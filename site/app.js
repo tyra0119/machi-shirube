@@ -17,6 +17,9 @@ const map = new maplibregl.Map({
 });
 map.addControl(new MapButtons({ onNoLocation: showMessage }), "bottom-right");
 
+let stats = null; // 住民基本台帳の数字（site/data/stats.json）
+fetch("data/stats.json").then((r) => r.json()).then((d) => (stats = d));
+
 map.on("load", async () => {
   const topo = await (await fetch("data/japan.topo.json")).json();
   const munis = topojson.feature(topo, topo.objects.municipalities);
@@ -72,17 +75,48 @@ function showCard(p) {
   const card = document.getElementById("card");
   const name = `${p.city}${p.ward}`;
   const where = [p.pref, p.county].filter(Boolean).join(" ");
-  const body = p.noData
-    ? "この地域には国の統計がありません。"
-    : "この町のくわしいページは、まだありません。";
+  const town = stats?.towns[p.code];
+  const body = p.noData || !town ? "<p>この地域には国の統計がありません。</p>" : featureCard(town);
   card.innerHTML = `
     <button type="button" class="close" aria-label="閉じる">×</button>
     <h2>${name || p.pref}</h2>
     <p class="where">${where}・市区町村コード ${p.code}</p>
-    <p>${body}</p>`;
+    ${body}`;
   card.querySelector(".close").addEventListener("click", hideCard);
   card.hidden = false;
 }
+// 特色のカード：全国の市区町村と比べて目立つものを3つ（真ん中から遠い順）
+const METRICS = {
+  over65Rate: { label: "65歳以上の人の割合", unit: "%" },
+  under15Rate: { label: "15歳未満の子どもの割合", unit: "%" },
+  foreignRate: { label: "外国の住民の割合", unit: "%" },
+  changeRate: { label: "1年の人口の増減", unit: "%", signed: true },
+  socialChangeRate: { label: "引っ越しによる1年の増減", unit: "%", signed: true },
+};
+function featureCard(t) {
+  const picks = Object.keys(METRICS)
+    .map((m) => ({ m, edge: Math.min(t.top[m], 100 - t.top[m]) }))
+    .sort((a, b) => a.edge - b.edge)
+    .slice(0, 3);
+  const items = picks.map(({ m }) => {
+    const { label, unit, signed } = METRICS[m];
+    const v = t[m];
+    const value = `${signed && v > 0 ? "+" : ""}${v.toFixed(1)}${unit}`;
+    const top = t.top[m];
+    const place =
+      t.rank[m] <= 10 ? `全国で ${t.rank[m]} 番目に高い`
+      : top <= 50 ? `全国で高いほうから ${Math.max(top, 0.1).toFixed(1)}%`
+      : `全国で低いほうから ${Math.max(100 - top, 0.1).toFixed(1)}%`;
+    return `<li><span class="label">${label}</span><span class="value">${value}</span><span class="place">${place}</span></li>`;
+  });
+  const s = stats.source;
+  return `
+    <p class="pop">人口 ${t.population.toLocaleString("ja-JP")}人</p>
+    <ul class="features">${items.join("")}</ul>
+    <p class="note">${t.ward ? "区の数字を、" : ""}全国の市区町村 ${stats.peers.toLocaleString("ja-JP")} と比べています。</p>
+    <p class="cite">出典：${s.name}（${s.asOf}。増減は${s.changePeriod}）を加工</p>`;
+}
+
 function hideCard() {
   document.getElementById("card").hidden = true;
   if (selected) map.setFeatureState({ source: "munis", id: selected }, { selected: false });
