@@ -422,6 +422,14 @@ function showCard(p) {
     ${actions(town ? `town.html?muni=${p.code}` : null, towns)}
     ${body}`;
   card.querySelector(".close").addEventListener("click", hideCard);
+  // 手元の画面だけ：この町を調べる（調べる画面で「調べ始める」を押すと、裏で Claude が物差しの問いを調べる）
+  if (town) {
+    isLocal.then((ok) => {
+      if (!ok || selected !== p.code) return;
+      card.querySelector(".card-actions")?.insertAdjacentHTML("beforeend",
+        `<a class="secondary as-button" href="research.html?muni=${p.code}">この町を調べる（手元の画面だけ）</a>`);
+    });
+  }
   card.querySelector(".towns")?.addEventListener("click", () => {
     map.setFeatureState({ source: "munis", id: p.code }, { selected: false });
     showTowns(p.code);
