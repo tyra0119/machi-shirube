@@ -1,5 +1,5 @@
 {
- "updatedAt": "2026-11-02T08:18:11.721Z",
+ "updatedAt": "2026-11-02T08:37:29.409Z",
  "counts": {
   "auto": 4,
   "ok": 5,
@@ -455,6 +455,21 @@
    "source": {
     "title": "大泉まつり｜大泉町",
     "url": "https://www.town.oizumi.gunma.jp/s020/kanko/010/030/20200825133615.html"
+   }
+  },
+  {
+   "id": "r00041",
+   "scope": "muni:39428",
+   "question": "この町の指定緊急避難場所の一覧は、どこで見られるか（公式のページか資料）。全部でいくつあるか",
+   "status": "void",
+   "source": {
+    "title": "黒潮町 指定緊急避難場所一覧（黒潮町オープンデータ、CSV）",
+    "url": "https://www.town.kuroshio.lg.jp/img/files/pv/sosiki/docs/open-date/2026/evacuation_space2025.csv"
+   },
+   "decided": {
+    "at": "2026-11-02T08:37:29.404Z",
+    "action": "void",
+    "reason": "CSV の読み違い：住所にカンマを含む行（ID 299）の列がずれ、津波の列を数えそこねた。正しくは 193 か所"
    }
   }
  ]

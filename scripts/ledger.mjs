@@ -83,11 +83,12 @@ export function reassess(id, fields) {
   return it;
 }
 
-// 無効にする：しくみの不具合でできた答え（例：町の公式サイトを読めなかった）。消さずに、理由を残して一覧から外す
+// 無効にする：しくみの不具合でできた答え（例：町の公式サイトを読めなかった・CSV の読み違い）。消さずに、理由を残して一覧から外す。
+// 人が決めたもの（OK・直して など）は変えない。確かめ待ちと、自動で承認したものだけ
 export function voidItem(id, reason) {
   const data = load();
   const it = data.items.find((x) => x.id === id);
-  if (!it || it.status !== "pending") return it;
+  if (!it || (it.status !== "pending" && it.status !== "auto")) return it;
   const rec = { at: new Date().toISOString(), by: "auto", action: "void", reason, from: it.status };
   it.status = "void";
   it.decisions.push(rec);

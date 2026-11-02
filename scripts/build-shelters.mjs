@@ -17,19 +17,37 @@ if (!fs.existsSync(raw)) {
   fs.writeFileSync(raw, Buffer.from(await res.arrayBuffer()));
 }
 const buf = fs.readFileSync(raw);
+// CSV の1行を列に分ける（"…" で囲んだ列の中のカンマは区切りにしない。住所に「822-117,896」のようなものがある）
+const cells = (line) => {
+  const out = [];
+  let cur = "", quoted = false;
+  for (let i = 0; i < line.length; i++) {
+    const ch = line[i];
+    if (quoted) {
+      if (ch === '"' && line[i + 1] === '"') { cur += '"'; i++; }
+      else if (ch === '"') quoted = false;
+      else cur += ch;
+    } else if (ch === '"') quoted = true;
+    else if (ch === ",") { out.push(cur); cur = ""; }
+    else cur += ch;
+  }
+  out.push(cur);
+  return out;
+};
 let text = new TextDecoder("utf-8").decode(buf);
 if (text.includes("�")) text = new TextDecoder("shift_jis").decode(buf);
 const lines = text.replace(/^﻿/, "").split(/\r?\n/).filter((l) => l.trim());
-const head = lines[0].split(",");
+const head = cells(lines[0]);
 const col = (name) => head.indexOf(name);
 const KINDS = { 洪水: "災害種別_洪水", 土砂: "災害種別_崖崩れ、土石流及び地滑り", 高潮: "災害種別_高潮", 地震: "災害種別_地震", 津波: "災害種別_津波", 火事: "災害種別_大規模な火事", 内水: "災害種別_内水氾濫", 火山: "災害種別_火山現象" };
 
 const features = [];
+const skipped = []; // 位置の書いていない行（地図に出せない）
 for (const line of lines.slice(1)) {
-  const r = line.split(",");
+  const r = cells(line);
   const lat = Number(r[col("緯度")]);
   const lon = Number(r[col("経度")]);
-  if (!Number.isFinite(lat) || !Number.isFinite(lon)) continue;
+  if (!r[col("緯度")] || !r[col("経度")] || !Number.isFinite(lat) || !Number.isFinite(lon)) { skipped.push(r[col("ID")]); continue; }
   features.push({
     type: "Feature",
     geometry: { type: "Point", coordinates: [lon, lat] },
@@ -43,9 +61,13 @@ for (const line of lines.slice(1)) {
   });
 }
 fs.mkdirSync("site/data/shelters", { recursive: true });
-fs.writeFileSync(`site/data/shelters/${code}.json`, JSON.stringify({
-  source: { title: title ?? "指定緊急避難場所一覧", url, license: license ?? "", fetchedAt: new Date().toISOString().slice(0, 10) },
+// 取った日は、前に作ったものがあれば引き継ぐ（作り直しただけで日付を変えない）
+const out = `site/data/shelters/${code}.json`;
+const fetchedAt = fs.existsSync(out) ? JSON.parse(fs.readFileSync(out, "utf8")).source.fetchedAt : new Date().toISOString().slice(0, 10);
+fs.writeFileSync(out, JSON.stringify({
+  source: { title: title ?? "指定緊急避難場所一覧", url, license: license ?? "", fetchedAt, rows: lines.length - 1, noLocation: skipped.length },
   type: "FeatureCollection",
   features,
 }));
-console.log(`${code}: 避難場所 ${features.length}（津波に使える ${features.filter((f) => f.properties.kinds.includes("津波")).length}）`);
+const tsunami = lines.slice(1).map(cells).filter((r) => r[col("災害種別_津波")] === "1").length;
+console.log(`${code}: 行 ${lines.length - 1}（津波 ${tsunami}）・位置なし ${skipped.length}${skipped.length ? `（ID ${skipped.join("、")}）` : ""}・地図に出す ${features.length}`);
