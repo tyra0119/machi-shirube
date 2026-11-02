@@ -701,6 +701,12 @@ function showTownCard(p) {
     <p class="note">この町は、まだ深く調べていません。</p>
     <p class="cite">出典：${townIndex.source}（${townIndex.asOf}）</p>`;
   card.querySelector(".multi").addEventListener("click", () => togglePick(p));
+  // 手元の画面だけ：この町・字を調べる（町・字ごとに違うこと＝ごみの曜日・校区・自治会・近くの計画を、町・字の問いで調べる）
+  isLocal.then((ok) => {
+    if (!ok || selectedTown !== p.town) return;
+    card.querySelector(".card-actions")?.insertAdjacentHTML("beforeend",
+      `<a class="secondary as-button" href="research.html?muni=${shownTowns}&part=${p.part}">この町・字を調べる（手元の画面だけ）</a>`);
+  });
   // 閉じると、中の町の一覧に戻る
   card.querySelector(".close").addEventListener("click", () => {
     map.setFeatureState({ source: "towns", id: selectedTown }, { selected: false });

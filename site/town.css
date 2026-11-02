@@ -343,3 +343,14 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .gomi-hits .k { background: hsl(var(--h) 25% 25%); color: hsl(var(--h) 60% 85%); } }
 .gomi-hits .also { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 4px; font-size: 13px; color: var(--text-sub); }
 .gomi-hits .also b { padding: 0 8px; border-radius: 10px; background: hsl(var(--h) 60% 94%); color: hsl(var(--h) 50% 30%); font-weight: 600; }
+.lang-bar a[aria-current] { background: var(--accent); color: var(--accent-text); }
+.answers .lvl.ai { background: var(--bg); color: var(--text-sub); border: 1px solid var(--line); font-weight: 400; }
+/* ほかの言葉（訳は日本語より長い）でも崩れないように */
+.memo-link { height: auto; min-height: 44px; padding: 8px 18px; border-radius: 16px; text-align: center; line-height: 1.4; }
+.day .w .by { display: inline-block; max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
+.hinan-kind { flex-wrap: wrap; gap: 6px; border: 0; border-radius: 0; overflow: visible; }
+.hinan-kind button { border: 1px solid var(--line); border-radius: 18px; min-height: 40px; }
+.lang-other .lvl, .lang-other .later > span, .lang-other .tiles .later { white-space: normal; overflow-wrap: anywhere; }
+.lang-other .today-life a { grid-template-columns: minmax(6em, 34%) 1fr; }
+.lang-other .day .row { grid-template-columns: minmax(3.5em, auto) 1fr; }
+.lang-other .town-head h1 { overflow-wrap: anywhere; }

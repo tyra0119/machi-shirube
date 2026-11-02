@@ -16,13 +16,13 @@ export const LANGS = {
   en: { name: "English", ja: "英語" },
   easy: { name: "やさしい にほんご", ja: "やさしい日本語" },
 };
-const PAGES = ["bousai", "komatta", "gomi", "tetsuzuki", "foreign", "iryo"]; // 暮らしと命に関わるページの答えを訳す
+const PAGES = ["bousai", "komatta", "gomi", "tetsuzuki", "foreign", "iryo", "koutsuu", "kosodate", "kaigo", "okane", "shisetsu", "shiru"]; // 町のページのどの場面の答えも訳す（ページ全体をその言葉で見られるように）
 
 const between = (t, tag) => t.match(new RegExp(`<${tag}>([\\s\\S]*?)</${tag}>`))?.[1];
 const textOf = (res) => res.content.filter((b) => b.type === "text").map((b) => b.text).join("");
 
 // 確かめ役：訳を日本語に訳し戻し、もとの日本語と意味が同じか。答えは1件ずつ印で囲ませる（JSON だと " でこわれる）
-async function checkLang(client, list, label) {
+export async function checkLang(client, list, label) {
   const chk = await client.messages.create({
     model: CHECKER,
     max_tokens: 8000,
@@ -102,11 +102,11 @@ export async function translateTown(code, langs = ["pt", "es", "en", "easy"], lo
 - 数字・日付・時間・電話番号・URL はそのまま。施設や地名は、訳した言葉のあとに日本語の名前を（ ）で残してください（看板や案内で探せるように）
 - ${lang === "easy" ? "やさしい日本語にしてください。短い文、むずかしい漢字にはひらがなで読みを（ ）でつけ、むずかしい言葉は言いかえる" : `${L.ja}（${L.name}）に訳してください`}
 - short（見出し）も訳してください
-- 最後に、<translations>[{"id": "番号", "short": "見出しの訳", "text": "本文の訳"}]</translations> の形だけを書いてください`,
+- 1件ずつ、<item id="番号"><short>見出しの訳</short><text>本文の訳</text></item> の形だけで答えてください（JSON にしない。訳の中に " があっても読めるように）`,
       messages: [{ role: "user", content: JSON.stringify(answers.map(({ id, short, text }) => ({ id, short, text })), null, 1) }],
     });
     usd += record(MODEL, res.usage, `訳す：${town?.name ?? code}（${L.ja}）`);
-    const tr = JSON.parse(between(textOf(res), "translations") ?? "[]");
+    const tr = [...textOf(res).matchAll(/<item id="([^"]+)">([\s\S]*?)<\/item>/g)].map(([, id, body]) => ({ id, short: between(body, "short")?.trim(), text: between(body, "text")?.trim() }));
 
     log(`${L.ja}の訳を、別の Claude が日本語に訳し戻して確かめています`);
     const { checks, usd: u } = await checkLang(client, answers.map((a) => ({ id: a.id, original: a.text, translation: tr.find((t) => t.id === a.id)?.text ?? "" })), `${town?.name ?? code}（${L.ja}）`);

@@ -21,6 +21,7 @@
     "research": "node --env-file=.env scripts/research.mjs",
     "recheck": "node --env-file=.env scripts/recheck.mjs",
     "translate": "node --env-file=.env scripts/translate.mjs",
+    "i18n": "node --env-file=.env scripts/i18n.mjs",
     "propose": "node --env-file=.env scripts/propose.mjs",
     "gomi": "node --env-file=.env scripts/gomi.mjs",
     "watch": "node scripts/watch.mjs",

@@ -1,5 +1,6 @@
 // 医療・健康のページ：今日（明日）やっている病院・診療所。見る人のブラウザで、曜日・祝日・第何週の休みから決める。
 // 元は厚生労働省「医療情報ネット」のオープンデータ（医療機関から届けられた内容）。変わっていることがあるので、行く前に電話で確かめてもらう
+const TT = (s) => (typeof T === "function" ? T(s) : s);
 const DAY_KEYS = ["日", "月", "火", "水", "木", "金", "土"];
 const MONDAY_FIRST = ["月", "火", "水", "木", "金", "土", "日"];
 
@@ -48,20 +49,25 @@ function medicalList(m, offset, center, now = new Date()) {
 
 function medicalHTML(m, offset, center, esc, filter = "", limit = 5) {
   const day = medicalList(m, offset, center);
-  const label = `${offset === 0 ? "今日" : "明日"}（${day.date.getMonth() + 1}月${day.date.getDate()}日 ${DAY_KEYS[day.date.getDay()]}曜${day.holiday ? `・${day.holiday}` : ""}）`;
+  const other = typeof LANG !== "undefined" && LANG && LANG !== "easy";
+  const label = other
+    ? `${TT(offset === 0 ? "今日" : "明日")}（${day.date.toLocaleDateString(LANG, { weekday: "short", month: "short", day: "numeric" })}${day.holiday ? `・${TT("祝日")}` : ""}）`
+    : `${TT(offset === 0 ? "今日" : "明日")}（${day.date.getMonth() + 1}月${day.date.getDate()}日 ${DAY_KEYS[day.date.getDay()]}曜${day.holiday ? `・${day.holiday}` : ""}）`;
   const f = filter.replace(/\s/g, "");
   const list = day.list.filter((x) => !f || (x.f.n + (x.f.s ?? []).join("")).replace(/\s/g, "").includes(f));
   const shown = list.slice(0, limit);
   return `
-    <p class="med-sum"><strong>${esc(label)}</strong>にやっているのは、この市区町村の ${m.list.length} か所のうち <strong>${day.list.length} か所</strong>${offset === 0 ? `（いま開いている ${day.list.filter((x) => x.openNow).length} か所）` : ""}</p>
+    <p class="med-sum">${other
+      ? `<strong>${esc(label)}</strong>：${TT("やっている所")} <strong>${day.list.length}</strong> / ${m.list.length}${offset === 0 ? `・${TT("いま開いている")} ${day.list.filter((x) => x.openNow).length}` : ""}`
+      : `<strong>${esc(label)}</strong>にやっているのは、この市区町村の ${m.list.length} か所のうち <strong>${day.list.length} か所</strong>${offset === 0 ? `（いま開いている ${day.list.filter((x) => x.openNow).length} か所）` : ""}`}</p>
     ${f ? `<p class="note">「${esc(filter)}」で絞ると ${list.length} か所</p>` : ""}
     <ul class="med-list">${shown.map((x) => `
       <li${x.openNow ? ` class="open"` : ""}>
-        <span class="n">${icon(x.f.k === "病院" ? "hospital" : "medical")}${x.f.u ? `<a href="${esc(x.f.u)}" target="_blank" rel="noopener">${esc(x.f.n)}</a>` : esc(x.f.n)}<small>${esc(x.f.k)}</small>${x.openNow ? `<em>いま開いている</em>` : ""}</span>
+        <span class="n">${icon(x.f.k === "病院" ? "hospital" : "medical")}${x.f.u ? `<a href="${esc(x.f.u)}" target="_blank" rel="noopener">${esc(x.f.n)}</a>` : esc(x.f.n)}<small>${esc(x.f.k)}</small>${x.openNow ? `<em>${TT("いま開いている")}</em>` : ""}</span>
         <span class="h">${x.h.map(([s, e]) => `${hhmm(s)}–${hhmm(e)}`).join("、")}${x.m != null ? `・まっすぐ ${x.m >= 1000 ? `${(x.m / 1000).toFixed(1)}km` : `${x.m}m`}` : ""}</span>
         ${x.f.s ? `<span class="s">${esc(x.f.s.slice(0, 6).join("・"))}${x.f.s.length > 6 ? ` ほか ${x.f.s.length - 6}` : ""}</span>` : ""}
         <span class="a">${esc(x.f.a)}${x.f.other ? `・休み：${esc(x.f.other.slice(0, 60))}` : ""}</span>
       </li>`).join("")}</ul>
-    ${list.length > shown.length ? `<button type="button" class="more-btn" data-more>次の ${Math.min(10, list.length - shown.length)} か所を見る（のこり ${list.length - shown.length}）</button>` : ""}
-    ${!day.list.length ? `<p class="note">${day.holiday ? "祝日のため、" : ""}届けられた診療時間では、この日にやっている所はありません。急ぐときは、下の窓口へ。</p>` : ""}`;
+    ${list.length > shown.length ? `<button type="button" class="more-btn" data-more>${TT("続きを見る")}（${list.length - shown.length}）</button>` : ""}
+    ${!day.list.length ? `<p class="note">${TT("届けられた診療時間では、この日にやっている所はありません。急ぐときは、下の窓口へ。")}</p>` : ""}`;
 }

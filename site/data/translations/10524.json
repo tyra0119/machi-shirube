@@ -1,7 +1,7 @@
 {
  "code": "10524",
  "name": "邑楽郡大泉町",
- "createdAt": "2026-11-02T09:35:06.625Z",
+ "createdAt": "2026-11-02T11:03:27.794Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
  "langs": {
@@ -11,10 +11,10 @@
    "items": [
     {
      "qid": "Q01",
-     "short": "Lista dos locais de refúgio",
-     "text": "Pode ser consultada na tabela da página “Abrigos” (避難所) do site oficial da cidade. Os locais de refúgio de emergência designados (terremoto) são 33, conforme a tabela.",
+     "short": "Lista dos locais de evacuação",
+     "text": "Pode ser consultada na tabela da página “Abrigos” (避難所) do site oficial da cidade. Os locais de evacuação de emergência designados (terremoto) são 33 locais na tabela.",
      "original": "町公式サイト「避難所」ページの表で見られる。指定緊急避難場所(地震)は表の33か所",
-     "back": "町公式サイトの「避難所」ページの表で見られる。指定緊急避難場所(地震)は表のとおり33か所",
+     "back": "町公式サイトの「避難所」ページの表で見られる。指定緊急避難場所（地震）は表の33か所。",
      "source": {
       "title": "避難所｜大泉町",
       "url": "https://www.town.oizumi.gunma.jp/s004/anzen/050/010/010/20200827140119.html",
@@ -25,10 +25,10 @@
     },
     {
      "qid": "Q02",
-     "short": "Mapa de perigos (hazard map)",
-     "text": "No site oficial da cidade, na página “Mapa Geral de Prevenção de Desastres de Oizumi” (大泉町総合防災マップ) (Segurança e Tranquilidade (安全・安心) > Preparação para desastres (災害への備え)), é possível ver PDFs da versão completa e das versões divididas (mapa detalhado de perigo de inundação, mapa geral (com as áreas de inundação previstas), etc.). Foi revisado como edição do ano fiscal de 2023 (página atualizada em 31 de março de 2025). Os mapas de tsunami e de deslizamento de terra não puderam ser confirmados nesta página.",
+     "short": "Mapa de risco de desastres (hazard map)",
+     "text": "Na página “Mapa Geral de Prevenção de Desastres de Oizumi” (大泉町総合防災マップ) do site oficial da cidade (Segurança e Tranquilidade > Preparação para desastres), é possível ver os PDFs da versão completa em um só arquivo e da versão dividida (mapa detalhado de risco de inundação, mapa geral (com as áreas de inundação prevista indicadas), etc.). Foi revisado como edição do ano fiscal de 2023 (página atualizada em 31 de março de 2025). Os mapas de tsunami e de deslizamento de terra não puderam ser confirmados nesta página.",
      "original": "町公式サイトの「大泉町総合防災マップ」ページ(安全・安心>災害への備え)で、一括版・分割版PDF(洪水ハザードマップ詳細地図、全体図(浸水想定区域表示あり)など)が見られる。2023年度版として改訂(ページ更新日2025年3月31日)。津波・土砂災害のマップはこのページでは確認できず。",
-     "back": "町公式サイトの「大泉町総合防災マップ」ページ（安全・安心＞災害への備え）で、一括版・分割版PDF（洪水ハザードマップ詳細地図、全体図（浸水想定区域表示あり）など）が見られる。2023年度版として改訂（ページ更新日2025年3月31日）。津波・土砂災害のマップはこのページでは確認できず。",
+     "back": "町公式サイトの「大泉町総合防災マップ」ページ（安全・安心＞災害への備え）で、一括版・分割版のPDF（洪水ハザードマップ詳細地図、全体図（浸水想定区域表示あり）など）が見られる。2023年度版として改訂（ページ更新日2025年3月31日）。津波・土砂災害のマップはこのページでは確認できず。",
      "source": {
       "title": "大泉町総合防災マップ｜大泉町",
       "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/170/20200828141906.html",
@@ -40,9 +40,9 @@
     {
      "qid": "Q03",
      "short": "Plano Regional de Prevenção de Desastres",
-     "text": "Pode ser consultado na página “Plano Regional de Prevenção de Desastres de Oizumi” (大泉町地域防災計画) do site oficial da cidade de Oizumi. Há download do documento completo e download dividido por parte e capítulo. A versão mais recente é a revisão de maio de Reiwa 8 (令和8年5月).",
+     "text": "Pode ser consultado na página “Plano Regional de Prevenção de Desastres de Oizumi” (大泉町地域防災計画) do site oficial da cidade de Oizumi. Há download de tudo de uma só vez e download dividido por parte e capítulo. A versão mais recente é a revisão de maio de Reiwa 8 (令和8年5月).",
      "original": "大泉町公式サイトの「大泉町地域防災計画」のページで見られる。一括ダウンロードと編・章ごとの分割ダウンロードがある。最新版は令和8年5月の改訂版。",
-     "back": "大泉町公式サイトの「大泉町地域防災計画」のページで見られる。全体の一括ダウンロードと、編・章ごとの分割ダウンロードがある。最新版は令和8年5月の改訂版。",
+     "back": "大泉町公式サイトの「大泉町地域防災計画」のページで見られる。一括ダウンロードと編・章ごとの分割ダウンロードがある。最新版は令和8年5月の改訂版。",
      "source": {
       "title": "大泉町地域防災計画｜大泉町",
       "url": "https://www.town.oizumi.gunma.jp/s004/gyosei/010/010/020/20200903104414.html",
@@ -54,7 +54,7 @@
     {
      "qid": "Q04",
      "short": "Avisos em caso de desastre",
-     "text": "Além das transmissões do rádio administrativo de prevenção de desastres (防災行政無線), é possível receber avisos por: ① E-mail de Segurança e Tranquilidade de Oizumi (大泉町安全・安心メール) (gratuito; também pode ser recebido pelo “Segurança e Tranquilidade” (安全・安心) do LINE oficial da cidade); ② E-mail de alerta de emergência (緊急速報メール) (Area Mail; recebido automaticamente, sem necessidade de cadastro); ③ Serviço de aviso por telefone (電話配信サービス) (mensagem de voz automática para telefone fixo; entregar o formulário de inscrição à Divisão de Segurança e Tranquilidade (安全安心課)). Os métodos de cadastro estão descritos na página “Utilize o E-mail de Segurança e Tranquilidade” (安全・安心メールをご利用ください) (e-mail e LINE) e na página “Serviço de aviso por telefone de informações de desastres” (災害情報などの電話配信サービス) (telefone).",
+     "text": "Além das transmissões do rádio administrativo de prevenção de desastres (防災行政無線), é possível receber avisos por: ① E-mail de Segurança e Tranquilidade de Oizumi (大泉町安全・安心メール) (gratuito; também pode ser recebido pelo “安全・安心” do LINE oficial da cidade); ② E-mail de alerta de emergência (Area Mail) (緊急速報メール) (recebido automaticamente, sem necessidade de cadastro); ③ Serviço de aviso por telefone (電話配信サービス) (mensagem de voz automática para telefone fixo; entregar o formulário de inscrição à Divisão de Segurança e Tranquilidade (安全安心課)). A forma de cadastro está nas páginas “Utilize o e-mail de Segurança e Tranquilidade” (安全・安心メールをご利用ください) (e-mail e LINE) e “Serviço de aviso por telefone de informações de desastres” (災害情報などの電話配信サービス) (telefone).",
      "original": "防災行政無線の放送のほか、①大泉町安全・安心メール（無料。町公式LINEの「安全・安心」からも受信可）、②緊急速報メール（エリアメール。登録不要で自動受信）、③電話配信サービス（固定電話に自動音声。申込書を安全安心課に提出）で受け取れる。登録方法は「安全・安心メールをご利用ください」ページ（メール・LINE）と「災害情報などの電話配信サービス」ページ（電話）に書かれている。",
      "back": "防災行政無線の放送のほか、①大泉町安全・安心メール（無料。町公式LINEの「安全・安心」からも受信可）、②緊急速報メール（エリアメール。登録不要で自動受信）、③電話配信サービス（固定電話に自動音声。申込書を安全安心課に提出）で受け取れる。登録方法は「安全・安心メールをご利用ください」ページ（メール・LINE）と「災害情報などの電話配信サービス」ページ（電話）に書かれている。",
      "source": {
@@ -68,7 +68,7 @@
     {
      "qid": "Q05",
      "short": "Como separar o lixo e dias de coleta",
-     "text": "Pode ser consultado na página “Regras e etiqueta para descartar o lixo” (ごみ出しのルールとマナー) do site oficial da cidade. Nessa página, é possível acessar as páginas do “Calendário de coleta de lixo (como descartar e separar o lixo)” (ごみ収集カレンダー（ごみの出しかた・分けかた）) por bairro e da “Tabela de separação do lixo” (ごみの分別一覧表). No LINE oficial da cidade também é possível receber avisos dos dias de coleta e pesquisar como separar o lixo.",
+     "text": "Pode ser consultado na página “Regras e etiqueta para descartar o lixo” (ごみ出しのルールとマナー) do site oficial da cidade. Dessa página, é possível ir para as páginas do “Calendário de coleta de lixo (como descartar e separar o lixo)” (ごみ収集カレンダー（ごみの出しかた・分けかた）) por bairro e da “Tabela de separação do lixo” (ごみの分別一覧表). No LINE oficial da cidade também é possível usar a notificação dos dias de coleta e a busca do método de separação.",
      "original": "町公式サイトの「ごみ出しのルールとマナー」のページで見られます。このページから、地区別の「ごみ収集カレンダー（ごみの出しかた・分けかた）」と「ごみの分別一覧表」のページに進めます。町公式LINEでも収集日の通知と分別方法の検索が使えます。",
      "back": "町公式サイトの「ごみ出しのルールとマナー」のページで見られます。このページから、地区別の「ごみ収集カレンダー（ごみの出しかた・分けかた）」と「ごみの分別一覧表」のページに進めます。町公式LINEでも収集日の通知と分別方法の検索が使えます。",
      "source": {
@@ -81,14 +81,30 @@
     },
     {
      "qid": "Q06",
-     "short": "Procedimentos de mudança",
-     "text": "Pode ser consultado na página “Mudança de entrada, saída e mudança dentro da cidade” (転入、転出、転居) do site oficial da cidade (Vida e procedimentos (くらし・手続き) > Notificações e certidões (届出と証明) > Certidão de residência (住民票)). A notificação de entrada (転入) deve ser feita em até 14 dias após começar a morar no novo endereço. Os itens necessários incluem documento de identificação pessoal, certidão de saída (転出証明書), etc.",
+     "short": "Procedimentos de mudança de endereço",
+     "text": "Pode ser consultado na página “Mudança de entrada, saída e mudança dentro da cidade” (転入、転出、転居) do site oficial da cidade (Vida e procedimentos > Declarações e certidões > Registro de residência (住民票)). Para a entrada (转入), a declaração deve ser feita em até 14 dias após começar a morar no novo endereço. Itens necessários: documento de identificação, certificado de mudança de saída (転出証明書), etc.",
      "original": "町公式サイトの「転入、転出、転居」ページ(くらし・手続き > 届出と証明 > 住民票)で見られる。転入は新住所に住み始めてから14日以内に届出。必要なものは本人確認書類、転出証明書など。",
-     "back": "町公式サイトの「転入、転出、転居」ページ（くらし・手続き > 届出と証明 > 住民票）で見られる。転入は新住所に住み始めてから14日以内に届出。必要なものは本人確認書類、転出証明書など。",
+     "back": "町公式サイトの「転入、転出、転居」ページ（くらし・手続き＞届出と証明＞住民票）で見られる。転入は新住所に住み始めてから14日以内に届出。必要なものは本人確認書類、転出証明書など。",
      "source": {
       "title": "転入、転出、転居｜大泉町",
       "url": "https://www.town.oizumi.gunma.jp/s017/kurashi/020/050/030/20200804203647.html",
       "where": "転入(手続きできる人・届出期間・必要なもの)"
+     },
+     "status": "auto",
+     "problems": [
+      "「转入」と簡体字が混入している（意味への影響なし）。"
+     ]
+    },
+    {
+     "qid": "Q07",
+     "short": "Transporte na cidade",
+     "text": "Há o ônibus público regional “Aozora” (あおぞら) (Chiyoda – Oizumi – Ota; horários publicados no site da cidade) e o transporte sob demanda para idosos e outros “Hohoemi” (ほほえみ) (para pessoas de 65 anos ou mais, gestantes e crianças em idade pré-escolar. É preciso se cadastrar como usuário previamente e ligar para a central de reservas desde 1 semana antes do dia de uso até 1 hora antes do horário desejado. Segunda a sexta, 7:00 às 17:00). O número de telefone da central de reservas não consta na página consultada. Contato para informações: Divisão de Idosos e Assistência (高齢介護課) 0276-63-3111.",
+     "original": "広域公共バス「あおぞら」(千代田町―大泉町―太田市、時刻表は町サイトに掲載)と、高齢者等デマンド交通「ほほえみ」(65歳以上・妊娠中の人・未就学児が対象。事前に利用者登録をし、利用日の1週間前から希望時刻の1時間前までに予約センターへ電話。月〜金 7:00〜17:00)がある。予約センターの電話番号は、確認したページには載っていない。問い合わせ先は高齢介護課 0276-63-3111。",
+     "back": "広域公共バス「あおぞら」（千代田町―大泉町―太田市、時刻表は町サイトに掲載）と、高齢者等デマンド交通「ほほえみ」（65歳以上・妊娠中の人・未就学児が対象。事前に利用者登録をし、利用日の1週間前から希望時刻の1時間前までに予約センターへ電話。月〜金 7:00〜17:00）がある。予約センターの電話番号は、確認したページには載っていない。問い合わせ先は高齢介護課 0276-63-3111。",
+     "source": {
+      "title": "高齢者等デマンド交通運行事業",
+      "url": "https://www.town.oizumi.gunma.jp/s014/kurashi/010/010/010/20200730120027.html",
+      "where": "利用方法・運行日・運行時間"
      },
      "status": "auto",
      "problems": []
@@ -96,13 +112,55 @@
     {
      "qid": "Q08",
      "short": "Informações para estrangeiros",
-     "text": "Sim, há. ① Na página “Foreign Language” do site oficial da cidade, é possível ver o site da cidade com tradução automática para português, inglês, espanhol, nepalês, chinês e outros idiomas. ② A página “Convivência multicultural em Oizumi” (大泉町の多文化共生) informa que a cidade transmite informações aos moradores estrangeiros por meio do informativo multilíngue “GARAPA” e do Centro Comunitário de Convivência Multicultural de Oizumi (大泉町多文化共生コミュニティセンター). O atendimento é na Divisão de Cooperação Multicultural (多文化協働課), do Departamento de Planejamento (企画部) (guichê nº 206, 2º andar da prefeitura (庁舎), telefone 0276-63-3111). A página em japonês simples (やさしい日本語) e os detalhes do atendimento de consultas (horários e idiomas atendidos) não puderam ser confirmados nos materiais lidos desta vez.",
+     "text": "Sim, há. ① Pela página “Foreign Language” do site oficial da cidade, é possível ver o site da cidade com tradução automática para português, inglês, espanhol, nepalês, chinês e outros idiomas. ② A página “Convivência multicultural em Oizumi” (大泉町の多文化共生) informa que a cidade passa informações aos moradores estrangeiros por meio do informativo multilíngue “GARAPA” e do Centro Comunitário de Convivência Multicultural de Oizumi (大泉町多文化共生コミュニティセンター). O atendimento é na Divisão de Cooperação Multicultural (多文化協働課), Departamento de Planejamento (企画部) (prédio da prefeitura, 2º andar, guichê 206, telefone 0276-63-3111). A página em japonês simples e os detalhes do atendimento para consultas (horário e idiomas atendidos) não puderam ser confirmados nos materiais lidos desta vez.",
      "original": "ある。①町公式サイトの「Foreign Language」ページから、ポルトガル語・英語・スペイン語・ネパール語・中国語などへの自動翻訳で町サイトを見られる。②「大泉町の多文化共生」のページに、多言語版広報紙「GARAPA」と大泉町多文化共生コミュニティセンターで外国人住民に情報を知らせていると書かれている。窓口は企画部 多文化協働課（庁舎2階206番窓口、電話0276-63-3111）。やさしい日本語のページと、相談窓口の詳しい内容（時間・対応言語）は、今回読んだ資料では確認できなかった。",
      "back": "ある。①町公式サイトの「Foreign Language」ページから、ポルトガル語・英語・スペイン語・ネパール語・中国語などへの自動翻訳で町サイトを見られる。②「大泉町の多文化共生」のページに、多言語版広報紙「GARAPA」と大泉町多文化共生コミュニティセンターで外国人住民に情報を知らせていると書かれている。窓口は企画部 多文化協働課（庁舎2階206番窓口、電話0276-63-3111）。やさしい日本語のページと、相談窓口の詳しい内容（時間・対応言語）は、今回読んだ資料では確認できなかった。",
      "source": {
       "title": "大泉町の多文化共生｜大泉町",
       "url": "https://www.town.oizumi.gunma.jp/s007/kurashi/010/030/100/20200812100640.html",
       "where": "本文（大泉町の多文化共生）"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q09",
+     "short": "História da cidade",
+     "text": "Em 1957 (Showa 32), a Vila de Okawa (大川村) e a cidade de Koizumi (小泉町) se uniram e formaram “Oizumi” (大泉町).",
+     "original": "昭和32年(1957年)に大川村と小泉町が合併して「大泉町」になった",
+     "back": "1957年（昭和32年）に大川村と小泉町が合併して「大泉町」になった。",
+     "source": {
+      "title": "大泉町の歴史",
+      "url": "https://www.town.oizumi.gunma.jp/s005/gyosei/010/010/140/20220218115627.html",
+      "where": "現在までの歩み"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q10",
+     "short": "Eventos e festivais",
+     "text": "Festival de Oizumi (大泉まつり). Realizado todos os anos no fim de setembro, com a Estrada Provincial 142 (県道142号) fechada para pedestres (carros alegóricos (山車), santuários portáteis (御神輿), Palco Internacional, etc.). O 54º está previsto para sábado, 26 de setembro de Reiwa 8 (令和8年9月26日), das 13h às 21h.",
+     "original": "大泉まつり。毎年9月下旬、県道142号を歩行者天国にして開催（山車・御神輿・インターナショナルステージなど）。第54回は令和8年9月26日（土）午後1時〜9時の予定。",
+     "back": "大泉まつり。毎年9月下旬、県道142号を歩行者天国にして開催（山車・御神輿・インターナショナルステージなど）。第54回は令和8年9月26日（土）午後1時〜9時の予定。",
+     "source": {
+      "title": "大泉まつり｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s020/kanko/010/030/20200825133615.html",
+      "where": "大泉まつり（本文冒頭）"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q11",
+     "short": "Flor e árvore da cidade",
+     "text": "Árvore da cidade: a árvore símbolo é o zelkova (けやき); as árvores recomendadas para arborização são a sasanqua (さざんか) e as azaleias (つつじ類, incluindo satsuki). Flor da cidade: tulipa (primavera) e sálvia (outono). Não há registro de pássaro da cidade. Decidido em 1982 (Showa 57) (25º aniversário da fundação da cidade).",
+     "original": "町の木：シンボル木はけやき、緑化推奨木はさざんか・つつじ類（さつき含む）。町の花：チューリップ（春）とサルビア（秋）。町の鳥は記載なし。1982年（昭和57年）に決定（町発足25周年記念）。",
+     "back": "町の木：シンボル木はけやき、緑化推奨木はさざんか・つつじ類（さつき含む）。町の花：チューリップ（春）とサルビア（秋）。町の鳥は記載なし。1982年（昭和57年）に決定（町発足25周年記念）。",
+     "source": {
+      "title": "大泉町の木・町の花｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s006/gyosei/020/040/1287974347-3.html",
+      "where": "町の木・町の花（本文の表）"
      },
      "status": "auto",
      "problems": []
@@ -116,9 +174,9 @@
     {
      "qid": "Q01",
      "short": "Lista de lugares de evacuación",
-     "text": "Se puede consultar en la tabla de la página «Refugios» (避難所) del sitio web oficial del pueblo. Los lugares de evacuación de emergencia designados (para terremotos) son 33 en la tabla.",
+     "text": "Se puede consultar en la tabla de la página «Refugios» (避難所) del sitio web oficial del pueblo. Los lugares de evacuación de emergencia designados (terremoto) son 33 en la tabla.",
      "original": "町公式サイト「避難所」ページの表で見られる。指定緊急避難場所(地震)は表の33か所",
-     "back": "町公式サイトの「避難所」ページの表で見られる。指定緊急避難場所（地震）は表の33か所。",
+     "back": "町公式サイト「避難所」ページの表で見られる。指定緊急避難場所(地震)は表の33か所",
      "source": {
       "title": "避難所｜大泉町",
       "url": "https://www.town.oizumi.gunma.jp/s004/anzen/050/010/010/20200827140119.html",
@@ -129,10 +187,10 @@
     },
     {
      "qid": "Q02",
-     "short": "Mapa de riesgos (hazard map)",
-     "text": "En la página «Mapa general de prevención de desastres de Oizumi» (大泉町総合防災マップ) del sitio web oficial del pueblo (Seguridad y tranquilidad > Preparación ante desastres) se pueden ver archivos PDF en versión completa y en versión dividida (mapa detallado de riesgo de inundación, mapa general con las zonas de inundación previstas, etc.). Fue revisado como edición del año fiscal 2023 (la página se actualizó el 31 de marzo de 2025). Los mapas de tsunami y de deslizamientos de tierra no se pueden encontrar en esta página.",
+     "short": "Mapa de peligros (ハザードマップ)",
+     "text": "En la página «Mapa Integral de Prevención de Desastres de Oizumi» (大泉町総合防災マップ) del sitio web oficial del pueblo (Seguridad y tranquilidad > Preparación para desastres, 安全・安心>災害への備え) se pueden ver los PDF en versión completa y en versiones divididas (mapa detallado de peligro de inundación, mapa general con las zonas de inundación previstas, etc.). Fue revisado como edición del año fiscal 2023 (fecha de actualización de la página: 31 de marzo de 2025). Los mapas de tsunami y de desastres por deslizamiento de tierra no se pueden confirmar en esta página.",
      "original": "町公式サイトの「大泉町総合防災マップ」ページ(安全・安心>災害への備え)で、一括版・分割版PDF(洪水ハザードマップ詳細地図、全体図(浸水想定区域表示あり)など)が見られる。2023年度版として改訂(ページ更新日2025年3月31日)。津波・土砂災害のマップはこのページでは確認できず。",
-     "back": "町公式サイトの「大泉町総合防災マップ」ページ（安全・安心＞災害への備え）で、全体版と分割版のPDF（洪水ハザードマップ詳細地図、浸水想定区域を表示した全体図など）が見られる。2023年度版として改訂された（ページ更新日2025年3月31日）。津波・土砂災害のマップは、このページでは確認できない。",
+     "back": "町公式サイトの「大泉町総合防災マップ」ページ(安全・安心＞災害への備え)で、一括版・分割版PDF(洪水ハザードマップ詳細地図、全体図(浸水想定区域表示あり)など)が見られる。2023年度版として改訂(ページ更新日2025年3月31日)。津波・土砂災害のマップはこのページでは確認できず。",
      "source": {
       "title": "大泉町総合防災マップ｜大泉町",
       "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/170/20200828141906.html",
@@ -144,21 +202,24 @@
     {
      "qid": "Q03",
      "short": "Plan Regional de Prevención de Desastres",
-     "text": "Se puede consultar en la página «Plan Regional de Prevención de Desastres de Oizumi» (大泉町地域防災計画) del sitio web oficial del pueblo de Oizumi (大泉町). Hay descarga completa y descarga dividida por partes y capítulos. La versión más reciente es la revisión de mayo del año 8 de la era Reiwa (令和8年5月).",
+     "text": "Se puede consultar en la página «Plan Regional de Prevención de Desastres de Oizumi» (大泉町地域防災計画) del sitio web oficial de Oizumi. Hay una descarga completa y descargas divididas por partes y capítulos. La última versión es la revisión de mayo de Reiwa 8 (2026).",
      "original": "大泉町公式サイトの「大泉町地域防災計画」のページで見られる。一括ダウンロードと編・章ごとの分割ダウンロードがある。最新版は令和8年5月の改訂版。",
-     "back": "大泉町公式サイトの「大泉町地域防災計画」ページで見られる。一括ダウンロードと編・章ごとの分割ダウンロードがある。最新版は令和8年5月の改訂版。",
+     "back": "大泉町公式サイトの「大泉町地域防災計画」のページで見られる。一括ダウンロードと編・章ごとの分割ダウンロードがある。最新版は令和8年(2026年)5月の改訂版。",
      "source": {
       "title": "大泉町地域防災計画｜大泉町",
       "url": "https://www.town.oizumi.gunma.jp/s004/gyosei/010/010/020/20200903104414.html",
       "where": "ページ冒頭の説明文、一括ダウンロード・分割ダウンロード欄"
      },
-     "status": "auto",
-     "problems": []
+     "status": "pending",
+     "problems": [
+      "原文にない西暦「(2026)」が追加されている（令和8年と同じ年なので内容のずれではない）"
+     ],
+     "ledgerId": "r00070"
     },
     {
      "qid": "Q04",
      "short": "Avisos en caso de desastre",
-     "text": "Además de las transmisiones del sistema de radio de prevención de desastres del pueblo (防災行政無線), se puede recibir información por: ① el correo de seguridad y tranquilidad de Oizumi (大泉町安全・安心メール) (gratuito; también se puede recibir desde «Seguridad y tranquilidad» (安全・安心) en el LINE oficial del pueblo); ② el correo de alerta de emergencia (緊急速報メール) (Area Mail; se recibe automáticamente, sin necesidad de registrarse); ③ el servicio de aviso por teléfono (電話配信サービス) (mensaje de voz automático al teléfono fijo; se debe entregar el formulario de solicitud a la Sección de Seguridad y Tranquilidad (安全安心課)). La forma de registrarse está explicada en la página «Utilice el correo de seguridad y tranquilidad» (安全・安心メールをご利用ください) (correo y LINE) y en la página «Servicio de aviso por teléfono de información sobre desastres» (災害情報などの電話配信サービス) (teléfono).",
+     "text": "Además de las transmisiones de la radio administrativa de prevención de desastres (防災行政無線), se puede recibir información por: ① el Correo de Seguridad y Tranquilidad de Oizumi (大泉町安全・安心メール) (gratuito; también se puede recibir desde «Seguridad y Tranquilidad» en el LINE oficial del pueblo), ② el correo de alerta de emergencia (緊急速報メール, Area Mail) (no requiere registro; se recibe automáticamente), ③ el servicio de aviso por teléfono (電話配信サービス) (mensaje de voz automático al teléfono fijo; se entrega el formulario de solicitud a la Sección de Seguridad y Tranquilidad, 安全安心課). La forma de registrarse está explicada en la página «Utilice el correo de seguridad y tranquilidad» (安全・安心メールをご利用ください) (correo y LINE) y en la página «Servicio de aviso por teléfono de información de desastres» (災害情報などの電話配信サービス) (teléfono).",
      "original": "防災行政無線の放送のほか、①大泉町安全・安心メール（無料。町公式LINEの「安全・安心」からも受信可）、②緊急速報メール（エリアメール。登録不要で自動受信）、③電話配信サービス（固定電話に自動音声。申込書を安全安心課に提出）で受け取れる。登録方法は「安全・安心メールをご利用ください」ページ（メール・LINE）と「災害情報などの電話配信サービス」ページ（電話）に書かれている。",
      "back": "防災行政無線の放送のほか、①大泉町安全・安心メール（無料。町公式LINEの「安全・安心」からも受信可）、②緊急速報メール（エリアメール。登録不要で自動受信）、③電話配信サービス（固定電話に自動音声。申込書を安全安心課に提出）で受け取れる。登録方法は「安全・安心メールをご利用ください」ページ（メール・LINE）と「災害情報などの電話配信サービス」ページ（電話）に書かれている。",
      "source": {
@@ -172,7 +233,7 @@
     {
      "qid": "Q05",
      "short": "Cómo separar la basura y días de recogida",
-     "text": "Se puede consultar en la página «Reglas y modales para sacar la basura» (ごみ出しのルールとマナー) del sitio web oficial del pueblo. Desde esa página se puede acceder a las páginas del «Calendario de recogida de basura (cómo sacar y separar la basura)» (ごみ収集カレンダー（ごみの出しかた・分けかた）) por zona y de la «Tabla de clasificación de la basura» (ごみの分別一覧表). En el LINE oficial del pueblo también se puede usar la notificación de los días de recogida y la búsqueda del método de separación.",
+     "text": "Se puede consultar en la página «Reglas y modales para sacar la basura» (ごみ出しのルールとマナー) del sitio web oficial del pueblo. Desde esa página se puede acceder a las páginas del «Calendario de recogida de basura por zona (cómo sacar y separar la basura)» (ごみ収集カレンダー（ごみの出しかた・分けかた）) y de la «Tabla de clasificación de la basura» (ごみの分別一覧表). En el LINE oficial del pueblo también se pueden usar los avisos de los días de recogida y la búsqueda de cómo separar la basura.",
      "original": "町公式サイトの「ごみ出しのルールとマナー」のページで見られます。このページから、地区別の「ごみ収集カレンダー（ごみの出しかた・分けかた）」と「ごみの分別一覧表」のページに進めます。町公式LINEでも収集日の通知と分別方法の検索が使えます。",
      "back": "町公式サイトの「ごみ出しのルールとマナー」のページで見られます。このページから、地区別の「ごみ収集カレンダー（ごみの出しかた・分けかた）」と「ごみの分別一覧表」のページに進めます。町公式LINEでも収集日の通知と分別方法の検索が使えます。",
      "source": {
@@ -186,9 +247,9 @@
     {
      "qid": "Q06",
      "short": "Trámites de mudanza",
-     "text": "Se puede consultar en la página «Traslado de entrada, traslado de salida y cambio de domicilio dentro del pueblo» (転入、転出、転居) del sitio web oficial del pueblo (Vida y trámites > Notificaciones y certificados > Registro de residencia (住民票)). La notificación de llegada al pueblo (転入) debe hacerse dentro de los 14 días desde que se empieza a vivir en el nuevo domicilio. Lo que se necesita incluye un documento de identificación personal, el certificado de traslado de salida (転出証明書), etc.",
+     "text": "Se puede consultar en la página «Traslado de entrada, traslado de salida y cambio de domicilio» (転入、転出、転居) del sitio web oficial del pueblo (Vida y trámites > Declaraciones y certificados > Registro de residencia, くらし・手続き > 届出と証明 > 住民票). La declaración de traslado de entrada se debe hacer dentro de los 14 días desde que se empieza a vivir en la nueva dirección. Lo necesario incluye un documento de identificación personal, el certificado de traslado de salida (転出証明書), etc.",
      "original": "町公式サイトの「転入、転出、転居」ページ(くらし・手続き > 届出と証明 > 住民票)で見られる。転入は新住所に住み始めてから14日以内に届出。必要なものは本人確認書類、転出証明書など。",
-     "back": "町公式サイトの「転入、転出、転居」ページ（くらし・手続き > 届出と証明 > 住民票）で見られる。転入は新住所に住み始めてから14日以内に届出。必要なものは本人確認書類、転出証明書など。",
+     "back": "町公式サイトの「転入、転出、転居」ページ(くらし・手続き＞届出と証明＞住民票)で見られる。転入は新住所に住み始めてから14日以内に届出。必要なものは本人確認書類、転出証明書など。",
      "source": {
       "title": "転入、転出、転居｜大泉町",
       "url": "https://www.town.oizumi.gunma.jp/s017/kurashi/020/050/030/20200804203647.html",
@@ -198,15 +259,74 @@
      "problems": []
     },
     {
+     "qid": "Q07",
+     "short": "Transporte del pueblo",
+     "text": "Hay dos servicios: el autobús público regional «Aozora» (あおぞら) (Chiyoda – Oizumi – Ota; el horario está en el sitio web del pueblo) y el transporte a demanda para personas mayores y otros «Hohoemi» (ほほえみ) (para personas de 65 años o más, mujeres embarazadas y niños que aún no están en edad escolar; hay que registrarse previamente como usuario y llamar por teléfono al centro de reservas desde 1 semana antes del día de uso hasta 1 hora antes de la hora deseada; de lunes a viernes, de 7:00 a 17:00). El número de teléfono del centro de reservas no aparece en la página que se revisó. Para consultas: Sección de Atención a Personas Mayores (高齢介護課), 0276-63-3111.",
+     "original": "広域公共バス「あおぞら」(千代田町―大泉町―太田市、時刻表は町サイトに掲載)と、高齢者等デマンド交通「ほほえみ」(65歳以上・妊娠中の人・未就学児が対象。事前に利用者登録をし、利用日の1週間前から希望時刻の1時間前までに予約センターへ電話。月〜金 7:00〜17:00)がある。予約センターの電話番号は、確認したページには載っていない。問い合わせ先は高齢介護課 0276-63-3111。",
+     "back": "広域公共バス「あおぞら」(千代田町―大泉町―太田市、時刻表は町サイトに掲載)と、高齢者等デマンド交通「ほほえみ」(65歳以上・妊娠中の人・未就学児が対象。事前に利用者登録をし、利用日の1週間前から希望時刻の1時間前までに予約センターへ電話。月〜金 7:00〜17:00)がある。予約センターの電話番号は、確認したページには載っていない。問い合わせ先は高齢介護課 0276-63-3111。",
+     "source": {
+      "title": "高齢者等デマンド交通運行事業",
+      "url": "https://www.town.oizumi.gunma.jp/s014/kurashi/010/010/010/20200730120027.html",
+      "where": "利用方法・運行日・運行時間"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
      "qid": "Q08",
      "short": "Información para personas extranjeras",
-     "text": "Sí hay. ① Desde la página «Foreign Language» del sitio web oficial del pueblo se puede ver el sitio del pueblo con traducción automática a portugués, inglés, español, nepalés, chino y otros idiomas. ② En la página «Convivencia multicultural en Oizumi» (大泉町の多文化共生) se indica que se informa a los residentes extranjeros mediante el boletín municipal multilingüe «GARAPA» y el Centro Comunitario de Convivencia Multicultural de Oizumi (大泉町多文化共生コミュニティセンター). La ventanilla es la Sección de Colaboración Multicultural (多文化協働課) del Departamento de Planificación (企画部) (ventanilla 206, 2.º piso del edificio municipal (庁舎2階206番窓口), teléfono 0276-63-3111). La página en japonés fácil (やさしい日本語) y los detalles de la ventanilla de consultas (horario e idiomas de atención) no se pudieron confirmar en los materiales leídos esta vez.",
+     "text": "Sí hay. ① Desde la página «Foreign Language» del sitio web oficial del pueblo se puede ver el sitio del pueblo con traducción automática al portugués, inglés, español, nepalés, chino y otros idiomas. ② En la página «Convivencia multicultural en Oizumi» (大泉町の多文化共生) se indica que se informa a los residentes extranjeros mediante el boletín municipal multilingüe «GARAPA» y el Centro Comunitario de Convivencia Multicultural de Oizumi (大泉町多文化共生コミュニティセンター). La ventanilla es el Departamento de Planificación (企画部), Sección de Colaboración Multicultural (多文化協働課) (ventanilla n.º 206, 2.º piso del ayuntamiento (庁舎), teléfono 0276-63-3111). La página en japonés fácil y los detalles de la ventanilla de consultas (horario e idiomas de atención) no pudieron confirmarse en los materiales leídos esta vez.",
      "original": "ある。①町公式サイトの「Foreign Language」ページから、ポルトガル語・英語・スペイン語・ネパール語・中国語などへの自動翻訳で町サイトを見られる。②「大泉町の多文化共生」のページに、多言語版広報紙「GARAPA」と大泉町多文化共生コミュニティセンターで外国人住民に情報を知らせていると書かれている。窓口は企画部 多文化協働課（庁舎2階206番窓口、電話0276-63-3111）。やさしい日本語のページと、相談窓口の詳しい内容（時間・対応言語）は、今回読んだ資料では確認できなかった。",
      "back": "ある。①町公式サイトの「Foreign Language」ページから、ポルトガル語・英語・スペイン語・ネパール語・中国語などへの自動翻訳で町サイトを見られる。②「大泉町の多文化共生」のページに、多言語版広報紙「GARAPA」と大泉町多文化共生コミュニティセンターで外国人住民に情報を知らせていると書かれている。窓口は企画部 多文化協働課（庁舎2階206番窓口、電話0276-63-3111）。やさしい日本語のページと、相談窓口の詳しい内容（時間・対応言語）は、今回読んだ資料では確認できなかった。",
      "source": {
       "title": "大泉町の多文化共生｜大泉町",
       "url": "https://www.town.oizumi.gunma.jp/s007/kurashi/010/030/100/20200812100640.html",
       "where": "本文（大泉町の多文化共生）"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q09",
+     "short": "Historia del pueblo",
+     "text": "En el año 32 de Showa (1957), la villa de Okawa (大川村) y el pueblo de Koizumi (小泉町) se fusionaron y se formó «Oizumi» (大泉町).",
+     "original": "昭和32年(1957年)に大川村と小泉町が合併して「大泉町」になった",
+     "back": "昭和32年(1957年)に大川村と小泉町が合併して「大泉町」になった",
+     "source": {
+      "title": "大泉町の歴史",
+      "url": "https://www.town.oizumi.gunma.jp/s005/gyosei/010/010/140/20220218115627.html",
+      "where": "現在までの歩み"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q10",
+     "short": "Eventos y festivales",
+     "text": "El Festival de Oizumi (大泉まつり). Se celebra cada año a finales de septiembre, con la carretera prefectural n.º 142 (県道142号) convertida en zona peatonal (carrozas dashi, mikoshi o santuarios portátiles, Escenario Internacional, etc.). La 54.ª edición está prevista para el sábado 26 de septiembre de Reiwa 8 (2026), de 1:00 p. m. a 9:00 p. m.",
+     "original": "大泉まつり。毎年9月下旬、県道142号を歩行者天国にして開催（山車・御神輿・インターナショナルステージなど）。第54回は令和8年9月26日（土）午後1時〜9時の予定。",
+     "back": "大泉まつり。毎年9月下旬、県道142号を歩行者天国にして開催（山車・御神輿・インターナショナルステージなど）。第54回は令和8年(2026年)9月26日（土）午後1時〜9時の予定。",
+     "source": {
+      "title": "大泉まつり｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s020/kanko/010/030/20200825133615.html",
+      "where": "大泉まつり（本文冒頭）"
+     },
+     "status": "pending",
+     "problems": [
+      "原文にない西暦「(2026)」が追加されている（令和8年と同じ年なので内容のずれではない）"
+     ],
+     "ledgerId": "r00071"
+    },
+    {
+     "qid": "Q11",
+     "short": "Flor y árbol del pueblo",
+     "text": "Árbol del pueblo: el árbol símbolo es el keyaki (けやき, zelkova japonesa); los árboles recomendados para el reverdecimiento son la sazanka (さざんか) y los tsutsuji (つつじ, azaleas; incluye las satsuki). Flor del pueblo: el tulipán (primavera) y la salvia (otoño). No hay registro de un ave del pueblo. Se decidieron en 1982 (año 57 de Showa), por el 25.º aniversario de la fundación del pueblo.",
+     "original": "町の木：シンボル木はけやき、緑化推奨木はさざんか・つつじ類（さつき含む）。町の花：チューリップ（春）とサルビア（秋）。町の鳥は記載なし。1982年（昭和57年）に決定（町発足25周年記念）。",
+     "back": "町の木：シンボル木はけやき、緑化推奨木はさざんか・つつじ類（さつき含む）。町の花：チューリップ（春）とサルビア（秋）。町の鳥は記載なし。1982年（昭和57年）に決定（町発足25周年記念）。",
+     "source": {
+      "title": "大泉町の木・町の花｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s006/gyosei/020/040/1287974347-3.html",
+      "where": "町の木・町の花（本文の表）"
      },
      "status": "auto",
      "problems": []
@@ -222,7 +342,7 @@
      "short": "List of evacuation sites",
      "text": "You can see it in the table on the \"Evacuation Shelters\" (避難所) page of the town's official website. The table lists 33 designated emergency evacuation sites (for earthquakes).",
      "original": "町公式サイト「避難所」ページの表で見られる。指定緊急避難場所(地震)は表の33か所",
-     "back": "町の公式サイトの「避難所」ページの表で見られます。指定緊急避難場所（地震）は表の33か所です。",
+     "back": "町公式サイトの「避難所」ページの表で見られる。指定緊急避難場所（地震）は表の33か所",
      "source": {
       "title": "避難所｜大泉町",
       "url": "https://www.town.oizumi.gunma.jp/s004/anzen/050/010/010/20200827140119.html",
@@ -234,9 +354,9 @@
     {
      "qid": "Q02",
      "short": "Hazard maps",
-     "text": "On the \"Oizumi Town General Disaster Prevention Map\" (大泉町総合防災マップ) page of the town's official website (Safety and Security > Disaster Preparedness (安全・安心>災害への備え)), you can see PDFs in a full version and split versions (including the detailed flood hazard maps and the overall map (showing the expected flood inundation areas)). It was revised as the FY2023 edition (page last updated March 31, 2025). Tsunami and landslide maps could not be found on this page.",
+     "text": "On the town website's \"Oizumi Town Comprehensive Disaster Prevention Map\" (大泉町総合防災マップ) page (Safety and Security > Preparing for Disasters), you can see all-in-one and split PDF versions, including the detailed flood hazard map and the overall map showing the expected flooding areas. It was revised as the fiscal 2023 edition (page updated March 31, 2025). Tsunami and landslide maps could not be found on this page.",
      "original": "町公式サイトの「大泉町総合防災マップ」ページ(安全・安心>災害への備え)で、一括版・分割版PDF(洪水ハザードマップ詳細地図、全体図(浸水想定区域表示あり)など)が見られる。2023年度版として改訂(ページ更新日2025年3月31日)。津波・土砂災害のマップはこのページでは確認できず。",
-     "back": "町の公式サイトの「大泉町総合防災マップ」ページ（安全・安心＞災害への備え）で、一括版・分割版のPDF（洪水ハザードマップ詳細地図、全体図（浸水想定区域表示あり）など）が見られます。2023年度版として改訂されました（ページ更新日2025年3月31日）。津波・土砂災害のマップはこのページでは確認できませんでした。",
+     "back": "町公式サイトの「大泉町総合防災マップ」ページ（安全・安心＞災害への備え）で、一括版・分割版PDF（洪水ハザードマップ詳細地図、浸水想定区域表示ありの全体図など）が見られる。2023年度版として改訂（ページ更新日2025年3月31日）。津波・土砂災害のマップはこのページでは確認できず。",
      "source": {
       "title": "大泉町総合防災マップ｜大泉町",
       "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/170/20200828141906.html",
@@ -247,27 +367,24 @@
     },
     {
      "qid": "Q03",
-     "short": "Regional Disaster Prevention Plan",
-     "text": "You can see it on the \"Oizumi Town Regional Disaster Prevention Plan\" (大泉町地域防災計画) page of the Oizumi Town official website. You can download the whole plan at once, or download it in parts by volume and chapter. The latest version is the revised edition of May, Reiwa 8 (2026).",
+     "short": "Regional disaster prevention plan",
+     "text": "You can see it on the \"Oizumi Town Regional Disaster Prevention Plan\" (大泉町地域防災計画) page of the town's official website. You can download the whole plan at once, or download it by part and chapter. The latest version is the revision of May 2026 (Reiwa 8).",
      "original": "大泉町公式サイトの「大泉町地域防災計画」のページで見られる。一括ダウンロードと編・章ごとの分割ダウンロードがある。最新版は令和8年5月の改訂版。",
-     "back": "大泉町公式サイトの「大泉町地域防災計画」のページで見られます。一括ダウンロードと、編・章ごとの分割ダウンロードがあります。最新版は令和8年5月の改訂版です。",
+     "back": "大泉町公式サイトの「大泉町地域防災計画」のページで見られる。一括ダウンロードと編・章ごとの分割ダウンロードがある。最新版は令和8年5月の改訂版。",
      "source": {
       "title": "大泉町地域防災計画｜大泉町",
       "url": "https://www.town.oizumi.gunma.jp/s004/gyosei/010/010/020/20200903104414.html",
       "where": "ページ冒頭の説明文、一括ダウンロード・分割ダウンロード欄"
      },
-     "status": "ok",
-     "problems": [
-      "訳で「(2026)」を追加している。原文にない西暦の補足。"
-     ],
-     "ledgerId": "r00062"
+     "status": "auto",
+     "problems": []
     },
     {
      "qid": "Q04",
-     "short": "Notifications during disasters",
-     "text": "In addition to the disaster prevention administrative radio broadcasts (防災行政無線), you can receive information through: (1) Oizumi Town Safety and Security Mail (大泉町安全・安心メール) (free; can also be received through \"Safety and Security\" (安全・安心) on the town's official LINE); (2) Emergency Alert Mail (緊急速報メール) (Area Mail; no registration needed, received automatically); (3) Telephone delivery service (電話配信サービス) (automated voice messages to landline phones; submit an application form to the Safety and Security Division (安全安心課)). How to register is explained on the page \"Please Use Safety and Security Mail\" (安全・安心メールをご利用ください) (for mail and LINE) and the page \"Telephone Delivery Service for Disaster Information\" (災害情報などの電話配信サービス) (for telephone).",
+     "short": "Disaster alerts",
+     "text": "In addition to disaster prevention administrative radio (防災行政無線) broadcasts, you can receive alerts in three ways. ① Oizumi Town Safety and Security Mail (大泉町安全・安心メール) (free; you can also receive it through \"Safety and Security\" (安全・安心) on the town's official LINE). ② Emergency alert mail (緊急速報メール) (Area Mail; no registration needed, received automatically). ③ Telephone delivery service (電話配信サービス) (automated voice message to landline phones; submit an application form to the Safety and Security Division (安全安心課)). How to register is explained on the \"Please Use Safety and Security Mail\" (安全・安心メールをご利用ください) page (email and LINE) and the \"Telephone Delivery Service for Disaster Information\" (災害情報などの電話配信サービス) page (telephone).",
      "original": "防災行政無線の放送のほか、①大泉町安全・安心メール（無料。町公式LINEの「安全・安心」からも受信可）、②緊急速報メール（エリアメール。登録不要で自動受信）、③電話配信サービス（固定電話に自動音声。申込書を安全安心課に提出）で受け取れる。登録方法は「安全・安心メールをご利用ください」ページ（メール・LINE）と「災害情報などの電話配信サービス」ページ（電話）に書かれている。",
-     "back": "防災行政無線の放送のほか、①大泉町安全・安心メール（無料。町公式LINEの「安全・安心」からも受信可）、②緊急速報メール（エリアメール。登録不要で自動受信）、③電話配信サービス（固定電話に自動音声。申込書を安全安心課に提出）で受け取れます。登録方法は「安全・安心メールをご利用ください」ページ（メール・LINE）と「災害情報などの電話配信サービス」ページ（電話）に書かれています。",
+     "back": "防災行政無線の放送のほか、①大泉町安全・安心メール（無料。町公式LINEの「安全・安心」からも受信可）、②緊急速報メール（エリアメール。登録不要で自動受信）、③電話配信サービス（固定電話に自動音声。申込書を安全安心課に提出）で受け取れる。登録方法は「安全・安心メールをご利用ください」ページ（メール・LINE）と「災害情報などの電話配信サービス」ページ（電話）に書かれている。",
      "source": {
       "title": "安全・安心メールをご利用ください｜大泉町",
       "url": "https://www.town.oizumi.gunma.jp/s004/anzen/050/050/20200827165944.html",
@@ -279,7 +396,7 @@
     {
      "qid": "Q05",
      "short": "How to sort garbage and collection days",
-     "text": "You can see it on the \"Garbage Disposal Rules and Manners\" (ごみ出しのルールとマナー) page of the town's official website. From this page, you can go to the pages for the district-specific \"Garbage Collection Calendar (How to Put Out and Sort Garbage)\" (ごみ収集カレンダー（ごみの出しかた・分けかた）) and the \"Garbage Sorting List\" (ごみの分別一覧表). The town's official LINE can also be used to receive collection day notifications and to search how to sort garbage.",
+     "text": "You can see it on the \"Rules and Manners for Taking Out Garbage\" (ごみ出しのルールとマナー) page of the town's official website. From this page, you can go to the pages for the district-specific \"Garbage Collection Calendar (How to Take Out and Sort Garbage)\" (ごみ収集カレンダー（ごみの出しかた・分けかた）) and the \"Garbage Sorting List\" (ごみの分別一覧表). The town's official LINE also offers collection day notifications and a search for how to sort garbage.",
      "original": "町公式サイトの「ごみ出しのルールとマナー」のページで見られます。このページから、地区別の「ごみ収集カレンダー（ごみの出しかた・分けかた）」と「ごみの分別一覧表」のページに進めます。町公式LINEでも収集日の通知と分別方法の検索が使えます。",
      "back": "町公式サイトの「ごみ出しのルールとマナー」のページで見られます。このページから、地区別の「ごみ収集カレンダー（ごみの出しかた・分けかた）」と「ごみの分別一覧表」のページに進めます。町公式LINEでも収集日の通知と分別方法の検索が使えます。",
      "source": {
@@ -293,9 +410,9 @@
     {
      "qid": "Q06",
      "short": "Procedures for moving",
-     "text": "You can see it on the \"Moving In, Moving Out, Changing Address\" (転入、転出、転居) page of the town's official website (Living and Procedures > Notifications and Certificates > Resident Record (くらし・手続き > 届出と証明 > 住民票)). When moving in, you must submit a notification within 14 days of starting to live at your new address. What you need includes identity verification documents and a moving-out certificate (転出証明書).",
+     "text": "You can see it on the \"Moving In, Moving Out, Moving Within the Town\" (転入、転出、転居) page of the town's official website (Living and Procedures > Notifications and Certificates > Resident Certificate). When moving in, you must file a notification within 14 days of starting to live at your new address. What you need includes an identification document and a moving-out certificate (転出証明書).",
      "original": "町公式サイトの「転入、転出、転居」ページ(くらし・手続き > 届出と証明 > 住民票)で見られる。転入は新住所に住み始めてから14日以内に届出。必要なものは本人確認書類、転出証明書など。",
-     "back": "町公式サイトの「転入、転出、転居」ページ（くらし・手続き＞届出と証明＞住民票）で見られます。転入は新住所に住み始めてから14日以内に届け出ます。必要なものは本人確認書類、転出証明書などです。",
+     "back": "町公式サイトの「転入、転出、転居」ページ（くらし・手続き＞届出と証明＞住民票）で見られる。転入は新住所に住み始めてから14日以内に届出。必要なものは本人確認書類、転出証明書など。",
      "source": {
       "title": "転入、転出、転居｜大泉町",
       "url": "https://www.town.oizumi.gunma.jp/s017/kurashi/020/050/030/20200804203647.html",
@@ -305,15 +422,71 @@
      "problems": []
     },
     {
+     "qid": "Q07",
+     "short": "Town transportation",
+     "text": "There are two services. One is the wide-area public bus \"Aozora\" (あおぞら) (Chiyoda Town–Oizumi Town–Ota City; the timetable is on the town website). The other is the on-demand transport for seniors and others, \"Hohoemi\" (ほほえみ) (for people aged 65 or older, pregnant women, and preschool children). To use Hohoemi, register as a user in advance, then call the reservation center between 1 week before the day of use and 1 hour before your desired time. Hours: Monday to Friday, 7:00–17:00. The reservation center's phone number is not listed on the pages that were checked. For inquiries, contact the Elderly Care Division (高齢介護課) at 0276-63-3111.",
+     "original": "広域公共バス「あおぞら」(千代田町―大泉町―太田市、時刻表は町サイトに掲載)と、高齢者等デマンド交通「ほほえみ」(65歳以上・妊娠中の人・未就学児が対象。事前に利用者登録をし、利用日の1週間前から希望時刻の1時間前までに予約センターへ電話。月〜金 7:00〜17:00)がある。予約センターの電話番号は、確認したページには載っていない。問い合わせ先は高齢介護課 0276-63-3111。",
+     "back": "広域公共バス「あおぞら」（千代田町―大泉町―太田市。時刻表は町サイトに掲載）と、高齢者等デマンド交通「ほほえみ」（65歳以上・妊娠中の人・未就学児が対象。事前に利用者登録をし、利用日の1週間前から希望時刻の1時間前までに予約センターへ電話。月〜金 7:00〜17:00）がある。予約センターの電話番号は、確認したページには載っていない。問い合わせ先は高齢介護課 0276-63-3111。",
+     "source": {
+      "title": "高齢者等デマンド交通運行事業",
+      "url": "https://www.town.oizumi.gunma.jp/s014/kurashi/010/010/010/20200730120027.html",
+      "where": "利用方法・運行日・運行時間"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
      "qid": "Q08",
-     "short": "Guidance for foreign residents",
-     "text": "Yes. (1) From the \"Foreign Language\" page of the town's official website, you can view the town's website through automatic translation into Portuguese, English, Spanish, Nepali, Chinese, and other languages. (2) The \"Multicultural Coexistence in Oizumi Town\" (大泉町の多文化共生) page says that the town provides information to foreign residents through the multilingual newsletter \"GARAPA\" and the Oizumi Town Multicultural Coexistence Community Center (大泉町多文化共生コミュニティセンター). The contact point is the Multicultural Collaboration Division (多文化協働課), Planning Department (企画部), Town Hall 2nd floor, Counter 206, telephone 0276-63-3111. A page in Easy Japanese and detailed information about consultation counters (hours and supported languages) could not be confirmed in the materials read this time.",
+     "short": "Information for foreign residents",
+     "text": "Yes, there is. ① From the \"Foreign Language\" page of the town's official website, you can view the town website through automatic translation into Portuguese, English, Spanish, Nepali, Chinese, and other languages. ② The \"Multicultural Coexistence in Oizumi Town\" (大泉町の多文化共生) page says that the town provides information to foreign residents through the multilingual newsletter \"GARAPA\" and the Oizumi Town Multicultural Coexistence Community Center (大泉町多文化共生コミュニティセンター). The contact is the Multicultural Collaboration Division (多文化協働課), Planning Department (企画部), at Window 206 on the 2nd floor of the town hall, telephone 0276-63-3111. A page in Easy Japanese and details of the consultation service (hours and languages available) could not be confirmed in the materials read this time.",
      "original": "ある。①町公式サイトの「Foreign Language」ページから、ポルトガル語・英語・スペイン語・ネパール語・中国語などへの自動翻訳で町サイトを見られる。②「大泉町の多文化共生」のページに、多言語版広報紙「GARAPA」と大泉町多文化共生コミュニティセンターで外国人住民に情報を知らせていると書かれている。窓口は企画部 多文化協働課（庁舎2階206番窓口、電話0276-63-3111）。やさしい日本語のページと、相談窓口の詳しい内容（時間・対応言語）は、今回読んだ資料では確認できなかった。",
-     "back": "はい。(1) 町公式サイトの「Foreign Language」ページから、ポルトガル語・英語・スペイン語・ネパール語・中国語などへの自動翻訳で町のサイトを見られます。(2)「大泉町の多文化共生」のページに、多言語版広報紙「GARAPA」と大泉町多文化共生コミュニティセンターで外国人住民に情報を知らせていると書かれています。窓口は企画部 多文化協働課（庁舎2階206番窓口、電話0276-63-3111）です。やさしい日本語のページと、相談窓口の詳しい内容（時間・対応言語）は、今回読んだ資料では確認できませんでした。",
+     "back": "ある。①町公式サイトの「Foreign Language」ページから、ポルトガル語・英語・スペイン語・ネパール語・中国語などへの自動翻訳で町サイトを見られる。②「大泉町の多文化共生」のページに、多言語版広報紙「GARAPA」と大泉町多文化共生コミュニティセンターで外国人住民に情報を知らせていると書かれている。窓口は企画部 多文化協働課（庁舎2階206番窓口、電話0276-63-3111）。やさしい日本語のページと、相談窓口の詳しい内容（時間・対応言語）は、今回読んだ資料では確認できなかった。",
      "source": {
       "title": "大泉町の多文化共生｜大泉町",
       "url": "https://www.town.oizumi.gunma.jp/s007/kurashi/010/030/100/20200812100640.html",
       "where": "本文（大泉町の多文化共生）"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q09",
+     "short": "History of the town",
+     "text": "In 1957 (Showa 32), Okawa Village (大川村) and Koizumi Town (小泉町) merged to become \"Oizumi Town\" (大泉町).",
+     "original": "昭和32年(1957年)に大川村と小泉町が合併して「大泉町」になった",
+     "back": "昭和32年（1957年）に大川村と小泉町が合併して「大泉町」になった",
+     "source": {
+      "title": "大泉町の歴史",
+      "url": "https://www.town.oizumi.gunma.jp/s005/gyosei/010/010/140/20220218115627.html",
+      "where": "現在までの歩み"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q10",
+     "short": "Events and festivals",
+     "text": "The Oizumi Festival (大泉まつり). It is held every year in late September, with Prefectural Route 142 (県道142号) turned into a pedestrian zone (floats, portable shrines, an International Stage, and more). The 54th festival is scheduled for Saturday, September 26, 2026 (Reiwa 8), from 1:00 pm to 9:00 pm.",
+     "original": "大泉まつり。毎年9月下旬、県道142号を歩行者天国にして開催（山車・御神輿・インターナショナルステージなど）。第54回は令和8年9月26日（土）午後1時〜9時の予定。",
+     "back": "大泉まつり。毎年9月下旬、県道142号を歩行者天国にして開催（山車・御神輿・インターナショナルステージなど）。第54回は令和8年9月26日（土）午後1時〜9時の予定。",
+     "source": {
+      "title": "大泉まつり｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s020/kanko/010/030/20200825133615.html",
+      "where": "大泉まつり（本文冒頭）"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q11",
+     "short": "Town flower and tree",
+     "text": "Town tree: the symbol tree is the zelkova (keyaki); the recommended greening trees are sasanqua (sazanka) and azaleas (tsutsuji, including satsuki). Town flowers: tulip (spring) and salvia (autumn). No town bird is listed. These were decided in 1982 (Showa 57), the 25th anniversary of the town's founding.",
+     "original": "町の木：シンボル木はけやき、緑化推奨木はさざんか・つつじ類（さつき含む）。町の花：チューリップ（春）とサルビア（秋）。町の鳥は記載なし。1982年（昭和57年）に決定（町発足25周年記念）。",
+     "back": "町の木：シンボル木はけやき、緑化推奨木はさざんか・つつじ類（さつき含む）。町の花：チューリップ（春）とサルビア（秋）。町の鳥は記載なし。1982年（昭和57年）に決定（町発足25周年記念）。",
+     "source": {
+      "title": "大泉町の木・町の花｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s006/gyosei/020/040/1287974347-3.html",
+      "where": "町の木・町の花（本文の表）"
      },
      "status": "auto",
      "problems": []
@@ -327,9 +500,9 @@
     {
      "qid": "Q01",
      "short": "避難場所（ひなんばしょ）の一覧（いちらん）",
-     "text": "町（まち）のホームページの「避難所（ひなんじょ）」のページにある表（ひょう）で見（み）られます。指定緊急避難場所（してい きんきゅう ひなんばしょ）（地震（じしん））は、表（ひょう）に33か所（しょ）あります。",
+     "text": "町（まち）の公式（こうしき）サイトの「避難所（ひなんじょ）」のページにある表（ひょう）で見（み）られます。指定緊急避難場所（していきんきゅうひなんばしょ）（地震（じしん））は、表（ひょう）の33か所（しょ）です。",
      "original": "町公式サイト「避難所」ページの表で見られる。指定緊急避難場所(地震)は表の33か所",
-     "back": "町のホームページの「避難所」ページの表で見られます。指定緊急避難場所（地震）は表の33か所です。",
+     "back": "町の公式サイトの「避難所」のページにある表で見られます。指定緊急避難場所（地震）は、表の33か所です。",
      "source": {
       "title": "避難所｜大泉町",
       "url": "https://www.town.oizumi.gunma.jp/s004/anzen/050/010/010/20200827140119.html",
@@ -340,10 +513,10 @@
     },
     {
      "qid": "Q02",
-     "short": "ハザードマップ（災害（さいがい）の地図（ちず））",
-     "text": "町（まち）のホームページの「大泉町総合防災マップ（おおいずみまち そうごう ぼうさい マップ）」のページ（安全（あんぜん）・安心（あんしん）＞災害（さいがい）への備（そな）え）で、PDFが見（み）られます。全部（ぜんぶ）がひとつになった一括版（いっかつばん）と、分（わ）けた分割版（ぶんかつばん）があります（洪水（こうずい）ハザードマップの詳（くわ）しい地図（ちず）、全体図（ぜんたいず）〈水（みず）につかるかもしれない場所（ばしょ）が書（か）いてあります〉など）。2023年度版（ねんどばん）として新（あたら）しくなりました（ページの更新日（こうしんび）は2025年3月31日）。津波（つなみ）と土砂災害（どしゃさいがい）のマップは、このページでは確認（かくにん）できませんでした。",
+     "short": "ハザードマップ",
+     "text": "町（まち）の公式（こうしき）サイトの「大泉町総合防災マップ（おおいずみまち そうごう ぼうさいマップ）」のページ（安全（あんぜん）・安心（あんしん）＞災害（さいがい）への備（そな）え）で見（み）られます。全部（ぜんぶ）が1つになったPDFと、分（わ）けたPDFがあります。たとえば、洪水（こうずい）ハザードマップの詳（くわ）しい地図（ちず）や、全体図（ぜんたいず）（水（みず）につかると考（かんが）えられる区域（くいき）が表示（ひょうじ）されています）などです。2023年度（ねんど）版（ばん）として新（あたら）しくなりました（ページの更新日（こうしんび）は2025年3月31日）。津波（つなみ）と土砂災害（どしゃさいがい）のマップは、このページでは確認（かくにん）できませんでした。",
      "original": "町公式サイトの「大泉町総合防災マップ」ページ(安全・安心>災害への備え)で、一括版・分割版PDF(洪水ハザードマップ詳細地図、全体図(浸水想定区域表示あり)など)が見られる。2023年度版として改訂(ページ更新日2025年3月31日)。津波・土砂災害のマップはこのページでは確認できず。",
-     "back": "町のホームページの「大泉町総合防災マップ」のページ（安全・安心＞災害への備え）で、PDFが見られます。全部がひとつになった一括版と、分けた分割版があります（洪水ハザードマップの詳しい地図、全体図〈浸水想定区域表示あり〉など）。2023年度版として改訂されました（ページの更新日は2025年3月31日）。津波と土砂災害のマップは、このページでは確認できませんでした。",
+     "back": "町の公式サイトの「大泉町総合防災マップ」のページ（安全・安心＞災害への備え）で見られます。全部が1つになったPDFと、分けたPDFがあります。たとえば洪水ハザードマップの詳しい地図や、全体図（水につかると考えられる区域が表示されています）などです。2023年度版として改訂されました（ページの更新日は2025年3月31日）。津波と土砂災害のマップは、このページでは確認できませんでした。",
      "source": {
       "title": "大泉町総合防災マップ｜大泉町",
       "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/170/20200828141906.html",
@@ -354,10 +527,10 @@
     },
     {
      "qid": "Q03",
-     "short": "地域防災計画（ちいき ぼうさい けいかく）",
-     "text": "大泉町（おおいずみまち）のホームページの「大泉町地域防災計画（おおいずみまち ちいき ぼうさい けいかく）」のページで見（み）られます。全部（ぜんぶ）を一度（いちど）にダウンロードすることも、編（へん）や章（しょう）ごとに分（わ）けてダウンロードすることもできます。いちばん新（あたら）しいものは、令和（れいわ）8年5月（ねん5がつ）に直（なお）したものです。",
+     "short": "地域防災計画（ちいきぼうさいけいかく）",
+     "text": "大泉町（おおいずみまち）の公式（こうしき）サイトの「大泉町地域防災計画（おおいずみまち ちいきぼうさいけいかく）」のページで見（み）られます。全部（ぜんぶ）をまとめてダウンロードできます。「編（へん）」や「章（しょう）」ごとに分（わ）けてダウンロードすることもできます。いちばん新（あたら）しい版（ばん）は、令和8年5月に直（なお）した版（ばん）です。",
      "original": "大泉町公式サイトの「大泉町地域防災計画」のページで見られる。一括ダウンロードと編・章ごとの分割ダウンロードがある。最新版は令和8年5月の改訂版。",
-     "back": "大泉町のホームページの「大泉町地域防災計画」のページで見られます。全部を一度にダウンロードすることも、編や章ごとに分けてダウンロードすることもできます。いちばん新しいものは、令和8年5月に改訂されたものです。",
+     "back": "大泉町の公式サイトの「大泉町地域防災計画」のページで見られます。全部をまとめてダウンロードできます。「編」や「章」ごとに分けてダウンロードすることもできます。いちばん新しい版は、令和8年5月に改訂された版です。",
      "source": {
       "title": "大泉町地域防災計画｜大泉町",
       "url": "https://www.town.oizumi.gunma.jp/s004/gyosei/010/010/020/20200903104414.html",
@@ -369,9 +542,9 @@
     {
      "qid": "Q04",
      "short": "災害（さいがい）のときの知（し）らせ",
-     "text": "防災行政無線（ぼうさい ぎょうせい むせん）の放送（ほうそう）のほかに、次（つぎ）の3つで知（し）らせを受（う）け取（と）れます。①大泉町安全・安心メール（おおいずみまち あんぜん・あんしん メール）：お金（かね）はかかりません。町（まち）の公式（こうしき）LINEの「安全・安心（あんぜん・あんしん）」からも受（う）け取（と）れます。②緊急速報メール（きんきゅう そくほう メール）（エリアメール）：登録（とうろく）しなくても、自動（じどう）で受（う）け取（と）れます。③電話配信（でんわ はいしん）サービス：固定電話（こていでんわ）に自動音声（じどう おんせい）で知（し）らせます。申込書（もうしこみしょ）を安全安心課（あんぜんあんしんか）に出（だ）します。登録（とうろく）の方法（ほうほう）は、「安全・安心メールをご利用ください」のページ（メールとLINE）と、「災害情報などの電話配信サービス」のページ（電話）に書（か）いてあります。",
+     "text": "防災行政無線（ぼうさいぎょうせいむせん）の放送（ほうそう）のほかに、次（つぎ）の3つで知（し）らせを受（う）け取（と）れます。\n①大泉町安全・安心メール（おおいずみまち あんぜん・あんしんメール）：無料（むりょう）です。町（まち）の公式（こうしき）LINEの「安全（あんぜん）・安心（あんしん）」からも受（う）け取（と）れます。\n②緊急速報（きんきゅうそくほう）メール（エリアメール）：登録（とうろく）しなくても、自動（じどう）で届（とど）きます。\n③電話配信（でんわはいしん）サービス：固定電話（こていでんわ）に、自動（じどう）の音声（おんせい）で知（し）らせます。申込書（もうしこみしょ）を安全安心課（あんぜんあんしんか）に出（だ）します。\n登録（とうろく）の方法（ほうほう）は、「安全・安心メールをご利用ください」のページ（メール・LINE）と、「災害情報などの電話配信サービス」のページ（電話）に書（か）いてあります。",
      "original": "防災行政無線の放送のほか、①大泉町安全・安心メール（無料。町公式LINEの「安全・安心」からも受信可）、②緊急速報メール（エリアメール。登録不要で自動受信）、③電話配信サービス（固定電話に自動音声。申込書を安全安心課に提出）で受け取れる。登録方法は「安全・安心メールをご利用ください」ページ（メール・LINE）と「災害情報などの電話配信サービス」ページ（電話）に書かれている。",
-     "back": "防災行政無線の放送のほか、次の3つで知らせを受け取れます。①大泉町安全・安心メール（無料）。町の公式LINEの「安全・安心」からも受信できます。②緊急速報メール（エリアメール）。登録不要で自動受信できます。③電話配信サービス。固定電話に自動音声で知らせます。申込書を安全安心課に提出します。登録方法は、「安全・安心メールをご利用ください」のページ（メール・LINE）と「災害情報などの電話配信サービス」のページ（電話）に書いてあります。",
+     "back": "防災行政無線の放送のほかに、次の3つで知らせを受け取れます。\n①大泉町安全・安心メール：無料です。町の公式LINEの「安全・安心」からも受信できます。\n②緊急速報メール（エリアメール）：登録しなくても、自動で受信できます。\n③電話配信サービス：固定電話に、自動音声で知らせます。申込書を安全安心課に提出します。\n登録の方法は、「安全・安心メールをご利用ください」のページ（メール・LINE）と、「災害情報などの電話配信サービス」のページ（電話）に書いてあります。",
      "source": {
       "title": "安全・安心メールをご利用ください｜大泉町",
       "url": "https://www.town.oizumi.gunma.jp/s004/anzen/050/050/20200827165944.html",
@@ -383,9 +556,9 @@
     {
      "qid": "Q05",
      "short": "ごみの分（わ）け方（かた）・出（だ）す日（ひ）",
-     "text": "町（まち）のホームページの「ごみ出（だ）しのルールとマナー」のページで見（み）られます。このページから、地区（ちく）ごとの「ごみ収集（しゅうしゅう）カレンダー（ごみの出（だ）しかた・分（わ）けかた）」のページと、「ごみの分別一覧表（ぶんべつ いちらんひょう）」のページに進（すす）めます。町（まち）の公式（こうしき）LINEでも、ごみを集（あつ）める日（ひ）の知（し）らせと、ごみの分（わ）け方（かた）の検索（けんさく）が使（つか）えます。",
+     "text": "町（まち）の公式（こうしき）サイトの「ごみ出しのルールとマナー」のページで見（み）られます。このページから、地区（ちく）ごとの「ごみ収集（しゅうしゅう）カレンダー（ごみの出（だ）しかた・分（わ）けかた）」と「ごみの分別一覧表（ぶんべついちらんひょう）」のページに進（すす）めます。町（まち）の公式（こうしき）LINEでも、収集日（しゅうしゅうび）の通知（つうち）と、分別（ぶんべつ）の方法（ほうほう）の検索（けんさく）が使（つか）えます。",
      "original": "町公式サイトの「ごみ出しのルールとマナー」のページで見られます。このページから、地区別の「ごみ収集カレンダー（ごみの出しかた・分けかた）」と「ごみの分別一覧表」のページに進めます。町公式LINEでも収集日の通知と分別方法の検索が使えます。",
-     "back": "町のホームページの「ごみ出しのルールとマナー」のページで見られます。このページから、地区ごとの「ごみ収集カレンダー（ごみの出しかた・分けかた）」のページと「ごみの分別一覧表」のページに進めます。町の公式LINEでも、収集日の通知と分別方法の検索が使えます。",
+     "back": "町の公式サイトの「ごみ出しのルールとマナー」のページで見られます。このページから、地区ごとの「ごみ収集カレンダー（ごみの出しかた・分けかた）」と「ごみの分別一覧表」のページに進めます。町の公式LINEでも、収集日の通知と分別方法の検索が使えます。",
      "source": {
       "title": "ごみ出しのルールとマナー｜大泉町",
       "url": "https://www.town.oizumi.gunma.jp/s024/kurashi/010/010/090/20200723200709.html",
@@ -397,30 +570,83 @@
     {
      "qid": "Q06",
      "short": "引（ひ）っ越（こ）しの手続（てつづ）き",
-     "text": "町（まち）のホームページの「転入（てんにゅう）、転出（てんしゅつ）、転居（てんきょ）」のページ（くらし・手続（てつづ）き＞届出（とどけで）と証明（しょうめい）＞住民票（じゅうみんひょう））で見（み）られます。町（まち）の外（そと）から引（ひ）っ越（こ）してきたとき（転入（てんにゅう））は、新（あたら）しい住所（じゅうしょ）に住（す）み始（はじ）めてから14日（にち）以内（いない）に届（とど）けます。必要（ひつよう）なものは、本人確認書類（ほんにん かくにん しょるい）、転出証明書（てんしゅつ しょうめいしょ）などです。",
+     "text": "町（まち）の公式（こうしき）サイトの「転入（てんにゅう）、転出（てんしゅつ）、転居（てんきょ）」のページ（くらし・手続（てつづ）き ＞ 届出（とどけで）と証明（しょうめい）＞ 住民票（じゅうみんひょう））で見（み）られます。転入（てんにゅう）は、新（あたら）しい住所（じゅうしょ）に住（す）み始（はじ）めてから14日以内（にちいない）に届（とど）け出（で）ます。必要（ひつよう）なものは、本人確認書類（ほんにんかくにんしょるい）、転出証明書（てんしゅつしょうめいしょ）などです。",
      "original": "町公式サイトの「転入、転出、転居」ページ(くらし・手続き > 届出と証明 > 住民票)で見られる。転入は新住所に住み始めてから14日以内に届出。必要なものは本人確認書類、転出証明書など。",
-     "back": "町のホームページの「転入、転出、転居」のページ（くらし・手続き＞届出と証明＞住民票）で見られます。町の外から引っ越してきたとき（転入）は、新しい住所に住み始めてから14日以内に届けます。必要なものは、本人確認書類、転出証明書などです。",
+     "back": "町の公式サイトの「転入、転出、転居」のページ（くらし・手続き＞届出と証明＞住民票）で見られます。転入は、新しい住所に住み始めてから14日以内に届け出ます。必要なものは、本人確認書類、転出証明書などです。",
      "source": {
       "title": "転入、転出、転居｜大泉町",
       "url": "https://www.town.oizumi.gunma.jp/s017/kurashi/020/050/030/20200804203647.html",
       "where": "転入(手続きできる人・届出期間・必要なもの)"
      },
-     "status": "ok",
-     "problems": [
-      "「町の外から引っ越してきたとき」を足している（原文にない）"
-     ],
-     "ledgerId": "r00061"
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q07",
+     "short": "町（まち）の交通（こうつう）",
+     "text": "次（つぎ）の2つがあります。\n・広域公共（こういきこうきょう）バス「あおぞら」（千代田町（ちよだまち）―大泉町（おおいずみまち）―太田市（おおたし））。時刻表（じこくひょう）は町（まち）のサイトにあります。\n・高齢者（こうれいしゃ）などのデマンド交通（こうつう）「ほほえみ」。対象（たいしょう）は、65歳（さい）以上（いじょう）の人（ひと）、妊娠中（にんしんちゅう）の人（ひと）、未就学児（みしゅうがくじ）（小学校（しょうがっこう）に入（はい）る前（まえ）の子（こ）ども）です。先（さき）に利用者登録（りようしゃとうろく）をします。予約（よやく）は、利用（りよう）する日（ひ）の1週間前（しゅうかんまえ）から、乗（の）りたい時刻（じこく）の1時間前（じかんまえ）までに、予約（よやく）センターに電話（でんわ）します。月（げつ）〜金（きん）　7:00〜17:00。\n予約（よやく）センターの電話番号（でんわばんごう）は、確認（かくにん）したページには書（か）いてありません。問（と）い合（あ）わせ先（さき）は、高齢介護課（こうれいかいごか）　0276-63-3111です。",
+     "original": "広域公共バス「あおぞら」(千代田町―大泉町―太田市、時刻表は町サイトに掲載)と、高齢者等デマンド交通「ほほえみ」(65歳以上・妊娠中の人・未就学児が対象。事前に利用者登録をし、利用日の1週間前から希望時刻の1時間前までに予約センターへ電話。月〜金 7:00〜17:00)がある。予約センターの電話番号は、確認したページには載っていない。問い合わせ先は高齢介護課 0276-63-3111。",
+     "back": "次の2つがあります。\n・広域公共バス「あおぞら」（千代田町―大泉町―太田市）。時刻表は町のサイトにあります。\n・高齢者などのデマンド交通「ほほえみ」。対象は、65歳以上の人、妊娠中の人、未就学児（小学校に入る前の子ども）です。先に利用者登録をします。予約は、利用する日の1週間前から、希望の時刻の1時間前までに、予約センターに電話します。月〜金 7:00〜17:00。\n予約センターの電話番号は、確認したページには書いてありません。問い合わせ先は、高齢介護課 0276-63-3111です。",
+     "source": {
+      "title": "高齢者等デマンド交通運行事業",
+      "url": "https://www.town.oizumi.gunma.jp/s014/kurashi/010/010/010/20200730120027.html",
+      "where": "利用方法・運行日・運行時間"
+     },
+     "status": "auto",
+     "problems": []
     },
     {
      "qid": "Q08",
      "short": "外国（がいこく）の人（ひと）向（む）けの案内（あんない）",
-     "text": "はい、あります。①町（まち）のホームページの「Foreign Language」のページから、ポルトガル語（ご）・英語（えいご）・スペイン語（ご）・ネパール語（ご）・中国語（ちゅうごくご）などに自動翻訳（じどう ほんやく）して、町（まち）のサイトを見（み）られます。②「大泉町の多文化共生（おおいずみまちの たぶんか きょうせい）」のページに、多言語版（たげんごばん）の広報紙（こうほうし）「GARAPA」と、大泉町多文化共生コミュニティセンター（おおいずみまち たぶんか きょうせい コミュニティセンター）で、外国人（がいこくじん）の住民（じゅうみん）に情報（じょうほう）を知（し）らせていると書（か）いてあります。窓口（まどぐち）は、企画部（きかくぶ）多文化協働課（たぶんか きょうどうか）です（庁舎（ちょうしゃ）2階（かい）206番窓口（ばん まどぐち）、電話（でんわ）0276-63-3111）。やさしい日本語（にほんご）のページと、相談窓口（そうだん まどぐち）の詳（くわ）しい内容（ないよう）（時間（じかん）・使（つか）える言葉（ことば））は、今回（こんかい）読（よ）んだ資料（しりょう）では確認（かくにん）できませんでした。",
+     "text": "あります。\n①町（まち）の公式（こうしき）サイトの「Foreign Language」のページから、ポルトガル語（ご）・英語（えいご）・スペイン語（ご）・ネパール語（ご）・中国語（ちゅうごくご）などへの自動翻訳（じどうほんやく）で、町（まち）のサイトが見（み）られます。\n②「大泉町の多文化共生（おおいずみまちの たぶんかきょうせい）」のページに、次（つぎ）のように書（か）いてあります。多言語版（たげんごばん）の広報紙（こうほうし）「GARAPA」と、大泉町多文化共生（おおいずみまち たぶんかきょうせい）コミュニティセンターで、外国人（がいこくじん）の住民（じゅうみん）に情報（じょうほう）を知（し）らせています。\n窓口（まどぐち）は、企画部（きかくぶ）　多文化協働課（たぶんかきょうどうか）です。庁舎（ちょうしゃ）2階（かい）206番窓口（ばんまどぐち）です。電話（でんわ）は0276-63-3111です。\nやさしい日本語（にほんご）のページと、相談窓口（そうだんまどぐち）の詳（くわ）しい内容（ないよう）（時間（じかん）・対応（たいおう）できる言語（げんご））は、今回（こんかい）読（よ）んだ資料（しりょう）では確認（かくにん）できませんでした。",
      "original": "ある。①町公式サイトの「Foreign Language」ページから、ポルトガル語・英語・スペイン語・ネパール語・中国語などへの自動翻訳で町サイトを見られる。②「大泉町の多文化共生」のページに、多言語版広報紙「GARAPA」と大泉町多文化共生コミュニティセンターで外国人住民に情報を知らせていると書かれている。窓口は企画部 多文化協働課（庁舎2階206番窓口、電話0276-63-3111）。やさしい日本語のページと、相談窓口の詳しい内容（時間・対応言語）は、今回読んだ資料では確認できなかった。",
-     "back": "はい、あります。①町のホームページの「Foreign Language」のページから、ポルトガル語・英語・スペイン語・ネパール語・中国語などに自動翻訳して、町のサイトを見られます。②「大泉町の多文化共生」のページに、多言語版の広報紙「GARAPA」と大泉町多文化共生コミュニティセンターで、外国人住民に情報を知らせていると書いてあります。窓口は企画部多文化協働課です（庁舎2階206番窓口、電話0276-63-3111）。やさしい日本語のページと、相談窓口の詳しい内容（時間・対応言語）は、今回読んだ資料では確認できませんでした。",
+     "back": "あります。\n①町の公式サイトの「Foreign Language」のページから、ポルトガル語・英語・スペイン語・ネパール語・中国語などへの自動翻訳で、町のサイトが見られます。\n②「大泉町の多文化共生」のページに、多言語版の広報紙「GARAPA」と大泉町多文化共生コミュニティセンターで、外国人住民に情報を知らせていると書いてあります。\n窓口は企画部 多文化協働課です。庁舎2階206番窓口です。電話は0276-63-3111です。\nやさしい日本語のページと、相談窓口の詳しい内容（時間・対応できる言語）は、今回読んだ資料では確認できませんでした。",
      "source": {
       "title": "大泉町の多文化共生｜大泉町",
       "url": "https://www.town.oizumi.gunma.jp/s007/kurashi/010/030/100/20200812100640.html",
       "where": "本文（大泉町の多文化共生）"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q09",
+     "short": "町（まち）のなりたち",
+     "text": "昭和（しょうわ）32年（1957年）に、大川村（おおかわむら）と小泉町（こいずみまち）が合併（がっぺい）して、「大泉町（おおいずみまち）」になりました。",
+     "original": "昭和32年(1957年)に大川村と小泉町が合併して「大泉町」になった",
+     "back": "昭和32年（1957年）に、大川村と小泉町が合併して、「大泉町」になりました。",
+     "source": {
+      "title": "大泉町の歴史",
+      "url": "https://www.town.oizumi.gunma.jp/s005/gyosei/010/010/140/20220218115627.html",
+      "where": "現在までの歩み"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q10",
+     "short": "催（もよお）し・祭（まつ）り",
+     "text": "大泉（おおいずみ）まつりです。毎年（まいとし）9月下旬（げじゅん）に、県道（けんどう）142号（ごう）を歩行者天国（ほこうしゃてんごく）にして行（おこな）います（山車（だし）・御神輿（おみこし）・インターナショナルステージなど）。第54回（かい）は、令和（れいわ）8年9月26日（土）午後（ごご）1時（じ）〜9時（じ）の予定（よてい）です。",
+     "original": "大泉まつり。毎年9月下旬、県道142号を歩行者天国にして開催（山車・御神輿・インターナショナルステージなど）。第54回は令和8年9月26日（土）午後1時〜9時の予定。",
+     "back": "大泉まつりです。毎年9月下旬に、県道142号を歩行者天国にして行います（山車・御神輿・インターナショナルステージなど）。第54回は、令和8年9月26日（土）午後1時〜9時の予定です。",
+     "source": {
+      "title": "大泉まつり｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s020/kanko/010/030/20200825133615.html",
+      "where": "大泉まつり（本文冒頭）"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q11",
+     "short": "町（まち）の花（はな）・木（き）",
+     "text": "町（まち）の木（き）：シンボルの木（き）はけやきです。緑化（りょくか）をすすめる木（き）は、さざんかと、つつじの仲間（なかま）（さつきもふくむ）です。町（まち）の花（はな）：チューリップ（春（はる））とサルビア（秋（あき））です。町（まち）の鳥（とり）は、書（か）いてありません。1982年（昭和（しょうわ）57年）に決（き）めました（町（まち）ができて25年（ねん）の記念（きねん））。",
+     "original": "町の木：シンボル木はけやき、緑化推奨木はさざんか・つつじ類（さつき含む）。町の花：チューリップ（春）とサルビア（秋）。町の鳥は記載なし。1982年（昭和57年）に決定（町発足25周年記念）。",
+     "back": "町の木：シンボルの木はけやきです。緑化をすすめる木は、さざんかと、つつじの仲間（さつきも含む）です。町の花：チューリップ（春）とサルビア（秋）です。町の鳥は、書いてありません。1982年（昭和57年）に決めました（町ができて25年の記念）。",
+     "source": {
+      "title": "大泉町の木・町の花｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s006/gyosei/020/040/1287974347-3.html",
+      "where": "町の木・町の花（本文の表）"
      },
      "status": "auto",
      "problems": []

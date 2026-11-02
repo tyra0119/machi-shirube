@@ -70,9 +70,12 @@ function showView() {
   if (window.scrollY > top) window.scrollTo({ top });
 }
 // 上のメニュー：よく使うページと「すべてのページ」
-$("tabs").innerHTML = `<li class="all-pages"><button type="button" id="open-all" aria-haspopup="dialog">☰ すべてのページ</button></li>`
-  + PAGES.filter((p) => p.tab || p.local).map((p) =>
-  `<li${p.local ? " class=\"local-only\" hidden" : ""}><a href="#${p.view}" data-view="${p.view}">${icon(ILLUST[p.view]?.main)}${esc(p.local ? "調べる" : p.title)}</a></li>`).join("");
+function renderTabs() {
+  $("tabs").innerHTML = `<li class="all-pages"><button type="button" id="open-all" aria-haspopup="dialog">☰ ${T("すべてのページ")}</button></li>`
+    + PAGES.filter((p) => p.tab || p.local).map((p) =>
+    `<li${p.local ? " class=\"local-only\" hidden" : ""}><a href="#${p.view}" data-view="${p.view}">${icon(ILLUST[p.view]?.main)}${esc(p.local ? T("調べる") : T(p.title))}</a></li>`).join("");
+}
+renderTabs();
 // 各ページのいちばん上の見出しに、場面の印を付ける
 for (const v of document.querySelectorAll(".view")) v.querySelector(".block > h2")?.insertAdjacentHTML("afterbegin", icon(ILLUST[v.dataset.view]?.main));
 addEventListener("hashchange", showView);
@@ -107,7 +110,7 @@ async function showHinan(code, townFeatures, startPart) {
   const kinds = ORDER.filter((k) => count(k));
   let kind = kinds.includes("津波") ? "津波" : kinds.includes("地震") ? "地震" : kinds[0] ?? "";
   $("hinan-kinds").innerHTML = [...kinds, ""].map((k) =>
-    `<button type="button" data-kind="${k}" aria-pressed="${k === kind}">${k ? `${k}` : "すべて"}<small>${k ? count(k) : shelters.features.length}</small></button>`).join("");
+    `<button type="button" data-kind="${k}" aria-pressed="${k === kind}">${k ? T(k) : T("すべて")}<small>${k ? count(k) : shelters.features.length}</small></button>`).join("");
   let here = null; // [経度, 緯度]
 
   // 町・字を選ぶ（形のおおよその真ん中を、その町・字の場所のめやすにする）
@@ -291,6 +294,14 @@ async function showAnswers(code, scopeNote, partKey, partName) {
   const [muniAnswers, partAnswers] = await Promise.all([load(code), partKey ? load(partKey) : []]);
   for (const a of partAnswers) a.level = partName;
   const answers = [...partAnswers, ...muniAnswers];
+  // ほかの言葉のときは、訳があり確かめられた答えをその言葉で出す（無いものは日本語のまま）
+  if (LANG) {
+    const tr = await fetch(`data/translations/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+    for (const a of answers) {
+      const x = tr?.langs?.[LANG]?.items.find((i) => i.qid === a.qid && (i.status === "auto" || i.status === "ok") && i.original === a.value);
+      if (x) Object.assign(a, { value: x.text, translated: true, shortT: x.short });
+    }
+  }
   yardstick = await fetch("data/yardstick.json").then((r) => r.json()).catch(() => ({ questions: [] }));
   health = await fetch("data/health.json").then((r) => (r.ok ? r.json() : null)).catch(() => null);
   answers.sort((x, y) => Boolean(y.level) - Boolean(x.level) || String(x.qid ?? "").localeCompare(String(y.qid ?? "")));
@@ -303,10 +314,10 @@ async function showAnswers(code, scopeNote, partKey, partName) {
     const list = answersByPage[box.dataset.page] ?? [];
     const p = PAGES.find((x) => x.view === box.dataset.page);
     // 場面の帯：イラストと、この場面で分かること
-    box.innerHTML = (p ? `<div class="page-banner" style="--h:${ILLUST[p.view]?.h ?? 200}">${illust(p.view)}<p><strong>${esc(p.title)}</strong>${esc(p.desc)}${list.length ? `<span>Claude が公式のサイトから確かめた答え ${list.length} 件</span>` : ""}</p></div>` : "")
+    box.innerHTML = (p ? `<div class="page-banner" style="--h:${ILLUST[p.view]?.h ?? 200}">${illust(p.view)}<p><strong>${esc(T(p.title))}</strong>${esc(T(p.desc))}${list.length ? `<span>${T("Claude が公式のサイトから確かめた答え")} ${list.length}</span>` : ""}</p></div>` : "")
       + (list.length && scopeNote && !list.some((a) => a.level) ? `<p class="note">${esc(scopeNote)}</p>` : "")
       + (list.length ? answersHTML(list) : "")
-      + (p?.later ? `<p class="later"><span>これから</span>${esc(p.later)}を、Claude が町の公式のサイトから探して、出典つきでここに出します。</p>` : "")
+      + (p?.later ? `<p class="later"><span>${T("準備中")}</span>${LANG ? `${esc(T(p.later))} — ${T("Claude が町の公式のサイトから探して、出典つきでここに出します。")}` : `${esc(p.later)}を、Claude が町の公式のサイトから探して、出典つきでここに出します。`}</p>` : "")
       + (!list.length && !p?.later ? `<p class="note">まだありません。</p>` : "");
   }
 }
@@ -332,16 +343,16 @@ function answersHTML(answers) {
     <li class="${notFound(a) ? "not-found" : ""}" id="a-${esc(a.qid ?? "")}" style="--h:${ill.h}">
       <span class="badge" aria-hidden="true">${icon(ANSWER_ICON[a.qid] ?? ill.main)}</span>
       <div class="body">
-      <h3 class="short">${esc(yardstick.questions.find((x) => x.id === a.qid)?.short ?? "")}${a.level ? `<span class="lvl">${esc(a.level)}の答え</span>` : ""}</h3>
+      <h3 class="short">${esc(a.shortT ?? T(yardstick.questions.find((x) => x.id === a.qid)?.short ?? ""))}${a.level ? `<span class="lvl">${esc(a.level)}${T("の答え")}</span>${a.translated ? `<span class="lvl ai">${T("AI による訳")}</span>` : ""}` : ""}</h3>
       ${notFound(a)
-        ? `<p class="lead">公開の資料では見つかりませんでした</p><p class="src">${a.checkedAt ? `${esc(a.checkedAt.slice(0, 10))} に調べた・` : ""}町の人に聞きたいことです</p>`
+        ? `<p class="lead">${T("公開の資料では見つかりませんでした")}</p><p class="src">${a.checkedAt ? `${esc(a.checkedAt.slice(0, 10))}・` : ""}${T("町の人に聞きたいことです")}</p>`
         : `${a.items ? "" : answerBody(a)}
       ${a.items ? `<ul class="topics">${a.items.map((x) => `<li><span class="tx">${esc(x.text)}</span>
         <span class="src">${x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.title ?? x.url)}</a>` : esc(x.title ?? "")}${x.asOf ? `・${esc(x.asOf)}` : ""}</span></li>`).join("")}</ul>` : ""}
       ${health?.links?.[a.source?.url]?.kind === "gone" ? `<p class="gone">出典のページが見つからなくなっています（${esc(health.links[a.source.url].checkedAt.slice(0, 10))} に見張りで確かめた）。町の公式のサイトで新しいページを探して確かめてください。</p>` : ""}
       ${a.outdated ? `<p class="outdated"><strong>古いデータに気づきました</strong>：${esc(a.outdated.what)}。古い：${a.outdated.old?.url ? `<a href="${esc(a.outdated.old.url)}" target="_blank" rel="noopener">${esc(a.outdated.old.asOf ?? "")}</a>` : esc(a.outdated.old?.asOf ?? "")}／新しい：${a.outdated.new?.url ? `<a href="${esc(a.outdated.new.url)}" target="_blank" rel="noopener">${esc(a.outdated.new.asOf ?? "")}</a>` : esc(a.outdated.new?.asOf ?? "")}</p>` : ""}
-      <p class="src chip">${icon("link")} ${a.source?.url ? `<a href="${esc(a.source.url)}" target="_blank" rel="noopener">${esc(a.source.title ?? a.source.url)}</a>` : esc(a.source?.title ?? "")}${a.asOf ? `・時点 ${esc(a.asOf)}` : ""}・${a.status === "auto" ? "自動で承認" : "人が確かめた"}</p>`}
-      <details class="q"><summary>Claude にした問い</summary>${esc(a.question)}${a.source?.where ? `<br>出典の中の場所：${esc(a.source.where)}` : ""}</details>
+      <p class="src chip">${icon("link")} ${a.source?.url ? `<a href="${esc(a.source.url)}" target="_blank" rel="noopener">${esc(a.source.title ?? a.source.url)}</a>` : esc(a.source?.title ?? "")}${a.asOf ? `・時点 ${esc(a.asOf)}` : ""}・${T(a.status === "auto" ? "自動で承認" : "人が確かめた")}</p>`}
+      <details class="q"><summary>${T("Claude にした問い")}</summary>${esc(a.question)}${a.source?.where ? `<br>出典の中の場所：${esc(a.source.where)}` : ""}</details>
       </div>
     </li>`;
   }).join("")}</ul>`;
@@ -362,7 +373,7 @@ async function showMedical(code, center) {
   if (!m) {
     const text = /0$/.test(code) && !(await fetch(`data/towns/${code}.json`).then((r) => r.ok).catch(() => false)) ? "区ごとのページで見られます" : "この市区町村の病院のデータはまだありません";
     $("med").innerHTML = `<p class="note">${text}。</p>`;
-    medicalRow = `<li><a href="#iryo"><span class="k">${icon("hospital")}病院</span><span class="v later">${text}</span></a></li>`;
+    medicalRow = `<li><a href="#iryo"><span class="k">${icon("hospital")}${T("病院")}</span><span class="v later">${text}</span></a></li>`;
     return;
   }
   let day = 0;
@@ -384,14 +395,14 @@ async function showMedical(code, center) {
   $("med-cite").innerHTML = `出典：<a href="${esc(m.source.url)}" target="_blank" rel="noopener">${esc(m.source.title)}</a>（${esc(m.source.asOf)}・${esc(m.source.license)}）を加工。祝日：${esc(m.holidaySource?.title ?? "")}。${center ? "距離は町・字のおおよその真ん中からまっすぐ測ったものです。" : ""}`;
   const today = medicalList(m, 0, center);
   const open = today.list.filter((x) => x.openNow).length;
-  medicalRow = `<li><a href="#iryo"><span class="k">${icon("hospital")}病院</span><span class="v">${today.holiday ? `今日は${esc(today.holiday)}。` : ""}今日やっている所 ${today.list.length} か所（いま開いている ${open}）</span></a></li>`;
+  medicalRow = `<li><a href="#iryo"><span class="k">${icon("hospital")}${T("病院")}</span><span class="v">${LANG ? `${T("今日やっている所")} ${today.list.length}（${T("いま開いている")} ${open}）` : `${today.holiday ? `今日は${esc(today.holiday)}。` : ""}今日やっている所 ${today.list.length} か所（いま開いている ${open}）`}</span></a></li>`;
 }
 
 // 今日の暮らし（今日すること・困ったときの入口）と、暮らしの場面のタイル
 let medicalRow = null;
 function todayLife(hasHinan) {
   const has = (v) => (answersByPage[v] ?? []).filter((a) => a.value !== "見つからなかった").length;
-  const row = (view, k, v, ready) => `<li><a href="#${view}"><span class="k">${icon(ILLUST[view]?.main)}${k}</span><span class="v${ready ? "" : " later"}">${esc(v)}</span></a></li>`;
+  const row = (view, k, v, ready) => `<li><a href="#${view}"><span class="k">${icon(ILLUST[view]?.main)}${T(k)}</span><span class="v${ready ? "" : " later"}">${esc(T(v))}</span></a></li>`;
   $("today-life").innerHTML = [
     row("gomi", "ごみ", has("gomi") ? "ごみの出し方を見る" : "今日の収集は、これから出します", has("gomi")),
     medicalRow ?? row("iryo", "病院", "この町の病院のデータはまだありません", false),
@@ -401,7 +412,7 @@ function todayLife(hasHinan) {
   $("tiles").innerHTML = PAGES.filter((p) => !["today", "source", "research", "mitate"].includes(p.view)).map((p) => {
     // 中身があるか：Claude の答え・わが家の避難・病院のデータ・町のデータ
     const n = has(p.view) + (p.view === "bousai" && hasHinan ? 1 : 0) + (p.view === "shiru" ? 1 : 0) + (p.view === "iryo" && medicalRow && !medicalRow.includes("later") ? 1 : 0) + (p.view === "foreign" && !$("tr-block").hidden ? 1 : 0);
-    return `<li><a href="#${p.view}">${illust(p.view)}<span class="t">${esc(p.title)}</span><span class="d">${esc(p.desc)}</span>${n ? "" : `<span class="later">これから</span>`}</a></li>`;
+    return `<li><a href="#${p.view}">${illust(p.view)}<span class="t">${esc(T(p.title))}</span><span class="d">${esc(T(p.desc))}</span>${n ? "" : `<span class="later">${T("準備中")}</span>`}</a></li>`;
   }).join("");
 }
 
@@ -429,7 +440,7 @@ function renderAllPages(filter = "") {
     const its = p.items.filter((i) => hit(i.label) || hit(p.title));
     if (f && !its.length && !hit(p.title) && !hit(p.desc)) return "";
     return `<section class="all-sec">
-      <a class="all-page" href="#${p.view}" data-view="${p.view}"><span class="t">${icon(ILLUST[p.view]?.main)}${esc(p.title)}</span><span class="d">${esc(p.desc)}</span></a>
+      <a class="all-page" href="#${p.view}" data-view="${p.view}"><span class="t">${icon(ILLUST[p.view]?.main)}${esc(T(p.title))}</span><span class="d">${esc(T(p.desc))}</span></a>
       ${its.length ? `<ul>${its.map((i) => `<li><a href="#${i.view}" data-view="${i.view}" data-target="${i.target}">${esc(i.label)}</a></li>`).join("")}</ul>` : ""}
     </section>`;
   }).join("") || `<p class="note">見つかりません。</p>`;
@@ -465,11 +476,12 @@ async function showTranslations(code) {
   const t = await fetch(`data/translations/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
   if (!t) return;
   const langs = Object.keys(t.langs);
-  let lang = new URLSearchParams(location.search).get("lang");
+  let lang = LANG ?? new URLSearchParams(location.search).get("lang");
   if (!langs.includes(lang)) lang = langs[0];
   $("tr-block").hidden = false;
   $("lang-bar").hidden = false;
-  $("lang-bar").innerHTML = langs.map((l) => `<a href="#foreign" data-lang="${l}">${esc(t.langs[l].name)}</a>`).join("") + `<span>（AI による訳）</span>`;
+  const href = (l) => { const u = new URL(location.href); if (l) u.searchParams.set("lang", l); else u.searchParams.delete("lang"); return u.pathname.split("/").pop() + u.search + u.hash; };
+  $("lang-bar").innerHTML = [["", "日本語"], ...langs.map((l) => [l, t.langs[l].name])].map(([l, n]) => `<a href="${href(l)}"${(LANG ?? "") === l ? " aria-current=\"true\"" : ""}>${esc(n)}</a>`).join("") + `<span>${T("（AI による訳）")}</span>`;
   const draw = () => {
     const L = t.langs[lang];
     $("tr-langs").innerHTML = langs.map((l) => `<button type="button" data-lang="${l}" aria-pressed="${l === lang}">${esc(t.langs[l].name)}</button>`).join("");
@@ -494,7 +506,6 @@ async function showTranslations(code) {
     }).join("");
     for (const b of $("tr-langs").querySelectorAll("button")) b.addEventListener("click", () => { lang = b.dataset.lang; draw(); });
   };
-  for (const a of $("lang-bar").querySelectorAll("a")) a.addEventListener("click", () => { lang = a.dataset.lang; draw(); });
   draw();
 }
 
@@ -508,7 +519,7 @@ async function showGomi(code) {
   const hue = (k) => [140, 205, 45, 275, 185, 320, 100, 235, 30, 165][d.kinds.indexOf(k) % 10];
   const items = d.items.map((x) => ({ ...x, key: kana(x.n), ykey: kana(x.y) }));
   const examples = ["ペットボトル", "乾電池", "スプレー缶", "フライパン", "蛍光灯", "傘"].filter((w) => items.some((x) => x.key.includes(kana(w)))).slice(0, 5);
-  $("gomi-ex").innerHTML = examples.length ? `例：${examples.map((w) => `<button type="button" data-w="${esc(w)}">${esc(w)}</button>`).join("")}` : "";
+  $("gomi-ex").innerHTML = examples.length ? `${T("例：")}${examples.map((w) => `<button type="button" data-w="${esc(w)}">${esc(w)}</button>`).join("")}` : "";
   const draw = () => {
     const q = kana($("gomi-q").value);
     if (!q) { $("gomi-hits").innerHTML = ""; return; }
@@ -517,10 +528,10 @@ async function showGomi(code) {
     $("gomi-hits").innerHTML = hits.length ? hits.map(({ x }) => `<li style="--h:${hue(x.k)}">
         <span class="n">${esc(x.n)}</span>
         <span class="k">${esc(x.k)}</span>
-        ${x.also ? `<span class="also">場合によって：${x.also.map((k) => `<b style="--h:${hue(k)}">${esc(k)}</b>`).join("")}</span>` : ""}
+        ${x.also ? `<span class="also">${T("場合によって：")}${x.also.map((k) => `<b style="--h:${hue(k)}">${esc(k)}</b>`).join("")}</span>` : ""}
         ${x.note ? `<span class="nt">${esc(x.note)}</span>` : ""}
       </li>`).join("")
-      : `<li class="none">「${esc($("gomi-q").value)}」は、町の表に見つかりませんでした。言いかえて探すか、町の一覧表で確かめてください。</li>`;
+      : `<li class="none">「${esc($("gomi-q").value)}」${T("は、町の表に見つかりませんでした。言いかえて探すか、町の一覧表で確かめてください。")}</li>`;
   };
   $("gomi-q").addEventListener("input", draw);
   for (const b of $("gomi-ex").querySelectorAll("button")) b.addEventListener("click", () => { $("gomi-q").value = b.dataset.w; draw(); $("gomi-q").focus(); });
@@ -536,7 +547,7 @@ async function finishPage(code, townFeatures, startPart, scopeNote) {
   const sym = applyTownColor(Object.values(answersByPage).flat().find((x) => x.qid === "Q11"));
   if (sym) {
     $("town-color-note").hidden = false;
-    $("town-color-note").innerHTML = `<span class="swatch" aria-hidden="true"></span>ページの上の帯の色は、町が定めた「${esc(sym.name)}」の色から作りました（町の公式の色ではありません）。<a href="#shiru" id="color-src">出典</a>`;
+    $("town-color-note").innerHTML = `<span class="swatch" aria-hidden="true"></span>${LANG ? `${T("ページの上の帯の色は、町が定めた花・木の色から作りました（町の公式の色ではありません）。")}（${esc(sym.name)}）` : `ページの上の帯の色は、町が定めた「${esc(sym.name)}」の色から作りました（町の公式の色ではありません）。`}<a href="#shiru" id="color-src">${T("出典")}</a>`;
     $("color-src").addEventListener("click", () => setTimeout(() => $("a-Q11")?.scrollIntoView({ behavior: "smooth", block: "start" }), 50));
   }
   const hasHinan = await showHinan(code, townFeatures, startPart);
@@ -545,7 +556,7 @@ async function finishPage(code, townFeatures, startPart, scopeNote) {
   todayLife(hasHinan);
   const local = await fetch("api/ping").then((r) => r.ok).catch(() => false);
   buildAllPages(hasHinan, local);
-  if (local) await researchBox(code);
+  if (local) await researchBox(code, part ? startPart : null, part?.properties.name);
 }
 
 // 天気を読む場所：町・字は形のおおよその真ん中、市区町村は地図の名前の位置（政令市まるごとは最初の区）
@@ -564,10 +575,11 @@ async function muniPoint(code) {
 }
 
 // 調べる（手元の画面だけ）。手元のサーバーが Claude を呼び、答えを確かめる一覧に入れる
-async function researchBox(code) {
+async function researchBox(code, part, partName) {
   $("research-block").hidden = false;
   for (const el of document.querySelectorAll(".town-tabs .local-only")) el.hidden = false;
-  $("research-link").href = `research.html?muni=${code}`;
+  $("research-link").href = part ? `research.html?muni=${code}&part=${part}` : `research.html?muni=${code}`;
+  if (part) $("research-link").textContent = `${partName}の問い（ごみの曜日・校区・自治会・近くの計画）をまとめて調べる（調べる画面）`;
   const form = $("research-form");
   form.question.value = "この町の指定緊急避難場所の一覧は、どこで見られるか（公式のページか資料）。全部でいくつあるか";
   form.addEventListener("submit", async (e) => {
@@ -587,6 +599,8 @@ async function researchBox(code) {
 }
 
 async function main() {
+  // 言葉の切り替え（?lang=pt など）：辞書があれば、タブとページの決まった文字を置きかえる
+  if (await setLang(q.get("lang"))) { renderTabs(); translateDom(); }
   const stats = await getJSON("data/stats.json");
   if (q.get("muni")) return muniPage(q.get("muni"), stats);
 
