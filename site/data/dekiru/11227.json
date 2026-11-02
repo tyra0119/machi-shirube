@@ -3,7 +3,7 @@
  "name": "埼玉県 朝霞市",
  "createdAt": "2026-11-02T19:57:36.359Z",
  "model": "claude-sonnet-5-5",
- "status": "pending",
+ "status": "ok",
  "ledgerId": "r00130",
  "links": [
   {

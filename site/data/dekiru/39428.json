@@ -3,7 +3,7 @@
  "name": "高知県 黒潮町",
  "createdAt": "2026-11-02T19:57:24.115Z",
  "model": "claude-sonnet-5-5",
- "status": "pending",
+ "status": "ok",
  "ledgerId": "r00128",
  "links": [
   {

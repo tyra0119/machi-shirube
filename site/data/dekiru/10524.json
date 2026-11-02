@@ -3,7 +3,7 @@
  "name": "群馬県 大泉町",
  "createdAt": "2026-11-02T19:57:29.897Z",
  "model": "claude-sonnet-5-5",
- "status": "pending",
+ "status": "ok",
  "ledgerId": "r00129",
  "links": [
   {
