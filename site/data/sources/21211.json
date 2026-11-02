@@ -1,0 +1,31 @@
+{
+ "cards": [
+  {
+   "id": "c0010",
+   "host": "www.city.minokamo.lg.jp",
+   "title": "岐阜県 美濃加茂市の公式サイト",
+   "url": "https://www.city.minokamo.lg.jp/",
+   "license": "作者が使ってよいと確かめた（事実と出典のリンクを出す。文はそのまま写さない）",
+   "status": "ok",
+   "approvedAt": "2026-11-02T23:46:10.719Z"
+  },
+  {
+   "id": "c0011",
+   "host": "www.city.minokamo.gifu.jp",
+   "title": "岐阜県 美濃加茂市の公式サイト",
+   "url": "https://www.city.minokamo.gifu.jp/",
+   "license": "作者が使ってよいと確かめた（事実と出典のリンクを出す。文はそのまま写さない）",
+   "status": "ok",
+   "approvedAt": "2026-11-02T23:46:18.818Z"
+  },
+  {
+   "id": "c0012",
+   "host": "www.cbr.mlit.go.jp",
+   "title": "岐阜県 美濃加茂市の公式サイト",
+   "url": "https://www.cbr.mlit.go.jp/",
+   "license": "作者が使ってよいと確かめた（事実と出典のリンクを出す。文はそのまま写さない）",
+   "status": "ok",
+   "approvedAt": "2026-11-02T23:46:20.242Z"
+  }
+ ]
+}

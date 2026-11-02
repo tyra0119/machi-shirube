@@ -1,10 +1,10 @@
 {
- "updatedAt": "2026-11-02T23:45:17.195Z",
+ "updatedAt": "2026-11-02T23:46:49.998Z",
  "totals": {
-  "towns": 3,
-  "answers": 101,
+  "towns": 4,
+  "answers": 118,
   "pages": 206,
-  "usd": 46.18,
+  "usd": 46.19,
   "skills": 1,
   "questions": 45
  },
@@ -14,6 +14,9 @@
   },
   "11227": {
    "answers": 34
+  },
+  "21211": {
+   "answers": 17
   },
   "39428": {
    "answers": 34

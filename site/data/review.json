@@ -1,9 +1,9 @@
 {
- "updatedAt": "2026-11-02T23:45:16.457Z",
+ "updatedAt": "2026-11-02T23:46:49.310Z",
  "counts": {
-  "auto": 29,
-  "ok": 94,
-  "pending": 17,
+  "auto": 36,
+  "ok": 104,
+  "pending": 0,
   "fix": 1,
   "rejected": 2,
   "unknown": 0
@@ -2639,12 +2639,17 @@
    "qid": "Q01",
    "kind": "answer",
    "question": "この町の指定緊急避難場所の一覧は、どこで見られるか（公式のページか資料）。全部でいくつあるか",
-   "why": "はじめて使う情報源（www.city.minokamo.lg.jp）。使ってよい範囲を人が確かめる／確かめ役：資料と合わない所がある（「web版・冊子版のハザードマップでも見られます」は、資料にハザードマップで避難場所一覧が見られるという記載がない（ハザードマップへのリンクがあるだけ））",
-   "status": "pending",
-   "score": null,
+   "why": "確かめ役：資料と合わない所がある（「web版・冊子版のハザードマップでも見られます」は、資料にハザードマップで避難場所一覧が見られるという記載がない（ハザードマップへのリンクがあるだけ））",
+   "status": "ok",
+   "score": 2,
    "source": {
     "title": "美濃加茂市の指定避難所・指定緊急避難場所および備蓄状況（一覧PDFへのリンク）",
     "url": "https://www.city.minokamo.lg.jp/site/bousai/2343.html"
+   },
+   "decided": {
+    "at": "2026-11-02T23:46:28.466Z",
+    "action": "ok",
+    "reason": ""
    }
   },
   {
@@ -2654,27 +2659,17 @@
    "qid": "Q02",
    "kind": "answer",
    "question": "この町のハザードマップ（洪水・津波・土砂災害など）は、どこで見られるか。いつ作られた（直された）ものか",
-   "why": "Claude が返した元の文が、答えに使ったページの中に見つからなかった／はじめて使う情報源（www.city.minokamo.gifu.jp）。使ってよい範囲を人が確かめる",
-   "status": "pending",
-   "score": null,
+   "why": "Claude が返した元の文が、答えに使ったページの中に見つからなかった",
+   "status": "ok",
+   "score": 2,
    "source": {
     "title": "美濃加茂市防災ガイド",
     "url": "https://www.city.minokamo.gifu.jp/bousai/guide/"
-   }
-  },
-  {
-   "id": "r00167",
-   "scope": "muni:21211",
-   "scopeName": "岐阜県 美濃加茂市",
-   "qid": "Q03",
-   "kind": "answer",
-   "question": "この町の地域防災計画は、どこで見られるか。いちばん新しい版はいつのものか",
-   "why": "はじめて使う情報源（www.city.minokamo.lg.jp）。使ってよい範囲を人が確かめる",
-   "status": "pending",
-   "score": null,
-   "source": {
-    "title": "防災情報ページ - 美濃加茂市公式ホームページ",
-    "url": "https://www.city.minokamo.lg.jp/site/bousai/"
+   },
+   "decided": {
+    "at": "2026-11-02T23:46:31.622Z",
+    "action": "ok",
+    "reason": ""
    }
   },
   {
@@ -2684,42 +2679,17 @@
    "qid": "Q04",
    "kind": "answer",
    "question": "災害のときの知らせ（防災無線・メール・アプリなど）は、どうやって受け取れるか。登録の方法はどこに書いてあるか",
-   "why": "Claude が返した元の文が、答えに使ったページの中に見つからなかった／はじめて使う情報源（www.city.minokamo.gifu.jp）。使ってよい範囲を人が確かめる",
-   "status": "pending",
-   "score": null,
+   "why": "Claude が返した元の文が、答えに使ったページの中に見つからなかった",
+   "status": "ok",
+   "score": 2,
    "source": {
     "title": "「広報みのかも」の放送が良く聞こえない、聞き取りづらいのですが？",
     "url": "https://www.city.minokamo.gifu.jp/shimin/answer.cfm?id=30407&mi_id=1&g1_id=8&g2_id=31"
-   }
-  },
-  {
-   "id": "r00169",
-   "scope": "muni:21211",
-   "scopeName": "岐阜県 美濃加茂市",
-   "qid": "Q05",
-   "kind": "answer",
-   "question": "ごみの分け方と出す日の案内は、どこで見られるか（ページや資料の名前）",
-   "why": "はじめて使う情報源（www.city.minokamo.lg.jp）。使ってよい範囲を人が確かめる",
-   "status": "pending",
-   "score": null,
-   "source": {
-    "title": "家庭ごみの分別と出し方、収集日について - 美濃加茂市公式ホームページ",
-    "url": "https://www.city.minokamo.lg.jp/soshiki/15/1744.html"
-   }
-  },
-  {
-   "id": "r00170",
-   "scope": "muni:21211",
-   "scopeName": "岐阜県 美濃加茂市",
-   "qid": "Q06",
-   "kind": "answer",
-   "question": "引っ越してきた人がはじめにする手続き（住民票・国民健康保険など）の案内は、どこで見られるか",
-   "why": "はじめて使う情報源（www.city.minokamo.lg.jp）。使ってよい範囲を人が確かめる",
-   "status": "pending",
-   "score": null,
-   "source": {
-    "title": "市外から美濃加茂市へ転入しました。引っ越しの際に一般的に必要な手続きを知りたい",
-    "url": "https://www.city.minokamo.lg.jp/soshiki/23/2408.html"
+   },
+   "decided": {
+    "at": "2026-11-02T23:46:34.276Z",
+    "action": "ok",
+    "reason": ""
    }
   },
   {
@@ -2729,12 +2699,17 @@
    "qid": "Q07",
    "kind": "answer",
    "question": "車を持たない人が使える町の交通（コミュニティバス・予約して乗る乗り物など）はあるか。予約先や時刻表はどこか",
-   "why": "はじめて使う情報源（www.city.minokamo.lg.jp）。使ってよい範囲を人が確かめる／確かめ役：資料と合わない所がある（「令和8年10月1日にダイヤ改正の予定」は資料に無い（資料にあるのは長良川鉄道のダイヤ改正R7.10.18のみ）・「新しい時刻表・路線図の冊子は、市のダイヤ改正のお知らせページにPDFがある」は資料に無い・「チョイソコみのかも」の存在、プレ運行・予約受付開始のお知らせは資料に無い）",
-   "status": "pending",
-   "score": null,
+   "why": "確かめ役：資料と合わない所がある（「令和8年10月1日にダイヤ改正の予定」は資料に無い（資料にあるのは長良川鉄道のダイヤ改正R7.10.18のみ）・「新しい時刻表・路線図の冊子は、市のダイヤ改正のお知らせページにPDFがある」は資料に無い・「チョイソコみのかも」の存在、プレ運行・予約受付開始のお知らせは資料に無い）",
+   "status": "ok",
+   "score": 2,
    "source": {
     "title": "あい愛バスの運行日(運休日)について - 美濃加茂市公式ホームページ",
     "url": "https://www.city.minokamo.lg.jp/soshiki/2/1109.html"
+   },
+   "decided": {
+    "at": "2026-11-02T23:46:36.388Z",
+    "action": "ok",
+    "reason": ""
    }
   },
   {
@@ -2744,12 +2719,17 @@
    "qid": "Q08",
    "kind": "answer",
    "question": "外国から来た人向けの案内（外国語のページ・やさしい日本語・相談窓口）はあるか。どこで見られるか",
-   "why": "Claude が返した元の文が、答えに使ったページの中に見つからなかった／はじめて使う情報源（www.city.minokamo.lg.jp）。使ってよい範囲を人が確かめる",
-   "status": "pending",
-   "score": null,
+   "why": "Claude が返した元の文が、答えに使ったページの中に見つからなかった",
+   "status": "ok",
+   "score": 2,
    "source": {
     "title": "外国人ワンストップ相談窓口を開設しています - 美濃加茂市公式ホームページ",
     "url": "https://www.city.minokamo.lg.jp/soshiki/2/1083.html"
+   },
+   "decided": {
+    "at": "2026-11-02T23:46:38.686Z",
+    "action": "ok",
+    "reason": ""
    }
   },
   {
@@ -2759,42 +2739,17 @@
    "qid": "Q09",
    "kind": "answer",
    "question": "この町はどうやってできたか（合わさった町や村と、その年）",
-   "why": "Claude が返した元の文が、答えに使ったページの中に見つからなかった／はじめて使う情報源（www.city.minokamo.gifu.jp）。使ってよい範囲を人が確かめる",
-   "status": "pending",
-   "score": null,
+   "why": "Claude が返した元の文が、答えに使ったページの中に見つからなかった",
+   "status": "ok",
+   "score": 2,
    "source": {
     "title": "美濃加茂市ホームページ（市の紹介）",
     "url": "https://www.city.minokamo.gifu.jp/shimin/answer.cfm?id=28580&mi_id=5&g1_id=16&g2_id=78"
-   }
-  },
-  {
-   "id": "r00174",
-   "scope": "muni:21211",
-   "scopeName": "岐阜県 美濃加茂市",
-   "qid": "Q10",
-   "kind": "answer",
-   "question": "この町で毎年ひらかれる大きな催しや祭りは何か。時期と場所",
-   "why": "はじめて使う情報源（www.city.minokamo.lg.jp）。使ってよい範囲を人が確かめる",
-   "status": "pending",
-   "score": null,
-   "source": {
-    "title": "おん祭MINOKAMO2026の開催日について - 美濃加茂市公式ホームページ",
-    "url": "https://www.city.minokamo.lg.jp/soshiki/12/16223.html"
-   }
-  },
-  {
-   "id": "r00175",
-   "scope": "muni:21211",
-   "scopeName": "岐阜県 美濃加茂市",
-   "qid": "Q11",
-   "kind": "answer",
-   "question": "この町が定めた町の花・町の木（あれば町の鳥も）は何か。定めた年と、載っている公式のページ",
-   "why": "はじめて使う情報源（www.city.minokamo.lg.jp）。使ってよい範囲を人が確かめる",
-   "status": "pending",
-   "score": null,
-   "source": {
-    "title": "美濃加茂市統計書 令和5年度版",
-    "url": "https://www.city.minokamo.lg.jp/uploaded/attachment/15172.pdf"
+   },
+   "decided": {
+    "at": "2026-11-02T23:46:40.055Z",
+    "action": "ok",
+    "reason": ""
    }
   },
   {
@@ -2804,27 +2759,17 @@
    "qid": "Q12",
    "kind": "answer",
    "question": "この町の津波や洪水の想定（浸水の深さ・津波が来るまでの時間）は、いつ、誰が出したものか。県や国がもっと新しい想定を出していれば、その時期と、町のハザードマップがそれに合わせて直されているか",
-   "why": "はじめて使う情報源（www.cbr.mlit.go.jp）。使ってよい範囲を人が確かめる／確かめ役：資料と合わない所がある（「国土交通省」という名称は資料本文にない（資料にあるのは「木曽川上流河川事務所」）・「美濃加茂太田駅南口」は資料では「美濃太田駅南口」と書かれている）",
-   "status": "pending",
-   "score": null,
+   "why": "確かめ役：資料と合わない所がある（「国土交通省」という名称は資料本文にない（資料にあるのは「木曽川上流河川事務所」）・「美濃加茂太田駅南口」は資料では「美濃太田駅南口」と書かれている）",
+   "status": "ok",
+   "score": 3,
    "source": {
     "title": "木曽川水系洪水浸水想定区域図（木曽川上流河川事務所）",
     "url": "https://www.cbr.mlit.go.jp/kisojyo/shinsuisoutei/index.html"
-   }
-  },
-  {
-   "id": "r00177",
-   "scope": "muni:21211",
-   "scopeName": "岐阜県 美濃加茂市",
-   "qid": "Q13",
-   "kind": "answer",
-   "question": "この町でいま動いていること（新しい施設・大きな計画や工事・制度の変わり目・町の取り組み）。ここ1年ほどの公式の発表から、多くても5つ。1つずつ1文で、それぞれ出典をつけて",
-   "why": "はじめて使う情報源（www.city.minokamo.gifu.jp）。使ってよい範囲を人が確かめる",
-   "status": "pending",
-   "score": null,
-   "source": {
-    "title": "美濃加茂市公式ホームページ トップページ",
-    "url": "https://www.city.minokamo.gifu.jp/"
+   },
+   "decided": {
+    "at": "2026-11-02T23:46:43.155Z",
+    "action": "ok",
+    "reason": ""
    }
   },
   {
@@ -2834,12 +2779,17 @@
    "qid": "Q15",
    "kind": "answer",
    "question": "この町で困ったときの窓口（役場の代表電話、夜間・休日の連絡先、消費生活センター、子ども・高齢者・DV などの相談窓口）。それぞれの電話番号と受付時間",
-   "why": "はじめて使う情報源（www.city.minokamo.lg.jp）。使ってよい範囲を人が確かめる／確かめ役：資料と合わない所がある（「本庁舎・分庁舎とも、受付は平日8時45分～16時45分」のうち、分庁舎の受付時間は資料に書かれていません（資料にあるのは本庁舎の業務時間です）。）",
-   "status": "pending",
-   "score": null,
+   "why": "確かめ役：資料と合わない所がある（「本庁舎・分庁舎とも、受付は平日8時45分～16時45分」のうち、分庁舎の受付時間は資料に書かれていません（資料にあるのは本庁舎の業務時間です）。）",
+   "status": "ok",
+   "score": 2,
    "source": {
     "title": "広域消費生活相談室のご案内",
     "url": "https://www.city.minokamo.lg.jp/soshiki/12/1631.html"
+   },
+   "decided": {
+    "at": "2026-11-02T23:46:45.153Z",
+    "action": "ok",
+    "reason": ""
    }
   },
   {
@@ -2849,27 +2799,17 @@
    "qid": "Q16",
    "kind": "answer",
    "question": "夜間や休日に具合が悪くなったときの窓口（休日当番医・夜間急病診療所・救急の電話相談・子どもの急病の電話相談 #8000 など）。電話番号と受付の時間",
-   "why": "Claude が返した元の文が、答えに使ったページの中に見つからなかった／はじめて使う情報源（www.city.minokamo.gifu.jp）。使ってよい範囲を人が確かめる",
-   "status": "pending",
-   "score": null,
+   "why": "Claude が返した元の文が、答えに使ったページの中に見つからなかった",
+   "status": "ok",
+   "score": 2,
    "source": {
     "title": "日曜、祝日等の急な病気やケガの際に（美濃加茂市）",
     "url": "https://www.city.minokamo.gifu.jp/shimin/contents.cfm?base_id=4068&mi_id=3&g1_id=12&g2_id=52"
-   }
-  },
-  {
-   "id": "r00180",
-   "scope": "muni:21211",
-   "scopeName": "岐阜県 美濃加茂市",
-   "qid": "Q17",
-   "kind": "answer",
-   "question": "子育ての相談の窓口（子育て世代包括支援センター・こども家庭センターなど）の場所と電話番号と、主な手当・子どもの医療費の助成",
-   "why": "はじめて使う情報源（www.city.minokamo.lg.jp）。使ってよい範囲を人が確かめる",
-   "status": "pending",
-   "score": null,
-   "source": {
-    "title": "みのかもこども家庭センター - 美濃加茂市公式ホームページ",
-    "url": "https://www.city.minokamo.lg.jp/soshiki/7/11916.html"
+   },
+   "decided": {
+    "at": "2026-11-02T23:46:47.100Z",
+    "action": "ok",
+    "reason": ""
    }
   },
   {
@@ -2879,12 +2819,17 @@
    "qid": "Q18",
    "kind": "answer",
    "question": "介護や高齢者の暮らしの相談の窓口（地域包括支援センターなど）の名前・担当する地区・電話番号",
-   "why": "Claude が返した元の文が、答えに使ったページの中に見つからなかった／はじめて使う情報源（www.city.minokamo.gifu.jp）。使ってよい範囲を人が確かめる",
-   "status": "pending",
-   "score": null,
+   "why": "Claude が返した元の文が、答えに使ったページの中に見つからなかった",
+   "status": "ok",
+   "score": 3,
    "source": {
     "title": "「長寿支援センター」は、高齢者の「総合相談窓口」です！",
     "url": "https://www.city.minokamo.gifu.jp/shimin/contents.cfm?base_id=7534&mi_id=3&g1_id=12&g2_id=48"
+   },
+   "decided": {
+    "at": "2026-11-02T23:46:49.294Z",
+    "action": "ok",
+    "reason": ""
    }
   },
   {
