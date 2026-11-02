@@ -116,8 +116,8 @@ export function decide(id, action, { user = "owner", reason = "" } = {}) {
 }
 
 // 公開してよいものだけを書き出す
-const PUBLIC_FIELDS = ["id", "scope", "question", "value", "asOf", "source", "method", "status", "why"];
-const pick = (it) => Object.fromEntries(PUBLIC_FIELDS.filter((k) => it[k] !== undefined).map((k) => [k, it[k]]));
+const PUBLIC_FIELDS = ["id", "qid", "scope", "question", "value", "asOf", "source", "method", "status"];
+const pick = (it) => ({ ...Object.fromEntries(PUBLIC_FIELDS.filter((k) => it[k] !== undefined).map((k) => [k, it[k]])), checkedAt: it.createdAt });
 export function exportPublic(data = load()) {
   const byMuni = new Map();
   for (const it of data.items) {

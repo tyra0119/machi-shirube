@@ -16,16 +16,14 @@
 </header>
 <main class="town-main">
   <section class="block">
-    <h2>件数</h2>
-    <ul id="counts" class="counts"></ul>
-  </section>
-  <section class="block">
-    <h2 id="pending-title">確かめ待ち</h2>
-    <div id="pending"></div>
-  </section>
-  <section class="block">
-    <h2>決めたもの</h2>
-    <div id="decided"></div>
+    <div class="r-tabs" role="tablist" aria-label="一覧を切りかえる">
+      <button type="button" role="tab" data-tab="pending" aria-selected="true">確かめ待ち <strong id="n-pending">0</strong></button>
+      <button type="button" role="tab" data-tab="decided" aria-selected="false">決めたもの <strong id="n-decided">0</strong></button>
+      <button type="button" role="tab" data-tab="auto" aria-selected="false">自動で承認 <strong id="n-auto">0</strong></button>
+    </div>
+    <label class="field r-filter">町で絞る<select id="town-filter"></select></label>
+    <p id="summary" class="note"></p>
+    <div id="list" class="r-list"></div>
   </section>
 </main>
 <div id="toast" class="toast" role="status" hidden></div>

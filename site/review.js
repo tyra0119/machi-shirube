@@ -7,6 +7,10 @@ const ACTION = { ok: "OK にしました", fix: "直してに回しました。C
 
 let local = false;
 let data = { items: [] };
+let all = []; // いまの全部の件
+let tab = "pending"; // 確かめ待ち・決めたもの・自動で承認
+let town = ""; // 町で絞る（scope）
+let openId = null; // いま開いている1件
 
 main();
 async function main() {
@@ -21,23 +25,62 @@ async function main() {
 async function reload() {
   if (local) {
     data = await (await fetch("api/review")).json();
-    const c = (s) => data.items.filter((x) => x.status === s).length;
-    render({ auto: c("auto"), ok: c("ok"), pending: c("pending"), fix: c("fix"), rejected: c("rejected"), unknown: c("unknown") }, data.items);
+    all = data.items;
   } else {
-    const pub = await fetch("data/review.json").then((r) => (r.ok ? r.json() : { counts: {}, items: [] })).catch(() => ({ counts: {}, items: [] }));
-    render(pub.counts, pub.items);
+    const pub = await fetch("data/review.json").then((r) => (r.ok ? r.json() : { items: [] })).catch(() => ({ items: [] }));
+    all = pub.items; // 公開の一覧には、人が見たもの・見ているものだけが入る
+    autoCount = pub.counts?.auto ?? 0;
   }
+  render();
 }
+let autoCount = 0;
 
-function render(counts, items) {
-  $("counts").innerHTML = Object.entries(LABEL).map(([k, l]) => `<li><span>${l}</span><strong>${(counts[k] ?? 0).toLocaleString("ja-JP")}件</strong></li>`).join("");
-  const pending = items.filter((x) => x.status === "pending");
-  $("pending-title").textContent = `確かめ待ち（${pending.length}件）`;
-  $("pending").innerHTML = pending.length ? pending.map(itemHTML).join("") : `<p class="note">確かめ待ちはありません。</p>`;
-  const decided = items.filter((x) => x.status !== "pending" && x.status !== "auto");
-  $("decided").innerHTML = decided.length ? decided.map(itemHTML).join("") : `<p class="note">まだありません。</p>`;
+const inTab = (x) => (tab === "pending" ? x.status === "pending" : tab === "auto" ? x.status === "auto" : !["pending", "auto"].includes(x.status));
+function render() {
+  // 町で絞る（件数つき）
+  const towns = [...new Map(all.map((x) => [x.scope, x.scopeName ?? x.scope])).entries()];
+  const sel = $("town-filter");
+  sel.innerHTML = `<option value="">全部の町</option>` + towns.map(([s, n]) => `<option value="${esc(s)}">${esc(n)}（${all.filter((x) => x.scope === s && inTab(x)).length}）</option>`).join("");
+  sel.value = town;
+  $("n-pending").textContent = all.filter((x) => x.status === "pending").length;
+  $("n-decided").textContent = all.filter((x) => !["pending", "auto"].includes(x.status)).length;
+  $("n-auto").textContent = local ? all.filter((x) => x.status === "auto").length : autoCount;
+  document.querySelectorAll(".r-tabs button").forEach((b) => b.setAttribute("aria-selected", String(b.dataset.tab === tab)));
+
+  const list = all.filter((x) => inTab(x) && (!town || x.scope === town));
+  $("summary").textContent = !local && tab === "auto" ? "自動で承認したものは、町のページの「確かめた答え」に出ています。" : "";
+  if (!list.length) {
+    $("list").innerHTML = `<p class="note">${tab === "pending" ? "確かめ待ちはありません。" : "まだありません。"}</p>`;
+    return;
+  }
+  // 1件は1行。押すとその1件だけが開く
+  $("list").innerHTML = list.map((it) => `
+    <details class="r-row" data-id="${it.id}" ${it.id === openId ? "open" : ""}>
+      <summary>
+        <span class="r-where">${esc(it.scopeName ?? it.scope)}${it.qid ? `・${esc(it.qid)}` : ""}</span>
+        <span class="r-q">${esc(it.question)}</span>
+        <span class="r-tags">${tags(it).map((t) => `<span>${esc(t)}</span>`).join("")}</span>
+      </summary>
+      ${itemHTML(it)}
+    </details>`).join("");
+  for (const d of document.querySelectorAll(".r-row")) {
+    d.addEventListener("toggle", () => {
+      if (!d.open) return;
+      openId = d.dataset.id;
+      document.querySelectorAll(".r-row").forEach((o) => o !== d && (o.open = false));
+    });
+  }
   if (local) wire();
 }
+// 1行に出す短い札
+function tags(it) {
+  if (it.status !== "pending") return [LABEL[it.status] ?? it.status];
+  return (it.why ?? "").split("／").filter((r) => r && !/^Claude のメモ/.test(r)).map((r) =>
+    /^はじめて使う情報源/.test(r) ? "はじめてのサイト" : /^確かめ役/.test(r) ? "確かめ役が気にした所" : /元の文/.test(r) ? "元の文が見つからない"
+      : /町の人に聞く/.test(r) ? "見つからなかった" : /^数が合わない/.test(r) ? "数が合わない" : /公式のサイトでない/.test(r) ? "公式でない" : "そのほか");
+}
+document.querySelectorAll(".r-tabs button").forEach((b) => b.addEventListener("click", () => { tab = b.dataset.tab; openId = null; render(); }));
+$("town-filter").addEventListener("change", (e) => { town = e.target.value; openId = null; render(); });
 
 // 人が見る理由（しくみの言葉）を、「何を見て、どう決めればよいか」に言いかえる
 function guide(reason, it) {
@@ -100,8 +143,6 @@ function itemHTML(it) {
     </div>` : local && it.status !== "auto" ? `<div class="decide" data-id="${it.id}"><button type="button" data-action="undo">元に戻す（確かめ待ちへ）</button></div>` : "";
   return `
     <article class="item">
-      <p class="scope">${esc(it.scopeName ?? it.scope)}${it.qid ? `・${esc(it.qid)}` : ""}</p>
-      <h3>${esc(it.question)}</h3>
       ${it.value != null ? `<p class="value">${esc(it.value)}</p>` : ""}
       ${src}${srcLink}
       ${todo}
@@ -135,6 +176,12 @@ async function decide(id, action, reason) {
   const res = await fetch(`api/review/${id}`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ action, reason }) });
   const body = await res.json();
   if (!res.ok) return toast(`できませんでした：${body.error}`);
+  // 決めたら、同じ一覧の次の確かめ待ちを開く
+  if (action !== "undo") {
+    const list = all.filter((x) => inTab(x) && (!town || x.scope === town));
+    const i = list.findIndex((x) => x.id === id);
+    openId = list[i + 1]?.id ?? list[i - 1]?.id ?? null;
+  }
   await reload();
   // 押したあと数秒は元に戻せる
   toast(ACTION[action], action === "undo" ? null : () => decide(id, "undo", ""));

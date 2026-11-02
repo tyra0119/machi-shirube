@@ -52,12 +52,17 @@ async function showAnswers(code, scopeNote) {
   if (!res?.ok) return;
   const { answers } = await res.json();
   if (!answers.length) return;
+  answers.sort((x, y) => String(x.qid ?? "").localeCompare(String(y.qid ?? "")));
   $("answers-scope").textContent = scopeNote;
+  // 見つからなかった答えも隠さず出す（届いていないことの手がかり。町の人に聞きたいこと）
+  const notFound = (a) => a.value === "見つからなかった";
   $("answers").innerHTML = `<ul class="answers">${answers.map((a) => `
-    <li>
+    <li class="${notFound(a) ? "not-found" : ""}">
       <p class="q">${esc(a.question)}</p>
-      <p class="a">${esc(a.value)}</p>
-      <p class="src">出典：${a.source?.url ? `<a href="${esc(a.source.url)}" target="_blank" rel="noopener">${esc(a.source.title ?? a.source.url)}</a>` : esc(a.source?.title ?? "")}${a.source?.where ? `（${esc(a.source.where)}）` : ""}${a.asOf ? `・時点 ${esc(a.asOf)}` : ""}・${a.status === "auto" ? "自動で承認" : "人が確かめた"}</p>
+      ${notFound(a)
+        ? `<p class="a">公開の資料では見つかりませんでした</p><p class="src">${a.checkedAt ? `${esc(a.checkedAt.slice(0, 10))} に調べた・` : ""}町の人に聞きたいことです</p>`
+        : `<p class="a">${esc(a.value)}</p>
+      <p class="src">出典：${a.source?.url ? `<a href="${esc(a.source.url)}" target="_blank" rel="noopener">${esc(a.source.title ?? a.source.url)}</a>` : esc(a.source?.title ?? "")}${a.source?.where ? `（${esc(a.source.where)}）` : ""}${a.asOf ? `・時点 ${esc(a.asOf)}` : ""}・${a.status === "auto" ? "自動で承認" : "人が確かめた"}</p>`}
     </li>`).join("")}</ul>`;
 }
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
