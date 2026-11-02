@@ -16,6 +16,7 @@ import { buildOverlays } from "./overlays.mjs";
 import { mitate } from "./mitate.mjs";
 import { hitokoto } from "./hitokoto.mjs";
 import { dekiru } from "./dekiru.mjs";
+import { mitateAsk } from "./mitate-ask.mjs";
 
 // 町をまとめて調べる（調べる画面から）。一度に1つだけ。様子はメモリに持ち、終わったら local/runs/ に残す
 const runs = new Map();
@@ -134,6 +135,11 @@ async function startRun(req, res) {
       await mitate(code, (text) => run.log.push({ at: new Date().toISOString(), text }))
         .then((r) => { run.usd += r.usd; })
         .catch((e) => run.log.push({ at: new Date().toISOString(), text: `見立ては出せませんでした：${e.message}` }));
+      // 見立てた人ごとに、その人の壁を越える町の支援の問いを結ぶ（新しい問いは、次に調べるときに調べる）
+      run.log.push({ at: new Date().toISOString(), text: "見立てた人ごとに、Claude が町の支援を調べる問いを結んでいます" });
+      await mitateAsk(code, (text) => run.log.push({ at: new Date().toISOString(), text }))
+        .then((r) => { run.usd += r.usd; })
+        .catch((e) => run.log.push({ at: new Date().toISOString(), text: `見立てから問いを結べませんでした：${e.message}` }));
       run.log.push({ at: new Date().toISOString(), text: "町・字ごとの数から、Claude が「わが町のひとこと」をまとめています" });
       await hitokoto(code, (text) => run.log.push({ at: new Date().toISOString(), text }))
         .then((r) => { run.usd += r.usd; })
