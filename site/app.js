@@ -143,8 +143,8 @@ async function showTowns(code) {
   const crumb = document.getElementById("crumb");
   crumb.querySelector(".here").textContent = `${byCode.get(code)?.properties.fullName ?? ""}の中の町`;
   crumb.hidden = false;
-  document.querySelector("main").classList.add("has-crumb");
   fit(townData.features);
+  showTownList();
 }
 // 中の町をしまって、市区町村の地図に戻る（戻った市・区を選んだ状態にする）
 function hideTowns() {
@@ -156,7 +156,6 @@ function hideTowns() {
   selectedTown = null;
   shownTowns = null;
   document.getElementById("crumb").hidden = true;
-  document.querySelector("main").classList.remove("has-crumb");
   const f = byCode.get(code);
   if (f) showCard(f.properties);
   map.easeTo({ zoom: Math.max(map.getZoom() - 1.5, 6), duration: 500 });
@@ -268,9 +267,35 @@ function showCard(p) {
   card.querySelector(".towns")?.addEventListener("click", () => {
     map.setFeatureState({ source: "munis", id: p.code }, { selected: false });
     showTowns(p.code);
-    card.hidden = true;
   });
-  card.hidden = false;
+  openCard();
+}
+
+// パネル：はじめの説明と、町のカードを入れかえる
+function openCard() {
+  document.getElementById("guide").hidden = true;
+  document.getElementById("card").hidden = false;
+  document.querySelector(".panel-body").scrollTop = 0;
+}
+function closeCard() {
+  document.getElementById("card").hidden = true;
+  document.getElementById("guide").hidden = false;
+}
+
+// 中の町の一覧（地図で押すほか、ここからも選べる）
+function showTownList() {
+  const muni = byCode.get(shownTowns)?.properties;
+  const card = document.getElementById("card");
+  const towns = [...townData.features].sort((a, b) => a.properties.part.localeCompare(b.properties.part));
+  card.innerHTML = `
+    <button type="button" class="close" aria-label="閉じる">×</button>
+    <h2>${muni?.fullName ?? ""}の中の町</h2>
+    <p class="where">地図で町を押すか、下から選んでください（${towns.length}の町・字）</p>
+    <ul class="town-list">${towns.map((f) => `<li><button type="button" data-part="${f.properties.part}"><span class="n">${f.properties.name}</span><span class="p">${f.properties.population ? `${f.properties.population.toLocaleString("ja-JP")}人` : "人が住んでいない"}</span></button></li>`).join("")}</ul>
+    <p class="cite">人口：${townIndex.source}（${townIndex.asOf}）</p>`;
+  card.querySelector(".close").addEventListener("click", hideTowns);
+  for (const b of card.querySelectorAll(".town-list button")) b.addEventListener("click", () => selectTown(shownTowns, b.dataset.part));
+  openCard();
 }
 
 // 政令市（形は区ごと）：区を選んでもらう
@@ -284,9 +309,9 @@ function showCityCard(cityName, pref) {
     <h2>${cityName}</h2>
     <p class="where">${pref}・区を選んでください</p>
     <div class="choices">${wards.map((w) => `<button type="button" data-code="${w.properties.code}">${w.properties.ward}</button>`).join("")}</div>`;
-  card.querySelector(".close").addEventListener("click", () => (card.hidden = true));
+  card.querySelector(".close").addEventListener("click", closeCard);
   for (const b of card.querySelectorAll(".choices button")) b.addEventListener("click", () => selectMuni(b.dataset.code));
-  card.hidden = false;
+  openCard();
 }
 
 let selectedTown = null;
@@ -306,12 +331,13 @@ function showTownCard(p) {
     ${people}
     <p>この町は、まだ深く調べていません。</p>
     <p class="cite">出典：${townIndex.source}（${townIndex.asOf}）</p>`;
+  // 閉じると、中の町の一覧に戻る
   card.querySelector(".close").addEventListener("click", () => {
-    card.hidden = true;
     map.setFeatureState({ source: "towns", id: selectedTown }, { selected: false });
     selectedTown = null;
+    showTownList();
   });
-  card.hidden = false;
+  openCard();
 }
 
 // 選ぶ（名前で探したときも、地図で押したときと同じ形にする）
@@ -367,7 +393,7 @@ function featureCard(t) {
 }
 
 function hideCard() {
-  document.getElementById("card").hidden = true;
+  closeCard();
   if (selected) map.setFeatureState({ source: "munis", id: selected }, { selected: false });
   selected = null;
 }
@@ -378,6 +404,15 @@ function showMessage(text) {
   box.textContent = text;
   document.querySelector("main").append(box);
   setTimeout(() => box.remove(), 4000);
+}
+
+// はじめの説明の「たとえば」
+for (const b of document.querySelectorAll(".examples button")) {
+  b.addEventListener("click", () => {
+    if (b.dataset.muni) return selectMuni(b.dataset.muni);
+    const [code, part] = b.dataset.town.split(":");
+    selectTown(code, part);
+  });
 }
 
 // 名前で探す：市区町村・政令市・用意した中の町（町・字）。前から合うものを先に

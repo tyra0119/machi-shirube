@@ -9,26 +9,61 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
-<header class="bar">
-  <h1>まちしるべ</h1>
-  <div class="search">
-    <input id="search" type="search" placeholder="町の名前で探す（例：黒潮町、上津台）" autocomplete="off"
-      role="combobox" aria-expanded="false" aria-controls="results" aria-label="町の名前で探す">
-    <ul id="results" class="results" role="listbox" hidden></ul>
-  </div>
-  <p class="lead">または地図で町を押す</p>
-</header>
-<main>
-  <div id="map" aria-label="日本の市区町村の地図"></div>
-  <div id="tip" class="tip" hidden></div>
-  <button id="basemap" type="button" class="basemap" aria-pressed="true">背景の地図：表示中</button>
-  <nav id="crumb" class="crumb" hidden>
-    <button type="button" class="back" aria-label="市区町村の地図に戻る">← 戻る</button>
-    <span class="here"></span>
-  </nav>
-  <section id="card" class="card" hidden aria-live="polite"></section>
-  <p class="source">町の形：国土数値情報（行政区域データ、2026年1月1日）国土交通省 を加工して作成（CC BY 4.0）／背景：<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank" rel="noopener">地理院タイル</a>（淡色地図。拡大したとき）</p>
-</main>
+<div class="layout">
+  <aside class="panel" aria-label="メニュー">
+    <div class="panel-top">
+      <h1>まちしるべ</h1>
+      <div class="search">
+        <input id="search" type="search" placeholder="町の名前で探す（例：黒潮町、上津台）" autocomplete="off"
+          role="combobox" aria-expanded="false" aria-controls="results" aria-label="町の名前で探す">
+        <ul id="results" class="results" role="listbox" hidden></ul>
+      </div>
+    </div>
+
+    <div class="panel-body">
+      <section id="guide" class="guide">
+        <p class="about">町を選ぶと、その町で<strong>暮らしの情報が届きにくい人</strong>を見つけ、その人に届くページを出典つきで作ります。</p>
+
+        <h2>はじめかた</h2>
+        <ol class="steps">
+          <li><span class="step-title">町を探す</span>上の欄に町の名前を入れるか、地図で町を押します。</li>
+          <li><span class="step-title">町の特色を見る</span>全国の市区町村と比べて目立つ数字が出ます。</li>
+          <li><span class="step-title">市・区なら、中の町を選ぶ</span>広い市や区は、中の町（町・字）ごとに見られます。</li>
+          <li><span class="step-title">町を調べる <span class="soon">準備中</span></span>Claude が町のサイトや計画を読み、出典つきのページを作ります。</li>
+        </ol>
+
+        <h2>たとえば</h2>
+        <div class="examples">
+          <button type="button" data-muni="39428"><span class="name">黒潮町</span><span class="sub">高知県・お年寄りが多く、津波の想定が大きい町</span></button>
+          <button type="button" data-muni="10524"><span class="name">大泉町</span><span class="sub">群馬県・外国の住民が多い町</span></button>
+          <button type="button" data-town="11227:0130"><span class="name">根岸台</span><span class="sub">埼玉県朝霞市・若い家族が多い市の中の町</span></button>
+        </div>
+
+        <h2>地図の見方</h2>
+        <ul class="legend">
+          <li><span class="swatch selected"></span>選んでいる町</li>
+          <li><span class="swatch nodata"></span>国の統計がない所（北方領土など）</li>
+          <li><span class="line pref"></span>県境</li>
+          <li><span class="line muni"></span>市区町村の境目</li>
+        </ul>
+        <p class="hint">拡大すると、道路や線路の見える背景の地図が出ます（右上のボタンで消せます）。</p>
+      </section>
+
+      <section id="card" class="card" hidden aria-live="polite"></section>
+    </div>
+  </aside>
+
+  <main>
+    <div id="map" aria-label="日本の市区町村の地図"></div>
+    <div id="tip" class="tip" hidden></div>
+    <nav id="crumb" class="crumb" hidden>
+      <button type="button" class="back" aria-label="市区町村の地図に戻る">← 戻る</button>
+      <span class="here"></span>
+    </nav>
+    <button id="basemap" type="button" class="basemap" aria-pressed="true">背景の地図：表示中</button>
+    <p class="source">町の形：国土数値情報（行政区域データ、2026年1月1日）国土交通省 を加工して作成（CC BY 4.0）／背景：<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank" rel="noopener">地理院タイル</a>（淡色地図。拡大したとき）</p>
+  </main>
+</div>
 <script src="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
 <script src="map-buttons.js"></script>
