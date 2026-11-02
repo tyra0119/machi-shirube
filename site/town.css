@@ -414,3 +414,10 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .gomi-rules li { display: grid; grid-template-columns: 8em 1fr; gap: 8px; padding: 6px 0; border-top: 1px dashed var(--line); font-size: 14px; line-height: 1.6; }
 .gomi-rules small { display: block; color: var(--text-sub); }
 #gomi-area { display: block; width: 100%; max-width: 360px; min-height: 44px; margin-top: 4px; padding: 0 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--text); font-size: 16px; }
+/* 町のページの最初：この町で届きにくい人 */
+.mitate-top .mitate-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.mitate-top li { display: grid; gap: 4px; padding: 12px 14px; border-radius: 10px; background: var(--town-tint, var(--bg)); }
+.mitate-top li strong { font-size: 18px; line-height: 1.5; }
+.mitate-top .why { font-size: 14px; color: var(--text-sub); line-height: 1.6; }
+.mitate-top .go { justify-self: start; display: inline-flex; align-items: center; gap: 6px; margin-top: 4px; padding: 8px 14px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); color: var(--text); font-weight: 700; text-decoration: none; }
+.mitate-top .go svg { width: 18px; height: 18px; }

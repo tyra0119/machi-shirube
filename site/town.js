@@ -96,7 +96,25 @@ async function showTypes(code, stats, scopeNote) {
   }
   $("types-scope").textContent = scopeNote;
   $("types").innerHTML = typeCandidatesHTML(t, f, stats.summary);
+  // 町のページのいちばん上に：この町で届きにくい人と、その人のためのページ
+  const list = typeCandidates(t, f, stats.summary);
+  const sh = await fetch(`data/shelters/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const tsunami = sh?.features.filter((x) => x.properties.kinds.includes("津波")).length ?? 0;
+  if (tsunami && t.over65Rate >= stats.summary.over65Rate.top10) {
+    list.unshift({ type: "お年寄り × 津波", who: "津波から坂を上って逃げる、足の弱いお年寄り", reason: `65歳以上が ${t.over65Rate.toFixed(1)}%（全国の上から10%に入る）で、津波の避難場所が ${tsunami} か所ある町` });
+  }
+  if (!list.length) return;
+  const page = (type) => { const v = TYPE_PAGE[type], f = v?.startsWith("feat-") && FEATURES[v.slice(5)]; return PAGES.find((p) => p.view === v) ?? (f ? { view: v, title: f.title } : null); };
+  $("mitate-top").hidden = false;
+  $("mitate-top").innerHTML = `<h2>${T("この町で、暮らしの情報が届きにくいのは")}</h2>
+    <ul class="mitate-list">${list.slice(0, 2).map((c) => { const p = page(c.type); return `<li><strong>${esc(T(c.who))}</strong><span class="why">${esc(c.reason)}</span>${p ? `<a class="go" href="#${p.view}">${icon(ILLUST[p.view]?.main ?? "map")}${esc(T(p.title))}${T("へ")}</a>` : ""}</li>`; }).join("")}</ul>
+    <p class="note">${T("全国の市区町村と国の数字で比べた、まちしるべの見立てです（町の評価ではありません）。")} <a href="#mitate">${T("くわしく")}</a></p>`;
 }
+// 届きにくい人の型 → その人のためのページ
+const TYPE_PAGE = {
+  "お年寄り × 津波": "bousai", "母語で防災": "bousai", "はじめての町": "tetsuzuki", "人が減る町の暮らし": "kaigo",
+  "一人暮らしのお年寄り": "kaigo", "雪の暮らし": "feat-yuki", "火山と暮らす": "feat-kazan", "島の暮らし": "feat-shima",
+};
 
 // わが家の避難（いちばん細い段）：場所（町・字・地図を押す・現在地）から、近い避難場所をまっすぐの距離で出す。
 // 場所はブラウザの中だけで使い、送らず残さない。坂・道・浸水の深さは、計算の部品ができてから足す
