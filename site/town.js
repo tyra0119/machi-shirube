@@ -160,7 +160,20 @@ async function showHinan(code, townFeatures, startPart) {
     map.fitBounds(box, { padding: 30, duration: 0 });
     if (startPart) { sel.value = startPart; sel.dispatchEvent(new Event("change")); }
   });
-  map.on("click", (e) => setHere([e.lngLat.lng, e.lngLat.lat], "地図で選んだ場所"));
+  // 地図を押す：避難場所の点なら名前を出す。それ以外の所なら、そこから近い避難場所を出す
+  map.on("click", (e) => {
+    const f = map.getLayer("shelters") && map.queryRenderedFeatures(e.point, { layers: ["shelters"] })[0];
+    if (f) return popup(f.geometry.coordinates, f.properties.name, JSON.parse(f.properties.kinds ?? "[]"));
+    setHere([e.lngLat.lng, e.lngLat.lat], "地図で選んだ場所");
+  });
+  map.on("mouseenter", "shelters", () => (map.getCanvas().style.cursor = "pointer"));
+  map.on("mouseleave", "shelters", () => (map.getCanvas().style.cursor = ""));
+  let pop = null;
+  function popup(at, name, kinds) {
+    pop?.remove();
+    pop = new maplibregl.Popup({ offset: 16, maxWidth: "240px" }).setLngLat(at)
+      .setHTML(`<strong>${esc(name)}</strong><br><small>${esc(kinds.join("・"))}のときに使える</small>`).addTo(map);
+  }
   sel.addEventListener("change", () => {
     const f = townFeatures.find((x) => x.properties.part === sel.value);
     if (f) setHere(center(f), `${f.properties.name}（町・字のおおよその真ん中）`);
@@ -184,10 +197,34 @@ async function showHinan(code, townFeatures, startPart) {
     const x = (c - a) * rad * Math.cos(((b + d) / 2) * rad), y = (d - b) * rad;
     return Math.round(Math.sqrt(x * x + y * y) * R);
   };
+  // 近い順の 1・2・3 を、一覧と同じ番号の印で地図に立てる。一覧や印を押すと、その場所に寄って名前を出す
+  let pins = [];
+  let cand = [];
+  function select(i) {
+    const c = cand[i];
+    if (!c) return;
+    pins.forEach((p, k) => p.getElement().classList.toggle("on", k === i));
+    document.querySelectorAll("#hinan-list li").forEach((li, k) => li.classList.toggle("on", k === i));
+    map.flyTo({ center: c.f.geometry.coordinates, zoom: Math.max(map.getZoom(), 16), duration: 600 });
+    popup(c.f.geometry.coordinates, `${i + 1}. ${c.f.properties.name}`, c.f.properties.kinds);
+    const r = $("hinan-map").getBoundingClientRect();
+    if (r.top < 60 || r.bottom > innerHeight) $("hinan-map").scrollIntoView({ behavior: "smooth", block: "center" });
+  }
   function setHere(at, label) {
     here = { at, label };
-    const cand = shelters.features.filter((f) => !kind || f.properties.kinds.includes(kind))
+    pop?.remove();
+    cand = shelters.features.filter((f) => !kind || f.properties.kinds.includes(kind))
       .map((f) => ({ f, m: meters(at, f.geometry.coordinates) })).sort((x, y) => x.m - y.m).slice(0, 3);
+    pins.forEach((p) => p.remove());
+    pins = cand.map((c, i) => {
+      const el = document.createElement("button");
+      el.type = "button";
+      el.className = "hinan-pin";
+      el.textContent = String(i + 1);
+      el.setAttribute("aria-label", `${i + 1}番目に近い ${c.f.properties.name}`);
+      el.addEventListener("click", (e) => { e.stopPropagation(); select(i); });
+      return new maplibregl.Marker({ element: el }).setLngLat(c.f.geometry.coordinates).addTo(map);
+    });
     map.getSource("here").setData({ type: "FeatureCollection", features: [
       { type: "Feature", geometry: { type: "Point", coordinates: at }, properties: {} },
       ...cand.map((c) => ({ type: "Feature", geometry: { type: "LineString", coordinates: [at, c.f.geometry.coordinates] }, properties: {} })),
@@ -196,10 +233,14 @@ async function showHinan(code, townFeatures, startPart) {
     for (const c of cand) box.extend(c.f.geometry.coordinates);
     map.fitTo = { box, opts: { padding: 50, maxZoom: 16 } };
     map.fitBounds(box, { padding: 50, maxZoom: 16, duration: 500 });
-    $("hinan-list").innerHTML = cand.map((c) => `
-      <li><span class="n">${esc(c.f.properties.name)}</span>
+    $("hinan-list").innerHTML = cand.map((c, i) => `
+      <li data-i="${i}" tabindex="0" role="button" aria-label="地図で ${esc(c.f.properties.name)} を見る"><span class="pin" aria-hidden="true">${i + 1}</span><span class="n">${esc(c.f.properties.name)}</span>
         <span class="d">まっすぐ ${c.m.toLocaleString("ja-JP")}m・歩いて約 ${Math.max(1, Math.round(c.m / 60))}分（めやす）</span>
         <span class="k">${esc(c.f.properties.address ?? "")}・${esc(c.f.properties.kinds.join("・"))}${c.f.properties.capacity ? `・${esc(c.f.properties.capacity)}` : ""}${c.f.properties.note ? `・${esc(c.f.properties.note)}` : ""}</span></li>`).join("");
+    for (const li of document.querySelectorAll("#hinan-list li")) {
+      li.addEventListener("click", () => select(Number(li.dataset.i)));
+      li.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); select(Number(li.dataset.i)); } });
+    }
     $("hinan-note").innerHTML = `${esc(label)}から、${kind ? `${kind}のときに使える指定緊急避難場所` : "すべての指定緊急避難場所"}の近い順。距離はまっすぐ測ったもので、坂や道の曲がりは考えていません。歩く時間は1分60mのめやすです。避難の判断は町の案内に従ってください。<br>出典：${esc(shelters.source.title)}（${esc(shelters.source.license)}・${shelters.source.updated ? `${esc(shelters.source.updated)} 更新のものを ` : ""}${esc(shelters.source.fetchedAt)} に取得）を加工`;
   }
   return true;
