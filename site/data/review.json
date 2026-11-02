@@ -1,9 +1,9 @@
 {
- "updatedAt": "2026-11-02T22:42:55.323Z",
+ "updatedAt": "2026-11-02T22:55:07.844Z",
  "counts": {
   "auto": 28,
   "ok": 90,
-  "pending": 0,
+  "pending": 4,
   "fix": 1,
   "rejected": 2,
   "unknown": 0
@@ -2554,6 +2554,62 @@
     "at": "2026-11-02T22:41:58.847Z",
     "action": "ok",
     "reason": ""
+   }
+  },
+  {
+   "id": "r00161",
+   "scope": "muni:39428",
+   "scopeName": "高知県 黒潮町",
+   "kind": "local-site",
+   "question": "このサイトを、町のことが分かるほかのサイト（公式ではない）として使ってよいか",
+   "why": "公式ではないサイト。運営者と利用の条件を見て、町を知るページのリンクと、話題・催しの答えの出典に使ってよいかを決める（防災・医療・手続きには使わない）",
+   "status": "pending",
+   "score": null,
+   "source": {
+    "title": "黒潮町観光公式サイト",
+    "url": "https://kuroshio-kanko.net/"
+   }
+  },
+  {
+   "id": "r00162",
+   "scope": "muni:39428",
+   "scopeName": "高知県 黒潮町",
+   "kind": "local-site",
+   "question": "このサイトを、町のことが分かるほかのサイト（公式ではない）として使ってよいか",
+   "why": "公式ではないサイト。運営者と利用の条件を見て、町を知るページのリンクと、話題・催しの答えの出典に使ってよいかを決める（防災・医療・手続きには使わない）",
+   "status": "pending",
+   "score": null,
+   "source": {
+    "title": "砂浜美術館（NPO砂浜美術館）",
+    "url": "https://sunabi.com/"
+   }
+  },
+  {
+   "id": "r00163",
+   "scope": "muni:39428",
+   "scopeName": "高知県 黒潮町",
+   "kind": "local-site",
+   "question": "このサイトを、町のことが分かるほかのサイト（公式ではない）として使ってよいか",
+   "why": "公式ではないサイト。運営者と利用の条件を見て、町を知るページのリンクと、話題・催しの答えの出典に使ってよいかを決める（防災・医療・手続きには使わない）",
+   "status": "pending",
+   "score": null,
+   "source": {
+    "title": "黒潮町商工会",
+    "url": "https://r.goope.jp/srb-kuroshio/"
+   }
+  },
+  {
+   "id": "r00164",
+   "scope": "muni:39428",
+   "scopeName": "高知県 黒潮町",
+   "kind": "local-site",
+   "question": "このサイトを、町のことが分かるほかのサイト（公式ではない）として使ってよいか",
+   "why": "公式ではないサイト。運営者と利用の条件を見て、町を知るページのリンクと、話題・催しの答えの出典に使ってよいかを決める（防災・医療・手続きには使わない）",
+   "status": "pending",
+   "score": null,
+   "source": {
+    "title": "大方ホエールウォッチング",
+    "url": "https://nitarikujira.com/"
    }
   }
  ]

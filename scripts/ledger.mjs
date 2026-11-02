@@ -31,18 +31,22 @@ export const muniScope = (scope) => `muni:${scope.match(/(\d{5})/)?.[1]}`;
 function ensureCard(it, user) {
   const host = it.source?.url ? new URL(it.source.url).hostname : null;
   if (!host || cardFor(muniScope(it.scope), host)) return null;
+  // 町のことが分かるほかのサイト（公式ではない）の候補を OK したとき：公式ではない印のカードにする
+  if (it.kind === "local-site") return addCard({ scope: muniScope(it.scope), scopeName: it.scopeName, host, origin: new URL(it.source.url).origin, user, fromItem: it.id, title: it.site?.name, local: true,
+    license: "作者が使ってよいとした、公式ではない町の情報サイト。話題・催しなどの答えの出典とリンクにだけ使う（防災・医療・手続きには使わない。文はそのまま写さない）" });
   return addCard({ scope: muniScope(it.scope), scopeName: it.scopeName, host, origin: new URL(it.source.url).origin, user, fromItem: it.id });
 }
-function addCard({ scope, scopeName, host, origin, user, fromItem, status = "ok", reason }) {
+function addCard({ scope, scopeName, host, origin, user, fromItem, status = "ok", reason, title, local, license }) {
   const data = loadCards();
   const card = {
     id: `c${String(data.cards.length + 1).padStart(4, "0")}`,
     scope,
     scopeName,
     host,
-    title: `${scopeName ?? ""}の公式サイト`,
+    title: title ?? `${scopeName ?? ""}の公式サイト`,
+    ...(local ? { local: true } : {}),
     url: origin + "/",
-    license: status === "ok" ? "作者が使ってよいと確かめた（事実と出典のリンクを出す。文はそのまま写さない）" : `使わない（${reason}）`,
+    license: license ?? (status === "ok" ? "作者が使ってよいと確かめた（事実と出典のリンクを出す。文はそのまま写さない）" : `使わない（${reason}）`),
     status,
     approvedBy: user,
     approvedAt: new Date().toISOString(),
@@ -268,7 +272,7 @@ export function exportPublic(data = load()) {
     if (it.status !== "ok" && it.status !== "auto") continue;
     if (replaced.has(it.id)) continue;
     if (it.kind === "translation") continue; // 訳は site/data/translations/ に（下で状態だけ合わせる）
-    if (["watch", "gomi-days", "plan-excerpt", "dekiru"].includes(it.kind)) continue; // 見張りの知らせ・ごみの収集日の表・防災計画の抜き出し・数とできることのつなぎは答えではない（下で状態だけ合わせる）
+    if (["watch", "gomi-days", "plan-excerpt", "dekiru", "local-site"].includes(it.kind)) continue; // 見張りの知らせ・ごみの収集日の表・防災計画の抜き出し・数とできることのつなぎは答えではない（下で状態だけ合わせる）
     // 市区町村の答えは {コード}.json、町・字の答えは {コード}-{番号}.json
     const code = it.scope.startsWith("town:") ? it.scope.slice(5) : it.scope.match(/(\d{5})/)?.[1];
     if (!code) continue;
@@ -284,6 +288,18 @@ export function exportPublic(data = load()) {
       if (it && it.status !== g.status) { g.status = it.status; fs.writeFileSync(`${dir}/${f}`, JSON.stringify(g, null, 1)); }
     }
   }
+  // 町のことが分かるほかのサイト（公式ではない）：作者が使ってよいとしたものだけ
+  const ldir = "site/data/local-sites";
+  fs.mkdirSync(ldir, { recursive: true });
+  const locals = new Map();
+  for (const it of data.items.filter((x) => x.kind === "local-site" && x.status === "ok")) {
+    const code = it.scope.match(/(d{5})/)?.[1];
+    if (!locals.has(code)) locals.set(code, []);
+    const { name, url, kind, operator, use } = it.site;
+    locals.get(code).push({ name, url, kind, operator, use, host: it.host, approvedAt: it.decisions.at(-1)?.at });
+  }
+  for (const f of fs.readdirSync(ldir)) if (!locals.has(f.replace(".json", ""))) fs.rmSync(path.join(ldir, f));
+  for (const [code, sites] of locals) fs.writeFileSync(`${ldir}/${code}.json`, JSON.stringify({ code, sites, note: "町の公式サイトではない、町のことが分かるサイトです。中身はそれぞれのサイトの運営者のものです" }, null, 1));
   // 訳：確かめ待ちに入れた訳の状態（人が OK・出さない）を、訳のファイルに写す
   const tdir = "site/data/translations";
   if (fs.existsSync(tdir)) {
@@ -311,7 +327,7 @@ export function exportPublic(data = load()) {
     const code = c.scope.match(/(\d{5})/)?.[1];
     if (!code) continue;
     if (!cardsByMuni.has(code)) cardsByMuni.set(code, []);
-    cardsByMuni.get(code).push({ id: c.id, host: c.host, title: c.title, url: c.url, license: c.license, status: c.status, approvedAt: c.approvedAt });
+    cardsByMuni.get(code).push({ id: c.id, host: c.host, title: c.title, url: c.url, license: c.license, status: c.status, approvedAt: c.approvedAt, ...(c.local ? { local: true } : {}) });
   }
   for (const [code, cards] of cardsByMuni) fs.writeFileSync(`${sdir}/${code}.json`, JSON.stringify({ cards }, null, 1));
 
@@ -338,7 +354,7 @@ export function exportChanges(data = load()) {
   const shown = (it) => it.status === "auto" ? it.createdAt : it.status === "ok" ? it.decisions.filter((d) => d.action === "ok").at(-1)?.at : null;
   const byMuni = new Map();
   const seen = new Set(); // 同じ問いで、前にもう出ていたか（町ごと）
-  const items = data.items.filter((it) => !["watch", "translation"].includes(it.kind) && shown(it)).sort((a, b) => shown(a).localeCompare(shown(b)));
+  const items = data.items.filter((it) => !["watch", "translation", "local-site"].includes(it.kind) && shown(it)).sort((a, b) => shown(a).localeCompare(shown(b)));
   for (const it of items) {
     const code = it.scope.match(/(\d{5})/)?.[1];
     if (!code || it.scope.startsWith("town:")) continue;
