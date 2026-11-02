@@ -269,7 +269,7 @@ async function showAccidents(code, part) {
   if (!d.spots.length) return;
   const map = new maplibregl.Map({
     container: "acc-map",
-    style: { version: 8, sources: { pale: { type: "raster", tiles: ["https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png"], tileSize: 256, maxzoom: 18 } }, layers: [{ id: "pale", type: "raster", source: "pale" }] },
+    style: await baseStyle(),
     attributionControl: false,
   });
   maps.push(map);
@@ -325,11 +325,7 @@ async function showHinan(code, townFeatures, startPart) {
 
   const map = new maplibregl.Map({
     container: "hinan-map",
-    style: {
-      version: 8,
-      sources: { pale: { type: "raster", tiles: ["https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png"], tileSize: 256, maxzoom: 18 } },
-      layers: [{ id: "pale", type: "raster", source: "pale" }],
-    },
+    style: await baseStyle(),
     attributionControl: false,
     dragRotate: true,
   });
@@ -982,7 +978,7 @@ async function muniPage(code, stats) {
 const N03 = "国土数値情報（行政区域データ、2026年1月1日）国土交通省 を加工して作成（CC BY 4.0）";
 const MEDICAL = "病院・診療所：厚生労働省「医療情報ネット」のオープンデータ（2026年6月1日時点、公共データ利用規約 第1.0版）を加工。祝日：内閣府「国民の祝日」（公共データ利用規約 第1.0版）";
 const WEATHER = "今日と明日の天気・警報・注意報・地震：気象庁ホームページ（その場で読む）。気温・湿度・風・日の照る時間：Open-Meteo.com（CC BY 4.0）を加工。洗濯・服装はまちしるべの決まりで出しためやす";
-const BASEMAP = "背景の地図：地理院タイル（淡色地図）https://maps.gsi.go.jp/development/ichiran.html";
+const BASEMAP = "背景の地図：地理院地図 Vector（国土地理院）https://maps.gsi.go.jp/development/vt.html";
 
 function header(name, where, path) {
   document.title = `${name}｜まちしるべ`;
@@ -1016,16 +1012,12 @@ function notFound(text) {
   $("path").innerHTML = `<li><a href="./">日本</a></li>`;
 }
 
-// 町の形の小さな地図（見るだけ。動かさない）。背景は地理院の淡色地図
-function drawMap(features) {
+// 町の形の小さな地図（見るだけ。動かさない）。背景は地理院地図 Vector（色をうすくしたもの）
+async function drawMap(features) {
   const data = { type: "FeatureCollection", features };
   const map = new maplibregl.Map({
     container: "town-map",
-    style: {
-      version: 8,
-      sources: { pale: { type: "raster", tiles: ["https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png"], tileSize: 256, maxzoom: 18 } },
-      layers: [{ id: "pale", type: "raster", source: "pale" }],
-    },
+    style: await baseStyle(),
     interactive: false,
     attributionControl: false,
   });

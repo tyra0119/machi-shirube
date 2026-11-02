@@ -41,7 +41,7 @@ async function showLayerMap(code, townFeatures, at, esc) {
 
   const map = new maplibregl.Map({
     container: box,
-    style: { version: 8, sources: { pale: { type: "raster", tiles: ["https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png"], tileSize: 256, maxzoom: 18 } }, layers: [{ id: "pale", type: "raster", source: "pale", paint: { "raster-saturation": -0.7, "raster-contrast": -0.15 } }] },
+    style: await baseStyle(),
     attributionControl: false,
     center: at ?? [139.7, 35.7], zoom: 12,
   });
@@ -70,6 +70,7 @@ async function showLayerMap(code, townFeatures, at, esc) {
       map.addLayer({ id: "outside", type: "fill", source: "outside", paint: { "fill-color": "#ffffff", "fill-opacity": 0.6 } });
     }
     map.addLayer({ id: "town", type: "line", source: "town", paint: { "line-color": "#3a4a5a", "line-width": ["interpolate", ["linear"], ["zoom"], 10, 0.8, 14, 1.6], "line-opacity": 0.7 } });
+    raiseLabels(map); // 地名などの文字は、重ねた色やおおいより上に（点はこのあとに足すので、さらに上）
     if (shelters) {
       map.addSource("shelter", { type: "geojson", data: shelters });
       map.addLayer({ id: "shelter", type: "circle", source: "shelter", paint: { "circle-radius": ["interpolate", ["linear"], ["zoom"], 10, 3.5, 13, 6, 16, 9], "circle-color": "#2f7d4f", "circle-stroke-color": "#fff", "circle-stroke-width": 1.5 } });
@@ -127,5 +128,5 @@ async function showLayerMap(code, townFeatures, at, esc) {
     setVis(id, on.has(id));
     draw();
   });
-  document.getElementById("layer-note").innerHTML = `${LT("出典")}：${LT("背景の地図・想定の地図は国土地理院（地理院タイル）とハザードマップポータルサイト、雨雲とキキクルは気象庁、病院は厚生労働省の医療情報ネット、避難場所は国土地理院の指定緊急避難場所データ、事故は警察庁のオープンデータ。想定は最大規模のもので、必ずこうなるという意味ではありません。")}`;
+  document.getElementById("layer-note").innerHTML = `${LT("出典")}：${LT("背景の地図は国土地理院の地理院地図 Vector、想定の地図はハザードマップポータルサイト、雨雲とキキクルは気象庁、病院は厚生労働省の医療情報ネット、避難場所は国土地理院の指定緊急避難場所データ、事故は警察庁のオープンデータ。想定は最大規模のもので、必ずこうなるという意味ではありません。")}`;
 }
