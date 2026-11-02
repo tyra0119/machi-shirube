@@ -13,6 +13,7 @@
     "build:census": "node scripts/build-census.mjs",
     "build:flags": "node scripts/build-flags.mjs",
     "build:shelters": "node scripts/build-shelters.mjs",
+    "build:shelters-gsi": "node scripts/build-shelters-gsi.mjs",
     "build:jma": "node scripts/build-jma.mjs",
     "build:medical": "node scripts/build-medical.mjs",
     "serve": "node scripts/serve.mjs",

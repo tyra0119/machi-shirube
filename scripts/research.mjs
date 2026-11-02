@@ -333,6 +333,12 @@ if (process.argv[1]?.endsWith("research.mjs")) {
   if (q[0] === "--all") {
     const total = await researchTown(code, { onItem: (q, it) => console.log(`→ ${q.id} ${it.status}：${it.value}`) });
     console.log(`合計 $${total.toFixed(3)}`);
+  } else if (/^Q\d+$/.test(q[0] ?? "")) {
+    // 物差しの問いを1つだけ（例：npm run research -- 39428 Q11）
+    const yq = JSON.parse(fs.readFileSync("site/data/yardstick.json", "utf8")).questions.find((x) => x.id === q[0]);
+    if (!yq) throw new Error(`${q[0]} は物差しにありません`);
+    const r = await research(code, yq.text, { qid: yq.id });
+    console.log(JSON.stringify({ id: r.item.id, status: r.item.status, value: r.item.value, source: r.item.source, why: r.item.why, usd: r.usd }, null, 1));
   } else {
     const r = await research(code, q.join(" ") || undefined);
     console.log(JSON.stringify({ id: r.item.id, status: r.item.status, value: r.item.value, source: r.item.source, why: r.item.why, usd: r.usd }, null, 1));

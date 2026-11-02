@@ -95,7 +95,13 @@ async function showHinan(code, townFeatures, startPart) {
   if (!res?.ok) return false;
   const shelters = await res.json();
   $("hinan-block").hidden = false;
-  let kind = "津波";
+  // 災害の種類のボタンは、この町のデータにある種類から作る（津波の避難場所がない町もある）
+  const ORDER = ["津波", "洪水", "土砂", "高潮", "地震", "火事", "内水", "火山"];
+  const count = (k) => shelters.features.filter((f) => f.properties.kinds.includes(k)).length;
+  const kinds = ORDER.filter((k) => count(k));
+  let kind = kinds.includes("津波") ? "津波" : kinds.includes("地震") ? "地震" : kinds[0] ?? "";
+  $("hinan-kinds").innerHTML = [...kinds, ""].map((k) =>
+    `<button type="button" data-kind="${k}" aria-pressed="${k === kind}">${k ? `${k}` : "すべて"}<small>${k ? count(k) : shelters.features.length}</small></button>`).join("");
   let here = null; // [経度, 緯度]
 
   // 町・字を選ぶ（形のおおよその真ん中を、その町・字の場所のめやすにする）
@@ -136,10 +142,11 @@ async function showHinan(code, townFeatures, startPart) {
       id: "shelters", type: "circle", source: "shelters",
       paint: {
         "circle-radius": ["interpolate", ["linear"], ["zoom"], 10, 3, 15, 7],
-        "circle-color": ["case", ["in", "津波", ["get", "kinds"]], color("--accent"), color("--pref-line")],
+        "circle-color": color("--accent"),
         "circle-stroke-color": "#ffffff", "circle-stroke-width": 1.5,
       },
     });
+    showKind();
     map.addSource("here", { type: "geojson", data: { type: "FeatureCollection", features: [] } });
     map.addLayer({ id: "near-line", type: "line", source: "here", filter: ["==", ["geometry-type"], "LineString"], paint: { "line-color": color("--text"), "line-width": 2, "line-dasharray": [2, 1.5] } });
     map.addLayer({ id: "here", type: "circle", source: "here", filter: ["==", ["geometry-type"], "Point"], paint: { "circle-radius": 8, "circle-color": color("--text"), "circle-stroke-color": "#ffffff", "circle-stroke-width": 3 } });
@@ -158,10 +165,15 @@ async function showHinan(code, townFeatures, startPart) {
     b.addEventListener("click", () => {
       kind = b.dataset.kind;
       document.querySelectorAll("#hinan-block .hinan-kind button").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+      showKind();
       if (here) setHere(here.at, here.label);
     });
   }
 
+  // 選んだ災害のときに使える所だけを地図に出す
+  function showKind() {
+    if (map.getLayer("shelters")) map.setFilter("shelters", kind ? ["in", kind, ["get", "kinds"]] : null);
+  }
   // まっすぐの距離（m）。歩くめやすは 1分 60m（お年寄りの歩く速さのめやす）
   const meters = ([a, b], [c, d]) => {
     const R = 6371000, rad = Math.PI / 180;
@@ -183,8 +195,8 @@ async function showHinan(code, townFeatures, startPart) {
     $("hinan-list").innerHTML = cand.map((c) => `
       <li><span class="n">${esc(c.f.properties.name)}</span>
         <span class="d">まっすぐ ${c.m.toLocaleString("ja-JP")}m・歩いて約 ${Math.max(1, Math.round(c.m / 60))}分（めやす）</span>
-        <span class="k">${esc(c.f.properties.address ?? "")}・${esc(c.f.properties.kinds.join("・"))}${c.f.properties.capacity ? `・${esc(c.f.properties.capacity)}` : ""}</span></li>`).join("");
-    $("hinan-note").innerHTML = `${esc(label)}から、${kind ? "津波のときに使える" : ""}避難場所の近い順。距離はまっすぐ測ったもので、坂や道の曲がりは考えていません。歩く時間は1分60mのめやすです。避難の判断は町の案内に従ってください。<br>出典：${esc(shelters.source.title)}（${esc(shelters.source.license)}・${esc(shelters.source.fetchedAt)} に取得）`;
+        <span class="k">${esc(c.f.properties.address ?? "")}・${esc(c.f.properties.kinds.join("・"))}${c.f.properties.capacity ? `・${esc(c.f.properties.capacity)}` : ""}${c.f.properties.note ? `・${esc(c.f.properties.note)}` : ""}</span></li>`).join("");
+    $("hinan-note").innerHTML = `${esc(label)}から、${kind ? `${kind}のときに使える指定緊急避難場所` : "すべての指定緊急避難場所"}の近い順。距離はまっすぐ測ったもので、坂や道の曲がりは考えていません。歩く時間は1分60mのめやすです。避難の判断は町の案内に従ってください。<br>出典：${esc(shelters.source.title)}（${esc(shelters.source.license)}・${shelters.source.updated ? `${esc(shelters.source.updated)} 更新のものを ` : ""}${esc(shelters.source.fetchedAt)} に取得）を加工`;
   }
   return true;
 }
