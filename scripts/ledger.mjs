@@ -148,6 +148,16 @@ export function reassess(id, fields) {
   return it;
 }
 
+// 書き添える：状態は変えずに、採点などの記録だけを足す
+export function annotate(id, fields) {
+  const data = load();
+  const it = data.items.find((x) => x.id === id);
+  if (!it) return null;
+  Object.assign(it, fields);
+  save(data);
+  return it;
+}
+
 // 無効にする：しくみの不具合でできた答え（例：町の公式サイトを読めなかった・CSV の読み違い）。消さずに、理由を残して一覧から外す。
 // 人が決めたもの（OK・直して など）は変えない。確かめ待ちと、自動で承認したものだけ
 export function voidItem(id, reason) {

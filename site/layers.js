@@ -8,10 +8,12 @@ async function showLayerMap(code, townFeatures, at, esc) {
   const box = document.getElementById("layer-map");
   if (!box) return;
   const get = (url) => fetch(url).then((r) => (r.ok ? r.json() : null)).catch(() => null);
-  const [shelters, med, acc, bus, nowc, risk] = await Promise.all([
+  const [japan, shelters, med, acc, bus, nowc, risk] = await Promise.all([
+    get("data/japan.topo.json"),
     get(`data/shelters/${code}.json`), loadMedical(code), get(`data/accidents/${code}.json`), get(`data/bus/${code}.json`),
     get(`${JMA_TILE}/nowc/targetTimes_N1.json`), get(`${JMA_TILE}/risk/targetTimes.json`),
   ]);
+  const outline = japan ? topojson.feature(japan, japan.objects.municipalities).features.find((f) => f.properties.code === code) : null;
   const t = (s) => `${Number(s.slice(8, 10)) + 9 >= 24 ? Number(s.slice(8, 10)) - 15 : Number(s.slice(8, 10)) + 9}:${s.slice(10, 12)}`; // UTC → 日本の時刻
   const fc = (features) => ({ type: "FeatureCollection", features });
   const pt = (p, props) => ({ type: "Feature", geometry: { type: "Point", coordinates: p }, properties: props });
@@ -39,7 +41,7 @@ async function showLayerMap(code, townFeatures, at, esc) {
 
   const map = new maplibregl.Map({
     container: box,
-    style: { version: 8, sources: { pale: { type: "raster", tiles: ["https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png"], tileSize: 256, maxzoom: 18 } }, layers: [{ id: "pale", type: "raster", source: "pale" }] },
+    style: { version: 8, sources: { pale: { type: "raster", tiles: ["https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png"], tileSize: 256, maxzoom: 18 } }, layers: [{ id: "pale", type: "raster", source: "pale", paint: { "raster-saturation": -0.7, "raster-contrast": -0.15 } }] },
     attributionControl: false,
     center: at ?? [139.7, 35.7], zoom: 12,
   });
@@ -60,10 +62,17 @@ async function showLayerMap(code, townFeatures, at, esc) {
     if (nowc) raster("rain", [`${JMA_TILE}/nowc/${nowc[0].basetime}/none/${nowc[0].validtime}/surf/hrpns/{z}/{x}/{y}.png`], 10, 0.7);
     if (risk) raster("kikikuru", [`${JMA_TILE}/risk/${risk[0].basetime}/${risk[0].member}/${risk[0].validtime}/surf/land/{z}/{x}/{y}.png`], 10, 0.7);
     map.addSource("town", { type: "geojson", data: fc(townFeatures) });
-    map.addLayer({ id: "town", type: "line", source: "town", paint: { "line-color": "#555", "line-width": 1.2, "line-dasharray": [2, 1] } });
+    // 町の外をうすく白でおおい、町の中を目立たせる
+    // 穴にするのは市区町村の外形（日本地図の形。町・字の形を重ねると境が重なって抜けがおかしくなる）
+    if (outline) {
+      const rings = outline.geometry.type === "Polygon" ? [outline.geometry.coordinates[0]] : outline.geometry.coordinates.map((p) => p[0]);
+      map.addSource("outside", { type: "geojson", data: { type: "Feature", geometry: { type: "Polygon", coordinates: [[[-179, -80], [179, -80], [179, 80], [-179, 80], [-179, -80]], ...rings] } } });
+      map.addLayer({ id: "outside", type: "fill", source: "outside", paint: { "fill-color": "#ffffff", "fill-opacity": 0.6 } });
+    }
+    map.addLayer({ id: "town", type: "line", source: "town", paint: { "line-color": "#3a4a5a", "line-width": ["interpolate", ["linear"], ["zoom"], 10, 0.8, 14, 1.6], "line-opacity": 0.7 } });
     if (shelters) {
       map.addSource("shelter", { type: "geojson", data: shelters });
-      map.addLayer({ id: "shelter", type: "circle", source: "shelter", paint: { "circle-radius": 6, "circle-color": "#2f7d4f", "circle-stroke-color": "#fff", "circle-stroke-width": 1.5 } });
+      map.addLayer({ id: "shelter", type: "circle", source: "shelter", paint: { "circle-radius": ["interpolate", ["linear"], ["zoom"], 10, 3.5, 13, 6, 16, 9], "circle-color": "#2f7d4f", "circle-stroke-color": "#fff", "circle-stroke-width": 1.5 } });
     }
     map.addSource("iryo", { type: "geojson", data: fc(medFeatures) });
     map.addLayer({ id: "iryo", type: "circle", source: "iryo", layout: { visibility: "none" }, paint: { "circle-radius": ["match", ["get", "state"], 2, 7, 1, 6, 5], "circle-color": ["match", ["get", "state"], 2, "#2a6fdb", 1, "#9db8e8", "#ccc"], "circle-stroke-color": "#fff", "circle-stroke-width": 1.5 } });
@@ -77,7 +86,9 @@ async function showLayerMap(code, townFeatures, at, esc) {
     }
     // 町の形に合わせる
     const pts = townFeatures.flatMap((f) => (f.geometry.type === "Polygon" ? f.geometry.coordinates : f.geometry.coordinates.flat()).flat());
-    if (pts.length) map.fitBounds([[Math.min(...pts.map((p) => p[0])), Math.min(...pts.map((p) => p[1]))], [Math.max(...pts.map((p) => p[0])), Math.max(...pts.map((p) => p[1]))]], { padding: 24, duration: 0 });
+    const fit = () => pts.length && map.fitBounds([[Math.min(...pts.map((p) => p[0])), Math.min(...pts.map((p) => p[1]))], [Math.max(...pts.map((p) => p[0])), Math.max(...pts.map((p) => p[1]))]], { padding: 16, duration: 0 });
+    if (box.clientWidth) fit();
+    else { const ro = new ResizeObserver(() => { if (box.clientWidth) { ro.disconnect(); map.resize(); fit(); } }); ro.observe(box); }
     for (const l of LAYERS) if (l.on) setVis(l.id, true);
     draw();
   });
