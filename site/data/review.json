@@ -1,7 +1,7 @@
 {
- "updatedAt": "2026-11-02T13:29:35.139Z",
+ "updatedAt": "2026-11-02T14:00:45.939Z",
  "counts": {
-  "auto": 17,
+  "auto": 18,
   "ok": 44,
   "pending": 17,
   "fix": 1,
@@ -1644,6 +1644,26 @@
    "source": {
     "title": "黒潮町地域防災計画（令和8年3月）本編",
     "url": "https://www.town.kuroshio.lg.jp/img/files/pv/sosiki/2026/03/tiiki-bousaikeikaku202603.pdf"
+   }
+  },
+  {
+   "id": "r00107",
+   "scope": "muni:10524",
+   "scopeName": "群馬県 大泉町",
+   "qid": "Q29",
+   "kind": "answer",
+   "question": "大泉町の防災マップ（洪水ハザードマップなど）に、外国語版はあるか。あれば、どの言葉で、いつの版か。無ければ、日本語版だけであること（公式のページか資料）",
+   "why": "確かめ役：資料と合わない所がある（「マップのPDFは画像で」は資料に記載がない・「ポルトガル語など」は資料に記載がない）",
+   "status": "void",
+   "score": 0,
+   "source": {
+    "title": "大泉町総合防災マップ｜大泉町",
+    "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/170/20200828141906.html"
+   },
+   "decided": {
+    "at": "2026-11-02T14:00:45.931Z",
+    "action": "void",
+    "reason": "マップの PDF を絵として読み直すと、ポルトガル語の訳があった（「確認できなかった」は不正確）。r00109 に置きかえ"
    }
   }
  ]
