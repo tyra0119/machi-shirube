@@ -5,7 +5,7 @@
 
 - Built with Claude: Japan 2026 の作品（テーマ2「本来、誰にでも届くべきものを」）
 - 作者: tyra
-- 公開サイト: https://tyra0119.github.io/machi-shirube/ （準備中）
+- 公開サイト: https://tyra0119.github.io/machi-shirube/ （見るだけ。調べる・確かめるは作者の手元の画面だけ）
 
 ## 何をするもの
 
