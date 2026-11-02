@@ -897,7 +897,7 @@ async function renderRank() {
   const list = document.getElementById("rank-list");
   const shown = rows.slice(0, 50);
   list.innerHTML = shown.map((r, i) =>
-    `<li><button type="button" data-i="${i}"><span class="no">${i + 1}</span><span class="nm">${r.name}<small>${r.sub}</small></span><span class="val">${fmt(r.value, def)}</span></button></li>`,
+    `<li><button type="button" data-i="${i}"><span class="nm">${r.name}<small>${r.sub}</small></span><span class="val">${fmt(r.value, def)}</span></button></li>`,
   ).join("") + (rows.length > shown.length ? `<li class="more"><p class="cite">ほか ${rows.length - shown.length}。地図の色でも見られます</p></li>` : "");
   list.querySelectorAll("button[data-i]").forEach((b) => b.addEventListener("click", () => shown[Number(b.dataset.i)].go()));
 
