@@ -23,6 +23,12 @@
 | 国土数値情報 A19 離島振興対策実施地域 | 国土交通省 https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-A19.html | 2017年 | 同上 |
 | アドレス・ベース・レジストリ 市区町村マスター・都道府県マスター | デジタル庁 https://dataset.address-br.digital.go.jp/ | 2024年3月12日 | CC BY 4.0 |
 
+## 加工して入れたもの
+
+| ファイル | 元 | 加工 |
+|---|---|---|
+| `site/data/japan.topo.json` | 国土数値情報 行政区域データ N03（2026年1月1日、国土交通省、CC BY 4.0） | 市区町村の番号ごとにまとめ、線を間引き、県の境目を作った（`npm run build:japan-map`） |
+
 ## 期間中に使う見込み（使う前に利用条件を確かめる）
 
 | データ | 出典 | 確かめること |
