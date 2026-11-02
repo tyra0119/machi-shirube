@@ -1,9 +1,9 @@
 {
- "updatedAt": "2026-11-02T11:35:35.146Z",
+ "updatedAt": "2026-11-02T11:40:48.617Z",
  "counts": {
-  "auto": 12,
+  "auto": 15,
   "ok": 44,
-  "pending": 3,
+  "pending": 5,
   "fix": 1,
   "rejected": 1,
   "unknown": 0
@@ -1423,6 +1423,36 @@
    "source": {
     "title": "ヴィアックス大泉町図書館｜大泉町",
     "url": "https://www.town.oizumi.gunma.jp/s031/map/010/20200707183053.html"
+   }
+  },
+  {
+   "id": "r00089",
+   "scope": "muni:11227",
+   "scopeName": "埼玉県 朝霞市",
+   "qid": "Q17",
+   "kind": "answer",
+   "question": "子育ての相談の窓口（子育て世代包括支援センター・こども家庭センターなど）の場所と電話番号と、主な手当・子どもの医療費の助成",
+   "why": "確かめ役：資料と合わない所がある（「児童手当とこども医療費は、対象・金額・申請方法を、今回は読めていません」は資料と合わない。こども医療費については資料に対象・申請方法・窓口などの詳しい記載がある（児童手当の詳細は資料に無い）。）",
+   "status": "pending",
+   "score": null,
+   "source": {
+    "title": "こども相談係及び家庭児童相談室移転のお知らせ - 朝霞市",
+    "url": "https://www.city.asaka.lg.jp/site/kosodate/itenn.html"
+   }
+  },
+  {
+   "id": "r00090",
+   "scope": "muni:11227",
+   "scopeName": "埼玉県 朝霞市",
+   "qid": "Q18",
+   "kind": "answer",
+   "question": "介護や高齢者の暮らしの相談の窓口（地域包括支援センターなど）の名前・担当する地区・電話番号",
+   "why": "Claude が返した元の文が、答えに使ったページの中に見つからなかった",
+   "status": "pending",
+   "score": null,
+   "source": {
+    "title": "地域包括支援センター - 朝霞市",
+    "url": "https://www.city.asaka.lg.jp/soshiki/23/tiikihoukatusiennsennta-.html"
    }
   }
  ]
