@@ -19,6 +19,9 @@ map.addControl(new MapButtons({ onNoLocation: showMessage }), "bottom-right");
 
 let stats = null; // 住民基本台帳の数字（site/data/stats.json）
 fetch("data/stats.json").then((r) => r.json()).then((d) => (stats = d));
+let townIndex = { codes: [] }; // 中の町（町・字）の形を用意した市・区の一覧
+fetch("data/towns/index.json").then((r) => r.json()).then((d) => (townIndex = d));
+let shownTowns = null; // いま中の町を出している市・区のコード
 
 map.on("load", async () => {
   const topo = await (await fetch("data/japan.topo.json")).json();
@@ -47,8 +50,40 @@ map.on("load", async () => {
     hovered = null;
     map.getCanvas().style.cursor = "";
   });
-  map.on("click", "muni-fill", (e) => showCard(e.features[0].properties));
+  // 中の町が出ていれば中の町を、そうでなければ市区町村を選ぶ
+  map.on("click", (e) => {
+    const town = shownTowns && map.queryRenderedFeatures(e.point, { layers: ["town-fill"] })[0];
+    if (town) return showTownCard(town);
+    const muni = map.queryRenderedFeatures(e.point, { layers: ["muni-fill"] })[0];
+    if (muni) showCard(muni.properties);
+  });
 });
+
+// 市・区の中の町（町・字）を地図に出す
+async function showTowns(code) {
+  const data = await (await fetch(`data/towns/${code}.json`)).json();
+  if (map.getSource("towns")) map.getSource("towns").setData(data);
+  else {
+    map.addSource("towns", { type: "geojson", data, promoteId: "town" });
+    map.addLayer({ id: "town-fill", type: "fill", source: "towns" }, "pref-line");
+    map.addLayer({ id: "town-line", type: "line", source: "towns" }, "pref-line");
+  }
+  shownTowns = code;
+  paintTowns();
+  const box = new maplibregl.LngLatBounds();
+  for (const f of data.features) for (const ring of f.geometry.type === "Polygon" ? f.geometry.coordinates : f.geometry.coordinates.flat()) for (const pt of ring) box.extend(pt);
+  map.fitBounds(box, { padding: 40, duration: 600 });
+}
+function paintTowns() {
+  if (!map.getLayer("town-fill")) return;
+  map.setPaintProperty("town-fill", "fill-color", [
+    "case",
+    ["boolean", ["feature-state", "selected"], false], color("--accent"),
+    color("--land"),
+  ]);
+  map.setPaintProperty("town-line", "line-color", color("--pref-line"));
+  map.setPaintProperty("town-line", "line-width", 1);
+}
 
 function paint() {
   map.setPaintProperty("sea", "background-color", color("--sea"));
@@ -64,7 +99,10 @@ function paint() {
   map.setPaintProperty("pref-line", "line-color", color("--pref-line"));
   map.setPaintProperty("pref-line", "line-width", ["interpolate", ["linear"], ["zoom"], 4, 0.6, 9, 2]);
 }
-matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => map.getLayer("muni-fill") && paint());
+matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
+  if (map.getLayer("muni-fill")) paint();
+  paintTowns();
+});
 
 let selected = null;
 function showCard(p) {
@@ -77,12 +115,50 @@ function showCard(p) {
   const where = [p.pref, p.county].filter(Boolean).join(" ");
   const town = stats?.towns[p.code];
   const body = p.noData || !town ? "<p>この地域には国の統計がありません。</p>" : featureCard(town);
+  // 市・区は広いので、中の町（町・字）まで下りられるようにする
+  const isCityOrWard = /[市区]$/.test(name);
+  const hasTowns = townIndex.codes.includes(p.code);
+  const towns = !isCityOrWard ? ""
+    : hasTowns ? `<button type="button" class="primary towns">中の町を選ぶ</button>`
+    : `<p class="note">中の町（町・字）の形は、まだ用意していません。</p>`;
   card.innerHTML = `
     <button type="button" class="close" aria-label="閉じる">×</button>
     <h2>${name || p.pref}</h2>
     <p class="where">${where}・市区町村コード ${p.code}</p>
+    ${towns}
     ${body}`;
   card.querySelector(".close").addEventListener("click", hideCard);
+  card.querySelector(".towns")?.addEventListener("click", () => {
+    map.setFeatureState({ source: "munis", id: p.code }, { selected: false });
+    showTowns(p.code);
+    card.hidden = true;
+  });
+  card.hidden = false;
+}
+
+let selectedTown = null;
+function showTownCard(f) {
+  const p = f.properties;
+  if (selectedTown) map.setFeatureState({ source: "towns", id: selectedTown }, { selected: false });
+  selectedTown = p.town;
+  map.setFeatureState({ source: "towns", id: selectedTown }, { selected: true });
+  const muni = stats?.towns[shownTowns];
+  const card = document.getElementById("card");
+  const people = p.population
+    ? `<p class="pop">人口 ${p.population.toLocaleString("ja-JP")}人・${p.households.toLocaleString("ja-JP")}世帯</p>`
+    : `<p class="pop">人の住んでいない町・字です</p>`;
+  card.innerHTML = `
+    <button type="button" class="close" aria-label="閉じる">×</button>
+    <h2>${p.name}</h2>
+    <p class="where">${muni ? `${muni.pref} ${muni.name.replace(/^.+郡/, "")}` : ""}・町・字の番号 ${p.part}</p>
+    ${people}
+    <p>この町は、まだ深く調べていません。</p>
+    <p class="cite">出典：${townIndex.source}（${townIndex.asOf}）</p>`;
+  card.querySelector(".close").addEventListener("click", () => {
+    card.hidden = true;
+    map.setFeatureState({ source: "towns", id: selectedTown }, { selected: false });
+    selectedTown = null;
+  });
   card.hidden = false;
 }
 // 特色のカード：全国の市区町村と比べて目立つものを3つ（真ん中から遠い順）
