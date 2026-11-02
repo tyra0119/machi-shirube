@@ -1118,3 +1118,7 @@ setInterval(() => {
     if (pointIds.has(c)) map.setFeatureState({ source: "lit-points", id: pointIds.get(c) }, { blink: v });
   }
 }, 100);
+
+// 左のパネルの「はじめかた」の印と、「たとえば」のイラスト（site/icons.js）
+for (const el of document.querySelectorAll(".step-ic[data-ic]")) el.innerHTML = icon(el.dataset.ic);
+for (const b of document.querySelectorAll(".examples button[data-il]")) b.insertAdjacentHTML("afterbegin", illust(b.dataset.il));

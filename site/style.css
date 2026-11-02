@@ -302,3 +302,30 @@ a.secondary.as-button { display: flex; align-items: center; justify-content: cen
 .counter .key i.lit { background: var(--accent); }
 .counter .key i.base { margin-left: 8px; background: var(--land); border: 1px solid var(--line); }
 @media (max-width: 700px) { .counter { bottom: 24px; font-size: 12px; } .counter strong { font-size: 15px; } }
+
+/* はじめかたの印・たとえばのイラスト・光る丸の見本 */
+.steps .step-ic { position: absolute; right: 0; top: 8px; color: var(--accent); }
+.steps .step-ic .ic, .ic { width: 22px; height: 22px; }
+.steps li { padding-right: 30px; }
+.examples button[data-il] { display: grid; grid-template-columns: 64px 1fr; grid-template-rows: auto auto; column-gap: 12px; align-items: center; padding: 8px 12px; }
+.examples button[data-il] .il { grid-row: 1 / span 2; width: 64px; height: 52px; }
+.examples button[data-il] .sub { line-height: 1.5; }
+.il .il-bg { fill: hsl(var(--h) 70% 93%); }
+.il .il-dot { fill: hsl(var(--h) 65% 86%); }
+.il .il-ground { stroke: hsl(var(--h) 40% 70%); stroke-width: 2; stroke-linecap: round; }
+.il .il-fg { stroke: hsl(var(--h) 50% 32%); }
+.il .il-badge { fill: #ffffff; stroke: hsl(var(--h) 50% 75%); stroke-width: 1.5; }
+.il .il-sub { stroke: hsl(var(--h) 55% 38%); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .il .il-bg { fill: hsl(var(--h) 25% 22%); }
+  :root:not([data-theme="light"]) .il .il-dot { fill: hsl(var(--h) 25% 28%); }
+  :root:not([data-theme="light"]) .il .il-fg, :root:not([data-theme="light"]) .il .il-sub { stroke: hsl(var(--h) 60% 78%); }
+  :root:not([data-theme="light"]) .il .il-badge { fill: hsl(var(--h) 20% 16%); }
+}
+.legend .swatch.lit { width: 16px; height: 16px; border: 2px solid #fff; border-radius: 8px; background: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 35%, transparent); margin: 0 3px; }
+/* スマホでは数える欄を小さく（地図を隠さない） */
+@media (max-width: 700px) {
+  .counter { left: 8px; bottom: 22px; max-width: calc(100% - 70px); gap: 0 8px; padding: 4px 8px; font-size: 11px; }
+  .counter strong { font-size: 13px; }
+  .counter .key { display: none; }
+}
