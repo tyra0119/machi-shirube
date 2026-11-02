@@ -302,28 +302,49 @@ async function showAnswers(code, scopeNote, partKey, partName) {
   for (const box of document.querySelectorAll(".answers-box")) {
     const list = answersByPage[box.dataset.page] ?? [];
     const p = PAGES.find((x) => x.view === box.dataset.page);
-    box.innerHTML = (list.length && scopeNote && !list.some((a) => a.level) ? `<p class="note">${esc(scopeNote)}</p>` : "")
+    // 場面の帯：イラストと、この場面で分かること
+    box.innerHTML = (p ? `<div class="page-banner" style="--h:${ILLUST[p.view]?.h ?? 200}">${illust(p.view)}<p><strong>${esc(p.title)}</strong>${esc(p.desc)}${list.length ? `<span>Claude が公式のサイトから確かめた答え ${list.length} 件</span>` : ""}</p></div>` : "")
+      + (list.length && scopeNote && !list.some((a) => a.level) ? `<p class="note">${esc(scopeNote)}</p>` : "")
       + (list.length ? answersHTML(list) : "")
       + (p?.later ? `<p class="later"><span>これから</span>${esc(p.later)}を、Claude が町の公式のサイトから探して、出典つきでここに出します。</p>` : "")
       + (!list.length && !p?.later ? `<p class="note">まだありません。</p>` : "");
   }
 }
+// 答えのカード：左に問いごとの絵、はじめの1文を要点として大きく、残りは箇条に。数（327 か所など）は目立たせる。出典は小さな札に
+const ANSWER_ICON = {
+  Q01: "pin", Q02: "map", Q03: "book", Q04: "speaker", Q05: "trash", Q06: "doc", Q07: "bus", Q08: "globe", Q09: "book",
+  Q10: "calendar", Q11: "tree", Q12: "alert", Q13: "pin", T01: "trash", T02: "school", T03: "child", T04: "pin",
+};
+const PAGE_OF = (qid) => yardstick.questions.find((x) => x.id === qid)?.page;
+// 数と単位を太く（中身は変えない）
+const numbers = (html) => html.replace(/([0-9０-９][0-9０-９,，.]*)(\s*)(か所|ヶ所|カ所|件|人|世帯|分|時間|m|km|メートル|校|台|便|回|%|％)/g, '<b class="num">$1$2$3</b>');
+function answerBody(a) {
+  const lines = prettyText(a.value, esc).split("<br>").filter(Boolean);
+  const [lead, ...rest] = lines;
+  return `<p class="lead">${numbers(lead ?? "")}</p>${rest.length ? `<ul class="pts">${rest.map((l) => `<li>${numbers(l)}</li>`).join("")}</ul>` : ""}`;
+}
 function answersHTML(answers) {
   // 見つからなかった答えも隠さず出す（届いていないことの手がかり。町の人に聞きたいこと）
   const notFound = (a) => a.value === "見つからなかった";
-  return `<ul class="answers">${answers.map((a) => `
-    <li class="${notFound(a) ? "not-found" : ""}" id="a-${esc(a.qid ?? "")}">
+  return `<ul class="answers">${answers.map((a) => {
+    const ill = ILLUST[PAGE_OF(a.qid)] ?? ILLUST.shiru;
+    return `
+    <li class="${notFound(a) ? "not-found" : ""}" id="a-${esc(a.qid ?? "")}" style="--h:${ill.h}">
+      <span class="badge" aria-hidden="true">${icon(ANSWER_ICON[a.qid] ?? ill.main)}</span>
+      <div class="body">
       <h3 class="short">${esc(yardstick.questions.find((x) => x.id === a.qid)?.short ?? "")}${a.level ? `<span class="lvl">${esc(a.level)}の答え</span>` : ""}</h3>
-      <p class="q">${esc(a.question)}</p>
       ${notFound(a)
-        ? `<p class="a">公開の資料では見つかりませんでした</p><p class="src">${a.checkedAt ? `${esc(a.checkedAt.slice(0, 10))} に調べた・` : ""}町の人に聞きたいことです</p>`
-        : `<p class="a">${a.items ? "" : prettyText(a.value, esc)}</p>
+        ? `<p class="lead">公開の資料では見つかりませんでした</p><p class="src">${a.checkedAt ? `${esc(a.checkedAt.slice(0, 10))} に調べた・` : ""}町の人に聞きたいことです</p>`
+        : `${a.items ? "" : answerBody(a)}
       ${a.items ? `<ul class="topics">${a.items.map((x) => `<li><span class="tx">${esc(x.text)}</span>
         <span class="src">${x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.title ?? x.url)}</a>` : esc(x.title ?? "")}${x.asOf ? `・${esc(x.asOf)}` : ""}</span></li>`).join("")}</ul>` : ""}
-      <p class="src">出典：${a.source?.url ? `<a href="${esc(a.source.url)}" target="_blank" rel="noopener">${esc(a.source.title ?? a.source.url)}</a>` : esc(a.source?.title ?? "")}${a.source?.where ? `（${esc(a.source.where)}）` : ""}${a.asOf ? `・時点 ${esc(a.asOf)}` : ""}・${a.status === "auto" ? "自動で承認" : "人が確かめた"}</p>
       ${health?.links?.[a.source?.url]?.kind === "gone" ? `<p class="gone">出典のページが見つからなくなっています（${esc(health.links[a.source.url].checkedAt.slice(0, 10))} に見張りで確かめた）。町の公式のサイトで新しいページを探して確かめてください。</p>` : ""}
-      ${a.outdated ? `<p class="outdated"><strong>古いデータに気づきました</strong>：${esc(a.outdated.what)}。古い：${a.outdated.old?.url ? `<a href="${esc(a.outdated.old.url)}" target="_blank" rel="noopener">${esc(a.outdated.old.asOf ?? "")}</a>` : esc(a.outdated.old?.asOf ?? "")}／新しい：${a.outdated.new?.url ? `<a href="${esc(a.outdated.new.url)}" target="_blank" rel="noopener">${esc(a.outdated.new.asOf ?? "")}</a>` : esc(a.outdated.new?.asOf ?? "")}</p>` : ""}`}
-    </li>`).join("")}</ul>`;
+      ${a.outdated ? `<p class="outdated"><strong>古いデータに気づきました</strong>：${esc(a.outdated.what)}。古い：${a.outdated.old?.url ? `<a href="${esc(a.outdated.old.url)}" target="_blank" rel="noopener">${esc(a.outdated.old.asOf ?? "")}</a>` : esc(a.outdated.old?.asOf ?? "")}／新しい：${a.outdated.new?.url ? `<a href="${esc(a.outdated.new.url)}" target="_blank" rel="noopener">${esc(a.outdated.new.asOf ?? "")}</a>` : esc(a.outdated.new?.asOf ?? "")}</p>` : ""}
+      <p class="src chip">${icon("link")} ${a.source?.url ? `<a href="${esc(a.source.url)}" target="_blank" rel="noopener">${esc(a.source.title ?? a.source.url)}</a>` : esc(a.source?.title ?? "")}${a.asOf ? `・時点 ${esc(a.asOf)}` : ""}・${a.status === "auto" ? "自動で承認" : "人が確かめた"}</p>`}
+      <details class="q"><summary>Claude にした問い</summary>${esc(a.question)}${a.source?.where ? `<br>出典の中の場所：${esc(a.source.where)}` : ""}</details>
+      </div>
+    </li>`;
+  }).join("")}</ul>`;
 }
 
 // 今日のページ：天気・洗濯・服装・警報・地震（見る人のブラウザが気象庁と Open-Meteo をその場で読む）
