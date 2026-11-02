@@ -15,7 +15,7 @@ let local = false;
 main();
 async function main() {
   const [stats, yard] = await Promise.all([fetch("data/stats.json").then((r) => r.json()), fetch("data/yardstick.json").then((r) => r.json())]);
-  questions = yard.questions.filter((q) => q.level !== "town"); // 町・字ごとの問いは、町・字を調べるときだけ
+  questions = yard.questions.filter((q) => q.level !== "town" && (!q.only || q.only === code)); // 町・字ごとの問いは、町・字を調べるときだけ。「この町だけ」の問いはその町だけ
   const t = stats.towns[code];
   if (!t) { $("name").textContent = "町が見つかりません"; return; }
   const name = t.name.replace(/^.+?郡(?=.+[町村]$)/, "");
@@ -37,6 +37,7 @@ async function main() {
   $("stop").addEventListener("click", () => run && fetch(`api/runs/${run.id}/stop`, { method: "POST" }));
   await loadItems();
   renderGrid();
+  await showProposals();
 }
 
 // いまの答え（手元なら台帳、公開なら公開の答えと確かめる一覧）
@@ -81,6 +82,39 @@ async function start() {
   poll();
 }
 
+// Claude からの提案の帯：物差しにない問い［この町だけ］［ほかの町にも］［今はしない］、調べ方［スキルにする］［今はしない］
+async function showProposals() {
+  const { proposals } = await fetch(`api/proposals?code=${code}`).then((r) => r.json()).catch(() => ({ proposals: [] }));
+  $("proposals").hidden = !proposals.length;
+  if (!proposals.length) return;
+  $("proposals").innerHTML = `<h2>Claude からの提案</h2>` + proposals.map((p) => p.kind === "question" ? `
+    <div class="prop" data-id="${p.id}">
+      <p class="what">物差しに無い問い：<strong>${esc(p.text)}</strong></p>
+      <p class="why">${esc(p.why ?? "")}${p.reach === "rule" && p.rule ? `（Claude の見立て：${esc(p.rule)}に）` : p.reach === "all" ? "（Claude の見立て：どの町にも）" : ""}</p>
+      <div class="decide"><button type="button" data-a="town">この町だけ<small>この町の物差しに足す</small></button>
+        <button type="button" class="primary" data-a="all">ほかの町にも<small>どの町にも聞く問いにする</small></button>
+        <button type="button" data-a="later">今はしない</button></div>
+    </div>` : `
+    <div class="prop" data-id="${p.id}">
+      <p class="what">この調べ方をスキルにしますか？ <strong>${esc(p.name)}</strong></p>
+      <ol class="steps">${(p.steps ?? []).map((s) => `<li>${esc(s)}</li>`).join("")}</ol>
+      <p class="why">${esc(p.why ?? "")}（使える問い：${esc((p.forQids ?? []).join("・"))}）</p>
+      <div class="decide"><button type="button" class="primary" data-a="skill">スキルにする<small>次の町で同じ問いを調べるときに使う</small></button>
+        <button type="button" data-a="later">今はしない</button></div>
+    </div>`).join("");
+  for (const b of $("proposals").querySelectorAll("button[data-a]")) {
+    b.addEventListener("click", async () => {
+      const id = b.closest(".prop").dataset.id;
+      const res = await fetch(`api/proposals/${id}`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ action: b.dataset.a }) });
+      const body = await res.json();
+      if (!res.ok) return ($("note").textContent = `できませんでした：${body.error}`);
+      $("note").textContent = body.addedAs?.startsWith("Q") ? `物差しに ${body.addedAs} を足しました（${body.status === "all" ? "どの町にも" : "この町だけ"}）。` : body.addedAs ? `スキル ${body.addedAs} にしました。` : "今はしないにしました。";
+      if (body.addedAs?.startsWith("Q")) { const yard = await fetch("data/yardstick.json", { cache: "no-store" }).then((r) => r.json()); questions = yard.questions.filter((q) => q.level !== "town" && (!q.only || q.only === code)); renderGrid(); }
+      await showProposals();
+    });
+  }
+}
+
 async function poll() {
   run = await (await fetch(`api/runs/${run.id}`)).json();
   $("started").textContent = hhmm(run.startedAt);
@@ -98,6 +132,7 @@ async function poll() {
   $("start").disabled = false;
   const label = { done: "調べ終わり", stopped: "止めました", failed: "止まりました" }[run.status];
   $("note").textContent = `${label}（確かめ待ち ${$("pending").textContent}件）。見つからなかった問いは、町の人に聞くことの候補です。`;
+  await showProposals();
 }
 
 function drawMap() {

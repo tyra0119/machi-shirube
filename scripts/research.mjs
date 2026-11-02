@@ -9,6 +9,7 @@ import Anthropic from "@anthropic-ai/sdk";
 import { getDocument } from "pdfjs-dist/legacy/build/pdf.mjs";
 import { record, spent, japanDay, DAILY_LIMIT_USD, TOTAL_LIMIT_USD } from "../src/cost.mjs";
 import * as ledger from "./ledger.mjs";
+import { skillHint } from "./propose.mjs";
 
 const MODEL = "claude-sonnet-5-5"; // ページや PDF を読んで決まった形に（設計の 14 章）
 const UA = "machi-shirube/0.1 (+https://github.com/tyra0119/machi-shirube)";
@@ -90,9 +91,12 @@ export async function research(code, question = DEFAULT_QUESTION, { log = consol
   step(`${name}を調べ始めます：${question}`);
 
   const site = await officialSite(code, muniName, step);
+  // スキル：この問いに使える調べ方があれば、手がかりとして渡す（2つめの町からは速く・安く）
+  const skill = qid ? skillHint(qid) : null;
+  if (skill) step(`スキルを使います：${skill.split("\n")[0].slice(0, 60)}`);
   const domains = domainsFor(site);
   const client = new Anthropic();
-  const messages = [{ role: "user", content: `町：${name}（市区町村コード ${code}${part ? `。${muniName}の中の町・字「${partName}」` : ""}）\n公式サイト：${site.url}\n${part ? `市全体のことではなく、${partName}に当てはまることを答えてください。市の資料（地区ごとの表・校区の一覧など）の中から、${partName}の所を探してください。\n` : ""}問い：${question}${hint ? `\n前の答えへの作者の指摘（これを直して調べ直してください）：${hint}` : ""}` }];
+  const messages = [{ role: "user", content: `町：${name}（市区町村コード ${code}${part ? `。${muniName}の中の町・字「${partName}」` : ""}）\n公式サイト：${site.url}\n${part ? `市全体のことではなく、${partName}に当てはまることを答えてください。市の資料（地区ごとの表・校区の一覧など）の中から、${partName}の所を探してください。\n` : ""}問い：${question}${hint ? `\n前の答えへの作者の指摘（これを直して調べ直してください）：${hint}` : ""}${skill ? `\n前に別の町でうまくいった調べ方（スキル。この町の公式サイトに合わせて使ってください）：\n${skill}` : ""}` }];
   let res;
   let usd = 0;
   const content = [];
@@ -328,7 +332,8 @@ export async function researchTown(code, { log = console.log, onItem = () => {},
   const scope = part ? `town:${code}-${part}` : `muni:${code}`;
   const done = new Set(ledger.load().items.filter((x) => x.scope === scope && ["pending", "ok", "auto"].includes(x.status)).map((x) => x.qid ?? x.question));
   let total = 0;
-  for (const q of questions.filter((x) => (x.level === "town") === Boolean(part))) {
+  // 「この町だけ」の問い（only）は、その町を調べるときだけ
+  for (const q of questions.filter((x) => (x.level === "town") === Boolean(part) && (!x.only || x.only === code))) {
     if (done.has(q.id) || done.has(q.text)) { log(`${q.id} はもう答えがあるので飛ばします`); continue; }
     if (shouldStop()) { log("止めました"); break; }
     if (total >= RUN_LIMIT_USD) { log(`この調べの費用が上限（$${RUN_LIMIT_USD}）に達したので止めます`); break; }

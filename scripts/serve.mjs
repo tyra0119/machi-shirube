@@ -11,6 +11,7 @@ import fs from "node:fs";
 import path from "node:path";
 import * as ledger from "./ledger.mjs";
 import { research, researchTown, RUN_LIMIT_USD } from "./research.mjs";
+import { propose, decideProposal, loadProposals } from "./propose.mjs";
 
 // 町をまとめて調べる（調べる画面から）。一度に1つだけ。様子はメモリに持ち、終わったら local/runs/ に残す
 const runs = new Map();
@@ -98,8 +99,15 @@ async function startRun(req, res) {
     log: (text) => run.log.push({ at: new Date().toISOString(), text: text.replace(/^\d\d:\d\d:\d\d /, "") }),
     onItem: (q, it, total) => { run.usd = total; run.items.push({ qid: q.id, id: it.id, status: it.status, value: it.value, why: it.why }); },
     shouldStop: () => run.stopRequested,
-  }).then((total) => {
+  }).then(async (total) => {
     run.usd = total;
+    // 調べ終わったら、Claude のほうから提案する（物差しにない問い・スキルにするか）
+    if (!run.stopRequested && total > 0) {
+      run.log.push({ at: new Date().toISOString(), text: "調べ終わりました。Claude が答えの全体を見て、提案を考えています" });
+      await propose(code, { part, log: (text) => run.log.push({ at: new Date().toISOString(), text }) })
+        .then((r) => { run.usd += r.usd; run.proposals = r.proposals.length; })
+        .catch((e) => run.log.push({ at: new Date().toISOString(), text: `提案は出せませんでした：${e.message}` }));
+    }
     run.status = run.stopRequested ? "stopped" : "done";
   }).catch((e) => {
     run.status = "failed";
@@ -109,6 +117,17 @@ async function startRun(req, res) {
     fs.mkdirSync("local/runs", { recursive: true });
     fs.writeFileSync(`local/runs/${id}.summary.json`, JSON.stringify(run, null, 1));
   });
+}
+
+async function decideProposalReq(req, res, id) {
+  let body = "";
+  for await (const chunk of req) body += chunk;
+  try {
+    const { action } = JSON.parse(body || "{}");
+    send(res, 200, decideProposal(id, action));
+  } catch (e) {
+    send(res, e.status ?? 400, { error: e.message });
+  }
 }
 
 // はじめて使うサイトを、町ごとに1回決める（そのサイトの確かめ待ちの答えに、まとめて効く）
@@ -161,6 +180,13 @@ http
       return send(res, 200, run);
     }
     if (url.pathname === "/api/sites" && req.method === "POST") return decideSiteReq(req, res);
+    // Claude からの提案：その町の、まだ決めていないもの。決める（town・all・later・skill）
+    if (url.pathname === "/api/proposals" && req.method === "GET") {
+      const code = url.searchParams.get("code") ?? "";
+      return send(res, 200, { proposals: loadProposals().proposals.filter((p) => p.status === "open" && (!code || p.scope.includes(code))) });
+    }
+    const pm = url.pathname.match(/^\/api\/proposals\/(p\d{4})$/);
+    if (pm && req.method === "POST") return decideProposalReq(req, res, pm[1]);
     const m = url.pathname.match(/^\/api\/review\/(r\d{5})$/);
     if (m && req.method === "POST") return decideItem(req, res, m[1]);
     let file = path.join(ROOT, decodeURIComponent(url.pathname));

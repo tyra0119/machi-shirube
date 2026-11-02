@@ -54,3 +54,20 @@ body.research-page { display: block; height: 100%; }
   .r-map-area { height: 40vh; }
   .r-grid { grid-template-columns: repeat(3, 1fr); }
 }
+/* Claude からの提案の帯 */
+.r-proposals { border: 2px solid var(--accent); }
+.r-proposals .prop { padding: 10px 0; border-top: 1px solid var(--line); }
+.r-proposals .prop:first-of-type { border-top: 0; }
+.r-proposals .what { margin: 0 0 4px; font-size: 15px; }
+.r-proposals .why { margin: 0 0 6px; font-size: 13px; color: var(--text-sub); }
+.r-proposals .steps { margin: 4px 0 6px; padding-left: 20px; font-size: 14px; line-height: 1.7; }
+.r-legend .sq.s3 { background: var(--accent); border-color: var(--accent); }
+.r-legend .sq.s2 { background: color-mix(in srgb, var(--accent) 55%, var(--surface)); border-color: var(--accent); }
+.r-legend .sq.s1 { background: color-mix(in srgb, var(--accent) 20%, var(--surface)); border-color: var(--accent); }
+.r-legend .sq.s0 { border-color: var(--pref-line); background: repeating-linear-gradient(45deg, var(--surface) 0 3px, var(--bg) 3px 6px); }
+.decide { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+.decide button { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; min-height: 52px; padding: 4px 16px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); color: var(--text); font-size: 15px; font-weight: 600; cursor: pointer; }
+.decide button small { font-size: 11px; font-weight: 400; color: var(--text-sub); }
+.decide button.primary small { color: var(--accent-text); }
+.decide button.primary { border: 0; background: var(--accent); color: var(--accent-text); font-weight: 600; }
+.decide .why-form { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 8px; width: 100%; }

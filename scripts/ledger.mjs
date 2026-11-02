@@ -212,9 +212,10 @@ export function exportProgress(data = load()) {
   const usd = fs.existsSync("local/costs.jsonl")
     ? fs.readFileSync("local/costs.jsonl", "utf8").split("\n").filter(Boolean).reduce((s, x) => s + (JSON.parse(x).usd ?? 0), 0) : 0;
   const lit = Object.values(towns).filter((t) => t.answers).length;
+  const skills = fs.existsSync("site/data/skills.json") ? JSON.parse(fs.readFileSync("site/data/skills.json", "utf8")).skills.length : 0;
   fs.writeFileSync("site/data/progress.json", JSON.stringify({
     updatedAt: new Date().toISOString(),
-    totals: { towns: lit, answers: Object.values(towns).reduce((s, t) => s + t.answers, 0), pages: pages.size, usd: Math.round(usd * 100) / 100, skills: 0 },
+    totals: { towns: lit, answers: Object.values(towns).reduce((s, t) => s + t.answers, 0), pages: pages.size, usd: Math.round(usd * 100) / 100, skills, questions: JSON.parse(fs.readFileSync("site/data/yardstick.json", "utf8")).questions.length },
     towns: Object.fromEntries(Object.entries(towns).filter(([, t]) => t.answers).map(([c, t]) => [c, { answers: t.answers }])),
   }, null, 1));
 }
