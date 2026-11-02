@@ -139,6 +139,17 @@ async function startRun(req, res) {
   });
 }
 
+async function revokeCardReq(req, res, id) {
+  let body = "";
+  for await (const chunk of req) body += chunk;
+  try {
+    const { reason } = JSON.parse(body || "{}");
+    send(res, 200, ledger.revokeCard(id, { user: "owner", reason: String(reason ?? "").slice(0, 200) }));
+  } catch (e) {
+    send(res, e.status ?? 400, { error: e.message });
+  }
+}
+
 async function decideProposalReq(req, res, id) {
   let body = "";
   for await (const chunk of req) body += chunk;
@@ -203,6 +214,10 @@ http
       return send(res, 200, run);
     }
     if (url.pathname === "/api/sites" && req.method === "POST") return decideSiteReq(req, res);
+    // 情報源カード：一覧と、カードごとの取り消し（そのサイトの答えを全部下げる）
+    if (url.pathname === "/api/cards" && req.method === "GET") return send(res, 200, ledger.loadCards());
+    const cm = url.pathname.match(/^\/api\/cards\/(c\d{4})\/revoke$/);
+    if (cm && req.method === "POST") return revokeCardReq(req, res, cm[1]);
     // Claude からの提案：その町の、まだ決めていないもの。決める（town・all・later・skill）
     if (url.pathname === "/api/proposals" && req.method === "GET") {
       const code = url.searchParams.get("code") ?? "";

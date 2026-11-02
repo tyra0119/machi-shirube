@@ -2,7 +2,7 @@
 // 公開のサイトでは、件数と、人が見たものの理由・出典の URL だけを見せる（引用した元の文は出さない）
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
-const LABEL = { pending: "確かめ待ち", auto: "自動で承認", ok: "OK（出した）", fix: "直して（調べ直し待ち）", rejected: "出さない", unknown: "分からない（町の人に聞く）", void: "無効（しくみの不具合）" };
+const LABEL = { revoked: "取り消した（サイトごと）", pending: "確かめ待ち", auto: "自動で承認", ok: "OK（出した）", fix: "直して（調べ直し待ち）", rejected: "出さない", unknown: "分からない（町の人に聞く）", void: "無効（しくみの不具合）" };
 const ACTION = { ok: "OK にしました", fix: "直してに回しました。Claude が調べ直しています（1分ほどで確かめる一覧に新しい答えが入ります）", reject: "出さないにしました", unknown: "分からないにしました", undo: "元に戻しました" };
 
 let local = false;
@@ -48,6 +48,7 @@ function render() {
   document.querySelectorAll(".r-tabs button").forEach((b) => b.setAttribute("aria-selected", String(b.dataset.tab === tab)));
 
   renderSites();
+  renderCards();
   const list = all.filter((x) => inTab(x) && (!town || x.scope === town));
   $("summary").textContent = !local && tab === "auto" ? "自動で承認したものは、町のページの「確かめた答え」に出ています。" : "";
   if (!list.length) {
@@ -73,6 +74,39 @@ function render() {
   }
   if (local) wire();
 }
+// 使ってよいとしたサイト（情報源カード）：「決めたもの」のタブで一覧にし、カードごとに取り消せる（そのサイトの答えを全部ページから下げる）
+async function renderCards() {
+  const show = local && tab === "decided";
+  $("cards").hidden = !show;
+  if (!show) return;
+  const { cards } = await fetch("api/cards").then((r) => r.json()).catch(() => ({ cards: [] }));
+  const list = cards.filter((c) => c.status === "ok" && (!town || c.scope === town.replace(/^town:(\d{5}).*/, "muni:$1")));
+  if (!list.length) { $("cards").hidden = true; return; }
+  $("cards").innerHTML = `
+    <h2>使ってよいとしたサイト（${list.length}）</h2>
+    <p class="note">取り消すと、そのサイトから出した答え（OK・自動で承認）が全部、町のページから下がります。次からそのサイトの答えは自動になりません。理由は記録に残ります。</p>
+    <ul class="site-list">${list.map((c) => `
+      <li data-id="${esc(c.id)}">
+        <p class="site-name"><strong>${esc(c.host)}</strong>・${esc(c.scopeName ?? c.scope)}・${esc(c.approvedAt?.slice(0, 10) ?? "")} に使ってよいとした（${esc(c.id)}）</p>
+        <div class="decide">
+          <button type="button" data-revoke>取り消す<small>このサイトの答えを全部下げる</small></button>
+          <form class="why-form" hidden><label class="field">理由を1行<input name="reason" maxlength="100" required></label><button type="submit">取り消す</button></form>
+        </div>
+      </li>`).join("")}</ul>`;
+  for (const li of $("cards").querySelectorAll("li[data-id]")) {
+    const form = li.querySelector(".why-form");
+    li.querySelector("[data-revoke]").addEventListener("click", () => { form.hidden = false; form.reason.focus(); });
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const res = await fetch(`api/cards/${li.dataset.id}/revoke`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ reason: form.reason.value }) });
+      const body = await res.json();
+      if (!res.ok) return toast(`できませんでした：${body.error}`);
+      await reload();
+      toast(`${body.card.host} を取り消しました。答え ${body.revoked.length} 件を町のページから下げました（次の公開で反映）`);
+    });
+  }
+}
+
 // はじめて使うサイト：町ごとに1回だけ聞く（答えごとには聞かない）。決めると、そのサイトの答え全部に効く
 const FIRST_USE = /^はじめて使う情報源（(.+?)）/;
 const firstUseHost = (r) => r.match(FIRST_USE)?.[1];

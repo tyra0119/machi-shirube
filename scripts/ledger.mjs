@@ -53,6 +53,32 @@ function addCard({ scope, scopeName, host, origin, user, fromItem, status = "ok"
   return card;
 }
 
+// 情報源カードごとに取り消す：そのサイトを使ってよいとした判断を取り消し、そのサイトから出した答え（OK・自動で承認）を全部ページから下げる。
+// カードは消さずに「取り消した」にし、理由を残す。次からそのサイトの答えは自動にならない（cardFor は OK のカードだけを見る）
+export function revokeCard(cardId, { user = "owner", reason = "" } = {}) {
+  if (!reason.trim()) throw Object.assign(new Error("理由を1行書いてください"), { status: 400 });
+  const cards = loadCards();
+  const card = cards.cards.find((c) => c.id === cardId);
+  if (!card) throw Object.assign(new Error("そのカードは見つかりません"), { status: 404 });
+  if (!can(user, "approve", card.scope)) throw Object.assign(new Error("この範囲を扱う権限がありません"), { status: 403 });
+  const at = new Date().toISOString();
+  Object.assign(card, { status: "revoked", revokedAt: at, revokedBy: user, revokedReason: reason.trim() });
+  fs.writeFileSync(CARDS, JSON.stringify(cards, null, 1));
+  const data = load();
+  const host = card.host;
+  const hit = data.items.filter((it) => ["ok", "auto"].includes(it.status) && muniScope(it.scope) === card.scope
+    && (it.cardId === card.id || (it.source?.url && new URL(it.source.url).hostname === host)));
+  for (const it of hit) {
+    const rec = { at, by: user, action: "revoke-card", reason: `情報源カード ${card.id}（${host}）を取り消した：${reason.trim()}`, from: it.status };
+    it.status = "revoked";
+    it.decisions.push(rec);
+    fs.appendFileSync(LOG, JSON.stringify({ id: it.id, scope: it.scope, ...rec }) + "\n");
+  }
+  save(data);
+  exportPublic(data);
+  return { card, revoked: hit.map((x) => x.id) };
+}
+
 // サイトごとに決める：はじめて使うサイトを、町（範囲）ごとに1回だけ「使ってよい」「使わない」と決める。
 // 使ってよい → そのサイトの確かめ待ちの答えから「はじめて使う情報源」の理由を外し、ほかに理由が無ければ自動で承認にする
 // 使わない → そのサイトの確かめ待ちの答えを、理由をつけて「出さない」にする（あとで1件ずつ元に戻せる）

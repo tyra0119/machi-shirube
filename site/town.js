@@ -299,7 +299,7 @@ async function showAnswers(code, scopeNote, partKey, partName) {
     const tr = await fetch(`data/translations/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
     for (const a of answers) {
       const x = tr?.langs?.[LANG]?.items.find((i) => i.qid === a.qid && (i.status === "auto" || i.status === "ok") && i.original === a.value);
-      if (x) Object.assign(a, { value: x.text, translated: true, shortT: x.short });
+      if (x) Object.assign(a, { valueJa: a.value, value: x.text, translated: true, shortT: x.short });
     }
   }
   yardstick = await fetch("data/yardstick.json").then((r) => r.json()).catch(() => ({ questions: [] }));
@@ -488,7 +488,9 @@ async function showTranslations(code) {
     $("tr-note").textContent = TR_NOTE[lang] ?? "";
     // 日本語の答えと同じカードの形（左に絵・要点・箇条）。訳が確かめ中のものは、もとの日本語を出す
     $("tr-list").className = "answers tr-list";
-    $("tr-list").innerHTML = L.items.map((x) => {
+    // 元の答えが町のページから下がった訳は出さない（元の答えと同じ文の訳だけ）
+    const live = new Set(Object.values(answersByPage).flat().map((a) => a.valueJa ?? a.value));
+    $("tr-list").innerHTML = L.items.filter((x) => live.has(x.original)).map((x) => {
       const ok = x.status === "auto" || x.status === "ok";
       const ill = ILLUST[PAGE_OF(x.qid)] ?? ILLUST.foreign;
       const lines = prettyText(ok ? x.text : x.original, esc).split("<br>").filter(Boolean);
@@ -732,7 +734,8 @@ function sources(list, code) {
     `<li><a href="${esc(d.source.url)}" target="_blank" rel="noopener">${esc(d.source.title)}</a>（${esc(d.source.license)}・${esc(d.source.fetchedAt)} に取得）を加工（わが家の避難）</li>`)).catch(() => {});
   fetch(`data/sources/${code}.json`).then((r) => (r.ok ? r.json() : null)).then((d) => {
     if (!d?.cards?.length) return;
-    $("sources").insertAdjacentHTML("beforeend", d.cards.map((c) =>
+    // 取り消したカードは出さない
+    $("sources").insertAdjacentHTML("beforeend", d.cards.filter((c) => c.status === "ok").map((c) =>
       `<li><a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.title)}</a>（情報源カード ${esc(c.id)}・${esc(c.approvedAt.slice(0, 10))} に確かめた・${esc(c.license)}）</li>`).join(""));
   }).catch(() => {});
 }
