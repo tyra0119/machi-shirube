@@ -117,7 +117,7 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .answers { margin: 0; padding: 0; list-style: none; }
 .answers li { padding: 10px 0; border-top: 1px solid var(--line); }
 .answers .q { margin: 0; font-size: 14px; color: var(--text-sub); }
-.answers .a { margin: 2px 0; font-size: 17px; font-weight: 600; }
+.answers .a { margin: 4px 0; font-size: 16px; font-weight: 400; line-height: 1.8; }
 .answers .src { margin: 0; font-size: 13px; }
 .answers li.not-found .a { color: var(--text-sub); }
 #research-form textarea { width: 100%; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; font: inherit; font-size: 15px; background: var(--surface); color: var(--text); }

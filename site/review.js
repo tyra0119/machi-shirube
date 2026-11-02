@@ -212,7 +212,7 @@ function itemHTML(it) {
     </div>` : local && it.status !== "auto" ? `<div class="decide" data-id="${it.id}"><button type="button" data-action="undo">元に戻す（確かめ待ちへ）</button></div>` : "";
   return `
     <article class="item">
-      ${it.value != null ? `<p class="value">${esc(it.value)}</p>` : ""}
+      ${it.value != null ? `<p class="value">${prettyText(it.value, esc)}</p>` : ""}
       ${src}${srcLink}
       ${siteNote}${todo}
       ${details ? `<details class="more"><summary>くわしく（元の文・Claude のメモ）</summary>${details}</details>` : ""}

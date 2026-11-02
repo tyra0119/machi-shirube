@@ -316,7 +316,7 @@ function answersHTML(answers) {
       <p class="q">${esc(a.question)}</p>
       ${notFound(a)
         ? `<p class="a">公開の資料では見つかりませんでした</p><p class="src">${a.checkedAt ? `${esc(a.checkedAt.slice(0, 10))} に調べた・` : ""}町の人に聞きたいことです</p>`
-        : `<p class="a">${esc(a.value)}</p>
+        : `<p class="a">${prettyText(a.value, esc)}</p>
       <p class="src">出典：${a.source?.url ? `<a href="${esc(a.source.url)}" target="_blank" rel="noopener">${esc(a.source.title ?? a.source.url)}</a>` : esc(a.source?.title ?? "")}${a.source?.where ? `（${esc(a.source.where)}）` : ""}${a.asOf ? `・時点 ${esc(a.asOf)}` : ""}・${a.status === "auto" ? "自動で承認" : "人が確かめた"}</p>
       ${a.outdated ? `<p class="outdated"><strong>古いデータに気づきました</strong>：${esc(a.outdated.what)}。古い：${a.outdated.old?.url ? `<a href="${esc(a.outdated.old.url)}" target="_blank" rel="noopener">${esc(a.outdated.old.asOf ?? "")}</a>` : esc(a.outdated.old?.asOf ?? "")}／新しい：${a.outdated.new?.url ? `<a href="${esc(a.outdated.new.url)}" target="_blank" rel="noopener">${esc(a.outdated.new.asOf ?? "")}</a>` : esc(a.outdated.new?.asOf ?? "")}</p>` : ""}`}
     </li>`).join("")}</ul>`;
@@ -453,7 +453,7 @@ async function showTranslations(code) {
       const ok = x.status === "auto" || x.status === "ok";
       return `<li lang="${lang === "easy" ? "ja" : lang}">
         <h3>${esc(ok ? x.short : x.qid)}</h3>
-        ${ok ? `<p class="tx">${esc(x.text)}</p>` : `<p class="tx pending">${esc(TR_PENDING[lang] ?? "")} ${esc(x.original)}</p>`}
+        ${ok ? `<p class="tx">${prettyText(x.text, esc)}</p>` : `<p class="tx pending">${esc(TR_PENDING[lang] ?? "")} ${esc(x.original)}</p>`}
         <details><summary>もとの日本語・出典</summary><p lang="ja">${esc(x.original)}</p>
           ${x.source?.url ? `<p>出典：<a href="${esc(x.source.url)}" target="_blank" rel="noopener">${esc(x.source.title ?? x.source.url)}</a></p>` : ""}</details>
       </li>`;
