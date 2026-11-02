@@ -328,6 +328,12 @@ wireAllPages();
 // どの町のページも最後に同じことをする：答え・わが家の避難・今日の暮らし・すべてのページ・調べる
 async function finishPage(code, townFeatures, startPart, scopeNote) {
   await showAnswers(code, scopeNote);
+  // 町の色（町の花・木から。地図を描く前に決める）
+  const sym = applyTownColor(Object.values(answersByPage).flat().find((x) => x.qid === "Q11"));
+  if (sym) {
+    $("town-color-note").hidden = false;
+    $("town-color-note").innerHTML = `<span class="swatch" aria-hidden="true"></span>このページの色は、町が定めた「${esc(sym.name)}」の色から作りました（町の公式の色ではありません）。<a href="#a-Q11">出典</a>`;
+  }
   const hasHinan = await showHinan(code, townFeatures, startPart);
   todayLife(hasHinan);
   const local = await fetch("api/ping").then((r) => r.ok).catch(() => false);

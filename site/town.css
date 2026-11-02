@@ -187,3 +187,8 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .med-list .h { font-size: 15px; }
 .med-list .s, .med-list .a { font-size: 13px; color: var(--text-sub); }
 .med-warn { margin-top: 10px !important; padding: 8px 12px; border: 1px solid var(--line); border-radius: 8px; }
+/* 町の色の説明 */
+.color-note { display: flex; align-items: center; gap: 6px; margin: 6px 0 0; font-size: 13px; color: var(--text-sub); }
+.color-note .swatch { width: 14px; height: 14px; border-radius: 7px; background: var(--accent); flex: none; }
+.color-note a { color: var(--accent); }
+.town-head h1 { border-left: 6px solid var(--accent); padding-left: 10px; }
