@@ -49,6 +49,15 @@ map.on("load", async () => {
   for (const f of labels.features) f.properties.label = byCode.get(f.properties.code)?.properties.label ?? "";
   const prefLines = topojson.mesh(topo, topo.objects.prefectures, (a, b) => a !== b);
 
+  // 拡大したときだけ、道路や線路の見える背景（国土地理院の淡色地図）を出す
+  map.addSource("gsi-pale", {
+    type: "raster",
+    tiles: ["https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png"],
+    tileSize: 256,
+    minzoom: 5,
+    maxzoom: 18,
+  });
+  map.addLayer({ id: "gsi-pale", type: "raster", source: "gsi-pale", minzoom: 7 });
   map.addSource("munis", { type: "geojson", data: munis, promoteId: "code" });
   map.addSource("prefs", { type: "geojson", data: prefLines });
   map.addSource("labels", { type: "geojson", data: { type: "FeatureCollection", features: labels.features.filter((f) => f.geometry) } });
@@ -56,7 +65,7 @@ map.on("load", async () => {
   map.addLayer({ id: "muni-line", type: "line", source: "munis" });
   map.addLayer({ id: "pref-line", type: "line", source: "prefs" });
   map.addLayer({
-    id: "muni-label", type: "symbol", source: "labels", minzoom: 7,
+    id: "muni-label", type: "symbol", source: "labels", minzoom: 7, maxzoom: 10, // その先は背景の地図の地名に任せる
     layout: { "text-field": ["get", "label"], "text-font": ["sans"], "text-size": ["interpolate", ["linear"], ["zoom"], 7, 12, 10, 15], "text-padding": 4 },
   });
   paint();
@@ -144,13 +153,11 @@ function hideTowns() {
 document.querySelector("#crumb .back").addEventListener("click", hideTowns);
 addEventListener("keydown", (e) => e.key === "Escape" && hideTowns());
 
+const isSelected = ["boolean", ["feature-state", "selected"], false];
 function paintTowns() {
   if (!map.getLayer("town-fill")) return;
-  map.setPaintProperty("town-fill", "fill-color", [
-    "case",
-    ["boolean", ["feature-state", "selected"], false], color("--accent"),
-    color("--land"),
-  ]);
+  map.setPaintProperty("town-fill", "fill-color", ["case", isSelected, color("--accent"), color("--land")]);
+  map.setPaintProperty("town-fill", "fill-opacity", ["case", isSelected, 0.45, 0.15]);
   map.setPaintProperty("town-line", "line-color", color("--pref-line"));
   map.setPaintProperty("town-line", "line-width", 1);
   paintLabel("town-label");
@@ -170,8 +177,19 @@ function paint() {
     ["boolean", ["feature-state", "hover"], false], color("--line"),
     color("--land"),
   ]);
-  map.setPaintProperty("muni-line", "line-color", color("--line"));
-  map.setPaintProperty("muni-line", "line-width", ["interpolate", ["linear"], ["zoom"], 4, 0.2, 9, 1]);
+  // 拡大すると背景の地図が透けて見えるよう、町の塗りを薄くする
+  map.setPaintProperty("muni-fill", "fill-opacity", [
+    "interpolate", ["linear"], ["zoom"],
+    7, ["case", isSelected, 1, 1],
+    9, ["case", isSelected, 0.45, 0.15],
+  ]);
+  const dark = matchMedia("(prefers-color-scheme: dark)").matches && document.documentElement.dataset.theme !== "light";
+  map.setPaintProperty("gsi-pale", "raster-brightness-max", dark ? 0.4 : 1);
+  map.setPaintProperty("gsi-pale", "raster-saturation", dark ? -0.6 : 0);
+  map.setPaintProperty("gsi-pale", "raster-opacity", ["interpolate", ["linear"], ["zoom"], 7, 0, 8.5, 1]);
+  map.setPaintProperty("muni-line", "line-color", color("--pref-line"));
+  map.setPaintProperty("muni-line", "line-opacity", ["interpolate", ["linear"], ["zoom"], 4, 0.35, 9, 0.8]);
+  map.setPaintProperty("muni-line", "line-width", ["interpolate", ["linear"], ["zoom"], 4, 0.2, 9, 1.2]);
   map.setPaintProperty("pref-line", "line-color", color("--pref-line"));
   map.setPaintProperty("pref-line", "line-width", ["interpolate", ["linear"], ["zoom"], 4, 0.6, 9, 2]);
   paintLabel("muni-label");
