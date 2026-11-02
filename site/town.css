@@ -14,13 +14,13 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 
 /* 町のサイトのメニュー（読み進めても上に残る） */
 .town-tabs { position: sticky; top: 0; z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line); }
-.town-tabs ul { display: flex; gap: 4px; max-width: 760px; margin: 0 auto; padding: 6px 16px; list-style: none; overflow-x: auto; }
+.town-tabs ul { display: flex; gap: 4px; max-width: 760px; margin: 0 auto; padding: 6px 16px; list-style: none; overflow-x: auto; scrollbar-width: thin; }
 .town-tabs a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 22px; color: var(--text); text-decoration: none; font-size: 16px; white-space: nowrap; }
 .town-tabs a:hover { background: var(--surface); }
 .town-tabs a[aria-current] { background: var(--accent); color: var(--accent-text); font-weight: 700; }
 
 /* すべてのページ */
-.town-tabs .all-pages { margin-left: auto; }
+.town-tabs .all-pages { position: sticky; left: 0; z-index: 1; padding-right: 4px; background: var(--bg); }
 .town-tabs .all-pages button { min-height: 44px; padding: 0 16px; border: 1px solid var(--line); border-radius: 22px; background: var(--surface); color: var(--text); font-size: 15px; white-space: nowrap; cursor: pointer; }
 .all-pages-dialog { width: min(560px, calc(100vw - 24px)); max-height: calc(100vh - 40px); padding: 16px; border: 0; border-radius: 14px; background: var(--surface); color: var(--text); box-shadow: var(--shadow); }
 .all-pages-dialog::backdrop { background: rgba(0, 0, 0, 0.35); }
@@ -38,11 +38,45 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .answers h3.short { margin: 0 0 2px; font-size: 16px; color: var(--accent); }
 
 /* トップの「この町のページ」 */
-.go-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; margin: 0; padding: 0; list-style: none; }
-.go-cards a { display: flex; flex-direction: column; gap: 4px; min-height: 72px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; color: var(--text); text-decoration: none; }
-.go-cards a:hover { border-color: var(--accent); background: var(--bg); }
-.go-cards .t { font-size: 17px; font-weight: 700; color: var(--accent); }
-.go-cards .d { font-size: 13px; color: var(--text-sub); line-height: 1.5; }
+/* 暮らしの場面のタイル */
+.tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 8px; margin: 0; padding: 0; list-style: none; }
+.tiles a { display: flex; flex-direction: column; gap: 4px; min-height: 76px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; color: var(--text); text-decoration: none; }
+.tiles a:hover { border-color: var(--accent); background: var(--bg); }
+.tiles .t { font-size: 17px; font-weight: 700; color: var(--accent); }
+.tiles .d { font-size: 13px; color: var(--text-sub); line-height: 1.5; }
+.tiles .later, .later > span { align-self: flex-start; padding: 0 8px; border: 1px dashed var(--line); border-radius: 10px; font-size: 12px; color: var(--text-sub); }
+.later { margin: 8px 0 0; font-size: 14px; color: var(--text-sub); line-height: 1.7; }
+.later > span { margin-right: 6px; }
+/* 今日と明日 */
+.days { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; }
+.day { padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; }
+.day h3 { margin: 0 0 4px; font-size: 18px; }
+.day h3 small { font-size: 14px; font-weight: 400; color: var(--text-sub); }
+.day .w { margin: 0 0 4px; font-size: 15px; line-height: 1.6; }
+.day .icon { margin-right: 6px; font-size: 22px; vertical-align: -2px; }
+.day .t { display: flex; align-items: baseline; gap: 12px; margin: 0 0 6px; font-size: 16px; }
+.day .t strong { font-size: 26px; }
+.day .row { display: grid; grid-template-columns: 3.5em 1fr; gap: 8px; margin: 0; padding: 6px 0; border-top: 1px solid var(--line); }
+.day .row .k { font-size: 13px; color: var(--text-sub); }
+.day .row .v { font-size: 15px; font-weight: 600; }
+.day .row .v small { display: block; font-size: 13px; font-weight: 400; color: var(--text-sub); }
+.day .lv0 { color: var(--text-sub); }
+.day .lv3 { color: var(--accent); }
+#sec-today h3.sub { margin: 14px 0 6px; font-size: 16px; }
+.warn-on { display: flex; flex-wrap: wrap; gap: 6px; }
+.warn-on span { padding: 2px 10px; border: 1px solid #c58a00; border-radius: 12px; background: #fff6dd; color: #6b4a00; font-size: 14px; }
+.warn-on span.kw { border-color: #c0392b; background: #c0392b; color: #fff; font-weight: 700; }
+.warn-off { font-size: 15px; }
+.quakes { margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.7; }
+.cite { margin-top: 12px !important; font-size: 12px; color: var(--text-sub); line-height: 1.6 !important; }
+/* 今日の暮らし */
+.today-life { margin: 0; padding: 0; list-style: none; }
+.today-life a { display: grid; grid-template-columns: 6em 1fr; gap: 8px; align-items: center; min-height: 48px; padding: 6px 4px; border-top: 1px solid var(--line); color: var(--text); text-decoration: none; }
+.today-life li:first-child a { border-top: 0; }
+.today-life a:hover { background: var(--bg); }
+.today-life .k { font-size: 14px; font-weight: 700; }
+.today-life .v { font-size: 15px; color: var(--accent); }
+.today-life .v.later { color: var(--text-sub); }
 .as-wide-link { display: flex !important; align-items: center; justify-content: center; min-height: 48px; margin-bottom: 14px; border-radius: 24px; background: var(--accent); color: var(--accent-text); font-weight: 700; text-decoration: none; }
 #research-form .secondary { width: auto; padding: 0 20px; }
 .block { margin: 14px 0; padding: 16px; background: var(--surface); border-radius: 10px; box-shadow: var(--shadow); }

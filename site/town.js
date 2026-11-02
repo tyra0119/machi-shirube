@@ -4,6 +4,7 @@
 const color = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
 const $ = (id) => document.getElementById(id);
 const q = new URLSearchParams(location.search);
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 
 async function getJSON(path) {
   try {
@@ -30,17 +31,44 @@ const TOWN_ROWS = [
   ["apartmentRate", "共同住宅（マンション・アパート）の世帯の割合", "households"],
 ];
 
-// 町のサイトのメニュー：URL の # で、どのページを見せるかを決める（#top・#sonae・#kurashi・#shiru・#source・#research）
-const VIEWS = ["top", "sonae", "kurashi", "shiru", "source", "research"];
+// 町のサイトのページ。URL の # で、どのページを見せるかを決める（#today・#bousai・#gomi …）
+// later：まだ答えがないページに「これから何が出るか」を書く（Claude が公式のサイトから探して出す予定のもの）
+const PAGES = [
+  { view: "today", title: "今日", desc: "今日と明日の天気・洗濯・服装・警報・地震", tab: true },
+  { view: "bousai", title: "防災・避難", desc: "わが家の避難・避難場所・災害のときの行動", tab: true, later: "災害のときにどう動くか（町の防災の手引き）" },
+  { view: "gomi", title: "ごみ", desc: "収集日・このごみは何ごみか", tab: true, later: "収集日のカレンダーと、このごみは何ごみかを引ける表" },
+  { view: "iryo", title: "医療・健康", desc: "今日やっている病院・夜間と休日の窓口", tab: true, later: "今日やっている病院と、夜間・休日に困ったときの窓口" },
+  { view: "komatta", title: "困ったとき", desc: "どこに電話・メールすればよいか", tab: true, later: "困りごとごとの、電話・メールの窓口" },
+  { view: "kosodate", title: "子育て", desc: "子育ての窓口・手当", later: "子育ての窓口と、手当・助成" },
+  { view: "kaigo", title: "お年寄り・介護", desc: "介護の窓口・見守り", later: "介護の相談の窓口と、見守り・配食などの助け" },
+  { view: "koutsuu", title: "バス・電車", desc: "町の中の移動", later: "コミュニティバスや電車の時刻・乗り場" },
+  { view: "tetsuzuki", title: "手続き", desc: "引っ越し・住民票など", later: "引っ越しや住民票などの手続きの窓口" },
+  { view: "foreign", title: "外国の方へ", desc: "やさしい日本語・母語の案内", later: "やさしい日本語や母語での案内" },
+  { view: "okane", title: "お金・補助金", desc: "補助金・給付・ガソリンなど", later: "いま申し込める補助金・給付と、締め切り" },
+  { view: "shisetsu", title: "公園・図書館", desc: "近くの施設", later: "公園・図書館などの場所と開いている時間" },
+  { view: "shiru", title: "町を知る", desc: "町の形・歴史・催し・町のデータ", tab: true },
+  { view: "mitate", title: "まちしるべの見立て", desc: "この町で暮らしの情報が届きにくい人" },
+  { view: "source", title: "出典", desc: "このページの情報の出どころと、しくみ" },
+  { view: "research", title: "調べる（手元の画面だけ）", desc: "Claude にこの町を調べてもらう", local: true },
+];
+const OLD_VIEW = { top: "today", sonae: "bousai", kurashi: "gomi" }; // 前の形の URL
 const maps = []; // 隠れていたページの地図は、見せたときに大きさを合わせ直す
+function currentView() {
+  const h = location.hash.slice(1);
+  return PAGES.some((p) => p.view === h) ? h : OLD_VIEW[h] ?? "today";
+}
 function showView() {
-  const v = VIEWS.includes(location.hash.slice(1)) ? location.hash.slice(1) : "top";
+  const v = currentView();
   for (const el of document.querySelectorAll(".view")) el.hidden = el.dataset.view !== v;
   for (const a of document.querySelectorAll(".town-tabs a")) a.toggleAttribute("aria-current", a.dataset.view === v);
   // 隠れていたあいだは大きさが 0 なので、見せたときに大きさを合わせ、覚えておいた範囲に寄せ直す
   for (const m of maps) { m.resize(); if (m.fitTo) m.fitBounds(m.fitTo.box, { ...m.fitTo.opts, duration: 0 }); }
   if (location.hash) window.scrollTo({ top: document.querySelector(".town-tabs").offsetTop - 4 });
 }
+// 上のメニュー：よく使うページと「すべてのページ」
+$("tabs").innerHTML = `<li class="all-pages"><button type="button" id="open-all" aria-haspopup="dialog">☰ すべてのページ</button></li>`
+  + PAGES.filter((p) => p.tab || p.local).map((p) =>
+  `<li${p.local ? " class=\"local-only\" hidden" : ""}><a href="#${p.view}" data-view="${p.view}">${esc(p.local ? "調べる" : p.title)}</a></li>`).join("");
 addEventListener("hashchange", showView);
 showView();
 
@@ -133,7 +161,6 @@ async function showHinan(code, townFeatures, startPart) {
       if (here) setHere(here.at, here.label);
     });
   }
-  return true;
 
   // まっすぐの距離（m）。歩くめやすは 1分 60m（お年寄りの歩く速さのめやす）
   const meters = ([a, b], [c, d]) => {
@@ -159,29 +186,30 @@ async function showHinan(code, townFeatures, startPart) {
         <span class="k">${esc(c.f.properties.address ?? "")}・${esc(c.f.properties.kinds.join("・"))}${c.f.properties.capacity ? `・${esc(c.f.properties.capacity)}` : ""}</span></li>`).join("");
     $("hinan-note").innerHTML = `${esc(label)}から、${kind ? "津波のときに使える" : ""}避難場所の近い順。距離はまっすぐ測ったもので、坂や道の曲がりは考えていません。歩く時間は1分60mのめやすです。避難の判断は町の案内に従ってください。<br>出典：${esc(shelters.source.title)}（${esc(shelters.source.license)}・${esc(shelters.source.fetchedAt)} に取得）`;
   }
+  return true;
 }
 
-// 確かめた答え（site/data/answers/{市区町村コード}.json。OK か自動で承認したものだけ）
-// 物差しの問いのまとまり → 町のページのどのページに出すか
-const GROUP_VIEW = { 備え: "sonae", 暮らしの基本: "kurashi", 届け方: "kurashi", 町を知る: "shiru" };
-const viewOfAnswer = (a, yard) => GROUP_VIEW[yard.questions.find((x) => x.id === a.qid)?.group] ?? "shiru";
-const answerCounts = { sonae: 0, kurashi: 0, shiru: 0 };
-let shownAnswers = [];
+// 確かめた答え（site/data/answers/{市区町村コード}.json。OK か自動で承認したものだけ）。
+// 物差しの問いの page で、町のサイトのどのページに出すかを決める
 let yardstick = { questions: [] };
+let answersByPage = {};
 async function showAnswers(code, scopeNote) {
   const res = await fetch(`data/answers/${code}.json`).catch(() => null);
   const answers = res?.ok ? (await res.json()).answers : [];
-  const yard = await fetch("data/yardstick.json").then((r) => r.json()).catch(() => ({ questions: [] }));
-  shownAnswers = answers;
-  yardstick = yard;
-  const viewOf = (a) => viewOfAnswer(a, yard);
+  yardstick = await fetch("data/yardstick.json").then((r) => r.json()).catch(() => ({ questions: [] }));
   answers.sort((x, y) => String(x.qid ?? "").localeCompare(String(y.qid ?? "")));
-  for (const el of document.querySelectorAll(".answers-scope")) el.textContent = scopeNote;
-  for (const v of Object.keys(answerCounts)) {
-    const list = answers.filter((a) => viewOf(a) === v);
-    answerCounts[v] = list.length;
-    $(`answers-${v}`).innerHTML = list.length ? answersHTML(list)
-      : `<p class="note">まだありません。町を調べて、人が確かめた（または自動で承認した）答えがここに出ます。</p>`;
+  answersByPage = {};
+  for (const a of answers) {
+    const page = yardstick.questions.find((x) => x.id === a.qid)?.page ?? "shiru";
+    (answersByPage[page] ??= []).push(a);
+  }
+  for (const box of document.querySelectorAll(".answers-box")) {
+    const list = answersByPage[box.dataset.page] ?? [];
+    const p = PAGES.find((x) => x.view === box.dataset.page);
+    box.innerHTML = (list.length && scopeNote ? `<p class="note">${esc(scopeNote)}</p>` : "")
+      + (list.length ? answersHTML(list) : "")
+      + (p?.later ? `<p class="later"><span>これから</span>${esc(p.later)}を、Claude が町の公式のサイトから探して、出典つきでここに出します。</p>` : "")
+      + (!list.length && !p?.later ? `<p class="note">まだありません。</p>` : "");
   }
 }
 function answersHTML(answers) {
@@ -198,25 +226,47 @@ function answersHTML(answers) {
     </li>`).join("")}</ul>`;
 }
 
+// 今日のページ：天気・洗濯・服装・警報・地震（見る人のブラウザが気象庁と Open-Meteo をその場で読む）
+async function showToday(code, at) {
+  try {
+    $("today").innerHTML = todayHTML(await loadToday(code, at[1], at[0]), esc);
+  } catch (e) {
+    $("today").innerHTML = `<p class="note">天気を読み込めませんでした。時間をおいて開き直してください。</p>`;
+    console.error(e);
+  }
+}
+// 今日の暮らし（今日すること・困ったときの入口）と、暮らしの場面のタイル
+function todayLife(hasHinan) {
+  const has = (v) => (answersByPage[v] ?? []).filter((a) => a.value !== "見つからなかった").length;
+  const row = (view, k, v, ready) => `<li><a href="#${view}"><span class="k">${k}</span><span class="v${ready ? "" : " later"}">${esc(v)}</span></a></li>`;
+  $("today-life").innerHTML = [
+    row("gomi", "ごみ", has("gomi") ? "ごみの出し方を見る" : "今日の収集は、これから出します", has("gomi")),
+    row("iryo", "病院", "今日やっている病院は、これから出します", false),
+    row("bousai", "避難", hasHinan ? "わが家から近い避難場所を出す" : has("bousai") ? "避難場所の案内を見る" : "避難場所は、これから出します", hasHinan || has("bousai")),
+    row("komatta", "困ったとき", "電話・メールの窓口は、これから出します", false),
+  ].join("");
+  $("tiles").innerHTML = PAGES.filter((p) => !["today", "source", "research", "mitate"].includes(p.view)).map((p) => {
+    const n = has(p.view) + (p.view === "bousai" && hasHinan ? 1 : 0) + (p.view === "shiru" ? 1 : 0);
+    return `<li><a href="#${p.view}"><span class="t">${esc(p.title)}</span><span class="d">${esc(p.desc)}</span>${n ? "" : `<span class="later">これから</span>`}</a></li>`;
+  }).join("");
+}
+
 // すべてのページ：町のサイトの全部のページと中身を一覧にして、押すとそこへ飛ぶ（中を探すこともできる）
 let allPages = [];
-function buildAllPages(hasHinan, answers, yard, local) {
-  const shortOf = (a) => yard.questions.find((x) => x.id === a.qid)?.short ?? a.question.slice(0, 16);
-  const items = (v) => answers.filter((a) => viewOfAnswer(a, yard) === v).map((a) => ({ label: shortOf(a), view: v, target: `a-${a.qid}` }));
-  allPages = [
-    { title: "トップ", view: "top", desc: "町の形・この町のページ・町の特色・届きにくい人", items: [
-      { label: "町の特色（全国と比べた数字）", view: "top", target: "sec-features" },
-      { label: "この町で、暮らしの情報が届きにくいのは", view: "top", target: "sec-types" },
-    ] },
-    { title: "備え", view: "sonae", desc: "避難と防災", items: [
-      ...(hasHinan ? [{ label: "わが家の避難（近い避難場所）", view: "sonae", target: "hinan-block" }] : []),
-      ...items("sonae"),
-    ] },
-    { title: "暮らし", view: "kurashi", desc: "毎日の暮らしの入口", items: items("kurashi") },
-    { title: "町を知る", view: "shiru", desc: "町のなりたちと、いま動いていること", items: items("shiru") },
-    { title: "出典", view: "source", desc: "このページの数字の出どころと、しくみ", items: [] },
-    ...(local ? [{ title: "調べる（手元の画面だけ）", view: "research", desc: "Claude にこの町を調べてもらう", items: [] }] : []),
-  ];
+function buildAllPages(hasHinan, local) {
+  const shortOf = (a) => yardstick.questions.find((x) => x.id === a.qid)?.short ?? a.question.slice(0, 16);
+  const extra = {
+    today: [["今日と明日（天気・洗濯・服装）", "sec-today"], ["今日の暮らし", "sec-today-life"]],
+    bousai: hasHinan ? [["わが家の避難（近い避難場所）", "hinan-block"]] : [],
+    shiru: [["町のデータ（全国と比べた数字）", "sec-features"]],
+  };
+  allPages = PAGES.filter((p) => !p.local || local).map((p) => ({
+    ...p,
+    items: [
+      ...(extra[p.view] ?? []).map(([label, target]) => ({ label, view: p.view, target })),
+      ...(answersByPage[p.view] ?? []).map((a) => ({ label: shortOf(a), view: p.view, target: `a-${a.qid}` })),
+    ],
+  }));
 }
 function renderAllPages(filter = "") {
   const f = filter.replace(/\s/g, "");
@@ -248,23 +298,33 @@ function wireAllPages() {
 }
 wireAllPages();
 
-// トップの「この町のページ」：各ページへの入口と、短い要約
-function goCards(hasHinan) {
-  fetch("api/ping").then((r) => r.ok).catch(() => false).then((local) => buildAllPages(hasHinan, shownAnswers, yardstick, local));
-  const n = (v) => (answerCounts[v] ? `確かめた答え ${answerCounts[v]}` : "まだ調べていません");
-  const cards = [
-    ["sonae", "備え", `${hasHinan ? "わが家の避難（近い避難場所）・" : ""}${n("sonae")}`],
-    ["kurashi", "暮らし", `ごみ・手続き・交通・外国の人向けの案内。${n("kurashi")}`],
-    ["shiru", "町を知る", `町のなりたち・催し。${n("shiru")}`],
-    ["source", "出典", "このページの数字の出どころと、しくみ"],
-  ];
-  $("go-cards").innerHTML = cards.map(([v, t, d]) => `<li><a href="#${v}"><span class="t">${t}</span><span class="d">${esc(d)}</span></a></li>`).join("");
+// どの町のページも最後に同じことをする：答え・わが家の避難・今日の暮らし・すべてのページ・調べる
+async function finishPage(code, townFeatures, startPart, scopeNote) {
+  await showAnswers(code, scopeNote);
+  const hasHinan = await showHinan(code, townFeatures, startPart);
+  todayLife(hasHinan);
+  const local = await fetch("api/ping").then((r) => r.ok).catch(() => false);
+  buildAllPages(hasHinan, local);
+  if (local) await researchBox(code);
 }
-const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+
+// 天気を読む場所：町・字は形のおおよその真ん中、市区町村は地図の名前の位置（政令市まるごとは最初の区）
+function centerOf(features) {
+  const box = [Infinity, Infinity, -Infinity, -Infinity];
+  for (const f of features) {
+    const polys = f.geometry.type === "Polygon" ? [f.geometry.coordinates] : f.geometry.coordinates;
+    for (const p of polys) for (const [x, y] of p[0]) { box[0] = Math.min(box[0], x); box[1] = Math.min(box[1], y); box[2] = Math.max(box[2], x); box[3] = Math.max(box[3], y); }
+  }
+  return [(box[0] + box[2]) / 2, (box[1] + box[3]) / 2];
+}
+async function muniPoint(code) {
+  const labels = (await getJSON("data/labels.json")).features;
+  const f = labels.find((x) => x.properties.code === code) ?? labels.find((x) => x.properties.code.startsWith(code.slice(0, 4)));
+  return f.geometry.coordinates;
+}
 
 // 調べる（手元の画面だけ）。手元のサーバーが Claude を呼び、答えを確かめる一覧に入れる
 async function researchBox(code) {
-  if (!(await fetch("api/ping").then((r) => r.ok).catch(() => false))) return;
   $("research-block").hidden = false;
   for (const el of document.querySelectorAll(".town-tabs .local-only")) el.hidden = false;
   $("research-link").href = `research.html?muni=${code}`;
@@ -339,11 +399,10 @@ async function main() {
     + (list.some((p) => p.ageHidden || p.foreignHidden || p.householdHidden) ? "一部の数字は、住む人が少ないため国勢調査で隠されています。" : "");
 
   await showTypes(code, stats, `いまは${muniName}全体の数字から選んだ候補です。この町・字の深い調べは、町を調べるときに。`);
-  await showAnswers(code, `${muniName}全体についての答えです。`);
-  goCards(await showHinan(code, all, chosen.length === 1 ? chosen[0].properties.part : null));
-  await researchBox(code);
+  showToday(code, centerOf(chosen));
+  await finishPage(code, all, chosen.length === 1 ? chosen[0].properties.part : null, `${muniName}全体についての答えです。`);
   const index = await getJSON("data/towns/index.json");
-  sources([`${index.source}（${index.asOf}）`, `${stats.source.name}（${stats.source.asOf}）を加工（届きにくい人の候補）`, BASEMAP], code);
+  sources([`${index.source}（${index.asOf}）`, `${stats.source.name}（${stats.source.asOf}）を加工（届きにくい人の候補）`, WEATHER, BASEMAP], code);
   drawMap(chosen);
 }
 
@@ -365,16 +424,16 @@ async function muniPage(code, stats) {
   }).join("");
   $("feature-note").textContent = `全国の市区町村 ${stats.peers.toLocaleString("ja-JP")} と比べています。`;
   await showTypes(code, stats, "");
-  await showAnswers(code, "");
+  showToday(code, await muniPoint(code));
   const towns = await fetch(`data/towns/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
-  goCards(await showHinan(code, towns ? topojson.feature(towns, towns.objects.towns).features : [], null));
-  await researchBox(code);
-  sources([`${stats.source.name}（${stats.source.asOf}。増減は${stats.source.changePeriod}）を加工`, N03, BASEMAP], code);
+  await finishPage(code, towns ? topojson.feature(towns, towns.objects.towns).features : [], null, "");
+  sources([`${stats.source.name}（${stats.source.asOf}。増減は${stats.source.changePeriod}）を加工`, N03, WEATHER, BASEMAP], code);
   const topo = await getJSON("data/japan.topo.json");
   drawMap(topojson.feature(topo, topo.objects.municipalities).features.filter((f) => f.properties.code === code));
 }
 
 const N03 = "国土数値情報（行政区域データ、2026年1月1日）国土交通省 を加工して作成（CC BY 4.0）";
+const WEATHER = "今日と明日の天気・警報・注意報・地震：気象庁ホームページ（その場で読む）。気温・湿度・風・日の照る時間：Open-Meteo.com（CC BY 4.0）を加工。洗濯・服装はまちしるべの決まりで出しためやす";
 const BASEMAP = "背景の地図：地理院タイル（淡色地図）https://maps.gsi.go.jp/development/ichiran.html";
 
 function header(name, where, path) {

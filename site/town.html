@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>町のページ｜まちしるべ</title>
-<meta name="description" content="まちしるべの町のページ。町の特色と、その町で暮らしの情報が届きにくい人に届く情報を、出典つきで。">
+<meta name="description" content="まちしるべの町のページ。今日の天気・ごみ・病院・困ったとき・災害のときの行動など、暮らしの情報を出典つきで。">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.css">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="town.css">
@@ -12,31 +12,23 @@
 <body class="town-page">
 <header class="town-head">
   <nav class="town-path" aria-label="いま見ている所"><ol id="path"></ol></nav>
-  <p class="unofficial">この町の非公式の暮らしの案内です（まちしるべ）</p>
   <h1 id="name">読み込んでいます…</h1>
   <p id="where" class="where"></p>
+  <p class="unofficial">この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）</p>
 </header>
 
-<!-- 町のサイトのメニュー（押すと URL の # も変わる。ページごとに送れる） -->
+<!-- いつも上に残るメニュー：今日・すべてのページ（とページの名前） -->
 <nav class="town-tabs" aria-label="町のページのメニュー">
-  <ul>
-    <li><a href="#top" data-view="top">トップ</a></li>
-    <li><a href="#sonae" data-view="sonae">備え</a></li>
-    <li><a href="#kurashi" data-view="kurashi">暮らし</a></li>
-    <li><a href="#shiru" data-view="shiru">町を知る</a></li>
-    <li><a href="#source" data-view="source">出典</a></li>
-    <li class="local-only" hidden><a href="#research" data-view="research">調べる</a></li>
-    <li class="all-pages"><button type="button" id="open-all" aria-haspopup="dialog">☰ すべてのページ</button></li>
-  </ul>
+  <ul id="tabs"></ul>
 </nav>
 
-<!-- すべてのページ：町のサイトの全部のページと中身の一覧。押すとそこへ飛ぶ -->
+<!-- すべてのページ -->
 <dialog id="all-pages" class="all-pages-dialog" aria-labelledby="all-title">
   <div class="all-head">
     <h2 id="all-title">すべてのページ</h2>
     <button type="button" class="close" id="close-all" aria-label="閉じる">×</button>
   </div>
-  <input id="all-search" type="search" placeholder="ページの中を探す（例：ごみ、避難）" aria-label="ページの中を探す">
+  <input id="all-search" type="search" placeholder="ページの中を探す（例：ごみ、病院、避難）" aria-label="ページの中を探す">
   <div id="all-list" class="all-list"></div>
 </dialog>
 
@@ -46,31 +38,24 @@
     <ul id="problems"></ul>
   </div>
 
-  <!-- トップ -->
-  <div class="view" data-view="top">
-    <section class="block">
-      <div id="town-map" class="town-map" aria-label="町の形"></div>
-      <p id="parts" class="parts"></p>
+  <!-- 今日 -->
+  <div class="view" data-view="today">
+    <section class="block" id="sec-today">
+      <h2>今日と明日</h2>
+      <div id="today"><p class="note">読み込んでいます…</p></div>
+    </section>
+    <section class="block" id="sec-today-life">
+      <h2>今日の暮らし</h2>
+      <ul class="today-life" id="today-life"></ul>
     </section>
     <section class="block">
-      <h2>この町のページ</h2>
-      <ul class="go-cards" id="go-cards"></ul>
-    </section>
-    <section class="block" id="sec-features">
-      <h2>町の特色</h2>
-      <p id="pop" class="pop"></p>
-      <ul id="features" class="features"></ul>
-      <p id="feature-note" class="note"></p>
-    </section>
-    <section class="block" id="sec-types">
-      <h2>この町で、暮らしの情報が届きにくいのは</h2>
-      <p class="note" id="types-scope"></p>
-      <div id="types"></div>
+      <h2>暮らしの場面</h2>
+      <ul class="tiles" id="tiles"></ul>
     </section>
   </div>
 
-  <!-- 備え -->
-  <div class="view" data-view="sonae" hidden>
+  <!-- 防災・避難 -->
+  <div class="view" data-view="bousai" hidden>
     <section class="block" id="hinan-block" hidden>
       <h2>わが家の避難</h2>
       <p class="note">場所を決めると、近い避難場所が出ます。場所はこのブラウザの中だけで使い、どこにも送らず、残しません。</p>
@@ -86,40 +71,42 @@
       <ol id="hinan-list" class="hinan-list"></ol>
       <p id="hinan-note" class="note"></p>
     </section>
-    <section class="block">
-      <h2>備えの情報</h2>
-      <p class="note answers-scope"></p>
-      <div id="answers-sonae" class="answers-box"></div>
-    </section>
-    <section class="block todo">
-      <h2>これから足すもの</h2>
-      <p>浸水の深さ・土砂・揺れ・坂を、公式のデータから計算して、わが家の避難に足します。</p>
-    </section>
+    <section class="block"><h2>防災の情報</h2><div class="answers-box" data-page="bousai"></div></section>
   </div>
 
-  <!-- 暮らし -->
-  <div class="view" data-view="kurashi" hidden>
-    <section class="block">
-      <h2>暮らしの基本</h2>
-      <p class="note answers-scope"></p>
-      <div id="answers-kurashi" class="answers-box"></div>
-    </section>
-    <section class="block todo">
-      <h2>これから足すもの</h2>
-      <p>医療・子育て・介護・困ったときの連絡先の、公式の入口を並べます。</p>
-    </section>
-  </div>
+  <!-- 場面のページ（中身は町ごとに Claude が調べた答え。まだのものは「これから」と出す） -->
+  <div class="view" data-view="gomi" hidden><section class="block"><h2>ごみ</h2><div class="answers-box" data-page="gomi"></div></section></div>
+  <div class="view" data-view="iryo" hidden><section class="block"><h2>医療・健康</h2><div class="answers-box" data-page="iryo"></div></section></div>
+  <div class="view" data-view="kosodate" hidden><section class="block"><h2>子育て</h2><div class="answers-box" data-page="kosodate"></div></section></div>
+  <div class="view" data-view="kaigo" hidden><section class="block"><h2>お年寄り・介護</h2><div class="answers-box" data-page="kaigo"></div></section></div>
+  <div class="view" data-view="koutsuu" hidden><section class="block"><h2>交通</h2><div class="answers-box" data-page="koutsuu"></div></section></div>
+  <div class="view" data-view="tetsuzuki" hidden><section class="block"><h2>手続き</h2><div class="answers-box" data-page="tetsuzuki"></div></section></div>
+  <div class="view" data-view="foreign" hidden><section class="block"><h2>外国の方へ</h2><div class="answers-box" data-page="foreign"></div></section></div>
+  <div class="view" data-view="okane" hidden><section class="block"><h2>お金・補助金</h2><div class="answers-box" data-page="okane"></div></section></div>
+  <div class="view" data-view="shisetsu" hidden><section class="block"><h2>公園・図書館</h2><div class="answers-box" data-page="shisetsu"></div></section></div>
+  <div class="view" data-view="komatta" hidden><section class="block"><h2>困ったとき</h2><div class="answers-box" data-page="komatta"></div></section></div>
 
   <!-- 町を知る -->
   <div class="view" data-view="shiru" hidden>
     <section class="block">
-      <h2>町を知る</h2>
-      <p class="note answers-scope"></p>
-      <div id="answers-shiru" class="answers-box"></div>
+      <div id="town-map" class="town-map" aria-label="町の形"></div>
+      <p id="parts" class="parts"></p>
     </section>
-    <section class="block todo">
-      <h2>町の話題（これから）</h2>
-      <p>市の計画・議会・広報紙から、いま町で動いていることを1文ずつ出典つきでまとめます。</p>
+    <section class="block"><h2>町の歴史・催し</h2><div class="answers-box" data-page="shiru"></div></section>
+    <section class="block" id="sec-features">
+      <h2>町のデータ</h2>
+      <p id="pop" class="pop"></p>
+      <ul id="features" class="features"></ul>
+      <p id="feature-note" class="note"></p>
+    </section>
+  </div>
+
+  <!-- まちしるべの見立て（作る側の情報） -->
+  <div class="view" data-view="mitate" hidden>
+    <section class="block" id="sec-types">
+      <h2>この町で、暮らしの情報が届きにくいのは</h2>
+      <p class="note" id="types-scope"></p>
+      <div id="types"></div>
     </section>
   </div>
 
@@ -131,7 +118,7 @@
     </section>
     <section class="block">
       <h2>このページのしくみ</h2>
-      <p>このページの情報は、Claude が町の公式のサイトだけを探して読み、出典つきで答えたものです。権利・食い違い・気をつけたい話題など危ない所は人が確かめ、ほかは自動で承認しています。数字や距離は「めやす」で、正しい情報は町の公式のページで確かめてください。</p>
+      <p>このページの情報は、Claude が町の公式のサイトなどだけを探して読み、出典つきで答えたものです。権利・食い違い・気をつけたい話題など危ない所は人が確かめ、ほかは自動で承認しています。数字や距離・洗濯や服装は「めやす」です。正しい情報は町の公式のページで確かめてください。</p>
       <a class="secondary as-button" href="review.html">確かめる一覧を見る</a>
     </section>
   </div>
@@ -157,6 +144,7 @@
 <script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
 <script src="types.js"></script>
 <script src="map-buttons.js"></script>
+<script src="today.js"></script>
 <script src="town.js"></script>
 </body>
 </html>
