@@ -23,6 +23,7 @@
     <div class="panel-body">
       <section id="guide" class="guide">
         <p class="about">町を選ぶと、その町で<strong>暮らしの情報が届きにくい人</strong>を見つけ、その人に届くページを出典つきで作ります。</p>
+        <button type="button" id="open-rank" class="secondary">数字で並べて探す（高い順・低い順）</button>
 
         <h2>はじめかた</h2>
         <ol class="steps">
@@ -50,6 +51,24 @@
       </section>
 
       <section id="card" class="card" hidden aria-live="polite"></section>
+
+      <section id="rank" class="rank card" hidden>
+        <button type="button" class="close" aria-label="閉じる">×</button>
+        <h2>数字で並べて探す</h2>
+        <label class="field">範囲
+          <select id="rank-scope"></select>
+        </label>
+        <label class="field">項目
+          <select id="rank-metric"></select>
+        </label>
+        <div class="order" role="radiogroup" aria-label="並べる順">
+          <button type="button" data-order="desc" aria-pressed="true">高い順</button>
+          <button type="button" data-order="asc" aria-pressed="false">低い順</button>
+        </div>
+        <div id="rank-legend" class="rank-legend"></div>
+        <ol id="rank-list" class="rank-list"></ol>
+        <p id="rank-cite" class="cite"></p>
+      </section>
     </div>
   </aside>
 

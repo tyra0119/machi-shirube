@@ -8,8 +8,9 @@ const map = new maplibregl.Map({
   container: "map",
   style: {
     version: 8,
-    // 地図の上の名前：日本語の文字はブラウザの文字で描く（外から文字のデータを取らない）
-    glyphs: "data/glyphs/{fontstack}/{range}.pbf",
+    // 地図の上の名前：漢字・かなはブラウザの文字で描く。「々」や全角のかっこなど、それで描けない文字だけ
+    // 国土地理院が公開している地図用の文字（Noto Sans CJK JP）を取る
+    glyphs: "https://maps.gsi.go.jp/xyz/noto-jp/{fontstack}/{range}.pbf",
     sources: {},
     layers: [{ id: "sea", type: "background", paint: { "background-color": color("--sea") } }],
   },
@@ -72,11 +73,11 @@ map.on("load", async () => {
   map.addSource("pref-labels", { type: "geojson", data: prefLabels });
   map.addLayer({
     id: "pref-label", type: "symbol", source: "pref-labels", minzoom: 4.5, maxzoom: 7.5,
-    layout: { "text-field": ["get", "pref"], "text-font": ["sans"], "text-size": ["interpolate", ["linear"], ["zoom"], 4.5, 12, 7, 16] },
+    layout: { "text-field": ["get", "pref"], "text-font": ["NotoSansCJKjp-Regular"], "text-size": ["interpolate", ["linear"], ["zoom"], 4.5, 12, 7, 16] },
   });
   map.addLayer({
     id: "muni-label", type: "symbol", source: "labels", minzoom: 7, maxzoom: 10, // その先は背景の地図の地名に任せる
-    layout: { "text-field": ["get", "label"], "text-font": ["sans"], "text-size": ["interpolate", ["linear"], ["zoom"], 7, 12, 10, 15], "text-padding": 4 },
+    layout: { "text-field": ["get", "label"], "text-font": ["NotoSansCJKjp-Regular"], "text-size": ["interpolate", ["linear"], ["zoom"], 7, 12, 10, 15], "text-padding": 4 },
   });
   paint();
 
@@ -123,7 +124,7 @@ function boundsOf(features) {
 const fit = (features, maxZoom = 12) => map.fitBounds(boundsOf(features), { padding: 60, maxZoom, duration: 700 });
 
 // 市・区の中の町（町・字）を地図に出す
-async function showTowns(code) {
+async function showTowns(code, { list = true } = {}) {
   townData = await (await fetch(`data/towns/${code}.json`)).json();
   if (map.getSource("towns")) map.getSource("towns").setData(townData);
   else {
@@ -133,7 +134,7 @@ async function showTowns(code) {
     map.addLayer({ id: "town-line", type: "line", source: "towns" }, "pref-line");
     map.addLayer({
       id: "town-label", type: "symbol", source: "towns", minzoom: 11,
-      layout: { "text-field": ["get", "name"], "text-font": ["sans"], "text-size": 13, "text-padding": 2 },
+      layout: { "text-field": ["get", "name"], "text-font": ["NotoSansCJKjp-Regular"], "text-size": 13, "text-padding": 2 },
     });
   }
   for (const id of TOWN_LAYERS) map.setLayoutProperty(id, "visibility", "visible");
@@ -144,10 +145,10 @@ async function showTowns(code) {
   crumb.querySelector(".here").textContent = `${byCode.get(code)?.properties.fullName ?? ""}の中の町`;
   crumb.hidden = false;
   fit(townData.features);
-  showTownList();
+  if (list) showTownList();
 }
 // 中の町をしまって、市区町村の地図に戻る（戻った市・区を選んだ状態にする）
-function hideTowns() {
+function hideTowns({ quiet = false } = {}) {
   if (!shownTowns) return;
   const code = shownTowns;
   for (const id of TOWN_LAYERS) map.setLayoutProperty(id, "visibility", "none");
@@ -156,6 +157,7 @@ function hideTowns() {
   selectedTown = null;
   shownTowns = null;
   document.getElementById("crumb").hidden = true;
+  if (quiet) return;
   const f = byCode.get(code);
   if (f) showCard(f.properties);
   map.easeTo({ zoom: Math.max(map.getZoom() - 1.5, 6), duration: 500 });
@@ -167,8 +169,13 @@ const TOWN_LAYERS = ["town-fill", "town-casing", "town-line", "town-label"];
 const isSelected = ["boolean", ["feature-state", "selected"], false];
 function paintTowns() {
   if (!map.getLayer("town-fill")) return;
-  map.setPaintProperty("town-fill", "fill-color", ["case", isSelected, color("--accent"), color("--land")]);
-  map.setPaintProperty("town-fill", "fill-opacity", basemapOn ? ["case", isSelected, 0.45, 0.15] : ["case", isSelected, 0.9, 1]);
+  if (colorBy?.source === "towns") {
+    map.setPaintProperty("town-fill", "fill-color", choropleth());
+    map.setPaintProperty("town-fill", "fill-opacity", 0.85);
+  } else {
+    map.setPaintProperty("town-fill", "fill-color", ["case", isSelected, color("--accent"), color("--land")]);
+    map.setPaintProperty("town-fill", "fill-opacity", basemapOn ? ["case", isSelected, 0.45, 0.15] : ["case", isSelected, 0.9, 1]);
+  }
   map.setPaintProperty("town-casing", "line-color", color("--land"));
   map.setPaintProperty("town-casing", "line-width", 4);
   map.setPaintProperty("town-casing", "line-opacity", basemapOn ? 0.9 : 0);
@@ -201,6 +208,16 @@ function paintLabel(id) {
   map.setPaintProperty(id, "text-halo-width", 2);
 }
 
+// 数字の色分け：範囲の外は地の色、選んでいる町は濃い線の代わりに作品の色をそのまま
+function choropleth() {
+  const v = ["feature-state", "v"];
+  return [
+    "case",
+    ["==", v, null], color("--land"),
+    ["interpolate", ["linear"], v, colorBy.low, color("--land"), colorBy.high, color("--accent")],
+  ];
+}
+
 function paint() {
   map.setPaintProperty("sea", "background-color", color("--sea"));
   map.setPaintProperty("muni-fill", "fill-color", [
@@ -214,6 +231,11 @@ function paint() {
   map.setPaintProperty("muni-fill", "fill-opacity", basemapOn
     ? ["interpolate", ["linear"], ["zoom"], 7, ["case", isSelected, 1, 1], 9, ["case", isSelected, 0.45, 0.15]]
     : 1);
+  // 数字で並べているときは、その数字で塗り分ける
+  if (colorBy?.source === "munis") {
+    map.setPaintProperty("muni-fill", "fill-color", ["case", ["get", "noData"], color("--no-data"), choropleth()]);
+    map.setPaintProperty("muni-fill", "fill-opacity", ["case", isSelected, 1, 0.85]);
+  }
   // 背景を出しているときは、大きく拡大したら名前を背景の地名に任せる
   map.setLayerZoomRange("muni-label", 7, basemapOn ? 10 : 24);
   map.setPaintProperty("muni-casing", "line-color", color("--land"));
@@ -273,12 +295,24 @@ function showCard(p) {
 
 // パネル：はじめの説明と、町のカードを入れかえる
 function openCard() {
+  const card = document.getElementById("card");
   document.getElementById("guide").hidden = true;
-  document.getElementById("card").hidden = false;
+  document.getElementById("rank").hidden = true;
+  // 並べた一覧から来たときは、一覧に戻るボタンを付ける
+  if (rankOn && !card.querySelector(".back-to-rank")) {
+    const back = document.createElement("button");
+    back.type = "button";
+    back.className = "back-to-rank";
+    back.textContent = "← 並べた一覧に戻る";
+    back.addEventListener("click", showRankPanel);
+    card.prepend(back);
+  }
+  card.hidden = false;
   document.querySelector(".panel-body").scrollTop = 0;
 }
 function closeCard() {
   document.getElementById("card").hidden = true;
+  if (rankOn) return showRankPanel();
   document.getElementById("guide").hidden = false;
 }
 
@@ -410,6 +444,134 @@ function showMessage(text) {
   box.textContent = text;
   document.querySelector("main").append(box);
   setTimeout(() => box.remove(), 4000);
+}
+
+// 数字で並べて探す：範囲（全国・県の中・市・区の中の町）と項目と順を選び、一覧と地図の色で見せる
+const shortName = (n) => n.replace(/^.+?郡(?=.+[町村]$)/, ""); // 「幡多郡黒潮町」→「黒潮町」（「大和郡山市」はそのまま）
+const MUNI_METRICS = { population: { label: "人口", unit: "人", int: true }, ...METRICS };
+const TOWN_METRICS = {
+  population: { label: "人口（国勢調査2020）", unit: "人", int: true },
+  households: { label: "世帯（国勢調査2020）", unit: "世帯", int: true },
+};
+const rankState = { scope: "all", metric: "over65Rate", order: "desc" };
+let rankOn = false;
+let colorBy = null; // 地図の色分け { source, low, high }
+const rankEl = document.getElementById("rank");
+const scopeSel = document.getElementById("rank-scope");
+const metricSel = document.getElementById("rank-metric");
+
+function fillScopes() {
+  const prefs = [...new Set(Object.values(stats.towns).map((t) => t.pref))];
+  scopeSel.innerHTML = `
+    <option value="all">全国の市区町村（${stats.peers.toLocaleString("ja-JP")}）</option>
+    <optgroup label="県の中の市区町村">${prefs.map((p) => `<option value="pref:${p}">${p}</option>`).join("")}</optgroup>
+    <optgroup label="市・区の中の町（町・字）">${townIndex.codes.map((c) => `<option value="towns:${c}">${byCode.get(c)?.properties.fullName ?? c}の中の町</option>`).join("")}</optgroup>`;
+  scopeSel.value = rankState.scope;
+}
+function fillMetrics() {
+  const list = rankState.scope.startsWith("towns:") ? TOWN_METRICS : MUNI_METRICS;
+  if (!list[rankState.metric]) rankState.metric = Object.keys(list)[0];
+  metricSel.innerHTML = Object.entries(list).map(([k, v]) => `<option value="${k}">${v.label}</option>`).join("");
+  metricSel.value = rankState.metric;
+}
+
+async function rankRows() {
+  const { scope, metric } = rankState;
+  if (scope.startsWith("towns:")) {
+    const code = scope.slice(6);
+    if (shownTowns !== code) await showTowns(code, { list: false });
+    const m = byCode.get(code)?.properties.fullName ?? "";
+    return townData.features.map((f) => ({
+      key: f.properties.town, name: f.properties.name, sub: m, value: f.properties[metric],
+      go: () => selectTown(code, f.properties.part),
+    }));
+  }
+  if (shownTowns) hideTowns({ quiet: true });
+  const pref = scope.startsWith("pref:") ? scope.slice(5) : null;
+  return Object.entries(stats.towns)
+    .filter(([, t]) => !t.ward && (!pref || t.pref === pref))
+    .map(([code, t]) => ({
+      key: code, name: shortName(t.name), sub: t.pref, value: t[metric],
+      go: () => (byCode.has(code) ? selectMuni(code) : showCityCard(t.name, t.pref)),
+      wards: byCode.has(code) ? null : munis.features.filter((f) => f.properties.pref === t.pref && f.properties.city === t.name && f.properties.ward),
+    }));
+}
+
+const fmt = (v, def) => (def.int ? Math.round(v).toLocaleString("ja-JP") : `${def.signed && v > 0 ? "+" : ""}${v.toFixed(1)}`) + def.unit;
+
+async function renderRank() {
+  const towns = rankState.scope.startsWith("towns:");
+  const def = (towns ? TOWN_METRICS : MUNI_METRICS)[rankState.metric];
+  const rows = (await rankRows()).filter((r) => typeof r.value === "number");
+  rows.sort((a, b) => (rankState.order === "desc" ? b.value - a.value : a.value - b.value));
+  const list = document.getElementById("rank-list");
+  const shown = rows.slice(0, 50);
+  list.innerHTML = shown.map((r, i) =>
+    `<li><button type="button" data-i="${i}"><span class="no">${i + 1}</span><span class="nm">${r.name}<small>${r.sub}</small></span><span class="val">${fmt(r.value, def)}</span></button></li>`,
+  ).join("") + (rows.length > shown.length ? `<li class="more"><p class="cite">ほか ${rows.length - shown.length}。地図の色でも見られます</p></li>` : "");
+  list.querySelectorAll("button[data-i]").forEach((b) => b.addEventListener("click", () => shown[Number(b.dataset.i)].go()));
+
+  // 地図の色分け（はずれ値に引っぱられないよう、下から5%〜上から5%の幅で塗る）
+  const vals = rows.map((r) => r.value).sort((a, b) => a - b);
+  const q = (p) => vals[Math.min(vals.length - 1, Math.floor((vals.length - 1) * p))];
+  const source = towns ? "towns" : "munis";
+  map.removeFeatureState({ source: "munis" });
+  if (map.getSource("towns")) map.removeFeatureState({ source: "towns" });
+  for (const r of rows) {
+    if (r.wards) for (const w of r.wards) map.setFeatureState({ source, id: w.properties.code }, { v: r.value });
+    else map.setFeatureState({ source, id: r.key }, { v: r.value });
+  }
+  colorBy = { source, low: q(0.05), high: q(0.95) };
+  if (colorBy.low === colorBy.high) colorBy.high = colorBy.low + 1;
+  paint();
+  paintTowns();
+  document.getElementById("rank-legend").innerHTML =
+    `<span>${fmt(colorBy.low, def)}</span><span class="bar" style="background:linear-gradient(to right, ${color("--land")}, ${color("--accent")})"></span><span>${fmt(colorBy.high, def)}</span>`;
+  document.getElementById("rank-cite").textContent = towns
+    ? `出典：${townIndex.source}（${townIndex.asOf}）`
+    : `出典：${stats.source.name}（${stats.source.asOf}。増減は${stats.source.changePeriod}）を加工`;
+  if (!towns) {
+    const pref = rankState.scope.startsWith("pref:") ? rankState.scope.slice(5) : null;
+    if (pref) fit(munis.features.filter((f) => f.properties.pref === pref), 10);
+  }
+}
+
+function showRankPanel() {
+  document.getElementById("guide").hidden = true;
+  document.getElementById("card").hidden = true;
+  rankEl.hidden = false;
+  rankOn = true;
+}
+async function openRank() {
+  if (shownTowns) rankState.scope = `towns:${shownTowns}`;
+  fillScopes();
+  fillMetrics();
+  showRankPanel();
+  document.querySelector(".panel-body").scrollTop = 0;
+  await renderRank();
+}
+function closeRank() {
+  rankOn = false;
+  colorBy = null;
+  rankEl.hidden = true;
+  map.removeFeatureState({ source: "munis" });
+  if (map.getSource("towns")) map.removeFeatureState({ source: "towns" });
+  selected = null;
+  selectedTown = null;
+  paint();
+  paintTowns();
+  closeCard();
+}
+document.getElementById("open-rank").addEventListener("click", openRank);
+rankEl.querySelector(".close").addEventListener("click", closeRank);
+scopeSel.addEventListener("change", () => { rankState.scope = scopeSel.value; fillMetrics(); renderRank(); });
+metricSel.addEventListener("change", () => { rankState.metric = metricSel.value; renderRank(); });
+for (const b of rankEl.querySelectorAll(".order button")) {
+  b.addEventListener("click", () => {
+    rankState.order = b.dataset.order;
+    rankEl.querySelectorAll(".order button").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+    renderRank();
+  });
 }
 
 // はじめの説明の「たとえば」

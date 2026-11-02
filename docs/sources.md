@@ -36,6 +36,7 @@
 | もの | 出典 | 決まり |
 |---|---|---|
 | 背景の地図（拡大したとき） | 国土地理院 地理院タイル（淡色地図）https://maps.gsi.go.jp/development/ichiran.html | ウェブでその場で読み込むなら、「地理院タイル」と書いて一覧ページへリンクすれば申請は要らない（2026-11-02 に一覧ページで確かめた）。画面の隅に出している |
+| 地図の上の名前の文字（「々」・全角のかっこなど、ブラウザの文字で描けないものだけ） | 国土地理院が地理院地図 Vector 用に公開している Noto Sans CJK JP の文字データ（https://maps.gsi.go.jp/xyz/noto-jp/ 。書体は SIL Open Font License） | その場で読み込むだけ。漢字・かなはブラウザの文字で描く |
 | 地図を描く部品 | MapLibre GL JS 4.7.1（BSD-3-Clause）、topojson-client 3.1.0（ISC） | jsDelivr から読み込む |
 
 ## 期間中に使う見込み（使う前に利用条件を確かめる）
