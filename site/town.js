@@ -187,9 +187,40 @@ async function showHinan(code, townFeatures, startPart) {
     });
   }
 
-  // 選んだ災害のときに使える所だけを地図に出す
+  // 選んだ災害のときに使える所だけを地図に出す。津波・洪水は、浸水の深さの想定を下に重ねる
   function showKind() {
-    if (map.getLayer("shelters")) map.setFilter("shelters", kind ? ["in", kind, ["get", "kinds"]] : null);
+    if (!map.getLayer("shelters")) return;
+    map.setFilter("shelters", kind ? ["in", kind, ["get", "kinds"]] : null);
+    if (map.getLayer("hazard")) map.removeLayer("hazard");
+    if (map.getSource("hazard")) map.removeSource("hazard");
+    const t = HAZARD_TILES[kind];
+    $("hazard-legend").hidden = !t;
+    if (!t) return;
+    map.addSource("hazard", { type: "raster", tiles: [t.url], tileSize: 256, minzoom: 2, maxzoom: 17 });
+    map.addLayer({ id: "hazard", type: "raster", source: "hazard", paint: { "raster-opacity": 0.65 } }, "shelters");
+    $("hazard-legend").innerHTML = `<span class="t">${esc(t.name)}（浸水の深さ）</span>`
+      + DEPTH_COLORS.map(([c, label]) => `<span class="c"><i style="background:rgb(${c.join(",")})"></i>${label}</span>`).join("")
+      + `<span class="src">出典：「ハザードマップポータルサイト」を加工して作成。くわしくは町のハザードマップで</span>`;
+  }
+  // 海抜・浸水の想定・坂を考えた歩く時間（hazard.js）。あとから出る（地図の絵を読むので少し待つ）
+  async function calc(at, token) {
+    const hz = HAZARD_TILES[kind] ? kind : null;
+    $("hinan-here").hidden = false;
+    $("hinan-here").textContent = "海抜と浸水の想定を計算しています…";
+    const [h0, d0] = await Promise.all([elevationAt(...at), hz ? depthAt(hz, ...at) : null]);
+    if (token !== setHere.token) return;
+    $("hinan-here").innerHTML = `選んだ場所：海抜 約 ${h0 != null ? `${Math.round(h0)}m` : "（分からない）"}${hz ? `・${hz}の浸水の想定 <strong>${d0?.label ?? "区域の外（想定なし）"}</strong>` : ""}`;
+    await Promise.all(cand.map(async (c, i) => {
+      const p = c.f.geometry.coordinates;
+      const [h, d, w] = await Promise.all([elevationAt(...p), hz ? depthAt(hz, ...p) : null, walkMinutes(at, p, c.m)]);
+      if (token !== setHere.token) return;
+      const li = document.querySelector(`#hinan-list li[data-i="${i}"] .d`);
+      if (!li) return;
+      li.innerHTML = `まっすぐ ${c.m.toLocaleString("ja-JP")}m・歩いて約 ${Math.max(1, Math.round(c.m / 60))}分`
+        + (w.hasElevation ? `・<strong>坂を考えると約 ${w.min}分</strong>（上り ${w.up}m・下り ${w.down}m）` : "")
+        + `<br>避難場所の海抜 約 ${h != null ? `${Math.round(h)}m` : "（分からない）"}`
+        + (hz ? `・${hz}の浸水の想定 ${d?.label ? `<strong class="warn">${d.label}</strong>` : "区域の外"}` : "");
+    }));
   }
   // まっすぐの距離（m）。歩くめやすは 1分 60m（お年寄りの歩く速さのめやす）
   const meters = ([a, b], [c, d]) => {
@@ -241,7 +272,9 @@ async function showHinan(code, townFeatures, startPart) {
       li.addEventListener("click", () => select(Number(li.dataset.i)));
       li.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); select(Number(li.dataset.i)); } });
     }
-    $("hinan-note").innerHTML = `${esc(label)}から、${kind ? `${kind}のときに使える指定緊急避難場所` : "すべての指定緊急避難場所"}の近い順。距離はまっすぐ測ったもので、坂や道の曲がりは考えていません。歩く時間は1分60mのめやすです。避難の判断は町の案内に従ってください。<br>出典：${esc(shelters.source.title)}（${esc(shelters.source.license)}・${shelters.source.updated ? `${esc(shelters.source.updated)} 更新のものを ` : ""}${esc(shelters.source.fetchedAt)} に取得）を加工`;
+    const token = (setHere.token = (setHere.token ?? 0) + 1);
+    calc(at, token);
+    $("hinan-note").innerHTML = `${esc(label)}から、${kind ? `${kind}のときに使える指定緊急避難場所` : "すべての指定緊急避難場所"}の近い順。距離はまっすぐ測ったもので、坂や道の曲がりは考えていません。歩く時間は1分60m（お年寄りの歩く速さ）のめやすで、坂はまっすぐの線の上の上り下りから見積もったものです（道の坂とは違います）。海抜は地理院タイル（標高タイル）、浸水の深さは想定の地図の色から読んだめやすです。避難の判断は町の案内に従ってください。<br>出典：${esc(shelters.source.title)}（${esc(shelters.source.license)}・${shelters.source.updated ? `${esc(shelters.source.updated)} 更新のものを ` : ""}${esc(shelters.source.fetchedAt)} に取得）を加工`;
   }
   return true;
 }

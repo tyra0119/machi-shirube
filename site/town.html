@@ -65,7 +65,9 @@
         <div class="hinan-kind" id="hinan-kinds" role="radiogroup" aria-label="どの災害のときか"></div>
       </div>
       <div id="hinan-map" class="hinan-map" aria-label="避難場所の地図（地図を押すと、その場所から近い避難場所を出します）"></div>
+      <div id="hazard-legend" class="hazard-legend" hidden></div>
       <p class="note">地図を押すか、右下の「現在地」でも場所を決められます。</p>
+      <p id="hinan-here" class="hinan-here" hidden></p>
       <ol id="hinan-list" class="hinan-list"></ol>
       <p id="hinan-note" class="note"></p>
       <ul class="hinan-cautions">
@@ -164,6 +166,7 @@
 <script src="map-buttons.js"></script>
 <script src="today.js"></script>
 <script src="medical.js"></script>
+<script src="hazard.js"></script>
 <script src="town-color.js"></script>
 <script src="town.js"></script>
 </body>
