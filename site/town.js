@@ -611,7 +611,7 @@ async function showHinan(code, townFeatures, startPart) {
     $("hinan-list").innerHTML = cand.map((c, i) => `
       <li data-i="${i}" tabindex="0" role="button" aria-label="地図で ${esc(c.f.properties.name)} を見る"><span class="pin" aria-hidden="true">${i + 1}</span><span class="n">${esc(c.f.properties.name)}</span>
         <span class="d">まっすぐ ${c.m.toLocaleString("ja-JP")}m・歩いて約 ${Math.max(1, Math.round(c.m / 60))}分（めやす）</span>
-        <span class="k">${esc(c.f.properties.address ?? "")}・${esc(c.f.properties.kinds.join("・"))}${c.f.properties.capacity ? `・${esc(c.f.properties.capacity)}` : ""}${c.f.properties.note ? `・${esc(c.f.properties.note)}` : ""}</span></li>`).join("");
+        <span class="k">${esc(String(c.f.properties.address ?? "").replace(/(\S{2,}?[郡市区町村])\1/g, "$1"))}・${esc(c.f.properties.kinds.join("・"))}${c.f.properties.capacity ? `・${esc(c.f.properties.capacity)}` : ""}${c.f.properties.note ? `・${esc(c.f.properties.note)}` : ""}</span></li>`).join("");
     for (const li of document.querySelectorAll("#hinan-list li")) {
       li.addEventListener("click", () => select(Number(li.dataset.i)));
       li.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); select(Number(li.dataset.i)); } });
