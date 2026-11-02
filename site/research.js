@@ -22,7 +22,7 @@ async function main() {
   document.title = `${name}を調べる｜まちしるべ`;
   $("name").textContent = `${name}を調べる`;
   $("where").textContent = `${t.pref}・市区町村コード ${code}・物差しの問い ${questions.length}（版 ${yard.version}）`;
-  $("path").innerHTML = `<li><a href="./">日本</a></li><li><span>${esc(t.pref)}</span></li><li><a href="town.html?muni=${code}">${esc(name)}</a></li><li><span>調べる</span></li>`;
+  $("path").innerHTML = `<li><a href="./">日本</a></li><li><a href="./?pref=${encodeURIComponent(t.pref)}">${esc(t.pref)}</a></li><li><a href="town.html?muni=${code}">${esc(name)}</a></li><li><span>調べる</span></li>`;
   drawMap();
 
   local = await fetch("api/ping").then((r) => r.ok).catch(() => false);

@@ -118,7 +118,7 @@ async function main() {
   const muniName = muni ? shortName(muni.name) : code;
   header(title, `${muni?.pref ?? ""} ${muniName}・${kind}`, [
     ["日本", "./"],
-    [muni?.pref ?? "", null],
+    [muni?.pref ?? "", muni ? `./?pref=${encodeURIComponent(muni.pref)}` : null],
     [muniName, `./?muni=${code}&towns`],
     [title, null],
   ]);
@@ -153,7 +153,7 @@ async function muniPage(code, stats) {
   const t = stats.towns[code];
   if (!t) return notFound("この市区町村は見つかりませんでした");
   const name = shortName(t.name);
-  header(name, `${t.pref}・市区町村コード ${code}`, [["日本", "./"], [t.pref, null], [name, null]]);
+  header(name, `${t.pref}・市区町村コード ${code}`, [["日本", "./"], [t.pref, `./?pref=${encodeURIComponent(t.pref)}`], [name, null]]);
   $("pop").textContent = `人口 ${t.population.toLocaleString("ja-JP")}人`;
   const rows = [
     ["over65Rate", "65歳以上の人の割合"], ["under15Rate", "15歳未満の子どもの割合"], ["foreignRate", "外国の住民の割合"],

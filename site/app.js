@@ -155,11 +155,13 @@ map.on("load", async () => {
     }
   });
 
-  // URL で送られた町を開く（?muni=39428 ／ ?muni=11227&towns ／ ?town=11227-0130）
+  // URL で送られた町を開く（?pref=兵庫県 ／ ?muni=39428 ／ ?muni=11227&towns ／ ?town=11227-0130 ／ ?area=28109-a1）
   const q = new URLSearchParams(location.search);
   await statsReady.catch(() => {});
   await townIndexReady.catch(() => {});
-  if (q.get("area")) {
+  if (q.get("pref")) {
+    if (munis.features.some((f) => f.properties.pref === q.get("pref"))) goPref(q.get("pref"));
+  } else if (q.get("area")) {
     openArea(q.get("area"));
   } else if (q.get("town")) {
     const [code, partList] = q.get("town").split("-");
@@ -187,6 +189,7 @@ function rememberInURL() {
   else if (shownTowns && selectedTown) q.set("town", `${shownTowns}-${selectedTown.slice(5)}`);
   else if (shownTowns) { q.set("muni", shownTowns); q.set("towns", ""); }
   else if (selected) q.set("muni", selected);
+  else if (currentPref) q.set("pref", currentPref);
   const s = q.toString().replace(/=(&|$)/g, "$1").replace(/%2C/g, ",");
   history.replaceState(null, "", `${location.pathname}${s ? `?${s}` : ""}${location.hash}`);
 }
@@ -253,6 +256,13 @@ function updateCrumb() {
   const crumb = document.getElementById("crumb");
   const code = shownTowns ?? selected;
   const p = code && byCode.get(code)?.properties;
+  if (p) currentPref = null; // 町を選んだら、県だけの状態は終わり
+  if (!p && currentPref) {
+    crumb.querySelector(".path").innerHTML = `<li><button type="button">日本</button></li><li aria-current="location"><span>${currentPref}</span></li>`;
+    crumb.querySelector(".path button").addEventListener("click", goJapan);
+    crumb.hidden = false;
+    return;
+  }
   if (!p) { crumb.hidden = true; return; }
   const steps = [
     { label: "日本", go: goJapan },
@@ -272,13 +282,17 @@ function updateCrumb() {
   crumb.hidden = false;
 }
 function goJapan() {
+  currentPref = null;
   hideTowns({ quiet: true });
   hideCard();
   map.easeTo({ center: [137.5, 37.5], zoom: 4.3, bearing: 0, pitch: 0, duration: 700 });
 }
+let currentPref = null; // 県に寄っているとき（道すじと URL に出す）
 function goPref(pref) {
   hideTowns({ quiet: true });
   hideCard();
+  currentPref = pref;
+  updateCrumb();
   fit(munis.features.filter((f) => f.properties.pref === pref), 10);
 }
 
