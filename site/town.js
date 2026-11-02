@@ -5,6 +5,8 @@ const color = (name) => getComputedStyle(document.documentElement).getPropertyVa
 const $ = (id) => document.getElementById(id);
 const q = new URLSearchParams(location.search);
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+// 文をつなぐ句点：ほかの言葉では「. 」（日本語とやさしい日本語は「。」）
+const KU = () => (LANG && LANG !== "easy" ? ". " : "。");
 
 async function getJSON(path) {
   try {
@@ -168,7 +170,7 @@ async function showFloodPop(code, part) {
       <ul class="fp-depth">${Object.entries(k.byDepth).map(([label, v]) => `<li><span class="l">${esc(label)}</span><span class="bar"><i style="width:${(v / max) * 100}%;background:${depthColor(label)}"></i></span><span class="v">${n(v)}</span></li>`).join("")}</ul>
     </div>`;
   }).join("");
-  $("floodpop-note").innerHTML = `${esc(T(d.note))}。${T("想定は最大の規模のもので、必ずこうなるという意味ではありません。")}${d.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join("・")}`;
+  $("floodpop-note").innerHTML = `${esc(T(d.note))}${KU()}${T("想定は最大の規模のもので、必ずこうなるという意味ではありません。")}${d.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join("・")}`;
 }
 const depthColor = (label) => { const c = DEPTH_COLORS.find(([, l]) => l === label)?.[0] ?? (label === "警戒区域" ? [214, 170, 110] : [200, 200, 200]); return `rgb(${c.join(",")})`; };
 
@@ -244,7 +246,7 @@ async function showLocalSites(code) {
   $("local-block").hidden = false;
   const short = (x) => String(x ?? "").replace(/[（(][^）)]*[）)]/g, "").trim(); // AI が添えた「〜の記載による」などの注記は外す
   $("local-sites").innerHTML = d.sites.map((s) => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener"><strong>${icon("link")}${esc(s.name)}</strong><span class="k">${esc(short(s.kind))}${s.operator && !/分からない/.test(s.operator) ? `・${esc(short(s.operator))}` : ""}</span><span class="u">${esc(s.use)}</span></a></li>`).join("");
-  $("local-note").textContent = `${T(d.note)}。${T("公式の情報ではありません。")}`;
+  $("local-note").textContent = `${T(d.note)}${KU()}${T("公式の情報ではありません。")}`;
 }
 
 // 昔の災害を伝える碑（国土地理院 自然災害伝承碑。scripts/build-lore.mjs）。碑の文は公開のまま出す。町の碑がなければ近くの町の碑
@@ -260,7 +262,7 @@ async function showLore(code) {
   </li>`;
   $("lore").innerHTML = (d.own.length ? `<p class="fp-head">${T("この町には、昔の災害を伝える碑が")} <strong>${d.own.length}</strong> ${T("基あります。")}</p><ul class="lore-list">${d.own.map(card).join("")}</ul>` : `<p class="fp-head">${T("この町として届けられた碑は、まだありません。近くの町の碑です。")}</p>`)
     + (d.near.length ? `${d.own.length ? `<h3 class="lore-sub">${T("近くの町の碑")}</h3>` : ""}<ul class="lore-list">${d.near.map(card).join("")}</ul>` : "");
-  $("lore-note").innerHTML = `${esc(T(d.note))}${LANG ? `（${T("日本語のまま")}）` : ""}。${d.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join("・")}`;
+  $("lore-note").innerHTML = `${esc(T(d.note))}${LANG ? `（${T("日本語のまま")}）` : ""}${KU()}${d.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join("・")}`;
 }
 
 // 町の気候（平年値メッシュ × 住む人。scripts/build-climate.mjs）。東京都心と並べ、良い所は明るい話題として添える
@@ -278,13 +280,13 @@ async function showClimate(code) {
   ];
   $("climate").innerHTML = (d.bright.length ? `<p class="fp-head"><span class="bright">${icon("sun")} ${d.bright.map((b) => esc(T(b))).join("。")}</span></p>` : "")
     + `<ul class="acc-stats">${rows.map(([l, v, t]) => `<li><span class="l">${l}</span><strong>${v}</strong><span class="s">${T("東京都心")} ${typeof t === "number" ? `${n(t)} ${T("時間")}` : t}</span></li>`).join("")}</ul>`;
-  $("climate-note").innerHTML = `${esc(T(d.note))}。${d.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join("・")}`;
+  $("climate-note").innerHTML = `${esc(T(d.note))}${KU()}${d.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join("・")}`;
 }
 
 // 坂の多い所に住む人（国土地理院の標高 × 250m 四方の人口。scripts/build-slope.mjs）
 async function showSlope(code, part) {
   const d = await fetch(`data/slope/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
-  if (!d || d.slope.people < 10) return;
+  if (!d || d.slope.people < 10 || d.slope.rate < 1) return; // 平らな町（住む人の1%未満）は出さない
   $("slope-block").hidden = false;
   const n = (v) => v.toLocaleString("ja-JP");
   const here = part && d.parts[part.properties.part];
@@ -294,7 +296,7 @@ async function showSlope(code, part) {
     [T("急な坂が多い所に住む人"), `${T("約")} ${n(d.steep.people)} ${T("人")}`, `${T("町の人の")} ${d.steep.rate}%`],
     ...(here ? [[esc(here.name), `${here.rate}%`, T("坂が多い所に住む人の割合")]] : []),
   ].map(([l, v, s]) => `<li><span class="l">${l}</span><strong>${v}</strong><span class="s">${s}</span></li>`).join("");
-  $("slope-note").innerHTML = `${esc(T(d.note))}。${T("避難の道や、毎日の買い物・通院の道のりが、お年寄りには重くなります。")}${d.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join("・")}`;
+  $("slope-note").innerHTML = `${esc(T(d.note))}${KU()}${T("避難の道や、毎日の買い物・通院の道のりが、お年寄りには重くなります。")}${d.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join("・")}`;
 }
 
 // 防災計画の、町・字に関係する所（scripts/plan-excerpts.mjs。Claude が引用つきで抜き出し、人が確かめてから出す）
@@ -321,7 +323,7 @@ async function showPlan(code, part) {
   };
   sel.addEventListener("change", draw);
   draw();
-  $("plan-note").innerHTML = `${esc(T(d.note))}。${src}`;
+  $("plan-note").innerHTML = `${esc(T(d.note))}${KU()}${src}`;
 }
 
 // 大きな地震の揺れの確率（J-SHIS × 250m 四方の人口。scripts/build-quake-pop.mjs が作る）
@@ -339,7 +341,7 @@ async function showQuake(code, part) {
     </ul>
     <h3 class="sub">${T("震度6弱以上の確率の高さごとの、住む人")}</h3>
     <ul class="fp-depth q">${Object.entries(d.bands).map(([l, v]) => `<li><span class="l">${esc(T(l))}</span><span class="bar"><i style="width:${(v / max) * 100}%"></i></span><span class="v">${n(v)}</span></li>`).join("")}</ul>`;
-  $("quake-note").innerHTML = `${esc(T(d.note))}。${T("確率 26% はおよそ100年に1回、6% はおよそ500年に1回、3% はおよそ1000年に1回の揺れにあたります。")}${d.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join("・")}`;
+  $("quake-note").innerHTML = `${esc(T(d.note))}${KU()}${T("確率 26% はおよそ100年に1回、6% はおよそ500年に1回、3% はおよそ1000年に1回の揺れにあたります。")}${d.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join("・")}`;
 }
 
 // 買い物に困っているお年寄り（農林水産政策研究所の推計を引用。scripts/build-shop-access.mjs）
@@ -354,7 +356,7 @@ async function showShopAccess(code) {
       <li><span class="l">${T("75歳以上")}</span><strong>${d.rate75}%</strong><span class="s">${T("約")} ${n(d.over75)} ${T("人")}・${T("全国")} ${d.nationRate75}%（${cmp(d.rate75, d.nationRate75)}）</span></li>
     </ul>
     <p class="fp-here">${T("店まで 500m 以上あり、車を使うのが難しい65歳以上の人の割合です（2020年の推計）。")}</p>`;
-  $("shop-note").innerHTML = `${esc(T(d.note))}。${d.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join("")}`;
+  $("shop-note").innerHTML = `${esc(T(d.note))}${KU()}${d.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join("")}`;
 }
 
 // これからの町の人口（社人研の推計。scripts/build-future.mjs）。政令市の区はその区、町・字のページは市区町村の数
@@ -390,7 +392,7 @@ async function showBus(code, part) {
     ...(here ? [[esc(here.name), `${here.farRate}%`, `${T("バス停まで 500m 以上")}・${T("1日10本未満")} ${here.fewRate}%`]] : []),
   ].map(([l, v, s]) => `<li><span class="l">${l}</span><strong>${v}</strong><span class="s">${s}</span></li>`).join("");
   $("bus-stops").innerHTML = d.stops.slice(0, 8).map((s) => `<li><span class="no">${s.n}</span><span>${esc(s.name)}</span></li>`).join("");
-  $("bus-note").innerHTML = `${esc(T(d.note))}。${T("丸の中の数は、平日1日に出る便の数です。")}${d.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join("・")}`;
+  $("bus-note").innerHTML = `${esc(T(d.note))}${KU()}${T("丸の中の数は、平日1日に出る便の数です。")}${d.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join("・")}`;
 }
 
 // 道の安全（交通事故。scripts/build-accidents.mjs が警察庁のオープンデータから作る）
@@ -410,7 +412,7 @@ async function showAccidents(code, part) {
   ].map(([l, v, s]) => `<li><span class="l">${l}</span><strong>${v}</strong><span class="s">${s}</span></li>`).join("");
   $("acc-spots-head").hidden = $("acc-map").hidden = !d.spots.length;
   $("acc-spots").innerHTML = d.spots.map((s, i) => `<li data-i="${i}"><span class="no">${i + 1}</span><span><strong>${esc(s.part)}</strong> ${s.n} ${T("件")}${s.ped ? `・${T("歩行者")} ${s.ped}` : ""}${s.bike ? `・${T("自転車")} ${s.bike}` : ""}${s.dead ? `・${T("死亡")} ${s.dead}` : ""}</span></li>`).join("");
-  $("acc-note").innerHTML = `${esc(T(d.note))}。${T("町の外から通る車の事故も入るので、人の数で割った値はめやすです。")}${d.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join("")}`;
+  $("acc-note").innerHTML = `${esc(T(d.note))}${KU()}${T("町の外から通る車の事故も入るので、人の数で割った値はめやすです。")}${d.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join("")}`;
   if (!d.spots.length) return;
   const map = new maplibregl.Map({
     container: "acc-map",
@@ -744,7 +746,7 @@ async function showMedical(code, center) {
   }
   $("med-filter").addEventListener("input", () => { limit = 5; draw(); });
   draw();
-  $("med-cite").innerHTML = `出典：<a href="${esc(m.source.url)}" target="_blank" rel="noopener">${esc(m.source.title)}</a>（${esc(m.source.asOf)}・${esc(m.source.license)}）を加工。祝日：${esc(m.holidaySource?.title ?? "")}。${center ? "距離は町・字のおおよその真ん中からまっすぐ測ったものです。" : ""}`;
+  $("med-cite").innerHTML = `出典：<a href="${esc(m.source.url)}" target="_blank" rel="noopener">${esc(m.source.title)}</a>（${esc(m.source.asOf)}・${esc(m.source.license)}）を加工。祝日：${esc(m.holidaySource?.title ?? "")}${KU()}${center ? "距離は町・字のおおよその真ん中からまっすぐ測ったものです。" : ""}`;
   const today = medicalList(m, 0, center);
   const open = today.list.filter((x) => x.openNow).length;
   medicalRow = `<li><a href="#iryo"><span class="k">${icon("hospital")}${T("病院")}</span><span class="v">${LANG ? `${T("今日やっている所")} ${today.list.length}（${T("いま開いている")} ${open}）` : `${today.holiday ? `今日は${esc(today.holiday)}。` : ""}今日やっている所 ${today.list.length} か所（いま開いている ${open}）`}</span></a></li>`;
@@ -929,7 +931,7 @@ async function showGomiDays(code, partName) {
   $("gomi-rules-head").textContent = T("出し方の要点");
   const ok = g.status === "ok" || g.status === "auto";
   $("gomi-rules").innerHTML = g.rules.map((r) => `<li><strong>${esc(r.kind)}</strong><span>${esc(r.how)}${r.time ? `<small>${esc(r.time)}</small>` : ""}</span></li>`).join("");
-  $("gomi-days-note").innerHTML = `${esc(T(g.note))}。${T("出典")}：${g.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title ?? s.url)}</a>`).join("・")}`;
+  $("gomi-days-note").innerHTML = `${esc(T(g.note))}${KU()}${T("出典")}：${g.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title ?? s.url)}</a>`).join("・")}`;
   if (!ok) {
     $("gomi-area").closest("label").hidden = true;
     $("gomi-today").innerHTML = `${icon("eye")} ${T("地区ごとの曜日は、いま人が確かめています（公式の表から読み取ったものが、町のカレンダーと合っているか）。それまでは町の収集日の表をご覧ください。")}`;
