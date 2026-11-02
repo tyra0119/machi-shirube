@@ -1,11 +1,11 @@
 {
  "lang": "vi",
  "name": "Tiếng Việt",
- "createdAt": "2026-11-02T14:19:06.510Z",
+ "createdAt": "2026-11-02T14:58:44.791Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 362,
- "of": 362,
+ "count": 377,
+ "of": 372,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Đây là trang hướng dẫn đời sống không chính thức của thị trấn này. Claude thu thập từ các trang chính thức của thị trấn v.v. và ghi rõ nguồn (Machi-shirube)",
   "すべてのページ": "Tất cả các trang",
@@ -368,6 +368,21 @@
   "見たいものを押すと、地図に重なります。もう一度押すと消えます。": "Nhấn vào mục muốn xem, mục đó sẽ hiện chồng lên bản đồ. Nhấn lần nữa để tắt.",
   "防災計画の、この地区に関係する所": "Phần của kế hoạch phòng chống thiên tai liên quan đến khu vực này",
   "交通と道の安全": "Giao thông và an toàn đường sá",
-  "バス・電車・事故が重なる所": "Xe buýt・Tàu điện・Nơi xảy ra nhiều tai nạn"
+  "バス・電車・事故が重なる所": "Xe buýt・Tàu điện・Nơi xảy ra nhiều tai nạn",
+  "町の公式のサイトを探しても、公開の資料では分からなかったことです。町に住む人の知っていることが、次の入口になります。": "Đây là những điều không tìm thấy trong tài liệu công khai, dù đã tìm trên trang web chính thức của thị trấn. Những gì người dân sống trong thị trấn biết sẽ là lối vào tiếp theo.",
+  "町の公式の収集日の表と出し方のページから AI が読み取り、地区と種類の名前が資料にあることを PC で確かめたもの。祝日や年末年始は変わることがあるので、町のカレンダーで確かめてください": "AI đọc từ bảng ngày thu gom chính thức của thị trấn và trang hướng dẫn cách đổ rác, rồi dùng PC kiểm tra xem tên khu vực và tên loại rác có trong tài liệu hay không. Ngày lễ và dịp cuối năm đầu năm có thể thay đổi, nên hãy xem lại trên lịch của thị trấn",
+  "町の地域防災計画のうち、町・字の名前が出てくるページを AI が読み、その地区に関係する所をまとめたもの。どのまとめにも元のページの引用があります": "AI đọc các trang có tên thị trấn và tên xóm (aza) trong kế hoạch phòng chống thiên tai khu vực của thị trấn, rồi tóm tắt những phần liên quan đến khu vực đó. Mọi phần tóm tắt đều có trích dẫn từ trang gốc",
+  "町の公式のサイトから探したこと": "Những điều đã tìm trên trang web chính thức của thị trấn",
+  "雪の先読み（冬のあいだは、ここにも出します）": "Dự báo trước về tuyết (trong mùa đông, cũng sẽ hiển thị ở đây)",
+  "雪の暮らしのページへ": "Đến trang đời sống mùa tuyết",
+  "坂が多い所に住む人": "Người sống ở nơi có nhiều dốc",
+  "そのうち65歳以上": "Trong đó từ 65 tuổi trở lên",
+  "65歳以上の": "Từ 65 tuổi trở lên",
+  "急な坂が多い所に住む人": "Người sống ở nơi có nhiều dốc đứng",
+  "坂が多い所に住む人の割合": "Tỷ lệ người sống ở nơi có nhiều dốc",
+  "避難の道や、毎日の買い物・通院の道のりが、お年寄りには重くなります。": "Đường sơ tán, cũng như quãng đường đi chợ và đi khám bệnh hằng ngày, trở nên vất vả hơn đối với người cao tuổi.",
+  "公式のサイトから確かめた答え": "Câu trả lời đã xác nhận từ trang web chính thức",
+  "町の公式のサイトから探して、出典つきでここに出します。": "Tìm từ trang web chính thức của thị trấn và hiển thị ở đây kèm theo nguồn.",
+  "出典の中の場所": "Vị trí trong nguồn"
  }
 }

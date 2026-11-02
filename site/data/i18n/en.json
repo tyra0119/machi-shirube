@@ -1,11 +1,11 @@
 {
  "lang": "en",
  "name": "English",
- "createdAt": "2026-11-02T14:17:39.212Z",
+ "createdAt": "2026-11-02T14:57:49.448Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 363,
- "of": 362,
+ "count": 379,
+ "of": 372,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "This is an unofficial guide to living in this town. Claude gathers information from the town's official website and other sources, and cites each source (Machishirube)",
   "すべてのページ": "All pages",
@@ -369,6 +369,22 @@
   "この町・字の名前が出てくる所は、防災計画に見つかりませんでした。": "No place where this town/district's name appears was found in the disaster prevention plan.",
   "2050年まで人口が増えると推計される町です。": "This town is estimated to see its population grow through 2050.",
   "人口の減りにくさは、全国の市区町村の上から": "Resistance to population decline: ranks from the top among municipalities nationwide",
-  "に入ります": "place"
+  "に入ります": "place",
+  "町の公式のサイトを探しても、公開の資料では分からなかったことです。町に住む人の知っていることが、次の入口になります。": "Things we looked for on the town's official website but couldn't find in public materials. What people who live here know can point to the next step.",
+  "町の公式の収集日の表と出し方のページから AI が読み取り、地区と種類の名前が資料にあることを PC で確かめたもの。祝日や年末年始は変わることがあるので、町のカレンダーで確かめてください": "Read by AI from the town's official collection schedule and disposal rules pages; a PC then checked that the area and waste type names appear in the source. Schedules may change on holidays and over New Year, so please check the town calendar.",
+  "いまやっている": "Happening now",
+  "町の地域防災計画のうち、町・字の名前が出てくるページを AI が読み、その地区に関係する所をまとめたもの。どのまとめにも元のページの引用があります": "AI read the pages of the town's Regional Disaster Prevention Plan that mention town and district names, and summarized the parts relevant to each area. Every summary includes a quote from the original page.",
+  "町の公式のサイトから探したこと": "What we found on the town's official website",
+  "雪の先読み（冬のあいだは、ここにも出します）": "Snow outlook (shown here too during winter)",
+  "雪の暮らしのページへ": "Go to the snow living guide",
+  "坂が多い所に住む人": "People living in hilly areas",
+  "そのうち65歳以上": "Of those, aged 65 or over",
+  "65歳以上の": "Aged 65 or over",
+  "急な坂が多い所に住む人": "People living in areas with many steep slopes",
+  "坂が多い所に住む人の割合": "Share of people living in hilly areas",
+  "避難の道や、毎日の買い物・通院の道のりが、お年寄りには重くなります。": "Evacuation routes, and the daily trips to shop or go to the hospital, become harder for older people.",
+  "公式のサイトから確かめた答え": "Answers confirmed from the official website",
+  "町の公式のサイトから探して、出典つきでここに出します。": "We search the town's official website and show the results here, with sources.",
+  "出典の中の場所": "Location in the source"
  }
 }

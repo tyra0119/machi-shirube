@@ -1,11 +1,11 @@
 {
  "lang": "id",
  "name": "Bahasa Indonesia",
- "createdAt": "2026-11-02T14:18:33.021Z",
+ "createdAt": "2026-11-02T14:58:09.369Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 360,
- "of": 362,
+ "count": 375,
+ "of": 372,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Ini adalah panduan hidup tidak resmi untuk kota ini. Claude mengumpulkannya dari situs resmi kota dan sumber lain, dengan mencantumkan sumbernya (Machishirube)",
   "すべてのページ": "Semua halaman",
@@ -366,6 +366,21 @@
   "交通と道の安全": "Lalu lintas dan keselamatan jalan",
   "バス・電車・事故が重なる所": "Bus, kereta, dan lokasi rawan kecelakaan",
   "2050年まで人口が増えると推計される町です。": "Kota ini diperkirakan jumlah penduduknya akan terus bertambah hingga tahun 2050.",
-  "は、町の表に見つかりませんでした。言いかえて探すか、町の一覧表で確かめてください。": "tidak ditemukan dalam tabel kota. Coba cari dengan kata lain, atau periksa di tabel daftar kota."
+  "は、町の表に見つかりませんでした。言いかえて探すか、町の一覧表で確かめてください。": "tidak ditemukan dalam tabel kota. Coba cari dengan kata lain, atau periksa di tabel daftar kota.",
+  "波浪注意報": "Peringatan Gelombang Tinggi",
+  "町の公式のサイトを探しても、公開の資料では分からなかったことです。町に住む人の知っていることが、次の入口になります。": "Ini hal-hal yang tidak ditemukan dalam materi publik, meskipun sudah dicari di situs resmi kota. Pengetahuan warga yang tinggal di kota ini bisa menjadi petunjuk berikutnya.",
+  "町の地域防災計画のうち、町・字の名前が出てくるページを AI が読み、その地区に関係する所をまとめたもの。どのまとめにも元のページの引用があります": "AI membaca halaman-halaman dalam rencana penanggulangan bencana daerah kota yang memuat nama kota dan desa (aza), lalu merangkum bagian yang berkaitan dengan wilayah tersebut. Setiap ringkasan disertai kutipan dari halaman aslinya.",
+  "町の公式のサイトから探したこと": "Hal yang dicari dari situs resmi kota",
+  "雪の先読み（冬のあいだは、ここにも出します）": "Prakiraan salju (selama musim dingin, juga ditampilkan di sini)",
+  "雪の暮らしのページへ": "Ke halaman kehidupan di musim salju",
+  "坂が多い所に住む人": "Penduduk yang tinggal di daerah banyak tanjakan",
+  "そのうち65歳以上": "Di antaranya yang berusia 65 tahun ke atas",
+  "65歳以上の": "Yang berusia 65 tahun ke atas",
+  "急な坂が多い所に住む人": "Penduduk yang tinggal di daerah dengan banyak tanjakan curam",
+  "坂が多い所に住む人の割合": "Persentase penduduk yang tinggal di daerah banyak tanjakan",
+  "避難の道や、毎日の買い物・通院の道のりが、お年寄りには重くなります。": "Jalur evakuasi serta perjalanan untuk berbelanja dan berobat sehari-hari menjadi berat bagi para lansia.",
+  "公式のサイトから確かめた答え": "Jawaban yang dipastikan dari situs resmi",
+  "町の公式のサイトから探して、出典つきでここに出します。": "Dicari dari situs resmi kota dan ditampilkan di sini beserta sumbernya.",
+  "出典の中の場所": "Lokasi dalam sumber"
  }
 }

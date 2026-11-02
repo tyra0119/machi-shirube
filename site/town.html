@@ -14,7 +14,7 @@
   <nav class="town-path" aria-label="いま見ている所"><ol id="path"></ol></nav>
   <h1 id="name">読み込んでいます…</h1>
   <p id="where" class="where"></p>
-  <p class="unofficial">この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）</p>
+  <p class="unofficial">この町の非公式の暮らしの案内です。町の公式のサイトや国の公開データから集め、出典をつけています（まちしるべ）</p>
   <p id="town-color-note" class="color-note" hidden></p>
   <p id="lang-bar" class="lang-bar" hidden></p>
 </header>
@@ -75,6 +75,11 @@
       <h2>浸水・土砂災害が想定される所に住む人</h2>
       <div id="floodpop"></div>
       <p class="note" id="floodpop-note"></p>
+    </section>
+    <section class="block" id="slope-block" hidden>
+      <h2>坂の多い所に住む人</h2>
+      <ul class="acc-stats" id="slope"></ul>
+      <p class="note" id="slope-note"></p>
     </section>
     <section class="block" id="plan-block" hidden>
       <h2>防災計画の、この地区に関係する所</h2>
@@ -206,7 +211,7 @@
     <section class="block"><h2>町の歴史・催し</h2><div class="answers-box" data-page="shiru"></div></section>
     <section class="block" id="ask-block" hidden>
       <h2>町の人に聞きたいこと</h2>
-      <p class="note">Claude が町の公式のサイトを探しても、公開の資料では分からなかったことです。町に住む人の知っていることが、次の入口になります。</p>
+      <p class="note">町の公式のサイトを探しても、公開の資料では分からなかったことです。町に住む人の知っていることが、次の入口になります。</p>
       <ul class="ask-list" id="ask-list"></ul>
     </section>
     <section class="block" id="sec-features">
@@ -234,7 +239,7 @@
     </section>
     <section class="block">
       <h2>このページのしくみ</h2>
-      <p>このページの情報は、Claude が町の公式のサイトなどだけを探して読み、出典つきで答えたものです。権利・食い違い・気をつけたい話題など危ない所は人が確かめ、ほかは自動で承認しています。数字や距離・洗濯や服装は「めやす」です。正しい情報は町の公式のページで確かめてください。</p>
+      <p>このページの情報は、AI が町の公式のサイトや国の公開データだけを読んでまとめ、出典をつけたものです。権利・食い違い・気をつけたい話題など危ない所は人が確かめ、ほかは自動で承認しています。数字や距離・洗濯や服装は「めやす」です。正しい情報は町の公式のページで確かめてください。</p>
       <a class="secondary as-button" href="review.html">確かめる一覧を見る</a>
     </section>
   </div>

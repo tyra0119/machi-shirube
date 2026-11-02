@@ -25,6 +25,8 @@ export function townFacts(code) {
   if (feats?.length) add(`町の特徴：${feats.map((x) => ({ nougyou: "農業", gyogyou: "漁業", yuki: "雪", kazan: "火山", shima: "島" })[x] ?? x).join("・")}`, "国勢調査・国の指定");
   const fp = read(`site/data/flood-pop/${code}.json`);
   for (const [k, v] of Object.entries(fp?.kinds ?? {})) add(`${k === "土砂" ? "土砂災害警戒区域" : `${k}で浸かる想定の所`}に住む人 約${v.people.toLocaleString("ja-JP")}人（町の${v.rate}%）、うち65歳以上 約${v.over65?.toLocaleString("ja-JP")}人`, "250m 四方の人口 × ハザードマップ。めやす");
+  const sl = read(`site/data/slope/${code}.json`);
+  if (sl?.slope?.people >= 10) add(`坂が多い所（土地の平均の傾き5%以上）に住む人 約${sl.slope.people.toLocaleString("ja-JP")}人（町の${sl.slope.rate}%）、うち65歳以上 約${sl.slope.over65.toLocaleString("ja-JP")}人`, "国土地理院の標高 × 250m 四方の人口。めやす");
   const q = read(`site/data/quake-pop/${code}.json`);
   if (q) add(`今後30年に震度6弱以上の揺れに見舞われる確率 ${q.p55}%、6強以上 ${q.p60}%（住む人で重みをつけた平均）`, "J-SHIS 2024年版");
   const a = read(`site/data/accidents/${code}.json`);
@@ -66,7 +68,7 @@ export async function mitate(code, log = console.log) {
     out.push(w);
   }
   fs.mkdirSync("site/data/mitate", { recursive: true });
-  fs.writeFileSync(`site/data/mitate/${code}.json`, JSON.stringify({ code, name, createdAt: new Date().toISOString(), model: MODEL, facts, who: out, note: "国の統計と、国や公の機関のデータを重ねた数から、Claude が見立てたものです。理由の数は、渡した数にあるかを PC で照らしています。町の評価ではありません" }, null, 1));
+  fs.writeFileSync(`site/data/mitate/${code}.json`, JSON.stringify({ code, name, createdAt: new Date().toISOString(), model: MODEL, facts, who: out, note: "国の統計と、国や公の機関のデータを重ねた数から、AI が見立てたものです。理由の数は、渡した数にあるかを PC で照らしています。町の評価ではありません" }, null, 1));
   log(`${name}：${out.map((w) => `${w.person}（${w.wall}）`).join("／")}（$${usd.toFixed(3)}）`);
   return { who: out, usd };
 }

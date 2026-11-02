@@ -63,7 +63,7 @@ async function showFeatures(code, at) {
     el.innerHTML = `<section class="block"><h2>${icon(f.main)}${esc(T(f.title))}</h2>
       <p class="feat-why"><span class="feat-badge">${T("この町ならでは")}</span>${esc(why)}（${T("国の数字から決めたもの")}）</p>
       ${f.widget ? `<div class="feat-widget" id="w-${id}"><p class="note">${T("読み込んでいます…")}</p></div>` : ""}</section>
-      <section class="block"><h2>${T("Claude が公式のサイトから探したこと")}</h2><div class="answers-box" data-page="${view}"></div></section>`;
+      <section class="block"><h2>${T("町の公式のサイトから探したこと")}</h2><div class="answers-box" data-page="${view}"></div></section>`;
     document.querySelector(".town-main").append(el);
     if (f.widget && at) WIDGETS[f.widget](at).then((html) => ($(`w-${id}`).innerHTML = html));
   }

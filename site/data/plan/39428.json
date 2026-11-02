@@ -13,7 +13,7 @@
    "url": "https://www.town.kuroshio.lg.jp/img/files/pv/sosiki/2026/03/tiiki-bousaikeikaku-siryou202603.pdf"
   }
  ],
- "note": "町の地域防災計画のうち、町・字の名前が出てくるページを Claude が読み、その地区に関係する所をまとめたもの。どのまとめにも元のページの引用があります",
+ "note": "町の地域防災計画のうち、町・字の名前が出てくるページを AI が読み、その地区に関係する所をまとめたもの。どのまとめにも元のページの引用があります",
  "status": "ok",
  "ledgerId": "r00106",
  "parts": {

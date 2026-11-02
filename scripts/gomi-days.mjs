@@ -120,7 +120,7 @@ export async function buildGomiDays(code, log = console.log) {
   fs.writeFileSync(`site/data/gomi-days/${code}.json`, JSON.stringify({
     name, createdAt: new Date().toISOString(), model: MODEL,
     sources: docs.map(({ url, title }) => ({ url, title })),
-    note: "町の公式の収集日の表と出し方のページから Claude が読み取り、地区と種類の名前が資料にあることを PC で確かめたもの。祝日や年末年始は変わることがあるので、町のカレンダーで確かめてください",
+    note: "町の公式の収集日の表と出し方のページから AI が読み取り、地区と種類の名前が資料にあることを PC で確かめたもの。祝日や年末年始は変わることがあるので、町のカレンダーで確かめてください",
     status: "pending", ledgerId: item.id,
     areas: [...areas.values()], rules,
   }, null, 1));

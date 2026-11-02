@@ -8,8 +8,8 @@ async function showLayerMap(code, townFeatures, at, esc) {
   const box = document.getElementById("layer-map");
   if (!box) return;
   const get = (url) => fetch(url).then((r) => (r.ok ? r.json() : null)).catch(() => null);
-  const [japan, flood, quake, shelters, med, acc, bus, nowc, risk] = await Promise.all([
-    get("data/japan.topo.json"), get(`data/flood-pop/${code}.json`), get(`data/quake-pop/${code}.json`),
+  const [japan, flood, quake, slope, shelters, med, acc, bus, nowc, risk] = await Promise.all([
+    get("data/japan.topo.json"), get(`data/flood-pop/${code}.json`), get(`data/quake-pop/${code}.json`), get(`data/slope/${code}.json`),
     get(`data/shelters/${code}.json`), loadMedical(code), get(`data/accidents/${code}.json`), get(`data/bus/${code}.json`),
     get(`${JMA_TILE}/nowc/targetTimes_N1.json`), get(`${JMA_TILE}/risk/targetTimes.json`),
   ]);
@@ -33,13 +33,14 @@ async function showLayerMap(code, townFeatures, at, esc) {
     ["洪水で浸かる想定の所に住む人が3割以上", (p) => (flood?.kinds?.洪水?.parts?.[p.part]?.rate ?? 0) >= 30],
     ["土砂災害警戒区域に住む人が1割以上", (p) => (flood?.kinds?.土砂?.parts?.[p.part]?.rate ?? 0) >= 10],
     ["30年以内に震度6強以上が26%以上", (p) => (quake?.parts?.[p.part]?.p60 ?? 0) >= 26],
+    ["坂が多い所に住む人が3割以上", (p) => (slope?.parts?.[p.part]?.rate ?? 0) >= 30],
   ];
   const overlap = townFeatures.map((f) => {
     const hit = CONDS.filter(([, fn]) => fn(f.properties)).map(([l]) => l);
     return { ...f, properties: { ...f.properties, n: hit.length, hit: hit.join("／") } };
   });
   const LAYERS = [
-    { id: "overlap", name: "気をつけたいことの重なり", on: true, ok: (flood || quake) && overlap.some((f) => f.properties.n > 0), legend: `${["#f6dfa8", "#f0b36b", "#d9773a", "#a8462a"].map((c, i) => `<i class="dot sq" style="background:${c}"></i>${i + 1}${i === 3 ? "+" : ""}`).join(" ")}　${LT("町・字ごとに、次のうちいくつが重なるか（色が濃いほど多い）")}：${CONDS.map(([l]) => LT(l)).join("・")}。${LT("国の数字から出した、めやすです")}` },
+    { id: "overlap", name: "気をつけたいことの重なり", on: true, ok: (flood || quake || slope) && overlap.some((f) => f.properties.n > 0), legend: `${["#f6dfa8", "#f0b36b", "#d9773a", "#a8462a"].map((c, i) => `<i class="dot sq" style="background:${c}"></i>${i + 1}${i === 3 ? "+" : ""}`).join(" ")}　${LT("町・字ごとに、次のうちいくつが重なるか（色が濃いほど多い）")}：${CONDS.map(([l]) => LT(l)).join("・")}。${LT("国の数字から出した、めやすです")}` },
     { id: "town", name: "町・字の境", on: true, ok: townFeatures.length > 0 },
     { id: "shelter", name: "避難場所", on: true, ok: !!shelters, legend: `<i class="dot" style="background:#2f7d4f"></i>${LT("指定緊急避難場所（押すと名前と、使える災害）")}` },
     { id: "iryo", name: "病院・診療所", ok: medFeatures.length > 0, legend: `<i class="dot" style="background:#2a6fdb"></i>${LT("いまやっている")} <i class="dot" style="background:#9db8e8"></i>${LT("今日やっている")} <i class="dot" style="background:#ccc"></i>${LT("今日は休み")}` },

@@ -1,11 +1,11 @@
 {
  "lang": "pt",
  "name": "Português",
- "createdAt": "2026-11-02T14:16:48.527Z",
+ "createdAt": "2026-11-02T14:57:29.638Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 364,
- "of": 362,
+ "count": 379,
+ "of": 372,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Guia não oficial da vida na cidade. O Claude reúne as informações em sites oficiais da cidade e outras fontes, e indica a origem de cada uma (Machishirube)",
   "すべてのページ": "Todas as páginas",
@@ -370,6 +370,21 @@
   "この町・字の名前が出てくる所は、防災計画に見つかりませんでした。": "Não foi encontrado no plano de prevenção de desastres nenhum trecho que mencione o nome deste bairro/localidade.",
   "2050年まで人口が増えると推計される町です。": "Cidade cuja população deve crescer até 2050.",
   "人口の減りにくさは、全国の市区町村の上から": "Resistência à queda da população: entre os primeiros",
-  "に入ります": "dos municípios do país"
+  "に入ります": "dos municípios do país",
+  "町の公式のサイトを探しても、公開の資料では分からなかったことです。町に住む人の知っていることが、次の入口になります。": "Informações que não foram encontradas nos materiais públicos, mesmo após pesquisar no site oficial da cidade. O que os moradores sabem pode ser o próximo passo.",
+  "町の公式の収集日の表と出し方のページから AI が読み取り、地区と種類の名前が資料にあることを PC で確かめたもの。祝日や年末年始は変わることがあるので、町のカレンダーで確かめてください": "Lido por IA a partir da tabela oficial de dias de coleta e da página sobre como descartar o lixo; confirmado por PC que os nomes dos bairros e dos tipos de lixo constam nos materiais. Feriados e o fim e início do ano podem mudar, por isso confirme no calendário da cidade",
+  "町の地域防災計画のうち、町・字の名前が出てくるページを AI が読み、その地区に関係する所をまとめたもの。どのまとめにも元のページの引用があります": "Páginas do plano municipal de prevenção de desastres em que aparecem nomes de cidade e de localidade (aza), lidas por IA, com um resumo dos trechos relacionados a cada bairro. Todos os resumos trazem uma citação da página original",
+  "町の公式のサイトから探したこと": "O que encontramos no site oficial da cidade",
+  "雪の先読み（冬のあいだは、ここにも出します）": "Prévia da neve (no inverno, também aparece aqui)",
+  "雪の暮らしのページへ": "Ir para a página sobre a vida na neve",
+  "坂が多い所に住む人": "Pessoas que moram em áreas com muitas ladeiras",
+  "そのうち65歳以上": "Dentre eles, com 65 anos ou mais",
+  "65歳以上の": "Com 65 anos ou mais:",
+  "急な坂が多い所に住む人": "Pessoas que moram em áreas com muitas ladeiras íngremes",
+  "坂が多い所に住む人の割合": "Proporção de pessoas que moram em áreas com muitas ladeiras",
+  "避難の道や、毎日の買い物・通院の道のりが、お年寄りには重くなります。": "Para os idosos, o caminho de evacuação e o trajeto diário para compras e hospitais se tornam mais difíceis.",
+  "公式のサイトから確かめた答え": "Respostas confirmadas no site oficial",
+  "町の公式のサイトから探して、出典つきでここに出します。": "Pesquisado no site oficial da cidade e exibido aqui com a fonte.",
+  "出典の中の場所": "Local na fonte"
  }
 }

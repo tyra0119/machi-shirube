@@ -39,7 +39,8 @@
     "build:bus": "node scripts/build-bus.mjs",
     "plan-excerpts": "node --env-file=.env scripts/plan-excerpts.mjs",
     "mitate": "node --env-file=.env scripts/mitate.mjs",
-    "build:summary": "node scripts/build-summary.mjs"
+    "build:summary": "node scripts/build-summary.mjs",
+    "build:slope": "node scripts/build-slope.mjs"
   },
   "devDependencies": {
     "mapshaper": "^0.7.101"

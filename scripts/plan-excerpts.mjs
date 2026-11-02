@@ -117,7 +117,7 @@ export async function planExcerpts(code, log = console.log, { only } = {}) {
   fs.writeFileSync(`site/data/plan/${code}.json`, JSON.stringify({
     name, createdAt: new Date().toISOString(), model: MODEL, page: plan.page,
     sources: plan.files.map(({ title, url }) => ({ title, url })),
-    note: "町の地域防災計画のうち、町・字の名前が出てくるページを Claude が読み、その地区に関係する所をまとめたもの。どのまとめにも元のページの引用があります",
+    note: "町の地域防災計画のうち、町・字の名前が出てくるページを AI が読み、その地区に関係する所をまとめたもの。どのまとめにも元のページの引用があります",
     status: "pending", ledgerId: item.id, parts: out,
   }, null, 1));
   log(`できました：町・字 ${Object.keys(out).length}（$${usd.toFixed(3)}）`);

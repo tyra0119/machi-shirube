@@ -435,7 +435,7 @@
     "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/170/20200828141906.html",
     "where": "目次（1〜2ページ）・5段階の警戒レベル（5〜6ページ）・洪水災害について（13〜14ページ）の PDF"
    },
-   "method": "PDF を絵として読んだ（Claude）",
+   "method": "PDF を絵として読んだ（AI）",
    "status": "ok",
    "checkedAt": "2026-11-02T14:00:46.149Z",
    "score": 2

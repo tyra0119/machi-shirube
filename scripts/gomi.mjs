@@ -166,7 +166,7 @@ export async function buildGomi(code, log = console.log) {
   fs.writeFileSync(`site/data/gomi/${code}.json`, JSON.stringify({
     name, createdAt: new Date().toISOString(), model: MODEL,
     sources: used.map(({ url, title }) => ({ url, title })),
-    note: "町の公式の一覧表から Claude が読み取り、品目名が表にあることを PC で確かめたもの。分け方の区分と注意は短くしています。迷ったら町の表で確かめてください",
+    note: "町の公式の一覧表から AI が読み取り、品目名が表にあることを PC で確かめたもの。分け方の区分と注意は短くしています。迷ったら町の表で確かめてください",
     kinds, items,
   }));
   log(`できました：${items.length} 品目・区分 ${kinds.length}（$${usd.toFixed(3)}）`);

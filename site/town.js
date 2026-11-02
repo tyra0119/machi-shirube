@@ -161,6 +161,22 @@ async function showFloodPop(code, part) {
 }
 const depthColor = (label) => { const c = DEPTH_COLORS.find(([, l]) => l === label)?.[0] ?? (label === "警戒区域" ? [214, 170, 110] : [200, 200, 200]); return `rgb(${c.join(",")})`; };
 
+// 坂の多い所に住む人（国土地理院の標高 × 250m 四方の人口。scripts/build-slope.mjs）
+async function showSlope(code, part) {
+  const d = await fetch(`data/slope/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  if (!d || d.slope.people < 10) return;
+  $("slope-block").hidden = false;
+  const n = (v) => v.toLocaleString("ja-JP");
+  const here = part && d.parts[part.properties.part];
+  $("slope").innerHTML = [
+    [T("坂が多い所に住む人"), `${T("約")} ${n(d.slope.people)} ${T("人")}`, `${T("町の人の")} ${d.slope.rate}%`],
+    [T("そのうち65歳以上"), `${T("約")} ${n(d.slope.over65)} ${T("人")}`, `${T("65歳以上の")} ${d.slope.over65Rate}%`],
+    [T("急な坂が多い所に住む人"), `${T("約")} ${n(d.steep.people)} ${T("人")}`, `${T("町の人の")} ${d.steep.rate}%`],
+    ...(here ? [[esc(here.name), `${here.rate}%`, T("坂が多い所に住む人の割合")]] : []),
+  ].map(([l, v, s]) => `<li><span class="l">${l}</span><strong>${v}</strong><span class="s">${s}</span></li>`).join("");
+  $("slope-note").innerHTML = `${esc(T(d.note))}。${T("避難の道や、毎日の買い物・通院の道のりが、お年寄りには重くなります。")}${d.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join("・")}`;
+}
+
 // 防災計画の、町・字に関係する所（scripts/plan-excerpts.mjs。Claude が引用つきで抜き出し、人が確かめてから出す）
 async function showPlan(code, part) {
   const d = await fetch(`data/plan/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
@@ -520,10 +536,10 @@ async function showAnswers(code, scopeNote, partKey, partName) {
     const list = answersByPage[box.dataset.page] ?? [];
     const p = PAGES.find((x) => x.view === box.dataset.page);
     // 場面の帯：イラストと、この場面で分かること
-    box.innerHTML = (p ? `<div class="page-banner" style="--h:${ILLUST[p.view]?.h ?? 200}">${illust(p.view)}<p><strong>${esc(T(p.title))}</strong>${esc(T(p.desc))}${list.length ? `<span>${T("Claude が公式のサイトから確かめた答え")} ${list.length}</span>` : ""}</p></div>` : "")
+    box.innerHTML = (p ? `<div class="page-banner" style="--h:${ILLUST[p.view]?.h ?? 200}">${illust(p.view)}<p><strong>${esc(T(p.title))}</strong>${esc(T(p.desc))}${list.length ? `<span>${T("公式のサイトから確かめた答え")} ${list.length}</span>` : ""}</p></div>` : "")
       + (list.length && scopeNote && !list.some((a) => a.level) ? `<p class="note">${esc(scopeNote)}</p>` : "")
       + (list.length ? answersHTML(list) : "")
-      + (p?.later && !list.length ? `<p class="later"><span>${T("準備中")}</span>${LANG ? `${esc(T(p.later))} — ${T("Claude が町の公式のサイトから探して、出典つきでここに出します。")}` : `${esc(p.later)}を、Claude が町の公式のサイトから探して、出典つきでここに出します。`}</p>` : "")
+      + (p?.later && !list.length ? `<p class="later"><span>${T("準備中")}</span>${LANG ? `${esc(T(p.later))} — ${T("町の公式のサイトから探して、出典つきでここに出します。")}` : `${esc(p.later)}を、町の公式のサイトから探して、出典つきでここに出します。`}</p>` : "")
       + (!list.length && !p?.later ? `<p class="note">まだありません。</p>` : "");
   }
 }
@@ -683,10 +699,10 @@ wireAllPages();
 // 母語で防災：Claude が訳し、別の Claude が訳し戻して確かめた訳（site/data/translations/{コード}.json）。
 // 確かめで意味がずれた訳は、人が OK するまで出さず、もとの日本語を出す
 const TR_NOTE = {
-  pt: "Tradução feita por IA (Claude). Outra IA traduziu de volta para o japonês para conferir o sentido. Confirme as informações oficiais no site da cidade.",
-  es: "Traducción hecha por IA (Claude). Otra IA la tradujo de nuevo al japonés para comprobar el sentido. Confirme la información oficial en el sitio del municipio.",
-  en: "Translated by AI (Claude). Another AI translated it back into Japanese to check the meaning. Please check the official information on the town's website.",
-  easy: "AI（Claude）が やさしい にほんごに しました。べつの AI が もとの ことばと おなじ いみか たしかめました。ただしい ことは まちの ホームページで たしかめて ください。",
+  pt: "Tradução feita por IA. Outra IA traduziu de volta para o japonês para conferir o sentido. Confirme as informações oficiais no site da cidade.",
+  es: "Traducción hecha por IA. Otra IA la tradujo de nuevo al japonés para comprobar el sentido. Confirme la información oficial en el sitio del municipio.",
+  en: "Translated by AI. Another AI translated it back into Japanese to check the meaning. Please check the official information on the town's website.",
+  easy: "AI が やさしい にほんごに しました。べつの AI が もとの ことばと おなじ いみか たしかめました。ただしい ことは まちの ホームページで たしかめて ください。",
 };
 const TR_PENDING = { pt: "Tradução em verificação. Original em japonês:", es: "Traducción en verificación. Original en japonés:", en: "Translation being checked. Original Japanese:", easy: "いま たしかめて います。もとの にほんご：" };
 async function showTranslations(code) {
@@ -836,6 +852,7 @@ async function finishPage(code, townFeatures, startPart, scopeNote, at) {
   }
   showLayerMap(code, townFeatures, at, esc);
   await showFloodPop(code, part);
+  await showSlope(code, part);
   await showPlan(code, part);
   await showQuake(code, part);
   await showBus(code, part);

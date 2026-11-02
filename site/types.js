@@ -38,13 +38,11 @@ function typeCandidates(t, f, s) {
   return out.sort((a, b) => b.strength - a.strength).slice(0, 3);
 }
 
-// まだ計算していないので候補にできない型（町を調べるときに計算する）
-const TYPES_LATER = "わが家の避難（浸水・津波）・水と揺れ・坂の地図は、浸水・揺れ・坂を計算してから候補にします。";
 
 function typeCandidatesHTML(t, f, s) {
   const list = typeCandidates(t, f, s);
   const items = list.length
     ? `<ol class="types">${list.map((c) => `<li><span class="type">${c.type}</span><span class="who">${c.who}</span><span class="why">${c.reason}</span></li>`).join("")}</ol>`
     : `<p>全国の数字と国の一覧からは、目立つ型は見つかりませんでした。</p>`;
-  return `${items}<p class="note">全国の数字と国の一覧に、決まりを当てはめた候補です。${TYPES_LATER}本当に届きにくいのは誰かは、町を調べるときに Claude が公式の資料から見立て、人が確かめます。</p>`;
+  return `${items}<p class="note">全国の数字と国の一覧に、決まりを当てはめた候補です。くわしく調べた町では、浸水・揺れ・坂・事故・バスなどの国のデータを重ねた数から、AI が見立て直します（町のページのいちばん上）。</p>`;
 }

@@ -1078,11 +1078,13 @@ async function lightTowns() {
     for (const [code, t] of Object.entries(progress.towns)) map.setFeatureState({ source: "munis", id: code }, { lit: Math.min(1, 0.35 + t.answers / 15) });
   }
   updatePoints();
-  showCounter();
+  // 数える欄（調べた町・答え・読んだページ・費用・スキル）は作る側のもの。住民が見る公開のサイトには出さず、手元の画面だけに出す
   if (!lightTowns.polling && (await fetch("api/ping").then((r) => r.ok).catch(() => false))) {
+    lightTowns.local = true;
     lightTowns.polling = true;
     pollRuns();
   }
+  if (lightTowns.local) showCounter();
 }
 function showCounter(running = []) {
   const t = progress?.totals;

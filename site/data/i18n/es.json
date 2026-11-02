@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-02T14:17:22.902Z",
+ "createdAt": "2026-11-02T14:57:39.242Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 363,
- "of": 362,
+ "count": 380,
+ "of": 372,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -369,6 +369,23 @@
   "この町・字の名前が出てくる所は、防災計画に見つかりませんでした。": "No se encontró en el plan de prevención de desastres ningún pasaje donde aparezca el nombre de este barrio o zona.",
   "2050年まで人口が増えると推計される町です。": "Municipio cuya población se estima que aumentará hasta 2050.",
   "人口の減りにくさは、全国の市区町村の上から": "Resistencia a la caída de población: entre los municipios del país, desde arriba,",
-  "に入ります": "está dentro"
+  "に入ります": "está dentro",
+  "この町の非公式の暮らしの案内です。町の公式のサイトや国の公開データから集め、出典をつけています（まちしるべ）": "Guía no oficial de la vida cotidiana de este municipio. Reúne información de los sitios oficiales del municipio y de datos públicos del país, e indica las fuentes (Machishirube)",
+  "町の公式のサイトを探しても、公開の資料では分からなかったことです。町に住む人の知っていることが、次の入口になります。": "Esto es lo que no se pudo saber con los materiales públicos, ni siquiera buscando en el sitio oficial del municipio. Lo que saben los vecinos puede ser la próxima puerta de entrada.",
+  "町の公式の収集日の表と出し方のページから AI が読み取り、地区と種類の名前が資料にあることを PC で確かめたもの。祝日や年末年始は変わることがあるので、町のカレンダーで確かめてください": "Datos leídos por IA de la tabla oficial de días de recogida y de la página sobre cómo sacar la basura, con comprobación en PC de que los nombres de barrios y tipos figuran en los materiales. Los festivos y el fin de año pueden cambiar, así que confírmelo en el calendario del municipio.",
+  "250m 四方ごとの人口（国勢調査 2020年）に、その四角の中で浸水や土砂災害が想定される場所の割合を掛けて足した、めやすです。人は四角の中に均等に住んでいるとみなしています。10人単位に丸めています": "Cifra aproximada: se multiplica la población de cada cuadrícula de 250 m de lado (censo de 2020) por la proporción de esa cuadrícula donde se prevén inundaciones o desprendimientos de tierra, y se suman los resultados. Se supone que la gente vive repartida de forma uniforme dentro de cada cuadrícula. Se redondea a decenas de personas.",
+  "町の地域防災計画のうち、町・字の名前が出てくるページを AI が読み、その地区に関係する所をまとめたもの。どのまとめにも元のページの引用があります": "Resumen hecho por IA de las páginas del plan municipal de prevención de desastres en las que aparecen nombres de municipio y de localidades (aza), con lo que se relaciona con ese barrio. Cada resumen incluye una cita de la página original.",
+  "町の公式のサイトから探したこと": "Lo que se buscó en el sitio oficial del municipio",
+  "雪の先読み（冬のあいだは、ここにも出します）": "Previsión de nieve (en invierno también se muestra aquí)",
+  "雪の暮らしのページへ": "Ir a la página de vida con nieve",
+  "坂が多い所に住む人": "Personas que viven en zonas con muchas cuestas",
+  "そのうち65歳以上": "De ellas, mayores de 65 años",
+  "65歳以上の": "Mayores de 65 años",
+  "急な坂が多い所に住む人": "Personas que viven en zonas con muchas cuestas empinadas",
+  "坂が多い所に住む人の割合": "Proporción de personas que viven en zonas con muchas cuestas",
+  "避難の道や、毎日の買い物・通院の道のりが、お年寄りには重くなります。": "Para las personas mayores, los caminos de evacuación y los trayectos diarios de compras y al hospital resultan más duros.",
+  "公式のサイトから確かめた答え": "Respuestas confirmadas en el sitio oficial",
+  "町の公式のサイトから探して、出典つきでここに出します。": "Se buscan en el sitio oficial del municipio y se muestran aquí con su fuente.",
+  "出典の中の場所": "Lugar dentro de la fuente"
  }
 }
