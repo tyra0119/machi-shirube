@@ -357,7 +357,15 @@ export async function researchTown(code, { log = console.log, onItem = () => {},
   let total = 0;
   // 「この町だけ」の問い（only）は、その町を調べるときだけ。特徴の問い（feature）は、その特徴のある町だけ（site/data/features.json）
   const feats = fs.existsSync("site/data/features.json") ? JSON.parse(fs.readFileSync("site/data/features.json", "utf8")).towns[code] ?? [] : [];
-  for (const q of questions.filter((x) => (x.level === "town") === Boolean(part) && (!x.only || x.only === code) && (!x.feature || feats.includes(x.feature)))) {
+  // 調べる順：その町らしい問いを先に（1回の上限で止まっても、町の特徴・届きにくい人の問いには届くように）。
+  // 町の特徴の問い → その町だけの問い → 防災と、その町で目立つ人（外国の住民・お年寄りが全国の上から10%）の問い → そのほか（物差しの順）
+  const stats = JSON.parse(fs.readFileSync("site/data/stats.json", "utf8"));
+  const t = stats.towns[code], s = stats.summary;
+  const loud = new Set(["bousai", ...(t?.foreignRate >= s.foreignRate.top10 ? ["foreign"] : []), ...(t?.over65Rate >= s.over65Rate.top10 ? ["kaigo"] : [])]);
+  const rank = (q) => (q.feature ? 0 : q.only ? 1 : loud.has(q.page) ? 2 : 3);
+  const list = questions.filter((x) => (x.level === "town") === Boolean(part) && (!x.only || x.only === code) && (!x.feature || feats.includes(x.feature)))
+    .map((q, i) => ({ q, i })).sort((a, b) => rank(a.q) - rank(b.q) || a.i - b.i).map((x) => x.q);
+  for (const q of list) {
     if (done.has(q.id) || done.has(q.text)) { log(`${q.id} はもう答えがあるので飛ばします`); continue; }
     if (shouldStop()) { log("止めました"); break; }
     if (total >= RUN_LIMIT_USD) { log(`この調べの費用が上限（$${RUN_LIMIT_USD}）に達したので止めます`); break; }
