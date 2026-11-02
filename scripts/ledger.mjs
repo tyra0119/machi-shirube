@@ -327,4 +327,31 @@ export function exportPublic(data = load()) {
     })),
   }, null, 1));
   exportProgress(data);
+  exportChanges(data);
+}
+
+// 新しくなったこと（町のページの「今日」に出す）：町のページに出るようになった日（自動で出したものは作った日、人が OK したものは OK した日）ごとに、
+// 足した答え・新しくした答え（前の答えを置きかえた）・ごみを出す日などを並べる。住む人の言葉（物差しの見出し）だけで、作る側の番号は出さない
+const KIND_LABEL = { "gomi-days": "ごみを出す日（地区ごとの曜日）", "plan-excerpt": "防災計画の、町・字に関係する所", dekiru: "数から、できることへ" };
+export function exportChanges(data = load()) {
+  const yard = JSON.parse(fs.readFileSync("site/data/yardstick.json", "utf8")).questions;
+  const shown = (it) => it.status === "auto" ? it.createdAt : it.status === "ok" ? it.decisions.filter((d) => d.action === "ok").at(-1)?.at : null;
+  const byMuni = new Map();
+  const seen = new Set(); // 同じ問いで、前にもう出ていたか（町ごと）
+  const items = data.items.filter((it) => !["watch", "translation"].includes(it.kind) && shown(it)).sort((a, b) => shown(a).localeCompare(shown(b)));
+  for (const it of items) {
+    const code = it.scope.match(/(\d{5})/)?.[1];
+    if (!code || it.scope.startsWith("town:")) continue;
+    if (it.value === "見つからなかった") continue;
+    const label = KIND_LABEL[it.kind] ?? yard.find((q) => q.id === it.qid)?.short;
+    if (!label) continue;
+    const key = `${code}/${it.kind ?? "answer"}/${it.qid ?? ""}`;
+    const what = seen.has(key) ? "新しくしました" : "足しました";
+    seen.add(key);
+    if (!byMuni.has(code)) byMuni.set(code, []);
+    byMuni.get(code).push({ at: shown(it), label, what, qid: it.qid ?? null, kind: it.kind ?? "answer" });
+  }
+  const dir = "site/data/changes";
+  fs.mkdirSync(dir, { recursive: true });
+  for (const [code, list] of byMuni) fs.writeFileSync(`${dir}/${code}.json`, JSON.stringify({ code, changes: list.reverse().slice(0, 40) }, null, 1));
 }

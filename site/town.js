@@ -217,6 +217,23 @@ async function showDekiru(code, part) {
   $("dekiru-note").textContent = `${t("n.dekiru", d.note)}${tr ? ` ${T("（AI による訳）")} ` : "。"}${T("人が確かめてから出しています。")}`;
 }
 
+// このページで新しくなったこと（scripts/ledger.mjs の exportChanges。町のページに出るようになった日ごと）。押すとその答えへ
+async function showChanges(code, part) {
+  if (part) return;
+  const d = await fetch(`data/changes/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  if (!d?.changes?.length) return;
+  const yard = (await getJSON("data/yardstick.json")).questions;
+  const pageOf = (c) => ({ "gomi-days": "gomi", "plan-excerpt": "bousai", dekiru: "today" })[c.kind] ?? yard.find((q) => q.id === c.qid)?.page ?? "today";
+  const day = (iso) => new Date(iso).toLocaleDateString(LANG && LANG !== "easy" ? LANG : "ja-JP", { timeZone: "Asia/Tokyo", month: "long", day: "numeric" });
+  const list = d.changes.slice(0, 8);
+  const days = [...new Set(list.map((c) => day(c.at)))];
+  $("changes-block").hidden = false;
+  $("changes").innerHTML = days.map((dd) => `<h3 class="ch-day">${icon("calendar")}${esc(dd)}</h3><ul class="ch-list">${list.filter((c) => day(c.at) === dd).map((c) =>
+    `<li><a href="#${pageOf(c)}" data-target="${c.qid ? `a-${c.qid}` : ""}"><span class="ch-what ${c.what === "新しくしました" ? "up" : ""}">${esc(T(c.what))}</span>${esc(T(c.label))}</a></li>`).join("")}</ul>`).join("")
+    + (d.changes.length > list.length ? `<p class="note">${T("ほかに")} ${d.changes.length - list.length} ${T("件")}</p>` : "");
+  for (const a of $("changes").querySelectorAll("a[data-target]")) if (a.dataset.target) a.addEventListener("click", () => setTimeout(() => $(a.dataset.target)?.scrollIntoView({ behavior: "smooth", block: "start" }), 50));
+}
+
 // 昔の災害を伝える碑（国土地理院 自然災害伝承碑。scripts/build-lore.mjs）。碑の文は公開のまま出す。町の碑がなければ近くの町の碑
 async function showLore(code) {
   const d = await fetch(`data/lore/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
@@ -943,6 +960,7 @@ async function finishPage(code, townFeatures, startPart, scopeNote, at) {
   showLayerMap(code, townFeatures, at, esc);
   await showHitokoto(code, part);
   await showDekiru(code, part);
+  await showChanges(code, part);
   await showFloodPop(code, part);
   await showSlope(code, part);
   await showPlan(code, part);
