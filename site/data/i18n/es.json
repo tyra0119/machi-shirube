@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-02T11:47:19.443Z",
+ "createdAt": "2026-11-02T12:04:43.374Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 224,
- "of": 223,
+ "count": 230,
+ "of": 230,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -230,6 +230,12 @@
   "働く人のうち漁業": "Pesca entre la población trabajadora",
   "豪雪地帯": "Zona de nevadas intensas",
   "火山災害警戒地域": "Zona de alerta por desastres volcánicos",
-  "離島がある": "Tiene islas remotas"
+  "離島がある": "Tiene islas remotas",
+  "ごみを出す日": "Días de recogida de basura",
+  "地区を選ぶ": "Elegir distrito",
+  "出し方の要点": "Puntos clave para sacar la basura",
+  "地区ごとの曜日は、いま人が確かめています（公式の表から読み取ったものが、町のカレンダーと合っているか）。それまでは町の収集日の表をご覧ください。": "Actualmente una persona está verificando los días de la semana de cada distrito (si lo extraído de la tabla oficial coincide con el calendario del municipio). Hasta entonces, consulte la tabla de días de recogida del municipio.",
+  "地区を選ぶと、今日と明日に出せるごみが分かります。": "Al elegir un distrito, verá qué basura se puede sacar hoy y mañana.",
+  "収集なし": "Sin recogida"
  }
 }

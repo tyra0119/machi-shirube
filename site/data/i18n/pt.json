@@ -1,11 +1,11 @@
 {
  "lang": "pt",
  "name": "Português",
- "createdAt": "2026-11-02T11:47:06.530Z",
+ "createdAt": "2026-11-02T12:04:36.382Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 222,
- "of": 223,
+ "count": 230,
+ "of": 230,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Guia não oficial da vida na cidade. O Claude reúne as informações em sites oficiais da cidade e outras fontes, e indica a origem de cada uma (Machishirube)",
   "すべてのページ": "Todas as páginas",
@@ -228,6 +228,14 @@
   "全国の市区町村で高いほうから": "Posição entre os municípios do país, do mais alto para baixo",
   "豪雪地帯": "Região de neve intensa",
   "火山災害警戒地域": "Zona de alerta de desastres vulcânicos",
-  "離島がある": "Tem ilhas remotas"
+  "離島がある": "Tem ilhas remotas",
+  "ごみを出す日": "Dia de colocar o lixo",
+  "働く人のうち農業・林業": "Trabalhadores na agricultura e silvicultura",
+  "働く人のうち漁業": "Trabalhadores na pesca",
+  "地区を選ぶ": "Escolher o bairro",
+  "出し方の要点": "Pontos principais para descartar",
+  "地区ごとの曜日は、いま人が確かめています（公式の表から読み取ったものが、町のカレンダーと合っているか）。それまでは町の収集日の表をご覧ください。": "Os dias da semana de cada bairro estão sendo conferidos por uma pessoa (se o que foi lido na tabela oficial coincide com o calendário da cidade). Até lá, consulte a tabela de dias de coleta da cidade.",
+  "地区を選ぶと、今日と明日に出せるごみが分かります。": "Ao escolher o bairro, você vê quais lixos podem ser colocados hoje e amanhã.",
+  "収集なし": "Sem coleta"
  }
 }

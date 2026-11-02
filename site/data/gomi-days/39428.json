@@ -1,0 +1,59 @@
+{
+ "name": "高知県 黒潮町",
+ "createdAt": "2026-11-02T12:06:16.780Z",
+ "model": "claude-sonnet-5-5",
+ "sources": [
+  {
+   "url": "https://www.town.kuroshio.lg.jp/pb/cont/juumin-gomi/5355",
+   "title": "令和8年一般ごみ収集計画表"
+  },
+  {
+   "url": "https://www.town.kuroshio.lg.jp/img/files/pv/sosiki/2025/12/2026gomi-ogata.pdf",
+   "title": "令和8年一般ごみ収集計画表の添付（PDF）"
+  },
+  {
+   "url": "https://www.town.kuroshio.lg.jp/img/files/pv/sosiki/2025/12/2026gomi-saga.pdf",
+   "title": "令和8年一般ごみ収集計画表の添付（PDF）"
+  },
+  {
+   "url": "https://www.town.kuroshio.lg.jp/pb/cont/kankyo-gomi/35942",
+   "title": "ごみの分け方・出し方"
+  }
+ ],
+ "note": "町の公式の収集日の表と出し方のページから Claude が読み取り、地区と種類の名前が資料にあることを PC で確かめたもの。祝日や年末年始は変わることがあるので、町のカレンダーで確かめてください",
+ "status": "pending",
+ "ledgerId": "r00104",
+ "areas": [
+  {
+   "area": "佐賀①の組",
+   "towns": [],
+   "days": [
+    {
+     "kind": "家庭ごみ",
+     "when": "毎週月・木曜日"
+    }
+   ]
+  },
+  {
+   "area": "佐賀②の組",
+   "towns": [],
+   "days": [
+    {
+     "kind": "家庭ごみ",
+     "when": "毎週火・金曜日"
+    }
+   ]
+  }
+ ],
+ "rules": [
+  {
+   "kind": "家庭ごみ",
+   "how": "収集日以外には出さない。詳しくは「黒潮町のごみの分け方・出し方」等で確認",
+   "time": "午前8時まで"
+  },
+  {
+   "kind": "粗大ごみ・有害ごみ（水銀系）",
+   "how": "出し方の要点は書かれていない"
+  }
+ ]
+}

@@ -1,11 +1,11 @@
 {
  "lang": "en",
  "name": "English",
- "createdAt": "2026-11-02T11:47:31.244Z",
+ "createdAt": "2026-11-02T12:04:49.781Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 223,
- "of": 223,
+ "count": 229,
+ "of": 230,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "This is an unofficial guide to living in this town. Claude gathers information from the town's official website and other sources, and cites each source (Machishirube)",
   "すべてのページ": "All pages",
@@ -229,6 +229,12 @@
   "働く人のうち漁業": "Share of workers in fishing",
   "豪雪地帯": "Heavy snowfall area",
   "火山災害警戒地域": "Volcanic disaster alert area",
-  "離島がある": "Has outlying islands"
+  "離島がある": "Has outlying islands",
+  "ごみを出す日": "Garbage Collection Days",
+  "地区を選ぶ": "Select your district",
+  "出し方の要点": "Disposal key points",
+  "地区ごとの曜日は、いま人が確かめています（公式の表から読み取ったものが、町のカレンダーと合っているか）。それまでは町の収集日の表をご覧ください。": "The collection days for each district are currently being verified by a person (to check whether what was read from the official schedule matches the town calendar). Until then, please refer to the town's collection schedule.",
+  "地区を選ぶと、今日と明日に出せるごみが分かります。": "Select your district to see what garbage can be put out today and tomorrow.",
+  "収集なし": "No collection"
  }
 }
