@@ -138,6 +138,9 @@ map.on("load", async () => {
   // 中の町が出ていれば中の町を、そうでなければ市区町村を選ぶ
   map.on("click", (e) => {
     const town = shownTowns && map.queryRenderedFeatures(e.point, { layers: ["town-fill"] })[0];
+    // 複数を選んでいるとき・Ctrl（⌘）や Shift を押しながらのときは、選ぶ・外すを切り替える
+    const add = e.originalEvent.ctrlKey || e.originalEvent.metaKey || e.originalEvent.shiftKey;
+    if (town && (picked.size || add)) return togglePick(town.properties);
     if (town) return showTownCard(town.properties);
     const muni = map.queryRenderedFeatures(e.point, { layers: ["muni-fill"] })[0];
     if (muni) showCard(muni.properties);
@@ -147,9 +150,20 @@ map.on("load", async () => {
   const q = new URLSearchParams(location.search);
   await statsReady.catch(() => {});
   await townIndexReady.catch(() => {});
-  if (q.get("town")) {
-    const [code, part] = q.get("town").split("-");
-    selectTown(code, part);
+  if (q.get("area")) {
+    openArea(q.get("area"));
+  } else if (q.get("town")) {
+    const [code, partList] = q.get("town").split("-");
+    const parts = partList.split(",");
+    if (parts.length === 1) selectTown(code, parts[0]);
+    else {
+      await showTowns(code);
+      for (const part of parts) {
+        const f = townData.features.find((x) => x.properties.part === part);
+        if (f) togglePick(f.properties);
+      }
+      fit(townData.features.filter((f) => picked.has(f.properties.town)), 14);
+    }
   } else if (q.get("muni") && byCode.has(q.get("muni"))) {
     if (q.has("towns") && townIndex.codes.includes(q.get("muni"))) showTowns(q.get("muni"));
     else selectMuni(q.get("muni"));
@@ -159,10 +173,12 @@ map.on("load", async () => {
 // 選んでいる町を URL に残す（送ると同じ町が開く。見ている場所は #z= のまま）
 function rememberInURL() {
   const q = new URLSearchParams();
-  if (shownTowns && selectedTown) q.set("town", `${shownTowns}-${selectedTown.slice(5)}`);
+  if (shownTowns && currentArea) q.set("area", currentArea.id);
+  else if (shownTowns && picked.size) q.set("town", `${shownTowns}-${[...picked.keys()].map((k) => k.slice(5)).join(",")}`);
+  else if (shownTowns && selectedTown) q.set("town", `${shownTowns}-${selectedTown.slice(5)}`);
   else if (shownTowns) { q.set("muni", shownTowns); q.set("towns", ""); }
   else if (selected) q.set("muni", selected);
-  const s = q.toString().replace(/=(&|$)/g, "$1");
+  const s = q.toString().replace(/=(&|$)/g, "$1").replace(/%2C/g, ",");
   history.replaceState(null, "", `${location.pathname}${s ? `?${s}` : ""}${location.hash}`);
 }
 
@@ -196,6 +212,7 @@ async function showTowns(code, { list = true } = {}) {
   map.setLayoutProperty("muni-label", "visibility", "none");
   shownTowns = code;
   selectedTownName = null;
+  picked.clear();
   paintTowns();
   updateCrumb();
   fit(townData.features);
@@ -210,6 +227,7 @@ function hideTowns({ quiet = false } = {}) {
   if (selectedTown) map.setFeatureState({ source: "towns", id: selectedTown }, { selected: false });
   selectedTown = null;
   selectedTownName = null;
+  clearPicks();
   shownTowns = null;
   updateCrumb();
   if (quiet) return;
@@ -232,7 +250,9 @@ function updateCrumb() {
     { label: p.pref, go: () => goPref(p.pref) },
     { label: p.fullName, go: () => (shownTowns ? hideTowns() : null) },
   ];
-  if (shownTowns) steps.push({ label: selectedTownName ?? "中の町", go: selectedTownName ? showTownList : null });
+  if (shownTowns && currentArea) steps.push({ label: currentArea.name, go: null });
+  else if (shownTowns && picked.size) steps.push({ label: `${picked.size}つの町・字`, go: null });
+  else if (shownTowns) steps.push({ label: selectedTownName ?? "中の町", go: selectedTownName ? showTownList : null });
   const path = crumb.querySelector(".path");
   path.innerHTML = steps.map((s, i) =>
     i === steps.length - 1 || !s.go
@@ -421,10 +441,155 @@ function showTownList() {
     <button type="button" class="close" aria-label="閉じる">×</button>
     <h2>${muni?.fullName ?? ""}の中の町</h2>
     <p class="where">地図で町を押すか、下から選んでください（${towns.length}の町・字）</p>
+    <button type="button" class="secondary multi">複数の町・字を選ぶ（合わせて見る）</button>
+    ${areas.some((a) => a.muni === shownTowns) ? `<p class="where">まとまり</p><ul class="town-list areas">${areas.filter((a) => a.muni === shownTowns).map((a) =>
+      `<li><button type="button" data-area="${a.id}"><span class="n">${a.name}</span><span class="p">${a.parts.length}の町・字</span></button></li>`).join("")}</ul><p class="where">町・字</p>` : ""}
     <ul class="town-list">${towns.map((f) => `<li><button type="button" data-part="${f.properties.part}"><span class="n">${f.properties.name}</span><span class="p">${f.properties.population ? `${f.properties.population.toLocaleString("ja-JP")}人` : "人が住んでいない"}</span></button></li>`).join("")}</ul>
     <p class="cite">人口：${townIndex.source}（${townIndex.asOf}）</p>`;
   card.querySelector(".close").addEventListener("click", hideTowns);
-  for (const b of card.querySelectorAll(".town-list button")) b.addEventListener("click", () => selectTown(shownTowns, b.dataset.part));
+  card.querySelector(".multi").addEventListener("click", () => showPickedCard());
+  for (const b of card.querySelectorAll(".town-list button")) {
+    b.addEventListener("click", () => (b.dataset.area ? openArea(b.dataset.area) : selectTown(shownTowns, b.dataset.part)));
+  }
+  openCard();
+}
+
+// まとまり：複数の町・字に名前を付けて、1つの町として扱う（site/data/areas.json。保存は手元の画面だけ）
+let areas = [];
+const areasReady = fetch("data/areas.json").then((r) => (r.ok ? r.json() : { areas: [] })).then((d) => (areas = d.areas)).catch(() => {});
+const isLocal = fetch("api/ping").then((r) => r.ok).catch(() => false); // 手元のサーバーなら保存できる
+let currentArea = null;
+
+async function openArea(id) {
+  await areasReady;
+  const a = areas.find((x) => x.id === id);
+  if (!a) return;
+  if (shownTowns !== a.muni) await showTowns(a.muni, { list: false });
+  clearPicks();
+  for (const part of a.parts) {
+    const f = townData.features.find((x) => x.properties.part === part);
+    if (f) picked.set(f.properties.town, f.properties);
+  }
+  for (const k of picked.keys()) map.setFeatureState({ source: "towns", id: k }, { selected: true });
+  currentArea = a;
+  fit(townData.features.filter((f) => picked.has(f.properties.town)), 14);
+  showPickedCard();
+}
+
+async function saveArea(name) {
+  const res = await fetch("api/areas", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ name, muni: shownTowns, parts: [...picked.keys()].map((k) => k.slice(5)) }),
+  });
+  const body = await res.json();
+  if (!res.ok) throw new Error(body.error ?? res.status);
+  areas.push(body);
+  cands = null; // 名前で探す候補を作り直す
+  return body;
+}
+
+// 複数の町・字を選んで合わせて見る（picked：町・字のキー9けた → 数字）
+const picked = new Map();
+function togglePick(p) {
+  // 1つだけ選んでいた町・字があれば、それも選んだものに入れてから始める
+  if (selectedTown && !picked.size && selectedTown !== p.town) {
+    const f = townData.features.find((x) => x.properties.town === selectedTown);
+    if (f) picked.set(selectedTown, f.properties);
+  }
+  selectedTown = null;
+  selectedTownName = null;
+  currentArea = null; // まとまりの中身を変えたら、まとまりではなく「選んだ町・字」にもどる
+  if (picked.has(p.town)) picked.delete(p.town);
+  else picked.set(p.town, p);
+  for (const f of townData.features) {
+    map.setFeatureState({ source: "towns", id: f.properties.town }, { selected: picked.has(f.properties.town) });
+  }
+  showPickedCard();
+}
+function clearPicks() {
+  for (const k of picked.keys()) map.setFeatureState({ source: "towns", id: k }, { selected: false });
+  picked.clear();
+  currentArea = null;
+}
+// 割合は、町・字ごとの割合に人数（世帯の割合は世帯の数）で重みをつけて合わせる。めやす
+const PERSON_RATES = ["over65Rate", "over75Rate", "under15Rate", "foreignRate"];
+const HOUSEHOLD_RATES = ["elderlySingleRate", "singleRate", "ownedRate", "apartmentRate"];
+function combined() {
+  const list = [...picked.values()];
+  const sum = (k) => list.reduce((s, p) => s + (p[k] ?? 0), 0);
+  const out = { population: sum("population"), households: sum("households") };
+  for (const m of [...PERSON_RATES, ...HOUSEHOLD_RATES]) {
+    const w = PERSON_RATES.includes(m) ? "population" : "households";
+    const have = list.filter((p) => p[m] != null && p[w]);
+    const weight = have.reduce((s, p) => s + p[w], 0);
+    out[m] = weight ? have.reduce((s, p) => s + p[m] * p[w], 0) / weight : null;
+    out[`${m}Missing`] = list.length - have.length;
+  }
+  return out;
+}
+function showPickedCard() {
+  updateCrumb();
+  const card = document.getElementById("card");
+  const muni = byCode.get(shownTowns)?.properties;
+  if (!picked.size) {
+    card.innerHTML = `
+      <button type="button" class="close" aria-label="閉じる">×</button>
+      <h2>複数の町・字を選ぶ</h2>
+      <p class="where">${muni?.fullName ?? ""}の中の町・字を、地図か下の一覧で押して選んでください。もう一度押すと外れます</p>
+      <ul class="town-list">${[...townData.features].sort((a, b) => a.properties.part.localeCompare(b.properties.part)).map((f) =>
+        `<li><button type="button" data-town="${f.properties.town}"><span class="n">${f.properties.name}</span><span class="p">${f.properties.population ? `${f.properties.population.toLocaleString("ja-JP")}人` : "人が住んでいない"}</span></button></li>`).join("")}</ul>`;
+    card.querySelector(".close").addEventListener("click", showTownList);
+    for (const b of card.querySelectorAll(".town-list button")) {
+      b.addEventListener("click", () => togglePick(townData.features.find((f) => f.properties.town === b.dataset.town).properties));
+    }
+    return openCard();
+  }
+  const c = combined();
+  const rows = [...PERSON_RATES, ...HOUSEHOLD_RATES].filter((m) => c[m] != null).map((m) =>
+    `<li><span class="label">${TOWN_METRICS[m].label}</span><span class="value">${c[m].toFixed(1)}%</span>${c[`${m}Missing`] ? `<span class="place">${c[`${m}Missing`]}の町・字は数字が無く、入れずに計算</span>` : ""}</li>`);
+  const a = currentArea;
+  const names = [...picked.values()].map((p) => a
+    ? `<li><span>${p.name}</span></li>`
+    : `<li><span>${p.name}</span><button type="button" data-town="${p.town}" aria-label="${p.name}を外す">×</button></li>`).join("");
+  card.innerHTML = `
+    <button type="button" class="close" aria-label="閉じる">×</button>
+    <h2>${a ? a.name : `選んだ町・字（${picked.size}）`}</h2>
+    <p class="where">${muni ? `${muni.pref} ${muni.fullName}` : ""}・${a ? `まとまり（${picked.size}の町・字）` : "地図か一覧で押すと、選ぶ・外すが切り替わります"}</p>
+    <ul class="picked">${names}</ul>
+    <p class="pop">合わせて 人口 ${c.population.toLocaleString("ja-JP")}人・${c.households.toLocaleString("ja-JP")}世帯</p>
+    <ul class="features">${rows.join("")}</ul>
+    <p class="note">割合は、町・字ごとの割合に人数（世帯の割合は世帯の数）で重みをつけて合わせた、めやすです。</p>
+    ${a ? `<p>このまとまりは、まだ深く調べていません。</p>` : `<div class="save-area" hidden>
+      <button type="button" class="primary to-area">このまとまりを1つの町にする</button>
+      <form class="area-form" hidden>
+        <label class="field">まとまりの名前（例：上津台地区）<input name="name" maxlength="30" required></label>
+        <button type="submit" class="primary">保存する</button>
+        <p class="note">保存すると site/data/areas.json に書かれ、コミットすると公開のサイトにも出ます。</p>
+      </form>
+    </div>`}
+    <button type="button" class="secondary done">${a ? "中の町の一覧へ" : "選び終わる（中の町の一覧へ）"}</button>
+    <p class="cite">出典：${townIndex.source}（${townIndex.asOf}）</p>`;
+  card.querySelector(".close").addEventListener("click", () => { clearPicks(); showTownList(); });
+  card.querySelector(".done").addEventListener("click", () => { clearPicks(); showTownList(); });
+  for (const b of card.querySelectorAll(".picked button")) b.addEventListener("click", () => togglePick(picked.get(b.dataset.town)));
+  // まとまりにするのは、手元の画面で2つ以上選んだときだけ
+  const save = card.querySelector(".save-area");
+  if (save && picked.size >= 2) {
+    isLocal.then((ok) => { save.hidden = !ok; });
+    const form = save.querySelector(".area-form");
+    save.querySelector(".to-area").addEventListener("click", (e) => { e.target.hidden = true; form.hidden = false; form.name.focus(); });
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      try {
+        const area = await saveArea(form.name.value);
+        currentArea = area;
+        showPickedCard();
+      } catch (err) {
+        showMessage(`保存できませんでした：${err.message}`);
+      }
+    });
+  }
   openCard();
 }
 
@@ -467,7 +632,9 @@ function showTownCard(p) {
     <p class="where">${muni ? `${muni.pref} ${muni.fullName}` : ""}・町・字の番号 ${p.part}</p>
     ${people}
     <p>この町は、まだ深く調べていません。</p>
+    <button type="button" class="secondary multi">ほかの町・字も選ぶ（合わせて見る）</button>
     <p class="cite">出典：${townIndex.source}（${townIndex.asOf}）</p>`;
+  card.querySelector(".multi").addEventListener("click", () => togglePick(p));
   // 閉じると、中の町の一覧に戻る
   card.querySelector(".close").addEventListener("click", () => {
     map.setFeatureState({ source: "towns", id: selectedTown }, { selected: false });
@@ -742,6 +909,10 @@ function candidates() {
       cities.add(p.pref + p.city);
       list.push({ name: p.city, sub: `${p.pref}（区を選ぶ）`, go: () => showCityCard(p.city, p.pref) });
     }
+  }
+  for (const a of areas) {
+    const m = byCode.get(a.muni)?.properties;
+    list.push({ name: a.name, sub: m ? `${m.pref} ${m.fullName}のまとまり（${a.parts.length}の町・字）` : "", go: () => openArea(a.id) });
   }
   for (const [code, part, name] of townNames ?? []) {
     const m = byCode.get(code)?.properties;
