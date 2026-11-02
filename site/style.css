@@ -47,7 +47,7 @@ body {
 .layout { display: flex; height: 100%; }
 .panel {
   position: relative; z-index: 3; display: flex; flex-direction: column;
-  width: 380px; flex: 0 0 380px; background: var(--surface); box-shadow: var(--shadow);
+  width: clamp(300px, 34vw, 380px); flex: 0 0 auto; background: var(--surface); box-shadow: var(--shadow);
 }
 .panel-top { padding: 14px 16px 10px; border-bottom: 1px solid var(--line); }
 .panel-top h1 { margin: 0 0 10px; font-size: 22px; }
@@ -191,8 +191,16 @@ main { position: relative; flex: 1; min-width: 0; }
   background: var(--surface); border-radius: 6px; box-shadow: var(--shadow); font-size: 14px;
 }
 
+/* 幅が狭いとき：パネルを少し詰める */
+@media (max-width: 900px) {
+  .panel-top h1 { font-size: 19px; margin-bottom: 8px; }
+  .card h2 { font-size: 20px; }
+  .card .features .value { font-size: 19px; }
+  .basemap { padding: 0 12px; font-size: 13px; }
+}
+
 /* スマホ：地図を上に、パネルを下に */
-@media (max-width: 760px) {
+@media (max-width: 560px) {
   .layout { flex-direction: column-reverse; }
   .panel { width: auto; flex: 0 0 auto; max-height: 48%; border-radius: 14px 14px 0 0; }
   .panel-top { padding: 10px 12px 8px; }
