@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-02T22:02:31.259Z",
+ "createdAt": "2026-11-02T22:35:52.113Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 410,
- "of": 403,
+ "count": 412,
+ "of": 404,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -416,6 +416,8 @@
   "基あります。": "estelas que recuerdan desastres del pasado.",
   "この町として届けられた碑は、まだありません。近くの町の碑です。": "Aún no hay estelas registradas a nombre de este pueblo. Son estelas de pueblos cercanos.",
   "近くの町の碑": "Estelas de pueblos cercanos",
-  "日本語のまま": "Solo en japonés"
+  "日本語のまま": "Solo en japonés",
+  "自然災害伝承碑（国土地理院）。押すと、伝えている災害と碑の文": "Monumento de tradición sobre desastres naturales (Instituto de Información Geoespacial de Japón). Al pulsar, verá el desastre que recuerda y el texto de la lápida",
+  "町の支援を見る": "Ver ayudas del municipio"
  }
 }

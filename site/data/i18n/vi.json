@@ -1,11 +1,11 @@
 {
  "lang": "vi",
  "name": "Tiếng Việt",
- "createdAt": "2026-11-02T22:03:22.611Z",
+ "createdAt": "2026-11-02T22:36:11.610Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
  "count": 409,
- "of": 403,
+ "of": 404,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Đây là trang hướng dẫn đời sống không chính thức của thị trấn này. Claude thu thập từ các trang chính thức của thị trấn v.v. và ghi rõ nguồn (Machi-shirube)",
   "すべてのページ": "Tất cả các trang",

@@ -45,7 +45,8 @@
     "hitokoto": "node --env-file=.env scripts/hitokoto.mjs",
     "dekiru": "node --env-file=.env scripts/dekiru.mjs",
     "translate-ai": "node --env-file=.env scripts/translate-ai.mjs",
-    "build:lore": "node scripts/build-lore.mjs"
+    "build:lore": "node scripts/build-lore.mjs",
+    "mitate-ask": "node --env-file=.env scripts/mitate-ask.mjs"
   },
   "devDependencies": {
     "mapshaper": "^0.7.101"

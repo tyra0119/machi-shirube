@@ -421,6 +421,8 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .mitate-top .why { font-size: 14px; color: var(--text-sub); line-height: 1.6; }
 .mitate-top .go { justify-self: start; display: inline-flex; align-items: center; gap: 6px; margin-top: 4px; padding: 8px 14px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); color: var(--text); font-weight: 700; text-decoration: none; }
 .mitate-top .go svg { width: 18px; height: 18px; }
+.mitate-top .gos { display: flex; flex-wrap: wrap; gap: 6px; }
+.mitate-top .go.ask { background: var(--accent); border-color: var(--accent); color: #fff; }
 /* 数から、できることへ */
 .dekiru-list { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; }
 .dekiru-list li { display: flex; flex-direction: column; gap: 6px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }

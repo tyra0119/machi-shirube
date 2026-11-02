@@ -130,9 +130,14 @@ async function showTypes(code, stats, scopeNote) {
   if (cm?.who?.length) {
     const pg = (v) => PAGES.find((p) => p.view === v);
     const t = tr ?? ((id, ja) => ja);
+    // 見立てを手がかりに調べた答え（scripts/mitate-ask.mjs が人ごとに問いを結ぶ）。見つかった答えがあれば、そこへ飛ぶ
+    const ans = (await fetch(`data/answers/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null))?.answers ?? [];
+    const yard = (await getJSON("data/yardstick.json")).questions;
+    const found = (qid) => { const a = ans.find((x) => x.qid === qid && x.value !== "見つからなかった"); const q = yard.find((x) => x.id === qid); return a && q ? q : null; };
     $("mitate-top").innerHTML = `<h2>${T("この町で、暮らしの情報が届きにくいのは")}</h2>
-      <ul class="mitate-list">${cm.who.map((w, i) => { const p = pg(w.page); return `<li><strong>${esc(t(`m${i}.person`, w.person))}</strong><span class="wall">${icon("alert")} ${esc(t(`m${i}.wall`, w.wall))}</span><span class="why">${esc(t(`m${i}.why`, w.why))}</span>${p ? `<a class="go" href="#${p.view}">${icon(ILLUST[p.view]?.main ?? "map")}${LANG ? esc(T(p.title)) : `${esc(p.title)}へ`}</a>` : ""}</li>`; }).join("")}</ul>
+      <ul class="mitate-list">${cm.who.map((w, i) => { const p = pg(w.page); const q = w.ask && found(w.ask); return `<li><strong>${esc(t(`m${i}.person`, w.person))}</strong><span class="wall">${icon("alert")} ${esc(t(`m${i}.wall`, w.wall))}</span><span class="why">${esc(t(`m${i}.why`, w.why))}</span><span class="gos">${q ? `<a class="go ask" href="#${q.page}" data-target="a-${q.id}">${icon("search")}${T("町の支援を見る")}：${esc(T(q.short))}</a>` : ""}${p ? `<a class="go" href="#${p.view}">${icon(ILLUST[p.view]?.main ?? "map")}${LANG ? esc(T(p.title)) : `${esc(p.title)}へ`}</a>` : ""}</span></li>`; }).join("")}</ul>
       <p class="note">${esc(t("n.mitate", cm.note))}${tr ? ` ${T("（AI による訳）")} ` : "。"}<a href="#mitate">${T("くわしく")}</a></p>`;
+    for (const a of $("mitate-top").querySelectorAll("a.ask")) a.addEventListener("click", () => setTimeout(() => $(a.dataset.target)?.scrollIntoView({ behavior: "smooth", block: "start" }), 50));
     return;
   }
   $("mitate-top").innerHTML = `<h2>${T("この町で、暮らしの情報が届きにくいのは")}</h2>

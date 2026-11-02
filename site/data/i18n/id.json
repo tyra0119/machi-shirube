@@ -1,11 +1,11 @@
 {
  "lang": "id",
  "name": "Bahasa Indonesia",
- "createdAt": "2026-11-02T22:02:58.960Z",
+ "createdAt": "2026-11-02T22:36:05.588Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 409,
- "of": 403,
+ "count": 410,
+ "of": 404,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Ini adalah panduan hidup tidak resmi untuk kota ini. Claude mengumpulkannya dari situs resmi kota dan sumber lain, dengan mencantumkan sumbernya (Machishirube)",
   "すべてのページ": "Semua halaman",
@@ -415,6 +415,7 @@
   "基あります。": "buah.",
   "この町として届けられた碑は、まだありません。近くの町の碑です。": "Belum ada prasasti yang terdaftar atas nama kota ini. Ini adalah prasasti dari kota terdekat.",
   "近くの町の碑": "Prasasti dari kota terdekat",
-  "日本語のまま": "Tetap dalam bahasa Jepang"
+  "日本語のまま": "Tetap dalam bahasa Jepang",
+  "町の支援を見る": "Lihat dukungan dari kota"
  }
 }
