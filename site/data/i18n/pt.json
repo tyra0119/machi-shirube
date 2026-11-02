@@ -1,11 +1,11 @@
 {
  "lang": "pt",
  "name": "Português",
- "createdAt": "2026-11-02T15:02:23.878Z",
+ "createdAt": "2026-11-02T21:46:06.946Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 387,
- "of": 379,
+ "count": 401,
+ "of": 392,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Guia não oficial da vida na cidade. O Claude reúne as informações em sites oficiais da cidade e outras fontes, e indica a origem de cada uma (Machishirube)",
   "すべてのページ": "Todas as páginas",
@@ -393,6 +393,20 @@
   "8月の平均気温": "Temperatura média em agosto",
   "1年の雨の量": "Chuva em 1 ano",
   "いちばん深い雪": "Maior profundidade de neve",
-  "東京都心": "Centro de Tóquio"
+  "東京都心": "Centro de Tóquio",
+  "数から、できることへ": "Dos números ao que podemos fazer",
+  "250m 四方の人口 × ハザードマップ。めやす": "População por área de 250 m × mapa de risco. Estimativa",
+  "J-SHIS 2024年版": "J-SHIS, edição 2024",
+  "GTFS × 250m 四方の人口。めやす": "GTFS × população por área de 250 m. Estimativa",
+  "国勢調査 2020年": "Censo de 2020",
+  "農林水産政策研究所 2020年": "Instituto de Pesquisa de Políticas Agroalimentares, 2020",
+  "住民基本台帳": "Registro Básico de Residentes",
+  "住民基本台帳 令和8年1月1日": "Registro Básico de Residentes, 1º de janeiro de 2026 (Reiwa 8)",
+  "AI のまとめ": "Resumo da IA",
+  "のひとこと": "Uma palavra sobre",
+  "もとにした数": "Números de base",
+  "時刻表データのあるバスだけで数えたもの": "Contagem apenas de ônibus com dados de horários",
+  "人が確かめてから出しています。": "Publicado após verificação por pessoas.",
+  "この地区のひとこと": "Uma palavra sobre este bairro"
  }
 }

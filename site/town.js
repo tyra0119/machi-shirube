@@ -123,13 +123,16 @@ async function showTypes(code, stats, scopeNote) {
   const reasonOf = (c) => (LANG ? (FACTS[c.type] ?? []).map(([l, v]) => `${T(l)} ${v}`).join(" · ") : c.reason);
   const page = (type) => { const v = TYPE_PAGE[type], f = v?.startsWith("feat-") && FEATURES[v.slice(5)]; return PAGES.find((p) => p.view === v) ?? (f ? { view: v, title: f.title } : null); };
   $("mitate-top").hidden = false;
-  // Claude の見立て（scripts/mitate.mjs）があれば、それを出す（日本語とやさしい日本語のとき。ほかの言葉は下の決まりによる見立て）
-  const cm = !LANG || LANG === "easy" ? await fetch(`data/mitate/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null) : null;
+  // Claude の見立て（scripts/mitate.mjs）があれば、それを出す。ほかの言葉は、確かめの通った訳があるときだけ（無ければ下の決まりによる見立て）
+  let cm = await fetch(`data/mitate/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const tr = cm && (await aiTr(code, "mitate", cm.createdAt));
+  if (cm && LANG && LANG !== "easy" && !tr) cm = null;
   if (cm?.who?.length) {
     const pg = (v) => PAGES.find((p) => p.view === v);
+    const t = tr ?? ((id, ja) => ja);
     $("mitate-top").innerHTML = `<h2>${T("この町で、暮らしの情報が届きにくいのは")}</h2>
-      <ul class="mitate-list">${cm.who.map((w) => { const p = pg(w.page); return `<li><strong>${esc(w.person)}</strong><span class="wall">${icon("alert")} ${esc(w.wall)}</span><span class="why">${esc(w.why)}</span>${p ? `<a class="go" href="#${p.view}">${icon(ILLUST[p.view]?.main ?? "map")}${esc(p.title)}へ</a>` : ""}</li>`; }).join("")}</ul>
-      <p class="note">${esc(cm.note)}。<a href="#mitate">${T("くわしく")}</a></p>`;
+      <ul class="mitate-list">${cm.who.map((w, i) => { const p = pg(w.page); return `<li><strong>${esc(t(`m${i}.person`, w.person))}</strong><span class="wall">${icon("alert")} ${esc(t(`m${i}.wall`, w.wall))}</span><span class="why">${esc(t(`m${i}.why`, w.why))}</span>${p ? `<a class="go" href="#${p.view}">${icon(ILLUST[p.view]?.main ?? "map")}${LANG ? esc(T(p.title)) : `${esc(p.title)}へ`}</a>` : ""}</li>`; }).join("")}</ul>
+      <p class="note">${esc(t("n.mitate", cm.note))}${tr ? ` ${T("（AI による訳）")} ` : "。"}<a href="#mitate">${T("くわしく")}</a></p>`;
     return;
   }
   $("mitate-top").innerHTML = `<h2>${T("この町で、暮らしの情報が届きにくいのは")}</h2>
@@ -161,33 +164,52 @@ async function showFloodPop(code, part) {
 }
 const depthColor = (label) => { const c = DEPTH_COLORS.find(([, l]) => l === label)?.[0] ?? (label === "警戒区域" ? [214, 170, 110] : [200, 200, 200]); return `rgb(${c.join(",")})`; };
 
+// AI が作った文の訳（scripts/translate-ai.mjs。訳し戻して確かめの通ったものだけ）。もとの文を作り直したあとの古い訳は使わない
+let aiTrCache;
+async function aiTr(code, kind, createdAt) {
+  if (!LANG) return null;
+  aiTrCache ??= fetch(`data/translations/${code}-ai.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const t = await aiTrCache;
+  const x = t?.made?.[kind] === createdAt && t.langs?.[LANG]?.texts;
+  return x ? (id, ja) => x[id] ?? ja : null;
+}
+
 // 町・字ごとの「わが町のひとこと」（scripts/hitokoto.mjs。AI が町・字の数だけでまとめ、数は PC で照らしたもの）。町・字のページのいちばん上に
+// ほかの言葉は、確かめの通った訳があるときだけ
 async function showHitokoto(code, part) {
-  if (!part || (LANG && LANG !== "easy")) return;
+  if (!part) return;
   const d = await fetch(`data/hitokoto/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
   const h = d?.parts?.[part.properties.part];
   if (!h) return;
+  const tr = await aiTr(code, "hitokoto", d.createdAt);
+  const id = `h${part.properties.part}`;
+  if (LANG && LANG !== "easy" && !tr?.(id, null)) return;
+  const t = tr ?? ((i, ja) => ja);
   $("hitokoto-block").hidden = false;
-  $("hitokoto-head").innerHTML = `${icon("pin")}${esc(h.name)}${T("のひとこと")}`;
-  $("hitokoto").textContent = h.text;
-  $("hitokoto-note").innerHTML = `${esc(T(d.note))}。<details class="facts"><summary>${T("もとにした数")}</summary>${h.facts.map((f) => esc(f)).join("・")}</details>`;
+  $("hitokoto-head").innerHTML = `${icon("pin")}${LANG ? `${T("この地区のひとこと")}（${esc(h.name)}）` : `${esc(h.name)}のひとこと`}`;
+  $("hitokoto").textContent = t(id, h.text);
+  $("hitokoto-note").innerHTML = `${esc(t("n.hitokoto", d.note))}${tr?.(id, null) ? ` ${T("（AI による訳）")}` : "。"}<details class="facts"><summary>${T("もとにした数")}</summary>${h.facts.map((f) => esc(f)).join("・")}</details>`;
 }
 
 // 数から、できることへ（scripts/dekiru.mjs。町の数と、確かめ済みの町の案内を AI がつなぎ、引用と数は PC で照らしたもの）。
 // 人が確かめてから出す。町のページ（市区町村）のいちばん上、見立ての下に
 async function showDekiru(code, part) {
-  if (part || (LANG && LANG !== "easy")) return;
+  if (part) return;
   const d = await fetch(`data/dekiru/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
   if (!d || (d.status !== "ok" && d.status !== "auto") || !d.links?.length) return;
+  // ほかの言葉は、確かめの通った訳があるときだけ（訳の無い文は日本語のまま）
+  const tr = await aiTr(code, "dekiru", d.createdAt);
+  if (LANG && LANG !== "easy" && !tr) return;
+  const t = tr ?? ((i, ja) => ja);
   const ic = (f) => (/津波|洪水|土砂/.test(f) ? "umbrella" : /震度/.test(f) ? "quake" : /バス/.test(f) ? "bus" : /店まで/.test(f) ? "shop" : /外国/.test(f) ? "globe" : /65歳|一人暮らし/.test(f) ? "heart" : "pin");
   $("dekiru-block").hidden = false;
-  $("dekiru").innerHTML = d.links.map((l) => `<li>
-    <p class="who">${icon(ic(l.fact))}<span>${esc(l.who)}</span></p>
-    <p class="num"><strong>${esc(l.num)}</strong><small>${esc(l.factSrc)}${/時刻表データのあるバスだけ/.test(l.fact) && !/時刻表/.test(l.num) ? `・${T("時刻表データのあるバスだけで数えたもの")}` : ""}</small></p>
-    <p class="todo">${icon("link")}<span>${esc(l.todo)}</span></p>
-    <blockquote>「${esc(l.quote)}」<a href="${esc(l.source.url)}" target="_blank" rel="noopener">${esc(l.source.title)}</a></blockquote>
+  $("dekiru").innerHTML = d.links.map((l, i) => `<li>
+    <p class="who">${icon(ic(l.fact))}<span>${esc(t(`d${i}.who`, l.who))}</span></p>
+    <p class="num"><strong>${esc(t(`d${i}.num`, l.num))}</strong><small>${esc(T(l.factSrc))}${/時刻表データのあるバスだけ/.test(l.fact) && !/時刻表/.test(l.num) ? `・${T("時刻表データのあるバスだけで数えたもの")}` : ""}</small></p>
+    <p class="todo">${icon("link")}<span>${esc(t(`d${i}.todo`, l.todo))}</span></p>
+    <blockquote>「${esc(t(`d${i}.quote`, l.quote))}」<a href="${esc(l.source.url)}" target="_blank" rel="noopener">${esc(l.source.title)}</a></blockquote>
   </li>`).join("");
-  $("dekiru-note").textContent = `${T(d.note)}。${T("人が確かめてから出しています。")}`;
+  $("dekiru-note").textContent = `${t("n.dekiru", d.note)}${tr ? ` ${T("（AI による訳）")} ` : "。"}${T("人が確かめてから出しています。")}`;
 }
 
 // 町の気候（平年値メッシュ × 住む人。scripts/build-climate.mjs）。東京都心と並べ、良い所は明るい話題として添える

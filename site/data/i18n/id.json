@@ -1,11 +1,11 @@
 {
  "lang": "id",
  "name": "Bahasa Indonesia",
- "createdAt": "2026-11-02T15:02:53.777Z",
+ "createdAt": "2026-11-02T21:46:21.070Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 384,
- "of": 379,
+ "count": 398,
+ "of": 392,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Ini adalah panduan hidup tidak resmi untuk kota ini. Claude mengumpulkannya dari situs resmi kota dan sumber lain, dengan mencantumkan sumbernya (Machishirube)",
   "すべてのページ": "Semua halaman",
@@ -390,6 +390,20 @@
   "8月の平均気温": "Suhu rata-rata Agustus",
   "1年の雨の量": "Curah hujan setahun",
   "いちばん深い雪": "Salju terdalam",
-  "東京都心": "Pusat kota Tokyo"
+  "東京都心": "Pusat kota Tokyo",
+  "雪下ろしや雪かきが難しいお年寄り": "Lansia yang kesulitan menyekop atau membersihkan salju",
+  "数から、できることへ": "Dari angka menjadi tindakan yang bisa dilakukan",
+  "250m 四方の人口 × ハザードマップ。めやす": "Jumlah penduduk per area 250 m persegi × peta bahaya. Perkiraan",
+  "J-SHIS 2024年版": "J-SHIS Edisi 2024",
+  "GTFS × 250m 四方の人口。めやす": "GTFS × jumlah penduduk per area 250 m persegi. Perkiraan",
+  "国勢調査 2020年": "Sensus Penduduk 2020",
+  "農林水産政策研究所 2020年": "Institut Penelitian Kebijakan Pertanian, Kehutanan, dan Perikanan 2020",
+  "住民基本台帳": "Registrasi Penduduk Dasar",
+  "住民基本台帳 令和8年1月1日": "Registrasi Penduduk Dasar per 1 Januari Reiwa 8",
+  "AI のまとめ": "Ringkasan AI",
+  "もとにした数": "Angka dasar",
+  "時刻表データのあるバスだけで数えたもの": "Dihitung hanya dari bus yang memiliki data jadwal",
+  "人が確かめてから出しています。": "Dipublikasikan setelah diperiksa oleh manusia.",
+  "この地区のひとこと": "Catatan singkat tentang wilayah ini"
  }
 }

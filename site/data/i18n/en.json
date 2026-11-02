@@ -1,11 +1,11 @@
 {
  "lang": "en",
  "name": "English",
- "createdAt": "2026-11-02T15:02:31.081Z",
+ "createdAt": "2026-11-02T21:46:13.676Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 387,
- "of": 379,
+ "count": 401,
+ "of": 392,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "This is an unofficial guide to living in this town. Claude gathers information from the town's official website and other sources, and cites each source (Machishirube)",
   "すべてのページ": "All pages",
@@ -393,6 +393,20 @@
   "8月の平均気温": "Average temperature in August",
   "1年の雨の量": "Annual rainfall",
   "いちばん深い雪": "Deepest snow",
-  "東京都心": "Central Tokyo"
+  "東京都心": "Central Tokyo",
+  "数から、できることへ": "From numbers to what you can do",
+  "J-SHIS 2024年版": "J-SHIS 2024 edition",
+  "国勢調査 2020年": "2020 Census",
+  "農林水産政策研究所 2020年": "Policy Research Institute, MAFF, 2020",
+  "住民基本台帳": "Basic Resident Register",
+  "住民基本台帳 令和8年1月1日": "Basic Resident Register, as of January 1, Reiwa 8 (2026)",
+  "AI のまとめ": "AI summary",
+  "のひとこと": "'s comment",
+  "もとにした数": "Source figures",
+  "時刻表データのあるバスだけで数えたもの": "Counted only for buses with timetable data",
+  "人が確かめてから出しています。": "Checked by a person before publishing.",
+  "250m 四方の人口 × ハザードマップ。めやす": "Population per 250 m square × hazard map. Rough estimate",
+  "GTFS × 250m 四方の人口。めやす": "GTFS × population per 250 m square. Rough estimate",
+  "この地区のひとこと": "A quick note on this district"
  }
 }

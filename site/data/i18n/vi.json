@@ -1,11 +1,11 @@
 {
  "lang": "vi",
  "name": "Tiếng Việt",
- "createdAt": "2026-11-02T15:03:09.124Z",
+ "createdAt": "2026-11-02T21:46:30.565Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 384,
- "of": 379,
+ "count": 398,
+ "of": 392,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Đây là trang hướng dẫn đời sống không chính thức của thị trấn này. Claude thu thập từ các trang chính thức của thị trấn v.v. và ghi rõ nguồn (Machi-shirube)",
   "すべてのページ": "Tất cả các trang",
@@ -390,6 +390,20 @@
   "8月の平均気温": "Nhiệt độ trung bình tháng 8",
   "1年の雨の量": "Lượng mưa cả năm",
   "いちばん深い雪": "Tuyết dày nhất",
-  "東京都心": "Trung tâm Tokyo"
+  "東京都心": "Trung tâm Tokyo",
+  "数から、できることへ": "Từ con số đến việc có thể làm",
+  "250m 四方の人口 × ハザードマップ。めやす": "Dân số theo ô vuông 250m × Bản đồ cảnh báo thiên tai. Ước tính",
+  "J-SHIS 2024年版": "J-SHIS phiên bản 2024",
+  "GTFS × 250m 四方の人口。めやす": "GTFS × Dân số theo ô vuông 250m. Ước tính",
+  "国勢調査 2020年": "Điều tra dân số năm 2020",
+  "農林水産政策研究所 2020年": "Viện Nghiên cứu Chính sách Nông Lâm Thủy sản năm 2020",
+  "住民基本台帳": "Sổ đăng ký cư dân cơ bản",
+  "住民基本台帳 令和8年1月1日": "Sổ đăng ký cư dân cơ bản ngày 1 tháng 1 năm Reiwa 8",
+  "AI のまとめ": "Tóm tắt của AI",
+  "もとにした数": "Số liệu gốc",
+  "時刻表データのあるバスだけで数えたもの": "Chỉ tính các tuyến xe buýt có dữ liệu giờ chạy",
+  "人が確かめてから出しています。": "Có người kiểm tra rồi mới đăng.",
+  "この町の非公式の暮らしの案内です。町の公式のサイトや国の公開データから集め、出典をつけています（まちしるべ）": "Đây là trang hướng dẫn đời sống không chính thức của thị trấn. Nội dung được tổng hợp từ trang web chính thức của thị trấn và dữ liệu công khai của nhà nước, có ghi rõ nguồn (Machishirube)",
+  "この地区のひとこと": "Đôi lời về khu vực này"
  }
 }

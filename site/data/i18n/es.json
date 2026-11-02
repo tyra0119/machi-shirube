@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-02T15:02:27.408Z",
+ "createdAt": "2026-11-02T21:46:10.863Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 387,
- "of": 379,
+ "count": 400,
+ "of": 392,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -393,6 +393,19 @@
   "8月の平均気温": "Temperatura media de agosto",
   "1年の雨の量": "Precipitación anual",
   "いちばん深い雪": "Mayor profundidad de nieve",
-  "東京都心": "Centro de Tokio"
+  "東京都心": "Centro de Tokio",
+  "数から、できることへ": "De las cifras a lo que se puede hacer",
+  "250m 四方の人口 × ハザードマップ。めやす": "Población por cuadrículas de 250 m × mapa de peligros. Estimación aproximada",
+  "J-SHIS 2024年版": "J-SHIS, edición 2024",
+  "GTFS × 250m 四方の人口。めやす": "GTFS × población por cuadrículas de 250 m. Estimación aproximada",
+  "国勢調査 2020年": "Censo nacional de 2020",
+  "農林水産政策研究所 2020年": "Instituto de Investigación de Políticas Agrícolas, Forestales y Pesqueras, 2020",
+  "住民基本台帳": "Registro básico de residentes",
+  "住民基本台帳 令和8年1月1日": "Registro básico de residentes, 1 de enero de Reiwa 8",
+  "AI のまとめ": "Resumen de la IA",
+  "もとにした数": "Cifras de origen",
+  "時刻表データのあるバスだけで数えたもの": "Contado solo con los autobuses que tienen datos de horarios",
+  "人が確かめてから出しています。": "Se publica después de que una persona lo verifica.",
+  "この地区のひとこと": "Una nota sobre este distrito"
  }
 }
