@@ -11,10 +11,16 @@
 <body>
 <header class="bar">
   <h1>まちしるべ</h1>
-  <p class="lead">町を押すと、その町のことが出ます</p>
+  <div class="search">
+    <input id="search" type="search" placeholder="町の名前で探す（例：黒潮町、上津台）" autocomplete="off"
+      role="combobox" aria-expanded="false" aria-controls="results" aria-label="町の名前で探す">
+    <ul id="results" class="results" role="listbox" hidden></ul>
+  </div>
+  <p class="lead">または地図で町を押す</p>
 </header>
 <main>
   <div id="map" aria-label="日本の市区町村の地図"></div>
+  <div id="tip" class="tip" hidden></div>
   <nav id="crumb" class="crumb" hidden>
     <button type="button" class="back" aria-label="市区町村の地図に戻る">← 戻る</button>
     <span class="here"></span>

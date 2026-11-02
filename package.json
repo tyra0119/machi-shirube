@@ -7,7 +7,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "build:japan-map": "mapshaper-xl 8gb data/raw/N03/N03-20260101.shp encoding=utf8 -rename-fields pref=N03_001,county=N03_003,city=N03_004,ward=N03_005,code=N03_007 -dissolve code copy-fields=pref,county,city,ward name=municipalities -simplify 1.5% weighted keep-shapes -dissolve pref + name=prefectures -o site/data/japan.topo.json format=topojson target=municipalities,prefectures quantization=100000",
+    "build:japan-map": "mapshaper-xl 8gb data/raw/N03/N03-20260101.shp encoding=utf8 -rename-fields pref=N03_001,county=N03_003,city=N03_004,ward=N03_005,code=N03_007 -dissolve code copy-fields=pref,county,city,ward name=municipalities -simplify 1.5% weighted keep-shapes -dissolve pref + name=prefectures -o site/data/japan.topo.json format=topojson target=municipalities,prefectures quantization=100000 && mapshaper site/data/japan.topo.json -points inner target=municipalities -filter-fields code -o site/data/labels.json format=geojson precision=0.001",
     "build:stats": "node scripts/build-stats.mjs",
     "build:towns": "node scripts/build-towns.mjs",
     "serve": "node scripts/serve.mjs",

@@ -6,11 +6,18 @@ const color = (name) => getComputedStyle(document.documentElement).getPropertyVa
 
 const map = new maplibregl.Map({
   container: "map",
-  style: { version: 8, sources: {}, layers: [{ id: "sea", type: "background", paint: { "background-color": color("--sea") } }] },
+  style: {
+    version: 8,
+    // 地図の上の名前：日本語の文字はブラウザの文字で描く（外から文字のデータを取らない）
+    glyphs: "data/glyphs/{fontstack}/{range}.pbf",
+    sources: {},
+    layers: [{ id: "sea", type: "background", paint: { "background-color": color("--sea") } }],
+  },
+  localIdeographFontFamily: "'Hiragino Sans', 'Noto Sans JP', 'Yu Gothic UI', sans-serif",
   center: [137.5, 37.5],
   zoom: 4.3,
   minZoom: 3.5,
-  maxZoom: 13,
+  maxZoom: 14,
   maxBounds: [[110, 15], [165, 50]],
   hash: "z",
   attributionControl: false,
@@ -19,80 +26,118 @@ map.addControl(new MapButtons({ onNoLocation: showMessage }), "bottom-right");
 
 let stats = null; // 住民基本台帳の数字（site/data/stats.json）
 fetch("data/stats.json").then((r) => r.json()).then((d) => (stats = d));
-let townIndex = { codes: [] }; // 中の町（町・字）の形を用意した市・区の一覧
+let townIndex = { codes: [], names: [] }; // 中の町（町・字）の形を用意した市・区と、町・字の名前
 fetch("data/towns/index.json").then((r) => r.json()).then((d) => (townIndex = d));
+let munis = null; // 市区町村の形（GeoJSON）
+const byCode = new Map(); // 市区町村コード → 形
 let shownTowns = null; // いま中の町を出している市・区のコード
+let townData = null; // いま出している中の町の形
 
 map.on("load", async () => {
-  const topo = await (await fetch("data/japan.topo.json")).json();
-  const munis = topojson.feature(topo, topo.objects.municipalities);
-  for (const f of munis.features) f.properties.noData = NO_DATA(f.properties.code);
+  const [topo, labels] = await Promise.all([
+    fetch("data/japan.topo.json").then((r) => r.json()),
+    fetch("data/labels.json").then((r) => r.json()),
+  ]);
+  munis = topojson.feature(topo, topo.objects.municipalities);
+  for (const f of munis.features) {
+    const p = f.properties;
+    p.noData = NO_DATA(p.code);
+    p.label = p.ward || p.city || `${p.pref}の所属未定地`;
+    p.fullName = `${p.city}${p.ward}` || p.label;
+    byCode.set(p.code, f);
+  }
+  for (const f of labels.features) f.properties.label = byCode.get(f.properties.code)?.properties.label ?? "";
   const prefLines = topojson.mesh(topo, topo.objects.prefectures, (a, b) => a !== b);
 
   map.addSource("munis", { type: "geojson", data: munis, promoteId: "code" });
   map.addSource("prefs", { type: "geojson", data: prefLines });
+  map.addSource("labels", { type: "geojson", data: { type: "FeatureCollection", features: labels.features.filter((f) => f.geometry) } });
   map.addLayer({ id: "muni-fill", type: "fill", source: "munis" });
   map.addLayer({ id: "muni-line", type: "line", source: "munis" });
   map.addLayer({ id: "pref-line", type: "line", source: "prefs" });
+  map.addLayer({
+    id: "muni-label", type: "symbol", source: "labels", minzoom: 7,
+    layout: { "text-field": ["get", "label"], "text-font": ["sans"], "text-size": ["interpolate", ["linear"], ["zoom"], 7, 12, 10, 15], "text-padding": 4 },
+  });
   paint();
 
+  // PC：マウスを乗せた町の名前を出す
+  const tip = document.getElementById("tip");
   let hovered = null;
-  map.on("mousemove", "muni-fill", (e) => {
-    const code = e.features[0].properties.code;
-    if (hovered === code) return;
-    if (hovered) map.setFeatureState({ source: "munis", id: hovered }, { hover: false });
-    hovered = code;
-    map.setFeatureState({ source: "munis", id: code }, { hover: true });
-    map.getCanvas().style.cursor = "pointer";
+  map.on("mousemove", (e) => {
+    const town = shownTowns && map.queryRenderedFeatures(e.point, { layers: ["town-fill"] })[0];
+    const muni = !town && map.queryRenderedFeatures(e.point, { layers: ["muni-fill"] })[0];
+    const code = muni?.properties.code ?? null;
+    if (hovered !== code) {
+      if (hovered) map.setFeatureState({ source: "munis", id: hovered }, { hover: false });
+      if (code) map.setFeatureState({ source: "munis", id: code }, { hover: true });
+      hovered = code;
+    }
+    const name = town ? town.properties.name : muni ? muni.properties.fullName : "";
+    map.getCanvas().style.cursor = name ? "pointer" : "";
+    tip.hidden = !name;
+    if (name) {
+      tip.textContent = name;
+      tip.style.transform = `translate(${e.point.x + 14}px, ${e.point.y + 14}px)`;
+    }
   });
-  map.on("mouseleave", "muni-fill", () => {
-    if (hovered) map.setFeatureState({ source: "munis", id: hovered }, { hover: false });
-    hovered = null;
-    map.getCanvas().style.cursor = "";
-  });
+  map.getCanvas().addEventListener("mouseleave", () => (tip.hidden = true));
+
   // 中の町が出ていれば中の町を、そうでなければ市区町村を選ぶ
   map.on("click", (e) => {
     const town = shownTowns && map.queryRenderedFeatures(e.point, { layers: ["town-fill"] })[0];
-    if (town) return showTownCard(town);
+    if (town) return showTownCard(town.properties);
     const muni = map.queryRenderedFeatures(e.point, { layers: ["muni-fill"] })[0];
     if (muni) showCard(muni.properties);
   });
 });
 
+// 形がおさまる範囲
+function boundsOf(features) {
+  const box = new maplibregl.LngLatBounds();
+  for (const f of features) {
+    const polys = f.geometry.type === "Polygon" ? [f.geometry.coordinates] : f.geometry.coordinates;
+    for (const poly of polys) for (const pt of poly[0]) box.extend(pt);
+  }
+  return box;
+}
+const fit = (features, maxZoom = 12) => map.fitBounds(boundsOf(features), { padding: 60, maxZoom, duration: 700 });
+
 // 市・区の中の町（町・字）を地図に出す
 async function showTowns(code) {
-  const data = await (await fetch(`data/towns/${code}.json`)).json();
-  if (map.getSource("towns")) map.getSource("towns").setData(data);
+  townData = await (await fetch(`data/towns/${code}.json`)).json();
+  if (map.getSource("towns")) map.getSource("towns").setData(townData);
   else {
-    map.addSource("towns", { type: "geojson", data, promoteId: "town" });
+    map.addSource("towns", { type: "geojson", data: townData, promoteId: "town" });
     map.addLayer({ id: "town-fill", type: "fill", source: "towns" }, "pref-line");
     map.addLayer({ id: "town-line", type: "line", source: "towns" }, "pref-line");
+    map.addLayer({
+      id: "town-label", type: "symbol", source: "towns", minzoom: 11,
+      layout: { "text-field": ["get", "name"], "text-font": ["sans"], "text-size": 13, "text-padding": 2 },
+    });
   }
-  map.setLayoutProperty("town-fill", "visibility", "visible");
-  map.setLayoutProperty("town-line", "visibility", "visible");
+  for (const id of ["town-fill", "town-line", "town-label"]) map.setLayoutProperty(id, "visibility", "visible");
+  map.setLayoutProperty("muni-label", "visibility", "none");
   shownTowns = code;
   paintTowns();
   const crumb = document.getElementById("crumb");
-  const t = stats?.towns[code];
-  crumb.querySelector(".here").textContent = `${t ? t.name.replace(/^.+郡/, "") : ""}の中の町`;
+  crumb.querySelector(".here").textContent = `${byCode.get(code)?.properties.fullName ?? ""}の中の町`;
   crumb.hidden = false;
   document.querySelector("main").classList.add("has-crumb");
-  const box = new maplibregl.LngLatBounds();
-  for (const f of data.features) for (const ring of f.geometry.type === "Polygon" ? f.geometry.coordinates : f.geometry.coordinates.flat()) for (const pt of ring) box.extend(pt);
-  map.fitBounds(box, { padding: 40, duration: 600 });
+  fit(townData.features);
 }
 // 中の町をしまって、市区町村の地図に戻る（戻った市・区を選んだ状態にする）
 function hideTowns() {
   if (!shownTowns) return;
   const code = shownTowns;
-  map.setLayoutProperty("town-fill", "visibility", "none");
-  map.setLayoutProperty("town-line", "visibility", "none");
+  for (const id of ["town-fill", "town-line", "town-label"]) map.setLayoutProperty(id, "visibility", "none");
+  map.setLayoutProperty("muni-label", "visibility", "visible");
   if (selectedTown) map.setFeatureState({ source: "towns", id: selectedTown }, { selected: false });
   selectedTown = null;
   shownTowns = null;
   document.getElementById("crumb").hidden = true;
   document.querySelector("main").classList.remove("has-crumb");
-  const f = map.querySourceFeatures("munis").find((x) => x.properties.code === code);
+  const f = byCode.get(code);
   if (f) showCard(f.properties);
   map.easeTo({ zoom: Math.max(map.getZoom() - 1.5, 6), duration: 500 });
 }
@@ -108,6 +153,12 @@ function paintTowns() {
   ]);
   map.setPaintProperty("town-line", "line-color", color("--pref-line"));
   map.setPaintProperty("town-line", "line-width", 1);
+  paintLabel("town-label");
+}
+function paintLabel(id) {
+  map.setPaintProperty(id, "text-color", color("--text"));
+  map.setPaintProperty(id, "text-halo-color", color("--land"));
+  map.setPaintProperty(id, "text-halo-width", 2);
 }
 
 function paint() {
@@ -123,6 +174,7 @@ function paint() {
   map.setPaintProperty("muni-line", "line-width", ["interpolate", ["linear"], ["zoom"], 4, 0.2, 9, 1]);
   map.setPaintProperty("pref-line", "line-color", color("--pref-line"));
   map.setPaintProperty("pref-line", "line-width", ["interpolate", ["linear"], ["zoom"], 4, 0.6, 9, 2]);
+  paintLabel("muni-label");
 }
 matchMedia("(prefers-color-scheme: dark)").addEventListener("change", () => {
   if (map.getLayer("muni-fill")) paint();
@@ -136,19 +188,18 @@ function showCard(p) {
   map.setFeatureState({ source: "munis", id: selected }, { selected: true });
 
   const card = document.getElementById("card");
-  const name = `${p.city}${p.ward}`;
   const where = [p.pref, p.county].filter(Boolean).join(" ");
   const town = stats?.towns[p.code];
   const body = p.noData || !town ? "<p>この地域には国の統計がありません。</p>" : featureCard(town);
   // 市・区は広いので、中の町（町・字）まで下りられるようにする
-  const isCityOrWard = /[市区]$/.test(name);
+  const isCityOrWard = /[市区]$/.test(p.fullName);
   const hasTowns = townIndex.codes.includes(p.code);
   const towns = !isCityOrWard ? ""
     : hasTowns ? `<button type="button" class="primary towns">中の町を選ぶ</button>`
     : `<p class="note">中の町（町・字）の形は、まだ用意していません。</p>`;
   card.innerHTML = `
     <button type="button" class="close" aria-label="閉じる">×</button>
-    <h2>${name || p.pref}</h2>
+    <h2>${p.fullName}</h2>
     <p class="where">${where}・市区町村コード ${p.code}</p>
     ${towns}
     ${body}`;
@@ -161,13 +212,28 @@ function showCard(p) {
   card.hidden = false;
 }
 
+// 政令市（形は区ごと）：区を選んでもらう
+function showCityCard(cityName, pref) {
+  const wards = munis.features.filter((f) => f.properties.city === cityName && f.properties.pref === pref && f.properties.ward);
+  fit(wards, 10);
+  hideCard();
+  const card = document.getElementById("card");
+  card.innerHTML = `
+    <button type="button" class="close" aria-label="閉じる">×</button>
+    <h2>${cityName}</h2>
+    <p class="where">${pref}・区を選んでください</p>
+    <div class="choices">${wards.map((w) => `<button type="button" data-code="${w.properties.code}">${w.properties.ward}</button>`).join("")}</div>`;
+  card.querySelector(".close").addEventListener("click", () => (card.hidden = true));
+  for (const b of card.querySelectorAll(".choices button")) b.addEventListener("click", () => selectMuni(b.dataset.code));
+  card.hidden = false;
+}
+
 let selectedTown = null;
-function showTownCard(f) {
-  const p = f.properties;
+function showTownCard(p) {
   if (selectedTown) map.setFeatureState({ source: "towns", id: selectedTown }, { selected: false });
   selectedTown = p.town;
   map.setFeatureState({ source: "towns", id: selectedTown }, { selected: true });
-  const muni = stats?.towns[shownTowns];
+  const muni = byCode.get(shownTowns)?.properties;
   const card = document.getElementById("card");
   const people = p.population
     ? `<p class="pop">人口 ${p.population.toLocaleString("ja-JP")}人・${p.households.toLocaleString("ja-JP")}世帯</p>`
@@ -175,7 +241,7 @@ function showTownCard(f) {
   card.innerHTML = `
     <button type="button" class="close" aria-label="閉じる">×</button>
     <h2>${p.name}</h2>
-    <p class="where">${muni ? `${muni.pref} ${muni.name.replace(/^.+郡/, "")}` : ""}・町・字の番号 ${p.part}</p>
+    <p class="where">${muni ? `${muni.pref} ${muni.fullName}` : ""}・町・字の番号 ${p.part}</p>
     ${people}
     <p>この町は、まだ深く調べていません。</p>
     <p class="cite">出典：${townIndex.source}（${townIndex.asOf}）</p>`;
@@ -186,6 +252,23 @@ function showTownCard(f) {
   });
   card.hidden = false;
 }
+
+// 選ぶ（名前で探したときも、地図で押したときと同じ形にする）
+function selectMuni(code) {
+  if (shownTowns) hideTowns();
+  const f = byCode.get(code);
+  if (!f) return;
+  fit([f], 11);
+  showCard(f.properties);
+}
+async function selectTown(code, part) {
+  if (shownTowns !== code) await showTowns(code);
+  const f = townData.features.find((x) => x.properties.part === part);
+  if (!f) return;
+  fit([f], 13);
+  showTownCard(f.properties);
+}
+
 // 特色のカード：全国の市区町村と比べて目立つものを3つ（真ん中から遠い順）
 const METRICS = {
   over65Rate: { label: "65歳以上の人の割合", unit: "%" },
@@ -235,3 +318,77 @@ function showMessage(text) {
   document.querySelector("main").append(box);
   setTimeout(() => box.remove(), 4000);
 }
+
+// 名前で探す：市区町村・政令市・用意した中の町（町・字）。前から合うものを先に
+const searchBox = document.getElementById("search");
+const results = document.getElementById("results");
+const normalize = (s) => s.replace(/\s/g, "").replace(/[ヶヵ]/g, "ケ");
+function candidates() {
+  const list = [];
+  const cities = new Set();
+  for (const f of munis?.features ?? []) {
+    const p = f.properties;
+    if (p.noData && !p.city) continue;
+    list.push({ name: p.fullName, sub: [p.pref, p.county].filter(Boolean).join(" "), go: () => selectMuni(p.code) });
+    if (p.ward && !cities.has(p.pref + p.city)) {
+      cities.add(p.pref + p.city);
+      list.push({ name: p.city, sub: `${p.pref}（区を選ぶ）`, go: () => showCityCard(p.city, p.pref) });
+    }
+  }
+  for (const [code, part, name] of townIndex.names) {
+    const m = byCode.get(code)?.properties;
+    list.push({ name, sub: m ? `${m.pref} ${m.fullName}の町・字` : "", go: () => selectTown(code, part) });
+  }
+  return list;
+}
+let found = [];
+let active = -1;
+function search() {
+  const q = normalize(searchBox.value);
+  active = -1;
+  if (!q) return closeResults();
+  found = candidates()
+    .map((c) => ({ c, at: normalize(c.name).indexOf(q), also: normalize(c.sub).includes(q) }))
+    .filter((x) => x.at >= 0 || x.also)
+    .sort((a, b) => (a.at < 0) - (b.at < 0) || (a.at !== 0) - (b.at !== 0) || a.c.name.length - b.c.name.length)
+    .slice(0, 8)
+    .map((x) => x.c);
+  results.innerHTML = found.length
+    ? found.map((c, i) => `<li role="option" id="r${i}"><button type="button" data-i="${i}"><span class="name">${c.name}</span><span class="sub">${c.sub}</span></button></li>`).join("")
+    : `<li class="none">見つかりません。市区町村の名前か、町・字の名前で探せます</li>`;
+  results.hidden = false;
+  searchBox.setAttribute("aria-expanded", "true");
+}
+function choose(i) {
+  const c = found[i];
+  if (!c) return;
+  searchBox.value = c.name;
+  closeResults();
+  searchBox.blur();
+  c.go();
+}
+function closeResults() {
+  results.hidden = true;
+  searchBox.setAttribute("aria-expanded", "false");
+}
+searchBox.addEventListener("input", search);
+searchBox.addEventListener("focus", () => searchBox.value && search());
+searchBox.addEventListener("keydown", (e) => {
+  if (e.key === "ArrowDown" || e.key === "ArrowUp") {
+    e.preventDefault();
+    active = (active + (e.key === "ArrowDown" ? 1 : -1) + found.length) % found.length;
+    results.querySelectorAll("button").forEach((b, i) => b.classList.toggle("active", i === active));
+  } else if (e.key === "Enter") {
+    choose(active >= 0 ? active : 0);
+  } else if (e.key === "Escape") {
+    closeResults();
+    e.stopPropagation();
+  }
+});
+results.addEventListener("click", (e) => {
+  const b = e.target.closest("button[data-i]");
+  if (b) choose(Number(b.dataset.i));
+});
+document.addEventListener("pointerdown", (e) => {
+  if (!e.target.closest(".search")) closeResults();
+});

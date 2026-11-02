@@ -41,10 +41,14 @@ for (const code of codes) {
   console.log(`${code}: 町・字 ${gj.features.length}（${(fs.statSync(out).size / 1024).toFixed(0)}KB）`);
 }
 
-// 3. 作った市・区の一覧
+// 3. 作った市・区の一覧と、名前で探すための町・字の名前（[市区町村コード, 町・字の番号, 名前]）
 const done = fs.readdirSync(OUT).filter((f) => /^\d{5}\.json$/.test(f)).map((f) => f.slice(0, 5)).sort();
+const names = done.flatMap((code) =>
+  JSON.parse(fs.readFileSync(`${OUT}/${code}.json`, "utf8")).features.map((f) => [code, f.properties.part, f.properties.name]),
+);
 fs.writeFileSync(`${OUT}/index.json`, JSON.stringify({
   source: "国勢調査 2020年（令和2年）小地域の境界データ（総務省統計局、e-Stat）を加工して作成",
   asOf: "2020年10月1日",
   codes: done,
+  names,
 }));
