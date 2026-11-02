@@ -89,3 +89,13 @@ body.research-page { display: block; height: 100%; }
 .r-layers { position: absolute; left: 10px; bottom: 28px; z-index: 2; margin: 0; padding: 6px 10px; list-style: none; background: var(--surface); border-radius: 10px; box-shadow: var(--shadow); font-size: 12px; }
 .r-layers li { padding: 2px 0; }
 .r-layers .new { margin-right: 6px; padding: 0 6px; border-radius: 4px; background: var(--accent); color: var(--accent-text); font-size: 11px; }
+/* Claude からの提案：枠の内側に余白、提案は1つずつのカードに */
+.r-proposals { padding: 14px 16px 16px; border-radius: 14px; }
+.r-proposals h2 { margin: 0 0 4px; }
+.r-proposals .prop { margin-top: 10px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); }
+.r-proposals .prop:first-of-type { border-top: 1px solid var(--line); }
+.r-proposals .what { margin: 0 0 6px; font-size: 15px; line-height: 1.7; }
+.r-proposals .why { margin: 0 0 8px; line-height: 1.7; }
+.r-proposals .steps { margin: 6px 0 8px; padding-left: 22px; }
+.r-proposals .steps li { margin: 4px 0; }
+.r-proposals .decide { margin-top: 10px; }
