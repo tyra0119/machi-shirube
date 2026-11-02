@@ -116,7 +116,20 @@ async function showLayerMap(code, townFeatures, at, esc) {
   });
 
   // 押した所の説明
-  const pop = (layer, html) => map.on("click", layer, (e) => new maplibregl.Popup({ maxWidth: "260px" }).setLngLat(e.lngLat).setHTML(html(e.features[0].properties)).addTo(map));
+  // 押した所の吹き出しは1つだけ（点が町・字の色の上にあるとき、両方が開いて重なっていた）。点を先に、町・字の重なりを最後に見る
+  const POPS = {};
+  const pop = (layer, html) => (POPS[layer] = html);
+  let popup = null;
+  map.on("click", (e) => {
+    for (const id of ["lore", "shelter", "iryo", "acc", "bus", "overlap"]) {
+      if (!POPS[id] || !map.getLayer(id) || map.getLayoutProperty(id, "visibility") === "none") continue;
+      const f = map.queryRenderedFeatures(e.point, { layers: [id] })[0];
+      if (!f) continue;
+      popup?.remove();
+      popup = new maplibregl.Popup({ maxWidth: "260px" }).setLngLat(e.lngLat).setHTML(POPS[id](f.properties)).addTo(map);
+      return;
+    }
+  });
   pop("shelter", (p) => `<strong>${esc(p.name)}</strong><br>${esc(JSON.parse(p.kinds || "[]").join("・"))}${p.capacity ? `<br>${esc(p.capacity)}` : ""}`);
   pop("iryo", (p) => `<strong>${esc(p.name)}</strong><br>${esc(p.kind)}${p.s ? `・${esc(p.s)}` : ""}<br>${p.state ? `${LT("今日")} ${esc(p.hours)}` : LT("今日は休み")}<br><small>${LT("行く前に電話で確かめてください")}</small>`);
   pop("acc", (p) => `<strong>${esc(p.part)}</strong><br>${LT("3年で")} ${p.n} ${LT("件")}${Number(p.ped) ? `・${LT("歩行者")} ${p.ped}` : ""}${Number(p.bike) ? `・${LT("自転車")} ${p.bike}` : ""}`);
