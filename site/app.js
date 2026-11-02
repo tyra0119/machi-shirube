@@ -49,6 +49,8 @@ let stats = null; // 住民基本台帳の数字（site/data/stats.json）
 const statsReady = getJSON("data/stats.json").then((d) => (stats = d));
 let flagData = { flags: {}, sources: {} }; // 火山・豪雪・離島の印（site/data/flags.json）
 getJSON("data/flags.json").then((d) => (flagData = d));
+let summary = { towns: {} }; // 外部のデータの数（交通事故・これからの人口。site/data/summary.json）
+getJSON("data/summary.json").then((d) => (summary = d)).catch(() => {});
 // 市区町村の印。政令市まるごとは、どれかの区に付いていれば付ける
 function flagsOf(code, t) {
   const own = flagData.flags[code];
@@ -812,6 +814,10 @@ const MUNI_METRICS = {
   elderlySingleRate: { label: "65歳以上の一人暮らしの世帯の割合", unit: "%", src: "census" },
   ownedRate: { label: "持ち家の世帯の割合", unit: "%", src: "census" },
   apartmentRate: { label: "共同住宅（マンション・アパート）の世帯の割合", unit: "%", src: "census" },
+  accPer1000: { label: "人身事故（1年、人口1,000人あたり。警察庁）", unit: "件", digits: 2, ext: true },
+  accOldPedShare: { label: "歩行者の事故のうち65歳以上の歩行者の割合（警察庁）", unit: "%", ext: true },
+  pop2050: { label: "2050年の人口（2020年を100としたとき。社人研）", unit: "", ext: true },
+  old2050: { label: "2050年の65歳以上の割合（社人研）", unit: "%", ext: true },
 };
 const TOWN_METRICS = {
   population: { label: "人口", unit: "人", int: true },
@@ -872,7 +878,7 @@ async function rankRows() {
   return Object.entries(stats.towns)
     .filter(([code, t]) => !t.ward && (!pref || t.pref === pref) && pass(code, t))
     .map(([code, t]) => ({
-      key: code, name: shortName(t.name), sub: t.pref, value: t[metric],
+      key: code, name: shortName(t.name), sub: t.pref, value: t[metric] ?? summary.towns[code]?.[metric],
       go: () => (byCode.has(code) ? selectMuni(code) : showCityCard(t.name, t.pref)),
       wards: byCode.has(code) ? null : munis.features.filter((f) => f.properties.pref === t.pref && f.properties.city === t.name && f.properties.ward),
     }));
