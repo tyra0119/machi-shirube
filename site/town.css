@@ -480,3 +480,10 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .mitate-top .wall svg { width: 14px; height: 14px; }
 .winter-first .go { display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; padding: 8px 14px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); color: var(--text); font-weight: 700; text-decoration: none; }
 .winter-first .go svg { width: 18px; height: 18px; }
+/* 町・字のひとこと */
+.hitokoto h2 svg { width: 20px; height: 20px; margin-right: 4px; vertical-align: -3px; }
+.hitokoto-text { margin: 4px 0 8px; padding: 12px 14px; border-radius: 10px; background: var(--town-tint, var(--bg)); font-size: 17px; line-height: 1.8; }
+.hitokoto .facts { display: block; margin-top: 4px; color: var(--text-sub); }
+.pop-hito { margin: 6px 0 0; font-size: 13px; line-height: 1.6; }
+.pop-hito small { color: #666; }
+.hitokoto details.facts summary { cursor: pointer; }

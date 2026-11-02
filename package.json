@@ -41,7 +41,8 @@
     "mitate": "node --env-file=.env scripts/mitate.mjs",
     "build:summary": "node scripts/build-summary.mjs",
     "build:slope": "node scripts/build-slope.mjs",
-    "build:climate": "node scripts/build-climate.mjs"
+    "build:climate": "node scripts/build-climate.mjs",
+    "hitokoto": "node --env-file=.env scripts/hitokoto.mjs"
   },
   "devDependencies": {
     "mapshaper": "^0.7.101"

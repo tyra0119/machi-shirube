@@ -161,6 +161,18 @@ async function showFloodPop(code, part) {
 }
 const depthColor = (label) => { const c = DEPTH_COLORS.find(([, l]) => l === label)?.[0] ?? (label === "警戒区域" ? [214, 170, 110] : [200, 200, 200]); return `rgb(${c.join(",")})`; };
 
+// 町・字ごとの「わが町のひとこと」（scripts/hitokoto.mjs。AI が町・字の数だけでまとめ、数は PC で照らしたもの）。町・字のページのいちばん上に
+async function showHitokoto(code, part) {
+  if (!part || (LANG && LANG !== "easy")) return;
+  const d = await fetch(`data/hitokoto/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const h = d?.parts?.[part.properties.part];
+  if (!h) return;
+  $("hitokoto-block").hidden = false;
+  $("hitokoto-head").innerHTML = `${icon("pin")}${esc(h.name)}${T("のひとこと")}`;
+  $("hitokoto").textContent = h.text;
+  $("hitokoto-note").innerHTML = `${esc(T(d.note))}。<details class="facts"><summary>${T("もとにした数")}</summary>${h.facts.map((f) => esc(f)).join("・")}</details>`;
+}
+
 // 町の気候（平年値メッシュ × 住む人。scripts/build-climate.mjs）。東京都心と並べ、良い所は明るい話題として添える
 async function showClimate(code) {
   const d = await fetch(`data/climate/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
@@ -869,6 +881,7 @@ async function finishPage(code, townFeatures, startPart, scopeNote, at) {
     $("color-src").addEventListener("click", () => setTimeout(() => $("a-Q11")?.scrollIntoView({ behavior: "smooth", block: "start" }), 50));
   }
   showLayerMap(code, townFeatures, at, esc);
+  await showHitokoto(code, part);
   await showFloodPop(code, part);
   await showSlope(code, part);
   await showPlan(code, part);

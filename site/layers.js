@@ -8,8 +8,8 @@ async function showLayerMap(code, townFeatures, at, esc) {
   const box = document.getElementById("layer-map");
   if (!box) return;
   const get = (url) => fetch(url).then((r) => (r.ok ? r.json() : null)).catch(() => null);
-  const [japan, flood, quake, slope, shelters, med, acc, bus, nowc, risk] = await Promise.all([
-    get("data/japan.topo.json"), get(`data/flood-pop/${code}.json`), get(`data/quake-pop/${code}.json`), get(`data/slope/${code}.json`),
+  const [japan, flood, quake, slope, hito, shelters, med, acc, bus, nowc, risk] = await Promise.all([
+    get("data/japan.topo.json"), get(`data/flood-pop/${code}.json`), get(`data/quake-pop/${code}.json`), get(`data/slope/${code}.json`), get(`data/hitokoto/${code}.json`),
     get(`data/shelters/${code}.json`), loadMedical(code), get(`data/accidents/${code}.json`), get(`data/bus/${code}.json`),
     get(`${JMA_TILE}/nowc/targetTimes_N1.json`), get(`${JMA_TILE}/risk/targetTimes.json`),
   ]);
@@ -115,7 +115,7 @@ async function showLayerMap(code, townFeatures, at, esc) {
   pop("shelter", (p) => `<strong>${esc(p.name)}</strong><br>${esc(JSON.parse(p.kinds || "[]").join("・"))}${p.capacity ? `<br>${esc(p.capacity)}` : ""}`);
   pop("iryo", (p) => `<strong>${esc(p.name)}</strong><br>${esc(p.kind)}${p.s ? `・${esc(p.s)}` : ""}<br>${p.state ? `${LT("今日")} ${esc(p.hours)}` : LT("今日は休み")}<br><small>${LT("行く前に電話で確かめてください")}</small>`);
   pop("acc", (p) => `<strong>${esc(p.part)}</strong><br>${LT("3年で")} ${p.n} ${LT("件")}${Number(p.ped) ? `・${LT("歩行者")} ${p.ped}` : ""}${Number(p.bike) ? `・${LT("自転車")} ${p.bike}` : ""}`);
-  pop("overlap", (p) => `<strong>${esc(p.name)}</strong><br>${p.n ? `${LT("重なり")} ${p.n}：${esc(p.hit)}` : LT("重なりはありません")}`);
+  pop("overlap", (p) => `<strong>${esc(p.name)}</strong><br>${p.n ? `${LT("重なり")} ${p.n}：${esc(p.hit)}` : LT("重なりはありません")}${hito?.parts?.[p.part] && (!LANG || LANG === "easy") ? `<p class="pop-hito">${esc(hito.parts[p.part].text)}<small>（${LT("AI のまとめ")}）</small></p>` : ""}`);
   pop("bus", (p) => `<strong>${esc(p.name)}</strong><br>${LT("平日")} ${p.n} ${LT("本")}`);
   for (const id of ["shelter", "iryo", "acc", "bus", "overlap"]) {
     map.on("mouseenter", id, () => (map.getCanvas().style.cursor = "pointer"));
