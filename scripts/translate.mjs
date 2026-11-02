@@ -136,7 +136,11 @@ export async function translateTown(code, langs = ["pt", "es", "en", "easy"], lo
     }
   }
   fs.mkdirSync("site/data/translations", { recursive: true });
-  fs.writeFileSync(`site/data/translations/${code}.json`, JSON.stringify(out, null, 1));
+  // 前に訳したほかの言葉は残す（今回訳した言葉だけを入れかえる）
+  const file = `site/data/translations/${code}.json`;
+  const prev = fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, "utf8")) : null;
+  if (prev?.langs) out.langs = { ...prev.langs, ...out.langs };
+  fs.writeFileSync(file, JSON.stringify(out, null, 1));
   ledger.exportPublic();
   log(`できました：site/data/translations/${code}.json（$${usd.toFixed(3)}）`);
   return { out, usd };
