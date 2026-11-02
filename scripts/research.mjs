@@ -21,10 +21,11 @@ const SYSTEM = `あなたは、日本の町の暮らしの情報を、公式の�
 - 推測で答えないでください。見つからなければ found を false にしてください
 - quote には、出典の中の文を一字一句そのまま、短く（120字まで）入れてください。言いかえないでください
 - 数字には、その資料に書かれた時点（例：令和7年4月1日現在）を asOf に入れてください。書かれていなければ空にしてください
+- CSV の行を数えて数を答えたときは、count に数と CSV の URL を入れてください（あとで機械が数え直して照らします）
 - 最後に、次の形の JSON を <answer> と </answer> のあいだに1つだけ書いてください
-{"found": true|false, "value": "答え（短く）", "asOf": "時点", "source": {"title": "資料やページの名前", "url": "出典の URL", "where": "どこか（ページ番号や見出し）"}, "quote": "元の文", "note": "気づいたこと（使ってよい範囲の書き方など。なければ空）"}`;
+{"found": true|false, "value": "答え（短く）", "asOf": "時点", "source": {"title": "資料やページの名前", "url": "出典の URL", "where": "どこか（ページ番号や見出し）"}, "quote": "元の文", "count": {"number": 数, "csvUrl": "数えた CSV の URL"} または null, "note": "気づいたこと（使ってよい範囲の書き方など。なければ空）"}`;
 
-export async function research(code, question = DEFAULT_QUESTION, { log = console.log } = {}) {
+export async function research(code, question = DEFAULT_QUESTION, { log = console.log, qid } = {}) {
   const stats = JSON.parse(fs.readFileSync("site/data/stats.json", "utf8"));
   const town = stats.towns[code];
   if (!town) throw new Error(`市区町村コード ${code} が見つかりません`);
@@ -101,15 +102,30 @@ export async function research(code, question = DEFAULT_QUESTION, { log = consol
     step(verified ? "元の文が出典の中にありました" : "元の文を照らせませんでした");
   }
 
-  // はじめて使う情報源は、人が OK するまで自動にしない
-  const known = ledger.load().items.some((x) => x.source?.url && new URL(x.source.url).hostname === host && x.status === "ok");
-  if (a.found && !known) why.push(`はじめて使う情報源（${host}）。使ってよい範囲を人が確かめる`);
+  // CSV を数えた数は、PC 側で数え直して照らす（見出しの1行を除いた、空でない行の数）
+  let counted = null;
+  if (a.found && a.count?.csvUrl && Number.isFinite(Number(a.count.number))) {
+    step(`CSV を PC 側で取り、行を数え直しています：${a.count.csvUrl}`);
+    try {
+      const csv = await politeText(a.count.csvUrl, { raw: true });
+      counted = csv.split(/\r?\n/).slice(1).filter((l) => l.replace(/[,\s"]/g, "")).length;
+      if (counted !== Number(a.count.number)) why.push(`数が合わない（Claude は ${a.count.number}、数え直すと ${counted}）`);
+      step(counted === Number(a.count.number) ? `数え直しても ${counted} で合いました` : `数え直すと ${counted} で、合いませんでした`);
+    } catch (e) {
+      why.push(`CSV を PC 側で数えられなかった（${e.message}）`);
+    }
+  }
+
+  // はじめて使う情報源は、人が OK するまで自動にしない（情報源カード。docs/approval-ledger.md）
+  const card = ledger.cardFor(`muni:${code}`, host);
+  if (a.found && !card) why.push(`はじめて使う情報源（${host}）。使ってよい範囲を人が確かめる`);
   if (a.note) why.push(`Claude のメモ：${a.note}`);
 
   const item = ledger.add({
     scope: `muni:${code}`,
     scopeName: name,
     kind: "answer",
+    qid,
     question,
     value: a.found ? a.value : "見つからなかった",
     asOf: a.asOf || undefined,
@@ -117,6 +133,8 @@ export async function research(code, question = DEFAULT_QUESTION, { log = consol
     method: "読んで取った",
     quote: a.quote || undefined,
     verified,
+    counted: counted ?? undefined,
+    cardId: card?.id,
     why: why.join("／") || undefined,
     status: why.length ? "pending" : "auto",
     runId,
@@ -132,7 +150,7 @@ export async function research(code, question = DEFAULT_QUESTION, { log = consol
 
 // 行儀よく取る：名乗る・robots.txt を見る・同じサイトへは1秒あける。PDF なら文字を取り出す
 const lastHit = new Map();
-async function politeText(url) {
+async function politeText(url, { raw = false } = {}) {
   const u = new URL(url);
   const wait = 1000 - (Date.now() - (lastHit.get(u.host) ?? 0));
   if (wait > 0) await new Promise((r) => setTimeout(r, wait));
@@ -143,6 +161,11 @@ async function politeText(url) {
   lastHit.set(u.host, Date.now());
   if (!res.ok) throw new Error(`応答 ${res.status}`);
   const buf = Buffer.from(await res.arrayBuffer());
+  if (raw) {
+    // CSV：UTF-8 で読めなければ Shift_JIS（日本の役所の CSV に多い）
+    const utf8 = new TextDecoder("utf-8", { fatal: false }).decode(buf);
+    return utf8.includes("�") ? new TextDecoder("shift_jis").decode(buf) : utf8.replace(/^﻿/, "");
+  }
   if ((res.headers.get("content-type") ?? "").includes("pdf") || url.toLowerCase().endsWith(".pdf")) {
     const doc = await getDocument({ data: new Uint8Array(buf), verbosity: 0 }).promise;
     let all = "";
@@ -164,9 +187,39 @@ function disallowed(robots, path) {
   return false;
 }
 
+// 1つの町を、物差しの問い（site/data/yardstick.json）でまとめて調べる。
+// もう答えのある問い（確かめ待ち・OK・自動）は飛ばす。1回の調べの費用の上限を超えたら止める
+export const RUN_LIMIT_USD = 4;
+export async function researchTown(code, { log = console.log, onItem = () => {}, shouldStop = () => false } = {}) {
+  const { questions } = JSON.parse(fs.readFileSync("site/data/yardstick.json", "utf8"));
+  const done = new Set(ledger.load().items.filter((x) => x.scope === `muni:${code}` && ["pending", "ok", "auto"].includes(x.status)).map((x) => x.qid ?? x.question));
+  let total = 0;
+  for (const q of questions) {
+    if (done.has(q.id) || done.has(q.text)) { log(`${q.id} はもう答えがあるので飛ばします`); continue; }
+    if (shouldStop()) { log("止めました"); break; }
+    if (total >= RUN_LIMIT_USD) { log(`この調べの費用が上限（$${RUN_LIMIT_USD}）に達したので止めます`); break; }
+    try {
+      const r = await research(code, q.text, { log, qid: q.id });
+      total += r.usd;
+      onItem(q, r.item, total);
+    } catch (e) {
+      log(`${q.id} は調べられませんでした：${e.message}`);
+      if (/上限/.test(e.message)) break;
+    }
+  }
+  return total;
+}
+
 // コマンドで動かしたとき
+//   npm run research -- 39428 [問い]   1つの問い
+//   npm run research -- 39428 --all    物差しの問いをまとめて
 if (process.argv[1]?.endsWith("research.mjs")) {
   const [code, ...q] = process.argv.slice(2);
-  const r = await research(code, q.join(" ") || undefined);
-  console.log(JSON.stringify({ id: r.item.id, status: r.item.status, value: r.item.value, source: r.item.source, why: r.item.why, usd: r.usd }, null, 1));
+  if (q[0] === "--all") {
+    const total = await researchTown(code, { onItem: (q, it) => console.log(`→ ${q.id} ${it.status}：${it.value}`) });
+    console.log(`合計 $${total.toFixed(3)}`);
+  } else {
+    const r = await research(code, q.join(" ") || undefined);
+    console.log(JSON.stringify({ id: r.item.id, status: r.item.status, value: r.item.value, source: r.item.source, why: r.item.why, usd: r.usd }, null, 1));
+  }
 }

@@ -18,6 +18,36 @@ export function can(user, action, scope) {
   return user === "owner" && typeof scope === "string";
 }
 
+// 情報源カード：町（市区町村）ごとに、サイト（ホスト）を1回 OK すれば、次からそのサイトの答えは自動の候補になる
+const CARDS = `${DIR}/cards.json`;
+export function loadCards() {
+  return fs.existsSync(CARDS) ? JSON.parse(fs.readFileSync(CARDS, "utf8")) : { cards: [] };
+}
+export function cardFor(scope, host) {
+  return loadCards().cards.find((c) => c.scope === scope && c.host === host && c.status === "ok");
+}
+function ensureCard(it, user) {
+  const host = it.source?.url ? new URL(it.source.url).hostname : null;
+  if (!host || cardFor(it.scope, host)) return null;
+  const data = loadCards();
+  const card = {
+    id: `c${String(data.cards.length + 1).padStart(4, "0")}`,
+    scope: it.scope,
+    scopeName: it.scopeName,
+    host,
+    title: `${it.scopeName ?? ""}の公式サイト`,
+    url: new URL(it.source.url).origin + "/",
+    license: "作者が使ってよいと確かめた（事実と出典のリンクを出す。文はそのまま写さない）",
+    status: "ok",
+    approvedBy: user,
+    approvedAt: new Date().toISOString(),
+    fromItem: it.id,
+  };
+  data.cards.push(card);
+  fs.writeFileSync(CARDS, JSON.stringify(data, null, 1));
+  return card;
+}
+
 export function load() {
   return fs.existsSync(ITEMS) ? JSON.parse(fs.readFileSync(ITEMS, "utf8")) : { items: [] };
 }
@@ -57,6 +87,11 @@ export function decide(id, action, { user = "owner", reason = "" } = {}) {
   }
   const rec = { at: new Date().toISOString(), by: user, action, reason: reason.trim(), from: prev };
   if (action !== "undo") it.status = STATUS[action];
+  // OK したら、その出典のサイトの情報源カードも OK にする（まだ無ければ）
+  if (action === "ok") {
+    const card = ensureCard(it, user);
+    if (card) { rec.card = card.id; it.cardId = card.id; }
+  }
   it.decisions.push(rec);
   save(data);
   fs.appendFileSync(LOG, JSON.stringify({ id, scope: it.scope, ...rec }) + "\n");
@@ -81,6 +116,18 @@ export function exportPublic(data = load()) {
   // いまある答えのファイルは作り直す（取り消したものがページから消えるように）
   for (const f of fs.readdirSync(dir)) if (/^\d{5}\.json$/.test(f) && !byMuni.has(f.slice(0, 5))) fs.rmSync(path.join(dir, f));
   for (const [code, answers] of byMuni) fs.writeFileSync(`${dir}/${code}.json`, JSON.stringify({ answers }, null, 1));
+
+  // 情報源カード（公開してよい項目だけ）→ 町のページの「出典」
+  const sdir = "site/data/sources";
+  fs.mkdirSync(sdir, { recursive: true });
+  const cardsByMuni = new Map();
+  for (const c of loadCards().cards) {
+    const code = c.scope.match(/(\d{5})/)?.[1];
+    if (!code) continue;
+    if (!cardsByMuni.has(code)) cardsByMuni.set(code, []);
+    cardsByMuni.get(code).push({ id: c.id, host: c.host, title: c.title, url: c.url, license: c.license, status: c.status, approvedAt: c.approvedAt });
+  }
+  for (const [code, cards] of cardsByMuni) fs.writeFileSync(`${sdir}/${code}.json`, JSON.stringify({ cards }, null, 1));
 
   const count = (s) => data.items.filter((x) => x.status === s).length;
   fs.writeFileSync("site/data/review.json", JSON.stringify({

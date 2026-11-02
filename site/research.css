@@ -1,0 +1,52 @@
+/* 調べる画面（PC の横長が主。動画の 1080p で文字が読める大きさ）。動くのは地図・ます目・流れの3つだけ */
+body.research-page { display: block; height: 100%; }
+.r-layout { display: grid; grid-template-columns: 1fr minmax(380px, 40%); height: 100%; }
+.r-map-area { position: relative; }
+.r-map { position: absolute; inset: 0; background: var(--sea); }
+.r-path { position: absolute; left: 12px; top: 12px; padding: 2px 12px; background: var(--surface); border-radius: 20px; box-shadow: var(--shadow); }
+.r-path ol { display: flex; align-items: center; margin: 0; padding: 0; list-style: none; font-size: 15px; }
+.r-path li { display: flex; align-items: center; min-height: 36px; }
+.r-path li + li::before { content: "›"; margin: 0 6px; color: var(--text-sub); }
+.r-path a { color: var(--accent); }
+.r-side { overflow-y: auto; padding: 16px 20px 32px; background: var(--surface); box-shadow: var(--shadow); }
+.r-head h1 { margin: 0; font-size: 26px; }
+.r-head .where { margin: 2px 0 10px; color: var(--text-sub); }
+.r-meters { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin: 0 0 12px; }
+.r-meters div { padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; }
+.r-meters dt { font-size: 12px; color: var(--text-sub); }
+.r-meters dd { margin: 2px 0 0; font-size: 18px; font-weight: 700; }
+.r-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 10px; }
+.r-actions .primary { min-height: 48px; padding: 0 28px; border: 0; border-radius: 24px; background: var(--accent); color: var(--accent-text); font-size: 17px; font-weight: 700; cursor: pointer; }
+.r-actions .primary:disabled { opacity: 0.5; cursor: default; }
+.r-actions .stop { min-height: 48px; padding: 0 20px; border: 2px solid var(--text); border-radius: 24px; background: var(--surface); color: var(--text); font-size: 16px; cursor: pointer; }
+.r-review { display: inline-flex; align-items: center; gap: 4px; min-height: 48px; padding: 0 16px; border: 1px solid var(--line); border-radius: 24px; color: var(--text); text-decoration: none; }
+.r-review strong { font-size: 18px; }
+.r-block { margin-top: 18px; }
+.r-block h2 { margin: 0 0 8px; font-size: 18px; }
+.r-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 6px; margin: 0; padding: 0; list-style: none; }
+.r-grid li { display: flex; flex-direction: column; justify-content: space-between; min-height: 64px; padding: 6px 8px; border: 2px solid var(--line); border-radius: 8px; font-size: 12px; background: var(--surface); }
+.r-grid .id { font-weight: 700; font-size: 14px; }
+.r-grid .g { color: var(--text-sub); }
+.r-grid li.doing { border-color: var(--accent); animation: r-blink 1.2s ease-in-out infinite; }
+.r-grid li.pending { border-color: var(--accent); border-style: dashed; }
+.r-grid li.done { border-color: var(--accent); background: var(--accent); color: var(--accent-text); }
+.r-grid li.done .g { color: var(--accent-text); }
+.r-grid li.none { border-color: var(--pref-line); background: repeating-linear-gradient(45deg, var(--surface) 0 6px, var(--bg) 6px 12px); }
+@keyframes r-blink { 50% { box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 30%, transparent); } }
+@media (prefers-reduced-motion: reduce) { .r-grid li.doing { animation: none; } }
+.r-legend { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 8px 0 0; padding: 0; list-style: none; font-size: 12px; color: var(--text-sub); }
+.r-legend li { display: flex; align-items: center; gap: 6px; }
+.r-legend .sq { width: 16px; height: 16px; border: 2px solid var(--line); border-radius: 4px; }
+.r-legend .sq.doing { border-color: var(--accent); }
+.r-legend .sq.pending { border-color: var(--accent); border-style: dashed; }
+.r-legend .sq.done { border-color: var(--accent); background: var(--accent); }
+.r-legend .sq.none { border-color: var(--pref-line); background: repeating-linear-gradient(45deg, var(--surface) 0 3px, var(--bg) 3px 6px); }
+.r-flow { margin: 0; padding: 0; list-style: none; font-size: 14px; line-height: 1.6; max-height: 40vh; overflow-y: auto; border-top: 1px solid var(--line); }
+.r-flow li { display: grid; grid-template-columns: 4.6em 1fr; gap: 8px; padding: 4px 0; border-bottom: 1px solid var(--line); }
+.r-flow li.note { display: block; color: var(--text-sub); }
+.r-flow time { color: var(--text-sub); font-variant-numeric: tabular-nums; }
+@media (max-width: 760px) {
+  .r-layout { grid-template-columns: 1fr; grid-template-rows: 40vh auto; height: auto; }
+  .r-map-area { height: 40vh; }
+  .r-grid { grid-template-columns: repeat(3, 1fr); }
+}

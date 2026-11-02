@@ -9,7 +9,11 @@ import http from "node:http";
 import fs from "node:fs";
 import path from "node:path";
 import * as ledger from "./ledger.mjs";
-import { research } from "./research.mjs";
+import { research, researchTown, RUN_LIMIT_USD } from "./research.mjs";
+
+// 町をまとめて調べる（調べる画面から）。一度に1つだけ。様子はメモリに持ち、終わったら local/runs/ に残す
+const runs = new Map();
+let activeRun = null;
 
 const ROOT = path.resolve("site");
 const AREAS = path.join(ROOT, "data", "areas.json");
@@ -74,6 +78,36 @@ async function startResearch(req, res) {
   }
 }
 
+async function startRun(req, res) {
+  if (!process.env.ANTHROPIC_API_KEY) return send(res, 400, { error: "調べるには npm run serve:research で動かしてください（.env の鍵を読む）" });
+  if (activeRun && runs.get(activeRun)?.status === "running") return send(res, 409, { error: "ほかの町を調べている最中です", runId: activeRun });
+  let body = "";
+  for await (const chunk of req) body += chunk;
+  const { code } = JSON.parse(body || "{}");
+  if (!/^\d{5}$/.test(code ?? "")) return send(res, 400, { error: "市区町村コードが正しくありません" });
+  if (!ledger.can("owner", "request", `muni:${code}`)) return send(res, 403, { error: "この範囲を調べる権限がありません" });
+  const id = `run-${new Date().toISOString().replace(/[-:T.Z]/g, "").slice(0, 14)}-${code}`;
+  const run = { id, code, startedAt: new Date().toISOString(), status: "running", usd: 0, limit: RUN_LIMIT_USD, log: [], items: [], stopRequested: false };
+  runs.set(id, run);
+  activeRun = id;
+  send(res, 200, run);
+  researchTown(code, {
+    log: (text) => run.log.push({ at: new Date().toISOString(), text: text.replace(/^\d\d:\d\d:\d\d /, "") }),
+    onItem: (q, it, total) => { run.usd = total; run.items.push({ qid: q.id, id: it.id, status: it.status, value: it.value, why: it.why }); },
+    shouldStop: () => run.stopRequested,
+  }).then((total) => {
+    run.usd = total;
+    run.status = run.stopRequested ? "stopped" : "done";
+  }).catch((e) => {
+    run.status = "failed";
+    run.log.push({ at: new Date().toISOString(), text: `止まりました：${e.message}` });
+  }).finally(() => {
+    run.endedAt = new Date().toISOString();
+    fs.mkdirSync("local/runs", { recursive: true });
+    fs.writeFileSync(`local/runs/${id}.summary.json`, JSON.stringify(run, null, 1));
+  });
+}
+
 async function decideItem(req, res, id) {
   let body = "";
   for await (const chunk of req) body += chunk;
@@ -92,6 +126,16 @@ http
     if (url.pathname === "/api/areas" && req.method === "POST") return saveArea(req, res);
     if (url.pathname === "/api/review" && req.method === "GET") return send(res, 200, ledger.load());
     if (url.pathname === "/api/research" && req.method === "POST") return startResearch(req, res);
+    if (url.pathname === "/api/runs" && req.method === "POST") return startRun(req, res);
+    const r = url.pathname.match(/^\/api\/runs\/([\w-]+)(\/stop)?$/);
+    if (r && req.method === "GET") return runs.has(r[1]) ? send(res, 200, runs.get(r[1])) : send(res, 404, { error: "見つかりません" });
+    if (r && r[2] && req.method === "POST") {
+      const run = runs.get(r[1]);
+      if (!run) return send(res, 404, { error: "見つかりません" });
+      run.stopRequested = true;
+      run.log.push({ at: new Date().toISOString(), text: "止めるように頼みました（いま調べている問いが終わったら止まります）" });
+      return send(res, 200, run);
+    }
     const m = url.pathname.match(/^\/api\/review\/(r\d{5})$/);
     if (m && req.method === "POST") return decideItem(req, res, m[1]);
     let file = path.join(ROOT, decodeURIComponent(url.pathname));

@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>調べる｜まちしるべ</title>
+<meta name="description" content="まちしるべで、Claude が町を調べている様子（地図・物差しのます目・作業の流れ）。">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="research.css">
+</head>
+<body class="research-page">
+<div class="r-layout">
+  <section class="r-map-area">
+    <div id="r-map" class="r-map" aria-label="調べている町の地図"></div>
+    <nav class="r-path" aria-label="いま見ている所"><ol id="path"><li><a href="./">日本</a></li></ol></nav>
+  </section>
+  <section class="r-side">
+    <header class="r-head">
+      <h1 id="name">調べる</h1>
+      <p id="where" class="where"></p>
+      <dl class="r-meters">
+        <div><dt>始めた時刻</dt><dd id="started">—</dd></div>
+        <div><dt>かかった時間</dt><dd id="elapsed">—</dd></div>
+        <div><dt>費用</dt><dd><span id="usd">$0.00</span> ／ 上限 <span id="limit">$4</span></dd></div>
+      </dl>
+      <div class="r-actions">
+        <button type="button" id="start" class="primary">調べ始める</button>
+        <button type="button" id="stop" class="stop" hidden>止める</button>
+        <a id="review-link" class="r-review" href="review.html">確かめ待ち <strong id="pending">0</strong>件 → 見る</a>
+      </div>
+      <p id="note" class="note"></p>
+    </header>
+
+    <section class="r-block">
+      <h2>物差しのます目 <span class="note" id="grid-sum"></span></h2>
+      <ol id="grid" class="r-grid"></ol>
+      <ul class="r-legend">
+        <li><span class="sq"></span>まだ</li>
+        <li><span class="sq doing"></span>調べている</li>
+        <li><span class="sq pending"></span>確かめ待ち</li>
+        <li><span class="sq done"></span>出せる（自動・OK）</li>
+        <li><span class="sq none"></span>見つからない（町の人に聞く）</li>
+      </ul>
+    </section>
+
+    <section class="r-block">
+      <h2>作業の流れ</h2>
+      <ol id="flow" class="r-flow" aria-live="polite"><li class="note">「調べ始める」を押すと、Claude が町の公式のサイトを探して読み、物差しの問いに出典つきで答えていきます。</li></ol>
+    </section>
+  </section>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+<script src="research.js"></script>
+</body>
+</html>

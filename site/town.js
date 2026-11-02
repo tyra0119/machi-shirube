@@ -66,6 +66,7 @@ const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<
 async function researchBox(code) {
   if (!(await fetch("api/ping").then((r) => r.ok).catch(() => false))) return;
   $("research-block").hidden = false;
+  $("research-link").href = `research.html?muni=${code}`;
   const form = $("research-form");
   form.question.value = "この町の指定緊急避難場所の一覧は、どこで見られるか（公式のページか資料）。全部でいくつあるか";
   form.addEventListener("submit", async (e) => {
@@ -139,7 +140,7 @@ async function main() {
   await showTypes(code, stats, `いまは${muniName}全体の数字から選んだ候補です。この町・字の深い調べは、町を調べるときに。`);
   await showAnswers(code, `${muniName}全体についての答えです。`);
   const index = await getJSON("data/towns/index.json");
-  sources([`${index.source}（${index.asOf}）`, `${stats.source.name}（${stats.source.asOf}）を加工（届きにくい人の候補）`, BASEMAP]);
+  sources([`${index.source}（${index.asOf}）`, `${stats.source.name}（${stats.source.asOf}）を加工（届きにくい人の候補）`, BASEMAP], code);
   drawMap(chosen);
 }
 
@@ -163,7 +164,7 @@ async function muniPage(code, stats) {
   await showTypes(code, stats, "");
   await showAnswers(code, "");
   await researchBox(code);
-  sources([`${stats.source.name}（${stats.source.asOf}。増減は${stats.source.changePeriod}）を加工`, N03, BASEMAP]);
+  sources([`${stats.source.name}（${stats.source.asOf}。増減は${stats.source.changePeriod}）を加工`, N03, BASEMAP], code);
   const topo = await getJSON("data/japan.topo.json");
   drawMap(topojson.feature(topo, topo.objects.municipalities).features.filter((f) => f.properties.code === code));
 }
@@ -177,8 +178,15 @@ function header(name, where, path) {
   $("where").textContent = where;
   $("path").innerHTML = path.filter(([l]) => l).map(([l, href]) => `<li>${href ? `<a href="${href}">${l}</a>` : `<span>${l}</span>`}</li>`).join("");
 }
-function sources(list) {
+function sources(list, code) {
   $("sources").innerHTML = list.map((s) => `<li>${s}</li>`).join("");
+  // 情報源カード（作者が使ってよいと確かめたサイト）
+  if (!code) return;
+  fetch(`data/sources/${code}.json`).then((r) => (r.ok ? r.json() : null)).then((d) => {
+    if (!d?.cards?.length) return;
+    $("sources").insertAdjacentHTML("beforeend", d.cards.map((c) =>
+      `<li><a href="${esc(c.url)}" target="_blank" rel="noopener">${esc(c.title)}</a>（情報源カード ${esc(c.id)}・${esc(c.approvedAt.slice(0, 10))} に確かめた・${esc(c.license)}）</li>`).join(""));
+  }).catch(() => {});
 }
 function notFound(text) {
   $("name").textContent = text;
