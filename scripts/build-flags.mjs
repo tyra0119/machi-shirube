@@ -1,4 +1,4 @@
-// 「絞る」の印：火山災害警戒地域・豪雪地帯・離島（期間前に取った国の一覧。data/raw/ に写したもの）
+// 「絞る」の印：南海トラフの津波避難対策特別強化地域・火山災害警戒地域・豪雪地帯・離島（期間前に取った国の一覧。data/raw/ に写したもの）
 // 動かし方: npm run build:flags（先に npm run build:stats）。出力は site/data/flags.json（市区町村コード → 印）
 // - 火山：内閣府の一覧（PDF、令和6年8月1日）。市町村の名前を拾い、全国で同じ名前が1つならその町、
 //         いくつかあれば同じ並び（「、」でつながった市町村）のほかの町の県に合わせる。合計 179 と合うか確かめる
@@ -43,6 +43,29 @@ for (const run of runs) {
 }
 console.log(`火山：${volcano} 市町村（一覧の合計は 179）${unresolved.length ? `。決まらない：${unresolved.join("、")}` : ""}`);
 
+// 南海トラフ地震 津波避難対策特別強化地域：内閣府（防災庁）の一覧の PDF の最後のページ（平成26年3月28日、令和7年7月1日の答申で変更なし）。
+// 期間中の 2026-11-03 に取得し local/cache/lists/ にだけ置いた。県ごとに、その県の市町村の名前を拾う（「松阪市鈴鹿市」のように「、」が抜けた所もある）。合計 139 と合うか確かめる
+{
+  const tdoc = await getDocument({ data: new Uint8Array(fs.readFileSync("local/cache/lists/nankaitrough_shichouson.pdf")), verbosity: 0 }).promise;
+  const last = (await (await tdoc.getPage(tdoc.numPages)).getTextContent()).items.map((x) => x.str).join("").replace(/s+/g, "");
+  const body = last.slice(last.indexOf("特別強化地域指定市町村一覧") + 13, last.indexOf("※"));
+  const prefs = [...new Set(munis.map((m) => m.pref))];
+  const at = prefs.map((p) => ({ p, i: body.indexOf(p) })).filter((x) => x.i >= 0).sort((a, b) => a.i - b.i);
+  let n = 0;
+  at.forEach(({ p, i }, k) => {
+    const part = body.slice(i + p.length, at[k + 1]?.i ?? body.length);
+    const mine = munis.filter((m) => m.pref === p);
+    const byName = (x) => mine.find((m) => m.name === x);
+    for (const tok of part.split("、").map((x) => x.replace(/[^\p{L}\p{N}]/gu, "").replace(/^.*郡/, "")).filter(Boolean)) {
+      // 名前に合わなければ、2つの名前がつながっていないかを見る（「松阪市鈴鹿市」）
+      const split = byName(tok) ? [tok] : [...Array(tok.length).keys()].map((j) => [tok.slice(0, j), tok.slice(j)]).find(([x, y]) => byName(x) && byName(y)) ?? [];
+      if (!split.length) console.log(`  津波：決まらない ${p} ${tok}`);
+      for (const x of split) { flag(byName(x).code, "tsunami"); n++; }
+    }
+  });
+  console.log(`南海トラフの津波避難対策特別強化地域：${n} 市町村（一覧の合計は 139）`);
+}
+
 // 豪雪・離島（市区町村コードで）。古い版なので、そのあと変わったコードは今のコードに読みかえる
 const RENAMED = {
   "03305": "03216", // 滝沢村 → 滝沢市（2014年）
@@ -72,6 +95,7 @@ if (missing.length) console.log(`今の市区町村に無いコード（合併�
 fs.writeFileSync("site/data/flags.json", JSON.stringify({
   sources: {
     volcano: "火山災害警戒地域の一覧（内閣府、令和6年8月1日）",
+    tsunami: "南海トラフ地震津波避難対策特別強化地域指定市町村一覧（内閣府〈防災庁〉、平成26年3月28日。令和7年7月1日の答申で変更なし）",
     snow: "国土数値情報 豪雪地帯データ A22（国土交通省、2016年度）を加工",
     island: "国土数値情報 離島振興対策実施地域データ A19（国土交通省、2017年）を加工",
   },

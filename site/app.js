@@ -27,7 +27,7 @@ map.addControl(new MapButtons({ onNoLocation: showMessage }), "bottom-right");
 
 // データを読む。読めなかったら、パネルの上に何が読めなかったかを出し続ける（黙って空の画面にしない）
 const DATA_NAMES = {
-  "stats.json": "全国の数字", "flags.json": "火山・豪雪・離島の印", "index.json": "中の町の一覧",
+  "stats.json": "全国の数字", "flags.json": "南海トラフの津波・火山・豪雪・離島の印", "index.json": "中の町の一覧",
   "japan.topo.json": "日本地図の形", "labels.json": "地図の名前", "pref-labels.json": "県の名前", "names.json": "町・字の名前",
 };
 async function getJSON(path) {
@@ -47,7 +47,7 @@ async function getJSON(path) {
 
 let stats = null; // 住民基本台帳の数字（site/data/stats.json）
 const statsReady = getJSON("data/stats.json").then((d) => (stats = d));
-let flagData = { flags: {}, sources: {} }; // 火山・豪雪・離島の印（site/data/flags.json）
+let flagData = { flags: {}, sources: {} }; // 南海トラフの津波・火山・豪雪・離島の印（site/data/flags.json）
 getJSON("data/flags.json").then((d) => (flagData = d));
 let summary = { towns: {} }; // 外部のデータの数（交通事故・これからの人口。site/data/summary.json）
 getJSON("data/summary.json").then((d) => (summary = d)).catch(() => {});
@@ -431,7 +431,7 @@ function showCard(p) {
   const where = [p.pref, p.county].filter(Boolean).join(" ");
   const town = stats?.towns[p.code];
   const f = town ? flagsOf(p.code, town) : {};
-  const tagList = [f.volcano && "火山の警戒地域", f.snow, f.island && "離島がある"].filter(Boolean);
+  const tagList = [f.tsunami && "南海トラフの津波の特別強化地域", f.volcano && "火山の警戒地域", f.snow, f.island && "離島がある"].filter(Boolean);
   const tags = tagList.length ? `<p class="tags">${tagList.map((t) => `<span>${t}</span>`).join("")}</p>` : "";
   const types = town ? `<h3 class="sub">届きにくい人の候補</h3>${typeCandidatesHTML(town, f, stats.summary)}` : "";
   const body = p.noData || !town ? "<p>この地域には国の統計がありません。</p>" : tags + featureCard(town) + types;
