@@ -390,3 +390,15 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .temp-strip li.frost .g { background: hsl(205 60% 40%); color: #fff; }
 .temp-strip li.hot { border-color: #c58a00; background: #fff6dd; }
 .temp-strip li.hot .g { background: #c26a00; color: #fff; }
+/* 入力欄・地図・フォームの下の隙間（.block p の余白の決まりに負けないように） */
+.block .gomi-ex { margin: 10px 0 8px; }
+.block .hinan-map + p, .block .hazard-legend + p { margin-top: 8px; }
+#research-form { margin-bottom: 12px; }
+#research-form .field { margin-bottom: 8px; }
+/* 暮らしの場面のカードの高さをそろえる（どの段も同じ高さ。札は下にそろえる） */
+.tiles { grid-auto-rows: 1fr; }
+.tiles li { display: flex; }
+.tiles a { flex: 1; }
+.tiles a .later { margin-top: auto; }
+.tiles li.feat .feat-badge { position: absolute; top: 8px; right: 8px; margin: 0; }
+.tiles a .later { position: absolute; top: 8px; right: 8px; margin: 0; }

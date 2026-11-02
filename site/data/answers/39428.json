@@ -404,6 +404,55 @@
    ],
    "checkedAt": "2026-11-02T11:27:20.762Z",
    "score": 2
+  },
+  {
+   "id": "r00097",
+   "qid": "Q28",
+   "scope": "muni:39428",
+   "question": "この町が進めている大きな計画と事業（総合計画の重点・新しい施設や道路・まちづくりの計画など）。多くても5つ。1つずつ1文で、時期と出典をつけて",
+   "value": "①令和7〜9年度の「黒潮町総合戦略」（産業振興・医療福祉・教育・防災の4部構成）で、2060年に人口6,800人を目指す。\n②令和8年度は、南海トラフ地震・津波に備えた地区防災計画や総合防災訓練を進め、高台への宅地造成も検討する。\n③高規格道路の延伸に向けた新たな集客施設の検討と、既存の道の駅の機能強化を進める。\n④令和8年度に「子ども家庭センター」を設置する。\n⑤脱炭素先行地域の交付金を使い、令和8年度も住民向けの補助事業を続ける。",
+   "asOf": "令和8年3月（施政方針）",
+   "source": {
+    "title": "黒潮町総合戦略【令和7～令和9年度】",
+    "url": "https://www.town.kuroshio.lg.jp/pb/cont/kikaku-sougou-senryaku/45943",
+    "where": "ページ冒頭の説明"
+   },
+   "method": "読んで取った",
+   "status": "auto",
+   "items": [
+    {
+     "text": "令和7〜9年度の3年間、産業振興・医療福祉・教育・防災の4部構成の黒潮町総合戦略で、2060年の人口6,800人を目指す。",
+     "title": "黒潮町総合戦略【令和7～令和9年度】",
+     "url": "https://www.town.kuroshio.lg.jp/pb/cont/kikaku-sougou-senryaku/45943",
+     "asOf": "令和7年3月策定（令和7〜9年度）"
+    },
+    {
+     "text": "令和8年度は、南海トラフ地震・津波に備えた総合防災訓練や地区防災計画を進め、高台への宅地造成も検討する。",
+     "title": "令和8年度施政方針（PDF）",
+     "url": "https://www.town.kuroshio.lg.jp/img/files/pv/sosiki/2026/04/r8-siseihousin(1).pdf",
+     "asOf": "令和8年3月"
+    },
+    {
+     "text": "高規格道路の延伸に向けた新たな集客施設の検討と、既存の道の駅の機能強化・維持管理を進める。",
+     "title": "令和8年度施政方針（PDF）",
+     "url": "https://www.town.kuroshio.lg.jp/img/files/pv/sosiki/2026/04/r8-siseihousin(1).pdf",
+     "asOf": "令和8年3月"
+    },
+    {
+     "text": "令和8年度に、子育て世代包括支援センターと子ども家庭総合支援拠点を一体化した「子ども家庭センター」を設置する。",
+     "title": "令和8年度施政方針（PDF）",
+     "url": "https://www.town.kuroshio.lg.jp/img/files/pv/sosiki/2026/04/r8-siseihousin(1).pdf",
+     "asOf": "令和8年3月"
+    },
+    {
+     "text": "脱炭素先行地域の国の交付金を活用し、令和8年度も住民向けの補助事業を続ける。",
+     "title": "令和8年度施政方針（PDF）",
+     "url": "https://www.town.kuroshio.lg.jp/img/files/pv/sosiki/2026/04/r8-siseihousin(1).pdf",
+     "asOf": "令和8年3月"
+    }
+   ],
+   "checkedAt": "2026-11-02T11:45:58.384Z",
+   "score": 2
   }
  ]
 }

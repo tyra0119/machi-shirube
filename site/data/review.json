@@ -1,9 +1,9 @@
 {
- "updatedAt": "2026-11-02T11:40:48.617Z",
+ "updatedAt": "2026-11-02T11:47:18.107Z",
  "counts": {
-  "auto": 15,
+  "auto": 17,
   "ok": 44,
-  "pending": 5,
+  "pending": 10,
   "fix": 1,
   "rejected": 1,
   "unknown": 0
@@ -1454,6 +1454,77 @@
     "title": "地域包括支援センター - 朝霞市",
     "url": "https://www.city.asaka.lg.jp/soshiki/23/tiikihoukatusiennsennta-.html"
    }
+  },
+  {
+   "id": "r00092",
+   "scope": "muni:11227",
+   "scopeName": "埼玉県 朝霞市",
+   "qid": "Q20",
+   "kind": "answer",
+   "question": "町の図書館と主な公園（名前・場所・開いている時間・休みの日）",
+   "why": "Claude が返した元の文が、答えに使ったページの中に見つからなかった",
+   "status": "pending",
+   "score": null,
+   "source": {
+    "title": "図書館利用案内 - 朝霞市",
+    "url": "https://www.city.asaka.lg.jp/soshiki/44/riyouannai.html"
+   }
+  },
+  {
+   "id": "r00093",
+   "scope": "muni:11227",
+   "scopeName": "埼玉県 朝霞市",
+   "qid": "Q21",
+   "kind": "answer",
+   "question": "これから3か月のあいだに町で開かれる催し（祭り・イベント・講座など）。多くても5つ。1つずつ1文で、日付・場所と出典をつけて",
+   "why": "Claude が返した元の文が、答えに使ったページの中に見つからなかった",
+   "status": "pending",
+   "score": null,
+   "source": {
+    "title": "「あさか冬のあかりテラス2026」点灯式の開催に伴い市内循環バス「わくわく号」根岸台線が一部時間帯で区間運休します",
+    "url": "https://www.city.asaka.lg.jp/soshiki/26/akari-terrace2025-bus.html"
+   }
+  },
+  {
+   "id": "r00094",
+   "scope": "muni:39428",
+   "scopeName": "高知県 黒潮町",
+   "qid": "Q22",
+   "kind": "answer",
+   "question": "この町がある県の病害虫防除所などが出している、いまの病害虫の発生予察（注意報・警報・特殊報）。多くても5つ。1つずつ1文で、作物・出た日と出典をつけて",
+   "why": "はじめて使う情報源（www.nogyo.tosa.pref.kochi.lg.jp）。使ってよい範囲を人が確かめる／確かめ役：資料と合わない所がある（注意報第2号（斑点米カメムシ類）の「令和8年7月13日付」は資料に無い日付です。資料には第2号の日付はなく、ページ全体の日付は2026/08/07です。）",
+   "status": "pending",
+   "score": null,
+   "source": {
+    "title": "病害虫発生予察情報 ～注意報～（高知県病害虫防除所）",
+    "url": "https://www.nogyo.tosa.pref.kochi.lg.jp/info/dtl.php?ID=5700"
+   }
+  },
+  {
+   "id": "r00095",
+   "scope": "muni:39428",
+   "scopeName": "高知県 黒潮町",
+   "qid": "Q23",
+   "kind": "answer",
+   "question": "イノシシ・シカ・サル・アライグマなどの農作物の被害の対策（町の相談窓口・柵や罠の補助・捕獲の決まり）。窓口の電話番号も",
+   "why": "確かめ役：資料と合わない所がある（「狩猟免許の取得費用への補助があります」は、資料には狩猟免許取得促進事業の周知や新規取得者確保は書かれているが、取得費用への補助とは書かれていない）",
+   "status": "pending",
+   "score": null,
+   "source": {
+    "title": "田畑がイノシシやシカなどの鳥獣被害に遭うのですが、何か駆除対策の補助事業はありませんか？（黒潮町FAQ）",
+    "url": "https://www.town.kuroshio.lg.jp/pb/cont/faq-snngyousigoto/3706"
+   }
+  },
+  {
+   "id": "r00096",
+   "scope": "muni:39428",
+   "scopeName": "高知県 黒潮町",
+   "qid": "Q24",
+   "kind": "answer",
+   "question": "漁業をしている人向けの町の窓口（担当課・漁協）と、いま申し込める漁業者向けの支援（燃油・機器・後継者など）",
+   "why": "公開の資料で答えが見つからなかった（町の人に聞くことの候補）",
+   "status": "pending",
+   "score": null
   }
  ]
 }
