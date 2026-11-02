@@ -1,5 +1,6 @@
 # 公開のサイト（GitHub Pages）：main に push したら site/ をそのまま公開する。
 # Claude は呼ばない・鍵も使わない（公開のサイトは見るだけ）
+# 公開の URL：https://tyra0119.github.io/machi-shirube/（リポジトリの Settings → Pages の Source は GitHub Actions）
 name: 公開のサイト
 
 on:
