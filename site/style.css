@@ -194,6 +194,13 @@ a.secondary.as-button { display: flex; align-items: center; justify-content: cen
 .types .who { font-size: 14px; }
 .types .why { font-size: 13px; color: var(--text-sub); }
 
+/* カードのボタンの段（どのカードも名前のすぐ下） */
+.card-actions { display: flex; flex-direction: column; gap: 8px; margin: 0 0 14px; }
+.card-actions .primary, .card-actions .secondary { margin: 0; }
+.card-actions .save-area { display: flex; flex-direction: column; gap: 8px; }
+.card-actions .area-form { display: flex; flex-direction: column; gap: 8px; }
+.card-actions .area-form input { width: 100%; min-height: 44px; margin-top: 4px; padding: 0 10px; border: 1px solid var(--line); border-radius: 8px; font-size: 15px; }
+
 /* 複数選んだ町・字 */
 .picked { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 10px; padding: 0; list-style: none; }
 .picked li { display: flex; align-items: center; gap: 2px; padding: 0 2px 0 12px; border: 1px solid var(--accent); border-radius: 18px; }

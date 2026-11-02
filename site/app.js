@@ -413,14 +413,13 @@ function showCard(p) {
   const isCityOrWard = /[市区]$/.test(p.fullName);
   const hasTowns = townIndex.codes.includes(p.code);
   // 町村はそのまま1つの町。中の地区（字）も見られるようにする
-  const towns = hasTowns ? `<button type="button" class="primary towns">${isCityOrWard ? "中の町を選ぶ" : "中の地区（字）を見る"}</button>`
+  const towns = hasTowns ? `<button type="button" class="secondary towns">${isCityOrWard ? "中の町を選ぶ" : "中の地区（字）を見る"}</button>`
     : isCityOrWard ? `<p class="note">中の町（町・字）の形は、まだ用意していません。</p>` : "";
   card.innerHTML = `
     <button type="button" class="close" aria-label="閉じる">×</button>
     <h2>${p.fullName}</h2>
     <p class="where">${where}・市区町村コード ${p.code}</p>
-    ${towns}
-    ${town ? `<a class="secondary as-button" href="town.html?muni=${p.code}">この市区町村のページを開く</a>` : ""}
+    ${actions(town ? `town.html?muni=${p.code}` : null, towns)}
     ${body}`;
   card.querySelector(".close").addEventListener("click", hideCard);
   card.querySelector(".towns")?.addEventListener("click", () => {
@@ -428,6 +427,13 @@ function showCard(p) {
     showTowns(p.code);
   });
   openCard();
+}
+
+// カードのボタンの段：どのカードも名前のすぐ下の同じ場所に。いちばん上は「この町のページを開く」（目立つボタンは1つだけ）、
+// その下に控えめなボタン
+function actions(pageHref, more = "", pageLabel = "この町のページを開く") {
+  const page = pageHref ? `<a class="primary as-button" href="${pageHref}">${pageLabel}</a>` : "";
+  return page || more ? `<div class="card-actions">${page}${more}</div>` : "";
 }
 
 // パネル：はじめの説明と、町のカードを入れかえる
@@ -466,7 +472,7 @@ function showTownList() {
     <button type="button" class="close" aria-label="閉じる">×</button>
     <h2>${muni?.fullName ?? ""}の中の町</h2>
     <p class="where">地図で町を押すか、下から選んでください（${towns.length}の町・字）</p>
-    <button type="button" class="secondary multi">複数の町・字を選ぶ（合わせて見る）</button>
+    ${actions(`town.html?muni=${shownTowns}`, `<button type="button" class="secondary multi">複数の町・字を選ぶ（合わせて見る）</button>`, `${muni?.fullName ?? ""}のページを開く`)}
     ${areas.some((a) => a.muni === shownTowns) ? `<p class="where">まとまり</p><ul class="town-list areas">${areas.filter((a) => a.muni === shownTowns).map((a) =>
       `<li><button type="button" data-area="${a.id}"><span class="n">${a.name}</span><span class="p">${a.parts.length}の町・字</span></button></li>`).join("")}</ul><p class="where">町・字</p>` : ""}
     <ul class="town-list">${towns.map((f) => `<li><button type="button" data-part="${f.properties.part}"><span class="n">${f.properties.name}</span><span class="p">${f.properties.population ? `${f.properties.population.toLocaleString("ja-JP")}人` : "人が住んでいない"}</span></button></li>`).join("")}</ul>
@@ -581,19 +587,21 @@ function showPickedCard() {
     <button type="button" class="close" aria-label="閉じる">×</button>
     <h2>${a ? a.name : `選んだ町・字（${picked.size}）`}</h2>
     <p class="where">${muni ? `${muni.pref} ${muni.fullName}` : ""}・${a ? `まとまり（${picked.size}の町・字）` : "地図か一覧で押すと、選ぶ・外すが切り替わります"}</p>
+    <div class="card-actions">
+      ${a ? `<a class="primary as-button" href="town.html?area=${a.id}">この町のページを開く</a>` : picked.size >= 2 ? `<div class="save-area">
+        <button type="button" class="primary to-area">1つの町のページにする</button>
+        <form class="area-form" hidden>
+          <label class="field">町の名前（例：上津台地区）<input name="name" maxlength="30" required></label>
+          <button type="submit" class="primary">名前を付けて、町のページを作る</button>
+          <p class="note">保存すると site/data/areas.json に書かれ、コミットすると公開のサイトにも出ます。</p>
+        </form>
+      </div>` : ""}
+      <button type="button" class="secondary done">${a ? "中の町の一覧へ" : "選び終わる（中の町の一覧へ）"}</button>
+    </div>
     <ul class="picked">${names}</ul>
     <p class="pop">合わせて 人口 ${c.population.toLocaleString("ja-JP")}人・${c.households.toLocaleString("ja-JP")}世帯</p>
     <ul class="features">${rows.join("")}</ul>
     <p class="note">割合は、町・字ごとの割合に人数（世帯の割合は世帯の数）で重みをつけて合わせた、めやすです。</p>
-    ${a ? `<a class="primary as-button" href="town.html?area=${a.id}">この町のページを開く</a>` : picked.size >= 2 ? `<div class="save-area">
-      <button type="button" class="primary to-area">1つの町のページにする</button>
-      <form class="area-form" hidden>
-        <label class="field">町の名前（例：上津台地区）<input name="name" maxlength="30" required></label>
-        <button type="submit" class="primary">名前を付けて、町のページを作る</button>
-        <p class="note">保存すると site/data/areas.json に書かれ、コミットすると公開のサイトにも出ます。</p>
-      </form>
-    </div>` : ""}
-    <button type="button" class="secondary done">${a ? "中の町の一覧へ" : "選び終わる（中の町の一覧へ）"}</button>
     <p class="cite">出典：${townIndex.source}（${townIndex.asOf}）</p>`;
   card.querySelector(".close").addEventListener("click", () => { clearPicks(); showTownList(); });
   card.querySelector(".done").addEventListener("click", () => { clearPicks(); showTownList(); });
@@ -660,10 +668,9 @@ function showTownCard(p) {
     <button type="button" class="close" aria-label="閉じる">×</button>
     <h2>${p.name}</h2>
     <p class="where">${muni ? `${muni.pref} ${muni.fullName}` : ""}・町・字の番号 ${p.part}</p>
+    ${actions(`town.html?town=${shownTowns}-${p.part}`, `<button type="button" class="secondary multi">ほかの町・字も選ぶ（合わせて見る）</button>`)}
     ${people}
-    <p>この町は、まだ深く調べていません。</p>
-    <a class="primary as-button" href="town.html?town=${shownTowns}-${p.part}">この町のページを開く</a>
-    <button type="button" class="secondary multi">ほかの町・字も選ぶ（合わせて見る）</button>
+    <p class="note">この町は、まだ深く調べていません。</p>
     <p class="cite">出典：${townIndex.source}（${townIndex.asOf}）</p>`;
   card.querySelector(".multi").addEventListener("click", () => togglePick(p));
   // 閉じると、中の町の一覧に戻る
