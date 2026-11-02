@@ -35,13 +35,14 @@ async function main() {
   $("path").innerHTML = `<li><a href="./">日本</a></li><li><a href="./?pref=${encodeURIComponent(t.pref)}">${esc(t.pref)}</a></li><li><a href="town.html?muni=${code}">${esc(muniName)}</a></li>${partFeature ? `<li><a href="town.html?town=${code}-${part}">${esc(partFeature.properties.name)}</a></li>` : ""}<li><span>調べる</span></li>`;
   drawMap();
 
-  local = await fetch("api/ping").then((r) => r.ok).catch(() => false);
+  const ping = await fetch("api/ping").then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  local = !!ping;
   if (!local) {
     $("start").disabled = true;
     $("note").textContent = "調べるのは作者の手元の画面だけです。ここでは、いまの答えの様子を見られます。";
     $("review-link").hidden = true;
   } else {
-    $("note").textContent = `見込み：問い1つ 約 $0.3・1分。まだ答えの無い問いだけを調べます。1回の調べの上限は $4、1日の上限は $40、合計の上限は $450。`;
+    $("note").textContent = `見込み：問い1つ 約 ${ping.estimate?.usd ?? 0.3}・${ping.estimate?.min ?? 1}分${ping.estimate ? `（これまでの調べ ${ping.estimate.n} 件の中ほどの値。採点と探し直しは別）` : ""}。まだ答えの無い問いだけを調べます。1回の調べの上限は $4、1日の上限は $40、合計の上限は $450。`;
   }
   $("start").addEventListener("click", start);
   $("stop").addEventListener("click", () => run && fetch(`api/runs/${run.id}/stop`, { method: "POST" }));

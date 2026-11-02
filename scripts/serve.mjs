@@ -215,10 +215,21 @@ async function decideItem(req, res, id) {
   }
 }
 
+// 調べる画面の見込み：これまでの調べの記録（local/runs/）の、近い 30 件の中ほどの値（問い1つの費用と時間）
+function estimate() {
+  const dir = "local/runs";
+  if (!fs.existsSync(dir)) return null;
+  const runs = fs.readdirSync(dir).filter((f) => f.endsWith(".json")).sort().slice(-30).map((f) => JSON.parse(fs.readFileSync(`${dir}/${f}`, "utf8")))
+    .filter((r) => r.steps?.length > 1).map((r) => ({ usd: r.usd, min: (Date.parse(r.steps.at(-1).at) - Date.parse(r.steps[0].at)) / 60000 }));
+  if (runs.length < 5) return null;
+  const mid = (xs) => xs.sort((a, b) => a - b)[Math.floor(xs.length / 2)];
+  return { usd: Math.round(mid(runs.map((r) => r.usd)) * 100) / 100, min: Math.max(1, Math.round(mid(runs.map((r) => r.min)))), n: runs.length };
+}
+
 http
   .createServer((req, res) => {
     const url = new URL(req.url, "http://localhost");
-    if (url.pathname === "/api/ping") return send(res, 200, { local: true });
+    if (url.pathname === "/api/ping") return send(res, 200, { local: true, estimate: estimate() });
     if (url.pathname === "/api/areas" && req.method === "POST") return saveArea(req, res);
     if (url.pathname === "/api/review" && req.method === "GET") { const d = ledger.load(); return send(res, 200, { ...d, items: d.items.map((it) => ({ ...it, score: ledger.scoreOf(it) })) }); }
     if (url.pathname === "/api/research" && req.method === "POST") return startResearch(req, res);
