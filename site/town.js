@@ -46,6 +46,103 @@ async function showTypes(code, stats, scopeNote) {
   $("types").innerHTML = typeCandidatesHTML(t, f, stats.summary);
 }
 
+// わが家の避難（いちばん細い段）：場所（町・字・地図を押す・現在地）から、近い避難場所をまっすぐの距離で出す。
+// 場所はブラウザの中だけで使い、送らず残さない。坂・道・浸水の深さは、計算の部品ができてから足す
+async function showHinan(code, townFeatures, startPart) {
+  const res = await fetch(`data/shelters/${code}.json`).catch(() => null);
+  if (!res?.ok) return;
+  const shelters = await res.json();
+  $("hinan-block").hidden = false;
+  let kind = "津波";
+  let here = null; // [経度, 緯度]
+
+  // 町・字を選ぶ（形のおおよその真ん中を、その町・字の場所のめやすにする）
+  const center = (f) => {
+    const polys = f.geometry.type === "Polygon" ? [f.geometry.coordinates] : f.geometry.coordinates;
+    const ring = polys.reduce((a, b) => (b[0].length > a[0].length ? b : a))[0];
+    return ring.reduce((s, p) => [s[0] + p[0] / ring.length, s[1] + p[1] / ring.length], [0, 0]);
+  };
+  const sel = $("hinan-town");
+  sel.innerHTML = `<option value="">（選ぶ）</option>` + townFeatures.map((f) => `<option value="${f.properties.part}">${esc(f.properties.name)}</option>`).join("");
+
+  const map = new maplibregl.Map({
+    container: "hinan-map",
+    style: {
+      version: 8,
+      sources: { pale: { type: "raster", tiles: ["https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png"], tileSize: 256, maxzoom: 18 } },
+      layers: [{ id: "pale", type: "raster", source: "pale" }],
+    },
+    attributionControl: false,
+    dragRotate: true,
+  });
+  // 地図のボタン：右下に縦に（方角・現在地・＋・−）。現在地はその場所から近い避難場所を出す
+  const buttons = new MapButtons({ onNoLocation: (t) => ($("hinan-note").textContent = t) });
+  buttons.locate = () => {
+    if (!navigator.geolocation) return ($("hinan-note").textContent = "この端末では現在地が使えません");
+    navigator.geolocation.getCurrentPosition(
+      (pos) => setHere([pos.coords.longitude, pos.coords.latitude], "現在地"),
+      () => ($("hinan-note").textContent = "現在地が取れませんでした"),
+      { enableHighAccuracy: true, timeout: 10000 },
+    );
+  };
+  map.addControl(buttons, "bottom-right");
+
+  map.on("load", () => {
+    map.addSource("shelters", { type: "geojson", data: shelters });
+    map.addLayer({
+      id: "shelters", type: "circle", source: "shelters",
+      paint: {
+        "circle-radius": ["interpolate", ["linear"], ["zoom"], 10, 3, 15, 7],
+        "circle-color": ["case", ["in", "津波", ["get", "kinds"]], color("--accent"), color("--pref-line")],
+        "circle-stroke-color": "#ffffff", "circle-stroke-width": 1.5,
+      },
+    });
+    map.addSource("here", { type: "geojson", data: { type: "FeatureCollection", features: [] } });
+    map.addLayer({ id: "near-line", type: "line", source: "here", filter: ["==", ["geometry-type"], "LineString"], paint: { "line-color": color("--text"), "line-width": 2, "line-dasharray": [2, 1.5] } });
+    map.addLayer({ id: "here", type: "circle", source: "here", filter: ["==", ["geometry-type"], "Point"], paint: { "circle-radius": 8, "circle-color": color("--text"), "circle-stroke-color": "#ffffff", "circle-stroke-width": 3 } });
+    const box = new maplibregl.LngLatBounds();
+    for (const f of shelters.features) box.extend(f.geometry.coordinates);
+    map.fitBounds(box, { padding: 30, duration: 0 });
+    if (startPart) { sel.value = startPart; sel.dispatchEvent(new Event("change")); }
+  });
+  map.on("click", (e) => setHere([e.lngLat.lng, e.lngLat.lat], "地図で選んだ場所"));
+  sel.addEventListener("change", () => {
+    const f = townFeatures.find((x) => x.properties.part === sel.value);
+    if (f) setHere(center(f), `${f.properties.name}（町・字のおおよその真ん中）`);
+  });
+  for (const b of document.querySelectorAll(".hinan-kind button")) {
+    b.addEventListener("click", () => {
+      kind = b.dataset.kind;
+      document.querySelectorAll(".hinan-kind button").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+      if (here) setHere(here.at, here.label);
+    });
+  }
+
+  // まっすぐの距離（m）。歩くめやすは 1分 60m（お年寄りの歩く速さのめやす）
+  const meters = ([a, b], [c, d]) => {
+    const R = 6371000, rad = Math.PI / 180;
+    const x = (c - a) * rad * Math.cos(((b + d) / 2) * rad), y = (d - b) * rad;
+    return Math.round(Math.sqrt(x * x + y * y) * R);
+  };
+  function setHere(at, label) {
+    here = { at, label };
+    const cand = shelters.features.filter((f) => !kind || f.properties.kinds.includes(kind))
+      .map((f) => ({ f, m: meters(at, f.geometry.coordinates) })).sort((x, y) => x.m - y.m).slice(0, 3);
+    map.getSource("here").setData({ type: "FeatureCollection", features: [
+      { type: "Feature", geometry: { type: "Point", coordinates: at }, properties: {} },
+      ...cand.map((c) => ({ type: "Feature", geometry: { type: "LineString", coordinates: [at, c.f.geometry.coordinates] }, properties: {} })),
+    ] });
+    const box = new maplibregl.LngLatBounds(at, at);
+    for (const c of cand) box.extend(c.f.geometry.coordinates);
+    map.fitBounds(box, { padding: 50, maxZoom: 16, duration: 500 });
+    $("hinan-list").innerHTML = cand.map((c) => `
+      <li><span class="n">${esc(c.f.properties.name)}</span>
+        <span class="d">まっすぐ ${c.m.toLocaleString("ja-JP")}m・歩いて約 ${Math.max(1, Math.round(c.m / 60))}分（めやす）</span>
+        <span class="k">${esc(c.f.properties.address ?? "")}・${esc(c.f.properties.kinds.join("・"))}${c.f.properties.capacity ? `・${esc(c.f.properties.capacity)}` : ""}</span></li>`).join("");
+    $("hinan-note").innerHTML = `${esc(label)}から、${kind ? "津波のときに使える" : ""}避難場所の近い順。距離はまっすぐ測ったもので、坂や道の曲がりは考えていません。歩く時間は1分60mのめやすです。避難の判断は町の案内に従ってください。<br>出典：${esc(shelters.source.title)}（${esc(shelters.source.license)}・${esc(shelters.source.fetchedAt)} に取得）`;
+  }
+}
+
 // 確かめた答え（site/data/answers/{市区町村コード}.json。OK か自動で承認したものだけ）
 async function showAnswers(code, scopeNote) {
   const res = await fetch(`data/answers/${code}.json`).catch(() => null);
@@ -144,6 +241,7 @@ async function main() {
 
   await showTypes(code, stats, `いまは${muniName}全体の数字から選んだ候補です。この町・字の深い調べは、町を調べるときに。`);
   await showAnswers(code, `${muniName}全体についての答えです。`);
+  await showHinan(code, all, chosen.length === 1 ? chosen[0].properties.part : null);
   const index = await getJSON("data/towns/index.json");
   sources([`${index.source}（${index.asOf}）`, `${stats.source.name}（${stats.source.asOf}）を加工（届きにくい人の候補）`, BASEMAP], code);
   drawMap(chosen);
@@ -168,6 +266,8 @@ async function muniPage(code, stats) {
   $("feature-note").textContent = `全国の市区町村 ${stats.peers.toLocaleString("ja-JP")} と比べています。`;
   await showTypes(code, stats, "");
   await showAnswers(code, "");
+  const towns = await fetch(`data/towns/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  await showHinan(code, towns ? topojson.feature(towns, towns.objects.towns).features : [], null);
   await researchBox(code);
   sources([`${stats.source.name}（${stats.source.asOf}。増減は${stats.source.changePeriod}）を加工`, N03, BASEMAP], code);
   const topo = await getJSON("data/japan.topo.json");

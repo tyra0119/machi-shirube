@@ -26,8 +26,9 @@ export function costOf(model, usage) {
   return (input * p.input + (usage.output_tokens ?? 0) * p.output) / 1_000_000 + searches * WEB_SEARCH_USD;
 }
 
-// 1日の費用の上限（作品の中で止める。Console のワークスペースの上限とは別）
-export const DAILY_LIMIT_USD = 5;
+// 1日の費用の上限（作品の中で止める。Console のワークスペースの上限とは別）。
+// ふだんは $5。作者が決めた日だけ、環境変数 DAILY_LIMIT_USD で変える
+export const DAILY_LIMIT_USD = Number(process.env.DAILY_LIMIT_USD ?? 5);
 
 // 1回の呼び出しを記録して、その回の費用を返す。what は人が読める「何のための呼び出しか」
 export function record(model, usage, what) {

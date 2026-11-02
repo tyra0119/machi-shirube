@@ -28,6 +28,20 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .sources { margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.7; }
 .town-foot { padding-bottom: 32px; }
 
+/* わが家の避難 */
+.hinan-controls { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 10px; margin-bottom: 8px; }
+.hinan-controls .field { flex: 1 1 200px; font-size: 13px; color: var(--text-sub); }
+.hinan-controls select { display: block; width: 100%; min-height: 44px; margin-top: 4px; padding: 0 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--text); font-size: 16px; }
+.hinan-kind { display: flex; border: 1px solid var(--line); border-radius: 22px; overflow: hidden; }
+.hinan-kind button { min-height: 44px; padding: 0 14px; border: 0; background: var(--surface); color: var(--text); font-size: 15px; cursor: pointer; }
+.hinan-kind button[aria-pressed="true"] { background: var(--accent); color: var(--accent-text); font-weight: 700; }
+.hinan-map { height: 360px; border-radius: 8px; overflow: hidden; }
+.hinan-list { margin: 10px 0 6px; padding-left: 24px; }
+.hinan-list li { padding: 6px 0; border-bottom: 1px solid var(--line); }
+.hinan-list .n { display: block; font-size: 17px; font-weight: 700; }
+.hinan-list .d { display: block; font-size: 15px; }
+.hinan-list .k { display: block; font-size: 13px; color: var(--text-sub); }
+
 /* 確かめた答え・調べる */
 .answers { margin: 0; padding: 0; list-style: none; }
 .answers li { padding: 10px 0; border-top: 1px solid var(--line); }

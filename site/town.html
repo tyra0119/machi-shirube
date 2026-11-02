@@ -56,6 +56,22 @@
     <ol id="research-steps" class="steps-log"></ol>
   </section>
 
+  <section class="block" id="hinan-block" hidden>
+    <h2>わが家の避難</h2>
+    <p class="note">場所を決めると、近い避難場所が出ます。場所はこのブラウザの中だけで使い、どこにも送らず、残しません。</p>
+    <div class="hinan-controls">
+      <label class="field">町・字を選ぶ<select id="hinan-town"></select></label>
+      <div class="hinan-kind" role="radiogroup" aria-label="どの災害のときか">
+        <button type="button" data-kind="津波" aria-pressed="true">津波のとき</button>
+        <button type="button" data-kind="" aria-pressed="false">すべての避難場所</button>
+      </div>
+    </div>
+    <div id="hinan-map" class="hinan-map" aria-label="避難場所の地図（地図を押すと、その場所から近い避難場所を出します）"></div>
+    <p class="note">地図を押すか、右下の「現在地」でも場所を決められます。</p>
+    <ol id="hinan-list" class="hinan-list"></ol>
+    <p id="hinan-note" class="note"></p>
+  </section>
+
   <section class="block todo">
     <h2>深掘り</h2>
     <p>まだ調べていません。町の特色と「届きにくい人」から、この町に合った深掘り（例：わが家の避難・母語で防災）を作ります。</p>
@@ -84,6 +100,7 @@
 <script src="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
 <script src="types.js"></script>
+<script src="map-buttons.js"></script>
 <script src="town.js"></script>
 </body>
 </html>
