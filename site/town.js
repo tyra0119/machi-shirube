@@ -416,6 +416,43 @@ function wireAllPages() {
 }
 wireAllPages();
 
+// 母語で防災：Claude が訳し、別の Claude が訳し戻して確かめた訳（site/data/translations/{コード}.json）。
+// 確かめで意味がずれた訳は、人が OK するまで出さず、もとの日本語を出す
+const TR_NOTE = {
+  pt: "Tradução feita por IA (Claude). Outra IA traduziu de volta para o japonês para conferir o sentido. Confirme as informações oficiais no site da cidade.",
+  es: "Traducción hecha por IA (Claude). Otra IA la tradujo de nuevo al japonés para comprobar el sentido. Confirme la información oficial en el sitio del municipio.",
+  en: "Translated by AI (Claude). Another AI translated it back into Japanese to check the meaning. Please check the official information on the town's website.",
+  easy: "AI（Claude）が やさしい にほんごに しました。べつの AI が もとの ことばと おなじ いみか たしかめました。ただしい ことは まちの ホームページで たしかめて ください。",
+};
+const TR_PENDING = { pt: "Tradução em verificação. Original em japonês:", es: "Traducción en verificación. Original en japonés:", en: "Translation being checked. Original Japanese:", easy: "いま たしかめて います。もとの にほんご：" };
+async function showTranslations(code) {
+  const t = await fetch(`data/translations/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  if (!t) return;
+  const langs = Object.keys(t.langs);
+  let lang = new URLSearchParams(location.search).get("lang");
+  if (!langs.includes(lang)) lang = langs[0];
+  $("tr-block").hidden = false;
+  $("lang-bar").hidden = false;
+  $("lang-bar").innerHTML = langs.map((l) => `<a href="#foreign" data-lang="${l}">${esc(t.langs[l].name)}</a>`).join("") + `<span>（AI による訳）</span>`;
+  const draw = () => {
+    const L = t.langs[lang];
+    $("tr-langs").innerHTML = langs.map((l) => `<button type="button" data-lang="${l}" aria-pressed="${l === lang}">${esc(t.langs[l].name)}</button>`).join("");
+    $("tr-note").textContent = TR_NOTE[lang] ?? "";
+    $("tr-list").innerHTML = L.items.map((x) => {
+      const ok = x.status === "auto" || x.status === "ok";
+      return `<li lang="${lang === "easy" ? "ja" : lang}">
+        <h3>${esc(ok ? x.short : x.qid)}</h3>
+        ${ok ? `<p class="tx">${esc(x.text)}</p>` : `<p class="tx pending">${esc(TR_PENDING[lang] ?? "")} ${esc(x.original)}</p>`}
+        <details><summary>もとの日本語・出典</summary><p lang="ja">${esc(x.original)}</p>
+          ${x.source?.url ? `<p>出典：<a href="${esc(x.source.url)}" target="_blank" rel="noopener">${esc(x.source.title ?? x.source.url)}</a></p>` : ""}</details>
+      </li>`;
+    }).join("");
+    for (const b of $("tr-langs").querySelectorAll("button")) b.addEventListener("click", () => { lang = b.dataset.lang; draw(); });
+  };
+  for (const a of $("lang-bar").querySelectorAll("a")) a.addEventListener("click", () => { lang = a.dataset.lang; draw(); });
+  draw();
+}
+
 // どの町のページも最後に同じことをする：答え・わが家の避難・今日の暮らし・すべてのページ・調べる
 async function finishPage(code, townFeatures, startPart, scopeNote) {
   await showAnswers(code, scopeNote);
@@ -428,6 +465,7 @@ async function finishPage(code, townFeatures, startPart, scopeNote) {
   }
   const hasHinan = await showHinan(code, townFeatures, startPart);
   todayLife(hasHinan);
+  await showTranslations(code);
   const local = await fetch("api/ping").then((r) => r.ok).catch(() => false);
   buildAllPages(hasHinan, local);
   if (local) await researchBox(code);

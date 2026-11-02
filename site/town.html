@@ -16,6 +16,7 @@
   <p id="where" class="where"></p>
   <p class="unofficial">この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）</p>
   <p id="town-color-note" class="color-note" hidden></p>
+  <p id="lang-bar" class="lang-bar" hidden></p>
 </header>
 
 <!-- いつも上に残るメニュー：今日・すべてのページ（とページの名前） -->
@@ -101,7 +102,15 @@
   <div class="view" data-view="kaigo" hidden><section class="block"><h2>お年寄り・介護</h2><div class="answers-box" data-page="kaigo"></div></section></div>
   <div class="view" data-view="koutsuu" hidden><section class="block"><h2>交通</h2><div class="answers-box" data-page="koutsuu"></div></section></div>
   <div class="view" data-view="tetsuzuki" hidden><section class="block"><h2>手続き</h2><div class="answers-box" data-page="tetsuzuki"></div></section></div>
-  <div class="view" data-view="foreign" hidden><section class="block"><h2>外国の方へ</h2><div class="answers-box" data-page="foreign"></div></section></div>
+  <div class="view" data-view="foreign" hidden>
+    <section class="block" id="tr-block" hidden>
+      <h2>母語で防災・暮らし</h2>
+      <div class="tr-langs" id="tr-langs" role="radiogroup" aria-label="言葉を選ぶ"></div>
+      <p class="tr-note" id="tr-note"></p>
+      <ol class="tr-list" id="tr-list"></ol>
+    </section>
+    <section class="block"><h2>外国の方へ</h2><div class="answers-box" data-page="foreign"></div></section>
+  </div>
   <div class="view" data-view="okane" hidden><section class="block"><h2>お金・補助金</h2><div class="answers-box" data-page="okane"></div></section></div>
   <div class="view" data-view="shisetsu" hidden><section class="block"><h2>公園・図書館</h2><div class="answers-box" data-page="shisetsu"></div></section></div>
   <div class="view" data-view="komatta" hidden><section class="block"><h2>困ったとき</h2><div class="answers-box" data-page="komatta"></div></section></div>

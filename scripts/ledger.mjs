@@ -206,10 +206,24 @@ export function exportPublic(data = load()) {
   const byMuni = new Map();
   for (const it of data.items) {
     if (it.status !== "ok" && it.status !== "auto") continue;
+    if (it.kind === "translation") continue; // 訳は site/data/translations/ に（下で状態だけ合わせる）
     const code = it.scope.match(/(\d{5})/)?.[1];
     if (!code) continue;
     if (!byMuni.has(code)) byMuni.set(code, []);
     byMuni.get(code).push(pick(it));
+  }
+  // 訳：確かめ待ちに入れた訳の状態（人が OK・出さない）を、訳のファイルに写す
+  const tdir = "site/data/translations";
+  if (fs.existsSync(tdir)) {
+    for (const f of fs.readdirSync(tdir).filter((x) => /^\d{5}\.json$/.test(x))) {
+      const t = JSON.parse(fs.readFileSync(`${tdir}/${f}`, "utf8"));
+      let changed = false;
+      for (const l of Object.values(t.langs)) for (const x of l.items) {
+        const it = x.ledgerId && data.items.find((i) => i.id === x.ledgerId);
+        if (it && x.status !== it.status) { x.status = it.status; changed = true; }
+      }
+      if (changed) fs.writeFileSync(`${tdir}/${f}`, JSON.stringify(t, null, 1));
+    }
   }
   const dir = "site/data/answers";
   fs.mkdirSync(dir, { recursive: true });

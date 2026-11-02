@@ -131,7 +131,7 @@ function tags(it) {
   if (!rs.length) return ["サイトを決めれば出せる"];
   return rs.map((r) =>
     /^はじめて使う情報源/.test(r) ? "はじめてのサイト" : /^確かめ役/.test(r) ? "確かめ役が気にした所" : /元の文/.test(r) ? "元の文が見つからない"
-      : /町の人に聞く/.test(r) ? "見つからなかった" : /^数が合わない/.test(r) ? "数が合わない" : /公式のサイトでない/.test(r) ? "公式でない" : /^古いデータ/.test(r) ? "古いデータ" : "そのほか");
+      : /町の人に聞く/.test(r) ? "見つからなかった" : /^数が合わない/.test(r) ? "数が合わない" : /公式のサイトでない/.test(r) ? "公式でない" : /^古いデータ/.test(r) ? "古いデータ" : /^訳し戻す/.test(r) ? "訳のずれ" : "そのほか");
 }
 document.querySelectorAll(".r-tabs button").forEach((b) => b.addEventListener("click", () => { tab = b.dataset.tab; openId = null; render(); }));
 $("town-filter").addEventListener("change", (e) => { town = e.target.value; openId = null; render(); });
@@ -167,6 +167,13 @@ function guide(reason, it) {
   }
   if (/^出典が公式のサイトでない/.test(r)) {
     return { title: "公式でないサイトを出典にしてよいか", todo: `${r}。まちしるべは公式の出典だけを使う決まりです。ふつうは「出さない」か、公式の出典で「直して」。` };
+  }
+  if (/^訳し戻すとずれがある/.test(r)) {
+    return { title: "訳の意味が、もとの日本語と同じか",
+      todo: `別の Claude が訳を日本語に訳し戻したら、ずれが見つかりました：${(r.match(/（(.+?)）/)?.[1] ?? "")}。
+        もとの日本語：${it.original ?? ""}
+        訳し戻し：${it.back ?? ""}
+        ずれが小さく、意味が同じなら OK（ページに訳が出ます）。意味が変わっていれば「出さない」（もとの日本語が出たままになります）。` };
   }
   if (/^古いデータの見込み/.test(r)) {
     const o = it.outdated;

@@ -221,3 +221,17 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .hinan-list .warn { color: #b3261e; }
 .answers .outdated { margin: 6px 0 0; padding: 6px 10px; border-left: 4px solid #c58a00; background: #fff6dd; color: #4a3500; font-size: 14px; }
 .answers .outdated a { color: #6b4a00; }
+/* 母語で防災 */
+.lang-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 6px 0 0; }
+.lang-bar a { display: inline-flex; align-items: center; min-height: 36px; padding: 0 12px; border: 1px solid var(--accent); border-radius: 18px; color: var(--accent); text-decoration: none; font-size: 14px; font-weight: 600; }
+.lang-bar span { font-size: 12px; color: var(--text-sub); }
+.tr-langs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
+.tr-langs button { min-height: 44px; padding: 0 16px; border: 1px solid var(--line); border-radius: 22px; background: var(--surface); color: var(--text); font-size: 15px; cursor: pointer; }
+.tr-langs button[aria-pressed="true"] { border-color: var(--accent); background: var(--accent); color: var(--accent-text); font-weight: 700; }
+.tr-note { padding: 8px 12px; border-radius: 8px; background: var(--bg); font-size: 13px; color: var(--text-sub); }
+.tr-list { margin: 0; padding: 0; list-style: none; }
+.tr-list li { padding: 10px 0; border-top: 1px solid var(--line); }
+.tr-list h3 { margin: 0 0 4px; font-size: 16px; color: var(--accent); }
+.tr-list .tx { margin: 0; font-size: 16px; line-height: 1.7; }
+.tr-list .tx.pending { color: var(--text-sub); }
+.tr-list details { margin-top: 4px; font-size: 13px; color: var(--text-sub); }
