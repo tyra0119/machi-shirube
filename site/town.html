@@ -132,6 +132,11 @@
       <p id="parts" class="parts"></p>
     </section>
     <section class="block"><h2>町の歴史・催し</h2><div class="answers-box" data-page="shiru"></div></section>
+    <section class="block" id="ask-block" hidden>
+      <h2>町の人に聞きたいこと</h2>
+      <p class="note">Claude が町の公式のサイトを探しても、公開の資料では分からなかったことです。町に住む人の知っていることが、次の入口になります。</p>
+      <ul class="ask-list" id="ask-list"></ul>
+    </section>
     <section class="block" id="sec-features">
       <h2>町のデータ</h2>
       <p id="pop" class="pop"></p>
@@ -168,10 +173,10 @@
       <h2>調べる（手元の画面だけ）</h2>
       <a id="research-link" class="primary as-button as-wide-link" href="research.html">物差しの問いをまとめて調べる（調べる画面）</a>
       <form id="research-form">
-        <label class="field">1つの問いだけ調べる<textarea name="question" rows="3"></textarea></label>
-        <button type="submit" class="secondary">この問いを調べる</button>
+        <label class="field">こういう情報も探して（頼みごと）<textarea name="question" rows="3" placeholder="例：子ども食堂はどこにあるか／ゴミ出しが難しいお年寄りの戸別収集はあるか"></textarea></label>
+        <button type="submit" class="secondary">頼む</button>
       </form>
-      <p class="note">Claude が公式のサイトだけを探して読み、出典つきで答えます。答えは確かめる一覧に入ります。1回 数十セントかかります。</p>
+      <p class="note">Claude が頼みごとを物差しの問いの形に直し、まちしるべの決まり（公式のサイトで調べられる・個人のことやうわさではない）に合うかを見ます。合えば「この町だけ」の問いとして物差しに足して、その場で調べます（答えは確かめる一覧へ）。合わなければ、理由を添えて断ります。1回 数十セントかかります。</p>
       <ol id="research-steps" class="steps-log"></ol>
     </section>
   </div>

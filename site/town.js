@@ -538,6 +538,21 @@ async function showGomi(code) {
   $("gomi-note").innerHTML = `${esc(d.note)}（${d.items.length} 品目）。出典：${d.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title ?? s.url)}</a>`).join("・")}`;
 }
 
+// 町の人に聞きたいこと：公開の資料では見つからなかった問い（答えが「見つからなかった」）と、作者が「分からない（町の人に聞く）」とした問い
+async function showAsk(code, partKey) {
+  const rev = await fetch("data/review.json").then((r) => (r.ok ? r.json() : { items: [] })).catch(() => ({ items: [] }));
+  const scopes = [`muni:${code}`, ...(partKey ? [`town:${partKey}`] : [])];
+  const fromAnswers = Object.values(answersByPage).flat().filter((a) => a.value === "見つからなかった");
+  // 「分からない」と決めたものと、見つからなかったので「出さない」と決めたもの
+  const unknown = rev.items.filter((x) => scopes.includes(x.scope) && (x.status === "unknown" || (x.status === "rejected" && /見つからなかった/.test(`${x.why ?? ""} ${x.decided?.reason ?? ""}`))));
+  const list = [...fromAnswers.map((a) => ({ qid: a.qid, q: a.question, at: a.checkedAt })), ...unknown.map((x) => ({ qid: x.qid, q: x.question, at: x.decided?.at, why: x.decided?.reason }))];
+  const seen = new Set();
+  const uniq = list.filter((x) => (seen.has(x.q) ? false : seen.add(x.q)));
+  if (!uniq.length) return;
+  $("ask-block").hidden = false;
+  $("ask-list").innerHTML = uniq.map((x) => `<li>${icon("search")}<span><strong>${esc(T(yardstick.questions.find((y) => y.id === x.qid)?.short ?? ""))}</strong>${esc(x.q)}${x.why ? `<small>${esc(x.why)}</small>` : ""}${x.at ? `<small>${esc(x.at.slice(0, 10))} に調べた</small>` : ""}</span></li>`).join("");
+}
+
 // どの町のページも最後に同じことをする：答え・わが家の避難・今日の暮らし・すべてのページ・調べる
 async function finishPage(code, townFeatures, startPart, scopeNote) {
   const part = startPart && townFeatures.find((f) => f.properties.part === startPart);
@@ -553,6 +568,7 @@ async function finishPage(code, townFeatures, startPart, scopeNote) {
   const hasHinan = await showHinan(code, townFeatures, startPart);
   await showTranslations(code);
   await showGomi(code);
+  await showAsk(code, part ? `${code}-${startPart}` : null);
   todayLife(hasHinan);
   const local = await fetch("api/ping").then((r) => r.ok).catch(() => false);
   buildAllPages(hasHinan, local);
@@ -581,20 +597,20 @@ async function researchBox(code, part, partName) {
   $("research-link").href = part ? `research.html?muni=${code}&part=${part}` : `research.html?muni=${code}`;
   if (part) $("research-link").textContent = `${partName}の問い（ごみの曜日・校区・自治会・近くの計画）をまとめて調べる（調べる画面）`;
   const form = $("research-form");
-  form.question.value = "この町の指定緊急避難場所の一覧は、どこで見られるか（公式のページか資料）。全部でいくつあるか";
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
     const button = form.querySelector("button");
     button.disabled = true;
-    button.textContent = "調べています…（1分ほど）";
+    button.textContent = "問いに直して、調べています…（1分ほど）";
     $("research-steps").innerHTML = `<li>${new Date().toLocaleTimeString("ja-JP")} 始めました</li>`;
-    const res = await fetch("api/research", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ code, question: form.question.value }) });
+    const res = await fetch("api/requests", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ code, part: part ?? undefined, text: form.question.value }) });
     const body = await res.json();
-    $("research-steps").innerHTML = res.ok
-      ? body.steps.map((s) => `<li>${esc(s)}</li>`).join("") + `<li>答え：${esc(body.value)}（$${body.usd.toFixed(3)}）</li><li>${body.status === "auto" ? "自動で承認しました" : `確かめる一覧に入りました：<a href="review.html">確かめる一覧へ</a>`}</li>`
-      : `<li>できませんでした：${esc(body.error)}</li>`;
+    $("research-steps").innerHTML = !res.ok ? `<li>できませんでした：${esc(body.error)}</li>`
+      : !body.ok ? `<li>この頼みは、まちしるべの決まりに合わないので調べませんでした：${esc(body.reason)}（${body.usd.toFixed(3)}）</li>`
+      : `<li>${body.same ? `物差しにある問い ${esc(body.qid)} と同じでした` : `物差しに ${esc(body.qid)} を足しました（この町だけ）`}：${esc(body.question)}</li>`
+        + body.steps.map((x) => `<li>${esc(x)}</li>`).join("") + `<li>答え：${esc(body.value)}（${body.usd.toFixed(3)}）</li><li>${body.status === "auto" ? "自動で承認しました" : `確かめる一覧に入りました：<a href="review.html">確かめる一覧へ</a>`}</li>`;
     button.disabled = false;
-    button.textContent = "この問いを調べる";
+    button.textContent = "頼む";
   });
 }
 

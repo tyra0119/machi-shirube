@@ -11,7 +11,7 @@ import fs from "node:fs";
 import path from "node:path";
 import * as ledger from "./ledger.mjs";
 import { research, researchTown, RUN_LIMIT_USD } from "./research.mjs";
-import { propose, decideProposal, loadProposals } from "./propose.mjs";
+import { propose, decideProposal, loadProposals, requestToQuestion } from "./propose.mjs";
 
 // 町をまとめて調べる（調べる画面から）。一度に1つだけ。様子はメモリに持ち、終わったら local/runs/ に残す
 const runs = new Map();
@@ -75,6 +75,26 @@ async function startResearch(req, res) {
     if (!ledger.can("owner", "request", `muni:${code}`)) return send(res, 403, { error: "この範囲を調べる権限がありません" });
     const r = await research(code, question ? String(question).slice(0, 200) : undefined, { log: () => {} });
     send(res, 200, { id: r.item.id, status: r.item.status, value: r.item.value, why: r.item.why, usd: r.usd, steps: r.steps.map((s) => s.text) });
+  } catch (e) {
+    send(res, 500, { error: e.message });
+  }
+}
+
+// 「こういう情報も探して」：頼みごとを問いに直して物差しに足し（合わなければ理由を返す）、そのまま調べる
+async function startRequest(req, res) {
+  if (!process.env.ANTHROPIC_API_KEY) return send(res, 400, { error: "調べるには npm run serve:research で動かしてください（.env の鍵を読む）" });
+  let body = "";
+  for await (const chunk of req) body += chunk;
+  try {
+    const { code, part, text } = JSON.parse(body || "{}");
+    if (!/^\d{5}$/.test(code ?? "")) return send(res, 400, { error: "市区町村コードが正しくありません" });
+    if (part != null && !/^\d{4}$/.test(part)) return send(res, 400, { error: "町・字の番号が正しくありません" });
+    if (!ledger.can("owner", "request", `muni:${code}`)) return send(res, 403, { error: "この範囲を頼む権限がありません" });
+    const r = await requestToQuestion(code, String(text ?? "").slice(0, 200), { part });
+    if (!r.ok) return send(res, 200, { ok: false, reason: r.reason, usd: r.usd });
+    const yq = JSON.parse(fs.readFileSync("site/data/yardstick.json", "utf8")).questions.find((q) => q.id === r.qid);
+    const a = await research(code, yq.text, { log: () => {}, qid: yq.id, part });
+    send(res, 200, { ok: true, qid: yq.id, question: yq.text, same: r.same ?? null, id: a.item.id, status: a.item.status, value: a.item.value, why: a.item.why, usd: r.usd + a.usd, steps: a.steps.map((s) => s.text) });
   } catch (e) {
     send(res, 500, { error: e.message });
   }
@@ -169,6 +189,7 @@ http
     if (url.pathname === "/api/areas" && req.method === "POST") return saveArea(req, res);
     if (url.pathname === "/api/review" && req.method === "GET") { const d = ledger.load(); return send(res, 200, { ...d, items: d.items.map((it) => ({ ...it, score: ledger.scoreOf(it) })) }); }
     if (url.pathname === "/api/research" && req.method === "POST") return startResearch(req, res);
+    if (url.pathname === "/api/requests" && req.method === "POST") return startRequest(req, res);
     if (url.pathname === "/api/runs" && req.method === "POST") return startRun(req, res);
     // いま調べている町（日本地図で点滅させる）
     if (url.pathname === "/api/runs" && req.method === "GET") return send(res, 200, { running: [...runs.values()].filter((x) => x.status === "running").map((x) => ({ id: x.id, code: x.code, usd: x.usd })) });

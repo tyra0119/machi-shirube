@@ -354,3 +354,10 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .lang-other .today-life a { grid-template-columns: minmax(6em, 34%) 1fr; }
 .lang-other .day .row { grid-template-columns: minmax(3.5em, auto) 1fr; }
 .lang-other .town-head h1 { overflow-wrap: anywhere; }
+/* 町の人に聞きたいこと */
+.ask-list { margin: 0; padding: 0; list-style: none; }
+.ask-list li { display: flex; gap: 10px; padding: 10px 0; border-top: 1px dashed var(--line); }
+.ask-list li .ic { flex: none; width: 22px; height: 22px; color: var(--accent); margin-top: 2px; }
+.ask-list strong { display: block; font-size: 15px; }
+.ask-list span { font-size: 14px; line-height: 1.7; color: var(--text); }
+.ask-list small { display: block; font-size: 12px; color: var(--text-sub); }

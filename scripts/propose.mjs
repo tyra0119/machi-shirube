@@ -103,6 +103,43 @@ export function decideProposal(id, action) {
   return p;
 }
 
+// 「こういう情報も探して」：管理者の頼みごとを、物差しの問いの形に直す。まちしるべの決まりに合わない頼みは、理由を添えて断る。
+// 合えば「この町だけ」の問いとして物差しに足す（出どころ＝誰の・いつの頼みか を残す）。頼みの記録は local/ledger/requests.json
+const REQUESTS = "local/ledger/requests.json";
+export async function requestToQuestion(code, text, { part, user = "owner" } = {}) {
+  if (spent(japanDay(new Date().toISOString())) >= DAILY_LIMIT_USD || spent() >= TOTAL_LIMIT_USD) throw new Error("費用の上限に達しています");
+  const yard = JSON.parse(fs.readFileSync(YARD, "utf8"));
+  const t = JSON.parse(fs.readFileSync("site/data/stats.json", "utf8")).towns[code];
+  const client = new Anthropic();
+  const res = await client.messages.create({
+    model: MODEL, max_tokens: 1500, output_config: { effort: "low" },
+    system: `あなたは、町の暮らしの情報を集める仕組み「まちしるべ」の受付です。管理者の頼みごと（こういう情報も探して）を、町の公式のサイトで調べられる「問い」の形に直してください。
+決まり：公式の出典（国・県・市区町村のサイト）で調べられること。個人の情報・うわさ・特定の店や人の評判・医療の判断は扱わない。
+すでにある問いと同じなら、その番号を same に。合わなければ ok を false にして、理由を短く。
+<request>{"ok": true か false, "reason": "合わない理由（ok のときは空）", "same": "同じ問いの番号か null", "text": "問い（町の公式のサイトで答えを探せる形）", "short": "短い見出し", "page": "bousai|gomi|iryo|komatta|kosodate|kaigo|koutsuu|tetsuzuki|foreign|okane|shisetsu|shiru"}</request> の形だけで答えてください。`,
+    messages: [{ role: "user", content: JSON.stringify({ 町: `${t.pref} ${t.name}`, 頼みごと: text, すでにある問い: yard.questions.map((q) => ({ id: q.id, text: q.text })) }) }],
+  });
+  const usd = record(MODEL, res.usage, `頼みごとを問いに直す：${t.name}`);
+  const raw = res.content.filter((b) => b.type === "text").map((b) => b.text).join("");
+  const body = between(raw, "request") ?? raw.match(/\{[\s\S]*\}/)?.[0];
+  let r;
+  try { r = JSON.parse(body); } catch { throw new Error(`Claude の答えの形が読めませんでした：${raw.slice(0, 160)}`); }
+  const at = new Date().toISOString();
+  let qid = r.same ?? null;
+  if (r.ok && !r.same) {
+    const n = Math.max(...yard.questions.filter((q) => /^Q\d+$/.test(q.id)).map((q) => Number(q.id.slice(1)))) + 1;
+    qid = `Q${String(n).padStart(2, "0")}`;
+    yard.questions.push({ id: qid, group: "管理者の頼みから", text: r.text, short: r.short, page: r.page ?? "shiru", only: code, ...(part ? { level: "town" } : {}),
+      origin: { from: `${t.pref} ${t.name}`, request: text, by: user, at } });
+    yard.version = (yard.version ?? 1) + 1;
+    fs.writeFileSync(YARD, JSON.stringify(yard, null, 1));
+  }
+  const log = fs.existsSync(REQUESTS) ? JSON.parse(fs.readFileSync(REQUESTS, "utf8")) : { requests: [] };
+  log.requests.push({ at, by: user, scope: part ? `town:${code}-${part}` : `muni:${code}`, text, ok: !!r.ok, reason: r.reason || undefined, qid });
+  fs.writeFileSync(REQUESTS, JSON.stringify(log, null, 1));
+  return { ...r, qid, usd };
+}
+
 // 調べるときの手がかり：その問いに使えるスキルの手順（research.mjs が Claude に渡す）
 export function skillHint(qid) {
   const s = loadSkills().skills.filter((x) => x.forQids?.includes(qid));
