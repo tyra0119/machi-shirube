@@ -22,6 +22,7 @@
     "recheck": "node --env-file=.env scripts/recheck.mjs",
     "translate": "node --env-file=.env scripts/translate.mjs",
     "propose": "node --env-file=.env scripts/propose.mjs",
+    "watch": "node scripts/watch.mjs",
     "try:api": "node --env-file=.env scripts/try-api.mjs",
     "try:fetch": "node --env-file=.env scripts/try-fetch.mjs",
     "try:pdf": "node --env-file=.env scripts/try-pdf.mjs"

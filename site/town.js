@@ -292,6 +292,7 @@ async function showAnswers(code, scopeNote, partKey, partName) {
   for (const a of partAnswers) a.level = partName;
   const answers = [...partAnswers, ...muniAnswers];
   yardstick = await fetch("data/yardstick.json").then((r) => r.json()).catch(() => ({ questions: [] }));
+  health = await fetch("data/health.json").then((r) => (r.ok ? r.json() : null)).catch(() => null);
   answers.sort((x, y) => Boolean(y.level) - Boolean(x.level) || String(x.qid ?? "").localeCompare(String(y.qid ?? "")));
   answersByPage = {};
   for (const a of answers) {
@@ -320,6 +321,7 @@ function answersHTML(answers) {
       ${a.items ? `<ul class="topics">${a.items.map((x) => `<li><span class="tx">${esc(x.text)}</span>
         <span class="src">${x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.title ?? x.url)}</a>` : esc(x.title ?? "")}${x.asOf ? `・${esc(x.asOf)}` : ""}</span></li>`).join("")}</ul>` : ""}
       <p class="src">出典：${a.source?.url ? `<a href="${esc(a.source.url)}" target="_blank" rel="noopener">${esc(a.source.title ?? a.source.url)}</a>` : esc(a.source?.title ?? "")}${a.source?.where ? `（${esc(a.source.where)}）` : ""}${a.asOf ? `・時点 ${esc(a.asOf)}` : ""}・${a.status === "auto" ? "自動で承認" : "人が確かめた"}</p>
+      ${health?.links?.[a.source?.url]?.kind === "gone" ? `<p class="gone">出典のページが見つからなくなっています（${esc(health.links[a.source.url].checkedAt.slice(0, 10))} に見張りで確かめた）。町の公式のサイトで新しいページを探して確かめてください。</p>` : ""}
       ${a.outdated ? `<p class="outdated"><strong>古いデータに気づきました</strong>：${esc(a.outdated.what)}。古い：${a.outdated.old?.url ? `<a href="${esc(a.outdated.old.url)}" target="_blank" rel="noopener">${esc(a.outdated.old.asOf ?? "")}</a>` : esc(a.outdated.old?.asOf ?? "")}／新しい：${a.outdated.new?.url ? `<a href="${esc(a.outdated.new.url)}" target="_blank" rel="noopener">${esc(a.outdated.new.asOf ?? "")}</a>` : esc(a.outdated.new?.asOf ?? "")}</p>` : ""}`}
     </li>`).join("")}</ul>`;
 }
@@ -623,8 +625,15 @@ function header(name, where, path) {
   $("where").textContent = where;
   $("path").innerHTML = path.filter(([l]) => l).map(([l, href]) => `<li>${href ? `<a href="${href}">${l}</a>` : `<span>${l}</span>`}</li>`).join("");
 }
+// 見張り（scripts/watch.mjs）の結果：出典のページがまだあるか
+let health = null;
 function sources(list, code) {
   $("sources").innerHTML = list.map((s) => `<li>${s}</li>`).join("");
+  if (health && code) {
+    const mine = Object.entries(health.links).filter(([, l]) => l.used.some((u) => u.page.startsWith(code)));
+    const gone = mine.filter(([, l]) => l.kind === "gone").length;
+    if (mine.length) $("sources").insertAdjacentHTML("beforebegin", `<p class="watch">${icon("eye")} 見張り：このページの出典 ${mine.length} 件を ${esc(health.checkedAt.slice(0, 10))} に確かめました。${gone ? `<strong>${gone} 件のページが見つからなくなっています</strong>（その答えに印を付けています）。` : "どれもページがありました。"}</p>`);
+  }
   // 情報源カード（作者が使ってよいと確かめたサイト）
   if (!code) return;
   // 避難場所のデータ（わが家の避難で使ったもの）

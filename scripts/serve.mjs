@@ -150,9 +150,11 @@ async function decideItem(req, res, id) {
     const it = ledger.decide(id, action, { user: "owner", reason: String(reason ?? "").slice(0, 200) });
     send(res, 200, it);
     // 「直して」：指摘を添えて、その問いだけを Claude に調べ直させる（新しい答えは確かめる一覧へ）
-    if (action === "fix" && process.env.ANTHROPIC_API_KEY && it.kind === "answer") {
+    // 見張りが見つけた切れ（kind: watch）も、「直して」で調べ直す（新しいページを探す）
+    if (action === "fix" && process.env.ANTHROPIC_API_KEY && (it.kind === "answer" || it.kind === "watch")) {
       const code = it.scope.match(/(\d{5})/)?.[1];
-      research(code, it.question, { log: () => {}, qid: it.qid, hint: reason, redoOf: it.id })
+      const part = it.scope.startsWith("town:") ? it.scope.slice(-4) : undefined;
+      research(code, it.question, { log: () => {}, qid: it.qid, hint: reason, redoOf: it.redoOf ?? it.id, part })
         .catch((e) => console.error(`${it.id} の調べ直しができませんでした：${e.message}`));
     }
   } catch (e) {

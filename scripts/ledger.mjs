@@ -225,6 +225,7 @@ export function exportPublic(data = load()) {
   for (const it of data.items) {
     if (it.status !== "ok" && it.status !== "auto") continue;
     if (it.kind === "translation") continue; // 訳は site/data/translations/ に（下で状態だけ合わせる）
+    if (it.kind === "watch") continue; // 見張りの知らせは答えではない
     // 市区町村の答えは {コード}.json、町・字の答えは {コード}-{番号}.json
     const code = it.scope.startsWith("town:") ? it.scope.slice(5) : it.scope.match(/(\d{5})/)?.[1];
     if (!code) continue;
