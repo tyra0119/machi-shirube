@@ -185,6 +185,14 @@ main { position: relative; flex: 1; min-width: 0; }
 .rank-list .nm small { display: block; font-size: 12px; color: var(--text-sub); }
 .rank-list .val { font-size: 15px; font-weight: 600; }
 
+/* 届きにくい人の候補（深掘りの型） */
+.card h3.sub { margin: 16px 0 6px; font-size: 16px; }
+.types { margin: 0 0 6px; padding: 0; list-style: none; }
+.types li { display: grid; gap: 2px; padding: 8px 10px; margin-bottom: 6px; border: 1px solid var(--line); border-radius: 8px; }
+.types .type { font-size: 16px; font-weight: 700; }
+.types .who { font-size: 14px; }
+.types .why { font-size: 13px; color: var(--text-sub); }
+
 /* 複数選んだ町・字 */
 .picked { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 10px; padding: 0; list-style: none; }
 .picked li { display: flex; align-items: center; gap: 2px; padding: 0 2px 0 12px; border: 1px solid var(--accent); border-radius: 18px; }

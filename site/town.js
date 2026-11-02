@@ -32,6 +32,20 @@ const TOWN_ROWS = [
 
 main().catch((e) => console.error(e));
 
+// 届きにくい人の候補（types.js）。町・字やまとまりのページでは、その市区町村の数字で出す
+async function showTypes(code, stats, scopeNote) {
+  const flags = (await getJSON("data/flags.json")).flags;
+  const t = stats.towns[code];
+  if (!t) return;
+  let f = flags[code] ?? {};
+  if (!flags[code] && !t.ward) {
+    // 政令市まるごとは、どれかの区に付いていれば付ける
+    for (const [c, w] of Object.entries(stats.towns)) if (w.ward && w.pref === t.pref && w.name.startsWith(t.name)) f = { ...f, ...flags[c] };
+  }
+  $("types-scope").textContent = scopeNote;
+  $("types").innerHTML = typeCandidatesHTML(t, f, stats.summary);
+}
+
 async function main() {
   const stats = await getJSON("data/stats.json");
   if (q.get("muni")) return muniPage(q.get("muni"), stats);
@@ -84,8 +98,9 @@ async function main() {
   $("feature-note").textContent = (list.length > 1 ? "割合は、町・字ごとの割合に人数（世帯の割合は世帯の数）で重みをつけて合わせた、めやすです。" : "")
     + (list.some((p) => p.ageHidden || p.foreignHidden || p.householdHidden) ? "一部の数字は、住む人が少ないため国勢調査で隠されています。" : "");
 
+  await showTypes(code, stats, `いまは${muniName}全体の数字から選んだ候補です。この町・字の深い調べは、町を調べるときに。`);
   const index = await getJSON("data/towns/index.json");
-  sources([`${index.source}（${index.asOf}）`, BASEMAP]);
+  sources([`${index.source}（${index.asOf}）`, `${stats.source.name}（${stats.source.asOf}）を加工（届きにくい人の候補）`, BASEMAP]);
   drawMap(chosen);
 }
 
@@ -106,6 +121,7 @@ async function muniPage(code, stats) {
     return `<li><span class="label">${label}</span><span class="value">${/change/i.test(m) && v > 0 ? "+" : ""}${pct(v)}</span><span class="place">${place}</span></li>`;
   }).join("");
   $("feature-note").textContent = `全国の市区町村 ${stats.peers.toLocaleString("ja-JP")} と比べています。`;
+  await showTypes(code, stats, "");
   sources([`${stats.source.name}（${stats.source.asOf}。増減は${stats.source.changePeriod}）を加工`, N03, BASEMAP]);
   const topo = await getJSON("data/japan.topo.json");
   drawMap(topojson.feature(topo, topo.objects.municipalities).features.filter((f) => f.properties.code === code));

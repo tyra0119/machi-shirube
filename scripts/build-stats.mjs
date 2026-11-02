@@ -153,8 +153,13 @@ for (const t of towns.values()) {
 }
 
 // 境目（確かめ用）：中央と上位10%
+// 境目：深掘りの型の候補を決まりで選ぶのに使う（上から5%・10%・20%、下から10%）
+const SUMMARY_METRICS = [...METRICS, "elderlySingleRate"];
+for (const m of SUMMARY_METRICS) sorted[m] ??= peers.map((t) => t[m]).filter((v) => typeof v === "number").sort((a, b) => a - b);
 const q = (m, p) => sorted[m][Math.floor((sorted[m].length - 1) * p)];
-const summary = Object.fromEntries(METRICS.map((m) => [m, { median: round(q(m, 0.5)), top10: round(q(m, 0.9)), bottom10: round(q(m, 0.1)) }]));
+const summary = Object.fromEntries(SUMMARY_METRICS.map((m) => [m, {
+  median: round(q(m, 0.5)), top5: round(q(m, 0.95)), top10: round(q(m, 0.9)), top20: round(q(m, 0.8)), bottom10: round(q(m, 0.1)),
+}]));
 
 fs.writeFileSync(
   "site/data/stats.json",

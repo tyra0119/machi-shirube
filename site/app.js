@@ -384,7 +384,8 @@ function showCard(p) {
   const f = town ? flagsOf(p.code, town) : {};
   const tagList = [f.volcano && "火山の警戒地域", f.snow, f.island && "離島がある"].filter(Boolean);
   const tags = tagList.length ? `<p class="tags">${tagList.map((t) => `<span>${t}</span>`).join("")}</p>` : "";
-  const body = p.noData || !town ? "<p>この地域には国の統計がありません。</p>" : tags + featureCard(town);
+  const types = town ? `<h3 class="sub">届きにくい人の候補</h3>${typeCandidatesHTML(town, f, stats.summary)}` : "";
+  const body = p.noData || !town ? "<p>この地域には国の統計がありません。</p>" : tags + featureCard(town) + types;
   // 市・区は広いので、中の町（町・字）まで下りられるようにする
   const isCityOrWard = /[市区]$/.test(p.fullName);
   const hasTowns = townIndex.codes.includes(p.code);
