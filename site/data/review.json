@@ -1,9 +1,9 @@
 {
- "updatedAt": "2026-11-02T11:29:05.252Z",
+ "updatedAt": "2026-11-02T11:29:54.625Z",
  "counts": {
   "auto": 11,
-  "ok": 38,
-  "pending": 5,
+  "ok": 44,
+  "pending": 0,
   "fix": 1,
   "rejected": 1,
   "unknown": 0
@@ -1268,11 +1268,16 @@
    "kind": "answer",
    "question": "夜間や休日に具合が悪くなったときの窓口（休日当番医・夜間急病診療所・救急の電話相談・子どもの急病の電話相談 #8000 など）。電話番号と受付の時間",
    "why": "Claude が返した元の文が、答えに使ったページの中に見つからなかった",
-   "status": "pending",
-   "score": null,
+   "status": "ok",
+   "score": 2,
    "source": {
     "title": "休日・夜間診療について│黒潮町公式ホームページ",
     "url": "https://www.town.kuroshio.lg.jp/pb/cont/byouki/1735"
+   },
+   "decided": {
+    "at": "2026-11-02T11:29:31.241Z",
+    "action": "ok",
+    "reason": ""
    }
   },
   {
@@ -1283,11 +1288,16 @@
    "kind": "answer",
    "question": "介護や高齢者の暮らしの相談の窓口（地域包括支援センターなど）の名前・担当する地区・電話番号",
    "why": "Claude が返した元の文が、答えに使ったページの中に見つからなかった",
-   "status": "pending",
-   "score": null,
+   "status": "ok",
+   "score": 2,
    "source": {
     "title": "各課情報／本庁・支所・出先機関 - 黒潮町",
     "url": "https://www.town.kuroshio.lg.jp/pb/cont/18806"
+   },
+   "decided": {
+    "at": "2026-11-02T11:29:45.496Z",
+    "action": "ok",
+    "reason": ""
    }
   },
   {
@@ -1298,11 +1308,16 @@
    "kind": "answer",
    "question": "いま申し込める、暮らしの補助金・給付（物価高の給付・省エネ家電・住宅・子育てなど）。多くても5つ。1つずつ1文で、締め切りと出典をつけて",
    "why": "Claude が返した元の文が、答えに使ったページの中に見つからなかった",
-   "status": "pending",
-   "score": null,
+   "status": "ok",
+   "score": 2,
    "source": {
     "title": "黒潮町結婚新生活応援事業のご案内",
     "url": "https://www.town.kuroshio.lg.jp/pb/cont/37491"
+   },
+   "decided": {
+    "at": "2026-11-02T11:29:47.715Z",
+    "action": "ok",
+    "reason": ""
    }
   },
   {
@@ -1313,11 +1328,16 @@
    "kind": "answer",
    "question": "これから3か月のあいだに町で開かれる催し（祭り・イベント・講座など）。多くても5つ。1つずつ1文で、日付・場所と出典をつけて",
    "why": "確かめ役：資料と合わない所がある（①と②の「会場は確認できていません」は資料と合わない。①は「ふるさと総合センター（黒潮町入野176-2）」、②は「黒潮町立大方町民館 2階大会議室」と書かれている。・①の「2026年11月8日」、②の「2026年11月5日」、③の「2026年11月15日（日）」の日付は資料と合っている。・③の会場が確認できないという記述は資料と合っている。）",
-   "status": "pending",
-   "score": null,
+   "status": "ok",
+   "score": 2,
    "source": {
     "title": "黒潮町公式ホームページ",
     "url": "https://www.town.kuroshio.lg.jp/"
+   },
+   "decided": {
+    "at": "2026-11-02T11:29:50.527Z",
+    "action": "ok",
+    "reason": ""
    }
   },
   {
@@ -1328,11 +1348,36 @@
    "kind": "answer",
    "question": "夜間や休日に具合が悪くなったときの窓口（休日当番医・夜間急病診療所・救急の電話相談・子どもの急病の電話相談 #8000 など）。電話番号と受付の時間",
    "why": "確かめ役：資料と合わない所がある（「子どもの急病の電話相談はページに受付時間の記載がない」は誤り。資料には受付時間（月〜土は18時〜翌8時、日・祝・年末年始は8時〜翌8時）が書かれている・「救急の電話相談(#7119)は載っていない」は誤り。資料に救急安心センター #7119（24時間365日）が載っている）",
-   "status": "pending",
-   "score": null,
+   "status": "ok",
+   "score": 2,
    "source": {
     "title": "休日や夜間の診療について｜大泉町",
     "url": "https://www.town.oizumi.gunma.jp/s016/kenko/010/020/030/20200822202636.html"
+   },
+   "decided": {
+    "at": "2026-11-02T11:29:53.679Z",
+    "action": "ok",
+    "reason": ""
+   }
+  },
+  {
+   "id": "r00082",
+   "scope": "muni:10524",
+   "scopeName": "群馬県 大泉町",
+   "qid": "Q17",
+   "kind": "answer",
+   "question": "子育ての相談の窓口（子育て世代包括支援センター・こども家庭センターなど）の場所と電話番号と、主な手当・子どもの医療費の助成",
+   "why": "確かめ役：資料と合わない所がある（「児童扶養手当・遺児手当・特別児童扶養手当」は資料に記載がない）",
+   "status": "ok",
+   "score": 2,
+   "source": {
+    "title": "皆さんの子育てを応援します こども家庭センター（チラシPDF）",
+    "url": "https://www.town.oizumi.gunma.jp/s006/gyosei/010/020/020/oizumi980_kodomokateisenta.pdf"
+   },
+   "decided": {
+    "at": "2026-11-02T11:29:54.618Z",
+    "action": "ok",
+    "reason": ""
    }
   }
  ]

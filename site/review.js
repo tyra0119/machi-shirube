@@ -98,9 +98,10 @@ async function renderCards() {
     li.querySelector("[data-revoke]").addEventListener("click", () => { form.hidden = false; form.reason.focus(); });
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
+      const done = busy(form.querySelector("button[type=submit]"), "取り消しています…");
       const res = await fetch(`api/cards/${li.dataset.id}/revoke`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ reason: form.reason.value }) });
       const body = await res.json();
-      if (!res.ok) return toast(`できませんでした：${body.error}`);
+      if (!res.ok) { done(); return toast(`できませんでした：${body.error}`); }
       await reload();
       toast(`${body.card.host} を取り消しました。答え ${body.revoked.length} 件を町のページから下げました（次の公開で反映）`);
     });
@@ -144,15 +145,16 @@ function renderSites() {
   for (const li of $("sites").querySelectorAll("li[data-i]")) {
     const x = sites[Number(li.dataset.i)];
     const form = li.querySelector(".why-form");
-    li.querySelector('[data-site="ok"]').addEventListener("click", () => decideSite(x, "ok", ""));
+    li.querySelector('[data-site="ok"]').addEventListener("click", (e) => decideSite(x, "ok", "", e.currentTarget));
     li.querySelector('[data-site="reject"]').addEventListener("click", () => { form.hidden = false; form.reason.focus(); });
-    form.addEventListener("submit", (e) => { e.preventDefault(); decideSite(x, "reject", form.reason.value); });
+    form.addEventListener("submit", (e) => { e.preventDefault(); decideSite(x, "reject", form.reason.value, form.querySelector("button[type=submit]")); });
   }
 }
-async function decideSite(x, action, reason) {
+async function decideSite(x, action, reason, btn) {
+  const done = busy(btn, action === "ok" ? "答えをまとめて決めています…" : "決めています…");
   const res = await fetch("api/sites", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ scope: x.scope, host: x.host, action, reason }) });
   const body = await res.json();
-  if (!res.ok) return toast(`できませんでした：${body.error}`);
+  if (!res.ok) { done(); return toast(`できませんでした：${body.error}`); }
   const auto = body.items.filter((i) => i.status === "auto").length;
   await reload();
   toast(action === "ok" ? `${x.host} を使ってよいにしました。${auto} 件が自動で承認、${body.items.length - auto} 件はほかの所を見てください` : `${x.host} を使わないにしました（${body.items.length} 件を出さない）`);
@@ -272,7 +274,7 @@ function wire() {
     for (const b of box.querySelectorAll("button[data-action]")) {
       b.addEventListener("click", () => {
         const a = b.dataset.action;
-        if (a === "ok" || a === "undo") return decide(id, a, "");
+        if (a === "ok" || a === "undo") return decide(id, a, "", b);
         pendingAction = a; // 直して・出さない・分からないは理由を1行
         form.hidden = false;
         form.reason.focus();
@@ -280,15 +282,29 @@ function wire() {
     }
     form?.addEventListener("submit", (e) => {
       e.preventDefault();
-      decide(id, pendingAction, form.reason.value);
+      decide(id, pendingAction, form.reason.value, form.querySelector("button[type=submit]"));
     });
   }
 }
 
-async function decide(id, action, reason) {
+// 処理中を見せる：押したボタンに回る印と「…しています」、同じまとまりのボタンは押せなくする（二度押しを防ぐ）
+function busy(btn, text = "決めています…") {
+  const box = btn?.closest(".decide");
+  if (!box) return () => {};
+  const buttons = [...box.querySelectorAll("button")];
+  const was = btn.innerHTML;
+  buttons.forEach((b) => (b.disabled = true));
+  box.classList.add("busy");
+  btn.innerHTML = `<span class="spin" aria-hidden="true"></span>${text}`;
+  btn.setAttribute("aria-busy", "true");
+  return () => { buttons.forEach((b) => (b.disabled = false)); box.classList.remove("busy"); btn.innerHTML = was; btn.removeAttribute("aria-busy"); };
+}
+
+async function decide(id, action, reason, btn) {
+  const done = busy(btn);
   const res = await fetch(`api/review/${id}`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ action, reason }) });
   const body = await res.json();
-  if (!res.ok) return toast(`できませんでした：${body.error}`);
+  if (!res.ok) { done(); return toast(`できませんでした：${body.error}`); }
   // 決めたら、同じ一覧の次の確かめ待ちを開く
   if (action !== "undo") {
     const list = all.filter((x) => inTab(x) && (!town || x.scope === town));
