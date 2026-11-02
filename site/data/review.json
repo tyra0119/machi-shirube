@@ -1,11 +1,11 @@
 {
- "updatedAt": "2026-11-02T07:43:38.187Z",
+ "updatedAt": "2026-11-02T08:06:44.928Z",
  "counts": {
   "auto": 3,
-  "ok": 7,
-  "pending": 0,
+  "ok": 6,
+  "pending": 10,
   "fix": 0,
-  "rejected": 0,
+  "rejected": 1,
   "unknown": 0
  },
  "items": [
@@ -94,11 +94,11 @@
    "scope": "muni:39428",
    "question": "外国から来た人向けの案内（外国語のページ・やさしい日本語・相談窓口）はあるか。どこで見られるか",
    "why": "公開の資料で答えが見つからなかった（町の人に聞くことの候補）",
-   "status": "ok",
+   "status": "rejected",
    "decided": {
-    "at": "2026-11-02T07:41:14.622Z",
-    "action": "ok",
-    "reason": ""
+    "at": "2026-11-02T07:49:34.114Z",
+    "action": "reject",
+    "reason": "見つからなかった"
    }
   },
   {
@@ -115,6 +115,236 @@
     "at": "2026-11-02T07:41:28.030Z",
     "action": "ok",
     "reason": ""
+   }
+  },
+  {
+   "id": "r00011",
+   "scope": "muni:10524",
+   "question": "この町の指定緊急避難場所の一覧は、どこで見られるか（公式のページか資料）。全部でいくつあるか",
+   "why": "公開の資料で答えが見つからなかった（町の人に聞くことの候補）",
+   "status": "void",
+   "decided": {
+    "at": "2026-11-02T08:06:44.908Z",
+    "action": "void",
+    "reason": "町の公式サイト（town.oizumi.gunma.jp）が lg.jp でないため、読めずに「見つからなかった」になった（しくみの不具合）"
+   }
+  },
+  {
+   "id": "r00012",
+   "scope": "muni:10524",
+   "question": "この町のハザードマップ（洪水・津波・土砂災害など）は、どこで見られるか。いつ作られた（直された）ものか",
+   "why": "公開の資料で答えが見つからなかった（町の人に聞くことの候補）",
+   "status": "void",
+   "decided": {
+    "at": "2026-11-02T08:06:44.912Z",
+    "action": "void",
+    "reason": "町の公式サイト（town.oizumi.gunma.jp）が lg.jp でないため、読めずに「見つからなかった」になった（しくみの不具合）"
+   }
+  },
+  {
+   "id": "r00013",
+   "scope": "muni:10524",
+   "question": "この町の地域防災計画は、どこで見られるか。いちばん新しい版はいつのものか",
+   "why": "公開の資料で答えが見つからなかった（町の人に聞くことの候補）",
+   "status": "void",
+   "decided": {
+    "at": "2026-11-02T08:06:44.915Z",
+    "action": "void",
+    "reason": "町の公式サイト（town.oizumi.gunma.jp）が lg.jp でないため、読めずに「見つからなかった」になった（しくみの不具合）"
+   }
+  },
+  {
+   "id": "r00014",
+   "scope": "muni:10524",
+   "question": "災害のときの知らせ（防災無線・メール・アプリなど）は、どうやって受け取れるか。登録の方法はどこに書いてあるか",
+   "why": "公開の資料で答えが見つからなかった（町の人に聞くことの候補）",
+   "status": "void",
+   "decided": {
+    "at": "2026-11-02T08:06:44.917Z",
+    "action": "void",
+    "reason": "町の公式サイト（town.oizumi.gunma.jp）が lg.jp でないため、読めずに「見つからなかった」になった（しくみの不具合）"
+   }
+  },
+  {
+   "id": "r00015",
+   "scope": "muni:10524",
+   "question": "ごみの分け方と出す日の案内は、どこで見られるか（ページや資料の名前）",
+   "why": "公開の資料で答えが見つからなかった（町の人に聞くことの候補）",
+   "status": "void",
+   "decided": {
+    "at": "2026-11-02T08:06:44.919Z",
+    "action": "void",
+    "reason": "町の公式サイト（town.oizumi.gunma.jp）が lg.jp でないため、読めずに「見つからなかった」になった（しくみの不具合）"
+   }
+  },
+  {
+   "id": "r00016",
+   "scope": "muni:10524",
+   "question": "引っ越してきた人がはじめにする手続き（住民票・国民健康保険など）の案内は、どこで見られるか",
+   "why": "公開の資料で答えが見つからなかった（町の人に聞くことの候補）",
+   "status": "void",
+   "decided": {
+    "at": "2026-11-02T08:06:44.921Z",
+    "action": "void",
+    "reason": "町の公式サイト（town.oizumi.gunma.jp）が lg.jp でないため、読めずに「見つからなかった」になった（しくみの不具合）"
+   }
+  },
+  {
+   "id": "r00017",
+   "scope": "muni:10524",
+   "question": "車を持たない人が使える町の交通（コミュニティバス・予約して乗る乗り物など）はあるか。予約先や時刻表はどこか",
+   "why": "公開の資料で答えが見つからなかった（町の人に聞くことの候補）",
+   "status": "void",
+   "decided": {
+    "at": "2026-11-02T08:06:44.922Z",
+    "action": "void",
+    "reason": "町の公式サイト（town.oizumi.gunma.jp）が lg.jp でないため、読めずに「見つからなかった」になった（しくみの不具合）"
+   }
+  },
+  {
+   "id": "r00018",
+   "scope": "muni:10524",
+   "question": "外国から来た人向けの案内（外国語のページ・やさしい日本語・相談窓口）はあるか。どこで見られるか",
+   "why": "公開の資料で答えが見つからなかった（町の人に聞くことの候補）",
+   "status": "void",
+   "decided": {
+    "at": "2026-11-02T08:06:44.924Z",
+    "action": "void",
+    "reason": "町の公式サイト（town.oizumi.gunma.jp）が lg.jp でないため、読めずに「見つからなかった」になった（しくみの不具合）"
+   }
+  },
+  {
+   "id": "r00019",
+   "scope": "muni:10524",
+   "question": "この町はどうやってできたか（合わさった町や村と、その年）",
+   "why": "公開の資料で答えが見つからなかった（町の人に聞くことの候補）",
+   "status": "void",
+   "decided": {
+    "at": "2026-11-02T08:06:44.925Z",
+    "action": "void",
+    "reason": "町の公式サイト（town.oizumi.gunma.jp）が lg.jp でないため、読めずに「見つからなかった」になった（しくみの不具合）"
+   }
+  },
+  {
+   "id": "r00020",
+   "scope": "muni:10524",
+   "question": "この町で毎年ひらかれる大きな催しや祭りは何か。時期と場所",
+   "why": "公開の資料で答えが見つからなかった（町の人に聞くことの候補）",
+   "status": "void",
+   "decided": {
+    "at": "2026-11-02T08:06:44.927Z",
+    "action": "void",
+    "reason": "町の公式サイト（town.oizumi.gunma.jp）が lg.jp でないため、読めずに「見つからなかった」になった（しくみの不具合）"
+   }
+  },
+  {
+   "id": "r00021",
+   "scope": "muni:11227",
+   "question": "この町の指定緊急避難場所の一覧は、どこで見られるか（公式のページか資料）。全部でいくつあるか",
+   "why": "はじめて使う情報源（www.city.asaka.lg.jp）。使ってよい範囲を人が確かめる",
+   "status": "pending",
+   "source": {
+    "title": "朝霞市指定避難場所一覧 - 朝霞市",
+    "url": "https://www.city.asaka.lg.jp/soshiki/6/hinanbasho.html"
+   }
+  },
+  {
+   "id": "r00022",
+   "scope": "muni:11227",
+   "question": "この町のハザードマップ（洪水・津波・土砂災害など）は、どこで見られるか。いつ作られた（直された）ものか",
+   "why": "はじめて使う情報源（www.city.asaka.lg.jp）。使ってよい範囲を人が確かめる／確かめ役：資料と合わない所がある（「令和3(2021)年2月発行」の記載が資料にない（資料にあるのは更新日2023年9月1日のみ））",
+   "status": "pending",
+   "source": {
+    "title": "朝霞市水害ハザードマップ - 朝霞市",
+    "url": "https://www.city.asaka.lg.jp/soshiki/6/shinsui-kurome-shingashi-arakawa.html"
+   }
+  },
+  {
+   "id": "r00023",
+   "scope": "muni:11227",
+   "question": "この町の地域防災計画は、どこで見られるか。いちばん新しい版はいつのものか",
+   "why": "Claude が返した元の文が、答えに使ったページの中に見つからなかった／はじめて使う情報源（www.city.asaka.lg.jp）。使ってよい範囲を人が確かめる",
+   "status": "pending",
+   "source": {
+    "title": "朝霞市地域防災計画 - 朝霞市",
+    "url": "https://www.city.asaka.lg.jp/soshiki/6/chikibousai.html"
+   }
+  },
+  {
+   "id": "r00024",
+   "scope": "muni:11227",
+   "question": "災害のときの知らせ（防災無線・メール・アプリなど）は、どうやって受け取れるか。登録の方法はどこに書いてあるか",
+   "why": "はじめて使う情報源（www.city.asaka.lg.jp）。使ってよい範囲を人が確かめる／確かめ役：資料と合わない所がある（メール配信サービスは現在停止中（令和8年10月21日時点）と資料にあるのに、答えは受け取れると現在形で書いている・停止中であることや、復旧後に市ホームページで知らせることが答えに無い）",
+   "status": "pending",
+   "source": {
+    "title": "メール配信サービス - 朝霞市",
+    "url": "https://www.city.asaka.lg.jp/soshiki/55/mail-service.html"
+   }
+  },
+  {
+   "id": "r00025",
+   "scope": "muni:11227",
+   "question": "ごみの分け方と出す日の案内は、どこで見られるか（ページや資料の名前）",
+   "why": "はじめて使う情報源（www.city.asaka.lg.jp）。使ってよい範囲を人が確かめる",
+   "status": "pending",
+   "source": {
+    "title": "資源とごみの分け方・出し方（家庭ごみ） - 朝霞市",
+    "url": "https://www.city.asaka.lg.jp/soshiki/15/dust-katei.html"
+   }
+  },
+  {
+   "id": "r00026",
+   "scope": "muni:11227",
+   "question": "引っ越してきた人がはじめにする手続き（住民票・国民健康保険など）の案内は、どこで見られるか",
+   "why": "はじめて使う情報源（www.city.asaka.lg.jp）。使ってよい範囲を人が確かめる／確かめ役：資料と合わない所がある（「国民健康保険」のページに進めるという内容は資料にありません。資料にあるのは「介護保険 住所を変更するときに～転入・転出の手続き～」の項目だけです。）",
+   "status": "pending",
+   "source": {
+    "title": "転入届 - 朝霞市",
+    "url": "https://www.city.asaka.lg.jp/soshiki/11/jyuuki-tennyuu.html"
+   }
+  },
+  {
+   "id": "r00027",
+   "scope": "muni:11227",
+   "question": "車を持たない人が使える町の交通（コミュニティバス・予約して乗る乗り物など）はあるか。予約先や時刻表はどこか",
+   "why": "はじめて使う情報源（www.city.asaka.lg.jp）。使ってよい範囲を人が確かめる",
+   "status": "pending",
+   "source": {
+    "title": "市内循環バス「わくわく号」マップ＆時刻表 - 朝霞市",
+    "url": "https://www.city.asaka.lg.jp/soshiki/26/norikaeannnai.html"
+   }
+  },
+  {
+   "id": "r00028",
+   "scope": "muni:11227",
+   "question": "外国から来た人向けの案内（外国語のページ・やさしい日本語・相談窓口）はあるか。どこで見られるか",
+   "why": "はじめて使う情報源（www.city.asaka.lg.jp）。使ってよい範囲を人が確かめる／確かめ役：資料と合わない所がある（「外国人生活ガイドは、やさしい日本語を含む多言語で見られます」について、資料の「外国人の生活ガイド」の対応言語は日本語・英語・スペイン語・中国語・ポルトガル語・韓国・朝鮮語・タガログ語・ベトナム語で、やさしい日本語は含まれていない。やさしい日本語を含むのは同じページ内の「多言語生活情報」である。）",
+   "status": "pending",
+   "source": {
+    "title": "外国人相談窓口 Information & Support - 朝霞市",
+    "url": "https://www.city.asaka.lg.jp/site/kosodate/gaikokujinsoudan2021.html"
+   }
+  },
+  {
+   "id": "r00029",
+   "scope": "muni:11227",
+   "question": "この町はどうやってできたか（合わさった町や村と、その年）",
+   "why": "はじめて使う情報源（www.city.asaka.lg.jp）。使ってよい範囲を人が確かめる",
+   "status": "pending",
+   "source": {
+    "title": "朝霞市主要年表（朝霞町誕生から）",
+    "url": "https://www.city.asaka.lg.jp/uploaded/attachment/17867.pdf"
+   }
+  },
+  {
+   "id": "r00030",
+   "scope": "muni:11227",
+   "question": "この町で毎年ひらかれる大きな催しや祭りは何か。時期と場所",
+   "why": "はじめて使う情報源（www.city.asaka.lg.jp）。使ってよい範囲を人が確かめる／確かめ役：資料と合わない所がある（「毎年8月上旬に開催」は資料に書かれていない。第43回は7月31日（前夜祭）から、第42回は8月1日から始まっている。・「大きな催し」「毎年」という位置づけは資料の記述から言い切れない。）",
+   "status": "pending",
+   "source": {
+    "title": "【記者発表資料】第43回朝霞市民まつり「彩夏祭」を開催します - 朝霞市",
+    "url": "https://www.city.asaka.lg.jp/soshiki/55/kisya-260727.html"
    }
   }
  ]

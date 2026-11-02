@@ -2,7 +2,7 @@
 // 公開のサイトでは、件数と、人が見たものの理由・出典の URL だけを見せる（引用した元の文は出さない）
 const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
-const LABEL = { pending: "確かめ待ち", auto: "自動で承認", ok: "OK（出した）", fix: "直して（調べ直し待ち）", rejected: "出さない", unknown: "分からない（町の人に聞く）" };
+const LABEL = { pending: "確かめ待ち", auto: "自動で承認", ok: "OK（出した）", fix: "直して（調べ直し待ち）", rejected: "出さない", unknown: "分からない（町の人に聞く）", void: "無効（しくみの不具合）" };
 const ACTION = { ok: "OK にしました", fix: "直してに回しました。Claude が調べ直しています（1分ほどで確かめる一覧に新しい答えが入ります）", reject: "出さないにしました", unknown: "分からないにしました", undo: "元に戻しました" };
 
 let local = false;

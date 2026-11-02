@@ -83,6 +83,20 @@ export function reassess(id, fields) {
   return it;
 }
 
+// 無効にする：しくみの不具合でできた答え（例：町の公式サイトを読めなかった）。消さずに、理由を残して一覧から外す
+export function voidItem(id, reason) {
+  const data = load();
+  const it = data.items.find((x) => x.id === id);
+  if (!it || it.status !== "pending") return it;
+  const rec = { at: new Date().toISOString(), by: "auto", action: "void", reason, from: it.status };
+  it.status = "void";
+  it.decisions.push(rec);
+  save(data);
+  fs.appendFileSync(LOG, JSON.stringify({ id, scope: it.scope, ...rec }) + "\n");
+  exportPublic(data);
+  return it;
+}
+
 // 決める：ok（出す）・fix（直して）・reject（出さない）・unknown（分からない）・undo（元に戻す）
 const STATUS = { ok: "ok", fix: "fix", reject: "rejected", unknown: "unknown" };
 export function decide(id, action, { user = "owner", reason = "" } = {}) {
