@@ -7,7 +7,7 @@
 import fs from "node:fs";
 import Anthropic from "@anthropic-ai/sdk";
 import { getDocument } from "pdfjs-dist/legacy/build/pdf.mjs";
-import { record, spent, japanDay, DAILY_LIMIT_USD } from "../src/cost.mjs";
+import { record, spent, japanDay, DAILY_LIMIT_USD, TOTAL_LIMIT_USD } from "../src/cost.mjs";
 import * as ledger from "./ledger.mjs";
 
 const MODEL = "claude-sonnet-5-5"; // ページや PDF を読んで決まった形に（設計の 14 章）
@@ -67,9 +67,11 @@ export async function research(code, question = DEFAULT_QUESTION, { log = consol
   if (!town) throw new Error(`市区町村コード ${code} が見つかりません`);
   const name = `${town.pref} ${town.name.replace(/^.+?郡(?=.+[町村]$)/, "")}`;
 
-  // 1日の上限
+  // 1日の上限と、合計の上限（ハッカソンの $500 を超えないように）
   const today = spent(japanDay(new Date().toISOString()));
-  if (today >= DAILY_LIMIT_USD) throw new Error(`今日の費用が上限（$${DAILY_LIMIT_USD}）に達しています（$${today.toFixed(2)}）`);
+  if (today >= DAILY_LIMIT_USD) throw new Error(`今日の費用が上限（${DAILY_LIMIT_USD}）に達しています（${today.toFixed(2)}）`);
+  const total = spent();
+  if (total >= TOTAL_LIMIT_USD) throw new Error(`これまでの費用が合計の上限（${TOTAL_LIMIT_USD}）に達しています（${total.toFixed(2)}）`);
 
   const runId = `run-${new Date().toISOString().replace(/[-:T.Z]/g, "").slice(0, 14)}-${code}`;
   const steps = [];

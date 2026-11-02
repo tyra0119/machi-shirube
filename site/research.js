@@ -31,7 +31,7 @@ async function main() {
     $("note").textContent = "調べるのは作者の手元の画面だけです。ここでは、いまの答えの様子を見られます。";
     $("review-link").hidden = true;
   } else {
-    $("note").textContent = `見込み：問い1つ 約 $0.3・1分。まだ答えの無い問いだけを調べます。1回の調べの上限は $4、1日の上限は $5。`;
+    $("note").textContent = `見込み：問い1つ 約 $0.3・1分。まだ答えの無い問いだけを調べます。1回の調べの上限は $4、1日の上限は $40、合計の上限は $450。`;
   }
   $("start").addEventListener("click", start);
   $("stop").addEventListener("click", () => run && fetch(`api/runs/${run.id}/stop`, { method: "POST" }));

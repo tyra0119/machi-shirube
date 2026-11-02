@@ -26,9 +26,12 @@ export function costOf(model, usage) {
   return (input * p.input + (usage.output_tokens ?? 0) * p.output) / 1_000_000 + searches * WEB_SEARCH_USD;
 }
 
-// 1日の費用の上限（作品の中で止める。Console のワークスペースの上限とは別）。
-// ふだんは $5。作者が決めた日だけ、環境変数 DAILY_LIMIT_USD で変える
-export const DAILY_LIMIT_USD = Number(process.env.DAILY_LIMIT_USD ?? 5);
+// 費用の上限（作品の中で止める。Console のワークスペースの上限とは別）。
+// ハッカソンの API の使える額は $500。作者「$500使えるなら、1日の使用量はもっと増やしていいのでは？」（2026-11-02）で、
+// 1日 $40（6日で $240。残りは仕上げとやり直しに）にした。合計は $450 で止める（ここで数える額は値段の表からの見積もりなので、$50 の余裕を残す）。
+// 作者が決めた日だけ、環境変数 DAILY_LIMIT_USD・TOTAL_LIMIT_USD で変える
+export const DAILY_LIMIT_USD = Number(process.env.DAILY_LIMIT_USD ?? 40);
+export const TOTAL_LIMIT_USD = Number(process.env.TOTAL_LIMIT_USD ?? 450);
 
 // 1回の呼び出しを記録して、その回の費用を返す。what は人が読める「何のための呼び出しか」
 export function record(model, usage, what) {
