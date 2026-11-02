@@ -103,11 +103,11 @@ function drawMap() {
     container: "r-map",
     style: {
       version: 8,
-      sources: { pale: { type: "raster", tiles: ["https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png"], tileSize: 256, maxzoom: 18 } },
+      sources: { pale: { type: "raster", tiles: ["https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png"], tileSize: 256, maxzoom: 18, attribution: "<a href=\"https://maps.gsi.go.jp/development/ichiran.html\" target=\"_blank\">地理院タイル</a>" } },
       layers: [{ id: "pale", type: "raster", source: "pale" }],
     },
     interactive: false,
-    attributionControl: false,
+    attributionControl: { compact: false },
   });
   map.on("load", async () => {
     const topo = await fetch("data/japan.topo.json").then((r) => r.json());

@@ -477,6 +477,9 @@ function sources(list, code) {
   $("sources").innerHTML = list.map((s) => `<li>${s}</li>`).join("");
   // 情報源カード（作者が使ってよいと確かめたサイト）
   if (!code) return;
+  // 避難場所のデータ（わが家の避難で使ったもの）
+  fetch(`data/shelters/${code}.json`).then((r) => (r.ok ? r.json() : null)).then((d) => d && $("sources").insertAdjacentHTML("beforeend",
+    `<li><a href="${esc(d.source.url)}" target="_blank" rel="noopener">${esc(d.source.title)}</a>（${esc(d.source.license)}・${esc(d.source.fetchedAt)} に取得）を加工（わが家の避難）</li>`)).catch(() => {});
   fetch(`data/sources/${code}.json`).then((r) => (r.ok ? r.json() : null)).then((d) => {
     if (!d?.cards?.length) return;
     $("sources").insertAdjacentHTML("beforeend", d.cards.map((c) =>
