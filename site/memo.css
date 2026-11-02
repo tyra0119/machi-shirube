@@ -1,0 +1,35 @@
+/* くらしのメモ：A4 1枚・白黒で読める。画面でも同じ見た目 */
+* { box-sizing: border-box; }
+[hidden] { display: none !important; }
+body { margin: 0; background: #e9e6df; color: #111; font-family: "Hiragino Sans", "Noto Sans JP", "Yu Gothic UI", sans-serif; }
+.bar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; max-width: 210mm; margin: 0 auto; padding: 12px 16px; }
+.bar a { color: #1f6f8b; }
+.bar button { min-height: 44px; padding: 0 20px; border: 0; border-radius: 22px; background: #1f6f8b; color: #fff; font-size: 16px; font-weight: 700; cursor: pointer; }
+.bar .hint { font-size: 13px; color: #555; }
+.sheet { width: 210mm; min-height: 297mm; max-width: 100%; margin: 0 auto 24px; padding: 14mm 14mm 10mm; background: #fff; box-shadow: 0 1px 6px rgba(0, 0, 0, 0.25); }
+h1 { margin: 0; font-size: 28pt; line-height: 1.2; }
+h1 small { display: block; font-size: 13pt; font-weight: 400; }
+.made { margin: 4px 0 10px; font-size: 9pt; color: #333; }
+h2 { margin: 12px 0 6px; padding: 2px 8px; border: 2px solid #111; border-radius: 6px; font-size: 14pt; display: inline-block; }
+.call .nums { display: flex; gap: 24px; }
+.call p { margin: 0; font-size: 13pt; }
+.call strong { margin-right: 8px; font-size: 30pt; }
+ol { margin: 0; padding-left: 22px; }
+li { margin: 4px 0; font-size: 12pt; }
+li span { display: block; font-size: 10.5pt; }
+#gomi-text { margin: 0; font-size: 12pt; line-height: 1.7; }
+table { width: 100%; border-collapse: collapse; font-size: 10.5pt; }
+th, td { padding: 4px 6px; border-bottom: 1px solid #999; text-align: left; vertical-align: top; }
+th small { display: block; font-weight: 400; font-size: 9pt; }
+.note { margin: 4px 0 0; font-size: 9.5pt; }
+footer { display: flex; gap: 12px; align-items: center; margin-top: 14px; padding-top: 8px; border-top: 2px solid #111; font-size: 10pt; }
+footer p { margin: 0 0 4px; }
+.qr svg { width: 28mm; height: 28mm; }
+.url { word-break: break-all; font-size: 9pt; }
+.src { font-size: 8pt; color: #333; }
+@media print {
+  @page { size: A4; margin: 0; }
+  body { background: #fff; }
+  .no-print { display: none !important; }
+  .sheet { margin: 0; box-shadow: none; }
+}

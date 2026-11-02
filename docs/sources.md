@@ -62,6 +62,7 @@
 | 浸水の深さの想定（津波・洪水）の地図 | ハザードマップポータルサイト「重ねるハザードマップ」のオープンデータ配信（https://disaportal.gsi.go.jp/hazardmapportal/hazardmap/copyright/opendata.html 。利用規約は公共データ利用規約〈第1.0版〉。2026-11-02 に確かめた） | わが家の避難の地図に、見る人のブラウザがその場で重ねる。選んだ場所と避難場所の色を凡例（shinsui_legend3）で浸水の深さに読みかえる。「出典：「ハザードマップポータルサイト」を加工して作成」と書き、くわしくは町のハザードマップで確かめるよう書く。タイルは入れない |
 | 海抜（坂を考えた歩く時間） | 地理院タイル 標高タイル（dem5a_png・dem_png。https://maps.gsi.go.jp/development/ichiran.html ） | 見る人のブラウザがその場で読む。まっすぐの線の上を 20m ごとに区切り、上り下りで歩く速さを変える（トブラーの式を平らな所で 1分 60m に合わせたもの）。道の坂ではないことを書く |
 | 地図を描く部品 | MapLibre GL JS 4.7.1（BSD-3-Clause）、topojson-client 3.1.0（ISC） | jsDelivr から読み込む |
+| QR コードを作る部品 | qrcode-generator 1.4.4（MIT） | jsDelivr から読み込む（くらしのメモ） |
 
 ## 期間中に使う見込み（使う前に利用条件を確かめる）
 

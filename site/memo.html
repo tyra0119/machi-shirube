@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>くらしのメモ｜まちしるべ</title>
+<meta name="description" content="冷蔵庫に貼れる、町のくらしのメモ（A4 1枚・白黒で印刷できる）。避難場所・ごみ・病院・電話。">
+<link rel="stylesheet" href="memo.css">
+</head>
+<body>
+<div class="no-print bar">
+  <a href="javascript:history.back()">← もどる</a>
+  <button type="button" id="print">印刷する</button>
+  <span class="hint">A4 の紙 1枚に、白黒で印刷できます</span>
+</div>
+<main class="sheet">
+  <header>
+    <h1><span id="name">くらしのメモ</span><small>くらしのメモ</small></h1>
+    <p class="made" id="made"></p>
+  </header>
+  <section class="call">
+    <h2>まず電話</h2>
+    <div class="nums">
+      <p><strong>119</strong>火事・救急車</p>
+      <p><strong>110</strong>事件・事故</p>
+    </div>
+  </section>
+  <section id="hinan"><h2>近い避難場所</h2><ol id="hinan-list"></ol><p class="note" id="hinan-note"></p></section>
+  <section id="gomi"><h2>ごみ</h2><p id="gomi-text"></p></section>
+  <section id="iryo"><h2>近い病院・診療所</h2><table id="iryo-list"></table><p class="note">行く前に電話で確かめてください。急に具合が悪いときは 119。</p></section>
+  <footer>
+    <div id="qr" class="qr" aria-label="町のページの QR コード"></div>
+    <div>
+      <p>くわしくは、スマホで QR コードを読むと、町のページ（今日の天気・今日やっている病院・避難の地図）が開きます。</p>
+      <p class="url" id="url"></p>
+      <p class="src" id="src"></p>
+    </div>
+  </footer>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+<script src="text.js"></script>
+<script src="medical.js"></script>
+<script src="memo.js"></script>
+</body>
+</html>

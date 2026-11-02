@@ -471,6 +471,7 @@ async function showTranslations(code) {
 // どの町のページも最後に同じことをする：答え・わが家の避難・今日の暮らし・すべてのページ・調べる
 async function finishPage(code, townFeatures, startPart, scopeNote) {
   const part = startPart && townFeatures.find((f) => f.properties.part === startPart);
+  $("memo-link").href = part ? `memo.html?town=${code}-${startPart}` : `memo.html?muni=${code}`;
   await showAnswers(code, scopeNote, part ? `${code}-${startPart}` : null, part?.properties.name);
   // 町の色（町の花・木から。地図を描く前に決める）
   const sym = applyTownColor(Object.values(answersByPage).flat().find((x) => x.qid === "Q11"));
