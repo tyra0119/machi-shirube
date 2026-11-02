@@ -262,8 +262,11 @@ export function exportProgress(data = load()) {
 
 export function exportPublic(data = load()) {
   const byMuni = new Map();
+  // 探し直した答え（redoOf）が出せるようになったら、前の答えは出さない（同じ問いの答えが2つ並ばないように）
+  const replaced = new Set(data.items.filter((x) => x.redoOf && (x.status === "ok" || x.status === "auto")).map((x) => x.redoOf));
   for (const it of data.items) {
     if (it.status !== "ok" && it.status !== "auto") continue;
+    if (replaced.has(it.id)) continue;
     if (it.kind === "translation") continue; // 訳は site/data/translations/ に（下で状態だけ合わせる）
     if (["watch", "gomi-days", "plan-excerpt", "dekiru"].includes(it.kind)) continue; // 見張りの知らせ・ごみの収集日の表・防災計画の抜き出し・数とできることのつなぎは答えではない（下で状態だけ合わせる）
     // 市区町村の答えは {コード}.json、町・字の答えは {コード}-{番号}.json

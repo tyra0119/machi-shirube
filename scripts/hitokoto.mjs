@@ -20,6 +20,7 @@ function partFacts(code) {
   const sh = read(`site/data/shelters/${code}.json`)?.features ?? [];
   const plan = read(`site/data/plan/${code}.json`);
   const planOk = plan && (plan.status === "ok" || plan.status === "auto");
+  const lore = read(`site/data/lore/${code}.json`)?.own ?? [];
   return parts.filter((p) => (p.props.population ?? 0) >= 30).map((p) => {
     const k = p.props.part;
     const f = [`人口 ${p.props.population}人`];
@@ -33,6 +34,8 @@ function partFacts(code) {
       const tsunami = inside.filter((s) => s.properties.kinds.includes("津波"));
       f.push(`地区の中の避難場所 ${inside.length}か所${tsunami.length ? `（津波のときに使える所 ${tsunami.length}か所）` : ""}`);
     }
+    // 地区の中の、昔の災害を伝える碑（国土地理院）。昔の災害と、いまの想定をつないで言えるように
+    for (const x of lore.filter((x) => inPoly(x.at[0], x.at[1], p.polys))) f.push(`地区の中の碑：「${x.name}」${x.disaster}を伝える碑`);
     if (planOk && plan.parts[k]) f.push(...plan.parts[k].points.slice(0, 2).map((x) => `防災計画より：${x.text}`));
     return { part: k, name: p.props.name, facts: f };
   });
@@ -52,7 +55,7 @@ export async function hitokoto(code, log = console.log) {
     const res = await client.messages.create({
       model: MODEL, max_tokens: 3000, output_config: { effort: "low" },
       system: "町・字に住む人に向けて、その地区の暮らしと備えで気をつけたいことを、やさしい短い日本語でまとめます。渡す数だけを使い、数を変えたり計算したり足したりしません。地区を評価したり、怖がらせたりしません。",
-      messages: [{ role: "user", content: `${name}の町・字ごとの数です。\n${chunk.map((x) => `<part id="${x.part}" name="${x.name}">\n${x.facts.map((f) => `- ${f}`).join("\n")}\n</part>`).join("\n")}\n\nそれぞれの町・字について、そこに住む人に向けた「ひとこと」を2〜3文（あわせて90字ほど）で書いてください。特に気をつけたいことを先に、数を1つ以上そのまま使って。次の形だけで：\n<hitokoto id="番号">文</hitokoto>` }],
+      messages: [{ role: "user", content: `${name}の町・字ごとの数です。\n${chunk.map((x) => `<part id="${x.part}" name="${x.name}">\n${x.facts.map((f) => `- ${f}`).join("\n")}\n</part>`).join("\n")}\n\nそれぞれの町・字について、そこに住む人に向けた「ひとこと」を2〜3文（あわせて90字ほど）で書いてください。特に気をつけたいことを先に、数を1つ以上そのまま使って。地区の中に碑があれば、昔の災害といまの想定をつないでください（碑の名前と年はそのまま）。次の形だけで：\n<hitokoto id="番号">文</hitokoto>` }],
     });
     usd += record(MODEL, res.usage, `わが町のひとこと：${name}`);
     const text = res.content.filter((b) => b.type === "text").map((b) => b.text).join("");
@@ -70,7 +73,7 @@ export async function hitokoto(code, log = console.log) {
   fs.mkdirSync("site/data/hitokoto", { recursive: true });
   fs.writeFileSync(`site/data/hitokoto/${code}.json`, JSON.stringify({
     code, name, createdAt: new Date().toISOString(), model: MODEL, parts: out,
-    note: "町・字ごとの国のデータ（年齢・浸水や土砂の想定・坂・揺れ・事故・避難場所）から、AI がまとめたものです。文の中の数は、渡した数にあるかを照らしています。めやすの数を含みます",
+    note: "町・字ごとの国のデータ（年齢・浸水や土砂の想定・坂・揺れ・事故・避難場所・昔の災害を伝える碑）から、AI がまとめたものです。文の中の数は、渡した数にあるかを照らしています。めやすの数を含みます",
   }, null, 1));
   log(`${name}：町・字 ${Object.keys(out).length} / ${list.length}（$${usd.toFixed(3)}）`);
   return { parts: Object.keys(out).length, usd };

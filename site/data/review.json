@@ -1,8 +1,8 @@
 {
- "updatedAt": "2026-11-02T22:35:45.479Z",
+ "updatedAt": "2026-11-02T22:39:10.713Z",
  "counts": {
   "auto": 28,
-  "ok": 73,
+  "ok": 74,
   "pending": 16,
   "fix": 1,
   "rejected": 2,
@@ -2373,12 +2373,17 @@
    "qid": "Q08",
    "kind": "answer",
    "question": "外国から来た人向けの案内（外国語のページ・やさしい日本語・相談窓口）はあるか。どこで見られるか",
-   "why": "Claude が返した元の文が、答えに使ったページの中に見つからなかった／はじめて使う情報源（www.pref.kochi.lg.jp）。使ってよい範囲を人が確かめる",
+   "why": "Claude が返した元の文が、答えに使ったページの中に見つからなかった",
    "status": "pending",
    "score": null,
    "source": {
     "title": "多文化共生について（高知県）",
     "url": "https://www.pref.kochi.lg.jp/doc/2025041700175/"
+   },
+   "decided": {
+    "at": "2026-11-02T22:37:40.098Z",
+    "action": "site-ok",
+    "reason": "www.pref.kochi.lg.jp を使ってよいと決めた（情報源カード c0005）"
    }
   },
   {
@@ -2449,11 +2454,31 @@
    "kind": "answer",
    "question": "この町ゆかりの人（町の出身の有名な人など）と、その人を記念する碑・像・施設、そのほか町の主な名所。多くても5つ。1つずつ1文で、場所と出典をつけて（町の公式のページか資料から）",
    "why": "確かめ役：資料と合わない所がある（本田美奈子.記念館の住所（膝折町4-12-37）と入館料無料は資料に無い・旧高橋家住宅の住所（根岸台2-15-10）は資料に無い）",
-   "status": "pending",
-   "score": null,
+   "status": "ok",
+   "score": 2,
    "source": {
     "title": "「シティ・セールス朝霞ブランド」を認定しました（令和6年4月～令和12年3月）",
     "url": "https://www.city.asaka.lg.jp/site/musashino-front-asaka/citysales-asakabrand.html"
+   },
+   "decided": {
+    "at": "2026-11-02T22:38:01.119Z",
+    "action": "ok",
+    "reason": ""
+   }
+  },
+  {
+   "id": "r00160",
+   "scope": "muni:39428",
+   "scopeName": "高知県 黒潮町",
+   "qid": "Q32",
+   "kind": "answer",
+   "question": "介護や見守りが必要な高齢者・障がいのある人など、自力で避難しにくい人のための支援（避難行動要支援者名簿、個別避難計画、福祉避難所）は、どこで案内されているか。登録・申請の方法と窓口はどこか",
+   "why": "古いデータの見込み：平成26年・28年の計画は「避難行動要支援者名簿」の作成だけを書いている。令和6年の計画で「個別避難計画」が加わった。（古い：平成28年2月、新しい：令和6年3月）／確かめ役：資料と合わない所がある（「福祉避難所」は提示資料のどの版にも記載がない・名簿を住基・介護認定・障害手帳の台帳から作るとの記述がない・対象者（要介護3以上、身体障害者手帳1・2級、療育手帳、精神障害者福祉手帳など）の記述がない）。読んだのは一つ前の版（令和6年3月）の地域防災計画。いちばん新しい版は令和8年3月（https://www.town.kuroshio.lg.jp/img/files/pv/sosiki/2026/03/tiiki-bousaikeikaku202603.pdf）。新しい版でも同じかを見てから OK を",
+   "status": "pending",
+   "score": null,
+   "source": {
+    "title": "黒潮町地域防災計画 令和６年３月 黒潮町防災会議",
+    "url": "https://www.town.kuroshio.lg.jp/img/files/pv/sosiki/2024/04/tiiki-bousaikeikaku202404.pdf"
    }
   }
  ]
