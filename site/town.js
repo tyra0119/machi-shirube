@@ -329,7 +329,8 @@ const ANSWER_ICON = {
 };
 const PAGE_OF = (qid) => yardstick.questions.find((x) => x.id === qid)?.page;
 // 数と単位を太く（中身は変えない）
-const numbers = (html) => html.replace(/([0-9０-９][0-9０-９,，.]*)(\s*)(か所|ヶ所|カ所|件|人|世帯|分|時間|m|km|メートル|校|台|便|回|%|％)/g, '<b class="num">$1$2$3</b>');
+// 時刻（8時30分・9:00）や電話番号の中の数は太くしない（前が「時」「:」「-」や数のときは除く）
+const numbers = (html) => html.replace(/(?<![0-9０-９時:：\-－])([0-9０-９][0-9０-９,，.]*)(\s*)(か所|ヶ所|カ所|件|人|世帯|分|時間|m|km|メートル|校|台|便|回|%|％)/g, '<b class="num">$1$2$3</b>');
 function answerBody(a) {
   const lines = prettyText(a.value, esc).split("<br>").filter(Boolean);
   const [lead, ...rest] = lines;
