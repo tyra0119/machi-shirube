@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-02T21:46:10.863Z",
+ "createdAt": "2026-11-02T22:02:31.259Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 400,
- "of": 392,
+ "count": 410,
+ "of": 403,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -406,6 +406,16 @@
   "もとにした数": "Cifras de origen",
   "時刻表データのあるバスだけで数えたもの": "Contado solo con los autobuses que tienen datos de horarios",
   "人が確かめてから出しています。": "Se publica después de que una persona lo verifica.",
-  "この地区のひとこと": "Una nota sobre este distrito"
+  "この地区のひとこと": "Una nota sobre este distrito",
+  "昔の災害を伝える碑": "Monumentos que recuerdan desastres del pasado",
+  "昔の災害（津波・洪水・土砂災害など）のようすや教訓を伝える石碑やモニュメントです。碑の文は国土地理院の公開のままです": "Son estelas y monumentos de piedra que transmiten cómo fueron los desastres del pasado (tsunamis, inundaciones, deslizamientos de tierra, etc.) y las lecciones que dejaron. El texto de cada estela se muestra tal como lo publica el Instituto de Información Geoespacial de Japón.",
+  "国土地理院 自然災害伝承碑": "Instituto de Información Geoespacial de Japón: Estelas de desastres naturales",
+  "町の真ん中から約": "Aprox. desde el centro del pueblo:",
+  "碑の写真": "Foto de la estela",
+  "この町には、昔の災害を伝える碑が": "En este pueblo hay",
+  "基あります。": "estelas que recuerdan desastres del pasado.",
+  "この町として届けられた碑は、まだありません。近くの町の碑です。": "Aún no hay estelas registradas a nombre de este pueblo. Son estelas de pueblos cercanos.",
+  "近くの町の碑": "Estelas de pueblos cercanos",
+  "日本語のまま": "Solo en japonés"
  }
 }

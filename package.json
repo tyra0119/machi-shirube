@@ -44,7 +44,8 @@
     "build:climate": "node scripts/build-climate.mjs",
     "hitokoto": "node --env-file=.env scripts/hitokoto.mjs",
     "dekiru": "node --env-file=.env scripts/dekiru.mjs",
-    "translate-ai": "node --env-file=.env scripts/translate-ai.mjs"
+    "translate-ai": "node --env-file=.env scripts/translate-ai.mjs",
+    "build:lore": "node scripts/build-lore.mjs"
   },
   "devDependencies": {
     "mapshaper": "^0.7.101"

@@ -1,0 +1,64 @@
+{
+ "code": "34104",
+ "own": [],
+ "near": [
+  {
+   "id": "34100-012",
+   "muni": "34100",
+   "name": "慰霊碑",
+   "disaster": "土石流 (1965年6月20日)",
+   "kind": "土砂災害",
+   "built": "1966",
+   "address": "広島県広島市南区段原南一丁目(段原南第三公園内)",
+   "text": "昭和40年(1965)6月20日に発生した山崩れにより犠牲となった方を慰霊するため、比治山のふもとにある公園の一画に建立された。 [関連外部サイトへのリンク集 ](https://www.gsi.go.jp/bousaichiri/denshouhi_links.html#hiroshima)",
+   "image": "https://maps.gsi.go.jp/legend/disaster_lore/34100/34100-012.jpg",
+   "at": [
+    132.47518,
+    34.38303
+   ],
+   "km": 5.4,
+   "muniName": "広島県 広島市"
+  },
+  {
+   "id": "34100-007",
+   "muni": "34100",
+   "name": "瀬川卯一翁彰徳碑",
+   "disaster": "洪水・土石流 (1926年) (1928年)",
+   "kind": "洪水・土砂災害",
+   "built": "1943",
+   "address": "広島県広島市安佐南区山本七丁目(平山神社ちびっこ広場付近)",
+   "text": "大正15年(1926)及び昭和3年(1928)の集中豪雨により発生した洪水・土石流災害の原因と被害状況、発生時に山本村長だった瀬川氏の復興に対する功績が記されている。 [関連外部サイトへのリンク集 ](https://www.gsi.go.jp/bousaichiri/denshouhi_links.html#hiroshima)",
+   "image": "https://maps.gsi.go.jp/legend/disaster_lore/34100/34100-007.jpg",
+   "at": [
+    132.44365,
+    34.43866
+   ],
+   "km": 5.8,
+   "muniName": "広島県 広島市"
+  },
+  {
+   "id": "34100-013",
+   "muni": "34100",
+   "name": "忘れまい大災害",
+   "disaster": "土石流 (1999年6月29日)",
+   "kind": "土砂災害",
+   "built": "2012",
+   "address": "広島県広島市佐伯区五日市町大字上河内(河内公民館敷地内)",
+   "text": "平成11年(1999)6月29日に発生した6.29災害を受け、後世に災害を伝えるために建立された。また、これまでの災害についても記されている。 [関連外部サイトへのリンク集 ](https://www.gsi.go.jp/bousaichiri/denshouhi_links.html#hiroshima)",
+   "image": "https://maps.gsi.go.jp/legend/disaster_lore/34100/34100-013.jpg",
+   "at": [
+    132.35477,
+    34.41442
+   ],
+   "km": 6.2,
+   "muniName": "広島県 広島市"
+  }
+ ],
+ "note": "昔の災害（津波・洪水・土砂災害など）のようすや教訓を伝える石碑やモニュメントです。碑の文は国土地理院の公開のままです",
+ "sources": [
+  {
+   "title": "自然災害伝承碑（国土地理院）",
+   "url": "https://www.gsi.go.jp/bousaichiri/denshouhi.html"
+  }
+ ]
+}

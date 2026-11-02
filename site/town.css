@@ -432,6 +432,17 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .dekiru-list .todo { display: flex; gap: 6px; align-items: flex-start; padding: 8px 10px; border-radius: 8px; background: var(--town-tint, var(--bg)); font-size: 15px; font-weight: 700; line-height: 1.6; }
 .dekiru-list blockquote { margin: 0; font-size: 13px; color: var(--text-sub); line-height: 1.6; }
 .dekiru-list blockquote a { display: block; margin-top: 2px; }
+/* 昔の災害を伝える碑 */
+.lore-list { margin: 8px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
+.lore-list li { display: flex; flex-direction: column; gap: 4px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+.lore-list p { margin: 0; }
+.lore-name { display: flex; align-items: center; gap: 6px; font-size: 16px; line-height: 1.5; }
+.lore-name svg, .lore-at svg { flex: none; width: 18px; height: 18px; color: #7a5c3e; }
+.lore-dis { font-size: 14px; font-weight: 700; }
+.lore-dis .tag { display: inline-block; margin-left: 6px; padding: 0 8px; border-radius: 999px; background: var(--bg); font-size: 12px; font-weight: 400; }
+.lore-text { font-size: 14px; line-height: 1.7; padding: 8px 10px; border-radius: 8px; background: var(--bg); }
+.lore-at { display: flex; gap: 4px; align-items: flex-start; font-size: 13px; color: var(--text-sub); }
+.lore-sub { margin: 14px 0 0; font-size: 16px; }
 /* 浸水が想定される所に住む人 */
 .fp-kind + .fp-kind { margin-top: 16px; }
 .fp-head { margin: 4px 0; font-size: 16px; line-height: 1.6; }

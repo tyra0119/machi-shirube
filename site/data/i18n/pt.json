@@ -1,11 +1,11 @@
 {
  "lang": "pt",
  "name": "Português",
- "createdAt": "2026-11-02T21:46:06.946Z",
+ "createdAt": "2026-11-02T22:02:23.708Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 401,
- "of": 392,
+ "count": 412,
+ "of": 403,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Guia não oficial da vida na cidade. O Claude reúne as informações em sites oficiais da cidade e outras fontes, e indica a origem de cada uma (Machishirube)",
   "すべてのページ": "Todas as páginas",
@@ -407,6 +407,17 @@
   "もとにした数": "Números de base",
   "時刻表データのあるバスだけで数えたもの": "Contagem apenas de ônibus com dados de horários",
   "人が確かめてから出しています。": "Publicado após verificação por pessoas.",
-  "この地区のひとこと": "Uma palavra sobre este bairro"
+  "この地区のひとこと": "Uma palavra sobre este bairro",
+  "昔の災害を伝える碑": "Monumentos de desastres do passado",
+  "昔の災害（津波・洪水・土砂災害など）のようすや教訓を伝える石碑やモニュメントです。碑の文は国土地理院の公開のままです": "São estelas e monumentos de pedra que transmitem como foram os desastres do passado (tsunamis, inundações, deslizamentos de terra etc.) e as lições que deixaram. O texto de cada monumento é o mesmo divulgado pelo Instituto de Informação Geoespacial do Japão.",
+  "自然災害伝承碑（国土地理院）。押すと、伝えている災害と碑の文": "Monumentos de tradição de desastres naturais (Instituto de Informação Geoespacial do Japão). Toque para ver o desastre relatado e o texto do monumento",
+  "国土地理院 自然災害伝承碑": "Monumentos de tradição de desastres naturais do Instituto de Informação Geoespacial do Japão",
+  "町の真ん中から約": "A cerca de",
+  "碑の写真": "Foto do monumento",
+  "この町には、昔の災害を伝える碑が": "Nesta cidade há",
+  "基あります。": "monumento(s) que transmitem desastres do passado.",
+  "この町として届けられた碑は、まだありません。近くの町の碑です。": "Ainda não há monumentos registrados como desta cidade. Estes são monumentos de cidades vizinhas.",
+  "近くの町の碑": "Monumentos de cidades vizinhas",
+  "日本語のまま": "Em japonês (original)"
  }
 }

@@ -1,11 +1,11 @@
 {
  "lang": "vi",
  "name": "Tiếng Việt",
- "createdAt": "2026-11-02T21:46:30.565Z",
+ "createdAt": "2026-11-02T22:03:22.611Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 398,
- "of": 392,
+ "count": 409,
+ "of": 403,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Đây là trang hướng dẫn đời sống không chính thức của thị trấn này. Claude thu thập từ các trang chính thức của thị trấn v.v. và ghi rõ nguồn (Machi-shirube)",
   "すべてのページ": "Tất cả các trang",
@@ -404,6 +404,17 @@
   "時刻表データのあるバスだけで数えたもの": "Chỉ tính các tuyến xe buýt có dữ liệu giờ chạy",
   "人が確かめてから出しています。": "Có người kiểm tra rồi mới đăng.",
   "この町の非公式の暮らしの案内です。町の公式のサイトや国の公開データから集め、出典をつけています（まちしるべ）": "Đây là trang hướng dẫn đời sống không chính thức của thị trấn. Nội dung được tổng hợp từ trang web chính thức của thị trấn và dữ liệu công khai của nhà nước, có ghi rõ nguồn (Machishirube)",
-  "この地区のひとこと": "Đôi lời về khu vực này"
+  "この地区のひとこと": "Đôi lời về khu vực này",
+  "昔の災害を伝える碑": "Bia ghi lại thiên tai ngày xưa",
+  "昔の災害（津波・洪水・土砂災害など）のようすや教訓を伝える石碑やモニュメントです。碑の文は国土地理院の公開のままです": "Đây là các bia đá và công trình tưởng niệm lưu truyền diễn biến và bài học của những thiên tai trong quá khứ (sóng thần, lũ lụt, sạt lở đất, v.v.). Nội dung văn bia được giữ nguyên như Cơ quan Thông tin Địa lý Nhật Bản công bố",
+  "自然災害伝承碑（国土地理院）。押すと、伝えている災害と碑の文": "Bia truyền lại thiên tai tự nhiên (Cơ quan Thông tin Địa lý Nhật Bản). Bấm vào để xem thiên tai được ghi lại và nội dung văn bia",
+  "国土地理院 自然災害伝承碑": "Bia truyền lại thiên tai tự nhiên – Cơ quan Thông tin Địa lý Nhật Bản",
+  "町の真ん中から約": "Cách trung tâm thị trấn khoảng",
+  "碑の写真": "Ảnh bia",
+  "この町には、昔の災害を伝える碑が": "Thị trấn này có bia ghi lại thiên tai ngày xưa:",
+  "基あります。": "bia.",
+  "この町として届けられた碑は、まだありません。近くの町の碑です。": "Hiện chưa có bia nào được đăng ký thuộc thị trấn này. Đây là bia của thị trấn lân cận.",
+  "近くの町の碑": "Bia của thị trấn lân cận",
+  "日本語のまま": "Giữ nguyên tiếng Nhật"
  }
 }

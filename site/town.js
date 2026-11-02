@@ -212,6 +212,22 @@ async function showDekiru(code, part) {
   $("dekiru-note").textContent = `${t("n.dekiru", d.note)}${tr ? ` ${T("（AI による訳）")} ` : "。"}${T("人が確かめてから出しています。")}`;
 }
 
+// 昔の災害を伝える碑（国土地理院 自然災害伝承碑。scripts/build-lore.mjs）。碑の文は公開のまま出す。町の碑がなければ近くの町の碑
+async function showLore(code) {
+  const d = await fetch(`data/lore/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  if (!d) return;
+  $("lore-block").hidden = false;
+  const card = (x) => `<li>
+    <p class="lore-name">${icon("doc")}<strong>${esc(x.name)}</strong></p>
+    <p class="lore-dis">${esc(x.disaster)}${x.kind ? `<span class="tag">${esc(x.kind)}</span>` : ""}</p>
+    ${x.text ? `<p class="lore-text">${esc(x.text)}</p>` : ""}
+    <p class="lore-at">${icon("pin")}${x.muniName ? `${esc(x.muniName)}（${T("町の真ん中から約")} ${x.km} km）・` : ""}${esc(x.address)}${x.image ? `・<a href="${esc(x.image)}" target="_blank" rel="noopener">${T("碑の写真")}</a>` : ""}</p>
+  </li>`;
+  $("lore").innerHTML = (d.own.length ? `<p class="fp-head">${T("この町には、昔の災害を伝える碑が")} <strong>${d.own.length}</strong> ${T("基あります。")}</p><ul class="lore-list">${d.own.map(card).join("")}</ul>` : `<p class="fp-head">${T("この町として届けられた碑は、まだありません。近くの町の碑です。")}</p>`)
+    + (d.near.length ? `${d.own.length ? `<h3 class="lore-sub">${T("近くの町の碑")}</h3>` : ""}<ul class="lore-list">${d.near.map(card).join("")}</ul>` : "");
+  $("lore-note").innerHTML = `${esc(T(d.note))}${LANG ? `（${T("日本語のまま")}）` : ""}。${d.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join("・")}`;
+}
+
 // 町の気候（平年値メッシュ × 住む人。scripts/build-climate.mjs）。東京都心と並べ、良い所は明るい話題として添える
 async function showClimate(code) {
   const d = await fetch(`data/climate/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
@@ -926,6 +942,7 @@ async function finishPage(code, townFeatures, startPart, scopeNote, at) {
   await showSlope(code, part);
   await showPlan(code, part);
   await showQuake(code, part);
+  await showLore(code);
   await showBus(code, part);
   await showAccidents(code, part);
   await showShopAccess(code);

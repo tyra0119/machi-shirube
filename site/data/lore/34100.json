@@ -1,0 +1,403 @@
+{
+ "code": "34100",
+ "own": [
+  {
+   "id": "34100-001",
+   "muni": "34100",
+   "name": "水害之碑",
+   "disaster": "洪水・土石流 (1907年7月15日)",
+   "kind": "洪水・土砂災害",
+   "built": "1909",
+   "address": "広島県広島市安芸区矢野東五丁目(矢野東集会所付近)",
+   "text": "明治40年(1907)7月15日に発生した豪雨災害について、発生前の村の様子、地理的位置、後世に伝えるべきという石碑建立の意図などが記されている。 [関連外部サイトへのリンク集 ](https://www.gsi.go.jp/bousaichiri/denshouhi_links.html#hiroshima)",
+   "image": "https://maps.gsi.go.jp/legend/disaster_lore/34100/34100-001.jpg",
+   "at": [
+    132.53602,
+    34.35329
+   ]
+  },
+  {
+   "id": "34100-002",
+   "muni": "34100",
+   "name": "水害之碑",
+   "disaster": "洪水、土石流 (1916年9月6日)",
+   "kind": "洪水・土砂災害",
+   "built": "1919",
+   "address": "広島県広島市安佐南区相田二丁目(相田集会所敷地内)",
+   "text": "大正5年(1916)9月6日に起きた安川の洪水災害について、多くの金銭的・人的支援、県知事や村長、県会議員の指揮で村民が奮起したことや石碑建立の経緯や意図も述べられている。 [関連外部サイトへのリンク集 ](https://www.gsi.go.jp/bousaichiri/denshouhi_links.html#hiroshima)",
+   "image": "https://maps.gsi.go.jp/legend/disaster_lore/34100/34100-002.jpg",
+   "at": [
+    132.45088,
+    34.47317
+   ]
+  },
+  {
+   "id": "34100-003",
+   "muni": "34100",
+   "name": "水害碑",
+   "disaster": "洪水・土石流 (1926年9月11日)",
+   "kind": "洪水・土砂災害",
+   "built": "1930",
+   "address": "広島県広島市東区温品七丁目(府中大川沿い、八幡端西詰)",
+   "text": "大正15年(1926)9月11日の集中豪雨により発生した洪水・土石流による被災の様子や被害状況が漢文で記されている。 [関連外部サイトへのリンク集 ](https://www.gsi.go.jp/bousaichiri/denshouhi_links.html#hiroshima)",
+   "image": "https://maps.gsi.go.jp/legend/disaster_lore/34100/34100-003.jpg",
+   "at": [
+    132.5108,
+    34.41413
+   ]
+  },
+  {
+   "id": "34100-004",
+   "muni": "34100",
+   "name": "畑賀村水害碑",
+   "disaster": "洪水・土石流 (1926年9月11日)",
+   "kind": "洪水・土砂災害",
+   "built": "1930",
+   "address": "広島県広島市安芸区畑賀三丁目(畑賀小学校敷地内)",
+   "text": "大正15年(1926)9月11日の集中豪雨により発生した洪水・土石流災害について、地理的位置や犠牲者の名前などを碑に刻み、災害の様子や復興の過程を後世に伝えている。 [関連外部サイトへのリンク集 ](https://www.gsi.go.jp/bousaichiri/denshouhi_links.html#hiroshima)",
+   "image": "https://maps.gsi.go.jp/legend/disaster_lore/34100/34100-004.jpg",
+   "at": [
+    132.55053,
+    34.39451
+   ]
+  },
+  {
+   "id": "34100-005",
+   "muni": "34100",
+   "name": "水害記念碑",
+   "disaster": "洪水・土石流 (1926年9月11日)",
+   "kind": "洪水・土砂災害",
+   "built": "1935",
+   "address": "広島県広島市安芸区中野一丁目(畑賀川沿い)",
+   "text": "大正15年(1926)9月11日の集中豪雨により発生した洪水・土石流などの水害の復旧工事完了を記念して建立され、工事にあたった耕地整理組合員の名前も記されている。 [関連外部サイトへのリンク集 ](https://www.gsi.go.jp/bousaichiri/denshouhi_links.html#hiroshima)",
+   "image": "https://maps.gsi.go.jp/legend/disaster_lore/34100/34100-005.jpg",
+   "at": [
+    132.5579,
+    34.38556
+   ]
+  },
+  {
+   "id": "34100-006",
+   "muni": "34100",
+   "name": "鉄道遭難者追弔塔",
+   "disaster": "洪水・土石流 (1926年9月23日)",
+   "kind": "洪水・土砂災害",
+   "built": "1927",
+   "address": "広島県広島市安芸区中野三丁目(専念寺境内)",
+   "text": "大正15年(1926)9月23日の集中豪雨により発生した洪水・土石流が原因で起きた鉄道事故の犠牲者を弔うために建立され、表面に名前などが刻まれている。 [関連外部サイトへのリンク集 ](https://www.gsi.go.jp/bousaichiri/denshouhi_links.html#hiroshima)",
+   "image": "https://maps.gsi.go.jp/legend/disaster_lore/34100/34100-006.jpg",
+   "at": [
+    132.56409,
+    34.39297
+   ]
+  },
+  {
+   "id": "34100-007",
+   "muni": "34100",
+   "name": "瀬川卯一翁彰徳碑",
+   "disaster": "洪水・土石流 (1926年) (1928年)",
+   "kind": "洪水・土砂災害",
+   "built": "1943",
+   "address": "広島県広島市安佐南区山本七丁目(平山神社ちびっこ広場付近)",
+   "text": "大正15年(1926)及び昭和3年(1928)の集中豪雨により発生した洪水・土石流災害の原因と被害状況、発生時に山本村長だった瀬川氏の復興に対する功績が記されている。 [関連外部サイトへのリンク集 ](https://www.gsi.go.jp/bousaichiri/denshouhi_links.html#hiroshima)",
+   "image": "https://maps.gsi.go.jp/legend/disaster_lore/34100/34100-007.jpg",
+   "at": [
+    132.44365,
+    34.43866
+   ]
+  },
+  {
+   "id": "34100-008",
+   "muni": "34100",
+   "name": "水害紀念碑",
+   "disaster": "洪水 (1928年6月24日)",
+   "kind": "洪水",
+   "built": "1930",
+   "address": "広島県広島市安佐北区可部二丁目(品窮寺境内)",
+   "text": "昭和3年(1928)6月24日、太田川支流の根の谷川の氾濫により、可部の市街地で洪水が発生し、市街地にある品窮寺境内に氾濫した水が流れ、深さ約4尺(120cm)浸水したと刻まれている。 [関連外部サイトへのリンク集 ](https://www.gsi.go.jp/bousaichiri/denshouhi_links.html#hiroshima)",
+   "image": "https://maps.gsi.go.jp/legend/disaster_lore/34100/34100-008.jpg",
+   "at": [
+    132.51247,
+    34.51516
+   ]
+  },
+  {
+   "id": "34100-009",
+   "muni": "34100",
+   "name": "伴安水災復興碑",
+   "disaster": "洪水、土石流 (1928年6月24日)",
+   "kind": "洪水・土砂災害",
+   "built": "1933",
+   "address": "広島県広島市安佐南区長楽寺二丁目(ヌマジ交通ミュージアム付近)",
+   "text": "昭和3年(1928)6月24日の土石流災害発生時の気象条件、被害状況、復興の過程や、災害への心構えなどを伝えている。 [関連外部サイトへのリンク集 ](https://www.gsi.go.jp/bousaichiri/denshouhi_links.html#hiroshima)",
+   "image": "https://maps.gsi.go.jp/legend/disaster_lore/34100/34100-009.jpg",
+   "at": [
+    132.43015,
+    34.47006
+   ]
+  },
+  {
+   "id": "34100-010",
+   "muni": "34100",
+   "name": "慰霊碑",
+   "disaster": "洪水・土石流 (1951年10月14日)",
+   "kind": "洪水・土砂災害",
+   "built": "1957",
+   "address": "広島県広島市佐伯区湯来町大字麦谷(下井谷橋南詰西側)",
+   "text": "昭和26年(1951)10月14日に発生したルース台風による犠牲者の名前や年齢を碑に刻み、二度と災害が起こらないよう祈念して建立された。 [関連外部サイトへのリンク集 ](https://www.gsi.go.jp/bousaichiri/denshouhi_links.html#hiroshima)",
+   "image": "https://maps.gsi.go.jp/legend/disaster_lore/34100/34100-010.jpg",
+   "at": [
+    132.3127,
+    34.51665
+   ]
+  },
+  {
+   "id": "34100-011",
+   "muni": "34100",
+   "name": "ルース台風を偲ぶ",
+   "disaster": "洪水・土石流 (1951年10月14日)",
+   "kind": "洪水・土砂災害",
+   "built": "1992",
+   "address": "広島県広島市佐伯区湯来町大字麦谷(湯来農村環境改善センター敷地内)",
+   "text": "昭和26年(1951)10月14日に発生したルース台風により洪水を起こした水内川流域で再び災害が起きないことを祈念し、災害から41年を経て建立された。 [関連外部サイトへのリンク集 ](https://www.gsi.go.jp/bousaichiri/denshouhi_links.html#hiroshima)",
+   "image": "https://maps.gsi.go.jp/legend/disaster_lore/34100/34100-011.jpg",
+   "at": [
+    132.3129,
+    34.52387
+   ]
+  },
+  {
+   "id": "34100-012",
+   "muni": "34100",
+   "name": "慰霊碑",
+   "disaster": "土石流 (1965年6月20日)",
+   "kind": "土砂災害",
+   "built": "1966",
+   "address": "広島県広島市南区段原南一丁目(段原南第三公園内)",
+   "text": "昭和40年(1965)6月20日に発生した山崩れにより犠牲となった方を慰霊するため、比治山のふもとにある公園の一画に建立された。 [関連外部サイトへのリンク集 ](https://www.gsi.go.jp/bousaichiri/denshouhi_links.html#hiroshima)",
+   "image": "https://maps.gsi.go.jp/legend/disaster_lore/34100/34100-012.jpg",
+   "at": [
+    132.47518,
+    34.38303
+   ]
+  },
+  {
+   "id": "34100-013",
+   "muni": "34100",
+   "name": "忘れまい大災害",
+   "disaster": "土石流 (1999年6月29日)",
+   "kind": "土砂災害",
+   "built": "2012",
+   "address": "広島県広島市佐伯区五日市町大字上河内(河内公民館敷地内)",
+   "text": "平成11年(1999)6月29日に発生した6.29災害を受け、後世に災害を伝えるために建立された。また、これまでの災害についても記されている。 [関連外部サイトへのリンク集 ](https://www.gsi.go.jp/bousaichiri/denshouhi_links.html#hiroshima)",
+   "image": "https://maps.gsi.go.jp/legend/disaster_lore/34100/34100-013.jpg",
+   "at": [
+    132.35477,
+    34.41442
+   ]
+  },
+  {
+   "id": "34100-014",
+   "muni": "34100",
+   "name": "広島土砂災害",
+   "disaster": "平成26年8月豪雨 (2014年8月20日)",
+   "kind": "土砂災害",
+   "built": "2014",
+   "address": "広島県広島市安佐南区祇園三丁目(祇園小学校敷地内)",
+   "text": "平成26年(2014)8月20日に発生した土石流により地上から62cmまで冠水したことを示す赤い線を碑に刻み、災害時の状況を後世に伝えている。 [関連外部サイトへのリンク集 ](https://www.gsi.go.jp/bousaichiri/denshouhi_links.html#hiroshima)",
+   "image": "https://maps.gsi.go.jp/legend/disaster_lore/34100/34100-014.jpg",
+   "at": [
+    132.46351,
+    34.44267
+   ]
+  },
+  {
+   "id": "34100-015",
+   "muni": "34100",
+   "name": "土砂災害記念碑",
+   "disaster": "平成26年8月豪雨 (2014年8月20日)",
+   "kind": "土砂災害",
+   "built": "2015",
+   "address": "広島県広島市安佐南区緑井七丁目(緑井第八公園［八敷公園］内)",
+   "text": "平成26年(2014)8月20日に発生した土石流により犠牲になった方の名前や民家の破壊という被害を後世に伝えるため、公園内に建立された。 [関連外部サイトへのリンク集 ](https://www.gsi.go.jp/bousaichiri/denshouhi_links.html#hiroshima)",
+   "image": "https://maps.gsi.go.jp/legend/disaster_lore/34100/34100-015.jpg",
+   "at": [
+    132.47736,
+    34.47402
+   ]
+  },
+  {
+   "id": "34100-016",
+   "muni": "34100",
+   "name": "鎮魂の碑",
+   "disaster": "平成26年8月豪雨 (2014年8月20日)",
+   "kind": "土砂災害",
+   "built": "2015",
+   "address": "広島県広島市安佐南区八木三丁目(梅林集会所付近)",
+   "text": "平成26年(2014)8月20日に発生した土砂災害に関する石碑で、周辺で犠牲になった方の名前が刻まれている。 [関連外部サイトへのリンク集 ](https://www.gsi.go.jp/bousaichiri/denshouhi_links.html#hiroshima)",
+   "image": "https://maps.gsi.go.jp/legend/disaster_lore/34100/34100-016.jpg",
+   "at": [
+    132.49404,
+    34.48174
+   ]
+  },
+  {
+   "id": "34100-017",
+   "muni": "34100",
+   "name": "慰霊碑",
+   "disaster": "平成26年8月豪雨 (2014年8月20日)",
+   "kind": "土砂災害",
+   "built": "2015",
+   "address": "広島県広島市安佐南区八木三丁目(県営緑丘住宅敷地内)",
+   "text": "平成26年(2014)8月20日に発生した土石流による県営緑丘住宅や小原山地区の犠牲者を弔うため建立。犠牲者の名前や豪雨の様子などが記されている。 [関連外部サイトへのリンク集 ](https://www.gsi.go.jp/bousaichiri/denshouhi_links.html#hiroshima)",
+   "image": "https://maps.gsi.go.jp/legend/disaster_lore/34100/34100-017.jpg",
+   "at": [
+    132.48802,
+    34.48097
+   ]
+  },
+  {
+   "id": "34100-018",
+   "muni": "34100",
+   "name": "広島土砂災害 忘れまい8・20",
+   "disaster": "平成26年8月豪雨 (2014年8月20日)",
+   "kind": "土砂災害",
+   "built": "2015",
+   "address": "広島県広島市安佐南区八木三丁目(梅林小学校敷地内)",
+   "text": "平成26年(2014)8月20日に発生した土石流による犠牲者への哀悼の意と、この災害が後世に伝わることを目的に建立されたことが記されている。 [関連外部サイトへのリンク集 ](https://www.gsi.go.jp/bousaichiri/denshouhi_links.html#hiroshima)",
+   "image": "https://maps.gsi.go.jp/legend/disaster_lore/34100/34100-018.jpg",
+   "at": [
+    132.49197,
+    34.48018
+   ]
+  },
+  {
+   "id": "34100-019",
+   "muni": "34100",
+   "name": "広島豪雨災害記念碑",
+   "disaster": "平成26年8月豪雨 (2014年8月20日)",
+   "kind": "土砂災害",
+   "built": "2015",
+   "address": "広島県広島市安佐北区可部東六丁目(可部東第四公園内)",
+   "text": "平成26年(2014)8月20日に発生した土石流による災害について、発生年月日などを碑の正面に刻み、被災の記憶を後世に伝えている。 [関連外部サイトへのリンク集 ](https://www.gsi.go.jp/bousaichiri/denshouhi_links.html#hiroshima)",
+   "image": "https://maps.gsi.go.jp/legend/disaster_lore/34100/34100-019.jpg",
+   "at": [
+    132.52358,
+    34.51694
+   ]
+  },
+  {
+   "id": "34100-020",
+   "muni": "34100",
+   "name": "ぼうさい碑",
+   "disaster": "平成26年8月豪雨 (2014年8月20日)",
+   "kind": "土砂災害",
+   "built": "2016",
+   "address": "広島県広島市安佐北区三入三丁目(三入小学校敷地内)",
+   "text": "平成26年(2014)8月20日に発生した土石流について、碑の正面に三入小学校の児童が作成したポスター、裏面に災害地図などを配置している。 [関連外部サイトへのリンク集 ](https://www.gsi.go.jp/bousaichiri/denshouhi_links.html#hiroshima)",
+   "image": "https://maps.gsi.go.jp/legend/disaster_lore/34100/34100-020.jpg",
+   "at": [
+    132.5269,
+    34.53877
+   ]
+  },
+  {
+   "id": "34100-021",
+   "muni": "34100",
+   "name": "大禹謨(だいうぼ)",
+   "disaster": "洪水(1943年他)",
+   "kind": "洪水",
+   "built": "1972",
+   "address": "広島県広島市安佐南区八木二丁目(大禹謨公園内)",
+   "text": "太田川流域は過去に何度も大洪水に見舞われており、特に承応2年(1653)の洪水では死者5,000人余りに達したという。昭和18年(1943)の大出水は、旧八木村、旧川内村、旧緑井村の堤防が決壊し、濁流は全村に流れ込み、尊い人命と多くの財宝を奪った。 [関連外部サイトへのリンク集 ](https://www.gsi.go.jp/bousaichiri/denshouhi_links.html#hiroshima)",
+   "image": "https://maps.gsi.go.jp/legend/disaster_lore/34100/34100-021.jpg",
+   "at": [
+    132.49874,
+    34.47897
+   ]
+  },
+  {
+   "id": "34100-022",
+   "muni": "34100",
+   "name": "八木学区復興記念モニュメント息を彫る20191",
+   "disaster": "平成26年8月豪雨 (2014年8月20日)",
+   "kind": "土砂災害",
+   "built": "2020",
+   "address": "広島県広島市安佐南区八木五丁目(城山北中学校敷地内)",
+   "text": "平成26年(2014)8月20日の集中豪雨により、八木地区は甚大な被害を受け、52名の人命が失われた。特に八木三丁目では、巨石を含んだ土石流が 3 度にわたり発生した。碑には「自分や家族の命を守るために、早めの避難を心掛けましょう」と刻まれている。 [関連外部サイトへのリンク集 ](https://www.gsi.go.jp/bousaichiri/denshouhi_links.html#hiroshima)",
+   "image": "https://maps.gsi.go.jp/legend/disaster_lore/34100/34100-022.jpg",
+   "at": [
+    132.50521,
+    34.48372
+   ]
+  },
+  {
+   "id": "34100-023",
+   "muni": "34100",
+   "name": "記念碑",
+   "disaster": "平成30年7月豪雨(西日本豪雨) (2018年7月6日)",
+   "kind": "土砂災害",
+   "built": "2019",
+   "address": "広島県広島市安芸区瀬野一丁目(瀬野福祉センター敷地内)",
+   "text": "記録的な豪雨によって平成30年(2018)7月6日に発生した土石流により、瀬野地区では4名の尊い命が奪われた。碑には犠牲者の名前が刻まれており、災害を後世に語り継いでいくために建立された。 [関連外部サイトへのリンク集 ](https://www.gsi.go.jp/bousaichiri/denshouhi_links.html#hiroshima)",
+   "image": "https://maps.gsi.go.jp/legend/disaster_lore/34100/34100-023.jpg",
+   "at": [
+    132.59729,
+    34.42171
+   ]
+  },
+  {
+   "id": "34100-024",
+   "muni": "34100",
+   "name": "忘れない あの日 あの刻 絆の輪",
+   "disaster": "平成30年7月豪雨(西日本豪雨) (2018年7月6日)",
+   "kind": "土砂災害",
+   "built": "2020",
+   "address": "広島県広島市安芸区矢野西六丁目(矢野小学校敷地内)",
+   "text": "平成30年(2018)7月6日19時30分頃から降り続いた記録的な豪雨により大量の土砂が矢野川を流れ下った。矢野川、宮下川、熊崎川から土砂・流木が流出し、川を埋め氾濫した。これらの土石流により矢野地区では12名の尊い命が奪われた。碑には被害の様子や災害発生後の地域住民の復旧活動が記されており、災害の記憶を後世に継承するために建立された。 [関連外部サイトへのリンク集 ](https://www.gsi.go.jp/bousaichiri/denshouhi_links.html#hiroshima)",
+   "image": "https://maps.gsi.go.jp/legend/disaster_lore/34100/34100-024.jpg",
+   "at": [
+    132.53627,
+    34.34801
+   ]
+  },
+  {
+   "id": "34100-025",
+   "muni": "34100",
+   "name": "功労碑",
+   "disaster": "洪水、土石流 (1928年6月)",
+   "kind": "洪水・土砂災害",
+   "built": "1933",
+   "address": "広島県広島市安佐南区長楽寺二丁目(安川沿い)",
+   "text": "昭和3年(1928)6月に発生した安川の氾濫による被災状況や当時復興に尽力された安村長の功績が記されている。",
+   "image": "https://maps.gsi.go.jp/legend/disaster_lore/34100/34100-025.jpg",
+   "at": [
+    132.43464,
+    34.47148
+   ]
+  },
+  {
+   "id": "34100-026",
+   "muni": "34100",
+   "name": "西日本豪雨災害碑",
+   "disaster": "平成30年7月豪雨(西日本豪雨) (2018年7月6日)",
+   "kind": "土砂災害",
+   "built": "2025",
+   "address": "広島県広島市安芸区上瀬野町(清山ちびっこ広場)",
+   "text": "記録的な豪雨によって平成30年(2018)7月6日に発生した土石流により、瀬野地区では4名の尊い命が奪われた。この碑は、災害から7年の節目に災害を後世に語り継いでいくために建立された。",
+   "image": "https://maps.gsi.go.jp/legend/disaster_lore/34100/34100-026.jpg",
+   "at": [
+    132.65379,
+    34.43784
+   ]
+  }
+ ],
+ "near": [],
+ "note": "昔の災害（津波・洪水・土砂災害など）のようすや教訓を伝える石碑やモニュメントです。碑の文は国土地理院の公開のままです",
+ "sources": [
+  {
+   "title": "自然災害伝承碑（国土地理院）",
+   "url": "https://www.gsi.go.jp/bousaichiri/denshouhi.html"
+  }
+ ]
+}

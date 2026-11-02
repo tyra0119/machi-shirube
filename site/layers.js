@@ -8,10 +8,10 @@ async function showLayerMap(code, townFeatures, at, esc) {
   const box = document.getElementById("layer-map");
   if (!box) return;
   const get = (url) => fetch(url).then((r) => (r.ok ? r.json() : null)).catch(() => null);
-  const [japan, flood, quake, slope, hito, shelters, med, acc, bus, nowc, risk] = await Promise.all([
+  const [japan, flood, quake, slope, hito, shelters, med, acc, bus, nowc, risk, lore] = await Promise.all([
     get("data/japan.topo.json"), get(`data/flood-pop/${code}.json`), get(`data/quake-pop/${code}.json`), get(`data/slope/${code}.json`), get(`data/hitokoto/${code}.json`),
     get(`data/shelters/${code}.json`), loadMedical(code), get(`data/accidents/${code}.json`), get(`data/bus/${code}.json`),
-    get(`${JMA_TILE}/nowc/targetTimes_N1.json`), get(`${JMA_TILE}/risk/targetTimes.json`),
+    get(`${JMA_TILE}/nowc/targetTimes_N1.json`), get(`${JMA_TILE}/risk/targetTimes.json`), get(`data/lore/${code}.json`),
   ]);
   const outline = japan ? topojson.feature(japan, japan.objects.municipalities).features.find((f) => f.properties.code === code) : null;
   const t = (s) => `${Number(s.slice(8, 10)) + 9 >= 24 ? Number(s.slice(8, 10)) - 15 : Number(s.slice(8, 10)) + 9}:${s.slice(10, 12)}`; // UTC → 日本の時刻
@@ -43,6 +43,7 @@ async function showLayerMap(code, townFeatures, at, esc) {
     { id: "overlap", name: "気をつけたいことの重なり", on: true, ok: (flood || quake || slope) && overlap.some((f) => f.properties.n > 0), legend: `${["#f6dfa8", "#f0b36b", "#d9773a", "#a8462a"].map((c, i) => `<i class="dot sq" style="background:${c}"></i>${i + 1}${i === 3 ? "+" : ""}`).join(" ")}　${LT("町・字ごとに、次のうちいくつが重なるか（色が濃いほど多い）")}：${CONDS.map(([l]) => LT(l)).join("・")}。${LT("国の数字から出した、めやすです")}` },
     { id: "town", name: "町・字の境", on: true, ok: townFeatures.length > 0 },
     { id: "shelter", name: "避難場所", on: true, ok: !!shelters, legend: `<i class="dot" style="background:#2f7d4f"></i>${LT("指定緊急避難場所（押すと名前と、使える災害）")}` },
+    { id: "lore", name: "昔の災害を伝える碑", on: true, ok: !!(lore?.own.length || lore?.near.length), legend: `<i class="dot" style="background:#7a5c3e"></i>${LT("自然災害伝承碑（国土地理院）。押すと、伝えている災害と碑の文")}` },
     { id: "iryo", name: "病院・診療所", ok: medFeatures.length > 0, legend: `<i class="dot" style="background:#2a6fdb"></i>${LT("いまやっている")} <i class="dot" style="background:#9db8e8"></i>${LT("今日やっている")} <i class="dot" style="background:#ccc"></i>${LT("今日は休み")}` },
     { id: "rain", name: "雨雲（いま）", ok: !!nowc, legend: `${LT("気象庁の雨雲の動き（高解像度降水ナウキャスト）")}${nowc ? `：${t(nowc[0].validtime)}` : ""}。${LT("薄い水色は弱い雨、黄・赤・紫ほど強い雨")}` },
     { id: "kikikuru", name: "キキクル（土砂）", ok: !!risk, legend: `${LT("気象庁の土砂災害の危険度分布")}${risk ? `：${t(risk[0].validtime)}` : ""}。${LT("黄＝注意・赤＝警戒（危険な所から避難の準備）・紫＝危険（避難）・黒＝災害が起きているおそれ")}` },
@@ -101,6 +102,10 @@ async function showLayerMap(code, townFeatures, at, esc) {
       map.addSource("bus", { type: "geojson", data: fc(bus.stops.map((s) => pt([s.lon, s.lat], s))) });
       map.addLayer({ id: "bus", type: "circle", source: "bus", layout: { visibility: "none" }, paint: { "circle-radius": ["interpolate", ["linear"], ["get", "n"], 1, 4, 30, 10], "circle-color": "#5b8fc7", "circle-stroke-color": "#fff", "circle-stroke-width": 1 } });
     }
+    if (lore?.own.length || lore?.near.length) {
+      map.addSource("lore", { type: "geojson", data: fc([...lore.own, ...lore.near].map((x) => pt(x.at, { name: x.name, disaster: x.disaster, text: x.text, muniName: x.muniName ?? "" }))) });
+      map.addLayer({ id: "lore", type: "circle", source: "lore", layout: { visibility: "none" }, paint: { "circle-radius": ["interpolate", ["linear"], ["zoom"], 10, 5, 14, 8], "circle-color": "#7a5c3e", "circle-stroke-color": "#fff", "circle-stroke-width": 2 } });
+    }
     // 町の形に合わせる
     const pts = townFeatures.flatMap((f) => (f.geometry.type === "Polygon" ? f.geometry.coordinates : f.geometry.coordinates.flat()).flat());
     const fit = () => pts.length && map.fitBounds([[Math.min(...pts.map((p) => p[0])), Math.min(...pts.map((p) => p[1]))], [Math.max(...pts.map((p) => p[0])), Math.max(...pts.map((p) => p[1]))]], { padding: 16, duration: 0 });
@@ -116,8 +121,9 @@ async function showLayerMap(code, townFeatures, at, esc) {
   pop("iryo", (p) => `<strong>${esc(p.name)}</strong><br>${esc(p.kind)}${p.s ? `・${esc(p.s)}` : ""}<br>${p.state ? `${LT("今日")} ${esc(p.hours)}` : LT("今日は休み")}<br><small>${LT("行く前に電話で確かめてください")}</small>`);
   pop("acc", (p) => `<strong>${esc(p.part)}</strong><br>${LT("3年で")} ${p.n} ${LT("件")}${Number(p.ped) ? `・${LT("歩行者")} ${p.ped}` : ""}${Number(p.bike) ? `・${LT("自転車")} ${p.bike}` : ""}`);
   pop("overlap", (p) => `<strong>${esc(p.name)}</strong><br>${p.n ? `${LT("重なり")} ${p.n}：${esc(p.hit)}` : LT("重なりはありません")}${hito?.parts?.[p.part] && (!LANG || LANG === "easy") ? `<p class="pop-hito">${esc(hito.parts[p.part].text)}<small>（${LT("AI のまとめ")}）</small></p>` : ""}`);
+  pop("lore", (p) => `<strong>${esc(p.name)}</strong>${p.muniName ? `<br><small>${esc(p.muniName)}</small>` : ""}<br>${esc(p.disaster)}<p class="pop-hito">${esc(p.text)}<small>（${LT("国土地理院 自然災害伝承碑")}）</small></p>`);
   pop("bus", (p) => `<strong>${esc(p.name)}</strong><br>${LT("平日")} ${p.n} ${LT("本")}`);
-  for (const id of ["shelter", "iryo", "acc", "bus", "overlap"]) {
+  for (const id of ["shelter", "lore", "iryo", "acc", "bus", "overlap"]) {
     map.on("mouseenter", id, () => (map.getCanvas().style.cursor = "pointer"));
     map.on("mouseleave", id, () => (map.getCanvas().style.cursor = ""));
   }

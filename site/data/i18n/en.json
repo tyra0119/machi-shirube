@@ -1,11 +1,11 @@
 {
  "lang": "en",
  "name": "English",
- "createdAt": "2026-11-02T21:46:13.676Z",
+ "createdAt": "2026-11-02T22:02:36.854Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 401,
- "of": 392,
+ "count": 412,
+ "of": 403,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "This is an unofficial guide to living in this town. Claude gathers information from the town's official website and other sources, and cites each source (Machishirube)",
   "すべてのページ": "All pages",
@@ -407,6 +407,17 @@
   "人が確かめてから出しています。": "Checked by a person before publishing.",
   "250m 四方の人口 × ハザードマップ。めやす": "Population per 250 m square × hazard map. Rough estimate",
   "GTFS × 250m 四方の人口。めやす": "GTFS × population per 250 m square. Rough estimate",
-  "この地区のひとこと": "A quick note on this district"
+  "この地区のひとこと": "A quick note on this district",
+  "昔の災害を伝える碑": "Monuments Recording Past Disasters",
+  "昔の災害（津波・洪水・土砂災害など）のようすや教訓を伝える石碑やモニュメントです。碑の文は国土地理院の公開のままです": "Stone monuments and memorials that convey what past disasters (tsunamis, floods, landslides, etc.) were like and the lessons learned from them. The inscriptions are shown exactly as published by the Geospatial Information Authority of Japan.",
+  "自然災害伝承碑（国土地理院）。押すと、伝えている災害と碑の文": "Natural Disaster Memorial Monuments (Geospatial Information Authority of Japan). Tap to see the disaster it records and the inscription",
+  "国土地理院 自然災害伝承碑": "GSI Japan Natural Disaster Memorial Monuments",
+  "町の真ん中から約": "About (distance) from the town center",
+  "碑の写真": "Photo of the monument",
+  "この町には、昔の災害を伝える碑が": "This town has",
+  "基あります。": "monument(s) recording past disasters.",
+  "この町として届けられた碑は、まだありません。近くの町の碑です。": "No monuments have been registered for this town yet. These are monuments in nearby towns.",
+  "近くの町の碑": "Monuments in nearby towns",
+  "日本語のまま": "In Japanese only"
  }
 }
