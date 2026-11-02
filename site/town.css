@@ -368,3 +368,10 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 @keyframes spin { to { transform: rotate(360deg); } }
 @media (prefers-reduced-motion: reduce) { .spin { animation-duration: 2.4s; } }
 .decide button[aria-busy] { flex-direction: row; }
+/* 警報・注意報の帯（どのページでも、タブの下のいちばん上） */
+.alert-band { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; max-width: 760px; margin: 10px auto 0; padding: 10px 14px; border-radius: 10px; background: #fff1cc; color: #4a3500; text-decoration: none; font-size: 15px; }
+.alert-band .ic { width: 22px; height: 22px; }
+.alert-band strong { font-size: 16px; }
+.alert-band small { margin-left: auto; font-size: 12px; }
+.alert-band.danger { background: #c0392b; color: #fff; }
+@media (max-width: 792px) { .alert-band { margin: 10px 16px 0; } }

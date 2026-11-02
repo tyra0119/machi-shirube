@@ -361,7 +361,17 @@ function answersHTML(answers) {
 // 今日のページ：天気・洗濯・服装・警報・地震（見る人のブラウザが気象庁と Open-Meteo をその場で読む）
 async function showToday(code, at) {
   try {
-    $("today-box").innerHTML = todayHTML(await loadToday(code, at[1], at[0]), esc);
+    const t = await loadToday(code, at[1], at[0]);
+    $("today-box").innerHTML = todayHTML(t, esc);
+    // 危ないことはいちばん上に：警報（赤）・注意報（橙）が出ていれば、どのページを見ていてもタブの下に帯で出す
+    const w = t.warnings?.list ?? [];
+    if (w.length) {
+      const danger = w.some((x) => /警報/.test(x));
+      const band = $("alert-band");
+      band.hidden = false;
+      band.classList.toggle("danger", danger);
+      band.innerHTML = `${icon("alert")}<strong>${T(danger ? "警報が出ています" : "注意報が出ています")}</strong><span>${w.map((x) => esc(T(x))).join("・")}</span><small>${T("気象庁の発表")} ›</small>`;
+    }
   } catch (e) {
     $("today-box").innerHTML = `<p class="note">天気を読み込めませんでした。時間をおいて開き直してください。</p>`;
     console.error(e);
