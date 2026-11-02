@@ -421,3 +421,14 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .mitate-top .why { font-size: 14px; color: var(--text-sub); line-height: 1.6; }
 .mitate-top .go { justify-self: start; display: inline-flex; align-items: center; gap: 6px; margin-top: 4px; padding: 8px 14px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); color: var(--text); font-weight: 700; text-decoration: none; }
 .mitate-top .go svg { width: 18px; height: 18px; }
+/* 浸水が想定される所に住む人 */
+.fp-kind + .fp-kind { margin-top: 16px; }
+.fp-head { margin: 4px 0; font-size: 16px; line-height: 1.6; }
+.fp-head strong { font-size: 22px; margin-right: 4px; }
+.fp-head span { display: block; font-size: 14px; color: var(--text-sub); }
+.fp-here { margin: 4px 0 8px; padding: 6px 10px; border-radius: 8px; background: var(--bg); font-size: 14px; }
+.fp-depth { margin: 8px 0 0; padding: 0; list-style: none; display: grid; gap: 4px; }
+.fp-depth li { display: grid; grid-template-columns: 6.5em 1fr 4.5em; gap: 8px; align-items: center; font-size: 13px; }
+.fp-depth .bar { height: 12px; border-radius: 6px; background: var(--bg); overflow: hidden; }
+.fp-depth .bar i { display: block; height: 100%; border-right: 1px solid rgba(0, 0, 0, .25); }
+.fp-depth .v { text-align: right; font-variant-numeric: tabular-nums; }

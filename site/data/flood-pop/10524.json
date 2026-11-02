@@ -1,0 +1,111 @@
+{
+ "code": "10524",
+ "createdAt": "2026-11-02T12:22:38.172Z",
+ "population": 42170,
+ "kinds": {
+  "洪水": {
+   "people": 18730,
+   "rate": 44.4,
+   "over65": 4370,
+   "byDepth": {
+    "0.3〜0.5m": 4300,
+    "1〜3m": 12220,
+    "3〜5m": 1630,
+    "5〜10m": 590
+   },
+   "parts": {
+    "0150": {
+     "rate": 81.9,
+     "people": 1520
+    },
+    "0120": {
+     "rate": 85.9,
+     "people": 370
+    },
+    "0132": {
+     "rate": 99.7,
+     "people": 340
+    },
+    "0131": {
+     "rate": 88.5,
+     "people": 3160
+    },
+    "0180": {
+     "rate": 96,
+     "people": 5090
+    },
+    "0190": {
+     "rate": 49.7,
+     "people": 2260
+    },
+    "0111": {
+     "rate": 2.9,
+     "people": 110
+    },
+    "0020": {
+     "rate": 49,
+     "people": 190
+    },
+    "0080": {
+     "rate": 45.5,
+     "people": 650
+    },
+    "0030": {
+     "rate": 82.9,
+     "people": 3820
+    },
+    "0160": {
+     "rate": 100,
+     "people": 40
+    },
+    "0010": {
+     "rate": 6.6,
+     "people": 80
+    },
+    "0060": {
+     "rate": 0.5,
+     "people": 10
+    },
+    "0050": {
+     "rate": 3.5,
+     "people": 30
+    },
+    "0070": {
+     "rate": 9.9,
+     "people": 170
+    },
+    "0170": {
+     "rate": 2.4,
+     "people": 90
+    },
+    "0040": {
+     "rate": 18.6,
+     "people": 500
+    },
+    "0090": {
+     "rate": 15.5,
+     "people": 50
+    },
+    "0100": {
+     "rate": 4.6,
+     "people": 80
+    },
+    "0140": {
+     "rate": 67.8,
+     "people": 160
+    }
+   }
+  }
+ },
+ "note": "250m 四方ごとの人口（国勢調査 2020年）に、その四角の中で浸水が想定される場所の割合を掛けて足した、めやすです。人は四角の中に均等に住んでいるとみなしています。10人単位に丸めています",
+ "sources": [
+  {
+   "title": "国勢調査 2020年 地域メッシュ統計（250m）人口及び世帯（総務省統計局 e-Stat）",
+   "url": "https://www.e-stat.go.jp/gis/statmap-search?page=1&type=1&toukeiCode=00200521&toukeiYear=2020&aggregateUnit=Q"
+  },
+  {
+   "title": "ハザードマップポータルサイト（重ねるハザードマップ）のオープンデータを加工して作成",
+   "url": "https://disaportal.gsi.go.jp/hazardmapportal/hazardmap/copyright/opendata.html"
+  }
+ ]
+}

@@ -30,16 +30,19 @@
     "watch": "node scripts/watch.mjs",
     "try:api": "node --env-file=.env scripts/try-api.mjs",
     "try:fetch": "node --env-file=.env scripts/try-fetch.mjs",
-    "try:pdf": "node --env-file=.env scripts/try-pdf.mjs"
+    "try:pdf": "node --env-file=.env scripts/try-pdf.mjs",
+    "build:flood-pop": "node scripts/build-flood-pop.mjs"
   },
   "devDependencies": {
     "mapshaper": "^0.7.101"
   },
   "dependencies": {
     "@anthropic-ai/sdk": "^1.3.0",
+    "adm-zip": "^0.6.1",
     "exceljs": "^4.4.0",
     "jszip": "^3.10.2",
     "pdf-lib": "^1.17.1",
-    "pdfjs-dist": "^6.5.438"
+    "pdfjs-dist": "^6.5.438",
+    "pngjs": "^7.0.0"
   }
 }

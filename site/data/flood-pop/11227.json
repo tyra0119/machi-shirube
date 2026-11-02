@@ -1,0 +1,104 @@
+{
+ "code": "11227",
+ "createdAt": "2026-11-02T12:23:34.227Z",
+ "population": 139849,
+ "kinds": {
+  "洪水": {
+   "people": 14610,
+   "rate": 10.5,
+   "over65": 3650,
+   "byDepth": {
+    "0.3〜0.5m": 1130,
+    "1〜3m": 5530,
+    "3〜5m": 4820,
+    "5〜10m": 3050,
+    "10〜20m": 90
+   },
+   "parts": {
+    "0050": {
+     "rate": 2.1,
+     "people": 220
+    },
+    "0070": {
+     "rate": 64.4,
+     "people": 1000
+    },
+    "0060": {
+     "rate": 26.4,
+     "people": 3160
+    },
+    "0130": {
+     "rate": 9.4,
+     "people": 1550
+    },
+    "0180": {
+     "rate": 5.1,
+     "people": 250
+    },
+    "0140": {
+     "rate": 17.9,
+     "people": 1270
+    },
+    "0110": {
+     "rate": 92.2,
+     "people": 230
+    },
+    "0100": {
+     "rate": 70.9,
+     "people": 250
+    },
+    "0150": {
+     "rate": 1.1,
+     "people": 40
+    },
+    "0220": {
+     "rate": 92.5,
+     "people": 310
+    },
+    "0210": {
+     "rate": 33.3,
+     "people": 1400
+    },
+    "0090": {
+     "rate": 94,
+     "people": 160
+    },
+    "0290": {
+     "rate": 99,
+     "people": 1900
+    },
+    "0240": {
+     "rate": 100,
+     "people": 280
+    },
+    "0260": {
+     "rate": 98.7,
+     "people": 360
+    },
+    "0280": {
+     "rate": 9.4,
+     "people": 940
+    },
+    "0230": {
+     "rate": 93.1,
+     "people": 200
+    },
+    "0250": {
+     "rate": 97,
+     "people": 1090
+    }
+   }
+  }
+ },
+ "note": "250m 四方ごとの人口（国勢調査 2020年）に、その四角の中で浸水が想定される場所の割合を掛けて足した、めやすです。人は四角の中に均等に住んでいるとみなしています。10人単位に丸めています",
+ "sources": [
+  {
+   "title": "国勢調査 2020年 地域メッシュ統計（250m）人口及び世帯（総務省統計局 e-Stat）",
+   "url": "https://www.e-stat.go.jp/gis/statmap-search?page=1&type=1&toukeiCode=00200521&toukeiYear=2020&aggregateUnit=Q"
+  },
+  {
+   "title": "ハザードマップポータルサイト（重ねるハザードマップ）のオープンデータを加工して作成",
+   "url": "https://disaportal.gsi.go.jp/hazardmapportal/hazardmap/copyright/opendata.html"
+  }
+ ]
+}

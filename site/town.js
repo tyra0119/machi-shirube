@@ -100,16 +100,57 @@ async function showTypes(code, stats, scopeNote) {
   const list = typeCandidates(t, f, stats.summary);
   const sh = await fetch(`data/shelters/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
   const tsunami = sh?.features.filter((x) => x.properties.kinds.includes("津波")).length ?? 0;
-  if (tsunami && t.over65Rate >= stats.summary.over65Rate.top10) {
-    list.unshift({ type: "お年寄り × 津波", who: "津波から坂を上って逃げる、足の弱いお年寄り", reason: `65歳以上が ${t.over65Rate.toFixed(1)}%（全国の上から10%に入る）で、津波の避難場所が ${tsunami} か所ある町` });
+  const fp = (await floodPop(code))?.kinds ?? {};
+  const n = (v) => v.toLocaleString("ja-JP");
+  if ((fp.津波 || tsunami) && t.over65Rate >= stats.summary.over65Rate.top10) {
+    list.unshift({ type: "お年寄り × 津波", who: "津波から坂を上って逃げる、足の弱いお年寄り", reason: fp.津波
+      ? `65歳以上が ${t.over65Rate.toFixed(1)}%（全国の上から10%に入る）。津波で浸かる想定の所に、約 ${n(fp.津波.people)} 人（町の ${fp.津波.rate}%）が住み、うち65歳以上が約 ${n(fp.津波.over65)} 人（めやす）`
+      : `65歳以上が ${t.over65Rate.toFixed(1)}%（全国の上から10%に入る）で、津波の避難場所が ${tsunami} か所ある町` });
   }
+  const lang = list.find((c) => c.type === "母語で防災");
+  if (lang && fp.洪水) lang.reason += `。洪水で浸かる想定の所に、町の人の約 ${fp.洪水.rate}% が住む（めやす）`;
   if (!list.length) return;
+  // ほかの言葉では、理由の文の代わりに、数字を見出しつきで並べる
+  const pc = (v) => `${v.toFixed(1)}%`;
+  const FACTS = {
+    "お年寄り × 津波": [["65歳以上の人の割合", pc(t.over65Rate)], ...(fp.津波 ? [["津波で浸かる想定の所に住む人", `${fp.津波.rate}%`]] : [])],
+    "母語で防災": [["外国の住民の割合", pc(t.foreignRate)], ...(fp.洪水 ? [["洪水で浸かる想定の所に住む人", `${fp.洪水.rate}%`]] : [])],
+    "はじめての町": [["引っ越しによる1年の増減", `${t.socialChangeRate > 0 ? "+" : ""}${pc(t.socialChangeRate)}`], ["65歳以上の人の割合", pc(t.over65Rate)]],
+    "人が減る町の暮らし": [["1年の人口の増減", pc(t.changeRate)], ["65歳以上の人の割合", pc(t.over65Rate)]],
+    "一人暮らしのお年寄り": t.elderlySingleRate != null ? [["65歳以上の一人暮らしの世帯", pc(t.elderlySingleRate)]] : [],
+  };
+  const reasonOf = (c) => (LANG ? (FACTS[c.type] ?? []).map(([l, v]) => `${T(l)} ${v}`).join(" · ") : c.reason);
   const page = (type) => { const v = TYPE_PAGE[type], f = v?.startsWith("feat-") && FEATURES[v.slice(5)]; return PAGES.find((p) => p.view === v) ?? (f ? { view: v, title: f.title } : null); };
   $("mitate-top").hidden = false;
   $("mitate-top").innerHTML = `<h2>${T("この町で、暮らしの情報が届きにくいのは")}</h2>
-    <ul class="mitate-list">${list.slice(0, 2).map((c) => { const p = page(c.type); return `<li><strong>${esc(T(c.who))}</strong><span class="why">${esc(c.reason)}</span>${p ? `<a class="go" href="#${p.view}">${icon(ILLUST[p.view]?.main ?? "map")}${esc(T(p.title))}${T("へ")}</a>` : ""}</li>`; }).join("")}</ul>
+    <ul class="mitate-list">${list.slice(0, 2).map((c) => { const p = page(c.type); return `<li><strong>${esc(T(c.who))}</strong><span class="why">${esc(reasonOf(c))}</span>${p ? `<a class="go" href="#${p.view}">${icon(ILLUST[p.view]?.main ?? "map")}${LANG ? esc(T(p.title)) : `${esc(p.title)}へ`}</a>` : ""}</li>`; }).join("")}</ul>
     <p class="note">${T("全国の市区町村と国の数字で比べた、まちしるべの見立てです（町の評価ではありません）。")} <a href="#mitate">${T("くわしく")}</a></p>`;
 }
+// 浸水が想定される所に住む人（めやす。scripts/build-flood-pop.mjs が作る）
+let floodPopCache;
+function floodPop(code) {
+  return (floodPopCache ??= fetch(`data/flood-pop/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null));
+}
+async function showFloodPop(code, part) {
+  const d = await floodPop(code);
+  const kinds = Object.entries(d?.kinds ?? {});
+  if (!kinds.length) return;
+  const n = (v) => v.toLocaleString("ja-JP");
+  $("floodpop-block").hidden = false;
+  $("floodpop").innerHTML = kinds.map(([kind, k]) => {
+    const max = Math.max(...Object.values(k.byDepth));
+    const here = part && k.parts[part.properties.part];
+    return `<div class="fp-kind">
+      <h3 class="sub">${esc(T(kind))}</h3>
+      <p class="fp-head"><strong>${T("約")} ${n(k.people)} ${T("人")}</strong>（${T("町の人の")} ${k.rate}%）${k.over65 ? `<span>${T("うち65歳以上")} ${T("約")} ${n(k.over65)} ${T("人")}</span>` : ""}</p>
+      ${part ? `<p class="fp-here">${esc(part.properties.name)}：${here ? `${T("約")} ${here.rate}%（${T("約")} ${n(here.people)} ${T("人")}）` : T("想定の区域に住む人は、ほとんどいません")}</p>` : ""}
+      <ul class="fp-depth">${Object.entries(k.byDepth).map(([label, v]) => `<li><span class="l">${esc(label)}</span><span class="bar"><i style="width:${(v / max) * 100}%;background:${depthColor(label)}"></i></span><span class="v">${n(v)}</span></li>`).join("")}</ul>
+    </div>`;
+  }).join("");
+  $("floodpop-note").innerHTML = `${esc(T(d.note))}。${T("想定は最大の規模のもので、必ずこうなるという意味ではありません。")}${d.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join("・")}`;
+}
+const depthColor = (label) => { const c = DEPTH_COLORS.find(([, l]) => l === label)?.[0] ?? [200, 200, 200]; return `rgb(${c.join(",")})`; };
+
 // 届きにくい人の型 → その人のためのページ
 const TYPE_PAGE = {
   "お年寄り × 津波": "bousai", "母語で防災": "bousai", "はじめての町": "tetsuzuki", "人が減る町の暮らし": "kaigo",
@@ -648,6 +689,7 @@ async function finishPage(code, townFeatures, startPart, scopeNote, at) {
     $("town-color-note").innerHTML = `<span class="swatch" aria-hidden="true"></span>${LANG ? `${T("ページの上の帯の色は、町が定めた花・木の色から作りました（町の公式の色ではありません）。")}（${esc(sym.name)}）` : `ページの上の帯の色は、町が定めた「${esc(sym.name)}」の色から作りました（町の公式の色ではありません）。`}<a href="#shiru" id="color-src">${T("出典")}</a>`;
     $("color-src").addEventListener("click", () => setTimeout(() => $("a-Q11")?.scrollIntoView({ behavior: "smooth", block: "start" }), 50));
   }
+  await showFloodPop(code, part);
   const hasHinan = await showHinan(code, townFeatures, startPart);
   await showTranslations(code);
   await showGomi(code);
