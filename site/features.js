@@ -1,0 +1,71 @@
+// その町ならではのページ：町の特徴（site/data/features.json。国の数字から決めたもの）ごとに、ページを足す。
+// 中身は2種類：見る人のブラウザがその場で国のデータから出すもの（widget）と、Claude が公式サイトから探す答え（物差しの問いの feature）
+const FEATURES = {
+  nougyou: { title: "農業をしている方へ", desc: "霜・低温・高温の先読み・病害虫・鳥獣の被害", h: 95, main: "tree", sub: "sun", widget: "frost" },
+  gyogyou: { title: "漁業をしている方へ", desc: "波と風の先読み・漁業者向けの窓口と支援", h: 200, main: "umbrella", sub: "map", widget: "sea" },
+  yuki: { title: "雪の暮らし", desc: "雪の先読み・除雪と雪下ろしの支援", h: 210, main: "snow", sub: "phone", widget: "snow" },
+  kazan: { title: "火山のそばの暮らし", desc: "噴火のときの避難の決まり・知らせの受け取り方", h: 25, main: "alert", sub: "map" },
+  shima: { title: "島の暮らし", desc: "船の便・島の医療と買い物の支え", h: 190, main: "map", sub: "bus" },
+};
+for (const [id, f] of Object.entries(FEATURES)) ILLUST[`feat-${id}`] = { h: f.h, main: f.main, sub: f.sub };
+
+// これから2週間の気温（Open-Meteo）から、霜・凍結・高温の日を拾う（めやす）
+async function frostWidget(at) {
+  const d = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${at[1].toFixed(3)}&longitude=${at[0].toFixed(3)}&daily=temperature_2m_max,temperature_2m_min&timezone=Asia%2FTokyo&forecast_days=16`).then((r) => r.json()).catch(() => null);
+  if (!d?.daily) return `<p class="note">${T("気温の予報を読み込めませんでした。")}</p>`;
+  const days = d.daily.time.map((t, i) => ({ t, max: d.daily.temperature_2m_max[i], min: d.daily.temperature_2m_min[i] }));
+  const tag = (x) => (x.min <= 0 ? ["frost", T("凍結のおそれ")] : x.min <= 3 ? ["frost", T("霜のおそれ")] : x.max >= 35 ? ["hot", T("猛暑")] : x.max >= 30 ? ["hot", T("高温")] : null);
+  const md = (t) => `${Number(t.slice(5, 7))}/${Number(t.slice(8, 10))}`;
+  const marks = days.filter(tag);
+  return `<p class="feat-sum">${marks.length ? `${T("これから2週間で気をつけたい日")}：<strong>${marks.length}</strong>` : T("これから2週間、霜や高温のおそれは小さい見込みです")}</p>
+    <ol class="temp-strip">${days.map((x) => { const g = tag(x); return `<li class="${g?.[0] ?? ""}"><span class="d">${md(x.t)}</span><span class="hi">${Math.round(x.max)}</span><span class="lo">${Math.round(x.min)}</span>${g ? `<span class="g">${esc(g[1])}</span>` : ""}</li>`; }).join("")}</ol>
+    <p class="cite">${T("最高・最低気温の予報：Open-Meteo.com（CC BY 4.0）を加工。霜は最低3℃以下・凍結は0℃以下・高温は最高30℃以上を、めやすとして印にしています。長い先の予報ほど外れやすいので、気象庁の早期天候情報も確かめてください。")}
+      <a href="https://www.data.jma.go.jp/cpd/souten/" target="_blank" rel="noopener">${T("気象庁 早期天候情報")}</a></p>`;
+}
+// 波と風（Open-Meteo の海の予報）。岸から離れた海の上の値なので、めやす
+async function seaWidget(at) {
+  const [m, w] = await Promise.all([
+    fetch(`https://marine-api.open-meteo.com/v1/marine?latitude=${at[1].toFixed(3)}&longitude=${at[0].toFixed(3)}&daily=wave_height_max&timezone=Asia%2FTokyo&forecast_days=5`).then((r) => r.json()).catch(() => null),
+    fetch(`https://api.open-meteo.com/v1/forecast?latitude=${at[1].toFixed(3)}&longitude=${at[0].toFixed(3)}&daily=wind_speed_10m_max&wind_speed_unit=ms&timezone=Asia%2FTokyo&forecast_days=5`).then((r) => r.json()).catch(() => null),
+  ]);
+  if (!m?.daily?.wave_height_max?.some((v) => v != null)) return `<p class="note">${T("この場所の波の予報はありません（海から離れている場合など）。")}</p>`;
+  const md = (t) => `${Number(t.slice(5, 7))}/${Number(t.slice(8, 10))}`;
+  return `<ol class="temp-strip sea">${m.daily.time.map((t, i) => { const h = m.daily.wave_height_max[i], v = w?.daily?.wind_speed_10m_max?.[i]; const rough = h >= 2.5 || v >= 12; return `<li class="${rough ? "hot" : ""}"><span class="d">${md(t)}</span><span class="hi">${h != null ? `${h.toFixed(1)}m` : "-"}</span><span class="lo">${v != null ? `${Math.round(v)}m/s` : ""}</span>${rough ? `<span class="g">${T("しけ")}</span>` : ""}</li>`; }).join("")}</ol>
+    <p class="cite">${T("波の高さ（いちばん高い波）と風の強さの予報：Open-Meteo.com（CC BY 4.0）を加工。沖の値のめやすです。出漁の判断は、気象庁の波浪警報・注意報と漁協の案内で。")}</p>`;
+}
+// 雪（Open-Meteo）：これから1週間の降雪
+async function snowWidget(at) {
+  const d = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${at[1].toFixed(3)}&longitude=${at[0].toFixed(3)}&daily=snowfall_sum,temperature_2m_min&timezone=Asia%2FTokyo&forecast_days=7`).then((r) => r.json()).catch(() => null);
+  if (!d?.daily) return `<p class="note">${T("雪の予報を読み込めませんでした。")}</p>`;
+  const md = (t) => `${Number(t.slice(5, 7))}/${Number(t.slice(8, 10))}`;
+  return `<ol class="temp-strip">${d.daily.time.map((t, i) => { const s = d.daily.snowfall_sum[i]; return `<li class="${s >= 5 ? "frost" : ""}"><span class="d">${md(t)}</span><span class="hi">${s ? `${Math.round(s)}cm` : "-"}</span><span class="lo">${Math.round(d.daily.temperature_2m_min[i])}℃</span>${s >= 5 ? `<span class="g">${T("雪")}</span>` : ""}</li>`; }).join("")}</ol>
+    <p class="cite">${T("降雪の量と最低気温の予報：Open-Meteo.com（CC BY 4.0）を加工。めやすです。大雪の警報・注意報は気象庁の発表で。")}</p>`;
+}
+const WIDGETS = { frost: frostWidget, sea: seaWidget, snow: snowWidget };
+
+// 町の特徴のページを作る：PAGES に足し、ページの枠を作り、国のデータの部品を描く
+async function showFeatures(code, at) {
+  const d = await fetch("data/features.json").then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const mine = d?.towns?.[code] ?? [];
+  const ind = mine.some((f) => f === "nougyou" || f === "gyogyou") ? (await fetch("data/industry.json").then((r) => r.json()).catch(() => null))?.towns?.[code] : null;
+  for (const id of mine) {
+    const f = FEATURES[id];
+    if (!f) continue;
+    const view = `feat-${id}`;
+    const why = id === "nougyou" && ind ? `${T("働く人のうち農業・林業")} ${ind.agri}%（${T("全国の市区町村で高いほうから")} ${ind.agriTop}%）`
+      : id === "gyogyou" && ind ? `${T("働く人のうち漁業")} ${ind.fish}%（${T("全国の市区町村で高いほうから")} ${ind.fishTop}%）`
+      : id === "yuki" ? T("豪雪地帯") : id === "kazan" ? T("火山災害警戒地域") : id === "shima" ? T("離島がある") : "";
+    PAGES.splice(1, 0, { view, title: f.title, desc: f.desc, feature: true, why });
+    const el = document.createElement("div");
+    el.className = "view";
+    el.dataset.view = view;
+    el.hidden = true;
+    el.innerHTML = `<section class="block"><h2>${icon(f.main)}${esc(T(f.title))}</h2>
+      <p class="feat-why"><span class="feat-badge">${T("この町ならでは")}</span>${esc(why)}（${T("国の数字から決めたもの")}）</p>
+      ${f.widget ? `<div class="feat-widget" id="w-${id}"><p class="note">${T("読み込んでいます…")}</p></div>` : ""}</section>
+      <section class="block"><h2>${T("Claude が公式のサイトから探したこと")}</h2><div class="answers-box" data-page="${view}"></div></section>`;
+    document.querySelector(".town-main").append(el);
+    if (f.widget && at) WIDGETS[f.widget](at).then((html) => ($(`w-${id}`).innerHTML = html));
+  }
+  return mine;
+}

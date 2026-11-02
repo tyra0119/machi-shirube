@@ -19,7 +19,8 @@ main();
 async function main() {
   const [stats, yard] = await Promise.all([fetch("data/stats.json").then((r) => r.json()), fetch("data/yardstick.json").then((r) => r.json())]);
   // 町・字ごとの問いは、町・字を調べるときだけ。「この町だけ」の問いはその町だけ
-  questions = yard.questions.filter((q) => (q.level === "town") === Boolean(part) && (!q.only || q.only === code));
+  const feats = (await fetch("data/features.json").then((r) => r.json()).catch(() => ({ towns: {} }))).towns[code] ?? [];
+  questions = yard.questions.filter((q) => (q.level === "town") === Boolean(part) && (!q.only || q.only === code) && (!q.feature || feats.includes(q.feature)));
   const t = stats.towns[code];
   if (!t) { $("name").textContent = "町が見つかりません"; return; }
   const muniName = t.name.replace(/^.+?郡(?=.+[町村]$)/, "");

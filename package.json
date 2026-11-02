@@ -11,6 +11,8 @@
     "build:stats": "node scripts/build-stats.mjs",
     "build:towns": "node scripts/build-towns.mjs",
     "build:census": "node scripts/build-census.mjs",
+    "build:industry": "node scripts/build-industry.mjs",
+    "build:features": "node scripts/build-features.mjs",
     "build:flags": "node scripts/build-flags.mjs",
     "build:shelters": "node scripts/build-shelters.mjs",
     "build:shelters-gsi": "node scripts/build-shelters-gsi.mjs",

@@ -46,6 +46,7 @@ const PAGES = [
   { view: "foreign", title: "外国の方へ", desc: "やさしい日本語・母語の案内", later: "やさしい日本語や母語での案内" },
   { view: "okane", title: "お金・補助金", desc: "補助金・給付・ガソリンなど", later: "いま申し込める補助金・給付と、締め切り" },
   { view: "shisetsu", title: "公園・図書館", desc: "近くの施設", later: "公園・図書館などの場所と開いている時間" },
+  { view: "keikaku", title: "町の計画と話題", desc: "町が何をしようとしているか・いま動いていること", tab: true, later: "町の大きな計画と、いま動いている話題" },
   { view: "shiru", title: "町を知る", desc: "町の形・歴史・催し・町のデータ", tab: true },
   { view: "mitate", title: "まちしるべの見立て", desc: "この町で暮らしの情報が届きにくい人" },
   { view: "source", title: "出典", desc: "このページの情報の出どころと、しくみ" },
@@ -421,8 +422,8 @@ function todayLife(hasHinan) {
   ].join("");
   $("tiles").innerHTML = PAGES.filter((p) => !["today", "source", "research", "mitate"].includes(p.view)).map((p) => {
     // 中身があるか：Claude の答え・わが家の避難・病院のデータ・町のデータ
-    const n = has(p.view) + (p.view === "bousai" && hasHinan ? 1 : 0) + (p.view === "shiru" ? 1 : 0) + (p.view === "iryo" && medicalRow && !medicalRow.includes("later") ? 1 : 0) + (p.view === "foreign" && !$("tr-block").hidden ? 1 : 0);
-    return `<li><a href="#${p.view}">${illust(p.view)}<span class="t">${esc(T(p.title))}</span><span class="d">${esc(T(p.desc))}</span>${n ? "" : `<span class="later">${T("準備中")}</span>`}</a></li>`;
+    const n = (p.feature ? 1 : 0) + has(p.view) + (p.view === "bousai" && hasHinan ? 1 : 0) + (p.view === "shiru" ? 1 : 0) + (p.view === "iryo" && medicalRow && !medicalRow.includes("later") ? 1 : 0) + (p.view === "foreign" && !$("tr-block").hidden ? 1 : 0);
+    return `<li${p.feature ? " class=\"feat\"" : ""}><a href="#${p.view}">${p.feature ? `<span class="feat-badge">${T("この町ならでは")}</span>` : ""}${illust(p.view)}<span class="t">${esc(T(p.title))}</span><span class="d">${esc(T(p.desc))}</span>${n ? "" : `<span class="later">${T("準備中")}</span>`}</a></li>`;
   }).join("");
 }
 
@@ -566,7 +567,10 @@ async function showAsk(code, partKey) {
 }
 
 // どの町のページも最後に同じことをする：答え・わが家の避難・今日の暮らし・すべてのページ・調べる
-async function finishPage(code, townFeatures, startPart, scopeNote) {
+async function finishPage(code, townFeatures, startPart, scopeNote, at) {
+  // その町ならではのページ（町の特徴から）を先に作る（答えの箱・タイル・すべてのページに入るように）
+  await showFeatures(code, at);
+  showView();
   const part = startPart && townFeatures.find((f) => f.properties.part === startPart);
   $("memo-link").href = part ? `memo.html?town=${code}-${startPart}` : `memo.html?muni=${code}`;
   await showAnswers(code, scopeNote, part ? `${code}-${startPart}` : null, part?.properties.name);
@@ -683,7 +687,7 @@ async function main() {
   await showTypes(code, stats, `いまは${muniName}全体の数字から選んだ候補です。この町・字の深い調べは、町を調べるときに。`);
   showToday(code, centerOf(chosen));
   await showMedical(code, centerOf(chosen));
-  await finishPage(code, all, chosen.length === 1 ? chosen[0].properties.part : null, `${muniName}全体についての答えです。`);
+  await finishPage(code, all, chosen.length === 1 ? chosen[0].properties.part : null, `${muniName}全体についての答えです。`, centerOf(chosen));
   const index = await getJSON("data/towns/index.json");
   sources([`${index.source}（${index.asOf}）`, `${stats.source.name}（${stats.source.asOf}）を加工（届きにくい人の候補）`, WEATHER, MEDICAL, BASEMAP], code);
   drawMap(chosen);
@@ -711,7 +715,7 @@ async function muniPage(code, stats) {
   showToday(code, at);
   await showMedical(code, null); // 市区町村まるごとは、近い順にしない（真ん中が決められないため）
   const towns = await fetch(`data/towns/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
-  await finishPage(code, towns ? topojson.feature(towns, towns.objects.towns).features : [], null, "");
+  await finishPage(code, towns ? topojson.feature(towns, towns.objects.towns).features : [], null, "", at);
   sources([`${stats.source.name}（${stats.source.asOf}。増減は${stats.source.changePeriod}）を加工`, N03, WEATHER, MEDICAL, BASEMAP], code);
   const topo = await getJSON("data/japan.topo.json");
   drawMap(topojson.feature(topo, topo.objects.municipalities).features.filter((f) => f.properties.code === code));

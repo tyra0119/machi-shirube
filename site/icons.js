@@ -53,6 +53,7 @@ const ILLUST = {
   okane: { h: 50, main: "yen", sub: "doc" },
   shisetsu: { h: 110, main: "tree", sub: "book" },
   shiru: { h: 260, main: "book", sub: "pin" },
+  keikaku: { h: 150, main: "map", sub: "calendar" },
   mitate: { h: 195, main: "eye", sub: "search" },
   source: { h: 30, main: "link", sub: "doc" },
   research: { h: 200, main: "search", sub: "book" },

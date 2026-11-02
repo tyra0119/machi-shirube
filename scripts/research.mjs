@@ -340,8 +340,9 @@ export async function researchTown(code, { log = console.log, onItem = () => {},
   const scope = part ? `town:${code}-${part}` : `muni:${code}`;
   const done = new Set(ledger.load().items.filter((x) => x.scope === scope && ["pending", "ok", "auto"].includes(x.status)).map((x) => x.qid ?? x.question));
   let total = 0;
-  // 「この町だけ」の問い（only）は、その町を調べるときだけ
-  for (const q of questions.filter((x) => (x.level === "town") === Boolean(part) && (!x.only || x.only === code))) {
+  // 「この町だけ」の問い（only）は、その町を調べるときだけ。特徴の問い（feature）は、その特徴のある町だけ（site/data/features.json）
+  const feats = fs.existsSync("site/data/features.json") ? JSON.parse(fs.readFileSync("site/data/features.json", "utf8")).towns[code] ?? [] : [];
+  for (const q of questions.filter((x) => (x.level === "town") === Boolean(part) && (!x.only || x.only === code) && (!x.feature || feats.includes(x.feature)))) {
     if (done.has(q.id) || done.has(q.text)) { log(`${q.id} はもう答えがあるので飛ばします`); continue; }
     if (shouldStop()) { log("止めました"); break; }
     if (total >= RUN_LIMIT_USD) { log(`この調べの費用が上限（$${RUN_LIMIT_USD}）に達したので止めます`); break; }
