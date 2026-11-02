@@ -40,7 +40,7 @@ async function cached(url, file) {
 }
 
 // TopoJSON の町・字の形をほどく（site/data/towns/{コード}.json）
-function polygonsOf(topo) {
+export function polygonsOf(topo) {
   const { scale, translate } = topo.transform;
   const arcs = topo.arcs.map((a) => { let x = 0, y = 0; return a.map(([dx, dy]) => [(x += dx) * scale[0] + translate[0], (y += dy) * scale[1] + translate[1]]); });
   const ring = (ids) => ids.flatMap((i, k) => { const a = i < 0 ? [...arcs[~i]].reverse() : arcs[i]; return k ? a.slice(1) : a; });
@@ -57,7 +57,7 @@ function inRing(x, y, r) {
   }
   return inside;
 }
-const inPoly = (x, y, polys) => polys.some(([outer, ...holes]) => inRing(x, y, outer) && !holes.some((h) => inRing(x, y, h)));
+export const inPoly = (x, y, polys) => polys.some(([outer, ...holes]) => inRing(x, y, outer) && !holes.some((h) => inRing(x, y, h)));
 
 // 地域メッシュのコード（250m＝5次メッシュ、10桁）→ 南西の角と大きさ
 function meshBox(code) {

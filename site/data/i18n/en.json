@@ -1,11 +1,11 @@
 {
  "lang": "en",
  "name": "English",
- "createdAt": "2026-11-02T12:26:32.021Z",
+ "createdAt": "2026-11-02T12:32:53.391Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 257,
- "of": 255,
+ "count": 273,
+ "of": 271,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "This is an unofficial guide to living in this town. Claude gathers information from the town's official website and other sources, and cites each source (Machishirube)",
   "すべてのページ": "All pages",
@@ -263,6 +263,22 @@
   "火山のふもとに住む人・訪れる人": "People who live at or visit the foot of a volcano",
   "島に住む人（船や飛行機が止まると行き来できなくなる）": "Island residents (cut off when ferries or flights stop)",
   "見守りや避難の声かけが届きにくい、一人で暮らすお年寄り": "Older adults living alone who are hard to reach with check-ins or evacuation calls",
-  "全国の市区町村と国の数字で比べた、まちしるべの見立てです（町の評価ではありません）。": "Machishirube's assessment, based on a comparison of national figures with those of municipalities across Japan (not an evaluation of the town)."
+  "全国の市区町村と国の数字で比べた、まちしるべの見立てです（町の評価ではありません）。": "Machishirube's assessment, based on a comparison of national figures with those of municipalities across Japan (not an evaluation of the town).",
+  "道の安全（交通事故）": "Road Safety (Traffic Accidents)",
+  "事故が重なる地点": "Accident Hotspots",
+  "警察庁の交通事故統計オープンデータ（人身事故。物損事故は入らない）のうち、町の中の地点で起きたものを数えたもの。年齢は事故のときの年齢の区分（65歳以上＝65〜74歳と75歳以上）。地点は升目（およそ50m）に集めた、めやすです": "Counted from the National Police Agency's open data on traffic accident statistics (injury accidents only; property-damage-only accidents are not included), limited to accidents at locations within the town. Age is the age group at the time of the accident (65 and over = 65–74 and 75 and over). Locations are grouped into grid cells (about 50 m) and are approximate.",
+  "年": "Year",
+  "人身事故": "Injury accidents",
+  "件": "cases",
+  "死亡事故": "Fatal accidents",
+  "町の人1000人あたり（1年）": "Per 1,000 residents (per year)",
+  "全国": "National",
+  "歩行者が関わる事故": "Accidents involving pedestrians",
+  "うち65歳以上の歩行者": "Of which, pedestrians aged 65 and over",
+  "自転車が関わる事故": "Accidents involving bicycles",
+  "歩行者": "Pedestrians",
+  "自転車": "Bicycles",
+  "死亡": "Deaths",
+  "町の外から通る車の事故も入るので、人の数で割った値はめやすです。": "Accidents involving vehicles passing through from outside the town are also included, so values divided by population are approximate."
  }
 }

@@ -432,3 +432,14 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .fp-depth .bar { height: 12px; border-radius: 6px; background: var(--bg); overflow: hidden; }
 .fp-depth .bar i { display: block; height: 100%; border-right: 1px solid rgba(0, 0, 0, .25); }
 .fp-depth .v { text-align: right; font-variant-numeric: tabular-nums; }
+/* 道の安全（交通事故） */
+.acc-stats { margin: 0 0 12px; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 8px; }
+.acc-stats li { display: flex; flex-direction: column; gap: 2px; padding: 10px 12px; border-radius: 10px; background: var(--bg); }
+.acc-stats .l { font-size: 13px; color: var(--text-sub); }
+.acc-stats strong { font-size: 20px; }
+.acc-stats .s { font-size: 13px; color: var(--text-sub); }
+.acc-pin { width: var(--s); height: var(--s); border-radius: 50%; background: #e8833a; border: 2px solid #fff; color: #fff; font-size: 12px; font-weight: 700; display: grid; place-items: center; box-shadow: 0 1px 3px rgba(0, 0, 0, .3); }
+.acc-spots { margin: 8px 0; padding: 0; list-style: none; display: grid; gap: 4px; }
+.acc-spots li { display: flex; gap: 8px; align-items: center; padding: 6px 8px; border-radius: 8px; cursor: pointer; font-size: 14px; }
+.acc-spots li:hover { background: var(--bg); }
+.acc-spots .no { flex: none; width: 22px; height: 22px; border-radius: 50%; background: #e8833a; color: #fff; font-size: 12px; font-weight: 700; display: grid; place-items: center; }

@@ -126,7 +126,17 @@
   </div>
   <div class="view" data-view="kosodate" hidden><section class="block"><h2>子育て</h2><div class="answers-box" data-page="kosodate"></div></section></div>
   <div class="view" data-view="kaigo" hidden><section class="block"><h2>お年寄り・介護</h2><div class="answers-box" data-page="kaigo"></div></section></div>
-  <div class="view" data-view="koutsuu" hidden><section class="block"><h2>交通</h2><div class="answers-box" data-page="koutsuu"></div></section></div>
+  <div class="view" data-view="koutsuu" hidden>
+    <section class="block" id="acc-block" hidden>
+      <h2>道の安全（交通事故）</h2>
+      <ul class="acc-stats" id="acc-stats"></ul>
+      <h3 class="sub" id="acc-spots-head">事故が重なる地点</h3>
+      <div class="hinan-map" id="acc-map"></div>
+      <ol class="acc-spots" id="acc-spots"></ol>
+      <p class="note" id="acc-note"></p>
+    </section>
+    <section class="block"><h2>交通</h2><div class="answers-box" data-page="koutsuu"></div></section>
+  </div>
   <div class="view" data-view="tetsuzuki" hidden><section class="block"><h2>手続き</h2><div class="answers-box" data-page="tetsuzuki"></div></section></div>
   <div class="view" data-view="foreign" hidden>
     <section class="block" id="tr-block" hidden>

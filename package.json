@@ -31,7 +31,8 @@
     "try:api": "node --env-file=.env scripts/try-api.mjs",
     "try:fetch": "node --env-file=.env scripts/try-fetch.mjs",
     "try:pdf": "node --env-file=.env scripts/try-pdf.mjs",
-    "build:flood-pop": "node scripts/build-flood-pop.mjs"
+    "build:flood-pop": "node scripts/build-flood-pop.mjs",
+    "build:accidents": "node scripts/build-accidents.mjs"
   },
   "devDependencies": {
     "mapshaper": "^0.7.101"

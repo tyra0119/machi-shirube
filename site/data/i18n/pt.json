@@ -1,11 +1,11 @@
 {
  "lang": "pt",
  "name": "Português",
- "createdAt": "2026-11-02T12:26:15.794Z",
+ "createdAt": "2026-11-02T12:32:40.210Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 256,
- "of": 255,
+ "count": 273,
+ "of": 271,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Guia não oficial da vida na cidade. O Claude reúne as informações em sites oficiais da cidade e outras fontes, e indica a origem de cada uma (Machishirube)",
   "すべてのページ": "Todas as páginas",
@@ -262,6 +262,23 @@
   "雪下ろしや雪かきが難しいお年寄り": "Idosos com dificuldade para remover a neve do telhado ou do chão",
   "火山のふもとに住む人・訪れる人": "Pessoas que moram ou visitam o sopé de um vulcão",
   "島に住む人（船や飛行機が止まると行き来できなくなる）": "Pessoas que moram na ilha (sem poder sair nem chegar quando barcos e aviões deixam de operar)",
-  "見守りや避難の声かけが届きにくい、一人で暮らすお年寄り": "Idosos que moram sozinhos e a quem é difícil chegar com visitas de acompanhamento ou avisos de evacuação"
+  "見守りや避難の声かけが届きにくい、一人で暮らすお年寄り": "Idosos que moram sozinhos e a quem é difícil chegar com visitas de acompanhamento ou avisos de evacuação",
+  "町の公式の収集日の表と出し方のページから Claude が読み取り、地区と種類の名前が資料にあることを PC で確かめたもの。祝日や年末年始は変わることがあるので、町のカレンダーで確かめてください": "Informações lidas por Claude na página oficial do município com a tabela de dias de coleta e as regras de descarte. O PC confirmou que os nomes das áreas e dos tipos constam no material. Feriados e o fim/início do ano podem mudar, por isso confira no calendário do município.",
+  "道の安全（交通事故）": "Segurança nas ruas (acidentes de trânsito)",
+  "事故が重なる地点": "Pontos com acidentes recorrentes",
+  "警察庁の交通事故統計オープンデータ（人身事故。物損事故は入らない）のうち、町の中の地点で起きたものを数えたもの。年齢は事故のときの年齢の区分（65歳以上＝65〜74歳と75歳以上）。地点は升目（およそ50m）に集めた、めやすです": "Dados abertos de estatísticas de acidentes de trânsito da Agência Nacional de Polícia (acidentes com vítimas; acidentes só com danos materiais não entram), contando os ocorridos em pontos dentro do município. A idade é a faixa etária no momento do acidente (65 anos ou mais = 65 a 74 anos e 75 anos ou mais). Os pontos são agrupados em quadrículas (cerca de 50 m) e servem apenas como referência.",
+  "年": "Ano",
+  "人身事故": "Acidentes com vítimas",
+  "件": "casos",
+  "死亡事故": "Acidentes fatais",
+  "町の人1000人あたり（1年）": "Por 1000 habitantes do município (1 ano)",
+  "全国": "Todo o país",
+  "歩行者が関わる事故": "Acidentes envolvendo pedestres",
+  "うち65歳以上の歩行者": "Destes, pedestres com 65 anos ou mais",
+  "自転車が関わる事故": "Acidentes envolvendo bicicletas",
+  "歩行者": "Pedestres",
+  "自転車": "Bicicletas",
+  "死亡": "Mortes",
+  "町の外から通る車の事故も入るので、人の数で割った値はめやすです。": "Como também entram acidentes de veículos que passam vindos de fora do município, o valor dividido pelo número de pessoas é apenas uma referência."
  }
 }

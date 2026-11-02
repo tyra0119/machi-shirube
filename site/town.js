@@ -41,7 +41,7 @@ const PAGES = [
   { view: "komatta", title: "困ったとき", desc: "どこに電話・メールすればよいか", tab: true, later: "困りごとごとの、電話・メールの窓口" },
   { view: "kosodate", title: "子育て", desc: "子育ての窓口・手当", later: "子育ての窓口と、手当・助成" },
   { view: "kaigo", title: "お年寄り・介護", desc: "介護の窓口・見守り", later: "介護の相談の窓口と、見守り・配食などの助け" },
-  { view: "koutsuu", title: "バス・電車", desc: "町の中の移動", later: "コミュニティバスや電車の時刻・乗り場" },
+  { view: "koutsuu", title: "交通と道の安全", desc: "バス・電車・事故が重なる所", later: "コミュニティバスや電車の時刻・乗り場" },
   { view: "tetsuzuki", title: "手続き", desc: "引っ越し・住民票など", later: "引っ越しや住民票などの手続きの窓口" },
   { view: "foreign", title: "外国の方へ", desc: "やさしい日本語・母語の案内", later: "やさしい日本語や母語での案内" },
   { view: "okane", title: "お金・補助金", desc: "補助金・給付・ガソリンなど", later: "いま申し込める補助金・給付と、締め切り" },
@@ -150,6 +150,50 @@ async function showFloodPop(code, part) {
   $("floodpop-note").innerHTML = `${esc(T(d.note))}。${T("想定は最大の規模のもので、必ずこうなるという意味ではありません。")}${d.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join("・")}`;
 }
 const depthColor = (label) => { const c = DEPTH_COLORS.find(([, l]) => l === label)?.[0] ?? [200, 200, 200]; return `rgb(${c.join(",")})`; };
+
+// 道の安全（交通事故。scripts/build-accidents.mjs が警察庁のオープンデータから作る）
+async function showAccidents(code, part) {
+  const d = await fetch(`data/accidents/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  if (!d?.total) return;
+  $("acc-block").hidden = false;
+  const n = (v) => v.toLocaleString("ja-JP");
+  const yrs = `${d.years[0]}〜${d.years.at(-1)}${T("年")}`;
+  const here = part && d.parts[part.properties.part];
+  $("acc-stats").innerHTML = [
+    [T("人身事故"), `${n(d.total)} ${T("件")}`, `${yrs}・${T("死亡事故")} ${d.dead}`],
+    [T("町の人1000人あたり（1年）"), `${d.per1000} ${T("件")}`, `${T("全国")} ${d.nationPer1000} ${T("件")}`],
+    [T("歩行者が関わる事故"), `${n(d.ped)} ${T("件")}`, `${T("うち65歳以上の歩行者")} ${d.oldPed}`],
+    [T("自転車が関わる事故"), `${n(d.bike)} ${T("件")}`, `${Math.round((d.bike / d.total) * 100)}%`],
+    ...(here ? [[esc(part.properties.name), `${here.n} ${T("件")}`, `${T("歩行者が関わる事故")} ${here.ped}`]] : []),
+  ].map(([l, v, s]) => `<li><span class="l">${l}</span><strong>${v}</strong><span class="s">${s}</span></li>`).join("");
+  $("acc-spots-head").hidden = $("acc-map").hidden = !d.spots.length;
+  $("acc-spots").innerHTML = d.spots.map((s, i) => `<li data-i="${i}"><span class="no">${i + 1}</span><span><strong>${esc(s.part)}</strong> ${s.n} ${T("件")}${s.ped ? `・${T("歩行者")} ${s.ped}` : ""}${s.bike ? `・${T("自転車")} ${s.bike}` : ""}${s.dead ? `・${T("死亡")} ${s.dead}` : ""}</span></li>`).join("");
+  $("acc-note").innerHTML = `${esc(T(d.note))}。${T("町の外から通る車の事故も入るので、人の数で割った値はめやすです。")}${d.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join("")}`;
+  if (!d.spots.length) return;
+  const map = new maplibregl.Map({
+    container: "acc-map",
+    style: { version: 8, sources: { pale: { type: "raster", tiles: ["https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png"], tileSize: 256, maxzoom: 18 } }, layers: [{ id: "pale", type: "raster", source: "pale" }] },
+    attributionControl: false,
+  });
+  maps.push(map);
+  map.addControl(new MapButtons({}), "bottom-right");
+  // 番号つきの丸（大きさは件数）。背景の地図は文字の部品を持たないので、印は HTML で置く
+  d.spots.forEach((s, i) => {
+    const el = document.createElement("div");
+    el.className = "acc-pin";
+    el.textContent = String(i + 1);
+    el.style.setProperty("--s", `${18 + Math.min(s.n, 12) * 1.5}px`);
+    new maplibregl.Marker({ element: el }).setLngLat([s.lon, s.lat]).addTo(map);
+  });
+  map.on("load", () => {
+    const lons = d.spots.map((s) => s.lon), lats = d.spots.map((s) => s.lat);
+    map.fitBounds([[Math.min(...lons), Math.min(...lats)], [Math.max(...lons), Math.max(...lats)]], { padding: 40, maxZoom: 15, duration: 0 });
+  });
+  $("acc-spots").addEventListener("click", (e) => {
+    const li = e.target.closest("li");
+    if (li) { const s = d.spots[Number(li.dataset.i)]; map.flyTo({ center: [s.lon, s.lat], zoom: 16 }); $("acc-map").scrollIntoView({ behavior: "smooth", block: "center" }); }
+  });
+}
 
 // 届きにくい人の型 → その人のためのページ
 const TYPE_PAGE = {
@@ -690,6 +734,7 @@ async function finishPage(code, townFeatures, startPart, scopeNote, at) {
     $("color-src").addEventListener("click", () => setTimeout(() => $("a-Q11")?.scrollIntoView({ behavior: "smooth", block: "start" }), 50));
   }
   await showFloodPop(code, part);
+  await showAccidents(code, part);
   const hasHinan = await showHinan(code, townFeatures, startPart);
   await showTranslations(code);
   await showGomi(code);

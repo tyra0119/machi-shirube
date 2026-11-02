@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-02T12:26:23.787Z",
+ "createdAt": "2026-11-02T12:32:46.825Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 257,
- "of": 255,
+ "count": 273,
+ "of": 271,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -263,6 +263,22 @@
   "雪下ろしや雪かきが難しいお年寄り": "Personas mayores a las que les cuesta quitar la nieve del tejado o despejarla",
   "火山のふもとに住む人・訪れる人": "Personas que viven al pie de un volcán o lo visitan",
   "島に住む人（船や飛行機が止まると行き来できなくなる）": "Personas que viven en islas (si se suspenden los barcos o los vuelos, no pueden salir ni llegar)",
-  "見守りや避難の声かけが届きにくい、一人で暮らすお年寄り": "Personas mayores que viven solas y a quienes cuesta llegar con visitas de control o avisos de evacuación"
+  "見守りや避難の声かけが届きにくい、一人で暮らすお年寄り": "Personas mayores que viven solas y a quienes cuesta llegar con visitas de control o avisos de evacuación",
+  "道の安全（交通事故）": "Seguridad vial (accidentes de tráfico)",
+  "事故が重なる地点": "Puntos con accidentes repetidos",
+  "警察庁の交通事故統計オープンデータ（人身事故。物損事故は入らない）のうち、町の中の地点で起きたものを数えたもの。年齢は事故のときの年齢の区分（65歳以上＝65〜74歳と75歳以上）。地点は升目（およそ50m）に集めた、めやすです": "Cifras de los datos abiertos de estadísticas de accidentes de tráfico de la Agencia Nacional de Policía (accidentes con víctimas; no incluyen los de solo daños materiales), contando los ocurridos en puntos dentro del municipio. La edad corresponde al grupo de edad en el momento del accidente (65 años o más = de 65 a 74 años y 75 años o más). Los puntos se agrupan en cuadrículas (de unos 50 m) y son orientativos",
+  "年": "Año",
+  "人身事故": "Accidentes con víctimas",
+  "件": "casos",
+  "死亡事故": "Accidentes mortales",
+  "町の人1000人あたり（1年）": "Por cada 1000 habitantes del municipio (1 año)",
+  "全国": "Total nacional",
+  "歩行者が関わる事故": "Accidentes con peatones implicados",
+  "うち65歳以上の歩行者": "De ellos, peatones de 65 años o más",
+  "自転車が関わる事故": "Accidentes con bicicletas implicadas",
+  "歩行者": "Peatones",
+  "自転車": "Bicicletas",
+  "死亡": "Fallecidos",
+  "町の外から通る車の事故も入るので、人の数で割った値はめやすです。": "Como también se incluyen accidentes de vehículos que pasan por el municipio desde fuera, el valor dividido por el número de habitantes es solo orientativo."
  }
 }
