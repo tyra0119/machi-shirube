@@ -1,87 +1,139 @@
-// 市・区の中の町（町・字。丁目はまとめる）の形を作る。
-// 動かし方: npm run build:towns -- 28109 11227 …（市区町村コード5けた）
-// 元は e-Stat の国勢調査2020 小地域の境界データ（人口・世帯つき）。取ったものは data/raw/estat/（公開しない）
-// 出力は site/data/towns/{コード}.json（町・字ごと）と site/data/towns/index.json（作った市・区の一覧）
+// 市区町村の中の町（町・字。丁目はまとめる）の形と数字を、県ごとに作る。
+// 動かし方: npm run build:towns -- all（全国）／ npm run build:towns -- 11 28（県の番号2けた）
+// 元は e-Stat の国勢調査2020（境界データと小地域集計。県ごとに取る。取ったものは data/raw/estat/、公開しない）
+// 出力は site/data/towns/{市区町村コード}.json（TopoJSON）、index.json（作った市区町村の一覧）、names.json（名前で探す用）
 import fs from "node:fs";
 import { execFileSync } from "node:child_process";
-import JSZip from "jszip";
+import mapshaper from "mapshaper";
+import { boundaryZip, gisTable, householdCounts, householdRates, num, smallAreaTable } from "./estat.mjs";
 
-const UA = "machi-shirube/0.1 (+https://github.com/tyra0119/machi-shirube)";
 const RAW = "data/raw/estat";
 const OUT = "site/data/towns";
-const codes = process.argv.slice(2).filter((c) => /^\d{5}$/.test(c));
-if (!codes.length) throw new Error("市区町村コード（5けた）を1つ以上渡してください");
-fs.mkdirSync(RAW, { recursive: true });
+let currentCache = null; // 今の市区町村の形（currentMunis）
+const args = process.argv.slice(2);
+const prefs = args.includes("all")
+  ? Array.from({ length: 47 }, (_, i) => String(i + 1).padStart(2, "0"))
+  : args.filter((a) => /^\d{2}$/.test(a));
+if (!prefs.length) throw new Error("県の番号（2けた）か all を渡してください");
+fs.mkdirSync(`${RAW}/tmp`, { recursive: true });
 fs.mkdirSync(OUT, { recursive: true });
 
-const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
-const mapshaper = (args) =>
-  execFileSync(process.execPath, ["node_modules/mapshaper/bin/mapshaper", ...args], { stdio: ["ignore", "pipe", "pipe"] });
+const cli = (args) =>
+  execFileSync(process.execPath, ["node_modules/mapshaper/bin/mapshaper", ...args], { stdio: ["ignore", "pipe", "pipe"], maxBuffer: 1 << 30 });
 
-for (const code of codes) {
-  // 1. 取る（まだ無いときだけ。名乗って、1秒以上あける）
-  const zip = `${RAW}/A002005212020-${code}.zip`;
-  if (!fs.existsSync(zip)) {
-    await sleep(1000);
-    const url = `https://www.e-stat.go.jp/gis/statmap-search/data?dlserveyId=A002005212020&code=${code}&coordSys=1&format=shape&downloadType=5&datum=2011`;
-    const res = await fetch(url, { headers: { "User-Agent": UA } });
-    if (!res.ok) throw new Error(`${code}: e-Stat から取れませんでした（${res.status}）`);
-    fs.writeFileSync(zip, Buffer.from(await res.arrayBuffer()));
-  }
-  // 2. 丁目を町・字にまとめ、人口と世帯を足す。名前の「〇丁目」を外す（zip はそのまま読める）
-  const out = `${OUT}/${code}.json`;
-  mapshaper([
-    zip, "encoding=shiftjis",
-    "-each", "town=KEY_CODE.slice(0,9), part=KIHON1, name=S_NAME.replace(/[一二三四五六七八九十〇0-9０-９]+丁目$/, '')",
-    "-dissolve", "town", "copy-fields=part,name", "sum-fields=JINKO,SETAI",
+for (const pref of prefs) {
+  // 1. 境界：丁目を町・字にまとめ、人口と世帯を足す。名前の「〇丁目」を外す
+  const tmp = `${RAW}/tmp/towns-${pref}.json`;
+  cli([
+    await boundaryZip(pref), "encoding=shiftjis",
+    "-filter", "KEY_CODE && KEY_CODE.length >= 9",
+    "-each", "town=KEY_CODE.slice(0,9), muni=KEY_CODE.slice(0,5), part=KIHON1, name=S_NAME ? S_NAME.replace(/[一二三四五六七八九十〇0-9０-９]+丁目$/, '') : ''",
+    "-dissolve", "town", "copy-fields=muni,part,name", "sum-fields=JINKO,SETAI",
     "-rename-fields", "population=JINKO,households=SETAI",
-    "-simplify", "40%", "keep-shapes",
-    "-o", out, "format=geojson", "precision=0.00001",
+    "-simplify", "30%", "keep-shapes",
+    "-o", tmp, "format=geojson", "precision=0.00001",
   ]);
-  // 3. 町・字ごとの年齢（国勢調査2020 小地域 T001082「年齢（5歳階級）別人口」）を足す
-  const ages = await ageTable(code.slice(0, 2));
-  // 4. 町・字ごとの外国の住民（国勢調査2020 小地域集計 第2表「男女別人口，外国人人口及び世帯数－町丁・字等」）
-  const foreign = await foreignTable(code.slice(0, 2));
-  const gj = JSON.parse(fs.readFileSync(out, "utf8"));
-  let hidden = 0;
-  for (const f of gj.features) {
-    const fr = foreign.get(f.properties.town);
-    if (fr?.hidden) f.properties.foreignHidden = true;
-    else if (fr) Object.assign(f.properties, fr);
-    const a = ages.get(f.properties.town);
-    if (!a) continue;
-    if (a.hidden) { f.properties.ageHidden = true; hidden++; continue; }
-    Object.assign(f.properties, a.rates);
+
+  // 2. 数字：年齢・外国の住民・世帯と住まい
+  const [ages, foreign, hh] = [await ageTable(pref), await foreignTable(pref), await householdCounts(pref)];
+  const groups = new Map();
+  for (const f of JSON.parse(fs.readFileSync(tmp, "utf8")).features) {
+    const p = f.properties;
+    const c = hh.get(p.town);
+    if (c?.householdHidden) p.householdHidden = true;
+    if (c) for (const [k, v] of Object.entries(householdRates(c))) if (v != null) p[k] = v;
+    const fr = foreign.get(p.town);
+    if (fr?.hidden) p.foreignHidden = true;
+    else if (fr) Object.assign(p, fr);
+    const a = ages.get(p.town);
+    if (a?.hidden) p.ageHidden = true;
+    else if (a) Object.assign(p, a.rates);
+    if (!groups.has(p.muni)) groups.set(p.muni, []);
+    groups.get(p.muni).push(f);
   }
-  fs.writeFileSync(out, JSON.stringify(gj));
-  console.log(`${code}: 町・字 ${gj.features.length}（${(fs.statSync(out).size / 1024).toFixed(0)}KB）。年齢の数字が隠されている町・字 ${hidden}`);
+
+  // 国勢調査（2020年）のあとに区が組みかわった所（浜松市 2024年）は、町・字の位置で今の区に入れ直す
+  const current = await currentMunis();
+  for (const [muni, features] of [...groups]) {
+    if (current.has(muni)) continue;
+    groups.delete(muni);
+    for (const f of features) {
+      const to = whichMuni(f, current, pref);
+      if (!to) { console.log(`  今の市区町村が見つからない町・字：${f.properties.name}（${muni}）`); continue; }
+      f.properties.muni = to;
+      if (!groups.has(to)) groups.set(to, []);
+      groups.get(to).push(f);
+    }
+    console.log(`  ${muni} は今の市区町村に無いので、位置で入れ直した`);
+  }
+
+  // 3. 市区町村ごとに、境目を共有する形（TopoJSON）で書く
+  let bytes = 0;
+  for (const [muni, features] of groups) {
+    const out = await mapshaper.applyCommands(
+      "-i towns.json -o format=topojson quantization=20000 towns.json",
+      { "towns.json": JSON.stringify({ type: "FeatureCollection", features }) },
+    );
+    fs.writeFileSync(`${OUT}/${muni}.json`, out["towns.json"]);
+    bytes += out["towns.json"].length;
+  }
+  console.log(`${pref}: 市区町村 ${groups.size}・町・字 ${[...groups.values()].reduce((s, g) => s + g.length, 0)}（${(bytes / 1e6).toFixed(1)}MB）`);
 }
 
-// 県ごとの第2表を取り（まだ無いときだけ）、町・字（市区町村コード＋町丁字コード4けた）ごとに外国の住民の数と割合を出す。
-// 表のファイルの番号は県ごとに違うので、e-Stat の県の一覧のページから読み取る
-async function foreignTable(pref) {
-  const file = `${RAW}/kokusei/t2-${pref}.csv`;
-  if (!fs.existsSync(file)) {
-    fs.mkdirSync(`${RAW}/kokusei`, { recursive: true });
-    const tclass2 = String(1159873 + Number(pref)).padStart(12, "0"); // 県の一覧（01 北海道 = 000001159874 から県の番号順）
-    await sleep(1000);
-    const list = await (await fetch(`https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00200521&tstat=000001136464&cycle=0&tclass1=000001136472&tclass2=${tclass2}&tclass3val=0`, { headers: { "User-Agent": UA } })).text();
-    if (!list.includes(`${pref}：`)) throw new Error(`e-Stat の県の一覧（${pref}）が見つかりません`);
-    const id = list.match(/stat_infid=(\d+)"[^>]*>\s*男女別人口，外国人人口及び世帯数/)?.[1];
-    if (!id) throw new Error(`第2表（${pref}）の場所が読み取れません`);
-    await sleep(1000);
-    const res = await fetch(`https://www.e-stat.go.jp/stat-search/file-download?statInfId=${id}&fileKind=1`, { headers: { "User-Agent": UA } });
-    if (!res.ok) throw new Error(`第2表（${pref}）が取れませんでした（${res.status}）`);
-    fs.writeFileSync(file, Buffer.from(await res.arrayBuffer()));
+// 4. 作った市区町村の一覧と、名前で探すための町・字の名前（[市区町村コード, 町・字の番号, 名前]）
+const done = fs.readdirSync(OUT).filter((f) => /^\d{5}\.json$/.test(f)).map((f) => f.slice(0, 5)).sort();
+const names = [];
+for (const code of done) {
+  const topo = JSON.parse(fs.readFileSync(`${OUT}/${code}.json`, "utf8"));
+  for (const g of topo.objects.towns.geometries) names.push([code, g.properties.part, g.properties.name]);
+}
+fs.writeFileSync(`${OUT}/index.json`, JSON.stringify({
+  source: "国勢調査 2020年（令和2年）小地域の境界データと小地域集計（年齢・外国人人口・世帯の家族類型・住宅）（総務省統計局、e-Stat）を加工して作成",
+  asOf: "2020年10月1日",
+  codes: done,
+}));
+fs.writeFileSync(`${OUT}/names.json`, JSON.stringify(names));
+console.log(`市区町村 ${done.length}・町・字の名前 ${names.length}`);
+
+// 今の市区町村の形（site/data/japan.topo.json）を、コード → GeoJSON の形で
+async function currentMunis() {
+  if (currentCache) return currentCache;
+  const out = await mapshaper.applyCommands(
+    "-i japan.topo.json -o format=geojson target=municipalities munis.json",
+    { "japan.topo.json": fs.readFileSync("site/data/japan.topo.json", "utf8") },
+  );
+  currentCache = new Map(JSON.parse(out["munis.json"]).features.map((f) => [f.properties.code, f]));
+  return currentCache;
+}
+
+// 町・字のおおよその真ん中（いちばん外の輪の点の平均）が、同じ県のどの市区町村に入るか
+function whichMuni(f, current, pref) {
+  const polys = f.geometry.type === "Polygon" ? [f.geometry.coordinates] : f.geometry.coordinates;
+  const ring = polys.reduce((a, b) => (b[0].length > a[0].length ? b : a))[0];
+  const pt = ring.reduce((s, p) => [s[0] + p[0] / ring.length, s[1] + p[1] / ring.length], [0, 0]);
+  const inside = (r) => {
+    let c = false;
+    for (let i = 0, j = r.length - 1; i < r.length; j = i++) {
+      if ((r[i][1] > pt[1]) !== (r[j][1] > pt[1]) && pt[0] < ((r[j][0] - r[i][0]) * (pt[1] - r[i][1])) / (r[j][1] - r[i][1]) + r[i][0]) c = !c;
+    }
+    return c;
+  };
+  for (const [code, m] of current) {
+    if (!code.startsWith(pref)) continue;
+    const mp = m.geometry.type === "Polygon" ? [m.geometry.coordinates] : m.geometry.coordinates;
+    if (mp.some((poly) => inside(poly[0]) && !poly.slice(1).some(inside))) return code;
   }
-  const txt = new TextDecoder("shift_jis").decode(fs.readFileSync(file));
+  return null;
+}
+
+// 第2表：町・字（市区町村コード＋町丁字コード4けた）ごとの外国の住民の数と割合
+async function foreignTable(pref) {
   const out = new Map();
-  for (const line of txt.split(/\r?\n/)) {
-    const r = line.split(",").map((s) => s.replace(/^"|"$/g, "")).slice(1); // いちばん左は行番号
+  for (const r of await smallAreaTable(pref, "男女別人口，外国人人口及び世帯数", "t2")) {
     // 地域階層レベル：2 = 丁目のない町・字、3 = 丁目をまとめた町・字
     if (!/^\d{5}$/.test(r[0]) || !/^\d{4}$/.test(r[1]) || (r[2] !== "2" && r[2] !== "3")) continue;
-    const total = /^\d+$/.test(r[10]) ? Number(r[10]) : null;
-    const foreigners = /^\d+$/.test(r[13]) ? Number(r[13]) : r[13] === "-" ? 0 : null;
+    const total = num(r[10]);
+    const foreigners = num(r[13]);
     if (r[3] || total === null || foreigners === null) { out.set(r[0] + r[1], { hidden: true }); continue; }
     if (!total) continue;
     out.set(r[0] + r[1], { foreigners, foreignRate: Math.round((foreigners / total) * 1000) / 10 });
@@ -89,28 +141,16 @@ async function foreignTable(pref) {
   return out;
 }
 
-// 県ごとの年齢の表を取り（まだ無いときだけ）、町・字（KEY_CODE 9けた）ごとに割合を出す
+// T001082「年齢（5歳階級）別人口」：町・字（KEY_CODE 9けた）ごとの割合
 async function ageTable(pref) {
-  const zip = `${RAW}/stats/T001082-${pref}.zip`;
-  if (!fs.existsSync(zip)) {
-    fs.mkdirSync(`${RAW}/stats`, { recursive: true });
-    await sleep(1000);
-    const res = await fetch(`https://www.e-stat.go.jp/gis/statmap-search/data?statsId=T001082&code=${pref}&downloadType=2`, { headers: { "User-Agent": UA } });
-    if (!res.ok) throw new Error(`年齢の表（${pref}）が e-Stat から取れませんでした（${res.status}）`);
-    fs.writeFileSync(zip, Buffer.from(await res.arrayBuffer()));
-  }
-  const files = (await JSZip.loadAsync(fs.readFileSync(zip))).files;
-  const txt = new TextDecoder("shift_jis").decode(await files[Object.keys(files).find((n) => n.endsWith(".txt"))].async("uint8array"));
-  const head = txt.split(/\r?\n/)[0].split(",");
-  const col = (id) => head.indexOf(id);
-  const [U15, A1564, O65, O75] = ["T001082017", "T001082018", "T001082019", "T001082020"].map(col);
+  const rows = await gisTable(pref, "T001082");
+  const head = rows[0];
+  const [U15, A1564, O65, O75] = ["T001082017", "T001082018", "T001082019", "T001082020"].map((id) => head.indexOf(id));
   const out = new Map();
-  for (const line of txt.split(/\r?\n/).slice(2)) {
-    const r = line.split(",");
+  for (const r of rows.slice(2)) {
     // 段：2 = 丁目のない町・字、3 = 丁目をまとめた町・字（4 は丁目、1 は市区町村）
     if (r[1] !== "2" && r[1] !== "3") continue;
-    const n = (i) => (/^\d+$/.test(r[i]) ? Number(r[i]) : r[i] === "-" ? 0 : null); // 「-」は 0、「*」「X」は隠されている
-    const [u15, a1564, o65, o75] = [U15, A1564, O65, O75].map(n);
+    const [u15, a1564, o65, o75] = [U15, A1564, O65, O75].map((i) => num(r[i]));
     // 秘匿の処理：1 = 隠した、2 = 隣の町・字と合わせた
     if (r[4] === "1" || r[4] === "2" || [u15, a1564, o65].includes(null)) { out.set(r[0], { hidden: true }); continue; }
     const known = u15 + a1564 + o65; // 年齢の分かっている人
@@ -120,15 +160,3 @@ async function ageTable(pref) {
   }
   return out;
 }
-
-// 3. 作った市・区の一覧と、名前で探すための町・字の名前（[市区町村コード, 町・字の番号, 名前]）
-const done = fs.readdirSync(OUT).filter((f) => /^\d{5}\.json$/.test(f)).map((f) => f.slice(0, 5)).sort();
-const names = done.flatMap((code) =>
-  JSON.parse(fs.readFileSync(`${OUT}/${code}.json`, "utf8")).features.map((f) => [code, f.properties.part, f.properties.name]),
-);
-fs.writeFileSync(`${OUT}/index.json`, JSON.stringify({
-  source: "国勢調査 2020年（令和2年）小地域の境界データ・年齢（5歳階級）別人口・小地域集計 第2表（外国人人口）（総務省統計局、e-Stat）を加工して作成",
-  asOf: "2020年10月1日",
-  codes: done,
-  names,
-}));

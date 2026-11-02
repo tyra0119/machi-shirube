@@ -20,6 +20,10 @@
       </div>
     </div>
 
+    <div class="problems" role="alert" hidden>
+      <p>うまく表示できていない所があります。時間をおいて開き直してください。</p>
+      <ul id="problems"></ul>
+    </div>
     <div class="panel-body">
       <section id="guide" class="guide">
         <p class="about">町を選ぶと、その町で<strong>暮らしの情報が届きにくい人</strong>を見つけ、その人に届くページを出典つきで作ります。</p>
@@ -61,6 +65,13 @@
         <label class="field">項目
           <select id="rank-metric"></select>
         </label>
+        <fieldset id="rank-filters" class="filters">
+          <legend>絞る（市区町村のとき）</legend>
+          <label><input type="checkbox" value="volcano"> 火山の警戒地域</label>
+          <label><input type="checkbox" value="snow"> 豪雪地帯</label>
+          <label><input type="checkbox" value="specialSnow"> 特別豪雪地帯</label>
+          <label><input type="checkbox" value="island"> 離島がある</label>
+        </fieldset>
         <div class="order" role="radiogroup" aria-label="並べる順">
           <button type="button" data-order="desc" aria-pressed="true">高い順</button>
           <button type="button" data-order="asc" aria-pressed="false">低い順</button>
@@ -75,9 +86,8 @@
   <main>
     <div id="map" aria-label="日本の市区町村の地図"></div>
     <div id="tip" class="tip" hidden></div>
-    <nav id="crumb" class="crumb" hidden>
-      <button type="button" class="back" aria-label="市区町村の地図に戻る">← 戻る</button>
-      <span class="here"></span>
+    <nav id="crumb" class="crumb" aria-label="いま見ている所" hidden>
+      <ol class="path"></ol>
     </nav>
     <button id="basemap" type="button" class="basemap" aria-pressed="true">背景の地図：表示中</button>
     <p class="source">町の形：国土数値情報（行政区域データ、2026年1月1日）国土交通省 を加工して作成（CC BY 4.0）／背景：<a href="https://maps.gsi.go.jp/development/ichiran.html" target="_blank" rel="noopener">地理院タイル</a>（淡色地図。拡大したとき）</p>

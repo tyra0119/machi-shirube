@@ -23,6 +23,29 @@
 - 医療の助言はしない。転載を禁じているサイトは、事実とリンクだけにする
 - 取得は robots.txt と利用規約に従い、名乗って、同じサイトへは1秒以上あける
 
+## 動かし方（手元）
+
+```bash
+npm install
+npm run serve            # http://127.0.0.1:8080/ （手元だけで待ち受ける）
+```
+
+公開のサイト（GitHub Pages）は `site/` をそのまま配る（`.github/workflows/pages.yml`）。Claude は呼ばない。
+
+## データの作り方
+
+期間前に取った公開データ（`docs/sources.md`）を `data/raw/` に置いてから：
+
+```bash
+npm run build:japan-map  # 市区町村の形（N03）→ site/data/japan.topo.json ほか
+npm run build:census     # 国勢調査2020 の世帯と住まい（e-Stat から47都道府県ぶん取る）→ data/census-munis.json
+npm run build:stats      # 住民基本台帳と国勢調査から、全国の市区町村 1,741 と比べた数字 → site/data/stats.json
+npm run build:flags      # 火山・豪雪・離島の印 → site/data/flags.json
+npm run build:towns -- all  # 全国の町・字の形と数字（e-Stat から県ごとに取る）→ site/data/towns/
+```
+
+e-Stat から取るときは名乗り、1秒以上あけ、手元にあるものは取り直さない（`scripts/estat.mjs`）。
+
 ## ライセンス
 
 - このリポジトリのコード: MIT（LICENSE）

@@ -4,6 +4,7 @@
 // 区の数字も、同じ 1,741 の並びの中に置いて位置を出す。
 import fs from "node:fs";
 import ExcelJS from "exceljs";
+import { householdRates } from "./estat.mjs";
 
 const RAW = "data/raw/juki";
 const SOURCE = {
@@ -54,6 +55,8 @@ for (const r of await rows("000892953.xlsx")) {
   const total = r[4];
   t.under15Rate = ((bands[0] + bands[1] + bands[2]) / total) * 100;
   t.over65Rate = (bands.slice(13).reduce((a, b) => a + b, 0) / total) * 100;
+  t.over75Rate = (bands.slice(15).reduce((a, b) => a + b, 0) / total) * 100;
+  t.under5Rate = (bands[0] / total) * 100;
 }
 
 // 3. 外国人住民の表
@@ -65,9 +68,29 @@ for (const r of await rows("000892960.xlsx")) {
   t.foreignRate = (r[5] / t.population) * 100;
 }
 
-// 4. 全国の中での位置（高いほうから何%か）
-const isPref = (t) => t.code.endsWith("000");
+// 4. 国勢調査2020 の世帯と住まい（npm run build:census で作った数）。政令市まるごとは区を足して出す
 const isWard = (t) => /市.+区$/.test(t.name);
+const census = fs.existsSync("data/census-munis.json") ? JSON.parse(fs.readFileSync("data/census-munis.json", "utf8")) : {};
+// 区のコードは市のコードのすぐ後ろの番号（神戸市 28100 → 28101〜28111）。国勢調査（2020年）のあとに
+// 区が組みかわった浜松市も、当時の区のコード（22131〜22137）で足せるよう、コードの並びで集める
+const sumWards = (city) => {
+  const sum = {};
+  const base = Number(city.code);
+  for (const [code, c] of Object.entries(census)) {
+    const n = Number(code);
+    if (n <= base || n >= base + 30) continue;
+    for (const [k, v] of Object.entries(c)) if (typeof v === "number") sum[k] = (sum[k] ?? 0) + v;
+  }
+  return Object.keys(sum).length ? sum : null;
+};
+const isDesignated = (t) => /^\d{2}1\d0$/.test(t.code) && /市$/.test(t.name) && [...towns.values()].some((w) => isWard(w) && w.name.startsWith(t.name));
+for (const t of towns.values()) {
+  const c = census[t.code] ?? (isDesignated(t) ? sumWards(t) : null);
+  if (c) Object.assign(t, householdRates(c));
+}
+
+// 5. 全国の中での位置（高いほうから何%か）
+const isPref = (t) => t.code.endsWith("000");
 const isCounty = (t) => !/[市町村区]$/.test(t.name); // 郡・支庁（島しょ）の小計の行
 const noPeople = (t) => !t.population; // 北方領土の6村（人口 0）
 const peers = [...towns.values()].filter((t) => !isPref(t) && !isWard(t) && !isCounty(t) && !noPeople(t));
@@ -108,6 +131,14 @@ for (const t of towns.values()) {
     changeRate: round(t.changeRate),
     naturalChangeRate: round(t.naturalChangeRate),
     socialChangeRate: round(t.socialChangeRate),
+    over75Rate: round(t.over75Rate),
+    under5Rate: round(t.under5Rate),
+    perHousehold: round(t.population / t.households),
+    abroadPer1000: round((t.movedInFromAbroad / t.population) * 1000),
+    singleRate: t.singleRate ?? null,
+    elderlySingleRate: t.elderlySingleRate ?? null,
+    ownedRate: t.ownedRate ?? null,
+    apartmentRate: t.apartmentRate ?? null,
     ward: isWard(t),
     top: {},
     rank: {},
@@ -127,7 +158,11 @@ const summary = Object.fromEntries(METRICS.map((m) => [m, { median: round(q(m, 0
 
 fs.writeFileSync(
   "site/data/stats.json",
-  JSON.stringify({ source: SOURCE, peers: peers.length, bigPeers: bigPeers.length, summary, towns: out }),
+  JSON.stringify({
+    source: SOURCE,
+    census: { name: "令和2年国勢調査 小地域集計 第6-1表・住宅の所有の関係・住宅の建て方（総務省統計局、e-Stat）", asOf: "2020年10月1日" },
+    peers: peers.length, bigPeers: bigPeers.length, summary, towns: out,
+  }),
 );
 console.log(`比べる相手 ${peers.length}、書き出した区域 ${Object.keys(out).length}`);
 console.log(JSON.stringify(summary, null, 1));

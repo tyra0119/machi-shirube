@@ -25,10 +25,42 @@ const map = new maplibregl.Map({
 });
 map.addControl(new MapButtons({ onNoLocation: showMessage }), "bottom-right");
 
+// データを読む。読めなかったら、パネルの上に何が読めなかったかを出し続ける（黙って空の画面にしない）
+const DATA_NAMES = {
+  "stats.json": "全国の数字", "flags.json": "火山・豪雪・離島の印", "index.json": "中の町の一覧",
+  "japan.topo.json": "日本地図の形", "labels.json": "地図の名前", "pref-labels.json": "県の名前", "names.json": "町・字の名前",
+};
+async function getJSON(path) {
+  try {
+    const res = await fetch(path);
+    if (!res.ok) throw new Error(`${res.status}`);
+    return await res.json();
+  } catch (e) {
+    const file = path.split("/").pop();
+    const what = DATA_NAMES[file] ?? (/^\d{5}\.json$/.test(file) ? "中の町の形" : file);
+    const box = document.getElementById("problems");
+    box.insertAdjacentHTML("beforeend", `<li>${what}が読み込めませんでした（${path}・${e.message}）</li>`);
+    box.parentElement.hidden = false;
+    throw e;
+  }
+}
+
 let stats = null; // 住民基本台帳の数字（site/data/stats.json）
-fetch("data/stats.json").then((r) => r.json()).then((d) => (stats = d));
+const statsReady = getJSON("data/stats.json").then((d) => (stats = d));
+let flagData = { flags: {}, sources: {} }; // 火山・豪雪・離島の印（site/data/flags.json）
+getJSON("data/flags.json").then((d) => (flagData = d));
+// 市区町村の印。政令市まるごとは、どれかの区に付いていれば付ける
+function flagsOf(code, t) {
+  const own = flagData.flags[code];
+  if (own || !t || t.ward) return own ?? {};
+  const out = {};
+  for (const [c, w] of Object.entries(stats.towns)) {
+    if (w.ward && w.pref === t.pref && w.name.startsWith(t.name)) Object.assign(out, flagData.flags[c]);
+  }
+  return out;
+}
 let townIndex = { codes: [], names: [] }; // 中の町（町・字）の形を用意した市・区と、町・字の名前
-fetch("data/towns/index.json").then((r) => r.json()).then((d) => (townIndex = d));
+const townIndexReady = getJSON("data/towns/index.json").then((d) => (townIndex = d));
 let munis = null; // 市区町村の形（GeoJSON）
 const byCode = new Map(); // 市区町村コード → 形
 let shownTowns = null; // いま中の町を出している市・区のコード
@@ -36,9 +68,9 @@ let townData = null; // いま出している中の町の形
 
 map.on("load", async () => {
   const [topo, labels, prefLabels] = await Promise.all([
-    fetch("data/japan.topo.json").then((r) => r.json()),
-    fetch("data/labels.json").then((r) => r.json()),
-    fetch("data/pref-labels.json").then((r) => r.json()),
+    getJSON("data/japan.topo.json"),
+    getJSON("data/labels.json"),
+    getJSON("data/pref-labels.json"),
   ]);
   munis = topojson.feature(topo, topo.objects.municipalities);
   for (const f of munis.features) {
@@ -110,7 +142,29 @@ map.on("load", async () => {
     const muni = map.queryRenderedFeatures(e.point, { layers: ["muni-fill"] })[0];
     if (muni) showCard(muni.properties);
   });
+
+  // URL で送られた町を開く（?muni=39428 ／ ?muni=11227&towns ／ ?town=11227-0130）
+  const q = new URLSearchParams(location.search);
+  await statsReady.catch(() => {});
+  await townIndexReady.catch(() => {});
+  if (q.get("town")) {
+    const [code, part] = q.get("town").split("-");
+    selectTown(code, part);
+  } else if (q.get("muni") && byCode.has(q.get("muni"))) {
+    if (q.has("towns") && townIndex.codes.includes(q.get("muni"))) showTowns(q.get("muni"));
+    else selectMuni(q.get("muni"));
+  }
 });
+
+// 選んでいる町を URL に残す（送ると同じ町が開く。見ている場所は #z= のまま）
+function rememberInURL() {
+  const q = new URLSearchParams();
+  if (shownTowns && selectedTown) q.set("town", `${shownTowns}-${selectedTown.slice(5)}`);
+  else if (shownTowns) { q.set("muni", shownTowns); q.set("towns", ""); }
+  else if (selected) q.set("muni", selected);
+  const s = q.toString().replace(/=(&|$)/g, "$1");
+  history.replaceState(null, "", `${location.pathname}${s ? `?${s}` : ""}${location.hash}`);
+}
 
 // 形がおさまる範囲
 function boundsOf(features) {
@@ -125,7 +179,8 @@ const fit = (features, maxZoom = 12) => map.fitBounds(boundsOf(features), { padd
 
 // 市・区の中の町（町・字）を地図に出す
 async function showTowns(code, { list = true } = {}) {
-  townData = await (await fetch(`data/towns/${code}.json`)).json();
+  const topo = await getJSON(`data/towns/${code}.json`);
+  townData = topojson.feature(topo, topo.objects.towns);
   if (map.getSource("towns")) map.getSource("towns").setData(townData);
   else {
     map.addSource("towns", { type: "geojson", data: townData, promoteId: "town" });
@@ -140,10 +195,9 @@ async function showTowns(code, { list = true } = {}) {
   for (const id of TOWN_LAYERS) map.setLayoutProperty(id, "visibility", "visible");
   map.setLayoutProperty("muni-label", "visibility", "none");
   shownTowns = code;
+  selectedTownName = null;
   paintTowns();
-  const crumb = document.getElementById("crumb");
-  crumb.querySelector(".here").textContent = `${byCode.get(code)?.properties.fullName ?? ""}の中の町`;
-  crumb.hidden = false;
+  updateCrumb();
   fit(townData.features);
   if (list) showTownList();
 }
@@ -155,15 +209,49 @@ function hideTowns({ quiet = false } = {}) {
   map.setLayoutProperty("muni-label", "visibility", "visible");
   if (selectedTown) map.setFeatureState({ source: "towns", id: selectedTown }, { selected: false });
   selectedTown = null;
+  selectedTownName = null;
   shownTowns = null;
-  document.getElementById("crumb").hidden = true;
+  updateCrumb();
   if (quiet) return;
   const f = byCode.get(code);
   if (f) showCard(f.properties);
   map.easeTo({ zoom: Math.max(map.getZoom() - 1.5, 6), duration: 500 });
 }
-document.querySelector("#crumb .back").addEventListener("click", hideTowns);
 addEventListener("keydown", (e) => e.key === "Escape" && hideTowns());
+
+// いま見ている所の道すじ（日本 › 県 › 市区町村 › 町・字）。どこを押しても、その段に戻る
+let selectedTownName = null;
+function updateCrumb() {
+  rememberInURL();
+  const crumb = document.getElementById("crumb");
+  const code = shownTowns ?? selected;
+  const p = code && byCode.get(code)?.properties;
+  if (!p) { crumb.hidden = true; return; }
+  const steps = [
+    { label: "日本", go: goJapan },
+    { label: p.pref, go: () => goPref(p.pref) },
+    { label: p.fullName, go: () => (shownTowns ? hideTowns() : null) },
+  ];
+  if (shownTowns) steps.push({ label: selectedTownName ?? "中の町", go: selectedTownName ? showTownList : null });
+  const path = crumb.querySelector(".path");
+  path.innerHTML = steps.map((s, i) =>
+    i === steps.length - 1 || !s.go
+      ? `<li aria-current="${i === steps.length - 1 ? "location" : "false"}"><span>${s.label}</span></li>`
+      : `<li><button type="button" data-i="${i}">${s.label}</button></li>`,
+  ).join("");
+  path.querySelectorAll("button").forEach((b) => b.addEventListener("click", () => steps[Number(b.dataset.i)].go()));
+  crumb.hidden = false;
+}
+function goJapan() {
+  hideTowns({ quiet: true });
+  hideCard();
+  map.easeTo({ center: [137.5, 37.5], zoom: 4.3, bearing: 0, pitch: 0, duration: 700 });
+}
+function goPref(pref) {
+  hideTowns({ quiet: true });
+  hideCard();
+  fit(munis.features.filter((f) => f.properties.pref === pref), 10);
+}
 
 const TOWN_LAYERS = ["town-fill", "town-casing", "town-line", "town-label"];
 const isSelected = ["boolean", ["feature-state", "selected"], false];
@@ -268,17 +356,21 @@ function showCard(p) {
   if (selected) map.setFeatureState({ source: "munis", id: selected }, { selected: false });
   selected = p.code;
   map.setFeatureState({ source: "munis", id: selected }, { selected: true });
+  updateCrumb();
 
   const card = document.getElementById("card");
   const where = [p.pref, p.county].filter(Boolean).join(" ");
   const town = stats?.towns[p.code];
-  const body = p.noData || !town ? "<p>この地域には国の統計がありません。</p>" : featureCard(town);
+  const f = town ? flagsOf(p.code, town) : {};
+  const tagList = [f.volcano && "火山の警戒地域", f.snow, f.island && "離島がある"].filter(Boolean);
+  const tags = tagList.length ? `<p class="tags">${tagList.map((t) => `<span>${t}</span>`).join("")}</p>` : "";
+  const body = p.noData || !town ? "<p>この地域には国の統計がありません。</p>" : tags + featureCard(town);
   // 市・区は広いので、中の町（町・字）まで下りられるようにする
   const isCityOrWard = /[市区]$/.test(p.fullName);
   const hasTowns = townIndex.codes.includes(p.code);
-  const towns = !isCityOrWard ? ""
-    : hasTowns ? `<button type="button" class="primary towns">中の町を選ぶ</button>`
-    : `<p class="note">中の町（町・字）の形は、まだ用意していません。</p>`;
+  // 町村はそのまま1つの町。中の地区（字）も見られるようにする
+  const towns = hasTowns ? `<button type="button" class="primary towns">${isCityOrWard ? "中の町を選ぶ" : "中の地区（字）を見る"}</button>`
+    : isCityOrWard ? `<p class="note">中の町（町・字）の形は、まだ用意していません。</p>` : "";
   card.innerHTML = `
     <button type="button" class="close" aria-label="閉じる">×</button>
     <h2>${p.fullName}</h2>
@@ -318,6 +410,10 @@ function closeCard() {
 
 // 中の町の一覧（地図で押すほか、ここからも選べる）
 function showTownList() {
+  if (selectedTown) map.setFeatureState({ source: "towns", id: selectedTown }, { selected: false });
+  selectedTown = null;
+  selectedTownName = null;
+  updateCrumb();
   const muni = byCode.get(shownTowns)?.properties;
   const card = document.getElementById("card");
   const towns = [...townData.features].sort((a, b) => a.properties.part.localeCompare(b.properties.part));
@@ -352,14 +448,16 @@ let selectedTown = null;
 function showTownCard(p) {
   if (selectedTown) map.setFeatureState({ source: "towns", id: selectedTown }, { selected: false });
   selectedTown = p.town;
+  selectedTownName = p.name;
   map.setFeatureState({ source: "towns", id: selectedTown }, { selected: true });
+  updateCrumb();
   const muni = byCode.get(shownTowns)?.properties;
   const card = document.getElementById("card");
-  const rows = ["over65Rate", "over75Rate", "under15Rate", "foreignRate"].filter((m) => p[m] != null);
+  const rows = ["over65Rate", "over75Rate", "under15Rate", "foreignRate", "elderlySingleRate", "singleRate", "ownedRate", "apartmentRate"].filter((m) => p[m] != null);
   const ages = (rows.length
     ? `<ul class="features">${rows.map((m) =>
         `<li><span class="label">${TOWN_METRICS[m].label}</span><span class="value">${p[m].toFixed(1)}%</span><span class="place">${townPlace(p, m)}</span></li>`).join("")}</ul>`
-    : "") + (p.ageHidden || p.foreignHidden ? `<p class="note">一部の数字は、住む人が少ないため国勢調査で隠されています。</p>` : "");
+    : "") + (p.ageHidden || p.foreignHidden || p.householdHidden ? `<p class="note">一部の数字は、住む人が少ないため国勢調査で隠されています。</p>` : "");
   const people = p.population
     ? `<p class="pop">人口 ${p.population.toLocaleString("ja-JP")}人・${p.households.toLocaleString("ja-JP")}世帯</p>${ages}`
     : `<p class="pop">人の住んでいない町・字です</p>`;
@@ -449,6 +547,7 @@ function hideCard() {
   closeCard();
   if (selected) map.setFeatureState({ source: "munis", id: selected }, { selected: false });
   selected = null;
+  updateCrumb();
 }
 
 function showMessage(text) {
@@ -461,7 +560,19 @@ function showMessage(text) {
 
 // 数字で並べて探す：範囲（全国・県の中・市・区の中の町）と項目と順を選び、一覧と地図の色で見せる
 const shortName = (n) => n.replace(/^.+?郡(?=.+[町村]$)/, ""); // 「幡多郡黒潮町」→「黒潮町」（「大和郡山市」はそのまま）
-const MUNI_METRICS = { population: { label: "人口", unit: "人", int: true }, ...METRICS };
+const MUNI_METRICS = {
+  population: { label: "人口", unit: "人", int: true },
+  ...METRICS,
+  over75Rate: { label: "75歳以上の人の割合", unit: "%" },
+  under5Rate: { label: "0〜4歳の子どもの割合", unit: "%" },
+  perHousehold: { label: "1世帯あたりの人数", unit: "人", digits: 2 },
+  abroadPer1000: { label: "国外からの転入（1年、人口1,000人あたり）", unit: "人", digits: 2 },
+  naturalChangeRate: { label: "生まれた人と亡くなった人の差（1年）", unit: "%", signed: true },
+  singleRate: { label: "一人暮らしの世帯の割合", unit: "%", src: "census" },
+  elderlySingleRate: { label: "65歳以上の一人暮らしの世帯の割合", unit: "%", src: "census" },
+  ownedRate: { label: "持ち家の世帯の割合", unit: "%", src: "census" },
+  apartmentRate: { label: "共同住宅（マンション・アパート）の世帯の割合", unit: "%", src: "census" },
+};
 const TOWN_METRICS = {
   population: { label: "人口", unit: "人", int: true },
   households: { label: "世帯", unit: "世帯", int: true },
@@ -469,6 +580,10 @@ const TOWN_METRICS = {
   over75Rate: { label: "75歳以上の人の割合", unit: "%" },
   under15Rate: { label: "15歳未満の子どもの割合", unit: "%" },
   foreignRate: { label: "外国の住民の割合", unit: "%" },
+  singleRate: { label: "一人暮らしの世帯の割合", unit: "%" },
+  elderlySingleRate: { label: "65歳以上の一人暮らしの世帯の割合", unit: "%" },
+  ownedRate: { label: "持ち家の世帯の割合", unit: "%" },
+  apartmentRate: { label: "共同住宅（マンション・アパート）の世帯の割合", unit: "%" },
 };
 const rankState = { scope: "all", metric: "over65Rate", order: "desc" };
 let rankOn = false;
@@ -479,14 +594,18 @@ const metricSel = document.getElementById("rank-metric");
 
 function fillScopes() {
   const prefs = [...new Set(Object.values(stats.towns).map((t) => t.pref))];
+  const here = shownTowns ?? selected; // いま選んでいる市区町村（その中の町で並べられる）
   scopeSel.innerHTML = `
     <option value="all">全国の市区町村（${stats.peers.toLocaleString("ja-JP")}）</option>
     <optgroup label="県の中の市区町村">${prefs.map((p) => `<option value="pref:${p}">${p}</option>`).join("")}</optgroup>
-    <optgroup label="市・区の中の町（町・字）">${townIndex.codes.map((c) => `<option value="towns:${c}">${byCode.get(c)?.properties.fullName ?? c}の中の町</option>`).join("")}</optgroup>`;
+    ${here && townIndex.codes.includes(here) ? `<optgroup label="中の町（町・字）"><option value="towns:${here}">${byCode.get(here)?.properties.fullName}の中の町</option></optgroup>` : ""}`;
+  if (rankState.scope.startsWith("towns:") && rankState.scope !== `towns:${here}`) rankState.scope = "all";
   scopeSel.value = rankState.scope;
 }
 function fillMetrics() {
-  const list = rankState.scope.startsWith("towns:") ? TOWN_METRICS : MUNI_METRICS;
+  const towns = rankState.scope.startsWith("towns:");
+  document.getElementById("rank-filters").disabled = towns;
+  const list = towns ? TOWN_METRICS : MUNI_METRICS;
   if (!list[rankState.metric]) rankState.metric = Object.keys(list)[0];
   metricSel.innerHTML = Object.entries(list).map(([k, v]) => `<option value="${k}">${v.label}</option>`).join("");
   metricSel.value = rankState.metric;
@@ -505,8 +624,13 @@ async function rankRows() {
   }
   if (shownTowns) hideTowns({ quiet: true });
   const pref = scope.startsWith("pref:") ? scope.slice(5) : null;
+  const want = [...document.querySelectorAll("#rank-filters input:checked")].map((i) => i.value);
+  const pass = (code, t) => {
+    const f = flagsOf(code, t);
+    return want.every((w) => (w === "specialSnow" ? f.snow === "特別豪雪地帯" : !!f[w]));
+  };
   return Object.entries(stats.towns)
-    .filter(([, t]) => !t.ward && (!pref || t.pref === pref))
+    .filter(([code, t]) => !t.ward && (!pref || t.pref === pref) && pass(code, t))
     .map(([code, t]) => ({
       key: code, name: shortName(t.name), sub: t.pref, value: t[metric],
       go: () => (byCode.has(code) ? selectMuni(code) : showCityCard(t.name, t.pref)),
@@ -514,7 +638,7 @@ async function rankRows() {
     }));
 }
 
-const fmt = (v, def) => (def.int ? Math.round(v).toLocaleString("ja-JP") : `${def.signed && v > 0 ? "+" : ""}${v.toFixed(1)}`) + def.unit;
+const fmt = (v, def) => (def.int ? Math.round(v).toLocaleString("ja-JP") : `${def.signed && v > 0 ? "+" : ""}${v.toFixed(def.digits ?? 1)}`) + def.unit;
 
 async function renderRank() {
   const towns = rankState.scope.startsWith("towns:");
@@ -546,7 +670,9 @@ async function renderRank() {
     `<span>${fmt(colorBy.low, def)}</span><span class="bar" style="background:linear-gradient(to right, ${color("--land")}, ${color("--accent")})"></span><span>${fmt(colorBy.high, def)}</span>`;
   document.getElementById("rank-cite").textContent = towns
     ? `出典：${townIndex.source}（${townIndex.asOf}）`
-    : `出典：${stats.source.name}（${stats.source.asOf}。増減は${stats.source.changePeriod}）を加工`;
+    : def.src === "census"
+      ? `出典：${stats.census.name}（${stats.census.asOf}）を加工。政令市は区を足して計算`
+      : `出典：${stats.source.name}（${stats.source.asOf}。増減・転入は${stats.source.changePeriod}）を加工`;
   if (!towns) {
     const pref = rankState.scope.startsWith("pref:") ? rankState.scope.slice(5) : null;
     if (pref) fit(munis.features.filter((f) => f.properties.pref === pref), 10);
@@ -583,6 +709,7 @@ document.getElementById("open-rank").addEventListener("click", openRank);
 rankEl.querySelector(".close").addEventListener("click", closeRank);
 scopeSel.addEventListener("change", () => { rankState.scope = scopeSel.value; fillMetrics(); renderRank(); });
 metricSel.addEventListener("change", () => { rankState.metric = metricSel.value; renderRank(); });
+document.getElementById("rank-filters").addEventListener("change", renderRank);
 for (const b of rankEl.querySelectorAll(".order button")) {
   b.addEventListener("click", () => {
     rankState.order = b.dataset.order;
@@ -616,7 +743,7 @@ function candidates() {
       list.push({ name: p.city, sub: `${p.pref}（区を選ぶ）`, go: () => showCityCard(p.city, p.pref) });
     }
   }
-  for (const [code, part, name] of townIndex.names) {
+  for (const [code, part, name] of townNames ?? []) {
     const m = byCode.get(code)?.properties;
     list.push({ name, sub: m ? `${m.pref} ${m.fullName}の町・字` : "", go: () => selectTown(code, part) });
   }
@@ -624,12 +751,27 @@ function candidates() {
 }
 let found = [];
 let active = -1;
+// 全国の町・字の名前は大きいので、探す欄を初めて使ったときに読む
+let townNames = null;
+let cands = null;
+let loadingNames = null;
+function loadNames() {
+  loadingNames ??= getJSON("data/towns/names.json").then((d) => {
+    townNames = d;
+    cands = null;
+    if (searchBox.value) search();
+  });
+}
 function search() {
+  if (!munis) return; // 地図の形を読み込む前は探さない
+  loadNames();
   const q = normalize(searchBox.value);
   active = -1;
   if (!q) return closeResults();
-  found = candidates()
-    .map((c) => ({ c, at: normalize(c.name).indexOf(q), also: normalize(c.sub).includes(q) }))
+  // 候補は一度だけ作り、名前を整えたものも持っておく（全国の町・字で 10万ほどになるため）
+  cands ??= candidates().map((c) => ({ ...c, n: normalize(c.name), s: normalize(c.sub) }));
+  found = cands
+    .map((c) => ({ c, at: c.n.indexOf(q), also: c.s.includes(q) }))
     .filter((x) => x.at >= 0 || x.also)
     .sort((a, b) => (a.at < 0) - (b.at < 0) || (a.at !== 0) - (b.at !== 0) || a.c.name.length - b.c.name.length)
     .slice(0, 8)
