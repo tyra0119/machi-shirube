@@ -12,13 +12,19 @@ const SYMBOL_COLORS = {
   イチョウ: "#c9a400", クスノキ: "#3f7a45", フクギ: "#3d7a3a", ナンキンハゼ: "#b8462e", なんきんはぜ: "#b8462e", フェニックス: "#3f7a45",
 };
 
-// 答えの文の中で、いちばん先に出てくる花・木を選ぶ（「市の花は○○、市の木は△△」なら花）
+// 町の花を先に選ぶ：答えの文を「。」「／」「、」で区切り、「花」とある所から探す。無ければ文の全体から（木など）。
+// その中で、いちばん先に出てくる名前を使う（「町の花：ユリ・ヤブツバキ」ならユリ）
 function townSymbol(text) {
-  let best = null;
-  for (const name of Object.keys(SYMBOL_COLORS)) {
-    const i = text.indexOf(name);
-    if (i >= 0 && (!best || i < best.i || (i === best.i && name.length > best.name.length))) best = { name, i };
-  }
+  const first = (part) => {
+    let best = null;
+    for (const name of Object.keys(SYMBOL_COLORS)) {
+      const i = part.indexOf(name);
+      if (i >= 0 && (!best || i < best.i || (i === best.i && name.length > best.name.length))) best = { name, i };
+    }
+    return best;
+  };
+  const flower = text.split(/[。／、；\n]/).filter((p) => p.includes("花")).map(first).find(Boolean);
+  const best = flower ?? first(text);
   return best && { name: best.name, color: SYMBOL_COLORS[best.name] };
 }
 

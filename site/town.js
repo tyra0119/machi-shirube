@@ -344,7 +344,8 @@ async function finishPage(code, townFeatures, startPart, scopeNote) {
   const sym = applyTownColor(Object.values(answersByPage).flat().find((x) => x.qid === "Q11"));
   if (sym) {
     $("town-color-note").hidden = false;
-    $("town-color-note").innerHTML = `<span class="swatch" aria-hidden="true"></span>このページの色は、町が定めた「${esc(sym.name)}」の色から作りました（町の公式の色ではありません）。<a href="#a-Q11">出典</a>`;
+    $("town-color-note").innerHTML = `<span class="swatch" aria-hidden="true"></span>このページの色は、町が定めた「${esc(sym.name)}」の色から作りました（町の公式の色ではありません）。<a href="#shiru" id="color-src">出典</a>`;
+    $("color-src").addEventListener("click", () => setTimeout(() => $("a-Q11")?.scrollIntoView({ behavior: "smooth", block: "start" }), 50));
   }
   const hasHinan = await showHinan(code, townFeatures, startPart);
   todayLife(hasHinan);
