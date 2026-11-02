@@ -1,0 +1,28 @@
+/* 町のページ（スマホを先に。文字を大きく、1画面に1つのこと） */
+body.town-page { display: block; height: auto; min-height: 100%; }
+.town-head, .town-main, .town-foot { max-width: 760px; margin: 0 auto; padding: 0 16px; }
+.town-head { padding-top: 12px; }
+.town-path ol { display: flex; flex-wrap: wrap; margin: 0; padding: 0; list-style: none; font-size: 14px; }
+.town-path li + li::before { content: "›"; margin: 0 6px; color: var(--text-sub); }
+.town-path a { display: inline-block; min-height: 32px; line-height: 32px; color: var(--accent); }
+.unofficial { margin: 10px 0 0; padding: 6px 10px; border: 1px solid var(--line); border-radius: 6px; font-size: 13px; color: var(--text-sub); }
+.town-head h1 { margin: 12px 0 2px; font-size: 30px; }
+.town-head .where { margin: 0 0 8px; color: var(--text-sub); font-size: 15px; }
+.town-page .problems { margin: 8px 0; }
+.block { margin: 14px 0; padding: 16px; background: var(--surface); border-radius: 10px; box-shadow: var(--shadow); }
+.block h2 { margin: 0 0 10px; font-size: 20px; }
+.block p { margin: 0 0 8px; line-height: 1.7; }
+.town-map { height: 280px; border-radius: 8px; overflow: hidden; }
+.parts { margin: 8px 0 0; font-size: 14px; color: var(--text-sub); }
+.block .pop { font-size: 18px; font-weight: 600; }
+.block .features { list-style: none; margin: 0 0 8px; padding: 0; }
+.block .features li { display: grid; grid-template-columns: 1fr auto; gap: 0 12px; padding: 10px 0; border-top: 1px solid var(--line); }
+.block .features .label { font-size: 15px; }
+.block .features .value { grid-row: span 2; align-self: center; font-size: 22px; font-weight: 700; }
+.block .features .place { font-size: 13px; color: var(--text-sub); }
+.block .note { font-size: 13px; color: var(--text-sub); }
+.block.todo { box-shadow: none; border: 1px dashed var(--line); background: transparent; }
+.block.todo p { color: var(--text-sub); }
+.sources { margin: 0; padding-left: 18px; font-size: 14px; line-height: 1.7; }
+.town-foot { padding-bottom: 32px; }
+.town-foot a { display: inline-block; min-height: 48px; line-height: 48px; color: var(--accent); font-size: 16px; }

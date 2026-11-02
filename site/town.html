@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>町のページ｜まちしるべ</title>
+<meta name="description" content="まちしるべの町のページ。町の特色と、その町で暮らしの情報が届きにくい人に届く情報を、出典つきで。">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="town.css">
+</head>
+<body class="town-page">
+<header class="town-head">
+  <nav class="town-path" aria-label="いま見ている所"><ol id="path"></ol></nav>
+  <p class="unofficial">この町の非公式の暮らしの案内です（まちしるべ）</p>
+  <h1 id="name">読み込んでいます…</h1>
+  <p id="where" class="where"></p>
+</header>
+<main class="town-main">
+  <div id="problems-box" class="problems" role="alert" hidden>
+    <p>うまく表示できていない所があります。時間をおいて開き直してください。</p>
+    <ul id="problems"></ul>
+  </div>
+
+  <section class="block">
+    <div id="town-map" class="town-map" aria-label="町の形"></div>
+    <p id="parts" class="parts"></p>
+  </section>
+
+  <section class="block">
+    <h2>町の特色</h2>
+    <p id="pop" class="pop"></p>
+    <ul id="features" class="features"></ul>
+    <p id="feature-note" class="note"></p>
+  </section>
+
+  <section class="block todo">
+    <h2>この町で、暮らしの情報が届きにくいのは</h2>
+    <p>まだ調べていません。町を調べると、Claude が公式の資料から見立てて、理由と出典をここに書きます。</p>
+  </section>
+  <section class="block todo">
+    <h2>深掘り</h2>
+    <p>まだ調べていません。町の特色と「届きにくい人」から、この町に合った深掘り（例：わが家の避難・母語で防災）を作ります。</p>
+  </section>
+  <section class="block todo">
+    <h2>町の話題</h2>
+    <p>まだ調べていません。市の計画・議会・広報紙から、いま町で動いていることを1文ずつ出典つきでまとめます。</p>
+  </section>
+  <section class="block todo">
+    <h2>備え</h2>
+    <p>まだ調べていません。浸水・土砂・揺れ・坂・避難場所までの道を、公式のデータから計算します。</p>
+  </section>
+  <section class="block todo">
+    <h2>暮らしの基本</h2>
+    <p>まだ調べていません。ごみ・医療・子育て・困ったときの連絡先の、公式の入口を並べます。</p>
+  </section>
+
+  <section class="block">
+    <h2>出典</h2>
+    <ul id="sources" class="sources"></ul>
+  </section>
+</main>
+<footer class="town-foot">
+  <a href="./">← 日本地図に戻る</a>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+<script src="town.js"></script>
+</body>
+</html>

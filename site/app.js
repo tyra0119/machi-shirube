@@ -396,6 +396,7 @@ function showCard(p) {
     <h2>${p.fullName}</h2>
     <p class="where">${where}・市区町村コード ${p.code}</p>
     ${towns}
+    ${town ? `<a class="secondary as-button" href="town.html?muni=${p.code}">この市区町村のページを開く</a>` : ""}
     ${body}`;
   card.querySelector(".close").addEventListener("click", hideCard);
   card.querySelector(".towns")?.addEventListener("click", () => {
@@ -560,31 +561,36 @@ function showPickedCard() {
     <p class="pop">合わせて 人口 ${c.population.toLocaleString("ja-JP")}人・${c.households.toLocaleString("ja-JP")}世帯</p>
     <ul class="features">${rows.join("")}</ul>
     <p class="note">割合は、町・字ごとの割合に人数（世帯の割合は世帯の数）で重みをつけて合わせた、めやすです。</p>
-    ${a ? `<p>このまとまりは、まだ深く調べていません。</p>` : `<div class="save-area" hidden>
-      <button type="button" class="primary to-area">このまとまりを1つの町にする</button>
+    ${a ? `<a class="primary as-button" href="town.html?area=${a.id}">この町のページを開く</a>` : picked.size >= 2 ? `<div class="save-area">
+      <button type="button" class="primary to-area">1つの町のページにする</button>
       <form class="area-form" hidden>
-        <label class="field">まとまりの名前（例：上津台地区）<input name="name" maxlength="30" required></label>
-        <button type="submit" class="primary">保存する</button>
+        <label class="field">町の名前（例：上津台地区）<input name="name" maxlength="30" required></label>
+        <button type="submit" class="primary">名前を付けて、町のページを作る</button>
         <p class="note">保存すると site/data/areas.json に書かれ、コミットすると公開のサイトにも出ます。</p>
       </form>
-    </div>`}
+    </div>` : ""}
     <button type="button" class="secondary done">${a ? "中の町の一覧へ" : "選び終わる（中の町の一覧へ）"}</button>
     <p class="cite">出典：${townIndex.source}（${townIndex.asOf}）</p>`;
   card.querySelector(".close").addEventListener("click", () => { clearPicks(); showTownList(); });
   card.querySelector(".done").addEventListener("click", () => { clearPicks(); showTownList(); });
   for (const b of card.querySelectorAll(".picked button")) b.addEventListener("click", () => togglePick(picked.get(b.dataset.town)));
-  // まとまりにするのは、手元の画面で2つ以上選んだときだけ
+  // 2つ以上選んだら、1つの町のページにできる。手元の画面なら名前を付けて保存（まとまり）、
+  // 公開のサイトでは保存せず、選んだ町・字を URL に入れてページを開く
   const save = card.querySelector(".save-area");
-  if (save && picked.size >= 2) {
-    isLocal.then((ok) => { save.hidden = !ok; });
+  if (save) {
     const form = save.querySelector(".area-form");
-    save.querySelector(".to-area").addEventListener("click", (e) => { e.target.hidden = true; form.hidden = false; form.name.focus(); });
+    const parts = [...picked.keys()].map((k) => k.slice(5)).join(",");
+    save.querySelector(".to-area").addEventListener("click", async (e) => {
+      if (!(await isLocal)) return (location.href = `town.html?town=${shownTowns}-${parts}`);
+      e.target.hidden = true;
+      form.hidden = false;
+      form.name.focus();
+    });
     form.addEventListener("submit", async (e) => {
       e.preventDefault();
       try {
         const area = await saveArea(form.name.value);
-        currentArea = area;
-        showPickedCard();
+        location.href = `town.html?area=${area.id}`;
       } catch (err) {
         showMessage(`保存できませんでした：${err.message}`);
       }
@@ -632,6 +638,7 @@ function showTownCard(p) {
     <p class="where">${muni ? `${muni.pref} ${muni.fullName}` : ""}・町・字の番号 ${p.part}</p>
     ${people}
     <p>この町は、まだ深く調べていません。</p>
+    <a class="primary as-button" href="town.html?town=${shownTowns}-${p.part}">この町のページを開く</a>
     <button type="button" class="secondary multi">ほかの町・字も選ぶ（合わせて見る）</button>
     <p class="cite">出典：${townIndex.source}（${townIndex.asOf}）</p>`;
   card.querySelector(".multi").addEventListener("click", () => togglePick(p));

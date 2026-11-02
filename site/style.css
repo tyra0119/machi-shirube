@@ -131,6 +131,7 @@ main { position: relative; flex: 1; min-width: 0; }
   font-size: 16px; font-weight: 600; cursor: pointer;
 }
 .card .primary:hover { filter: brightness(1.08); }
+.card a.as-button { display: flex; align-items: center; justify-content: center; text-decoration: none; }
 .card .primary:focus-visible { outline: 3px solid var(--text); outline-offset: 2px; }
 .card .close {
   position: absolute; right: -6px; top: 6px; width: 44px; height: 44px;
