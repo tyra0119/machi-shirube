@@ -1,0 +1,20 @@
+# 鍵
+.env
+.env.*
+
+# 公開しないもの（承認前のもの・証拠の文・作業の記録の生のもの）
+local/
+
+# 取ってきたデータそのもの
+data/raw/
+
+# 道具が作るもの
+node_modules/
+dist/
+.cache/
+*.log
+
+# OS が作るもの
+Thumbs.db
+desktop.ini
+.DS_Store
