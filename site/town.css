@@ -459,3 +459,11 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .fp-depth.q li { grid-template-columns: 11em 1fr 4.5em; }
 .fp-head .bright { display: flex; gap: 6px; align-items: center; margin: 8px 0 0; padding: 8px 12px; border-radius: 10px; background: #fff6d6; color: #5a4a00; font-size: 15px; font-weight: 700; }
 .fp-head .bright svg { width: 20px; height: 20px; flex: none; }
+/* 重ねて見る地図 */
+.layer-chips { display: flex; flex-wrap: wrap; gap: 6px; margin: 8px 0 10px; align-items: center; }
+.layer-chips button { min-height: 36px; padding: 0 12px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); color: var(--text); font-size: 14px; cursor: pointer; }
+.layer-chips button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; font-weight: 700; }
+.layer-chips .open-only { display: inline-flex; gap: 4px; align-items: center; font-size: 14px; margin-left: 4px; }
+.layer-map { height: min(70vh, 560px); }
+.layer-legend { margin: 10px 0 0; padding: 0; list-style: none; display: grid; gap: 6px; font-size: 13px; line-height: 1.6; }
+.layer-legend .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin: 0 2px 0 6px; vertical-align: middle; }

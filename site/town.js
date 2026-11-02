@@ -35,6 +35,7 @@ const TOWN_ROWS = [
 // later：まだ答えがないページに「これから何が出るか」を書く（Claude が公式のサイトから探して出す予定のもの）
 const PAGES = [
   { view: "today", title: "今日", desc: "今日と明日の天気・洗濯・服装・警報・地震", tab: true },
+  { view: "chizu", title: "地図", desc: "避難場所・病院・浸水の想定・雨雲などを重ねて見る", tab: true },
   { view: "bousai", title: "防災・避難", desc: "わが家の避難・避難場所・災害のときの行動", tab: true, later: "災害のときにどう動くか（町の防災の手引き）" },
   { view: "gomi", title: "ごみ", desc: "収集日・このごみは何ごみか", tab: true, later: "収集日のカレンダーと、このごみは何ごみかを引ける表" },
   { view: "iryo", title: "医療・健康", desc: "今日やっている病院・夜間と休日の窓口", tab: true, later: "夜間・休日に困ったときの窓口（休日の当番医・子どもの急病の相談など）" },
@@ -802,6 +803,7 @@ async function finishPage(code, townFeatures, startPart, scopeNote, at) {
     $("town-color-note").innerHTML = `<span class="swatch" aria-hidden="true"></span>${LANG ? `${T("ページの上の帯の色は、町が定めた花・木の色から作りました（町の公式の色ではありません）。")}（${esc(sym.name)}）` : `ページの上の帯の色は、町が定めた「${esc(sym.name)}」の色から作りました（町の公式の色ではありません）。`}<a href="#shiru" id="color-src">${T("出典")}</a>`;
     $("color-src").addEventListener("click", () => setTimeout(() => $("a-Q11")?.scrollIntoView({ behavior: "smooth", block: "start" }), 50));
   }
+  showLayerMap(code, townFeatures, at, esc);
   await showFloodPop(code, part);
   await showQuake(code, part);
   await showBus(code, part);

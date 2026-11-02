@@ -60,6 +60,16 @@
   </div>
 
   <!-- 防災・避難 -->
+  <div class="view" data-view="chizu" hidden>
+    <section class="block" id="layer-block">
+      <h2>重ねて見る地図</h2>
+      <p class="note">見たいものを押すと、地図に重なります。もう一度押すと消えます。</p>
+      <div class="layer-chips" id="layer-chips"></div>
+      <div class="hinan-map layer-map" id="layer-map"></div>
+      <ul class="layer-legend" id="layer-legend"></ul>
+      <p class="note" id="layer-note"></p>
+    </section>
+  </div>
   <div class="view" data-view="bousai" hidden>
     <section class="block" id="floodpop-block" hidden>
       <h2>浸水・土砂災害が想定される所に住む人</h2>
@@ -250,6 +260,7 @@
 <script src="today.js"></script>
 <script src="medical.js"></script>
 <script src="hazard.js"></script>
+<script src="layers.js"></script>
 <script src="town-color.js"></script>
 <script src="features.js"></script>
 <script src="town.js"></script>

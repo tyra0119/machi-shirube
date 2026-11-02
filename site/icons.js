@@ -42,6 +42,7 @@ function icon(name, cls = "") {
 const ILLUST = {
   today: { h: 45, main: "sun", sub: "cloud" },
   bousai: { h: 205, main: "shield", sub: "umbrella" },
+  chizu: { h: 150, main: "map", sub: "umbrella" },
   gomi: { h: 140, main: "trash", sub: "calendar" },
   iryo: { h: 185, main: "hospital", sub: "heart" },
   komatta: { h: 40, main: "phone", sub: "doc" },
