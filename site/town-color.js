@@ -42,16 +42,18 @@ function fit(base, against, toward) {
   return toHex(c);
 }
 
+// 町の色は「差し色」だけに使う：ページの上の帯に薄く敷く色と、色の見本。文字・リンク・ボタンの色（--accent）は変えない。
+// 赤い花の町で文字やボタンが赤くなると、警告のように見えるため（赤は警報と戻せない操作だけ。作者「文字の色が赤いと警告に感じる」）
+const mix = (h, to, t) => toHex(hex(h).map((v, i) => v + (to[i] - v) * t));
 function applyTownColor(answer) {
   const sym = answer && answer.value !== "見つからなかった" ? townSymbol(answer.value) : null;
   if (!sym) return null;
-  const day = fit(sym.color, "#ffffff", [0, 0, 0]);
-  const night = fit(sym.color, "#26282a", [255, 255, 255]);
   const style = document.createElement("style");
   style.textContent = `
-    :root { --accent: ${day}; --accent-text: #ffffff; }
-    @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --accent: ${night}; --accent-text: #15120f; } }
-    :root[data-theme="dark"] { --accent: ${night}; --accent-text: #15120f; }`;
+    :root { --town: ${sym.color}; --town-tint: ${mix(sym.color, [255, 255, 255], 0.86)}; }
+    @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --town-tint: ${mix(sym.color, [27, 29, 31], 0.8)}; } }
+    :root[data-theme="dark"] { --town-tint: ${mix(sym.color, [27, 29, 31], 0.8)}; }`;
   document.head.append(style);
+  document.body.classList.add("has-town-color");
   return sym;
 }

@@ -15,7 +15,7 @@ let local = false;
 main();
 async function main() {
   const [stats, yard] = await Promise.all([fetch("data/stats.json").then((r) => r.json()), fetch("data/yardstick.json").then((r) => r.json())]);
-  questions = yard.questions;
+  questions = yard.questions.filter((q) => q.level !== "town"); // 町・字ごとの問いは、町・字を調べるときだけ
   const t = stats.towns[code];
   if (!t) { $("name").textContent = "町が見つかりません"; return; }
   const name = t.name.replace(/^.+?郡(?=.+[町村]$)/, "");

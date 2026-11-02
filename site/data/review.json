@@ -1,9 +1,9 @@
 {
- "updatedAt": "2026-11-02T09:38:12.940Z",
+ "updatedAt": "2026-11-02T09:49:24.735Z",
  "counts": {
-  "auto": 5,
+  "auto": 7,
   "ok": 27,
-  "pending": 3,
+  "pending": 5,
   "fix": 1,
   "rejected": 1,
   "unknown": 0
@@ -859,6 +859,28 @@
    "source": {
     "title": "大泉町地域防災計画｜大泉町",
     "url": "https://www.town.oizumi.gunma.jp/s004/gyosei/010/010/020/20200903104414.html"
+   }
+  },
+  {
+   "id": "r00063",
+   "scope": "town:11227-0130",
+   "question": "この町・字のごみの収集日（燃えるごみ・資源などの曜日）。市の地区ごとの表で、この町・字がどの地区か",
+   "why": "Claude が返した元の文が、答えに使ったページの中に見つからなかった",
+   "status": "pending",
+   "source": {
+    "title": "家庭ごみ収集日一覧表 - 朝霞市",
+    "url": "https://www.city.asaka.lg.jp/soshiki/15/dust-syuusyuu.html"
+   }
+  },
+  {
+   "id": "r00065",
+   "scope": "town:11227-0130",
+   "question": "この町・字の自治会・町内会と、地域の集まる場所（集会所・公民館・地区センターなど）",
+   "why": "確かめ役：資料と合わない所がある（三栄自治会の「水久保公園管理事務所」は資料に無い（資料は主な該当地域の丁目・番地のみ））",
+   "status": "pending",
+   "source": {
+    "title": "東町内会 - 朝霞市",
+    "url": "https://www.city.asaka.lg.jp/soshiki/12/azuma.html"
    }
   }
  ]

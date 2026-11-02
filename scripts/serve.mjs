@@ -84,15 +84,17 @@ async function startRun(req, res) {
   if (activeRun && runs.get(activeRun)?.status === "running") return send(res, 409, { error: "ほかの町を調べている最中です", runId: activeRun });
   let body = "";
   for await (const chunk of req) body += chunk;
-  const { code } = JSON.parse(body || "{}");
+  const { code, part } = JSON.parse(body || "{}");
   if (!/^\d{5}$/.test(code ?? "")) return send(res, 400, { error: "市区町村コードが正しくありません" });
+  if (part != null && !/^\d{4}$/.test(part)) return send(res, 400, { error: "町・字の番号が正しくありません" });
   if (!ledger.can("owner", "request", `muni:${code}`)) return send(res, 403, { error: "この範囲を調べる権限がありません" });
-  const id = `run-${new Date().toISOString().replace(/[-:T.Z]/g, "").slice(0, 14)}-${code}`;
-  const run = { id, code, startedAt: new Date().toISOString(), status: "running", usd: 0, limit: RUN_LIMIT_USD, log: [], items: [], stopRequested: false };
+  const id = `run-${new Date().toISOString().replace(/[-:T.Z]/g, "").slice(0, 14)}-${code}${part ? `-${part}` : ""}`;
+  const run = { id, code, part, startedAt: new Date().toISOString(), status: "running", usd: 0, limit: RUN_LIMIT_USD, log: [], items: [], stopRequested: false };
   runs.set(id, run);
   activeRun = id;
   send(res, 200, run);
   researchTown(code, {
+    part,
     log: (text) => run.log.push({ at: new Date().toISOString(), text: text.replace(/^\d\d:\d\d:\d\d /, "") }),
     onItem: (q, it, total) => { run.usd = total; run.items.push({ qid: q.id, id: it.id, status: it.status, value: it.value, why: it.why }); },
     shouldStop: () => run.stopRequested,

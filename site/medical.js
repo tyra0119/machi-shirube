@@ -57,7 +57,7 @@ function medicalHTML(m, offset, center, esc, filter = "", limit = 5) {
     ${f ? `<p class="note">「${esc(filter)}」で絞ると ${list.length} か所</p>` : ""}
     <ul class="med-list">${shown.map((x) => `
       <li${x.openNow ? ` class="open"` : ""}>
-        <span class="n">${x.f.u ? `<a href="${esc(x.f.u)}" target="_blank" rel="noopener">${esc(x.f.n)}</a>` : esc(x.f.n)}<small>${esc(x.f.k)}</small>${x.openNow ? `<em>いま開いている</em>` : ""}</span>
+        <span class="n">${icon(x.f.k === "病院" ? "hospital" : "medical")}${x.f.u ? `<a href="${esc(x.f.u)}" target="_blank" rel="noopener">${esc(x.f.n)}</a>` : esc(x.f.n)}<small>${esc(x.f.k)}</small>${x.openNow ? `<em>いま開いている</em>` : ""}</span>
         <span class="h">${x.h.map(([s, e]) => `${hhmm(s)}–${hhmm(e)}`).join("、")}${x.m != null ? `・まっすぐ ${x.m >= 1000 ? `${(x.m / 1000).toFixed(1)}km` : `${x.m}m`}` : ""}</span>
         ${x.f.s ? `<span class="s">${esc(x.f.s.slice(0, 6).join("・"))}${x.f.s.length > 6 ? ` ほか ${x.f.s.length - 6}` : ""}</span>` : ""}
         <span class="a">${esc(x.f.a)}${x.f.other ? `・休み：${esc(x.f.other.slice(0, 60))}` : ""}</span>

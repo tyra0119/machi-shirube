@@ -72,7 +72,9 @@ function showView() {
 // 上のメニュー：よく使うページと「すべてのページ」
 $("tabs").innerHTML = `<li class="all-pages"><button type="button" id="open-all" aria-haspopup="dialog">☰ すべてのページ</button></li>`
   + PAGES.filter((p) => p.tab || p.local).map((p) =>
-  `<li${p.local ? " class=\"local-only\" hidden" : ""}><a href="#${p.view}" data-view="${p.view}">${esc(p.local ? "調べる" : p.title)}</a></li>`).join("");
+  `<li${p.local ? " class=\"local-only\" hidden" : ""}><a href="#${p.view}" data-view="${p.view}">${icon(ILLUST[p.view]?.main)}${esc(p.local ? "調べる" : p.title)}</a></li>`).join("");
+// 各ページのいちばん上の見出しに、場面の印を付ける
+for (const v of document.querySelectorAll(".view")) v.querySelector(".block > h2")?.insertAdjacentHTML("afterbegin", icon(ILLUST[v.dataset.view]?.main));
 addEventListener("hashchange", showView);
 showView();
 
@@ -283,11 +285,14 @@ async function showHinan(code, townFeatures, startPart) {
 // 物差しの問いの page で、町のサイトのどのページに出すかを決める
 let yardstick = { questions: [] };
 let answersByPage = {};
-async function showAnswers(code, scopeNote) {
-  const res = await fetch(`data/answers/${code}.json`).catch(() => null);
-  const answers = res?.ok ? (await res.json()).answers : [];
+// 町・字のページ（partKey＝{コード}-{番号}）では、その町・字について調べた答えを先に、市区町村全体の答えをあとに出す
+async function showAnswers(code, scopeNote, partKey, partName) {
+  const load = (k) => fetch(`data/answers/${k}.json`).then((r) => (r.ok ? r.json() : { answers: [] })).then((d) => d.answers).catch(() => []);
+  const [muniAnswers, partAnswers] = await Promise.all([load(code), partKey ? load(partKey) : []]);
+  for (const a of partAnswers) a.level = partName;
+  const answers = [...partAnswers, ...muniAnswers];
   yardstick = await fetch("data/yardstick.json").then((r) => r.json()).catch(() => ({ questions: [] }));
-  answers.sort((x, y) => String(x.qid ?? "").localeCompare(String(y.qid ?? "")));
+  answers.sort((x, y) => Boolean(y.level) - Boolean(x.level) || String(x.qid ?? "").localeCompare(String(y.qid ?? "")));
   answersByPage = {};
   for (const a of answers) {
     const page = yardstick.questions.find((x) => x.id === a.qid)?.page ?? "shiru";
@@ -296,7 +301,7 @@ async function showAnswers(code, scopeNote) {
   for (const box of document.querySelectorAll(".answers-box")) {
     const list = answersByPage[box.dataset.page] ?? [];
     const p = PAGES.find((x) => x.view === box.dataset.page);
-    box.innerHTML = (list.length && scopeNote ? `<p class="note">${esc(scopeNote)}</p>` : "")
+    box.innerHTML = (list.length && scopeNote && !list.some((a) => a.level) ? `<p class="note">${esc(scopeNote)}</p>` : "")
       + (list.length ? answersHTML(list) : "")
       + (p?.later ? `<p class="later"><span>これから</span>${esc(p.later)}を、Claude が町の公式のサイトから探して、出典つきでここに出します。</p>` : "")
       + (!list.length && !p?.later ? `<p class="note">まだありません。</p>` : "");
@@ -307,7 +312,7 @@ function answersHTML(answers) {
   const notFound = (a) => a.value === "見つからなかった";
   return `<ul class="answers">${answers.map((a) => `
     <li class="${notFound(a) ? "not-found" : ""}" id="a-${esc(a.qid ?? "")}">
-      <h3 class="short">${esc(yardstick.questions.find((x) => x.id === a.qid)?.short ?? "")}</h3>
+      <h3 class="short">${esc(yardstick.questions.find((x) => x.id === a.qid)?.short ?? "")}${a.level ? `<span class="lvl">${esc(a.level)}の答え</span>` : ""}</h3>
       <p class="q">${esc(a.question)}</p>
       ${notFound(a)
         ? `<p class="a">公開の資料では見つかりませんでした</p><p class="src">${a.checkedAt ? `${esc(a.checkedAt.slice(0, 10))} に調べた・` : ""}町の人に聞きたいことです</p>`
@@ -332,7 +337,7 @@ async function showMedical(code, center) {
   if (!m) {
     const text = /0$/.test(code) && !(await fetch(`data/towns/${code}.json`).then((r) => r.ok).catch(() => false)) ? "区ごとのページで見られます" : "この市区町村の病院のデータはまだありません";
     $("med").innerHTML = `<p class="note">${text}。</p>`;
-    medicalRow = `<li><a href="#iryo"><span class="k">病院</span><span class="v later">${text}</span></a></li>`;
+    medicalRow = `<li><a href="#iryo"><span class="k">${icon("hospital")}病院</span><span class="v later">${text}</span></a></li>`;
     return;
   }
   let day = 0;
@@ -354,14 +359,14 @@ async function showMedical(code, center) {
   $("med-cite").innerHTML = `出典：<a href="${esc(m.source.url)}" target="_blank" rel="noopener">${esc(m.source.title)}</a>（${esc(m.source.asOf)}・${esc(m.source.license)}）を加工。祝日：${esc(m.holidaySource?.title ?? "")}。${center ? "距離は町・字のおおよその真ん中からまっすぐ測ったものです。" : ""}`;
   const today = medicalList(m, 0, center);
   const open = today.list.filter((x) => x.openNow).length;
-  medicalRow = `<li><a href="#iryo"><span class="k">病院</span><span class="v">${today.holiday ? `今日は${esc(today.holiday)}。` : ""}今日やっている所 ${today.list.length} か所（いま開いている ${open}）</span></a></li>`;
+  medicalRow = `<li><a href="#iryo"><span class="k">${icon("hospital")}病院</span><span class="v">${today.holiday ? `今日は${esc(today.holiday)}。` : ""}今日やっている所 ${today.list.length} か所（いま開いている ${open}）</span></a></li>`;
 }
 
 // 今日の暮らし（今日すること・困ったときの入口）と、暮らしの場面のタイル
 let medicalRow = null;
 function todayLife(hasHinan) {
   const has = (v) => (answersByPage[v] ?? []).filter((a) => a.value !== "見つからなかった").length;
-  const row = (view, k, v, ready) => `<li><a href="#${view}"><span class="k">${k}</span><span class="v${ready ? "" : " later"}">${esc(v)}</span></a></li>`;
+  const row = (view, k, v, ready) => `<li><a href="#${view}"><span class="k">${icon(ILLUST[view]?.main)}${k}</span><span class="v${ready ? "" : " later"}">${esc(v)}</span></a></li>`;
   $("today-life").innerHTML = [
     row("gomi", "ごみ", has("gomi") ? "ごみの出し方を見る" : "今日の収集は、これから出します", has("gomi")),
     medicalRow ?? row("iryo", "病院", "この町の病院のデータはまだありません", false),
@@ -369,8 +374,9 @@ function todayLife(hasHinan) {
     row("komatta", "困ったとき", "電話・メールの窓口は、これから出します", false),
   ].join("");
   $("tiles").innerHTML = PAGES.filter((p) => !["today", "source", "research", "mitate"].includes(p.view)).map((p) => {
-    const n = has(p.view) + (p.view === "bousai" && hasHinan ? 1 : 0) + (p.view === "shiru" ? 1 : 0);
-    return `<li><a href="#${p.view}"><span class="t">${esc(p.title)}</span><span class="d">${esc(p.desc)}</span>${n ? "" : `<span class="later">これから</span>`}</a></li>`;
+    // 中身があるか：Claude の答え・わが家の避難・病院のデータ・町のデータ
+    const n = has(p.view) + (p.view === "bousai" && hasHinan ? 1 : 0) + (p.view === "shiru" ? 1 : 0) + (p.view === "iryo" && medicalRow && !medicalRow.includes("later") ? 1 : 0) + (p.view === "foreign" && !$("tr-block").hidden ? 1 : 0);
+    return `<li><a href="#${p.view}">${illust(p.view)}<span class="t">${esc(p.title)}</span><span class="d">${esc(p.desc)}</span>${n ? "" : `<span class="later">これから</span>`}</a></li>`;
   }).join("");
 }
 
@@ -398,7 +404,7 @@ function renderAllPages(filter = "") {
     const its = p.items.filter((i) => hit(i.label) || hit(p.title));
     if (f && !its.length && !hit(p.title) && !hit(p.desc)) return "";
     return `<section class="all-sec">
-      <a class="all-page" href="#${p.view}" data-view="${p.view}"><span class="t">${esc(p.title)}</span><span class="d">${esc(p.desc)}</span></a>
+      <a class="all-page" href="#${p.view}" data-view="${p.view}"><span class="t">${icon(ILLUST[p.view]?.main)}${esc(p.title)}</span><span class="d">${esc(p.desc)}</span></a>
       ${its.length ? `<ul>${its.map((i) => `<li><a href="#${i.view}" data-view="${i.view}" data-target="${i.target}">${esc(i.label)}</a></li>`).join("")}</ul>` : ""}
     </section>`;
   }).join("") || `<p class="note">見つかりません。</p>`;
@@ -460,17 +466,18 @@ async function showTranslations(code) {
 
 // どの町のページも最後に同じことをする：答え・わが家の避難・今日の暮らし・すべてのページ・調べる
 async function finishPage(code, townFeatures, startPart, scopeNote) {
-  await showAnswers(code, scopeNote);
+  const part = startPart && townFeatures.find((f) => f.properties.part === startPart);
+  await showAnswers(code, scopeNote, part ? `${code}-${startPart}` : null, part?.properties.name);
   // 町の色（町の花・木から。地図を描く前に決める）
   const sym = applyTownColor(Object.values(answersByPage).flat().find((x) => x.qid === "Q11"));
   if (sym) {
     $("town-color-note").hidden = false;
-    $("town-color-note").innerHTML = `<span class="swatch" aria-hidden="true"></span>このページの色は、町が定めた「${esc(sym.name)}」の色から作りました（町の公式の色ではありません）。<a href="#shiru" id="color-src">出典</a>`;
+    $("town-color-note").innerHTML = `<span class="swatch" aria-hidden="true"></span>ページの上の帯の色は、町が定めた「${esc(sym.name)}」の色から作りました（町の公式の色ではありません）。<a href="#shiru" id="color-src">出典</a>`;
     $("color-src").addEventListener("click", () => setTimeout(() => $("a-Q11")?.scrollIntoView({ behavior: "smooth", block: "start" }), 50));
   }
   const hasHinan = await showHinan(code, townFeatures, startPart);
-  todayLife(hasHinan);
   await showTranslations(code);
+  todayLife(hasHinan);
   const local = await fetch("api/ping").then((r) => r.ok).catch(() => false);
   buildAllPages(hasHinan, local);
   if (local) await researchBox(code);

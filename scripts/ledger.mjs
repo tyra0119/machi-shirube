@@ -26,10 +26,12 @@ export function loadCards() {
 export function cardFor(scope, host) {
   return loadCards().cards.find((c) => c.scope === scope && c.host === host && c.status === "ok");
 }
+// 情報源カードは市区町村ごと（町・字の答えも、その市区町村のカードを使う）
+export const muniScope = (scope) => `muni:${scope.match(/(\d{5})/)?.[1]}`;
 function ensureCard(it, user) {
   const host = it.source?.url ? new URL(it.source.url).hostname : null;
-  if (!host || cardFor(it.scope, host)) return null;
-  return addCard({ scope: it.scope, scopeName: it.scopeName, host, origin: new URL(it.source.url).origin, user, fromItem: it.id });
+  if (!host || cardFor(muniScope(it.scope), host)) return null;
+  return addCard({ scope: muniScope(it.scope), scopeName: it.scopeName, host, origin: new URL(it.source.url).origin, user, fromItem: it.id });
 }
 function addCard({ scope, scopeName, host, origin, user, fromItem, status = "ok", reason }) {
   const data = loadCards();
@@ -60,10 +62,10 @@ export function decideSite(scope, host, action, { user = "owner", reason = "" } 
   if (action !== "ok" && action !== "reject") throw Object.assign(new Error("分からない操作です"), { status: 400 });
   if (action === "reject" && !reason.trim()) throw Object.assign(new Error("理由を1行書いてください"), { status: 400 });
   const data = load();
-  const items = data.items.filter((x) => x.status === "pending" && x.scope === scope && (x.why ?? "").split("／").some((r) => r.match(FIRST_USE)?.[1] === host));
+  const items = data.items.filter((x) => x.status === "pending" && muniScope(x.scope) === muniScope(scope) && (x.why ?? "").split("／").some((r) => r.match(FIRST_USE)?.[1] === host));
   if (!items.length) throw Object.assign(new Error("そのサイトの確かめ待ちはありません"), { status: 404 });
   const sample = items.find((x) => x.source?.url && new URL(x.source.url).hostname === host) ?? items[0];
-  const card = cardFor(scope, host) ?? addCard({ scope, scopeName: sample.scopeName, host, origin: `https://${host}`, user, fromItem: sample.id, status: action === "ok" ? "ok" : "rejected", reason: reason.trim() });
+  const card = cardFor(muniScope(scope), host) ?? addCard({ scope: muniScope(scope), scopeName: sample.scopeName, host, origin: `https://${host}`, user, fromItem: sample.id, status: action === "ok" ? "ok" : "rejected", reason: reason.trim() });
   const at = new Date().toISOString();
   for (const it of items) {
     const from = it.status;
@@ -207,7 +209,8 @@ export function exportPublic(data = load()) {
   for (const it of data.items) {
     if (it.status !== "ok" && it.status !== "auto") continue;
     if (it.kind === "translation") continue; // 訳は site/data/translations/ に（下で状態だけ合わせる）
-    const code = it.scope.match(/(\d{5})/)?.[1];
+    // 市区町村の答えは {コード}.json、町・字の答えは {コード}-{番号}.json
+    const code = it.scope.startsWith("town:") ? it.scope.slice(5) : it.scope.match(/(\d{5})/)?.[1];
     if (!code) continue;
     if (!byMuni.has(code)) byMuni.set(code, []);
     byMuni.get(code).push(pick(it));
@@ -228,7 +231,7 @@ export function exportPublic(data = load()) {
   const dir = "site/data/answers";
   fs.mkdirSync(dir, { recursive: true });
   // いまある答えのファイルは作り直す（取り消したものがページから消えるように）
-  for (const f of fs.readdirSync(dir)) if (/^\d{5}\.json$/.test(f) && !byMuni.has(f.slice(0, 5))) fs.rmSync(path.join(dir, f));
+  for (const f of fs.readdirSync(dir)) if (/^\d{5}(-\d{4})?\.json$/.test(f) && !byMuni.has(f.replace(".json", ""))) fs.rmSync(path.join(dir, f));
   for (const [code, answers] of byMuni) fs.writeFileSync(`${dir}/${code}.json`, JSON.stringify({ answers }, null, 1));
 
   // 情報源カード（公開してよい項目だけ）→ 町のページの「出典」

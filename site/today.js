@@ -110,7 +110,8 @@ function myQuakes(code, whole, list) {
   return out.slice(0, 3);
 }
 
-const WEATHER_ICON = (code) => (!code ? "" : code.startsWith("1") ? "☀" : code.startsWith("2") ? "☁" : code.startsWith("3") ? "☂" : code.startsWith("4") ? "❄" : "");
+// 天気の印（気象庁の天気のコードの先頭：1 晴れ・2 くもり・3 雨・4 雪）。線の絵で
+const WEATHER_ICON = (code) => (!code ? "" : icon(code.startsWith("1") ? "sun" : code.startsWith("2") ? "cloud" : code.startsWith("3") ? "umbrella" : code.startsWith("4") ? "snow" : ""));
 
 function todayHTML(t, esc) {
   const dayCard = (d) => `
@@ -118,8 +119,8 @@ function todayHTML(t, esc) {
       <h3>${d.label}<small>${d.date ? ` ${Number(d.date.slice(5, 7))}月${Number(d.date.slice(8, 10))}日` : ""}</small></h3>
       <p class="w"><span class="icon" aria-hidden="true">${WEATHER_ICON(d.weatherCode)}</span>${d.weather ? `${esc(d.weather)}<small class="by">気象庁の予報</small>` : "気象庁の予報を読み込めませんでした"}</p>
       <p class="t">${d.max != null ? `<strong>${Math.round(d.max)}℃</strong> / ${Math.round(d.min)}℃` : ""}${d.pop != null ? `<span>雨 ${d.pop}%</span>` : ""}</p>
-      ${d.laundry ? `<p class="row"><span class="k">洗濯</span><span class="v lv${d.laundry.level}">${d.laundry.text}</span></p>` : ""}
-      ${d.clothes ? `<p class="row"><span class="k">服装</span><span class="v">${esc(d.clothes.text)}${d.clothes.notes.length ? `<small>${esc(d.clothes.notes.join("。"))}</small>` : ""}</span></p>` : ""}
+      ${d.laundry ? `<p class="row"><span class="k">${icon("laundry")}洗濯</span><span class="v lv${d.laundry.level}">${d.laundry.text}</span></p>` : ""}
+      ${d.clothes ? `<p class="row"><span class="k">${icon("shirt")}服装</span><span class="v">${esc(d.clothes.text)}${d.clothes.notes.length ? `<small>${esc(d.clothes.notes.join("。"))}</small>` : ""}</span></p>` : ""}
     </article>`;
   const w = t.warnings;
   const warnHTML = !w ? `<p class="note">警報・注意報を読み込めませんでした（出ていないという意味ではありません）。気象庁のページで確かめてください。</p>`
@@ -131,7 +132,7 @@ function todayHTML(t, esc) {
     : `<p class="note">この1週間、この町で震度を観測した地震はありません。</p>`;
   return `
     <div class="days">${t.days.map(dayCard).join("")}</div>
-    <h3 class="sub">警報・注意報</h3>${warnHTML}
-    <h3 class="sub">地震</h3>${quakeHTML}
+    <h3 class="sub">${icon("alert")} 警報・注意報</h3>${warnHTML}
+    <h3 class="sub">${icon("quake")} 地震</h3>${quakeHTML}
     <p class="cite">出典：気象庁ホームページ（天気予報・警報・注意報・地震情報。${esc(t.jma?.officeName ?? "")}${esc(t.jma?.class10Name ?? "")}）、天気の数値：Open-Meteo.com（CC BY 4.0）を加工。洗濯・服装は、まちしるべの決まりで出しためやすです。</p>`;
 }

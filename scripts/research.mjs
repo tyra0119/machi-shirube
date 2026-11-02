@@ -62,11 +62,20 @@ const SYSTEM = `あなたは、日本の町の暮らしの情報を、公式の�
 - 最後に、次の形の JSON を <answer> と </answer> のあいだに1つだけ書いてください
 {"found": true|false, "value": "答え（短く）", "asOf": "時点", "source": {"title": "資料やページの名前", "url": "出典の URL", "where": "どこか（ページ番号や見出し）"}, "sources": [{"title": "ほかに使ったページ", "url": "URL"}], "quote": "元の文", "count": {"number": 数, "csvUrl": "数えた CSV の URL"} または null, "outdated": {"what": "何が古いか", "old": {"asOf": "時点", "url": "URL"}, "new": {"asOf": "時点", "url": "URL"}} または null, "note": "気づいたこと（使ってよい範囲の書き方など。なければ空）"}`;
 
-export async function research(code, question = DEFAULT_QUESTION, { log = console.log, qid, hint, redoOf } = {}) {
+// part を渡すと、その町・字（市区町村の中の町・字。国勢調査の小地域の番号4けた）について調べる。範囲は town:{コード}-{番号}
+export async function research(code, question = DEFAULT_QUESTION, { log = console.log, qid, hint, redoOf, part } = {}) {
   const stats = JSON.parse(fs.readFileSync("site/data/stats.json", "utf8"));
   const town = stats.towns[code];
   if (!town) throw new Error(`市区町村コード ${code} が見つかりません`);
-  const name = `${town.pref} ${town.name.replace(/^.+?郡(?=.+[町村]$)/, "")}`;
+  const muniName = `${town.pref} ${town.name.replace(/^.+?郡(?=.+[町村]$)/, "")}`;
+  let partName = null;
+  if (part) {
+    const topo = JSON.parse(fs.readFileSync(`site/data/towns/${code}.json`, "utf8"));
+    partName = topo.objects.towns.geometries.find((g) => g.properties.part === part)?.properties.name;
+    if (!partName) throw new Error(`町・字 ${code}-${part} が見つかりません`);
+  }
+  const name = partName ? `${muniName} ${partName}` : muniName;
+  const scope = part ? `town:${code}-${part}` : `muni:${code}`;
 
   // 1日の上限と、合計の上限（ハッカソンの $500 を超えないように）
   const today = spent(japanDay(new Date().toISOString()));
@@ -74,15 +83,15 @@ export async function research(code, question = DEFAULT_QUESTION, { log = consol
   const total = spent();
   if (total >= TOTAL_LIMIT_USD) throw new Error(`これまでの費用が合計の上限（${TOTAL_LIMIT_USD}）に達しています（${total.toFixed(2)}）`);
 
-  const runId = `run-${new Date().toISOString().replace(/[-:T.Z]/g, "").slice(0, 14)}-${code}`;
+  const runId = `run-${new Date().toISOString().replace(/[-:T.Z]/g, "").slice(0, 14)}-${code}${part ? `-${part}` : ""}`;
   const steps = [];
   const step = (text) => { const s = { at: new Date().toISOString(), text }; steps.push(s); log(`${s.at.slice(11, 19)} ${text}`); };
   step(`${name}を調べ始めます：${question}`);
 
-  const site = await officialSite(code, name, step);
+  const site = await officialSite(code, muniName, step);
   const domains = domainsFor(site);
   const client = new Anthropic();
-  const messages = [{ role: "user", content: `町：${name}（市区町村コード ${code}）\n公式サイト：${site.url}\n問い：${question}${hint ? `\n前の答えへの作者の指摘（これを直して調べ直してください）：${hint}` : ""}` }];
+  const messages = [{ role: "user", content: `町：${name}（市区町村コード ${code}${part ? `。${muniName}の中の町・字「${partName}」` : ""}）\n公式サイト：${site.url}\n${part ? `市全体のことではなく、${partName}に当てはまることを答えてください。市の資料（地区ごとの表・校区の一覧など）の中から、${partName}の所を探してください。\n` : ""}問い：${question}${hint ? `\n前の答えへの作者の指摘（これを直して調べ直してください）：${hint}` : ""}` }];
   let res;
   let usd = 0;
   const content = [];
@@ -124,7 +133,7 @@ export async function research(code, question = DEFAULT_QUESTION, { log = consol
   const { why, verified, quoteUrl, counted, card, check } = await assess({ a, content, code, question, step, domains });
 
   const item = ledger.add({
-    scope: `muni:${code}`,
+    scope,
     scopeName: name,
     kind: "answer",
     qid,
@@ -311,16 +320,18 @@ function disallowed(robots, path) {
 // 1つの町を、物差しの問い（site/data/yardstick.json）でまとめて調べる。
 // もう答えのある問い（確かめ待ち・OK・自動）は飛ばす。1回の調べの費用の上限を超えたら止める
 export const RUN_LIMIT_USD = 4;
-export async function researchTown(code, { log = console.log, onItem = () => {}, shouldStop = () => false } = {}) {
+// まとめて調べる。part を渡すと町・字の問い（物差しで level が town のもの）、渡さなければ市区町村の問い
+export async function researchTown(code, { log = console.log, onItem = () => {}, shouldStop = () => false, part } = {}) {
   const { questions } = JSON.parse(fs.readFileSync("site/data/yardstick.json", "utf8"));
-  const done = new Set(ledger.load().items.filter((x) => x.scope === `muni:${code}` && ["pending", "ok", "auto"].includes(x.status)).map((x) => x.qid ?? x.question));
+  const scope = part ? `town:${code}-${part}` : `muni:${code}`;
+  const done = new Set(ledger.load().items.filter((x) => x.scope === scope && ["pending", "ok", "auto"].includes(x.status)).map((x) => x.qid ?? x.question));
   let total = 0;
-  for (const q of questions) {
+  for (const q of questions.filter((x) => (x.level === "town") === Boolean(part))) {
     if (done.has(q.id) || done.has(q.text)) { log(`${q.id} はもう答えがあるので飛ばします`); continue; }
     if (shouldStop()) { log("止めました"); break; }
     if (total >= RUN_LIMIT_USD) { log(`この調べの費用が上限（$${RUN_LIMIT_USD}）に達したので止めます`); break; }
     try {
-      const r = await research(code, q.text, { log, qid: q.id });
+      const r = await research(code, q.text, { log, qid: q.id, part });
       total += r.usd;
       onItem(q, r.item, total);
     } catch (e) {
@@ -334,16 +345,20 @@ export async function researchTown(code, { log = console.log, onItem = () => {},
 // コマンドで動かしたとき
 //   npm run research -- 39428 [問い]   1つの問い
 //   npm run research -- 39428 --all    物差しの問いをまとめて
+//   npm run research -- 11227 --part 0130 --all（または T01）  町・字（朝霞市 根岸台）の問い
 if (process.argv[1]?.endsWith("research.mjs")) {
-  const [code, ...q] = process.argv.slice(2);
+  const args = process.argv.slice(2);
+  const pi = args.indexOf("--part");
+  const part = pi >= 0 ? args.splice(pi, 2)[1] : undefined;
+  const [code, ...q] = args;
   if (q[0] === "--all") {
-    const total = await researchTown(code, { onItem: (q, it) => console.log(`→ ${q.id} ${it.status}：${it.value}`) });
+    const total = await researchTown(code, { part, onItem: (q, it) => console.log(`→ ${q.id} ${it.status}：${it.value}`) });
     console.log(`合計 $${total.toFixed(3)}`);
-  } else if (/^Q\d+$/.test(q[0] ?? "")) {
+  } else if (/^[QT]\d+$/.test(q[0] ?? "")) {
     // 物差しの問いを1つだけ（例：npm run research -- 39428 Q11）
     const yq = JSON.parse(fs.readFileSync("site/data/yardstick.json", "utf8")).questions.find((x) => x.id === q[0]);
     if (!yq) throw new Error(`${q[0]} は物差しにありません`);
-    const r = await research(code, yq.text, { qid: yq.id });
+    const r = await research(code, yq.text, { qid: yq.id, part });
     console.log(JSON.stringify({ id: r.item.id, status: r.item.status, value: r.item.value, source: r.item.source, why: r.item.why, usd: r.usd }, null, 1));
   } else {
     const r = await research(code, q.join(" ") || undefined);
