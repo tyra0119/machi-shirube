@@ -1,11 +1,11 @@
 // その町ならではのページ：町の特徴（site/data/features.json。国の数字から決めたもの）ごとに、ページを足す。
 // 中身は2種類：見る人のブラウザがその場で国のデータから出すもの（widget）と、Claude が公式サイトから探す答え（物差しの問いの feature）
 const FEATURES = {
-  nougyou: { title: "農業をしている方へ", desc: "霜・低温・高温の先読み・病害虫・鳥獣の被害", h: 95, main: "tree", sub: "sun", widget: "frost" },
-  gyogyou: { title: "漁業をしている方へ", desc: "波と風の先読み・漁業者向けの窓口と支援", h: 200, main: "umbrella", sub: "map", widget: "sea" },
-  yuki: { title: "雪の暮らし", desc: "雪の先読み・除雪と雪下ろしの支援", h: 210, main: "snow", sub: "phone", widget: "snow" },
-  kazan: { title: "火山のそばの暮らし", desc: "噴火のときの避難の決まり・知らせの受け取り方", h: 25, main: "alert", sub: "map" },
-  shima: { title: "島の暮らし", desc: "船の便・島の医療と買い物の支え", h: 190, main: "map", sub: "bus" },
+  nougyou: { title: "農業をしている方へ", desc: "霜・低温・高温の先読み・病害虫・鳥獣の被害", h: 95, main: "tree", sub: "sun", widget: "frost", later: "県の病害虫の発生予察と、鳥獣の被害の対策（町の窓口・柵や罠の補助）" },
+  gyogyou: { title: "漁業をしている方へ", desc: "波と風の先読み・漁業者向けの窓口と支援", h: 200, main: "umbrella", sub: "map", widget: "sea", later: "漁業をしている人向けの町の窓口と、いま申し込める支援" },
+  yuki: { title: "雪の暮らし", desc: "雪の先読み・除雪と雪下ろしの支援", h: 210, main: "snow", sub: "phone", widget: "snow", later: "除雪や屋根の雪下ろしの支援と、除雪の連絡先" },
+  kazan: { title: "火山のそばの暮らし", desc: "噴火のときの避難の決まり・知らせの受け取り方", h: 25, main: "alert", sub: "map", later: "噴火したときの避難の決まりと、知らせの受け取り方" },
+  shima: { title: "島の暮らし", desc: "船の便・島の医療と買い物の支え", h: 190, main: "map", sub: "bus", later: "船の便と、島の医療・買い物の支え" },
 };
 for (const [id, f] of Object.entries(FEATURES)) ILLUST[`feat-${id}`] = { h: f.h, main: f.main, sub: f.sub };
 
@@ -55,7 +55,7 @@ async function showFeatures(code, at) {
     const why = id === "nougyou" && ind ? `${T("働く人のうち農業・林業")} ${ind.agri}%（${T("全国の市区町村で高いほうから")} ${ind.agriTop}%）`
       : id === "gyogyou" && ind ? `${T("働く人のうち漁業")} ${ind.fish}%（${T("全国の市区町村で高いほうから")} ${ind.fishTop}%）`
       : id === "yuki" ? T("豪雪地帯") : id === "kazan" ? T("火山災害警戒地域") : id === "shima" ? T("離島がある") : "";
-    PAGES.splice(1, 0, { view, title: f.title, desc: f.desc, feature: true, why });
+    PAGES.splice(1, 0, { view, title: f.title, desc: f.desc, feature: true, why, later: f.later });
     const el = document.createElement("div");
     el.className = "view";
     el.dataset.view = view;
