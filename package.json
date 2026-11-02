@@ -37,7 +37,8 @@
     "build:shop-access": "node scripts/build-shop-access.mjs",
     "build:future": "node scripts/build-future.mjs",
     "build:bus": "node scripts/build-bus.mjs",
-    "plan-excerpts": "node --env-file=.env scripts/plan-excerpts.mjs"
+    "plan-excerpts": "node --env-file=.env scripts/plan-excerpts.mjs",
+    "mitate": "node --env-file=.env scripts/mitate.mjs"
   },
   "devDependencies": {
     "mapshaper": "^0.7.101"

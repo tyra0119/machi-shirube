@@ -476,3 +476,5 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 #plan-pick { margin-bottom: 8px; }
 #plan-part { display: block; width: 100%; max-width: 360px; min-height: 44px; margin-top: 4px; padding: 0 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--text); font-size: 16px; }
 .layer-legend .dot.sq { border-radius: 3px; }
+.mitate-top .wall { display: inline-flex; align-items: center; gap: 4px; justify-self: start; padding: 2px 10px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); font-size: 13px; font-weight: 700; }
+.mitate-top .wall svg { width: 14px; height: 14px; }

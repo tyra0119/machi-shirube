@@ -123,6 +123,15 @@ async function showTypes(code, stats, scopeNote) {
   const reasonOf = (c) => (LANG ? (FACTS[c.type] ?? []).map(([l, v]) => `${T(l)} ${v}`).join(" · ") : c.reason);
   const page = (type) => { const v = TYPE_PAGE[type], f = v?.startsWith("feat-") && FEATURES[v.slice(5)]; return PAGES.find((p) => p.view === v) ?? (f ? { view: v, title: f.title } : null); };
   $("mitate-top").hidden = false;
+  // Claude の見立て（scripts/mitate.mjs）があれば、それを出す（日本語とやさしい日本語のとき。ほかの言葉は下の決まりによる見立て）
+  const cm = !LANG || LANG === "easy" ? await fetch(`data/mitate/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null) : null;
+  if (cm?.who?.length) {
+    const pg = (v) => PAGES.find((p) => p.view === v);
+    $("mitate-top").innerHTML = `<h2>${T("この町で、暮らしの情報が届きにくいのは")}</h2>
+      <ul class="mitate-list">${cm.who.map((w) => { const p = pg(w.page); return `<li><strong>${esc(w.person)}</strong><span class="wall">${icon("alert")} ${esc(w.wall)}</span><span class="why">${esc(w.why)}</span>${p ? `<a class="go" href="#${p.view}">${icon(ILLUST[p.view]?.main ?? "map")}${esc(p.title)}へ</a>` : ""}</li>`; }).join("")}</ul>
+      <p class="note">${esc(cm.note)}。<a href="#mitate">${T("くわしく")}</a></p>`;
+    return;
+  }
   $("mitate-top").innerHTML = `<h2>${T("この町で、暮らしの情報が届きにくいのは")}</h2>
     <ul class="mitate-list">${list.slice(0, 2).map((c) => { const p = page(c.type); return `<li><strong>${esc(T(c.who))}</strong><span class="why">${esc(reasonOf(c))}</span>${p ? `<a class="go" href="#${p.view}">${icon(ILLUST[p.view]?.main ?? "map")}${LANG ? esc(T(p.title)) : `${esc(p.title)}へ`}</a>` : ""}</li>`; }).join("")}</ul>
     <p class="note">${T("全国の市区町村と国の数字で比べた、まちしるべの見立てです（町の評価ではありません）。")} <a href="#mitate">${T("くわしく")}</a></p>`;

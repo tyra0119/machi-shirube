@@ -13,6 +13,7 @@ import * as ledger from "./ledger.mjs";
 import { research, researchTown, RUN_LIMIT_USD } from "./research.mjs";
 import { propose, decideProposal, loadProposals, requestToQuestion } from "./propose.mjs";
 import { buildOverlays } from "./overlays.mjs";
+import { mitate } from "./mitate.mjs";
 
 // 町をまとめて調べる（調べる画面から）。一度に1つだけ。様子はメモリに持ち、終わったら local/runs/ に残す
 const runs = new Map();
@@ -125,6 +126,13 @@ async function startRun(req, res) {
   }).then(async (total) => {
     run.usd = total;
     await overlays;
+    // 重ねた数がそろったら、Claude が「この町で届きにくい人」を見立てる（市区町村の調べのとき）
+    if (!part && !run.stopRequested) {
+      run.log.push({ at: new Date().toISOString(), text: "国のデータを重ねた数から、Claude が「この町で届きにくい人」を見立てています" });
+      await mitate(code, (text) => run.log.push({ at: new Date().toISOString(), text }))
+        .then((r) => { run.usd += r.usd; })
+        .catch((e) => run.log.push({ at: new Date().toISOString(), text: `見立ては出せませんでした：${e.message}` }));
+    }
     // 調べ終わったら、Claude のほうから提案する（物差しにない問い・スキルにするか）
     if (!run.stopRequested && total > 0) {
       run.log.push({ at: new Date().toISOString(), text: "調べ終わりました。Claude が答えの全体を見て、提案を考えています" });
