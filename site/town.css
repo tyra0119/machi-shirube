@@ -456,3 +456,4 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .future .o { order: 4; font-weight: 700; }
 .acc-spots.bus .no { width: auto; min-width: 26px; padding: 0 6px; border-radius: 12px; background: #5b8fc7; }
 .acc-spots.bus li { cursor: default; }
+.fp-depth.q li { grid-template-columns: 11em 1fr 4.5em; }

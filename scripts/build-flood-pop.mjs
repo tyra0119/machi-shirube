@@ -9,9 +9,12 @@ import AdmZip from "adm-zip";
 import { PNG } from "pngjs";
 
 const UA = "machi-shirube/0.1 (+https://github.com/tyra0119/machi-shirube)";
+const HZ = (layer) => `https://disaportaldata.gsi.go.jp/raster/${layer}/{z}/{x}/{y}.png`;
 const KINDS = {
-  津波: "https://disaportaldata.gsi.go.jp/raster/04_tsunami_newlegend_data/{z}/{x}/{y}.png",
-  洪水: "https://disaportaldata.gsi.go.jp/raster/01_flood_l2_shinsuishin_data/{z}/{x}/{y}.png",
+  津波: [HZ("04_tsunami_newlegend_data")],
+  洪水: [HZ("01_flood_l2_shinsuishin_data")],
+  // 土砂災害警戒区域（土石流・急傾斜地の崩壊・地すべり。特別警戒区域を含む）。色が付いていれば区域の中
+  土砂: [HZ("05_dosekiryukeikaikuiki"), HZ("05_kyukeishakeikaikuiki"), HZ("05_jisuberikeikaikuiki")],
 };
 // 凡例の色 → 浸水の深さ（site/hazard.js と同じ。ハザードマップポータルサイトの凡例 shinsui_legend3）
 const DEPTH_COLORS = [
@@ -71,15 +74,15 @@ function meshBox(code) {
 }
 
 const tiles = new Map();
-async function colorAt(kind, lon, lat) {
+async function colorAt(kind, li, lon, lat) {
   const n = 2 ** Z;
   const px = ((lon + 180) / 360) * n * 256;
   const r = (lat * Math.PI) / 180;
   const py = ((1 - Math.log(Math.tan(r) + 1 / Math.cos(r)) / Math.PI) / 2) * n * 256;
   const tx = Math.floor(px / 256), ty = Math.floor(py / 256);
-  const key = `${kind}/${tx}/${ty}`;
+  const key = `${kind}${li}/${tx}/${ty}`;
   if (!tiles.has(key)) {
-    const buf = await cached(KINDS[kind].replace("{z}", Z).replace("{x}", tx).replace("{y}", ty), `local/cache/hazard/${kind}/${Z}/${tx}/${ty}.png`);
+    const buf = await cached(KINDS[kind][li].replace("{z}", Z).replace("{x}", tx).replace("{y}", ty), `local/cache/hazard/${kind}${li || ""}/${Z}/${tx}/${ty}.png`);
     tiles.set(key, buf ? PNG.sync.read(buf) : null);
   }
   const png = tiles.get(key);
@@ -153,7 +156,10 @@ export async function buildFloodPop(code, log = console.log) {
       let hit = 0;
       const depths = [];
       for (let i = 0; i < STEP; i++) for (let j = 0; j < STEP; j++) {
-        const d = depthOf(await colorAt(kind, m.b.lon + ((j + 0.5) / STEP) * m.b.w, m.b.lat + ((i + 0.5) / STEP) * m.b.h));
+        const [lon, lat] = [m.b.lon + ((j + 0.5) / STEP) * m.b.w, m.b.lat + ((i + 0.5) / STEP) * m.b.h];
+        let d = null;
+        if (kind === "土砂") { for (const li of KINDS[kind].keys()) if (await colorAt(kind, li, lon, lat)) { d = "警戒区域"; break; } }
+        else d = depthOf(await colorAt(kind, 0, lon, lat));
         if (d) { hit++; depths.push(d); }
       }
       const f = hit / (STEP * STEP);
@@ -169,12 +175,12 @@ export async function buildFloodPop(code, log = console.log) {
     out.kinds[kind] = {
       people: r10(people), rate: Math.round((people / pop) * 1000) / 10,
       over65: oldKnown.length ? r10(old) : null,
-      byDepth: Object.fromEntries(DEPTH_COLORS.map(([, l]) => [l, r10(byDepth[l] ?? 0)]).filter(([, v]) => v > 0)),
+      byDepth: Object.fromEntries([...DEPTH_COLORS.map(([, l]) => l), "警戒区域"].map((l) => [l, r10(byDepth[l] ?? 0)]).filter(([, v]) => v > 0)),
       parts: Object.fromEntries(Object.entries(byPart).filter(([, v]) => v.people >= 5).map(([k, v]) => [k, { rate: Math.round((v.people / v.pop) * 1000) / 10, people: r10(v.people) }])),
     };
     log(`${kind}：約 ${out.kinds[kind].people.toLocaleString("ja-JP")} 人（${out.kinds[kind].rate}%）・65歳以上 約 ${out.kinds[kind].over65?.toLocaleString("ja-JP")} 人`);
   }
-  out.note = "250m 四方ごとの人口（国勢調査 2020年）に、その四角の中で浸水が想定される場所の割合を掛けて足した、めやすです。人は四角の中に均等に住んでいるとみなしています。10人単位に丸めています";
+  out.note = "250m 四方ごとの人口（国勢調査 2020年）に、その四角の中で浸水や土砂災害が想定される場所の割合を掛けて足した、めやすです。人は四角の中に均等に住んでいるとみなしています。10人単位に丸めています";
   out.sources = [
     { title: "国勢調査 2020年 地域メッシュ統計（250m）人口及び世帯（総務省統計局 e-Stat）", url: "https://www.e-stat.go.jp/gis/statmap-search?page=1&type=1&toukeiCode=00200521&toukeiYear=2020&aggregateUnit=Q" },
     { title: "ハザードマップポータルサイト（重ねるハザードマップ）のオープンデータを加工して作成", url: "https://disaportal.gsi.go.jp/hazardmapportal/hazardmap/copyright/opendata.html" },
