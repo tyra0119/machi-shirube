@@ -64,6 +64,8 @@ function stateOf(q) {
   return "";
 }
 function renderGrid() {
+  renderGrow();
+  updateMap();
   const states = questions.map(stateOf);
   $("grid").innerHTML = questions.map((q, i) => `<li class="${states[i]}" title="${esc(q.text)}"><span class="id">${q.id}</span><span class="g">${esc(q.group)}</span>${/^s\d/.test(states[i]) ? `<span class="pt">${states[i].slice(1)}点</span>` : states[i] === "pending" ? `<span class="pt">保留</span>` : ""}</li>`).join("");
   const n = (s) => states.filter((x) => x === s).length;
@@ -135,8 +137,24 @@ async function poll() {
   await showProposals();
 }
 
+// 地図が育つ：町の形から始まり、答えが出るたびに重なっていく（避難場所の答え → 避難場所の点、ハザードマップの答え → 浸水の想定）
+let rmap = null;
+let mapReady = false; // 重ねる層を全部足し終えたら true
+const GROW_LAYERS = [
+  { id: "towns", label: "町・字の境", always: true },
+  { id: "iryo", label: "病院・診療所（国のデータ）", always: true },
+  { id: "shelters", label: "避難場所", qid: "Q01" },
+  { id: "hazard", label: "浸水の想定（津波）", qid: "Q02" },
+];
+function updateMap() {
+  if (!mapReady) return;
+  const has = (qid) => items.some((x) => x.qid === qid && x.value !== "見つからなかった");
+  const shown = GROW_LAYERS.filter((l) => l.always || has(l.qid));
+  for (const l of GROW_LAYERS) for (const id of [l.id, `${l.id}-line`]) if (rmap.getLayer(id)) rmap.setLayoutProperty(id, "visibility", shown.includes(l) ? "visible" : "none");
+  $("r-layers").innerHTML = shown.map((l) => `<li>${l.qid ? `<span class="new">${esc(l.qid)} の答えから</span>` : ""}${esc(l.label)}</li>`).join("");
+}
 function drawMap() {
-  const map = new maplibregl.Map({
+  const map = (rmap = new maplibregl.Map({
     container: "r-map",
     style: {
       version: 8,
@@ -145,7 +163,7 @@ function drawMap() {
     },
     interactive: false,
     attributionControl: { compact: false },
-  });
+  }));
   map.on("load", async () => {
     const topo = await fetch("data/japan.topo.json").then((r) => r.json());
     const features = topojson.feature(topo, topo.objects.municipalities).features.filter((f) => f.properties.code === code);
@@ -155,5 +173,44 @@ function drawMap() {
     const box = new maplibregl.LngLatBounds();
     for (const f of features) for (const poly of f.geometry.type === "Polygon" ? [f.geometry.coordinates] : f.geometry.coordinates) for (const pt of poly[0]) box.extend(pt);
     if (!box.isEmpty()) map.fitBounds(box, { padding: 40, duration: 0 });
+    // 重なっていくもの（はじめは隠しておき、答えが出たら出す）
+    const towns = await fetch(`data/towns/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+    if (towns) {
+      map.addSource("towns", { type: "geojson", data: topojson.feature(towns, towns.objects.towns) });
+      map.addLayer({ id: "towns-line", type: "line", source: "towns", paint: { "line-color": color("--accent"), "line-width": 0.8, "line-opacity": 0.6 } });
+    }
+    const t = HAZARD_TILES["津波"];
+    map.addSource("hazard", { type: "raster", tiles: [t.url], tileSize: 256, minzoom: 2, maxzoom: 17 });
+    map.addLayer({ id: "hazard", type: "raster", source: "hazard", paint: { "raster-opacity": 0.6 } });
+    const iryo = await fetch(`data/iryo/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+    if (iryo) {
+      map.addSource("iryo", { type: "geojson", data: { type: "FeatureCollection", features: iryo.list.filter((f) => f.p).map((f) => ({ type: "Feature", geometry: { type: "Point", coordinates: f.p }, properties: {} })) } });
+      map.addLayer({ id: "iryo", type: "circle", source: "iryo", paint: { "circle-radius": 3, "circle-color": "#5b7f95", "circle-stroke-color": "#fff", "circle-stroke-width": 1 } });
+    }
+    const sh = await fetch(`data/shelters/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+    if (sh) {
+      map.addSource("shelters", { type: "geojson", data: sh });
+      map.addLayer({ id: "shelters", type: "circle", source: "shelters", paint: { "circle-radius": 4, "circle-color": color("--accent"), "circle-stroke-color": "#fff", "circle-stroke-width": 1.5 } });
+    }
+    mapReady = true;
+    updateMap();
   });
+}
+
+// 育つ町のページ：町のページの場面ごとに、答えの点数の印を並べる（● 点のある答え・◌ 保留・○ まだ）
+const GROW_PAGES = [["bousai", "防災・避難", "shield"], ["gomi", "ごみ", "trash"], ["iryo", "医療・健康", "hospital"], ["koutsuu", "バス・電車", "bus"],
+  ["tetsuzuki", "手続き", "doc"], ["foreign", "外国の方へ", "globe"], ["kaigo", "お年寄り・介護", "heart"], ["kosodate", "子育て", "child"], ["shiru", "町を知る", "book"]];
+function renderGrow() {
+  $("grow").innerHTML = GROW_PAGES.map(([page, label, ic]) => {
+    const qs = questions.filter((q) => q.page === page);
+    if (!qs.length) return "";
+    const marks = qs.map((q) => {
+      const it = items.filter((x) => x.qid === q.id).at(-1);
+      if (!it) return `<i class="m none" title="${esc(q.short ?? q.id)}：まだ"></i>`;
+      if (it.status === "pending") return `<i class="m hold" title="${esc(q.short ?? q.id)}：保留"></i>`;
+      return `<i class="m s${it.score ?? 2}" title="${esc(q.short ?? q.id)}：${it.score ?? 2}点"></i>`;
+    }).join("");
+    const done = qs.filter((q) => items.some((x) => x.qid === q.id && x.status !== "pending")).length;
+    return `<li class="${done ? "on" : ""}">${icon(ic)}<span class="l">${esc(label)}</span><span class="ms">${marks}</span><span class="n">${done}/${qs.length}</span></li>`;
+  }).join("");
 }

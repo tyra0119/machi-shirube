@@ -71,3 +71,21 @@ body.research-page { display: block; height: 100%; }
 .decide button.primary small { color: var(--accent-text); }
 .decide button.primary { border: 0; background: var(--accent); color: var(--accent-text); font-weight: 600; }
 .decide .why-form { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 8px; width: 100%; }
+/* 育つ町のページと、地図に重なったもの */
+.r-grow { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 6px; }
+.r-grow li { display: flex; align-items: center; gap: 6px; padding: 6px 10px; border: 1px solid var(--line); border-radius: 8px; color: var(--text-sub); font-size: 14px; }
+.r-grow li.on { color: var(--text); border-color: var(--accent); }
+.r-grow .ic { width: 18px; height: 18px; color: var(--accent); }
+.r-grow .l { flex: 1; }
+.r-grow .ms { display: flex; gap: 3px; }
+.r-grow .m { display: inline-block; width: 10px; height: 10px; border-radius: 5px; border: 1.5px solid var(--accent); }
+.r-grow .m.s3 { background: var(--accent); }
+.r-grow .m.s2 { background: color-mix(in srgb, var(--accent) 55%, var(--surface)); }
+.r-grow .m.s1 { background: color-mix(in srgb, var(--accent) 20%, var(--surface)); }
+.r-grow .m.s0 { border-color: var(--pref-line); }
+.r-grow .m.hold { border-style: dashed; }
+.r-grow .m.none { border-color: var(--line); }
+.r-grow .n { font-size: 12px; }
+.r-layers { position: absolute; left: 10px; bottom: 28px; z-index: 2; margin: 0; padding: 6px 10px; list-style: none; background: var(--surface); border-radius: 10px; box-shadow: var(--shadow); font-size: 12px; }
+.r-layers li { padding: 2px 0; }
+.r-layers .new { margin-right: 6px; padding: 0 6px; border-radius: 4px; background: var(--accent); color: var(--accent-text); font-size: 11px; }

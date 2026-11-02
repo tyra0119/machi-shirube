@@ -13,6 +13,7 @@
 <div class="r-layout">
   <section class="r-map-area">
     <div id="r-map" class="r-map" aria-label="調べている町の地図"></div>
+    <ul id="r-layers" class="r-layers" aria-label="地図に重なったもの"></ul>
     <nav class="r-path" aria-label="いま見ている所"><ol id="path"><li><a href="./">日本</a></li></ol></nav>
   </section>
   <section class="r-side">
@@ -49,6 +50,11 @@
     </section>
 
     <section class="r-block">
+      <h2>育つ町のページ <span class="note">答えが入るたびに、町のページの場面が埋まっていきます</span></h2>
+      <ul id="grow" class="r-grow"></ul>
+    </section>
+
+    <section class="r-block">
       <h2>作業の流れ</h2>
       <ol id="flow" class="r-flow" aria-live="polite"><li class="note">「調べ始める」を押すと、Claude が町の公式のサイトを探して読み、物差しの問いに出典つきで答えていきます。</li></ol>
     </section>
@@ -56,6 +62,8 @@
 </div>
 <script src="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+<script src="icons.js"></script>
+<script src="hazard.js"></script>
 <script src="research.js"></script>
 </body>
 </html>
