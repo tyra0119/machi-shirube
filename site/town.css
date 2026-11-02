@@ -421,6 +421,17 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .mitate-top .why { font-size: 14px; color: var(--text-sub); line-height: 1.6; }
 .mitate-top .go { justify-self: start; display: inline-flex; align-items: center; gap: 6px; margin-top: 4px; padding: 8px 14px; border-radius: 999px; background: var(--surface); border: 1px solid var(--line); color: var(--text); font-weight: 700; text-decoration: none; }
 .mitate-top .go svg { width: 18px; height: 18px; }
+/* 数から、できることへ */
+.dekiru-list { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 10px; }
+.dekiru-list li { display: flex; flex-direction: column; gap: 6px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+.dekiru-list p { margin: 0; }
+.dekiru-list .who { display: flex; align-items: center; gap: 6px; font-weight: 700; font-size: 16px; line-height: 1.5; }
+.dekiru-list .who svg, .dekiru-list .todo svg { flex: none; width: 20px; height: 20px; color: var(--accent); }
+.dekiru-list .num strong { display: block; font-size: 20px; line-height: 1.4; }
+.dekiru-list .num small { display: block; font-size: 12px; color: var(--text-sub); }
+.dekiru-list .todo { display: flex; gap: 6px; align-items: flex-start; padding: 8px 10px; border-radius: 8px; background: var(--town-tint, var(--bg)); font-size: 15px; font-weight: 700; line-height: 1.6; }
+.dekiru-list blockquote { margin: 0; font-size: 13px; color: var(--text-sub); line-height: 1.6; }
+.dekiru-list blockquote a { display: block; margin-top: 2px; }
 /* 浸水が想定される所に住む人 */
 .fp-kind + .fp-kind { margin-top: 16px; }
 .fp-head { margin: 4px 0; font-size: 16px; line-height: 1.6; }

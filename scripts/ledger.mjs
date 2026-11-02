@@ -265,15 +265,15 @@ export function exportPublic(data = load()) {
   for (const it of data.items) {
     if (it.status !== "ok" && it.status !== "auto") continue;
     if (it.kind === "translation") continue; // 訳は site/data/translations/ に（下で状態だけ合わせる）
-    if (["watch", "gomi-days", "plan-excerpt"].includes(it.kind)) continue; // 見張りの知らせ・ごみの収集日の表・防災計画の抜き出しは答えではない（下で状態だけ合わせる）
+    if (["watch", "gomi-days", "plan-excerpt", "dekiru"].includes(it.kind)) continue; // 見張りの知らせ・ごみの収集日の表・防災計画の抜き出し・数とできることのつなぎは答えではない（下で状態だけ合わせる）
     // 市区町村の答えは {コード}.json、町・字の答えは {コード}-{番号}.json
     const code = it.scope.startsWith("town:") ? it.scope.slice(5) : it.scope.match(/(\d{5})/)?.[1];
     if (!code) continue;
     if (!byMuni.has(code)) byMuni.set(code, []);
     byMuni.get(code).push(pick(it));
   }
-  // ごみの収集日の表・防災計画の抜き出し：人が OK したら町のページに出す（状態をファイルに写す）
-  for (const dir of ["site/data/gomi-days", "site/data/plan"]) {
+  // ごみの収集日の表・防災計画の抜き出し・数とできることのつなぎ：人が OK したら町のページに出す（状態をファイルに写す）
+  for (const dir of ["site/data/gomi-days", "site/data/plan", "site/data/dekiru"]) {
     if (!fs.existsSync(dir)) continue;
     for (const f of fs.readdirSync(dir).filter((x) => x.endsWith(".json"))) {
       const g = JSON.parse(fs.readFileSync(`${dir}/${f}`, "utf8"));

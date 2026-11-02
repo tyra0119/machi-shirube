@@ -173,6 +173,23 @@ async function showHitokoto(code, part) {
   $("hitokoto-note").innerHTML = `${esc(T(d.note))}。<details class="facts"><summary>${T("もとにした数")}</summary>${h.facts.map((f) => esc(f)).join("・")}</details>`;
 }
 
+// 数から、できることへ（scripts/dekiru.mjs。町の数と、確かめ済みの町の案内を AI がつなぎ、引用と数は PC で照らしたもの）。
+// 人が確かめてから出す。町のページ（市区町村）のいちばん上、見立ての下に
+async function showDekiru(code, part) {
+  if (part || (LANG && LANG !== "easy")) return;
+  const d = await fetch(`data/dekiru/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  if (!d || (d.status !== "ok" && d.status !== "auto") || !d.links?.length) return;
+  const ic = (f) => (/津波|洪水|土砂/.test(f) ? "umbrella" : /震度/.test(f) ? "quake" : /バス/.test(f) ? "bus" : /店まで/.test(f) ? "shop" : /外国/.test(f) ? "globe" : /65歳|一人暮らし/.test(f) ? "heart" : "pin");
+  $("dekiru-block").hidden = false;
+  $("dekiru").innerHTML = d.links.map((l) => `<li>
+    <p class="who">${icon(ic(l.fact))}<span>${esc(l.who)}</span></p>
+    <p class="num"><strong>${esc(l.num)}</strong><small>${esc(l.factSrc)}${/時刻表データのあるバスだけ/.test(l.fact) && !/時刻表/.test(l.num) ? `・${T("時刻表データのあるバスだけで数えたもの")}` : ""}</small></p>
+    <p class="todo">${icon("link")}<span>${esc(l.todo)}</span></p>
+    <blockquote>「${esc(l.quote)}」<a href="${esc(l.source.url)}" target="_blank" rel="noopener">${esc(l.source.title)}</a></blockquote>
+  </li>`).join("");
+  $("dekiru-note").textContent = `${T(d.note)}。${T("人が確かめてから出しています。")}`;
+}
+
 // 町の気候（平年値メッシュ × 住む人。scripts/build-climate.mjs）。東京都心と並べ、良い所は明るい話題として添える
 async function showClimate(code) {
   const d = await fetch(`data/climate/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
@@ -882,6 +899,7 @@ async function finishPage(code, townFeatures, startPart, scopeNote, at) {
   }
   showLayerMap(code, townFeatures, at, esc);
   await showHitokoto(code, part);
+  await showDekiru(code, part);
   await showFloodPop(code, part);
   await showSlope(code, part);
   await showPlan(code, part);

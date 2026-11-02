@@ -15,6 +15,7 @@ import { propose, decideProposal, loadProposals, requestToQuestion } from "./pro
 import { buildOverlays } from "./overlays.mjs";
 import { mitate } from "./mitate.mjs";
 import { hitokoto } from "./hitokoto.mjs";
+import { dekiru } from "./dekiru.mjs";
 
 // 町をまとめて調べる（調べる画面から）。一度に1つだけ。様子はメモリに持ち、終わったら local/runs/ に残す
 const runs = new Map();
@@ -137,6 +138,10 @@ async function startRun(req, res) {
       await hitokoto(code, (text) => run.log.push({ at: new Date().toISOString(), text }))
         .then((r) => { run.usd += r.usd; })
         .catch((e) => run.log.push({ at: new Date().toISOString(), text: `ひとことは出せませんでした：${e.message}` }));
+      run.log.push({ at: new Date().toISOString(), text: "町の数と、確かめ済みの町の案内を、Claude がつないでいます（数から、できることへ。人が確かめてから出す）" });
+      await dekiru(code, (text) => run.log.push({ at: new Date().toISOString(), text }))
+        .then((r) => { run.usd += r.usd; })
+        .catch((e) => run.log.push({ at: new Date().toISOString(), text: `数から、できることへは出せませんでした：${e.message}` }));
     }
     // 調べ終わったら、Claude のほうから提案する（物差しにない問い・スキルにするか）
     if (!run.stopRequested && total > 0) {
