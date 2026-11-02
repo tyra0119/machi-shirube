@@ -445,3 +445,12 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .acc-spots .no { flex: none; width: 22px; height: 22px; border-radius: 50%; background: #e8833a; color: #fff; font-size: 12px; font-weight: 700; display: grid; place-items: center; }
 .fp-depth.q .bar i { background: #a88bd0; }
 #quake .acc-stats { margin-bottom: 8px; }
+/* これからの町の人口 */
+.future { margin: 8px 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; align-items: end; }
+.future li { display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 12px; }
+.future .bar { width: 100%; max-width: 40px; height: 120px; display: flex; align-items: flex-end; }
+.future .bar i { display: block; width: 100%; border-radius: 6px 6px 0 0; background: var(--town, #7a9cc6); opacity: .75; }
+.future .y { order: 3; color: var(--text-sub); }
+.future .v { order: 0; font-variant-numeric: tabular-nums; }
+.future .bar { order: 1; }
+.future .o { order: 4; font-weight: 700; }

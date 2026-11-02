@@ -62,7 +62,7 @@
   <!-- 防災・避難 -->
   <div class="view" data-view="bousai" hidden>
     <section class="block" id="floodpop-block" hidden>
-      <h2>浸水が想定される所に住む人</h2>
+      <h2>浸水・土砂災害が想定される所に住む人</h2>
       <div id="floodpop"></div>
       <p class="note" id="floodpop-note"></p>
     </section>
@@ -164,7 +164,15 @@
   <div class="view" data-view="komatta" hidden><section class="block"><h2>困ったとき</h2><div class="answers-box" data-page="komatta"></div></section></div>
 
   <!-- 町の計画と話題 -->
-  <div class="view" data-view="keikaku" hidden><section class="block"><h2>町の計画と話題</h2><div class="answers-box" data-page="keikaku"></div></section></div>
+  <div class="view" data-view="keikaku" hidden>
+    <section class="block" id="future-block" hidden>
+      <h2>これからの町の人口（2050年まで）</h2>
+      <p class="fp-head" id="future-head"></p>
+      <ol class="future" id="future"></ol>
+      <p class="note" id="future-note"></p>
+    </section>
+    <section class="block"><h2>町の計画と話題</h2><div class="answers-box" data-page="keikaku"></div></section>
+  </div>
 
   <!-- 町を知る -->
   <div class="view" data-view="shiru" hidden>

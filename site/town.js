@@ -141,7 +141,7 @@ async function showFloodPop(code, part) {
     const max = Math.max(...Object.values(k.byDepth));
     const here = part && k.parts[part.properties.part];
     return `<div class="fp-kind">
-      <h3 class="sub">${esc(T(kind))}</h3>
+      <h3 class="sub">${esc(T(kind === "土砂" ? "土砂災害警戒区域" : kind))}</h3>
       <p class="fp-head"><strong>${T("約")} ${n(k.people)} ${T("人")}</strong>（${T("町の人の")} ${k.rate}%）${k.over65 ? `<span>${T("うち65歳以上")} ${T("約")} ${n(k.over65)} ${T("人")}</span>` : ""}</p>
       ${part ? `<p class="fp-here">${esc(part.properties.name)}：${here ? `${T("約")} ${here.rate}%（${T("約")} ${n(here.people)} ${T("人")}）` : T("想定の区域に住む人は、ほとんどいません")}</p>` : ""}
       <ul class="fp-depth">${Object.entries(k.byDepth).map(([label, v]) => `<li><span class="l">${esc(label)}</span><span class="bar"><i style="width:${(v / max) * 100}%;background:${depthColor(label)}"></i></span><span class="v">${n(v)}</span></li>`).join("")}</ul>
@@ -149,7 +149,7 @@ async function showFloodPop(code, part) {
   }).join("");
   $("floodpop-note").innerHTML = `${esc(T(d.note))}。${T("想定は最大の規模のもので、必ずこうなるという意味ではありません。")}${d.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join("・")}`;
 }
-const depthColor = (label) => { const c = DEPTH_COLORS.find(([, l]) => l === label)?.[0] ?? [200, 200, 200]; return `rgb(${c.join(",")})`; };
+const depthColor = (label) => { const c = DEPTH_COLORS.find(([, l]) => l === label)?.[0] ?? (label === "警戒区域" ? [214, 170, 110] : [200, 200, 200]); return `rgb(${c.join(",")})`; };
 
 // 大きな地震の揺れの確率（J-SHIS × 250m 四方の人口。scripts/build-quake-pop.mjs が作る）
 async function showQuake(code, part) {
@@ -182,6 +182,20 @@ async function showShopAccess(code) {
     </ul>
     <p class="fp-here">${T("店まで 500m 以上あり、車を使うのが難しい65歳以上の人の割合です（2020年の推計）。")}</p>`;
   $("shop-note").innerHTML = `${esc(T(d.note))}。${d.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join("")}`;
+}
+
+// これからの町の人口（社人研の推計。scripts/build-future.mjs）。政令市の区はその区、町・字のページは市区町村の数
+async function showFuture(code) {
+  const d = await getJSON("data/future.json").catch(() => null);
+  const t = d?.towns[code];
+  if (!t) return;
+  $("future-block").hidden = false;
+  const n = (v) => v.toLocaleString("ja-JP");
+  const idx = (p) => Math.round((p.at(-1) / p[0]) * 100);
+  const max = Math.max(...t.pop);
+  $("future-head").innerHTML = `${T("2050年の人口は、2020年の")} <strong>${idx(t.pop)}%</strong>（${T("約")} ${n(Math.round(t.pop.at(-1) / 10) * 10)} ${T("人")}）<span>${T("全国")} ${idx(d.nation.pop)}%${t.old ? `・${T("65歳以上の割合")} ${t.old[0]}% → ${t.old.at(-1)}%（${T("全国")} ${d.nation.old.at(-1)}%）` : ""}</span>`;
+  $("future").innerHTML = d.years.map((y, i) => `<li><span class="y">${y}</span><span class="bar"><i style="height:${(t.pop[i] / max) * 100}%"></i></span><span class="v">${n(Math.round(t.pop[i] / 100) * 100)}</span>${t.old ? `<span class="o">${t.old[i]}%</span>` : ""}</li>`).join("");
+  $("future-note").innerHTML = `${T("棒は総人口、下の % は65歳以上の割合です。")}${esc(T(d.note))}。<a href="${esc(d.source.url)}" target="_blank" rel="noopener">${esc(d.source.title)}</a>`;
 }
 
 // 道の安全（交通事故。scripts/build-accidents.mjs が警察庁のオープンデータから作る）
@@ -770,6 +784,7 @@ async function finishPage(code, townFeatures, startPart, scopeNote, at) {
   await showQuake(code, part);
   await showAccidents(code, part);
   await showShopAccess(code);
+  await showFuture(code);
   const hasHinan = await showHinan(code, townFeatures, startPart);
   await showTranslations(code);
   await showGomi(code);
