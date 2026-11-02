@@ -83,15 +83,17 @@ map.on("load", async () => {
   for (const f of labels.features) f.properties.label = byCode.get(f.properties.code)?.properties.label ?? "";
   const prefLines = topojson.mesh(topo, topo.objects.prefectures, (a, b) => a !== b);
 
-  // 拡大したときだけ、道路や線路の見える背景（国土地理院の淡色地図）を出す
-  map.addSource("gsi-pale", {
-    type: "raster",
-    tiles: ["https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png"],
-    tileSize: 256,
-    minzoom: 5,
-    maxzoom: 18,
-  });
-  map.addLayer({ id: "gsi-pale", type: "raster", source: "gsi-pale", minzoom: 7, layout: { visibility: basemapOn ? "visible" : "none" } });
+  // 拡大したときだけ、道路や線路の見える背景を出す。町のページと同じ地理院地図 Vector（色をうすくしたもの）から、
+  // 線と面（道路・線路・川・建物など）だけを借りる。名前の文字はこの地図が自分で描く
+  const base = await baseStyle();
+  const vsrc = Object.entries(base.sources ?? {}).find(([, s]) => s.type === "vector");
+  if (vsrc) {
+    map.addSource("gsi-v", vsrc[1]);
+    for (const l of base.layers) {
+      if (l.source !== vsrc[0] || !["fill", "line"].includes(l.type) || l.layout?.visibility === "none") continue;
+      map.addLayer({ ...l, id: `base-${l.id}`, source: "gsi-v", minzoom: Math.max(l.minzoom ?? 0, 7), layout: { ...l.layout, visibility: basemapOn ? "visible" : "none" } });
+    }
+  }
   map.addSource("munis", { type: "geojson", data: munis, promoteId: "code" });
   map.addSource("prefs", { type: "geojson", data: prefLines });
   map.addSource("labels", { type: "geojson", data: { type: "FeatureCollection", features: labels.features.filter((f) => f.geometry) } });
@@ -338,8 +340,7 @@ basemapButton.addEventListener("click", () => {
   basemapOn = !basemapOn;
   try { localStorage.setItem("basemap", basemapOn ? "on" : "off"); } catch {}
   showBasemapState();
-  if (!map.getLayer("gsi-pale")) return;
-  map.setLayoutProperty("gsi-pale", "visibility", basemapOn ? "visible" : "none");
+  for (const l of map.getStyle().layers) if (l.id.startsWith("base-")) map.setLayoutProperty(l.id, "visibility", basemapOn ? "visible" : "none");
   paint();
   paintTowns();
 });

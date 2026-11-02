@@ -164,14 +164,10 @@ function updateMap() {
   for (const l of GROW_LAYERS) for (const id of [l.id, `${l.id}-line`]) if (rmap.getLayer(id)) rmap.setLayoutProperty(id, "visibility", shown.includes(l) ? "visible" : "none");
   $("r-layers").innerHTML = shown.map((l) => `<li>${l.qid ? `<span class="new">${esc(l.qid)} の答えから</span>` : ""}${esc(l.label)}</li>`).join("");
 }
-function drawMap() {
+async function drawMap() {
   const map = (rmap = new maplibregl.Map({
     container: "r-map",
-    style: {
-      version: 8,
-      sources: { pale: { type: "raster", tiles: ["https://cyberjapandata.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png"], tileSize: 256, maxzoom: 18, attribution: "<a href=\"https://maps.gsi.go.jp/development/ichiran.html\" target=\"_blank\">地理院タイル</a>" } },
-      layers: [{ id: "pale", type: "raster", source: "pale" }],
-    },
+    style: await baseStyle(),
     interactive: false,
     attributionControl: { compact: false },
   }));
@@ -181,6 +177,7 @@ function drawMap() {
     map.addSource("town", { type: "geojson", data: { type: "FeatureCollection", features } });
     map.addLayer({ id: "fill", type: "fill", source: "town", paint: { "fill-color": color("--accent"), "fill-opacity": 0.2 } });
     map.addLayer({ id: "line", type: "line", source: "town", paint: { "line-color": color("--accent"), "line-width": 3 } });
+    raiseLabels(map); // 地名の文字は町の色の上に
     const box = new maplibregl.LngLatBounds();
     for (const f of features) for (const poly of f.geometry.type === "Polygon" ? [f.geometry.coordinates] : f.geometry.coordinates) for (const pt of poly[0]) box.extend(pt);
     if (!box.isEmpty()) map.fitBounds(box, { padding: 40, duration: 0 });
