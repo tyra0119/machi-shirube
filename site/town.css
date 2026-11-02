@@ -475,3 +475,4 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .plan-points .cite { display: inline-block; margin: 0 6px 0 0; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); font-size: 12px; text-decoration: none; color: var(--text); }
 #plan-pick { margin-bottom: 8px; }
 #plan-part { display: block; width: 100%; max-width: 360px; min-height: 44px; margin-top: 4px; padding: 0 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--text); font-size: 16px; }
+.layer-legend .dot.sq { border-radius: 3px; }

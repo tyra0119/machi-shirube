@@ -8,8 +8,8 @@ async function showLayerMap(code, townFeatures, at, esc) {
   const box = document.getElementById("layer-map");
   if (!box) return;
   const get = (url) => fetch(url).then((r) => (r.ok ? r.json() : null)).catch(() => null);
-  const [japan, shelters, med, acc, bus, nowc, risk] = await Promise.all([
-    get("data/japan.topo.json"),
+  const [japan, flood, quake, shelters, med, acc, bus, nowc, risk] = await Promise.all([
+    get("data/japan.topo.json"), get(`data/flood-pop/${code}.json`), get(`data/quake-pop/${code}.json`),
     get(`data/shelters/${code}.json`), loadMedical(code), get(`data/accidents/${code}.json`), get(`data/bus/${code}.json`),
     get(`${JMA_TILE}/nowc/targetTimes_N1.json`), get(`${JMA_TILE}/risk/targetTimes.json`),
   ]);
@@ -26,7 +26,20 @@ async function showLayerMap(code, townFeatures, at, esc) {
     return pt(f.p, { name: f.n, kind: f.k, s: (f.s ?? []).slice(0, 4).join("・"), state: x?.openNow ? 2 : x ? 1 : 0, hours: x ? x.h.map(([a, b]) => `${hhmm(a)}〜${hhmm(b)}`).join("、") : "" });
   });
 
+  // 気をつけたいことの重なり：町・字ごとに、次の条件がいくつ重なるか（国の数字から。町の評価ではない）
+  const CONDS = [
+    ["65歳以上が4割以上", (p) => p.over65Rate >= 40],
+    ["津波で浸かる想定の所に住む人が3割以上", (p) => (flood?.kinds?.津波?.parts?.[p.part]?.rate ?? 0) >= 30],
+    ["洪水で浸かる想定の所に住む人が3割以上", (p) => (flood?.kinds?.洪水?.parts?.[p.part]?.rate ?? 0) >= 30],
+    ["土砂災害警戒区域に住む人が1割以上", (p) => (flood?.kinds?.土砂?.parts?.[p.part]?.rate ?? 0) >= 10],
+    ["30年以内に震度6強以上が26%以上", (p) => (quake?.parts?.[p.part]?.p60 ?? 0) >= 26],
+  ];
+  const overlap = townFeatures.map((f) => {
+    const hit = CONDS.filter(([, fn]) => fn(f.properties)).map(([l]) => l);
+    return { ...f, properties: { ...f.properties, n: hit.length, hit: hit.join("／") } };
+  });
   const LAYERS = [
+    { id: "overlap", name: "気をつけたいことの重なり", on: true, ok: (flood || quake) && overlap.some((f) => f.properties.n > 0), legend: `${["#f6dfa8", "#f0b36b", "#d9773a", "#a8462a"].map((c, i) => `<i class="dot sq" style="background:${c}"></i>${i + 1}${i === 3 ? "+" : ""}`).join(" ")}　${LT("町・字ごとに、次のうちいくつが重なるか（色が濃いほど多い）")}：${CONDS.map(([l]) => LT(l)).join("・")}。${LT("国の数字から出した、めやすです")}` },
     { id: "town", name: "町・字の境", on: true, ok: townFeatures.length > 0 },
     { id: "shelter", name: "避難場所", on: true, ok: !!shelters, legend: `<i class="dot" style="background:#2f7d4f"></i>${LT("指定緊急避難場所（押すと名前と、使える災害）")}` },
     { id: "iryo", name: "病院・診療所", ok: medFeatures.length > 0, legend: `<i class="dot" style="background:#2a6fdb"></i>${LT("いまやっている")} <i class="dot" style="background:#9db8e8"></i>${LT("今日やっている")} <i class="dot" style="background:#ccc"></i>${LT("今日は休み")}` },
@@ -61,6 +74,8 @@ async function showLayerMap(code, townFeatures, at, esc) {
     for (const [i, l] of ["05_dosekiryukeikaikuiki", "05_kyukeishakeikaikuiki", "05_jisuberikeikaikuiki"].entries()) raster(`dosha${i}`, [HZ_TILE(l)], 17);
     if (nowc) raster("rain", [`${JMA_TILE}/nowc/${nowc[0].basetime}/none/${nowc[0].validtime}/surf/hrpns/{z}/{x}/{y}.png`], 10, 0.7);
     if (risk) raster("kikikuru", [`${JMA_TILE}/risk/${risk[0].basetime}/${risk[0].member}/${risk[0].validtime}/surf/land/{z}/{x}/{y}.png`], 10, 0.7);
+    map.addSource("overlap", { type: "geojson", data: fc(overlap) });
+    map.addLayer({ id: "overlap", type: "fill", source: "overlap", layout: { visibility: "none" }, paint: { "fill-color": ["step", ["get", "n"], "rgba(0,0,0,0)", 1, "#f6dfa8", 2, "#f0b36b", 3, "#d9773a", 4, "#a8462a"], "fill-opacity": 0.7 } });
     map.addSource("town", { type: "geojson", data: fc(townFeatures) });
     // 町の外をうすく白でおおい、町の中を目立たせる
     // 穴にするのは市区町村の外形（日本地図の形。町・字の形を重ねると境が重なって抜けがおかしくなる）
@@ -99,8 +114,9 @@ async function showLayerMap(code, townFeatures, at, esc) {
   pop("shelter", (p) => `<strong>${esc(p.name)}</strong><br>${esc(JSON.parse(p.kinds || "[]").join("・"))}${p.capacity ? `<br>${esc(p.capacity)}` : ""}`);
   pop("iryo", (p) => `<strong>${esc(p.name)}</strong><br>${esc(p.kind)}${p.s ? `・${esc(p.s)}` : ""}<br>${p.state ? `${LT("今日")} ${esc(p.hours)}` : LT("今日は休み")}<br><small>${LT("行く前に電話で確かめてください")}</small>`);
   pop("acc", (p) => `<strong>${esc(p.part)}</strong><br>${LT("3年で")} ${p.n} ${LT("件")}${Number(p.ped) ? `・${LT("歩行者")} ${p.ped}` : ""}${Number(p.bike) ? `・${LT("自転車")} ${p.bike}` : ""}`);
+  pop("overlap", (p) => `<strong>${esc(p.name)}</strong><br>${p.n ? `${LT("重なり")} ${p.n}：${esc(p.hit)}` : LT("重なりはありません")}`);
   pop("bus", (p) => `<strong>${esc(p.name)}</strong><br>${LT("平日")} ${p.n} ${LT("本")}`);
-  for (const id of ["shelter", "iryo", "acc", "bus"]) {
+  for (const id of ["shelter", "iryo", "acc", "bus", "overlap"]) {
     map.on("mouseenter", id, () => (map.getCanvas().style.cursor = "pointer"));
     map.on("mouseleave", id, () => (map.getCanvas().style.cursor = ""));
   }

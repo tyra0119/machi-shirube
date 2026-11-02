@@ -15,6 +15,10 @@ export const LANGS = {
   es: { name: "Español", ja: "スペイン語" },
   en: { name: "English", ja: "英語" },
   easy: { name: "やさしい にほんご", ja: "やさしい日本語" },
+  // 大泉町の外国の住民で、ポルトガル語・スペイン語の次に多い国籍の言葉（インドネシア・ネパール・ベトナム。2026-11-02 に足した）
+  id: { name: "Bahasa Indonesia", ja: "インドネシア語" },
+  ne: { name: "नेपाली", ja: "ネパール語" },
+  vi: { name: "Tiếng Việt", ja: "ベトナム語" },
 };
 const PAGES = ["bousai", "komatta", "gomi", "tetsuzuki", "foreign", "iryo", "koutsuu", "kosodate", "kaigo", "okane", "shisetsu", "shiru"]; // 町のページのどの場面の答えも訳す（ページ全体をその言葉で見られるように）
 
