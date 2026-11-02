@@ -68,12 +68,37 @@ async function showTowns(code) {
     map.addLayer({ id: "town-fill", type: "fill", source: "towns" }, "pref-line");
     map.addLayer({ id: "town-line", type: "line", source: "towns" }, "pref-line");
   }
+  map.setLayoutProperty("town-fill", "visibility", "visible");
+  map.setLayoutProperty("town-line", "visibility", "visible");
   shownTowns = code;
   paintTowns();
+  const crumb = document.getElementById("crumb");
+  const t = stats?.towns[code];
+  crumb.querySelector(".here").textContent = `${t ? t.name.replace(/^.+郡/, "") : ""}の中の町`;
+  crumb.hidden = false;
+  document.querySelector("main").classList.add("has-crumb");
   const box = new maplibregl.LngLatBounds();
   for (const f of data.features) for (const ring of f.geometry.type === "Polygon" ? f.geometry.coordinates : f.geometry.coordinates.flat()) for (const pt of ring) box.extend(pt);
   map.fitBounds(box, { padding: 40, duration: 600 });
 }
+// 中の町をしまって、市区町村の地図に戻る（戻った市・区を選んだ状態にする）
+function hideTowns() {
+  if (!shownTowns) return;
+  const code = shownTowns;
+  map.setLayoutProperty("town-fill", "visibility", "none");
+  map.setLayoutProperty("town-line", "visibility", "none");
+  if (selectedTown) map.setFeatureState({ source: "towns", id: selectedTown }, { selected: false });
+  selectedTown = null;
+  shownTowns = null;
+  document.getElementById("crumb").hidden = true;
+  document.querySelector("main").classList.remove("has-crumb");
+  const f = map.querySourceFeatures("munis").find((x) => x.properties.code === code);
+  if (f) showCard(f.properties);
+  map.easeTo({ zoom: Math.max(map.getZoom() - 1.5, 6), duration: 500 });
+}
+document.querySelector("#crumb .back").addEventListener("click", hideTowns);
+addEventListener("keydown", (e) => e.key === "Escape" && hideTowns());
+
 function paintTowns() {
   if (!map.getLayer("town-fill")) return;
   map.setPaintProperty("town-fill", "fill-color", [
