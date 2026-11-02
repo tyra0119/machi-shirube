@@ -193,7 +193,12 @@ async function showFuture(code) {
   const n = (v) => v.toLocaleString("ja-JP");
   const idx = (p) => Math.round((p.at(-1) / p[0]) * 100);
   const max = Math.max(...t.pop);
-  $("future-head").innerHTML = `${T("2050年の人口は、2020年の")} <strong>${idx(t.pop)}%</strong>（${T("約")} ${n(Math.round(t.pop.at(-1) / 10) * 10)} ${T("人")}）<span>${T("全国")} ${idx(d.nation.pop)}%${t.old ? `・${T("65歳以上の割合")} ${t.old[0]}% → ${t.old.at(-1)}%（${T("全国")} ${d.nation.old.at(-1)}%）` : ""}</span>`;
+  // 明るい話題：2050年まで人口が減りにくい町（全国の上から1割）は、順位を添える
+  const ratio = (p) => p.at(-1) / p[0];
+  const rank = Object.values(d.towns).filter((x) => ratio(x.pop) > ratio(t.pop)).length + 1;
+  const total = Object.keys(d.towns).length;
+  const bright = rank <= total / 10 ? `<span class="bright">${icon("sun")} ${ratio(t.pop) > 1 ? T("2050年まで人口が増えると推計される町です。") : ""}${T("人口の減りにくさは全国の")} ${n(total)} ${T("区域のうち")} ${rank} ${T("番目")}</span>` : "";
+  $("future-head").innerHTML = `${T("2050年の人口は、2020年の")} <strong>${idx(t.pop)}%</strong>（${T("約")} ${n(Math.round(t.pop.at(-1) / 10) * 10)} ${T("人")}）<span>${T("全国")} ${idx(d.nation.pop)}%${t.old ? `・${T("65歳以上の割合")} ${t.old[0]}% → ${t.old.at(-1)}%（${T("全国")} ${d.nation.old.at(-1)}%）` : ""}</span>${bright}`;
   $("future").innerHTML = d.years.map((y, i) => `<li><span class="y">${y}</span><span class="bar"><i style="height:${(t.pop[i] / max) * 100}%"></i></span><span class="v">${n(Math.round(t.pop[i] / 100) * 100)}</span>${t.old ? `<span class="o">${t.old[i]}%</span>` : ""}</li>`).join("");
   $("future-note").innerHTML = `${T("棒は総人口、下の % は65歳以上の割合です。")}${esc(T(d.note))}。<a href="${esc(d.source.url)}" target="_blank" rel="noopener">${esc(d.source.title)}</a>`;
 }
