@@ -63,7 +63,11 @@ function showView() {
   for (const a of document.querySelectorAll(".town-tabs a")) a.toggleAttribute("aria-current", a.dataset.view === v);
   // 隠れていたあいだは大きさが 0 なので、見せたときに大きさを合わせ、覚えておいた範囲に寄せ直す
   for (const m of maps) { m.resize(); if (m.fitTo) m.fitBounds(m.fitTo.box, { ...m.fitTo.opts, duration: 0 }); }
-  if (location.hash) window.scrollTo({ top: document.querySelector(".town-tabs").offsetTop - 4 });
+  // タブの帯を動かさない：下のほうまで読んでいたときだけ、新しいページの先頭（タブの帯のすぐ下）を出す。
+  // 上のほう（町の名前が見えている所）にいたときは、そのまま
+  const head = document.querySelector(".town-head");
+  const top = head.offsetTop + head.offsetHeight;
+  if (window.scrollY > top) window.scrollTo({ top });
 }
 // 上のメニュー：よく使うページと「すべてのページ」
 $("tabs").innerHTML = `<li class="all-pages"><button type="button" id="open-all" aria-haspopup="dialog">☰ すべてのページ</button></li>`
@@ -241,9 +245,9 @@ function answersHTML(answers) {
 // 今日のページ：天気・洗濯・服装・警報・地震（見る人のブラウザが気象庁と Open-Meteo をその場で読む）
 async function showToday(code, at) {
   try {
-    $("today").innerHTML = todayHTML(await loadToday(code, at[1], at[0]), esc);
+    $("today-box").innerHTML = todayHTML(await loadToday(code, at[1], at[0]), esc);
   } catch (e) {
-    $("today").innerHTML = `<p class="note">天気を読み込めませんでした。時間をおいて開き直してください。</p>`;
+    $("today-box").innerHTML = `<p class="note">天気を読み込めませんでした。時間をおいて開き直してください。</p>`;
     console.error(e);
   }
 }

@@ -195,3 +195,12 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .hinan-kind { flex-wrap: wrap; border-radius: 12px; }
 .hinan-kind button small { margin-left: 4px; font-size: 11px; opacity: 0.8; }
 .hinan-cautions { margin: 8px 0 0; padding-left: 20px; font-size: 13px; line-height: 1.7; color: var(--text-sub); }
+/* 確かめる一覧：はじめて使うサイト（サイトごとに1回） */
+.sites-box { margin: 0 0 14px; padding: 12px 14px; border: 2px solid var(--accent); border-radius: 10px; }
+.sites-box h2 { margin: 0 0 4px; font-size: 18px; }
+.site-list { margin: 0; padding: 0; list-style: none; }
+.site-list li { padding: 10px 0; border-top: 1px solid var(--line); }
+.site-list .site-name { margin: 0 0 4px; font-size: 15px; }
+.site-list .site-todo { margin: 0 0 4px; font-size: 14px; line-height: 1.7; }
+/* タブを切り替えても帯が動かないよう、短いページでも画面の高さを持たせる */
+.town-main { min-height: calc(100vh - 64px); }

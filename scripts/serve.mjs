@@ -5,6 +5,7 @@
 //   POST /api/areas  複数の町・字を「まとまり」として保存する（site/data/areas.json に書く）
 //   GET  /api/review 確かめる一覧（引用した元の文も入る。手元だけ）
 //   POST /api/review/{番号}  決める（ok・fix・reject・unknown・undo、理由1行）
+//   POST /api/sites  はじめて使うサイトを、町ごとに1回決める（scope・host・ok か reject・理由1行）
 import http from "node:http";
 import fs from "node:fs";
 import path from "node:path";
@@ -108,6 +109,18 @@ async function startRun(req, res) {
   });
 }
 
+// はじめて使うサイトを、町ごとに1回決める（そのサイトの確かめ待ちの答えに、まとめて効く）
+async function decideSiteReq(req, res) {
+  let body = "";
+  for await (const chunk of req) body += chunk;
+  try {
+    const { scope, host, action, reason } = JSON.parse(body || "{}");
+    send(res, 200, ledger.decideSite(scope, host, action, { user: "owner", reason: String(reason ?? "").slice(0, 200) }));
+  } catch (e) {
+    send(res, e.status ?? 400, { error: e.message });
+  }
+}
+
 async function decideItem(req, res, id) {
   let body = "";
   for await (const chunk of req) body += chunk;
@@ -143,6 +156,7 @@ http
       run.log.push({ at: new Date().toISOString(), text: "止めるように頼みました（いま調べている問いが終わったら止まります）" });
       return send(res, 200, run);
     }
+    if (url.pathname === "/api/sites" && req.method === "POST") return decideSiteReq(req, res);
     const m = url.pathname.match(/^\/api\/review\/(r\d{5})$/);
     if (m && req.method === "POST") return decideItem(req, res, m[1]);
     let file = path.join(ROOT, decodeURIComponent(url.pathname));

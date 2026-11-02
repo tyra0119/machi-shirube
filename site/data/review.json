@@ -1,9 +1,9 @@
 {
- "updatedAt": "2026-11-02T09:10:40.861Z",
+ "updatedAt": "2026-11-02T09:17:21.786Z",
  "counts": {
   "auto": 5,
-  "ok": 5,
-  "pending": 20,
+  "ok": 27,
+  "pending": 0,
   "fix": 1,
   "rejected": 1,
   "unknown": 0
@@ -242,10 +242,15 @@
    "scope": "muni:11227",
    "question": "この町の指定緊急避難場所の一覧は、どこで見られるか（公式のページか資料）。全部でいくつあるか",
    "why": "はじめて使う情報源（www.city.asaka.lg.jp）。使ってよい範囲を人が確かめる",
-   "status": "pending",
+   "status": "ok",
    "source": {
     "title": "朝霞市指定避難場所一覧 - 朝霞市",
     "url": "https://www.city.asaka.lg.jp/soshiki/6/hinanbasho.html"
+   },
+   "decided": {
+    "at": "2026-11-02T09:15:54.492Z",
+    "action": "ok",
+    "reason": ""
    }
   },
   {
@@ -253,10 +258,15 @@
    "scope": "muni:11227",
    "question": "この町のハザードマップ（洪水・津波・土砂災害など）は、どこで見られるか。いつ作られた（直された）ものか",
    "why": "はじめて使う情報源（www.city.asaka.lg.jp）。使ってよい範囲を人が確かめる／確かめ役：資料と合わない所がある（「令和3(2021)年2月発行」の記載が資料にない（資料にあるのは更新日2023年9月1日のみ））",
-   "status": "pending",
+   "status": "ok",
    "source": {
     "title": "朝霞市水害ハザードマップ - 朝霞市",
     "url": "https://www.city.asaka.lg.jp/soshiki/6/shinsui-kurome-shingashi-arakawa.html"
+   },
+   "decided": {
+    "at": "2026-11-02T09:16:10.341Z",
+    "action": "ok",
+    "reason": ""
    }
   },
   {
@@ -264,10 +274,15 @@
    "scope": "muni:11227",
    "question": "この町の地域防災計画は、どこで見られるか。いちばん新しい版はいつのものか",
    "why": "Claude が返した元の文が、答えに使ったページの中に見つからなかった／はじめて使う情報源（www.city.asaka.lg.jp）。使ってよい範囲を人が確かめる",
-   "status": "pending",
+   "status": "ok",
    "source": {
     "title": "朝霞市地域防災計画 - 朝霞市",
     "url": "https://www.city.asaka.lg.jp/soshiki/6/chikibousai.html"
+   },
+   "decided": {
+    "at": "2026-11-02T09:16:29.656Z",
+    "action": "ok",
+    "reason": ""
    }
   },
   {
@@ -275,10 +290,15 @@
    "scope": "muni:11227",
    "question": "災害のときの知らせ（防災無線・メール・アプリなど）は、どうやって受け取れるか。登録の方法はどこに書いてあるか",
    "why": "はじめて使う情報源（www.city.asaka.lg.jp）。使ってよい範囲を人が確かめる／確かめ役：資料と合わない所がある（メール配信サービスは現在停止中（令和8年10月21日時点）と資料にあるのに、答えは受け取れると現在形で書いている・停止中であることや、復旧後に市ホームページで知らせることが答えに無い）",
-   "status": "pending",
+   "status": "ok",
    "source": {
     "title": "メール配信サービス - 朝霞市",
     "url": "https://www.city.asaka.lg.jp/soshiki/55/mail-service.html"
+   },
+   "decided": {
+    "at": "2026-11-02T09:17:00.842Z",
+    "action": "ok",
+    "reason": ""
    }
   },
   {
@@ -286,10 +306,15 @@
    "scope": "muni:11227",
    "question": "ごみの分け方と出す日の案内は、どこで見られるか（ページや資料の名前）",
    "why": "はじめて使う情報源（www.city.asaka.lg.jp）。使ってよい範囲を人が確かめる",
-   "status": "pending",
+   "status": "ok",
    "source": {
     "title": "資源とごみの分け方・出し方（家庭ごみ） - 朝霞市",
     "url": "https://www.city.asaka.lg.jp/soshiki/15/dust-katei.html"
+   },
+   "decided": {
+    "at": "2026-11-02T09:17:03.521Z",
+    "action": "ok",
+    "reason": ""
    }
   },
   {
@@ -297,10 +322,15 @@
    "scope": "muni:11227",
    "question": "引っ越してきた人がはじめにする手続き（住民票・国民健康保険など）の案内は、どこで見られるか",
    "why": "はじめて使う情報源（www.city.asaka.lg.jp）。使ってよい範囲を人が確かめる／確かめ役：資料と合わない所がある（「国民健康保険」のページに進めるという内容は資料にありません。資料にあるのは「介護保険 住所を変更するときに～転入・転出の手続き～」の項目だけです。）",
-   "status": "pending",
+   "status": "ok",
    "source": {
     "title": "転入届 - 朝霞市",
     "url": "https://www.city.asaka.lg.jp/soshiki/11/jyuuki-tennyuu.html"
+   },
+   "decided": {
+    "at": "2026-11-02T09:17:04.521Z",
+    "action": "ok",
+    "reason": ""
    }
   },
   {
@@ -308,10 +338,15 @@
    "scope": "muni:11227",
    "question": "車を持たない人が使える町の交通（コミュニティバス・予約して乗る乗り物など）はあるか。予約先や時刻表はどこか",
    "why": "はじめて使う情報源（www.city.asaka.lg.jp）。使ってよい範囲を人が確かめる",
-   "status": "pending",
+   "status": "ok",
    "source": {
     "title": "市内循環バス「わくわく号」マップ＆時刻表 - 朝霞市",
     "url": "https://www.city.asaka.lg.jp/soshiki/26/norikaeannnai.html"
+   },
+   "decided": {
+    "at": "2026-11-02T09:17:05.681Z",
+    "action": "ok",
+    "reason": ""
    }
   },
   {
@@ -319,10 +354,15 @@
    "scope": "muni:11227",
    "question": "外国から来た人向けの案内（外国語のページ・やさしい日本語・相談窓口）はあるか。どこで見られるか",
    "why": "はじめて使う情報源（www.city.asaka.lg.jp）。使ってよい範囲を人が確かめる／確かめ役：資料と合わない所がある（「外国人生活ガイドは、やさしい日本語を含む多言語で見られます」について、資料の「外国人の生活ガイド」の対応言語は日本語・英語・スペイン語・中国語・ポルトガル語・韓国・朝鮮語・タガログ語・ベトナム語で、やさしい日本語は含まれていない。やさしい日本語を含むのは同じページ内の「多言語生活情報」である。）",
-   "status": "pending",
+   "status": "ok",
    "source": {
     "title": "外国人相談窓口 Information & Support - 朝霞市",
     "url": "https://www.city.asaka.lg.jp/site/kosodate/gaikokujinsoudan2021.html"
+   },
+   "decided": {
+    "at": "2026-11-02T09:17:06.689Z",
+    "action": "ok",
+    "reason": ""
    }
   },
   {
@@ -330,10 +370,15 @@
    "scope": "muni:11227",
    "question": "この町はどうやってできたか（合わさった町や村と、その年）",
    "why": "はじめて使う情報源（www.city.asaka.lg.jp）。使ってよい範囲を人が確かめる",
-   "status": "pending",
+   "status": "ok",
    "source": {
     "title": "朝霞市主要年表（朝霞町誕生から）",
     "url": "https://www.city.asaka.lg.jp/uploaded/attachment/17867.pdf"
+   },
+   "decided": {
+    "at": "2026-11-02T09:17:07.647Z",
+    "action": "ok",
+    "reason": ""
    }
   },
   {
@@ -341,10 +386,15 @@
    "scope": "muni:11227",
    "question": "この町で毎年ひらかれる大きな催しや祭りは何か。時期と場所",
    "why": "はじめて使う情報源（www.city.asaka.lg.jp）。使ってよい範囲を人が確かめる／確かめ役：資料と合わない所がある（「毎年8月上旬に開催」は資料に書かれていない。第43回は7月31日（前夜祭）から、第42回は8月1日から始まっている。・「大きな催し」「毎年」という位置づけは資料の記述から言い切れない。）",
-   "status": "pending",
+   "status": "ok",
    "source": {
     "title": "【記者発表資料】第43回朝霞市民まつり「彩夏祭」を開催します - 朝霞市",
     "url": "https://www.city.asaka.lg.jp/soshiki/55/kisya-260727.html"
+   },
+   "decided": {
+    "at": "2026-11-02T09:17:08.342Z",
+    "action": "ok",
+    "reason": ""
    }
   },
   {
@@ -352,10 +402,15 @@
    "scope": "muni:10524",
    "question": "この町の指定緊急避難場所の一覧は、どこで見られるか（公式のページか資料）。全部でいくつあるか",
    "why": "数が合わない（Claude は 33、数え直すと 563）／はじめて使う情報源（www.town.oizumi.gunma.jp）。使ってよい範囲を人が確かめる",
-   "status": "pending",
+   "status": "ok",
    "source": {
     "title": "避難所｜大泉町",
     "url": "https://www.town.oizumi.gunma.jp/s004/anzen/050/010/010/20200827140119.html"
+   },
+   "decided": {
+    "at": "2026-11-02T09:17:09.625Z",
+    "action": "ok",
+    "reason": ""
    }
   },
   {
@@ -363,10 +418,15 @@
    "scope": "muni:10524",
    "question": "この町のハザードマップ（洪水・津波・土砂災害など）は、どこで見られるか。いつ作られた（直された）ものか",
    "why": "はじめて使う情報源（www.town.oizumi.gunma.jp）。使ってよい範囲を人が確かめる",
-   "status": "pending",
+   "status": "ok",
    "source": {
     "title": "大泉町総合防災マップ｜大泉町",
     "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/170/20200828141906.html"
+   },
+   "decided": {
+    "at": "2026-11-02T09:17:10.177Z",
+    "action": "ok",
+    "reason": ""
    }
   },
   {
@@ -374,10 +434,15 @@
    "scope": "muni:10524",
    "question": "この町の地域防災計画は、どこで見られるか。いちばん新しい版はいつのものか",
    "why": "はじめて使う情報源（www.town.oizumi.gunma.jp）。使ってよい範囲を人が確かめる",
-   "status": "pending",
+   "status": "ok",
    "source": {
     "title": "大泉町地域防災計画｜大泉町",
     "url": "https://www.town.oizumi.gunma.jp/s004/gyosei/010/010/020/20200903104414.html"
+   },
+   "decided": {
+    "at": "2026-11-02T09:17:11.772Z",
+    "action": "ok",
+    "reason": ""
    }
   },
   {
@@ -385,10 +450,15 @@
    "scope": "muni:10524",
    "question": "災害のときの知らせ（防災無線・メール・アプリなど）は、どうやって受け取れるか。登録の方法はどこに書いてあるか",
    "why": "はじめて使う情報源（www.town.oizumi.gunma.jp）。使ってよい範囲を人が確かめる",
-   "status": "pending",
+   "status": "ok",
    "source": {
     "title": "安全・安心メールをご利用ください｜大泉町",
     "url": "https://www.town.oizumi.gunma.jp/s004/anzen/050/050/20200827165944.html"
+   },
+   "decided": {
+    "at": "2026-11-02T09:17:12.602Z",
+    "action": "ok",
+    "reason": ""
    }
   },
   {
@@ -396,10 +466,15 @@
    "scope": "muni:10524",
    "question": "ごみの分け方と出す日の案内は、どこで見られるか（ページや資料の名前）",
    "why": "はじめて使う情報源（www.town.oizumi.gunma.jp）。使ってよい範囲を人が確かめる",
-   "status": "pending",
+   "status": "ok",
    "source": {
     "title": "ごみ出しのルールとマナー｜大泉町",
     "url": "https://www.town.oizumi.gunma.jp/s024/kurashi/010/010/090/20200723200709.html"
+   },
+   "decided": {
+    "at": "2026-11-02T09:17:13.183Z",
+    "action": "ok",
+    "reason": ""
    }
   },
   {
@@ -407,10 +482,15 @@
    "scope": "muni:10524",
    "question": "引っ越してきた人がはじめにする手続き（住民票・国民健康保険など）の案内は、どこで見られるか",
    "why": "はじめて使う情報源（www.town.oizumi.gunma.jp）。使ってよい範囲を人が確かめる",
-   "status": "pending",
+   "status": "ok",
    "source": {
     "title": "転入、転出、転居｜大泉町",
     "url": "https://www.town.oizumi.gunma.jp/s017/kurashi/020/050/030/20200804203647.html"
+   },
+   "decided": {
+    "at": "2026-11-02T09:17:21.784Z",
+    "action": "ok",
+    "reason": ""
    }
   },
   {
@@ -418,10 +498,15 @@
    "scope": "muni:10524",
    "question": "車を持たない人が使える町の交通（コミュニティバス・予約して乗る乗り物など）はあるか。予約先や時刻表はどこか",
    "why": "はじめて使う情報源（www.town.oizumi.gunma.jp）。使ってよい範囲を人が確かめる／確かめ役：資料と合わない所がある（「月〜金 7:00〜17:00」は資料では運行日・運行時間で、予約センターの受付時間とは書かれていない）",
-   "status": "pending",
+   "status": "ok",
    "source": {
     "title": "高齢者等デマンド交通運行事業",
     "url": "https://www.town.oizumi.gunma.jp/s014/kurashi/010/010/010/20200730120027.html"
+   },
+   "decided": {
+    "at": "2026-11-02T09:17:15.295Z",
+    "action": "ok",
+    "reason": ""
    }
   },
   {
@@ -429,10 +514,15 @@
    "scope": "muni:10524",
    "question": "外国から来た人向けの案内（外国語のページ・やさしい日本語・相談窓口）はあるか。どこで見られるか",
    "why": "Claude が返した元の文が、答えに使ったページの中に見つからなかった／はじめて使う情報源（www.town.oizumi.gunma.jp）。使ってよい範囲を人が確かめる",
-   "status": "pending",
+   "status": "ok",
    "source": {
     "title": "大泉町の多文化共生｜大泉町",
     "url": "https://www.town.oizumi.gunma.jp/s007/kurashi/010/030/100/20200812100640.html"
+   },
+   "decided": {
+    "at": "2026-11-02T09:17:16.181Z",
+    "action": "ok",
+    "reason": ""
    }
   },
   {
@@ -440,10 +530,15 @@
    "scope": "muni:10524",
    "question": "この町はどうやってできたか（合わさった町や村と、その年）",
    "why": "はじめて使う情報源（www.town.oizumi.gunma.jp）。使ってよい範囲を人が確かめる",
-   "status": "pending",
+   "status": "ok",
    "source": {
     "title": "大泉町の歴史",
     "url": "https://www.town.oizumi.gunma.jp/s005/gyosei/010/010/140/20220218115627.html"
+   },
+   "decided": {
+    "at": "2026-11-02T09:17:16.805Z",
+    "action": "ok",
+    "reason": ""
    }
   },
   {
@@ -451,10 +546,15 @@
    "scope": "muni:10524",
    "question": "この町で毎年ひらかれる大きな催しや祭りは何か。時期と場所",
    "why": "はじめて使う情報源（www.town.oizumi.gunma.jp）。使ってよい範囲を人が確かめる／確かめ役：資料と合わない所がある（「第54回」「令和8年9月26日（土）」「午後1時〜9時の予定」は、資料のどこにも書かれていません。）",
-   "status": "pending",
+   "status": "ok",
    "source": {
     "title": "大泉まつり｜大泉町",
     "url": "https://www.town.oizumi.gunma.jp/s020/kanko/010/030/20200825133615.html"
+   },
+   "decided": {
+    "at": "2026-11-02T09:17:17.461Z",
+    "action": "ok",
+    "reason": ""
    }
   },
   {
@@ -470,6 +570,38 @@
     "at": "2026-11-02T08:37:29.404Z",
     "action": "void",
     "reason": "CSV の読み違い：住所にカンマを含む行（ID 299）の列がずれ、津波の列を数えそこねた。正しくは 193 か所"
+   }
+  },
+  {
+   "id": "r00044",
+   "scope": "muni:10524",
+   "question": "この町が定めた町の花・町の木（あれば町の鳥も）は何か。定めた年と、載っている公式のページ",
+   "why": "Claude が返した元の文が、答えに使ったページの中に見つからなかった／はじめて使う情報源（www.town.oizumi.gunma.jp）。使ってよい範囲を人が確かめる",
+   "status": "ok",
+   "source": {
+    "title": "大泉町の木・町の花｜大泉町",
+    "url": "https://www.town.oizumi.gunma.jp/s006/gyosei/020/040/1287974347-3.html"
+   },
+   "decided": {
+    "at": "2026-11-02T09:17:17.945Z",
+    "action": "ok",
+    "reason": ""
+   }
+  },
+  {
+   "id": "r00045",
+   "scope": "muni:11227",
+   "question": "この町が定めた町の花・町の木（あれば町の鳥も）は何か。定めた年と、載っている公式のページ",
+   "why": "はじめて使う情報源（www.city.asaka.lg.jp）。使ってよい範囲を人が確かめる",
+   "status": "ok",
+   "source": {
+    "title": "市章・市の木・市の花 - 朝霞市",
+    "url": "https://www.city.asaka.lg.jp/soshiki/55/asaka-sisyou.html"
+   },
+   "decided": {
+    "at": "2026-11-02T09:17:18.768Z",
+    "action": "ok",
+    "reason": ""
    }
   }
  ]

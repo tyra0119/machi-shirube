@@ -47,6 +47,7 @@ function render() {
   $("n-auto").textContent = local ? all.filter((x) => x.status === "auto").length : autoCount;
   document.querySelectorAll(".r-tabs button").forEach((b) => b.setAttribute("aria-selected", String(b.dataset.tab === tab)));
 
+  renderSites();
   const list = all.filter((x) => inTab(x) && (!town || x.scope === town));
   $("summary").textContent = !local && tab === "auto" ? "自動で承認したものは、町のページの「確かめた答え」に出ています。" : "";
   if (!list.length) {
@@ -72,10 +73,63 @@ function render() {
   }
   if (local) wire();
 }
-// 1行に出す短い札
+// はじめて使うサイト：町ごとに1回だけ聞く（答えごとには聞かない）。決めると、そのサイトの答え全部に効く
+const FIRST_USE = /^はじめて使う情報源（(.+?)）/;
+const firstUseHost = (r) => r.match(FIRST_USE)?.[1];
+function pendingSites() {
+  const m = new Map();
+  for (const it of all.filter((x) => x.status === "pending" && (!town || x.scope === town))) {
+    for (const r of (it.why ?? "").split("／")) {
+      const host = firstUseHost(r);
+      if (!host) continue;
+      const k = `${it.scope} ${host}`;
+      if (!m.has(k)) m.set(k, { scope: it.scope, scopeName: it.scopeName ?? it.scope, host, items: [] });
+      m.get(k).items.push(it);
+    }
+  }
+  return [...m.values()];
+}
+function renderSites() {
+  const sites = local && tab === "pending" ? pendingSites() : [];
+  $("sites").hidden = !sites.length;
+  if (!sites.length) return;
+  $("sites").innerHTML = `
+    <h2>はじめて使うサイト（${sites.length}）</h2>
+    <p class="note">サイトごとに1回だけ決めます。「使ってよい」にすると、そのサイトから出した答え全部から、この判断が外れます（ほかに気になる所が無い答えは、そのまま自動で承認）。</p>
+    <ul class="site-list">${sites.map((x, i) => `
+      <li data-i="${i}">
+        <p class="site-name"><strong>${esc(x.host)}</strong>・${esc(x.scopeName)}・この町の答え ${x.items.length} 件で使っています</p>
+        <p class="site-todo">サイトの「このサイトについて」「著作権」「リンク・転載」の書き方を見てください。決まりが書いていないか、事実を使ってリンクするのがよい書き方なら「使ってよい」。転載を禁じていても、日付や数字などの事実とリンクだけなら出せます。</p>
+        <a class="open-src" href="https://${esc(x.host)}/" target="_blank" rel="noopener">サイトを開く ↗</a>
+        <div class="decide">
+          <button type="button" class="primary" data-site="ok">使ってよい<small>このサイトの答え ${x.items.length} 件に効く</small></button>
+          <button type="button" data-site="reject">使わない<small>理由を書いて、答えを出さない</small></button>
+          <form class="why-form" hidden><label class="field">理由を1行<input name="reason" maxlength="100" required></label><button type="submit">決める</button></form>
+        </div>
+      </li>`).join("")}</ul>`;
+  for (const li of $("sites").querySelectorAll("li[data-i]")) {
+    const x = sites[Number(li.dataset.i)];
+    const form = li.querySelector(".why-form");
+    li.querySelector('[data-site="ok"]').addEventListener("click", () => decideSite(x, "ok", ""));
+    li.querySelector('[data-site="reject"]').addEventListener("click", () => { form.hidden = false; form.reason.focus(); });
+    form.addEventListener("submit", (e) => { e.preventDefault(); decideSite(x, "reject", form.reason.value); });
+  }
+}
+async function decideSite(x, action, reason) {
+  const res = await fetch("api/sites", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ scope: x.scope, host: x.host, action, reason }) });
+  const body = await res.json();
+  if (!res.ok) return toast(`できませんでした：${body.error}`);
+  const auto = body.items.filter((i) => i.status === "auto").length;
+  await reload();
+  toast(action === "ok" ? `${x.host} を使ってよいにしました。${auto} 件が自動で承認、${body.items.length - auto} 件はほかの所を見てください` : `${x.host} を使わないにしました（${body.items.length} 件を出さない）`);
+}
+
+// 1行に出す短い札（はじめてのサイトは上でまとめて聞くので、札にしない）
 function tags(it) {
   if (it.status !== "pending") return [LABEL[it.status] ?? it.status];
-  return (it.why ?? "").split("／").filter((r) => r && !/^Claude のメモ/.test(r)).map((r) =>
+  const rs = (it.why ?? "").split("／").filter((r) => r && !/^Claude のメモ/.test(r) && !firstUseHost(r));
+  if (!rs.length) return ["サイトを決めれば出せる"];
+  return rs.map((r) =>
     /^はじめて使う情報源/.test(r) ? "はじめてのサイト" : /^確かめ役/.test(r) ? "確かめ役が気にした所" : /元の文/.test(r) ? "元の文が見つからない"
       : /町の人に聞く/.test(r) ? "見つからなかった" : /^数が合わない/.test(r) ? "数が合わない" : /公式のサイトでない/.test(r) ? "公式でない" : "そのほか");
 }
@@ -120,7 +174,9 @@ function guide(reason, it) {
 function itemHTML(it) {
   const srcLink = it.source?.url ? `<a class="open-src" href="${esc(it.source.url)}" target="_blank" rel="noopener">出典を開く ↗</a>` : "";
   const src = it.source ? `<p class="src">出典：${esc(it.source.title ?? it.source.url)}${it.source.where ? `（${esc(it.source.where)}）` : ""}${it.asOf ? `・時点 ${esc(it.asOf)}` : ""}</p>` : "";
-  const reasons = (it.why ?? "").split("／").filter((r) => r && !/^Claude のメモ/.test(r));
+  const firstUse = (it.why ?? "").split("／").map(firstUseHost).find(Boolean);
+  const reasons = (it.why ?? "").split("／").filter((r) => r && !/^Claude のメモ/.test(r) && !firstUseHost(r));
+  const siteNote = it.status === "pending" && firstUse ? `<p class="note">${esc(firstUse)} を使ってよいかは、上の「はじめて使うサイト」で決めてください。${reasons.length ? "" : "ほかに気になる所はありません。サイトを使ってよいにすると、この答えは自動で承認されます。"}</p>` : "";
   const todo = it.status === "pending" && reasons.length ? `
     <div class="todo-box">
       <p class="todo-head">判断してほしいこと</p>
@@ -145,7 +201,7 @@ function itemHTML(it) {
     <article class="item">
       ${it.value != null ? `<p class="value">${esc(it.value)}</p>` : ""}
       ${src}${srcLink}
-      ${todo}
+      ${siteNote}${todo}
       ${details ? `<details class="more"><summary>くわしく（元の文・Claude のメモ）</summary>${details}</details>` : ""}
       ${decided}${buttons}
     </article>`;

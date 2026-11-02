@@ -29,23 +29,60 @@ export function cardFor(scope, host) {
 function ensureCard(it, user) {
   const host = it.source?.url ? new URL(it.source.url).hostname : null;
   if (!host || cardFor(it.scope, host)) return null;
+  return addCard({ scope: it.scope, scopeName: it.scopeName, host, origin: new URL(it.source.url).origin, user, fromItem: it.id });
+}
+function addCard({ scope, scopeName, host, origin, user, fromItem, status = "ok", reason }) {
   const data = loadCards();
   const card = {
     id: `c${String(data.cards.length + 1).padStart(4, "0")}`,
-    scope: it.scope,
-    scopeName: it.scopeName,
+    scope,
+    scopeName,
     host,
-    title: `${it.scopeName ?? ""}の公式サイト`,
-    url: new URL(it.source.url).origin + "/",
-    license: "作者が使ってよいと確かめた（事実と出典のリンクを出す。文はそのまま写さない）",
-    status: "ok",
+    title: `${scopeName ?? ""}の公式サイト`,
+    url: origin + "/",
+    license: status === "ok" ? "作者が使ってよいと確かめた（事実と出典のリンクを出す。文はそのまま写さない）" : `使わない（${reason}）`,
+    status,
     approvedBy: user,
     approvedAt: new Date().toISOString(),
-    fromItem: it.id,
+    fromItem,
   };
   data.cards.push(card);
   fs.writeFileSync(CARDS, JSON.stringify(data, null, 1));
   return card;
+}
+
+// サイトごとに決める：はじめて使うサイトを、町（範囲）ごとに1回だけ「使ってよい」「使わない」と決める。
+// 使ってよい → そのサイトの確かめ待ちの答えから「はじめて使う情報源」の理由を外し、ほかに理由が無ければ自動で承認にする
+// 使わない → そのサイトの確かめ待ちの答えを、理由をつけて「出さない」にする（あとで1件ずつ元に戻せる）
+const FIRST_USE = /^はじめて使う情報源（(.+?)）/;
+export function decideSite(scope, host, action, { user = "owner", reason = "" } = {}) {
+  if (!can(user, "approve", scope)) throw Object.assign(new Error("この範囲を扱う権限がありません"), { status: 403 });
+  if (action !== "ok" && action !== "reject") throw Object.assign(new Error("分からない操作です"), { status: 400 });
+  if (action === "reject" && !reason.trim()) throw Object.assign(new Error("理由を1行書いてください"), { status: 400 });
+  const data = load();
+  const items = data.items.filter((x) => x.status === "pending" && x.scope === scope && (x.why ?? "").split("／").some((r) => r.match(FIRST_USE)?.[1] === host));
+  if (!items.length) throw Object.assign(new Error("そのサイトの確かめ待ちはありません"), { status: 404 });
+  const sample = items.find((x) => x.source?.url && new URL(x.source.url).hostname === host) ?? items[0];
+  const card = cardFor(scope, host) ?? addCard({ scope, scopeName: sample.scopeName, host, origin: `https://${host}`, user, fromItem: sample.id, status: action === "ok" ? "ok" : "rejected", reason: reason.trim() });
+  const at = new Date().toISOString();
+  for (const it of items) {
+    const from = it.status;
+    if (action === "ok") {
+      const rest = it.why.split("／").filter((r) => r.match(FIRST_USE)?.[1] !== host);
+      it.why = rest.length ? rest.join("／") : undefined;
+      // 残っているのが Claude のメモだけなら、人が見る理由は無い
+      it.status = rest.some((r) => !/^Claude のメモ/.test(r)) ? "pending" : "auto";
+      it.cardId = card.id;
+    } else {
+      it.status = "rejected";
+    }
+    const rec = { at, by: user, action: `site-${action}`, reason: action === "ok" ? `${host} を使ってよいと決めた（情報源カード ${card.id}）` : reason.trim(), from };
+    it.decisions.push(rec);
+    fs.appendFileSync(LOG, JSON.stringify({ id: it.id, scope: it.scope, ...rec }) + "\n");
+  }
+  save(data);
+  exportPublic(data);
+  return { card, items: items.map((x) => ({ id: x.id, status: x.status })) };
 }
 
 export function load() {
