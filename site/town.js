@@ -46,6 +46,44 @@ async function showTypes(code, stats, scopeNote) {
   $("types").innerHTML = typeCandidatesHTML(t, f, stats.summary);
 }
 
+// 確かめた答え（site/data/answers/{市区町村コード}.json。OK か自動で承認したものだけ）
+async function showAnswers(code, scopeNote) {
+  const res = await fetch(`data/answers/${code}.json`).catch(() => null);
+  if (!res?.ok) return;
+  const { answers } = await res.json();
+  if (!answers.length) return;
+  $("answers-scope").textContent = scopeNote;
+  $("answers").innerHTML = `<ul class="answers">${answers.map((a) => `
+    <li>
+      <p class="q">${esc(a.question)}</p>
+      <p class="a">${esc(a.value)}</p>
+      <p class="src">出典：${a.source?.url ? `<a href="${esc(a.source.url)}" target="_blank" rel="noopener">${esc(a.source.title ?? a.source.url)}</a>` : esc(a.source?.title ?? "")}${a.source?.where ? `（${esc(a.source.where)}）` : ""}${a.asOf ? `・時点 ${esc(a.asOf)}` : ""}・${a.status === "auto" ? "自動で承認" : "人が確かめた"}</p>
+    </li>`).join("")}</ul>`;
+}
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+
+// 調べる（手元の画面だけ）。手元のサーバーが Claude を呼び、答えを確かめる一覧に入れる
+async function researchBox(code) {
+  if (!(await fetch("api/ping").then((r) => r.ok).catch(() => false))) return;
+  $("research-block").hidden = false;
+  const form = $("research-form");
+  form.question.value = "この町の指定緊急避難場所の一覧は、どこで見られるか（公式のページか資料）。全部でいくつあるか";
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const button = form.querySelector("button");
+    button.disabled = true;
+    button.textContent = "調べています…（1分ほど）";
+    $("research-steps").innerHTML = `<li>${new Date().toLocaleTimeString("ja-JP")} 始めました</li>`;
+    const res = await fetch("api/research", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ code, question: form.question.value }) });
+    const body = await res.json();
+    $("research-steps").innerHTML = res.ok
+      ? body.steps.map((s) => `<li>${esc(s)}</li>`).join("") + `<li>答え：${esc(body.value)}（$${body.usd.toFixed(3)}）</li><li>${body.status === "auto" ? "自動で承認しました" : `確かめる一覧に入りました：<a href="review.html">確かめる一覧へ</a>`}</li>`
+      : `<li>できませんでした：${esc(body.error)}</li>`;
+    button.disabled = false;
+    button.textContent = "この問いを調べる";
+  });
+}
+
 async function main() {
   const stats = await getJSON("data/stats.json");
   if (q.get("muni")) return muniPage(q.get("muni"), stats);
@@ -99,6 +137,7 @@ async function main() {
     + (list.some((p) => p.ageHidden || p.foreignHidden || p.householdHidden) ? "一部の数字は、住む人が少ないため国勢調査で隠されています。" : "");
 
   await showTypes(code, stats, `いまは${muniName}全体の数字から選んだ候補です。この町・字の深い調べは、町を調べるときに。`);
+  await showAnswers(code, `${muniName}全体についての答えです。`);
   const index = await getJSON("data/towns/index.json");
   sources([`${index.source}（${index.asOf}）`, `${stats.source.name}（${stats.source.asOf}）を加工（届きにくい人の候補）`, BASEMAP]);
   drawMap(chosen);
@@ -122,6 +161,8 @@ async function muniPage(code, stats) {
   }).join("");
   $("feature-note").textContent = `全国の市区町村 ${stats.peers.toLocaleString("ja-JP")} と比べています。`;
   await showTypes(code, stats, "");
+  await showAnswers(code, "");
+  await researchBox(code);
   sources([`${stats.source.name}（${stats.source.asOf}。増減は${stats.source.changePeriod}）を加工`, N03, BASEMAP]);
   const topo = await getJSON("data/japan.topo.json");
   drawMap(topojson.feature(topo, topo.objects.municipalities).features.filter((f) => f.properties.code === code));

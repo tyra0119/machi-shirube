@@ -9,6 +9,7 @@ import http from "node:http";
 import fs from "node:fs";
 import path from "node:path";
 import * as ledger from "./ledger.mjs";
+import { research } from "./research.mjs";
 
 const ROOT = path.resolve("site");
 const AREAS = path.join(ROOT, "data", "areas.json");
@@ -57,6 +58,22 @@ async function saveArea(req, res) {
   send(res, 200, area);
 }
 
+// 町を調べる（API の鍵を使うので、鍵が読めるときだけ。npm run serve:research で .env を読んで動かす）
+async function startResearch(req, res) {
+  if (!process.env.ANTHROPIC_API_KEY) return send(res, 400, { error: "調べるには npm run serve:research で動かしてください（.env の鍵を読む）" });
+  let body = "";
+  for await (const chunk of req) body += chunk;
+  try {
+    const { code, question } = JSON.parse(body || "{}");
+    if (!/^\d{5}$/.test(code ?? "")) return send(res, 400, { error: "市区町村コードが正しくありません" });
+    if (!ledger.can("owner", "request", `muni:${code}`)) return send(res, 403, { error: "この範囲を調べる権限がありません" });
+    const r = await research(code, question ? String(question).slice(0, 200) : undefined, { log: () => {} });
+    send(res, 200, { id: r.item.id, status: r.item.status, value: r.item.value, why: r.item.why, usd: r.usd, steps: r.steps.map((s) => s.text) });
+  } catch (e) {
+    send(res, 500, { error: e.message });
+  }
+}
+
 async function decideItem(req, res, id) {
   let body = "";
   for await (const chunk of req) body += chunk;
@@ -74,6 +91,7 @@ http
     if (url.pathname === "/api/ping") return send(res, 200, { local: true });
     if (url.pathname === "/api/areas" && req.method === "POST") return saveArea(req, res);
     if (url.pathname === "/api/review" && req.method === "GET") return send(res, 200, ledger.load());
+    if (url.pathname === "/api/research" && req.method === "POST") return startResearch(req, res);
     const m = url.pathname.match(/^\/api\/review\/(r\d{5})$/);
     if (m && req.method === "POST") return decideItem(req, res, m[1]);
     let file = path.join(ROOT, decodeURIComponent(url.pathname));

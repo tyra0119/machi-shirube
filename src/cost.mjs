@@ -11,6 +11,9 @@ const PRICES = {
 
 const LOG = path.join("local", "costs.jsonl");
 
+// Web 検索は 1,000回で $10（1回 $0.01）。web_fetch はトークンの分だけ
+const WEB_SEARCH_USD = 0.01;
+
 // キャッシュの読み出しは入力の 0.1 倍、書き込みは 1.25 倍で数える
 export function costOf(model, usage) {
   const p = PRICES[model];
@@ -19,8 +22,12 @@ export function costOf(model, usage) {
     (usage.input_tokens ?? 0) +
     (usage.cache_read_input_tokens ?? 0) * 0.1 +
     (usage.cache_creation_input_tokens ?? 0) * 1.25;
-  return (input * p.input + (usage.output_tokens ?? 0) * p.output) / 1_000_000;
+  const searches = usage.server_tool_use?.web_search_requests ?? 0;
+  return (input * p.input + (usage.output_tokens ?? 0) * p.output) / 1_000_000 + searches * WEB_SEARCH_USD;
 }
+
+// 1日の費用の上限（作品の中で止める。Console のワークスペースの上限とは別）
+export const DAILY_LIMIT_USD = 5;
 
 // 1回の呼び出しを記録して、その回の費用を返す。what は人が読める「何のための呼び出しか」
 export function record(model, usage, what) {

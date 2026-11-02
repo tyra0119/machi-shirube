@@ -39,6 +39,22 @@
     <p class="note" id="types-scope"></p>
     <div id="types"></div>
   </section>
+  <section class="block" id="answers-block">
+    <h2>確かめた答え</h2>
+    <p class="note" id="answers-scope"></p>
+    <div id="answers"><p class="note">まだありません。町を調べて、人が確かめた（または自動で承認した）答えがここに出ます。</p></div>
+  </section>
+
+  <section class="block local-only" id="research-block" hidden>
+    <h2>調べる（手元の画面だけ）</h2>
+    <form id="research-form">
+      <label class="field">問い<textarea name="question" rows="3"></textarea></label>
+      <button type="submit" class="primary as-wide">この問いを調べる</button>
+    </form>
+    <p class="note">Claude が公式のサイト（lg.jp・go.jp）だけを探して読み、出典つきで答えます。答えは確かめる一覧に入ります。1回 数十セントかかります。</p>
+    <ol id="research-steps" class="steps-log"></ol>
+  </section>
+
   <section class="block todo">
     <h2>深掘り</h2>
     <p>まだ調べていません。町の特色と「届きにくい人」から、この町に合った深掘り（例：わが家の避難・母語で防災）を作ります。</p>
