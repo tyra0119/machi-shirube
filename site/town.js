@@ -234,6 +234,16 @@ async function showChanges(code, part) {
   for (const a of $("changes").querySelectorAll("a[data-target]")) if (a.dataset.target) a.addEventListener("click", () => setTimeout(() => $(a.dataset.target)?.scrollIntoView({ behavior: "smooth", block: "start" }), 50));
 }
 
+// 町のことが分かるほかのサイト（公式ではない。scripts/local-sites.mjs で AI が探し、作者が使ってよいとしたものだけ）。リンクと短い紹介
+async function showLocalSites(code) {
+  const d = await fetch(`data/local-sites/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  if (!d?.sites?.length) return;
+  $("local-block").hidden = false;
+  const short = (x) => String(x ?? "").replace(/[（(][^）)]*[）)]/g, "").trim(); // AI が添えた「〜の記載による」などの注記は外す
+  $("local-sites").innerHTML = d.sites.map((s) => `<li><a href="${esc(s.url)}" target="_blank" rel="noopener"><strong>${icon("link")}${esc(s.name)}</strong><span class="k">${esc(short(s.kind))}${s.operator && !/分からない/.test(s.operator) ? `・${esc(short(s.operator))}` : ""}</span><span class="u">${esc(s.use)}</span></a></li>`).join("");
+  $("local-note").textContent = `${T(d.note)}。${T("公式の情報ではありません。")}`;
+}
+
 // 昔の災害を伝える碑（国土地理院 自然災害伝承碑。scripts/build-lore.mjs）。碑の文は公開のまま出す。町の碑がなければ近くの町の碑
 async function showLore(code) {
   const d = await fetch(`data/lore/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
@@ -971,6 +981,7 @@ async function finishPage(code, townFeatures, startPart, scopeNote, at) {
   await showShopAccess(code);
   await showFuture(code);
   await showClimate(code);
+  await showLocalSites(code);
   const hasHinan = await showHinan(code, townFeatures, startPart);
   await showTranslations(code);
   await showGomi(code);

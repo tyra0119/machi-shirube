@@ -293,7 +293,7 @@ export function exportPublic(data = load()) {
   fs.mkdirSync(ldir, { recursive: true });
   const locals = new Map();
   for (const it of data.items.filter((x) => x.kind === "local-site" && x.status === "ok")) {
-    const code = it.scope.match(/(d{5})/)?.[1];
+    const code = it.scope.match(/(\d{5})/)?.[1];
     if (!locals.has(code)) locals.set(code, []);
     const { name, url, kind, operator, use } = it.site;
     locals.get(code).push({ name, url, kind, operator, use, host: it.host, approvedAt: it.decisions.at(-1)?.at });

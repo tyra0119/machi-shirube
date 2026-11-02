@@ -443,6 +443,13 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .ch-list a:hover { background: var(--town-tint, var(--bg)); }
 .ch-what { flex: none; padding: 1px 8px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); font-size: 12px; font-weight: 700; }
 .ch-what.up { border-color: var(--accent); color: var(--accent); }
+/* 町のことが分かるほかのサイト */
+.local-list { margin: 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 8px; }
+.local-list a { display: flex; flex-direction: column; gap: 2px; height: 100%; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); color: var(--text); text-decoration: none; }
+.local-list strong { display: flex; align-items: center; gap: 6px; font-size: 15px; }
+.local-list strong svg { width: 16px; height: 16px; color: var(--accent); }
+.local-list .k { font-size: 12px; color: var(--text-sub); }
+.local-list .u { font-size: 13px; line-height: 1.6; }
 /* 昔の災害を伝える碑 */
 .lore-list { margin: 8px 0 0; padding: 0; list-style: none; display: grid; gap: 10px; }
 .lore-list li { display: flex; flex-direction: column; gap: 4px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }

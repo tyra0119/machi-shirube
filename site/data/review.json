@@ -1,9 +1,9 @@
 {
- "updatedAt": "2026-11-02T22:55:07.844Z",
+ "updatedAt": "2026-11-02T23:02:17.567Z",
  "counts": {
   "auto": 28,
-  "ok": 90,
-  "pending": 4,
+  "ok": 94,
+  "pending": 0,
   "fix": 1,
   "rejected": 2,
   "unknown": 0
@@ -2563,11 +2563,16 @@
    "kind": "local-site",
    "question": "このサイトを、町のことが分かるほかのサイト（公式ではない）として使ってよいか",
    "why": "公式ではないサイト。運営者と利用の条件を見て、町を知るページのリンクと、話題・催しの答えの出典に使ってよいかを決める（防災・医療・手続きには使わない）",
-   "status": "pending",
-   "score": null,
+   "status": "ok",
+   "score": 2,
    "source": {
     "title": "黒潮町観光公式サイト",
     "url": "https://kuroshio-kanko.net/"
+   },
+   "decided": {
+    "at": "2026-11-02T23:01:16.377Z",
+    "action": "ok",
+    "reason": ""
    }
   },
   {
@@ -2577,11 +2582,16 @@
    "kind": "local-site",
    "question": "このサイトを、町のことが分かるほかのサイト（公式ではない）として使ってよいか",
    "why": "公式ではないサイト。運営者と利用の条件を見て、町を知るページのリンクと、話題・催しの答えの出典に使ってよいかを決める（防災・医療・手続きには使わない）",
-   "status": "pending",
-   "score": null,
+   "status": "ok",
+   "score": 2,
    "source": {
     "title": "砂浜美術館（NPO砂浜美術館）",
     "url": "https://sunabi.com/"
+   },
+   "decided": {
+    "at": "2026-11-02T23:01:19.557Z",
+    "action": "ok",
+    "reason": ""
    }
   },
   {
@@ -2591,11 +2601,16 @@
    "kind": "local-site",
    "question": "このサイトを、町のことが分かるほかのサイト（公式ではない）として使ってよいか",
    "why": "公式ではないサイト。運営者と利用の条件を見て、町を知るページのリンクと、話題・催しの答えの出典に使ってよいかを決める（防災・医療・手続きには使わない）",
-   "status": "pending",
-   "score": null,
+   "status": "ok",
+   "score": 2,
    "source": {
     "title": "黒潮町商工会",
     "url": "https://r.goope.jp/srb-kuroshio/"
+   },
+   "decided": {
+    "at": "2026-11-02T23:01:21.035Z",
+    "action": "ok",
+    "reason": ""
    }
   },
   {
@@ -2605,11 +2620,16 @@
    "kind": "local-site",
    "question": "このサイトを、町のことが分かるほかのサイト（公式ではない）として使ってよいか",
    "why": "公式ではないサイト。運営者と利用の条件を見て、町を知るページのリンクと、話題・催しの答えの出典に使ってよいかを決める（防災・医療・手続きには使わない）",
-   "status": "pending",
-   "score": null,
+   "status": "ok",
+   "score": 2,
    "source": {
     "title": "大方ホエールウォッチング",
     "url": "https://nitarikujira.com/"
+   },
+   "decided": {
+    "at": "2026-11-02T23:01:22.812Z",
+    "action": "ok",
+    "reason": ""
    }
   }
  ]

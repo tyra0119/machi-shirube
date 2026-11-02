@@ -26,6 +26,46 @@
    "license": "作者が使ってよいと確かめた（事実と出典のリンクを出す。文はそのまま写さない）",
    "status": "ok",
    "approvedAt": "2026-11-02T22:37:40.098Z"
+  },
+  {
+   "id": "c0006",
+   "host": "kuroshio-kanko.net",
+   "title": "黒潮町観光公式サイト",
+   "url": "https://kuroshio-kanko.net/",
+   "license": "作者が使ってよいとした、公式ではない町の情報サイト。話題・催しなどの答えの出典とリンクにだけ使う（防災・医療・手続きには使わない。文はそのまま写さない）",
+   "status": "ok",
+   "approvedAt": "2026-11-02T23:01:16.378Z",
+   "local": true
+  },
+  {
+   "id": "c0007",
+   "host": "sunabi.com",
+   "title": "砂浜美術館（NPO砂浜美術館）",
+   "url": "https://sunabi.com/",
+   "license": "作者が使ってよいとした、公式ではない町の情報サイト。話題・催しなどの答えの出典とリンクにだけ使う（防災・医療・手続きには使わない。文はそのまま写さない）",
+   "status": "ok",
+   "approvedAt": "2026-11-02T23:01:19.557Z",
+   "local": true
+  },
+  {
+   "id": "c0008",
+   "host": "r.goope.jp",
+   "title": "黒潮町商工会",
+   "url": "https://r.goope.jp/",
+   "license": "作者が使ってよいとした、公式ではない町の情報サイト。話題・催しなどの答えの出典とリンクにだけ使う（防災・医療・手続きには使わない。文はそのまま写さない）",
+   "status": "ok",
+   "approvedAt": "2026-11-02T23:01:21.036Z",
+   "local": true
+  },
+  {
+   "id": "c0009",
+   "host": "nitarikujira.com",
+   "title": "大方ホエールウォッチング",
+   "url": "https://nitarikujira.com/",
+   "license": "作者が使ってよいとした、公式ではない町の情報サイト。話題・催しなどの答えの出典とリンクにだけ使う（防災・医療・手続きには使わない。文はそのまま写さない）",
+   "status": "ok",
+   "approvedAt": "2026-11-02T23:01:22.812Z",
+   "local": true
   }
  ]
 }
