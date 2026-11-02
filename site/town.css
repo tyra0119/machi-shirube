@@ -219,3 +219,5 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .hazard-legend .src { width: 100%; }
 .hinan-here { margin: 8px 0 0; padding: 8px 12px; border-radius: 8px; background: var(--bg); font-size: 15px; }
 .hinan-list .warn { color: #b3261e; }
+.answers .outdated { margin: 6px 0 0; padding: 6px 10px; border-left: 4px solid #c58a00; background: #fff6dd; color: #4a3500; font-size: 14px; }
+.answers .outdated a { color: #6b4a00; }

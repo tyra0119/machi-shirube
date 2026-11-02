@@ -58,8 +58,9 @@ const SYSTEM = `あなたは、日本の町の暮らしの情報を、公式の�
 - 答えに使ったページが複数あるときは、いちばん大事な1つを source に、ほかを sources に並べてください（あとで機械が全部を読み直して照らします）
 - 数字には、その資料に書かれた時点（例：令和7年4月1日現在）を asOf に入れてください。書かれていなければ空にしてください
 - CSV の行を数えて数を答えたときは、count に数と CSV の URL を入れてください（あとで機械が数え直して照らします）
+- 公式の資料どうしで、同じことについて古いものと新しいもの（例：町の想定は平成24年、県が令和7年に新しい想定を出した）に気づいたら、outdated に入れてください。古いほうの時点と URL、新しいほうの時点と URL を、資料に書かれたとおりに。無ければ null
 - 最後に、次の形の JSON を <answer> と </answer> のあいだに1つだけ書いてください
-{"found": true|false, "value": "答え（短く）", "asOf": "時点", "source": {"title": "資料やページの名前", "url": "出典の URL", "where": "どこか（ページ番号や見出し）"}, "sources": [{"title": "ほかに使ったページ", "url": "URL"}], "quote": "元の文", "count": {"number": 数, "csvUrl": "数えた CSV の URL"} または null, "note": "気づいたこと（使ってよい範囲の書き方など。なければ空）"}`;
+{"found": true|false, "value": "答え（短く）", "asOf": "時点", "source": {"title": "資料やページの名前", "url": "出典の URL", "where": "どこか（ページ番号や見出し）"}, "sources": [{"title": "ほかに使ったページ", "url": "URL"}], "quote": "元の文", "count": {"number": 数, "csvUrl": "数えた CSV の URL"} または null, "outdated": {"what": "何が古いか", "old": {"asOf": "時点", "url": "URL"}, "new": {"asOf": "時点", "url": "URL"}} または null, "note": "気づいたこと（使ってよい範囲の書き方など。なければ空）"}`;
 
 export async function research(code, question = DEFAULT_QUESTION, { log = console.log, qid, hint, redoOf } = {}) {
   const stats = JSON.parse(fs.readFileSync("site/data/stats.json", "utf8"));
@@ -137,6 +138,7 @@ export async function research(code, question = DEFAULT_QUESTION, { log = consol
     quoteUrl,
     verified,
     counted: counted ?? undefined,
+    outdated: a.outdated?.what ? a.outdated : undefined,
     check,
     note: a.note || undefined,
     cardId: card?.id,
@@ -157,6 +159,8 @@ export async function research(code, question = DEFAULT_QUESTION, { log = consol
 // 自動の条件：公式のサイト・情報源カードが OK・元の文がある・（数えたなら）数が合う・確かめ役が「合っている」と言う
 export async function assess({ a, content, code, question, step = () => {}, domains = OFFICIAL }) {
   const why = [];
+  // 古いデータの見込み（公式の資料どうしで、古いものと新しいものがある）は、いつも人が確かめる
+  if (a.outdated?.what) why.push(`古いデータの見込み：${a.outdated.what}（古い：${a.outdated.old?.asOf ?? "?"}、新しい：${a.outdated.new?.asOf ?? "?"}）`);
   if (!a.found) why.push("公開の資料で答えが見つからなかった（町の人に聞くことの候補）");
   const url = a.source?.url ?? "";
   const host = url ? new URL(url).hostname : "";

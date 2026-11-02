@@ -168,7 +168,7 @@ export function decide(id, action, { user = "owner", reason = "" } = {}) {
 }
 
 // 公開してよいものだけを書き出す
-const PUBLIC_FIELDS = ["id", "qid", "scope", "question", "value", "asOf", "source", "method", "status"];
+const PUBLIC_FIELDS = ["id", "qid", "scope", "question", "value", "asOf", "source", "method", "status", "outdated"];
 const pick = (it) => ({ ...Object.fromEntries(PUBLIC_FIELDS.filter((k) => it[k] !== undefined).map((k) => [k, it[k]])), checkedAt: it.createdAt });
 export function exportPublic(data = load()) {
   const byMuni = new Map();
