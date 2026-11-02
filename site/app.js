@@ -57,11 +57,13 @@ map.on("load", async () => {
     minzoom: 5,
     maxzoom: 18,
   });
-  map.addLayer({ id: "gsi-pale", type: "raster", source: "gsi-pale", minzoom: 7 });
+  map.addLayer({ id: "gsi-pale", type: "raster", source: "gsi-pale", minzoom: 7, layout: { visibility: basemapOn ? "visible" : "none" } });
   map.addSource("munis", { type: "geojson", data: munis, promoteId: "code" });
   map.addSource("prefs", { type: "geojson", data: prefLines });
   map.addSource("labels", { type: "geojson", data: { type: "FeatureCollection", features: labels.features.filter((f) => f.geometry) } });
   map.addLayer({ id: "muni-fill", type: "fill", source: "munis" });
+  // 境目は、背景の地図の上でも見えるよう白い縁取りの上に濃い線を引く
+  map.addLayer({ id: "muni-casing", type: "line", source: "munis", minzoom: 7 });
   map.addLayer({ id: "muni-line", type: "line", source: "munis" });
   map.addLayer({ id: "pref-line", type: "line", source: "prefs" });
   map.addLayer({
@@ -119,13 +121,14 @@ async function showTowns(code) {
   else {
     map.addSource("towns", { type: "geojson", data: townData, promoteId: "town" });
     map.addLayer({ id: "town-fill", type: "fill", source: "towns" }, "pref-line");
+    map.addLayer({ id: "town-casing", type: "line", source: "towns" }, "pref-line");
     map.addLayer({ id: "town-line", type: "line", source: "towns" }, "pref-line");
     map.addLayer({
       id: "town-label", type: "symbol", source: "towns", minzoom: 11,
       layout: { "text-field": ["get", "name"], "text-font": ["sans"], "text-size": 13, "text-padding": 2 },
     });
   }
-  for (const id of ["town-fill", "town-line", "town-label"]) map.setLayoutProperty(id, "visibility", "visible");
+  for (const id of TOWN_LAYERS) map.setLayoutProperty(id, "visibility", "visible");
   map.setLayoutProperty("muni-label", "visibility", "none");
   shownTowns = code;
   paintTowns();
@@ -139,7 +142,7 @@ async function showTowns(code) {
 function hideTowns() {
   if (!shownTowns) return;
   const code = shownTowns;
-  for (const id of ["town-fill", "town-line", "town-label"]) map.setLayoutProperty(id, "visibility", "none");
+  for (const id of TOWN_LAYERS) map.setLayoutProperty(id, "visibility", "none");
   map.setLayoutProperty("muni-label", "visibility", "visible");
   if (selectedTown) map.setFeatureState({ source: "towns", id: selectedTown }, { selected: false });
   selectedTown = null;
@@ -153,15 +156,38 @@ function hideTowns() {
 document.querySelector("#crumb .back").addEventListener("click", hideTowns);
 addEventListener("keydown", (e) => e.key === "Escape" && hideTowns());
 
+const TOWN_LAYERS = ["town-fill", "town-casing", "town-line", "town-label"];
 const isSelected = ["boolean", ["feature-state", "selected"], false];
 function paintTowns() {
   if (!map.getLayer("town-fill")) return;
   map.setPaintProperty("town-fill", "fill-color", ["case", isSelected, color("--accent"), color("--land")]);
-  map.setPaintProperty("town-fill", "fill-opacity", ["case", isSelected, 0.45, 0.15]);
-  map.setPaintProperty("town-line", "line-color", color("--pref-line"));
-  map.setPaintProperty("town-line", "line-width", 1);
+  map.setPaintProperty("town-fill", "fill-opacity", basemapOn ? ["case", isSelected, 0.45, 0.15] : ["case", isSelected, 0.9, 1]);
+  map.setPaintProperty("town-casing", "line-color", color("--land"));
+  map.setPaintProperty("town-casing", "line-width", 4);
+  map.setPaintProperty("town-casing", "line-opacity", basemapOn ? 0.9 : 0);
+  map.setPaintProperty("town-line", "line-color", color("--text"));
+  map.setPaintProperty("town-line", "line-width", 1.5);
   paintLabel("town-label");
 }
+
+// 背景の地図を出す・消す（どちらにしたかは、この端末に覚えておく）
+let basemapOn = true;
+try { basemapOn = localStorage.getItem("basemap") !== "off"; } catch {}
+const basemapButton = document.getElementById("basemap");
+function showBasemapState() {
+  basemapButton.textContent = basemapOn ? "背景の地図：表示中" : "背景の地図：非表示";
+  basemapButton.setAttribute("aria-pressed", String(basemapOn));
+}
+showBasemapState();
+basemapButton.addEventListener("click", () => {
+  basemapOn = !basemapOn;
+  try { localStorage.setItem("basemap", basemapOn ? "on" : "off"); } catch {}
+  showBasemapState();
+  if (!map.getLayer("gsi-pale")) return;
+  map.setLayoutProperty("gsi-pale", "visibility", basemapOn ? "visible" : "none");
+  paint();
+  paintTowns();
+});
 function paintLabel(id) {
   map.setPaintProperty(id, "text-color", color("--text"));
   map.setPaintProperty(id, "text-halo-color", color("--land"));
@@ -177,19 +203,22 @@ function paint() {
     ["boolean", ["feature-state", "hover"], false], color("--line"),
     color("--land"),
   ]);
-  // 拡大すると背景の地図が透けて見えるよう、町の塗りを薄くする
-  map.setPaintProperty("muni-fill", "fill-opacity", [
-    "interpolate", ["linear"], ["zoom"],
-    7, ["case", isSelected, 1, 1],
-    9, ["case", isSelected, 0.45, 0.15],
-  ]);
+  // 拡大すると背景の地図が透けて見えるよう、町の塗りを薄くする（背景を消したときは塗ったまま）
+  map.setPaintProperty("muni-fill", "fill-opacity", basemapOn
+    ? ["interpolate", ["linear"], ["zoom"], 7, ["case", isSelected, 1, 1], 9, ["case", isSelected, 0.45, 0.15]]
+    : 1);
+  // 背景を出しているときは、大きく拡大したら名前を背景の地名に任せる
+  map.setLayerZoomRange("muni-label", 7, basemapOn ? 10 : 24);
+  map.setPaintProperty("muni-casing", "line-color", color("--land"));
+  map.setPaintProperty("muni-casing", "line-width", ["interpolate", ["linear"], ["zoom"], 7, 2, 12, 6]);
+  map.setPaintProperty("muni-casing", "line-opacity", basemapOn ? ["interpolate", ["linear"], ["zoom"], 7, 0, 9, 0.9] : 0);
   const dark = matchMedia("(prefers-color-scheme: dark)").matches && document.documentElement.dataset.theme !== "light";
   map.setPaintProperty("gsi-pale", "raster-brightness-max", dark ? 0.4 : 1);
   map.setPaintProperty("gsi-pale", "raster-saturation", dark ? -0.6 : 0);
   map.setPaintProperty("gsi-pale", "raster-opacity", ["interpolate", ["linear"], ["zoom"], 7, 0, 8.5, 1]);
   map.setPaintProperty("muni-line", "line-color", color("--pref-line"));
-  map.setPaintProperty("muni-line", "line-opacity", ["interpolate", ["linear"], ["zoom"], 4, 0.35, 9, 0.8]);
-  map.setPaintProperty("muni-line", "line-width", ["interpolate", ["linear"], ["zoom"], 4, 0.2, 9, 1.2]);
+  map.setPaintProperty("muni-line", "line-opacity", ["interpolate", ["linear"], ["zoom"], 4, 0.35, 9, 1]);
+  map.setPaintProperty("muni-line", "line-width", ["interpolate", ["linear"], ["zoom"], 4, 0.2, 9, 1.5, 12, 3]);
   map.setPaintProperty("pref-line", "line-color", color("--pref-line"));
   map.setPaintProperty("pref-line", "line-width", ["interpolate", ["linear"], ["zoom"], 4, 0.6, 9, 2]);
   paintLabel("muni-label");

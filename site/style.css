@@ -85,6 +85,14 @@ body {
 main { position: relative; flex: 1; min-height: 0; }
 #map { position: absolute; inset: 0; background: var(--sea); }
 
+.basemap {
+  position: absolute; right: 12px; top: 12px; min-height: 44px; padding: 0 16px;
+  border: 1px solid var(--line); border-radius: 22px; background: var(--surface); color: var(--text);
+  font-size: 14px; box-shadow: var(--shadow); cursor: pointer;
+}
+.basemap:hover { background: var(--bg); }
+.basemap[aria-pressed="false"] { color: var(--text-sub); }
+.source a { color: inherit; }
 .source {
   position: absolute; left: 8px; bottom: 6px; margin: 0; max-width: calc(100% - 90px);
   padding: 2px 6px; font-size: 11px; color: var(--text-sub);
