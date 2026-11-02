@@ -467,3 +467,11 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .layer-map { height: min(70vh, 560px); }
 .layer-legend { margin: 10px 0 0; padding: 0; list-style: none; display: grid; gap: 6px; font-size: 13px; line-height: 1.6; }
 .layer-legend .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin: 0 2px 0 6px; vertical-align: middle; }
+/* 防災計画の、この地区に関係する所 */
+.plan-points { margin: 8px 0; padding: 0; list-style: none; display: grid; gap: 10px; counter-reset: pp; }
+.plan-points li { padding: 10px 12px 10px 40px; border-radius: 10px; background: var(--bg); position: relative; }
+.plan-points li::before { counter-increment: pp; content: counter(pp); position: absolute; left: 12px; top: 11px; width: 20px; height: 20px; border-radius: 50%; background: var(--accent); color: #fff; font-size: 12px; font-weight: 700; display: grid; place-items: center; }
+.plan-points p { margin: 0 0 6px; line-height: 1.7; }
+.plan-points .cite { display: inline-block; margin: 0 6px 0 0; padding: 2px 8px; border-radius: 999px; border: 1px solid var(--line); background: var(--surface); font-size: 12px; text-decoration: none; color: var(--text); }
+#plan-pick { margin-bottom: 8px; }
+#plan-part { display: block; width: 100%; max-width: 360px; min-height: 44px; margin-top: 4px; padding: 0 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--text); font-size: 16px; }

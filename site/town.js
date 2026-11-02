@@ -152,6 +152,33 @@ async function showFloodPop(code, part) {
 }
 const depthColor = (label) => { const c = DEPTH_COLORS.find(([, l]) => l === label)?.[0] ?? (label === "警戒区域" ? [214, 170, 110] : [200, 200, 200]); return `rgb(${c.join(",")})`; };
 
+// 防災計画の、町・字に関係する所（scripts/plan-excerpts.mjs。Claude が引用つきで抜き出し、人が確かめてから出す）
+async function showPlan(code, part) {
+  const d = await fetch(`data/plan/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  if (!d) return;
+  $("plan-block").hidden = false;
+  const src = d.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join("・");
+  if (d.status !== "ok" && d.status !== "auto") {
+    $("plan-pick").hidden = true;
+    $("plan").innerHTML = `<p class="gomi-today">${icon("eye")} ${T("防災計画から町・字ごとに抜き出したものを、いま人が確かめています（元のページと合っているか）。それまでは町の防災計画をご覧ください。")}</p>`;
+    $("plan-note").innerHTML = src;
+    return;
+  }
+  const keys = Object.keys(d.parts);
+  const sel = $("plan-part");
+  $("plan-pick").hidden = false;
+  sel.innerHTML = keys.map((k) => `<option value="${k}">${esc(d.parts[k].name)}（${d.parts[k].points.length}）</option>`).join("");
+  if (part && d.parts[part.properties.part]) { sel.value = part.properties.part; $("plan-pick").hidden = true; }
+  const draw = () => {
+    const p = d.parts[sel.value];
+    $("plan").innerHTML = p ? `<ol class="plan-points">${p.points.map((x) => `<li><p>${esc(x.text)}</p>${x.cites.map((c) => `<a class="cite" href="${esc(c.url)}#page=${c.page}" target="_blank" rel="noopener" title="${esc(c.quote)}">${esc(c.doc.replace(/^.*?（.*?）/, ""))} ${c.page}${T("ページ")}</a>`).join("")}</li>`).join("")}</ol>`
+      : `<p>${T("この町・字の名前が出てくる所は、防災計画に見つかりませんでした。")}</p>`;
+  };
+  sel.addEventListener("change", draw);
+  draw();
+  $("plan-note").innerHTML = `${esc(T(d.note))}。${src}`;
+}
+
 // 大きな地震の揺れの確率（J-SHIS × 250m 四方の人口。scripts/build-quake-pop.mjs が作る）
 async function showQuake(code, part) {
   const d = await fetch(`data/quake-pop/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
@@ -805,6 +832,7 @@ async function finishPage(code, townFeatures, startPart, scopeNote, at) {
   }
   showLayerMap(code, townFeatures, at, esc);
   await showFloodPop(code, part);
+  await showPlan(code, part);
   await showQuake(code, part);
   await showBus(code, part);
   await showAccidents(code, part);

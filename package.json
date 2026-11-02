@@ -36,7 +36,8 @@
     "build:quake-pop": "node scripts/build-quake-pop.mjs",
     "build:shop-access": "node scripts/build-shop-access.mjs",
     "build:future": "node scripts/build-future.mjs",
-    "build:bus": "node scripts/build-bus.mjs"
+    "build:bus": "node scripts/build-bus.mjs",
+    "plan-excerpts": "node --env-file=.env scripts/plan-excerpts.mjs"
   },
   "devDependencies": {
     "mapshaper": "^0.7.101"

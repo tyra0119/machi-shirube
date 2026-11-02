@@ -1,9 +1,9 @@
 {
- "updatedAt": "2026-11-02T11:59:30.348Z",
+ "updatedAt": "2026-11-02T13:29:35.139Z",
  "counts": {
   "auto": 17,
   "ok": 44,
-  "pending": 14,
+  "pending": 17,
   "fix": 1,
   "rejected": 1,
   "unknown": 0
@@ -1583,6 +1583,67 @@
    "source": {
     "title": "家庭ごみ収集日一覧表 - 朝霞市の添付（PDF）",
     "url": "https://www.city.asaka.lg.jp/uploaded/attachment/70441.pdf"
+   }
+  },
+  {
+   "id": "r00103",
+   "scope": "muni:10524",
+   "scopeName": "群馬県 大泉町",
+   "kind": "gomi-days",
+   "question": "ごみの収集日の表（地区ごとの曜日）は、町のカレンダーと合っているか",
+   "why": "PDF の表から読み取った地区と曜日の対応は、列の並びが崩れてまちがえやすい。町のカレンダーと、いくつかの地区で照らして確かめる",
+   "status": "pending",
+   "score": null,
+   "source": {
+    "title": "ごみ出しのルールとマナー（地区ごとの収集曜日、袋・出す時間）",
+    "url": "https://www.town.oizumi.gunma.jp/s024/kurashi/010/010/090/20200723200709.html"
+   }
+  },
+  {
+   "id": "r00104",
+   "scope": "muni:39428",
+   "scopeName": "高知県 黒潮町",
+   "kind": "gomi-days",
+   "question": "ごみの収集日の表（地区ごとの曜日）は、町のカレンダーと合っているか",
+   "why": "PDF の表から読み取った地区と曜日の対応は、列の並びが崩れてまちがえやすい。町のカレンダーと、いくつかの地区で照らして確かめる",
+   "status": "pending",
+   "score": null,
+   "source": {
+    "title": "令和8年一般ごみ収集計画表",
+    "url": "https://www.town.kuroshio.lg.jp/pb/cont/juumin-gomi/5355"
+   }
+  },
+  {
+   "id": "r00105",
+   "scope": "muni:39428",
+   "scopeName": "高知県 黒潮町",
+   "kind": "plan-excerpt",
+   "question": "防災計画の、町・字ごとに関係する所の抜き出しは、元のページと合っているか",
+   "why": "防災計画のまとめは、まちがえると避難の判断にひびく。いくつかの町・字で、引用のページを開いて合っているかを確かめる",
+   "status": "void",
+   "score": 0,
+   "source": {
+    "title": "黒潮町地域防災計画（令和8年3月）本編",
+    "url": "https://www.town.kuroshio.lg.jp/img/files/pv/sosiki/2026/03/tiiki-bousaikeikaku202603.pdf"
+   },
+   "decided": {
+    "at": "2026-11-02T13:29:35.130Z",
+    "action": "void",
+    "reason": "ページの選び方を直して作り直した（町道の一覧ばかり選んでいた）"
+   }
+  },
+  {
+   "id": "r00106",
+   "scope": "muni:39428",
+   "scopeName": "高知県 黒潮町",
+   "kind": "plan-excerpt",
+   "question": "防災計画の、町・字ごとに関係する所の抜き出しは、元のページと合っているか",
+   "why": "防災計画のまとめは、まちがえると避難の判断にひびく。いくつかの町・字で、引用のページを開いて合っているかを確かめる",
+   "status": "pending",
+   "score": null,
+   "source": {
+    "title": "黒潮町地域防災計画（令和8年3月）本編",
+    "url": "https://www.town.kuroshio.lg.jp/img/files/pv/sosiki/2026/03/tiiki-bousaikeikaku202603.pdf"
    }
   }
  ]
