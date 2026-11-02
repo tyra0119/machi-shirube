@@ -146,7 +146,7 @@ http
     const url = new URL(req.url, "http://localhost");
     if (url.pathname === "/api/ping") return send(res, 200, { local: true });
     if (url.pathname === "/api/areas" && req.method === "POST") return saveArea(req, res);
-    if (url.pathname === "/api/review" && req.method === "GET") return send(res, 200, ledger.load());
+    if (url.pathname === "/api/review" && req.method === "GET") { const d = ledger.load(); return send(res, 200, { ...d, items: d.items.map((it) => ({ ...it, score: ledger.scoreOf(it) })) }); }
     if (url.pathname === "/api/research" && req.method === "POST") return startResearch(req, res);
     if (url.pathname === "/api/runs" && req.method === "POST") return startRun(req, res);
     // いま調べている町（日本地図で点滅させる）

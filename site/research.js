@@ -57,16 +57,18 @@ function stateOf(q) {
   const doing = run?.status === "running" && run.log.findLast((l) => l.text.includes("調べ始めます"))?.text.includes(q.text);
   if (doing) return "doing";
   if (!it) return "";
-  if (it.value === "見つからなかった") return "none";
-  if (it.status === "ok" || it.status === "auto") return "done";
+  // 点数（0〜3）で濃さを変える。人の判断待ちは点を付けず「保留」
   if (it.status === "pending") return "pending";
+  if (it.score != null) return `s${it.score}`;
   return "";
 }
 function renderGrid() {
   const states = questions.map(stateOf);
-  $("grid").innerHTML = questions.map((q, i) => `<li class="${states[i]}" title="${esc(q.text)}"><span class="id">${q.id}</span><span class="g">${esc(q.group)}</span></li>`).join("");
+  $("grid").innerHTML = questions.map((q, i) => `<li class="${states[i]}" title="${esc(q.text)}"><span class="id">${q.id}</span><span class="g">${esc(q.group)}</span>${/^s\d/.test(states[i]) ? `<span class="pt">${states[i].slice(1)}点</span>` : states[i] === "pending" ? `<span class="pt">保留</span>` : ""}</li>`).join("");
   const n = (s) => states.filter((x) => x === s).length;
-  $("grid-sum").textContent = `出せる ${n("done")}・確かめ待ち ${n("pending")}・見つからない ${n("none")}・まだ ${n("")}`;
+  const scored = states.filter((x) => /^s\d/.test(x));
+  const pass = scored.filter((x) => x >= "s2").length;
+  $("grid-sum").textContent = `3点 ${n("s3")}・2点 ${n("s2")}・1点 ${n("s1")}・0点 ${n("s0")}・保留 ${n("pending")}・まだ ${n("")}。合格（2点以上）は 保留を除いた ${scored.length}問のうち ${pass}問`;
 }
 
 async function start() {

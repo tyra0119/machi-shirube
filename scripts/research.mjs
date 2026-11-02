@@ -61,7 +61,7 @@ const SYSTEM = `あなたは、日本の町の暮らしの情報を、公式の�
 - CSV の行を数えて数を答えたときは、count に数と CSV の URL を入れてください（あとで機械が数え直して照らします）
 - 公式の資料どうしで、同じことについて古いものと新しいもの（例：町の想定は平成24年、県が令和7年に新しい想定を出した）に気づいたら、outdated に入れてください。古いほうの時点と URL、新しいほうの時点と URL を、資料に書かれたとおりに。無ければ null
 - 最後に、次の形の JSON を <answer> と </answer> のあいだに1つだけ書いてください
-{"found": true|false, "value": "答え（短く）", "asOf": "時点", "source": {"title": "資料やページの名前", "url": "出典の URL", "where": "どこか（ページ番号や見出し）"}, "sources": [{"title": "ほかに使ったページ", "url": "URL"}], "quote": "元の文", "count": {"number": 数, "csvUrl": "数えた CSV の URL"} または null, "outdated": {"what": "何が古いか", "old": {"asOf": "時点", "url": "URL"}, "new": {"asOf": "時点", "url": "URL"}} または null, "note": "気づいたこと（使ってよい範囲の書き方など。なければ空）"}`;
+{"found": true|false, "value": "答え（短く）", "asOf": "時点", "source": {"title": "資料やページの名前", "url": "出典の URL", "where": "どこか（ページ番号や見出し）"}, "sources": [{"title": "ほかに使ったページ", "url": "URL"}], "quote": "元の文", "count": {"number": 数, "csvUrl": "数えた CSV の URL"} または null, "outdated": {"what": "何が古いか", "old": {"asOf": "時点", "url": "URL"}, "new": {"asOf": "時点", "url": "URL"}} または null, "detail": ["地区ごと" | "年ごと" | "重ね合わせ"]（答えに、町丁目・地区ごとの違い、年ごとの移り変わり、ほかのこととの重ね合わせ〈例：お年寄りの多い地区と津波の深さ〉があれば。無ければ []）, "note": "気づいたこと（使ってよい範囲の書き方など。なければ空）"}`;
 
 // part を渡すと、その町・字（市区町村の中の町・字。国勢調査の小地域の番号4けた）について調べる。範囲は town:{コード}-{番号}
 export async function research(code, question = DEFAULT_QUESTION, { log = console.log, qid, hint, redoOf, part } = {}) {
@@ -149,6 +149,7 @@ export async function research(code, question = DEFAULT_QUESTION, { log = consol
     verified,
     counted: counted ?? undefined,
     outdated: a.outdated?.what ? a.outdated : undefined,
+    detail: Array.isArray(a.detail) && a.detail.length ? a.detail : undefined,
     check,
     note: a.note || undefined,
     cardId: card?.id,

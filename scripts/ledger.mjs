@@ -170,8 +170,23 @@ export function decide(id, action, { user = "owner", reason = "" } = {}) {
 }
 
 // 公開してよいものだけを書き出す
-const PUBLIC_FIELDS = ["id", "qid", "scope", "question", "value", "asOf", "source", "method", "status", "outdated"];
-const pick = (it) => ({ ...Object.fromEntries(PUBLIC_FIELDS.filter((k) => it[k] !== undefined).map((k) => [k, it[k]])), checkedAt: it.createdAt });
+const PUBLIC_FIELDS = ["id", "qid", "scope", "question", "value", "asOf", "source", "method", "status", "outdated", "detail"];
+const pick = (it) => ({ ...Object.fromEntries(PUBLIC_FIELDS.filter((k) => it[k] !== undefined).map((k) => [k, it[k]])), checkedAt: it.createdAt, score: scoreOf(it) });
+
+// 物差しの点数（1つの答えごと、0〜3。人の判断待ちは点を付けず null＝保留）。Claude を呼ばず、台帳の確かめの結果から決める
+//   0：見つからなかった・出典が公式でない・出さないと決めた
+//   1：答えはあるが、元の文を出典の中で確かめられなかった（照らせない）か、確かめ役が合わないと言った
+//   2：公式の出典があり、元の文か数え直しで確かめられた（確かめた日つき）
+//   3：2 に加えて、町丁目・地区ごと、年ごとの移り変わり、重ね合わせ のどれかがある（町・字の範囲の答えは地区ごとに当たる）
+export function scoreOf(it) {
+  if (it.status === "pending" || it.status === "fix") return null;
+  if (it.status === "rejected" || it.status === "void" || it.value === "見つからなかった" || !it.source?.url) return 0;
+  if (/公式のサイトでない/.test(it.why ?? "")) return 0;
+  const checked = (it.verified || it.counted != null || it.method?.startsWith("数えた")) && it.check?.supported !== false;
+  if (!checked && it.status !== "ok") return 1;
+  const deep = it.scope?.startsWith("town:") || (it.detail?.length ?? 0) > 0 || /丁目|地区ごと|地区別|年ごと|推移/.test(it.value ?? "");
+  return deep ? 3 : 2;
+}
 // 日本地図の「灯り」と数える欄（site/data/progress.json）：町ごとの公開した答えの数と、全体の数
 // 読んだページは調査の記録（local/runs/）の「読んでいます：URL」を重ねずに数え、費用は local/costs.jsonl の合計（見積もり）
 export function exportProgress(data = load()) {

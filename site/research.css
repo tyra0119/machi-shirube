@@ -29,8 +29,12 @@ body.research-page { display: block; height: 100%; }
 .r-grid .g { color: var(--text-sub); }
 .r-grid li.doing { border-color: var(--accent); animation: r-blink 1.2s ease-in-out infinite; }
 .r-grid li.pending { border-color: var(--accent); border-style: dashed; }
-.r-grid li.done { border-color: var(--accent); background: var(--accent); color: var(--accent-text); }
-.r-grid li.done .g { color: var(--accent-text); }
+.r-grid li.s3 { border-color: var(--accent); background: var(--accent); color: var(--accent-text); }
+.r-grid li.s3 .g { color: var(--accent-text); }
+.r-grid li.s2 { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 55%, var(--surface)); color: var(--text); }
+.r-grid li.s1 { border-color: var(--accent); background: color-mix(in srgb, var(--accent) 20%, var(--surface)); }
+.r-grid li.s0 { border-color: var(--pref-line); background: repeating-linear-gradient(45deg, var(--surface) 0 6px, var(--bg) 6px 12px); }
+.r-grid li .pt { font-weight: 700; font-size: 13px; }
 .r-grid li.none { border-color: var(--pref-line); background: repeating-linear-gradient(45deg, var(--surface) 0 6px, var(--bg) 6px 12px); }
 @keyframes r-blink { 50% { box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 30%, transparent); } }
 @media (prefers-reduced-motion: reduce) { .r-grid li.doing { animation: none; } }
