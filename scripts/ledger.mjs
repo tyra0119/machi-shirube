@@ -227,7 +227,10 @@ export function scoreOf(it) {
 // 読んだページは調査の記録（local/runs/）の「読んでいます：URL」を重ねずに数え、費用は local/costs.jsonl の合計（見積もり）
 export function exportProgress(data = load()) {
   const towns = {};
+  const parts = {}; // 町・字（"11227-0130"）ごとの答えの数。中の町の地図の灯りに使う
   for (const it of data.items) {
+    const part = it.scope.match(/^town:(\d{5}-\d{4})$/)?.[1];
+    if (part && it.kind === "answer" && (it.status === "ok" || it.status === "auto")) parts[part] = (parts[part] ?? 0) + 1;
     const code = it.scope.match(/(\d{5})/)?.[1];
     if (!code || it.kind !== "answer") continue;
     const t = (towns[code] ??= { answers: 0, pending: 0, scopeName: it.scopeName });
@@ -253,6 +256,7 @@ export function exportProgress(data = load()) {
     updatedAt: new Date().toISOString(),
     totals: { towns: lit, answers: Object.values(towns).reduce((s, t) => s + t.answers, 0), pages: pages.size, usd: Math.round(usd * 100) / 100, skills, questions: JSON.parse(fs.readFileSync("site/data/yardstick.json", "utf8")).questions.length },
     towns: Object.fromEntries(Object.entries(towns).filter(([, t]) => t.answers).map(([c, t]) => [c, { answers: t.answers }])),
+    parts,
   }, null, 1));
 }
 

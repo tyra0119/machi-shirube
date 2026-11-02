@@ -1,7 +1,7 @@
 {
- "updatedAt": "2026-11-02T14:16:05.474Z",
+ "updatedAt": "2026-11-02T14:29:46.476Z",
  "counts": {
-  "auto": 18,
+  "auto": 19,
   "ok": 44,
   "pending": 21,
   "fix": 1,
@@ -1724,6 +1724,25 @@
    "source": {
     "title": "国籍別外国人人口表（令和8年9月末 外国人人口表 PDF）",
     "url": "https://www.town.oizumi.gunma.jp/s017/gyosei/010/010/010/R0810gaikokuzin.pdf"
+   }
+  },
+  {
+   "id": "r00113",
+   "scope": "muni:11227",
+   "scopeName": "埼玉県 朝霞市",
+   "qid": "Q31",
+   "kind": "answer",
+   "question": "朝霞市への転入者のうち、国外から転入した人の数は、年ごとにどう変わっているか（令和3年ごろから、いちばん新しい年まで。統計あさか などの公式の統計）",
+   "status": "void",
+   "score": 0,
+   "source": {
+    "title": "令和4年版統計あさか 第2章 人口（PDF）4.前住地別転入人口の推移",
+    "url": "https://www.city.asaka.lg.jp/uploaded/attachment/91379.pdf"
+   },
+   "decided": {
+    "at": "2026-11-02T14:29:46.472Z",
+    "action": "void",
+    "reason": "探し直した答え（r00114）に置きかえた（令和7年まで）"
    }
   }
  ]

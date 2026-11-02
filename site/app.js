@@ -227,6 +227,8 @@ async function showTowns(code, { list = true } = {}) {
   else {
     map.addSource("towns", { type: "geojson", data: townData, promoteId: "town" });
     map.addLayer({ id: "town-fill", type: "fill", source: "towns" }, "pref-line");
+    // 灯り：Claude が町・字を深く調べて答えを出した所は、中の町の地図でも光る（答えが多いほど濃い）
+    map.addLayer({ id: "town-lit", type: "fill", source: "towns", paint: { "fill-color": color("--accent"), "fill-opacity": ["coalesce", ["feature-state", "lit"], 0] } }, "pref-line");
     map.addLayer({ id: "town-casing", type: "line", source: "towns" }, "pref-line");
     map.addLayer({ id: "town-line", type: "line", source: "towns" }, "pref-line");
     map.addLayer({
@@ -236,6 +238,7 @@ async function showTowns(code, { list = true } = {}) {
   }
   for (const id of TOWN_LAYERS) map.setLayoutProperty(id, "visibility", "visible");
   map.setLayoutProperty("muni-label", "visibility", "none");
+  lightParts(code);
   shownTowns = code;
   selectedTownName = null;
   picked.clear();
@@ -310,7 +313,7 @@ function goPref(pref) {
   fit(munis.features.filter((f) => f.properties.pref === pref), 10);
 }
 
-const TOWN_LAYERS = ["town-fill", "town-casing", "town-line", "town-label"];
+const TOWN_LAYERS = ["town-fill", "town-lit", "town-casing", "town-line", "town-label"];
 const isSelected = ["boolean", ["feature-state", "selected"], false];
 function paintTowns() {
   if (!map.getLayer("town-fill")) return;
@@ -1094,6 +1097,12 @@ function showCounter(running = []) {
     <span><strong>${t.skills}</strong>のスキル</span>
     ${running.length ? `<span class="now">いま ${running.length}町を調べています</span>` : ""}
     <span class="key"><i class="lit"></i>調べた町（濃いほど答えが多い）<i class="base"></i>国のデータだけの町</span>`;
+}
+// 中の町（町・字）の灯り：progress.json の parts（"11227-0130": 答えの数）
+function lightParts(code) {
+  for (const [k, n] of Object.entries(progress?.parts ?? {})) {
+    if (k.startsWith(`${code}-`)) map.setFeatureState({ source: "towns", id: k.replace("-", "") }, { lit: Math.min(0.75, 0.35 + n / 10) });
+  }
 }
 // 光る丸：調べた町と、いま調べている町の位置（市区町村の名前の位置）
 let labelPoints = null;

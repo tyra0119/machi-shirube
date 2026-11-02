@@ -11,6 +11,8 @@ import { rows as csvRows } from "./csv.mjs";
 // 町ごとに使う時刻表（GTFS データリポジトリ https://gtfs-data.jp/ で町の名前・事業者で探したもの）
 const FEEDS = {
   10524: [{ name: "大泉町 広域公共バス「あおぞら」", url: "https://api.gtfs-data.jp/v2/organizations/oizumitown/feeds/kouikikoukyoubasuaozora/files/feed.zip", page: "https://gtfs-data.jp/search?target_feed=oizumitown/kouikikoukyoubasuaozora" }],
+  // 朝霞市：市が「オープンデータとして公開」（ライセンスの名前は書かれていない）。作者が使ってよいとしたサイト（情報源カード c0002：事実と出典のリンクを出す）
+  11227: [{ name: "朝霞市 市内循環バス（わくわく号）", url: "https://www.city.asaka.lg.jp/uploaded/attachment/110771.zip", page: "https://www.city.asaka.lg.jp/soshiki/26/gtfs.html" }],
   39428: [{ name: "高知西南交通 路線バス", url: "https://api-public.odpt.org/api/v4/files/odpt/KochiSeinanTraffic/Localbus.zip?date=current", page: "https://gtfs-data.jp/search?target_feed=kochi-seinan-kotsu/GTFS-Seinantraffic_Localbus" }],
 };
 const FAR = 500, FEW = 10;
@@ -44,7 +46,10 @@ export async function buildBus(code, log = console.log) {
   for (const f of feeds) {
     const buf = await cached(f.url, `local/cache/gtfs/${code}-${feeds.indexOf(f)}.zip`);
     if (!buf) throw new Error(`時刻表を取れませんでした：${f.name}`);
-    const zip = new AdmZip(buf);
+    let zip = new AdmZip(buf);
+    // zip の中に zip が入っている形（朝霞市など）は、中の zip を開く
+    const inner = !zip.getEntries().some((e) => e.entryName.endsWith("stops.txt")) && zip.getEntries().find((e) => e.entryName.endsWith(".zip"));
+    if (inner) zip = new AdmZip(inner.getData());
     const sv = weekdayServices(zip);
     ymd = sv.ymd;
     const trips = new Set(table(zip, "trips.txt").filter((t) => sv.on.has(t.service_id)).map((t) => t.trip_id));
