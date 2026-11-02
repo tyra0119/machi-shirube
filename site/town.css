@@ -402,3 +402,15 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .tiles a .later { margin-top: auto; }
 .tiles li.feat .feat-badge { position: absolute; top: 8px; right: 8px; margin: 0; }
 .tiles a .later { position: absolute; top: 8px; right: 8px; margin: 0; }
+/* ごみを出す日・出し方の要点 */
+.gomi-today { padding: 10px 12px; border-radius: 10px; background: var(--bg); font-size: 16px; }
+.gomi-today .ic { color: var(--accent); margin-right: 4px; }
+.gomi-days { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 6px; margin: 8px 0; padding: 0; list-style: none; }
+.gomi-days li { display: flex; flex-direction: column; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; }
+.gomi-days li.today { border: 2px solid var(--accent); }
+.gomi-days .k { font-weight: 700; }
+.gomi-days .w { font-size: 14px; color: var(--text-sub); }
+.gomi-rules { margin: 0 0 8px; padding: 0; list-style: none; }
+.gomi-rules li { display: grid; grid-template-columns: 8em 1fr; gap: 8px; padding: 6px 0; border-top: 1px dashed var(--line); font-size: 14px; line-height: 1.6; }
+.gomi-rules small { display: block; color: var(--text-sub); }
+#gomi-area { display: block; width: 100%; max-width: 360px; min-height: 44px; margin-top: 4px; padding: 0 10px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--text); font-size: 16px; }

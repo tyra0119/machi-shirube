@@ -26,6 +26,7 @@
     "i18n": "node --env-file=.env scripts/i18n.mjs",
     "propose": "node --env-file=.env scripts/propose.mjs",
     "gomi": "node --env-file=.env scripts/gomi.mjs",
+    "gomi-days": "node --env-file=.env scripts/gomi-days.mjs",
     "watch": "node scripts/watch.mjs",
     "try:api": "node --env-file=.env scripts/try-api.mjs",
     "try:fetch": "node --env-file=.env scripts/try-fetch.mjs",

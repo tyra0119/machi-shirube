@@ -412,11 +412,12 @@ async function showMedical(code, center) {
 
 // 今日の暮らし（今日すること・困ったときの入口）と、暮らしの場面のタイル
 let medicalRow = null;
+let gomiToday = null; // 町・字のページで、今日出せるごみ（ごみを出す日の表から）
 function todayLife(hasHinan) {
   const has = (v) => (answersByPage[v] ?? []).filter((a) => a.value !== "見つからなかった").length;
   const row = (view, k, v, ready) => `<li><a href="#${view}"><span class="k">${icon(ILLUST[view]?.main)}${T(k)}</span><span class="v${ready ? "" : " later"}">${esc(T(v))}</span></a></li>`;
   $("today-life").innerHTML = [
-    row("gomi", "ごみ", has("gomi") ? "ごみの出し方を見る" : "今日の収集は、これから出します", has("gomi")),
+    row("gomi", "ごみ", gomiToday ? (gomiToday.length ? `今日は ${gomiToday.join("・")} の日` : "今日はごみの収集はありません") : has("gomi") ? "ごみの出し方を見る" : "今日の収集は、これから出します", has("gomi") || !!gomiToday),
     medicalRow ?? row("iryo", "病院", "この町の病院のデータはまだありません", false),
     row("bousai", "避難", hasHinan ? "わが家から近い避難場所を出す" : has("bousai") ? "避難場所の案内を見る" : "避難場所は、これから出します", hasHinan || has("bousai")),
     row("komatta", "困ったとき", has("komatta") ? "電話・メールの窓口を見る" : "電話・メールの窓口は、これから出します", has("komatta")),
@@ -567,6 +568,51 @@ async function showAsk(code, partKey) {
   $("ask-list").innerHTML = uniq.map((x) => `<li>${icon("search")}<span><strong>${esc(T(yardstick.questions.find((y) => y.id === x.qid)?.short ?? ""))}</strong>${esc(x.q)}${x.why ? `<small>${esc(x.why)}</small>` : ""}${x.at ? `<small>${esc(x.at.slice(0, 10))} に調べた</small>` : ""}</span></li>`).join("");
 }
 
+// ごみを出す日：町の公式の収集日の表から読み取った地区ごとの曜日（site/data/gomi-days/{コード}.json）。
+// 人が確かめるまで（status が ok・auto でないあいだ）は曜日を出さず、そう書く。出し方の要点はいつも出す
+const WD = "日月火水木金土";
+// 「毎週火・金曜日」「第1・3水曜日」から、その日に当たるか
+function onDay(when, date) {
+  const w = WD[date.getDay()];
+  const days = (when.match(/[月火水木金土日](?=[・、曜]|$)/g) ?? []);
+  if (!days.includes(w)) return false;
+  const nth = when.match(/第([0-9０-９・、]+)/);
+  if (!nth) return /毎週|曜/.test(when);
+  const n = Math.ceil(date.getDate() / 7);
+  return nth[1].normalize("NFKC").split(/[・、]/).map(Number).includes(n);
+}
+async function showGomiDays(code, partName) {
+  const g = await fetch(`data/gomi-days/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  if (!g) return null;
+  $("gomi-days-block").hidden = false;
+  const ok = g.status === "ok" || g.status === "auto";
+  $("gomi-rules").innerHTML = g.rules.map((r) => `<li><strong>${esc(r.kind)}</strong><span>${esc(r.how)}${r.time ? `<small>${esc(r.time)}</small>` : ""}</span></li>`).join("");
+  $("gomi-days-note").innerHTML = `${esc(g.note)}。出典：${g.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title ?? s.url)}</a>`).join("・")}`;
+  if (!ok) {
+    $("gomi-area").closest("label").hidden = true;
+    $("gomi-today").innerHTML = `${icon("eye")} 地区ごとの曜日は、いま人が確かめています（公式の表から読み取ったものが、町のカレンダーと合っているか）。それまでは町の収集日の表をご覧ください。`;
+    return null;
+  }
+  const sel = $("gomi-area");
+  sel.innerHTML = `<option value="">（選ぶ）</option>` + g.areas.map((a, i) => `<option value="${i}">${esc(a.area)}${a.towns.length ? `（${esc(a.towns.slice(0, 3).join("・"))}${a.towns.length > 3 ? "…" : ""}）` : ""}</option>`).join("");
+  // 町・字のページなら、その名前の地区を選んでおく
+  const guess = partName ? g.areas.findIndex((a) => a.area.includes(partName) || a.towns.some((t) => t.includes(partName))) : -1;
+  let todayKinds = null;
+  const draw = () => {
+    const a = g.areas[Number(sel.value)];
+    if (!a) { $("gomi-days").innerHTML = ""; $("gomi-today").textContent = "地区を選ぶと、今日と明日に出せるごみが分かります。"; return; }
+    const now = new Date(), tmr = new Date(now.getTime() + 86400000);
+    const t0 = a.days.filter((x) => onDay(x.when, now)).map((x) => x.kind), t1 = a.days.filter((x) => onDay(x.when, tmr)).map((x) => x.kind);
+    todayKinds = t0;
+    $("gomi-today").innerHTML = `${icon("calendar")} 今日：<strong>${t0.length ? esc(t0.join("・")) : "収集なし"}</strong>　明日：<strong>${t1.length ? esc(t1.join("・")) : "収集なし"}</strong>`;
+    $("gomi-days").innerHTML = a.days.map((x) => `<li class="${onDay(x.when, now) ? "today" : ""}"><span class="k">${esc(x.kind)}</span><span class="w">${esc(x.when)}</span></li>`).join("");
+  };
+  sel.addEventListener("change", draw);
+  if (guess >= 0) sel.value = String(guess);
+  draw();
+  return guess >= 0 ? todayKinds : null;
+}
+
 // どの町のページも最後に同じことをする：答え・わが家の避難・今日の暮らし・すべてのページ・調べる
 async function finishPage(code, townFeatures, startPart, scopeNote, at) {
   // その町ならではのページ（町の特徴から）を先に作る（答えの箱・タイル・すべてのページに入るように）
@@ -585,6 +631,7 @@ async function finishPage(code, townFeatures, startPart, scopeNote, at) {
   const hasHinan = await showHinan(code, townFeatures, startPart);
   await showTranslations(code);
   await showGomi(code);
+  gomiToday = await showGomiDays(code, part?.properties.name);
   await showAsk(code, part ? `${code}-${startPart}` : null);
   todayLife(hasHinan);
   const local = await fetch("api/ping").then((r) => r.ok).catch(() => false);

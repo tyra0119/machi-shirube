@@ -84,6 +84,15 @@
 
   <!-- 場面のページ（中身は町ごとに Claude が調べた答え。まだのものは「これから」と出す） -->
   <div class="view" data-view="gomi" hidden>
+    <section class="block" id="gomi-days-block" hidden>
+      <h2>ごみを出す日</h2>
+      <label class="field">地区を選ぶ<select id="gomi-area"></select></label>
+      <p class="gomi-today" id="gomi-today"></p>
+      <ul class="gomi-days" id="gomi-days"></ul>
+      <h3 class="sub">出し方の要点</h3>
+      <ul class="gomi-rules" id="gomi-rules"></ul>
+      <p class="note" id="gomi-days-note"></p>
+    </section>
     <section class="block" id="gomi-block" hidden>
       <h2>このごみは何ごみ？</h2>
       <input id="gomi-q" class="gomi-q" type="search" placeholder="ごみの名前を入れる（例：ペットボトル、電池、フライパン）" aria-label="ごみの名前" autocomplete="off">
