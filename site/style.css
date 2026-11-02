@@ -289,3 +289,16 @@ a.secondary.as-button { display: flex; align-items: center; justify-content: cen
   .results { top: auto; bottom: 54px; }
   .source { max-width: calc(100% - 80px); }
 }
+
+/* 数える欄（日本地図の左下）と灯りの見本 */
+.counter {
+  position: absolute; left: 12px; bottom: 28px; z-index: 2; display: flex; flex-wrap: wrap; gap: 4px 12px; max-width: min(560px, calc(100% - 90px));
+  padding: 8px 12px; background: var(--surface); border-radius: 12px; box-shadow: var(--shadow); font-size: 13px; color: var(--text-sub);
+}
+.counter strong { margin-right: 2px; font-size: 18px; color: var(--text); }
+.counter .now { color: var(--accent); font-weight: 700; }
+.counter .key { width: 100%; display: flex; align-items: center; gap: 6px; font-size: 12px; }
+.counter .key i { display: inline-block; width: 14px; height: 10px; border-radius: 2px; }
+.counter .key i.lit { background: var(--accent); }
+.counter .key i.base { margin-left: 8px; background: var(--land); border: 1px solid var(--line); }
+@media (max-width: 700px) { .counter { bottom: 24px; font-size: 12px; } .counter strong { font-size: 15px; } }

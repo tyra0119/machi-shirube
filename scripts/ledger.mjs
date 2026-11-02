@@ -170,6 +170,38 @@ export function decide(id, action, { user = "owner", reason = "" } = {}) {
 // 公開してよいものだけを書き出す
 const PUBLIC_FIELDS = ["id", "qid", "scope", "question", "value", "asOf", "source", "method", "status", "outdated"];
 const pick = (it) => ({ ...Object.fromEntries(PUBLIC_FIELDS.filter((k) => it[k] !== undefined).map((k) => [k, it[k]])), checkedAt: it.createdAt });
+// 日本地図の「灯り」と数える欄（site/data/progress.json）：町ごとの公開した答えの数と、全体の数
+// 読んだページは調査の記録（local/runs/）の「読んでいます：URL」を重ねずに数え、費用は local/costs.jsonl の合計（見積もり）
+export function exportProgress(data = load()) {
+  const towns = {};
+  for (const it of data.items) {
+    const code = it.scope.match(/(\d{5})/)?.[1];
+    if (!code || it.kind !== "answer") continue;
+    const t = (towns[code] ??= { answers: 0, pending: 0, scopeName: it.scopeName });
+    if (it.status === "ok" || it.status === "auto") t.answers++;
+    if (it.status === "pending") t.pending++;
+  }
+  const pages = new Set();
+  if (fs.existsSync("local/runs")) {
+    for (const f of fs.readdirSync("local/runs").filter((x) => /^run-.*\d\.json$/.test(x))) {
+      try {
+        for (const s of JSON.parse(fs.readFileSync(`local/runs/${f}`, "utf8")).steps ?? []) {
+          const u = s.text.match(/^読んでいます：(https?:\/\/\S+)/)?.[1];
+          if (u) pages.add(u);
+        }
+      } catch {}
+    }
+  }
+  const usd = fs.existsSync("local/costs.jsonl")
+    ? fs.readFileSync("local/costs.jsonl", "utf8").split("\n").filter(Boolean).reduce((s, x) => s + (JSON.parse(x).usd ?? 0), 0) : 0;
+  const lit = Object.values(towns).filter((t) => t.answers).length;
+  fs.writeFileSync("site/data/progress.json", JSON.stringify({
+    updatedAt: new Date().toISOString(),
+    totals: { towns: lit, answers: Object.values(towns).reduce((s, t) => s + t.answers, 0), pages: pages.size, usd: Math.round(usd * 100) / 100, skills: 0 },
+    towns: Object.fromEntries(Object.entries(towns).filter(([, t]) => t.answers).map(([c, t]) => [c, { answers: t.answers }])),
+  }, null, 1));
+}
+
 export function exportPublic(data = load()) {
   const byMuni = new Map();
   for (const it of data.items) {
@@ -208,4 +240,5 @@ export function exportPublic(data = load()) {
       decided: x.decisions.at(-1) ? { at: x.decisions.at(-1).at, action: x.decisions.at(-1).action, reason: x.decisions.at(-1).reason } : undefined,
     })),
   }, null, 1));
+  exportProgress(data);
 }

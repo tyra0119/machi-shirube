@@ -147,6 +147,8 @@ http
     if (url.pathname === "/api/review" && req.method === "GET") return send(res, 200, ledger.load());
     if (url.pathname === "/api/research" && req.method === "POST") return startResearch(req, res);
     if (url.pathname === "/api/runs" && req.method === "POST") return startRun(req, res);
+    // いま調べている町（日本地図で点滅させる）
+    if (url.pathname === "/api/runs" && req.method === "GET") return send(res, 200, { running: [...runs.values()].filter((x) => x.status === "running").map((x) => ({ id: x.id, code: x.code, usd: x.usd })) });
     const r = url.pathname.match(/^\/api\/runs\/([\w-]+)(\/stop)?$/);
     if (r && req.method === "GET") return runs.has(r[1]) ? send(res, 200, runs.get(r[1])) : send(res, 404, { error: "見つかりません" });
     if (r && r[2] && req.method === "POST") {

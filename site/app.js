@@ -96,6 +96,15 @@ map.on("load", async () => {
   map.addSource("prefs", { type: "geojson", data: prefLines });
   map.addSource("labels", { type: "geojson", data: { type: "FeatureCollection", features: labels.features.filter((f) => f.geometry) } });
   map.addLayer({ id: "muni-fill", type: "fill", source: "munis" });
+  // 灯り：Claude が調べて答えを出した町は濃く光る（答えが多いほど濃い）。調べている最中の町は点滅（手元の画面だけ）
+  map.addLayer({ id: "muni-lit", type: "fill", source: "munis" });
+  map.addLayer({ id: "muni-lit-line", type: "line", source: "munis" });
+  // 日本全体の大きさでも見えるよう、調べた町の位置に光る丸を置く（外側はぼかした光、内側は濃い点）
+  map.addSource("lit-points", { type: "geojson", data: { type: "FeatureCollection", features: [] } });
+  map.addLayer({ id: "lit-glow", type: "circle", source: "lit-points", maxzoom: 9,
+    paint: { "circle-radius": ["interpolate", ["linear"], ["zoom"], 4, 12, 8, 22], "circle-blur": 0.9, "circle-opacity": ["case", ["get", "running"], ["coalesce", ["feature-state", "blink"], 0.5], 0.55] } });
+  map.addLayer({ id: "lit-dot", type: "circle", source: "lit-points", maxzoom: 9,
+    paint: { "circle-radius": ["interpolate", ["linear"], ["zoom"], 4, 4, 8, 7], "circle-stroke-width": 2, "circle-stroke-color": "#ffffff" } });
   // 境目は、背景の地図の上でも見えるよう白い縁取りの上に濃い線を引く
   map.addLayer({ id: "muni-casing", type: "line", source: "munis", minzoom: 7 });
   map.addLayer({ id: "muni-line", type: "line", source: "munis" });
@@ -112,6 +121,7 @@ map.on("load", async () => {
     layout: { "text-field": ["get", "label"], "text-font": ["NotoSansCJKjp-Regular"], "text-size": ["interpolate", ["linear"], ["zoom"], 7, 12, 10, 15], "text-padding": 4 },
   });
   paint();
+  lightTowns();
 
   // PC：マウスを乗せた町の名前を出す
   const tip = document.getElementById("tip");
@@ -351,6 +361,16 @@ function choropleth() {
 
 function paint() {
   map.setPaintProperty("sea", "background-color", color("--sea"));
+  const lit = ["coalesce", ["feature-state", "lit"], 0];
+  const running = ["boolean", ["feature-state", "running"], false];
+  map.setPaintProperty("muni-lit", "fill-color", color("--accent"));
+  map.setPaintProperty("muni-lit", "fill-opacity", ["case", running, ["coalesce", ["feature-state", "blink"], 0.2], ["*", lit, 0.75]]);
+  map.setPaintProperty("muni-lit-line", "line-color", color("--accent"));
+  map.setPaintProperty("muni-lit-line", "line-width", ["case", ["any", running, [">", lit, 0]], 2, 0]);
+  map.setPaintProperty("lit-glow", "circle-color", color("--accent"));
+  map.setPaintProperty("lit-dot", "circle-color", color("--accent"));
+  // 数字で並べているときは、灯りを消して数字の色だけにする
+  for (const id of ["muni-lit", "muni-lit-line", "lit-glow", "lit-dot"]) map.setLayoutProperty(id, "visibility", colorBy ? "none" : "visible");
   map.setPaintProperty("muni-fill", "fill-color", [
     "case",
     ["get", "noData"], color("--no-data"),
@@ -1032,3 +1052,69 @@ results.addEventListener("click", (e) => {
 document.addEventListener("pointerdown", (e) => {
   if (!e.target.closest(".search")) closeResults();
 });
+
+// 灯りと数える欄：site/data/progress.json（承認の台帳から書き出す）。手元の画面では、いま調べている町を点滅させ、
+// 調べ終わった町が1つずつ灯っていくのを見せる
+let progress = null;
+async function lightTowns() {
+  progress = await fetch("data/progress.json", { cache: "no-store" }).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  if (progress) {
+    for (const [code, t] of Object.entries(progress.towns)) map.setFeatureState({ source: "munis", id: code }, { lit: Math.min(1, 0.35 + t.answers / 15) });
+  }
+  updatePoints();
+  showCounter();
+  if (!lightTowns.polling && (await fetch("api/ping").then((r) => r.ok).catch(() => false))) {
+    lightTowns.polling = true;
+    pollRuns();
+  }
+}
+function showCounter(running = []) {
+  const t = progress?.totals;
+  if (!t) return;
+  const box = document.getElementById("counter");
+  box.hidden = false;
+  box.innerHTML = `
+    <span><strong>${t.towns}</strong>町を Claude が調べた</span>
+    <span><strong>${t.answers}</strong>の答え</span>
+    <span><strong>${t.pages.toLocaleString("ja-JP")}</strong>ページを読んだ</span>
+    <span><strong>$${t.usd.toFixed(2)}</strong>使った</span>
+    <span><strong>${t.skills}</strong>のスキル</span>
+    ${running.length ? `<span class="now">いま ${running.length}町を調べています</span>` : ""}
+    <span class="key"><i class="lit"></i>調べた町（濃いほど答えが多い）<i class="base"></i>国のデータだけの町</span>`;
+}
+// 光る丸：調べた町と、いま調べている町の位置（市区町村の名前の位置）
+let labelPoints = null;
+async function updatePoints() {
+  labelPoints ??= (await getJSON("data/labels.json")).features;
+  const lit = new Set(Object.keys(progress?.towns ?? {}));
+  const features = labelPoints.filter((f) => f.geometry && (lit.has(f.properties.code) || runningCodes.has(f.properties.code)))
+    .map((f, i) => ({ ...f, id: i, properties: { code: f.properties.code, running: runningCodes.has(f.properties.code) } }));
+  map.getSource("lit-points")?.setData({ type: "FeatureCollection", features });
+  pointIds = new Map(features.map((f) => [f.properties.code, f.id]));
+}
+let pointIds = new Map();
+
+// 手元の画面：いま調べている町を点滅させる。終わったら、その町の灯りを点け直す
+let runningCodes = new Set();
+async function pollRuns() {
+  const r = await fetch("api/runs").then((x) => x.json()).catch(() => ({ running: [] }));
+  const now = new Set(r.running.map((x) => x.code));
+  for (const c of runningCodes) if (!now.has(c)) map.setFeatureState({ source: "munis", id: c }, { running: false });
+  for (const c of now) map.setFeatureState({ source: "munis", id: c }, { running: true });
+  const finished = [...runningCodes].some((c) => !now.has(c));
+  const started = [...now].some((c) => !runningCodes.has(c));
+  runningCodes = now;
+  if (started) await updatePoints();
+  if (finished) await lightTowns();
+  else showCounter(r.running);
+  setTimeout(pollRuns, 3000);
+}
+// 点滅（調べている町の濃さを、ゆっくり行き来させる）
+setInterval(() => {
+  if (!runningCodes.size) return;
+  const v = 0.15 + 0.6 * (0.5 + 0.5 * Math.sin(Date.now() / 300));
+  for (const c of runningCodes) {
+    map.setFeatureState({ source: "munis", id: c }, { blink: v });
+    if (pointIds.has(c)) map.setFeatureState({ source: "lit-points", id: pointIds.get(c) }, { blink: v });
+  }
+}, 100);
