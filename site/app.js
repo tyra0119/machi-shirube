@@ -356,7 +356,7 @@ async function selectTown(code, part) {
   showTownCard(f.properties);
 }
 
-// 特色のカード：全国の市区町村と比べて目立つものを3つ（真ん中から遠い順）
+// 特色のカード：どの町でも同じ順で5つ出し、全国の上下 20% に入る数字に「目立つ」の印（3つまで、真ん中から遠い順）
 const METRICS = {
   over65Rate: { label: "65歳以上の人の割合", unit: "%" },
   under15Rate: { label: "15歳未満の子どもの割合", unit: "%" },
@@ -365,11 +365,15 @@ const METRICS = {
   socialChangeRate: { label: "引っ越しによる1年の増減", unit: "%", signed: true },
 };
 function featureCard(t) {
-  const picks = Object.keys(METRICS)
-    .map((m) => ({ m, edge: Math.min(t.top[m], 100 - t.top[m]) }))
-    .sort((a, b) => a.edge - b.edge)
-    .slice(0, 3);
-  const items = picks.map(({ m }) => {
+  const notable = new Set(
+    Object.keys(METRICS)
+      .map((m) => ({ m, edge: Math.min(t.top[m], 100 - t.top[m]) }))
+      .filter((x) => x.edge <= 20)
+      .sort((a, b) => a.edge - b.edge)
+      .slice(0, 3)
+      .map((x) => x.m),
+  );
+  const items = Object.keys(METRICS).map((m) => {
     const { label, unit, signed } = METRICS[m];
     const v = t[m];
     const value = `${signed && v > 0 ? "+" : ""}${v.toFixed(1)}${unit}`;
@@ -382,11 +386,13 @@ function featureCard(t) {
     const big = t.rankBig?.[m];
     const bigNote = big && big <= 3 && big < t.rank[m]
       ? `<span class="place">人口2万人以上の市区町村では${big === 1 ? "全国一" : `全国で ${big} 番目`}</span>` : "";
-    return `<li><span class="label">${label}</span><span class="value">${value}</span><span class="place">${place}</span>${bigNote}</li>`;
+    const mark = notable.has(m) ? `<span class="mark">目立つ</span>` : "";
+    return `<li class="${notable.has(m) ? "notable" : ""}"><span class="label">${label}${mark}</span><span class="value">${value}</span><span class="place">${place}</span>${bigNote}</li>`;
   });
   const s = stats.source;
   return `
     <p class="pop">人口 ${t.population.toLocaleString("ja-JP")}人</p>
+    <p class="note">全国の市区町村と比べると（「目立つ」は全国の上下 20% に入る数字）</p>
     <ul class="features">${items.join("")}</ul>
     <p class="note">${t.ward ? "区の数字を、" : ""}全国の市区町村 ${stats.peers.toLocaleString("ja-JP")} と比べています。</p>
     <p class="cite">出典：${s.name}（${s.asOf}。増減は${s.changePeriod}）を加工</p>`;
