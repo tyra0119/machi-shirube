@@ -175,3 +175,15 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 }
 .toast button { min-height: 36px; padding: 0 12px; border: 1px solid var(--surface); border-radius: 18px; background: transparent; color: var(--surface); cursor: pointer; }
 .town-foot a { display: inline-block; min-height: 48px; line-height: 48px; color: var(--accent); font-size: 16px; }
+/* 今日やっている病院 */
+.med-controls { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 8px; }
+#med-filter { flex: 1 1 220px; min-height: 44px; padding: 0 14px; border: 1px solid var(--line); border-radius: 22px; background: var(--surface); color: var(--text); font-size: 16px; }
+.med-sum { font-size: 15px; }
+.med-list { margin: 0; padding: 0; list-style: none; }
+.med-list li { display: flex; flex-direction: column; gap: 2px; padding: 10px 0; border-top: 1px solid var(--line); }
+.med-list .n { font-size: 16px; font-weight: 700; }
+.med-list .n small { margin-left: 8px; font-size: 12px; font-weight: 400; color: var(--text-sub); }
+.med-list .n em { margin-left: 8px; padding: 0 8px; border-radius: 10px; background: var(--accent); color: var(--accent-text); font-size: 12px; font-style: normal; }
+.med-list .h { font-size: 15px; }
+.med-list .s, .med-list .a { font-size: 13px; color: var(--text-sub); }
+.med-warn { margin-top: 10px !important; padding: 8px 12px; border: 1px solid var(--line); border-radius: 8px; }

@@ -76,7 +76,22 @@
 
   <!-- 場面のページ（中身は町ごとに Claude が調べた答え。まだのものは「これから」と出す） -->
   <div class="view" data-view="gomi" hidden><section class="block"><h2>ごみ</h2><div class="answers-box" data-page="gomi"></div></section></div>
-  <div class="view" data-view="iryo" hidden><section class="block"><h2>医療・健康</h2><div class="answers-box" data-page="iryo"></div></section></div>
+  <div class="view" data-view="iryo" hidden>
+    <section class="block" id="med-block">
+      <h2>今日やっている病院・診療所</h2>
+      <div class="med-controls">
+        <div class="hinan-kind" role="radiogroup" aria-label="どの日か">
+          <button type="button" data-day="0" aria-pressed="true">今日</button>
+          <button type="button" data-day="1" aria-pressed="false">明日</button>
+        </div>
+        <input id="med-filter" type="search" placeholder="名前や診療科で絞る（例：小児科、歯科）" aria-label="名前や診療科で絞る">
+      </div>
+      <div id="med"><p class="note">読み込んでいます…</p></div>
+      <p class="note med-warn">医療機関が国（医療情報ネット）に届けた診療時間から出しています。休みや時間が変わっていることがあるので、<strong>行く前に必ず電話で確かめてください</strong>。急に具合が悪いときは、迷わず <strong>119</strong> へ。</p>
+      <p class="cite" id="med-cite"></p>
+    </section>
+    <section class="block"><h2>夜間・休日に困ったとき</h2><div class="answers-box" data-page="iryo"></div></section>
+  </div>
   <div class="view" data-view="kosodate" hidden><section class="block"><h2>子育て</h2><div class="answers-box" data-page="kosodate"></div></section></div>
   <div class="view" data-view="kaigo" hidden><section class="block"><h2>お年寄り・介護</h2><div class="answers-box" data-page="kaigo"></div></section></div>
   <div class="view" data-view="koutsuu" hidden><section class="block"><h2>交通</h2><div class="answers-box" data-page="koutsuu"></div></section></div>
@@ -145,6 +160,7 @@
 <script src="types.js"></script>
 <script src="map-buttons.js"></script>
 <script src="today.js"></script>
+<script src="medical.js"></script>
 <script src="town.js"></script>
 </body>
 </html>

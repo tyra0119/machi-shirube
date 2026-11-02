@@ -37,7 +37,7 @@ const PAGES = [
   { view: "today", title: "今日", desc: "今日と明日の天気・洗濯・服装・警報・地震", tab: true },
   { view: "bousai", title: "防災・避難", desc: "わが家の避難・避難場所・災害のときの行動", tab: true, later: "災害のときにどう動くか（町の防災の手引き）" },
   { view: "gomi", title: "ごみ", desc: "収集日・このごみは何ごみか", tab: true, later: "収集日のカレンダーと、このごみは何ごみかを引ける表" },
-  { view: "iryo", title: "医療・健康", desc: "今日やっている病院・夜間と休日の窓口", tab: true, later: "今日やっている病院と、夜間・休日に困ったときの窓口" },
+  { view: "iryo", title: "医療・健康", desc: "今日やっている病院・夜間と休日の窓口", tab: true, later: "夜間・休日に困ったときの窓口（休日の当番医・子どもの急病の相談など）" },
   { view: "komatta", title: "困ったとき", desc: "どこに電話・メールすればよいか", tab: true, later: "困りごとごとの、電話・メールの窓口" },
   { view: "kosodate", title: "子育て", desc: "子育ての窓口・手当", later: "子育ての窓口と、手当・助成" },
   { view: "kaigo", title: "お年寄り・介護", desc: "介護の窓口・見守り", later: "介護の相談の窓口と、見守り・配食などの助け" },
@@ -154,10 +154,10 @@ async function showHinan(code, townFeatures, startPart) {
     const f = townFeatures.find((x) => x.properties.part === sel.value);
     if (f) setHere(center(f), `${f.properties.name}（町・字のおおよその真ん中）`);
   });
-  for (const b of document.querySelectorAll(".hinan-kind button")) {
+  for (const b of document.querySelectorAll("#hinan-block .hinan-kind button")) {
     b.addEventListener("click", () => {
       kind = b.dataset.kind;
-      document.querySelectorAll(".hinan-kind button").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+      document.querySelectorAll("#hinan-block .hinan-kind button").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
       if (here) setHere(here.at, here.label);
     });
   }
@@ -235,13 +235,40 @@ async function showToday(code, at) {
     console.error(e);
   }
 }
+// 医療・健康：今日・明日やっている病院と診療所（medical.js）。center は近い順に並べる場所
+async function showMedical(code, center) {
+  const m = await loadMedical(code);
+  if (!m) {
+    const text = /0$/.test(code) && !(await fetch(`data/towns/${code}.json`).then((r) => r.ok).catch(() => false)) ? "区ごとのページで見られます" : "この市区町村の病院のデータはまだありません";
+    $("med").innerHTML = `<p class="note">${text}。</p>`;
+    medicalRow = `<li><a href="#iryo"><span class="k">病院</span><span class="v later">${text}</span></a></li>`;
+    return;
+  }
+  let day = 0;
+  const draw = () => ($("med").innerHTML = medicalHTML(m, day, center, esc, $("med-filter").value));
+  for (const b of document.querySelectorAll("#med-block .hinan-kind button")) {
+    b.addEventListener("click", () => {
+      day = Number(b.dataset.day);
+      document.querySelectorAll("#med-block .hinan-kind button").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
+      draw();
+    });
+  }
+  $("med-filter").addEventListener("input", draw);
+  draw();
+  $("med-cite").innerHTML = `出典：<a href="${esc(m.source.url)}" target="_blank" rel="noopener">${esc(m.source.title)}</a>（${esc(m.source.asOf)}・${esc(m.source.license)}）を加工。祝日：${esc(m.holidaySource?.title ?? "")}。${center ? "距離は町・字のおおよその真ん中からまっすぐ測ったものです。" : ""}`;
+  const today = medicalList(m, 0, center);
+  const open = today.list.filter((x) => x.openNow).length;
+  medicalRow = `<li><a href="#iryo"><span class="k">病院</span><span class="v">${today.holiday ? `今日は${esc(today.holiday)}。` : ""}今日やっている所 ${today.list.length} か所（いま開いている ${open}）</span></a></li>`;
+}
+
 // 今日の暮らし（今日すること・困ったときの入口）と、暮らしの場面のタイル
+let medicalRow = null;
 function todayLife(hasHinan) {
   const has = (v) => (answersByPage[v] ?? []).filter((a) => a.value !== "見つからなかった").length;
   const row = (view, k, v, ready) => `<li><a href="#${view}"><span class="k">${k}</span><span class="v${ready ? "" : " later"}">${esc(v)}</span></a></li>`;
   $("today-life").innerHTML = [
     row("gomi", "ごみ", has("gomi") ? "ごみの出し方を見る" : "今日の収集は、これから出します", has("gomi")),
-    row("iryo", "病院", "今日やっている病院は、これから出します", false),
+    medicalRow ?? row("iryo", "病院", "この町の病院のデータはまだありません", false),
     row("bousai", "避難", hasHinan ? "わが家から近い避難場所を出す" : has("bousai") ? "避難場所の案内を見る" : "避難場所は、これから出します", hasHinan || has("bousai")),
     row("komatta", "困ったとき", "電話・メールの窓口は、これから出します", false),
   ].join("");
@@ -400,9 +427,10 @@ async function main() {
 
   await showTypes(code, stats, `いまは${muniName}全体の数字から選んだ候補です。この町・字の深い調べは、町を調べるときに。`);
   showToday(code, centerOf(chosen));
+  await showMedical(code, centerOf(chosen));
   await finishPage(code, all, chosen.length === 1 ? chosen[0].properties.part : null, `${muniName}全体についての答えです。`);
   const index = await getJSON("data/towns/index.json");
-  sources([`${index.source}（${index.asOf}）`, `${stats.source.name}（${stats.source.asOf}）を加工（届きにくい人の候補）`, WEATHER, BASEMAP], code);
+  sources([`${index.source}（${index.asOf}）`, `${stats.source.name}（${stats.source.asOf}）を加工（届きにくい人の候補）`, WEATHER, MEDICAL, BASEMAP], code);
   drawMap(chosen);
 }
 
@@ -424,15 +452,18 @@ async function muniPage(code, stats) {
   }).join("");
   $("feature-note").textContent = `全国の市区町村 ${stats.peers.toLocaleString("ja-JP")} と比べています。`;
   await showTypes(code, stats, "");
-  showToday(code, await muniPoint(code));
+  const at = await muniPoint(code);
+  showToday(code, at);
+  await showMedical(code, null); // 市区町村まるごとは、近い順にしない（真ん中が決められないため）
   const towns = await fetch(`data/towns/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
   await finishPage(code, towns ? topojson.feature(towns, towns.objects.towns).features : [], null, "");
-  sources([`${stats.source.name}（${stats.source.asOf}。増減は${stats.source.changePeriod}）を加工`, N03, WEATHER, BASEMAP], code);
+  sources([`${stats.source.name}（${stats.source.asOf}。増減は${stats.source.changePeriod}）を加工`, N03, WEATHER, MEDICAL, BASEMAP], code);
   const topo = await getJSON("data/japan.topo.json");
   drawMap(topojson.feature(topo, topo.objects.municipalities).features.filter((f) => f.properties.code === code));
 }
 
 const N03 = "国土数値情報（行政区域データ、2026年1月1日）国土交通省 を加工して作成（CC BY 4.0）";
+const MEDICAL = "病院・診療所：厚生労働省「医療情報ネット」のオープンデータ（2026年6月1日時点、公共データ利用規約 第1.0版）を加工。祝日：内閣府「国民の祝日」（公共データ利用規約 第1.0版）";
 const WEATHER = "今日と明日の天気・警報・注意報・地震：気象庁ホームページ（その場で読む）。気温・湿度・風・日の照る時間：Open-Meteo.com（CC BY 4.0）を加工。洗濯・服装はまちしるべの決まりで出しためやす";
 const BASEMAP = "背景の地図：地理院タイル（淡色地図）https://maps.gsi.go.jp/development/ichiran.html";
 

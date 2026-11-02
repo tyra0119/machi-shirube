@@ -3,6 +3,7 @@
 // 取ったものは data/raw/shelters/（公開しない）。出力は site/data/shelters/{市区町村コード}.json
 // CSV は「指定緊急避難場所一覧」の全国でそろった形（緯度・経度・災害種別_津波 などの列）を前提にする
 import fs from "node:fs";
+import { cells } from "./csv.mjs";
 
 const UA = "machi-shirube/0.1 (+https://github.com/tyra0119/machi-shirube)";
 const [code, url, license, title] = process.argv.slice(2);
@@ -17,23 +18,6 @@ if (!fs.existsSync(raw)) {
   fs.writeFileSync(raw, Buffer.from(await res.arrayBuffer()));
 }
 const buf = fs.readFileSync(raw);
-// CSV の1行を列に分ける（"…" で囲んだ列の中のカンマは区切りにしない。住所に「822-117,896」のようなものがある）
-const cells = (line) => {
-  const out = [];
-  let cur = "", quoted = false;
-  for (let i = 0; i < line.length; i++) {
-    const ch = line[i];
-    if (quoted) {
-      if (ch === '"' && line[i + 1] === '"') { cur += '"'; i++; }
-      else if (ch === '"') quoted = false;
-      else cur += ch;
-    } else if (ch === '"') quoted = true;
-    else if (ch === ",") { out.push(cur); cur = ""; }
-    else cur += ch;
-  }
-  out.push(cur);
-  return out;
-};
 let text = new TextDecoder("utf-8").decode(buf);
 if (text.includes("�")) text = new TextDecoder("shift_jis").decode(buf);
 const lines = text.replace(/^﻿/, "").split(/\r?\n/).filter((l) => l.trim());
