@@ -1,0 +1,18 @@
+{
+ "answers": [
+  {
+   "id": "r00001",
+   "scope": "muni:39428",
+   "question": "この町の指定緊急避難場所の一覧は、どこで見られるか（公式のページか資料）。全部でいくつあるか",
+   "value": "黒潮町公式サイトの「まちの情報/オープンデータ」ページに「指定緊急避難場所一覧」(CSV)がある。CSVの件数は248か所。",
+   "source": {
+    "title": "オープンデータ│黒潮町公式ホームページ(指定緊急避難場所一覧 CSV)",
+    "url": "https://www.town.kuroshio.lg.jp/pb/cont/machi-opendate/26597",
+    "where": "黒潮町オープンデータ一覧の表「指定緊急避難場所一覧」(CSV: https://www.town.kuroshio.lg.jp/img/files/pv/sosiki/docs/open-date/2026/evacuation_space2025.csv)"
+   },
+   "method": "読んで取った",
+   "status": "ok",
+   "why": "はじめて使う情報源（www.town.kuroshio.lg.jp）。使ってよい範囲を人が確かめる／Claude のメモ：248か所は、CSVのデータ行を数えた結果です(IDは1〜248)。CSVの中に時点の記載はありません。ページには情報防災課・2026年1月4日と表示されていて、これは掲載日か更新日と思われます。町の地域防災計画の資料編(令和8年3月)にも避難場所と避難所の表がありますが、その件数は確認していません。"
+  }
+ ]
+}
