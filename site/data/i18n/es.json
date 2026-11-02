@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-02T14:57:39.242Z",
+ "createdAt": "2026-11-02T15:02:27.408Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 380,
- "of": 372,
+ "count": 387,
+ "of": 379,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -386,6 +386,13 @@
   "避難の道や、毎日の買い物・通院の道のりが、お年寄りには重くなります。": "Para las personas mayores, los caminos de evacuación y los trayectos diarios de compras y al hospital resultan más duros.",
   "公式のサイトから確かめた答え": "Respuestas confirmadas en el sitio oficial",
   "町の公式のサイトから探して、出典つきでここに出します。": "Se buscan en el sitio oficial del municipio y se muestran aquí con su fuente.",
-  "出典の中の場所": "Lugar dentro de la fuente"
+  "出典の中の場所": "Lugar dentro de la fuente",
+  "日の当たる時間（1年）": "Horas de sol (al año)",
+  "時間": "horas",
+  "1月の平均気温": "Temperatura media de enero",
+  "8月の平均気温": "Temperatura media de agosto",
+  "1年の雨の量": "Precipitación anual",
+  "いちばん深い雪": "Mayor profundidad de nieve",
+  "東京都心": "Centro de Tokio"
  }
 }

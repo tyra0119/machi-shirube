@@ -8,6 +8,7 @@ import { buildQuakePop } from "./build-quake-pop.mjs";
 import { buildAccidents } from "./build-accidents.mjs";
 import { buildShopAccess } from "./build-shop-access.mjs";
 import { buildSlope } from "./build-slope.mjs";
+import { buildClimate } from "./build-climate.mjs";
 
 export async function buildOverlays(code, log = console.log, { force = false } = {}) {
   const steps = [
@@ -16,6 +17,7 @@ export async function buildOverlays(code, log = console.log, { force = false } =
     ["交通事故", `site/data/accidents/${code}.json`, () => buildAccidents([code], () => {})],
     ["買い物に困っているお年寄り", `site/data/shop-access/${code}.json`, () => buildShopAccess([code], () => {})],
     ["坂の多い所に住む人", `site/data/slope/${code}.json`, () => buildSlope(code, () => {})],
+    ["町の気候（平年値）", `site/data/climate/${code}.json`, () => buildClimate(code, () => {})],
   ];
   for (const [name, file, run] of steps) {
     if (!force && fs.existsSync(file)) continue;

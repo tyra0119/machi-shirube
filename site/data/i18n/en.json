@@ -1,11 +1,11 @@
 {
  "lang": "en",
  "name": "English",
- "createdAt": "2026-11-02T14:57:49.448Z",
+ "createdAt": "2026-11-02T15:02:31.081Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 379,
- "of": 372,
+ "count": 387,
+ "of": 379,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "This is an unofficial guide to living in this town. Claude gathers information from the town's official website and other sources, and cites each source (Machishirube)",
   "すべてのページ": "All pages",
@@ -385,6 +385,14 @@
   "避難の道や、毎日の買い物・通院の道のりが、お年寄りには重くなります。": "Evacuation routes, and the daily trips to shop or go to the hospital, become harder for older people.",
   "公式のサイトから確かめた答え": "Answers confirmed from the official website",
   "町の公式のサイトから探して、出典つきでここに出します。": "We search the town's official website and show the results here, with sources.",
-  "出典の中の場所": "Location in the source"
+  "出典の中の場所": "Location in the source",
+  "この町の非公式の暮らしの案内です。町の公式のサイトや国の公開データから集め、出典をつけています（まちしるべ）": "This is an unofficial living guide to the town. It is compiled from the town's official website and national open data, with sources cited (Machishirube).",
+  "日の当たる時間（1年）": "Sunshine hours (per year)",
+  "時間": "hours",
+  "1月の平均気温": "Average temperature in January",
+  "8月の平均気温": "Average temperature in August",
+  "1年の雨の量": "Annual rainfall",
+  "いちばん深い雪": "Deepest snow",
+  "東京都心": "Central Tokyo"
  }
 }

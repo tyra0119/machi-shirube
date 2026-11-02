@@ -1,11 +1,11 @@
 {
  "lang": "vi",
  "name": "Tiếng Việt",
- "createdAt": "2026-11-02T14:58:44.791Z",
+ "createdAt": "2026-11-02T15:03:09.124Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 377,
- "of": 372,
+ "count": 384,
+ "of": 379,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Đây là trang hướng dẫn đời sống không chính thức của thị trấn này. Claude thu thập từ các trang chính thức của thị trấn v.v. và ghi rõ nguồn (Machi-shirube)",
   "すべてのページ": "Tất cả các trang",
@@ -383,6 +383,13 @@
   "避難の道や、毎日の買い物・通院の道のりが、お年寄りには重くなります。": "Đường sơ tán, cũng như quãng đường đi chợ và đi khám bệnh hằng ngày, trở nên vất vả hơn đối với người cao tuổi.",
   "公式のサイトから確かめた答え": "Câu trả lời đã xác nhận từ trang web chính thức",
   "町の公式のサイトから探して、出典つきでここに出します。": "Tìm từ trang web chính thức của thị trấn và hiển thị ở đây kèm theo nguồn.",
-  "出典の中の場所": "Vị trí trong nguồn"
+  "出典の中の場所": "Vị trí trong nguồn",
+  "日の当たる時間（1年）": "Số giờ nắng (1 năm)",
+  "時間": "giờ",
+  "1月の平均気温": "Nhiệt độ trung bình tháng 1",
+  "8月の平均気温": "Nhiệt độ trung bình tháng 8",
+  "1年の雨の量": "Lượng mưa cả năm",
+  "いちばん深い雪": "Tuyết dày nhất",
+  "東京都心": "Trung tâm Tokyo"
  }
 }

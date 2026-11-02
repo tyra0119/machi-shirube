@@ -40,7 +40,8 @@
     "plan-excerpts": "node --env-file=.env scripts/plan-excerpts.mjs",
     "mitate": "node --env-file=.env scripts/mitate.mjs",
     "build:summary": "node scripts/build-summary.mjs",
-    "build:slope": "node scripts/build-slope.mjs"
+    "build:slope": "node scripts/build-slope.mjs",
+    "build:climate": "node scripts/build-climate.mjs"
   },
   "devDependencies": {
     "mapshaper": "^0.7.101"

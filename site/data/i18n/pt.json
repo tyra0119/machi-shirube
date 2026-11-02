@@ -1,11 +1,11 @@
 {
  "lang": "pt",
  "name": "Português",
- "createdAt": "2026-11-02T14:57:29.638Z",
+ "createdAt": "2026-11-02T15:02:23.878Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 379,
- "of": 372,
+ "count": 387,
+ "of": 379,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Guia não oficial da vida na cidade. O Claude reúne as informações em sites oficiais da cidade e outras fontes, e indica a origem de cada uma (Machishirube)",
   "すべてのページ": "Todas as páginas",
@@ -385,6 +385,14 @@
   "避難の道や、毎日の買い物・通院の道のりが、お年寄りには重くなります。": "Para os idosos, o caminho de evacuação e o trajeto diário para compras e hospitais se tornam mais difíceis.",
   "公式のサイトから確かめた答え": "Respostas confirmadas no site oficial",
   "町の公式のサイトから探して、出典つきでここに出します。": "Pesquisado no site oficial da cidade e exibido aqui com a fonte.",
-  "出典の中の場所": "Local na fonte"
+  "出典の中の場所": "Local na fonte",
+  "この町の非公式の暮らしの案内です。町の公式のサイトや国の公開データから集め、出典をつけています（まちしるべ）": "Guia não oficial de vida cotidiana desta cidade. Reunimos informações de sites oficiais da cidade e de dados públicos do país, com indicação das fontes (Machishirube)",
+  "日の当たる時間（1年）": "Horas de sol (1 ano)",
+  "時間": "horas",
+  "1月の平均気温": "Temperatura média em janeiro",
+  "8月の平均気温": "Temperatura média em agosto",
+  "1年の雨の量": "Chuva em 1 ano",
+  "いちばん深い雪": "Maior profundidade de neve",
+  "東京都心": "Centro de Tóquio"
  }
 }

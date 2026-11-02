@@ -161,6 +161,24 @@ async function showFloodPop(code, part) {
 }
 const depthColor = (label) => { const c = DEPTH_COLORS.find(([, l]) => l === label)?.[0] ?? (label === "警戒区域" ? [214, 170, 110] : [200, 200, 200]); return `rgb(${c.join(",")})`; };
 
+// 町の気候（平年値メッシュ × 住む人。scripts/build-climate.mjs）。東京都心と並べ、良い所は明るい話題として添える
+async function showClimate(code) {
+  const d = await fetch(`data/climate/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  if (!d) return;
+  $("climate-block").hidden = false;
+  const n = (v) => Math.round(v).toLocaleString("ja-JP");
+  const rows = [
+    [T("日の当たる時間（1年）"), `${n(d.town.sun)} ${T("時間")}`, d.tokyo.sun],
+    [T("1月の平均気温"), `${d.town.jan}℃`, `${d.tokyo.jan}℃`],
+    [T("8月の平均気温"), `${d.town.aug}℃`, `${d.tokyo.aug}℃`],
+    [T("1年の雨の量"), `${n(d.town.rain)} mm`, `${n(d.tokyo.rain)} mm`],
+    ...(d.town.snow ? [[T("いちばん深い雪"), `${d.town.snow} cm`, `${d.tokyo.snow ?? 0} cm`]] : []),
+  ];
+  $("climate").innerHTML = (d.bright.length ? `<p class="fp-head"><span class="bright">${icon("sun")} ${d.bright.map((b) => esc(T(b))).join("。")}</span></p>` : "")
+    + `<ul class="acc-stats">${rows.map(([l, v, t]) => `<li><span class="l">${l}</span><strong>${v}</strong><span class="s">${T("東京都心")} ${typeof t === "number" ? `${n(t)} ${T("時間")}` : t}</span></li>`).join("")}</ul>`;
+  $("climate-note").innerHTML = `${esc(T(d.note))}。${d.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join("・")}`;
+}
+
 // 坂の多い所に住む人（国土地理院の標高 × 250m 四方の人口。scripts/build-slope.mjs）
 async function showSlope(code, part) {
   const d = await fetch(`data/slope/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
@@ -859,6 +877,7 @@ async function finishPage(code, townFeatures, startPart, scopeNote, at) {
   await showAccidents(code, part);
   await showShopAccess(code);
   await showFuture(code);
+  await showClimate(code);
   const hasHinan = await showHinan(code, townFeatures, startPart);
   await showTranslations(code);
   await showGomi(code);
