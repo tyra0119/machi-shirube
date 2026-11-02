@@ -498,6 +498,35 @@ async function showTranslations(code) {
   draw();
 }
 
+// このごみは何ごみ？：町の公式の一覧表から作った辞書（site/data/gomi/{コード}.json）を、入力した言葉で引く。
+// ひらがな・カタカナ・全角半角の違いは吸収する。見つからなければ、町の表へ案内する
+const kana = (s) => String(s ?? "").normalize("NFKC").toLowerCase().replace(/[ァ-ヶ]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0x60)).replace(/[\s　・･]/g, "");
+async function showGomi(code) {
+  const d = await fetch(`data/gomi/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  if (!d) return;
+  $("gomi-block").hidden = false;
+  const hue = (k) => [140, 205, 45, 275, 185, 320, 100, 235, 30, 165][d.kinds.indexOf(k) % 10];
+  const items = d.items.map((x) => ({ ...x, key: kana(x.n), ykey: kana(x.y) }));
+  const examples = ["ペットボトル", "乾電池", "スプレー缶", "フライパン", "蛍光灯", "傘"].filter((w) => items.some((x) => x.key.includes(kana(w)))).slice(0, 5);
+  $("gomi-ex").innerHTML = examples.length ? `例：${examples.map((w) => `<button type="button" data-w="${esc(w)}">${esc(w)}</button>`).join("")}` : "";
+  const draw = () => {
+    const q = kana($("gomi-q").value);
+    if (!q) { $("gomi-hits").innerHTML = ""; return; }
+    const hits = items.map((x) => ({ x, s: x.key === q || x.ykey === q ? 0 : x.key.startsWith(q) || x.ykey?.startsWith(q) ? 1 : x.key.includes(q) || x.ykey?.includes(q) ? 2 : 9 }))
+      .filter((h) => h.s < 9).sort((a, b) => a.s - b.s || a.x.n.length - b.x.n.length).slice(0, 8);
+    $("gomi-hits").innerHTML = hits.length ? hits.map(({ x }) => `<li style="--h:${hue(x.k)}">
+        <span class="n">${esc(x.n)}</span>
+        <span class="k">${esc(x.k)}</span>
+        ${x.also ? `<span class="also">場合によって：${x.also.map((k) => `<b style="--h:${hue(k)}">${esc(k)}</b>`).join("")}</span>` : ""}
+        ${x.note ? `<span class="nt">${esc(x.note)}</span>` : ""}
+      </li>`).join("")
+      : `<li class="none">「${esc($("gomi-q").value)}」は、町の表に見つかりませんでした。言いかえて探すか、町の一覧表で確かめてください。</li>`;
+  };
+  $("gomi-q").addEventListener("input", draw);
+  for (const b of $("gomi-ex").querySelectorAll("button")) b.addEventListener("click", () => { $("gomi-q").value = b.dataset.w; draw(); $("gomi-q").focus(); });
+  $("gomi-note").innerHTML = `${esc(d.note)}（${d.items.length} 品目）。出典：${d.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title ?? s.url)}</a>`).join("・")}`;
+}
+
 // どの町のページも最後に同じことをする：答え・わが家の避難・今日の暮らし・すべてのページ・調べる
 async function finishPage(code, townFeatures, startPart, scopeNote) {
   const part = startPart && townFeatures.find((f) => f.properties.part === startPart);
@@ -512,6 +541,7 @@ async function finishPage(code, townFeatures, startPart, scopeNote) {
   }
   const hasHinan = await showHinan(code, townFeatures, startPart);
   await showTranslations(code);
+  await showGomi(code);
   todayLife(hasHinan);
   const local = await fetch("api/ping").then((r) => r.ok).catch(() => false);
   buildAllPages(hasHinan, local);

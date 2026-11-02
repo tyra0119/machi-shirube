@@ -82,7 +82,16 @@
   </div>
 
   <!-- 場面のページ（中身は町ごとに Claude が調べた答え。まだのものは「これから」と出す） -->
-  <div class="view" data-view="gomi" hidden><section class="block"><h2>ごみ</h2><div class="answers-box" data-page="gomi"></div></section></div>
+  <div class="view" data-view="gomi" hidden>
+    <section class="block" id="gomi-block" hidden>
+      <h2>このごみは何ごみ？</h2>
+      <input id="gomi-q" class="gomi-q" type="search" placeholder="ごみの名前を入れる（例：ペットボトル、電池、フライパン）" aria-label="ごみの名前" autocomplete="off">
+      <p class="gomi-ex" id="gomi-ex"></p>
+      <ul class="gomi-hits" id="gomi-hits" aria-live="polite"></ul>
+      <p class="note" id="gomi-note"></p>
+    </section>
+    <section class="block"><h2>ごみ</h2><div class="answers-box" data-page="gomi"></div></section>
+  </div>
   <div class="view" data-view="iryo" hidden>
     <section class="block" id="med-block">
       <h2>今日やっている病院・診療所</h2>

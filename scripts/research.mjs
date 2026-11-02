@@ -47,7 +47,7 @@ export async function officialSite(code, name, step = () => {}) {
   return sites[code];
 }
 // 読んでよいサイト：国・県・市町村の lg.jp と go.jp に、その町の公式サイトを足す
-const domainsFor = (site) => [...new Set([...OFFICIAL, site.host.replace(/^www\./, "")])];
+export const domainsFor = (site) => [...new Set([...OFFICIAL, site.host.replace(/^www\./, "")])];
 const isOfficial = (domains, h) => domains.some((d) => h === d || h.endsWith(`.${d}`) || h.endsWith(d));
 export const DEFAULT_QUESTION = "この町の指定緊急避難場所の一覧は、どこで見られるか（公式のページか資料）。全部でいくつあるか";
 
@@ -293,7 +293,7 @@ async function checker(question, value, docText) {
 
 // 行儀よく取る：名乗る・robots.txt を見る・同じサイトへは1秒あける。PDF なら文字を取り出す
 const lastHit = new Map();
-async function politeText(url, { raw = false } = {}) {
+export async function politeText(url, { raw = false, binary = false } = {}) {
   const u = new URL(url);
   const wait = 1000 - (Date.now() - (lastHit.get(u.host) ?? 0));
   if (wait > 0) await new Promise((r) => setTimeout(r, wait));
@@ -304,6 +304,7 @@ async function politeText(url, { raw = false } = {}) {
   lastHit.set(u.host, Date.now());
   if (!res.ok) throw new Error(`応答 ${res.status}`);
   const buf = Buffer.from(await res.arrayBuffer());
+  if (binary) return buf; // Excel など、文字でないファイル
   if (raw) {
     // CSV：UTF-8 で読めなければ Shift_JIS（日本の役所の CSV に多い）
     const utf8 = new TextDecoder("utf-8", { fatal: false }).decode(buf);
