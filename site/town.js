@@ -198,6 +198,23 @@ async function showFuture(code) {
   $("future-note").innerHTML = `${T("棒は総人口、下の % は65歳以上の割合です。")}${esc(T(d.note))}。<a href="${esc(d.source.url)}" target="_blank" rel="noopener">${esc(d.source.title)}</a>`;
 }
 
+// バスの便利さ（公開されている時刻表データ × 250m 四方の65歳以上。scripts/build-bus.mjs）
+async function showBus(code, part) {
+  const d = await fetch(`data/bus/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  if (!d) return;
+  $("bus-block").hidden = false;
+  const n = (v) => v.toLocaleString("ja-JP");
+  const here = part && d.parts[part.properties.part];
+  $("bus-stats").innerHTML = [
+    [T("町とその近くの、平日に便のあるバス停"), `${d.stops.length}`, d.routes.map((r) => esc(T(r))).join("・")],
+    [T("バス停まで 500m 以上の所に住む65歳以上"), `${d.farRate}%`, `${T("約")} ${n(d.far)} ${T("人")}`],
+    [T("近いバス停が1日10本未満の所に住む65歳以上"), `${d.fewRate}%`, `${T("約")} ${n(d.few)} ${T("人")}`],
+    ...(here ? [[esc(here.name), `${here.farRate}%`, `${T("バス停まで 500m 以上")}・${T("1日10本未満")} ${here.fewRate}%`]] : []),
+  ].map(([l, v, s]) => `<li><span class="l">${l}</span><strong>${v}</strong><span class="s">${s}</span></li>`).join("");
+  $("bus-stops").innerHTML = d.stops.slice(0, 8).map((s) => `<li><span class="no">${s.n}</span><span>${esc(s.name)}</span></li>`).join("");
+  $("bus-note").innerHTML = `${esc(T(d.note))}。${T("丸の中の数は、平日1日に出る便の数です。")}${d.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join("・")}`;
+}
+
 // 道の安全（交通事故。scripts/build-accidents.mjs が警察庁のオープンデータから作る）
 async function showAccidents(code, part) {
   const d = await fetch(`data/accidents/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
@@ -782,6 +799,7 @@ async function finishPage(code, townFeatures, startPart, scopeNote, at) {
   }
   await showFloodPop(code, part);
   await showQuake(code, part);
+  await showBus(code, part);
   await showAccidents(code, part);
   await showShopAccess(code);
   await showFuture(code);
