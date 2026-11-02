@@ -317,7 +317,7 @@ async function showAnswers(code, scopeNote, partKey, partName) {
     box.innerHTML = (p ? `<div class="page-banner" style="--h:${ILLUST[p.view]?.h ?? 200}">${illust(p.view)}<p><strong>${esc(T(p.title))}</strong>${esc(T(p.desc))}${list.length ? `<span>${T("Claude が公式のサイトから確かめた答え")} ${list.length}</span>` : ""}</p></div>` : "")
       + (list.length && scopeNote && !list.some((a) => a.level) ? `<p class="note">${esc(scopeNote)}</p>` : "")
       + (list.length ? answersHTML(list) : "")
-      + (p?.later ? `<p class="later"><span>${T("準備中")}</span>${LANG ? `${esc(T(p.later))} — ${T("Claude が町の公式のサイトから探して、出典つきでここに出します。")}` : `${esc(p.later)}を、Claude が町の公式のサイトから探して、出典つきでここに出します。`}</p>` : "")
+      + (p?.later && !list.length ? `<p class="later"><span>${T("準備中")}</span>${LANG ? `${esc(T(p.later))} — ${T("Claude が町の公式のサイトから探して、出典つきでここに出します。")}` : `${esc(p.later)}を、Claude が町の公式のサイトから探して、出典つきでここに出します。`}</p>` : "")
       + (!list.length && !p?.later ? `<p class="note">まだありません。</p>` : "");
   }
 }
@@ -407,7 +407,7 @@ function todayLife(hasHinan) {
     row("gomi", "ごみ", has("gomi") ? "ごみの出し方を見る" : "今日の収集は、これから出します", has("gomi")),
     medicalRow ?? row("iryo", "病院", "この町の病院のデータはまだありません", false),
     row("bousai", "避難", hasHinan ? "わが家から近い避難場所を出す" : has("bousai") ? "避難場所の案内を見る" : "避難場所は、これから出します", hasHinan || has("bousai")),
-    row("komatta", "困ったとき", "電話・メールの窓口は、これから出します", false),
+    row("komatta", "困ったとき", has("komatta") ? "電話・メールの窓口を見る" : "電話・メールの窓口は、これから出します", has("komatta")),
   ].join("");
   $("tiles").innerHTML = PAGES.filter((p) => !["today", "source", "research", "mitate"].includes(p.view)).map((p) => {
     // 中身があるか：Claude の答え・わが家の避難・病院のデータ・町のデータ

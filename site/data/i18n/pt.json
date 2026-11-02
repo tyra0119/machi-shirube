@@ -1,11 +1,11 @@
 {
  "lang": "pt",
  "name": "Português",
- "createdAt": "2026-11-02T11:02:20.769Z",
+ "createdAt": "2026-11-02T11:26:03.729Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 181,
- "of": 180,
+ "count": 192,
+ "of": 191,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Guia não oficial da vida na cidade. O Claude reúne as informações em sites oficiais da cidade e outras fontes, e indica a origem de cada uma (Machishirube)",
   "すべてのページ": "Todas as páginas",
@@ -187,6 +187,17 @@
   "例：": "Exemplo:",
   "場合によって：": "Dependendo do caso:",
   "は、町の表に見つかりませんでした。言いかえて探すか、町の一覧表で確かめてください。": "não foi encontrado na tabela da cidade. Tente outras palavras ou confira na lista da cidade.",
-  "ページの上の帯の色は、町が定めた花・木の色から作りました（町の公式の色ではありません）。": "A cor da faixa no topo da página foi criada a partir das cores da flor e da árvore definidas pela cidade (não é a cor oficial da cidade)."
+  "ページの上の帯の色は、町が定めた花・木の色から作りました（町の公式の色ではありません）。": "A cor da faixa no topo da página foi criada a partir das cores da flor e da árvore definidas pela cidade (não é a cor oficial da cidade).",
+  "電話・メールの窓口を見る": "Ver contatos por telefone e e-mail",
+  "困ったときの窓口": "Onde buscar ajuda",
+  "夜間・休日の医療": "Atendimento médico noturno e em feriados",
+  "子育ての窓口と助成": "Apoio e auxílios para criação de filhos",
+  "介護の相談の窓口": "Onde buscar orientação sobre cuidados a idosos",
+  "いま申し込める補助金・給付": "Subsídios e benefícios com inscrições abertas agora",
+  "図書館と公園": "Biblioteca e parques",
+  "これからの催し": "Próximos eventos",
+  "高齢者のごみ戸別収集": "Coleta de lixo porta a porta para idosos",
+  "町の人に聞きたいこと": "O que queremos perguntar aos moradores",
+  "Claude が町の公式のサイトを探しても、公開の資料では分からなかったことです。町に住む人の知っていることが、次の入口になります。": "São coisas que o Claude procurou nos sites oficiais da cidade e não conseguiu descobrir pelos materiais públicos. O que os moradores sabem pode ser o próximo ponto de partida."
  }
 }

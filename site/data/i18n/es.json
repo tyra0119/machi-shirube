@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-02T11:02:29.202Z",
+ "createdAt": "2026-11-02T11:26:10.557Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 180,
- "of": 180,
+ "count": 190,
+ "of": 191,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -186,6 +186,16 @@
   "例：": "Ejemplo:",
   "場合によって：": "En algunos casos:",
   "は、町の表に見つかりませんでした。言いかえて探すか、町の一覧表で確かめてください。": "no se encontró en las tablas de la ciudad. Pruebe a buscar con otras palabras o consulte la lista de la ciudad.",
-  "ページの上の帯の色は、町が定めた花・木の色から作りました（町の公式の色ではありません）。": "El color de la franja superior de la página se creó a partir de los colores de la flor y el árbol que la ciudad ha designado (no es un color oficial de la ciudad)."
+  "ページの上の帯の色は、町が定めた花・木の色から作りました（町の公式の色ではありません）。": "El color de la franja superior de la página se creó a partir de los colores de la flor y el árbol que la ciudad ha designado (no es un color oficial de la ciudad).",
+  "電話・メールの窓口を見る": "Ver contactos por teléfono y correo electrónico",
+  "困ったときの窓口": "Dónde pedir ayuda",
+  "夜間・休日の医療": "Atención médica nocturna y en días festivos",
+  "子育ての窓口と助成": "Servicios de crianza y ayudas",
+  "いま申し込める補助金・給付": "Subvenciones y prestaciones que se pueden solicitar ahora",
+  "図書館と公園": "Bibliotecas y parques",
+  "これからの催し": "Próximos eventos",
+  "高齢者のごみ戸別収集": "Recogida de basura puerta a puerta para personas mayores",
+  "町の人に聞きたいこと": "Preguntas para los vecinos",
+  "Claude が町の公式のサイトを探しても、公開の資料では分からなかったことです。町に住む人の知っていることが、次の入口になります。": "Son cosas que Claude buscó en los sitios web oficiales del municipio y no pudo averiguar con los documentos públicos. Lo que saben las personas que viven en el municipio puede ser la siguiente pista."
  }
 }

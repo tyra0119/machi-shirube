@@ -210,7 +210,7 @@
       "url": "https://www.town.oizumi.gunma.jp/s004/gyosei/010/010/020/20200903104414.html",
       "where": "ページ冒頭の説明文、一括ダウンロード・分割ダウンロード欄"
      },
-     "status": "pending",
+     "status": "ok",
      "problems": [
       "原文にない西暦「(2026)」が追加されている（令和8年と同じ年なので内容のずれではない）"
      ],
@@ -311,7 +311,7 @@
       "url": "https://www.town.oizumi.gunma.jp/s020/kanko/010/030/20200825133615.html",
       "where": "大泉まつり（本文冒頭）"
      },
-     "status": "pending",
+     "status": "ok",
      "problems": [
       "原文にない西暦「(2026)」が追加されている（令和8年と同じ年なので内容のずれではない）"
      ],

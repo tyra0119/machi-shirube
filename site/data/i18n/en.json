@@ -1,11 +1,11 @@
 {
  "lang": "en",
  "name": "English",
- "createdAt": "2026-11-02T11:02:37.737Z",
+ "createdAt": "2026-11-02T11:26:18.896Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 180,
- "of": 180,
+ "count": 190,
+ "of": 191,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "This is an unofficial guide to living in this town. Claude gathers information from the town's official website and other sources, and cites each source (Machishirube)",
   "すべてのページ": "All pages",
@@ -186,6 +186,16 @@
   "例：": "Example:",
   "場合によって：": "In some cases:",
   "は、町の表に見つかりませんでした。言いかえて探すか、町の一覧表で確かめてください。": "was not found in the town's table. Try different wording, or check the town's list.",
-  "ページの上の帯の色は、町が定めた花・木の色から作りました（町の公式の色ではありません）。": "The color of the bar at the top of the page is based on the town's designated flower and tree colors (it is not an official town color)."
+  "ページの上の帯の色は、町が定めた花・木の色から作りました（町の公式の色ではありません）。": "The color of the bar at the top of the page is based on the town's designated flower and tree colors (it is not an official town color).",
+  "電話・メールの窓口を見る": "See phone and email contacts",
+  "困ったときの窓口": "Where to get help",
+  "夜間・休日の医療": "Night and holiday medical care",
+  "子育ての窓口と助成": "Childcare contacts and subsidies",
+  "介護の相談の窓口": "Nursing care consultation contacts",
+  "いま申し込める補助金・給付": "Subsidies and benefits you can apply for now",
+  "図書館と公園": "Libraries and parks",
+  "これからの催し": "Upcoming events",
+  "高齢者のごみ戸別収集": "Door-to-door garbage collection for seniors",
+  "町の人に聞きたいこと": "Questions for local residents"
  }
 }
