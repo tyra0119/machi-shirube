@@ -474,13 +474,22 @@ async function showTranslations(code) {
     const L = t.langs[lang];
     $("tr-langs").innerHTML = langs.map((l) => `<button type="button" data-lang="${l}" aria-pressed="${l === lang}">${esc(t.langs[l].name)}</button>`).join("");
     $("tr-note").textContent = TR_NOTE[lang] ?? "";
+    // 日本語の答えと同じカードの形（左に絵・要点・箇条）。訳が確かめ中のものは、もとの日本語を出す
+    $("tr-list").className = "answers tr-list";
     $("tr-list").innerHTML = L.items.map((x) => {
       const ok = x.status === "auto" || x.status === "ok";
-      return `<li lang="${lang === "easy" ? "ja" : lang}">
-        <h3>${esc(ok ? x.short : x.qid)}</h3>
-        ${ok ? `<p class="tx">${prettyText(x.text, esc)}</p>` : `<p class="tx pending">${esc(TR_PENDING[lang] ?? "")} ${esc(x.original)}</p>`}
-        <details><summary>もとの日本語・出典</summary><p lang="ja">${esc(x.original)}</p>
-          ${x.source?.url ? `<p>出典：<a href="${esc(x.source.url)}" target="_blank" rel="noopener">${esc(x.source.title ?? x.source.url)}</a></p>` : ""}</details>
+      const ill = ILLUST[PAGE_OF(x.qid)] ?? ILLUST.foreign;
+      const lines = prettyText(ok ? x.text : x.original, esc).split("<br>").filter(Boolean);
+      return `<li lang="${ok && lang !== "easy" ? lang : "ja"}" style="--h:${ill.h}">
+        <span class="badge" aria-hidden="true">${icon(ANSWER_ICON[x.qid] ?? ill.main)}</span>
+        <div class="body">
+          <h3 class="short">${esc(ok ? x.short : (yardstick.questions.find((q) => q.id === x.qid)?.short ?? x.qid))}</h3>
+          ${ok ? "" : `<p class="pending-note">${esc(TR_PENDING[lang] ?? "")}</p>`}
+          <p class="lead">${numbers(lines[0] ?? "")}</p>
+          ${lines.length > 1 ? `<ul class="pts">${lines.slice(1).map((l) => `<li>${numbers(l)}</li>`).join("")}</ul>` : ""}
+          ${x.source?.url ? `<p class="src chip">${icon("link")} <a href="${esc(x.source.url)}" target="_blank" rel="noopener">${esc(x.source.title ?? x.source.url)}</a></p>` : ""}
+          ${ok ? `<details class="q"><summary>もとの日本語</summary><span lang="ja">${prettyText(x.original, esc)}</span></details>` : ""}
+        </div>
       </li>`;
     }).join("");
     for (const b of $("tr-langs").querySelectorAll("button")) b.addEventListener("click", () => { lang = b.dataset.lang; draw(); });

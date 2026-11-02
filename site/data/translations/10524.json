@@ -256,7 +256,7 @@
       "url": "https://www.town.oizumi.gunma.jp/s004/gyosei/010/010/020/20200903104414.html",
       "where": "ページ冒頭の説明文、一括ダウンロード・分割ダウンロード欄"
      },
-     "status": "pending",
+     "status": "ok",
      "problems": [
       "訳で「(2026)」を追加している。原文にない西暦の補足。"
      ],
@@ -405,7 +405,7 @@
       "url": "https://www.town.oizumi.gunma.jp/s017/kurashi/020/050/030/20200804203647.html",
       "where": "転入(手続きできる人・届出期間・必要なもの)"
      },
-     "status": "pending",
+     "status": "ok",
      "problems": [
       "「町の外から引っ越してきたとき」を足している（原文にない）"
      ],

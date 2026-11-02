@@ -306,3 +306,27 @@ body.town-page { display: block; height: auto; min-height: 100%; }
   :root:not([data-theme="light"]) .answers .num { color: hsl(var(--h) 60% 78%); }
   :root:not([data-theme="light"]) .page-banner { background: hsl(var(--h) 20% 18%); }
 }
+/* 確かめる一覧：判断してほしいことを先に、見出しの大きさで。Claude の答えはカードに（太字にしない） */
+.todo-box { margin: 4px 0 12px; padding: 12px 16px; border: 2px solid var(--accent); border-radius: 12px; background: var(--surface); }
+.todo-box .todo-head { margin: 0 0 6px; font-size: 13px; font-weight: 700; color: var(--accent); letter-spacing: 0.05em; }
+.todo-list { margin: 0; padding: 0; list-style: none; }
+.todo-list > li { margin: 0; padding: 8px 0; border-top: 1px dashed var(--line); }
+.todo-list > li:first-child { border-top: 0; padding-top: 0; }
+.todo-q { margin: 0 0 6px; font-size: 18px; line-height: 1.5; color: var(--text); }
+.todo-said { margin: 0 0 8px; font-size: 15px; line-height: 1.7; color: var(--text); }
+.todo-links { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 8px; }
+.todo-links .open-src { margin: 0; }
+.todo-how { margin: 0; padding: 0; list-style: none; }
+.todo-how li { display: flex; align-items: baseline; gap: 8px; padding: 4px 0; font-size: 15px; line-height: 1.6; }
+.todo-how .b { flex: none; min-width: 5.5em; padding: 1px 8px; border: 1px solid var(--line); border-radius: 6px; font-size: 13px; font-weight: 700; text-align: center; }
+.todo-how .b.ok { border-color: var(--accent); background: var(--accent); color: var(--accent-text); }
+.todo-compare { margin: 0 0 8px; }
+.todo-compare div { display: grid; grid-template-columns: 7em 1fr; gap: 8px; padding: 4px 0; font-size: 14px; }
+.todo-compare dt { color: var(--text-sub); }
+.answer-card { margin: 0 0 10px; padding: 12px 14px; border-radius: 12px; background: var(--bg); }
+.answer-card .answer-label { margin: 0 0 4px; font-size: 12px; font-weight: 700; color: var(--text-sub); }
+.item .answer-card .value { margin: 0 0 6px; font-size: 16px; font-weight: 400; line-height: 1.8; }
+.answer-card .src { margin: 0 0 6px; font-size: 13px; color: var(--text-sub); }
+/* 外へのリンクの ↗ はボタン（open-src）にも付ける。二重にしない */
+.open-src::after { content: " ↗"; }
+.tr-list .pending-note { margin: 0 0 4px; font-size: 13px; color: var(--text-sub); }

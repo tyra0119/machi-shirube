@@ -136,62 +136,64 @@ function tags(it) {
 document.querySelectorAll(".r-tabs button").forEach((b) => b.addEventListener("click", () => { tab = b.dataset.tab; openId = null; render(); }));
 $("town-filter").addEventListener("change", (e) => { town = e.target.value; openId = null; render(); });
 
-// 人が見る理由（しくみの言葉）を、「何を見て、どう決めればよいか」に言いかえる
+// 人が見る理由（しくみの言葉）を、「何を見て、どう決めればよいか」に言いかえる。
+// 1つの長い文にせず、分けて返す：title（決めること）・said（Claude が気づいたこと、1〜2行）・links（開いて見る資料）・ok／fix／other（こうならこのボタン）
 function guide(reason, it) {
   const r = reason;
-  if (/^はじめて使う情報源/.test(r)) {
-    const host = r.match(/（(.+?)）/)?.[1] ?? "このサイト";
-    return { title: "このサイトの情報を、まちしるべに出してよいか",
-      todo: `${host} をはじめて使います。サイトの「このサイトについて」「著作権」「リンク・転載」の書き方を見てください。
-        決まりが書いていないか、「事実を使う・リンクする」のがよい書き方なら OK。転載を禁じていても、日付や数字などの事実とリンクだけなら出せます。
-        OK すると、このサイトは次から自動で使えるようになります。` };
-  }
+  const src = it.source?.url ? [{ label: "出典を開く", url: it.source.url }] : [];
   if (/^確かめ役/.test(r)) {
     const detail = r.replace(/^確かめ役：資料と合わない所がある（/, "").replace(/）$/, "");
-    return { title: "答えに、資料に書かれていないことが入っていないか",
-      todo: `別の Claude（確かめ役）が気にした所：「${detail}」。出典を開いて、答えの文が正しいか見てください。
-        正しい（言いかえの範囲）なら OK。まちがい・言いすぎがあれば「直して」に、どこを直すかを書いてください。` };
+    return { title: "答えに、資料に書かれていないことが入っていないか", said: `別の Claude（確かめ役）が気にした所：${detail}`, links: src,
+      ok: "資料に書いてある（言いかえの範囲）", fix: "まちがい・言いすぎがある → どこを直すかを書く" };
   }
   if (/元の文が.*見つからなかった/.test(r)) {
-    return { title: "答えが、出典のページに本当に書かれているか",
-      todo: `Claude が引いた元の文が、出典のページの中で見つかりませんでした。出典を開いて、答えがそのページ（か、そこから行けるページ）に書かれているか見てください。
-        書かれていれば OK。違うページのことなら「直して」に、そう書いてください。` };
+    return { title: "答えが、出典のページに本当に書かれているか", said: "Claude が引いた元の文が、出典のページの中で見つかりませんでした", links: src,
+      ok: "そのページ（か、そこから行けるページ）に書いてある", fix: "違うページのことだった → そう書く" };
   }
   if (/見つからなかった（町の人に聞く/.test(r)) {
-    return { title: "町の人に聞くことにするか",
-      todo: `公開の資料では答えが見つかりませんでした。町のサイトに本当に無いと思えば「分からない」を押してください（町の人に聞きたいことの一覧に入ります）。
-        どこかにありそうなら「直して」に、探してほしい場所を書いてください。` };
+    return { title: "町の人に聞くことにするか", said: "公開の資料では、答えが見つかりませんでした", links: [],
+      other: ["分からない", "町のサイトに本当に無い（町の人に聞きたいことの一覧に入る）"], fix: "どこかにありそう → 探してほしい場所を書く" };
   }
   if (/^数が合わない/.test(r)) {
-    return { title: "数はどちらが正しいか", todo: `${r}。出典の一覧を開いて数を見て、正しい数を「直して」に書くか、Claude の数で合っていれば OK。` };
+    return { title: "数はどちらが正しいか", said: r, links: src, ok: "Claude の数で合っている", fix: "違う → 正しい数を書く" };
   }
   if (/^出典が公式のサイトでない/.test(r)) {
-    return { title: "公式でないサイトを出典にしてよいか", todo: `${r}。まちしるべは公式の出典だけを使う決まりです。ふつうは「出さない」か、公式の出典で「直して」。` };
+    return { title: "公式でないサイトを出典にしてよいか", said: `${r}。まちしるべは公式の出典だけを使う決まりです`, links: src,
+      other: ["出さない", "ふつうはこちら"], fix: "公式の出典がある → その場所を書く" };
   }
   if (/^見張り：/.test(r)) {
-    return { title: "出典のページが切れた：調べ直すか",
-      todo: `${r.replace(/^見張り：/, "")}
-        「出典を開く」で本当に見られないか確かめてください。見られないなら「直して」に「新しいページを探して」と書くと、Claude が調べ直します（新しい答えは確かめる一覧に入ります）。
-        見られるなら（一時的だった）「OK」で知らせを閉じます。` };
+    return { title: "出典のページが切れた：調べ直すか", said: r.replace(/^見張り：/, "").replace(/。「直して」で.*$/, ""), links: src,
+      ok: "ページが見られた（一時的だった）→ 知らせを閉じる", fix: "見られない → 「新しいページを探して」と書くと、Claude が調べ直す" };
   }
   if (/^訳し戻すとずれがある/.test(r)) {
-    return { title: "訳の意味が、もとの日本語と同じか",
-      todo: `別の Claude が訳を日本語に訳し戻したら、ずれが見つかりました：${(r.match(/（(.+?)）/)?.[1] ?? "")}。
-        もとの日本語：${it.original ?? ""}
-        訳し戻し：${it.back ?? ""}
-        ずれが小さく、意味が同じなら OK（ページに訳が出ます）。意味が変わっていれば「出さない」（もとの日本語が出たままになります）。` };
+    return { title: "訳の意味が、もとの日本語と同じか", said: `訳を日本語に訳し戻したら、ずれがありました：${r.match(/（(.+?)）/)?.[1] ?? ""}`,
+      compare: [["もとの日本語", it.original], ["訳し戻し", it.back]], links: [],
+      ok: "ずれが小さく、意味は同じ（ページに訳が出る）", other: ["出さない", "意味が変わっている（もとの日本語が出たまま）"] };
   }
   if (/^古いデータの見込み/.test(r)) {
     const o = it.outdated;
-    return { title: "古いデータを見抜いた：どちらを町のページに出すか",
-      todo: `Claude が、公式の資料どうしで古いものと新しいものがあることに気づきました。${o ? `古い：${o.old?.asOf ?? "?"}（${o.old?.url ?? ""}）。新しい：${o.new?.asOf ?? "?"}（${o.new?.url ?? ""}）。` : r}
-        両方を開いて時点を見てください。答えが新しいほうを元にしていて、古いほうがあることも書けていれば OK。古いほうだけを元にしていれば「直して」に「新しいほうで」と書いてください。` };
+    return { title: "古いデータを見抜いた：どちらを町のページに出すか", said: `公式の資料どうしで、古いものと新しいものがあります${o?.what ? `（${o.what}）` : ""}`,
+      links: o ? [{ label: `古い資料（${o.old?.asOf ?? "?"}）`, url: o.old?.url }, { label: `新しい資料（${o.new?.asOf ?? "?"}）`, url: o.new?.url }].filter((x) => x.url) : src,
+      ok: "答えが新しいほうを元にしていて、古いほうがあることも書けている", fix: "古いほうだけを元にしている → 「新しいほうで」と書く" };
   }
-  return { title: "ほかに気になる所", todo: r };
+  return { title: "ほかに気になる所", said: r, links: src };
+}
+function todoHTML(g) {
+  const btn = (x) => `<a class="open-src" href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.label)}</a>`;
+  return `<li>
+    <h3 class="todo-q">${esc(g.title)}</h3>
+    ${g.said ? `<p class="todo-said">${esc(g.said)}</p>` : ""}
+    ${g.compare ? `<dl class="todo-compare">${g.compare.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v ?? "")}</dd></div>`).join("")}</dl>` : ""}
+    ${g.links?.length ? `<p class="todo-links">${g.links.map(btn).join("")}</p>` : ""}
+    <ul class="todo-how">
+      ${g.ok ? `<li><span class="b ok">OK</span>${esc(g.ok)}</li>` : ""}
+      ${g.fix ? `<li><span class="b">直して</span>${esc(g.fix)}</li>` : ""}
+      ${g.other ? `<li><span class="b">${esc(g.other[0])}</span>${esc(g.other[1])}</li>` : ""}
+    </ul>
+  </li>`;
 }
 
 function itemHTML(it) {
-  const srcLink = it.source?.url ? `<a class="open-src" href="${esc(it.source.url)}" target="_blank" rel="noopener">出典を開く ↗</a>` : "";
   const src = it.source ? `<p class="src">出典：${esc(it.source.title ?? it.source.url)}${it.source.where ? `（${esc(it.source.where)}）` : ""}${it.asOf ? `・時点 ${esc(it.asOf)}` : ""}</p>` : "";
   const firstUse = (it.why ?? "").split("／").map(firstUseHost).find(Boolean);
   const reasons = (it.why ?? "").split("／").filter((r) => r && !/^Claude のメモ/.test(r) && !firstUseHost(r));
@@ -199,8 +201,10 @@ function itemHTML(it) {
   const todo = it.status === "pending" && reasons.length ? `
     <div class="todo-box">
       <p class="todo-head">判断してほしいこと</p>
-      <ol>${reasons.map((r) => { const g = guide(r, it); return `<li><strong>${esc(g.title)}</strong><span>${esc(g.todo).replace(/\s*\n\s*/g, "<br>")}</span></li>`; }).join("")}</ol>
+      <ol class="todo-list">${reasons.map((r) => todoHTML(guide(r, it))).join("")}</ol>
     </div>` : "";
+  // 出典を開くボタン：判断の説明に出典のボタンが無いときだけ
+  const srcLink = it.source?.url && !todo.includes(esc(it.source.url)) ? `<a class="open-src" href="${esc(it.source.url)}" target="_blank" rel="noopener">出典を開く</a>` : "";
   const details = [
     it.quote ? `<p class="note">Claude が引いた元の文（手元だけ。公開しません）</p><blockquote class="quote">${esc(it.quote)}</blockquote>` : "",
     it.note ? `<p class="note">Claude のメモ</p><p>${esc(it.note)}</p>` : "",
@@ -216,11 +220,11 @@ function itemHTML(it) {
       <button type="button" data-action="unknown">分からない<small>町の人に聞くことにする</small></button>
       <form class="why-form" hidden><label class="field">理由を1行（何が違うか・どこを探すか）<input name="reason" maxlength="100" required></label><button type="submit">決める</button></form>
     </div>` : local && it.status !== "auto" ? `<div class="decide" data-id="${it.id}"><button type="button" data-action="undo">元に戻す（確かめ待ちへ）</button></div>` : "";
+  // 並び：判断してほしいこと → Claude の答え（カード）→ くわしく → ボタン
   return `
     <article class="item">
-      ${it.value != null ? `<p class="value">${prettyText(it.value, esc)}</p>` : ""}
-      ${src}${srcLink}
       ${siteNote}${todo}
+      ${it.value != null ? `<div class="answer-card"><p class="answer-label">${it.kind === "translation" ? "Claude の訳" : "Claude の答え"}</p><p class="value">${prettyText(it.value, esc)}</p>${src}${srcLink}</div>` : ""}
       ${details ? `<details class="more"><summary>くわしく（元の文・Claude のメモ）</summary>${details}</details>` : ""}
       ${decided}${buttons}
     </article>`;
