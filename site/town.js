@@ -30,6 +30,20 @@ const TOWN_ROWS = [
   ["apartmentRate", "共同住宅（マンション・アパート）の世帯の割合", "households"],
 ];
 
+// 町のサイトのメニュー：URL の # で、どのページを見せるかを決める（#top・#sonae・#kurashi・#shiru・#source・#research）
+const VIEWS = ["top", "sonae", "kurashi", "shiru", "source", "research"];
+const maps = []; // 隠れていたページの地図は、見せたときに大きさを合わせ直す
+function showView() {
+  const v = VIEWS.includes(location.hash.slice(1)) ? location.hash.slice(1) : "top";
+  for (const el of document.querySelectorAll(".view")) el.hidden = el.dataset.view !== v;
+  for (const a of document.querySelectorAll(".town-tabs a")) a.toggleAttribute("aria-current", a.dataset.view === v);
+  // 隠れていたあいだは大きさが 0 なので、見せたときに大きさを合わせ、覚えておいた範囲に寄せ直す
+  for (const m of maps) { m.resize(); if (m.fitTo) m.fitBounds(m.fitTo.box, { ...m.fitTo.opts, duration: 0 }); }
+  if (location.hash) window.scrollTo({ top: document.querySelector(".town-tabs").offsetTop - 4 });
+}
+addEventListener("hashchange", showView);
+showView();
+
 main().catch((e) => console.error(e));
 
 // 届きにくい人の候補（types.js）。町・字やまとまりのページでは、その市区町村の数字で出す
@@ -50,7 +64,7 @@ async function showTypes(code, stats, scopeNote) {
 // 場所はブラウザの中だけで使い、送らず残さない。坂・道・浸水の深さは、計算の部品ができてから足す
 async function showHinan(code, townFeatures, startPart) {
   const res = await fetch(`data/shelters/${code}.json`).catch(() => null);
-  if (!res?.ok) return;
+  if (!res?.ok) return false;
   const shelters = await res.json();
   $("hinan-block").hidden = false;
   let kind = "津波";
@@ -75,6 +89,7 @@ async function showHinan(code, townFeatures, startPart) {
     attributionControl: false,
     dragRotate: true,
   });
+  maps.push(map);
   // 地図のボタン：右下に縦に（方角・現在地・＋・−）。現在地はその場所から近い避難場所を出す
   const buttons = new MapButtons({ onNoLocation: (t) => ($("hinan-note").textContent = t) });
   buttons.locate = () => {
@@ -102,6 +117,7 @@ async function showHinan(code, townFeatures, startPart) {
     map.addLayer({ id: "here", type: "circle", source: "here", filter: ["==", ["geometry-type"], "Point"], paint: { "circle-radius": 8, "circle-color": color("--text"), "circle-stroke-color": "#ffffff", "circle-stroke-width": 3 } });
     const box = new maplibregl.LngLatBounds();
     for (const f of shelters.features) box.extend(f.geometry.coordinates);
+    map.fitTo = { box, opts: { padding: 30 } };
     map.fitBounds(box, { padding: 30, duration: 0 });
     if (startPart) { sel.value = startPart; sel.dispatchEvent(new Event("change")); }
   });
@@ -117,6 +133,7 @@ async function showHinan(code, townFeatures, startPart) {
       if (here) setHere(here.at, here.label);
     });
   }
+  return true;
 
   // まっすぐの距離（m）。歩くめやすは 1分 60m（お年寄りの歩く速さのめやす）
   const meters = ([a, b], [c, d]) => {
@@ -134,6 +151,7 @@ async function showHinan(code, townFeatures, startPart) {
     ] });
     const box = new maplibregl.LngLatBounds(at, at);
     for (const c of cand) box.extend(c.f.geometry.coordinates);
+    map.fitTo = { box, opts: { padding: 50, maxZoom: 16 } };
     map.fitBounds(box, { padding: 50, maxZoom: 16, duration: 500 });
     $("hinan-list").innerHTML = cand.map((c) => `
       <li><span class="n">${esc(c.f.properties.name)}</span>
@@ -144,17 +162,34 @@ async function showHinan(code, townFeatures, startPart) {
 }
 
 // 確かめた答え（site/data/answers/{市区町村コード}.json。OK か自動で承認したものだけ）
+// 物差しの問いのまとまり → 町のページのどのページに出すか
+const GROUP_VIEW = { 備え: "sonae", 暮らしの基本: "kurashi", 届け方: "kurashi", 町を知る: "shiru" };
+const viewOfAnswer = (a, yard) => GROUP_VIEW[yard.questions.find((x) => x.id === a.qid)?.group] ?? "shiru";
+const answerCounts = { sonae: 0, kurashi: 0, shiru: 0 };
+let shownAnswers = [];
+let yardstick = { questions: [] };
 async function showAnswers(code, scopeNote) {
   const res = await fetch(`data/answers/${code}.json`).catch(() => null);
-  if (!res?.ok) return;
-  const { answers } = await res.json();
-  if (!answers.length) return;
+  const answers = res?.ok ? (await res.json()).answers : [];
+  const yard = await fetch("data/yardstick.json").then((r) => r.json()).catch(() => ({ questions: [] }));
+  shownAnswers = answers;
+  yardstick = yard;
+  const viewOf = (a) => viewOfAnswer(a, yard);
   answers.sort((x, y) => String(x.qid ?? "").localeCompare(String(y.qid ?? "")));
-  $("answers-scope").textContent = scopeNote;
+  for (const el of document.querySelectorAll(".answers-scope")) el.textContent = scopeNote;
+  for (const v of Object.keys(answerCounts)) {
+    const list = answers.filter((a) => viewOf(a) === v);
+    answerCounts[v] = list.length;
+    $(`answers-${v}`).innerHTML = list.length ? answersHTML(list)
+      : `<p class="note">まだありません。町を調べて、人が確かめた（または自動で承認した）答えがここに出ます。</p>`;
+  }
+}
+function answersHTML(answers) {
   // 見つからなかった答えも隠さず出す（届いていないことの手がかり。町の人に聞きたいこと）
   const notFound = (a) => a.value === "見つからなかった";
-  $("answers").innerHTML = `<ul class="answers">${answers.map((a) => `
-    <li class="${notFound(a) ? "not-found" : ""}">
+  return `<ul class="answers">${answers.map((a) => `
+    <li class="${notFound(a) ? "not-found" : ""}" id="a-${esc(a.qid ?? "")}">
+      <h3 class="short">${esc(yardstick.questions.find((x) => x.id === a.qid)?.short ?? "")}</h3>
       <p class="q">${esc(a.question)}</p>
       ${notFound(a)
         ? `<p class="a">公開の資料では見つかりませんでした</p><p class="src">${a.checkedAt ? `${esc(a.checkedAt.slice(0, 10))} に調べた・` : ""}町の人に聞きたいことです</p>`
@@ -162,12 +197,76 @@ async function showAnswers(code, scopeNote) {
       <p class="src">出典：${a.source?.url ? `<a href="${esc(a.source.url)}" target="_blank" rel="noopener">${esc(a.source.title ?? a.source.url)}</a>` : esc(a.source?.title ?? "")}${a.source?.where ? `（${esc(a.source.where)}）` : ""}${a.asOf ? `・時点 ${esc(a.asOf)}` : ""}・${a.status === "auto" ? "自動で承認" : "人が確かめた"}</p>`}
     </li>`).join("")}</ul>`;
 }
+
+// すべてのページ：町のサイトの全部のページと中身を一覧にして、押すとそこへ飛ぶ（中を探すこともできる）
+let allPages = [];
+function buildAllPages(hasHinan, answers, yard, local) {
+  const shortOf = (a) => yard.questions.find((x) => x.id === a.qid)?.short ?? a.question.slice(0, 16);
+  const items = (v) => answers.filter((a) => viewOfAnswer(a, yard) === v).map((a) => ({ label: shortOf(a), view: v, target: `a-${a.qid}` }));
+  allPages = [
+    { title: "トップ", view: "top", desc: "町の形・この町のページ・町の特色・届きにくい人", items: [
+      { label: "町の特色（全国と比べた数字）", view: "top", target: "sec-features" },
+      { label: "この町で、暮らしの情報が届きにくいのは", view: "top", target: "sec-types" },
+    ] },
+    { title: "備え", view: "sonae", desc: "避難と防災", items: [
+      ...(hasHinan ? [{ label: "わが家の避難（近い避難場所）", view: "sonae", target: "hinan-block" }] : []),
+      ...items("sonae"),
+    ] },
+    { title: "暮らし", view: "kurashi", desc: "毎日の暮らしの入口", items: items("kurashi") },
+    { title: "町を知る", view: "shiru", desc: "町のなりたちと、いま動いていること", items: items("shiru") },
+    { title: "出典", view: "source", desc: "このページの数字の出どころと、しくみ", items: [] },
+    ...(local ? [{ title: "調べる（手元の画面だけ）", view: "research", desc: "Claude にこの町を調べてもらう", items: [] }] : []),
+  ];
+}
+function renderAllPages(filter = "") {
+  const f = filter.replace(/\s/g, "");
+  const hit = (s) => !f || s.replace(/\s/g, "").includes(f);
+  $("all-list").innerHTML = allPages.map((p) => {
+    const its = p.items.filter((i) => hit(i.label) || hit(p.title));
+    if (f && !its.length && !hit(p.title) && !hit(p.desc)) return "";
+    return `<section class="all-sec">
+      <a class="all-page" href="#${p.view}" data-view="${p.view}"><span class="t">${esc(p.title)}</span><span class="d">${esc(p.desc)}</span></a>
+      ${its.length ? `<ul>${its.map((i) => `<li><a href="#${i.view}" data-view="${i.view}" data-target="${i.target}">${esc(i.label)}</a></li>`).join("")}</ul>` : ""}
+    </section>`;
+  }).join("") || `<p class="note">見つかりません。</p>`;
+}
+function wireAllPages() {
+  const dlg = $("all-pages");
+  $("open-all").addEventListener("click", () => { renderAllPages($("all-search").value); dlg.showModal(); $("all-search").focus(); });
+  $("close-all").addEventListener("click", () => dlg.close());
+  dlg.addEventListener("click", (e) => { if (e.target === dlg) dlg.close(); }); // 外を押すと閉じる
+  $("all-search").addEventListener("input", (e) => renderAllPages(e.target.value));
+  $("all-list").addEventListener("click", (e) => {
+    const a = e.target.closest("a[data-view]");
+    if (!a) return;
+    e.preventDefault();
+    dlg.close();
+    location.hash = a.dataset.view;
+    showView();
+    if (a.dataset.target) setTimeout(() => $(a.dataset.target)?.scrollIntoView({ behavior: "smooth", block: "start" }), 50);
+  });
+}
+wireAllPages();
+
+// トップの「この町のページ」：各ページへの入口と、短い要約
+function goCards(hasHinan) {
+  fetch("api/ping").then((r) => r.ok).catch(() => false).then((local) => buildAllPages(hasHinan, shownAnswers, yardstick, local));
+  const n = (v) => (answerCounts[v] ? `確かめた答え ${answerCounts[v]}` : "まだ調べていません");
+  const cards = [
+    ["sonae", "備え", `${hasHinan ? "わが家の避難（近い避難場所）・" : ""}${n("sonae")}`],
+    ["kurashi", "暮らし", `ごみ・手続き・交通・外国の人向けの案内。${n("kurashi")}`],
+    ["shiru", "町を知る", `町のなりたち・催し。${n("shiru")}`],
+    ["source", "出典", "このページの数字の出どころと、しくみ"],
+  ];
+  $("go-cards").innerHTML = cards.map(([v, t, d]) => `<li><a href="#${v}"><span class="t">${t}</span><span class="d">${esc(d)}</span></a></li>`).join("");
+}
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 
 // 調べる（手元の画面だけ）。手元のサーバーが Claude を呼び、答えを確かめる一覧に入れる
 async function researchBox(code) {
   if (!(await fetch("api/ping").then((r) => r.ok).catch(() => false))) return;
   $("research-block").hidden = false;
+  for (const el of document.querySelectorAll(".town-tabs .local-only")) el.hidden = false;
   $("research-link").href = `research.html?muni=${code}`;
   const form = $("research-form");
   form.question.value = "この町の指定緊急避難場所の一覧は、どこで見られるか（公式のページか資料）。全部でいくつあるか";
@@ -241,7 +340,8 @@ async function main() {
 
   await showTypes(code, stats, `いまは${muniName}全体の数字から選んだ候補です。この町・字の深い調べは、町を調べるときに。`);
   await showAnswers(code, `${muniName}全体についての答えです。`);
-  await showHinan(code, all, chosen.length === 1 ? chosen[0].properties.part : null);
+  goCards(await showHinan(code, all, chosen.length === 1 ? chosen[0].properties.part : null));
+  await researchBox(code);
   const index = await getJSON("data/towns/index.json");
   sources([`${index.source}（${index.asOf}）`, `${stats.source.name}（${stats.source.asOf}）を加工（届きにくい人の候補）`, BASEMAP], code);
   drawMap(chosen);
@@ -267,7 +367,7 @@ async function muniPage(code, stats) {
   await showTypes(code, stats, "");
   await showAnswers(code, "");
   const towns = await fetch(`data/towns/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
-  await showHinan(code, towns ? topojson.feature(towns, towns.objects.towns).features : [], null);
+  goCards(await showHinan(code, towns ? topojson.feature(towns, towns.objects.towns).features : [], null));
   await researchBox(code);
   sources([`${stats.source.name}（${stats.source.asOf}。増減は${stats.source.changePeriod}）を加工`, N03, BASEMAP], code);
   const topo = await getJSON("data/japan.topo.json");
@@ -311,6 +411,7 @@ function drawMap(features) {
     interactive: false,
     attributionControl: false,
   });
+  maps.push(map);
   map.on("load", () => {
     map.addSource("town", { type: "geojson", data });
     map.addLayer({ id: "fill", type: "fill", source: "town", paint: { "fill-color": color("--accent"), "fill-opacity": 0.3 } });
@@ -320,6 +421,7 @@ function drawMap(features) {
       const polys = f.geometry.type === "Polygon" ? [f.geometry.coordinates] : f.geometry.coordinates;
       for (const p of polys) for (const pt of p[0]) box.extend(pt);
     }
+    map.fitTo = { box, opts: { padding: 24, maxZoom: 15 } };
     map.fitBounds(box, { padding: 24, duration: 0, maxZoom: 15 });
   });
 }

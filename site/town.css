@@ -11,6 +11,40 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .town-head h1 { margin: 12px 0 2px; font-size: 30px; }
 .town-head .where { margin: 0 0 8px; color: var(--text-sub); font-size: 15px; }
 .town-page .problems { margin: 8px 0; }
+
+/* 町のサイトのメニュー（読み進めても上に残る） */
+.town-tabs { position: sticky; top: 0; z-index: 5; background: var(--bg); border-bottom: 1px solid var(--line); }
+.town-tabs ul { display: flex; gap: 4px; max-width: 760px; margin: 0 auto; padding: 6px 16px; list-style: none; overflow-x: auto; }
+.town-tabs a { display: inline-flex; align-items: center; min-height: 44px; padding: 0 16px; border-radius: 22px; color: var(--text); text-decoration: none; font-size: 16px; white-space: nowrap; }
+.town-tabs a:hover { background: var(--surface); }
+.town-tabs a[aria-current] { background: var(--accent); color: var(--accent-text); font-weight: 700; }
+
+/* すべてのページ */
+.town-tabs .all-pages { margin-left: auto; }
+.town-tabs .all-pages button { min-height: 44px; padding: 0 16px; border: 1px solid var(--line); border-radius: 22px; background: var(--surface); color: var(--text); font-size: 15px; white-space: nowrap; cursor: pointer; }
+.all-pages-dialog { width: min(560px, calc(100vw - 24px)); max-height: calc(100vh - 40px); padding: 16px; border: 0; border-radius: 14px; background: var(--surface); color: var(--text); box-shadow: var(--shadow); }
+.all-pages-dialog::backdrop { background: rgba(0, 0, 0, 0.35); }
+.all-head { display: flex; align-items: center; justify-content: space-between; }
+.all-head h2 { margin: 0; font-size: 20px; }
+.all-head .close { width: 44px; height: 44px; border: 0; border-radius: 22px; background: transparent; color: var(--text-sub); font-size: 24px; cursor: pointer; }
+#all-search { width: 100%; min-height: 44px; margin: 8px 0 12px; padding: 0 14px; border: 1px solid var(--line); border-radius: 22px; background: var(--surface); color: var(--text); font-size: 16px; }
+.all-sec { padding: 8px 0; border-top: 1px solid var(--line); }
+.all-page { display: flex; flex-direction: column; min-height: 44px; padding: 6px 8px; border-radius: 8px; color: var(--text); text-decoration: none; }
+.all-page:hover, .all-sec li a:hover { background: var(--bg); }
+.all-page .t { font-size: 17px; font-weight: 700; color: var(--accent); }
+.all-page .d { font-size: 13px; color: var(--text-sub); }
+.all-sec ul { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 2px; padding: 0 8px; list-style: none; }
+.all-sec li a { display: inline-flex; align-items: center; min-height: 40px; padding: 0 12px; border: 1px solid var(--line); border-radius: 20px; color: var(--text); text-decoration: none; font-size: 14px; }
+.answers h3.short { margin: 0 0 2px; font-size: 16px; color: var(--accent); }
+
+/* トップの「この町のページ」 */
+.go-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 8px; margin: 0; padding: 0; list-style: none; }
+.go-cards a { display: flex; flex-direction: column; gap: 4px; min-height: 72px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 10px; color: var(--text); text-decoration: none; }
+.go-cards a:hover { border-color: var(--accent); background: var(--bg); }
+.go-cards .t { font-size: 17px; font-weight: 700; color: var(--accent); }
+.go-cards .d { font-size: 13px; color: var(--text-sub); line-height: 1.5; }
+.as-wide-link { display: flex !important; align-items: center; justify-content: center; min-height: 48px; margin-bottom: 14px; border-radius: 24px; background: var(--accent); color: var(--accent-text); font-weight: 700; text-decoration: none; }
+#research-form .secondary { width: auto; padding: 0 20px; }
 .block { margin: 14px 0; padding: 16px; background: var(--surface); border-radius: 10px; box-shadow: var(--shadow); }
 .block h2 { margin: 0 0 10px; font-size: 20px; }
 .block p { margin: 0 0 8px; line-height: 1.7; }
