@@ -269,7 +269,7 @@ export function exportPublic(data = load()) {
     counts: { auto: count("auto"), ok: count("ok"), pending: count("pending"), fix: count("fix"), rejected: count("rejected"), unknown: count("unknown") },
     // 公開の一覧：人が見たもの・見ているものの、理由と出典の URL だけ
     items: data.items.filter((x) => x.status !== "auto").map((x) => ({
-      id: x.id, scope: x.scope, question: x.question, why: x.why, status: x.status,
+      id: x.id, scope: x.scope, scopeName: x.scopeName, qid: x.qid, kind: x.kind, question: x.question, why: x.why, status: x.status, score: scoreOf(x),
       source: x.source ? { title: x.source.title, url: x.source.url } : undefined,
       decided: x.decisions.at(-1) ? { at: x.decisions.at(-1).at, action: x.decisions.at(-1).action, reason: x.decisions.at(-1).reason } : undefined,
     })),

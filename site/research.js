@@ -47,7 +47,8 @@ async function loadItems() {
   } else {
     const ans = await fetch(`data/answers/${code}.json`).then((r) => (r.ok ? r.json() : { answers: [] })).catch(() => ({ answers: [] }));
     const rev = await fetch("data/review.json").then((r) => (r.ok ? r.json() : { items: [] })).catch(() => ({ items: [] }));
-    items = [...ans.answers, ...rev.items.filter((x) => x.scope === `muni:${code}`)];
+    // 確かめる一覧の記録を先に、公開の答え（点数つき）を後に並べる（同じ問いでは後ろのものを使うため）
+    items = [...rev.items.filter((x) => x.scope === `muni:${code}`), ...ans.answers];
   }
   $("pending").textContent = items.filter((x) => x.status === "pending").length;
 }
