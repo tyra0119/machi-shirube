@@ -355,8 +355,12 @@ function showTownCard(p) {
   map.setFeatureState({ source: "towns", id: selectedTown }, { selected: true });
   const muni = byCode.get(shownTowns)?.properties;
   const card = document.getElementById("card");
+  const ages = p.over65Rate != null
+    ? `<ul class="features">${["over65Rate", "over75Rate", "under15Rate"].map((m) =>
+        `<li><span class="label">${TOWN_METRICS[m].label}</span><span class="value">${p[m].toFixed(1)}%</span><span class="place">${townPlace(p, m)}</span></li>`).join("")}</ul>`
+    : p.ageHidden ? `<p class="note">年齢の数字は、住む人が少ないため国勢調査で隠されています。</p>` : "";
   const people = p.population
-    ? `<p class="pop">人口 ${p.population.toLocaleString("ja-JP")}人・${p.households.toLocaleString("ja-JP")}世帯</p>`
+    ? `<p class="pop">人口 ${p.population.toLocaleString("ja-JP")}人・${p.households.toLocaleString("ja-JP")}世帯</p>${ages}`
     : `<p class="pop">人の住んでいない町・字です</p>`;
   card.innerHTML = `
     <button type="button" class="close" aria-label="閉じる">×</button>
@@ -372,6 +376,14 @@ function showTownCard(p) {
     showTownList();
   });
   openCard();
+}
+
+// 町・字の数字が、同じ市・区の中で高いほうから何番目か
+function townPlace(p, m) {
+  const vals = townData.features.map((f) => f.properties[m]).filter((v) => typeof v === "number");
+  const rank = vals.filter((v) => v > p[m]).length + 1;
+  const muni = byCode.get(shownTowns)?.properties.fullName ?? "";
+  return `${muni}の ${vals.length} の町・字で高いほうから ${rank} 番目`;
 }
 
 // 選ぶ（名前で探したときも、地図で押したときと同じ形にする）
@@ -450,8 +462,11 @@ function showMessage(text) {
 const shortName = (n) => n.replace(/^.+?郡(?=.+[町村]$)/, ""); // 「幡多郡黒潮町」→「黒潮町」（「大和郡山市」はそのまま）
 const MUNI_METRICS = { population: { label: "人口", unit: "人", int: true }, ...METRICS };
 const TOWN_METRICS = {
-  population: { label: "人口（国勢調査2020）", unit: "人", int: true },
-  households: { label: "世帯（国勢調査2020）", unit: "世帯", int: true },
+  population: { label: "人口", unit: "人", int: true },
+  households: { label: "世帯", unit: "世帯", int: true },
+  over65Rate: { label: "65歳以上の人の割合", unit: "%" },
+  over75Rate: { label: "75歳以上の人の割合", unit: "%" },
+  under15Rate: { label: "15歳未満の子どもの割合", unit: "%" },
 };
 const rankState = { scope: "all", metric: "over65Rate", order: "desc" };
 let rankOn = false;
