@@ -1,9 +1,9 @@
 {
- "updatedAt": "2026-11-02T14:53:25.835Z",
+ "updatedAt": "2026-11-02T20:00:04.322Z",
  "counts": {
   "auto": 19,
   "ok": 67,
-  "pending": 0,
+  "pending": 7,
   "fix": 1,
   "rejected": 1,
   "unknown": 0
@@ -1884,6 +1884,237 @@
     "at": "2026-11-02T14:53:25.829Z",
     "action": "ok",
     "reason": ""
+   }
+  },
+  {
+   "id": "r00117",
+   "scope": "muni:10524",
+   "scopeName": "群馬県 大泉町",
+   "qid": "Q32",
+   "kind": "answer",
+   "question": "介護や見守りが必要な高齢者・障がいのある人など、自力で避難しにくい人のための支援（避難行動要支援者名簿、個別避難計画、福祉避難所）は、どこで案内されているか。登録・申請の方法と窓口はどこか",
+   "why": "公開の資料で答えが見つからなかった（町の人に聞くことの候補）",
+   "status": "pending",
+   "score": null
+  },
+  {
+   "id": "r00118",
+   "scope": "muni:10524",
+   "scopeName": "群馬県 大泉町",
+   "qid": "Q33",
+   "kind": "answer",
+   "question": "高齢者が病院・買い物・役場へ行くときの支援（通院や買い物の送迎、配食サービス、見守り、地域包括支援センターなどの相談窓口）は、どこで案内されているか。窓口の連絡先はどこか",
+   "why": "Claude が返した元の文が、答えに使ったページの中に見つからなかった",
+   "status": "pending",
+   "score": null,
+   "source": {
+    "title": "福祉こども部 高齢介護課｜大泉町",
+    "url": "https://www.town.oizumi.gunma.jp/department/20200707153849.html"
+   }
+  },
+  {
+   "id": "r00119",
+   "scope": "muni:11227",
+   "scopeName": "埼玉県 朝霞市",
+   "qid": "Q32",
+   "kind": "answer",
+   "question": "介護や見守りが必要な高齢者・障がいのある人など、自力で避難しにくい人のための支援（避難行動要支援者名簿、個別避難計画、福祉避難所）は、どこで案内されているか。登録・申請の方法と窓口はどこか",
+   "why": "確かめ役：資料と合わない所がある（要綱の本文（対象者条件、届出書名、台帳作成の担当課、変更・廃止届）は資料の抜粋に無く、確認できない・福祉避難所3か所の指定はこの資料では確認できない（住所は施設一覧と一致するが、福祉避難所としての記載が無い）・「避難行動要支援者台帳登録届出書」「変更・廃止届出書」「障害福祉課」の担当は資料に無い）",
+   "status": "pending",
+   "score": null,
+   "source": {
+    "title": "朝霞市地域防災計画 資料編",
+    "url": "https://www.city.asaka.lg.jp/uploaded/attachment/100914.pdf"
+   }
+  },
+  {
+   "id": "r00120",
+   "scope": "muni:11227",
+   "scopeName": "埼玉県 朝霞市",
+   "qid": "Q33",
+   "kind": "answer",
+   "question": "高齢者が病院・買い物・役場へ行くときの支援（通院や買い物の送迎、配食サービス、見守り、地域包括支援センターなどの相談窓口）は、どこで案内されているか。窓口の連絡先はどこか",
+   "why": "確かめ役：資料と合わない所がある（地域包括支援センター6か所、担当地区、各センターの電話番号は資料に書かれていません・「高齢者福祉サービスのご案内」ページは、地域包括支援センターの案内先とはされていません）",
+   "status": "pending",
+   "score": null,
+   "source": {
+    "title": "高齢者福祉サービスのご案内 - 朝霞市",
+    "url": "https://www.city.asaka.lg.jp/soshiki/58/koureisyafukushi-service.html"
+   }
+  },
+  {
+   "id": "r00121",
+   "scope": "muni:39428",
+   "scopeName": "高知県 黒潮町",
+   "kind": "dekiru",
+   "question": "町の数と、町の案内のつなぎ方は正しいか（その数の人に、その案内が合っているか）",
+   "why": "避難や暮らしの判断にひびくので、つなぎ方が合っているかと、引用の元の答えが今も正しいかを人が見る",
+   "status": "void",
+   "score": 0,
+   "source": {
+    "title": "黒潮町 指定緊急避難場所一覧（黒潮町オープンデータ、CSV）",
+    "url": "https://www.town.kuroshio.lg.jp/img/files/pv/sosiki/docs/open-date/2026/evacuation_space2025.csv"
+   },
+   "decided": {
+    "at": "2026-11-02T19:56:06.409Z",
+    "action": "void",
+    "reason": "作り直したため"
+   }
+  },
+  {
+   "id": "r00122",
+   "scope": "muni:39428",
+   "scopeName": "高知県 黒潮町",
+   "kind": "dekiru",
+   "question": "町の数と、町の案内のつなぎ方は正しいか（その数の人に、その案内が合っているか）",
+   "why": "避難や暮らしの判断にひびくので、つなぎ方が合っているかと、引用の元の答えが今も正しいかを人が見る",
+   "status": "void",
+   "score": 0,
+   "source": {
+    "title": "黒潮町 指定緊急避難場所一覧（黒潮町オープンデータ、CSV）",
+    "url": "https://www.town.kuroshio.lg.jp/img/files/pv/sosiki/docs/open-date/2026/evacuation_space2025.csv"
+   },
+   "decided": {
+    "at": "2026-11-02T19:56:47.087Z",
+    "action": "void",
+    "reason": "作り直したため"
+   }
+  },
+  {
+   "id": "r00123",
+   "scope": "muni:10524",
+   "scopeName": "群馬県 大泉町",
+   "kind": "dekiru",
+   "question": "町の数と、町の案内のつなぎ方は正しいか（その数の人に、その案内が合っているか）",
+   "why": "避難や暮らしの判断にひびくので、つなぎ方が合っているかと、引用の元の答えが今も正しいかを人が見る",
+   "status": "void",
+   "score": 0,
+   "source": {
+    "title": "大泉町総合防災マップ｜大泉町",
+    "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/170/20200828141906.html"
+   },
+   "decided": {
+    "at": "2026-11-02T19:56:53.060Z",
+    "action": "void",
+    "reason": "作り直したため"
+   }
+  },
+  {
+   "id": "r00124",
+   "scope": "muni:11227",
+   "scopeName": "埼玉県 朝霞市",
+   "kind": "dekiru",
+   "question": "町の数と、町の案内のつなぎ方は正しいか（その数の人に、その案内が合っているか）",
+   "why": "避難や暮らしの判断にひびくので、つなぎ方が合っているかと、引用の元の答えが今も正しいかを人が見る",
+   "status": "void",
+   "score": 0,
+   "source": {
+    "title": "朝霞市水害ハザードマップ - 朝霞市",
+    "url": "https://www.city.asaka.lg.jp/soshiki/6/shinsui-kurome-shingashi-arakawa.html"
+   },
+   "decided": {
+    "at": "2026-11-02T19:56:58.590Z",
+    "action": "void",
+    "reason": "作り直したため"
+   }
+  },
+  {
+   "id": "r00125",
+   "scope": "muni:39428",
+   "scopeName": "高知県 黒潮町",
+   "kind": "dekiru",
+   "question": "町の数と、町の案内のつなぎ方は正しいか（その数の人に、その案内が合っているか）",
+   "why": "避難や暮らしの判断にひびくので、つなぎ方が合っているかと、引用の元の答えが今も正しいかを人が見る",
+   "status": "void",
+   "score": 0,
+   "source": {
+    "title": "黒潮町 指定緊急避難場所一覧（黒潮町オープンデータ、CSV）",
+    "url": "https://www.town.kuroshio.lg.jp/img/files/pv/sosiki/docs/open-date/2026/evacuation_space2025.csv"
+   },
+   "decided": {
+    "at": "2026-11-02T19:57:23.854Z",
+    "action": "void",
+    "reason": "作り直したため"
+   }
+  },
+  {
+   "id": "r00126",
+   "scope": "muni:10524",
+   "scopeName": "群馬県 大泉町",
+   "kind": "dekiru",
+   "question": "町の数と、町の案内のつなぎ方は正しいか（その数の人に、その案内が合っているか）",
+   "why": "避難や暮らしの判断にひびくので、つなぎ方が合っているかと、引用の元の答えが今も正しいかを人が見る",
+   "status": "void",
+   "score": 0,
+   "source": {
+    "title": "大泉町総合防災マップ｜大泉町",
+    "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/170/20200828141906.html"
+   },
+   "decided": {
+    "at": "2026-11-02T19:57:29.639Z",
+    "action": "void",
+    "reason": "作り直したため"
+   }
+  },
+  {
+   "id": "r00127",
+   "scope": "muni:11227",
+   "scopeName": "埼玉県 朝霞市",
+   "kind": "dekiru",
+   "question": "町の数と、町の案内のつなぎ方は正しいか（その数の人に、その案内が合っているか）",
+   "why": "避難や暮らしの判断にひびくので、つなぎ方が合っているかと、引用の元の答えが今も正しいかを人が見る",
+   "status": "void",
+   "score": 0,
+   "source": {
+    "title": "朝霞市水害ハザードマップ - 朝霞市",
+    "url": "https://www.city.asaka.lg.jp/soshiki/6/shinsui-kurome-shingashi-arakawa.html"
+   },
+   "decided": {
+    "at": "2026-11-02T19:57:36.093Z",
+    "action": "void",
+    "reason": "作り直したため"
+   }
+  },
+  {
+   "id": "r00128",
+   "scope": "muni:39428",
+   "scopeName": "高知県 黒潮町",
+   "kind": "dekiru",
+   "question": "町の数と、町の案内のつなぎ方は正しいか（その数の人に、その案内が合っているか）",
+   "why": "避難や暮らしの判断にひびくので、つなぎ方が合っているかと、引用の元の答えが今も正しいかを人が見る",
+   "status": "pending",
+   "score": null,
+   "source": {
+    "title": "黒潮町 指定緊急避難場所一覧（黒潮町オープンデータ、CSV）",
+    "url": "https://www.town.kuroshio.lg.jp/img/files/pv/sosiki/docs/open-date/2026/evacuation_space2025.csv"
+   }
+  },
+  {
+   "id": "r00129",
+   "scope": "muni:10524",
+   "scopeName": "群馬県 大泉町",
+   "kind": "dekiru",
+   "question": "町の数と、町の案内のつなぎ方は正しいか（その数の人に、その案内が合っているか）",
+   "why": "避難や暮らしの判断にひびくので、つなぎ方が合っているかと、引用の元の答えが今も正しいかを人が見る",
+   "status": "pending",
+   "score": null,
+   "source": {
+    "title": "大泉町総合防災マップ｜大泉町",
+    "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/170/20200828141906.html"
+   }
+  },
+  {
+   "id": "r00130",
+   "scope": "muni:11227",
+   "scopeName": "埼玉県 朝霞市",
+   "kind": "dekiru",
+   "question": "町の数と、町の案内のつなぎ方は正しいか（その数の人に、その案内が合っているか）",
+   "why": "避難や暮らしの判断にひびくので、つなぎ方が合っているかと、引用の元の答えが今も正しいかを人が見る",
+   "status": "pending",
+   "score": null,
+   "source": {
+    "title": "朝霞市水害ハザードマップ - 朝霞市",
+    "url": "https://www.city.asaka.lg.jp/soshiki/6/shinsui-kurome-shingashi-arakawa.html"
    }
   }
  ]
