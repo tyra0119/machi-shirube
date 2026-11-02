@@ -40,9 +40,14 @@ for (const code of codes) {
   ]);
   // 3. 町・字ごとの年齢（国勢調査2020 小地域 T001082「年齢（5歳階級）別人口」）を足す
   const ages = await ageTable(code.slice(0, 2));
+  // 4. 町・字ごとの外国の住民（国勢調査2020 小地域集計 第2表「男女別人口，外国人人口及び世帯数－町丁・字等」）
+  const foreign = await foreignTable(code.slice(0, 2));
   const gj = JSON.parse(fs.readFileSync(out, "utf8"));
   let hidden = 0;
   for (const f of gj.features) {
+    const fr = foreign.get(f.properties.town);
+    if (fr?.hidden) f.properties.foreignHidden = true;
+    else if (fr) Object.assign(f.properties, fr);
     const a = ages.get(f.properties.town);
     if (!a) continue;
     if (a.hidden) { f.properties.ageHidden = true; hidden++; continue; }
@@ -50,6 +55,38 @@ for (const code of codes) {
   }
   fs.writeFileSync(out, JSON.stringify(gj));
   console.log(`${code}: 町・字 ${gj.features.length}（${(fs.statSync(out).size / 1024).toFixed(0)}KB）。年齢の数字が隠されている町・字 ${hidden}`);
+}
+
+// 県ごとの第2表を取り（まだ無いときだけ）、町・字（市区町村コード＋町丁字コード4けた）ごとに外国の住民の数と割合を出す。
+// 表のファイルの番号は県ごとに違うので、e-Stat の県の一覧のページから読み取る
+async function foreignTable(pref) {
+  const file = `${RAW}/kokusei/t2-${pref}.csv`;
+  if (!fs.existsSync(file)) {
+    fs.mkdirSync(`${RAW}/kokusei`, { recursive: true });
+    const tclass2 = String(1159873 + Number(pref)).padStart(12, "0"); // 県の一覧（01 北海道 = 000001159874 から県の番号順）
+    await sleep(1000);
+    const list = await (await fetch(`https://www.e-stat.go.jp/stat-search/files?page=1&layout=datalist&toukei=00200521&tstat=000001136464&cycle=0&tclass1=000001136472&tclass2=${tclass2}&tclass3val=0`, { headers: { "User-Agent": UA } })).text();
+    if (!list.includes(`${pref}：`)) throw new Error(`e-Stat の県の一覧（${pref}）が見つかりません`);
+    const id = list.match(/stat_infid=(\d+)"[^>]*>\s*男女別人口，外国人人口及び世帯数/)?.[1];
+    if (!id) throw new Error(`第2表（${pref}）の場所が読み取れません`);
+    await sleep(1000);
+    const res = await fetch(`https://www.e-stat.go.jp/stat-search/file-download?statInfId=${id}&fileKind=1`, { headers: { "User-Agent": UA } });
+    if (!res.ok) throw new Error(`第2表（${pref}）が取れませんでした（${res.status}）`);
+    fs.writeFileSync(file, Buffer.from(await res.arrayBuffer()));
+  }
+  const txt = new TextDecoder("shift_jis").decode(fs.readFileSync(file));
+  const out = new Map();
+  for (const line of txt.split(/\r?\n/)) {
+    const r = line.split(",").map((s) => s.replace(/^"|"$/g, "")).slice(1); // いちばん左は行番号
+    // 地域階層レベル：2 = 丁目のない町・字、3 = 丁目をまとめた町・字
+    if (!/^\d{5}$/.test(r[0]) || !/^\d{4}$/.test(r[1]) || (r[2] !== "2" && r[2] !== "3")) continue;
+    const total = /^\d+$/.test(r[10]) ? Number(r[10]) : null;
+    const foreigners = /^\d+$/.test(r[13]) ? Number(r[13]) : r[13] === "-" ? 0 : null;
+    if (r[3] || total === null || foreigners === null) { out.set(r[0] + r[1], { hidden: true }); continue; }
+    if (!total) continue;
+    out.set(r[0] + r[1], { foreigners, foreignRate: Math.round((foreigners / total) * 1000) / 10 });
+  }
+  return out;
 }
 
 // 県ごとの年齢の表を取り（まだ無いときだけ）、町・字（KEY_CODE 9けた）ごとに割合を出す
@@ -90,7 +127,7 @@ const names = done.flatMap((code) =>
   JSON.parse(fs.readFileSync(`${OUT}/${code}.json`, "utf8")).features.map((f) => [code, f.properties.part, f.properties.name]),
 );
 fs.writeFileSync(`${OUT}/index.json`, JSON.stringify({
-  source: "国勢調査 2020年（令和2年）小地域の境界データと年齢（5歳階級）別人口の表（総務省統計局、e-Stat）を加工して作成",
+  source: "国勢調査 2020年（令和2年）小地域の境界データ・年齢（5歳階級）別人口・小地域集計 第2表（外国人人口）（総務省統計局、e-Stat）を加工して作成",
   asOf: "2020年10月1日",
   codes: done,
   names,
