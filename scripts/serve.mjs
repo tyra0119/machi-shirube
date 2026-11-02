@@ -3,9 +3,12 @@
 // 手元だけの口（公開のサイトには無い）：
 //   GET  /api/ping   手元の画面かどうか
 //   POST /api/areas  複数の町・字を「まとまり」として保存する（site/data/areas.json に書く）
+//   GET  /api/review 確かめる一覧（引用した元の文も入る。手元だけ）
+//   POST /api/review/{番号}  決める（ok・fix・reject・unknown・undo、理由1行）
 import http from "node:http";
 import fs from "node:fs";
 import path from "node:path";
+import * as ledger from "./ledger.mjs";
 
 const ROOT = path.resolve("site");
 const AREAS = path.join(ROOT, "data", "areas.json");
@@ -54,11 +57,25 @@ async function saveArea(req, res) {
   send(res, 200, area);
 }
 
+async function decideItem(req, res, id) {
+  let body = "";
+  for await (const chunk of req) body += chunk;
+  try {
+    const { action, reason } = JSON.parse(body || "{}");
+    send(res, 200, ledger.decide(id, action, { user: "owner", reason: String(reason ?? "").slice(0, 200) }));
+  } catch (e) {
+    send(res, e.status ?? 400, { error: e.message });
+  }
+}
+
 http
   .createServer((req, res) => {
     const url = new URL(req.url, "http://localhost");
     if (url.pathname === "/api/ping") return send(res, 200, { local: true });
     if (url.pathname === "/api/areas" && req.method === "POST") return saveArea(req, res);
+    if (url.pathname === "/api/review" && req.method === "GET") return send(res, 200, ledger.load());
+    const m = url.pathname.match(/^\/api\/review\/(r\d{5})$/);
+    if (m && req.method === "POST") return decideItem(req, res, m[1]);
     let file = path.join(ROOT, decodeURIComponent(url.pathname));
     if (!file.startsWith(ROOT)) return res.writeHead(403).end();
     if (fs.existsSync(file) && fs.statSync(file).isDirectory()) file = path.join(file, "index.html");

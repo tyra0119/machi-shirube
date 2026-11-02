@@ -151,6 +151,7 @@ main { position: relative; flex: 1; min-width: 0; }
   font-size: 15px; font-weight: 600; cursor: pointer;
 }
 .secondary:hover { background: var(--bg); }
+a.secondary.as-button { display: flex; align-items: center; justify-content: center; text-decoration: none; }
 .rank .field { display: block; margin: 0 0 10px; font-size: 13px; color: var(--text-sub); }
 .rank select {
   display: block; width: 100%; min-height: 44px; margin-top: 4px; padding: 0 10px;
