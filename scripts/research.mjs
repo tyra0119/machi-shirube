@@ -26,7 +26,7 @@ const SYSTEM = `あなたは、日本の町の暮らしの情報を、公式の�
 - 最後に、次の形の JSON を <answer> と </answer> のあいだに1つだけ書いてください
 {"found": true|false, "value": "答え（短く）", "asOf": "時点", "source": {"title": "資料やページの名前", "url": "出典の URL", "where": "どこか（ページ番号や見出し）"}, "sources": [{"title": "ほかに使ったページ", "url": "URL"}], "quote": "元の文", "count": {"number": 数, "csvUrl": "数えた CSV の URL"} または null, "note": "気づいたこと（使ってよい範囲の書き方など。なければ空）"}`;
 
-export async function research(code, question = DEFAULT_QUESTION, { log = console.log, qid } = {}) {
+export async function research(code, question = DEFAULT_QUESTION, { log = console.log, qid, hint, redoOf } = {}) {
   const stats = JSON.parse(fs.readFileSync("site/data/stats.json", "utf8"));
   const town = stats.towns[code];
   if (!town) throw new Error(`市区町村コード ${code} が見つかりません`);
@@ -42,7 +42,7 @@ export async function research(code, question = DEFAULT_QUESTION, { log = consol
   step(`${name}を調べ始めます：${question}`);
 
   const client = new Anthropic();
-  const messages = [{ role: "user", content: `町：${name}（市区町村コード ${code}）\n問い：${question}` }];
+  const messages = [{ role: "user", content: `町：${name}（市区町村コード ${code}）\n問い：${question}${hint ? `\n前の答えへの作者の指摘（これを直して調べ直してください）：${hint}` : ""}` }];
   let res;
   let usd = 0;
   const content = [];
@@ -88,6 +88,7 @@ export async function research(code, question = DEFAULT_QUESTION, { log = consol
     scopeName: name,
     kind: "answer",
     qid,
+    redoOf,
     question,
     value: a.found ? a.value : "見つからなかった",
     asOf: a.asOf || undefined,

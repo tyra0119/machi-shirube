@@ -113,7 +113,14 @@ async function decideItem(req, res, id) {
   for await (const chunk of req) body += chunk;
   try {
     const { action, reason } = JSON.parse(body || "{}");
-    send(res, 200, ledger.decide(id, action, { user: "owner", reason: String(reason ?? "").slice(0, 200) }));
+    const it = ledger.decide(id, action, { user: "owner", reason: String(reason ?? "").slice(0, 200) });
+    send(res, 200, it);
+    // 「直して」：指摘を添えて、その問いだけを Claude に調べ直させる（新しい答えは確かめる一覧へ）
+    if (action === "fix" && process.env.ANTHROPIC_API_KEY && it.kind === "answer") {
+      const code = it.scope.match(/(\d{5})/)?.[1];
+      research(code, it.question, { log: () => {}, qid: it.qid, hint: reason, redoOf: it.id })
+        .catch((e) => console.error(`${it.id} の調べ直しができませんでした：${e.message}`));
+    }
   } catch (e) {
     send(res, e.status ?? 400, { error: e.message });
   }
