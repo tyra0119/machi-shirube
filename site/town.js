@@ -151,6 +151,39 @@ async function showFloodPop(code, part) {
 }
 const depthColor = (label) => { const c = DEPTH_COLORS.find(([, l]) => l === label)?.[0] ?? [200, 200, 200]; return `rgb(${c.join(",")})`; };
 
+// 大きな地震の揺れの確率（J-SHIS × 250m 四方の人口。scripts/build-quake-pop.mjs が作る）
+async function showQuake(code, part) {
+  const d = await fetch(`data/quake-pop/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  if (!d) return;
+  $("quake-block").hidden = false;
+  const n = (v) => v.toLocaleString("ja-JP");
+  const here = part && d.parts[part.properties.part];
+  const max = Math.max(...Object.values(d.bands));
+  $("quake").innerHTML = `<ul class="acc-stats">
+      <li><span class="l">${T("震度6弱以上")}</span><strong>${d.p55}%</strong><span class="s">${T("町の中で")} ${d.min55}〜${d.max55}%</span></li>
+      <li><span class="l">${T("震度6強以上")}</span><strong>${d.p60}%</strong><span class="s">${T("住む人で重みをつけた平均")}</span></li>
+      ${here ? `<li><span class="l">${esc(here.name)}</span><strong>${here.p55}%</strong><span class="s">${T("震度6強以上")} ${here.p60}%</span></li>` : ""}
+    </ul>
+    <h3 class="sub">${T("震度6弱以上の確率の高さごとの、住む人")}</h3>
+    <ul class="fp-depth q">${Object.entries(d.bands).map(([l, v]) => `<li><span class="l">${esc(T(l))}</span><span class="bar"><i style="width:${(v / max) * 100}%"></i></span><span class="v">${n(v)}</span></li>`).join("")}</ul>`;
+  $("quake-note").innerHTML = `${esc(T(d.note))}。${T("確率 26% はおよそ100年に1回、6% はおよそ500年に1回、3% はおよそ1000年に1回の揺れにあたります。")}${d.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join("・")}`;
+}
+
+// 買い物に困っているお年寄り（農林水産政策研究所の推計を引用。scripts/build-shop-access.mjs）
+async function showShopAccess(code) {
+  const d = await fetch(`data/shop-access/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  if (!d) return;
+  $("shop-block").hidden = false;
+  const n = (v) => v.toLocaleString("ja-JP");
+  const cmp = (v, nat) => (v > nat + 1 ? T("全国より高い") : v < nat - 1 ? T("全国より低い") : T("全国と同じくらい"));
+  $("shop").innerHTML = `<ul class="acc-stats">
+      <li><span class="l">${T("65歳以上")}</span><strong>${d.rate}%</strong><span class="s">${T("約")} ${n(d.people)} ${T("人")}・${T("全国")} ${d.nationRate}%（${cmp(d.rate, d.nationRate)}）</span></li>
+      <li><span class="l">${T("75歳以上")}</span><strong>${d.rate75}%</strong><span class="s">${T("約")} ${n(d.over75)} ${T("人")}・${T("全国")} ${d.nationRate75}%（${cmp(d.rate75, d.nationRate75)}）</span></li>
+    </ul>
+    <p class="fp-here">${T("店まで 500m 以上あり、車を使うのが難しい65歳以上の人の割合です（2020年の推計）。")}</p>`;
+  $("shop-note").innerHTML = `${esc(T(d.note))}。${d.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join("")}`;
+}
+
 // 道の安全（交通事故。scripts/build-accidents.mjs が警察庁のオープンデータから作る）
 async function showAccidents(code, part) {
   const d = await fetch(`data/accidents/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
@@ -734,7 +767,9 @@ async function finishPage(code, townFeatures, startPart, scopeNote, at) {
     $("color-src").addEventListener("click", () => setTimeout(() => $("a-Q11")?.scrollIntoView({ behavior: "smooth", block: "start" }), 50));
   }
   await showFloodPop(code, part);
+  await showQuake(code, part);
   await showAccidents(code, part);
+  await showShopAccess(code);
   const hasHinan = await showHinan(code, townFeatures, startPart);
   await showTranslations(code);
   await showGomi(code);

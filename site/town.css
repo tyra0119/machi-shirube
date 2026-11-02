@@ -443,3 +443,5 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .acc-spots li { display: flex; gap: 8px; align-items: center; padding: 6px 8px; border-radius: 8px; cursor: pointer; font-size: 14px; }
 .acc-spots li:hover { background: var(--bg); }
 .acc-spots .no { flex: none; width: 22px; height: 22px; border-radius: 50%; background: #e8833a; color: #fff; font-size: 12px; font-weight: 700; display: grid; place-items: center; }
+.fp-depth.q .bar i { background: #a88bd0; }
+#quake .acc-stats { margin-bottom: 8px; }

@@ -28,7 +28,7 @@ async function polite(url) {
   last = Date.now();
   return fetch(url, { headers: { "User-Agent": UA } });
 }
-async function cached(url, file) {
+export async function cached(url, file) {
   if (fs.existsSync(file)) return fs.readFileSync(file);
   if (fs.existsSync(file + ".none")) return null;
   const res = await polite(url);
@@ -94,7 +94,8 @@ function depthOf(c) {
   return best.d < 30 ? best.label : null;
 }
 
-export async function buildFloodPop(code, log = console.log) {
+// 町の中の 250m 四方（真ん中が入る町・字つき）と、その人口・65歳以上の人口。ほかの重ね合わせ（地震の揺れなど）でも使う
+export async function townMeshes(code, log = console.log) {
   const parts = polygonsOf(JSON.parse(fs.readFileSync(`site/data/towns/${code}.json`, "utf8")));
   const all = parts.flatMap((p) => p.polys.flat(2));
   const [minX, maxX] = [Math.min(...all.map((p) => p[0])), Math.max(...all.map((p) => p[0]))];
@@ -138,6 +139,11 @@ export async function buildFloodPop(code, log = console.log) {
   const pop = inTown.reduce((s, m) => s + m.pop, 0);
   const oldKnown = inTown.filter((m) => m.old != null);
   log(`町の中の区画 ${inTown.length}・人口 ${pop.toLocaleString("ja-JP")}`);
+  return { parts, inTown, pop, oldKnown };
+}
+
+export async function buildFloodPop(code, log = console.log) {
+  const { inTown, pop, oldKnown } = await townMeshes(code, log);
 
   const out = { code, createdAt: new Date().toISOString(), population: pop, kinds: {} };
   for (const kind of Object.keys(KINDS)) {
