@@ -15,6 +15,7 @@
     "serve": "node scripts/serve.mjs",
     "serve:research": "node --env-file=.env scripts/serve.mjs",
     "research": "node --env-file=.env scripts/research.mjs",
+    "recheck": "node --env-file=.env scripts/recheck.mjs",
     "try:api": "node --env-file=.env scripts/try-api.mjs",
     "try:fetch": "node --env-file=.env scripts/try-fetch.mjs",
     "try:pdf": "node --env-file=.env scripts/try-pdf.mjs"

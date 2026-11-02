@@ -67,6 +67,22 @@ export function add(item) {
   return rec;
 }
 
+// 判断し直す（しくみを直したあと、確かめ待ちの答えを調べ直さずにもう一度判断する）。人が決めたものは変えない
+export function reassess(id, fields) {
+  const data = load();
+  const it = data.items.find((x) => x.id === id);
+  if (!it || it.status !== "pending") return it;
+  const prev = it.status;
+  Object.assign(it, fields);
+  it.status = fields.why ? "pending" : "auto";
+  const rec = { at: new Date().toISOString(), by: "auto", action: "reassess", reason: fields.why ?? "自動の条件がそろった", from: prev };
+  it.decisions.push(rec);
+  save(data);
+  fs.appendFileSync(LOG, JSON.stringify({ id, scope: it.scope, ...rec }) + "\n");
+  exportPublic(data);
+  return it;
+}
+
 // 決める：ok（出す）・fix（直して）・reject（出さない）・unknown（分からない）・undo（元に戻す）
 const STATUS = { ok: "ok", fix: "fix", reject: "rejected", unknown: "unknown" };
 export function decide(id, action, { user = "owner", reason = "" } = {}) {
