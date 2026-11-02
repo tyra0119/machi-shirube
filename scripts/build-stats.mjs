@@ -86,6 +86,10 @@ function topPercent(metric, value) {
 }
 // 高いほうから何番目か（同じ値は同じ順位）
 const rankOf = (metric, value) => sorted[metric].filter((v) => v > value).length + 1;
+// 人口2万人以上の市区町村の中で何番目か（人の少ない村の大きな割合に埋もれる町のため）
+const BIG = 20000;
+const bigPeers = peers.filter((t) => t.population >= BIG);
+const rankAmongBig = (metric, value) => bigPeers.filter((t) => t[metric] > value).length + 1;
 
 const round = (v, d = 2) => Math.round(v * 10 ** d) / 10 ** d;
 const out = {};
@@ -107,10 +111,12 @@ for (const t of towns.values()) {
     ward: isWard(t),
     top: {},
     rank: {},
+    rankBig: {},
   };
   for (const m of METRICS) {
     rec.top[m] = round(topPercent(m, t[m]), 1);
     rec.rank[m] = rankOf(m, t[m]);
+    if (t.population >= BIG && !isWard(t)) rec.rankBig[m] = rankAmongBig(m, t[m]);
   }
   out[t.code] = rec;
 }
@@ -121,7 +127,7 @@ const summary = Object.fromEntries(METRICS.map((m) => [m, { median: round(q(m, 0
 
 fs.writeFileSync(
   "site/data/stats.json",
-  JSON.stringify({ source: SOURCE, peers: peers.length, summary, towns: out }),
+  JSON.stringify({ source: SOURCE, peers: peers.length, bigPeers: bigPeers.length, summary, towns: out }),
 );
 console.log(`比べる相手 ${peers.length}、書き出した区域 ${Object.keys(out).length}`);
 console.log(JSON.stringify(summary, null, 1));

@@ -107,7 +107,11 @@ function featureCard(t) {
       t.rank[m] <= 10 ? `全国で ${t.rank[m]} 番目に高い`
       : top <= 50 ? `全国で高いほうから ${Math.max(top, 0.1).toFixed(1)}%`
       : `全国で低いほうから ${Math.max(100 - top, 0.1).toFixed(1)}%`;
-    return `<li><span class="label">${label}</span><span class="value">${value}</span><span class="place">${place}</span></li>`;
+    // 人の少ない村の大きな割合に埋もれる町は、人口2万人以上の中での順位も添える（3番目まで）
+    const big = t.rankBig?.[m];
+    const bigNote = big && big <= 3 && big < t.rank[m]
+      ? `<span class="place">人口2万人以上の市区町村では${big === 1 ? "全国一" : `全国で ${big} 番目`}</span>` : "";
+    return `<li><span class="label">${label}</span><span class="value">${value}</span><span class="place">${place}</span>${bigNote}</li>`;
   });
   const s = stats.source;
   return `
