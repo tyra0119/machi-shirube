@@ -558,8 +558,7 @@ function answersHTML(answers) {
         <span class="src">${x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.title ?? x.url)}</a>` : esc(x.title ?? "")}${x.asOf ? `・${esc(x.asOf)}` : ""}</span></li>`).join("")}</ul>` : ""}
       ${health?.links?.[a.source?.url]?.kind === "gone" ? `<p class="gone">出典のページが見つからなくなっています（${esc(health.links[a.source.url].checkedAt.slice(0, 10))} に見張りで確かめた）。町の公式のサイトで新しいページを探して確かめてください。</p>` : ""}
       ${a.outdated ? `<p class="outdated"><strong>古いデータに気づきました</strong>：${esc(a.outdated.what)}。古い：${a.outdated.old?.url ? `<a href="${esc(a.outdated.old.url)}" target="_blank" rel="noopener">${esc(a.outdated.old.asOf ?? "")}</a>` : esc(a.outdated.old?.asOf ?? "")}／新しい：${a.outdated.new?.url ? `<a href="${esc(a.outdated.new.url)}" target="_blank" rel="noopener">${esc(a.outdated.new.asOf ?? "")}</a>` : esc(a.outdated.new?.asOf ?? "")}</p>` : ""}
-      <p class="src chip">${icon("link")} ${a.source?.url ? `<a href="${esc(a.source.url)}" target="_blank" rel="noopener">${esc(a.source.title ?? a.source.url)}</a>` : esc(a.source?.title ?? "")}${a.asOf ? `・時点 ${esc(a.asOf)}` : ""}・${T(a.status === "auto" ? "自動で承認" : "人が確かめた")}</p>`}
-      <details class="q"><summary>${T("Claude にした問い")}</summary>${esc(a.question)}${a.source?.where ? `<br>出典の中の場所：${esc(a.source.where)}` : ""}</details>
+      <p class="src chip">${icon("link")} ${a.source?.url ? `<a href="${esc(a.source.url)}" target="_blank" rel="noopener"${a.source.where ? ` title="${esc(T("出典の中の場所"))}：${esc(a.source.where)}"` : ""}>${esc(a.source.title ?? a.source.url)}</a>` : esc(a.source?.title ?? "")}${a.asOf ? `・時点 ${esc(a.asOf)}` : ""}・${T(a.status === "auto" ? "自動で承認" : "人が確かめた")}</p>`}
       </div>
     </li>`;
   }).join("")}</ul>`;
@@ -770,7 +769,7 @@ async function showAsk(code, partKey) {
   const uniq = list.filter((x) => (seen.has(x.q) ? false : seen.add(x.q)));
   if (!uniq.length) return;
   $("ask-block").hidden = false;
-  $("ask-list").innerHTML = uniq.map((x) => `<li>${icon("search")}<span><strong>${esc(T(yardstick.questions.find((y) => y.id === x.qid)?.short ?? ""))}</strong>${esc(x.q)}${x.why ? `<small>${esc(x.why)}</small>` : ""}${x.at ? `<small>${esc(x.at.slice(0, 10))} に調べた</small>` : ""}</span></li>`).join("");
+  $("ask-list").innerHTML = uniq.map((x) => `<li>${icon("search")}<span><strong>${esc(T(yardstick.questions.find((y) => y.id === x.qid)?.short ?? x.q.slice(0, 20)))}</strong>${x.why ? `<small>${esc(x.why)}</small>` : ""}${x.at ? `<small>${esc(x.at.slice(0, 10))} に調べた</small>` : ""}</span></li>`).join("");
 }
 
 // ごみを出す日：町の公式の収集日の表から読み取った地区ごとの曜日（site/data/gomi-days/{コード}.json）。

@@ -870,7 +870,7 @@
       "url": "https://www.town.oizumi.gunma.jp/s006/gyosei/010/020/020/oizumi980_kodomokateisenta.pdf",
       "where": "本文冒頭・下部の「詳しくは、こども未来課保健・相談係（内線520）へ」"
      },
-     "status": "pending",
+     "status": "ok",
      "problems": [
       "訳が空欄。原文（相談窓口、主な手当、子どもの医療費助成）が訳されていない。"
      ],
@@ -887,7 +887,7 @@
       "url": "https://www.town.oizumi.gunma.jp/s031/kanko/010/020/20221007175044.html",
       "where": "日時・場所"
      },
-     "status": "pending",
+     "status": "ok",
      "problems": [
       "訳が空欄。原文の4つの行事（11月11日、11月13日・20日、11月15日、12月5日）が訳されていない。"
      ],
@@ -1094,7 +1094,7 @@
       "url": "https://www.town.oizumi.gunma.jp/s006/gyosei/010/020/020/oizumi980_kodomokateisenta.pdf",
       "where": "本文冒頭・下部の「詳しくは、こども未来課保健・相談係（内線520）へ」"
      },
-     "status": "pending",
+     "status": "ok",
      "problems": [
       "訳文が空欄。原文の内容が訳されていない"
      ],
@@ -1111,7 +1111,7 @@
       "url": "https://www.town.oizumi.gunma.jp/s031/kanko/010/020/20221007175044.html",
       "where": "日時・場所"
      },
-     "status": "pending",
+     "status": "ok",
      "problems": [
       "訳文が空欄。原文の内容が訳されていない"
      ],
@@ -1128,7 +1128,7 @@
       "url": "https://www.town.oizumi.gunma.jp/s017/gyosei/010/010/010/R0810gaikokuzin.pdf",
       "where": "表全体"
      },
-     "status": "pending",
+     "status": "ok",
      "problems": [
       "訳文が空欄。原文の内容が訳されていない"
      ],
