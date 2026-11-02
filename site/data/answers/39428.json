@@ -1,21 +1,6 @@
 {
  "answers": [
   {
-   "id": "r00001",
-   "qid": "Q01",
-   "scope": "muni:39428",
-   "question": "この町の指定緊急避難場所の一覧は、どこで見られるか（公式のページか資料）。全部でいくつあるか",
-   "value": "黒潮町公式サイトの「まちの情報/オープンデータ」ページに「指定緊急避難場所一覧」(CSV)がある。CSVの件数は248か所。",
-   "source": {
-    "title": "オープンデータ│黒潮町公式ホームページ(指定緊急避難場所一覧 CSV)",
-    "url": "https://www.town.kuroshio.lg.jp/pb/cont/machi-opendate/26597",
-    "where": "黒潮町オープンデータ一覧の表「指定緊急避難場所一覧」(CSV: https://www.town.kuroshio.lg.jp/img/files/pv/sosiki/docs/open-date/2026/evacuation_space2025.csv)"
-   },
-   "method": "読んで取った",
-   "status": "ok",
-   "checkedAt": "2026-11-02T06:56:31.837Z"
-  },
-  {
    "id": "r00002",
    "qid": "Q02",
    "scope": "muni:39428",
@@ -110,16 +95,6 @@
    "checkedAt": "2026-11-02T07:27:34.990Z"
   },
   {
-   "id": "r00008",
-   "qid": "Q08",
-   "scope": "muni:39428",
-   "question": "外国から来た人向けの案内（外国語のページ・やさしい日本語・相談窓口）はあるか。どこで見られるか",
-   "value": "見つからなかった",
-   "method": "読んで取った",
-   "status": "ok",
-   "checkedAt": "2026-11-02T07:28:21.314Z"
-  },
-  {
    "id": "r00009",
    "qid": "Q09",
    "scope": "muni:39428",
@@ -149,6 +124,21 @@
    "method": "読んで取った",
    "status": "ok",
    "checkedAt": "2026-11-02T07:29:03.968Z"
+  },
+  {
+   "id": "r00041",
+   "qid": "Q01",
+   "scope": "muni:39428",
+   "question": "この町の指定緊急避難場所の一覧は、どこで見られるか（公式のページか資料）。全部でいくつあるか",
+   "value": "黒潮町公式サイトの「まちの情報／オープンデータ」に「指定緊急避難場所一覧」（CSV）がある。一覧は 327 か所で、そのうち津波のときに使えるのは 192 か所。",
+   "source": {
+    "title": "黒潮町 指定緊急避難場所一覧（黒潮町オープンデータ、CSV）",
+    "url": "https://www.town.kuroshio.lg.jp/img/files/pv/sosiki/docs/open-date/2026/evacuation_space2025.csv",
+    "where": "CSV の全部の行（災害種別_津波の列が 1 の行が津波に使える場所）"
+   },
+   "method": "数えた（PC で CSV の行を数えた）",
+   "status": "auto",
+   "checkedAt": "2026-11-02T08:18:11.719Z"
   }
  ]
 }
