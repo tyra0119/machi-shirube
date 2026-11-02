@@ -62,7 +62,7 @@ const SYSTEM = `あなたは、日本の町の暮らしの情報を、公式の�
 - CSV の行を数えて数を答えたときは、count に数と CSV の URL を入れてください（あとで機械が数え直して照らします）
 - 公式の資料どうしで、同じことについて古いものと新しいもの（例：町の想定は平成24年、県が令和7年に新しい想定を出した）に気づいたら、outdated に入れてください。古いほうの時点と URL、新しいほうの時点と URL を、資料に書かれたとおりに。無ければ null
 - 最後に、次の形の JSON を <answer> と </answer> のあいだに1つだけ書いてください
-{"found": true|false, "value": "答え（短く）", "asOf": "時点", "source": {"title": "資料やページの名前", "url": "出典の URL", "where": "どこか（ページ番号や見出し）"}, "sources": [{"title": "ほかに使ったページ", "url": "URL"}], "quote": "元の文", "count": {"number": 数, "csvUrl": "数えた CSV の URL"} または null, "outdated": {"what": "何が古いか", "old": {"asOf": "時点", "url": "URL"}, "new": {"asOf": "時点", "url": "URL"}} または null, "detail": ["地区ごと" | "年ごと" | "重ね合わせ"]（答えに、町丁目・地区ごとの違い、年ごとの移り変わり、ほかのこととの重ね合わせ〈例：お年寄りの多い地区と津波の深さ〉があれば。無ければ []）, "note": "気づいたこと（使ってよい範囲の書き方など。なければ空）"}`;
+{"found": true|false, "value": "答え（短く）", "asOf": "時点", "source": {"title": "資料やページの名前", "url": "出典の URL", "where": "どこか（ページ番号や見出し）"}, "sources": [{"title": "ほかに使ったページ", "url": "URL"}], "quote": "元の文", "count": {"number": 数, "csvUrl": "数えた CSV の URL"} または null, "outdated": {"what": "何が古いか", "old": {"asOf": "時点", "url": "URL"}, "new": {"asOf": "時点", "url": "URL"}} または null, "items": [{"text": "話題を1文で", "title": "その出典のページの名前", "url": "その出典の URL", "asOf": "時点"}]（話題や計画のように、いくつも並ぶ答えのときだけ。1つずつ別の出典を付ける。無ければ []）, "detail": ["地区ごと" | "年ごと" | "重ね合わせ"]（答えに、町丁目・地区ごとの違い、年ごとの移り変わり、ほかのこととの重ね合わせ〈例：お年寄りの多い地区と津波の深さ〉があれば。無ければ []）, "note": "気づいたこと（使ってよい範囲の書き方など。なければ空）"}`;
 
 // part を渡すと、その町・字（市区町村の中の町・字。国勢調査の小地域の番号4けた）について調べる。範囲は town:{コード}-{番号}
 export async function research(code, question = DEFAULT_QUESTION, { log = console.log, qid, hint, redoOf, part } = {}) {
@@ -154,6 +154,7 @@ export async function research(code, question = DEFAULT_QUESTION, { log = consol
     counted: counted ?? undefined,
     outdated: a.outdated?.what ? a.outdated : undefined,
     detail: Array.isArray(a.detail) && a.detail.length ? a.detail : undefined,
+    items: Array.isArray(a.items) && a.items.length ? a.items.slice(0, 8) : undefined,
     check,
     note: a.note || undefined,
     cardId: card?.id,
@@ -181,6 +182,12 @@ export async function assess({ a, content, code, question, step = () => {}, doma
   const host = url ? new URL(url).hostname : "";
   const official = (h) => isOfficial(domains, h);
   if (url && !official(host)) why.push(`出典が公式のサイトでない（${host}）`);
+  // 話題のように、いくつも並ぶ答え（items）：どの1文の出典も公式のサイトか
+  for (const x of a.items ?? []) {
+    const h = x?.url && /^https?:/.test(x.url) ? new URL(x.url).hostname : null;
+    if (!h) why.push(`話題「${String(x?.text ?? "").slice(0, 20)}」に出典の URL が無い`);
+    else if (!official(h)) why.push(`話題の出典が公式のサイトでない（${h}）`);
+  }
 
   // 元の文を照らす：答えに使ったページ（source・sources と、メモや「どこか」に書かれた公式の URL）を PC 側で
   // 行儀よく取り直して探す（4つまで）。Claude が読んだページの中身が手元にあれば、それも使う

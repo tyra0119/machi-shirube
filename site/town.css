@@ -267,3 +267,9 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .day .icon .ic { width: 26px; height: 26px; vertical-align: -6px; color: var(--accent); }
 .day .row .k { display: inline-flex; align-items: center; gap: 4px; }
 .med-list .n .ic { margin-right: 4px; color: var(--accent); }
+/* 町の話題：1つずつ1文と出典 */
+.answers .topics { margin: 4px 0; padding: 0; list-style: none; }
+.answers .topics li { display: flex; flex-direction: column; gap: 2px; padding: 8px 0 8px 14px; border-top: 1px dashed var(--line); position: relative; }
+.answers .topics li::before { content: ""; position: absolute; left: 2px; top: 16px; width: 6px; height: 6px; border-radius: 3px; background: var(--accent); }
+.answers .topics .tx { font-size: 16px; line-height: 1.7; }
+.answers .topics .src { font-size: 13px; color: var(--text-sub); }

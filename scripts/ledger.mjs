@@ -170,7 +170,7 @@ export function decide(id, action, { user = "owner", reason = "" } = {}) {
 }
 
 // 公開してよいものだけを書き出す
-const PUBLIC_FIELDS = ["id", "qid", "scope", "question", "value", "asOf", "source", "method", "status", "outdated", "detail"];
+const PUBLIC_FIELDS = ["id", "qid", "scope", "question", "value", "asOf", "source", "method", "status", "outdated", "detail", "items"];
 const pick = (it) => ({ ...Object.fromEntries(PUBLIC_FIELDS.filter((k) => it[k] !== undefined).map((k) => [k, it[k]])), checkedAt: it.createdAt, score: scoreOf(it) });
 
 // 物差しの点数（1つの答えごと、0〜3。人の判断待ちは点を付けず null＝保留）。Claude を呼ばず、台帳の確かめの結果から決める
