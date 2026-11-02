@@ -93,35 +93,48 @@ export async function translateTown(code, langs = ["pt", "es", "en", "easy"], lo
   const client = new Anthropic();
   const out = { code, name: town?.name, createdAt: new Date().toISOString(), model: MODEL, checker: CHECKER, langs: {} };
   let usd = 0;
+  // 前に訳した答えで、もとの日本語が変わっていないものは使い回す（足した答え・変わった答えだけを訳す）
+  const prevFile = `site/data/translations/${code}.json`;
+  const prevT = fs.existsSync(prevFile) ? JSON.parse(fs.readFileSync(prevFile, "utf8")) : null;
+  const all = answers;
 
   for (const lang of langs) {
     const L = LANGS[lang];
     if (!L) throw new Error(`${lang} は分からない言葉です（${Object.keys(LANGS).join("・")}）`);
-    log(`${L.ja}に訳しています（${answers.length}件）`);
+    const kept = (prevT?.langs?.[lang]?.items ?? []).filter((x) => x.status !== "rejected" && all.some((a) => a.id === x.qid && a.text === x.original));
+    const answers = all.filter((a) => !kept.some((x) => x.qid === a.id));
+    out.langs[lang] = { name: L.name, ja: L.ja, items: [...kept] };
+    if (!answers.length) { log(`${L.ja}：みな訳してあります（${kept.length}件）`); continue; }
+    log(`${L.ja}に訳しています（${answers.length}件。前の訳 ${kept.length}件は使い回す）`);
+    // 8件ずつ頼む（まとめて頼むと、長い言葉〈やさしい日本語・ネパール語など〉で答えの長さの上限に届き、後ろの訳が空になった）
+    const tr = [];
+    for (let i = 0; i < answers.length; i += 8) {
+    const chunk = answers.slice(i, i + 8);
     const res = await client.messages.create({
       model: MODEL,
-      max_tokens: 8000,
+      max_tokens: 12000,
       system: `あなたは、町の暮らしと防災の情報を、その町に住む外国の人のために訳す係です。
 - 渡す日本語は、町の公式の資料から確かめた要約です。意味を変えず、足さず、減らさずに訳してください
 - 数字・日付・時間・電話番号・URL はそのまま。施設や地名は、訳した言葉のあとに日本語の名前を（ ）で残してください（看板や案内で探せるように）
 - ${lang === "easy" ? "やさしい日本語にしてください。短い文、むずかしい漢字にはひらがなで読みを（ ）でつけ、むずかしい言葉は言いかえる" : `${L.ja}（${L.name}）に訳してください`}
 - short（見出し）も訳してください
 - 1件ずつ、<item id="番号"><short>見出しの訳</short><text>本文の訳</text></item> の形だけで答えてください（JSON にしない。訳の中に " があっても読めるように）`,
-      messages: [{ role: "user", content: JSON.stringify(answers.map(({ id, short, text }) => ({ id, short, text })), null, 1) }],
+      messages: [{ role: "user", content: JSON.stringify(chunk.map(({ id, short, text }) => ({ id, short, text })), null, 1) }],
     });
     usd += record(MODEL, res.usage, `訳す：${town?.name ?? code}（${L.ja}）`);
-    const tr = [...textOf(res).matchAll(/<item id="([^"]+)">([\s\S]*?)<\/item>/g)].map(([, id, body]) => ({ id, short: between(body, "short")?.trim(), text: between(body, "text")?.trim() }));
+    tr.push(...[...textOf(res).matchAll(/<item id="([^"]+)">([\s\S]*?)<\/item>/g)].map(([, id, body]) => ({ id, short: between(body, "short")?.trim(), text: between(body, "text")?.trim() })));
+    }
 
     log(`${L.ja}の訳を、別の Claude が日本語に訳し戻して確かめています`);
     const { checks, usd: u } = await checkLang(client, answers.map((a) => ({ id: a.id, original: a.text, translation: tr.find((t) => t.id === a.id)?.text ?? "" })), `${town?.name ?? code}（${L.ja}）`);
     usd += u;
 
-    out.langs[lang] = { name: L.name, ja: L.ja, items: [] };
     for (const a of answers) {
       const t = tr.find((x) => x.id === a.id);
       const c = checks.find((x) => x.id === a.id);
       const item = { qid: a.id, short: t?.short ?? a.short, text: t?.text ?? "", original: a.text, back: c?.back ?? "", source: a.source,
         status: t?.text && c?.ok ? "auto" : "pending", problems: c?.problems ?? ["確かめ役の答えが読めなかった"] };
+      if (!item.text) { log(`  ${a.id} 訳が空（出さない。次に訳し直す）`); continue; }
       if (item.status === "pending") {
         const rec = ledger.add({
           scope: `muni:${code}`, scopeName: town?.name, kind: "translation", qid: a.id, lang,

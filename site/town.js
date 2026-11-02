@@ -134,8 +134,11 @@ async function showTypes(code, stats, scopeNote) {
     const ans = (await fetch(`data/answers/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null))?.answers ?? [];
     const yard = (await getJSON("data/yardstick.json")).questions;
     const found = (qid) => { const a = ans.find((x) => x.qid === qid && x.value !== "見つからなかった"); const q = yard.find((x) => x.id === qid); return a && q ? q : null; };
+    // ほかの言葉では、答えの訳の見出しを使う（訳が無ければ見出しを付けない）
+    const trItems = LANG ? (await fetch(`data/translations/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null))?.langs?.[LANG]?.items ?? [] : [];
+    const askShort = (q) => (LANG ? trItems.find((x) => x.qid === q.id && (x.status === "auto" || x.status === "ok"))?.short : q.short);
     $("mitate-top").innerHTML = `<h2>${T("この町で、暮らしの情報が届きにくいのは")}</h2>
-      <ul class="mitate-list">${cm.who.map((w, i) => { const p = pg(w.page); const q = w.ask && found(w.ask); return `<li><strong>${esc(t(`m${i}.person`, w.person))}</strong><span class="wall">${icon("alert")} ${esc(t(`m${i}.wall`, w.wall))}</span><span class="why">${esc(t(`m${i}.why`, w.why))}</span><span class="gos">${q ? `<a class="go ask" href="#${q.page}" data-target="a-${q.id}">${icon("search")}${T("町の支援を見る")}：${esc(T(q.short))}</a>` : ""}${p ? `<a class="go" href="#${p.view}">${icon(ILLUST[p.view]?.main ?? "map")}${LANG ? esc(T(p.title)) : `${esc(p.title)}へ`}</a>` : ""}</span></li>`; }).join("")}</ul>
+      <ul class="mitate-list">${cm.who.map((w, i) => { const p = pg(w.page); const q = w.ask && found(w.ask); return `<li><strong>${esc(t(`m${i}.person`, w.person))}</strong><span class="wall">${icon("alert")} ${esc(t(`m${i}.wall`, w.wall))}</span><span class="why">${esc(t(`m${i}.why`, w.why))}</span><span class="gos">${q ? `<a class="go ask" href="#${q.page}" data-target="a-${q.id}">${icon("search")}${T("町の支援を見る")}${askShort(q) ? `：${esc(askShort(q))}` : ""}</a>` : ""}${p ? `<a class="go" href="#${p.view}">${icon(ILLUST[p.view]?.main ?? "map")}${LANG ? esc(T(p.title)) : `${esc(p.title)}へ`}</a>` : ""}</span></li>`; }).join("")}</ul>
       <p class="note">${esc(t("n.mitate", cm.note))}${tr ? ` ${T("（AI による訳）")} ` : "。"}<a href="#mitate">${T("くわしく")}</a></p>`;
     for (const a of $("mitate-top").querySelectorAll("a.ask")) a.addEventListener("click", () => setTimeout(() => $(a.dataset.target)?.scrollIntoView({ behavior: "smooth", block: "start" }), 50));
     return;
@@ -689,7 +692,7 @@ function answersHTML(answers) {
         : `${a.items ? "" : answerBody(a)}
       ${a.items ? `<ul class="topics">${a.items.map((x) => `<li><span class="tx">${esc(x.text)}</span>
         <span class="src">${x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.title ?? x.url)}</a>` : esc(x.title ?? "")}${x.asOf ? `・${esc(x.asOf)}` : ""}</span></li>`).join("")}</ul>` : ""}
-      ${health?.links?.[a.source?.url]?.kind === "gone" ? `<p class="gone">出典のページが見つからなくなっています（${esc(health.links[a.source.url].checkedAt.slice(0, 10))} に見張りで確かめた）。町の公式のサイトで新しいページを探して確かめてください。</p>` : ""}
+      ${health?.links?.[a.source?.url]?.kind === "gone" ? `<p class="gone">${T("出典のページが見つからなくなっています")}（${esc(health.links[a.source.url].checkedAt.slice(0, 10))}）。${T("町の公式のサイトで新しいページを探して確かめてください。")}</p>` : ""}
       ${a.outdated ? `<p class="outdated"><strong>古いデータに気づきました</strong>：${esc(a.outdated.what)}。古い：${a.outdated.old?.url ? `<a href="${esc(a.outdated.old.url)}" target="_blank" rel="noopener">${esc(a.outdated.old.asOf ?? "")}</a>` : esc(a.outdated.old?.asOf ?? "")}／新しい：${a.outdated.new?.url ? `<a href="${esc(a.outdated.new.url)}" target="_blank" rel="noopener">${esc(a.outdated.new.asOf ?? "")}</a>` : esc(a.outdated.new?.asOf ?? "")}</p>` : ""}
       <p class="src chip">${icon("link")} ${a.source?.url ? `<a href="${esc(a.source.url)}" target="_blank" rel="noopener"${a.source.where ? ` title="${esc(T("出典の中の場所"))}：${esc(a.source.where)}"` : ""}>${esc(a.source.title ?? a.source.url)}</a>` : esc(a.source?.title ?? "")}${a.asOf ? `・時点 ${esc(a.asOf)}` : ""}・${T(a.status === "auto" ? "自動で承認" : "人が確かめた")}</p>`}
       </div>

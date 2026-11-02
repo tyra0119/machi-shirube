@@ -1,11 +1,11 @@
 {
  "lang": "vi",
  "name": "Tiếng Việt",
- "createdAt": "2026-11-02T22:36:11.610Z",
+ "createdAt": "2026-11-02T23:45:43.010Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 409,
- "of": 404,
+ "count": 414,
+ "of": 408,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Đây là trang hướng dẫn đời sống không chính thức của thị trấn này. Claude thu thập từ các trang chính thức của thị trấn v.v. và ghi rõ nguồn (Machi-shirube)",
   "すべてのページ": "Tất cả các trang",
@@ -415,6 +415,11 @@
   "基あります。": "bia.",
   "この町として届けられた碑は、まだありません。近くの町の碑です。": "Hiện chưa có bia nào được đăng ký thuộc thị trấn này. Đây là bia của thị trấn lân cận.",
   "近くの町の碑": "Bia của thị trấn lân cận",
-  "日本語のまま": "Giữ nguyên tiếng Nhật"
+  "日本語のまま": "Giữ nguyên tiếng Nhật",
+  "町の支援を見る": "Xem hỗ trợ của thị trấn",
+  "ほかに": "Mục khác",
+  "公式の情報ではありません。": "Đây không phải là thông tin chính thức.",
+  "出典のページが見つからなくなっています": "Không tìm thấy trang nguồn",
+  "町の公式のサイトで新しいページを探して確かめてください。": "Hãy tìm trang mới trên trang web chính thức của thị trấn để xác nhận."
  }
 }

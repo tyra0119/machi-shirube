@@ -1,11 +1,11 @@
 {
  "lang": "pt",
  "name": "Português",
- "createdAt": "2026-11-02T22:35:49.028Z",
+ "createdAt": "2026-11-02T23:45:21.179Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 413,
- "of": 404,
+ "count": 416,
+ "of": 408,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Guia não oficial da vida na cidade. O Claude reúne as informações em sites oficiais da cidade e outras fontes, e indica a origem de cada uma (Machishirube)",
   "すべてのページ": "Todas as páginas",
@@ -419,6 +419,9 @@
   "この町として届けられた碑は、まだありません。近くの町の碑です。": "Ainda não há monumentos registrados como desta cidade. Estes são monumentos de cidades vizinhas.",
   "近くの町の碑": "Monumentos de cidades vizinhas",
   "日本語のまま": "Em japonês (original)",
-  "町の支援を見る": "Ver os apoios do município"
+  "町の支援を見る": "Ver os apoios do município",
+  "ほかに": "Outros",
+  "公式の情報ではありません。": "Não são informações oficiais.",
+  "出典のページが見つからなくなっています": "A página da fonte não foi encontrada"
  }
 }

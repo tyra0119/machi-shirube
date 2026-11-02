@@ -267,7 +267,7 @@ export function exportProgress(data = load()) {
 export function exportPublic(data = load()) {
   const byMuni = new Map();
   // 探し直した答え（redoOf）が出せるようになったら、前の答えは出さない（同じ問いの答えが2つ並ばないように）
-  const replaced = new Set(data.items.filter((x) => x.redoOf && (x.status === "ok" || x.status === "auto")).map((x) => x.redoOf));
+  const replaced = new Set(data.items.filter((x) => x.redoOf && (!x.kind || x.kind === "answer") && (x.status === "ok" || x.status === "auto")).map((x) => x.redoOf));
   for (const it of data.items) {
     if (it.status !== "ok" && it.status !== "auto") continue;
     if (replaced.has(it.id)) continue;
