@@ -116,17 +116,17 @@ function todayHTML(t, esc) {
   const dayCard = (d) => `
     <article class="day">
       <h3>${d.label}<small>${d.date ? ` ${Number(d.date.slice(5, 7))}月${Number(d.date.slice(8, 10))}日` : ""}</small></h3>
-      <p class="w"><span class="icon" aria-hidden="true">${WEATHER_ICON(d.weatherCode)}</span>${esc(d.weather ?? "天気の文はありません")}</p>
+      <p class="w"><span class="icon" aria-hidden="true">${WEATHER_ICON(d.weatherCode)}</span>${d.weather ? `${esc(d.weather)}<small class="by">気象庁の予報</small>` : "気象庁の予報を読み込めませんでした"}</p>
       <p class="t">${d.max != null ? `<strong>${Math.round(d.max)}℃</strong> / ${Math.round(d.min)}℃` : ""}${d.pop != null ? `<span>雨 ${d.pop}%</span>` : ""}</p>
       ${d.laundry ? `<p class="row"><span class="k">洗濯</span><span class="v lv${d.laundry.level}">${d.laundry.text}</span></p>` : ""}
       ${d.clothes ? `<p class="row"><span class="k">服装</span><span class="v">${esc(d.clothes.text)}${d.clothes.notes.length ? `<small>${esc(d.clothes.notes.join("。"))}</small>` : ""}</span></p>` : ""}
     </article>`;
   const w = t.warnings;
-  const warnHTML = !w ? `<p class="note">警報・注意報を読み込めませんでした。</p>`
+  const warnHTML = !w ? `<p class="note">警報・注意報を読み込めませんでした（出ていないという意味ではありません）。気象庁のページで確かめてください。</p>`
     : w.list.length ? `<p class="warn-on">${w.list.map((x) => `<span class="${/警報/.test(x) ? "kw" : ""}">${esc(x)}</span>`).join("")}</p>`
     : `<p class="warn-off">いま、この町に警報・注意報は出ていません</p>`;
   const q = t.quakes;
-  const quakeHTML = !q ? "" : q.length
+  const quakeHTML = !q ? `<p class="note">地震の情報を読み込めませんでした（地震が無かったという意味ではありません）。</p>` : q.length
     ? `<ul class="quakes">${q.map((x) => `<li>${esc(new Date(x.at).toLocaleString("ja-JP", { month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" }))} ${esc(x.place)}・M${esc(x.mag)}・この町で震度 ${esc(x.maxi)}</li>`).join("")}</ul>`
     : `<p class="note">この1週間、この町で震度を観測した地震はありません。</p>`;
   return `

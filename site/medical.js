@@ -46,12 +46,12 @@ function medicalList(m, offset, center, now = new Date()) {
   return { date, holiday: m.holidays[ymd], list: out };
 }
 
-function medicalHTML(m, offset, center, esc, filter = "") {
+function medicalHTML(m, offset, center, esc, filter = "", limit = 5) {
   const day = medicalList(m, offset, center);
   const label = `${offset === 0 ? "今日" : "明日"}（${day.date.getMonth() + 1}月${day.date.getDate()}日 ${DAY_KEYS[day.date.getDay()]}曜${day.holiday ? `・${day.holiday}` : ""}）`;
   const f = filter.replace(/\s/g, "");
   const list = day.list.filter((x) => !f || (x.f.n + (x.f.s ?? []).join("")).replace(/\s/g, "").includes(f));
-  const shown = list.slice(0, 30);
+  const shown = list.slice(0, limit);
   return `
     <p class="med-sum"><strong>${esc(label)}</strong>にやっているのは、この市区町村の ${m.list.length} か所のうち <strong>${day.list.length} か所</strong>${offset === 0 ? `（いま開いている ${day.list.filter((x) => x.openNow).length} か所）` : ""}</p>
     ${f ? `<p class="note">「${esc(filter)}」で絞ると ${list.length} か所</p>` : ""}
@@ -62,6 +62,6 @@ function medicalHTML(m, offset, center, esc, filter = "") {
         ${x.f.s ? `<span class="s">${esc(x.f.s.slice(0, 6).join("・"))}${x.f.s.length > 6 ? ` ほか ${x.f.s.length - 6}` : ""}</span>` : ""}
         <span class="a">${esc(x.f.a)}${x.f.other ? `・休み：${esc(x.f.other.slice(0, 60))}` : ""}</span>
       </li>`).join("")}</ul>
-    ${list.length > shown.length ? `<p class="note">ほか ${list.length - shown.length} か所。名前や診療科で絞ってください。</p>` : ""}
+    ${list.length > shown.length ? `<button type="button" class="more-btn" data-more>次の ${Math.min(10, list.length - shown.length)} か所を見る（のこり ${list.length - shown.length}）</button>` : ""}
     ${!day.list.length ? `<p class="note">${day.holiday ? "祝日のため、" : ""}届けられた診療時間では、この日にやっている所はありません。急ぐときは、下の窓口へ。</p>` : ""}`;
 }

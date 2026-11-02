@@ -336,15 +336,20 @@ async function showMedical(code, center) {
     return;
   }
   let day = 0;
-  const draw = () => ($("med").innerHTML = medicalHTML(m, day, center, esc, $("med-filter").value));
+  let limit = 5;
+  const draw = () => {
+    $("med").innerHTML = medicalHTML(m, day, center, esc, $("med-filter").value, limit);
+    $("med").querySelector("[data-more]")?.addEventListener("click", () => { limit += 10; draw(); });
+  };
   for (const b of document.querySelectorAll("#med-block .hinan-kind button")) {
     b.addEventListener("click", () => {
       day = Number(b.dataset.day);
+      limit = 5;
       document.querySelectorAll("#med-block .hinan-kind button").forEach((x) => x.setAttribute("aria-pressed", String(x === b)));
       draw();
     });
   }
-  $("med-filter").addEventListener("input", draw);
+  $("med-filter").addEventListener("input", () => { limit = 5; draw(); });
   draw();
   $("med-cite").innerHTML = `出典：<a href="${esc(m.source.url)}" target="_blank" rel="noopener">${esc(m.source.title)}</a>（${esc(m.source.asOf)}・${esc(m.source.license)}）を加工。祝日：${esc(m.holidaySource?.title ?? "")}。${center ? "距離は町・字のおおよその真ん中からまっすぐ測ったものです。" : ""}`;
   const today = medicalList(m, 0, center);
