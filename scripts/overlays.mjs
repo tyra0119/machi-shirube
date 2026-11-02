@@ -12,17 +12,18 @@ import { buildClimate } from "./build-climate.mjs";
 
 export async function buildOverlays(code, log = console.log, { force = false } = {}) {
   const steps = [
-    ["浸水・土砂災害の想定の区域に住む人", `site/data/flood-pop/${code}.json`, () => buildFloodPop(code, () => {})],
-    ["大きな地震の揺れの確率", `site/data/quake-pop/${code}.json`, () => buildQuakePop(code, () => {})],
-    ["交通事故", `site/data/accidents/${code}.json`, () => buildAccidents([code], () => {})],
-    ["買い物に困っているお年寄り", `site/data/shop-access/${code}.json`, () => buildShopAccess([code], () => {})],
-    ["坂の多い所に住む人", `site/data/slope/${code}.json`, () => buildSlope(code, () => {})],
-    ["町の気候（平年値）", `site/data/climate/${code}.json`, () => buildClimate(code, () => {})],
+    ["浸水・土砂災害の想定の区域に住む人", `site/data/flood-pop/${code}.json`, (l) => buildFloodPop(code, l)],
+    ["大きな地震の揺れの確率", `site/data/quake-pop/${code}.json`, (l) => buildQuakePop(code, l)],
+    ["交通事故", `site/data/accidents/${code}.json`, (l) => buildAccidents([code], l)],
+    ["買い物に困っているお年寄り", `site/data/shop-access/${code}.json`, (l) => buildShopAccess([code], l)],
+    ["坂の多い所に住む人", `site/data/slope/${code}.json`, (l) => buildSlope(code, l)],
+    ["町の気候（平年値）", `site/data/climate/${code}.json`, (l) => buildClimate(code, l)],
   ];
   for (const [name, file, run] of steps) {
     if (!force && fs.existsSync(file)) continue;
     log(`国のデータを重ねています：${name}`);
-    try { await run(); } catch (e) { log(`${name}は出せませんでした：${e.message}`); }
+    // 途中の進み具合も画面の作業の流れに出す（揺れの確率などは数分かかり、出さないと止まって見える）
+    try { await run((t) => log(`${name}：${String(t).trim()}`)); } catch (e) { log(`${name}は出せませんでした：${e.message}`); }
   }
   log("国のデータを重ねる計算が終わりました");
 }
