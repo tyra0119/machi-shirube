@@ -140,10 +140,19 @@ map.on("load", async () => {
     const town = shownTowns && map.queryRenderedFeatures(e.point, { layers: ["town-fill"] })[0];
     // 複数を選んでいるとき・Ctrl（⌘）や Shift を押しながらのときは、選ぶ・外すを切り替える
     const add = e.originalEvent.ctrlKey || e.originalEvent.metaKey || e.originalEvent.shiftKey;
-    if (town && (picked.size || add)) return togglePick(town.properties);
-    if (town) return showTownCard(town.properties);
+    if (town && (picked.size || add)) return togglePick(town.properties); // 複数を選ぶときは寄らない（選びにくくなるので）
+    // 押した町・字や市区町村に寄る（形は描くために切れていることがあるので、元の形で）
+    if (town) {
+      const f = townData.features.find((x) => x.properties.town === town.properties.town);
+      if (f) fit([f], 14);
+      return showTownCard(town.properties);
+    }
     const muni = map.queryRenderedFeatures(e.point, { layers: ["muni-fill"] })[0];
-    if (muni) showCard(muni.properties);
+    if (muni) {
+      const f = byCode.get(muni.properties.code);
+      if (f) fit([f], 11);
+      showCard(muni.properties);
+    }
   });
 
   // URL で送られた町を開く（?muni=39428 ／ ?muni=11227&towns ／ ?town=11227-0130）
