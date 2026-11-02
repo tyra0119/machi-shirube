@@ -1,6 +1,6 @@
 // 道の安全（交通事故）：警察庁の交通事故統計オープンデータ（本票。人身事故の1件ごとの地点・年齢・当事者）から、
 // 町の中で起きた事故を、町・字ごとと「事故が重なる地点」に数える。Claude は使わない（PC の計算だけ）
-// 動かし方: npm run build:accidents -- 39428 10524 11227
+// 動かし方: npm run build:accidents -- 39428 10524 11227（全国は --all）
 // 元のデータ（local/cache/npa/honhyo_{年}.csv）は手元にだけ置く。https://www.npa.go.jp/publications/statistics/koutsuu/opendata/index_opendata.html から取る
 import fs from "node:fs";
 import readline from "node:readline";
@@ -33,6 +33,7 @@ export async function buildAccidents(codes, log = console.log) {
       const ped = r[C.typeA] === PED || r[C.typeB] === PED;
       const oldPed = (r[C.typeA] === PED && OLD.has(r[C.ageA])) || (r[C.typeB] === PED && OLD.has(r[C.ageB]));
       nation.all++; if (ped) nation.ped++; if (oldPed) nation.oldPed++;
+      if (!r[C.lon]) continue; // 列の足りない行
       const lat = dms(r[C.lat], 2), lon = dms(r[C.lon], 3);
       for (const t of towns) {
         if (lon < t.box[0] || lon > t.box[2] || lat < t.box[1] || lat > t.box[3]) continue;
@@ -85,4 +86,9 @@ export async function buildAccidents(codes, log = console.log) {
   }
 }
 
-if (process.argv[1]?.endsWith("build-accidents.mjs")) await buildAccidents(process.argv.slice(2));
+// --all：全国の町（site/data/towns/ にある 1,894 区域）を一度に
+if (process.argv[1]?.endsWith("build-accidents.mjs")) {
+  const args = process.argv.slice(2);
+  const codes = args.includes("--all") ? fs.readdirSync("site/data/towns").map((f) => f.match(/^(\d{5})\.json$/)?.[1]).filter(Boolean) : args;
+  await buildAccidents(codes, args.includes("--all") ? (t) => /年：/.test(t) && console.log(t) : console.log);
+}

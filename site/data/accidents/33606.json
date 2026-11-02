@@ -1,0 +1,90 @@
+{
+ "code": "33606",
+ "years": [
+  2022,
+  2023,
+  2024
+ ],
+ "createdAt": "2026-11-02T13:00:41.143Z",
+ "population": 12062,
+ "total": 28,
+ "dead": 1,
+ "ped": 1,
+ "oldPed": 0,
+ "bike": 3,
+ "per1000": 0.77,
+ "nationPer1000": 2.38,
+ "oldPedShare": 0,
+ "nationOldPedShare": 4.2,
+ "oldPedDusk": null,
+ "parts": {
+  "1030": {
+   "n": 7,
+   "ped": 0,
+   "oldPed": 0
+  },
+  "1040": {
+   "n": 1,
+   "ped": 0,
+   "oldPed": 0
+  },
+  "1050": {
+   "n": 3,
+   "ped": 1,
+   "oldPed": 0
+  },
+  "1060": {
+   "n": 3,
+   "ped": 0,
+   "oldPed": 0
+  },
+  "2020": {
+   "n": 3,
+   "ped": 0,
+   "oldPed": 0
+  },
+  "2030": {
+   "n": 2,
+   "ped": 0,
+   "oldPed": 0
+  },
+  "2040": {
+   "n": 1,
+   "ped": 0,
+   "oldPed": 0
+  },
+  "2050": {
+   "n": 1,
+   "ped": 0,
+   "oldPed": 0
+  },
+  "3010": {
+   "n": 1,
+   "ped": 0,
+   "oldPed": 0
+  },
+  "5020": {
+   "n": 1,
+   "ped": 0,
+   "oldPed": 0
+  },
+  "7040": {
+   "n": 4,
+   "ped": 0,
+   "oldPed": 0
+  },
+  "7200": {
+   "n": 1,
+   "ped": 0,
+   "oldPed": 0
+  }
+ },
+ "spots": [],
+ "note": "警察庁の交通事故統計オープンデータ（人身事故。物損事故は入らない）のうち、町の中の地点で起きたものを数えたもの。年齢は事故のときの年齢の区分（65歳以上＝65〜74歳と75歳以上）。地点は升目（およそ50m）に集めた、めやすです",
+ "sources": [
+  {
+   "title": "警察庁 交通事故統計情報のオープンデータ（本票 2022〜2024年）を加工して作成",
+   "url": "https://www.npa.go.jp/publications/statistics/koutsuu/opendata/index_opendata.html"
+  }
+ ]
+}

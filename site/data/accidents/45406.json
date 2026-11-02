@@ -1,0 +1,56 @@
+{
+ "code": "45406",
+ "years": [
+  2022,
+  2023,
+  2024
+ ],
+ "createdAt": "2026-11-02T13:00:41.375Z",
+ "population": 9906,
+ "total": 86,
+ "dead": 3,
+ "ped": 4,
+ "oldPed": 4,
+ "bike": 5,
+ "per1000": 2.89,
+ "nationPer1000": 2.38,
+ "oldPedShare": 4.7,
+ "nationOldPedShare": 4.2,
+ "oldPedDusk": 50,
+ "parts": {
+  "0010": {
+   "n": 86,
+   "ped": 4,
+   "oldPed": 4
+  }
+ },
+ "spots": [
+  {
+   "lat": 32.25431,
+   "lon": 131.55384,
+   "n": 4,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 0,
+   "dead": 0,
+   "part": "大字川北篠別府"
+  },
+  {
+   "lat": 32.25476,
+   "lon": 131.55832,
+   "n": 3,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 1,
+   "dead": 0,
+   "part": "大字川北篠別府"
+  }
+ ],
+ "note": "警察庁の交通事故統計オープンデータ（人身事故。物損事故は入らない）のうち、町の中の地点で起きたものを数えたもの。年齢は事故のときの年齢の区分（65歳以上＝65〜74歳と75歳以上）。地点は升目（およそ50m）に集めた、めやすです",
+ "sources": [
+  {
+   "title": "警察庁 交通事故統計情報のオープンデータ（本票 2022〜2024年）を加工して作成",
+   "url": "https://www.npa.go.jp/publications/statistics/koutsuu/opendata/index_opendata.html"
+  }
+ ]
+}

@@ -1,0 +1,111 @@
+{
+ "code": "42322",
+ "years": [
+  2022,
+  2023,
+  2024
+ ],
+ "createdAt": "2026-11-02T13:00:41.333Z",
+ "population": 13377,
+ "total": 69,
+ "dead": 0,
+ "ped": 7,
+ "oldPed": 2,
+ "bike": 0,
+ "per1000": 1.72,
+ "nationPer1000": 2.38,
+ "oldPedShare": 2.9,
+ "nationOldPedShare": 4.2,
+ "oldPedDusk": 0,
+ "parts": {
+  "0140": {
+   "n": 12,
+   "ped": 0,
+   "oldPed": 0
+  },
+  "0020": {
+   "n": 10,
+   "ped": 1,
+   "oldPed": 1
+  },
+  "0130": {
+   "n": 14,
+   "ped": 1,
+   "oldPed": 0
+  },
+  "0160": {
+   "n": 13,
+   "ped": 1,
+   "oldPed": 0
+  },
+  "0170": {
+   "n": 9,
+   "ped": 1,
+   "oldPed": 0
+  },
+  "0030": {
+   "n": 6,
+   "ped": 1,
+   "oldPed": 1
+  },
+  "0090": {
+   "n": 1,
+   "ped": 0,
+   "oldPed": 0
+  },
+  "0040": {
+   "n": 1,
+   "ped": 1,
+   "oldPed": 0
+  },
+  "0120": {
+   "n": 1,
+   "ped": 0,
+   "oldPed": 0
+  },
+  "0050": {
+   "n": 2,
+   "ped": 1,
+   "oldPed": 0
+  }
+ },
+ "spots": [
+  {
+   "lat": 33.06831,
+   "lon": 129.85787,
+   "n": 3,
+   "ped": 1,
+   "oldPed": 0,
+   "bike": 0,
+   "dead": 0,
+   "part": "下組郷"
+  },
+  {
+   "lat": 33.06528,
+   "lon": 129.85521,
+   "n": 3,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 0,
+   "dead": 0,
+   "part": "白石郷"
+  },
+  {
+   "lat": 33.05893,
+   "lon": 129.84283,
+   "n": 3,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 0,
+   "dead": 0,
+   "part": "小串郷"
+  }
+ ],
+ "note": "警察庁の交通事故統計オープンデータ（人身事故。物損事故は入らない）のうち、町の中の地点で起きたものを数えたもの。年齢は事故のときの年齢の区分（65歳以上＝65〜74歳と75歳以上）。地点は升目（およそ50m）に集めた、めやすです",
+ "sources": [
+  {
+   "title": "警察庁 交通事故統計情報のオープンデータ（本票 2022〜2024年）を加工して作成",
+   "url": "https://www.npa.go.jp/publications/statistics/koutsuu/opendata/index_opendata.html"
+  }
+ ]
+}

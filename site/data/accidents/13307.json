@@ -1,0 +1,106 @@
+{
+ "code": "13307",
+ "years": [
+  2022,
+  2023,
+  2024
+ ],
+ "createdAt": "2026-11-02T13:00:40.582Z",
+ "population": 2003,
+ "total": 159,
+ "dead": 1,
+ "ped": 0,
+ "oldPed": 0,
+ "bike": 20,
+ "per1000": 26.46,
+ "nationPer1000": 2.38,
+ "oldPedShare": 0,
+ "nationOldPedShare": 4.2,
+ "oldPedDusk": null,
+ "parts": {
+  "0010": {
+   "n": 159,
+   "ped": 0,
+   "oldPed": 0
+  }
+ },
+ "spots": [
+  {
+   "lat": 35.70208,
+   "lon": 139.13587,
+   "n": 7,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 0,
+   "dead": 1,
+   "part": "下元郷"
+  },
+  {
+   "lat": 35.73688,
+   "lon": 139.04149,
+   "n": 6,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 0,
+   "dead": 0,
+   "part": "下元郷"
+  },
+  {
+   "lat": 35.73851,
+   "lon": 139.04441,
+   "n": 5,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 0,
+   "dead": 0,
+   "part": "下元郷"
+  },
+  {
+   "lat": 35.72715,
+   "lon": 139.04045,
+   "n": 3,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 1,
+   "dead": 0,
+   "part": "下元郷"
+  },
+  {
+   "lat": 35.74265,
+   "lon": 139.04366,
+   "n": 3,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 0,
+   "dead": 0,
+   "part": "下元郷"
+  },
+  {
+   "lat": 35.7436,
+   "lon": 139.04336,
+   "n": 3,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 0,
+   "dead": 0,
+   "part": "下元郷"
+  },
+  {
+   "lat": 35.75032,
+   "lon": 139.03995,
+   "n": 3,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 0,
+   "dead": 0,
+   "part": "下元郷"
+  }
+ ],
+ "note": "警察庁の交通事故統計オープンデータ（人身事故。物損事故は入らない）のうち、町の中の地点で起きたものを数えたもの。年齢は事故のときの年齢の区分（65歳以上＝65〜74歳と75歳以上）。地点は升目（およそ50m）に集めた、めやすです",
+ "sources": [
+  {
+   "title": "警察庁 交通事故統計情報のオープンデータ（本票 2022〜2024年）を加工して作成",
+   "url": "https://www.npa.go.jp/publications/statistics/koutsuu/opendata/index_opendata.html"
+  }
+ ]
+}

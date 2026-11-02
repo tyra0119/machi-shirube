@@ -1,0 +1,86 @@
+{
+ "code": "33445",
+ "years": [
+  2022,
+  2023,
+  2024
+ ],
+ "createdAt": "2026-11-02T13:00:41.143Z",
+ "population": 10950,
+ "total": 81,
+ "dead": 1,
+ "ped": 7,
+ "oldPed": 4,
+ "bike": 12,
+ "per1000": 2.47,
+ "nationPer1000": 2.38,
+ "oldPedShare": 4.9,
+ "nationOldPedShare": 4.2,
+ "oldPedDusk": 25,
+ "parts": {
+  "0020": {
+   "n": 30,
+   "ped": 1,
+   "oldPed": 1
+  },
+  "0030": {
+   "n": 32,
+   "ped": 3,
+   "oldPed": 2
+  },
+  "0010": {
+   "n": 19,
+   "ped": 3,
+   "oldPed": 1
+  }
+ },
+ "spots": [
+  {
+   "lat": 34.512,
+   "lon": 133.55798,
+   "n": 3,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 2,
+   "dead": 0,
+   "part": "大字里見"
+  },
+  {
+   "lat": 34.50534,
+   "lon": 133.53669,
+   "n": 3,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 2,
+   "dead": 0,
+   "part": "大字新庄"
+  },
+  {
+   "lat": 34.51011,
+   "lon": 133.55664,
+   "n": 3,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 0,
+   "dead": 0,
+   "part": "大字新庄"
+  },
+  {
+   "lat": 34.49985,
+   "lon": 133.53613,
+   "n": 3,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 0,
+   "dead": 0,
+   "part": "大字浜中"
+  }
+ ],
+ "note": "警察庁の交通事故統計オープンデータ（人身事故。物損事故は入らない）のうち、町の中の地点で起きたものを数えたもの。年齢は事故のときの年齢の区分（65歳以上＝65〜74歳と75歳以上）。地点は升目（およそ50m）に集めた、めやすです",
+ "sources": [
+  {
+   "title": "警察庁 交通事故統計情報のオープンデータ（本票 2022〜2024年）を加工して作成",
+   "url": "https://www.npa.go.jp/publications/statistics/koutsuu/opendata/index_opendata.html"
+  }
+ ]
+}

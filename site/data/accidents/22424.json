@@ -1,0 +1,156 @@
+{
+ "code": "22424",
+ "years": [
+  2022,
+  2023,
+  2024
+ ],
+ "createdAt": "2026-11-02T13:00:40.818Z",
+ "population": 28919,
+ "total": 352,
+ "dead": 3,
+ "ped": 23,
+ "oldPed": 7,
+ "bike": 43,
+ "per1000": 4.06,
+ "nationPer1000": 2.38,
+ "oldPedShare": 2,
+ "nationOldPedShare": 4.2,
+ "oldPedDusk": 42.9,
+ "parts": {
+  "0040": {
+   "n": 92,
+   "ped": 7,
+   "oldPed": 1
+  },
+  "0010": {
+   "n": 99,
+   "ped": 9,
+   "oldPed": 4
+  },
+  "0030": {
+   "n": 57,
+   "ped": 4,
+   "oldPed": 1
+  },
+  "0020": {
+   "n": 65,
+   "ped": 3,
+   "oldPed": 1
+  },
+  "0050": {
+   "n": 39,
+   "ped": 0,
+   "oldPed": 0
+  }
+ },
+ "spots": [
+  {
+   "lat": 34.79142,
+   "lon": 138.23851,
+   "n": 7,
+   "ped": 2,
+   "oldPed": 0,
+   "bike": 0,
+   "dead": 0,
+   "part": "神戸"
+  },
+  {
+   "lat": 34.77062,
+   "lon": 138.27206,
+   "n": 7,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 0,
+   "dead": 0,
+   "part": "川尻"
+  },
+  {
+   "lat": 34.78501,
+   "lon": 138.24472,
+   "n": 6,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 0,
+   "dead": 0,
+   "part": "神戸"
+  },
+  {
+   "lat": 34.78742,
+   "lon": 138.24369,
+   "n": 5,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 0,
+   "dead": 0,
+   "part": "神戸"
+  },
+  {
+   "lat": 34.79254,
+   "lon": 138.25086,
+   "n": 5,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 1,
+   "dead": 0,
+   "part": "大幡"
+  },
+  {
+   "lat": 34.77318,
+   "lon": 138.24649,
+   "n": 5,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 0,
+   "dead": 0,
+   "part": "片岡"
+  },
+  {
+   "lat": 34.79222,
+   "lon": 138.25288,
+   "n": 5,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 0,
+   "dead": 0,
+   "part": "大幡"
+  },
+  {
+   "lat": 34.76513,
+   "lon": 138.24867,
+   "n": 4,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 2,
+   "dead": 0,
+   "part": "住吉"
+  },
+  {
+   "lat": 34.77007,
+   "lon": 138.24886,
+   "n": 4,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 2,
+   "dead": 0,
+   "part": "住吉"
+  },
+  {
+   "lat": 34.78494,
+   "lon": 138.2544,
+   "n": 4,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 0,
+   "dead": 0,
+   "part": "大幡"
+  }
+ ],
+ "note": "警察庁の交通事故統計オープンデータ（人身事故。物損事故は入らない）のうち、町の中の地点で起きたものを数えたもの。年齢は事故のときの年齢の区分（65歳以上＝65〜74歳と75歳以上）。地点は升目（およそ50m）に集めた、めやすです",
+ "sources": [
+  {
+   "title": "警察庁 交通事故統計情報のオープンデータ（本票 2022〜2024年）を加工して作成",
+   "url": "https://www.npa.go.jp/publications/statistics/koutsuu/opendata/index_opendata.html"
+  }
+ ]
+}

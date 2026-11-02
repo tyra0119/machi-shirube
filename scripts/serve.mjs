@@ -12,6 +12,7 @@ import path from "node:path";
 import * as ledger from "./ledger.mjs";
 import { research, researchTown, RUN_LIMIT_USD } from "./research.mjs";
 import { propose, decideProposal, loadProposals, requestToQuestion } from "./propose.mjs";
+import { buildOverlays } from "./overlays.mjs";
 
 // 町をまとめて調べる（調べる画面から）。一度に1つだけ。様子はメモリに持ち、終わったら local/runs/ に残す
 const runs = new Map();
@@ -114,6 +115,8 @@ async function startRun(req, res) {
   runs.set(id, run);
   activeRun = id;
   send(res, 200, run);
+  // 国のデータを重ねる計算（PC だけ・無料）を、Claude の調べと並べて動かす。町・字のときは市区町村の分がもうあれば何もしない
+  const overlays = buildOverlays(code, (text) => run.log.push({ at: new Date().toISOString(), text })).catch(() => {});
   researchTown(code, {
     part,
     log: (text) => run.log.push({ at: new Date().toISOString(), text: text.replace(/^\d\d:\d\d:\d\d /, "") }),
@@ -121,6 +124,7 @@ async function startRun(req, res) {
     shouldStop: () => run.stopRequested,
   }).then(async (total) => {
     run.usd = total;
+    await overlays;
     // 調べ終わったら、Claude のほうから提案する（物差しにない問い・スキルにするか）
     if (!run.stopRequested && total > 0) {
       run.log.push({ at: new Date().toISOString(), text: "調べ終わりました。Claude が答えの全体を見て、提案を考えています" });

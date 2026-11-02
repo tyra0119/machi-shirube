@@ -1,0 +1,86 @@
+{
+ "code": "40604",
+ "years": [
+  2022,
+  2023,
+  2024
+ ],
+ "createdAt": "2026-11-02T13:00:41.289Z",
+ "population": 8407,
+ "total": 79,
+ "dead": 2,
+ "ped": 10,
+ "oldPed": 6,
+ "bike": 1,
+ "per1000": 3.13,
+ "nationPer1000": 2.38,
+ "oldPedShare": 7.6,
+ "nationOldPedShare": 4.2,
+ "oldPedDusk": 16.7,
+ "parts": {
+  "0010": {
+   "n": 79,
+   "ped": 10,
+   "oldPed": 6
+  }
+ },
+ "spots": [
+  {
+   "lat": 33.64149,
+   "lon": 130.76202,
+   "n": 7,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 0,
+   "dead": 0,
+   "part": "宮床"
+  },
+  {
+   "lat": 33.65583,
+   "lon": 130.78576,
+   "n": 4,
+   "ped": 4,
+   "oldPed": 4,
+   "bike": 0,
+   "dead": 0,
+   "part": "宮床"
+  },
+  {
+   "lat": 33.64161,
+   "lon": 130.75977,
+   "n": 4,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 0,
+   "dead": 0,
+   "part": "宮床"
+  },
+  {
+   "lat": 33.67257,
+   "lon": 130.77855,
+   "n": 4,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 0,
+   "dead": 0,
+   "part": "宮床"
+  },
+  {
+   "lat": 33.65417,
+   "lon": 130.77967,
+   "n": 3,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 0,
+   "dead": 0,
+   "part": "宮床"
+  }
+ ],
+ "note": "警察庁の交通事故統計オープンデータ（人身事故。物損事故は入らない）のうち、町の中の地点で起きたものを数えたもの。年齢は事故のときの年齢の区分（65歳以上＝65〜74歳と75歳以上）。地点は升目（およそ50m）に集めた、めやすです",
+ "sources": [
+  {
+   "title": "警察庁 交通事故統計情報のオープンデータ（本票 2022〜2024年）を加工して作成",
+   "url": "https://www.npa.go.jp/publications/statistics/koutsuu/opendata/index_opendata.html"
+  }
+ ]
+}

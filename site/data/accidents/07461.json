@@ -1,0 +1,121 @@
+{
+ "code": "07461",
+ "years": [
+  2022,
+  2023,
+  2024
+ ],
+ "createdAt": "2026-11-02T13:00:40.326Z",
+ "population": 20808,
+ "total": 95,
+ "dead": 2,
+ "ped": 8,
+ "oldPed": 2,
+ "bike": 12,
+ "per1000": 1.52,
+ "nationPer1000": 2.38,
+ "oldPedShare": 2.1,
+ "nationOldPedShare": 4.2,
+ "oldPedDusk": 0,
+ "parts": {
+  "0080": {
+   "n": 43,
+   "ped": 1,
+   "oldPed": 0
+  },
+  "0010": {
+   "n": 5,
+   "ped": 0,
+   "oldPed": 0
+  },
+  "0090": {
+   "n": 16,
+   "ped": 3,
+   "oldPed": 2
+  },
+  "0050": {
+   "n": 13,
+   "ped": 0,
+   "oldPed": 0
+  },
+  "0030": {
+   "n": 12,
+   "ped": 3,
+   "oldPed": 0
+  },
+  "0070": {
+   "n": 3,
+   "ped": 1,
+   "oldPed": 0
+  },
+  "0060": {
+   "n": 2,
+   "ped": 0,
+   "oldPed": 0
+  },
+  "0040": {
+   "n": 1,
+   "ped": 0,
+   "oldPed": 0
+  }
+ },
+ "spots": [
+  {
+   "lat": 37.17402,
+   "lon": 140.15904,
+   "n": 4,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 0,
+   "dead": 0,
+   "part": "大字羽太"
+  },
+  {
+   "lat": 37.12556,
+   "lon": 140.18524,
+   "n": 3,
+   "ped": 1,
+   "oldPed": 0,
+   "bike": 1,
+   "dead": 0,
+   "part": ""
+  },
+  {
+   "lat": 37.14903,
+   "lon": 140.17451,
+   "n": 3,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 0,
+   "dead": 0,
+   "part": "大字熊倉"
+  },
+  {
+   "lat": 37.12497,
+   "lon": 140.18629,
+   "n": 3,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 0,
+   "dead": 0,
+   "part": ""
+  },
+  {
+   "lat": 37.1263,
+   "lon": 140.16647,
+   "n": 3,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 0,
+   "dead": 0,
+   "part": "大字小田倉"
+  }
+ ],
+ "note": "警察庁の交通事故統計オープンデータ（人身事故。物損事故は入らない）のうち、町の中の地点で起きたものを数えたもの。年齢は事故のときの年齢の区分（65歳以上＝65〜74歳と75歳以上）。地点は升目（およそ50m）に集めた、めやすです",
+ "sources": [
+  {
+   "title": "警察庁 交通事故統計情報のオープンデータ（本票 2022〜2024年）を加工して作成",
+   "url": "https://www.npa.go.jp/publications/statistics/koutsuu/opendata/index_opendata.html"
+  }
+ ]
+}

@@ -1,0 +1,146 @@
+{
+ "code": "37386",
+ "years": [
+  2022,
+  2023,
+  2024
+ ],
+ "createdAt": "2026-11-02T13:00:41.202Z",
+ "population": 18699,
+ "total": 195,
+ "dead": 2,
+ "ped": 8,
+ "oldPed": 4,
+ "bike": 36,
+ "per1000": 3.48,
+ "nationPer1000": 2.38,
+ "oldPedShare": 2.1,
+ "nationOldPedShare": 4.2,
+ "oldPedDusk": 0,
+ "parts": {
+  "0010": {
+   "n": 61,
+   "ped": 3,
+   "oldPed": 0
+  },
+  "0030": {
+   "n": 108,
+   "ped": 4,
+   "oldPed": 3
+  },
+  "0020": {
+   "n": 26,
+   "ped": 1,
+   "oldPed": 1
+  }
+ },
+ "spots": [
+  {
+   "lat": 34.30982,
+   "lon": 133.81406,
+   "n": 7,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 0,
+   "dead": 0,
+   "part": "浜一番丁"
+  },
+  {
+   "lat": 34.3081,
+   "lon": 133.81976,
+   "n": 4,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 0,
+   "dead": 0,
+   "part": "浜一番丁"
+  },
+  {
+   "lat": 34.31528,
+   "lon": 133.82178,
+   "n": 4,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 1,
+   "dead": 0,
+   "part": "浜一番丁"
+  },
+  {
+   "lat": 34.29571,
+   "lon": 133.83778,
+   "n": 4,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 0,
+   "dead": 0,
+   "part": "東分"
+  },
+  {
+   "lat": 34.30806,
+   "lon": 133.81731,
+   "n": 3,
+   "ped": 1,
+   "oldPed": 1,
+   "bike": 0,
+   "dead": 0,
+   "part": "浜一番丁"
+  },
+  {
+   "lat": 34.31079,
+   "lon": 133.81225,
+   "n": 3,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 0,
+   "dead": 0,
+   "part": "浜一番丁"
+  },
+  {
+   "lat": 34.30888,
+   "lon": 133.81195,
+   "n": 3,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 3,
+   "dead": 0,
+   "part": "浜一番丁"
+  },
+  {
+   "lat": 34.30944,
+   "lon": 133.82193,
+   "n": 3,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 1,
+   "dead": 0,
+   "part": "浜一番丁"
+  },
+  {
+   "lat": 34.31117,
+   "lon": 133.81148,
+   "n": 3,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 0,
+   "dead": 0,
+   "part": "浜一番丁"
+  },
+  {
+   "lat": 34.2913,
+   "lon": 133.83308,
+   "n": 3,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 0,
+   "dead": 0,
+   "part": "東分"
+  }
+ ],
+ "note": "警察庁の交通事故統計オープンデータ（人身事故。物損事故は入らない）のうち、町の中の地点で起きたものを数えたもの。年齢は事故のときの年齢の区分（65歳以上＝65〜74歳と75歳以上）。地点は升目（およそ50m）に集めた、めやすです",
+ "sources": [
+  {
+   "title": "警察庁 交通事故統計情報のオープンデータ（本票 2022〜2024年）を加工して作成",
+   "url": "https://www.npa.go.jp/publications/statistics/koutsuu/opendata/index_opendata.html"
+  }
+ ]
+}

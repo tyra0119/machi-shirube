@@ -1,0 +1,106 @@
+{
+ "code": "10344",
+ "years": [
+  2022,
+  2023,
+  2024
+ ],
+ "createdAt": "2026-11-02T13:00:40.423Z",
+ "population": 14216,
+ "total": 134,
+ "dead": 0,
+ "ped": 7,
+ "oldPed": 1,
+ "bike": 15,
+ "per1000": 3.14,
+ "nationPer1000": 2.38,
+ "oldPedShare": 0.7,
+ "nationOldPedShare": 4.2,
+ "oldPedDusk": 100,
+ "parts": {
+  "0030": {
+   "n": 54,
+   "ped": 3,
+   "oldPed": 0
+  },
+  "0020": {
+   "n": 31,
+   "ped": 2,
+   "oldPed": 0
+  },
+  "0040": {
+   "n": 31,
+   "ped": 1,
+   "oldPed": 1
+  },
+  "0010": {
+   "n": 16,
+   "ped": 1,
+   "oldPed": 0
+  },
+  "0050": {
+   "n": 2,
+   "ped": 0,
+   "oldPed": 0
+  }
+ },
+ "spots": [
+  {
+   "lat": 36.44048,
+   "lon": 138.99344,
+   "n": 6,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 0,
+   "dead": 0,
+   "part": "大字山子田"
+  },
+  {
+   "lat": 36.43203,
+   "lon": 138.97699,
+   "n": 3,
+   "ped": 1,
+   "oldPed": 0,
+   "bike": 0,
+   "dead": 0,
+   "part": "大字新井"
+  },
+  {
+   "lat": 36.44359,
+   "lon": 138.98342,
+   "n": 3,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 1,
+   "dead": 0,
+   "part": "大字山子田"
+  },
+  {
+   "lat": 36.43205,
+   "lon": 138.97562,
+   "n": 3,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 0,
+   "dead": 0,
+   "part": "大字新井"
+  },
+  {
+   "lat": 36.4196,
+   "lon": 138.96828,
+   "n": 3,
+   "ped": 0,
+   "oldPed": 0,
+   "bike": 0,
+   "dead": 0,
+   "part": "大字広馬場"
+  }
+ ],
+ "note": "警察庁の交通事故統計オープンデータ（人身事故。物損事故は入らない）のうち、町の中の地点で起きたものを数えたもの。年齢は事故のときの年齢の区分（65歳以上＝65〜74歳と75歳以上）。地点は升目（およそ50m）に集めた、めやすです",
+ "sources": [
+  {
+   "title": "警察庁 交通事故統計情報のオープンデータ（本票 2022〜2024年）を加工して作成",
+   "url": "https://www.npa.go.jp/publications/statistics/koutsuu/opendata/index_opendata.html"
+  }
+ ]
+}
