@@ -908,7 +908,8 @@ function renderAllPages(filter = "") {
 }
 function wireAllPages() {
   const dlg = $("all-pages");
-  $("open-all").addEventListener("click", () => { renderAllPages($("all-search").value); dlg.showModal(); $("all-search").focus(); });
+  // タブの並びはほかの言葉のときに作り直す（renderTabs）ので、ボタンそのものではなく並び全体で受け取る（作り直すと処理が消え、日本語以外で押しても開かなかった）
+  $("tabs").addEventListener("click", (e) => { if (!e.target.closest("#open-all")) return; renderAllPages($("all-search").value); dlg.showModal(); $("all-search").focus(); });
   $("close-all").addEventListener("click", () => dlg.close());
   dlg.addEventListener("click", (e) => { if (e.target === dlg) dlg.close(); }); // 外を押すと閉じる
   $("all-search").addEventListener("input", (e) => renderAllPages(e.target.value));
