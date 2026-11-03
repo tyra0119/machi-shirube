@@ -1,11 +1,11 @@
 {
  "lang": "pt",
  "name": "Português",
- "createdAt": "2026-11-03T00:41:22.541Z",
+ "createdAt": "2026-11-03T00:42:48.602Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 419,
- "of": 411,
+ "count": 427,
+ "of": 418,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Guia não oficial da vida na cidade. O Claude reúne as informações em sites oficiais da cidade e outras fontes, e indica a origem de cada uma (Machishirube)",
   "すべてのページ": "Todas as páginas",
@@ -425,6 +425,14 @@
   "出典のページが見つからなくなっています": "A página da fonte não foi encontrada",
   "想定収容": "Capacidade prevista",
   "建物の中": "Dentro do edifício",
-  "屋外の広場などを含むことがあります": "Pode incluir áreas externas, como praças"
+  "屋外の広場などを含むことがあります": "Pode incluir áreas externas, como praças",
+  "このサイトについて": "Sobre este site",
+  "町の公式のサイトではありません。町の公式のサイトや国の公開データから集め、出典をつけています。": "Não é o site oficial do município. As informações são reunidas de sites oficiais do município e de dados públicos do governo, com as fontes indicadas.",
+  "避難するかどうか、病院にかかるかどうかは決めません。警報や避難の情報は、町と気象庁の発表で確かめてください。": "Este site não decide se você deve evacuar ou ir ao hospital. Confirme os alertas e as informações de evacuação nos comunicados do município e da Agência Meteorológica do Japão.",
+  "急ぐときは、火事・救急は 119、事件・事故は 110 へ。": "Em caso de urgência: incêndio ou emergência médica, ligue 119; crime ou acidente, ligue 110.",
+  "答えには確かめた日があります。そのあとに変わっていることがあります。": "Cada resposta traz a data em que foi verificada. As informações podem ter mudado depois dessa data.",
+  "数の多くは「めやす」です。必ずこうなるという意味ではありません。": "Muitos dos números são apenas \"estimativas\". Não significa que será sempre assim.",
+  "まちがいや古い所を見つけたら、<a href=\"https://github.com/tyra0119/machi-shirube/issues\" target=\"_blank\" rel=\"noopener\">こちら（GitHub の Issues）</a>で知らせてください。": "Se encontrar erros ou informações desatualizadas, avise-nos <a href=\"https://github.com/tyra0119/machi-shirube/issues\" target=\"_blank\" rel=\"noopener\">aqui (Issues do GitHub)</a>.",
+  "町の公式のサイトで新しいページを探して確かめてください。": "Procure a página mais recente no site oficial do município e confirme."
  }
 }

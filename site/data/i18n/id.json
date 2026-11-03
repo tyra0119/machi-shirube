@@ -1,11 +1,11 @@
 {
  "lang": "id",
  "name": "Bahasa Indonesia",
- "createdAt": "2026-11-03T00:41:38.280Z",
+ "createdAt": "2026-11-03T00:43:11.485Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 417,
- "of": 411,
+ "count": 424,
+ "of": 418,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Ini adalah panduan hidup tidak resmi untuk kota ini. Claude mengumpulkannya dari situs resmi kota dan sumber lain, dengan mencantumkan sumbernya (Machishirube)",
   "すべてのページ": "Semua halaman",
@@ -423,6 +423,13 @@
   "想定収容": "Perkiraan kapasitas tampung",
   "建物の中": "Di dalam gedung",
   "屋外の広場などを含むことがあります": "Mungkin termasuk area terbuka di luar ruangan seperti lapangan",
-  "町の公式のサイトで新しいページを探して確かめてください。": "Silakan cari dan periksa halaman terbaru di situs resmi kota."
+  "町の公式のサイトで新しいページを探して確かめてください。": "Silakan cari dan periksa halaman terbaru di situs resmi kota.",
+  "このサイトについて": "Tentang Situs Ini",
+  "町の公式のサイトではありません。町の公式のサイトや国の公開データから集め、出典をつけています。": "Ini bukan situs resmi kota. Informasi dikumpulkan dari situs resmi kota dan data terbuka pemerintah pusat, dengan mencantumkan sumbernya.",
+  "避難するかどうか、病院にかかるかどうかは決めません。警報や避難の情報は、町と気象庁の発表で確かめてください。": "Situs ini tidak menentukan apakah Anda perlu mengungsi atau berobat ke rumah sakit. Untuk peringatan dan informasi pengungsian, pastikan melalui pengumuman resmi kota dan Badan Meteorologi Jepang (JMA).",
+  "急ぐときは、火事・救急は 119、事件・事故は 110 へ。": "Dalam keadaan mendesak, hubungi 119 untuk kebakaran dan darurat medis, atau 110 untuk kejahatan dan kecelakaan.",
+  "答えには確かめた日があります。そのあとに変わっていることがあります。": "Setiap jawaban mencantumkan tanggal pengecekan. Informasi bisa saja sudah berubah setelah tanggal itu.",
+  "数の多くは「めやす」です。必ずこうなるという意味ではありません。": "Sebagian besar angka hanyalah perkiraan. Artinya belum tentu pasti demikian.",
+  "まちがいや古い所を見つけたら、<a href=\"https://github.com/tyra0119/machi-shirube/issues\" target=\"_blank\" rel=\"noopener\">こちら（GitHub の Issues）</a>で知らせてください。": "Jika menemukan kesalahan atau informasi yang sudah usang, mohon beri tahu kami melalui <a href=\"https://github.com/tyra0119/machi-shirube/issues\" target=\"_blank\" rel=\"noopener\">tautan ini (GitHub Issues)</a>."
  }
 }
