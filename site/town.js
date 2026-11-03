@@ -1025,6 +1025,57 @@ async function finishPage(code, townFeatures, startPart, scopeNote, at) {
   const local = await fetch("api/ping").then((r) => r.ok).catch(() => false);
   buildAllPages(hasHinan, local);
   if (local) await researchBox(code, part ? startPart : null, part?.properties.name);
+  foldPages();
+}
+
+// 縦に長いページを短く：各欄を「見出し＋いちばん大事な数の1行」にたたみ、見出しを押すと開く。ページの上に目次の札。
+// 最初から開いておくのは、わが家の避難・今日のページの見立てと数から、できることへ・今日と明日と、各ページの最初の1つ
+// （作者「やたらと縦が長くなってしまうと、読むのが大変。何か工夫できないかな？」→「たたむ＋目次」）
+const FOLD_OPEN = new Set(["hinan-block", "mitate-top", "dekiru-block", "sec-today", "hitokoto-block"]);
+function foldSummary(sec) {
+  // 確かめた答えの欄は、答えの数
+  const answers = sec.querySelectorAll(".answers-box [id^=\"a-\"]").length;
+  if (answers) return `${T("確かめた答え")} ${answers} ${T("件")}`;
+  // いちばん大事な数：最初の太字の行（中の部品ごとに空白で区切る）。選ぶ欄や注意書きは使わない
+  const strong = [...sec.querySelectorAll("strong")].find((x) => !x.closest(".fold-sum, label, select, .note, h2, h3"));
+  const el = strong?.closest("p, li") ?? [...sec.querySelectorAll("p, li")].find((x) => !x.closest(".fold-sum, label, .note") && x.textContent.trim());
+  if (!el) return "";
+  // 文字のかたまりごとに空白で区切り、最初の3つまで（「…」で切らず、最初の1文だけにする）
+  const words = [];
+  const walk = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+  while (walk.nextNode() && words.length < 3) { const t = walk.currentNode.textContent.replace(/\s+/g, " ").trim(); if (t) words.push(t); }
+  return words.join(" ").split("。")[0];
+}
+function foldPages() {
+  for (const view of document.querySelectorAll(".view")) {
+    const secs = [...view.querySelectorAll(":scope > section.block")].filter((s) => s.querySelector(":scope > h2"));
+    if (secs.length < 3) continue; // 欄が少ないページはたたまない
+    secs.forEach((sec, i) => {
+      const h = sec.querySelector(":scope > h2");
+      if (!sec.dataset.fold) {
+        sec.dataset.fold = "1";
+        if (!FOLD_OPEN.has(sec.id) && i > 0) sec.classList.add("folded");
+        h.setAttribute("role", "button");
+        h.tabIndex = 0;
+        const toggle = () => { sec.classList.toggle("folded"); h.setAttribute("aria-expanded", String(!sec.classList.contains("folded"))); if (!sec.classList.contains("folded")) for (const m of maps) { m.resize(); if (m.fitTo && sec.contains(m.getContainer())) m.fitBounds(m.fitTo.box, { ...m.fitTo.opts, duration: 0 }); } };
+        h.addEventListener("click", toggle);
+        h.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); } });
+        h.insertAdjacentHTML("afterend", `<p class="fold-sum"></p>`);
+      }
+      h.setAttribute("aria-expanded", String(!sec.classList.contains("folded")));
+      sec.querySelector(":scope > .fold-sum").textContent = foldSummary(sec);
+    });
+    // 目次の札（見えている欄だけ）。押すと開いて、そこへ動く
+    let toc = view.querySelector(":scope > .view-toc");
+    if (!toc) { toc = document.createElement("nav"); toc.className = "view-toc"; toc.setAttribute("aria-label", T("このページの中身")); view.prepend(toc); }
+    const shown = secs.filter((s) => !s.hidden);
+    toc.innerHTML = shown.map((s, i) => `<button type="button" data-i="${i}">${esc(s.querySelector(":scope > h2").textContent.trim())}</button>`).join("");
+    toc.querySelectorAll("button").forEach((b) => b.addEventListener("click", () => {
+      const s = shown[Number(b.dataset.i)];
+      if (s.classList.contains("folded")) s.querySelector(":scope > h2").click();
+      s.scrollIntoView({ behavior: "smooth", block: "start" });
+    }));
+  }
 }
 
 // 天気を読む場所：町・字は形のおおよその真ん中、市区町村は地図の名前の位置（政令市まるごとは最初の区）

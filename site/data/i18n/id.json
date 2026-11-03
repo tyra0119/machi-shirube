@@ -1,11 +1,11 @@
 {
  "lang": "id",
  "name": "Bahasa Indonesia",
- "createdAt": "2026-11-03T01:14:30.127Z",
+ "createdAt": "2026-11-03T01:19:36.729Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 467,
- "of": 460,
+ "count": 469,
+ "of": 462,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Ini adalah panduan hidup tidak resmi untuk kota ini. Claude mengumpulkannya dari situs resmi kota dan sumber lain, dengan mencantumkan sumbernya (Machishirube)",
   "すべてのページ": "Semua halaman",
@@ -473,6 +473,8 @@
   "まちしるべのページで、まちがいや古い所を見つけたら、GitHub（ギットハブ）の「Issues（イシュー）」という掲示板に書いて知らせてください。作者が読んで、調べ直します。": "Jika Anda menemukan kesalahan atau bagian yang sudah usang di halaman Machishirube, silakan tulis dan laporkan di papan pesan bernama \"Issues\" di GitHub. Pembuatnya akan membacanya dan memeriksanya kembali.",
   "場所を決めると、近い避難場所が出ます。場所はこのブラウザの中だけで使い、残しません。「Google マップで歩く道を見る」を押したときだけ、選んだ場所と避難場所を Google マップに渡します。": "Setelah Anda menentukan lokasi, tempat evakuasi terdekat akan ditampilkan. Lokasi hanya digunakan di dalam browser ini dan tidak disimpan. Hanya saat Anda menekan \"Lihat rute jalan kaki di Google Maps\", lokasi yang dipilih dan tempat evakuasi akan diteruskan ke Google Maps.",
   "Google マップで歩く道を見る": "Lihat rute jalan kaki di Google Maps",
-  "公式のページが変わったので、照らし直しました": "Halaman resmi telah berubah, jadi sudah dicocokkan ulang"
+  "公式のページが変わったので、照らし直しました": "Halaman resmi telah berubah, jadi sudah dicocokkan ulang",
+  "確かめた答え": "Jawaban yang sudah dipastikan",
+  "このページの中身": "Isi halaman ini"
  }
 }

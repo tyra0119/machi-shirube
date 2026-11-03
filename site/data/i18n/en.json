@@ -1,11 +1,11 @@
 {
  "lang": "en",
  "name": "English",
- "createdAt": "2026-11-03T01:14:22.401Z",
+ "createdAt": "2026-11-03T01:19:31.533Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 470,
- "of": 460,
+ "count": 471,
+ "of": 462,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "This is an unofficial guide to living in this town. Claude gathers information from the town's official website and other sources, and cites each source (Machishirube)",
   "すべてのページ": "All pages",
@@ -476,6 +476,7 @@
   "急ぐこと（火事・けが・事件）は、ここではなく 119・110 へ。": "For urgent matters (fire, injury, crime), call 119 or 110, not here.",
   "場所を決めると、近い避難場所が出ます。場所はこのブラウザの中だけで使い、残しません。「Google マップで歩く道を見る」を押したときだけ、選んだ場所と避難場所を Google マップに渡します。": "Set your location to see nearby evacuation sites. Your location is used only in this browser and is not saved. Only when you press \"View walking route in Google Maps\" will the location you chose and the evacuation site be sent to Google Maps.",
   "Google マップで歩く道を見る": "View walking route in Google Maps",
-  "公式のページが変わったので、照らし直しました": "The official page has changed, so we have rechecked the information."
+  "公式のページが変わったので、照らし直しました": "The official page has changed, so we have rechecked the information.",
+  "確かめた答え": "Verified answer"
  }
 }

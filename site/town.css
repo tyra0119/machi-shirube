@@ -536,3 +536,14 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .about-site ul { margin: 0 0 8px; padding-left: 1.2em; } .about-site li { margin: 4px 0; font-size: 14px; line-height: 1.7; }
 .hinan-walk { margin: 10px 0; padding: 12px 14px; border-radius: 10px; background: var(--town-tint, var(--bg)); } .hinan-walk p { margin: 0 0 6px; line-height: 1.7; } .hinan-walk .t { display: flex; align-items: center; gap: 6px; font-weight: 700; font-size: 16px; } .hinan-walk .t svg { width: 20px; height: 20px; color: var(--accent); }
 .gmap { display: inline-flex; align-items: center; gap: 6px; margin-top: 6px; min-height: 40px; padding: 0 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--text); font-size: 14px; font-weight: 700; text-decoration: none; } .gmap svg { width: 16px; height: 16px; color: var(--accent); }
+/* 縦に長いページをたたむ（見出しを押すと開く）と、ページの上の目次 */
+.view-toc { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 12px; }
+.view-toc button { min-height: 36px; padding: 4px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--text); font-size: 13px; cursor: pointer; }
+.view-toc button:hover { border-color: var(--accent); color: var(--accent); }
+section.block[data-fold] > h2 { cursor: pointer; position: relative; padding-right: 32px; }
+section.block[data-fold] > h2::after { content: "▴"; position: absolute; right: 4px; top: 50%; transform: translateY(-50%); font-size: 16px; color: var(--text-sub); }
+section.block.folded > h2::after { content: "▾"; }
+section.block > .fold-sum { display: none; margin: 4px 0 0; color: var(--text-sub); font-size: 14px; line-height: 1.6; }
+section.block.folded > .fold-sum { display: block; }
+section.block.folded > :not(h2):not(.fold-sum) { display: none !important; }
+section.block.folded { padding-bottom: 12px; }
