@@ -1,11 +1,11 @@
 {
  "lang": "id",
  "name": "Bahasa Indonesia",
- "createdAt": "2026-11-03T08:58:05.512Z",
+ "createdAt": "2026-11-03T09:06:55.256Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 726,
- "of": 719,
+ "count": 728,
+ "of": 721,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Ini adalah panduan hidup tidak resmi untuk kota ini. Claude mengumpulkannya dari situs resmi kota dan sumber lain, dengan mencantumkan sumbernya (Machishirube)",
   "すべてのページ": "Semua halaman",
@@ -732,6 +732,8 @@
   "町の気候（平年値）": "Iklim Kota (Nilai Normal)",
   "人口 {n}人・{h}世帯": "Penduduk {n} orang · {h} rumah tangga",
   "人口 {n}人": "Penduduk {n} orang",
-  "（選ぶ）": "(Pilih)"
+  "（選ぶ）": "(Pilih)",
+  "坂の多い所に住む人": "Warga yang tinggal di daerah berbukit",
+  "町のことが分かるほかのサイト": "Situs lain untuk mengetahui informasi tentang kota"
  }
 }

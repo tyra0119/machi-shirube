@@ -164,7 +164,9 @@
     "d3.quote": "Ang pangkalahatang tanggapan ng konsultasyon para sa mga nakatatanda ay ang \"Sentro ng Suporta sa Mahabang Buhay (長寿支援センター)\" (Pangkomunidad na Komprehensibong Sentro ng Suporta／地域包括支援センター).",
     "d4.who": "Mga taong nakatira sa lugar na may babala sa sakuna dulot ng pagguho ng lupa",
     "d4.num": "Humigit-kumulang 1,400 katao (2.6% ng bayan)",
-    "d4.todo": "Magrehistro sa isang disaster prevention app o sa 「すぐメールみのかも」"
+    "d4.todo": "Magrehistro sa isang disaster prevention app o sa 「すぐメールみのかも」",
+    "d4.quote": "① \"Sugu Mail Minokamo\" (すぐメールみのかも) (serbisyo ng lungsod para sa pagpapadala ng email)",
+    "n.dekiru": "Ito ay pinagsama ng AI: ang mga numero ng bayan at ang impormasyong hinanap mula sa opisyal na pahina ng bayan. Ang teksto ng impormasyon ay kinopya nang eksakto mula sa nahanap na sagot, at itinutugma ito gamit ang PC."
    },
    "gomi": {}
   },
@@ -414,7 +416,7 @@
   }
  },
  "name": "美濃加茂市",
- "createdAt": "2026-11-03T04:53:54.151Z",
+ "createdAt": "2026-11-03T09:07:07.893Z",
  "model": "claude-sonnet-5-5",
  "made": {
   "mitate": "2026-11-02T23:26:01.226Z",

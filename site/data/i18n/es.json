@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-03T08:57:56.228Z",
+ "createdAt": "2026-11-03T09:06:44.275Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 728,
- "of": 719,
+ "count": 730,
+ "of": 721,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -734,6 +734,8 @@
   "町の気候（平年値）": "Clima del pueblo (valores normales)",
   "人口 {n}人・{h}世帯": "Población: {n} personas · {h} hogares",
   "人口 {n}人": "Población: {n} personas",
-  "（選ぶ）": "(Seleccionar)"
+  "（選ぶ）": "(Seleccionar)",
+  "坂の多い所に住む人": "Personas que viven en zonas con muchas cuestas",
+  "町のことが分かるほかのサイト": "Otros sitios web con información sobre la ciudad"
  }
 }

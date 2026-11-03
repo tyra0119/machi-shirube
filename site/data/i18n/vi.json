@@ -1,11 +1,11 @@
 {
  "lang": "vi",
  "name": "Tiếng Việt",
- "createdAt": "2026-11-03T08:58:15.395Z",
+ "createdAt": "2026-11-03T09:07:03.076Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 726,
- "of": 719,
+ "count": 728,
+ "of": 721,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Đây là trang hướng dẫn đời sống không chính thức của thị trấn này. Claude thu thập từ các trang chính thức của thị trấn v.v. và ghi rõ nguồn (Machi-shirube)",
   "すべてのページ": "Tất cả các trang",
@@ -732,6 +732,8 @@
   "人口 {n}人・{h}世帯": "Dân số {n} người・{h} hộ gia đình",
   "人口 {n}人": "Dân số {n} người",
   "（選ぶ）": "(Chọn)",
-  "線はバスの路線（時刻表データから）。バス停を押すと、この先の発車": "Các đường kẻ là tuyến xe buýt (từ dữ liệu bảng giờ). Bấm vào bến xe buýt để xem các chuyến khởi hành tiếp theo"
+  "線はバスの路線（時刻表データから）。バス停を押すと、この先の発車": "Các đường kẻ là tuyến xe buýt (từ dữ liệu bảng giờ). Bấm vào bến xe buýt để xem các chuyến khởi hành tiếp theo",
+  "坂の多い所に住む人": "Người sống ở khu vực có nhiều dốc",
+  "町のことが分かるほかのサイト": "Các trang web khác giúp tìm hiểu về thị trấn"
  }
 }
