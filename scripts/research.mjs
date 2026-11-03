@@ -380,6 +380,22 @@ export async function researchTown(code, { log = console.log, onItem = () => {},
     try {
       let r = await research(code, q.text, { log, qid: q.id, part });
       total += r.usd;
+      // 出典のページが消えていた（404）答えは、検索に残った古い内容のことがあるので、1回だけ「いま開けるページで」と探し直す
+      // （朝霞市の Q18 で、消えた市のページの古い電話番号のまま答えた。11/3）
+      const whys = (x) => String(x.item.why ?? "").split("／");
+      const dead = whys(r).find((w) => w.startsWith("出典のページが開けない"));
+      if (dead && !shouldStop() && total < RUN_LIMIT_USD) {
+        log(`${q.id} の出典のページが開けないので、いま開けるページを探し直します`);
+        const r2 = await research(code, q.text, { log, qid: q.id, part, redoOf: r.item.id,
+          hint: `前の答えの出典 ${r.item.source?.url ?? ""} は開けない（${dead.match(/404|410/)?.[0] ?? "404"}）。検索に残った古い内容は使わず、いま開ける公式のページ（市のほかのページ・県や国の一覧など）を探して答える` });
+        total += r2.usd;
+        if (!whys(r2).some((w) => w.startsWith("出典のページが開けない"))) {
+          ledger.voidItem(r.item.id, `出典のページが開けなかったので、いま開けるページで探し直した答え（${r2.item.id}）に置きかえた`);
+          r = r2;
+        } else {
+          ledger.voidItem(r2.item.id, `探し直しても、開けるページが見つからなかった（前の答え ${r.item.id} を確かめる一覧に残す）`);
+        }
+      }
       // 採点役が答えを採点し、足りなければ1回だけ探し直して、良いほうを残す
       let g = await grade(q.text, r.item);
       total += g.usd;
