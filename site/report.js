@@ -7,7 +7,7 @@ const NEW = "https://github.com/tyra0119/machi-shirube/issues/new";
 const PAGES = { today: "今日", chizu: "地図", bousai: "防災・避難", gomi: "ごみ", iryo: "医療・健康", komatta: "困ったとき", kosodate: "子育て", kaigo: "お年寄り・介護", koutsuu: "交通と道の安全", tetsuzuki: "手続き", foreign: "外国の方へ", okane: "お金", shisetsu: "施設", shiru: "町を知る", keikaku: "町の計画と話題" };
 // 決まった文字の置きかえる場所
 const REPORT_SEL = ".report h1, .report .lead, .report .warn li, .report h2, .report .note, .report .steps .t, .report .steps p, .report .faq dt, .report .faq dd";
-const LANGS = [["", "日本語"], ["pt", "Português"], ["es", "Español"], ["en", "English"], ["easy", "やさしい にほんご"], ["id", "Bahasa Indonesia"], ["ne", "नेपाली"], ["vi", "Tiếng Việt"]];
+const LANGS = [["", "日本語"], ["pt", "Português"], ["es", "Español"], ["en", "English"], ["easy", "やさしい にほんご"], ["id", "Bahasa Indonesia"], ["ne", "नेपाली"], ["vi", "Tiếng Việt"], ["tl", "Filipino"]];
 
 const q = new URLSearchParams(location.search);
 const lang = q.get("lang");

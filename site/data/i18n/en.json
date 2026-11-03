@@ -1,11 +1,11 @@
 {
  "lang": "en",
  "name": "English",
- "createdAt": "2026-11-03T04:26:52.355Z",
+ "createdAt": "2026-11-03T04:52:47.909Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 670,
- "of": 661,
+ "count": 672,
+ "of": 662,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "This is an unofficial guide to living in this town. Claude gathers information from the town's official website and other sources, and cites each source (Machishirube)",
   "すべてのページ": "All pages",
@@ -676,6 +676,8 @@
   "目次": "Contents",
   "防災情報の多言語対応": "Multilingual Disaster Prevention Information",
   "日本語教室と就学案内": "Japanese Classes and School Enrollment Guide",
-  "保育所・学童の申し込み": "Applying for Daycare and After-School Care"
+  "保育所・学童の申し込み": "Applying for Daycare and After-School Care",
+  "今日は {k} の日": "Today is {k} day",
+  "日の当たる時間が、東京都心より年に約120時間長い": "Gets about 120 more hours of sunlight per year than central Tokyo"
  }
 }

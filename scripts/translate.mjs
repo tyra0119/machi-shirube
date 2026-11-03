@@ -19,6 +19,8 @@ export const LANGS = {
   id: { name: "Bahasa Indonesia", ja: "インドネシア語" },
   ne: { name: "नेपाली", ja: "ネパール語" },
   vi: { name: "Tiếng Việt", ja: "ベトナム語" },
+  // 美濃加茂市の外国の住民は、ブラジルとフィリピンがとても多い（2018年4月1日 ブラジル 43.3%・フィリピン 40.3%。2026-11-03 に足した）
+  tl: { name: "Filipino", ja: "フィリピノ語" },
 };
 const PAGES = ["bousai", "komatta", "gomi", "tetsuzuki", "foreign", "iryo", "koutsuu", "kosodate", "kaigo", "okane", "shisetsu", "shiru", "keikaku"]; // 町のページのどの場面の答えも訳す（ページ全体をその言葉で見られるように）
 

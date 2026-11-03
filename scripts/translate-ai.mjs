@@ -58,19 +58,26 @@ export async function translateAI(code, langs = Object.keys(LANGS), log = consol
     const kept = prevOk[lang] ?? {};
     const list = all.filter((x) => !kept[x.id]);
     if (!list.length) { log(`${L.ja}：みな訳してあります`); continue; }
-    const res = await client.messages.create({
-      model: MODEL, max_tokens: 12000,
-      system: `町に住む人に向けた、暮らしと防災の短い文を訳します。
-- 意味を変えず、足さず、減らさずに訳してください
-- 数字・%・電話番号・URL はそのまま。施設や地名は、訳した言葉のあとに日本語の名前を（ ）で残してください（看板や案内で探せるように）
-- ${lang === "easy" ? "やさしい日本語にしてください。短い文、むずかしい漢字にはひらがなで読みを（ ）でつけ、むずかしい言葉は言いかえる" : `${L.ja}（${L.name}）に訳してください`}
-- 1件ずつ、<item id="番号">訳</item> の形だけで答えてください（JSON にしない）`,
-      messages: [{ role: "user", content: list.map((x) => `<item id="${x.id}">${x.text}</item>`).join("\n") }],
-    });
-    usd += record(MODEL, res.usage, `AI の文を訳す：${town?.name ?? code}（${L.ja}）`);
-    const tr = Object.fromEntries([...textOf(res).matchAll(/<item id="([^"]+)">([\s\S]*?)<\/item>/g)].map(([, id, t]) => [id, t.trim()]));
-    const { checks, usd: u } = await checkLang(client, list.map((x) => ({ id: x.id, original: x.text, translation: tr[x.id] ?? "" })), `${town?.name ?? code}（AI の文・${L.ja}）`);
-    usd += u;
+    // 20件ずつ頼む（町・字の多い町〈美濃加茂市 78件〉をまとめて頼むと、訳か確かめの答えが長さの上限で切れ、後ろの文が読めなかった）
+    const tr = {};
+    const checks = [];
+    for (let i = 0; i < list.length; i += 20) {
+      const part = list.slice(i, i + 20);
+      const res = await client.messages.create({
+        model: MODEL, max_tokens: 12000,
+        system: `町に住む人に向けた、暮らしと防災の短い文を訳します。
+  - 意味を変えず、足さず、減らさずに訳してください
+  - 数字・%・電話番号・URL はそのまま。施設や地名は、訳した言葉のあとに日本語の名前を（ ）で残してください（看板や案内で探せるように）
+  - ${lang === "easy" ? "やさしい日本語にしてください。短い文、むずかしい漢字にはひらがなで読みを（ ）でつけ、むずかしい言葉は言いかえる" : `${L.ja}（${L.name}）に訳してください`}
+  - 1件ずつ、<item id="番号">訳</item> の形だけで答えてください（JSON にしない）`,
+        messages: [{ role: "user", content: part.map((x) => `<item id="${x.id}">${x.text}</item>`).join("\n") }],
+      });
+      usd += record(MODEL, res.usage, `AI の文を訳す：${town?.name ?? code}（${L.ja}）`);
+      Object.assign(tr, Object.fromEntries([...textOf(res).matchAll(/<item id="([^"]+)">([\s\S]*?)<\/item>/g)].map(([, id, t]) => [id, t.trim()])));
+      const c = await checkLang(client, part.map((x) => ({ id: x.id, original: x.text, translation: tr[x.id] ?? "" })), `${town?.name ?? code}（AI の文・${L.ja}）`);
+      checks.push(...c.checks);
+      usd += c.usd;
+    }
     const ok = { ...kept };
     const bad = [];
     for (const x of list) {

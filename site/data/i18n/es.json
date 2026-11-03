@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-03T04:26:48.702Z",
+ "createdAt": "2026-11-03T04:52:45.486Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 669,
- "of": 661,
+ "count": 670,
+ "of": 662,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -675,6 +675,7 @@
   "目次": "Índice",
   "防災情報の多言語対応": "Información de prevención de desastres en varios idiomas",
   "日本語教室と就学案内": "Clases de japonés e información de escolarización",
-  "保育所・学童の申し込み": "Inscripción en guarderías y clubes extraescolares"
+  "保育所・学童の申し込み": "Inscripción en guarderías y clubes extraescolares",
+  "日の当たる時間が、東京都心より年に約120時間長い": "Las horas de sol son unas 120 horas más al año que en el centro de Tokio"
  }
 }

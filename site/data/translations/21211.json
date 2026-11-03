@@ -1,0 +1,1463 @@
+{
+ "code": "21211",
+ "name": "美濃加茂市",
+ "createdAt": "2026-11-03T05:02:45.698Z",
+ "model": "claude-sonnet-5-5",
+ "checker": "claude-haiku-5-5",
+ "langs": {
+  "pt": {
+   "name": "Português",
+   "ja": "ポルトガル語",
+   "items": [
+    {
+     "qid": "Q01",
+     "short": "Lista dos locais de evacuação",
+     "text": "No site oficial da cidade, na página \"Abrigos designados, locais de evacuação de emergência designados e situação dos estoques de Minokamo (美濃加茂市の指定避難所・指定緊急避難場所および備蓄状況)\", há um PDF com a lista.\nOs locais de evacuação de emergência designados são 57 no total.\nDesses, 40 são instalações que também são abrigos designados, e 17 são locais de evacuação de emergência apenas, como parques e campos esportivos.\nEles também podem ser consultados no mapa de risco (hazard map), nas versões web e em livreto.",
+     "original": "市公式サイトの「美濃加茂市の指定避難所・指定緊急避難場所および備蓄状況」ページに、一覧のPDFがあります。\n指定緊急避難場所は全部で57か所です。\n内訳は、指定避難所と兼ねる施設が40か所、緊急避難場所だけの公園・グラウンドなどが17か所です。\nweb版・冊子版のハザードマップでも見られます。",
+     "back": "市公式サイトの「美濃加茂市の指定避難所・指定緊急避難場所および備蓄状況」ページに、一覧のPDFがあります。指定緊急避難場所は全部で57か所です。内訳は、指定避難所と兼ねる施設が40か所、緊急避難場所だけの公園・グラウンドなどが17か所です。web版・冊子版のハザードマップでも見られます。",
+     "source": {
+      "title": "美濃加茂市の指定避難所・指定緊急避難場所および備蓄状況（一覧PDFへのリンク）",
+      "url": "https://www.city.minokamo.lg.jp/site/bousai/2343.html",
+      "where": "「市の指定避難所・指定緊急避難場所」の見出し／一覧PDF（2343_25113_misc.pdf）"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q02",
+     "short": "Mapa de risco (hazard map)",
+     "text": "O mapa de risco pode ser consultado na \"página de informações de prevenção de desastres (防災情報ページ)\" do site oficial da cidade.\nHá a versão web e a versão em livreto (PDF, cerca de 47 MB).\nNa página \"Mapa de risco da cidade de Minokamo (美濃加茂市ハザードマップ)\" do site antigo também há PDFs do mapa da cidade e dos mapas das áreas de inundação previstas do Rio Kiso (木曽川) e do Rio Kamo (加茂川).\nA data de elaboração ou de revisão do mapa em si não constava nas páginas consultadas.\nNão foi encontrado um mapa de tsunami.",
+     "original": "ハザードマップは市公式サイトの「防災情報ページ」で見られます。\nweb版と冊子版（PDF、約47MB）があります。\n旧サイトの「美濃加茂市ハザードマップ」ページにも、市のマップと木曽川・加茂川の浸水想定区域図のPDFがあります。\nマップ本体の作成日・改訂日は、見たページには書かれていませんでした。\n津波のマップは見つかりませんでした。",
+     "back": "ハザードマップは市公式サイトの「防災情報ページ」で見られます。web版と冊子版（PDF、約47MB）があります。旧サイトの「美濃加茂市ハザードマップ」ページにも、市のマップと木曽川・加茂川の浸水想定区域図のPDFがあります。マップ本体の作成日・改訂日は、見たページには書かれていませんでした。津波のマップは見つかりませんでした。",
+     "source": {
+      "title": "美濃加茂市防災ガイド",
+      "url": "https://www.city.minokamo.gifu.jp/bousai/guide/",
+      "where": "ハザードマップ"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q03",
+     "short": "Plano Regional de Prevenção de Desastres",
+     "text": "O Plano Regional de Prevenção de Desastres pode ser consultado na \"página de informações de prevenção de desastres (防災情報ページ)\" do site oficial da cidade.\nComo \"Plano Regional de Prevenção de Desastres de Minokamo (美濃加茂市地域防災計画)\", estão publicados os PDFs do volume principal e do volume de materiais.\nA versão mais recente é a revisada em março de Reiwa 8 (令和8年).",
+     "original": "地域防災計画は、市公式サイトの「防災情報ページ」で見られます。\n「美濃加茂市地域防災計画」として、本編と資料編のPDFが載っています。\nいちばん新しい版は令和8年3月修正です。",
+     "back": "地域防災計画は、市公式サイトの「防災情報ページ」で見られます。「美濃加茂市地域防災計画」として、本編と資料編のPDFが載っています。いちばん新しい版は令和8年3月修正です。",
+     "source": {
+      "title": "防災情報ページ - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/site/bousai/",
+      "where": "防災情報一覧「美濃加茂市地域防災計画」"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q05",
+     "short": "Como separar o lixo e dias de coleta",
+     "text": "As informações estão na página \"Separação do lixo doméstico, como descartar e dias de coleta (家庭ごみの分別と出し方、収集日について)\" do site oficial da cidade.\nA cidade coleta o lixo em 9 categorias e 15 tipos de separação.\nEm \"Materiais relacionados (関連資料)\", na página, há a tabela de dias de coleta do ano fiscal de Reiwa 8 e o guia de separação e descarte (PDF em japonês).\nTambém há versões em outros idiomas, como português, inglês e tagalo.\nO lixo deve ser colocado para coleta na manhã do próprio dia da coleta, das 6h às 8h.\nGarrafas PET, bandejas de alimentos e isopor devem ser colocados das 8h às 10h da manhã.",
+     "original": "市公式サイトの「家庭ごみの分別と出し方、収集日について」のページで見られます。\n市は9区分15分別でごみを収集しています。\nページ内の「関連資料」に、令和8年度ごみ収集日一覧表・分別と出し方（日本語PDF）があります。\n外国語版もあります。ポルトガル語、英語、タガログ語などです。\n排出は収集日当日の朝6時から8時です。\nペットボトル、食品トレイ、発泡スチロールは朝8時から10時です。",
+     "back": "市公式サイトの「家庭ごみの分別と出し方、収集日について」のページで見られます。市は9区分15分別でごみを収集しています。ページ内の「関連資料」に、令和8年度ごみ収集日一覧表・分別と出し方（日本語PDF）があります。外国語版もあります。ポルトガル語、英語、タガログ語などです。排出は収集日当日の朝6時から8時です。ペットボトル、食品トレイ、発泡スチロールは朝8時から10時です。",
+     "source": {
+      "title": "家庭ごみの分別と出し方、収集日について - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/15/1744.html",
+      "where": "関連資料：令和8年度ごみ収集日一覧表・分別と出し方(日本語)"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q06",
+     "short": "Trâmites de mudança",
+     "text": "As informações estão na página \"Mudei de outra cidade para Minokamo. Quero saber os trâmites geralmente necessários na mudança (市外から美濃加茂市へ転入しました。引っ越しの際に一般的に必要な手続きを知りたい)\" do site oficial da cidade.\nA alteração do registro de residência (declaração de entrada, 転入届) deve ser feita em até 14 dias a partir do dia em que você começou a morar na cidade.\nQuem vai se inscrever no Seguro Nacional de Saúde (国民健康保険) deve fazer o trâmite em até 14 dias após a mudança para a cidade.\nNa mesma página também constam a alteração de endereço do cartão My Number (マイナンバーカード), o registro de carimbo (印鑑登録), a transferência de escola, a Previdência Nacional (国民年金), o auxílio-filho (児童手当) e outros.\nTambém há a página \"Ao se mudar para a cidade ou para fora dela (転入・転出するときは)\".",
+     "original": "市公式サイトの「市外から美濃加茂市へ転入しました。引っ越しの際に一般的に必要な手続きを知りたい」のページで見られます。\n住民票の異動（転入届）は、住み始めた日から14日以内です。\n国民健康保険は、加入する方が転入後14日以内に手続きします。\nマイナンバーカードの住所変更、印鑑登録、転校、国民年金、児童手当なども、同じページに並んでいます。\n「転入・転出するときは」のページもあります。",
+     "back": "市公式サイトの「市外から美濃加茂市へ転入しました。引っ越しの際に一般的に必要な手続きを知りたい」のページで見られます。住民票の異動（転入届）は、住み始めた日から14日以内です。国民健康保険は、加入する方が転入後14日以内に手続きします。マイナンバーカードの住所変更、印鑑登録、転校、国民年金、児童手当なども、同じページに並んでいます。「転入・転出するときは」のページもあります。",
+     "source": {
+      "title": "市外から美濃加茂市へ転入しました。引っ越しの際に一般的に必要な手続きを知りたい",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/23/2408.html",
+      "where": "本文の手続き一覧"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q07",
+     "short": "Transporte da cidade",
+     "text": "Há o ônibus comunitário \"Ai-ai Bus (あい愛バス)\".\nEle funciona todos os dias, exceto no fim e início de ano (de 31 de dezembro a 2 de janeiro).\nA tabela de horários pode ser consultada na versão de dados do site exclusivo do Ai-ai Bus.\nA tabela de horários em livreto também é distribuída em instalações da cidade e outros locais.\nEstá prevista uma mudança de horários em 1º de outubro de Reiwa 8 (令和8年). O livreto com a nova tabela de horários e o mapa das linhas está em PDF na página de aviso da mudança de horários da cidade.\nHá também o ônibus sob demanda com IA, que se pega por reserva, \"Choisoko Minokamo (チョイソコみのかも)\". Na página de transporte público da cidade foi publicado o aviso do início da operação de teste e das reservas.\nO local de reserva, os dias de operação e a tarifa não puderam ser confirmados, pois o conteúdo desse aviso não foi lido.",
+     "original": "コミュニティバス「あい愛バス」があります。\n年末年始（12月31日〜1月2日）を除き、毎日運行しています。\n時刻表は、あい愛バス専用ホームページのデータ版で見られます。\n冊子の時刻表も、市の施設などで配っています。\n令和8年10月1日にダイヤ改正の予定です。新しい時刻表・路線図の冊子は、市のダイヤ改正のお知らせページにPDFがあります。\n予約して乗るAIデマンドバス「チョイソコみのかも」もあります。市の公共交通のページに、プレ運行・予約受付開始のお知らせが出ています。\n予約先と運行日、料金は、そのお知らせの中身を読めておらず、確認できていません。",
+     "back": "コミュニティバス「あい愛バス」があります。年末年始（12月31日〜1月2日）を除き、毎日運行しています。時刻表は、あい愛バス専用ホームページのデータ版で見られます。冊子の時刻表も、市の施設などで配っています。令和8年10月1日にダイヤ改正の予定です。新しい時刻表・路線図の冊子は、市のダイヤ改正のお知らせページにPDFがあります。予約して乗るAIデマンドバス「チョイソコみのかも」もあります。市の公共交通のページに、プレ運行・予約受付開始のお知らせが出ています。予約先と運行日、料金は、そのお知らせの中身を読めておらず、確認できていません。",
+     "source": {
+      "title": "あい愛バスの運行日(運休日)について - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/2/1109.html",
+      "where": "本文"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q10",
+     "short": "Eventos e festivais",
+     "text": "O grande evento realizado todos os anos é o \"On-matsuri MINOKAMO (おん祭MINOKAMO)\". É um evento feito à mão pelos próprios moradores.\nA programação de Reiwa 8 (2026) é a seguinte.\nBon Odori (dança de Obon): sábado, 8 de agosto, no estacionamento do Parque Gifu Seiryu Satoyama (ぎふ清流里山公園).\nFestival de fogos de artifício dos moradores: domingo, 11 de outubro, no Parque Kisogawa Ryokuchi Line (木曽川緑地ライン公園). O dia reserva é domingo, 22 de novembro.\nFestival Nakasendo de Ota-juku (太田宿中山道まつり): domingo, 25 de outubro, nos arredores de Nakasendo Ota-juku (中山道太田宿界隈).\nAs datas mudam conforme o ano. Até o ano fiscal de Reiwa 5 eram em agosto e outubro, mas, por causa do calor intenso, passaram para as datas atuais.\nAlém disso, há o Hatsuuma-sai de Koyama Kannon (小山観音初午祭, primeiro domingo de março, em Koyama Kannon, 小山観音) e o festival do Santuário Suwa (諏訪神社の祭礼, primeiro sábado e domingo de abril, no Santuário Suwa, 諏訪神社).",
+     "original": "毎年ひらかれる大きな催しは「おん祭MINOKAMO」です。市民による手作りのイベントです。\n令和8年（2026年）の予定は次のとおりです。\n盆踊り：8月8日（土）、ぎふ清流里山公園の駐車場。\n市民花火大会：10月11日（日）、木曽川緑地ライン公園。予備日は11月22日（日）です。\n太田宿中山道まつり：10月25日（日）、中山道太田宿界隈。\n日程は年によって変わります。令和5年度までは8月と10月でしたが、猛暑のため、いまの日程になりました。\nほかに、小山観音初午祭（3月第1日曜、小山観音）と諏訪神社の祭礼（4月第1土・日曜、諏訪神社）があります。",
+     "back": "毎年ひらかれる大きな催しは「おん祭MINOKAMO」です。市民による手作りのイベントです。令和8年（2026年）の予定は次のとおりです。盆踊り：8月8日（土）、ぎふ清流里山公園の駐車場。市民花火大会：10月11日（日）、木曽川緑地ライン公園。予備日は11月22日（日）です。太田宿中山道まつり：10月25日（日）、中山道太田宿界隈。日程は年によって変わります。令和5年度までは8月と10月でしたが、猛暑のため、いまの日程になりました。ほかに、小山観音初午祭（3月第1日曜、小山観音）と諏訪神社の祭礼（4月第1土・日曜、諏訪神社）があります。",
+     "source": {
+      "title": "おん祭MINOKAMO2026の開催日について - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/12/16223.html",
+      "where": "本文"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q11",
+     "short": "Flor e árvore da cidade",
+     "text": "A flor da cidade é a hortênsia (\"ajisai\", あじさい), da família Saxifragaceae (ゆきのした科).\nA árvore da cidade é o \"muku\" (むく), da família Ulmaceae (にれ科).\nO pássaro da cidade não consta nos materiais consultados.\nO ano em que foram definidos não está escrito nos materiais oficiais encontrados.",
+     "original": "市の花は「あじさい」（ゆきのした科）です。\n市の木は「むく」（にれ科）です。\n市の鳥は、調べた資料には載っていません。\n定めた年は、見つけた公式資料には書かれていません。",
+     "back": "市の花は「あじさい」（ゆきのした科）です。市の木は「むく」（にれ科）です。市の鳥は、調べた資料には載っていません。定めた年は、見つけた公式資料には書かれていません。",
+     "source": {
+      "title": "美濃加茂市統計書 令和5年度版",
+      "url": "https://www.city.minokamo.lg.jp/uploaded/attachment/15172.pdf",
+      "where": "3ページ「美濃加茂市の花」「美濃加茂市の木」"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q12",
+     "short": "Quão recentes são as previsões (área de inundação)",
+     "text": "O mapa das áreas previstas de inundação do Rio Kiso (木曽川) foi divulgado pelo governo nacional (Ministério da Terra, Infraestrutura, Transporte e Turismo 国土交通省, Escritório do Rio Kiso Superior 木曽川上流河川事務所).\nEm 22 de dezembro de Heisei 28, foi divulgada a previsão baseada na chuva de escala máxima prevista.\nFoi alterado em 24 de abril de Reiwa 2.\nSegundo os dados da província, as profundidades nos mapas de área do Rio Kiso (木曽川) e do Rio Kamo (加茂川) que constam no mapa de perigos (ハザードマップ) da cidade são as seguintes:\n・Na região da rua comercial em frente à saída sul da estação Minokamo-Ota (美濃加茂太田駅南口), é de 0,5 a 5 m na escala planejada e de 10 a 20 m ou mais na escala máxima.\n・Na área do Rio Kamo (加茂川), é de 3 a 10 m.\nA previsão de tsunami e o tempo até a chegada de um tsunami não foram encontrados nos documentos oficiais da cidade.\nNão foi possível confirmar se o mapa da cidade foi corrigido de acordo com a alteração feita pelo governo nacional em Reiwa 2.",
+     "original": "木曽川の洪水浸水想定区域図は、国（国土交通省 木曽川上流河川事務所）が出したものです。\n平成28年12月22日に、想定最大規模の降雨による想定を公表しました。\n令和2年4月24日に変更しています。\n市のハザードマップに載っている木曽川と加茂川の区域図の深さは、県の資料によると次のとおりです。\n・美濃加茂太田駅南口の駅前商店街のあたりは、計画規模で0.5〜5m、最大規模で10〜20m以上です。\n・加茂川の区域は3〜10mです。\n津波の想定や、津波が来るまでの時間は、市の公式資料では見つかりませんでした。\n市のマップが国の令和2年の変更に合わせて直されているかは、確認できませんでした。",
+     "back": "木曽川の洪水浸水想定区域図は、国（国土交通省 木曽川上流河川事務所）が出したものです。平成28年12月22日に、想定最大規模の降雨による想定を公表しました。令和2年4月24日に変更しています。県の資料によると、市のハザードマップに載っている木曽川と加茂川の区域図の深さは次のとおりです。・美濃加茂太田駅南口の駅前商店街のあたりは、計画規模で0.5〜5m、最大規模で10〜20m以上です。・加茂川の区域は3〜10mです。津波の想定や、津波が来るまでの時間は、市の公式資料では見つかりませんでした。市のマップが国の令和2年の変更に合わせて直されているかは、確認できませんでした。",
+     "source": {
+      "title": "木曽川水系洪水浸水想定区域図（木曽川上流河川事務所）",
+      "url": "https://www.cbr.mlit.go.jp/kisojyo/shinsuisoutei/index.html",
+      "where": "ページ冒頭の変更・公表のお知らせ"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q13",
+     "short": "Novidades da cidade",
+     "text": "Será realizada uma experiência do \"Moshibana Game\" (もしバナゲーム体験会), para pensar no que é importante para o final da vida.\nSerá realizada uma sessão de cinema para divulgar o \"atendimento médico domiciliar\" (在宅医療).\nHaverá restrições de trânsito por causa da 21ª Meia Maratona Minokamo (第21回みのかもハーフマラソン大会).",
+     "original": "人生の最期に大切にしたいことを考える「もしバナゲーム体験会」を開きます。\n「在宅医療」普及啓発の映画上映会を開きます。\n第21回みのかもハーフマラソン大会に伴い交通規制があります。",
+     "back": "人生の最期に大切にしたいことを考える「もしバナゲーム体験会」を開きます。「在宅医療」普及啓発の映画上映会を開きます。第21回みのかもハーフマラソン大会に伴い交通規制があります。",
+     "source": {
+      "title": "美濃加茂市公式ホームページ トップページ",
+      "url": "https://www.city.minokamo.gifu.jp/",
+      "where": "新着情報・トピックス"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q15",
+     "short": "Onde procurar ajuda quando há problemas",
+     "text": "【Prefeitura (número principal)】0574-25-2111.\nTanto no prédio principal quanto no prédio anexo (本庁舎・分庁舎), o atendimento é em dias úteis, das 8h45 às 16h45.\nA prefeitura fecha aos sábados, domingos, feriados e de 29 de dezembro a 3 de janeiro.\n\n【Consultas sobre direitos do consumidor】Central Regional de Consultas ao Consumidor (広域消費生活相談室), no 2º andar do prédio oeste da prefeitura (市役所西館2階).\nO telefone é 0574-25-2111 (ramal 462) ou a Linha Direta do Consumidor 188.\nO atendimento é em dias úteis, das 8h45 às 16h45 (exceto feriados e fim/início de ano).\n\n【Consultas ao consumidor da província】O Centro de Consultas da Vida dos Cidadãos da Província (県民生活相談センター) atende pelo 058-277-1003.\nEm dias úteis, das 8h30 às 17h; aos sábados, das 9h às 17h (somente por telefone).\n\n【Contatos à noite e em feriados, e canais de consulta sobre crianças, idosos e violência doméstica (DV)】Não foi possível confirmar desta vez.",
+     "original": "【市役所代表】0574-25-2111。\n本庁舎・分庁舎とも、受付は平日8時45分～16時45分です。\n土日祝日と12月29日～1月3日は閉庁です。\n\n【消費生活相談】広域消費生活相談室（市役所西館2階）です。\n電話は0574-25-2111（内線462）か、消費者ホットライン188です。\n受付は平日8時45分～16時45分です（祝日・年末年始を除く）。\n\n【県の消費生活相談】県民生活相談センターは058-277-1003です。\n平日8時30分～17時、土曜9時～17時（電話のみ）です。\n\n【夜間・休日の連絡先、子ども・高齢者・DVの相談窓口】今回は確認できませんでした。",
+     "back": "【市役所代表】0574-25-2111。本庁舎・分庁舎とも、受付は平日8時45分～16時45分です。土日祝日と12月29日～1月3日は閉庁です。【消費生活相談】広域消費生活相談室（市役所西館2階）です。電話は0574-25-2111（内線462）か、消費者ホットライン188です。受付は平日8時45分～16時45分です（祝日・年末年始を除く）。【県の消費生活相談】県民生活相談センターは058-277-1003です。平日8時30分～17時、土曜9時～17時（電話のみ）です。【夜間・休日の連絡先、子ども・高齢者・DVの相談窓口】今回は確認できませんでした。",
+     "source": {
+      "title": "広域消費生活相談室のご案内",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/12/1631.html",
+      "where": "受付時間・電話"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q16",
+     "short": "Atendimento médico à noite e em feriados",
+     "text": "Em caso de doença súbita em feriados (domingos, feriados nacionais e fim/início de ano), há o atendimento de emergência de feriados (休日急患診療), feito por médicos de plantão em seus próprios consultórios.\nO atendimento é das 9h às 16h30.\nPara dentista, é das 9h às 13h.\nO médico de plantão muda a cada dia. Confira na escala de plantão da Associação Médica de Kamo (加茂医師会).\nHá uma linha de consulta por telefone, gratuita e exclusiva para moradores da cidade, 24 horas por dia, 365 dias por ano: \"Minokamo Kenkō Hotto Dial\" (みのかも健康ほっとダイヤル). O telefone é 0120-238-007.\nPara doença súbita de criança, ligue para a consulta médica infantil por telefone da província, #8000. Se não completar a ligação, ligue para 058-240-4199.\nO atendimento é de segunda a sexta das 18h às 8h da manhã seguinte, e aos sábados, feriados e fim/início de ano das 8h às 8h da manhã seguinte.\nO número 058-240-4199 mudará para 058-216-0999 a partir das 18h de 2 de novembro de Reiwa 8.\nOs telefones da clínica de emergência noturna (夜間急病診療所) e da clínica de emergência de feriados (休日急患診療所) não foram encontrados nos documentos oficiais.",
+     "original": "休日（日曜・祝日・年末年始）の急病は、在宅当番制の休日急患診療です。\n受付は午前9時から午後4時30分までです。\n歯科は午前9時から午後1時までです。\n当番医は日ごとに替わります。加茂医師会の当番表で確認してください。\n24時間365日、市民専用の無料電話相談「みのかも健康ほっとダイヤル」があります。電話は 0120-238-007 です。\n子どもの急病は、県の子ども医療電話相談 #8000 です。つながらないときは 058-240-4199 にかけます。\n受付は月〜金が18時〜翌朝8時、土・休日・年末年始は8時〜翌朝8時です。\n058-240-4199 は令和8年11月2日18時から 058-216-0999 に変わります。\n夜間急病診療所と、休日急患診療所の電話番号は、公式資料では見つかりませんでした。",
+     "back": "休日（日曜・祝日・年末年始）の急病は、在宅当番制の休日急患診療です。受付は午前9時から午後4時30分までです。歯科は午前9時から午後1時までです。当番医は日ごとに替わります。加茂医師会の当番表で確認してください。24時間365日、市民専用の無料電話相談「みのかも健康ほっとダイヤル」があります。電話は 0120-238-007 です。子どもの急病は、県の子ども医療電話相談 #8000 です。つながらないときは 058-240-4199 にかけます。受付は月〜金が18時〜翌朝8時、土・休日・年末年始は8時〜翌朝8時です。058-240-4199 は令和8年11月2日18時から 058-216-0999 に変わります。夜間急病診療所と、休日急患診療所の電話番号は、公式資料では見つかりませんでした。",
+     "source": {
+      "title": "日曜、祝日等の急な病気やケガの際に（美濃加茂市）",
+      "url": "https://www.city.minokamo.gifu.jp/shimin/contents.cfm?base_id=4068&mi_id=3&g1_id=12&g2_id=52",
+      "where": "休日急患診療当番"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q17",
+     "short": "Atendimento sobre criação de filhos e auxílios",
+     "text": "【Local de consulta】\nO \"Centro da Família e da Criança de Minokamo\" (みのかもこども家庭センター) atende consultas sobre gravidez, parto e criação de filhos.\nFica no 2º andar do \"Minokamo Kenkō Plaza\" (みのかも健康プラザ), em Gifu-ken, Minokamo-shi, Kenkō no Machi 1-chōme 2-banchi (岐阜県美濃加茂市健康のまち一丁目2番地).\nAbre de segunda a sexta, das 8h45 às 16h45. Fecha no fim/início de ano e em feriados.\nPara consultas sobre crianças menores de 18 anos e criação de filhos, ligue para o Centro da Família e da Criança no 0574-25-1110.\nPara consultas de saúde desde a gravidez até a primeira infância, ligue para a Seção de Saúde Materno-Infantil da Divisão de Saúde (健康課母子保健係), no 0574-25-4145.\nAs consultas são gratuitas. Também é possível ir sem hora marcada, mas pode ser preciso esperar.\n\n【Auxílio para despesas médicas de crianças】\nExiste o sistema de auxílio para despesas médicas e de bem-estar (福祉医療費助成, crianças).\nAté a conclusão do ensino fundamental II (até 31 de março após completar 15 anos), há auxílio tanto para internação quanto para consultas ambulatoriais.\nNa faixa etária do ensino médio (até 31 de março após completar 18 anos), só a internação recebe auxílio.\nÉ subsidiada a parte paga pelo paciente nas consultas cobertas pelo seguro de saúde.\nNas instituições médicas da província de Gifu, ao mostrar o cartão de beneficiário (受給者証), a parte paga pelo paciente é gratuita.\nPara a faixa etária do ensino médio, o cartão de beneficiário não é emitido.\n\n【Abono infantil (児童手当) e outros auxílios】\nNão foi possível confirmar desta vez na página oficial da cidade. Consulte a prefeitura (0574-25-2111).",
+     "original": "【相談の窓口】\n「みのかもこども家庭センター」が、妊娠・出産・子育ての相談を受けています。\n場所は、岐阜県美濃加茂市健康のまち一丁目2番地の「みのかも健康プラザ」2階です。\n開所は月〜金の午前8時45分〜午後4時45分です。年末年始と祝日は休みです。\n18歳未満の子ども・子育ての相談は、こども家庭センターの電話 0574-25-1110 へどうぞ。\n妊娠期から幼児期の健康の相談は、健康課母子保健係の電話 0574-25-4145 です。\n相談は無料です。予約なしで行くこともできますが、待つことがあります。\n\n【子どもの医療費の助成】\n福祉医療費助成（子ども）の制度があります。\n中学校を卒業するまで（15歳になった後の最初の3月31日まで）は、入院も通院も助成されます。\n高校生年代（18歳になった後の最初の3月31日まで）は、入院だけが助成されます。\n保険診療の自己負担額が助成されます。\n岐阜県内の医療機関では、受給者証を見せると自己負担が無料になります。\n高校生年代には受給者証は出ません。\n\n【児童手当などの手当】\n今回は市の公式ページで確認できませんでした。市役所（0574-25-2111）にお問い合わせください。",
+     "back": "【相談の窓口】「みのかもこども家庭センター」が、妊娠・出産・子育ての相談を受けています。場所は、岐阜県美濃加茂市健康のまち一丁目2番地の「みのかも健康プラザ」2階です。開所は月〜金の午前8時45分〜午後4時45分です。年末年始と祝日は休みです。18歳未満の子ども・子育ての相談は、こども家庭センターの電話 0574-25-1110 へどうぞ。妊娠期から幼児期の健康の相談は、健康課母子保健係の電話 0574-25-4145 です。相談は無料です。予約なしで行くこともできますが、待つことがあります。【子どもの医療費の助成】福祉医療費助成（子ども）の制度があります。中学校を卒業するまで（15歳になった後の最初の3月31日まで）は、入院も通院も助成されます。高校生年代（18歳になった後の最初の3月31日まで）は、入院だけが助成されます。保険診療の自己負担額が助成されます。岐阜県内の医療機関では、受給者証を見せると自己負担が無料になります。高校生年代には受給者証は出ません。【児童手当などの手当】今回は市の公式ページで確認できませんでした。市役所（0574-25-2111）にお問い合わせください。",
+     "source": {
+      "title": "みのかもこども家庭センター - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/7/11916.html",
+      "where": "児童福祉の相談窓口／場所と開所時間"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q18",
+     "short": "Onde consultar sobre cuidados de idosos",
+     "text": "O canal geral de consultas para idosos é o \"Centro de Apoio à Longevidade\" (長寿支援センター), que é o Centro Regional de Apoio Integral (地域包括支援センター). Há 3 na cidade.\nCentro de Apoio à Longevidade da Região Oeste (西部長寿支援センター): distritos escolares das escolas primárias Ota e Kamono (太田小・加茂野小). Telefone 0574-24-7007.\nCentro de Apoio à Longevidade da Região Central (中部長寿支援センター): distritos escolares das escolas primárias Yamate, Yamanoue, Hachiya, Ibuka e Miwa (山手小・山之上小・蜂屋小・伊深小・三和小). Telefone 0574-49-8591.\nCentro de Apoio à Longevidade da Região Leste (東部長寿支援センター): distritos escolares das escolas primárias Furui e Shimoyoneda (古井小・下米田小). Telefone 0574-50-1777.",
+     "original": "高齢者の総合相談窓口は「長寿支援センター」（地域包括支援センター）です。市内に3か所あります。\n西部長寿支援センター：太田小・加茂野小校区。電話 0574-24-7007。\n中部長寿支援センター：山手小・山之上小・蜂屋小・伊深小・三和小校区。電話 0574-49-8591。\n東部長寿支援センター：古井小・下米田小校区。電話 0574-50-1777。",
+     "back": "高齢者の総合相談窓口は「長寿支援センター」（地域包括支援センター）です。市内に3か所あります。西部長寿支援センター：太田小・加茂野小校区。電話 0574-24-7007。中部長寿支援センター：山手小・山之上小・蜂屋小・伊深小・三和小校区。電話 0574-49-8591。東部長寿支援センター：古井小・下米田小校区。電話 0574-50-1777。",
+     "source": {
+      "title": "「長寿支援センター」は、高齢者の「総合相談窓口」です！",
+      "url": "https://www.city.minokamo.gifu.jp/shimin/contents.cfm?base_id=7534&mi_id=3&g1_id=12&g2_id=48",
+      "where": "長寿支援センターの名称及び担当区域・連絡先"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q04",
+     "short": "Avisos em caso de desastre",
+     "text": "Os avisos de desastre podem ser recebidos de 3 formas:\n① E-mail \"Sugu Mail Minokamo\" (すぐメールみのかも): o conteúdo das transmissões do sistema de rádio de prevenção de desastres (防災行政無線) chega por e-mail.\nPara se cadastrar, envie um e-mail em branco para t-minokamo@sg-p.jp. Leia o e-mail de resposta com as instruções e faça o cadastro.\n② Aplicativo de prevenção de desastres \"Minokamo-shi Bōsai\" (美濃加茂市防災): é possível ver informações de emergência, informações sobre abrigos e o conteúdo das transmissões do rádio de prevenção de desastres.\nBusque \"美濃加茂市防災\" na App Store ou no Google Play e instale.\n③ E-mail de alerta de emergência (緊急速報メール, Area Mail): chega aos celulares da docomo, au e SoftBank. Não precisa de inscrição prévia e é gratuito.\nDependendo do aparelho, pode ser necessário configurar a recepção.",
+     "original": "災害の知らせは、次の3つで受け取れます。\n①メール「すぐメールみのかも」：防災行政無線の放送内容がメールで届きます。\n登録は t-minokamo@sg-p.jp に空メールを送ります。折り返しの案内メールを読んで登録します。\n②防災アプリ「美濃加茂市防災」：緊急情報、避難所情報、防災行政無線の放送内容を見られます。\nApp Store か Google Play で「美濃加茂市防災」と検索して入れます。\n③緊急速報メール（エリアメール）：ドコモ・au・ソフトバンクの携帯に届きます。事前の申し込みは要らず、無料です。\n機種によっては受信設定が必要です。",
+     "back": "災害の知らせは、次の3つで受け取れます。①メール「すぐメールみのかも」：防災行政無線の放送内容がメールで届きます。登録は t-minokamo@sg-p.jp に空メールを送ります。折り返しの案内メールを読んで登録します。②防災アプリ「美濃加茂市防災」：緊急情報、避難所情報、防災行政無線の放送内容を見られます。App Store か Google Play で「美濃加茂市防災」と検索して入れます。③緊急速報メール（エリアメール）：ドコモ・au・ソフトバンクの携帯に届きます。事前の申し込みは要らず、無料です。機種によっては受信設定が必要です。",
+     "source": {
+      "title": "「広報みのかも」の放送が良く聞こえない、聞き取りづらいのですが？ - 防災ページ",
+      "url": "https://www.city.minokamo.lg.jp/site/bousai/2340.html",
+      "where": "本文"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q09",
+     "short": "A história da cidade",
+     "text": "A cidade de Minokamo (美濃加茂市) nasceu em 1º de abril de Shōwa 29 (1954).\nO centro foram as cidades de Ōta (太田町) e Furui (古井町), do distrito de Kamo (加茂郡).\nA elas se juntaram as aldeias de Yamanoue (山之上村), Hachiya (蜂屋村), Kamono (加茂野村) e Ibuka (伊深村).\nTambém entraram as áreas de Kawaura (川浦) e Tsuzuya (廿屋), da aldeia de Miwa (三和村).\nTambém se uniram a aldeia de Shimoyoneda (下米田村) e a área de Makino (牧野), da aldeia de Wachi (和知村).",
+     "original": "美濃加茂市は、昭和29年（1954年）4月1日に生まれました。\n加茂郡の太田町と古井町が中心です。\nそこに山之上村、蜂屋村、加茂野村、伊深村が合わさりました。\n三和村の川浦地区と廿屋地区も入りました。\n下米田村と、和知村の牧野地区も加わりました。",
+     "back": "美濃加茂市は、昭和29年（1954年）4月1日に生まれました。加茂郡の太田町と古井町が中心です。そこに山之上村、蜂屋村、加茂野村、伊深村が合わさりました。三和村の川浦地区と廿屋地区も入りました。下米田村と、和知村の牧野地区も加わりました。",
+     "source": {
+      "title": "美濃加茂市 市制施行70周年",
+      "url": "https://www.city.minokamo.lg.jp/site/70th-anniversary/",
+      "where": "■美濃加茂市の軌跡 美濃加茂市の誕生"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q08",
+     "short": "Informações para estrangeiros",
+     "text": "A prefeitura (市役所) tem o \"Balcão de Atendimento Único para Estrangeiros (外国人ワンストップ相談窓口)\".\nFica no 1º andar do prédio principal da prefeitura (市役所本館). O telefone é 0574-25-2111 (ramais 364 e 366).\nNa página em japonês fácil \"O que você pode consultar na prefeitura (市役所（しやくしょ）で相談（そうだん）できること)\", você pode ver os locais de atendimento e os telefones.\nTambém há uma página em inglês (English) e um informativo municipal em versões em idiomas estrangeiros.\nA página em inglês diz que os idiomas atendidos são: japonês fácil, inglês, português e tagalo.\nOs contatos da Divisão de Coexistência Multicultural (多文化共創課) (Edifício Noritake (則竹ビル), 1º andar, 0574-42-6262) estão em outra página.",
+     "original": "市役所（しやくしょ）には「外国人ワンストップ相談窓口」があります。\n場所は市役所本館1階です。電話は0574-25-2111（内線364・366）です。\nやさしい日本語のページ「市役所（しやくしょ）で相談（そうだん）できること」で、相談できる場所と電話が見られます。\n英語のページ（English）と、外国語版の広報紙もあります。\n英語ページには、対応言語はやさしい日本語・英語・ポルトガル語・タガログ語と書かれています。\n多文化共創課（則竹ビル1階、0574-42-6262）の連絡先は、別のページに載っています。",
+     "back": "",
+     "source": {
+      "title": "市役所（しやくしょ）で相談（そうだん）できること - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/37/20430.html",
+      "where": "本文（外国人ワンストップ相談窓口の説明と表）"
+     },
+     "status": "ok",
+     "problems": [
+      "確かめ役の答えが読めなかった"
+     ],
+     "ledgerId": "r00291"
+    },
+    {
+     "qid": "Q52",
+     "short": "Informações de prevenção de desastres em vários idiomas",
+     "text": "Existe um guia de prevenção de desastres em português.\nVocê pode abri-lo pelo botão que fica no alto da página \"Guia de Prevenção de Desastres (防災ガイド)\" da cidade (em japonês).\nA página em português traz informações sobre o mapa de prevenção de desastres.\nEla também tem links para as páginas dos itens 1 a 4.\nComo contato, está indicado o setor de segurança e prevenção de desastres da prefeitura (市役所) (telefone 0574-25-2111, ramal 272).\nA página de prevenção de desastres do site oficial da cidade tem um link \"Translation\" (tradução) e um link \"やさしい日本語\" (japonês fácil).\nO japonês fácil funciona assim: o site é convertido por um serviço externo (tsutaeru.cloud) para ser exibido.\nDesta vez, não foi possível confirmar se existem versões em idiomas estrangeiros ou em japonês fácil do aplicativo de prevenção de desastres, do envio de e-mails e da informação sobre abrigos.\nOs PDFs do mapa de perigos (ハザードマップ) (deslizamentos de terra e inundações; terremotos) foram encontrados somente em japonês.",
+     "original": "ポルトガル語の防災ガイドがあります。\n市の「防災ガイド」ページ（日本語）の上のボタンから開けます。\nポルトガル語のページには、防災マップの案内があります。\nそのほか、1〜4の項目ページにもつながっています。\n問い合わせ先は、市役所の安全・防災の担当（電話 0574-25-2111、内線272）と書かれています。\n市の公式サイトの防災ページには、「Translation」（翻訳）のリンクと、「やさしい日本語」のリンクがあります。\nやさしい日本語は、外部のサービス（tsutaeru.cloud）でサイトを変換して見る形です。\n防災アプリ、メール配信、避難所案内の外国語版・やさしい日本語版があるかは、今回は確認できませんでした。\nハザードマップのPDF（土砂災害・水害、地震災害）は日本語版だけが見つかりました。",
+     "back": "",
+     "source": {
+      "title": "Dia de Prevenção de Desastres da Cidade de Minokamo（美濃加茂市防災ガイド ポルトガル語版）",
+      "url": "https://www.city.minokamo.gifu.jp/bousai/guide/port/index.htm",
+      "where": "ポルトガル語版トップページ"
+     },
+     "status": "ok",
+     "problems": [
+      "確かめ役の答えが読めなかった"
+     ],
+     "ledgerId": "r00292"
+    },
+    {
+     "qid": "Q53",
+     "short": "Aulas de japonês e informações sobre matrícula escolar",
+     "text": "【Como matricular a criança na escola】\nVocê pode ver na página da cidade \"Sobre a matrícula escolar de crianças e alunos estrangeiros (外国人児童生徒の就学について)\".\nEstrangeiros não têm obrigação de frequentar a escola. Se quiserem, podem entrar nas escolas de ensino fundamental (小学校 e 中学校).\nA escola é decidida pelo endereço do registro de residência (住民票). As mensalidades e os livros didáticos são gratuitos.\nPara o procedimento, vá ao Conselho de Educação (教育委員会) levando o cartão de residência (在留カード) e o passaporte (do responsável e da criança). Depois, faça o procedimento na escola em que a criança vai entrar.\nO pedido de matrícula e o folheto informativo em português e inglês também estão na mesma página.\nInformações: Conselho de Educação (教育委員会), Divisão de Educação Escolar (学校教育課), 0574-25-2111 (ramal 342)\n\n【Crianças que estudam japonês pela primeira vez】\nHá a \"Classe Nozomi (のぞみ教室)\". Fica dentro da Escola Primária Furui (古井小学校).\nFunciona de segunda a sexta, das 8h30 às 16h30. Há cobrança do custo da merenda escolar.\n\n【Apoio ao estudo depois da aula \"MIRAI\" (para alunos estrangeiros do ensino fundamental)】\nDistrito de Ōta (太田地区): quartas e sextas. Alunos do primário (小学生) das 18:30 às 20:00; alunos do ginásio (中学生) das 18:30 às 20:30. Centro de Aprendizagem ao Longo da Vida (生涯学習センター) (太田町3425-1).\nDistrito de Furui (古井地区): terças e quintas. Alunos do primário (小学生) das 16:30 às 18:00 na Biblioteca Higashi (東図書館) (本郷町9-2-22). Alunos do ginásio (中学生) das 18:30 às 20:30 no Centro de Intercâmbio Kamifurui (上古井交流センター) (本郷町8-8-48).\nInscrição e informações: Associação de Intercâmbio Internacional de Minokamo (美濃加茂国際交流協会) 0574-28-3822\n\n【Aulas de japonês para adultos】\nA Divisão de Coexistência Multicultural (多文化共創課) da cidade tem uma página (atualizada em 13 de março de 2025) que diz \"Há aulas de japonês para moradores estrangeiros (外国人市民への日本語教室があります)\". Os detalhes de data, horário, local e onde se inscrever não foram confirmados.\nO contato é a Divisão de Coexistência Multicultural (多文化共創課) 0574-42-6262 (Edifício Noritake (則竹ビル), 1º andar, 太田町1752-1).",
+     "original": "【子どもの学校への入り方】\n市の「外国人児童生徒の就学について」のページで見られます。\n外国人は就学の義務はありません。希望すれば小・中学校に入れます。\n入る学校は住民票の住所で決まります。授業料と教科書代は無料です。\n手続きは、在留カードとパスポート（保護者と本人）を持って教育委員会へ行きます。そのあと、入る学校で手続きをします。\nポルトガル語・英語の就学願いと案内リーフレットも、同じページにあります。\n問い合わせ：教育委員会 学校教育課 0574-25-2111（内線342）\n\n【日本語を初めて学ぶ子】\n「のぞみ教室」があります。場所は古井小学校内です。\n月〜金の午前8時30分〜午後4時30分です。給食費がかかります。\n\n【放課後の学習支援「MIRAI」（外国籍の小中学生）】\n太田地区：水・金曜。小学生18:30〜20:00、中学生18:30〜20:30。生涯学習センター（太田町3425-1）。\n古井地区：火・木曜。小学生16:30〜18:00は東図書館（本郷町9-2-22）。中学生18:30〜20:30は上古井交流センター（本郷町8-8-48）。\n申し込み・問い合わせ：美濃加茂国際交流協会 0574-28-3822\n\n【大人の日本語教室】\n市の多文化共創課に「外国人市民への日本語教室があります」というページ（2025年3月13日更新）があります。日時・場所・申込先の詳細は確認できていません。\n問い合わせ先は多文化共創課 0574-42-6262（太田町1752-1 則竹ビル1階）です。",
+     "back": "",
+     "source": {
+      "title": "外国籍の小中学生への学習支援について",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/37/10413.html",
+      "where": "MIRAIの概要（日時・場所・問い合わせ先）"
+     },
+     "status": "ok",
+     "problems": [
+      "確かめ役の答えが読めなかった"
+     ],
+     "ledgerId": "r00293"
+    },
+    {
+     "qid": "Q54",
+     "short": "Inscrição em creches e no clube pós-aula (gakudō)",
+     "text": "【Creches (保育園) e escolas infantis certificadas (認定こども園)】\nA inscrição é feita no balcão da Divisão do Futuro das Crianças (こども未来課) ou pelo pedido on-line.\nNão há recebimento em cada creche nem inscrição pelo correio.\nA inscrição para a entrada em abril de Reiwa 9 (令和9年) tem três etapas.\nPrimeira etapa: on-line de 1º a 20 de novembro de Reiwa 8 (令和8年); balcão de 2 a 30 de novembro.\nSegunda etapa: on-line de 1º de dezembro de Reiwa 8 a 3 de fevereiro de Reiwa 9; balcão de 1º de dezembro a 10 de fevereiro.\nTerceira etapa: on-line de 11 de fevereiro a 3 de março de Reiwa 9; balcão de 12 de fevereiro a 10 de março.\n【Clube pós-aula (学童保育)】\nPara crianças do 1º ao 6º ano do ensino fundamental.\nA inscrição é feita pelo pedido on-line ou no balcão da Divisão do Futuro das Crianças (こども未来課).\nNão é recebida nas escolas primárias nem nos postos de contato (連絡所).\nEm Reiwa 8 (令和8年度), o recebimento para abril já terminou. Depois disso, as inscrições continuam sendo aceitas a qualquer momento, mas, se passar do número de vagas, fica em lista de espera.\nNão foi encontrada informação sobre o clube pós-aula para Reiwa 9 (令和9年度).\n【Telefone】\nA Divisão do Futuro das Crianças (こども未来課) (Minokamo Health Plaza (みのかも健康プラザ), 2º andar): 0574-25-2111 (ramal 387).\n【Idiomas estrangeiros】\nOs documentos de matrícula nas creches têm versões em português, tagalo e inglês.\nO edital de inscrição e o formulário do clube pós-aula têm versões em inglês e português.\nO site oficial tem links para a página de tradução e para a exibição em \"やさしい日本語\" (japonês fácil).",
+     "original": "【保育園・認定こども園】\n申込み先は、こども未来課の窓口か、オンライン申請です。\n各園での受付と郵送での申込みはありません。\n令和9年4月入園の申込みは三段階です。\n第一次は、オンラインが令和8年11月1日〜20日、窓口が11月2日〜30日です。\n第二次は、オンラインが令和8年12月1日〜令和9年2月3日、窓口が12月1日〜令和9年2月10日です。\n第三次は、オンラインが令和9年2月11日〜3月3日、窓口が2月12日〜3月10日です。\n【学童保育】\n対象は1年生から6年生です。\nオンライン申請か、こども未来課の窓口で申し込みます。\n小学校と連絡所では受け付けていません。\n令和8年度は4月分の受付が終わっています。その後も随時受け付けますが、定員を超えると待機になります。\n令和9年度の学童の案内は見つかりませんでした。\n【電話】\nこども未来課（みのかも健康プラザ2階）は 0574-25-2111（内線387）です。\n【外国語】\n入園書類には、ポルトガル語・タガログ語・英語版があります。\n学童の募集要項や申請書は、英語とポルトガル語版があります。\n公式サイトに、翻訳ページと「やさしい日本語」表示へのリンクがあります。",
+     "back": "",
+     "source": {
+      "title": "令和9年度4月 保育園・こども園・小規模保育所等の入園について",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/8/13155.html",
+      "where": "4月入園の申込期間／申込み手続きについて／申請方法／お問い合わせ先"
+     },
+     "status": "ok",
+     "problems": [
+      "確かめ役の答えが読めなかった"
+     ],
+     "ledgerId": "r00294"
+    }
+   ]
+  },
+  "tl": {
+   "name": "Filipino",
+   "ja": "フィリピノ語",
+   "items": [
+    {
+     "qid": "Q01",
+     "short": "Listahan ng mga evacuation site",
+     "text": "Sa pahina ng opisyal na website ng lungsod na “Mga itinalagang evacuation center, itinalagang emergency evacuation site, at kalagayan ng imbak na suplay ng Lungsod ng Minokamo” (美濃加茂市の指定避難所・指定緊急避難場所および備蓄状況), may PDF ng listahan.\nAng kabuuang bilang ng itinalagang emergency evacuation site ay 57.\nAng detalye: 40 ang mga pasilidad na itinalaga ring evacuation center, at 17 ang mga emergency evacuation site lamang, tulad ng mga parke at grounds.\nMakikita rin ito sa web na bersyon at booklet na bersyon ng hazard map.",
+     "original": "市公式サイトの「美濃加茂市の指定避難所・指定緊急避難場所および備蓄状況」ページに、一覧のPDFがあります。\n指定緊急避難場所は全部で57か所です。\n内訳は、指定避難所と兼ねる施設が40か所、緊急避難場所だけの公園・グラウンドなどが17か所です。\nweb版・冊子版のハザードマップでも見られます。",
+     "back": "市公式サイトの「美濃加茂市の指定避難所・指定緊急避難場所および備蓄状況」ページに、一覧のPDFがあります。指定緊急避難場所は全部で57か所です。内訳は、指定避難所と兼ねる施設が40か所、緊急避難場所だけの公園・グラウンドなどが17か所です。web版・冊子版のハザードマップでも見られます。",
+     "source": {
+      "title": "美濃加茂市の指定避難所・指定緊急避難場所および備蓄状況（一覧PDFへのリンク）",
+      "url": "https://www.city.minokamo.lg.jp/site/bousai/2343.html",
+      "where": "「市の指定避難所・指定緊急避難場所」の見出し／一覧PDF（2343_25113_misc.pdf）"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q02",
+     "short": "Hazard map",
+     "text": "Makikita ang hazard map sa “pahina ng impormasyon sa pag-iwas sa sakuna” (防災情報ページ) ng opisyal na website ng lungsod.\nMay web na bersyon at booklet na bersyon (PDF, mga 47MB).\nSa pahina ng lumang website na “Hazard Map ng Lungsod ng Minokamo” (美濃加茂市ハザードマップ), may PDF din ng mapa ng lungsod at ng mga mapa ng inaasahang lugar na babahain ng Ilog Kiso (木曽川) at Ilog Kamo (加茂川).\nHindi nakasulat sa mga pahinang nakita ang petsa ng paggawa o petsa ng rebisyon ng mismong mapa.\nWalang nakitang mapa para sa tsunami.",
+     "original": "ハザードマップは市公式サイトの「防災情報ページ」で見られます。\nweb版と冊子版（PDF、約47MB）があります。\n旧サイトの「美濃加茂市ハザードマップ」ページにも、市のマップと木曽川・加茂川の浸水想定区域図のPDFがあります。\nマップ本体の作成日・改訂日は、見たページには書かれていませんでした。\n津波のマップは見つかりませんでした。",
+     "back": "ハザードマップは市公式サイトの「防災情報ページ」で見られます。web版と冊子版（PDF、約47MB）があります。旧サイトの「美濃加茂市ハザードマップ」ページにも、市のマップと木曽川・加茂川の浸水想定区域図のPDFがあります。見たページには、マップ本体の作成日・改訂日は書かれていませんでした。津波のマップは見つかりませんでした。",
+     "source": {
+      "title": "美濃加茂市防災ガイド",
+      "url": "https://www.city.minokamo.gifu.jp/bousai/guide/",
+      "where": "ハザードマップ"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q03",
+     "short": "Plano sa pag-iwas sa sakuna ng lugar",
+     "text": "Makikita ang plano sa pag-iwas sa sakuna ng lugar sa “pahina ng impormasyon sa pag-iwas sa sakuna” (防災情報ページ) ng opisyal na website ng lungsod.\nNakalagay doon ang mga PDF ng pangunahing bahagi at ng bahagi ng mga materyales bilang “Plano sa Pag-iwas sa Sakuna ng Lugar ng Lungsod ng Minokamo” (美濃加茂市地域防災計画).\nAng pinakabagong bersyon ay ang binago noong Marso ng Reiwa 8 (令和8年3月).",
+     "original": "地域防災計画は、市公式サイトの「防災情報ページ」で見られます。\n「美濃加茂市地域防災計画」として、本編と資料編のPDFが載っています。\nいちばん新しい版は令和8年3月修正です。",
+     "back": "地域防災計画は、市公式サイトの「防災情報ページ」で見られます。「美濃加茂市地域防災計画」として、本編と資料編のPDFが載っています。いちばん新しい版は令和8年3月修正です。",
+     "source": {
+      "title": "防災情報ページ - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/site/bousai/",
+      "where": "防災情報一覧「美濃加茂市地域防災計画」"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q05",
+     "short": "Paghihiwalay ng basura at araw ng pagtatapon",
+     "text": "Makikita ito sa pahina ng opisyal na website ng lungsod na “Tungkol sa paghihiwalay at pagtatapon ng basura ng sambahayan at sa mga araw ng koleksyon” (家庭ごみの分別と出し方、収集日について).\nNangongolekta ang lungsod ng basura sa 9 na kategorya at 15 uri ng paghihiwalay.\nSa “Mga kaugnay na materyales” (関連資料) sa loob ng pahina, may talaan ng mga araw ng koleksyon ng basura para sa Reiwa 8 at gabay sa paghihiwalay at pagtatapon (PDF sa wikang Hapon).\nMay mga bersyon din sa wikang banyaga, gaya ng Portuges, Ingles, at Tagalog.\nIlabas ang basura sa umaga ng mismong araw ng koleksyon, mula 6:00 hanggang 8:00.\nPara sa mga PET bottle, food tray, at styrofoam, mula 8:00 hanggang 10:00 ng umaga.",
+     "original": "市公式サイトの「家庭ごみの分別と出し方、収集日について」のページで見られます。\n市は9区分15分別でごみを収集しています。\nページ内の「関連資料」に、令和8年度ごみ収集日一覧表・分別と出し方（日本語PDF）があります。\n外国語版もあります。ポルトガル語、英語、タガログ語などです。\n排出は収集日当日の朝6時から8時です。\nペットボトル、食品トレイ、発泡スチロールは朝8時から10時です。",
+     "back": "市公式サイトの「家庭ごみの分別と出し方、収集日について」のページで見られます。市は9区分15分別でごみを収集しています。ページ内の「関連資料」に、令和8年度ごみ収集日一覧表・分別と出し方（日本語PDF）があります。外国語版もあります。ポルトガル語、英語、タガログ語などです。排出は収集日当日の朝6時から8時です。ペットボトル、食品トレイ、発泡スチロールは朝8時から10時です。",
+     "source": {
+      "title": "家庭ごみの分別と出し方、収集日について - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/15/1744.html",
+      "where": "関連資料：令和8年度ごみ収集日一覧表・分別と出し方(日本語)"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q06",
+     "short": "Mga proseso sa paglipat ng tirahan",
+     "text": "Makikita ito sa pahina ng opisyal na website ng lungsod na “Lumipat ako sa Lungsod ng Minokamo mula sa labas ng lungsod. Gusto kong malaman ang mga karaniwang kinakailangang proseso sa paglipat” (市外から美濃加茂市へ転入しました。引っ越しの際に一般的に必要な手続きを知りたい).\nAng pagbabago ng rehistro ng paninirahan (abiso ng paglipat papasok, 転入届) ay dapat gawin sa loob ng 14 na araw mula sa araw na nagsimula kang tumira.\nPara sa National Health Insurance (国民健康保険), ang sasali ay magpoproseso sa loob ng 14 na araw pagkatapos lumipat papasok.\nNakalista rin sa parehong pahina ang pagpapalit ng address sa My Number card, pagrehistro ng selyo (印鑑登録), paglipat ng paaralan, National Pension (国民年金), at child allowance (児童手当), at iba pa.\nMay pahina rin na “Kapag lilipat papasok o palabas” (転入・転出するときは).",
+     "original": "市公式サイトの「市外から美濃加茂市へ転入しました。引っ越しの際に一般的に必要な手続きを知りたい」のページで見られます。\n住民票の異動（転入届）は、住み始めた日から14日以内です。\n国民健康保険は、加入する方が転入後14日以内に手続きします。\nマイナンバーカードの住所変更、印鑑登録、転校、国民年金、児童手当なども、同じページに並んでいます。\n「転入・転出するときは」のページもあります。",
+     "back": "市公式サイトの「市外から美濃加茂市へ転入しました。引っ越しの際に一般的に必要な手続きを知りたい」のページで見られます。住民票の異動（転入届）は、住み始めた日から14日以内です。国民健康保険は、加入する方が転入後14日以内に手続きします。マイナンバーカードの住所変更、印鑑登録、転校、国民年金、児童手当なども、同じページに並んでいます。「転入・転出するときは」のページもあります。",
+     "source": {
+      "title": "市外から美濃加茂市へ転入しました。引っ越しの際に一般的に必要な手続きを知りたい",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/23/2408.html",
+      "where": "本文の手続き一覧"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q07",
+     "short": "Transportasyon sa lungsod",
+     "text": "May community bus na “Aiai Bus” (あい愛バス).\nAraw-araw itong bumibiyahe maliban sa katapusan at simula ng taon (Disyembre 31 hanggang Enero 2).\nMakikita ang iskedyul sa data na bersyon sa espesyal na website ng Aiai Bus.\nNamimigay rin ng booklet na iskedyul sa mga pasilidad ng lungsod at iba pa.\nPlano ang pagbabago ng iskedyul ng biyahe sa Oktubre 1, Reiwa 8 (令和8年10月1日). Ang booklet ng bagong iskedyul at mapa ng ruta ay nasa anyong PDF sa pahina ng abiso ng lungsod tungkol sa pagbabago ng iskedyul.\nMay AI on-demand bus din na “Choisoko Minokamo” (チョイソコみのかも) na sasakyan sa pamamagitan ng reserbasyon. Sa pahina ng lungsod tungkol sa pampublikong transportasyon, may abiso tungkol sa pre-operation at pagsisimula ng pagtanggap ng reserbasyon.\nHindi pa nababasa ang nilalaman ng abisong iyon, kaya hindi pa makumpirma ang pagrereserbahan, mga araw ng biyahe, at pamasahe.",
+     "original": "コミュニティバス「あい愛バス」があります。\n年末年始（12月31日〜1月2日）を除き、毎日運行しています。\n時刻表は、あい愛バス専用ホームページのデータ版で見られます。\n冊子の時刻表も、市の施設などで配っています。\n令和8年10月1日にダイヤ改正の予定です。新しい時刻表・路線図の冊子は、市のダイヤ改正のお知らせページにPDFがあります。\n予約して乗るAIデマンドバス「チョイソコみのかも」もあります。市の公共交通のページに、プレ運行・予約受付開始のお知らせが出ています。\n予約先と運行日、料金は、そのお知らせの中身を読めておらず、確認できていません。",
+     "back": "コミュニティバス「あい愛バス」があります。年末年始（12月31日〜1月2日）を除き、毎日運行しています。時刻表は、あい愛バス専用ホームページのデータ版で見られます。冊子の時刻表も、市の施設などで配っています。令和8年10月1日にダイヤ改正の予定です。新しい時刻表・路線図の冊子は、市のダイヤ改正のお知らせページにPDFがあります。予約して乗るAIデマンドバス「チョイソコみのかも」もあります。市の公共交通のページに、プレ運行・予約受付開始のお知らせが出ています。予約先と運行日、料金は、そのお知らせの中身を読めておらず、確認できていません。",
+     "source": {
+      "title": "あい愛バスの運行日(運休日)について - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/2/1109.html",
+      "where": "本文"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q10",
+     "short": "Mga kaganapan at pista",
+     "text": "Ang malaking kaganapang ginaganap taon-taon ay ang “Onmatsuri MINOKAMO” (おん祭MINOKAMO). Ito ay isang kaganapang gawa ng mga mamamayan mismo.\nAng iskedyul para sa Reiwa 8 (2026) ay ang sumusunod.\nBon odori (sayaw sa Bon): Agosto 8 (Sabado), sa paradahan ng Gifu Seiryu Satoyama Park (ぎふ清流里山公園).\nFireworks display ng mga mamamayan: Oktubre 11 (Linggo), sa Kisogawa Ryokuchi Line Park (木曽川緑地ライン公園). Ang reserbang araw ay Nobyembre 22 (Linggo).\nOta-juku Nakasendo Festival (太田宿中山道まつり): Oktubre 25 (Linggo), sa paligid ng Nakasendo Ota-juku (中山道太田宿界隈).\nNag-iiba ang iskedyul bawat taon. Hanggang fiscal year ng Reiwa 5, ito ay noong Agosto at Oktubre, ngunit dahil sa matinding init, naging ganito na ang kasalukuyang iskedyul.\nMayroon ding Oyama Kannon Hatsuuma Festival (小山観音初午祭, unang Linggo ng Marso, sa Oyama Kannon, 小山観音) at pista ng Suwa Shrine (諏訪神社の祭礼, unang Sabado at Linggo ng Abril, sa Suwa Shrine, 諏訪神社).",
+     "original": "毎年ひらかれる大きな催しは「おん祭MINOKAMO」です。市民による手作りのイベントです。\n令和8年（2026年）の予定は次のとおりです。\n盆踊り：8月8日（土）、ぎふ清流里山公園の駐車場。\n市民花火大会：10月11日（日）、木曽川緑地ライン公園。予備日は11月22日（日）です。\n太田宿中山道まつり：10月25日（日）、中山道太田宿界隈。\n日程は年によって変わります。令和5年度までは8月と10月でしたが、猛暑のため、いまの日程になりました。\nほかに、小山観音初午祭（3月第1日曜、小山観音）と諏訪神社の祭礼（4月第1土・日曜、諏訪神社）があります。",
+     "back": "毎年ひらかれる大きな催しは「おん祭MINOKAMO」です。市民による手作りのイベントです。令和8年（2026年）の予定は次のとおりです。盆踊り：8月8日（土）、ぎふ清流里山公園の駐車場。市民花火大会：10月11日（日）、木曽川緑地ライン公園。予備日は11月22日（日）です。太田宿中山道まつり：10月25日（日）、中山道太田宿界隈。日程は年によって変わります。令和5年度までは8月と10月でしたが、猛暑のため、いまの日程になりました。ほかに、小山観音初午祭（3月第1日曜、小山観音）と諏訪神社の祭礼（4月第1土・日曜、諏訪神社）があります。",
+     "source": {
+      "title": "おん祭MINOKAMO2026の開催日について - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/12/16223.html",
+      "where": "本文"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q11",
+     "short": "Bulaklak at puno ng lungsod",
+     "text": "Ang bulaklak ng lungsod ay ang “hydrangea” (あじさい, pamilyang yukinoshita, ゆきのした科).\nAng puno ng lungsod ay ang “muku” (むく, pamilyang nire, にれ科).\nHindi nakalista sa mga materyales na sinuri ang ibon ng lungsod.\nHindi nakasulat sa mga opisyal na materyales na nakita ang taon kung kailan ito itinakda.",
+     "original": "市の花は「あじさい」（ゆきのした科）です。\n市の木は「むく」（にれ科）です。\n市の鳥は、調べた資料には載っていません。\n定めた年は、見つけた公式資料には書かれていません。",
+     "back": "市の花は「あじさい」（ゆきのした科）です。市の木は「むく」（にれ科）です。市の鳥は、調べた資料には載っていません。定めた年は、見つけた公式資料には書かれていません。",
+     "source": {
+      "title": "美濃加茂市統計書 令和5年度版",
+      "url": "https://www.city.minokamo.lg.jp/uploaded/attachment/15172.pdf",
+      "where": "3ページ「美濃加茂市の花」「美濃加茂市の木」"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q12",
+     "short": "Gaano kabago ang mga pagtataya",
+     "text": "Ang mapa ng inaasahang lugar na babahain ng Ilog Kiso (木曽川) ay inilabas ng pambansang pamahalaan (Ministri ng Lupa, Imprastraktura, Transportasyon at Turismo, Kiso River Upstream River Office / 国土交通省 木曽川上流河川事務所).\nNoong Disyembre 22, Heisei 28, inilabas ang pagtataya batay sa pinakamalaking inaasahang dami ng ulan.\nBinago ito noong Abril 24, Reiwa 2.\nAyon sa datos ng prefecture, ito ang lalim sa mga mapa ng Ilog Kiso (木曽川) at Ilog Kamo (加茂川) na nasa hazard map ng lungsod:\n・Sa paligid ng shopping street sa harap ng south exit ng Minokamo-Ota Station (美濃加茂太田駅南口): 0.5〜5 m sa planadong lawak ng pagbaha, at 10〜20 m pataas sa pinakamalaking inaasahang lawak.\n・Sa lugar ng Ilog Kamo (加茂川): 3〜10 m.\nWala kaming nakitang pagtataya tungkol sa tsunami o kung gaano katagal bago dumating ang tsunami sa opisyal na mga materyales ng lungsod.\nHindi namin makumpirma kung naayos na ang mapa ng lungsod ayon sa pagbabagong ginawa ng pambansang pamahalaan noong Reiwa 2.",
+     "original": "木曽川の洪水浸水想定区域図は、国（国土交通省 木曽川上流河川事務所）が出したものです。\n平成28年12月22日に、想定最大規模の降雨による想定を公表しました。\n令和2年4月24日に変更しています。\n市のハザードマップに載っている木曽川と加茂川の区域図の深さは、県の資料によると次のとおりです。\n・美濃加茂太田駅南口の駅前商店街のあたりは、計画規模で0.5〜5m、最大規模で10〜20m以上です。\n・加茂川の区域は3〜10mです。\n津波の想定や、津波が来るまでの時間は、市の公式資料では見つかりませんでした。\n市のマップが国の令和2年の変更に合わせて直されているかは、確認できませんでした。",
+     "back": "木曽川の洪水浸水想定区域図は、国（国土交通省 木曽川上流河川事務所）が出したものです。平成28年12月22日に、想定最大規模の降雨による想定を公表しました。令和2年4月24日に変更しています。市のハザードマップに載っている木曽川と加茂川の区域図の深さは、県の資料によると次のとおりです。・美濃加茂太田駅南口の駅前商店街のあたりは、計画規模で0.5〜5m、最大規模で10〜20m以上です。・加茂川の区域は3〜10mです。津波の想定や、津波が来るまでの時間は、市の公式資料では見つかりませんでした。市のマップが国の令和2年の変更に合わせて直されているかは、確認できませんでした。",
+     "source": {
+      "title": "木曽川水系洪水浸水想定区域図（木曽川上流河川事務所）",
+      "url": "https://www.cbr.mlit.go.jp/kisojyo/shinsuisoutei/index.html",
+      "where": "ページ冒頭の変更・公表のお知らせ"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q13",
+     "short": "Mga balita sa bayan",
+     "text": "Magkakaroon ng \"Moshibana Game Experience Session (もしバナゲーム体験会)\" kung saan pag-iisipan kung ano ang mahalaga sa katapusan ng buhay.\nMagkakaroon ng pagpapalabas ng pelikula para ipakilala ang \"home medical care (在宅医療)\".\nMay mga paghihigpit sa trapiko dahil sa ika-21 Minokamo Half Marathon (みのかもハーフマラソン大会).",
+     "original": "人生の最期に大切にしたいことを考える「もしバナゲーム体験会」を開きます。\n「在宅医療」普及啓発の映画上映会を開きます。\n第21回みのかもハーフマラソン大会に伴い交通規制があります。",
+     "back": "人生の最期に大切にしたいことを考える「もしバナゲーム体験会」を開きます。「在宅医療」普及啓発の映画上映会を開きます。第21回みのかもハーフマラソン大会に伴い交通規制があります。",
+     "source": {
+      "title": "美濃加茂市公式ホームページ トップページ",
+      "url": "https://www.city.minokamo.gifu.jp/",
+      "where": "新着情報・トピックス"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q15",
+     "short": "Mga lugar na matatawagan kapag may problema",
+     "text": "【City Hall, pangunahing numero】0574-25-2111.\nSa main building at annex building, ang oras ng pagtanggap ay Lunes hanggang Biyernes, 8:45〜16:45.\nSarado tuwing Sabado, Linggo, pambansang holiday, at mula Disyembre 29 hanggang Enero 3.\n\n【Konsultasyon para sa mga mamimili】Ito ang Wide-Area Consumer Affairs Consultation Office (広域消費生活相談室), sa ika-2 palapag ng West Building ng City Hall (市役所西館).\nTumawag sa 0574-25-2111 (extension 462) o sa Consumer Hotline 188.\nAng oras ng pagtanggap ay Lunes hanggang Biyernes, 8:45〜16:45 (maliban sa mga holiday at katapusan/simula ng taon).\n\n【Konsultasyon ng prefecture para sa mga mamimili】Ang Prefectural Citizens' Life Consultation Center (県民生活相談センター) ay 058-277-1003.\nLunes hanggang Biyernes 8:30〜17:00, Sabado 9:00〜17:00 (telepono lamang).\n\n【Mga numerong matatawagan sa gabi at holiday, at mga konsultasyon para sa bata, matatanda, at DV】Hindi namin ito nakumpirma sa pagkakataong ito.",
+     "original": "【市役所代表】0574-25-2111。\n本庁舎・分庁舎とも、受付は平日8時45分～16時45分です。\n土日祝日と12月29日～1月3日は閉庁です。\n\n【消費生活相談】広域消費生活相談室（市役所西館2階）です。\n電話は0574-25-2111（内線462）か、消費者ホットライン188です。\n受付は平日8時45分～16時45分です（祝日・年末年始を除く）。\n\n【県の消費生活相談】県民生活相談センターは058-277-1003です。\n平日8時30分～17時、土曜9時～17時（電話のみ）です。\n\n【夜間・休日の連絡先、子ども・高齢者・DVの相談窓口】今回は確認できませんでした。",
+     "back": "【市役所代表】0574-25-2111。本庁舎・分庁舎とも、受付は平日8時45分～16時45分です。土日祝日と12月29日～1月3日は閉庁です。【消費生活相談】広域消費生活相談室（市役所西館2階）です。電話は0574-25-2111（内線462）か、消費者ホットライン188です。受付は平日8時45分～16時45分です（祝日・年末年始を除く）。【県の消費生活相談】県民生活相談センターは058-277-1003です。平日8時30分～17時、土曜9時～17時（電話のみ）です。【夜間・休日の連絡先、子ども・高齢者・DVの相談窓口】今回は確認できませんでした。",
+     "source": {
+      "title": "広域消費生活相談室のご案内",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/12/1631.html",
+      "where": "受付時間・電話"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q16",
+     "short": "Medikal na tulong sa gabi at holiday",
+     "text": "Kapag biglang nagkasakit sa holiday (Linggo, pambansang holiday, katapusan/simula ng taon), may holiday emergency clinic (休日急患診療) na ginagawa ng mga doktor na naka-duty ayon sa turnong nasa bahay lang sila.\nAng oras ng pagtanggap ay 9:00 n.u. hanggang 4:30 n.h.\nPara sa dentista, 9:00 n.u. hanggang 1:00 n.h.\nNagpapalit-palit ang doktor na naka-duty bawat araw. Tingnan ang iskedyul ng duty sa Kamo Medical Association (加茂医師会).\nMayroong libreng telepono para sa konsultasyon, para lamang sa mga residente ng lungsod, bukas 24 oras, 365 araw: \"Minokamo Health Hotline (みのかも健康ほっとダイヤル)\". Ang numero ay 0120-238-007.\nKapag biglang nagkasakit ang bata, tumawag sa telepono ng prefecture para sa konsultasyong medikal ng bata, #8000. Kung hindi makakonekta, tumawag sa 058-240-4199.\nAng oras ng pagtanggap: Lunes hanggang Biyernes 18:00 hanggang 8:00 ng susunod na umaga; Sabado, holiday, at katapusan/simula ng taon 8:00 hanggang 8:00 ng susunod na umaga.\nAng 058-240-4199 ay magiging 058-216-0999 simula 18:00 ng Nobyembre 2, Reiwa 8.\nHindi nakita sa opisyal na mga materyales ang mga numero ng telepono ng night emergency clinic (夜間急病診療所) at ng holiday emergency clinic (休日急患診療所).",
+     "original": "休日（日曜・祝日・年末年始）の急病は、在宅当番制の休日急患診療です。\n受付は午前9時から午後4時30分までです。\n歯科は午前9時から午後1時までです。\n当番医は日ごとに替わります。加茂医師会の当番表で確認してください。\n24時間365日、市民専用の無料電話相談「みのかも健康ほっとダイヤル」があります。電話は 0120-238-007 です。\n子どもの急病は、県の子ども医療電話相談 #8000 です。つながらないときは 058-240-4199 にかけます。\n受付は月〜金が18時〜翌朝8時、土・休日・年末年始は8時〜翌朝8時です。\n058-240-4199 は令和8年11月2日18時から 058-216-0999 に変わります。\n夜間急病診療所と、休日急患診療所の電話番号は、公式資料では見つかりませんでした。",
+     "back": "休日（日曜・祝日・年末年始）の急病は、在宅当番制の休日急患診療です。受付は午前9時から午後4時30分までです。歯科は午前9時から午後1時までです。当番医は日ごとに替わります。加茂医師会の当番表で確認してください。24時間365日、市民専用の無料電話相談「みのかも健康ほっとダイヤル」があります。電話は 0120-238-007 です。子どもの急病は、県の子ども医療電話相談 #8000 です。つながらないときは 058-240-4199 にかけます。受付は月〜金が18時〜翌朝8時、土・休日・年末年始は8時〜翌朝8時です。058-240-4199 は令和8年11月2日18時から 058-216-0999 に変わります。夜間急病診療所と、休日急患診療所の電話番号は、公式資料では見つかりませんでした。",
+     "source": {
+      "title": "日曜、祝日等の急な病気やケガの際に（美濃加茂市）",
+      "url": "https://www.city.minokamo.gifu.jp/shimin/contents.cfm?base_id=4068&mi_id=3&g1_id=12&g2_id=52",
+      "where": "休日急患診療当番"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q17",
+     "short": "Mga tanggapan sa pagpapalaki ng anak at mga tulong-pinansyal",
+     "text": "【Tanggapan para sa konsultasyon】\nTumatanggap ng konsultasyon tungkol sa pagbubuntis, panganganak, at pagpapalaki ng anak ang \"Minokamo Children and Family Center (みのかもこども家庭センター)\".\nMatatagpuan ito sa ika-2 palapag ng \"Minokamo Health Plaza (みのかも健康プラザ)\", Kenko-no-machi 1-chome 2-banchi, Minokamo City, Gifu Prefecture (岐阜県美濃加茂市健康のまち一丁目2番地).\nBukas ito Lunes hanggang Biyernes, 8:45 n.u. hanggang 4:45 n.h. Sarado tuwing katapusan/simula ng taon at pambansang holiday.\nPara sa konsultasyon tungkol sa mga batang wala pang 18 taong gulang at sa pagpapalaki ng anak, tumawag sa Children and Family Center sa 0574-25-1110.\nPara sa konsultasyon tungkol sa kalusugan mula sa panahon ng pagbubuntis hanggang sa edad ng maliit na bata, ang numero ay 0574-25-4145 (Maternal and Child Health Section, Health Division / 健康課母子保健係).\nLibre ang konsultasyon. Maaari ring pumunta nang walang reserbasyon, pero maaaring maghintay.\n\n【Tulong sa gastusing medikal ng bata】\nMayroong sistema ng tulong sa gastusing medikal (福祉医療費助成, para sa mga bata).\nHanggang makapagtapos ng junior high school (hanggang Marso 31 pagkatapos ng ika-15 kaarawan), may tulong para sa pagpapaospital at pagpapa-konsulta sa outpatient.\nSa edad ng high school (hanggang Marso 31 pagkatapos ng ika-18 kaarawan), pagpapaospital lang ang may tulong.\nTinutulungan ang bahagi ng gastos na sariling babayaran sa insured na pagpapagamot.\nSa mga medikal na institusyon sa loob ng Gifu Prefecture, libre ang sariling bayad kapag ipinakita ang sertipiko ng benepisyaryo (受給者証).\nWalang ibinibigay na sertipiko ng benepisyaryo sa edad ng high school.\n\n【Child allowance (児童手当) at iba pang allowance】\nHindi ito nakumpirma sa opisyal na pahina ng lungsod sa pagkakataong ito. Mangyaring magtanong sa City Hall (0574-25-2111).",
+     "original": "【相談の窓口】\n「みのかもこども家庭センター」が、妊娠・出産・子育ての相談を受けています。\n場所は、岐阜県美濃加茂市健康のまち一丁目2番地の「みのかも健康プラザ」2階です。\n開所は月〜金の午前8時45分〜午後4時45分です。年末年始と祝日は休みです。\n18歳未満の子ども・子育ての相談は、こども家庭センターの電話 0574-25-1110 へどうぞ。\n妊娠期から幼児期の健康の相談は、健康課母子保健係の電話 0574-25-4145 です。\n相談は無料です。予約なしで行くこともできますが、待つことがあります。\n\n【子どもの医療費の助成】\n福祉医療費助成（子ども）の制度があります。\n中学校を卒業するまで（15歳になった後の最初の3月31日まで）は、入院も通院も助成されます。\n高校生年代（18歳になった後の最初の3月31日まで）は、入院だけが助成されます。\n保険診療の自己負担額が助成されます。\n岐阜県内の医療機関では、受給者証を見せると自己負担が無料になります。\n高校生年代には受給者証は出ません。\n\n【児童手当などの手当】\n今回は市の公式ページで確認できませんでした。市役所（0574-25-2111）にお問い合わせください。",
+     "back": "【相談の窓口】「みのかもこども家庭センター」が、妊娠・出産・子育ての相談を受けています。場所は、岐阜県美濃加茂市健康のまち一丁目2番地の「みのかも健康プラザ」2階です。開所は月〜金の午前8時45分〜午後4時45分です。年末年始と祝日は休みです。18歳未満の子ども・子育ての相談は、こども家庭センターの電話 0574-25-1110 へどうぞ。妊娠期から幼児期の健康の相談は、健康課母子保健係の電話 0574-25-4145 です。相談は無料です。予約なしで行くこともできますが、待つことがあります。【子どもの医療費の助成】福祉医療費助成（子ども）の制度があります。中学校を卒業するまで（15歳になった後の最初の3月31日まで）は、入院も通院も助成されます。高校生年代（18歳になった後の最初の3月31日まで）は、入院だけが助成されます。保険診療の自己負担額が助成されます。岐阜県内の医療機関では、受給者証を見せると自己負担が無料になります。高校生年代には受給者証は出ません。【児童手当などの手当】今回は市の公式ページで確認できませんでした。市役所（0574-25-2111）にお問い合わせください。",
+     "source": {
+      "title": "みのかもこども家庭センター - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/7/11916.html",
+      "where": "児童福祉の相談窓口／場所と開所時間"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q18",
+     "short": "Tanggapan para sa konsultasyon tungkol sa pangangalaga sa matatanda",
+     "text": "Ang pangkalahatang tanggapan para sa konsultasyon ng mga matatanda ay ang \"Longevity Support Center (長寿支援センター)\" (Community Comprehensive Support Center / 地域包括支援センター). Mayroong 3 sa loob ng lungsod.\nWestern Longevity Support Center (西部長寿支援センター): para sa mga school district ng Ota Elementary School (太田小) at Kamono Elementary School (加茂野小). Telepono 0574-24-7007.\nCentral Longevity Support Center (中部長寿支援センター): para sa mga school district ng Yamate Elementary School (山手小), Yamanoue Elementary School (山之上小), Hachiya Elementary School (蜂屋小), Ibuka Elementary School (伊深小), at Miwa Elementary School (三和小). Telepono 0574-49-8591.\nEastern Longevity Support Center (東部長寿支援センター): para sa mga school district ng Furui Elementary School (古井小) at Shimoyoneda Elementary School (下米田小). Telepono 0574-50-1777.",
+     "original": "高齢者の総合相談窓口は「長寿支援センター」（地域包括支援センター）です。市内に3か所あります。\n西部長寿支援センター：太田小・加茂野小校区。電話 0574-24-7007。\n中部長寿支援センター：山手小・山之上小・蜂屋小・伊深小・三和小校区。電話 0574-49-8591。\n東部長寿支援センター：古井小・下米田小校区。電話 0574-50-1777。",
+     "back": "高齢者の総合相談窓口は「長寿支援センター」（地域包括支援センター）です。市内に3か所あります。西部長寿支援センター：太田小・加茂野小校区。電話 0574-24-7007。中部長寿支援センター：山手小・山之上小・蜂屋小・伊深小・三和小校区。電話 0574-49-8591。東部長寿支援センター：古井小・下米田小校区。電話 0574-50-1777。",
+     "source": {
+      "title": "「長寿支援センター」は、高齢者の「総合相談窓口」です！",
+      "url": "https://www.city.minokamo.gifu.jp/shimin/contents.cfm?base_id=7534&mi_id=3&g1_id=12&g2_id=48",
+      "where": "長寿支援センターの名称及び担当区域・連絡先"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q04",
+     "short": "Mga abiso kapag may sakuna",
+     "text": "Maaaring tumanggap ng abiso tungkol sa sakuna sa 3 paraang ito:\n①Email na \"Sugu Mail Minokamo (すぐメールみのかも)\": Ipapadala sa email ang laman ng broadcast ng disaster prevention administrative radio.\nPara magparehistro, magpadala ng blangkong email sa t-minokamo@sg-p.jp. Basahin ang email na sagot na may gabay at magparehistro.\n②Disaster prevention app na \"Minokamo City Disaster Prevention (美濃加茂市防災)\": Makikita ang emergency information, impormasyon sa evacuation shelter, at laman ng broadcast ng disaster prevention administrative radio.\nI-install ito sa pamamagitan ng paghahanap ng \"美濃加茂市防災\" sa App Store o Google Play.\n③Emergency alert mail (緊急速報メール, Area Mail / エリアメール): Dumarating ito sa mga cellphone ng docomo, au, at SoftBank. Hindi kailangan ng naunang pag-apply, at libre ito.\nDepende sa modelo ng telepono, maaaring kailanganin ang pag-set up ng pagtanggap.",
+     "original": "災害の知らせは、次の3つで受け取れます。\n①メール「すぐメールみのかも」：防災行政無線の放送内容がメールで届きます。\n登録は t-minokamo@sg-p.jp に空メールを送ります。折り返しの案内メールを読んで登録します。\n②防災アプリ「美濃加茂市防災」：緊急情報、避難所情報、防災行政無線の放送内容を見られます。\nApp Store か Google Play で「美濃加茂市防災」と検索して入れます。\n③緊急速報メール（エリアメール）：ドコモ・au・ソフトバンクの携帯に届きます。事前の申し込みは要らず、無料です。\n機種によっては受信設定が必要です。",
+     "back": "災害の知らせは、次の3つで受け取れます。①メール「すぐメールみのかも」：防災行政無線の放送内容がメールで届きます。登録は t-minokamo@sg-p.jp に空メールを送ります。折り返しの案内メールを読んで登録します。②防災アプリ「美濃加茂市防災」：緊急情報、避難所情報、防災行政無線の放送内容を見られます。App Store か Google Play で「美濃加茂市防災」と検索して入れます。③緊急速報メール（エリアメール）：ドコモ・au・ソフトバンクの携帯に届きます。事前の申し込みは要らず、無料です。機種によっては受信設定が必要です。",
+     "source": {
+      "title": "「広報みのかも」の放送が良く聞こえない、聞き取りづらいのですが？ - 防災ページ",
+      "url": "https://www.city.minokamo.lg.jp/site/bousai/2340.html",
+      "where": "本文"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q09",
+     "short": "Pinagmulan ng bayan",
+     "text": "Ang Minokamo City (美濃加茂市) ay itinatag noong Abril 1, Showa 29 (1954).\nAng sentro nito ay ang Ota Town (太田町) at Furui Town (古井町) sa Kamo District (加茂郡).\nSumanib dito ang Yamanoue Village (山之上村), Hachiya Village (蜂屋村), Kamono Village (加茂野村), at Ibuka Village (伊深村).\nNapasama rin ang Kawaura area (川浦地区) at Tsuzuya area (廿屋地区) ng Miwa Village (三和村).\nSumali rin ang Shimoyoneda Village (下米田村) at ang Makino area (牧野地区) ng Wachi Village (和知村).",
+     "original": "美濃加茂市は、昭和29年（1954年）4月1日に生まれました。\n加茂郡の太田町と古井町が中心です。\nそこに山之上村、蜂屋村、加茂野村、伊深村が合わさりました。\n三和村の川浦地区と廿屋地区も入りました。\n下米田村と、和知村の牧野地区も加わりました。",
+     "back": "美濃加茂市は、昭和29年（1954年）4月1日に生まれました。加茂郡の太田町と古井町が中心です。そこに山之上村、蜂屋村、加茂野村、伊深村が合わさりました。三和村の川浦地区と廿屋地区も入りました。下米田村と、和知村の牧野地区も加わりました。",
+     "source": {
+      "title": "美濃加茂市 市制施行70周年",
+      "url": "https://www.city.minokamo.lg.jp/site/70th-anniversary/",
+      "where": "■美濃加茂市の軌跡 美濃加茂市の誕生"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q08",
+     "short": "Gabay para sa mga dayuhan",
+     "text": "Ang City Hall (市役所) ay may \"One-Stop Consultation Counter para sa mga Dayuhan\" (外国人ワンストップ相談窓口).\nMatatagpuan ito sa 1st floor ng Main Building ng City Hall (市役所本館1階). Ang telepono ay 0574-25-2111 (extension 364 at 366).\nSa pahinang nasa madaling Nihongo na \"Mga Maaaring Konsultahin sa City Hall (市役所で相談できること)\", makikita ang mga lugar na mapagkokonsultahan at ang mga numero ng telepono.\nMayroon ding pahina sa Ingles (English) at mga edisyon ng newsletter ng lungsod sa mga banyagang wika.\nNakasulat sa pahina sa Ingles na ang mga wikang sinusuportahan ay madaling Nihongo, Ingles, Portuges, at Tagalog.\nAng impormasyon sa pakikipag-ugnayan sa Multicultural Co-creation Division (多文化共創課) (1st floor ng Noritake Building (則竹ビル), 0574-42-6262) ay nasa ibang pahina.",
+     "original": "市役所（しやくしょ）には「外国人ワンストップ相談窓口」があります。\n場所は市役所本館1階です。電話は0574-25-2111（内線364・366）です。\nやさしい日本語のページ「市役所（しやくしょ）で相談（そうだん）できること」で、相談できる場所と電話が見られます。\n英語のページ（English）と、外国語版の広報紙もあります。\n英語ページには、対応言語はやさしい日本語・英語・ポルトガル語・タガログ語と書かれています。\n多文化共創課（則竹ビル1階、0574-42-6262）の連絡先は、別のページに載っています。",
+     "back": "市役所（しやくしょ）には「外国人ワンストップ相談窓口」があります。場所は市役所本館1階です。電話は0574-25-2111（内線364・366）です。やさしい日本語のページ「市役所（しやくしょ）で相談（そうだん）できること」で、相談できる場所と電話が見られます。英語のページ（English）と、外国語版の広報紙もあります。英語ページには、対応言語はやさしい日本語・英語・ポルトガル語・タガログ語と書かれています。多文化共創課（則竹ビル1階、0574-42-6262）の連絡先は、別のページに載っています。",
+     "source": {
+      "title": "市役所（しやくしょ）で相談（そうだん）できること - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/37/20430.html",
+      "where": "本文（外国人ワンストップ相談窓口の説明と表）"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q52",
+     "short": "Impormasyon sa pag-iwas sa sakuna sa iba't ibang wika",
+     "text": "Mayroong gabay sa pag-iwas sa sakuna sa wikang Portuges.\nMabubuksan ito mula sa button sa itaas ng pahinang \"Gabay sa Pag-iwas sa Sakuna (防災ガイド)\" ng lungsod (nasa Nihongo).\nSa pahina sa Portuges, may paliwanag tungkol sa mapa ng pag-iwas sa sakuna (防災マップ).\nKonektado rin ito sa mga pahina ng mga aytem 1 hanggang 4.\nAyon sa pahina, ang mapagtatanungan ay ang tanggapan ng kaligtasan at pag-iwas sa sakuna ng City Hall (市役所) (telepono 0574-25-2111, extension 272).\nSa pahina ng pag-iwas sa sakuna sa opisyal na website ng lungsod, may link na \"Translation\" (pagsasalin) at link na \"Yasashii Nihongo\" (madaling Nihongo).\nAng madaling Nihongo ay paraan ng pagtingin sa site na kino-convert gamit ang panlabas na serbisyo (tsutaeru.cloud).\nHindi namin natiyak sa pagkakataong ito kung may bersyon sa banyagang wika o sa madaling Nihongo ang disaster prevention app, ang email notification, at ang gabay sa mga evacuation center.\nAng mga PDF ng hazard map (pagguho ng lupa at baha, at lindol) ay bersyon lang sa Nihongo ang natagpuan.",
+     "original": "ポルトガル語の防災ガイドがあります。\n市の「防災ガイド」ページ（日本語）の上のボタンから開けます。\nポルトガル語のページには、防災マップの案内があります。\nそのほか、1〜4の項目ページにもつながっています。\n問い合わせ先は、市役所の安全・防災の担当（電話 0574-25-2111、内線272）と書かれています。\n市の公式サイトの防災ページには、「Translation」（翻訳）のリンクと、「やさしい日本語」のリンクがあります。\nやさしい日本語は、外部のサービス（tsutaeru.cloud）でサイトを変換して見る形です。\n防災アプリ、メール配信、避難所案内の外国語版・やさしい日本語版があるかは、今回は確認できませんでした。\nハザードマップのPDF（土砂災害・水害、地震災害）は日本語版だけが見つかりました。",
+     "back": "ポルトガル語の防災ガイドがあります。市の「防災ガイド」ページ（日本語）の上のボタンから開けます。ポルトガル語のページには、防災マップの案内があります。そのほか、1〜4の項目ページにもつながっています。問い合わせ先は、市役所の安全・防災の担当（電話 0574-25-2111、内線272）と書かれています。市の公式サイトの防災ページには、「Translation」（翻訳）のリンクと、「やさしい日本語」のリンクがあります。やさしい日本語は、外部のサービス（tsutaeru.cloud）でサイトを変換して見る形です。防災アプリ、メール配信、避難所案内の外国語版・やさしい日本語版があるかは、今回は確認できませんでした。ハザードマップのPDF（土砂災害・水害、地震災害）は日本語版だけが見つかりました。",
+     "source": {
+      "title": "Dia de Prevenção de Desastres da Cidade de Minokamo（美濃加茂市防災ガイド ポルトガル語版）",
+      "url": "https://www.city.minokamo.gifu.jp/bousai/guide/port/index.htm",
+      "where": "ポルトガル語版トップページ"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q53",
+     "short": "Mga klase sa Nihongo at gabay sa pag-enroll sa paaralan",
+     "text": "【Paano pumasok ang bata sa paaralan】\nMakikita ito sa pahina ng lungsod na \"Tungkol sa Pag-enroll ng mga Batang Dayuhang Mag-aaral (外国人児童生徒の就学について)\".\nWalang obligasyon ang mga dayuhan na pumasok sa paaralan. Kung nais, maaaring pumasok sa elementarya at junior high school.\nAng paaralang papasukan ay batay sa address sa residence certificate (住民票). Libre ang tuition at ang bayad sa mga textbook.\nPara sa proseso, dalhin ang residence card (在留カード) at pasaporte (ng magulang at ng bata) at pumunta sa Board of Education (教育委員会). Pagkatapos, gawin ang proseso sa paaralang papasukan.\nNasa parehong pahina rin ang application form sa pag-enroll at ang leaflet na gabay sa wikang Portuges at Ingles.\nMga katanungan: Board of Education (教育委員会) School Education Division (学校教育課) 0574-25-2111 (extension 342)\n\n【Para sa batang unang beses mag-aaral ng Nihongo】\nMayroong \"Nozomi Class (のぞみ教室)\". Matatagpuan ito sa loob ng Furui Elementary School (古井小学校).\nLunes hanggang Biyernes, 8:30 AM hanggang 4:30 PM. May bayad sa school lunch.\n\n【Tulong sa pag-aaral pagkatapos ng klase na \"MIRAI\" (para sa mga batang elementarya at junior high school na may dayuhang nasyonalidad)】\nOta area (太田地区): Miyerkules at Biyernes. Elementarya 18:30–20:00, junior high school 18:30–20:30. Lifelong Learning Center (生涯学習センター) (太田町3425-1).\nFurui area (古井地区): Martes at Huwebes. Elementarya 16:30–18:00 sa East Library (東図書館) (本郷町9-2-22). Junior high school 18:30–20:30 sa Kamifurui Community Center (上古井交流センター) (本郷町8-8-48).\nPag-apply at mga katanungan: Minokamo International Association (美濃加茂国際交流協会) 0574-28-3822\n\n【Klase sa Nihongo para sa mga nasa hustong gulang】\nSa Multicultural Co-creation Division (多文化共創課) ng lungsod, may pahinang \"May mga klase sa Nihongo para sa mga dayuhang residente (外国人市民への日本語教室があります)\" (na-update noong 2025年3月13日). Hindi pa namin natitiyak ang mga detalye ng petsa at oras, lugar, at pag-aapplayan.\nAng mapagtatanungan ay ang Multicultural Co-creation Division (多文化共創課) 0574-42-6262 (1st floor ng Noritake Building (則竹ビル), 太田町1752-1).",
+     "original": "【子どもの学校への入り方】\n市の「外国人児童生徒の就学について」のページで見られます。\n外国人は就学の義務はありません。希望すれば小・中学校に入れます。\n入る学校は住民票の住所で決まります。授業料と教科書代は無料です。\n手続きは、在留カードとパスポート（保護者と本人）を持って教育委員会へ行きます。そのあと、入る学校で手続きをします。\nポルトガル語・英語の就学願いと案内リーフレットも、同じページにあります。\n問い合わせ：教育委員会 学校教育課 0574-25-2111（内線342）\n\n【日本語を初めて学ぶ子】\n「のぞみ教室」があります。場所は古井小学校内です。\n月〜金の午前8時30分〜午後4時30分です。給食費がかかります。\n\n【放課後の学習支援「MIRAI」（外国籍の小中学生）】\n太田地区：水・金曜。小学生18:30〜20:00、中学生18:30〜20:30。生涯学習センター（太田町3425-1）。\n古井地区：火・木曜。小学生16:30〜18:00は東図書館（本郷町9-2-22）。中学生18:30〜20:30は上古井交流センター（本郷町8-8-48）。\n申し込み・問い合わせ：美濃加茂国際交流協会 0574-28-3822\n\n【大人の日本語教室】\n市の多文化共創課に「外国人市民への日本語教室があります」というページ（2025年3月13日更新）があります。日時・場所・申込先の詳細は確認できていません。\n問い合わせ先は多文化共創課 0574-42-6262（太田町1752-1 則竹ビル1階）です。",
+     "back": "【子どもの学校への入り方】市の「外国人児童生徒の就学について」のページで見られます。外国人は就学の義務はありません。希望すれば小・中学校に入れます。入る学校は住民票の住所で決まります。授業料と教科書代は無料です。手続きは、在留カードとパスポート（保護者と本人）を持って教育委員会へ行きます。そのあと、入る学校で手続きをします。ポルトガル語・英語の就学願いと案内リーフレットも、同じページにあります。問い合わせ：教育委員会 学校教育課 0574-25-2111（内線342）【日本語を初めて学ぶ子】「のぞみ教室」があります。場所は古井小学校内です。月〜金の午前8時30分〜午後4時30分です。給食費がかかります。【放課後の学習支援「MIRAI」（外国籍の小中学生）】太田地区：水・金曜。小学生18:30〜20:00、中学生18:30〜20:30。生涯学習センター（太田町3425-1）。古井地区：火・木曜。小学生16:30〜18:00は東図書館（本郷町9-2-22）。中学生18:30〜20:30は上古井交流センター（本郷町8-8-48）。申し込み・問い合わせ：美濃加茂国際交流協会 0574-28-3822【大人の日本語教室】市の多文化共創課に「外国人市民への日本語教室があります」というページ（2025年3月13日更新）があります。日時・場所・申込先の詳細は確認できていません。問い合わせ先は多文化共創課 0574-42-6262（太田町1752-1 則竹ビル1階）です。",
+     "source": {
+      "title": "外国籍の小中学生への学習支援について",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/37/10413.html",
+      "where": "MIRAIの概要（日時・場所・問い合わせ先）"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q54",
+     "short": "Pag-apply sa nursery at after-school childcare",
+     "text": "【Nursery school (保育園) at certified center for early childhood education and care (認定こども園)】\nAng pag-aapplayan ay ang counter ng Children's Future Division (こども未来課) o online application.\nWalang pagtanggap sa bawat paaralan at walang pag-apply sa pamamagitan ng koreo.\nAng pag-apply para sa pagpasok sa Abril ng 令和9年 ay may tatlong yugto.\nUnang yugto: online mula 令和8年11月1日 hanggang 20日, counter mula 11月2日 hanggang 30日.\nIkalawang yugto: online mula 令和8年12月1日 hanggang 令和9年2月3日, counter mula 12月1日 hanggang 令和9年2月10日.\nIkatlong yugto: online mula 令和9年2月11日 hanggang 3月3日, counter mula 2月12日 hanggang 3月10日.\n【After-school childcare (学童保育)】\nPara ito sa Grade 1 hanggang Grade 6.\nMag-apply sa pamamagitan ng online application o sa counter ng Children's Future Division (こども未来課).\nHindi ito tinatanggap sa mga elementary school at sa mga liaison office (連絡所).\nPara sa 令和8年度, tapos na ang pagtanggap para sa Abril. Patuloy pa rin ang pagtanggap pagkatapos nito anumang oras, ngunit kapag lumampas sa kapasidad, mapupunta sa waiting list.\nWalang natagpuang gabay sa after-school childcare para sa 令和9年度.\n【Telepono】\nAng Children's Future Division (こども未来課) (2nd floor ng Minokamo Health Plaza (みのかも健康プラザ)) ay 0574-25-2111 (extension 387).\n【Mga banyagang wika】\nAng mga dokumento sa pagpasok sa nursery ay may bersyon sa Portuges, Tagalog, at Ingles.\nAng mga gabay sa pag-recruit at application form ng after-school childcare ay may bersyon sa Ingles at Portuges.\nSa opisyal na website, may link sa pahina ng pagsasalin at sa display ng \"Yasashii Nihongo\" (madaling Nihongo).",
+     "original": "【保育園・認定こども園】\n申込み先は、こども未来課の窓口か、オンライン申請です。\n各園での受付と郵送での申込みはありません。\n令和9年4月入園の申込みは三段階です。\n第一次は、オンラインが令和8年11月1日〜20日、窓口が11月2日〜30日です。\n第二次は、オンラインが令和8年12月1日〜令和9年2月3日、窓口が12月1日〜令和9年2月10日です。\n第三次は、オンラインが令和9年2月11日〜3月3日、窓口が2月12日〜3月10日です。\n【学童保育】\n対象は1年生から6年生です。\nオンライン申請か、こども未来課の窓口で申し込みます。\n小学校と連絡所では受け付けていません。\n令和8年度は4月分の受付が終わっています。その後も随時受け付けますが、定員を超えると待機になります。\n令和9年度の学童の案内は見つかりませんでした。\n【電話】\nこども未来課（みのかも健康プラザ2階）は 0574-25-2111（内線387）です。\n【外国語】\n入園書類には、ポルトガル語・タガログ語・英語版があります。\n学童の募集要項や申請書は、英語とポルトガル語版があります。\n公式サイトに、翻訳ページと「やさしい日本語」表示へのリンクがあります。",
+     "back": "",
+     "source": {
+      "title": "令和9年度4月 保育園・こども園・小規模保育所等の入園について",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/8/13155.html",
+      "where": "4月入園の申込期間／申込み手続きについて／申請方法／お問い合わせ先"
+     },
+     "status": "ok",
+     "problems": [
+      "確かめ役の答えが読めなかった"
+     ],
+     "ledgerId": "r00295"
+    }
+   ]
+  },
+  "vi": {
+   "name": "Tiếng Việt",
+   "ja": "ベトナム語",
+   "items": [
+    {
+     "qid": "Q01",
+     "short": "Danh sách nơi lánh nạn (避難場所の一覧)",
+     "text": "Trên trang web chính thức của thành phố, trang \"Tình hình dự trữ vật phẩm và danh sách nhà lánh nạn chỉ định, nơi lánh nạn khẩn cấp chỉ định của thành phố Minokamo (美濃加茂市の指定避難所・指定緊急避難場所および備蓄状況)\" có tệp PDF danh sách.\nNơi lánh nạn khẩn cấp chỉ định có tổng cộng 57 địa điểm.\nTrong đó, 40 địa điểm là cơ sở đồng thời là nhà lánh nạn chỉ định, và 17 địa điểm chỉ là nơi lánh nạn khẩn cấp như công viên, sân bãi.\nBạn cũng có thể xem trong bản đồ cảnh báo thiên tai (ハザードマップ) bản web và bản sách nhỏ.",
+     "original": "市公式サイトの「美濃加茂市の指定避難所・指定緊急避難場所および備蓄状況」ページに、一覧のPDFがあります。\n指定緊急避難場所は全部で57か所です。\n内訳は、指定避難所と兼ねる施設が40か所、緊急避難場所だけの公園・グラウンドなどが17か所です。\nweb版・冊子版のハザードマップでも見られます。",
+     "back": "市公式サイトの「美濃加茂市の指定避難所・指定緊急避難場所および備蓄状況」ページに、一覧のPDFがあります。指定緊急避難場所は全部で57か所です。内訳は、指定避難所と兼ねる施設が40か所、緊急避難場所だけの公園・グラウンドなどが17か所です。web版・冊子版のハザードマップでも見られます。",
+     "source": {
+      "title": "美濃加茂市の指定避難所・指定緊急避難場所および備蓄状況（一覧PDFへのリンク）",
+      "url": "https://www.city.minokamo.lg.jp/site/bousai/2343.html",
+      "where": "「市の指定避難所・指定緊急避難場所」の見出し／一覧PDF（2343_25113_misc.pdf）"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q02",
+     "short": "Bản đồ cảnh báo thiên tai (ハザードマップ)",
+     "text": "Bạn có thể xem bản đồ cảnh báo thiên tai (ハザードマップ) trên \"Trang thông tin phòng chống thiên tai (防災情報ページ)\" của trang web chính thức của thành phố.\nCó bản web và bản sách nhỏ (PDF, khoảng 47MB).\nTrang \"Bản đồ cảnh báo thiên tai thành phố Minokamo (美濃加茂市ハザードマップ)\" của trang web cũ cũng có PDF bản đồ của thành phố và bản đồ khu vực dự kiến ngập của sông Kiso (木曽川) và sông Kamo (加茂川).\nNgày lập và ngày sửa đổi của bản đồ không được ghi trên các trang đã xem.\nKhông tìm thấy bản đồ sóng thần.",
+     "original": "ハザードマップは市公式サイトの「防災情報ページ」で見られます。\nweb版と冊子版（PDF、約47MB）があります。\n旧サイトの「美濃加茂市ハザードマップ」ページにも、市のマップと木曽川・加茂川の浸水想定区域図のPDFがあります。\nマップ本体の作成日・改訂日は、見たページには書かれていませんでした。\n津波のマップは見つかりませんでした。",
+     "back": "ハザードマップは市公式サイトの「防災情報ページ」で見られます。web版と冊子版（PDF、約47MB）があります。旧サイトの「美濃加茂市ハザードマップ」ページにも、市のマップと木曽川・加茂川の浸水想定区域図のPDFがあります。マップ本体の作成日・改訂日は、見たページには書かれていませんでした。津波のマップは見つかりませんでした。",
+     "source": {
+      "title": "美濃加茂市防災ガイド",
+      "url": "https://www.city.minokamo.gifu.jp/bousai/guide/",
+      "where": "ハザードマップ"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q03",
+     "short": "Kế hoạch phòng chống thiên tai khu vực (地域防災計画)",
+     "text": "Bạn có thể xem kế hoạch phòng chống thiên tai khu vực (地域防災計画) trên \"Trang thông tin phòng chống thiên tai (防災情報ページ)\" của trang web chính thức của thành phố.\nVới tên \"Kế hoạch phòng chống thiên tai khu vực thành phố Minokamo (美濃加茂市地域防災計画)\", có đăng PDF của phần chính và phần tài liệu.\nPhiên bản mới nhất là bản sửa đổi tháng 3 năm Reiwa 8.",
+     "original": "地域防災計画は、市公式サイトの「防災情報ページ」で見られます。\n「美濃加茂市地域防災計画」として、本編と資料編のPDFが載っています。\nいちばん新しい版は令和8年3月修正です。",
+     "back": "地域防災計画は、市公式サイトの「防災情報ページ」で見られます。「美濃加茂市地域防災計画」として、本編と資料編のPDFが載っています。いちばん新しい版は令和8年3月修正です。",
+     "source": {
+      "title": "防災情報ページ - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/site/bousai/",
+      "where": "防災情報一覧「美濃加茂市地域防災計画」"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q05",
+     "short": "Cách phân loại rác và ngày đổ rác (ごみの分け方・出す日)",
+     "text": "Bạn có thể xem ở trang \"Về cách phân loại, cách đổ rác gia đình và ngày thu gom (家庭ごみの分別と出し方、収集日について)\" trên trang web chính thức của thành phố.\nThành phố thu gom rác theo 9 nhóm, 15 loại phân loại.\nTrong mục \"Tài liệu liên quan (関連資料)\" của trang có bảng ngày thu gom rác năm tài khóa Reiwa 8 và cách phân loại, cách đổ rác (PDF tiếng Nhật).\nCũng có bản tiếng nước ngoài, như tiếng Bồ Đào Nha, tiếng Anh, tiếng Tagalog, v.v.\nGiờ đổ rác là từ 6 giờ đến 8 giờ sáng vào đúng ngày thu gom.\nChai nhựa PET, khay đựng thực phẩm và xốp thì đổ từ 8 giờ đến 10 giờ sáng.",
+     "original": "市公式サイトの「家庭ごみの分別と出し方、収集日について」のページで見られます。\n市は9区分15分別でごみを収集しています。\nページ内の「関連資料」に、令和8年度ごみ収集日一覧表・分別と出し方（日本語PDF）があります。\n外国語版もあります。ポルトガル語、英語、タガログ語などです。\n排出は収集日当日の朝6時から8時です。\nペットボトル、食品トレイ、発泡スチロールは朝8時から10時です。",
+     "back": "市公式サイトの「家庭ごみの分別と出し方、収集日について」のページで見られます。市は9区分15分別でごみを収集しています。ページ内の「関連資料」に、令和8年度ごみ収集日一覧表・分別と出し方（日本語PDF）があります。外国語版もあります。ポルトガル語、英語、タガログ語などです。排出は収集日当日の朝6時から8時です。ペットボトル、食品トレイ、発泡スチロールは朝8時から10時です。",
+     "source": {
+      "title": "家庭ごみの分別と出し方、収集日について - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/15/1744.html",
+      "where": "関連資料：令和8年度ごみ収集日一覧表・分別と出し方(日本語)"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q06",
+     "short": "Thủ tục khi chuyển nhà (引っ越しの手続き)",
+     "text": "Bạn có thể xem ở trang \"Tôi đã chuyển từ ngoài thành phố đến thành phố Minokamo. Tôi muốn biết các thủ tục thường cần khi chuyển nhà (市外から美濃加茂市へ転入しました。引っ越しの際に一般的に必要な手続きを知りたい)\" trên trang web chính thức của thành phố.\nViệc thay đổi đăng ký cư trú (khai báo chuyển đến) phải làm trong vòng 14 ngày kể từ ngày bắt đầu sống ở nơi mới.\nBảo hiểm y tế quốc dân: người tham gia làm thủ tục trong vòng 14 ngày sau khi chuyển đến.\nĐổi địa chỉ thẻ My Number, đăng ký con dấu, chuyển trường, lương hưu quốc dân, trợ cấp trẻ em, v.v. cũng được liệt kê trong cùng trang.\nCũng có trang \"Khi chuyển đến, chuyển đi (転入・転出するときは)\".",
+     "original": "市公式サイトの「市外から美濃加茂市へ転入しました。引っ越しの際に一般的に必要な手続きを知りたい」のページで見られます。\n住民票の異動（転入届）は、住み始めた日から14日以内です。\n国民健康保険は、加入する方が転入後14日以内に手続きします。\nマイナンバーカードの住所変更、印鑑登録、転校、国民年金、児童手当なども、同じページに並んでいます。\n「転入・転出するときは」のページもあります。",
+     "back": "市公式サイトの「市外から美濃加茂市へ転入しました。引っ越しの際に一般的に必要な手続きを知りたい」のページで見られます。住民票の異動（転入届）は、住み始めた日から14日以内です。国民健康保険は、加入する方が転入後14日以内に手続きします。マイナンバーカードの住所変更、印鑑登録、転校、国民年金、児童手当なども、同じページに並んでいます。「転入・転出するときは」のページもあります。",
+     "source": {
+      "title": "市外から美濃加茂市へ転入しました。引っ越しの際に一般的に必要な手続きを知りたい",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/23/2408.html",
+      "where": "本文の手続き一覧"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q07",
+     "short": "Giao thông trong thành phố (町の交通)",
+     "text": "Có xe buýt cộng đồng \"Aiai Bus (あい愛バス)\".\nXe chạy hằng ngày, trừ dịp cuối năm đầu năm (từ ngày 31 tháng 12 đến ngày 2 tháng 1).\nBạn có thể xem bảng giờ chạy bằng dữ liệu trên trang web riêng của Aiai Bus (あい愛バス).\nBảng giờ chạy dạng sách nhỏ cũng được phát tại các cơ sở của thành phố, v.v.\nDự kiến điều chỉnh lịch chạy xe vào ngày 1 tháng 10 năm Reiwa 8. Sách nhỏ về bảng giờ chạy và sơ đồ tuyến mới có PDF trên trang thông báo điều chỉnh lịch chạy xe của thành phố.\nCũng có xe buýt theo yêu cầu dùng AI, đặt trước khi đi, \"Choisoko Minokamo (チョイソコみのかも)\". Trang giao thông công cộng của thành phố có đăng thông báo về vận hành thử và bắt đầu nhận đặt chỗ.\nNơi đặt chỗ, ngày vận hành và giá vé: chưa đọc được nội dung của thông báo đó nên chưa xác nhận được.",
+     "original": "コミュニティバス「あい愛バス」があります。\n年末年始（12月31日〜1月2日）を除き、毎日運行しています。\n時刻表は、あい愛バス専用ホームページのデータ版で見られます。\n冊子の時刻表も、市の施設などで配っています。\n令和8年10月1日にダイヤ改正の予定です。新しい時刻表・路線図の冊子は、市のダイヤ改正のお知らせページにPDFがあります。\n予約して乗るAIデマンドバス「チョイソコみのかも」もあります。市の公共交通のページに、プレ運行・予約受付開始のお知らせが出ています。\n予約先と運行日、料金は、そのお知らせの中身を読めておらず、確認できていません。",
+     "back": "コミュニティバス「あい愛バス」があります。年末年始（12月31日〜1月2日）を除き、毎日運行しています。時刻表は、あい愛バス専用ホームページのデータ版で見られます。冊子の時刻表も、市の施設などで配っています。令和8年10月1日にダイヤ改正の予定です。新しい時刻表・路線図の冊子は、市のダイヤ改正のお知らせページにPDFがあります。予約して乗るAIデマンドバス「チョイソコみのかも」もあります。市の公共交通のページに、プレ運行・予約受付開始のお知らせが出ています。予約先と運行日、料金は、そのお知らせの中身を読めておらず、確認できていません。",
+     "source": {
+      "title": "あい愛バスの運行日(運休日)について - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/2/1109.html",
+      "where": "本文"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q10",
+     "short": "Sự kiện và lễ hội (催し・祭り)",
+     "text": "Sự kiện lớn được tổ chức hằng năm là \"On-matsuri MINOKAMO (おん祭MINOKAMO)\". Đây là sự kiện do người dân thành phố tự tay tổ chức.\nDự định năm Reiwa 8 (2026) như sau.\nMúa Bon (盆踊り): ngày 8 tháng 8 (Thứ Bảy), tại bãi đỗ xe của Công viên Gifu Seiryu Satoyama (ぎふ清流里山公園).\nĐại hội pháo hoa của người dân thành phố (市民花火大会): ngày 11 tháng 10 (Chủ nhật), tại Công viên Kisogawa Ryokuchi Line (木曽川緑地ライン公園). Ngày dự phòng là ngày 22 tháng 11 (Chủ nhật).\nLễ hội Nakasendo Ota-juku (太田宿中山道まつり): ngày 25 tháng 10 (Chủ nhật), khu vực Ota-juku trên đường Nakasendo (中山道太田宿界隈).\nLịch có thể thay đổi theo từng năm. Đến năm tài khóa Reiwa 5, sự kiện được tổ chức vào tháng 8 và tháng 10, nhưng do nắng nóng gay gắt nên đã đổi sang lịch như hiện nay.\nNgoài ra còn có Lễ Hatsuuma Oyama Kannon (小山観音初午祭) (Chủ nhật đầu tiên của tháng 3, tại Oyama Kannon (小山観音)) và lễ hội của đền Suwa (諏訪神社) (thứ Bảy và Chủ nhật đầu tiên của tháng 4, tại đền Suwa (諏訪神社)).",
+     "original": "毎年ひらかれる大きな催しは「おん祭MINOKAMO」です。市民による手作りのイベントです。\n令和8年（2026年）の予定は次のとおりです。\n盆踊り：8月8日（土）、ぎふ清流里山公園の駐車場。\n市民花火大会：10月11日（日）、木曽川緑地ライン公園。予備日は11月22日（日）です。\n太田宿中山道まつり：10月25日（日）、中山道太田宿界隈。\n日程は年によって変わります。令和5年度までは8月と10月でしたが、猛暑のため、いまの日程になりました。\nほかに、小山観音初午祭（3月第1日曜、小山観音）と諏訪神社の祭礼（4月第1土・日曜、諏訪神社）があります。",
+     "back": "毎年ひらかれる大きな催しは「おん祭MINOKAMO」です。市民による手作りのイベントです。令和8年（2026年）の予定は次のとおりです。盆踊り：8月8日（土）、ぎふ清流里山公園の駐車場。市民花火大会：10月11日（日）、木曽川緑地ライン公園。予備日は11月22日（日）です。太田宿中山道まつり：10月25日（日）、中山道太田宿界隈。日程は年によって変わります。令和5年度までは8月と10月でしたが、猛暑のため、いまの日程になりました。ほかに、小山観音初午祭（3月第1日曜、小山観音）と諏訪神社の祭礼（4月第1土・日曜、諏訪神社）があります。",
+     "source": {
+      "title": "おん祭MINOKAMO2026の開催日について - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/12/16223.html",
+      "where": "本文"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q11",
+     "short": "Hoa và cây của thành phố (町の花・木)",
+     "text": "Hoa của thành phố là \"cẩm tú cầu (あじさい)\" (họ Tai hổ, ゆきのした科).\nCây của thành phố là \"cây muku (むく)\" (họ Du, にれ科).\nLoài chim của thành phố không có trong các tài liệu đã tra cứu.\nNăm quy định không được ghi trong các tài liệu chính thức đã tìm thấy.",
+     "original": "市の花は「あじさい」（ゆきのした科）です。\n市の木は「むく」（にれ科）です。\n市の鳥は、調べた資料には載っていません。\n定めた年は、見つけた公式資料には書かれていません。",
+     "back": "市の花は「あじさい」（ゆきのした科）です。市の木は「むく」（にれ科）です。市の鳥は、調べた資料には載っていません。定めた年は、見つけた公式資料には書かれていません。",
+     "source": {
+      "title": "美濃加茂市統計書 令和5年度版",
+      "url": "https://www.city.minokamo.lg.jp/uploaded/attachment/15172.pdf",
+      "where": "3ページ「美濃加茂市の花」「美濃加茂市の木」"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q12",
+     "short": "Mức độ cập nhật của dự báo ngập lụt",
+     "text": "Bản đồ khu vực dự kiến ngập lụt của sông Kiso（木曽川）do Nhà nước (Bộ Đất đai, Hạ tầng, Giao thông và Du lịch（国土交通省）– Văn phòng quản lý thượng lưu sông Kiso（木曽川上流河川事務所）) công bố.\nVào ngày 22 tháng 12 năm Heisei 28, đã công bố dự kiến ngập lụt theo lượng mưa ở quy mô tối đa có thể dự kiến.\nVào ngày 24 tháng 4 năm Reiwa 2, bản đồ đã được thay đổi.\nTheo tài liệu của tỉnh, độ sâu trong bản đồ khu vực của sông Kiso（木曽川）và sông Kamo（加茂川）có trong bản đồ nguy cơ thiên tai (hazard map) của thành phố như sau:\n・Khu vực phố mua sắm trước ga, cửa Nam ga Minokamo-Ota（美濃加茂太田駅南口）: 0.5〜5m theo quy mô theo kế hoạch, và 10〜20m trở lên theo quy mô tối đa.\n・Khu vực sông Kamo（加茂川）: 3〜10m.\nVề dự kiến sóng thần và thời gian từ lúc có cảnh báo đến khi sóng thần đến, không tìm thấy trong tài liệu chính thức của thành phố.\nChưa xác nhận được bản đồ của thành phố đã được sửa theo thay đổi của Nhà nước vào năm Reiwa 2 hay chưa.",
+     "original": "木曽川の洪水浸水想定区域図は、国（国土交通省 木曽川上流河川事務所）が出したものです。\n平成28年12月22日に、想定最大規模の降雨による想定を公表しました。\n令和2年4月24日に変更しています。\n市のハザードマップに載っている木曽川と加茂川の区域図の深さは、県の資料によると次のとおりです。\n・美濃加茂太田駅南口の駅前商店街のあたりは、計画規模で0.5〜5m、最大規模で10〜20m以上です。\n・加茂川の区域は3〜10mです。\n津波の想定や、津波が来るまでの時間は、市の公式資料では見つかりませんでした。\n市のマップが国の令和2年の変更に合わせて直されているかは、確認できませんでした。",
+     "back": "木曽川の洪水浸水想定区域図は、国（国土交通省 木曽川上流河川事務所）が出したものです。平成28年12月22日に、想定最大規模の降雨による想定を公表しました。令和2年4月24日に変更しています。市のハザードマップに載っている木曽川と加茂川の区域図の深さは、県の資料によると次のとおりです。・美濃加茂太田駅南口の駅前商店街のあたりは、計画規模で0.5〜5m、最大規模で10〜20m以上です。・加茂川の区域は3〜10mです。津波の想定や、津波が来るまでの時間は、市の公式資料では見つかりませんでした。市のマップが国の令和2年の変更に合わせて直されているかは、確認できませんでした。",
+     "source": {
+      "title": "木曽川水系洪水浸水想定区域図（木曽川上流河川事務所）",
+      "url": "https://www.cbr.mlit.go.jp/kisojyo/shinsuisoutei/index.html",
+      "where": "ページ冒頭の変更・公表のお知らせ"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q13",
+     "short": "Tin tức trong thành phố",
+     "text": "Sẽ tổ chức \"Buổi trải nghiệm trò chơi Moshi-Bana（もしバナゲーム）\" để suy nghĩ về điều mình muốn coi trọng vào giai đoạn cuối đời.\nSẽ tổ chức buổi chiếu phim nhằm phổ biến và nâng cao nhận thức về \"chăm sóc y tế tại nhà（在宅医療）\".\nNhân Giải marathon nửa chặng Minokamo lần thứ 21（第21回みのかもハーフマラソン大会）, sẽ có hạn chế giao thông.",
+     "original": "人生の最期に大切にしたいことを考える「もしバナゲーム体験会」を開きます。\n「在宅医療」普及啓発の映画上映会を開きます。\n第21回みのかもハーフマラソン大会に伴い交通規制があります。",
+     "back": "人生の最期に大切にしたいことを考える「もしバナゲーム体験会」を開きます。「在宅医療」普及啓発の映画上映会を開きます。第21回みのかもハーフマラソン大会に伴い交通規制があります。",
+     "source": {
+      "title": "美濃加茂市公式ホームページ トップページ",
+      "url": "https://www.city.minokamo.gifu.jp/",
+      "where": "新着情報・トピックス"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q15",
+     "short": "Nơi liên hệ khi gặp khó khăn",
+     "text": "【Tổng đài UBND thành phố（市役所代表）】0574-25-2111.\nCả trụ sở chính（本庁舎）và trụ sở phụ（分庁舎）đều tiếp nhận vào ngày thường từ 8 giờ 45 phút đến 16 giờ 45 phút.\nĐóng cửa vào thứ Bảy, Chủ nhật, ngày lễ và từ ngày 29 tháng 12 đến ngày 3 tháng 1.\n\n【Tư vấn tiêu dùng】Phòng tư vấn tiêu dùng khu vực rộng（広域消費生活相談室）, tầng 2 tòa nhà phía Tây UBND thành phố（市役所西館2階）.\nĐiện thoại: 0574-25-2111 (số máy lẻ 462) hoặc đường dây nóng người tiêu dùng 188.\nTiếp nhận vào ngày thường từ 8 giờ 45 phút đến 16 giờ 45 phút (trừ ngày lễ và dịp cuối năm đầu năm).\n\n【Tư vấn tiêu dùng của tỉnh】Trung tâm tư vấn đời sống người dân tỉnh（県民生活相談センター）: 058-277-1003.\nNgày thường từ 8 giờ 30 phút đến 17 giờ, thứ Bảy từ 9 giờ đến 17 giờ (chỉ qua điện thoại).\n\n【Liên hệ ban đêm và ngày nghỉ; nơi tư vấn về trẻ em, người cao tuổi, bạo lực gia đình (DV)】Lần này chưa xác nhận được.",
+     "original": "【市役所代表】0574-25-2111。\n本庁舎・分庁舎とも、受付は平日8時45分～16時45分です。\n土日祝日と12月29日～1月3日は閉庁です。\n\n【消費生活相談】広域消費生活相談室（市役所西館2階）です。\n電話は0574-25-2111（内線462）か、消費者ホットライン188です。\n受付は平日8時45分～16時45分です（祝日・年末年始を除く）。\n\n【県の消費生活相談】県民生活相談センターは058-277-1003です。\n平日8時30分～17時、土曜9時～17時（電話のみ）です。\n\n【夜間・休日の連絡先、子ども・高齢者・DVの相談窓口】今回は確認できませんでした。",
+     "back": "【市役所代表】0574-25-2111。本庁舎・分庁舎とも、受付は平日8時45分～16時45分です。土日祝日と12月29日～1月3日は閉庁です。【消費生活相談】広域消費生活相談室（市役所西館2階）です。電話は0574-25-2111（内線462）か、消費者ホットライン188です。受付は平日8時45分～16時45分です（祝日・年末年始を除く）。【県の消費生活相談】県民生活相談センターは058-277-1003です。平日8時30分～17時、土曜9時～17時（電話のみ）です。【夜間・休日の連絡先、子ども・高齢者・DVの相談窓口】今回は確認できませんでした。",
+     "source": {
+      "title": "広域消費生活相談室のご案内",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/12/1631.html",
+      "where": "受付時間・電話"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q16",
+     "short": "Y tế ban đêm và ngày nghỉ",
+     "text": "Khi bị bệnh đột xuất vào ngày nghỉ (Chủ nhật, ngày lễ, dịp cuối năm đầu năm), có khám cấp cứu ngày nghỉ（休日急患診療）theo chế độ trực luân phiên tại nhà（在宅当番制）.\nTiếp nhận từ 9 giờ sáng đến 4 giờ 30 phút chiều.\nNha khoa tiếp nhận từ 9 giờ sáng đến 1 giờ chiều.\nBác sĩ trực thay đổi theo từng ngày. Hãy xác nhận trên bảng lịch trực của Hội Y sĩ Kamo（加茂医師会）.\nCó đường dây tư vấn qua điện thoại miễn phí dành riêng cho người dân thành phố, 24 giờ một ngày, 365 ngày một năm: \"Đường dây nóng sức khỏe Minokamo（みのかも健康ほっとダイヤル）\". Số điện thoại là 0120-238-007.\nKhi trẻ em bị bệnh đột xuất, hãy gọi Tư vấn y tế trẻ em qua điện thoại của tỉnh（子ども医療電話相談）#8000. Nếu không gọi được, hãy gọi 058-240-4199.\nThời gian tiếp nhận: thứ Hai đến thứ Sáu từ 18 giờ đến 8 giờ sáng hôm sau; thứ Bảy, ngày nghỉ, dịp cuối năm đầu năm từ 8 giờ đến 8 giờ sáng hôm sau.\nSố 058-240-4199 sẽ đổi thành 058-216-0999 từ 18 giờ ngày 2 tháng 11 năm Reiwa 8.\nSố điện thoại của phòng khám cấp cứu ban đêm（夜間急病診療所）và phòng khám cấp cứu ngày nghỉ（休日急患診療所）không tìm thấy trong tài liệu chính thức.",
+     "original": "休日（日曜・祝日・年末年始）の急病は、在宅当番制の休日急患診療です。\n受付は午前9時から午後4時30分までです。\n歯科は午前9時から午後1時までです。\n当番医は日ごとに替わります。加茂医師会の当番表で確認してください。\n24時間365日、市民専用の無料電話相談「みのかも健康ほっとダイヤル」があります。電話は 0120-238-007 です。\n子どもの急病は、県の子ども医療電話相談 #8000 です。つながらないときは 058-240-4199 にかけます。\n受付は月〜金が18時〜翌朝8時、土・休日・年末年始は8時〜翌朝8時です。\n058-240-4199 は令和8年11月2日18時から 058-216-0999 に変わります。\n夜間急病診療所と、休日急患診療所の電話番号は、公式資料では見つかりませんでした。",
+     "back": "休日（日曜・祝日・年末年始）の急病は、在宅当番制の休日急患診療です。受付は午前9時から午後4時30分までです。歯科は午前9時から午後1時までです。当番医は日ごとに替わります。加茂医師会の当番表で確認してください。24時間365日、市民専用の無料電話相談「みのかも健康ほっとダイヤル」があります。電話は 0120-238-007 です。子どもの急病は、県の子ども医療電話相談 #8000 です。つながらないときは 058-240-4199 にかけます。受付は月〜金が18時〜翌朝8時、土・休日・年末年始は8時〜翌朝8時です。058-240-4199 は令和8年11月2日18時から 058-216-0999 に変わります。夜間急病診療所と、休日急患診療所の電話番号は、公式資料では見つかりませんでした。",
+     "source": {
+      "title": "日曜、祝日等の急な病気やケガの際に（美濃加茂市）",
+      "url": "https://www.city.minokamo.gifu.jp/shimin/contents.cfm?base_id=4068&mi_id=3&g1_id=12&g2_id=52",
+      "where": "休日急患診療当番"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q17",
+     "short": "Nơi tư vấn và hỗ trợ chi phí nuôi dạy trẻ",
+     "text": "【Nơi tư vấn】\n\"Trung tâm Gia đình và Trẻ em Minokamo（みのかもこども家庭センター）\" nhận tư vấn về mang thai, sinh nở và nuôi dạy trẻ.\nĐịa điểm: tầng 2 \"Trung tâm Sức khỏe Minokamo（みのかも健康プラザ）\", Kenko-no-machi 1-chome 2-banchi, thành phố Minokamo, tỉnh Gifu（岐阜県美濃加茂市健康のまち一丁目2番地）.\nMở cửa từ thứ Hai đến thứ Sáu, từ 8 giờ 45 phút sáng đến 4 giờ 45 phút chiều. Nghỉ vào dịp cuối năm đầu năm và ngày lễ.\nVề tư vấn liên quan đến trẻ em và nuôi dạy trẻ dưới 18 tuổi, xin gọi Trung tâm Gia đình và Trẻ em theo số 0574-25-1110.\nVề tư vấn sức khỏe từ thời kỳ mang thai đến tuổi ấu nhi, xin gọi Tổ Sức khỏe Mẹ và Bé, Phòng Sức khỏe（健康課母子保健係）theo số 0574-25-4145.\nTư vấn miễn phí. Bạn cũng có thể đến mà không cần hẹn trước, nhưng có thể phải chờ.\n\n【Hỗ trợ chi phí y tế cho trẻ em】\nCó chế độ hỗ trợ chi phí y tế phúc lợi (trẻ em)（福祉医療費助成（子ども））.\nCho đến khi tốt nghiệp trung học cơ sở (đến ngày 31 tháng 3 đầu tiên sau khi tròn 15 tuổi), được hỗ trợ cả nhập viện lẫn khám ngoại trú.\nỞ độ tuổi học sinh trung học phổ thông (đến ngày 31 tháng 3 đầu tiên sau khi tròn 18 tuổi), chỉ được hỗ trợ nhập viện.\nĐược hỗ trợ phần tự chi trả của khám chữa bệnh có bảo hiểm.\nTại các cơ sở y tế trong tỉnh Gifu, khi xuất trình giấy chứng nhận người thụ hưởng, phần tự chi trả sẽ được miễn.\nĐộ tuổi học sinh trung học phổ thông không được cấp giấy chứng nhận người thụ hưởng.\n\n【Trợ cấp nhi đồng và các khoản trợ cấp khác】\nLần này chưa xác nhận được trên trang chính thức của thành phố. Xin liên hệ UBND thành phố (0574-25-2111).",
+     "original": "【相談の窓口】\n「みのかもこども家庭センター」が、妊娠・出産・子育ての相談を受けています。\n場所は、岐阜県美濃加茂市健康のまち一丁目2番地の「みのかも健康プラザ」2階です。\n開所は月〜金の午前8時45分〜午後4時45分です。年末年始と祝日は休みです。\n18歳未満の子ども・子育ての相談は、こども家庭センターの電話 0574-25-1110 へどうぞ。\n妊娠期から幼児期の健康の相談は、健康課母子保健係の電話 0574-25-4145 です。\n相談は無料です。予約なしで行くこともできますが、待つことがあります。\n\n【子どもの医療費の助成】\n福祉医療費助成（子ども）の制度があります。\n中学校を卒業するまで（15歳になった後の最初の3月31日まで）は、入院も通院も助成されます。\n高校生年代（18歳になった後の最初の3月31日まで）は、入院だけが助成されます。\n保険診療の自己負担額が助成されます。\n岐阜県内の医療機関では、受給者証を見せると自己負担が無料になります。\n高校生年代には受給者証は出ません。\n\n【児童手当などの手当】\n今回は市の公式ページで確認できませんでした。市役所（0574-25-2111）にお問い合わせください。",
+     "back": "【相談の窓口】「みのかもこども家庭センター」が、妊娠・出産・子育ての相談を受けています。場所は、岐阜県美濃加茂市健康のまち一丁目2番地の「みのかも健康プラザ」2階です。開所は月〜金の午前8時45分〜午後4時45分です。年末年始と祝日は休みです。18歳未満の子ども・子育ての相談は、こども家庭センターの電話 0574-25-1110 へどうぞ。妊娠期から幼児期の健康の相談は、健康課母子保健係の電話 0574-25-4145 です。相談は無料です。予約なしで行くこともできますが、待つことがあります。【子どもの医療費の助成】福祉医療費助成（子ども）の制度があります。中学校を卒業するまで（15歳になった後の最初の3月31日まで）は、入院も通院も助成されます。高校生年代（18歳になった後の最初の3月31日まで）は、入院だけが助成されます。保険診療の自己負担額が助成されます。岐阜県内の医療機関では、受給者証を見せると自己負担が無料になります。高校生年代には受給者証は出ません。【児童手当などの手当】今回は市の公式ページで確認できませんでした。市役所（0574-25-2111）にお問い合わせください。",
+     "source": {
+      "title": "みのかもこども家庭センター - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/7/11916.html",
+      "where": "児童福祉の相談窓口／場所と開所時間"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q18",
+     "short": "Nơi tư vấn về chăm sóc điều dưỡng",
+     "text": "Nơi tư vấn tổng hợp cho người cao tuổi là \"Trung tâm Hỗ trợ Trường thọ（長寿支援センター）\" (Trung tâm hỗ trợ tổng hợp khu vực（地域包括支援センター）). Trong thành phố có 3 nơi.\nTrung tâm Hỗ trợ Trường thọ khu Tây（西部長寿支援センター）: phụ trách khu vực trường tiểu học Ota（太田小）và trường tiểu học Kamono（加茂野小）. Điện thoại: 0574-24-7007.\nTrung tâm Hỗ trợ Trường thọ khu Trung（中部長寿支援センター）: phụ trách khu vực trường tiểu học Yamate（山手小）, Yamanoue（山之上小）, Hachiya（蜂屋小）, Ibuka（伊深小）và Miwa（三和小）. Điện thoại: 0574-49-8591.\nTrung tâm Hỗ trợ Trường thọ khu Đông（東部長寿支援センター）: phụ trách khu vực trường tiểu học Furui（古井小）và Shimoyoneda（下米田小）. Điện thoại: 0574-50-1777.",
+     "original": "高齢者の総合相談窓口は「長寿支援センター」（地域包括支援センター）です。市内に3か所あります。\n西部長寿支援センター：太田小・加茂野小校区。電話 0574-24-7007。\n中部長寿支援センター：山手小・山之上小・蜂屋小・伊深小・三和小校区。電話 0574-49-8591。\n東部長寿支援センター：古井小・下米田小校区。電話 0574-50-1777。",
+     "back": "高齢者の総合相談窓口は「長寿支援センター」（地域包括支援センター）です。市内に3か所あります。西部長寿支援センター：太田小・加茂野小校区。電話 0574-24-7007。中部長寿支援センター：山手小・山之上小・蜂屋小・伊深小・三和小校区。電話 0574-49-8591。東部長寿支援センター：古井小・下米田小校区。電話 0574-50-1777。",
+     "source": {
+      "title": "「長寿支援センター」は、高齢者の「総合相談窓口」です！",
+      "url": "https://www.city.minokamo.gifu.jp/shimin/contents.cfm?base_id=7534&mi_id=3&g1_id=12&g2_id=48",
+      "where": "長寿支援センターの名称及び担当区域・連絡先"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q04",
+     "short": "Cách nhận thông báo khi có thiên tai",
+     "text": "Bạn có thể nhận thông báo thiên tai qua 3 cách sau.\n① Thư điện tử \"Sugu Mail Minokamo（すぐメールみのかも）\": nội dung phát thanh của hệ thống loa phát thanh phòng chống thiên tai hành chính（防災行政無線）sẽ được gửi đến bằng thư điện tử.\nĐể đăng ký, hãy gửi một thư trống đến t-minokamo@sg-p.jp. Đọc thư hướng dẫn được gửi lại rồi đăng ký.\n② Ứng dụng phòng chống thiên tai \"Minokamo-shi Bousai（美濃加茂市防災）\": xem được thông tin khẩn cấp, thông tin nơi lánh nạn và nội dung phát thanh của hệ thống loa phát thanh phòng chống thiên tai hành chính.\nHãy tìm \"美濃加茂市防災\" trên App Store hoặc Google Play rồi cài đặt.\n③ Thư thông báo khẩn cấp (Area Mail)（緊急速報メール（エリアメール））: gửi đến điện thoại của docomo, au và SoftBank. Không cần đăng ký trước và miễn phí.\nTùy loại máy, có thể cần cài đặt để nhận.",
+     "original": "災害の知らせは、次の3つで受け取れます。\n①メール「すぐメールみのかも」：防災行政無線の放送内容がメールで届きます。\n登録は t-minokamo@sg-p.jp に空メールを送ります。折り返しの案内メールを読んで登録します。\n②防災アプリ「美濃加茂市防災」：緊急情報、避難所情報、防災行政無線の放送内容を見られます。\nApp Store か Google Play で「美濃加茂市防災」と検索して入れます。\n③緊急速報メール（エリアメール）：ドコモ・au・ソフトバンクの携帯に届きます。事前の申し込みは要らず、無料です。\n機種によっては受信設定が必要です。",
+     "back": "災害の知らせは、次の3つで受け取れます。①メール「すぐメールみのかも」：防災行政無線の放送内容がメールで届きます。登録は t-minokamo@sg-p.jp に空メールを送ります。折り返しの案内メールを読んで登録します。②防災アプリ「美濃加茂市防災」：緊急情報、避難所情報、防災行政無線の放送内容を見られます。App Store か Google Play で「美濃加茂市防災」と検索して入れます。③緊急速報メール（エリアメール）：ドコモ・au・ソフトバンクの携帯に届きます。事前の申し込みは要らず、無料です。機種によっては受信設定が必要です。",
+     "source": {
+      "title": "「広報みのかも」の放送が良く聞こえない、聞き取りづらいのですが？ - 防災ページ",
+      "url": "https://www.city.minokamo.lg.jp/site/bousai/2340.html",
+      "where": "本文"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q09",
+     "short": "Lịch sử hình thành thành phố",
+     "text": "Thành phố Minokamo（美濃加茂市）ra đời vào ngày 1 tháng 4 năm Showa 29 (năm 1954).\nTrung tâm là thị trấn Ota（太田町）và thị trấn Furui（古井町）của quận Kamo（加茂郡）.\nNgoài ra còn sáp nhập thêm làng Yamanoue（山之上村）, làng Hachiya（蜂屋村）, làng Kamono（加茂野村）và làng Ibuka（伊深村）.\nKhu Kawaura（川浦）và khu Tsuzuya（廿屋）của làng Miwa（三和村）cũng được gộp vào.\nLàng Shimoyoneda（下米田村）và khu Makino（牧野）của làng Wachi（和知村）cũng được thêm vào.",
+     "original": "美濃加茂市は、昭和29年（1954年）4月1日に生まれました。\n加茂郡の太田町と古井町が中心です。\nそこに山之上村、蜂屋村、加茂野村、伊深村が合わさりました。\n三和村の川浦地区と廿屋地区も入りました。\n下米田村と、和知村の牧野地区も加わりました。",
+     "back": "美濃加茂市は、昭和29年（1954年）4月1日に生まれました。加茂郡の太田町と古井町が中心です。そこに山之上村、蜂屋村、加茂野村、伊深村が合わさりました。三和村の川浦地区と廿屋地区も入りました。下米田村と、和知村の牧野地区も加わりました。",
+     "source": {
+      "title": "美濃加茂市 市制施行70周年",
+      "url": "https://www.city.minokamo.lg.jp/site/70th-anniversary/",
+      "where": "■美濃加茂市の軌跡 美濃加茂市の誕生"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q08",
+     "short": "Hướng dẫn dành cho người nước ngoài",
+     "text": "Tòa thị chính (市役所) có \"Quầy tư vấn một cửa dành cho người nước ngoài\" (外国人ワンストップ相談窓口).\nĐịa điểm là tầng 1 tòa nhà chính của Tòa thị chính (市役所本館1階). Số điện thoại là 0574-25-2111 (số nội bộ 364・366).\nTrên trang tiếng Nhật đơn giản (やさしい日本語) \"市役所（しやくしょ）で相談（そうだん）できること\" (Những việc có thể tư vấn tại Tòa thị chính), bạn có thể xem các nơi tư vấn và số điện thoại.\nCũng có trang tiếng Anh (English) và bản báo thành phố bằng tiếng nước ngoài.\nTrang tiếng Anh ghi các ngôn ngữ được hỗ trợ là tiếng Nhật đơn giản, tiếng Anh, tiếng Bồ Đào Nha và tiếng Tagalog.\nThông tin liên hệ của Phòng Cùng sáng tạo đa văn hóa (多文化共創課) (tầng 1 tòa nhà Noritake (則竹ビル), 0574-42-6262) được đăng ở một trang khác.",
+     "original": "市役所（しやくしょ）には「外国人ワンストップ相談窓口」があります。\n場所は市役所本館1階です。電話は0574-25-2111（内線364・366）です。\nやさしい日本語のページ「市役所（しやくしょ）で相談（そうだん）できること」で、相談できる場所と電話が見られます。\n英語のページ（English）と、外国語版の広報紙もあります。\n英語ページには、対応言語はやさしい日本語・英語・ポルトガル語・タガログ語と書かれています。\n多文化共創課（則竹ビル1階、0574-42-6262）の連絡先は、別のページに載っています。",
+     "back": "市役所（しやくしょ）には「外国人ワンストップ相談窓口」があります。場所は市役所本館1階です。電話は0574-25-2111（内線364・366）です。やさしい日本語のページ「市役所（しやくしょ）で相談（そうだん）できること」で、相談できる場所と電話が見られます。英語のページ（English）と、外国語版の広報紙もあります。英語ページには、対応言語はやさしい日本語・英語・ポルトガル語・タガログ語と書かれています。多文化共創課（則竹ビル1階、0574-42-6262）の連絡先は、別のページに載っています。",
+     "source": {
+      "title": "市役所（しやくしょ）で相談（そうだん）できること - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/37/20430.html",
+      "where": "本文（外国人ワンストップ相談窓口の説明と表）"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q52",
+     "short": "Thông tin phòng chống thiên tai bằng nhiều ngôn ngữ",
+     "text": "Có sổ tay hướng dẫn phòng chống thiên tai bằng tiếng Bồ Đào Nha.\nBạn có thể mở từ nút ở phía trên trang \"Hướng dẫn phòng chống thiên tai\" (防災ガイド) của thành phố (trang tiếng Nhật).\nTrang tiếng Bồ Đào Nha có phần giới thiệu bản đồ phòng chống thiên tai (防災マップ).\nNgoài ra, trang này cũng liên kết đến các trang mục từ 1 đến 4.\nNơi liên hệ được ghi là bộ phận phụ trách an toàn và phòng chống thiên tai của Tòa thị chính (市役所) (điện thoại 0574-25-2111, số nội bộ 272).\nTrên trang phòng chống thiên tai của trang web chính thức của thành phố có liên kết \"Translation\" (dịch) và liên kết \"やさしい日本語\" (tiếng Nhật đơn giản).\nVới tiếng Nhật đơn giản, bạn xem trang web được chuyển đổi bằng một dịch vụ bên ngoài (tsutaeru.cloud).\nLần này chưa xác nhận được ứng dụng phòng chống thiên tai, thư điện tử thông báo và hướng dẫn nơi lánh nạn có bản tiếng nước ngoài hay bản tiếng Nhật đơn giản hay không.\nBản đồ cảnh báo thiên tai (ハザードマップ) dạng PDF (sạt lở đất・lũ lụt, động đất) chỉ tìm thấy bản tiếng Nhật.",
+     "original": "ポルトガル語の防災ガイドがあります。\n市の「防災ガイド」ページ（日本語）の上のボタンから開けます。\nポルトガル語のページには、防災マップの案内があります。\nそのほか、1〜4の項目ページにもつながっています。\n問い合わせ先は、市役所の安全・防災の担当（電話 0574-25-2111、内線272）と書かれています。\n市の公式サイトの防災ページには、「Translation」（翻訳）のリンクと、「やさしい日本語」のリンクがあります。\nやさしい日本語は、外部のサービス（tsutaeru.cloud）でサイトを変換して見る形です。\n防災アプリ、メール配信、避難所案内の外国語版・やさしい日本語版があるかは、今回は確認できませんでした。\nハザードマップのPDF（土砂災害・水害、地震災害）は日本語版だけが見つかりました。",
+     "back": "ポルトガル語の防災ガイドがあります。市の「防災ガイド」ページ（日本語）の上のボタンから開けます。ポルトガル語のページには、防災マップの案内があります。そのほか、1〜4の項目ページにもつながっています。問い合わせ先は、市役所の安全・防災の担当（電話 0574-25-2111、内線272）と書かれています。市の公式サイトの防災ページには、「Translation」（翻訳）のリンクと、「やさしい日本語」のリンクがあります。やさしい日本語は、外部のサービス（tsutaeru.cloud）でサイトを変換して見る形です。防災アプリ、メール配信、避難所案内の外国語版・やさしい日本語版があるかは、今回は確認できませんでした。ハザードマップのPDF（土砂災害・水害、地震災害）は日本語版だけが見つかりました。",
+     "source": {
+      "title": "Dia de Prevenção de Desastres da Cidade de Minokamo（美濃加茂市防災ガイド ポルトガル語版）",
+      "url": "https://www.city.minokamo.gifu.jp/bousai/guide/port/index.htm",
+      "where": "ポルトガル語版トップページ"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q53",
+     "short": "Lớp tiếng Nhật và hướng dẫn nhập học",
+     "text": "【Cách cho con vào trường】\nBạn có thể xem ở trang \"Về việc nhập học của học sinh nước ngoài\" (外国人児童生徒の就学について) của thành phố.\nNgười nước ngoài không có nghĩa vụ đi học. Nếu muốn, trẻ có thể vào trường tiểu học và trung học cơ sở.\nTrường được vào sẽ được quyết định theo địa chỉ trên phiếu cư trú (住民票). Học phí và tiền sách giáo khoa là miễn phí.\nThủ tục: mang theo thẻ cư trú và hộ chiếu (của phụ huynh và của trẻ) đến Ủy ban Giáo dục (教育委員会). Sau đó làm thủ tục tại trường sẽ vào học.\nĐơn xin nhập học và tờ hướng dẫn bằng tiếng Bồ Đào Nha và tiếng Anh cũng có ở cùng trang đó.\nLiên hệ: Ủy ban Giáo dục (教育委員会), Phòng Giáo dục học đường (学校教育課) 0574-25-2111 (số nội bộ 342)\n\n【Trẻ lần đầu học tiếng Nhật】\nCó \"Lớp Nozomi\" (のぞみ教室). Địa điểm là trong Trường tiểu học Furui (古井小学校).\nTừ thứ Hai đến thứ Sáu, từ 8 giờ 30 sáng đến 4 giờ 30 chiều. Có thu tiền ăn trưa ở trường.\n\n【Hỗ trợ học tập sau giờ học \"MIRAI\" (dành cho học sinh tiểu học và trung học cơ sở mang quốc tịch nước ngoài)】\nKhu Ota (太田地区): thứ Tư và thứ Sáu. Học sinh tiểu học 18:30〜20:00, học sinh trung học cơ sở 18:30〜20:30. Tại Trung tâm học tập suốt đời (生涯学習センター) (太田町3425-1).\nKhu Furui (古井地区): thứ Ba và thứ Năm. Học sinh tiểu học 16:30〜18:00 tại Thư viện Higashi (東図書館) (本郷町9-2-22). Học sinh trung học cơ sở 18:30〜20:30 tại Trung tâm giao lưu Kamifurui (上古井交流センター) (本郷町8-8-48).\nĐăng ký・liên hệ: Hiệp hội Giao lưu Quốc tế Minokamo (美濃加茂国際交流協会) 0574-28-3822\n\n【Lớp tiếng Nhật cho người lớn】\nPhòng Cùng sáng tạo đa văn hóa (多文化共創課) của thành phố có trang \"Có lớp tiếng Nhật dành cho cư dân nước ngoài\" (外国人市民への日本語教室があります) (cập nhật ngày 13 tháng 3 năm 2025). Chi tiết về ngày giờ, địa điểm và nơi đăng ký chưa xác nhận được.\nNơi liên hệ là Phòng Cùng sáng tạo đa văn hóa (多文化共創課) 0574-42-6262 (tầng 1 tòa nhà Noritake (則竹ビル), 太田町1752-1).",
+     "original": "【子どもの学校への入り方】\n市の「外国人児童生徒の就学について」のページで見られます。\n外国人は就学の義務はありません。希望すれば小・中学校に入れます。\n入る学校は住民票の住所で決まります。授業料と教科書代は無料です。\n手続きは、在留カードとパスポート（保護者と本人）を持って教育委員会へ行きます。そのあと、入る学校で手続きをします。\nポルトガル語・英語の就学願いと案内リーフレットも、同じページにあります。\n問い合わせ：教育委員会 学校教育課 0574-25-2111（内線342）\n\n【日本語を初めて学ぶ子】\n「のぞみ教室」があります。場所は古井小学校内です。\n月〜金の午前8時30分〜午後4時30分です。給食費がかかります。\n\n【放課後の学習支援「MIRAI」（外国籍の小中学生）】\n太田地区：水・金曜。小学生18:30〜20:00、中学生18:30〜20:30。生涯学習センター（太田町3425-1）。\n古井地区：火・木曜。小学生16:30〜18:00は東図書館（本郷町9-2-22）。中学生18:30〜20:30は上古井交流センター（本郷町8-8-48）。\n申し込み・問い合わせ：美濃加茂国際交流協会 0574-28-3822\n\n【大人の日本語教室】\n市の多文化共創課に「外国人市民への日本語教室があります」というページ（2025年3月13日更新）があります。日時・場所・申込先の詳細は確認できていません。\n問い合わせ先は多文化共創課 0574-42-6262（太田町1752-1 則竹ビル1階）です。",
+     "back": "【子どもの学校への入り方】市の「外国人児童生徒の就学について」のページで見られます。外国人は就学の義務はありません。希望すれば小・中学校に入れます。入る学校は住民票の住所で決まります。授業料と教科書代は無料です。手続きは、在留カードとパスポート（保護者と本人）を持って教育委員会へ行きます。そのあと、入る学校で手続きをします。ポルトガル語・英語の就学願いと案内リーフレットも、同じページにあります。問い合わせ：教育委員会 学校教育課 0574-25-2111（内線342）【日本語を初めて学ぶ子】「のぞみ教室」があります。場所は古井小学校内です。月〜金の午前8時30分〜午後4時30分です。給食費がかかります。【放課後の学習支援「MIRAI」（外国籍の小中学生）】太田地区：水・金曜。小学生18:30〜20:00、中学生18:30〜20:30。生涯学習センター（太田町3425-1）。古井地区：火・木曜。小学生16:30〜18:00は東図書館（本郷町9-2-22）。中学生18:30〜20:30は上古井交流センター（本郷町8-8-48）。申し込み・問い合わせ：美濃加茂国際交流協会 0574-28-3822【大人の日本語教室】市の多文化共創課に「外国人市民への日本語教室があります」というページ（2025年3月13日更新）があります。日時・場所・申込先の詳細は確認できていません。問い合わせ先は多文化共創課 0574-42-6262（太田町1752-1 則竹ビル1階）です。",
+     "source": {
+      "title": "外国籍の小中学生への学習支援について",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/37/10413.html",
+      "where": "MIRAIの概要（日時・場所・問い合わせ先）"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q54",
+     "short": "Đăng ký nhà trẻ và câu lạc bộ sau giờ học",
+     "text": "【Nhà trẻ・Trường mầm non được chứng nhận (認定こども園)】\nNơi đăng ký là quầy của Phòng Con cái và Tương lai (こども未来課) hoặc đăng ký trực tuyến.\nKhông nhận đăng ký tại từng trường và không nhận đăng ký qua đường bưu điện.\nĐăng ký nhập học tháng 4 năm Reiwa 9 (令和9年) gồm ba đợt.\nĐợt 1: trực tuyến từ ngày 1 đến ngày 20 tháng 11 năm Reiwa 8 (令和8年); tại quầy từ ngày 2 đến ngày 30 tháng 11.\nĐợt 2: trực tuyến từ ngày 1 tháng 12 năm Reiwa 8 đến ngày 3 tháng 2 năm Reiwa 9; tại quầy từ ngày 1 tháng 12 đến ngày 10 tháng 2 năm Reiwa 9.\nĐợt 3: trực tuyến từ ngày 11 tháng 2 đến ngày 3 tháng 3 năm Reiwa 9; tại quầy từ ngày 12 tháng 2 đến ngày 10 tháng 3.\n【Câu lạc bộ sau giờ học (学童保育)】\nĐối tượng là học sinh từ lớp 1 đến lớp 6.\nĐăng ký bằng hình thức trực tuyến hoặc tại quầy của Phòng Con cái và Tương lai (こども未来課).\nKhông nhận đăng ký tại trường tiểu học và văn phòng liên lạc (連絡所).\nNăm Reiwa 8 (令和8年度), đợt nhận đăng ký cho tháng 4 đã kết thúc. Sau đó vẫn nhận đăng ký bất cứ lúc nào, nhưng nếu vượt quá số chỗ thì sẽ phải chờ.\nChưa tìm thấy hướng dẫn về câu lạc bộ sau giờ học cho năm Reiwa 9 (令和9年度).\n【Điện thoại】\nPhòng Con cái và Tương lai (こども未来課) (tầng 2 Minokamo Health Plaza (みのかも健康プラザ)): 0574-25-2111 (số nội bộ 387)\n【Ngoại ngữ】\nHồ sơ nhập học có bản tiếng Bồ Đào Nha, tiếng Tagalog và tiếng Anh.\nThông báo tuyển sinh và đơn đăng ký của câu lạc bộ sau giờ học có bản tiếng Anh và tiếng Bồ Đào Nha.\nTrên trang web chính thức có liên kết đến trang dịch và hiển thị \"やさしい日本語\" (tiếng Nhật đơn giản).",
+     "original": "【保育園・認定こども園】\n申込み先は、こども未来課の窓口か、オンライン申請です。\n各園での受付と郵送での申込みはありません。\n令和9年4月入園の申込みは三段階です。\n第一次は、オンラインが令和8年11月1日〜20日、窓口が11月2日〜30日です。\n第二次は、オンラインが令和8年12月1日〜令和9年2月3日、窓口が12月1日〜令和9年2月10日です。\n第三次は、オンラインが令和9年2月11日〜3月3日、窓口が2月12日〜3月10日です。\n【学童保育】\n対象は1年生から6年生です。\nオンライン申請か、こども未来課の窓口で申し込みます。\n小学校と連絡所では受け付けていません。\n令和8年度は4月分の受付が終わっています。その後も随時受け付けますが、定員を超えると待機になります。\n令和9年度の学童の案内は見つかりませんでした。\n【電話】\nこども未来課（みのかも健康プラザ2階）は 0574-25-2111（内線387）です。\n【外国語】\n入園書類には、ポルトガル語・タガログ語・英語版があります。\n学童の募集要項や申請書は、英語とポルトガル語版があります。\n公式サイトに、翻訳ページと「やさしい日本語」表示へのリンクがあります。",
+     "back": "",
+     "source": {
+      "title": "令和9年度4月 保育園・こども園・小規模保育所等の入園について",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/8/13155.html",
+      "where": "4月入園の申込期間／申込み手続きについて／申請方法／お問い合わせ先"
+     },
+     "status": "ok",
+     "problems": [
+      "確かめ役の答えが読めなかった"
+     ],
+     "ledgerId": "r00296"
+    }
+   ]
+  },
+  "en": {
+   "name": "English",
+   "ja": "英語",
+   "items": [
+    {
+     "qid": "Q01",
+     "short": "List of evacuation sites",
+     "text": "A PDF list is available on the city website page \"Minokamo City Designated Shelters, Designated Emergency Evacuation Sites, and Stockpile Status\" (美濃加茂市の指定避難所・指定緊急避難場所および備蓄状況).\nThere are 57 designated emergency evacuation sites in total.\nOf these, 40 are facilities that also serve as designated shelters, and 17 are emergency evacuation sites only, such as parks and sports grounds.\nYou can also check them in the web and booklet versions of the hazard map.",
+     "original": "市公式サイトの「美濃加茂市の指定避難所・指定緊急避難場所および備蓄状況」ページに、一覧のPDFがあります。\n指定緊急避難場所は全部で57か所です。\n内訳は、指定避難所と兼ねる施設が40か所、緊急避難場所だけの公園・グラウンドなどが17か所です。\nweb版・冊子版のハザードマップでも見られます。",
+     "back": "市公式サイトの「美濃加茂市の指定避難所・指定緊急避難場所および備蓄状況」ページに、一覧のPDFがあります。指定緊急避難場所は全部で57か所です。内訳は、指定避難所と兼ねる施設が40か所、緊急避難場所だけの公園・グラウンドなどが17か所です。web版・冊子版のハザードマップでも見られます。",
+     "source": {
+      "title": "美濃加茂市の指定避難所・指定緊急避難場所および備蓄状況（一覧PDFへのリンク）",
+      "url": "https://www.city.minokamo.lg.jp/site/bousai/2343.html",
+      "where": "「市の指定避難所・指定緊急避難場所」の見出し／一覧PDF（2343_25113_misc.pdf）"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q02",
+     "short": "Hazard map",
+     "text": "The hazard map is available on the city website's \"Disaster Prevention Information page\" (防災情報ページ).\nThere is a web version and a booklet version (PDF, about 47MB).\nThe old site's \"Minokamo City Hazard Map\" (美濃加茂市ハザードマップ) page also has PDFs of the city map and of the flood inundation area maps for the Kiso River (木曽川) and the Kamo River (加茂川).\nThe creation date and revision date of the map itself were not written on the pages I viewed.\nI could not find a tsunami map.",
+     "original": "ハザードマップは市公式サイトの「防災情報ページ」で見られます。\nweb版と冊子版（PDF、約47MB）があります。\n旧サイトの「美濃加茂市ハザードマップ」ページにも、市のマップと木曽川・加茂川の浸水想定区域図のPDFがあります。\nマップ本体の作成日・改訂日は、見たページには書かれていませんでした。\n津波のマップは見つかりませんでした。",
+     "back": "ハザードマップは市公式サイトの「防災情報ページ」で見られます。web版と冊子版（PDF、約47MB）があります。旧サイトの「美濃加茂市ハザードマップ」ページにも、市のマップと木曽川・加茂川の浸水想定区域図のPDFがあります。マップ本体の作成日・改訂日は、見たページには書かれていませんでした。津波のマップは見つかりませんでした。",
+     "source": {
+      "title": "美濃加茂市防災ガイド",
+      "url": "https://www.city.minokamo.gifu.jp/bousai/guide/",
+      "where": "ハザードマップ"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q05",
+     "short": "How to separate garbage and collection days",
+     "text": "You can find this on the city website page \"About Household Garbage Separation, How to Put It Out, and Collection Days\" (家庭ごみの分別と出し方、収集日について).\nThe city collects garbage in 9 categories and 15 types of separation.\nUnder \"Related Materials\" (関連資料) on the page, there is the Reiwa 8 (fiscal 2026) garbage collection day schedule and guide to separation and disposal (Japanese PDF).\nForeign-language versions are also available, including Portuguese, English, and Tagalog.\nPut garbage out from 6:00 to 8:00 in the morning on the day of collection.\nFor PET bottles, food trays, and Styrofoam, put them out from 8:00 to 10:00 in the morning.",
+     "original": "市公式サイトの「家庭ごみの分別と出し方、収集日について」のページで見られます。\n市は9区分15分別でごみを収集しています。\nページ内の「関連資料」に、令和8年度ごみ収集日一覧表・分別と出し方（日本語PDF）があります。\n外国語版もあります。ポルトガル語、英語、タガログ語などです。\n排出は収集日当日の朝6時から8時です。\nペットボトル、食品トレイ、発泡スチロールは朝8時から10時です。",
+     "back": "市公式サイトの「家庭ごみの分別と出し方、収集日について」のページで見られます。市は9区分15分別でごみを収集しています。ページ内の「関連資料」に、令和8年度ごみ収集日一覧表・分別と出し方（日本語PDF）があります。外国語版もあります。ポルトガル語、英語、タガログ語などです。排出は収集日当日の朝6時から8時です。ペットボトル、食品トレイ、発泡スチロールは朝8時から10時です。",
+     "source": {
+      "title": "家庭ごみの分別と出し方、収集日について - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/15/1744.html",
+      "where": "関連資料：令和8年度ごみ収集日一覧表・分別と出し方(日本語)"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q06",
+     "short": "Procedures when moving",
+     "text": "You can find this on the city website page \"I moved to Minokamo City from outside the city. I want to know the procedures generally needed when moving\" (市外から美濃加茂市へ転入しました。引っ越しの際に一般的に必要な手続きを知りたい).\nThe change of residence registration (moving-in notification) must be done within 14 days of the day you start living here.\nFor National Health Insurance, the person who is joining must complete the procedure within 14 days after moving in.\nAddress change for the My Number Card, seal registration, school transfer, National Pension, child allowance, and others are also listed on the same page.\nThere is also a page called \"When moving in or moving out\" (転入・転出するときは).",
+     "original": "市公式サイトの「市外から美濃加茂市へ転入しました。引っ越しの際に一般的に必要な手続きを知りたい」のページで見られます。\n住民票の異動（転入届）は、住み始めた日から14日以内です。\n国民健康保険は、加入する方が転入後14日以内に手続きします。\nマイナンバーカードの住所変更、印鑑登録、転校、国民年金、児童手当なども、同じページに並んでいます。\n「転入・転出するときは」のページもあります。",
+     "back": "市公式サイトの「市外から美濃加茂市へ転入しました。引っ越しの際に一般的に必要な手続きを知りたい」のページで見られます。住民票の異動（転入届）は、住み始めた日から14日以内です。国民健康保険は、加入する方が転入後14日以内に手続きします。マイナンバーカードの住所変更、印鑑登録、転校、国民年金、児童手当なども、同じページに並んでいます。「転入・転出するときは」のページもあります。",
+     "source": {
+      "title": "市外から美濃加茂市へ転入しました。引っ越しの際に一般的に必要な手続きを知りたい",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/23/2408.html",
+      "where": "本文の手続き一覧"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q07",
+     "short": "Transportation in the city",
+     "text": "There is a community bus called \"Ai-ai Bus\" (あい愛バス).\nIt runs every day except during the year-end and New Year period (December 31 to January 2).\nYou can see the timetable in the data version on the dedicated Ai-ai Bus website.\nBooklet timetables are also distributed at city facilities and other places.\nA timetable revision is planned for October 1, Reiwa 8 (2026). The new timetable and route map booklet is available as a PDF on the city's timetable revision announcement page.\nThere is also an AI on-demand bus that you ride by reservation, \"Choisoko Minokamo\" (チョイソコみのかも). A notice about the pre-launch trial operation and the start of reservations is posted on the city's public transportation page.\nI have not been able to read the contents of that notice, so the reservation contact, operating days, and fares are not confirmed.",
+     "original": "コミュニティバス「あい愛バス」があります。\n年末年始（12月31日〜1月2日）を除き、毎日運行しています。\n時刻表は、あい愛バス専用ホームページのデータ版で見られます。\n冊子の時刻表も、市の施設などで配っています。\n令和8年10月1日にダイヤ改正の予定です。新しい時刻表・路線図の冊子は、市のダイヤ改正のお知らせページにPDFがあります。\n予約して乗るAIデマンドバス「チョイソコみのかも」もあります。市の公共交通のページに、プレ運行・予約受付開始のお知らせが出ています。\n予約先と運行日、料金は、そのお知らせの中身を読めておらず、確認できていません。",
+     "back": "コミュニティバス「あい愛バス」があります。年末年始（12月31日〜1月2日）を除き、毎日運行しています。時刻表は、あい愛バス専用ホームページのデータ版で見られます。冊子の時刻表も、市の施設などで配っています。令和8年10月1日にダイヤ改正の予定です。新しい時刻表・路線図の冊子は、市のダイヤ改正のお知らせページにPDFがあります。予約して乗るAIデマンドバス「チョイソコみのかも」もあります。市の公共交通のページに、プレ運行・予約受付開始のお知らせが出ています。予約先と運行日、料金は、そのお知らせの中身を読めておらず、確認できていません。",
+     "source": {
+      "title": "あい愛バスの運行日(運休日)について - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/2/1109.html",
+      "where": "本文"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q10",
+     "short": "Events and festivals",
+     "text": "The big event held every year is \"On-Matsuri MINOKAMO\" (おん祭MINOKAMO). It is a handmade event run by city residents.\nThe schedule for Reiwa 8 (2026) is as follows.\nBon dance: Saturday, August 8, at the parking lot of Gifu Seiryu Satoyama Park (ぎふ清流里山公園).\nCitizens' Fireworks Festival: Sunday, October 11, at Kisogawa Ryokuchi Line Park (木曽川緑地ライン公園). The backup date is Sunday, November 22.\nOta-juku Nakasendo Festival: Sunday, October 25, around Nakasendo Ota-juku (中山道太田宿界隈).\nThe dates change from year to year. Until fiscal Reiwa 5, the events were held in August and October, but because of extreme heat, they were moved to the current dates.\nThere are also the Oyama Kannon Hatsuuma Festival (小山観音初午祭) (first Sunday of March, at Oyama Kannon (小山観音)) and the festival of Suwa Shrine (諏訪神社) (first Saturday and Sunday of April, at Suwa Shrine).",
+     "original": "毎年ひらかれる大きな催しは「おん祭MINOKAMO」です。市民による手作りのイベントです。\n令和8年（2026年）の予定は次のとおりです。\n盆踊り：8月8日（土）、ぎふ清流里山公園の駐車場。\n市民花火大会：10月11日（日）、木曽川緑地ライン公園。予備日は11月22日（日）です。\n太田宿中山道まつり：10月25日（日）、中山道太田宿界隈。\n日程は年によって変わります。令和5年度までは8月と10月でしたが、猛暑のため、いまの日程になりました。\nほかに、小山観音初午祭（3月第1日曜、小山観音）と諏訪神社の祭礼（4月第1土・日曜、諏訪神社）があります。",
+     "back": "毎年ひらかれる大きな催しは「おん祭MINOKAMO」です。市民による手作りのイベントです。令和8年（2026年）の予定は次のとおりです。盆踊り：8月8日（土）、ぎふ清流里山公園の駐車場。市民花火大会：10月11日（日）、木曽川緑地ライン公園。予備日は11月22日（日）です。太田宿中山道まつり：10月25日（日）、中山道太田宿界隈。日程は年によって変わります。令和5年度までは8月と10月でしたが、猛暑のため、いまの日程になりました。ほかに、小山観音初午祭（3月第1日曜、小山観音）と諏訪神社の祭礼（4月第1土・日曜、諏訪神社）があります。",
+     "source": {
+      "title": "おん祭MINOKAMO2026の開催日について - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/12/16223.html",
+      "where": "本文"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q11",
+     "short": "City flower and tree",
+     "text": "The city flower is the \"ajisai\" (hydrangea) (あじさい) (yukinoshita family).\nThe city tree is the \"muku\" (むく) (elm family).\nThe city bird is not listed in the materials I checked.\nThe year these were designated is not written in the official materials I found.",
+     "original": "市の花は「あじさい」（ゆきのした科）です。\n市の木は「むく」（にれ科）です。\n市の鳥は、調べた資料には載っていません。\n定めた年は、見つけた公式資料には書かれていません。",
+     "back": "市の花は「あじさい」（ゆきのした科）です。市の木は「むく」（にれ科）です。市の鳥は、調べた資料には載っていません。定めた年は、見つけた公式資料には書かれていません。",
+     "source": {
+      "title": "美濃加茂市統計書 令和5年度版",
+      "url": "https://www.city.minokamo.lg.jp/uploaded/attachment/15172.pdf",
+      "where": "3ページ「美濃加茂市の花」「美濃加茂市の木」"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q12",
+     "short": "How up-to-date the flood assumptions are",
+     "text": "The flood inundation map for the Kiso River (木曽川) was published by the national government (Ministry of Land, Infrastructure, Transport and Tourism, Kisogawa Upstream River Office / 木曽川上流河川事務所).\nOn December 22, Heisei 28 (2016), it published the assumptions for the maximum assumed rainfall.\nIt was revised on April 24, Reiwa 2 (2020).\nAccording to prefectural materials, the depths in the Kiso River and Kamo River (加茂川) zone maps in the city hazard map are as follows.\n・Around the shopping street in front of the south exit of Minokamo-Ota Station (美濃加茂太田駅): 0.5 to 5 m for the planned scale, and 10 to 20 m or more for the maximum scale.\n・The Kamo River zone: 3 to 10 m.\nWe could not find tsunami assumptions or the time it would take for a tsunami to arrive in the city's official materials.\nWe could not confirm whether the city's map has been revised to match the national government's Reiwa 2 (2020) revision.",
+     "original": "木曽川の洪水浸水想定区域図は、国（国土交通省 木曽川上流河川事務所）が出したものです。\n平成28年12月22日に、想定最大規模の降雨による想定を公表しました。\n令和2年4月24日に変更しています。\n市のハザードマップに載っている木曽川と加茂川の区域図の深さは、県の資料によると次のとおりです。\n・美濃加茂太田駅南口の駅前商店街のあたりは、計画規模で0.5〜5m、最大規模で10〜20m以上です。\n・加茂川の区域は3〜10mです。\n津波の想定や、津波が来るまでの時間は、市の公式資料では見つかりませんでした。\n市のマップが国の令和2年の変更に合わせて直されているかは、確認できませんでした。",
+     "back": "木曽川の洪水浸水想定区域図は、国（国土交通省 木曽川上流河川事務所）が出したものです。平成28年12月22日に、想定最大規模の降雨による想定を公表しました。令和2年4月24日に変更しています。市のハザードマップに載っている木曽川と加茂川の区域図の深さは、県の資料によると次のとおりです。・美濃加茂太田駅南口の駅前商店街のあたりは、計画規模で0.5〜5m、最大規模で10〜20m以上です。・加茂川の区域は3〜10mです。津波の想定や、津波が来るまでの時間は、市の公式資料では見つかりませんでした。市のマップが国の令和2年の変更に合わせて直されているかは、確認できませんでした。",
+     "source": {
+      "title": "木曽川水系洪水浸水想定区域図（木曽川上流河川事務所）",
+      "url": "https://www.cbr.mlit.go.jp/kisojyo/shinsuisoutei/index.html",
+      "where": "ページ冒頭の変更・公表のお知らせ"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q13",
+     "short": "Town news",
+     "text": "A \"Moshi-Bana Game experience session\" (もしバナゲーム体験会) will be held. It is a chance to think about what matters most at the end of life.\nA film screening to promote awareness of \"home medical care\" (在宅医療) will be held.\nThere will be traffic restrictions for the 21st Minokamo Half Marathon (みのかもハーフマラソン大会).",
+     "original": "人生の最期に大切にしたいことを考える「もしバナゲーム体験会」を開きます。\n「在宅医療」普及啓発の映画上映会を開きます。\n第21回みのかもハーフマラソン大会に伴い交通規制があります。",
+     "back": "人生の最期に大切にしたいことを考える「もしバナゲーム体験会」を開きます。「在宅医療」普及啓発の映画上映会を開きます。第21回みのかもハーフマラソン大会に伴い交通規制があります。",
+     "source": {
+      "title": "美濃加茂市公式ホームページ トップページ",
+      "url": "https://www.city.minokamo.gifu.jp/",
+      "where": "新着情報・トピックス"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q15",
+     "short": "Where to get help",
+     "text": "[City Hall main number] 0574-25-2111.\nBoth the main building and the annex are open on weekdays from 8:45 to 16:45.\nThey are closed on Saturdays, Sundays, national holidays, and from December 29 to January 3.\n\n[Consumer affairs consultation] Wide-Area Consumer Affairs Consultation Office (広域消費生活相談室), 2nd floor of the City Hall West Building (市役所西館).\nPhone: 0574-25-2111 (extension 462), or the Consumer Hotline 188.\nOpen weekdays from 8:45 to 16:45 (except national holidays and the year-end and New Year period).\n\n[Prefectural consumer affairs consultation] The Prefectural Citizens' Life Consultation Center (県民生活相談センター): 058-277-1003.\nWeekdays 8:30 to 17:00, Saturdays 9:00 to 17:00 (phone only).\n\n[Night and holiday contacts, and consultation services for children, older people, and domestic violence] We could not confirm these this time.",
+     "original": "【市役所代表】0574-25-2111。\n本庁舎・分庁舎とも、受付は平日8時45分～16時45分です。\n土日祝日と12月29日～1月3日は閉庁です。\n\n【消費生活相談】広域消費生活相談室（市役所西館2階）です。\n電話は0574-25-2111（内線462）か、消費者ホットライン188です。\n受付は平日8時45分～16時45分です（祝日・年末年始を除く）。\n\n【県の消費生活相談】県民生活相談センターは058-277-1003です。\n平日8時30分～17時、土曜9時～17時（電話のみ）です。\n\n【夜間・休日の連絡先、子ども・高齢者・DVの相談窓口】今回は確認できませんでした。",
+     "back": "【市役所代表】0574-25-2111。本庁舎・分庁舎とも、受付は平日8時45分～16時45分です。土日祝日と12月29日～1月3日は閉庁です。【消費生活相談】広域消費生活相談室（市役所西館2階）です。電話は0574-25-2111（内線462）か、消費者ホットライン188です。受付は平日8時45分～16時45分です（祝日・年末年始を除く）。【県の消費生活相談】県民生活相談センターは058-277-1003です。平日8時30分～17時、土曜9時～17時（電話のみ）です。【夜間・休日の連絡先、子ども・高齢者・DVの相談窓口】今回は確認できませんでした。",
+     "source": {
+      "title": "広域消費生活相談室のご案内",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/12/1631.html",
+      "where": "受付時間・電話"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q16",
+     "short": "Medical care at night and on holidays",
+     "text": "For sudden illness on holidays (Sundays, national holidays, and the year-end and New Year period), there is a holiday emergency clinic run by doctors on a home-duty rotation system.\nReception is from 9:00 a.m. to 4:30 p.m.\nFor dental care, reception is from 9:00 a.m. to 1:00 p.m.\nThe doctor on duty changes each day. Please check the duty schedule of the Kamo Medical Association (加茂医師会).\nThere is a free phone consultation service for city residents only, the \"Minokamo Health Hotline\" (みのかも健康ほっとダイヤル), available 24 hours a day, 365 days a year. The phone number is 0120-238-007.\nFor a child's sudden illness, use the prefecture's children's medical phone consultation, #8000. If you cannot get through, call 058-240-4199.\nHours: Monday to Friday from 18:00 to 8:00 the next morning; Saturdays, holidays, and the year-end and New Year period from 8:00 to 8:00 the next morning.\nThe number 058-240-4199 will change to 058-216-0999 from 18:00 on November 2, Reiwa 8 (2026).\nWe could not find the phone numbers for the night emergency clinic (夜間急病診療所) and the holiday emergency clinic (休日急患診療所) in the official materials.",
+     "original": "休日（日曜・祝日・年末年始）の急病は、在宅当番制の休日急患診療です。\n受付は午前9時から午後4時30分までです。\n歯科は午前9時から午後1時までです。\n当番医は日ごとに替わります。加茂医師会の当番表で確認してください。\n24時間365日、市民専用の無料電話相談「みのかも健康ほっとダイヤル」があります。電話は 0120-238-007 です。\n子どもの急病は、県の子ども医療電話相談 #8000 です。つながらないときは 058-240-4199 にかけます。\n受付は月〜金が18時〜翌朝8時、土・休日・年末年始は8時〜翌朝8時です。\n058-240-4199 は令和8年11月2日18時から 058-216-0999 に変わります。\n夜間急病診療所と、休日急患診療所の電話番号は、公式資料では見つかりませんでした。",
+     "back": "休日（日曜・祝日・年末年始）の急病は、在宅当番制の休日急患診療です。受付は午前9時から午後4時30分までです。歯科は午前9時から午後1時までです。当番医は日ごとに替わります。加茂医師会の当番表で確認してください。24時間365日、市民専用の無料電話相談「みのかも健康ほっとダイヤル」があります。電話は 0120-238-007 です。子どもの急病は、県の子ども医療電話相談 #8000 です。つながらないときは 058-240-4199 にかけます。受付は月〜金が18時〜翌朝8時、土・休日・年末年始は8時〜翌朝8時です。058-240-4199 は令和8年11月2日18時から 058-216-0999 に変わります。夜間急病診療所と、休日急患診療所の電話番号は、公式資料では見つかりませんでした。",
+     "source": {
+      "title": "日曜、祝日等の急な病気やケガの際に（美濃加茂市）",
+      "url": "https://www.city.minokamo.gifu.jp/shimin/contents.cfm?base_id=4068&mi_id=3&g1_id=12&g2_id=52",
+      "where": "休日急患診療当番"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q03",
+     "short": "Regional Disaster Prevention Plan (地域防災計画)",
+     "text": "The Regional Disaster Prevention Plan can be viewed on the \"Disaster Prevention Information page\" (防災情報ページ) of the city's official website.\nIt is posted as the \"Minokamo City Regional Disaster Prevention Plan\" (美濃加茂市地域防災計画), with PDFs of the main volume and the reference materials volume.\nThe latest version is the one revised in March, Reiwa 8.",
+     "original": "地域防災計画は、市公式サイトの「防災情報ページ」で見られます。\n「美濃加茂市地域防災計画」として、本編と資料編のPDFが載っています。\nいちばん新しい版は令和8年3月修正です。",
+     "back": "地域防災計画は、市の公式サイトの「防災情報ページ」で見られます。「美濃加茂市地域防災計画」として、本編と資料編のPDFが掲載されています。最新版は令和8年3月に修正されたものです。",
+     "source": {
+      "title": "防災情報ページ - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/site/bousai/",
+      "where": "防災情報一覧「美濃加茂市地域防災計画」"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q17",
+     "short": "Childcare consultation desks and subsidies",
+     "text": "[Consultation desks]\nThe \"Minokamo Child and Family Center\" (みのかもこども家庭センター) takes consultations about pregnancy, childbirth, and child-rearing.\nIt is on the 2nd floor of the \"Minokamo Health Plaza\" (みのかも健康プラザ), 1-2 Kenko-no-machi 1-chome, Minokamo City, Gifu Prefecture (岐阜県美濃加茂市健康のまち一丁目2番地).\nIt is open Monday to Friday, 8:45 a.m. to 4:45 p.m. It is closed during the year-end and New Year holidays and on public holidays.\nFor consultations about children and child-rearing for those under 18, call the Child and Family Center at 0574-25-1110.\nFor consultations about health from pregnancy through early childhood, call the Maternal and Child Health Section, Health Division (健康課母子保健係) at 0574-25-4145.\nConsultations are free. You can also go without an appointment, but you may have to wait.\n\n[Medical expense subsidy for children]\nThere is a welfare medical expense subsidy system (福祉医療費助成) for children.\nUntil graduation from junior high school (until the first March 31 after turning 15), both inpatient and outpatient care are subsidized.\nFor high school age (until the first March 31 after turning 18), only inpatient care is subsidized.\nThe subsidy covers the out-of-pocket amount for insured medical care.\nAt medical institutions in Gifu Prefecture, if you show the recipient certificate, your out-of-pocket cost is free.\nNo recipient certificate is issued for high school age.\n\n[Child allowance and other allowances]\nWe could not confirm this on the city's official pages this time. Please contact City Hall (市役所) at 0574-25-2111.",
+     "original": "【相談の窓口】\n「みのかもこども家庭センター」が、妊娠・出産・子育ての相談を受けています。\n場所は、岐阜県美濃加茂市健康のまち一丁目2番地の「みのかも健康プラザ」2階です。\n開所は月〜金の午前8時45分〜午後4時45分です。年末年始と祝日は休みです。\n18歳未満の子ども・子育ての相談は、こども家庭センターの電話 0574-25-1110 へどうぞ。\n妊娠期から幼児期の健康の相談は、健康課母子保健係の電話 0574-25-4145 です。\n相談は無料です。予約なしで行くこともできますが、待つことがあります。\n\n【子どもの医療費の助成】\n福祉医療費助成（子ども）の制度があります。\n中学校を卒業するまで（15歳になった後の最初の3月31日まで）は、入院も通院も助成されます。\n高校生年代（18歳になった後の最初の3月31日まで）は、入院だけが助成されます。\n保険診療の自己負担額が助成されます。\n岐阜県内の医療機関では、受給者証を見せると自己負担が無料になります。\n高校生年代には受給者証は出ません。\n\n【児童手当などの手当】\n今回は市の公式ページで確認できませんでした。市役所（0574-25-2111）にお問い合わせください。",
+     "back": "【相談の窓口】「みのかもこども家庭センター」が妊娠・出産・子育ての相談を受けています。場所は岐阜県美濃加茂市健康のまち一丁目2番地の「みのかも健康プラザ」2階です。開所は月〜金の午前8時45分〜午後4時45分です。年末年始と祝日は休みです。18歳未満の子ども・子育ての相談は、こども家庭センターの電話0574-25-1110へ。妊娠期から幼児期の健康相談は、健康課母子保健係の電話0574-25-4145です。相談は無料です。予約なしでも行けますが、待つことがあります。【子どもの医療費の助成】福祉医療費助成（子ども）の制度があります。中学校を卒業するまで（15歳になった後の最初の3月31日まで）は、入院も通院も助成されます。高校生年代（18歳になった後の最初の3月31日まで）は、入院のみ助成されます。保険診療の自己負担額が助成されます。岐阜県内の医療機関では、受給者証を見せると自己負担が無料になります。高校生年代には受給者証は発行されません。【児童手当などの手当】今回は市の公式ページで確認できませんでした。市役所（0574-25-2111）にお問い合わせください。",
+     "source": {
+      "title": "みのかもこども家庭センター - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/7/11916.html",
+      "where": "児童福祉の相談窓口／場所と開所時間"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q18",
+     "short": "Consultation desks for nursing care",
+     "text": "The general consultation desk for older people is the \"Choju Support Center\" (長寿支援センター), also called the Community General Support Center (地域包括支援センター). There are 3 in the city.\nWest Choju Support Center (西部長寿支援センター): Ota Elementary School (太田小) and Kamono Elementary School (加茂野小) districts. Phone 0574-24-7007.\nCentral Choju Support Center (中部長寿支援センター): Yamate Elementary School (山手小), Yamanoue Elementary School (山之上小), Hachiya Elementary School (蜂屋小), Ibuka Elementary School (伊深小), and Miwa Elementary School (三和小) districts. Phone 0574-49-8591.\nEast Choju Support Center (東部長寿支援センター): Furui Elementary School (古井小) and Shimokomeda Elementary School (下米田小) districts. Phone 0574-50-1777.",
+     "original": "高齢者の総合相談窓口は「長寿支援センター」（地域包括支援センター）です。市内に3か所あります。\n西部長寿支援センター：太田小・加茂野小校区。電話 0574-24-7007。\n中部長寿支援センター：山手小・山之上小・蜂屋小・伊深小・三和小校区。電話 0574-49-8591。\n東部長寿支援センター：古井小・下米田小校区。電話 0574-50-1777。",
+     "back": "高齢者の総合相談窓口は「長寿支援センター」（地域包括支援センター）です。市内に3か所あります。西部長寿支援センター：太田小・加茂野小校区。電話0574-24-7007。中部長寿支援センター：山手小・山之上小・蜂屋小・伊深小・三和小校区。電話0574-49-8591。東部長寿支援センター：古井小・下米田小校区。電話0574-50-1777。",
+     "source": {
+      "title": "「長寿支援センター」は、高齢者の「総合相談窓口」です！",
+      "url": "https://www.city.minokamo.gifu.jp/shimin/contents.cfm?base_id=7534&mi_id=3&g1_id=12&g2_id=48",
+      "where": "長寿支援センターの名称及び担当区域・連絡先"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q04",
+     "short": "Disaster alerts",
+     "text": "You can receive disaster alerts in the following 3 ways.\n① Email \"Sugu Mail Minokamo\" (すぐメールみのかも): The content of disaster prevention administrative radio broadcasts is sent to you by email.\nTo register, send a blank email to t-minokamo@sg-p.jp. Read the reply email with instructions and register.\n② Disaster prevention app \"Minokamo City Disaster Prevention\" (美濃加茂市防災): You can see emergency information, evacuation shelter information, and the content of disaster prevention administrative radio broadcasts.\nSearch for \"美濃加茂市防災\" in the App Store or Google Play and install it.\n③ Emergency alert mail (Area Mail) (緊急速報メール（エリアメール）): It is sent to docomo, au, and SoftBank mobile phones. No prior application is needed, and it is free.\nSome phone models need a reception setting.",
+     "original": "災害の知らせは、次の3つで受け取れます。\n①メール「すぐメールみのかも」：防災行政無線の放送内容がメールで届きます。\n登録は t-minokamo@sg-p.jp に空メールを送ります。折り返しの案内メールを読んで登録します。\n②防災アプリ「美濃加茂市防災」：緊急情報、避難所情報、防災行政無線の放送内容を見られます。\nApp Store か Google Play で「美濃加茂市防災」と検索して入れます。\n③緊急速報メール（エリアメール）：ドコモ・au・ソフトバンクの携帯に届きます。事前の申し込みは要らず、無料です。\n機種によっては受信設定が必要です。",
+     "back": "災害の知らせは、次の3つで受け取れます。①メール「すぐメールみのかも」：防災行政無線の放送内容がメールで届きます。登録はt-minokamo@sg-p.jpに空メールを送ります。折り返しの案内メールを読んで登録します。②防災アプリ「美濃加茂市防災」：緊急情報、避難所情報、防災行政無線の放送内容を見られます。App StoreかGoogle Playで「美濃加茂市防災」と検索して入れます。③緊急速報メール（エリアメール）：ドコモ・au・ソフトバンクの携帯に届きます。事前の申し込みは不要で、無料です。機種によっては受信設定が必要です。",
+     "source": {
+      "title": "「広報みのかも」の放送が良く聞こえない、聞き取りづらいのですが？ - 防災ページ",
+      "url": "https://www.city.minokamo.lg.jp/site/bousai/2340.html",
+      "where": "本文"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q09",
+     "short": "History of the city",
+     "text": "Minokamo City was founded on April 1, Showa 29 (1954).\nIt was centered on Ota Town (太田町) and Furui Town (古井町) in Kamo District (加茂郡).\nYamanoue Village (山之上村), Hachiya Village (蜂屋村), Kamono Village (加茂野村), and Ibuka Village (伊深村) joined them.\nThe Kawaura (川浦) area and the 廿屋 area of Miwa Village (三和村) also joined.\nShimokomeda Village (下米田村) and the Makino (牧野) area of Wachi Village (和知村) were also added.",
+     "original": "美濃加茂市は、昭和29年（1954年）4月1日に生まれました。\n加茂郡の太田町と古井町が中心です。\nそこに山之上村、蜂屋村、加茂野村、伊深村が合わさりました。\n三和村の川浦地区と廿屋地区も入りました。\n下米田村と、和知村の牧野地区も加わりました。",
+     "back": "美濃加茂市は、昭和29年（1954年）4月1日に誕生しました。加茂郡の太田町と古井町が中心です。そこに山之上村、蜂屋村、加茂野村、伊深村が合併しました。三和村の川浦地区と廿屋地区も加わりました。下米田村と、和知村の牧野地区も加わりました。",
+     "source": {
+      "title": "美濃加茂市 市制施行70周年",
+      "url": "https://www.city.minokamo.lg.jp/site/70th-anniversary/",
+      "where": "■美濃加茂市の軌跡 美濃加茂市の誕生"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q08",
+     "short": "Information for foreign residents",
+     "text": "City Hall (市役所) has a \"Foreign Residents One-Stop Consultation Desk\" (外国人ワンストップ相談窓口).\nIt is on the 1st floor of the City Hall main building (市役所本館1階). The phone number is 0574-25-2111 (extensions 364 and 366).\nOn the Easy Japanese page \"What you can consult about at City Hall (市役所（しやくしょ）で相談（そうだん）できること)\", you can see where to get consultations and the phone numbers.\nThere is also an English page (English) and a foreign-language edition of the city newsletter.\nThe English page says the supported languages are Easy Japanese, English, Portuguese, and Tagalog.\nThe contact information for the Multicultural Co-creation Division (多文化共創課) (Noritake Building 1st floor (則竹ビル1階), 0574-42-6262) is on a separate page.",
+     "original": "市役所（しやくしょ）には「外国人ワンストップ相談窓口」があります。\n場所は市役所本館1階です。電話は0574-25-2111（内線364・366）です。\nやさしい日本語のページ「市役所（しやくしょ）で相談（そうだん）できること」で、相談できる場所と電話が見られます。\n英語のページ（English）と、外国語版の広報紙もあります。\n英語ページには、対応言語はやさしい日本語・英語・ポルトガル語・タガログ語と書かれています。\n多文化共創課（則竹ビル1階、0574-42-6262）の連絡先は、別のページに載っています。",
+     "back": "市役所には「外国人ワンストップ相談窓口」があります。場所は市役所本館1階です。電話は0574-25-2111（内線364・366）です。やさしい日本語のページ「市役所で相談できること」で、相談できる場所と電話番号が見られます。英語のページ（English）と、外国語版の広報紙もあります。英語ページには、対応言語はやさしい日本語・英語・ポルトガル語・タガログ語と書かれています。多文化共創課（則竹ビル1階、0574-42-6262）の連絡先は、別のページに載っています。",
+     "source": {
+      "title": "市役所（しやくしょ）で相談（そうだん）できること - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/37/20430.html",
+      "where": "本文（外国人ワンストップ相談窓口の説明と表）"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q52",
+     "short": "Disaster information in multiple languages",
+     "text": "There is a disaster prevention guide in Portuguese.\nYou can open it from the button at the top of the city's \"Disaster Prevention Guide\" (防災ガイド) page (in Japanese).\nThe Portuguese page has information about the disaster prevention map.\nIt also links to the item pages 1 to 4.\nThe contact for inquiries is stated as the safety and disaster prevention staff at City Hall (市役所) (phone 0574-25-2111, extension 272).\nThe disaster prevention page of the city's official website has a \"Translation\" link and an \"Easy Japanese\" (やさしい日本語) link.\nEasy Japanese works by converting the site through an external service (tsutaeru.cloud).\nWe could not confirm this time whether foreign-language or Easy Japanese versions exist for the disaster prevention app, the email alerts, or the evacuation shelter information.\nFor the hazard map PDFs (landslide/flood disasters, and earthquake disasters), only Japanese versions were found.",
+     "original": "ポルトガル語の防災ガイドがあります。\n市の「防災ガイド」ページ（日本語）の上のボタンから開けます。\nポルトガル語のページには、防災マップの案内があります。\nそのほか、1〜4の項目ページにもつながっています。\n問い合わせ先は、市役所の安全・防災の担当（電話 0574-25-2111、内線272）と書かれています。\n市の公式サイトの防災ページには、「Translation」（翻訳）のリンクと、「やさしい日本語」のリンクがあります。\nやさしい日本語は、外部のサービス（tsutaeru.cloud）でサイトを変換して見る形です。\n防災アプリ、メール配信、避難所案内の外国語版・やさしい日本語版があるかは、今回は確認できませんでした。\nハザードマップのPDF（土砂災害・水害、地震災害）は日本語版だけが見つかりました。",
+     "back": "ポルトガル語の防災ガイドがあります。市の「防災ガイド」ページ（日本語）の上部のボタンから開けます。ポルトガル語のページには防災マップの案内があります。そのほか、1〜4の項目ページにもつながっています。問い合わせ先は、市役所の安全・防災担当（電話0574-25-2111、内線272）と書かれています。市の公式サイトの防災ページには「Translation」（翻訳）のリンクと「やさしい日本語」のリンクがあります。やさしい日本語は、外部サービス（tsutaeru.cloud）でサイトを変換して見る形です。防災アプリ、メール配信、避難所案内の外国語版・やさしい日本語版があるかは、今回確認できませんでした。ハザードマップのPDF（土砂災害・水害、地震災害）は日本語版のみ見つかりました。",
+     "source": {
+      "title": "Dia de Prevenção de Desastres da Cidade de Minokamo（美濃加茂市防災ガイド ポルトガル語版）",
+      "url": "https://www.city.minokamo.gifu.jp/bousai/guide/port/index.htm",
+      "where": "ポルトガル語版トップページ"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q53",
+     "short": "Japanese classes and school enrollment information",
+     "text": "[How children enter school]\nYou can see this on the city's page \"About school enrollment for foreign children and students\" (外国人児童生徒の就学について).\nForeign nationals are not obligated to send their children to school. If you wish, your child can enter an elementary or junior high school.\nThe school is decided by the address on your residence record. Tuition and textbooks are free.\nFor the procedure, take your residence card and passport (for both the parent/guardian and the child) to the Board of Education (教育委員会). After that, do the procedure at the school your child will enter.\nSchool enrollment request forms and guide leaflets in Portuguese and English are on the same page.\nInquiries: School Education Division (学校教育課), Board of Education (教育委員会), 0574-25-2111 (extension 342)\n\n[Children learning Japanese for the first time]\nThere is the \"Nozomi Class\" (のぞみ教室). It is located inside Furui Elementary School (古井小学校).\nIt is open Monday to Friday, 8:30 a.m. to 4:30 p.m. School lunch fees are charged.\n\n[After-school learning support \"MIRAI\" (for elementary and junior high school students of foreign nationality)]\nOta area (太田地区): Wednesdays and Fridays. Elementary school students 18:30 to 20:00, junior high school students 18:30 to 20:30. At the Lifelong Learning Center (生涯学習センター) (3425-1 Ota-cho (太田町3425-1)).\nFurui area (古井地区): Tuesdays and Thursdays. Elementary school students 16:30 to 18:00 at the East Library (東図書館) (9-2-22 Hongo-cho (本郷町9-2-22)). Junior high school students 18:30 to 20:30 at the Kami-Furui Community Center (上古井交流センター) (8-8-48 Hongo-cho (本郷町8-8-48)).\nApplications and inquiries: Minokamo International Association (美濃加茂国際交流協会) 0574-28-3822\n\n[Japanese classes for adults]\nThe city's Multicultural Co-creation Division (多文化共創課) has a page titled \"There are Japanese classes for foreign residents\" (外国人市民への日本語教室があります) (updated March 13, 2025). We have not been able to confirm the details of dates, times, places, and where to apply.\nThe contact is the Multicultural Co-creation Division, 0574-42-6262 (Noritake Building 1st floor (則竹ビル1階), 1752-1 Ota-cho (太田町1752-1)).",
+     "original": "【子どもの学校への入り方】\n市の「外国人児童生徒の就学について」のページで見られます。\n外国人は就学の義務はありません。希望すれば小・中学校に入れます。\n入る学校は住民票の住所で決まります。授業料と教科書代は無料です。\n手続きは、在留カードとパスポート（保護者と本人）を持って教育委員会へ行きます。そのあと、入る学校で手続きをします。\nポルトガル語・英語の就学願いと案内リーフレットも、同じページにあります。\n問い合わせ：教育委員会 学校教育課 0574-25-2111（内線342）\n\n【日本語を初めて学ぶ子】\n「のぞみ教室」があります。場所は古井小学校内です。\n月〜金の午前8時30分〜午後4時30分です。給食費がかかります。\n\n【放課後の学習支援「MIRAI」（外国籍の小中学生）】\n太田地区：水・金曜。小学生18:30〜20:00、中学生18:30〜20:30。生涯学習センター（太田町3425-1）。\n古井地区：火・木曜。小学生16:30〜18:00は東図書館（本郷町9-2-22）。中学生18:30〜20:30は上古井交流センター（本郷町8-8-48）。\n申し込み・問い合わせ：美濃加茂国際交流協会 0574-28-3822\n\n【大人の日本語教室】\n市の多文化共創課に「外国人市民への日本語教室があります」というページ（2025年3月13日更新）があります。日時・場所・申込先の詳細は確認できていません。\n問い合わせ先は多文化共創課 0574-42-6262（太田町1752-1 則竹ビル1階）です。",
+     "back": "【子どもの学校への入り方】市の「外国人児童生徒の就学について」のページで見られます。外国人は就学の義務はありません。希望すれば小・中学校に入れます。入る学校は住民票の住所で決まります。授業料と教科書代は無料です。手続きは、在留カードとパスポート（保護者と本人）を持って教育委員会へ行きます。その後、入る学校で手続きをします。ポルトガル語・英語の就学願いと案内リーフレットも同じページにあります。問い合わせ：教育委員会学校教育課0574-25-2111（内線342）。【日本語を初めて学ぶ子】「のぞみ教室」があります。場所は古井小学校内です。月〜金の午前8時30分〜午後4時30分です。給食費がかかります。【放課後の学習支援「MIRAI」】太田地区：水・金曜。小学生18:30〜20:00、中学生18:30〜20:30。生涯学習センター（太田町3425-1）。古井地区：火・木曜。小学生16:30〜18:00は東図書館（本郷町9-2-22）。中学生18:30〜20:30は上古井交流センター（本郷町8-8-48）。申し込み・問い合わせ：美濃加茂国際交流協会0574-28-3822。【大人の日本語教室】市の多文化共創課に「外国人市民への日本語教室があります」というページ（2025年3月13日更新）があります。日時・場所・申込先の詳細は確認できていません。問い合わせ先は多文化共創課0574-42-6262（太田町1752-1 則竹ビル1階）です。",
+     "source": {
+      "title": "外国籍の小中学生への学習支援について",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/37/10413.html",
+      "where": "MIRAIの概要（日時・場所・問い合わせ先）"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q54",
+     "short": "Applying for Nursery Schools and After-School Care (Gakudo)",
+     "text": "[Nursery Schools / Certified Early Childhood Education and Care Centers (保育園・認定こども園)]\nApply at the counter of the Children's Future Division (こども未来課) or apply online.\nApplications are not accepted at each individual school, and applications by mail are not accepted.\nApplications for admission in April 2027 (Reiwa 9) are made in three rounds.\nFirst round: online from November 1 to 20, 2026 (Reiwa 8); at the counter from November 2 to 30.\nSecond round: online from December 1, 2026 to February 3, 2027 (Reiwa 9); at the counter from December 1, 2026 to February 10, 2027.\nThird round: online from February 11 to March 3, 2027; at the counter from February 12 to March 10.\n[After-School Care (学童保育)]\nIt is for children in grades 1 to 6.\nApply online or at the counter of the Children's Future Division (こども未来課).\nApplications are not accepted at elementary schools or liaison offices (連絡所).\nFor fiscal year 2026 (Reiwa 8), the application period for April has ended. Applications will continue to be accepted at any time after that, but if the number of applicants exceeds capacity, children will be put on a waiting list.\nWe could not find any information about after-school care for fiscal year 2027 (Reiwa 9).\n[Phone]\nThe Children's Future Division (こども未来課), on the 2nd floor of Minokamo Health Plaza (みのかも健康プラザ), can be reached at 0574-25-2111 (extension 387).\n[Foreign Languages]\nAdmission documents are available in Portuguese, Tagalog, and English.\nThe after-school care application guidelines and application forms are available in English and Portuguese.\nThe official website has links to a translation page and to a \"Plain Japanese\" (やさしい日本語) display.",
+     "original": "【保育園・認定こども園】\n申込み先は、こども未来課の窓口か、オンライン申請です。\n各園での受付と郵送での申込みはありません。\n令和9年4月入園の申込みは三段階です。\n第一次は、オンラインが令和8年11月1日〜20日、窓口が11月2日〜30日です。\n第二次は、オンラインが令和8年12月1日〜令和9年2月3日、窓口が12月1日〜令和9年2月10日です。\n第三次は、オンラインが令和9年2月11日〜3月3日、窓口が2月12日〜3月10日です。\n【学童保育】\n対象は1年生から6年生です。\nオンライン申請か、こども未来課の窓口で申し込みます。\n小学校と連絡所では受け付けていません。\n令和8年度は4月分の受付が終わっています。その後も随時受け付けますが、定員を超えると待機になります。\n令和9年度の学童の案内は見つかりませんでした。\n【電話】\nこども未来課（みのかも健康プラザ2階）は 0574-25-2111（内線387）です。\n【外国語】\n入園書類には、ポルトガル語・タガログ語・英語版があります。\n学童の募集要項や申請書は、英語とポルトガル語版があります。\n公式サイトに、翻訳ページと「やさしい日本語」表示へのリンクがあります。",
+     "back": "【保育園・認定こども園】申込先は、こども未来課の窓口か、オンライン申請です。各園での受付と郵送での申込みはありません。令和9年4月入園の申込みは三段階です。第一次は、オンラインが令和8年11月1日〜20日、窓口が11月2日〜30日です。第二次は、オンラインが令和8年12月1日〜令和9年2月3日、窓口が12月1日〜令和9年2月10日です。第三次は、オンラインが令和9年2月11日〜3月3日、窓口が2月12日〜3月10日です。【学童保育】対象は1年生から6年生です。オンライン申請か、こども未来課の窓口で申し込みます。小学校と連絡所では受け付けていません。令和8年度は4月分の受付が終わっています。その後も随時受け付けますが、定員を超えると待機になります。令和9年度の学童の案内は見つかりませんでした。【電話】こども未来課（みのかも健康プラザ2階）は0574-25-2111（内線387）です。【外国語】入園書類には、ポルトガル語・タガログ語・英語版があります。学童の募集要項や申請書は、英語とポルトガル語版があります。公式サイトに、翻訳ページと「やさしい日本語」表示へのリンクがあります。",
+     "source": {
+      "title": "令和9年度4月 保育園・こども園・小規模保育所等の入園について",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/8/13155.html",
+      "where": "4月入園の申込期間／申込み手続きについて／申請方法／お問い合わせ先"
+     },
+     "status": "auto",
+     "problems": []
+    }
+   ]
+  },
+  "easy": {
+   "name": "やさしい にほんご",
+   "ja": "やさしい日本語",
+   "items": [
+    {
+     "qid": "Q01",
+     "short": "避難場所（ひなんばしょ）の一覧（いちらん）",
+     "text": "市（し）のホームページに、「美濃加茂市の指定避難所・指定緊急避難場所および備蓄状況」というページがあります。そこに、一覧のPDFがあります。\n指定緊急避難場所（してい きんきゅう ひなんばしょ）は、ぜんぶで57か所です。\n内訳（うちわけ）は、次のとおりです。\n・指定避難所（してい ひなんじょ）もかねている施設（しせつ）：40か所\n・緊急避難場所だけの公園（こうえん）やグラウンドなど：17か所\nweb版と冊子（さっし）版のハザードマップでも見られます。",
+     "original": "市公式サイトの「美濃加茂市の指定避難所・指定緊急避難場所および備蓄状況」ページに、一覧のPDFがあります。\n指定緊急避難場所は全部で57か所です。\n内訳は、指定避難所と兼ねる施設が40か所、緊急避難場所だけの公園・グラウンドなどが17か所です。\nweb版・冊子版のハザードマップでも見られます。",
+     "back": "市のホームページに、「美濃加茂市の指定避難所・指定緊急避難場所および備蓄状況」のページがあります。そこに一覧のPDFがあります。指定緊急避難場所は全部で57か所です。内訳は、指定避難所と兼ねる施設が40か所、緊急避難場所だけの公園・グラウンドなどが17か所です。web版・冊子版のハザードマップでも見られます。",
+     "source": {
+      "title": "美濃加茂市の指定避難所・指定緊急避難場所および備蓄状況（一覧PDFへのリンク）",
+      "url": "https://www.city.minokamo.lg.jp/site/bousai/2343.html",
+      "where": "「市の指定避難所・指定緊急避難場所」の見出し／一覧PDF（2343_25113_misc.pdf）"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q03",
+     "short": "地域防災計画（ちいき ぼうさい けいかく）",
+     "text": "地域防災計画は、市のホームページの「防災情報ページ」で見られます。\n「美濃加茂市地域防災計画」として、本編（ほんぺん）と資料編（しりょうへん）のPDFがのっています。\nいちばん新しい版は、令和8年3月に直（なお）したものです。",
+     "original": "地域防災計画は、市公式サイトの「防災情報ページ」で見られます。\n「美濃加茂市地域防災計画」として、本編と資料編のPDFが載っています。\nいちばん新しい版は令和8年3月修正です。",
+     "back": "地域防災計画は、市のホームページの「防災情報ページ」で見られます。「美濃加茂市地域防災計画」として、本編と資料編のPDFが載っています。いちばん新しい版は、令和8年3月に直したものです。",
+     "source": {
+      "title": "防災情報ページ - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/site/bousai/",
+      "where": "防災情報一覧「美濃加茂市地域防災計画」"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q05",
+     "short": "ごみの分（わ）け方・出（だ）す日",
+     "text": "市のホームページの「家庭ごみの分別と出し方、収集日について」のページで見られます。\n市は、9区分15分別（くぶん ぶんべつ）でごみを集めています。\nページの中の「関連資料」に、令和8年度ごみ収集日一覧表・分別と出し方（日本語のPDF）があります。\n外国語の版もあります。ポルトガル語、英語、タガログ語などです。\nごみを出す時間は、収集日（しゅうしゅうび）の当日（とうじつ）の朝6時から8時です。\nペットボトル、食品トレイ、発泡（はっぽう）スチロールは、朝8時から10時です。",
+     "original": "市公式サイトの「家庭ごみの分別と出し方、収集日について」のページで見られます。\n市は9区分15分別でごみを収集しています。\nページ内の「関連資料」に、令和8年度ごみ収集日一覧表・分別と出し方（日本語PDF）があります。\n外国語版もあります。ポルトガル語、英語、タガログ語などです。\n排出は収集日当日の朝6時から8時です。\nペットボトル、食品トレイ、発泡スチロールは朝8時から10時です。",
+     "back": "市のホームページの「家庭ごみの分別と出し方、収集日について」のページで見られます。市は9区分15分別でごみを集めています。ページの中の「関連資料」に、令和8年度ごみ収集日一覧表・分別と出し方（日本語のPDF）があります。外国語の版もあります。ポルトガル語、英語、タガログ語などです。ごみを出す時間は、収集日の当日の朝6時から8時です。ペットボトル、食品トレイ、発泡スチロールは、朝8時から10時です。",
+     "source": {
+      "title": "家庭ごみの分別と出し方、収集日について - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/15/1744.html",
+      "where": "関連資料：令和8年度ごみ収集日一覧表・分別と出し方(日本語)"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q06",
+     "short": "引（ひ）っ越（こ）しの手続（てつづ）き",
+     "text": "市のホームページの「市外から美濃加茂市へ転入しました。引っ越しの際に一般的に必要な手続きを知りたい」のページで見られます。\n住民票（じゅうみんひょう）の異動（いどう）、つまり転入届（てんにゅうとどけ）は、住みはじめた日から14日以内にします。\n国民健康保険（こくみん けんこう ほけん）は、入る人が、転入（てんにゅう）してから14日以内に手続きをします。\nマイナンバーカードの住所変更（じゅうしょ へんこう）、印鑑登録（いんかん とうろく）、転校（てんこう）、国民年金（こくみん ねんきん）、児童手当（じどう てあて）なども、同じページにのっています。\n「転入・転出するときは」のページもあります。",
+     "original": "市公式サイトの「市外から美濃加茂市へ転入しました。引っ越しの際に一般的に必要な手続きを知りたい」のページで見られます。\n住民票の異動（転入届）は、住み始めた日から14日以内です。\n国民健康保険は、加入する方が転入後14日以内に手続きします。\nマイナンバーカードの住所変更、印鑑登録、転校、国民年金、児童手当なども、同じページに並んでいます。\n「転入・転出するときは」のページもあります。",
+     "back": "市のホームページの「市外から美濃加茂市へ転入しました。引っ越しの際に一般的に必要な手続きを知りたい」のページで見られます。住民票の異動、つまり転入届は、住みはじめた日から14日以内にします。国民健康保険は、入る人が転入してから14日以内に手続きをします。マイナンバーカードの住所変更、印鑑登録、転校、国民年金、児童手当なども、同じページにのっています。「転入・転出するときは」のページもあります。",
+     "source": {
+      "title": "市外から美濃加茂市へ転入しました。引っ越しの際に一般的に必要な手続きを知りたい",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/23/2408.html",
+      "where": "本文の手続き一覧"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q10",
+     "short": "催（もよお）し・祭（まつ）り",
+     "text": "毎年ひらかれる大きな催しは、「おん祭MINOKAMO」です。市民（しみん）の手作（てづく）りのイベントです。\n令和8年（2026年）の予定は、次のとおりです。\n・盆踊（ぼんおど）り：8月8日（土）、ぎふ清流里山公園（せいりゅう さとやま こうえん）の駐車場（ちゅうしゃじょう）。\n・市民花火大会（しみん はなびたいかい）：10月11日（日）、木曽川緑地ライン公園（きそがわ りょくち らいんこうえん）。予備日（よびび）は11月22日（日）です。\n・太田宿中山道まつり（おおたじゅく なかせんどう まつり）：10月25日（日）、中山道太田宿界隈（なかせんどう おおたじゅく かいわい）。\n日にちは、年によって変わります。令和5年度までは8月と10月でしたが、とても暑い夏のため、今の日にちになりました。\nほかに、小山観音初午祭（おやまかんのん はつうままつり：3月の第1日曜日、小山観音）と、諏訪神社（すわじんじゃ）の祭礼（さいれい：4月の第1土曜日・日曜日、諏訪神社）があります。",
+     "original": "毎年ひらかれる大きな催しは「おん祭MINOKAMO」です。市民による手作りのイベントです。\n令和8年（2026年）の予定は次のとおりです。\n盆踊り：8月8日（土）、ぎふ清流里山公園の駐車場。\n市民花火大会：10月11日（日）、木曽川緑地ライン公園。予備日は11月22日（日）です。\n太田宿中山道まつり：10月25日（日）、中山道太田宿界隈。\n日程は年によって変わります。令和5年度までは8月と10月でしたが、猛暑のため、いまの日程になりました。\nほかに、小山観音初午祭（3月第1日曜、小山観音）と諏訪神社の祭礼（4月第1土・日曜、諏訪神社）があります。",
+     "back": "毎年ひらかれる大きな催しは、「おん祭MINOKAMO」です。市民の手作りのイベントです。令和8年（2026年）の予定は、次のとおりです。盆踊り：8月8日（土）、ぎふ清流里山公園の駐車場。市民花火大会：10月11日（日）、木曽川緑地ライン公園。予備日は11月22日（日）です。太田宿中山道まつり：10月25日（日）、中山道太田宿界隈。日にちは、年によって変わります。令和5年度までは8月と10月でしたが、とても暑い夏のため、今の日にちになりました。ほかに、小山観音初午祭（3月の第1日曜日、小山観音）と、諏訪神社の祭礼（4月の第1土曜日・日曜日、諏訪神社）があります。",
+     "source": {
+      "title": "おん祭MINOKAMO2026の開催日について - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/12/16223.html",
+      "where": "本文"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q11",
+     "short": "町（まち）の花（はな）・木（き）",
+     "text": "市の花は「あじさい」（ゆきのした科）です。\n市の木は「むく」（にれ科）です。\n市の鳥（とり）は、調べた資料（しりょう）にのっていません。\nきめた年は、見つけた公式（こうしき）の資料には書かれていません。",
+     "original": "市の花は「あじさい」（ゆきのした科）です。\n市の木は「むく」（にれ科）です。\n市の鳥は、調べた資料には載っていません。\n定めた年は、見つけた公式資料には書かれていません。",
+     "back": "市の花は「あじさい」（ゆきのした科）です。市の木は「むく」（にれ科）です。市の鳥は、調べた資料にはのっていません。決めた年は、見つけた公式の資料には書かれていません。",
+     "source": {
+      "title": "美濃加茂市統計書 令和5年度版",
+      "url": "https://www.city.minokamo.lg.jp/uploaded/attachment/15172.pdf",
+      "where": "3ページ「美濃加茂市の花」「美濃加茂市の木」"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q13",
+     "short": "町(まち)の話題(わだい)",
+     "text": "人生(じんせい)の最期(さいご)に大切(たいせつ)にしたいことを考(かんが)える「もしバナゲーム体験会(たいけんかい)」を開(ひら)きます。\n「在宅医療(ざいたくいりょう)」を広(ひろ)く知(し)ってもらうための映画上映会(えいがじょうえいかい)を開きます。\n第21回みのかもハーフマラソン大会(たいかい)にあわせて、交通規制(こうつうきせい)があります。",
+     "original": "人生の最期に大切にしたいことを考える「もしバナゲーム体験会」を開きます。\n「在宅医療」普及啓発の映画上映会を開きます。\n第21回みのかもハーフマラソン大会に伴い交通規制があります。",
+     "back": "人生の最期に大切にしたいことを考える「もしバナゲーム体験会」を開きます。「在宅医療」を広く知ってもらうための映画上映会を開きます。第21回みのかもハーフマラソン大会にあわせて、交通規制があります。",
+     "source": {
+      "title": "美濃加茂市公式ホームページ トップページ",
+      "url": "https://www.city.minokamo.gifu.jp/",
+      "where": "新着情報・トピックス"
+     },
+     "status": "auto",
+     "problems": [
+      "「映画上映会」の目的を「広く知ってもらうため」と言い換えているが、原文の「普及啓発」の意味の範囲内で、大きなずれはない。"
+     ]
+    },
+    {
+     "qid": "Q15",
+     "short": "困(こま)ったときの窓口(まどぐち)",
+     "text": "【市役所(しやくしょ)の代表電話(だいひょうでんわ)】0574-25-2111。\n本庁舎(ほんちょうしゃ)・分庁舎(ぶんちょうしゃ)とも、受付(うけつけ)は平日(へいじつ)8時45分～16時45分です。\n土曜日(どようび)・日曜日(にちようび)・祝日(しゅくじつ)と、12月29日～1月3日は閉(し)まっています（閉庁(へいちょう)）。\n\n【消費生活相談(しょうひせいかつそうだん)】広域消費生活相談室(こういきしょうひせいかつそうだんしつ)（市役所西館(しやくしょにしかん)2階(かい)）です。\n電話(でんわ)は0574-25-2111（内線(ないせん)462）か、消費者(しょうひしゃ)ホットライン188です。\n受付は平日8時45分～16時45分です（祝日・年末年始(ねんまつねんし)をのぞく）。\n\n【県(けん)の消費生活相談】県民生活相談(けんみんせいかつそうだん)センターは058-277-1003です。\n平日8時30分～17時、土曜日9時～17時（電話のみ）です。\n\n【夜間(やかん)・休日(きゅうじつ)の連絡先(れんらくさき)、子(こ)ども・高齢者(こうれいしゃ)・DVの相談窓口】今回(こんかい)は確認(かくにん)できませんでした。",
+     "original": "【市役所代表】0574-25-2111。\n本庁舎・分庁舎とも、受付は平日8時45分～16時45分です。\n土日祝日と12月29日～1月3日は閉庁です。\n\n【消費生活相談】広域消費生活相談室（市役所西館2階）です。\n電話は0574-25-2111（内線462）か、消費者ホットライン188です。\n受付は平日8時45分～16時45分です（祝日・年末年始を除く）。\n\n【県の消費生活相談】県民生活相談センターは058-277-1003です。\n平日8時30分～17時、土曜9時～17時（電話のみ）です。\n\n【夜間・休日の連絡先、子ども・高齢者・DVの相談窓口】今回は確認できませんでした。",
+     "back": "【市役所の代表電話】0574-25-2111。本庁舎・分庁舎とも、受付は平日8時45分～16時45分です。土曜日・日曜日・祝日と、12月29日～1月3日は閉まっています（閉庁）。【消費生活相談】広域消費生活相談室（市役所西館2階）です。電話は0574-25-2111（内線462）か、消費者ホットライン188です。受付は平日8時45分～16時45分です（祝日・年末年始をのぞく）。【県の消費生活相談】県民生活相談センターは058-277-1003です。平日8時30分～17時、土曜日9時～17時（電話のみ）です。【夜間・休日の連絡先、子ども・高齢者・DVの相談窓口】今回は確認できませんでした。",
+     "source": {
+      "title": "広域消費生活相談室のご案内",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/12/1631.html",
+      "where": "受付時間・電話"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q16",
+     "short": "夜間(やかん)・休日(きゅうじつ)の医療(いりょう)",
+     "text": "休日（日曜日・祝日・年末年始)の急病(きゅうびょう)は、在宅当番制(ざいたくとうばんせい)の休日急患診療(きゅうじつきゅうかんしんりょう)です。\n受付(うけつけ)は午前9時から午後4時30分までです。\n歯科(しか)は午前9時から午後1時までです。\n当番医(とうばんい)は日(ひ)ごとにかわります。加茂医師会(かもいしかい)の当番表(とうばんひょう)で確認(かくにん)してください。\n24時間365日、市民(しみん)だけが使(つか)える無料(むりょう)の電話相談(でんわそうだん)「みのかも健康(けんこう)ほっとダイヤル」があります。電話は 0120-238-007 です。\n子どもの急病は、県の子ども医療電話相談(いりょうでんわそうだん) #8000 です。つながらないときは 058-240-4199 にかけます。\n受付は月〜金が18時〜翌朝(よくあさ)8時、土・休日・年末年始は8時〜翌朝8時です。\n058-240-4199 は令和8年11月2日18時から 058-216-0999 に変わります。\n夜間急病診療所(やかんきゅうびょうしんりょうしょ)と、休日急患診療所(きゅうじつきゅうかんしんりょうしょ)の電話番号(でんわばんごう)は、公式資料(こうしきしりょう)では見(み)つかりませんでした。",
+     "original": "休日（日曜・祝日・年末年始）の急病は、在宅当番制の休日急患診療です。\n受付は午前9時から午後4時30分までです。\n歯科は午前9時から午後1時までです。\n当番医は日ごとに替わります。加茂医師会の当番表で確認してください。\n24時間365日、市民専用の無料電話相談「みのかも健康ほっとダイヤル」があります。電話は 0120-238-007 です。\n子どもの急病は、県の子ども医療電話相談 #8000 です。つながらないときは 058-240-4199 にかけます。\n受付は月〜金が18時〜翌朝8時、土・休日・年末年始は8時〜翌朝8時です。\n058-240-4199 は令和8年11月2日18時から 058-216-0999 に変わります。\n夜間急病診療所と、休日急患診療所の電話番号は、公式資料では見つかりませんでした。",
+     "back": "休日（日曜日・祝日・年末年始）の急病は、在宅当番制の休日急患診療です。受付は午前9時から午後4時30分までです。歯科は午前9時から午後1時までです。当番医は日ごとにかわります。加茂医師会の当番表で確認してください。24時間365日、市民だけが使える無料の電話相談「みのかも健康ほっとダイヤル」があります。電話は 0120-238-007 です。子どもの急病は、県の子ども医療電話相談 #8000 です。つながらないときは 058-240-4199 にかけます。受付は月〜金が18時〜翌朝8時、土・休日・年末年始は8時〜翌朝8時です。058-240-4199 は令和8年11月2日18時から 058-216-0999 に変わります。夜間急病診療所と、休日急患診療所の電話番号は、公式資料では見つかりませんでした。",
+     "source": {
+      "title": "日曜、祝日等の急な病気やケガの際に（美濃加茂市）",
+      "url": "https://www.city.minokamo.gifu.jp/shimin/contents.cfm?base_id=4068&mi_id=3&g1_id=12&g2_id=52",
+      "where": "休日急患診療当番"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q18",
+     "short": "介護(かいご)の相談(そうだん)の窓口(まどぐち)",
+     "text": "高齢者(こうれいしゃ)の総合相談窓口(そうごうそうだんまどぐち)は「長寿支援(ちょうじゅしえん)センター」（地域包括支援(ちいきほうかつしえん)センター）です。市内(しない)に3か所(しょ)あります。\n西部長寿支援センター（せいぶちょうじゅしえんセンター）：太田(おおた)小・加茂野(かもの)小校区(こうく)。電話 0574-24-7007。\n中部長寿支援センター（ちゅうぶちょうじゅしえんセンター）：山手(やまて)小・山之上(やまのうえ)小・蜂屋(はちや)小・伊深(いぶか)小・三和(みわ)小校区。電話 0574-49-8591。\n東部長寿支援センター（とうぶちょうじゅしえんセンター）：古井(ふるい)小・下米田(しもよねだ)小校区。電話 0574-50-1777。",
+     "original": "高齢者の総合相談窓口は「長寿支援センター」（地域包括支援センター）です。市内に3か所あります。\n西部長寿支援センター：太田小・加茂野小校区。電話 0574-24-7007。\n中部長寿支援センター：山手小・山之上小・蜂屋小・伊深小・三和小校区。電話 0574-49-8591。\n東部長寿支援センター：古井小・下米田小校区。電話 0574-50-1777。",
+     "back": "高齢者の総合相談窓口は「長寿支援センター」（地域包括支援センター）です。市内に3か所あります。西部長寿支援センター（せいぶちょうじゅしえんセンター）：太田小・加茂野小校区。電話 0574-24-7007。中部長寿支援センター（ちゅうぶちょうじゅしえんセンター）：山手小・山之上小・蜂屋小・伊深小・三和小校区。電話 0574-49-8591。東部長寿支援センター（とうぶちょうじゅしえんセンター）：古井小・下米田小校区。電話 0574-50-1777。",
+     "source": {
+      "title": "「長寿支援センター」は、高齢者の「総合相談窓口」です！",
+      "url": "https://www.city.minokamo.gifu.jp/shimin/contents.cfm?base_id=7534&mi_id=3&g1_id=12&g2_id=48",
+      "where": "長寿支援センターの名称及び担当区域・連絡先"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q04",
+     "short": "災害(さいがい)のときの知(し)らせ",
+     "text": "災害の知らせは、次(つぎ)の3つで受(う)け取(と)れます。\n①メール「すぐメールみのかも」：防災行政無線(ぼうさいぎょうせいむせん)の放送(ほうそう)の内容(ないよう)がメールで届(とど)きます。\n登録(とうろく)は t-minokamo@sg-p.jp に、何(なに)も書(か)かないメール（空(から)メール）を送(おく)ります。折(お)り返(かえ)し届く案内(あんない)メールを読(よ)んで登録します。\n②防災アプリ「美濃加茂市防災(みのかもしぼうさい)」：緊急情報(きんきゅうじょうほう)、避難所(ひなんじょ)の情報、防災行政無線の放送内容を見(み)られます。\nApp Store か Google Play で「美濃加茂市防災」と検索(けんさく)して入(い)れます。\n③緊急速報(きんきゅうそくほう)メール（エリアメール）：ドコモ・au・ソフトバンクの携帯(けいたい)に届きます。事前(じぜん)の申(もう)し込(こ)みはいらず、無料(むりょう)です。\n機種(きしゅ)によっては、受信設定(じゅしんせってい)が必要(ひつよう)です。",
+     "original": "災害の知らせは、次の3つで受け取れます。\n①メール「すぐメールみのかも」：防災行政無線の放送内容がメールで届きます。\n登録は t-minokamo@sg-p.jp に空メールを送ります。折り返しの案内メールを読んで登録します。\n②防災アプリ「美濃加茂市防災」：緊急情報、避難所情報、防災行政無線の放送内容を見られます。\nApp Store か Google Play で「美濃加茂市防災」と検索して入れます。\n③緊急速報メール（エリアメール）：ドコモ・au・ソフトバンクの携帯に届きます。事前の申し込みは要らず、無料です。\n機種によっては受信設定が必要です。",
+     "back": "災害の知らせは、次の3つで受け取れます。①メール「すぐメールみのかも」：防災行政無線の放送の内容がメールで届きます。登録は t-minokamo@sg-p.jp に、何も書かないメール（空メール）を送ります。折り返し届く案内メールを読んで登録します。②防災アプリ「美濃加茂市防災」：緊急情報、避難所の情報、防災行政無線の放送内容を見られます。App Store か Google Play で「美濃加茂市防災」と検索して入れます。③緊急速報メール（エリアメール）：ドコモ・au・ソフトバンクの携帯に届きます。事前の申し込みはいらず、無料です。機種によっては、受信設定が必要です。",
+     "source": {
+      "title": "「広報みのかも」の放送が良く聞こえない、聞き取りづらいのですが？ - 防災ページ",
+      "url": "https://www.city.minokamo.lg.jp/site/bousai/2340.html",
+      "where": "本文"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q09",
+     "short": "町(まち)のなりたち",
+     "text": "美濃加茂市(みのかもし)は、昭和(しょうわ)29年（1954年）4月1日にできました。\n加茂郡(かもぐん)の太田町(おおたまち)と古井町(ふるいまち)が中心(ちゅうしん)です。\nそこに山之上村(やまのうえむら)、蜂屋村(はちやむら)、加茂野村(かものむら)、伊深村(いぶかむら)が合(あ)わさりました。\n三和村(みわむら)の川浦地区(かわうらちく)と廿屋地区(つづやちく)も入(はい)りました。\n下米田村(しもよねだむら)と、和知村(わちむら)の牧野地区(まきのちく)も加(くわ)わりました。",
+     "original": "美濃加茂市は、昭和29年（1954年）4月1日に生まれました。\n加茂郡の太田町と古井町が中心です。\nそこに山之上村、蜂屋村、加茂野村、伊深村が合わさりました。\n三和村の川浦地区と廿屋地区も入りました。\n下米田村と、和知村の牧野地区も加わりました。",
+     "back": "美濃加茂市は、昭和29年（1954年）4月1日にできました。加茂郡の太田町と古井町が中心です。そこに山之上村、蜂屋村、加茂野村、伊深村が合わさりました。三和村の川浦地区と廿屋地区も入りました。下米田村と、和知村の牧野地区も加わりました。",
+     "source": {
+      "title": "美濃加茂市 市制施行70周年",
+      "url": "https://www.city.minokamo.lg.jp/site/70th-anniversary/",
+      "where": "■美濃加茂市の軌跡 美濃加茂市の誕生"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q08",
+     "short": "外国（がいこく）の人（ひと）のための案内（あんない）",
+     "text": "市役所（しやくしょ）に「外国人（がいこくじん）ワンストップ相談窓口（そうだんまどぐち）」があります。\n場所（ばしょ）は市役所（しやくしょ）本館（ほんかん）の1階（かい）です。電話（でんわ）は 0574-25-2111（内線（ないせん）364・366）です。\nやさしい日本語（にほんご）のページ「市役所（しやくしょ）で相談（そうだん）できること」で、相談（そうだん）できる場所（ばしょ）と電話（でんわ）番号（ばんごう）が見（み）られます。\n英語（えいご）のページ（English）と、外国語（がいこくご）の広報紙（こうほうし）もあります。\n英語（えいご）のページには、相談（そうだん）できる言葉（ことば）は、やさしい日本語（にほんご）・英語（えいご）・ポルトガル語（ご）・タガログ語（ご）と書（か）いてあります。\n多文化共創課（たぶんかきょうそうか）（則竹（のりたけ）ビル1階（かい）、0574-42-6262）の連絡先（れんらくさき）は、別（べつ）のページにのっています。",
+     "original": "市役所（しやくしょ）には「外国人ワンストップ相談窓口」があります。\n場所は市役所本館1階です。電話は0574-25-2111（内線364・366）です。\nやさしい日本語のページ「市役所（しやくしょ）で相談（そうだん）できること」で、相談できる場所と電話が見られます。\n英語のページ（English）と、外国語版の広報紙もあります。\n英語ページには、対応言語はやさしい日本語・英語・ポルトガル語・タガログ語と書かれています。\n多文化共創課（則竹ビル1階、0574-42-6262）の連絡先は、別のページに載っています。",
+     "back": "市役所に「外国人ワンストップ相談窓口」があります。場所は市役所本館の1階です。電話は 0574-25-2111（内線364・366）です。やさしい日本語のページ「市役所で相談できること」で、相談できる場所と電話番号が見られます。英語のページ（English）と、外国語の広報紙もあります。英語のページには、相談できる言葉は、やさしい日本語・英語・ポルトガル語・タガログ語と書いてあります。多文化共創課（則竹ビル1階、0574-42-6262）の連絡先は、別のページにのっています。",
+     "source": {
+      "title": "市役所（しやくしょ）で相談（そうだん）できること - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/37/20430.html",
+      "where": "本文（外国人ワンストップ相談窓口の説明と表）"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q52",
+     "short": "防災（ぼうさい）の情報（じょうほう）を いろいろな言葉（ことば）で",
+     "text": "ポルトガル語（ご）の防災（ぼうさい）ガイドがあります。\n市（し）の「防災（ぼうさい）ガイド」ページ（日本語（にほんご））の上（うえ）のボタンから開（ひら）けます。\nポルトガル語（ご）のページには、防災（ぼうさい）マップの案内（あんない）があります。\nそのほか、1〜4の項目（こうもく）のページにもつながっています。\n問（と）い合（あ）わせ先（さき）は、市役所（しやくしょ）の安全（あんぜん）・防災（ぼうさい）の担当（たんとう）（電話（でんわ） 0574-25-2111、内線（ないせん）272）と書（か）いてあります。\n市（し）の公式（こうしき）サイトの防災（ぼうさい）ページには、「Translation」（翻訳（ほんやく））のリンクと、「やさしい日本語（にほんご）」のリンクがあります。\nやさしい日本語（にほんご）は、外部（がいぶ）のサービス（tsutaeru.cloud）でサイトを変（か）えて見（み）る形（かたち）です。\n防災（ぼうさい）アプリ、メール配信（はいしん）、避難所（ひなんじょ）案内（あんない）の外国語（がいこくご）版（ばん）・やさしい日本語（にほんご）版（ばん）があるかどうかは、今回（こんかい）は確（たし）かめられませんでした。\nハザードマップのPDF（土砂災害（どしゃさいがい）・水害（すいがい）、地震災害（じしんさいがい））は、日本語（にほんご）版（ばん）だけが見（み）つかりました。",
+     "original": "ポルトガル語の防災ガイドがあります。\n市の「防災ガイド」ページ（日本語）の上のボタンから開けます。\nポルトガル語のページには、防災マップの案内があります。\nそのほか、1〜4の項目ページにもつながっています。\n問い合わせ先は、市役所の安全・防災の担当（電話 0574-25-2111、内線272）と書かれています。\n市の公式サイトの防災ページには、「Translation」（翻訳）のリンクと、「やさしい日本語」のリンクがあります。\nやさしい日本語は、外部のサービス（tsutaeru.cloud）でサイトを変換して見る形です。\n防災アプリ、メール配信、避難所案内の外国語版・やさしい日本語版があるかは、今回は確認できませんでした。\nハザードマップのPDF（土砂災害・水害、地震災害）は日本語版だけが見つかりました。",
+     "back": "ポルトガル語の防災ガイドがあります。市の「防災ガイド」ページ（日本語）の上のボタンから開けます。ポルトガル語のページには、防災マップの案内があります。そのほか、1〜4の項目のページにもつながっています。問い合わせ先は、市役所の安全・防災の担当（電話 0574-25-2111、内線272）と書いてあります。市の公式サイトの防災ページには、「Translation」（翻訳）のリンクと、「やさしい日本語」のリンクがあります。やさしい日本語は、外部のサービス（tsutaeru.cloud）でサイトを変えて見る形です。防災アプリ、メール配信、避難所案内の外国語版・やさしい日本語版があるかどうかは、今回は確かめられませんでした。ハザードマップのPDF（土砂災害・水害、地震災害）は、日本語版だけが見つかりました。",
+     "source": {
+      "title": "Dia de Prevenção de Desastres da Cidade de Minokamo（美濃加茂市防災ガイド ポルトガル語版）",
+      "url": "https://www.city.minokamo.gifu.jp/bousai/guide/port/index.htm",
+      "where": "ポルトガル語版トップページ"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q02",
+     "short": "ハザードマップ",
+     "text": "ハザードマップは、市(し)のホームページの「防災情報(ぼうさいじょうほう)ページ」で見(み)られます。\nweb版(ばん)と冊子(さっし)版（PDF、約(やく)47MB）があります。\n古(ふる)いホームページの「美濃加茂市ハザードマップ」のページにも、市のマップと、木曽川(きそがわ)・加茂川(かもがわ)の浸水想定区域図(しんすいそうていくいきず)のPDFがあります。\nマップを作(つく)った日と直(なお)した日は、見(み)たページには書(か)いてありませんでした。\n津波(つなみ)のマップは見つかりませんでした。",
+     "original": "ハザードマップは市公式サイトの「防災情報ページ」で見られます。\nweb版と冊子版（PDF、約47MB）があります。\n旧サイトの「美濃加茂市ハザードマップ」ページにも、市のマップと木曽川・加茂川の浸水想定区域図のPDFがあります。\nマップ本体の作成日・改訂日は、見たページには書かれていませんでした。\n津波のマップは見つかりませんでした。",
+     "back": "ハザードマップは、市のホームページの「防災情報ページ」で見られます。web版と冊子版（PDF、約47MB）があります。古いホームページの「美濃加茂市ハザードマップ」のページにも、市のマップと、木曽川・加茂川の浸水想定区域図のPDFがあります。マップを作った日と直した日は、見たページには書いてありませんでした。津波のマップは見つかりませんでした。",
+     "source": {
+      "title": "美濃加茂市防災ガイド",
+      "url": "https://www.city.minokamo.gifu.jp/bousai/guide/",
+      "where": "ハザードマップ"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q07",
+     "short": "町(まち)の交通(こうつう)",
+     "text": "コミュニティバス「あい愛バス」があります。\n年末年始(ねんまつねんし)（12月31日〜1月2日）をのぞいて、毎日(まいにち)走(はし)っています。\n時刻表(じこくひょう)は、あい愛バスのホームページ（専用(せんよう)）のデータ版で見られます。\n冊子の時刻表も、市の施設(しせつ)などで配(くば)っています。\n令和(れいわ)8年10月1日にダイヤ改正(かいせい)（バスの時間や道を変えること）の予定(よてい)です。新しい時刻表・路線図(ろせんず)の冊子は、市の「ダイヤ改正のお知らせ」のページにPDFがあります。\n予約(よやく)して乗(の)るAIデマンドバス「チョイソコみのかも」もあります。市の公共交通(こうきょうこうつう)のページに、プレ運行(うんこう)と予約受付開始(よやくうけつけかいし)のお知らせが出ています。\n予約先(さき)、運行日(うんこうび)、料金(りょうきん)は、お知らせの中身(なかみ)を読(よ)めていないので、確認(かくにん)できていません。",
+     "original": "コミュニティバス「あい愛バス」があります。\n年末年始（12月31日〜1月2日）を除き、毎日運行しています。\n時刻表は、あい愛バス専用ホームページのデータ版で見られます。\n冊子の時刻表も、市の施設などで配っています。\n令和8年10月1日にダイヤ改正の予定です。新しい時刻表・路線図の冊子は、市のダイヤ改正のお知らせページにPDFがあります。\n予約して乗るAIデマンドバス「チョイソコみのかも」もあります。市の公共交通のページに、プレ運行・予約受付開始のお知らせが出ています。\n予約先と運行日、料金は、そのお知らせの中身を読めておらず、確認できていません。",
+     "back": "コミュニティバス「あい愛バス」があります。年末年始（12月31日〜1月2日）をのぞいて、毎日走っています。時刻表は、あい愛バスのホームページ（専用）のデータ版で見られます。冊子の時刻表も、市の施設などで配っています。令和8年10月1日にダイヤ改正（バスの時間や道を変えること）の予定です。新しい時刻表・路線図の冊子は、市の「ダイヤ改正のお知らせ」のページにPDFがあります。予約して乗るAIデマンドバス「チョイソコみのかも」もあります。市の公共交通のページに、プレ運行と予約受付開始のお知らせが出ています。予約先、運行日、料金は、お知らせの中身を読めていないので、確認できていません。",
+     "source": {
+      "title": "あい愛バスの運行日(運休日)について - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/2/1109.html",
+      "where": "本文"
+     },
+     "status": "auto",
+     "problems": [
+      "「ダイヤ改正」の括弧内の説明は原文にない補足（意味は同じ）"
+     ]
+    },
+    {
+     "qid": "Q12",
+     "short": "想定(そうてい)の新(あたら)しさ",
+     "text": "木曽川(きそがわ)の洪水浸水想定区域図(こうずいしんすいそうていくいきず)は、国(くに)（国土交通省(こくどこうつうしょう) 木曽川上流河川事務所(きそがわじょうりゅうかせんじむしょ)）が出(だ)したものです。\n平成(へいせい)28年12月22日に、想定最大規模(そうていさいだいきぼ)の雨(あめ)による想定を発表(はっぴょう)しました。\n令和(れいわ)2年4月24日に変更(へんこう)しています。\n市のハザードマップにのっている木曽川と加茂川の区域図の深(ふか)さは、県(けん)の資料(しりょう)によると次(つぎ)のとおりです。\n・美濃加茂太田駅南口(みのかもおおたえきみなみぐち)の駅前商店街(えきまえしょうてんがい)のあたりは、計画規模(けいかくきぼ)で0.5〜5m、最大規模で10〜20m以上(いじょう)です。\n・加茂川(かもがわ)の区域は3〜10mです。\n津波(つなみ)の想定や、津波が来るまでの時間(じかん)は、市の公式資料(こうしきしりょう)では見つかりませんでした。\n市のマップが国の令和2年の変更に合(あ)わせて直(なお)されているかは、確認(かくにん)できませんでした。",
+     "original": "木曽川の洪水浸水想定区域図は、国（国土交通省 木曽川上流河川事務所）が出したものです。\n平成28年12月22日に、想定最大規模の降雨による想定を公表しました。\n令和2年4月24日に変更しています。\n市のハザードマップに載っている木曽川と加茂川の区域図の深さは、県の資料によると次のとおりです。\n・美濃加茂太田駅南口の駅前商店街のあたりは、計画規模で0.5〜5m、最大規模で10〜20m以上です。\n・加茂川の区域は3〜10mです。\n津波の想定や、津波が来るまでの時間は、市の公式資料では見つかりませんでした。\n市のマップが国の令和2年の変更に合わせて直されているかは、確認できませんでした。",
+     "back": "木曽川の洪水浸水想定区域図は、国（国土交通省 木曽川上流河川事務所）が出したものです。平成28年12月22日に、想定最大規模の雨による想定を発表しました。令和2年4月24日に変更しています。市のハザードマップにのっている木曽川と加茂川の区域図の深さは、県の資料によると次のとおりです。・美濃加茂太田駅南口の駅前商店街のあたりは、計画規模で0.5〜5m、最大規模で10〜20m以上です。・加茂川の区域は3〜10mです。津波の想定や、津波が来るまでの時間は、市の公式資料では見つかりませんでした。市のマップが国の令和2年の変更に合わせて直されているかは、確認できませんでした。",
+     "source": {
+      "title": "木曽川水系洪水浸水想定区域図（木曽川上流河川事務所）",
+      "url": "https://www.cbr.mlit.go.jp/kisojyo/shinsuisoutei/index.html",
+      "where": "ページ冒頭の変更・公表のお知らせ"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q17",
+     "short": "子育(こそだ)ての窓口(まどぐち)と助成(じょせい)",
+     "text": "【相談(そうだん)の窓口】\n「みのかもこども家庭(かてい)センター」が、妊娠(にんしん)・出産(しゅっさん)・子育ての相談を受(う)けています。\n場所(ばしょ)は、岐阜県美濃加茂市健康のまち一丁目2番地の「みのかも健康プラザ」2階です。\n開所(かいしょ)は月〜金の午前8時45分〜午後4時45分です。年末年始と祝日(しゅくじつ)は休(やす)みです。\n18歳(さい)未満(みまん)の子ども・子育ての相談は、こども家庭センターの電話 0574-25-1110 へどうぞ。\n妊娠中(にんしんちゅう)から幼児(ようじ)のころまでの健康の相談は、健康課母子保健係(けんこうかぼしほけんがかり)の電話 0574-25-4145 です。\n相談は無料(むりょう)です。予約なしで行(い)くこともできますが、待(ま)つことがあります。\n\n【子どもの医療費(いりょうひ)の助成(じょせい)】\n福祉医療費助成(ふくしいりょうひじょせい)（子ども）の制度(せいど)があります。\n中学校を卒業(そつぎょう)するまで（15歳になった後の最初の3月31日まで）は、入院(にゅういん)も通院(ついん)も助成（お金の助(たす)け）があります。\n高校生年代(こうこうせいねんだい)（18歳になった後の最初の3月31日まで）は、入院だけ助成があります。\n健康保険(けんこうほけん)を使(つか)った診療(しんりょう)で、自分(じぶん)が払(はら)うお金（自己負担額(じこふたんがく)）が助成されます。\n岐阜県内の医療機関(いりょうきかん)では、受給者証(じゅきゅうしゃしょう)を見せると、自分が払うお金が無料になります。\n高校生年代には受給者証は出ません。\n\n【児童手当(じどうてあて)などの手当】\n今回(こんかい)は市の公式ページで確認できませんでした。市役所(しやくしょ)（0574-25-2111）にお問(と)い合(あ)わせください。",
+     "original": "【相談の窓口】\n「みのかもこども家庭センター」が、妊娠・出産・子育ての相談を受けています。\n場所は、岐阜県美濃加茂市健康のまち一丁目2番地の「みのかも健康プラザ」2階です。\n開所は月〜金の午前8時45分〜午後4時45分です。年末年始と祝日は休みです。\n18歳未満の子ども・子育ての相談は、こども家庭センターの電話 0574-25-1110 へどうぞ。\n妊娠期から幼児期の健康の相談は、健康課母子保健係の電話 0574-25-4145 です。\n相談は無料です。予約なしで行くこともできますが、待つことがあります。\n\n【子どもの医療費の助成】\n福祉医療費助成（子ども）の制度があります。\n中学校を卒業するまで（15歳になった後の最初の3月31日まで）は、入院も通院も助成されます。\n高校生年代（18歳になった後の最初の3月31日まで）は、入院だけが助成されます。\n保険診療の自己負担額が助成されます。\n岐阜県内の医療機関では、受給者証を見せると自己負担が無料になります。\n高校生年代には受給者証は出ません。\n\n【児童手当などの手当】\n今回は市の公式ページで確認できませんでした。市役所（0574-25-2111）にお問い合わせください。",
+     "back": "【相談の窓口】「みのかもこども家庭センター」が、妊娠・出産・子育ての相談を受けています。場所は、岐阜県美濃加茂市健康のまち一丁目2番地の「みのかも健康プラザ」2階です。開所は月〜金の午前8時45分〜午後4時45分です。年末年始と祝日は休みです。18歳未満の子ども・子育ての相談は、こども家庭センターの電話 0574-25-1110 へどうぞ。妊娠期から幼児期の健康の相談は、健康課母子保健係の電話 0574-25-4145 です。相談は無料です。予約なしで行くこともできますが、待つことがあります。【子どもの医療費の助成】福祉医療費助成（子ども）の制度があります。中学校を卒業するまで（15歳になった後の最初の3月31日まで）は、入院も通院も助成（お金の助け）があります。高校生年代（18歳になった後の最初の3月31日まで）は、入院だけ助成があります。健康保険を使った診療で、自分が払うお金（自己負担額）が助成されます。岐阜県内の医療機関では、受給者証を見せると、自分が払うお金が無料になります。高校生年代には受給者証は出ません。【児童手当などの手当】今回は市の公式ページで確認できませんでした。市役所（0574-25-2111）にお問い合わせください。",
+     "source": {
+      "title": "みのかもこども家庭センター - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/7/11916.html",
+      "where": "児童福祉の相談窓口／場所と開所時間"
+     },
+     "status": "auto",
+     "problems": [
+      "「助成（お金の助け）」の括弧内の説明は原文にない補足（意味は同じ）"
+     ]
+    },
+    {
+     "qid": "Q53",
+     "short": "日本語教室(にほんごきょうしつ)と就学案内(しゅうがくあんない)",
+     "text": "【子どもの学校(がっこう)への入(はい)り方(かた)】\n市の「外国人児童生徒の就学について」のページで見られます。\n外国人は就学(しゅうがく)の義務(ぎむ)はありません。希望(きぼう)すれば小学校・中学校に入れます。\n入る学校は住民票(じゅうみんひょう)の住所(じゅうしょ)で決(き)まります。授業料(じゅぎょうりょう)と教科書代(きょうかしょだい)は無料です。\n手続(てつづ)きは、在留(ざいりゅう)カードとパスポート（保護者(ほごしゃ)と本人(ほんにん)）を持(も)って教育委員会(きょういくいいんかい)へ行きます。そのあと、入る学校で手続きをします。\nポルトガル語・英語の就学願(しゅうがくねがい)と案内リーフレットも、同(おな)じページにあります。\n問い合わせ：教育委員会 学校教育課(がっこうきょういくか) 0574-25-2111（内線(ないせん)342）\n\n【日本語を初(はじ)めて学(まな)ぶ子】\n「のぞみ教室」があります。場所は古井小学校(ふるいしょうがっこう)の中(なか)です。\n月〜金の午前8時30分〜午後4時30分です。給食費(きゅうしょくひ)がかかります。\n\n【放課後(ほうかご)の学習支援(がくしゅうしえん)「MIRAI」（外国籍(がいこくせき)の小学生・中学生）】\n太田地区(おおたちく)：水曜日・金曜日。小学生18:30〜20:00、中学生18:30〜20:30。生涯学習(しょうがいがくしゅう)センター（太田町3425-1）。\n古井地区(ふるいちく)：火曜日・木曜日。小学生16:30〜18:00は東図書館(ひがしとしょかん)（本郷町9-2-22）。中学生18:30〜20:30は上古井交流(かみふるいこうりゅう)センター（本郷町8-8-48）。\n申(もう)し込(こ)み・問い合わせ：美濃加茂国際交流協会(みのかもこくさいこうりゅうきょうかい) 0574-28-3822\n\n【大人(おとな)の日本語教室】\n市の多文化共創課(たぶんかきょうそうか)に「外国人市民への日本語教室があります」というページ（2025年3月13日更新(こうしん)）があります。日時(にちじ)・場所・申込先(もうしこみさき)のくわしいことは、確認できていません。\n問い合わせ先は多文化共創課 0574-42-6262（太田町1752-1 則竹ビル1階）です。",
+     "original": "【子どもの学校への入り方】\n市の「外国人児童生徒の就学について」のページで見られます。\n外国人は就学の義務はありません。希望すれば小・中学校に入れます。\n入る学校は住民票の住所で決まります。授業料と教科書代は無料です。\n手続きは、在留カードとパスポート（保護者と本人）を持って教育委員会へ行きます。そのあと、入る学校で手続きをします。\nポルトガル語・英語の就学願いと案内リーフレットも、同じページにあります。\n問い合わせ：教育委員会 学校教育課 0574-25-2111（内線342）\n\n【日本語を初めて学ぶ子】\n「のぞみ教室」があります。場所は古井小学校内です。\n月〜金の午前8時30分〜午後4時30分です。給食費がかかります。\n\n【放課後の学習支援「MIRAI」（外国籍の小中学生）】\n太田地区：水・金曜。小学生18:30〜20:00、中学生18:30〜20:30。生涯学習センター（太田町3425-1）。\n古井地区：火・木曜。小学生16:30〜18:00は東図書館（本郷町9-2-22）。中学生18:30〜20:30は上古井交流センター（本郷町8-8-48）。\n申し込み・問い合わせ：美濃加茂国際交流協会 0574-28-3822\n\n【大人の日本語教室】\n市の多文化共創課に「外国人市民への日本語教室があります」というページ（2025年3月13日更新）があります。日時・場所・申込先の詳細は確認できていません。\n問い合わせ先は多文化共創課 0574-42-6262（太田町1752-1 則竹ビル1階）です。",
+     "back": "【子どもの学校への入り方】市の「外国人児童生徒の就学について」のページで見られます。外国人は就学の義務はありません。希望すれば小学校・中学校に入れます。入る学校は住民票の住所で決まります。授業料と教科書代は無料です。手続きは、在留カードとパスポート（保護者と本人）を持って教育委員会へ行きます。そのあと、入る学校で手続きをします。ポルトガル語・英語の就学願いと案内リーフレットも、同じページにあります。問い合わせ：教育委員会 学校教育課 0574-25-2111（内線342）【日本語を初めて学ぶ子】「のぞみ教室」があります。場所は古井小学校の中です。月〜金の午前8時30分〜午後4時30分です。給食費がかかります。【放課後の学習支援「MIRAI」（外国籍の小学生・中学生）】太田地区：水曜日・金曜日。小学生18:30〜20:00、中学生18:30〜20:30。生涯学習センター（太田町3425-1）。古井地区：火曜日・木曜日。小学生16:30〜18:00は東図書館（本郷町9-2-22）。中学生18:30〜20:30は上古井交流センター（本郷町8-8-48）。申し込み・問い合わせ：美濃加茂国際交流協会 0574-28-3822【大人の日本語教室】市の多文化共創課に「外国人市民への日本語教室があります」というページ（2025年3月13日更新）があります。日時・場所・申込先のくわしいことは、確認できていません。問い合わせ先は多文化共創課 0574-42-6262（太田町1752-1 則竹ビル1階）です。",
+     "source": {
+      "title": "外国籍の小中学生への学習支援について",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/37/10413.html",
+      "where": "MIRAIの概要（日時・場所・問い合わせ先）"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q54",
+     "short": "保育所(ほいくしょ)・学童(がくどう)の申(もう)し込(こ)み",
+     "text": "【保育園(ほいくえん)・認定(にんてい)こども園(えん)】\n申込み先は、こども未来課(みらいか)の窓口(まどぐち)か、オンライン申請(しんせい)です。\n各園(かくえん)での受付(うけつけ)と、郵送(ゆうそう)での申込みはありません。\n令和(れいわ)9年4月入園(にゅうえん)の申込みは三段階(さんだんかい)です。\n第一次(だいいちじ)は、オンラインが令和8年11月1日〜20日、窓口が11月2日〜30日です。\n第二次(だいにじ)は、オンラインが令和8年12月1日〜令和9年2月3日、窓口が12月1日〜令和9年2月10日です。\n第三次(だいさんじ)は、オンラインが令和9年2月11日〜3月3日、窓口が2月12日〜3月10日です。\n\n【学童保育(がくどうほいく)】\n対象(たいしょう)は1年生から6年生です。\nオンライン申請か、こども未来課の窓口で申し込みます。\n小学校と連絡所(れんらくじょ)では受(う)け付(つ)けていません。\n令和8年度(ねんど)は、4月分(がつぶん)の受付が終(お)わっています。そのあとも、いつでも受け付けますが、定員(ていいん)を超(こ)えると待機(たいき)（待つこと）になります。\n令和9年度の学童の案内は見つかりませんでした。\n\n【電話(でんわ)】\nこども未来課（みのかも健康プラザ2階）は 0574-25-2111（内線(ないせん)387）です。\n\n【外国語(がいこくご)】\n入園書類(にゅうえんしょるい)には、ポルトガル語・タガログ語・英語版があります。\n学童の募集要項(ぼしゅうようこう)や申請書(しんせいしょ)は、英語版とポルトガル語版があります。\n公式(こうしき)サイトに、翻訳(ほんやく)ページと「やさしい日本語」表示(ひょうじ)へのリンクがあります。",
+     "original": "【保育園・認定こども園】\n申込み先は、こども未来課の窓口か、オンライン申請です。\n各園での受付と郵送での申込みはありません。\n令和9年4月入園の申込みは三段階です。\n第一次は、オンラインが令和8年11月1日〜20日、窓口が11月2日〜30日です。\n第二次は、オンラインが令和8年12月1日〜令和9年2月3日、窓口が12月1日〜令和9年2月10日です。\n第三次は、オンラインが令和9年2月11日〜3月3日、窓口が2月12日〜3月10日です。\n【学童保育】\n対象は1年生から6年生です。\nオンライン申請か、こども未来課の窓口で申し込みます。\n小学校と連絡所では受け付けていません。\n令和8年度は4月分の受付が終わっています。その後も随時受け付けますが、定員を超えると待機になります。\n令和9年度の学童の案内は見つかりませんでした。\n【電話】\nこども未来課（みのかも健康プラザ2階）は 0574-25-2111（内線387）です。\n【外国語】\n入園書類には、ポルトガル語・タガログ語・英語版があります。\n学童の募集要項や申請書は、英語とポルトガル語版があります。\n公式サイトに、翻訳ページと「やさしい日本語」表示へのリンクがあります。",
+     "back": "【保育園・認定こども園】申込み先は、こども未来課の窓口か、オンライン申請です。各園での受付と、郵送での申込みはありません。令和9年4月入園の申込みは三段階です。第一次は、オンラインが令和8年11月1日〜20日、窓口が11月2日〜30日です。第二次は、オンラインが令和8年12月1日〜令和9年2月3日、窓口が12月1日〜令和9年2月10日です。第三次は、オンラインが令和9年2月11日〜3月3日、窓口が2月12日〜3月10日です。【学童保育】対象は1年生から6年生です。オンライン申請か、こども未来課の窓口で申し込みます。小学校と連絡所では受け付けていません。令和8年度は、4月分の受付が終わっています。そのあとも、いつでも受け付けますが、定員を超えると待機（待つこと）になります。令和9年度の学童の案内は見つかりませんでした。【電話】こども未来課（みのかも健康プラザ2階）は 0574-25-2111（内線387）です。【外国語】入園書類には、ポルトガル語・タガログ語・英語版があります。学童の募集要項や申請書は、英語版とポルトガル語版があります。公式サイトに、翻訳ページと「やさしい日本語」表示へのリンクがあります。",
+     "source": {
+      "title": "令和9年度4月 保育園・こども園・小規模保育所等の入園について",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/8/13155.html",
+      "where": "4月入園の申込期間／申込み手続きについて／申請方法／お問い合わせ先"
+     },
+     "status": "auto",
+     "problems": []
+    }
+   ]
+  }
+ }
+}

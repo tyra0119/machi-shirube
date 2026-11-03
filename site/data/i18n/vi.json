@@ -1,11 +1,11 @@
 {
  "lang": "vi",
  "name": "Tiếng Việt",
- "createdAt": "2026-11-03T03:10:08.356Z",
+ "createdAt": "2026-11-03T04:53:13.591Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 662,
- "of": 656,
+ "count": 668,
+ "of": 662,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Đây là trang hướng dẫn đời sống không chính thức của thị trấn này. Claude thu thập từ các trang chính thức của thị trấn v.v. và ghi rõ nguồn (Machi-shirube)",
   "すべてのページ": "Tất cả các trang",
@@ -668,6 +668,12 @@
   "地域の集まりとボランティア": "Sinh hoạt cộng đồng và tình nguyện",
   "今日はごみの収集はありません": "Hôm nay không có thu gom rác",
   "今日は {k} の日": "Hôm nay là ngày {k}",
-  "買い物の手段": "Phương tiện đi mua sắm"
+  "買い物の手段": "Phương tiện đi mua sắm",
+  "読めませんでした": "Không đọc được",
+  "目次": "Mục lục",
+  "防災情報の多言語対応": "Thông tin phòng chống thiên tai bằng nhiều ngôn ngữ",
+  "日本語教室と就学案内": "Lớp tiếng Nhật và hướng dẫn nhập học",
+  "保育所・学童の申し込み": "Đăng ký nhà trẻ và lớp giữ trẻ sau giờ học",
+  "日の当たる時間が、東京都心より年に約120時間長い": "Số giờ có nắng nhiều hơn trung tâm Tokyo khoảng 120 giờ mỗi năm"
  }
 }

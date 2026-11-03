@@ -1,11 +1,11 @@
 {
  "lang": "id",
  "name": "Bahasa Indonesia",
- "createdAt": "2026-11-03T03:10:01.265Z",
+ "createdAt": "2026-11-03T04:52:59.055Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 663,
- "of": 656,
+ "count": 669,
+ "of": 662,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Ini adalah panduan hidup tidak resmi untuk kota ini. Claude mengumpulkannya dari situs resmi kota dan sumber lain, dengan mencantumkan sumbernya (Machishirube)",
   "すべてのページ": "Semua halaman",
@@ -669,6 +669,12 @@
   "犬・猫と暮らす人へ": "Untuk yang hidup bersama anjing dan kucing",
   "地域の集まりとボランティア": "Kegiatan warga dan relawan",
   "今日はごみの収集はありません": "Hari ini tidak ada pengambilan sampah",
-  "今日は {k} の日": "Hari ini hari {k}"
+  "今日は {k} の日": "Hari ini hari {k}",
+  "読めませんでした": "Tidak dapat dibaca",
+  "目次": "Daftar Isi",
+  "防災情報の多言語対応": "Informasi Penanggulangan Bencana dalam Berbagai Bahasa",
+  "日本語教室と就学案内": "Kelas Bahasa Jepang dan Informasi Masuk Sekolah",
+  "保育所・学童の申し込み": "Pendaftaran Tempat Penitipan Anak dan Klub Anak Sepulang Sekolah",
+  "日の当たる時間が、東京都心より年に約120時間長い": "Waktu terkena sinar matahari sekitar 120 jam per tahun lebih lama daripada pusat kota Tokyo"
  }
 }
