@@ -1,9 +1,9 @@
 {
- "updatedAt": "2026-11-02T23:46:49.310Z",
+ "updatedAt": "2026-11-03T00:03:30.168Z",
  "counts": {
   "auto": 36,
   "ok": 104,
-  "pending": 0,
+  "pending": 1,
   "fix": 1,
   "rejected": 2,
   "unknown": 0
@@ -3210,6 +3210,25 @@
     "at": "2026-11-02T23:42:40.284Z",
     "action": "void",
     "reason": "訳の確かめ役の答えの形が読めなかった（しくみの不具合。確かめをやり直した）"
+   }
+  },
+  {
+   "id": "r00202",
+   "scope": "muni:21211",
+   "scopeName": "岐阜県 美濃加茂市",
+   "kind": "dekiru",
+   "question": "町の数と、町の案内のつなぎ方は正しいか（その数の人に、その案内が合っているか）",
+   "why": "避難や暮らしの判断にひびくので、つなぎ方が合っているかと、引用の元の答えが今も正しいかを人が見る",
+   "status": "pending",
+   "score": null,
+   "source": {
+    "title": "美濃加茂市防災ガイド",
+    "url": "https://www.city.minokamo.gifu.jp/bousai/guide/"
+   },
+   "decided": {
+    "at": "2026-11-03T00:03:30.154Z",
+    "action": "undo",
+    "reason": "Claude が画面を確かめる途中で、誤って OK を押した。作者が決めるので確かめ待ちに戻す"
    }
   }
  ]

@@ -4,7 +4,7 @@ const LT = (s) => (typeof T === "function" ? T(s) : s);
 const HZ_TILE = (layer) => `https://disaportaldata.gsi.go.jp/raster/${layer}/{z}/{x}/{y}.png`;
 const JMA_TILE = "https://www.jma.go.jp/bosai/jmatile/data";
 
-async function showLayerMap(code, townFeatures, at, esc) {
+async function showLayerMap(code, townFeatures, at, esc, part = null) {
   const box = document.getElementById("layer-map");
   if (!box) return;
   const get = (url) => fetch(url).then((r) => (r.ok ? r.json() : null)).catch(() => null);
@@ -87,6 +87,11 @@ async function showLayerMap(code, townFeatures, at, esc) {
       map.addLayer({ id: "outside", type: "fill", source: "outside", paint: { "fill-color": "#ffffff", "fill-opacity": 0.6 } });
     }
     map.addLayer({ id: "town", type: "line", source: "town", paint: { "line-color": "#3a4a5a", "line-width": ["interpolate", ["linear"], ["zoom"], 10, 0.8, 14, 1.6], "line-opacity": 0.7 } });
+    // 町・字のページでは、その町・字の境を太く（どこを見ているかが分かるように）
+    if (part) {
+      map.addSource("here", { type: "geojson", data: part });
+      map.addLayer({ id: "here", type: "line", source: "here", paint: { "line-color": "#1f3a52", "line-width": 3.5 } });
+    }
     raiseLabels(map); // 地名などの文字は、重ねた色やおおいより上に（点はこのあとに足すので、さらに上）
     if (shelters) {
       map.addSource("shelter", { type: "geojson", data: shelters });
@@ -106,9 +111,9 @@ async function showLayerMap(code, townFeatures, at, esc) {
       map.addSource("lore", { type: "geojson", data: fc([...lore.own, ...lore.near].map((x) => pt(x.at, { name: x.name, disaster: x.disaster, text: x.text, muniName: x.muniName ?? "" }))) });
       map.addLayer({ id: "lore", type: "circle", source: "lore", layout: { visibility: "none" }, paint: { "circle-radius": ["interpolate", ["linear"], ["zoom"], 10, 5, 14, 8], "circle-color": "#7a5c3e", "circle-stroke-color": "#fff", "circle-stroke-width": 2 } });
     }
-    // 町の形に合わせる
-    const pts = townFeatures.flatMap((f) => (f.geometry.type === "Polygon" ? f.geometry.coordinates : f.geometry.coordinates.flat()).flat());
-    const fit = () => pts.length && map.fitBounds([[Math.min(...pts.map((p) => p[0])), Math.min(...pts.map((p) => p[1]))], [Math.max(...pts.map((p) => p[0])), Math.max(...pts.map((p) => p[1]))]], { padding: 16, duration: 0 });
+    // 町の形に合わせる（町・字のページでは、その町・字に合わせて拡大して始める）
+    const pts = (part ? [part] : townFeatures).flatMap((f) => (f.geometry.type === "Polygon" ? f.geometry.coordinates : f.geometry.coordinates.flat()).flat());
+    const fit = () => pts.length && map.fitBounds([[Math.min(...pts.map((p) => p[0])), Math.min(...pts.map((p) => p[1]))], [Math.max(...pts.map((p) => p[0])), Math.max(...pts.map((p) => p[1]))]], { padding: 24, duration: 0, maxZoom: 16 });
     if (box.clientWidth) fit();
     else { const ro = new ResizeObserver(() => { if (box.clientWidth) { ro.disconnect(); map.resize(); fit(); } }); ro.observe(box); }
     for (const l of LAYERS) if (l.on) setVis(l.id, true);

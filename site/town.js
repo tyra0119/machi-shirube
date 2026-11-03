@@ -972,7 +972,7 @@ async function finishPage(code, townFeatures, startPart, scopeNote, at) {
     $("town-color-note").innerHTML = `<span class="swatch" aria-hidden="true"></span>${LANG ? `${T("ページの上の帯の色は、町が定めた花・木の色から作りました（町の公式の色ではありません）。")}（${esc(sym.name)}）` : `ページの上の帯の色は、町が定めた「${esc(sym.name)}」の色から作りました（町の公式の色ではありません）。`}<a href="#shiru" id="color-src">${T("出典")}</a>`;
     $("color-src").addEventListener("click", () => setTimeout(() => $("a-Q11")?.scrollIntoView({ behavior: "smooth", block: "start" }), 50));
   }
-  showLayerMap(code, townFeatures, at, esc);
+  showLayerMap(code, townFeatures, at, esc, part);
   await showHitokoto(code, part);
   await showDekiru(code, part);
   await showChanges(code, part);

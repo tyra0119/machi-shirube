@@ -160,9 +160,22 @@ async function decideSite(x, action, reason, btn) {
   toast(action === "ok" ? `${x.host} を使ってよいにしました。${auto} 件が自動で承認、${body.items.length - auto} 件はほかの所を見てください` : `${x.host} を使わないにしました（${body.items.length} 件を出さない）`);
 }
 
+// 答えでない確かめ（種類ごと）：札・決めること・こうならこのボタン・答えのカードの見出し
+const KINDS = {
+  dekiru: { tag: "数から、できることへ", label: "Claude のつなぎ方", title: "町の数と、町の案内のつなぎ方が合っているか",
+    ok: "その数の人に、その案内が合っている（町のページのいちばん上に出る）", fix: "合わないつなぎがある → 何番かと理由を書く" },
+  "local-site": { tag: "町の外部のサイト", label: "Claude が見つけたサイト", title: "このサイトを、公式ではない町の情報サイトとして使ってよいか",
+    ok: "運営者と利用の条件に問題が無い（町を知るページにリンクが出る）", other: ["出さない", "運営がはっきりしない・使ってよいか分からない"] },
+  "plan-excerpt": { tag: "防災計画の抜き出し", label: "Claude の抜き出し", title: "防災計画の、町・字ごとの抜き出しが、元のページと合っているか",
+    ok: "いくつかの町・字で、引用のページと合っていた", fix: "合わない所がある → 町・字の名前と理由を書く" },
+  "gomi-days": { tag: "ごみを出す日", label: "Claude が読み取った表", title: "地区ごとのごみの曜日が、町の収集日の表と合っているか",
+    ok: "いくつかの地区で、町の表と合っていた", fix: "違う曜日がある → 地区とごみの種類を書く" },
+};
+
 // 1行に出す短い札（はじめてのサイトは上でまとめて聞くので、札にしない）
 function tags(it) {
   if (it.status !== "pending") return [LABEL[it.status] ?? it.status];
+  if (KINDS[it.kind]) return [KINDS[it.kind].tag];
   const rs = (it.why ?? "").split("／").filter((r) => r && !/^Claude のメモ/.test(r) && !firstUseHost(r));
   if (!rs.length) return ["サイトを決めれば出せる"];
   return rs.map((r) =>
@@ -177,6 +190,8 @@ $("town-filter").addEventListener("change", (e) => { town = e.target.value; open
 function guide(reason, it) {
   const r = reason;
   const src = it.source?.url ? [{ label: "出典を開く", url: it.source.url }] : [];
+  const k = KINDS[it.kind];
+  if (k) return { title: k.title, said: r, links: src, ok: k.ok, fix: k.fix, other: k.other };
   if (/^確かめ役/.test(r)) {
     const detail = r.replace(/^確かめ役：資料と合わない所がある（/, "").replace(/）$/, "");
     return { title: "答えに、資料に書かれていないことが入っていないか", said: `別の Claude（確かめ役）が気にした所：${detail}`, links: src,
@@ -260,7 +275,7 @@ function itemHTML(it) {
   return `
     <article class="item">
       ${siteNote}${todo}
-      ${it.value != null ? `<div class="answer-card"><p class="answer-label">${it.kind === "translation" ? "Claude の訳" : "Claude の答え"}</p><p class="value">${prettyText(it.value, esc)}</p>${src}${srcLink}</div>` : ""}
+      ${it.value != null ? `<div class="answer-card"><p class="answer-label">${it.kind === "translation" ? "Claude の訳" : KINDS[it.kind]?.label ?? "Claude の答え"}</p><p class="value">${prettyText(it.value, esc)}</p>${src}${srcLink}</div>` : ""}
       ${details ? `<details class="more"><summary>くわしく（元の文・Claude のメモ）</summary>${details}</details>` : ""}
       ${decided}${buttons}
     </article>`;
