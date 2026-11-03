@@ -1,11 +1,11 @@
 {
  "lang": "pt",
  "name": "Português",
- "createdAt": "2026-11-03T03:09:45.525Z",
+ "createdAt": "2026-11-03T04:26:44.805Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 666,
- "of": 656,
+ "count": 671,
+ "of": 661,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Guia não oficial da vida na cidade. O Claude reúne as informações em sites oficiais da cidade e outras fontes, e indica a origem de cada uma (Machishirube)",
   "すべてのページ": "Todas as páginas",
@@ -672,6 +672,11 @@
   "犬・猫と暮らす人へ": "Para quem vive com cães e gatos",
   "地域の集まりとボランティア": "Encontros da comunidade e voluntariado",
   "今日はごみの収集はありません": "Hoje não há coleta de lixo",
-  "今日は {k} の日": "Hoje é dia de {k}"
+  "今日は {k} の日": "Hoje é dia de {k}",
+  "読めませんでした": "Não foi possível ler",
+  "目次": "Índice",
+  "防災情報の多言語対応": "Informações de prevenção de desastres em vários idiomas",
+  "日本語教室と就学案内": "Aulas de japonês e informações sobre matrícula escolar",
+  "保育所・学童の申し込み": "Inscrição em creches e no after-school (gakudō)"
  }
 }

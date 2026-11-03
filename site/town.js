@@ -76,6 +76,7 @@ function showView() {
   const v = currentView();
   for (const el of document.querySelectorAll(".view")) el.hidden = el.dataset.view !== v;
   for (const a of document.querySelectorAll(".town-tabs a")) a.toggleAttribute("aria-current", a.dataset.view === v);
+  updateToc();
   // まちがいの知らせ方のページへ、町と見ているページを渡す（言葉は渡さない）
   // 隠れていたあいだは大きさが 0 なので、見せたときに大きさを合わせ、覚えておいた範囲に寄せ直す
   for (const m of maps) { m.resize(); if (m.fitTo) m.fitBounds(m.fitTo.box, { ...m.fitTo.opts, duration: 0 }); }
@@ -159,13 +160,13 @@ async function showTypes(code, stats, scopeNote) {
     const trItems = LANG ? (await getData(`data/translations/${code}.json`))?.langs?.[LANG]?.items ?? [] : [];
     const askShort = (q) => (LANG ? trItems.find((x) => x.qid === q.id && (x.status === "auto" || x.status === "ok"))?.short : q.short);
     $("mitate-top").innerHTML = `<h2>${T("この町で、暮らしの情報が届きにくいのは")}</h2>
-      <ul class="mitate-list">${cm.who.map((w, i) => { const p = pg(w.page); const q = w.ask && found(w.ask); return `<li><strong>${esc(t(`m${i}.person`, w.person))}</strong><span class="wall">${icon("alert")} ${esc(t(`m${i}.wall`, w.wall))}</span><span class="why">${esc(t(`m${i}.why`, w.why))}</span><span class="gos">${q ? `<a class="go ask" href="#${q.page}" data-target="a-${q.id}">${icon("search")}${T("町の支援を見る")}${askShort(q) ? `：${esc(askShort(q))}` : ""}</a>` : ""}${p ? `<a class="go" href="#${p.view}">${icon(ILLUST[p.view]?.main ?? "map")}${LANG ? esc(T(p.title)) : `${esc(p.title)}へ`}</a>` : ""}</span></li>`; }).join("")}</ul>
+      <ul class="mitate-list">${cm.who.map((w, i) => { const p = pg(w.page); const q = w.ask && found(w.ask); return `<li><strong>${esc(t(`m${i}.person`, w.person))}</strong><span class="wall">${icon("alert")} ${esc(t(`m${i}.wall`, w.wall))}</span><span class="why">${esc(t(`m${i}.why`, w.why))}</span><span class="gos">${q ? `<a class="go ask" href="#${q.page}" data-target="a-${q.id}">${icon("search")}${T("町の支援を見る")}${askShort(q) ? `：${esc(askShort(q))}` : ""}</a>` : ""}${p ? `<a class="go" href="#${p.view}">${icon(ILLUST[p.view]?.main ?? "map")}${LANG ? esc(T(p.title)) : `${esc(p.title)}${p.title.endsWith("へ") ? "" : "へ"}`}</a>` : ""}</span></li>`; }).join("")}</ul>
       <p class="note">${esc(t("n.mitate", cm.note))}${tr ? ` ${T("（AI による訳）")} ` : "。"}<a href="#mitate">${T("くわしく")}</a></p>`;
     for (const a of $("mitate-top").querySelectorAll("a.ask")) a.addEventListener("click", () => setTimeout(() => $(a.dataset.target)?.scrollIntoView({ behavior: "smooth", block: "start" }), 50));
     return;
   }
   $("mitate-top").innerHTML = `<h2>${T("この町で、暮らしの情報が届きにくいのは")}</h2>
-    <ul class="mitate-list">${list.slice(0, 2).map((c) => { const p = page(c.type); return `<li><strong>${esc(T(c.who))}</strong><span class="why">${esc(reasonOf(c))}</span>${p ? `<a class="go" href="#${p.view}">${icon(ILLUST[p.view]?.main ?? "map")}${LANG ? esc(T(p.title)) : `${esc(p.title)}へ`}</a>` : ""}</li>`; }).join("")}</ul>
+    <ul class="mitate-list">${list.slice(0, 2).map((c) => { const p = page(c.type); return `<li><strong>${esc(T(c.who))}</strong><span class="why">${esc(reasonOf(c))}</span>${p ? `<a class="go" href="#${p.view}">${icon(ILLUST[p.view]?.main ?? "map")}${LANG ? esc(T(p.title)) : `${esc(p.title)}${p.title.endsWith("へ") ? "" : "へ"}`}</a>` : ""}</li>`; }).join("")}</ul>
     <p class="note">${T("全国の市区町村と国の数字で比べた、まちしるべの見立てです（町の評価ではありません）。")} <a href="#mitate">${T("くわしく")}</a></p>`;
 }
 // 浸水が想定される所に住む人（めやす。scripts/build-flood-pop.mjs が作る）
@@ -934,6 +935,7 @@ async function showTranslations(code) {
   let lang = LANG ?? new URLSearchParams(location.search).get("lang");
   if (!langs.includes(lang)) lang = langs[0];
   $("tr-block").hidden = false;
+  $("foreign-guide").hidden = true;
   $("lang-bar").hidden = false;
   const href = (l) => { const u = new URL(location.href); if (l) u.searchParams.set("lang", l); else u.searchParams.delete("lang"); return u.pathname.split("/").pop() + u.search + u.hash; };
   $("lang-bar").innerHTML = [["", "日本語"], ...langs.map((l) => [l, t.langs[l].name])].map(([l, n]) => `<a href="${href(l)}"${(LANG ?? "") === l ? " aria-current=\"true\"" : ""}>${esc(n)}</a>`).join("") + `<span>${T("（AI による訳）")}</span>`;
@@ -1140,17 +1142,51 @@ function foldPages() {
       h.setAttribute("aria-expanded", String(!sec.classList.contains("folded")));
       sec.querySelector(":scope > .fold-sum").textContent = foldSummary(sec);
     });
-    // 目次の札（見えている欄だけ）。押すと開いて、そこへ動く
-    let toc = view.querySelector(":scope > .view-toc");
-    if (!toc) { toc = document.createElement("nav"); toc.className = "view-toc"; toc.setAttribute("aria-label", T("このページの中身")); view.prepend(toc); }
-    const shown = secs.filter((s) => !s.hidden);
-    toc.innerHTML = shown.map((s, i) => `<button type="button" data-i="${i}">${esc(s.querySelector(":scope > h2").textContent.trim())}</button>`).join("");
-    toc.querySelectorAll("button").forEach((b) => b.addEventListener("click", () => {
-      const s = shown[Number(b.dataset.i)];
-      if (s.classList.contains("folded")) s.querySelector(":scope > h2").click();
-      s.scrollIntoView({ behavior: "smooth", block: "start" });
-    }));
   }
+  setupToc();
+}
+
+// 目次：画面の右下に動かないボタン。押すと、いま見ているページの欄の一覧が開き、選ぶとその欄を開いてそこへ動く
+// （作者「画面の右下に『目次』というスクロールしないボタンを用意し、それを押すと、上記が選択できるようにしたほうが、スマホでも操作しやすい」）
+function tocSections() {
+  const view = document.querySelector(`.view[data-view="${currentView()}"]`);
+  return view ? [...view.querySelectorAll(":scope > section.block")].filter((s) => !s.hidden && s.querySelector(":scope > h2")) : [];
+}
+function updateToc() {
+  const fab = $("toc-fab");
+  if (!fab) return;
+  fab.hidden = tocSections().length < 3; // 欄が少ないページは目次なし
+  closeToc();
+}
+function closeToc() {
+  if (!$("toc-panel")) return;
+  $("toc-panel").hidden = true;
+  $("toc-btn").setAttribute("aria-expanded", "false");
+}
+function setupToc() {
+  if (!$("toc-fab")) {
+    document.body.insertAdjacentHTML("beforeend", `<nav class="toc-fab" id="toc-fab" aria-label="${esc(T("このページの中身"))}" hidden>
+      <ol class="toc-panel" id="toc-panel" hidden></ol>
+      <button type="button" id="toc-btn" aria-expanded="false" aria-controls="toc-panel">${icon("list")}<span>${esc(T("目次"))}</span></button></nav>`);
+    $("toc-btn").addEventListener("click", () => {
+      const panel = $("toc-panel");
+      if (!panel.hidden) { closeToc(); return; }
+      const secs = tocSections();
+      panel.innerHTML = secs.map((s, i) => `<li><button type="button" data-i="${i}">${esc(s.querySelector(":scope > h2").textContent.trim())}</button></li>`).join("");
+      panel.querySelectorAll("button").forEach((b) => b.addEventListener("click", () => {
+        const s = secs[Number(b.dataset.i)];
+        closeToc();
+        if (s.classList.contains("folded")) s.querySelector(":scope > h2").click();
+        s.scrollIntoView({ behavior: "smooth", block: "start" });
+      }));
+      panel.hidden = false;
+      $("toc-btn").setAttribute("aria-expanded", "true");
+      panel.querySelector("button")?.focus();
+    });
+    document.addEventListener("click", (e) => { if (!e.target.closest("#toc-fab")) closeToc(); });
+    document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !$("toc-panel").hidden) { closeToc(); $("toc-btn").focus(); } });
+  }
+  updateToc();
 }
 
 // 天気を読む場所：町・字は形のおおよその真ん中、市区町村は地図の名前の位置（政令市まるごとは最初の区）

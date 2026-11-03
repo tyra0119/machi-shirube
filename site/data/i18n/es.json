@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-03T03:09:49.101Z",
+ "createdAt": "2026-11-03T04:26:48.702Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 664,
- "of": 656,
+ "count": 669,
+ "of": 661,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -670,6 +670,11 @@
   "犬・猫と暮らす人へ": "Para quienes viven con perros y gatos",
   "地域の集まりとボランティア": "Reuniones comunitarias y voluntariado",
   "今日はごみの収集はありません": "Hoy no hay recogida de basura",
-  "今日は {k} の日": "Hoy toca {k}"
+  "今日は {k} の日": "Hoy toca {k}",
+  "読めませんでした": "No se pudo leer",
+  "目次": "Índice",
+  "防災情報の多言語対応": "Información de prevención de desastres en varios idiomas",
+  "日本語教室と就学案内": "Clases de japonés e información de escolarización",
+  "保育所・学童の申し込み": "Inscripción en guarderías y clubes extraescolares"
  }
 }

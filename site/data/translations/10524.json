@@ -572,7 +572,7 @@
       "url": "https://www.town.oizumi.gunma.jp/s030/kosodate/010/010/050/20200826145316.html",
       "where": "申込方法（受付期間・提出場所）"
      },
-     "status": "pending",
+     "status": "ok",
      "problems": [
       "「町サイト」が「市のサイト」になっています。原文は「町」で、訳文の \"cidade\"（市）は行政区分が違います。その他の数字・日付・時間・名前・場所は一致しています。"
      ],
@@ -1741,7 +1741,7 @@
       "url": "https://www.town.oizumi.gunma.jp/s030/kosodate/010/010/050/20200826145316.html",
       "where": "申込方法（受付期間・提出場所）"
      },
-     "status": "pending",
+     "status": "ok",
      "problems": [
       "「令和9年度」の後に「(fiscal year 2027)」と西暦年度の補足が追加されています。内容自体は正しいですが、原文にない追記です。ほかの数字・日付・時間・名前・場所は一致しています。"
      ],
@@ -2905,7 +2905,7 @@
       "url": "https://www.town.oizumi.gunma.jp/s030/kosodate/010/010/050/20200826145316.html",
       "where": "申込方法（受付期間・提出場所）"
      },
-     "status": "pending",
+     "status": "ok",
      "problems": [
       "「町サイト」が「Situs web kota（市のサイト）」になっている。町と市の違い。それ以外の数字・日付・時間・電話番号・場所は一致。"
      ],

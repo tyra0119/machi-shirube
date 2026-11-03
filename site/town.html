@@ -204,6 +204,23 @@
   </div>
   <div class="view" data-view="tetsuzuki" hidden><section class="block"><h2>手続き</h2><div class="answers-box" data-page="tetsuzuki"></div></section></div>
   <div class="view" data-view="foreign" hidden>
+    <!-- この町の訳がまだ無いときの、いくつかの言葉での案内（訳のある町では隠す） -->
+    <div class="foreign-guide" id="foreign-guide">
+      <p class="fg-lead">この町の案内は、まだ日本語だけです。ブラウザの「翻訳」を使うと、自分の言葉で読めます。</p>
+      <ul class="fg-list">
+        <li lang="ja"><span class="fg-name">やさしい にほんご</span>この ページは にほんごです。ブラウザの「ほんやく」を つかって ください。</li>
+        <li lang="en"><span class="fg-name">English</span>This page is in Japanese. Please use your browser's translate function.</li>
+        <li lang="pt"><span class="fg-name">Português</span>Esta página está em japonês. Use a função de tradução do seu navegador.</li>
+        <li lang="es"><span class="fg-name">Español</span>Esta página está en japonés. Use la función de traducción de su navegador.</li>
+        <li lang="zh"><span class="fg-name">中文</span>本页面为日语。请使用浏览器的翻译功能。</li>
+        <li lang="ko"><span class="fg-name">한국어</span>이 페이지는 일본어입니다. 브라우저의 번역 기능을 사용해 주세요.</li>
+        <li lang="vi"><span class="fg-name">Tiếng Việt</span>Trang này viết bằng tiếng Nhật. Hãy dùng chức năng dịch của trình duyệt.</li>
+        <li lang="tl"><span class="fg-name">Filipino</span>Nasa wikang Hapon ang pahinang ito. Gamitin ang translate ng iyong browser.</li>
+        <li lang="id"><span class="fg-name">Bahasa Indonesia</span>Halaman ini berbahasa Jepang. Silakan gunakan fitur terjemahan di browser Anda.</li>
+        <li lang="ne"><span class="fg-name">नेपाली</span>यो पृष्ठ जापानी भाषामा छ। कृपया आफ्नो ब्राउजरको अनुवाद सुविधा प्रयोग गर्नुहोस्।</li>
+      </ul>
+      <p class="fg-link"><a href="https://www.moj.go.jp/isa/support/portal/index.html" target="_blank" rel="noopener">外国人生活支援ポータルサイト（出入国在留管理庁） / Foreign Residents Support Portal</a></p>
+    </div>
     <section class="block" id="tr-block" hidden>
       <h2>母語で防災・暮らし</h2>
       <div class="tr-langs" id="tr-langs" role="radiogroup" aria-label="言葉を選ぶ"></div>
