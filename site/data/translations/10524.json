@@ -1,7 +1,7 @@
 {
  "code": "10524",
  "name": "邑楽郡大泉町",
- "createdAt": "2026-11-02T23:44:21.025Z",
+ "createdAt": "2026-11-03T00:13:24.691Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
  "langs": {
@@ -414,6 +414,23 @@
      },
      "status": "auto",
      "problems": []
+    },
+    {
+     "qid": "Q43",
+     "short": "Aviso de prevenção de crimes da polícia da província (県警)",
+     "text": "【E-mail da polícia da província】\nO nome é \"Jōshū-kun Anzen・Anshin Mail\" (上州くん安全・安心メール).\nA Polícia da Província de Gunma (群馬県警察) envia para celulares e computadores informações de prevenção de crimes, como informações sobre pessoas suspeitas, e informações de segurança no trânsito.\nO cadastro é feito acessando o site da Polícia da Província de Gunma pelo código QR. Ou então, envie um e-mail em branco e faça o cadastro seguindo os passos do e-mail que você receber de volta.\nOs detalhes estão na página inicial (homepage) da Polícia da Província de Gunma.\n\n【E-mail da cidade de Oizumi (大泉町)】\nA cidade envia informações de prevenção de crimes, como informações sobre pessoas suspeitas, pelo \"Oizumi-machi Anzen・Anshin Mail\" (大泉町安全・安心メール).\nPara se cadastrar, envie um e-mail em branco para bousai.gunma-oizumi-town@raiden2.ktaiwork.jp.\nFaça o procedimento seguindo os passos do e-mail que você receber.\nO cadastro e o envio das mensagens são gratuitos. A taxa de comunicação (internet) fica por conta de cada pessoa.\n\n【LINE oficial da cidade】\nAdicione o LINE oficial da cidade como amigo.\nNo menu, escolha \"Anzen・Anshin\" (安全・安心) e depois \"Anzen Anshin Mail\" (安全安心メール). Assim, você também pode receber o mesmo conteúdo pelo LINE.",
+     "original": "【県警のメール】\n名前は「上州くん安全・安心メール」です。\n群馬県警察が、不審者情報などの防犯情報や交通安全情報を、携帯電話やパソコンに配信しています。\n登録は二次元コードから群馬県警察のサイトに進んで行います。または、空メールを送り、返ってきたメールの手順で登録します。\n詳しくは群馬県警察のホームページに載っています。\n\n【大泉町のメール】\n町は「大泉町安全・安心メール」で、不審者情報などの防犯情報を配信しています。\n登録は、bousai.gunma-oizumi-town@raiden2.ktaiwork.jp に空メールを送ります。\n送られてきたメールの手順に沿って手続きをします。\n登録・配信は無料です。通信料は自己負担です。\n\n【町公式LINE】\n町公式LINEを友だち追加します。\nメニューの「安全・安心」から「安全安心メール」を選ぶと、LINEでも同じ内容を受け取れます。",
+     "back": "【県警のメール】名前は「上州くん安全・安心メール」です。群馬県警察が、不審者情報などの防犯情報や交通安全情報を、携帯電話やパソコンに配信しています。登録は二次元コードから群馬県警察のサイトに進んで行います。または、空メールを送り、返ってきたメールの手順で登録します。詳しくは群馬県警察のホームページに載っています。\n\n【大泉町のメール】町は「大泉町安全・安心メール」で、不審者情報などの防犯情報を配信しています。登録は、bousai.gunma-oizumi-town@raiden2.ktaiwork.jp に空メールを送ります。送られてきたメールの手順に沿って手続きをします。登録・配信は無料です。通信料（インターネットの）は自己負担です。\n\n【町公式LINE】町公式LINEを友だち追加します。メニューの「安全・安心」から「安全安心メール」を選ぶと、LINEでも同じ内容を受け取れます。",
+     "source": {
+      "title": "安全・安心メールをご利用ください｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s004/anzen/050/050/20200827165944.html",
+      "where": "配信内容／メールアドレスの登録について／町公式LINEでも配信内容を受け取れます"
+     },
+     "status": "ok",
+     "problems": [
+      "「通信料」に「(internet)」が足されている。原文は単に「通信料は自己負担です」で、インターネットに限定されていない。"
+     ],
+     "ledgerId": "r00210"
     }
    ]
   },
@@ -832,6 +849,23 @@
      "problems": [
       "「大泉町」の町名に「En el pueblo de Oizumi」と町の種類を添えているが、原文にない語の追加ではなく訳語の補足なので軽微。「ポルトガル語や英語などの」→「portugués, inglés y otros idiomas」で意味は同じ。問題なし。"
      ]
+    },
+    {
+     "qid": "Q43",
+     "short": "Avisos de prevención del delito de la policía de la prefectura (県警)",
+     "text": "【Correo de la policía de la prefectura】\nSe llama «Jōshū-kun Correo de Seguridad y Tranquilidad» (上州くん安全・安心メール).\nLa Policía de la Prefectura de Gunma (群馬県警察) envía a teléfonos móviles y computadoras información de prevención del delito, como avisos de personas sospechosas, e información de seguridad vial.\nPara registrarse, se accede al sitio de la Policía de la Prefectura de Gunma (群馬県警察) mediante un código bidimensional (código QR). También se puede enviar un correo vacío (sin texto) y registrarse siguiendo los pasos del correo que se reciba como respuesta.\nHay más detalles en la página web de la Policía de la Prefectura de Gunma (群馬県警察).\n\n【Correo de la ciudad de Oizumi (大泉町)】\nLa ciudad envía información de prevención del delito, como avisos de personas sospechosas, mediante el «Correo de Seguridad y Tranquilidad de Oizumi» (大泉町安全・安心メール).\nPara registrarse, envíe un correo vacío (sin texto) a bousai.gunma-oizumi-town@raiden2.ktaiwork.jp.\nSiga los pasos del correo que reciba para completar el trámite.\nEl registro y el envío de los avisos son gratuitos. Los gastos de comunicación corren por cuenta de cada persona.\n\n【LINE oficial de la ciudad】\nAgregue como amigo el LINE oficial de la ciudad.\nEn el menú, elija «Seguridad y tranquilidad» (安全・安心) y luego «Correo de seguridad y tranquilidad» (安全安心メール). Así también puede recibir el mismo contenido por LINE.",
+     "original": "【県警のメール】\n名前は「上州くん安全・安心メール」です。\n群馬県警察が、不審者情報などの防犯情報や交通安全情報を、携帯電話やパソコンに配信しています。\n登録は二次元コードから群馬県警察のサイトに進んで行います。または、空メールを送り、返ってきたメールの手順で登録します。\n詳しくは群馬県警察のホームページに載っています。\n\n【大泉町のメール】\n町は「大泉町安全・安心メール」で、不審者情報などの防犯情報を配信しています。\n登録は、bousai.gunma-oizumi-town@raiden2.ktaiwork.jp に空メールを送ります。\n送られてきたメールの手順に沿って手続きをします。\n登録・配信は無料です。通信料は自己負担です。\n\n【町公式LINE】\n町公式LINEを友だち追加します。\nメニューの「安全・安心」から「安全安心メール」を選ぶと、LINEでも同じ内容を受け取れます。",
+     "back": "【県警のメール】\n名前は「上州くん安全・安心メール」です。\n群馬県警察が、不審者情報などの防犯情報や交通安全情報を、携帯電話やパソコンに配信しています。\n登録は二次元コード（QRコード）から群馬県警察のサイトに進んで行います。また、空メール（本文のないメール）を送り、返ってきたメールの手順で登録することもできます。\n詳しくは群馬県警察のホームページに載っています。\n\n【大泉町のメール】\n町は「大泉町安全・安心メール」で、不審者情報などの防犯情報を配信しています。\n登録は、bousai.gunma-oizumi-town@raiden2.ktaiwork.jp に空メール（本文のないメール）を送ります。\n送られてきたメールの手順に沿って手続きをします。\n登録・配信は無料です。通信料は自己負担です。\n\n【町公式LINE】\n町公式LINEを友だち追加します。\nメニューの「安全・安心」から「安全安心メール」を選ぶと、LINEでも同じ内容を受け取れます。",
+     "source": {
+      "title": "安全・安心メールをご利用ください｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s004/anzen/050/050/20200827165944.html",
+      "where": "配信内容／メールアドレスの登録について／町公式LINEでも配信内容を受け取れます"
+     },
+     "status": "ok",
+     "problems": [
+      "意味のずれはないが、原文にない説明を足している。「二次元コード」に「(código QR)」に相当する「QRコード」の補足、「空メール」に「(sin texto)」に相当する「本文のない」の補足が、訳文の括弧内で加えられている。"
+     ],
+     "ledgerId": "r00211"
     }
    ]
   },
@@ -1254,6 +1288,20 @@
      "problems": [
       "英文の \"a Easy Japanese\" は冠詞の誤り（意味への影響なし）"
      ]
+    },
+    {
+     "qid": "Q43",
+     "short": "Crime Prevention Notices from the Prefectural Police (群馬県警察)",
+     "text": "[Gunma Prefectural Police email]\nThe name is \"Joshu-kun Anzen-Anshin Mail\" (上州くん安全・安心メール).\nThe Gunma Prefectural Police (群馬県警察) send crime prevention information, such as reports of suspicious persons, and traffic safety information to mobile phones and computers.\nTo register, use the QR code to go to the Gunma Prefectural Police website. Or, send a blank email and register by following the steps in the email you receive in reply.\nDetails are on the Gunma Prefectural Police website.\n\n[Oizumi Town email]\nThe town sends crime prevention information, such as reports of suspicious persons, through the \"Oizumi Town Anzen-Anshin Mail\" (大泉町安全・安心メール).\nTo register, send a blank email to bousai.gunma-oizumi-town@raiden2.ktaiwork.jp.\nComplete the registration by following the steps in the email that is sent to you.\nRegistration and delivery are free. You pay your own communication charges.\n\n[Town official LINE]\nAdd the town's official LINE as a friend.\nFrom \"Anzen-Anshin\" (安全・安心) in the menu, choose \"Anzen-Anshin Mail\" (安全安心メール). You can then receive the same information on LINE as well.",
+     "original": "【県警のメール】\n名前は「上州くん安全・安心メール」です。\n群馬県警察が、不審者情報などの防犯情報や交通安全情報を、携帯電話やパソコンに配信しています。\n登録は二次元コードから群馬県警察のサイトに進んで行います。または、空メールを送り、返ってきたメールの手順で登録します。\n詳しくは群馬県警察のホームページに載っています。\n\n【大泉町のメール】\n町は「大泉町安全・安心メール」で、不審者情報などの防犯情報を配信しています。\n登録は、bousai.gunma-oizumi-town@raiden2.ktaiwork.jp に空メールを送ります。\n送られてきたメールの手順に沿って手続きをします。\n登録・配信は無料です。通信料は自己負担です。\n\n【町公式LINE】\n町公式LINEを友だち追加します。\nメニューの「安全・安心」から「安全安心メール」を選ぶと、LINEでも同じ内容を受け取れます。",
+     "back": "【県警のメール】\n名前は「上州くん安全・安心メール」です。\n群馬県警察は、不審者情報などの防犯情報や交通安全情報を、携帯電話やパソコンに配信しています。\n登録は、二次元コードから群馬県警察のサイトに進んで行います。または、空メールを送り、返ってきたメールの手順で登録します。\n詳しくは群馬県警察のホームページに載っています。\n\n【大泉町のメール】\n町は「大泉町安全・安心メール」で、不審者情報などの防犯情報を配信しています。\n登録は、bousai.gunma-oizumi-town@raiden2.ktaiwork.jp に空メールを送ります。\n送られてきたメールの手順に沿って手続きをします。\n登録・配信は無料です。通信料は自己負担です。\n\n【町公式LINE】\n町公式LINEを友だち追加します。\nメニューの「安全・安心」から「安全安心メール」を選ぶと、LINEでも同じ内容を受け取れます。",
+     "source": {
+      "title": "安全・安心メールをご利用ください｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s004/anzen/050/050/20200827165944.html",
+      "where": "配信内容／メールアドレスの登録について／町公式LINEでも配信内容を受け取れます"
+     },
+     "status": "auto",
+     "problems": []
     }
    ]
   },
@@ -1674,6 +1722,23 @@
      },
      "status": "auto",
      "problems": []
+    },
+    {
+     "qid": "Q43",
+     "short": "県(けん)の警察(けいさつ)の 防犯(ぼうはん)の 知(し)らせ",
+     "text": "【県警(けんけい)のメール】\n名前(なまえ)は「上州(じょうしゅう)くん安全(あんぜん)・安心(あんしん)メール」です。\n群馬県警察(ぐんまけんけいさつ)が、あやしい人(ふしんしゃ)の情報(じょうほう)など、犯罪(はんざい)を防(ふせ)ぐための情報(じょうほう)や、交通安全(こうつうあんぜん)の情報(じょうほう)を、携帯電話(けいたいでんわ)やパソコンに送(おく)っています。\n登録(とうろく)は、二次元(にじげん)コードから群馬県警察(ぐんまけんけいさつ)のサイトに進(すす)んで行(おこな)います。または、空(から)メール（何(なに)も書(か)いていないメール）を送(おく)ります。そして、返(かえ)ってきたメールの手順(てじゅん)で登録(とうろく)します。\nくわしくは、群馬県警察(ぐんまけんけいさつ)のホームページに書(か)いてあります。\n\n【大泉町(おおいずみまち)のメール】\n町(まち)は「大泉町安全・安心メール(おおいずみまちあんぜん・あんしんメール)」で、あやしい人(ふしんしゃ)の情報(じょうほう)など、犯罪(はんざい)を防(ふせ)ぐための情報(じょうほう)を送(おく)っています。\n登録(とうろく)するときは、bousai.gunma-oizumi-town@raiden2.ktaiwork.jp に空(から)メールを送(おく)ります。\n送(おく)られてきたメールの手順(てじゅん)で手続(てつづ)きをします。\n登録(とうろく)も、メールを受(う)け取(と)ることも、お金(かね)はかかりません。ただし、通信料(つうしんりょう)は自分(じぶん)で払(はら)います。\n\n【町(まち)の公式(こうしき)LINE】\n町(まち)の公式(こうしき)LINEを友(とも)だちに追加(ついか)します。\nメニューの「安全・安心(あんぜん・あんしん)」から「安全安心(あんぜんあんしん)メール」を選(えら)ぶと、LINEでも同(おな)じ内容(ないよう)を受(う)け取(と)れます。",
+     "original": "【県警のメール】\n名前は「上州くん安全・安心メール」です。\n群馬県警察が、不審者情報などの防犯情報や交通安全情報を、携帯電話やパソコンに配信しています。\n登録は二次元コードから群馬県警察のサイトに進んで行います。または、空メールを送り、返ってきたメールの手順で登録します。\n詳しくは群馬県警察のホームページに載っています。\n\n【大泉町のメール】\n町は「大泉町安全・安心メール」で、不審者情報などの防犯情報を配信しています。\n登録は、bousai.gunma-oizumi-town@raiden2.ktaiwork.jp に空メールを送ります。\n送られてきたメールの手順に沿って手続きをします。\n登録・配信は無料です。通信料は自己負担です。\n\n【町公式LINE】\n町公式LINEを友だち追加します。\nメニューの「安全・安心」から「安全安心メール」を選ぶと、LINEでも同じ内容を受け取れます。",
+     "back": "【県警のメール】\n名前は「上州くん安全・安心メール」です。\n群馬県警察が、不審者情報などの防犯情報や交通安全情報を、携帯電話やパソコンに配信しています。\n登録は二次元コードから群馬県警察のサイトに進んで行います。または、空メール（何も書いていないメール）を送ります。そして、返ってきたメールの手順で登録します。\n詳しくは、群馬県警察のホームページに書いてあります。\n\n【大泉町のメール】\n町は「大泉町安全・安心メール」で、あやしい人の情報など、犯罪を防ぐための情報を送っています。\n登録するときは、bousai.gunma-oizumi-town@raiden2.ktaiwork.jp に空メールを送ります。\n送られてきたメールの手順で手続きをします。\n登録も、メールを受け取ることも、お金はかかりません。ただし、通信料は自分で払います。\n\n【町の公式LINE】\n町の公式LINEを友だちに追加します。\nメニューの「安全・安心」から「安全安心メール」を選ぶと、LINEでも同じ内容を受け取れます。",
+     "source": {
+      "title": "安全・安心メールをご利用ください｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s004/anzen/050/050/20200827165944.html",
+      "where": "配信内容／メールアドレスの登録について／町公式LINEでも配信内容を受け取れます"
+     },
+     "status": "pending",
+     "problems": [
+      "「（何も書いていないメール）」は原文にない説明の追加です。他の数字・名前・アドレス・内容は一致しています。"
+     ],
+     "ledgerId": "r00212"
     }
    ]
   },
@@ -2088,6 +2153,20 @@
      },
      "status": "auto",
      "problems": []
+    },
+    {
+     "qid": "Q43",
+     "short": "Informasi pencegahan kejahatan dari Kepolisian Prefektur (県警)",
+     "text": "【Email dari Kepolisian Prefektur (県警)】\nNamanya \"Jōshū-kun Anzen・Anshin Mail\" (上州くん安全・安心メール).\nKepolisian Prefektur Gunma (群馬県警察) mengirimkan informasi pencegahan kejahatan, seperti informasi tentang orang mencurigakan, serta informasi keselamatan lalu lintas ke ponsel dan komputer.\nPendaftaran dilakukan dengan membuka situs Kepolisian Prefektur Gunma (群馬県警察) melalui kode QR. Atau, kirim email kosong, lalu daftar dengan mengikuti langkah-langkah dalam email balasan yang diterima.\nInformasi lebih lengkap tersedia di situs web Kepolisian Prefektur Gunma (群馬県警察).\n\n【Email dari Kota Oizumi (大泉町)】\nKota mengirimkan informasi pencegahan kejahatan, seperti informasi tentang orang mencurigakan, melalui \"Oizumi-machi Anzen・Anshin Mail\" (大泉町安全・安心メール).\nUntuk mendaftar, kirim email kosong ke bousai.gunma-oizumi-town@raiden2.ktaiwork.jp.\nLakukan prosedur pendaftaran sesuai langkah-langkah dalam email yang dikirim kepada Anda.\nPendaftaran dan pengiriman informasi gratis. Biaya komunikasi ditanggung sendiri.\n\n【LINE resmi kota】\nTambahkan LINE resmi kota sebagai teman.\nJika Anda memilih \"Anzen・Anshin Mail\" (安全安心メール) dari \"Anzen・Anshin\" (安全・安心) di menu, Anda juga dapat menerima informasi yang sama melalui LINE.",
+     "original": "【県警のメール】\n名前は「上州くん安全・安心メール」です。\n群馬県警察が、不審者情報などの防犯情報や交通安全情報を、携帯電話やパソコンに配信しています。\n登録は二次元コードから群馬県警察のサイトに進んで行います。または、空メールを送り、返ってきたメールの手順で登録します。\n詳しくは群馬県警察のホームページに載っています。\n\n【大泉町のメール】\n町は「大泉町安全・安心メール」で、不審者情報などの防犯情報を配信しています。\n登録は、bousai.gunma-oizumi-town@raiden2.ktaiwork.jp に空メールを送ります。\n送られてきたメールの手順に沿って手続きをします。\n登録・配信は無料です。通信料は自己負担です。\n\n【町公式LINE】\n町公式LINEを友だち追加します。\nメニューの「安全・安心」から「安全安心メール」を選ぶと、LINEでも同じ内容を受け取れます。",
+     "back": "【県警のメール】\n名前は「上州くん安全・安心メール」です。\n群馬県警察が、不審者情報などの防犯情報や交通安全情報を、携帯電話やパソコンに配信しています。\n登録は二次元コードから群馬県警察のサイトに進んで行います。または、空メールを送り、返ってきたメールの手順で登録します。\n詳しくは群馬県警察のホームページに載っています。\n\n【大泉町のメール】\n町は「大泉町安全・安心メール」で、不審者情報などの防犯情報を配信しています。\n登録は、bousai.gunma-oizumi-town@raiden2.ktaiwork.jp に空メールを送ります。\n送られてきたメールの手順に沿って手続きをします。\n登録・配信は無料です。通信料は自己負担です。\n\n【町公式LINE】\n町公式LINEを友だち追加します。\nメニューの「安全・安心」から「安全安心メール」を選ぶと、LINEでも同じ内容を受け取れます。",
+     "source": {
+      "title": "安全・安心メールをご利用ください｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s004/anzen/050/050/20200827165944.html",
+      "where": "配信内容／メールアドレスの登録について／町公式LINEでも配信内容を受け取れます"
+     },
+     "status": "auto",
+     "problems": []
     }
    ]
   },
@@ -2497,6 +2576,20 @@
       "title": "外国人に行政情報を伝えたいのですが、どんなものがありますか?",
       "url": "https://www.town.oizumi.gunma.jp/s007/qa/020/020/010/20200714165211.html",
       "where": "よくある質問 答え"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q43",
+     "short": "प्रिफेक्चर प्रहरीको अपराध रोकथाम सूचना",
+     "text": "【प्रिफेक्चर प्रहरीको इमेल】\nनाम \"जोशू-कुन सुरक्षा·निश्चिन्त इमेल (上州くん安全・安心メール)\" हो।\nग्युन्मा प्रिफेक्चर प्रहरी (群馬県警察) ले शंकास्पद व्यक्तिसम्बन्धी जानकारी जस्ता अपराध रोकथामका जानकारी र सडक सुरक्षाको जानकारी मोबाइल फोन र कम्प्युटरमा पठाउँछ।\nदर्ता QR कोडबाट ग्युन्मा प्रिफेक्चर प्रहरी (群馬県警察) को साइटमा गएर गरिन्छ। अथवा खाली इमेल पठाउनुहोस्, र फर्केर आएको इमेलमा दिइएको प्रक्रिया अनुसार दर्ता गर्नुहोस्।\nविस्तृत जानकारी ग्युन्मा प्रिफेक्चर प्रहरी (群馬県警察) को वेबसाइटमा छ।\n\n【ओइज्युमी नगरको इमेल】\nनगरले \"ओइज्युमी नगर सुरक्षा·निश्चिन्त इमेल (大泉町安全・安心メール)\" बाट शंकास्पद व्यक्तिसम्बन्धी जानकारी जस्ता अपराध रोकथामका जानकारी पठाउँछ।\nदर्ता गर्न bousai.gunma-oizumi-town@raiden2.ktaiwork.jp मा खाली इमेल पठाउनुहोस्।\nपठाइएको इमेलमा दिइएको प्रक्रिया अनुसार दर्ता गर्नुहोस्।\nदर्ता र जानकारी प्राप्त गर्न निःशुल्क छ। इन्टरनेट/सञ्चार शुल्क आफैँले तिर्नुपर्छ।\n\n【नगरको आधिकारिक LINE】\nनगरको आधिकारिक LINE मा साथी (friend) थप्नुहोस्।\nमेनुको \"सुरक्षा·निश्चिन्त (安全・安心)\" बाट \"सुरक्षा निश्चिन्त इमेल (安全安心メール)\" छान्नुभयो भने LINE मा पनि उही जानकारी प्राप्त गर्न सकिन्छ।",
+     "original": "【県警のメール】\n名前は「上州くん安全・安心メール」です。\n群馬県警察が、不審者情報などの防犯情報や交通安全情報を、携帯電話やパソコンに配信しています。\n登録は二次元コードから群馬県警察のサイトに進んで行います。または、空メールを送り、返ってきたメールの手順で登録します。\n詳しくは群馬県警察のホームページに載っています。\n\n【大泉町のメール】\n町は「大泉町安全・安心メール」で、不審者情報などの防犯情報を配信しています。\n登録は、bousai.gunma-oizumi-town@raiden2.ktaiwork.jp に空メールを送ります。\n送られてきたメールの手順に沿って手続きをします。\n登録・配信は無料です。通信料は自己負担です。\n\n【町公式LINE】\n町公式LINEを友だち追加します。\nメニューの「安全・安心」から「安全安心メール」を選ぶと、LINEでも同じ内容を受け取れます。",
+     "back": "【県警のメール】\n名前は「上州くん安全・安心メール」です。\n群馬県警察が、不審者情報などの防犯情報や交通安全情報を、携帯電話やパソコンに配信しています。\n登録は二次元コードから群馬県警察のサイトに進んで行います。または、空メールを送り、返ってきたメールの手順で登録します。\n詳しくは群馬県警察のホームページに載っています。\n\n【大泉町のメール】\n町は「大泉町安全・安心メール」で、不審者情報などの防犯情報を配信しています。\n登録は、bousai.gunma-oizumi-town@raiden2.ktaiwork.jp に空メールを送ります。\n送られてきたメールの手順に沿って手続きをします。\n登録・配信は無料です。通信料は自己負担です。\n\n【町公式LINE】\n町公式LINEを友だち追加します。\nメニューの「安全・安心」から「安全安心メール」を選ぶと、LINEでも同じ内容を受け取れます。",
+     "source": {
+      "title": "安全・安心メールをご利用ください｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s004/anzen/050/050/20200827165944.html",
+      "where": "配信内容／メールアドレスの登録について／町公式LINEでも配信内容を受け取れます"
      },
      "status": "auto",
      "problems": []
@@ -2914,6 +3007,23 @@
      },
      "status": "auto",
      "problems": []
+    },
+    {
+     "qid": "Q43",
+     "short": "Thông báo phòng chống tội phạm của cảnh sát tỉnh",
+     "text": "【Email của cảnh sát tỉnh】\nTên là 「上州くん安全・安心メール」 (Jōshū-kun An toàn・An tâm Mail).\nCảnh sát tỉnh Gunma (群馬県警察) gửi thông tin phòng chống tội phạm như thông tin về người khả nghi, cũng như thông tin về an toàn giao thông, đến điện thoại di động và máy tính.\nĐể đăng ký, bạn quét mã QR (mã hai chiều) để vào trang web của Cảnh sát tỉnh Gunma (群馬県警察) rồi đăng ký. Hoặc bạn gửi một email trống (không có nội dung), sau đó đăng ký theo các bước trong email được gửi lại.\nThông tin chi tiết có trên trang chủ của Cảnh sát tỉnh Gunma (群馬県警察).\n\n【Email của thị trấn Oizumi (大泉町)】\nThị trấn gửi thông tin phòng chống tội phạm như thông tin về người khả nghi qua 「大泉町安全・安心メール」 (Email An toàn・An tâm của thị trấn Oizumi).\nĐể đăng ký, bạn gửi một email trống (không có nội dung) đến bousai.gunma-oizumi-town@raiden2.ktaiwork.jp.\nSau đó làm thủ tục theo các bước trong email được gửi lại.\nĐăng ký và nhận thông tin đều miễn phí. Cước phí truyền tin do bạn tự chịu.\n\n【LINE chính thức của thị trấn】\nHãy thêm LINE chính thức của thị trấn làm bạn bè.\nNếu bạn chọn 「安全安心メール」 (Email An toàn An tâm) trong mục 「安全・安心」 (An toàn・An tâm) ở menu, bạn cũng có thể nhận nội dung tương tự qua LINE.",
+     "original": "【県警のメール】\n名前は「上州くん安全・安心メール」です。\n群馬県警察が、不審者情報などの防犯情報や交通安全情報を、携帯電話やパソコンに配信しています。\n登録は二次元コードから群馬県警察のサイトに進んで行います。または、空メールを送り、返ってきたメールの手順で登録します。\n詳しくは群馬県警察のホームページに載っています。\n\n【大泉町のメール】\n町は「大泉町安全・安心メール」で、不審者情報などの防犯情報を配信しています。\n登録は、bousai.gunma-oizumi-town@raiden2.ktaiwork.jp に空メールを送ります。\n送られてきたメールの手順に沿って手続きをします。\n登録・配信は無料です。通信料は自己負担です。\n\n【町公式LINE】\n町公式LINEを友だち追加します。\nメニューの「安全・安心」から「安全安心メール」を選ぶと、LINEでも同じ内容を受け取れます。",
+     "back": "【県警のメール】\n名前は「上州くん安全・安心メール」です。群馬県警察は、不審者情報などの防犯情報や交通安全情報を、携帯電話やパソコンに配信しています。\n登録は二次元コードから群馬県警察のサイトに進んで行います。または、空メール（内容のないメール）を送り、返ってきたメールの手順で登録します。\n詳しくは群馬県警察のホームページに載っています。\n\n【大泉町のメール】\n町は「大泉町安全・安心メール」で、不審者情報などの防犯情報を配信しています。\n登録は、bousai.gunma-oizumi-town@raiden2.ktaiwork.jp に空メール（内容のないメール）を送ります。\n送られてきたメールの手順に沿って手続きをします。\n登録・配信は無料です。通信料は自己負担です。\n\n【町公式LINE】\n町公式LINEを友だち追加します。\nメニューの「安全・安心」から「安全安心メール」を選ぶと、LINEでも同じ内容を受け取れます。",
+     "source": {
+      "title": "安全・安心メールをご利用ください｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s004/anzen/050/050/20200827165944.html",
+      "where": "配信内容／メールアドレスの登録について／町公式LINEでも配信内容を受け取れます"
+     },
+     "status": "pending",
+     "problems": [
+      "「LINEでも同じ内容」が訳し戻しでは「同様の内容」になっている。原文は「同じ内容」で、訳文の「nội dung tương tự（似た内容）」は少しずれている。「nội dung giống nhau（同じ内容）」にすると合う。その他の数字・アドレス・名前・手順は一致している。"
+     ],
+     "ledgerId": "r00213"
     }
    ]
   }

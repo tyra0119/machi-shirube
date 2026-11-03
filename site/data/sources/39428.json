@@ -66,6 +66,15 @@
    "status": "ok",
    "approvedAt": "2026-11-02T23:01:22.812Z",
    "local": true
+  },
+  {
+   "id": "c0013",
+   "host": "www.police.pref.kochi.lg.jp",
+   "title": "高知県 黒潮町の公式サイト",
+   "url": "https://www.police.pref.kochi.lg.jp/",
+   "license": "作者が使ってよいと確かめた（事実と出典のリンクを出す。文はそのまま写さない）",
+   "status": "ok",
+   "approvedAt": "2026-11-03T00:12:48.043Z"
   }
  ]
 }
