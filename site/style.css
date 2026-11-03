@@ -367,3 +367,5 @@ a.secondary.as-button { display: flex; align-items: center; justify-content: cen
 .guide .howto summary::-webkit-details-marker { display: none; }
 .guide .howto summary::before { content: "▸"; color: var(--accent); }
 .guide .howto[open] summary::before { content: "▾"; }
+/* カウンターの帯と地図の見方の札は、地図の下の出典の文の上に置く（高さは app.js の placeAboveSource が測る） */
+.counter, .map-key { bottom: var(--source-top, 28px) !important; }

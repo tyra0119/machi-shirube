@@ -1244,3 +1244,13 @@ if (new URLSearchParams(location.search).has("wave")) {
   map.on("load", () => setTimeout(playWave, 1500));
   addEventListener("keydown", (e) => { if (e.key === "w" || e.key === "W") playWave(); });
 }
+
+// 地図の下の出典の文（.source）を、カウンターの帯と地図の見方の札で隠さない：出典の文の高さを測り、その上に置く
+// （スマホでは出典の文が2行に折れて、札に隠れていた。出典はいつも見えるようにする決まり）
+function placeAboveSource() {
+  const src = document.querySelector("main .source");
+  if (!src) return;
+  document.documentElement.style.setProperty("--source-top", `${src.offsetHeight + 12}px`);
+}
+placeAboveSource();
+addEventListener("resize", placeAboveSource);
