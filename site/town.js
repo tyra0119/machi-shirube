@@ -571,7 +571,10 @@ async function showHinan(code, townFeatures, startPart) {
     $("hinan-here").textContent = "海抜と浸水の想定を計算しています…";
     const [h0, d0] = await Promise.all([elevationAt(...at), hz ? depthAt(hz, ...at) : null]);
     if (token !== setHere.token) return;
-    $("hinan-here").innerHTML = `選んだ場所：海抜 約 ${h0 != null ? `${Math.round(h0)}m` : "（分からない）"}${hz ? `・${hz}の浸水の想定 <strong>${d0?.label ?? "区域の外（想定なし）"}</strong>` : ""}`;
+    // 数の入る文は {m} などの印つきで訳す（TT。i18n.js）
+    const flood = (k, label) => TN("{kind}の浸水の想定", { kind: T(k) }) + " " + label;
+    $("hinan-here").innerHTML = TN("選んだ場所：海抜 約 {h}", { h: h0 != null ? `${Math.round(h0)}m` : T("（分からない）") })
+      + (hz ? `・${flood(hz, `<strong>${esc(T(d0?.label ?? "区域の外（想定なし）"))}</strong>`)}` : "");
     const walks = [];
     $("hinan-walk").hidden = true;
     await Promise.all(cand.map(async (c, i) => {
@@ -581,19 +584,19 @@ async function showHinan(code, townFeatures, startPart) {
       if (w.hasElevation) walks.push({ i, name: c.f.properties.name, m: c.m, up: w.up, min: w.min });
       const li = document.querySelector(`#hinan-list li[data-i="${i}"] .d`);
       if (!li) return;
-      li.innerHTML = `まっすぐ ${c.m.toLocaleString("ja-JP")}m・歩いて約 ${Math.max(1, Math.round(c.m / 60))}分`
-        + (w.hasElevation ? `・<strong>坂を考えると約 ${w.min}分</strong>（上り ${w.up}m・下り ${w.down}m）` : "")
-        + `<br>避難場所の海抜 約 ${h != null ? `${Math.round(h)}m` : "（分からない）"}`
-        + (hz ? `・${hz}の浸水の想定 ${d?.label ? `<strong class="warn">${d.label}</strong>` : "区域の外"}` : "");
+      li.innerHTML = TN("まっすぐ {m}m・歩いて約 {min}分", { m: c.m.toLocaleString("ja-JP"), min: Math.max(1, Math.round(c.m / 60)) })
+        + (w.hasElevation ? `・<strong>${TN("坂を考えると約 {min}分", { min: w.min })}</strong>（${TN("上り {up}m・下り {down}m", { up: w.up, down: w.down })}）` : "")
+        + `<br>${TN("避難場所の海抜 約 {h}", { h: h != null ? `${Math.round(h)}m` : T("（分からない）") })}`
+        + (hz ? `・${flood(hz, d?.label ? `<strong class="warn">${esc(T(d.label))}</strong>` : T("区域の外"))}` : "");
     }));
     // 防災散歩：近い3つのうち、上りがいちばん少ない避難場所まで、ふだんの散歩で一度歩いてみる。道は持っていないので、まっすぐの線のめやすだと書く
     if (token !== setHere.token || !walks.length) return;
     const w = walks.sort((a, b) => a.up - b.up || a.m - b.m)[0];
     $("hinan-walk").hidden = false;
     const wc = cand[w.i].f.geometry.coordinates;
-    $("hinan-walk").innerHTML = `<p class="t">${icon("heart")}防災散歩</p>`
-      + `<p>ふだんの散歩で、一度 <strong>${esc(w.name)}</strong>（${w.i + 1}）まで歩いてみませんか。往復 約 ${(w.m * 2).toLocaleString("ja-JP")}m・約 ${w.min * 2}分（行きの上り ${w.up}m）。近い ${walks.length} つの中で、上りがいちばん少ない所です。</p>`
-      + `<p class="note">長さと上りは、まっすぐの線で測っためやすです。歩く道は、町の地図や現地で選んでください。夜や雨の日の道も、明るいうちに一度見ておくと安心です。</p>`
+    $("hinan-walk").innerHTML = `<p class="t">${icon("heart")}${T("防災散歩")}</p>`
+      + `<p>${TN("ふだんの散歩で、一度 {name}（{i}）まで歩いてみませんか。往復 約 {m}m・約 {min}分（行きの上り {up}m）。近い {n} つの中で、上りがいちばん少ない所です。", { name: `<strong>${esc(w.name)}</strong>`, i: w.i + 1, m: (w.m * 2).toLocaleString("ja-JP"), min: w.min * 2, up: w.up, n: walks.length })}</p>`
+      + `<p class="note">${T("長さと上りは、まっすぐの線で測っためやすです。歩く道は、町の地図や現地で選んでください。夜や雨の日の道も、明るいうちに一度見ておくと安心です。")}</p>`
       + `<a class="gmap" href="${gmapWalk(wc, at)}" target="_blank" rel="noopener">${icon("map")}${T("Google マップで歩く道を見る")}</a>`;
   }
   // まっすぐの距離（m）。歩くめやすは 1分 60m（お年寄りの歩く速さのめやす）
@@ -642,8 +645,8 @@ async function showHinan(code, townFeatures, startPart) {
     map.fitBounds(box, { padding: 50, maxZoom: 16, duration: 500 });
     $("hinan-list").innerHTML = cand.map((c, i) => `
       <li data-i="${i}" tabindex="0" role="button" aria-label="地図で ${esc(c.f.properties.name)} を見る"><span class="pin" aria-hidden="true">${i + 1}</span><span class="n">${esc(c.f.properties.name)}</span>
-        <span class="d">まっすぐ ${c.m.toLocaleString("ja-JP")}m・歩いて約 ${Math.max(1, Math.round(c.m / 60))}分（めやす）</span>
-        <span class="k">${esc(String(c.f.properties.address ?? "").replace(/(\S{2,}?[郡市区町村])\1/g, "$1"))}・${esc(c.f.properties.kinds.join("・"))}${c.f.properties.capacity ? `・${capText(c.f.properties)}` : ""}${c.f.properties.note ? `・${esc(c.f.properties.note)}` : ""}</span>
+        <span class="d">${TN("まっすぐ {m}m・歩いて約 {min}分", { m: c.m.toLocaleString("ja-JP"), min: Math.max(1, Math.round(c.m / 60)) })}（${T("めやす")}）</span>
+        <span class="k">${esc(String(c.f.properties.address ?? "").replace(/(\S{2,}?[郡市区町村])\1/g, "$1"))}・${esc(c.f.properties.kinds.map((k) => T(k)).join("・"))}${c.f.properties.capacity ? `・${capText(c.f.properties)}` : ""}${c.f.properties.note ? `・${esc(c.f.properties.note)}` : ""}</span>
         <a class="gmap" href="${gmapWalk(c.f.geometry.coordinates, at)}" target="_blank" rel="noopener">${icon("map")}${T("Google マップで歩く道を見る")}</a></li>`).join("");
     for (const li of document.querySelectorAll("#hinan-list li")) {
       li.addEventListener("click", (e) => { if (!e.target.closest("a")) select(Number(li.dataset.i)); }); // Google マップのボタンは地図を動かさない
@@ -651,7 +654,8 @@ async function showHinan(code, townFeatures, startPart) {
     }
     const token = (setHere.token = (setHere.token ?? 0) + 1);
     calc(at, token);
-    $("hinan-note").innerHTML = `${esc(label)}から、${kind ? `${kind}のときに使える指定緊急避難場所` : "すべての指定緊急避難場所"}の近い順。距離はまっすぐ測ったもので、坂や道の曲がりは考えていません。歩く時間は1分60m（お年寄りの歩く速さ）のめやすで、坂はまっすぐの線の上の上り下りから見積もったものです（道の坂とは違います）。海抜は地理院タイル（標高タイル）、浸水の深さは想定の地図の色から読んだめやすです。避難の判断は町の案内に従ってください。<br>出典：${esc(shelters.source.title)}（${esc(shelters.source.license)}・${shelters.source.updated ? `${esc(shelters.source.updated)} 更新のものを ` : ""}${esc(shelters.source.fetchedAt)} に取得）を加工`;
+    $("hinan-note").innerHTML = TN("{from}から、{what}の近い順。", { from: esc(label), what: kind ? TN("{kind}のときに使える指定緊急避難場所", { kind: T(kind) }) : T("すべての指定緊急避難場所") })
+      + T("距離はまっすぐ測ったもので、坂や道の曲がりは考えていません。歩く時間は1分60m（お年寄りの歩く速さ）のめやすで、坂はまっすぐの線の上の上り下りから見積もったものです（道の坂とは違います）。海抜は地理院タイル（標高タイル）、浸水の深さは想定の地図の色から読んだめやすです。避難の判断は町の案内に従ってください。") + `<br>${T("出典")}：${esc(shelters.source.title)}（${esc(shelters.source.license)}・${shelters.source.updated ? `${esc(shelters.source.updated)} 更新のものを ` : ""}${esc(shelters.source.fetchedAt)} に取得）を加工`;
   }
   return true;
 }

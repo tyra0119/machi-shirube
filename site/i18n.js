@@ -3,6 +3,8 @@
 let LANG = null;
 let DICT = {};
 const T = (ja) => (LANG && DICT[ja]) || ja;
+// 数などの入る文：辞書には {m} のような印のまま入れ、出すときに値を入れる（例：TN("まっすぐ {m}m", { m: 120 })）
+const TN = (ja, vars = {}) => T(ja).replace(/\{(\w+)\}/g, (all, k) => (vars[k] ?? all));
 async function setLang(lang) {
   if (!lang || lang === "ja") return false;
   const d = await fetch(`data/i18n/${lang}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
@@ -14,7 +16,7 @@ async function setLang(lang) {
   return true;
 }
 // ページに書いてある決まった文字を置きかえる（見出し・注意書き・ボタン・入力欄の例）。印（svg）は残す
-const I18N_SEL = ".med-controls button, .town-head .unofficial, .block > h2, .block > p.note, .about-site li, .hinan-cautions li, .med-warn, .memo-link, .town-foot a, .all-head h2, #tr-block h2";
+const I18N_SEL = ".med-controls button, .town-head .unofficial, .block > h2, .block > p.note, .about-site li, label.field > span, .hinan-cautions li, .med-warn, .memo-link, .town-foot a, .all-head h2, #tr-block h2";
 function translateDom(root = document, sel = I18N_SEL) {
   if (!LANG) return;
   for (const el of root.querySelectorAll(sel)) {

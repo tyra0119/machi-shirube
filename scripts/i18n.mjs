@@ -15,6 +15,8 @@ const textOf = (res) => res.content.filter((b) => b.type === "text").map((b) => 
 const keys = new Set(JSON.parse(fs.readFileSync("site/data/i18n/keys-page.json", "utf8")));
 for (const f of fs.readdirSync("site").filter((x) => x.endsWith(".js"))) {
   for (const m of fs.readFileSync(`site/${f}`, "utf8").matchAll(/T\("([^"]+)"\)/g)) keys.add(m[1]);
+  // 数などの入る文（TN("…{m}…", { m })。i18n.js）も
+  for (const m of fs.readFileSync(`site/${f}`, "utf8").matchAll(/TN\("([^"]+)",/g)) keys.add(m[1]);
 }
 for (const k of ["日本語", "（AI による訳）"]) keys.add(k);
 const list = [...keys];
@@ -36,7 +38,7 @@ for (const lang of langs) {
       model: MODEL, max_tokens: 12000,
       system: `町の暮らしの案内のウェブページの、画面の決まった文字（見出し・ボタン・注意書き）を訳します。
 - ${lang === "easy" ? "やさしい日本語にしてください。短い文、むずかしい漢字にはひらがなで読みを（ ）でつけ、むずかしい言葉は言いかえる" : `${L.ja}（${L.name}）に訳してください。短く、画面のボタンや見出しに合う言い方で`}
-- <strong> などの HTML の印はそのまま残す。数字・119・記号もそのまま
+- <strong> などの HTML の印はそのまま残す。{m} や {name} のような { } の印も、そのまま残す（あとで数や名前が入る）。数字・119・記号もそのまま
 - 意味を変えず、足さず、減らさない
 - 1件ずつ <item id="番号">訳</item> の形だけで答えてください`,
       messages: [{ role: "user", content: part.map((x) => `<item id="${x.id}">${x.ja}</item>`).join("\n") }],
