@@ -144,6 +144,11 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .r-tags span { padding: 1px 8px; border: 1px solid var(--accent); border-radius: 10px; font-size: 12px; color: var(--accent); white-space: nowrap; }
 .r-row .item { border-top: 0; padding: 4px 8px 14px; }
 @media (max-width: 560px) { .r-row > summary { grid-template-columns: 1fr; } .r-tags { justify-content: flex-start; } }
+.r-kinds { display: flex; flex-wrap: wrap; gap: 6px; margin: 10px 0; }
+.r-kinds button { display: inline-flex; align-items: center; gap: 6px; min-height: 36px; padding: 4px 12px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--text); font-size: 13px; cursor: pointer; }
+.r-kinds button b { font-weight: 700; }
+.r-kinds button[aria-pressed="true"] { background: var(--accent); border-color: var(--accent); color: #fff; }
+.r-more { display: block; width: 100%; min-height: 44px; margin-top: 8px; border: 1px dashed var(--line); border-radius: 10px; background: transparent; color: var(--text); cursor: pointer; }
 
 /* 確かめる一覧 */
 .counts { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; margin: 0; padding: 0; list-style: none; }
@@ -527,3 +532,4 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .pop-hito { margin: 6px 0 0; font-size: 13px; line-height: 1.6; }
 .pop-hito small { color: #666; }
 .hitokoto details.facts summary { cursor: pointer; }
+.cards-box > summary { cursor: pointer; list-style: none; } .cards-box > summary h2 { display: inline; } .cards-box > summary::after { content: " ▾"; color: var(--text-sub); } .cards-box[open] > summary::after { content: " ▴"; }

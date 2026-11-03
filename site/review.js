@@ -11,6 +11,9 @@ let all = []; // いまの全部の件
 let tab = "pending"; // 確かめ待ち・決めたもの・自動で承認
 let town = ""; // 町で絞る（scope）
 let openId = null; // いま開いている1件
+let kind = ""; // 札で絞る
+let limit = 30; // 決めたもの・自動で承認は、新しい順にこの数まで（「もっと見る」で増やす）
+let scrollToOpen = false; // 決めたあと、次に開いた1件まで画面を動かす
 
 main();
 async function main() {
@@ -49,7 +52,20 @@ function render() {
 
   renderSites();
   renderCards();
-  const list = all.filter((x) => inTab(x) && (!town || x.scope === town));
+  const inScope = all.filter((x) => inTab(x) && (!town || x.scope === town));
+  // 札で絞る（件数つき）。数が多いときにスクロールしないで済むように
+  const counts = new Map();
+  for (const x of inScope) for (const t of new Set(tags(x))) counts.set(t, (counts.get(t) ?? 0) + 1);
+  if (kind && !counts.has(kind)) kind = "";
+  let kinds = $("kinds");
+  if (!kinds) { kinds = document.createElement("div"); kinds.id = "kinds"; kinds.className = "r-kinds"; $("list").before(kinds); }
+  kinds.innerHTML = counts.size > 1 ? [["", inScope.length], ...[...counts].sort((a, b) => b[1] - a[1])].map(([t, n]) => `<button type="button" data-kind="${esc(t)}" aria-pressed="${t === kind}">${t ? esc(t) : "すべて"}<b>${n}</b></button>`).join("") : "";
+  kinds.querySelectorAll("button").forEach((b) => b.addEventListener("click", () => { kind = b.dataset.kind; openId = null; limit = 30; render(); }));
+  const lastAt = (x) => x.decisions?.at(-1)?.at ?? x.createdAt ?? "";
+  let list = inScope.filter((x) => !kind || tags(x).includes(kind));
+  if (tab !== "pending") list = [...list].sort((a, b) => lastAt(b).localeCompare(lastAt(a)));
+  const more = tab !== "pending" && list.length > limit ? list.length - limit : 0;
+  if (more) list = list.slice(0, limit);
   $("summary").textContent = !local && tab === "auto" ? "自動で承認したものは、町のページの「確かめた答え」に出ています。" : "";
   if (!list.length) {
     $("list").innerHTML = `<p class="note">${tab === "pending" ? "確かめ待ちはありません。" : "まだありません。"}</p>`;
@@ -64,7 +80,9 @@ function render() {
         <span class="r-tags">${tags(it).map((t) => `<span>${esc(t)}</span>`).join("")}</span>
       </summary>
       ${itemHTML(it)}
-    </details>`).join("");
+    </details>`).join("") + (more ? `<button type="button" class="r-more" id="more">もっと見る（あと ${more} 件）</button>` : "");
+  $("more")?.addEventListener("click", () => { limit += 30; render(); });
+  if (scrollToOpen && openId) { scrollToOpen = false; document.querySelector(`.r-row[data-id="${openId}"]`)?.scrollIntoView({ behavior: "smooth", block: "start" }); }
   for (const d of document.querySelectorAll(".r-row")) {
     d.addEventListener("toggle", () => {
       if (!d.open) return;
@@ -82,8 +100,9 @@ async function renderCards() {
   const { cards } = await fetch("api/cards").then((r) => r.json()).catch(() => ({ cards: [] }));
   const list = cards.filter((c) => c.status === "ok" && (!town || c.scope === town.replace(/^town:(\d{5}).*/, "muni:$1")));
   if (!list.length) { $("cards").hidden = true; return; }
-  $("cards").innerHTML = `
-    <h2>使ってよいとしたサイト（${list.length}）</h2>
+  // 長くなるので、押すと開く形にまとめる（いつも開いていると、決めたものの一覧までのスクロールが長い）
+  $("cards").innerHTML = `<details class="cards-box">
+    <summary><h2>使ってよいとしたサイト（${list.length}）</h2></summary>
     <p class="note">取り消すと、そのサイトから出した答え（OK・自動で承認）が全部、町のページから下がります。次からそのサイトの答えは自動になりません。理由は記録に残ります。</p>
     <ul class="site-list">${list.map((c) => `
       <li data-id="${esc(c.id)}">
@@ -92,7 +111,7 @@ async function renderCards() {
           <button type="button" data-revoke>取り消す<small>このサイトの答えを全部下げる</small></button>
           <form class="why-form" hidden><label class="field">理由を1行<input name="reason" maxlength="100" required></label><button type="submit">取り消す</button></form>
         </div>
-      </li>`).join("")}</ul>`;
+      </li>`).join("")}</ul></details>`;
   for (const li of $("cards").querySelectorAll("li[data-id]")) {
     const form = li.querySelector(".why-form");
     li.querySelector("[data-revoke]").addEventListener("click", () => { form.hidden = false; form.reason.focus(); });
@@ -182,7 +201,7 @@ function tags(it) {
     /^はじめて使う情報源/.test(r) ? "はじめてのサイト" : /^確かめ役/.test(r) ? "確かめ役が気にした所" : /元の文/.test(r) ? "元の文が見つからない"
       : /町の人に聞く/.test(r) ? "見つからなかった" : /^数が合わない/.test(r) ? "数が合わない" : /公式のサイトでない/.test(r) ? "公式でない" : /^古いデータ/.test(r) ? "古いデータ" : /^訳し戻す/.test(r) ? "訳のずれ" : /^見張り/.test(r) ? "見張り：出典が切れた" : "そのほか");
 }
-document.querySelectorAll(".r-tabs button").forEach((b) => b.addEventListener("click", () => { tab = b.dataset.tab; openId = null; render(); }));
+document.querySelectorAll(".r-tabs button").forEach((b) => b.addEventListener("click", () => { tab = b.dataset.tab; openId = null; kind = ""; limit = 30; render(); }));
 $("town-filter").addEventListener("change", (e) => { town = e.target.value; openId = null; render(); });
 
 // 人が見る理由（しくみの言葉）を、「何を見て、どう決めればよいか」に言いかえる。
@@ -322,9 +341,10 @@ async function decide(id, action, reason, btn) {
   if (!res.ok) { done(); return toast(`できませんでした：${body.error}`); }
   // 決めたら、同じ一覧の次の確かめ待ちを開く
   if (action !== "undo") {
-    const list = all.filter((x) => inTab(x) && (!town || x.scope === town));
+    const list = all.filter((x) => inTab(x) && (!town || x.scope === town) && (!kind || tags(x).includes(kind)));
     const i = list.findIndex((x) => x.id === id);
     openId = list[i + 1]?.id ?? list[i - 1]?.id ?? null;
+    scrollToOpen = true;
   }
   await reload();
   // 押したあと数秒は元に戻せる
