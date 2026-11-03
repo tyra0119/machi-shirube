@@ -1,11 +1,11 @@
 {
  "lang": "en",
  "name": "English",
- "createdAt": "2026-11-03T11:19:01.235Z",
+ "createdAt": "2026-11-03T23:43:01.464Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 781,
- "of": 764,
+ "count": 784,
+ "of": 765,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "This is an unofficial guide to living in this town. Claude gathers information from the town's official website and other sources, and cites each source (Machishirube)",
   "すべてのページ": "All pages",
@@ -787,6 +787,9 @@
   "迷子の犬・猫": "Lost dogs and cats",
   "落とし物・忘れ物": "Lost and found",
   "乳幼児健診・赤ちゃんの教室": "Infant health checkups and baby classes",
-  "保育所・認定こども園の空き": "Vacancies at nursery schools and certified childcare centers"
+  "保育所・認定こども園の空き": "Vacancies at nursery schools and certified childcare centers",
+  "防災": "Disaster Preparedness",
+  "ほか": "Other",
+  "このページの中": "On This Page"
  }
 }

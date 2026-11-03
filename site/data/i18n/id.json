@@ -1,11 +1,11 @@
 {
  "lang": "id",
  "name": "Bahasa Indonesia",
- "createdAt": "2026-11-03T11:19:54.799Z",
+ "createdAt": "2026-11-03T23:43:31.639Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 777,
- "of": 764,
+ "count": 781,
+ "of": 765,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Ini adalah panduan hidup tidak resmi untuk kota ini. Claude mengumpulkannya dari situs resmi kota dan sumber lain, dengan mencantumkan sumbernya (Machishirube)",
   "すべてのページ": "Semua halaman",
@@ -783,6 +783,10 @@
   "迷子の犬・猫": "Anjing・kucing yang hilang",
   "落とし物・忘れ物": "Barang hilang・barang tertinggal",
   "乳幼児健診・赤ちゃんの教室": "Pemeriksaan kesehatan bayi dan balita・kelas untuk bayi",
-  "保育所・認定こども園の空き": "Ketersediaan tempat di tempat penitipan anak・taman kanak-kanak terpadu (kodomo-en)"
+  "保育所・認定こども園の空き": "Ketersediaan tempat di tempat penitipan anak・taman kanak-kanak terpadu (kodomo-en)",
+  "居宅介護支援（ケアマネジャー）": "Layanan Dukungan Perawatan di Rumah (Care Manager)",
+  "防災": "Penanggulangan Bencana",
+  "ほか": "Lainnya",
+  "このページの中": "Di Halaman Ini"
  }
 }

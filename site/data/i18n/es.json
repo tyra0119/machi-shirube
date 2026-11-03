@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-03T11:18:50.913Z",
+ "createdAt": "2026-11-03T23:42:57.448Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 780,
- "of": 764,
+ "count": 783,
+ "of": 765,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -786,6 +786,9 @@
   "迷子の犬・猫": "Perros y gatos perdidos",
   "落とし物・忘れ物": "Objetos perdidos y olvidados",
   "乳幼児健診・赤ちゃんの教室": "Revisiones de bebés y niños pequeños, clases para bebés",
-  "保育所・認定こども園の空き": "Plazas disponibles en guarderías y centros infantiles certificados"
+  "保育所・認定こども園の空き": "Plazas disponibles en guarderías y centros infantiles certificados",
+  "防災": "Prevención de desastres",
+  "ほか": "Otros",
+  "このページの中": "En esta página"
  }
 }

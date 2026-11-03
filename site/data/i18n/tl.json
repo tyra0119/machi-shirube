@@ -1,11 +1,11 @@
 {
  "lang": "tl",
  "name": "Filipino",
- "createdAt": "2026-11-03T11:20:57.536Z",
+ "createdAt": "2026-11-03T23:43:28.056Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 768,
- "of": 764,
+ "count": 774,
+ "of": 765,
  "dict": {
   "この町の非公式の暮らしの案内です。町の公式のサイトや国の公開データから集め、出典をつけています（まちしるべ）": "Ito ay isang di-opisyal na gabay sa pamumuhay sa bayang ito. Kinuha ito mula sa opisyal na website ng bayan at sa pampublikong datos ng bansa, at may nakasaad na pinagmulan (Machishirube)",
   "すべてのページ": "Lahat ng pahina",
@@ -774,6 +774,12 @@
   "迷子の犬・猫": "Nawawalang aso at pusa",
   "落とし物・忘れ物": "Mga nawala at naiwang gamit",
   "乳幼児健診・赤ちゃんの教室": "Check-up ng sanggol at bata, klase para sa sanggol",
-  "保育所・認定こども園の空き": "Mga bakante sa nursery at certified na center para sa mga bata (nintei kodomoen)"
+  "保育所・認定こども園の空き": "Mga bakante sa nursery at certified na center para sa mga bata (nintei kodomoen)",
+  "家に来てもらう": "Pagbisita sa bahay",
+  "泊まる・住む": "Pananatili / Paninirahan",
+  "介護保険のサービスの事業所のうち、相談・通う・家に来る・泊まる／住むのものです。空きや受け入れの条件は、事業所に問い合わせてください": "Ito ay mga pasilidad na nagbibigay ng serbisyo ng insurance sa pangmatagalang pangangalaga (kaigo hoken), para sa konsultasyon, pagpunta sa pasilidad, pagbisita sa bahay, at pananatili/paninirahan. Para sa mga bakante at kundisyon ng pagtanggap, makipag-ugnayan sa pasilidad.",
+  "防災": "Pag-iwas sa sakuna",
+  "ほか": "Iba pa",
+  "このページの中": "Sa pahinang ito"
  }
 }

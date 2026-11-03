@@ -20,7 +20,7 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .town-tabs a[aria-current] { background: var(--accent); color: var(--accent-text); font-weight: 700; }
 
 /* すべてのページ */
-.town-tabs .all-pages { position: sticky; left: 0; z-index: 1; padding-right: 4px; background: var(--bg); }
+.town-tabs .all-pages { margin-left: auto; padding-left: 8px; }
 .town-tabs .all-pages button { min-height: 44px; padding: 0 16px; border: 1px solid var(--line); border-radius: 22px; background: var(--surface); color: var(--text); font-size: 15px; white-space: nowrap; cursor: pointer; }
 .all-pages-dialog { width: min(560px, calc(100vw - 24px)); max-height: calc(100vh - 40px); padding: 16px; border: 0; border-radius: 14px; background: var(--surface); color: var(--text); box-shadow: var(--shadow); }
 .all-pages-dialog::backdrop { background: rgba(0, 0, 0, 0.35); }
@@ -35,6 +35,21 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .all-page .d { font-size: 13px; color: var(--text-sub); }
 .all-sec ul { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 2px; padding: 0 8px; list-style: none; }
 .all-sec li a { display: inline-flex; align-items: center; min-height: 40px; padding: 0 12px; border: 1px solid var(--line); border-radius: 20px; color: var(--text); text-decoration: none; font-size: 14px; }
+.all-sec li button { display: inline-flex; align-items: center; min-height: 40px; padding: 0 12px; border: 1px solid var(--line); border-radius: 20px; background: var(--surface); color: var(--text); font-size: 14px; cursor: pointer; }
+.all-sec li button:hover { background: var(--bg); }
+.all-here .all-page .t { color: var(--text); }
+/* 画面の下のメニュー（スマホだけ）：5つを同じ幅で。いま見ているページは色を塗る */
+.town-bottom { display: none; }
+@media (max-width: 640px) {
+  .town-tabs { display: none; }
+  .town-bottom { display: block; position: fixed; left: 0; right: 0; bottom: 0; z-index: 30; padding-bottom: env(safe-area-inset-bottom); background: var(--surface); border-top: 1px solid var(--line); box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.08); }
+  .town-bottom ul { display: grid; grid-template-columns: repeat(5, 1fr); margin: 0; padding: 4px 4px; list-style: none; }
+  .town-bottom a, .town-bottom button { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 2px; width: 100%; min-height: 56px; padding: 4px 2px; border: 0; border-radius: 12px; background: none; color: var(--text-sub); font: inherit; font-size: 12px; line-height: 1.2; text-align: center; text-decoration: none; overflow-wrap: anywhere; cursor: pointer; }
+  .town-bottom .ic { width: 24px; height: 24px; margin: 0; }
+  .town-bottom a[aria-current], .town-bottom button.current { color: var(--accent); font-weight: 700; }
+  .town-bottom a[aria-current] .ic, .town-bottom button.current .ic { padding: 2px 14px; box-sizing: content-box; border-radius: 14px; background: var(--accent); color: var(--accent-text); }
+  body.town-page { padding-bottom: calc(72px + env(safe-area-inset-bottom)); }
+}
 .answers h3.short { margin: 0 0 2px; font-size: 16px; color: var(--accent); }
 
 /* トップの「この町のページ」 */
@@ -568,19 +583,7 @@ section.block.folded { padding-bottom: 12px; }
 .quiz-end { font-size: 18px; font-weight: 700; }
 
 /* 目次：画面の右下に動かないボタン。押すと上に欄の一覧 */
-.toc-fab { position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); z-index: 40; display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
-.toc-fab[hidden] { display: none; }
-.toc-fab { transition: opacity 0.2s; }
-.toc-fab.over-map { opacity: 0; pointer-events: none; }
-#toc-btn { display: inline-flex; align-items: center; gap: 6px; min-height: 48px; padding: 0 18px; border: 1px solid var(--line); border-radius: 24px; background: var(--surface); color: var(--text); font-size: 15px; font-weight: 600; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18); cursor: pointer; }
-#toc-btn svg { width: 20px; height: 20px; }
-#toc-btn[aria-expanded="true"] { background: var(--accent); color: var(--accent-text); border-color: var(--accent); }
-.toc-panel { list-style: none; margin: 0; padding: 6px; width: min(300px, calc(100vw - 32px)); max-height: 60vh; overflow-y: auto; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2); }
-.toc-panel button { display: flex; align-items: center; gap: 8px; width: 100%; min-height: 44px; padding: 6px 10px; border: 0; border-radius: 8px; background: none; color: var(--text); font-size: 15px; text-align: left; cursor: pointer; }
-.toc-panel button svg { width: 18px; height: 18px; flex: none; }
-.toc-panel button:hover, .toc-panel button:focus-visible { background: var(--bg-sub, rgba(0, 0, 0, 0.05)); }
 /* ページのいちばん下が目次のボタンに隠れないように */
-body:has(.toc-fab:not([hidden])) { padding-bottom: 80px; }
 
 /* 外国の方へ：訳がまだ無い町の、いくつかの言葉での案内 */
 .foreign-guide { margin: 0 0 16px; padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
@@ -603,9 +606,6 @@ body:has(.toc-fab:not([hidden])) { padding-bottom: 80px; }
 .lg-yes, .lg-no { display: inline-block; min-width: 3em; padding: 2px 8px; border-radius: 12px; text-align: center; font-size: 13px; font-weight: 600; }
 .lg-yes { background: var(--accent); color: var(--accent-text); }
 .lg-no { border: 1px solid var(--line); color: var(--text-sub); }
-#toc-btn.icon-only { width: 52px; min-height: 52px; padding: 0; justify-content: center; border-radius: 50%; }
-#toc-btn.icon-only span { display: none; }
-#toc-btn.icon-only svg { width: 24px; height: 24px; }
 
 /* ===== 部品の形のそろえ方（作者「部品の形が混同したりしないか。統一性があるか」→「その案で直して」） =====
    丸い札＝押すと動く（操作・行き先）。ふだんは白に枠、その場でいちばん大事な1つだけ塗る
@@ -686,3 +686,8 @@ body:has(.toc-fab:not([hidden])) { padding-bottom: 80px; }
 .view.enter-l { animation: view-in-l 0.24s ease-out; }
 .town-tabs a, .town-tabs .all-pages button { transition: background-color 0.2s, color 0.2s; }
 @media (prefers-reduced-motion: reduce) { .view.enter-r, .view.enter-l { animation: none; } .town-tabs a { transition: none; } }
+/* パソコン・タブレット：タブを折り返して、全部（右の端の「すべてのページ」まで）が横に動かさなくても見えるように */
+@media (min-width: 641px) {
+  .town-tabs ul { flex-wrap: wrap; overflow-x: visible; }
+  .town-tabs a { padding: 0 12px; }
+}

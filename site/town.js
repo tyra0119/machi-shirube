@@ -87,8 +87,9 @@ function showView() {
     }
   }
   lastView = v;
-  for (const a of document.querySelectorAll(".town-tabs a")) a.toggleAttribute("aria-current", a.dataset.view === v);
-  updateToc();
+  for (const a of document.querySelectorAll(".town-tabs a, .town-bottom a")) a.toggleAttribute("aria-current", a.dataset.view === v);
+  // 下のメニューにないページを見ているときは「ほか」を選んでいる印にする
+  document.querySelector(".town-bottom .open-all")?.classList.toggle("current", !BOTTOM.some(([b]) => b === v));
   // まちがいの知らせ方のページへ、町と見ているページを渡す（言葉は渡さない）
   // 隠れていたあいだは大きさが 0 なので、見せたときに大きさを合わせ、覚えておいた範囲に寄せ直す
   for (const m of maps) { m.resize(); if (m.fitTo) m.fitBounds(m.fitTo.box, { ...m.fitTo.opts, duration: 0 }); }
@@ -98,11 +99,17 @@ function showView() {
   const top = head.offsetTop + head.offsetHeight;
   if (window.scrollY > top) window.scrollTo({ top });
 }
-// 上のメニュー：よく使うページと「すべてのページ」
+// 上のメニュー（パソコン）：よく使うページと、右の端に「すべてのページ」
+// 下のメニュー（スマホ）：親指の届く所に、よく使う4つと「ほか」（すべてのページ）だけを並べる。横に動かさなくても全部が見える
+// （作者「上部の『今日』『地図』などのボタンがただ並んでいるだけで本当に使いやすいのか？」→ 案A）
+const BOTTOM = [["today", "今日"], ["chizu", "地図"], ["bousai", "防災"], ["gomi", "ごみ"]];
 function renderTabs() {
-  $("tabs").innerHTML = `<li class="all-pages"><button type="button" id="open-all" aria-haspopup="dialog">☰ ${T("すべてのページ")}</button></li>`
-    + PAGES.filter((p) => p.tab || p.local).map((p) =>
-    `<li${p.local ? " class=\"local-only\" hidden" : ""}><a href="#${p.view}" data-view="${p.view}">${icon(ILLUST[p.view]?.main)}${esc(p.local ? T("調べる") : T(p.title))}</a></li>`).join("");
+  $("tabs").innerHTML = PAGES.filter((p) => p.tab || p.local).map((p) =>
+    `<li${p.local ? " class=\"local-only\" hidden" : ""}><a href="#${p.view}" data-view="${p.view}">${icon(ILLUST[p.view]?.main)}${esc(p.local ? T("調べる") : T(p.title))}</a></li>`).join("")
+    + `<li class="all-pages"><button type="button" class="open-all" aria-haspopup="dialog">☰ ${T("すべてのページ")}</button></li>`;
+  $("bottom-tabs").innerHTML = BOTTOM.map(([v, label]) =>
+    `<li><a href="#${v}" data-view="${v}">${icon(ILLUST[v]?.main)}<span>${esc(T(label))}</span></a></li>`).join("")
+    + `<li><button type="button" class="open-all" aria-haspopup="dialog" aria-label="${esc(T("すべてのページ"))}">${icon("list")}<span>${esc(T("ほか"))}</span></button></li>`;
 }
 renderTabs();
 // 各ページのいちばん上の見出しに、場面の印を付ける
@@ -910,10 +917,20 @@ function buildAllPages(hasHinan, local) {
     ],
   }));
 }
+// いま見ているページの欄（見出しのある欄）。すべてのページのいちばん上に「このページの中」として出す
+// （右下の「目次」のボタンをやめて、ここにまとめた。作者「目次は他の一覧にまとめて」）
+let hereSecs = [];
 function renderAllPages(filter = "") {
   const f = filter.replace(/\s/g, "");
   const hit = (s) => !f || s.replace(/\s/g, "").includes(f);
-  $("all-list").innerHTML = allPages.map((p) => {
+  const view = document.querySelector(`.view[data-view="${currentView()}"]`);
+  hereSecs = view ? [...view.querySelectorAll(":scope > section.block")].filter((s) => !s.hidden && s.querySelector(":scope > h2")) : [];
+  const page = PAGES.find((p) => p.view === currentView());
+  const here = hereSecs.map((s, i) => [s.querySelector(":scope > h2").textContent.trim(), i]).filter(([t]) => hit(t));
+  $("all-list").innerHTML = (hereSecs.length >= 2 && here.length ? `<section class="all-sec all-here">
+      <p class="all-page"><span class="t">${icon(ILLUST[page?.view]?.main)}${esc(T("このページの中"))}</span><span class="d">${esc(page?.local ? T("調べる") : T(page?.title ?? ""))}</span></p>
+      <ul>${here.map(([t, i]) => `<li><button type="button" data-sec="${i}">${esc(t)}</button></li>`).join("")}</ul>
+    </section>` : "") + allPages.map((p) => {
     const its = p.items.filter((i) => hit(i.label) || hit(p.title));
     if (f && !its.length && !hit(p.title) && !hit(p.desc)) return "";
     return `<section class="all-sec">
@@ -925,11 +942,21 @@ function renderAllPages(filter = "") {
 function wireAllPages() {
   const dlg = $("all-pages");
   // タブの並びはほかの言葉のときに作り直す（renderTabs）ので、ボタンそのものではなく並び全体で受け取る（作り直すと処理が消え、日本語以外で押しても開かなかった）
-  $("tabs").addEventListener("click", (e) => { if (!e.target.closest("#open-all")) return; renderAllPages($("all-search").value); dlg.showModal(); $("all-search").focus(); });
+  // 上のメニューと下のメニューの両方から開く
+  document.addEventListener("click", (e) => { if (!e.target.closest(".open-all")) return; $("all-search").value = ""; renderAllPages(); dlg.showModal(); });
   $("close-all").addEventListener("click", () => dlg.close());
   dlg.addEventListener("click", (e) => { if (e.target === dlg) dlg.close(); }); // 外を押すと閉じる
   $("all-search").addEventListener("input", (e) => renderAllPages(e.target.value));
   $("all-list").addEventListener("click", (e) => {
+    // このページの中：たたんである欄は開いてから、そこへ動く
+    const b = e.target.closest("button[data-sec]");
+    if (b) {
+      const s = hereSecs[Number(b.dataset.sec)];
+      dlg.close();
+      if (s.classList.contains("folded")) s.querySelector(":scope > h2").click();
+      s.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
     const a = e.target.closest("a[data-view]");
     if (!a) return;
     e.preventDefault();
@@ -1224,67 +1251,6 @@ function foldPages() {
       sec.querySelector(":scope > .fold-sum").textContent = foldSummary(sec);
     });
   }
-  setupToc();
-}
-
-// 目次：画面の右下に動かないボタン。押すと、いま見ているページの欄の一覧が開き、選ぶとその欄を開いてそこへ動く
-// （作者「画面の右下に『目次』というスクロールしないボタンを用意し、それを押すと、上記が選択できるようにしたほうが、スマホでも操作しやすい」）
-function tocSections() {
-  const view = document.querySelector(`.view[data-view="${currentView()}"]`);
-  return view ? [...view.querySelectorAll(":scope > section.block")].filter((s) => !s.hidden && s.querySelector(":scope > h2")) : [];
-}
-function updateToc() {
-  const fab = $("toc-fab");
-  if (!fab) return;
-  fab.hidden = tocSections().length < 3; // 欄が少ないページは目次なし
-  closeToc();
-}
-function tocOverMap() {
-  const fab = $("toc-fab");
-  if (!fab || fab.hidden) return;
-  const b = $("toc-btn").getBoundingClientRect();
-  const hit = maps.some((m) => { const r = m.getContainer().getBoundingClientRect(); return r.width && r.top < b.bottom && r.bottom > b.top - 10 && r.right > b.left; });
-  fab.classList.toggle("over-map", hit && $("toc-panel").hidden);
-}
-function closeToc() {
-  if (!$("toc-panel")) return;
-  $("toc-panel").hidden = true;
-  $("toc-btn").setAttribute("aria-expanded", "false");
-}
-function setupToc() {
-  if (!$("toc-fab")) {
-    document.body.insertAdjacentHTML("beforeend", `<nav class="toc-fab" id="toc-fab" aria-label="${esc(T("このページの中身"))}" hidden>
-      <ol class="toc-panel" id="toc-panel" hidden></ol>
-      <button type="button" id="toc-btn" aria-expanded="false" aria-controls="toc-panel" aria-label="${esc(T("目次"))}" title="${esc(T("目次"))}"${T("目次").length > 6 ? " class=\"icon-only\"" : ""}>${icon("list")}<span>${esc(T("目次"))}</span></button></nav>`);
-    // ほかの言葉で「目次」が長くなると（Talaan ng nilalaman など）ページのボタンに重なるので、印だけの丸いボタンにする
-    $("toc-btn").addEventListener("click", () => {
-      const panel = $("toc-panel");
-      if (!panel.hidden) { closeToc(); return; }
-      const secs = tocSections();
-      panel.innerHTML = secs.map((s, i) => `<li><button type="button" data-i="${i}">${esc(s.querySelector(":scope > h2").textContent.trim())}</button></li>`).join("");
-      panel.querySelectorAll("button").forEach((b) => b.addEventListener("click", () => {
-        const s = secs[Number(b.dataset.i)];
-        closeToc();
-        if (s.classList.contains("folded")) s.querySelector(":scope > h2").click();
-        s.scrollIntoView({ behavior: "smooth", block: "start" });
-      }));
-      panel.hidden = false;
-      $("toc-btn").setAttribute("aria-expanded", "true");
-      panel.querySelector("button")?.focus();
-    });
-    document.addEventListener("click", (e) => { if (!e.target.closest("#toc-fab")) closeToc(); });
-    document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !$("toc-panel").hidden) { closeToc(); $("toc-btn").focus(); } });
-    // 地図の右下のボタン（方角・現在地・拡大・縮小）と重なるあいだは、目次のボタンを薄く消す（実機のスマホで重なった）
-    let ticking = false;
-    const overMap = () => { ticking = false; tocOverMap(); };
-    addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(overMap); } }, { passive: true });
-    addEventListener("resize", overMap);
-    addEventListener("hashchange", () => requestAnimationFrame(overMap));
-    // 欄を開け閉めしたときも、地図の位置が動くので確かめ直す
-    document.addEventListener("click", () => requestAnimationFrame(overMap));
-  }
-  updateToc();
-  tocOverMap();
 }
 
 // 天気を読む場所：町・字は形のおおよその真ん中、市区町村は地図の名前の位置（政令市まるごとは最初の区）

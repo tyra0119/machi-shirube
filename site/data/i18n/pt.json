@@ -1,11 +1,11 @@
 {
  "lang": "pt",
  "name": "Português",
- "createdAt": "2026-11-03T11:18:39.800Z",
+ "createdAt": "2026-11-03T23:42:53.222Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 779,
- "of": 764,
+ "count": 784,
+ "of": 765,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Guia não oficial da vida na cidade. O Claude reúne as informações em sites oficiais da cidade e outras fontes, e indica a origem de cada uma (Machishirube)",
   "すべてのページ": "Todas as páginas",
@@ -785,6 +785,11 @@
   "迷子の犬・猫": "Cães e gatos perdidos",
   "落とし物・忘れ物": "Achados e perdidos",
   "乳幼児健診・赤ちゃんの教室": "Exames de saúde infantil e aulas para bebês",
-  "保育所・認定こども園の空き": "Vagas em creches e centros de educação infantil certificados"
+  "保育所・認定こども園の空き": "Vagas em creches e centros de educação infantil certificados",
+  "介護老人保健施設": "Instituição de saúde para idosos que necessitam de cuidados (Roken)",
+  "介護医療院": "Instituição médica de cuidados de longa duração (Kaigo Iryoin)",
+  "防災": "Prevenção de desastres",
+  "ほか": "Outros",
+  "このページの中": "Nesta página"
  }
 }
