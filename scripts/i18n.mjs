@@ -18,7 +18,20 @@ for (const f of fs.readdirSync("site").filter((x) => x.endsWith(".js"))) {
   // 数などの入る文（TN("…{m}…", { m })。i18n.js）も
   for (const m of fs.readFileSync(`site/${f}`, "utf8").matchAll(/TN\("([^"]+)",/g)) keys.add(m[1]);
 }
-for (const k of ["日本語", "（AI による訳）"]) keys.add(k);
+for (const k of ["日本語", "（AI による訳）", "足しました", "新しくしました", "照らし直しました"]) keys.add(k);
+// 物差しの問いの見出し（新しくなったこと・見立てのボタンなどで T(見出し) と出す）
+for (const q of JSON.parse(fs.readFileSync("site/data/yardstick.json", "utf8")).questions) if (q.short) keys.add(q.short);
+// 訳のある町（site/data/translations/{コード}.json がある町）のデータの注意書き・明るい話題（町のページが T(d.note) などで出す）
+const trTowns = fs.readdirSync("site/data/translations").filter((f) => /^\d{5}\.json$/.test(f)).map((f) => f.slice(0, 5));
+for (const dir of ["flood-pop", "slope", "quake-pop", "climate", "lore", "accidents", "bus", "shop-access", "gomi-days", "plan", "local-sites"]) {
+  for (const code of trTowns) {
+    const f = `site/data/${dir}/${code}.json`;
+    if (!fs.existsSync(f)) continue;
+    const d = JSON.parse(fs.readFileSync(f, "utf8"));
+    if (d.note) keys.add(d.note);
+    for (const b of d.bright ?? []) keys.add(b);
+  }
+}
 const list = [...keys];
 console.log(`見出し語 ${list.length}`);
 

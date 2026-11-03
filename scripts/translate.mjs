@@ -20,7 +20,7 @@ export const LANGS = {
   ne: { name: "नेपाली", ja: "ネパール語" },
   vi: { name: "Tiếng Việt", ja: "ベトナム語" },
 };
-const PAGES = ["bousai", "komatta", "gomi", "tetsuzuki", "foreign", "iryo", "koutsuu", "kosodate", "kaigo", "okane", "shisetsu", "shiru"]; // 町のページのどの場面の答えも訳す（ページ全体をその言葉で見られるように）
+const PAGES = ["bousai", "komatta", "gomi", "tetsuzuki", "foreign", "iryo", "koutsuu", "kosodate", "kaigo", "okane", "shisetsu", "shiru", "keikaku"]; // 町のページのどの場面の答えも訳す（ページ全体をその言葉で見られるように）
 
 const between = (t, tag) => t.match(new RegExp(`<${tag}>([\\s\\S]*?)</${tag}>`))?.[1];
 const textOf = (res) => res.content.filter((b) => b.type === "text").map((b) => b.text).join("");

@@ -196,6 +196,13 @@ async function aiTr(code, kind, createdAt) {
   const x = t?.made?.[kind] === createdAt && t.langs?.[LANG]?.texts;
   return x ? (id, ja) => x[id] ?? ja : null;
 }
+// ごみを出す日の文の訳（もとの文 → 訳。確かめの通ったものだけ）
+async function aiTrGomi(code, createdAt) {
+  if (!LANG) return null;
+  aiTrCache ??= fetch(`data/translations/${code}-ai.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const t = await aiTrCache;
+  return t?.made?.gomi === createdAt ? t.langs?.[LANG]?.gomi ?? null : null;
+}
 
 // 町・字ごとの「わが町のひとこと」（scripts/hitokoto.mjs。AI が町・字の数だけでまとめ、数は PC で照らしたもの）。町・字のページのいちばん上に
 // ほかの言葉は、確かめの通った訳があるときだけ
@@ -960,10 +967,13 @@ async function showGomiDays(code, partName) {
   const g = await fetch(`data/gomi-days/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
   if (!g) return null;
   $("gomi-days-block").hidden = false;
+  // ほかの言葉では、確かめの通った訳で出す（無い文は日本語のまま）
+  const gtr = await aiTrGomi(code, g.createdAt);
+  const gt = (x) => gtr?.[x] ?? x;
   $("gomi-area-label").textContent = T("地区を選ぶ");
   $("gomi-rules-head").textContent = T("出し方の要点");
   const ok = g.status === "ok" || g.status === "auto";
-  $("gomi-rules").innerHTML = g.rules.map((r) => `<li><strong>${esc(r.kind)}</strong><span>${esc(r.how)}${r.time ? `<small>${esc(r.time)}</small>` : ""}</span></li>`).join("");
+  $("gomi-rules").innerHTML = g.rules.map((r) => `<li><strong>${esc(gt(r.kind))}</strong><span>${esc(gt(r.how))}${r.time ? `<small>${esc(gt(r.time))}</small>` : ""}</span></li>`).join("");
   $("gomi-days-note").innerHTML = `${esc(T(g.note))}${KU()}${T("出典")}：${g.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title ?? s.url)}</a>`).join("・")}`;
   if (!ok) {
     $("gomi-area").closest("label").hidden = true;
@@ -971,7 +981,7 @@ async function showGomiDays(code, partName) {
     return null;
   }
   const sel = $("gomi-area");
-  sel.innerHTML = `<option value="">（選ぶ）</option>` + g.areas.map((a, i) => `<option value="${i}">${esc(a.area)}${a.towns.length ? `（${esc(a.towns.slice(0, 3).join("・"))}${a.towns.length > 3 ? "…" : ""}）` : ""}</option>`).join("");
+  sel.innerHTML = `<option value="">（選ぶ）</option>` + g.areas.map((a, i) => `<option value="${i}">${esc(gt(a.area))}${a.towns.length ? `（${esc(a.towns.slice(0, 3).join("・"))}${a.towns.length > 3 ? "…" : ""}）` : ""}</option>`).join("");
   // 町・字のページなら、その名前の地区を選んでおく
   const guess = partName ? g.areas.findIndex((a) => a.area.includes(partName) || a.towns.some((t) => t.includes(partName))) : -1;
   let todayKinds = null;
@@ -979,10 +989,10 @@ async function showGomiDays(code, partName) {
     const a = g.areas[Number(sel.value)];
     if (!a) { $("gomi-days").innerHTML = ""; $("gomi-today").textContent = T("地区を選ぶと、今日と明日に出せるごみが分かります。"); return; }
     const now = new Date(), tmr = new Date(now.getTime() + 86400000);
-    const t0 = a.days.filter((x) => onDay(x.when, now)).map((x) => x.kind), t1 = a.days.filter((x) => onDay(x.when, tmr)).map((x) => x.kind);
+    const t0 = a.days.filter((x) => onDay(x.when, now)).map((x) => gt(x.kind)), t1 = a.days.filter((x) => onDay(x.when, tmr)).map((x) => gt(x.kind));
     todayKinds = t0;
     $("gomi-today").innerHTML = `${icon("calendar")} ${T("今日")}：<strong>${t0.length ? esc(t0.join("・")) : T("収集なし")}</strong>　${T("明日")}：<strong>${t1.length ? esc(t1.join("・")) : T("収集なし")}</strong>`;
-    $("gomi-days").innerHTML = a.days.map((x) => `<li class="${onDay(x.when, now) ? "today" : ""}"><span class="k">${esc(x.kind)}</span><span class="w">${esc(x.when)}</span></li>`).join("");
+    $("gomi-days").innerHTML = a.days.map((x) => `<li class="${onDay(x.when, now) ? "today" : ""}"><span class="k">${esc(gt(x.kind))}</span><span class="w">${esc(gt(x.when))}</span></li>`).join("");
   };
   sel.addEventListener("change", draw);
   if (guess >= 0) sel.value = String(guess);

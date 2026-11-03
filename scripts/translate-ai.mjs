@@ -26,19 +26,23 @@ function collect(code) {
   const d = read(`site/data/dekiru/${code}.json`);
   d?.links.forEach((l, i) => { push(`d${i}.who`, l.who); push(`d${i}.num`, l.num); push(`d${i}.todo`, l.todo); push(`d${i}.quote`, l.quote); });
   push("n.dekiru", d?.note);
-  return { list, made: { mitate: m?.createdAt ?? null, hitokoto: h?.createdAt ?? null, dekiru: d?.createdAt ?? null } };
+  // ごみを出す日（AI が町の収集日の表から読み取った、ごみの種類・曜日・出し方の要点）。同じ文は1回だけ。id は g0, g1 …、もとの文は gomi に残す
+  const gd = read(`site/data/gomi-days/${code}.json`);
+  const gomi = [...new Set([...(gd?.areas ?? []).flatMap((a) => [a.area, ...a.days.flatMap((x) => [x.kind, x.when])]), ...(gd?.rules ?? []).flatMap((r) => [r.kind, r.how, r.time])].filter(Boolean))];
+  gomi.forEach((t, i) => push(`g${i}`, t));
+  return { list, gomi, made: { mitate: m?.createdAt ?? null, hitokoto: h?.createdAt ?? null, dekiru: d?.createdAt ?? null, gomi: gd?.createdAt ?? null } };
 }
 
 export async function translateAI(code, langs = Object.keys(LANGS), log = console.log) {
   if (spent(japanDay(new Date().toISOString())) >= DAILY_LIMIT_USD || spent() >= TOTAL_LIMIT_USD) throw new Error("費用の上限に達しています");
-  const { list, made } = collect(code);
+  const { list, gomi, made } = collect(code);
   if (!list.length) throw new Error("訳す文がありません（見立て・ひとこと・数から、できることへ）");
   const town = read("site/data/stats.json").towns[code];
   const client = new Anthropic();
   const file = `site/data/translations/${code}-ai.json`;
   const out = read(file) ?? { code, langs: {} };
   // もとの文が前と同じ種類は、確かめの通った訳を使い回す（通らなかった文だけ訳し直す）
-  const kindOf = (id) => ({ m: "mitate", h: "hitokoto", d: "dekiru" })[id[0]] ?? id.split(".")[1];
+  const kindOf = (id) => ({ m: "mitate", h: "hitokoto", d: "dekiru", g: "gomi" })[id[0]] ?? id.split(".")[1];
   const same = (id) => out.made?.[kindOf(id)] && out.made[kindOf(id)] === made[kindOf(id)];
   const prevOk = Object.fromEntries(Object.entries(out.langs).map(([l, v]) => [l, Object.fromEntries(Object.entries(v.texts).filter(([id]) => same(id)))]));
   Object.assign(out, { name: town?.name, createdAt: new Date().toISOString(), model: MODEL, made });
@@ -70,7 +74,9 @@ export async function translateAI(code, langs = Object.keys(LANGS), log = consol
       if (tr[x.id] && c?.ok) ok[x.id] = tr[x.id];
       else bad.push(`${x.id}（${c?.problems.join("・") || "訳か確かめが読めなかった"}）`);
     }
-    out.langs[lang] = { name: L.name, ja: L.ja, texts: ok };
+    // ごみの文は、もとの文 → 訳 で引けるようにしておく（町のページはもとの文で引く）
+    const gomiTr = Object.fromEntries(gomi.map((ja, i) => [ja, ok[`g${i}`]]).filter(([, v]) => v));
+    out.langs[lang] = { name: L.name, ja: L.ja, texts: ok, gomi: gomiTr };
     log(`${L.ja}：${Object.keys(ok).length} / ${all.length}${bad.length ? `。出さない：${bad.join("／")}` : ""}`);
   }
   fs.mkdirSync("site/data/translations", { recursive: true });

@@ -1,7 +1,7 @@
 {
  "code": "10524",
  "name": "邑楽郡大泉町",
- "createdAt": "2026-11-03T01:33:46.163Z",
+ "createdAt": "2026-11-03T01:57:59.943Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
  "langs": {
@@ -429,7 +429,7 @@
       "url": "https://www.soumu.go.jp/main_content/000612577.pdf",
       "where": "2ページ目 警察署の一覧（大泉警察署）"
      },
-     "status": "pending",
+     "status": "ok",
      "problems": [
       "原文の「大泉町・千代田町・邑楽町」の訳で、原文では千代田町は「千代田町」だが訳文は「Chiyoda」の町とし、邑楽町は「Ora」とあるが問題なし。ただし訳文で「Asahi 2-27-1」の後に「朝日2-27-1」を併記した点は原文どおり。主な問題: 「Ora」は邑楽町の訳として妥当だが、「Koban 交番 and Chuzaisho 駐在所」は原文の「交番・駐在所」に相当し問題なし。訳文の「lido a partir da disposição da tabela」は原文の注記と同じ。実質的なずれは見当たらないが、「Delegacia de Polícia de Oizumi」の住所表記「Distrito de Ora (邑楽郡)」は原文の「邑楽郡大泉町」と一致。よって意味の違いは確認できなかった。"
      ],
@@ -445,6 +445,34 @@
       "title": "令和8年度大泉町保健福祉まつり&防災フェアについて｜大泉町",
       "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/300/20240829152035.html",
       "where": "期日・時間・場所"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q28",
+     "short": "Planos da cidade (町の計画)",
+     "text": "O novo prédio da prefeitura (新庁舎) começou a funcionar em 7 de maio de Reiwa 8 (令和8年5月7日).\nNa região de Kamikoizumi (上小泉地区), estão em andamento as obras de construção de um novo parque industrial, incluindo a instalação de um reservatório de regulação de águas pluviais (調整池) na área ao redor.\nCom o Plano de Otimização da Localização (立地適正化計画), a cidade busca criar uma comunidade compacta e sustentável.\nQuanto às vias do planejamento urbano (都市計画道路), a cidade está avançando na aquisição de terrenos e em outras etapas para abri-las ao tráfego o mais rápido possível.",
+     "original": "新庁舎は令和8年5月7日に供用を開始しました。\n上小泉地区では新産業団地の造成を進めていて、周辺の調整池の設置工事なども行っています。\n立地適正化計画で、コンパクトで続けやすいまちづくりを目指しています。\n都市計画道路は、早く開通させるため用地取得などを進めています。",
+     "back": "新庁舎は令和8年5月7日に供用を開始しました。上小泉地区では新産業団地の造成を進めており、周辺の調整池の設置工事なども行っています。立地適正化計画で、コンパクトで続けやすいまちづくりを目指しています。都市計画道路については、早く開通させるため用地取得などを進めています。",
+     "source": {
+      "title": "新庁舎の供用を開始しました",
+      "url": "https://www.town.oizumi.gunma.jp/s008/gyosei/020/010/800/20260422182503.html",
+      "where": "本文冒頭"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q13",
+     "short": "Assuntos da cidade (町の話題)",
+     "text": "O novo prédio da prefeitura (新庁舎) foi construído para começar a funcionar em maio de Reiwa 8 (令和8年5月), e a cidade já iniciou os trabalhos administrativos no novo prédio.\nOs contratos para a demolição do antigo prédio da prefeitura (旧庁舎) e para as obras de reforma do Estádio Municipal de Beisebol do Parque Geral Izumi (いずみ総合公園町民野球場) foram apresentados como propostas à Assembleia Municipal (町議会) de setembro de Reiwa 8 (令和8年9月).\nA partir do ano fiscal de Reiwa 8 (令和8年度), as alíquotas do imposto do seguro nacional de saúde (国民健康保険税) e outros itens foram alterados.\nComo medida contra a alta dos preços, está prevista a concessão de um benefício de 5,000円 por munícipe.",
+     "original": "新庁舎が令和8年5月の供用開始に向けて建てられ、町は新庁舎での業務を始めました。\n旧庁舎の解体工事と、いずみ総合公園町民野球場の改修工事の契約が、令和8年9月の町議会に議案として出ました。\n令和8年度から国民健康保険税の税率などが変わりました。\n物価高騰対策として、町民1人あたり5,000円の給付が予定されています。",
+     "back": "新庁舎は令和8年5月の供用開始に向けて建てられ、町は新庁舎での業務を始めました。旧庁舎の解体工事といずみ総合公園町民野球場の改修工事の契約が、令和8年9月の町議会に議案として提出されました。令和8年度から国民健康保険税の税率などが変わりました。物価高騰対策として、町民1人あたり5,000円の給付が予定されています。",
+     "source": {
+      "title": "令和８年 第４回大泉町議会定例会議事日程（第１号）",
+      "url": "https://www.town.oizumi.gunma.jp/g001/060/090/20260901gijinitteishin.pdf",
+      "where": "議事日程 第12・第14号議案"
      },
      "status": "auto",
      "problems": []
@@ -895,11 +923,42 @@
       "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/300/20240829152035.html",
       "where": "期日・時間・場所"
      },
-     "status": "pending",
+     "status": "ok",
      "problems": [
       "訳文に「(2026)」（西暦）が追加されている。原文にはない。令和8年が2026年に当たるのは正しいが、足した情報になっている。"
      ],
      "ledgerId": "r00237"
+    },
+    {
+     "qid": "Q28",
+     "short": "Planes del municipio",
+     "text": "El nuevo edificio del ayuntamiento (新庁舎) comenzó a funcionar el 7 de mayo del año 5 de Reiwa 8 (令和8年5月7日).\nEn el distrito de Kamikoizumi (上小泉地区) se avanza en la construcción de un nuevo parque industrial, y también se realizan obras como la instalación de estanques de regulación en los alrededores.\nCon el Plan de Optimización de la Ubicación (立地適正化計画), el municipio busca crear una ciudad compacta y sostenible.\nPara abrir cuanto antes las vías de planificación urbana (都市計画道路), se avanza en la adquisición de los terrenos necesarios y otros trámites.",
+     "original": "新庁舎は令和8年5月7日に供用を開始しました。\n上小泉地区では新産業団地の造成を進めていて、周辺の調整池の設置工事なども行っています。\n立地適正化計画で、コンパクトで続けやすいまちづくりを目指しています。\n都市計画道路は、早く開通させるため用地取得などを進めています。",
+     "back": "新庁舎は令和5年8月7日に供用を開始しました。上小泉地区では新産業団地の造成を進めていて、周辺の調整池の設置工事なども行っています。立地適正化計画で、コンパクトで続けやすいまちづくりを目指しています。都市計画道路を早く開通させるため、用地取得などを進めています。",
+     "source": {
+      "title": "新庁舎の供用を開始しました",
+      "url": "https://www.town.oizumi.gunma.jp/s008/gyosei/020/010/800/20260422182503.html",
+      "where": "本文冒頭"
+     },
+     "status": "ok",
+     "problems": [
+      "開始日の年・月が違う。原文は令和8年5月7日だが、訳では「año 5 de Reiwa 8」「7 de mayo」となっており、令和5年8月7日に読める。"
+     ],
+     "ledgerId": "r00240"
+    },
+    {
+     "qid": "Q13",
+     "short": "Novedades del municipio",
+     "text": "El nuevo edificio del ayuntamiento (新庁舎) fue construido para comenzar a usarse en mayo del año 8 de Reiwa (令和8年5月), y el municipio ya ha empezado a trabajar en él.\nLos contratos para la demolición del antiguo edificio del ayuntamiento y para las obras de renovación del estadio municipal de béisbol del Parque General Izumi (いずみ総合公園町民野球場) se presentaron como proyectos de acuerdo en la sesión de septiembre del año 8 de Reiwa (令和8年9月) de la Asamblea municipal (町議会).\nDesde el año fiscal 8 de Reiwa (令和8年度) han cambiado las tasas y otros aspectos del impuesto del seguro nacional de salud (国民健康保険税).\nComo medida contra el aumento de los precios, está previsto un pago de 5,000 yenes por cada habitante del municipio.",
+     "original": "新庁舎が令和8年5月の供用開始に向けて建てられ、町は新庁舎での業務を始めました。\n旧庁舎の解体工事と、いずみ総合公園町民野球場の改修工事の契約が、令和8年9月の町議会に議案として出ました。\n令和8年度から国民健康保険税の税率などが変わりました。\n物価高騰対策として、町民1人あたり5,000円の給付が予定されています。",
+     "back": "新庁舎は令和8年5月の供用開始に向けて建てられ、町は新庁舎での業務を始めました。旧庁舎の解体工事と、いずみ総合公園町民野球場の改修工事の契約が、令和8年9月の町議会に議案として出ました。令和8年度から国民健康保険税の税率などが変わりました。物価高騰対策として、町民1人あたり5,000円の給付が予定されています。",
+     "source": {
+      "title": "令和８年 第４回大泉町議会定例会議事日程（第１号）",
+      "url": "https://www.town.oizumi.gunma.jp/g001/060/090/20260901gijinitteishin.pdf",
+      "where": "議事日程 第12・第14号議案"
+     },
+     "status": "auto",
+     "problems": []
     }
    ]
   },
@@ -1348,11 +1407,43 @@
       "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/300/20240829152035.html",
       "where": "期日・時間・場所"
      },
-     "status": "pending",
+     "status": "ok",
      "problems": [
       "「Reiwa 8 (2026)」の「(2026)」は原文にない追加です。令和8年が2026年に当たるとしても、訳文で西暦を補っています。"
      ],
      "ledgerId": "r00238"
+    },
+    {
+     "qid": "Q28",
+     "short": "Town Plans",
+     "text": "The new town hall (新庁舎) opened for use on May 7, Reiwa 8 (2026).\nIn the Kamikoizumi (上小泉) district, the town is developing a new industrial park, and work such as installing a retention basin (調整池) in the surrounding area is also underway.\nThrough its Location Normalization Plan (立地適正化計画), the town aims to build a compact town that can be sustained over the long term.\nFor the urban planning roads (都市計画道路), the town is acquiring land and taking other steps so that they can be opened to traffic sooner.",
+     "original": "新庁舎は令和8年5月7日に供用を開始しました。\n上小泉地区では新産業団地の造成を進めていて、周辺の調整池の設置工事なども行っています。\n立地適正化計画で、コンパクトで続けやすいまちづくりを目指しています。\n都市計画道路は、早く開通させるため用地取得などを進めています。",
+     "back": "令和8年（2026年）5月7日に新庁舎の供用を開始しました。上小泉地区では新産業団地の造成を進めており、周辺の調整池の設置工事なども行っています。立地適正化計画で、コンパクトで長く続けられるまちづくりを目指しています。都市計画道路は、早期に開通できるよう用地取得などを進めています。",
+     "source": {
+      "title": "新庁舎の供用を開始しました",
+      "url": "https://www.town.oizumi.gunma.jp/s008/gyosei/020/010/800/20260422182503.html",
+      "where": "本文冒頭"
+     },
+     "status": "auto",
+     "problems": [
+      "西暦の併記（2026年）は令和8年の換算として正しい。「町は」の主語補足や「over the long term（長期的に）」の補足は意味の範囲内。"
+     ]
+    },
+    {
+     "qid": "Q13",
+     "short": "Town News",
+     "text": "The new town hall (新庁舎) was built to open for use in May, Reiwa 8 (2026), and the town has started its operations there.\nContracts for the demolition of the old town hall (旧庁舎) and for the renovation of the Izumi General Park Town Baseball Stadium (いずみ総合公園町民野球場) were submitted as bills to the Town Assembly (町議会) in September, Reiwa 8 (2026).\nFrom fiscal year Reiwa 8 (2026), the tax rates and other aspects of the National Health Insurance tax (国民健康保険税) have changed.\nAs a measure against rising prices, a payment of 5,000 yen per resident is planned.",
+     "original": "新庁舎が令和8年5月の供用開始に向けて建てられ、町は新庁舎での業務を始めました。\n旧庁舎の解体工事と、いずみ総合公園町民野球場の改修工事の契約が、令和8年9月の町議会に議案として出ました。\n令和8年度から国民健康保険税の税率などが変わりました。\n物価高騰対策として、町民1人あたり5,000円の給付が予定されています。",
+     "back": "新庁舎は令和8年（2026年）5月の供用開始に向けて建てられ、町は新庁舎での業務を開始しました。旧庁舎の解体工事と、いずみ総合公園町民野球場の改修工事の契約が、令和8年（2026年）9月の町議会に議案として提出されました。令和8年度（2026年度）から国民健康保険税の税率などが変わりました。物価高騰対策として、町民1人あたり5,000円の給付が予定されています。",
+     "source": {
+      "title": "令和８年 第４回大泉町議会定例会議事日程（第１号）",
+      "url": "https://www.town.oizumi.gunma.jp/g001/060/090/20260901gijinitteishin.pdf",
+      "where": "議事日程 第12・第14号議案"
+     },
+     "status": "auto",
+     "problems": [
+      "西暦の併記は令和8年の換算として正しい。「per resident」は「町民」と同じ意味の範囲。"
+     ]
     }
    ]
   },
@@ -1788,7 +1879,7 @@
       "url": "https://www.soumu.go.jp/main_content/000612577.pdf",
       "where": "2ページ目 警察署の一覧（大泉警察署）"
      },
-     "status": "pending",
+     "status": "ok",
      "problems": [
       "「町の公式の資料」と訳したところで「町の」を足している。原文は「公式の資料」で、町の資料とは限定していない。"
      ],
@@ -1804,6 +1895,37 @@
       "title": "令和8年度大泉町保健福祉まつり&防災フェアについて｜大泉町",
       "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/300/20240829152035.html",
       "where": "期日・時間・場所"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q28",
+     "short": "町（まち）の計画（けいかく）",
+     "text": "新しい庁舎（ちょうしゃ：町役場［まちやくば］の建物）は、令和8年5月7日から使（つか）い始（はじ）めました。\n上小泉（かみこいずみ）地区では、新しい産業団地（さんぎょうだんち）をつくっています。まわりに調整池（ちょうせいち：雨（あめ）の水（みず）をためる池［いけ］）をつくる工事（こうじ）なども しています。\n立地適正化計画（りっちてきせいかけいかく）で、コンパクトで長（なが）く続（つづ）けやすい まちづくりを めざしています。\n都市計画道路（としけいかくどうろ）は、早（はや）く通（とお）れるようにするため、土地（とち）を手（て）に入（い）れることなどを進（すす）めています。",
+     "original": "新庁舎は令和8年5月7日に供用を開始しました。\n上小泉地区では新産業団地の造成を進めていて、周辺の調整池の設置工事なども行っています。\n立地適正化計画で、コンパクトで続けやすいまちづくりを目指しています。\n都市計画道路は、早く開通させるため用地取得などを進めています。",
+     "back": "新しい庁舎は令和8年5月7日から使い始めました。上小泉地区では、新しい産業団地をつくっています。まわりに調整池をつくる工事なども行っています。立地適正化計画で、コンパクトで長く続けやすいまちづくりをめざしています。都市計画道路は、早く通れるようにするため、土地を手に入れることなどを進めています。",
+     "source": {
+      "title": "新庁舎の供用を開始しました",
+      "url": "https://www.town.oizumi.gunma.jp/s008/gyosei/020/010/800/20260422182503.html",
+      "where": "本文冒頭"
+     },
+     "status": "ok",
+     "problems": [
+      "「長く」が追加されている（原文は「続けやすい」のみ）。"
+     ],
+     "ledgerId": "r00241"
+    },
+    {
+     "qid": "Q13",
+     "short": "町（まち）の話題（わだい）",
+     "text": "新しい庁舎（ちょうしゃ：町役場［まちやくば］の建物）が、令和8年5月から使（つか）えるように建（た）てられました。町は新しい庁舎で仕事（しごと）を始（はじ）めました。\n古（ふる）い庁舎をこわす工事（解体工事［かいたいこうじ］）と、いずみ総合公園町民野球場（いずみそうごうこうえんちょうみんやきゅうじょう）を直（なお）す工事（改修工事［かいしゅうこうじ］）の契約（けいやく）が、令和8年9月の町議会（ちょうぎかい）に議案（ぎあん：話（はな）し合（あ）う案［あん］）として出（だ）されました。\n令和8年度から、国民健康保険税（こくみんけんこうほけんぜい）の税率（ぜいりつ：税金［ぜいきん］の割合［わりあい］）などが変（か）わりました。\n物価（ぶっか）が高（たか）くなっていることへの対策（たいさく）として、町民（ちょうみん）1人（ひとり）に5,000円の給付（きゅうふ：お金［かね］を配［くば］ること）が予定（よてい）されています。",
+     "original": "新庁舎が令和8年5月の供用開始に向けて建てられ、町は新庁舎での業務を始めました。\n旧庁舎の解体工事と、いずみ総合公園町民野球場の改修工事の契約が、令和8年9月の町議会に議案として出ました。\n令和8年度から国民健康保険税の税率などが変わりました。\n物価高騰対策として、町民1人あたり5,000円の給付が予定されています。",
+     "back": "新しい庁舎が、令和8年5月から使えるように建てられました。町は新しい庁舎で仕事を始めました。古い庁舎をこわす工事と、いずみ総合公園町民野球場を直す工事の契約が、令和8年9月の町議会に議案として出されました。令和8年度から、国民健康保険税の税率などが変わりました。物価が高くなっていることへの対策として、町民1人に5,000円の給付が予定されています。",
+     "source": {
+      "title": "令和８年 第４回大泉町議会定例会議事日程（第１号）",
+      "url": "https://www.town.oizumi.gunma.jp/g001/060/090/20260901gijinitteishin.pdf",
+      "where": "議事日程 第12・第14号議案"
      },
      "status": "auto",
      "problems": []
@@ -2249,6 +2371,40 @@
      },
      "status": "auto",
      "problems": []
+    },
+    {
+     "qid": "Q28",
+     "short": "Rencana Kota",
+     "text": "Gedung kantor pemerintahan baru (新庁舎) mulai digunakan pada 7 Mei Reiwa 8 (令和8年5月7日).\nDi Distrik Kamikoizumi (上小泉地区), pembangunan kawasan industri baru (新産業団地) sedang berjalan, dan pekerjaan pemasangan kolam pengatur air (調整池) di sekitarnya juga sedang dilakukan.\nMelalui Rencana Optimalisasi Lokasi (立地適正化計画), kota ini bertujuan menjadi kota yang ringkas dan mudah dipertahankan dalam jangka panjang.\nUntuk jalan rencana kota (都市計画道路), pengadaan lahan dan pekerjaan lainnya terus dilakukan agar jalan dapat segera dibuka.",
+     "original": "新庁舎は令和8年5月7日に供用を開始しました。\n上小泉地区では新産業団地の造成を進めていて、周辺の調整池の設置工事なども行っています。\n立地適正化計画で、コンパクトで続けやすいまちづくりを目指しています。\n都市計画道路は、早く開通させるため用地取得などを進めています。",
+     "back": "",
+     "source": {
+      "title": "新庁舎の供用を開始しました",
+      "url": "https://www.town.oizumi.gunma.jp/s008/gyosei/020/010/800/20260422182503.html",
+      "where": "本文冒頭"
+     },
+     "status": "ok",
+     "problems": [
+      "確かめ役の答えが読めなかった"
+     ],
+     "ledgerId": "r00242"
+    },
+    {
+     "qid": "Q13",
+     "short": "Kabar Kota",
+     "text": "Gedung kantor pemerintahan baru (新庁舎) dibangun untuk mulai digunakan pada Mei Reiwa 8 (令和8年5月), dan kota telah memulai pelayanan di gedung baru tersebut.\nKontrak pembongkaran gedung kantor lama (旧庁舎) dan kontrak renovasi Lapangan Bisbol Warga Kota di Taman Umum Izumi (いずみ総合公園町民野球場) diajukan sebagai rancangan agenda pada sidang dewan kota (町議会) September Reiwa 8 (令和8年9月).\nMulai tahun anggaran Reiwa 8 (令和8年度), tarif pajak asuransi kesehatan nasional (国民健康保険税) dan hal-hal terkait telah berubah.\nSebagai langkah menghadapi kenaikan harga barang, direncanakan pemberian tunjangan sebesar 5,000 yen per warga.",
+     "original": "新庁舎が令和8年5月の供用開始に向けて建てられ、町は新庁舎での業務を始めました。\n旧庁舎の解体工事と、いずみ総合公園町民野球場の改修工事の契約が、令和8年9月の町議会に議案として出ました。\n令和8年度から国民健康保険税の税率などが変わりました。\n物価高騰対策として、町民1人あたり5,000円の給付が予定されています。",
+     "back": "",
+     "source": {
+      "title": "令和８年 第４回大泉町議会定例会議事日程（第１号）",
+      "url": "https://www.town.oizumi.gunma.jp/g001/060/090/20260901gijinitteishin.pdf",
+      "where": "議事日程 第12・第14号議案"
+     },
+     "status": "ok",
+     "problems": [
+      "確かめ役の答えが読めなかった"
+     ],
+     "ledgerId": "r00243"
     }
    ]
   },
@@ -2689,6 +2845,40 @@
      },
      "status": "auto",
      "problems": []
+    },
+    {
+     "qid": "Q28",
+     "short": "नगरको योजना (町の計画)",
+     "text": "नयाँ नगर कार्यालय भवन (新庁舎) 令和8年5月7日 देखि प्रयोगमा आएको छ।\nकामिकोइजुमी क्षेत्र (上小泉地区) मा नयाँ औद्योगिक क्षेत्र (新産業団地) को निर्माण अघि बढाइँदै छ, र वरपर जल नियन्त्रण पोखरी (調整池) राख्ने काम आदि पनि गरिँदै छ।\nस्थान उपयुक्तीकरण योजना (立地適正化計画) अन्तर्गत, सानो घेरामा बनेको र निरन्तर चलाउन सजिलो नगर निर्माण गर्ने लक्ष्य राखिएको छ।\nसहरी योजना सडक (都市計画道路) चाँडो खोल्नका लागि जग्गा अधिग्रहण आदि काम अघि बढाइँदै छ।",
+     "original": "新庁舎は令和8年5月7日に供用を開始しました。\n上小泉地区では新産業団地の造成を進めていて、周辺の調整池の設置工事なども行っています。\n立地適正化計画で、コンパクトで続けやすいまちづくりを目指しています。\n都市計画道路は、早く開通させるため用地取得などを進めています。",
+     "back": "新庁舎は令和8年5月7日に供用を開始しました。上小泉地区では新産業団地の造成を進めていて、周辺の調整池の設置工事なども行っています。立地適正化計画で、コンパクトで続けやすいまちづくりを目指しています。都市計画道路は、早く開通させるため用地取得などを進めています。",
+     "source": {
+      "title": "新庁舎の供用を開始しました",
+      "url": "https://www.town.oizumi.gunma.jp/s008/gyosei/020/010/800/20260422182503.html",
+      "where": "本文冒頭"
+     },
+     "status": "ok",
+     "problems": [
+      "「新庁舎」の訳が「नयाँ नगर कार्यालय भवन」で、それ自体は問題ないが、「上小泉地区」を「कामिकोइजुमी क्षेत्र」と訳しており、地名の読みが原文の「かみこいずみ」と対応するか確認が必要。さらに「立地適正化計画」の「コンパクト」が「सानो घेरामा बनेको」（小さな範囲に作られた）となっており、「コンパクト」は意味が近いが「सघन」等の方がより適切。主な問題は「続けやすい」が「निरन्तर चलाउन सजिलो」となっている点で意味は概ね同じ。ほかに「都市計画道路」の「सहरी योजना सडक」は意味が通る。主な齟齬は「上小泉地区」の地名表記の不確かさのみ。"
+     ],
+     "ledgerId": "r00244"
+    },
+    {
+     "qid": "Q13",
+     "short": "नगरका चर्चाका विषय (町の話題)",
+     "text": "नयाँ नगर कार्यालय भवन (新庁舎) 令和8年5月 मा प्रयोगमा ल्याउने गरी बनाइयो, र नगरले नयाँ भवनमा कामकाज सुरु गरेको छ।\nपुरानो कार्यालय भवन (旧庁舎) भत्काउने काम र इजुमी सामान्य पार्क नगर बेसबल मैदान (いずみ総合公園町民野球場) को मर्मत कामको सम्झौता, 令和8年9月 को नगर सभा (町議会) मा प्रस्तावको रूपमा पेश गरियो।\n令和8年度 देखि राष्ट्रिय स्वास्थ्य बीमा कर (国民健康保険税) को दर आदि परिवर्तन भएका छन्।\nमूल्यवृद्धिको सामना गर्ने उपायको रूपमा, नगरका प्रत्येक व्यक्तिलाई 5,000円 वितरण गर्ने योजना छ।",
+     "original": "新庁舎が令和8年5月の供用開始に向けて建てられ、町は新庁舎での業務を始めました。\n旧庁舎の解体工事と、いずみ総合公園町民野球場の改修工事の契約が、令和8年9月の町議会に議案として出ました。\n令和8年度から国民健康保険税の税率などが変わりました。\n物価高騰対策として、町民1人あたり5,000円の給付が予定されています。",
+     "back": "新庁舎が令和8年5月の供用開始に向けて建てられ、町は新庁舎での業務を始めました。旧庁舎の解体工事と、いずみ総合公園町民野球場の改修工事の契約が、令和8年9月の町議会に議案として出ました。令和8年度から国民健康保険税の税率などが変わりました。物価高騰対策として、町民1人あたり5,000円の給付が予定されています。",
+     "source": {
+      "title": "令和８年 第４回大泉町議会定例会議事日程（第１号）",
+      "url": "https://www.town.oizumi.gunma.jp/g001/060/090/20260901gijinitteishin.pdf",
+      "where": "議事日程 第12・第14号議案"
+     },
+     "status": "ok",
+     "problems": [
+      "「町議会」が「नगर सभा」と訳されている点は許容範囲。主な問題は「町民1人あたり」が「नगरका प्रत्येक व्यक्तिलाई」となっており「町民」（町の住民）と「नगरका」（市町村の）の範囲が一致するか曖昧な点。「いずみ総合公園町民野球場」を「इजुमी सामान्य पार्क नगर बेसबल मैदान」と訳しているが「総合」を「सामान्य」（一般）としており、「総合」の意味が正確に伝わっていない。「5,000円」は数字が同じ。「予定されています」が「वितरण गर्ने योजना छ」で意味は同じ。"
+     ],
+     "ledgerId": "r00245"
     }
    ]
   },
@@ -3131,6 +3321,34 @@
       "title": "令和8年度大泉町保健福祉まつり&防災フェアについて｜大泉町",
       "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/300/20240829152035.html",
       "where": "期日・時間・場所"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q28",
+     "short": "Kế hoạch của thị trấn",
+     "text": "Tòa nhà hành chính mới (新庁舎) đã bắt đầu được đưa vào sử dụng từ ngày 7 tháng 5 năm Reiwa 8 (令和8年5月7日).\nTại khu vực Kamikoizumi (上小泉地区), thị trấn đang xúc tiến việc xây dựng khu công nghiệp mới (新産業団地), đồng thời tiến hành các công trình như lắp đặt hồ điều tiết nước (調整池) ở xung quanh.\nTheo Kế hoạch tối ưu hóa vị trí (立地適正化計画), thị trấn hướng tới việc xây dựng một đô thị gọn nhẹ và dễ duy trì lâu dài.\nĐối với các tuyến đường quy hoạch đô thị (都市計画道路), thị trấn đang tiến hành việc thu hồi đất v.v. để sớm thông xe.",
+     "original": "新庁舎は令和8年5月7日に供用を開始しました。\n上小泉地区では新産業団地の造成を進めていて、周辺の調整池の設置工事なども行っています。\n立地適正化計画で、コンパクトで続けやすいまちづくりを目指しています。\n都市計画道路は、早く開通させるため用地取得などを進めています。",
+     "back": "新庁舎は令和8年5月7日に供用を開始しました。",
+     "source": {
+      "title": "新庁舎の供用を開始しました",
+      "url": "https://www.town.oizumi.gunma.jp/s008/gyosei/020/010/800/20260422182503.html",
+      "where": "本文冒頭"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q13",
+     "short": "Chủ đề của thị trấn",
+     "text": "Tòa nhà hành chính mới (新庁舎) đã được xây dựng để đưa vào sử dụng vào tháng 5 năm Reiwa 8, và thị trấn đã bắt đầu làm việc tại tòa nhà mới.\nHợp đồng công trình phá dỡ tòa nhà hành chính cũ (旧庁舎) và hợp đồng công trình cải tạo sân bóng chày của thị trấn tại Công viên Tổng hợp Izumi (いずみ総合公園町民野球場) đã được trình lên hội đồng thị trấn (町議会) họp vào tháng 9 năm Reiwa 8 dưới dạng nghị án.\nTừ năm tài chính Reiwa 8, thuế suất v.v. của thuế bảo hiểm y tế quốc dân (国民健康保険税) đã thay đổi.\nĐể đối phó với tình trạng giá cả tăng cao, thị trấn dự kiến chi trả 5,000円 cho mỗi người dân.",
+     "original": "新庁舎が令和8年5月の供用開始に向けて建てられ、町は新庁舎での業務を始めました。\n旧庁舎の解体工事と、いずみ総合公園町民野球場の改修工事の契約が、令和8年9月の町議会に議案として出ました。\n令和8年度から国民健康保険税の税率などが変わりました。\n物価高騰対策として、町民1人あたり5,000円の給付が予定されています。",
+     "back": "新庁舎は令和8年5月の供用開始に向けて建設され、町は新庁舎で業務を開始しました。",
+     "source": {
+      "title": "令和８年 第４回大泉町議会定例会議事日程（第１号）",
+      "url": "https://www.town.oizumi.gunma.jp/g001/060/090/20260901gijinitteishin.pdf",
+      "where": "議事日程 第12・第14号議案"
      },
      "status": "auto",
      "problems": []
