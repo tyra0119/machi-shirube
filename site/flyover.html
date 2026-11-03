@@ -9,18 +9,19 @@
   /* 録画用の演出のページ。夜の日本の上を、黒潮町から北海道へ低く飛び、通った町が灯っていく */
   html, body { margin: 0; height: 100%; background: #050b14; overflow: hidden; font-family: "M PLUS 1p", "Hiragino Sans", "Yu Gothic", sans-serif; }
   #map { position: absolute; inset: 0; }
-  .badge { position: absolute; top: 24px; right: 28px; z-index: 5; padding: 6px 14px; border: 1px solid rgba(255, 255, 255, 0.35); border-radius: 999px; color: rgba(255, 255, 255, 0.8); font-size: 15px; letter-spacing: 0.08em; background: rgba(5, 11, 20, 0.45); }
+  /* 文字は画面の幅に合わせて大きさを決める（フル HD の動画で読める大きさ。作者「もう少し、文字は大きいほうがいい」） */
+  .badge { position: absolute; top: 2.2vw; right: 2.4vw; z-index: 5; padding: 0.4vw 1.1vw; border: 1px solid rgba(255, 255, 255, 0.35); border-radius: 999px; color: rgba(255, 255, 255, 0.85); font-size: max(15px, 1.25vw); letter-spacing: 0.08em; background: rgba(5, 11, 20, 0.45); }
   .cap { position: absolute; left: 0; right: 0; bottom: 12%; z-index: 5; text-align: center; color: #fff; opacity: 0; transition: opacity 1.2s ease; text-shadow: 0 2px 18px rgba(0, 0, 0, 0.9); pointer-events: none; }
   .cap.on { opacity: 1; }
-  .cap .s { display: block; font-size: 22px; letter-spacing: 0.3em; color: #ffd28a; margin-bottom: 10px; }
-  .cap .l { display: block; font-size: 46px; font-weight: 700; letter-spacing: 0.06em; }
+  .cap .s { display: block; font-size: max(22px, 1.9vw); letter-spacing: 0.3em; color: #ffd28a; margin-bottom: 0.8vw; }
+  .cap .l { display: block; font-size: max(46px, 3.6vw); font-weight: 700; letter-spacing: 0.06em; }
   .vignette { position: absolute; inset: 0; z-index: 4; pointer-events: none; background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, 0.55) 100%); }
   .start { position: absolute; inset: 0; z-index: 6; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 14px; color: #fff; background: rgba(5, 11, 20, 0.6); font-size: 18px; }
   .start button { padding: 14px 32px; border: 0; border-radius: 999px; background: #ffb547; color: #1a1205; font-size: 20px; font-weight: 700; cursor: pointer; }
   .start button:disabled { opacity: 0.5; cursor: wait; }
   .start small { color: rgba(255, 255, 255, 0.7); font-size: 14px; }
   .start[hidden] { display: none; }
-  .maplibregl-ctrl-attrib { background: rgba(5, 11, 20, 0.5) !important; color: rgba(255, 255, 255, 0.6) !important; font-size: 11px; }
+  .maplibregl-ctrl-attrib { background: rgba(5, 11, 20, 0.5) !important; color: rgba(255, 255, 255, 0.65) !important; font-size: max(11px, 0.75vw); }
   .maplibregl-ctrl-attrib a { color: rgba(255, 255, 255, 0.7) !important; }
 </style>
 </head>
