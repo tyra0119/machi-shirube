@@ -17,6 +17,10 @@ const saveProposals = (d) => fs.writeFileSync(FILE, JSON.stringify(d, null, 1));
 export const loadSkills = () => (fs.existsSync(SKILLS) ? JSON.parse(fs.readFileSync(SKILLS, "utf8")) : { skills: [] });
 const between = (t, tag) => t.match(new RegExp(`<${tag}>([\\s\\S]*?)</${tag}>`))?.[1];
 
+// 2つの問いの文の重なり（文字の2つ組のうち、短いほうの何割が重なるか。0〜1）
+const bigrams = (s) => { const t = s.replace(/[\s、。（）()・「」]/g, ""); const b = new Set(); for (let i = 0; i < t.length - 1; i++) b.add(t.slice(i, i + 2)); return b; };
+const overlap = (a, b) => { const A = bigrams(a), B = bigrams(b); if (!A.size || !B.size) return 0; let n = 0; for (const x of A) if (B.has(x)) n++; return n / Math.min(A.size, B.size); };
+
 export async function propose(code, { part, log = console.log } = {}) {
   if (spent(japanDay(new Date().toISOString())) >= DAILY_LIMIT_USD || spent() >= TOTAL_LIMIT_USD) throw new Error("費用の上限に達しています");
   const scope = part ? `town:${code}-${part}` : `muni:${code}`;
@@ -61,7 +65,12 @@ export async function propose(code, { part, log = console.log } = {}) {
   const d = loadProposals();
   const at = new Date().toISOString();
   const add = (x) => { const id = `p${String(d.proposals.length + 1).padStart(4, "0")}`; d.proposals.push({ id, scope, scopeName: `${t.pref} ${t.name}`, at, status: "open", ...x }); return id; };
-  for (const q of (p.questions ?? []).slice(0, 2)) add({ kind: "question", ...q });
+  // もうある問いと重なる提案は出さない（文字の2つ組の重なりで照らす。物差しを渡しても、Q32 とほぼ同じ問いが出たことがある）
+  for (const q of (p.questions ?? []).slice(0, 2)) {
+    const near = yard.questions.map((y) => ({ id: y.id, s: overlap(q.text ?? "", y.text) })).sort((a, b) => b.s - a.s)[0];
+    if (near && near.s >= 0.6) { log(`提案「${q.short ?? q.text}」は、もうある ${near.id} と重なるので出しません`); continue; }
+    add({ kind: "question", ...q });
+  }
   if (p.skill?.name) add({ kind: "skill", ...p.skill });
   saveProposals(d);
   log(`提案 ${(p.questions ?? []).length}つ・スキル ${p.skill?.name ? 1 : 0}つ（$${usd.toFixed(3)}）`);

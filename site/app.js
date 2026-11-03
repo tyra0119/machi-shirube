@@ -1099,7 +1099,7 @@ function showCounter(running = []) {
     <span><strong>${t.answers}</strong>の答え</span>
     <span><strong>${t.pages.toLocaleString("ja-JP")}</strong>ページを読んだ</span>
     <span><strong>$${t.usd.toFixed(2)}</strong>使った</span>
-    <span><strong>${t.skills}</strong>のスキル</span>
+    <span><strong>${t.skills}</strong>の調べ方のスキル（OK したもの）</span>
     ${running.length ? `<span class="now">いま ${running.length}町を調べています</span>` : ""}
     <span class="key"><i class="lit"></i>調べた町（濃いほど答えが多い）<i class="base"></i>国のデータだけの町</span>`;
 }
