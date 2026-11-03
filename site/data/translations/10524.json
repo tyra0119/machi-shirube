@@ -1,7 +1,7 @@
 {
  "code": "10524",
  "name": "邑楽郡大泉町",
- "createdAt": "2026-11-03T07:29:58.665Z",
+ "createdAt": "2026-11-03T12:07:08.278Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
  "langs": {
@@ -579,6 +579,48 @@
      "problems": [
       "意味のずれはなし。「Anzen・Anshin Mēru」は原文にない英字表記（「安全・安心メール」の訳語として付けられたもの）。意味は同じ。"
      ]
+    },
+    {
+     "qid": "Q55",
+     "short": "Para quem avisar sobre estragos em ruas, postes de iluminação e parques",
+     "text": "Buracos na rua e árvores caídas na rua: quem cuida é a Seção de Administração de Obras Civis (土木管理課), do Departamento de Urbanismo e Construção (都市建設部), no balcão nº 210 do 2º andar da prefeitura (庁舎).\nBrinquedos quebrados nos parques: quem cuida é a Seção de Parques e Esgoto (公園下水道課), do Departamento de Urbanismo e Construção (都市建設部), no balcão nº 211 do 2º andar da prefeitura (庁舎).\nNos dois casos, o telefone é o número principal da prefeitura da cidade (町役場): 0276-63-3111.\nNão foi possível confirmar qual seção cuida das lâmpadas queimadas dos postes de iluminação.\nO horário de atendimento é das 8h30 às 17h15.\nNão foi possível confirmar o contato para noites e feriados, nem os canais de denúncia por e-mail, LINE ou aplicativo.",
+     "original": "道路の穴・道路への倒木は、都市建設部 土木管理課（庁舎2階210番窓口）が担当です。\n公園の遊具のこわれは、都市建設部 公園下水道課（庁舎2階211番窓口）が担当です。\nどちらも電話は町役場代表の 0276-63-3111 です。\n街灯の球切れの担当課は確認できませんでした。\n開庁時間は午前8時30分から午後5時15分です。\n夜や休日の連絡先と、メール・LINE・アプリの通報窓口は確認できませんでした。",
+     "back": "道路の穴・道路への倒木は、都市建設部 土木管理課（庁舎2階210番窓口）が担当です。公園の遊具の故障は、都市建設部 公園下水道課（庁舎2階211番窓口）が担当です。どちらも町役場代表電話は 0276-63-3111 です。街灯の球切れの担当課は確認できませんでした。開庁時間は午前8時30分から午後5時15分です。夜間・休日の連絡先と、メール・LINE・アプリの通報窓口は確認できませんでした。",
+     "source": {
+      "title": "課の案内｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/department/index.html",
+      "where": "都市建設部 土木管理課・公園下水道課の欄"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q56",
+     "short": "Vazamento de água ou falta de água",
+     "text": "Para problemas com a água encanada (vazamento, falta de água, água turva), o contato é o Escritório de Tatebayashi (館林支所) da Associação de Serviços de Água de Gunma Leste (群馬東部水道企業団), telefone 0276-80-3201.\nO número exclusivo para noites e feriados não foi confirmado nas páginas oficiais da cidade.\nPara consultas sobre esgoto, o contato é a Seção de Parques e Esgoto (公園下水道課), do Departamento de Urbanismo e Construção (都市建設部) da cidade: 0276-63-3111, balcão nº 211 do 2º andar da prefeitura (庁舎). O horário de atendimento é das 8h30 às 17h15.\nA lista de empresas autorizadas para obras de instalações de drenagem (下水道指定工事店) está na página da cidade \"大泉町下水道排水設備指定工事事業者\".\nA lista de empresas autorizadas para obras de instalações de abastecimento de água (給水装置の指定工事店) não foi encontrada dentro do que foi possível verificar.",
+     "original": "水道（水漏れ・水が出ない・濁り）は群馬東部水道企業団 館林支所（電話 0276-80-3201）が問い合わせ先です。\n夜間・休日の専用番号は、町の公式ページでは確認できませんでした。\n下水の問い合わせは、町の都市建設部 公園下水道課（0276-63-3111、庁舎2階211番窓口）です。開庁時間は午前8時30分から午後5時15分です。\n排水設備の指定工事店（下水道指定工事店）の一覧は、町の「大泉町下水道排水設備指定工事事業者」ページにあります。\n水道の給水装置の指定工事店の一覧は、確認できた範囲では見つかっていません。",
+     "back": "水道（漏水・断水・濁り）は、群馬東部水道企業団 館林支所（電話 0276-80-3201）が問い合わせ先です。夜間・休日の専用番号は、町の公式ページでは確認できませんでした。下水の問い合わせは、町の都市建設部 公園下水道課（0276-63-3111、庁舎2階211番窓口）です。開庁時間は午前8時30分から午後5時15分です。排水設備の指定工事店（下水道指定工事店）の一覧は、町の「大泉町下水道排水設備指定工事事業者」ページにあります。給水装置の指定工事店の一覧は、確認できた範囲では見つかっていません。",
+     "source": {
+      "title": "群馬東部水道企業団のご案内｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s025/kurashi/020/020/210/20200814150558.html",
+      "where": "本文"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q58",
+     "short": "Cães e gatos perdidos",
+     "text": "【Quando o seu animal se perdeu (para os donos)】\nEntre em contato com um destes: a Filial Leste do Centro de Proteção Animal da Província de Gunma (群馬県動物愛護センター東部出張所), a Delegacia de Oizumi (大泉警察署) da Polícia da Província de Gunma (群馬県警察), ou a Seção de Melhoria Ambiental (環境整備課) da prefeitura de Oizumi (大泉町役場).\nPrefeitura (Seção de Melhoria Ambiental): 0276-63-3111. Atendimento em dias úteis, das 8h30 às 17h15.\nFilial Leste do Centro de Proteção Animal (動物愛護センター東部出張所): 0276-55-0731.\nO telefone da Delegacia de Oizumi (大泉警察署) não constava na página da cidade que foi consultada.\n\n【Quando você encontrar um cão ou gato perdido】\nPara cães perdidos ou errantes, entre em contato com a Filial Leste do Centro de Proteção Animal (動物愛護センター東部出張所): 0276-55-0731.\nSe a prefeitura recolher um cão e já tiver recebido aviso de que ele se perdeu, avisa o dono. Se não houver aviso, o cão é entregue à Filial Leste e fica abrigado por um período determinado.\n\n【Informações sobre cães e gatos recolhidos】\nPodem ser consultadas nas páginas da província: informações de proteção (abrigo) de \"cães\" (犬), informações de proteção (animais feridos) de \"gatos e outros\" (猫等), e informações de cães e gatos perdidos, recolhidos ou desaparecidos (迷い犬・猫保護・行方不明情報).\nNa página da cidade \"飼い犬・飼い猫の迷子の情報を公開します\" também são publicadas as informações de animais perdidos cujos donos pediram a divulgação. O período de publicação é de 1 mês.",
+     "original": "【迷子になったとき（飼い主）】\n群馬県動物愛護センター東部出張所、群馬県警察大泉警察署、大泉町役場環境整備課のいずれかに連絡します。\n町役場（環境整備課）：0276-63-3111。受付は平日の午前8時30分〜午後5時15分です。\n動物愛護センター東部出張所：0276-55-0731。\n大泉警察署の電話番号は、読んだ町のページには載っていませんでした。\n\n【迷子の犬や猫を見つけたとき】\n迷い犬や野犬は、動物愛護センター東部出張所（0276-55-0731）に連絡します。\n役場が保護した犬は、事前に迷子の連絡があれば飼い主へ知らせます。連絡がなければ東部出張所へ引き渡し、一定期間収容されます。\n\n【保護された犬や猫の情報】\n県のページ「犬」保護（収容）情報、「猫等」保護（負傷）情報、迷い犬・猫保護・行方不明情報で見られます。\n町のページ「飼い犬・飼い猫の迷子の情報を公開します」にも、掲載を希望した迷子の情報が載ります。掲載期間は1か月です。",
+     "back": "【迷子になったとき（飼い主）】群馬県動物愛護センター東部出張所、群馬県警察大泉警察署、大泉町役場環境整備課のいずれかに連絡します。町役場（環境整備課）：0276-63-3111。受付は平日の午前8時30分〜午後5時15分です。動物愛護センター東部出張所：0276-55-0731。大泉警察署の電話番号は、読んだ町のページには載っていませんでした。【迷子の犬や猫を見つけたとき】迷い犬や野犬は、動物愛護センター東部出張所（0276-55-0731）に連絡します。役場が保護した犬は、事前に迷子の連絡があれば飼い主へ知らせます。連絡がなければ東部出張所へ引き渡し、一定期間収容されます。【保護された犬や猫の情報】県のページ「犬」保護（収容）情報、「猫等」保護（負傷）情報、迷い犬・猫保護・行方不明情報で見られます。町のページ「飼い犬・飼い猫の迷子の情報を公開します」にも、掲載を希望した迷子の情報が載ります。掲載期間は1か月です。",
+     "source": {
+      "title": "飼い犬・飼い猫が迷子になってしまったとき｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s024/kurashi/020/110/20200727195400.html",
+      "where": "本文冒頭、「動物愛護センターなどでの保護情報」"
+     },
+     "status": "auto",
+     "problems": []
     }
    ]
   },
@@ -1163,6 +1205,48 @@
       "自動翻訳の言語が原文と違う。原文は「ポルトガル語・英語・スペイン語・ネパール語・中国語」だが、訳し戻しでは「スペイン語・英語・ポルトガル語・ネパール語・中国語」になっている。並びは変わっているが言語の組み合わせは同じで、意味の違いは小さい。また、訳文の「Oizumi」は町名の表記として正しい。原文の「日本語・英語・ポルトガル語」以外の数字（2023年度、3〜4ページ）は一致している。"
      ],
      "ledgerId": "r00313"
+    },
+    {
+     "qid": "Q55",
+     "short": "A quién avisar de daños en calles, farolas y parques",
+     "text": "Los baches en la calzada y los árboles caídos sobre la calzada son competencia de la Sección de Gestión de Obras Públicas (土木管理課) del Departamento de Construcción Urbana (都市建設部), ventanilla n.º 210 en el 2.º piso del edificio del ayuntamiento (庁舎).\nLos daños en los juegos infantiles de los parques son competencia de la Sección de Parques y Alcantarillado (公園下水道課) del Departamento de Construcción Urbana (都市建設部), ventanilla n.º 211 en el 2.º piso del edificio del ayuntamiento (庁舎).\nEn ambos casos, el teléfono es el número principal del ayuntamiento (町役場): 0276-63-3111.\nNo se pudo confirmar qué sección se encarga de las farolas con la bombilla fundida.\nEl horario de atención es de 8:30 a 17:15.\nNo se pudo confirmar el contacto para las noches y los días festivos, ni los canales de aviso por correo electrónico, LINE o aplicación.",
+     "original": "道路の穴・道路への倒木は、都市建設部 土木管理課（庁舎2階210番窓口）が担当です。\n公園の遊具のこわれは、都市建設部 公園下水道課（庁舎2階211番窓口）が担当です。\nどちらも電話は町役場代表の 0276-63-3111 です。\n街灯の球切れの担当課は確認できませんでした。\n開庁時間は午前8時30分から午後5時15分です。\n夜や休日の連絡先と、メール・LINE・アプリの通報窓口は確認できませんでした。",
+     "back": "道路の穴・道路への倒木は、都市建設部の土木管理課（庁舎2階210番窓口）が担当です。公園の遊具の破損は、都市建設部の公園下水道課（庁舎2階211番窓口）が担当です。どちらも町役場代表の電話は0276-63-3111です。街灯の球切れの担当課は確認できませんでした。受付時間は8時30分から17時15分です。夜間や休日の連絡先、およびメール・LINE・アプリでの通報窓口は確認できませんでした。",
+     "source": {
+      "title": "課の案内｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/department/index.html",
+      "where": "都市建設部 土木管理課・公園下水道課の欄"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q56",
+     "short": "Fugas de agua o falta de agua",
+     "text": "Para el agua corriente (fugas, falta de agua, agua turbia), el contacto es la Oficina de Tatebayashi (館林支所) de la Empresa de Agua del Este de Gunma (群馬東部水道企業団), teléfono 0276-80-3201.\nNo se pudo confirmar en la página oficial del municipio un número exclusivo para la noche y los días festivos.\nPara consultas sobre el alcantarillado, el contacto es la Sección de Parques y Alcantarillado (公園下水道課) del Departamento de Construcción Urbana (都市建設部) del municipio (0276-63-3111, ventanilla n.º 211 en el 2.º piso del edificio del ayuntamiento (庁舎)). El horario de atención es de 8:30 a 17:15.\nLa lista de empresas instaladoras designadas para las instalaciones de desagüe (下水道指定工事店) está en la página del municipio \"大泉町下水道排水設備指定工事事業者\".\nLa lista de empresas instaladoras designadas para las instalaciones de suministro de agua corriente no se ha encontrado dentro de lo que se pudo confirmar.",
+     "original": "水道（水漏れ・水が出ない・濁り）は群馬東部水道企業団 館林支所（電話 0276-80-3201）が問い合わせ先です。\n夜間・休日の専用番号は、町の公式ページでは確認できませんでした。\n下水の問い合わせは、町の都市建設部 公園下水道課（0276-63-3111、庁舎2階211番窓口）です。開庁時間は午前8時30分から午後5時15分です。\n排水設備の指定工事店（下水道指定工事店）の一覧は、町の「大泉町下水道排水設備指定工事事業者」ページにあります。\n水道の給水装置の指定工事店の一覧は、確認できた範囲では見つかっていません。",
+     "back": "水道（漏水・断水・濁り）の問い合わせ先は、群馬東部水道企業団館林支所（電話0276-80-3201）です。夜間・休日の専用番号は、町の公式ページでは確認できませんでした。下水の問い合わせは、町の都市建設部公園下水道課（0276-63-3111、庁舎2階211番窓口）です。受付時間は8時30分から17時15分です。排水設備の指定工事店（下水道指定工事店）の一覧は、町のページ「大泉町下水道排水設備指定工事事業者」にあります。水道の給水装置の指定工事店の一覧は、確認できた範囲では見つかりませんでした。",
+     "source": {
+      "title": "群馬東部水道企業団のご案内｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s025/kurashi/020/020/210/20200814150558.html",
+      "where": "本文"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q58",
+     "short": "Perros y gatos perdidos",
+     "text": "【Si se pierde su mascota (dueños)】\nContacte con uno de estos: la Sucursal Este (東部出張所) del Centro de Protección Animal de la Prefectura de Gunma (群馬県動物愛護センター), la Comisaría de Oizumi (大泉警察署) de la Policía de la Prefectura de Gunma (群馬県警察), o la Sección de Mejora Ambiental (環境整備課) del Ayuntamiento de Oizumi (大泉町役場).\nAyuntamiento (Sección de Mejora Ambiental, 環境整備課): 0276-63-3111. Atención en días laborables de 8:30 a 17:15.\nSucursal Este del Centro de Protección Animal (動物愛護センター東部出張所): 0276-55-0731.\nEl número de teléfono de la Comisaría de Oizumi (大泉警察署) no figuraba en las páginas del municipio consultadas.\n\n【Si encuentra un perro o gato perdido】\nPara perros perdidos o callejeros, contacte con la Sucursal Este del Centro de Protección Animal (動物愛護センター東部出張所) (0276-55-0731).\nSi el ayuntamiento recoge un perro y antes se ha avisado de su pérdida, se informa al dueño. Si no ha habido aviso, se entrega a la Sucursal Este (東部出張所) y permanece allí durante un tiempo determinado.\n\n【Información sobre perros y gatos recogidos】\nPuede consultarla en las páginas de la prefectura: información de protección (acogida) de \"perros\" (「犬」保護（収容）情報), información de protección (heridos) de \"gatos y otros\" (「猫等」保護（負傷）情報), e información de perros y gatos perdidos, recogidos o desaparecidos (迷い犬・猫保護・行方不明情報).\nEn la página del municipio \"Publicamos información de perros y gatos domésticos perdidos\" (「飼い犬・飼い猫の迷子の情報を公開します」) también se publica la información de los animales perdidos cuyos dueños lo soliciten. El período de publicación es de 1 mes.",
+     "original": "【迷子になったとき（飼い主）】\n群馬県動物愛護センター東部出張所、群馬県警察大泉警察署、大泉町役場環境整備課のいずれかに連絡します。\n町役場（環境整備課）：0276-63-3111。受付は平日の午前8時30分〜午後5時15分です。\n動物愛護センター東部出張所：0276-55-0731。\n大泉警察署の電話番号は、読んだ町のページには載っていませんでした。\n\n【迷子の犬や猫を見つけたとき】\n迷い犬や野犬は、動物愛護センター東部出張所（0276-55-0731）に連絡します。\n役場が保護した犬は、事前に迷子の連絡があれば飼い主へ知らせます。連絡がなければ東部出張所へ引き渡し、一定期間収容されます。\n\n【保護された犬や猫の情報】\n県のページ「犬」保護（収容）情報、「猫等」保護（負傷）情報、迷い犬・猫保護・行方不明情報で見られます。\n町のページ「飼い犬・飼い猫の迷子の情報を公開します」にも、掲載を希望した迷子の情報が載ります。掲載期間は1か月です。",
+     "back": "【飼い主で迷子になったとき】群馬県動物愛護センター東部出張所、群馬県警察大泉警察署、大泉町役場環境整備課のいずれかに連絡します。町役場（環境整備課）：0276-63-3111。受付は平日の8時30分〜17時15分です。動物愛護センター東部出張所：0276-55-0731。大泉警察署の電話番号は、読んだ町のページには載っていませんでした。【迷子の犬や猫を見つけたとき】迷い犬や野犬は、動物愛護センター東部出張所（0276-55-0731）に連絡します。町が保護した犬は、事前に迷子の連絡があれば飼い主へ知らせます。連絡がなければ東部出張所へ引き渡し、一定期間収容されます。【保護された犬や猫の情報】県のページ「犬」保護（収容）情報、「猫等」保護（負傷）情報、迷い犬・猫保護・行方不明情報で見られます。町のページ「飼い犬・飼い猫の迷子の情報を公開します」にも、掲載を希望した迷子の情報が載ります。掲載期間は1か月です。",
+     "source": {
+      "title": "飼い犬・飼い猫が迷子になってしまったとき｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s024/kurashi/020/110/20200727195400.html",
+      "where": "本文冒頭、「動物愛護センターなどでの保護情報」"
+     },
+     "status": "auto",
+     "problems": []
     }
    ]
   },
@@ -1751,6 +1835,48 @@
      "problems": [
       "「LINEの友だち追加」に「町を」の意味を補っている（原文にはない）。「避難所ではピクトグラムを掲示します」が「掲示されています」と、予定から状態の言い方に変わっている。どちらも伝わる内容は同じ。"
      ]
+    },
+    {
+     "qid": "Q55",
+     "short": "Where to report damaged roads, streetlights, and parks",
+     "text": "Road potholes and trees fallen on roads are handled by the Public Works Management Division (土木管理課), Urban Construction Department (都市建設部), at Window 210 on the 2nd floor of the Town Hall (庁舎2階210番窓口).\nBroken playground equipment in parks is handled by the Parks and Sewerage Division (公園下水道課), Urban Construction Department (都市建設部), at Window 211 on the 2nd floor of the Town Hall (庁舎2階211番窓口).\nFor both, call the Town Office main number: 0276-63-3111.\nWe could not confirm which division handles burned-out streetlights.\nOffice hours are 8:30 a.m. to 5:15 p.m.\nWe could not confirm a contact number for nights and holidays, or any email, LINE, or app reporting service.",
+     "original": "道路の穴・道路への倒木は、都市建設部 土木管理課（庁舎2階210番窓口）が担当です。\n公園の遊具のこわれは、都市建設部 公園下水道課（庁舎2階211番窓口）が担当です。\nどちらも電話は町役場代表の 0276-63-3111 です。\n街灯の球切れの担当課は確認できませんでした。\n開庁時間は午前8時30分から午後5時15分です。\n夜や休日の連絡先と、メール・LINE・アプリの通報窓口は確認できませんでした。",
+     "back": "道路の穴や道路に倒れた木は、都市建設部の土木管理課（庁舎2階210番窓口）が担当です。公園の遊具の破損は、都市建設部の公園下水道課（庁舎2階211番窓口）が担当です。どちらも電話は町役場代表の0276-63-3111です。街灯の球切れの担当課は確認できませんでした。開庁時間は午前8時30分から午後5時15分です。夜間や休日の連絡先、メール・LINE・アプリの通報窓口は確認できませんでした。",
+     "source": {
+      "title": "課の案内｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/department/index.html",
+      "where": "都市建設部 土木管理課・公園下水道課の欄"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q56",
+     "short": "Water leaks or no water from the tap",
+     "text": "For waterworks problems (leaks, no water, cloudy water), contact the Gunma Eastern Waterworks Enterprise Agency, Tatebayashi Branch Office (群馬東部水道企業団 館林支所) at 0276-80-3201.\nWe could not confirm a dedicated night or holiday number on the town's official page.\nFor sewerage questions, contact the Parks and Sewerage Division (公園下水道課), Urban Construction Department (都市建設部), at 0276-63-3111, Window 211 on the 2nd floor of the Town Hall (庁舎2階211番窓口). Office hours are 8:30 a.m. to 5:15 p.m.\nA list of designated contractors for drainage facilities (下水道指定工事店) is on the town's page \"大泉町下水道排水設備指定工事事業者\".\nWe have not been able to find a list of designated contractors for water supply equipment (給水装置) among the sources we could confirm.",
+     "original": "水道（水漏れ・水が出ない・濁り）は群馬東部水道企業団 館林支所（電話 0276-80-3201）が問い合わせ先です。\n夜間・休日の専用番号は、町の公式ページでは確認できませんでした。\n下水の問い合わせは、町の都市建設部 公園下水道課（0276-63-3111、庁舎2階211番窓口）です。開庁時間は午前8時30分から午後5時15分です。\n排水設備の指定工事店（下水道指定工事店）の一覧は、町の「大泉町下水道排水設備指定工事事業者」ページにあります。\n水道の給水装置の指定工事店の一覧は、確認できた範囲では見つかっていません。",
+     "back": "水道（漏水・断水・濁り）は、群馬東部水道企業団 館林支所（0276-80-3201）が問い合わせ先です。夜間・休日の専用番号は、町の公式ページでは確認できませんでした。下水の問い合わせは、都市建設部 公園下水道課（0276-63-3111、庁舎2階211番窓口）です。開庁時間は午前8時30分から午後5時15分です。排水設備の指定工事店（下水道指定工事店）の一覧は、町の「大泉町下水道排水設備指定工事事業者」ページにあります。水道の給水装置の指定工事店の一覧は、確認できた範囲では見つかっていません。",
+     "source": {
+      "title": "群馬東部水道企業団のご案内｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s025/kurashi/020/020/210/20200814150558.html",
+      "where": "本文"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q58",
+     "short": "Lost dogs and cats",
+     "text": "[If your pet is lost (owners)]\nContact one of the following: the Gunma Prefecture Animal Protection Center, Eastern Branch Office (群馬県動物愛護センター東部出張所), the Gunma Prefectural Police Oizumi Police Station (群馬県警察大泉警察署), or the Oizumi Town Office Environmental Maintenance Division (環境整備課).\nTown Office (Environmental Maintenance Division): 0276-63-3111. Reception is open on weekdays from 8:30 a.m. to 5:15 p.m.\nAnimal Protection Center, Eastern Branch Office: 0276-55-0731.\nThe Oizumi Police Station phone number was not given on the town page we read.\n\n[If you find a lost dog or cat]\nFor stray dogs and wild dogs, contact the Animal Protection Center, Eastern Branch Office (動物愛護センター東部出張所) at 0276-55-0731.\nIf the Town Office takes in a dog and an owner has already reported it missing, the Town Office will notify the owner. If no report has been made, the dog is handed over to the Eastern Branch Office and kept there for a set period.\n\n[Information on sheltered dogs and cats]\nYou can check the prefecture's pages: \"犬\" protection (shelter) information, \"猫等\" protection (injured) information, and the information on lost dogs and cats / missing animals.\nThe town's page \"飼い犬・飼い猫の迷子の情報を公開します\" also lists lost-pet information for owners who asked to have it posted. Listings stay up for 1 month.",
+     "original": "【迷子になったとき（飼い主）】\n群馬県動物愛護センター東部出張所、群馬県警察大泉警察署、大泉町役場環境整備課のいずれかに連絡します。\n町役場（環境整備課）：0276-63-3111。受付は平日の午前8時30分〜午後5時15分です。\n動物愛護センター東部出張所：0276-55-0731。\n大泉警察署の電話番号は、読んだ町のページには載っていませんでした。\n\n【迷子の犬や猫を見つけたとき】\n迷い犬や野犬は、動物愛護センター東部出張所（0276-55-0731）に連絡します。\n役場が保護した犬は、事前に迷子の連絡があれば飼い主へ知らせます。連絡がなければ東部出張所へ引き渡し、一定期間収容されます。\n\n【保護された犬や猫の情報】\n県のページ「犬」保護（収容）情報、「猫等」保護（負傷）情報、迷い犬・猫保護・行方不明情報で見られます。\n町のページ「飼い犬・飼い猫の迷子の情報を公開します」にも、掲載を希望した迷子の情報が載ります。掲載期間は1か月です。",
+     "back": "【飼い主で迷子になったとき】群馬県動物愛護センター東部出張所、群馬県警察大泉警察署、大泉町役場環境整備課のいずれかに連絡します。町役場（環境整備課）：0276-63-3111。受付は平日の午前8時30分〜午後5時15分です。動物愛護センター東部出張所：0276-55-0731。大泉警察署の電話番号は、読んだ町のページには載っていませんでした。【迷子の犬や猫を見つけたとき】迷い犬や野犬は、動物愛護センター東部出張所（0276-55-0731）に連絡します。役場が保護した犬は、事前に迷子の連絡があれば飼い主へ知らせます。連絡がなければ東部出張所へ引き渡し、一定期間収容されます。【保護された犬や猫の情報】県のページ「犬」保護（収容）情報、「猫等」保護（負傷）情報、迷い犬・猫保護・行方不明情報で見られます。町のページ「飼い犬・飼い猫の迷子の情報を公開します」にも、掲載を希望した迷子の情報が載ります。掲載期間は1か月です。",
+     "source": {
+      "title": "飼い犬・飼い猫が迷子になってしまったとき｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s024/kurashi/020/110/20200727195400.html",
+      "where": "本文冒頭、「動物愛護センターなどでの保護情報」"
+     },
+     "status": "auto",
+     "problems": []
     }
    ]
   },
@@ -2338,6 +2464,50 @@
      "problems": [
       "「ピクトグラム」に「（絵で見せるマーク）」という補足が加わっています（意味は変わらない）。「登録案内」が「登録の仕方」、「電話配信サービス」が「電話で知らせるサービス」と言い換えられていますが、意味のずれはありません。"
      ]
+    },
+    {
+     "qid": "Q55",
+     "short": "道路（どうろ）・街灯（がいとう）・公園（こうえん）がこわれたとき、知（し）らせるところ",
+     "text": "道路に穴（あな）があいたとき、道路に木（き）がたおれたときは、都市建設部（としけんせつぶ）土木管理課（どぼくかんりか）が担当（たんとう）です。庁舎（ちょうしゃ）2階（かい）の210番（ばん）の窓口（まどぐち）です。\n公園の遊具（ゆうぐ）がこわれたときは、都市建設部 公園下水道課（こうえんげすいどうか）が担当です。庁舎2階の211番の窓口です。\nどちらも電話（でんわ）は、町役場（まちやくば）の代表（だいひょう）の番号（ばんごう） 0276-63-3111 です。\n街灯の電球（でんきゅう）が切（き）れたときの担当の課（か）は、確（たし）かめられませんでした。\n役場が開（あ）いている時間は、午前8時30分から午後5時15分までです。\n夜や休（やす）みの日の連絡先（れんらくさき）は、確かめられませんでした。メール・LINE・アプリで知らせる窓口も、確かめられませんでした。",
+     "original": "道路の穴・道路への倒木は、都市建設部 土木管理課（庁舎2階210番窓口）が担当です。\n公園の遊具のこわれは、都市建設部 公園下水道課（庁舎2階211番窓口）が担当です。\nどちらも電話は町役場代表の 0276-63-3111 です。\n街灯の球切れの担当課は確認できませんでした。\n開庁時間は午前8時30分から午後5時15分です。\n夜や休日の連絡先と、メール・LINE・アプリの通報窓口は確認できませんでした。",
+     "back": "道路に穴があいたとき、道路に木がたおれたときは、都市建設部土木管理課が担当です。庁舎2階の210番窓口です。公園の遊具がこわれたときは、都市建設部公園下水道課が担当です。庁舎2階の211番窓口です。どちらも電話は町役場の代表番号0276-63-3111です。街灯の電球が切れたときの担当課は確かめられませんでした。役場の開いている時間は、午前8時30分から午後5時15分までです。夜や休みの日の連絡先は確かめられませんでした。メール・LINE・アプリで知らせる窓口も確かめられませんでした。",
+     "source": {
+      "title": "課の案内｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/department/index.html",
+      "where": "都市建設部 土木管理課・公園下水道課の欄"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q56",
+     "short": "水道（すいどう）の水（みず）もれ・水が出（で）ないとき",
+     "text": "水道の水もれ・水が出ない・水がにごっているときは、群馬東部水道企業団（ぐんまとうぶすいどうきぎょうだん）館林支所（たてばやしししょ）に聞（き）きます。電話は 0276-80-3201 です。\n夜や休（やす）みの日だけの電話番号は、町の公式（こうしき）ページでは確（たし）かめられませんでした。\n下水（げすい）のことは、町の都市建設部（としけんせつぶ）公園下水道課（こうえんげすいどうか）に聞きます。電話は 0276-63-3111、庁舎（ちょうしゃ）2階（かい）の211番（ばん）の窓口（まどぐち）です。役場が開（あ）いている時間は、午前8時30分から午後5時15分までです。\n排水設備（はいすいせつび）の指定工事店（していこうじてん）（下水道指定工事店）の一覧（いちらん）は、町のページ「大泉町下水道排水設備指定工事事業者」にあります。\n水道の給水装置（きゅうすいそうち）の指定工事店の一覧は、確かめられた中では見つかっていません。",
+     "original": "水道（水漏れ・水が出ない・濁り）は群馬東部水道企業団 館林支所（電話 0276-80-3201）が問い合わせ先です。\n夜間・休日の専用番号は、町の公式ページでは確認できませんでした。\n下水の問い合わせは、町の都市建設部 公園下水道課（0276-63-3111、庁舎2階211番窓口）です。開庁時間は午前8時30分から午後5時15分です。\n排水設備の指定工事店（下水道指定工事店）の一覧は、町の「大泉町下水道排水設備指定工事事業者」ページにあります。\n水道の給水装置の指定工事店の一覧は、確認できた範囲では見つかっていません。",
+     "back": "水道の水もれ・水が出ない・水がにごっているときは、群馬東部水道企業団館林支所に聞きます。電話は0276-80-3201です。夜や休みの日だけの電話番号は、町の公式ページでは確かめられませんでした。下水のことは、町の都市建設部公園下水道課に聞きます。電話は0276-63-3111、庁舎2階の211番の窓口です。役場の開いている時間は、午前8時30分から午後5時15分までです。排水設備の指定工事店（下水道指定工事店）の一覧は、町のページ「大泉町下水道排水設備指定工事事業者」にあります。水道の給水装置の指定工事店の一覧は、確かめられた中では見つかっていません。",
+     "source": {
+      "title": "群馬東部水道企業団のご案内｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s025/kurashi/020/020/210/20200814150558.html",
+      "where": "本文"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q58",
+     "short": "迷子（まいご）の犬（いぬ）・猫（ねこ）",
+     "text": "【ペットが迷子になったとき（飼（か）い主（ぬし））】\n次のどれかに連絡（れんらく）します。\n・群馬県動物愛護センター東部出張所（ぐんまけんどうぶつあいごセンターとうぶしゅっちょうしょ）\n・群馬県警察大泉警察署（ぐんまけんけいさつ おおいずみけいさつしょ）\n・大泉町役場（おおいずみまちやくば）環境整備課（かんきょうせいびか）\n町役場（環境整備課）は 0276-63-3111 です。受付（うけつけ）は、平日（へいじつ）の午前8時30分から午後5時15分までです。\n動物愛護センター東部出張所は 0276-55-0731 です。\n大泉警察署の電話番号は、読んだ町のページには書（か）いてありませんでした。\n\n【迷子の犬や猫を見（み）つけたとき】\n迷（まよ）い犬や野犬（やけん）を見つけたときは、動物愛護センター東部出張所（0276-55-0731）に連絡します。\n役場が保護（ほご）した犬は、先（さき）に迷子の連絡があれば、飼い主に知らせます。連絡がなければ、東部出張所に渡（わた）します。そこで、決（き）まった期間（きかん）、あずかります。\n\n【保護された犬や猫の情報（じょうほう）】\n県のページで見（み）られます。見るページは、「犬」保護（収容（しゅうよう））情報、「猫等（ねこなど）」保護（負傷（ふしょう））情報、迷い犬・猫保護・行方不明（ゆくえふめい）情報です。\n町のページ「飼い犬・飼い猫の迷子の情報を公開します」にも、のせてほしいと希望（きぼう）した迷子の情報がのります。のせる期間は1か月です。",
+     "original": "【迷子になったとき（飼い主）】\n群馬県動物愛護センター東部出張所、群馬県警察大泉警察署、大泉町役場環境整備課のいずれかに連絡します。\n町役場（環境整備課）：0276-63-3111。受付は平日の午前8時30分〜午後5時15分です。\n動物愛護センター東部出張所：0276-55-0731。\n大泉警察署の電話番号は、読んだ町のページには載っていませんでした。\n\n【迷子の犬や猫を見つけたとき】\n迷い犬や野犬は、動物愛護センター東部出張所（0276-55-0731）に連絡します。\n役場が保護した犬は、事前に迷子の連絡があれば飼い主へ知らせます。連絡がなければ東部出張所へ引き渡し、一定期間収容されます。\n\n【保護された犬や猫の情報】\n県のページ「犬」保護（収容）情報、「猫等」保護（負傷）情報、迷い犬・猫保護・行方不明情報で見られます。\n町のページ「飼い犬・飼い猫の迷子の情報を公開します」にも、掲載を希望した迷子の情報が載ります。掲載期間は1か月です。",
+     "back": "ペットが迷子になったとき（飼い主）は、次のどれかに連絡します。群馬県動物愛護センター東部出張所、群馬県警察大泉警察署、大泉町役場環境整備課です。町役場（環境整備課）は0276-63-3111です。受付は平日の午前8時30分から午後5時15分までです。動物愛護センター東部出張所は0276-55-0731です。大泉警察署の電話番号は、読んだ町のページには書いてありませんでした。迷い犬や野犬を見つけたときは、動物愛護センター東部出張所（0276-55-0731）に連絡します。役場が保護した犬は、先に迷子の連絡があれば飼い主に知らせます。連絡がなければ、東部出張所に渡します。そこで、決まった期間あずかります。保護された犬や猫の情報は、県のページで見られます。見るページは「犬」保護（収容）情報、「猫等」保護（負傷）情報、迷い犬・猫保護・行方不明情報です。町のページ「飼い犬・飼い猫の迷子の情報を公開します」にも、のせてほしいと希望した迷子の情報がのります。のせる期間は1か月です。",
+     "source": {
+      "title": "飼い犬・飼い猫が迷子になってしまったとき｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s024/kurashi/020/110/20200727195400.html",
+      "where": "本文冒頭、「動物愛護センターなどでの保護情報」"
+     },
+     "status": "auto",
+     "problems": [
+      "「一定期間収容されます」が「決まった期間あずかります」になっており、「収容（保護して入れておく）」の強さが弱まっている。「あずかる」より「収容」を使うほうが原文に近い。"
+     ]
     }
    ]
   },
@@ -2915,6 +3085,50 @@
      },
      "status": "auto",
      "problems": []
+    },
+    {
+     "qid": "Q55",
+     "short": "Tempat melapor kerusakan jalan, lampu jalan, dan taman",
+     "text": "Lubang di jalan dan pohon tumbang di jalan ditangani oleh Seksi Pengelolaan Pekerjaan Umum (土木管理課), Departemen Pembangunan Kota (都市建設部), di loket nomor 210 lantai 2 gedung kantor (庁舎2階210番窓口).\nKerusakan alat permainan di taman ditangani oleh Seksi Taman dan Air Limbah (公園下水道課), Departemen Pembangunan Kota (都市建設部), di loket nomor 211 lantai 2 gedung kantor (庁舎2階211番窓口).\nUntuk keduanya, telepon ke nomor utama kantor kota (町役場) 0276-63-3111.\nSeksi yang menangani lampu jalan yang padam tidak dapat dipastikan.\nJam layanan kantor adalah pukul 08.30 sampai 17.15.\nKontak untuk malam hari dan hari libur, serta saluran laporan lewat email, LINE, atau aplikasi, tidak dapat dipastikan.",
+     "original": "道路の穴・道路への倒木は、都市建設部 土木管理課（庁舎2階210番窓口）が担当です。\n公園の遊具のこわれは、都市建設部 公園下水道課（庁舎2階211番窓口）が担当です。\nどちらも電話は町役場代表の 0276-63-3111 です。\n街灯の球切れの担当課は確認できませんでした。\n開庁時間は午前8時30分から午後5時15分です。\n夜や休日の連絡先と、メール・LINE・アプリの通報窓口は確認できませんでした。",
+     "back": "道路の穴・道路への倒木は都市建設部土木管理課（庁舎2階210番窓口）が担当です。公園の遊具の破損は都市建設部公園下水道課（庁舎2階211番窓口）が担当です。どちらも町役場代表電話 0276-63-3111 です。街灯の球切れの担当課は確認できませんでした。開庁時間は午前8時30分から午後5時15分です。夜間・休日の連絡先と、メール・LINE・アプリの通報窓口は確認できませんでした。",
+     "source": {
+      "title": "課の案内｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/department/index.html",
+      "where": "都市建設部 土木管理課・公園下水道課の欄"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q56",
+     "short": "Jika air ledeng bocor atau tidak mengalir",
+     "text": "Untuk masalah air ledeng (kebocoran, air tidak mengalir, air keruh), hubungi Perusahaan Gabungan Air Minum Gunma Timur (群馬東部水道企業団) Cabang Tatebayashi (館林支所), telepon 0276-80-3201.\nNomor khusus untuk malam hari dan hari libur tidak dapat dipastikan di halaman resmi kota.\nPertanyaan tentang air limbah (下水) ditujukan ke Seksi Taman dan Air Limbah (公園下水道課), Departemen Pembangunan Kota (都市建設部) kota, telepon 0276-63-3111, loket nomor 211 lantai 2 gedung kantor (庁舎2階211番窓口). Jam layanan pukul 08.30 sampai 17.15.\nDaftar toko pelaksana konstruksi yang ditunjuk untuk fasilitas pembuangan air (下水道指定工事店) ada di halaman kota \"大泉町下水道排水設備指定工事事業者\" (Pelaksana Konstruksi Fasilitas Pembuangan Air Limbah yang Ditunjuk Kota Oizumi).\nDaftar toko pelaksana konstruksi yang ditunjuk untuk instalasi penyambungan air ledeng (給水装置) belum ditemukan sejauh yang dapat dipastikan.",
+     "original": "水道（水漏れ・水が出ない・濁り）は群馬東部水道企業団 館林支所（電話 0276-80-3201）が問い合わせ先です。\n夜間・休日の専用番号は、町の公式ページでは確認できませんでした。\n下水の問い合わせは、町の都市建設部 公園下水道課（0276-63-3111、庁舎2階211番窓口）です。開庁時間は午前8時30分から午後5時15分です。\n排水設備の指定工事店（下水道指定工事店）の一覧は、町の「大泉町下水道排水設備指定工事事業者」ページにあります。\n水道の給水装置の指定工事店の一覧は、確認できた範囲では見つかっていません。",
+     "back": "水道（漏水・断水・濁り）は群馬東部水道企業団館林支所（電話 0276-80-3201）が問い合わせ先です。夜間・休日の専用番号は町の公式ページでは確認できませんでした。下水の問い合わせは都市建設部公園下水道課（0276-63-3111、庁舎2階211番窓口）で、開庁時間は午前8時30分から午後5時15分です。下水道指定工事店の一覧は町の「大泉町下水道排水設備指定工事事業者」ページにあります。給水装置の指定工事店の一覧は、確認できた範囲では見つかっていません。",
+     "source": {
+      "title": "群馬東部水道企業団のご案内｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s025/kurashi/020/020/210/20200814150558.html",
+      "where": "本文"
+     },
+     "status": "auto",
+     "problems": [
+      "「水が出ない」を「断水」と訳し戻しているが、意味はほぼ同じ。"
+     ]
+    },
+    {
+     "qid": "Q58",
+     "short": "Anjing dan kucing yang hilang",
+     "text": "【Jika hewan peliharaan Anda hilang (untuk pemilik)】\nHubungi salah satu dari: Pusat Perlindungan Hewan Prefektur Gunma, Kantor Cabang Timur (群馬県動物愛護センター東部出張所); Kantor Polisi Oizumi (大泉警察署) Kepolisian Prefektur Gunma (群馬県警察); atau Seksi Pengelolaan Lingkungan (環境整備課) Kantor Kota Oizumi (大泉町役場).\nKantor kota (Seksi Pengelolaan Lingkungan): 0276-63-3111. Penerimaan pada hari kerja pukul 08.30–17.15.\nPusat Perlindungan Hewan, Kantor Cabang Timur (動物愛護センター東部出張所): 0276-55-0731.\nNomor telepon Kantor Polisi Oizumi (大泉警察署) tidak tercantum di halaman kota yang dibaca.\n\n【Jika Anda menemukan anjing atau kucing yang hilang】\nUntuk anjing tersesat atau anjing liar, hubungi Pusat Perlindungan Hewan, Kantor Cabang Timur (動物愛護センター東部出張所) di 0276-55-0731.\nAnjing yang dilindungi oleh kantor kota akan diberitahukan kepada pemiliknya jika sebelumnya sudah ada laporan kehilangan. Jika tidak ada laporan, anjing diserahkan ke Kantor Cabang Timur (東部出張所) dan ditampung selama jangka waktu tertentu.\n\n【Informasi anjing dan kucing yang dilindungi】\nDapat dilihat di halaman prefektur: informasi perlindungan (penampungan) \"犬\" (anjing), informasi perlindungan (hewan terluka) \"猫等\" (kucing dan lainnya), serta informasi perlindungan anjing/kucing tersesat dan hilang (迷い犬・猫保護・行方不明情報).\nDi halaman kota \"飼い犬・飼い猫の迷子の情報を公開します\" (Informasi anjing dan kucing peliharaan yang hilang dipublikasikan) juga dimuat informasi hewan hilang yang pemiliknya meminta untuk dimuat. Masa pemuatan adalah 1 bulan.",
+     "original": "【迷子になったとき（飼い主）】\n群馬県動物愛護センター東部出張所、群馬県警察大泉警察署、大泉町役場環境整備課のいずれかに連絡します。\n町役場（環境整備課）：0276-63-3111。受付は平日の午前8時30分〜午後5時15分です。\n動物愛護センター東部出張所：0276-55-0731。\n大泉警察署の電話番号は、読んだ町のページには載っていませんでした。\n\n【迷子の犬や猫を見つけたとき】\n迷い犬や野犬は、動物愛護センター東部出張所（0276-55-0731）に連絡します。\n役場が保護した犬は、事前に迷子の連絡があれば飼い主へ知らせます。連絡がなければ東部出張所へ引き渡し、一定期間収容されます。\n\n【保護された犬や猫の情報】\n県のページ「犬」保護（収容）情報、「猫等」保護（負傷）情報、迷い犬・猫保護・行方不明情報で見られます。\n町のページ「飼い犬・飼い猫の迷子の情報を公開します」にも、掲載を希望した迷子の情報が載ります。掲載期間は1か月です。",
+     "back": "迷子になったとき（飼い主）は、群馬県動物愛護センター東部出張所、群馬県警察大泉警察署、大泉町役場環境整備課のいずれかに連絡します。町役場（環境整備課）は 0276-63-3111、受付は平日の午前8時30分〜午後5時15分です。動物愛護センター東部出張所は 0276-55-0731 です。大泉警察署の電話番号は、読んだ町のページには載っていませんでした。迷い犬や野犬は東部出張所（0276-55-0731）に連絡します。役場が保護した犬は、事前に迷子の連絡があれば飼い主へ知らせ、連絡がなければ東部出張所へ引き渡され一定期間収容されます。県のページで「犬」保護（収容）情報、「猫等」保護（負傷）情報、迷い犬・猫保護・行方不明情報を見られます。町のページ「飼い犬・飼い猫の迷子の情報を公開します」には、掲載を希望した迷子の情報が載り、掲載期間は1か月です。",
+     "source": {
+      "title": "飼い犬・飼い猫が迷子になってしまったとき｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s024/kurashi/020/110/20200727195400.html",
+      "where": "本文冒頭、「動物愛護センターなどでの保護情報」"
+     },
+     "status": "auto",
+     "problems": []
     }
    ]
   },
@@ -3484,6 +3698,51 @@
       "title": "大泉町総合防災マップ｜大泉町",
       "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/170/20200828141906.html",
       "where": "主な改訂事項（翻訳の見直し）／分割版「情報を集めましょう」（3〜4ページ）のPDF"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q55",
+     "short": "सडक, सडक बत्ती र पार्क बिग्रेको खबर गर्ने ठाउँ",
+     "text": "सडकमा खाडल परेको र सडकमा रुख ढलेको विषय सहरी निर्माण विभाग (都市建設部) को सिभिल इन्जिनियरिङ व्यवस्थापन शाखा (土木管理課) को जिम्मामा छ। काउन्टर नगर कार्यालय भवन (庁舎) को दोस्रो तलामा नं. 210 मा छ।\nपार्कका खेल उपकरण बिग्रेको विषय सहरी निर्माण विभाग (都市建設部) को पार्क तथा ढल शाखा (公園下水道課) को जिम्मामा छ। काउन्टर नगर कार्यालय भवन (庁舎) को दोस्रो तलामा नं. 211 मा छ।\nदुवैको फोन नगर कार्यालय (町役場) को मुख्य नम्बर 0276-63-3111 हो।\nसडक बत्तीको बल्ब बिग्रेको विषय हेर्ने शाखा पुष्टि गर्न सकिएन।\nकार्यालय खुल्ने समय बिहान 8:30 देखि साँझ 5:15 सम्म हो।\nराति र बिदाको दिनको सम्पर्क ठेगाना, तथा इमेल, LINE र एपबाट खबर गर्ने ठाउँ पुष्टि गर्न सकिएन।",
+     "original": "道路の穴・道路への倒木は、都市建設部 土木管理課（庁舎2階210番窓口）が担当です。\n公園の遊具のこわれは、都市建設部 公園下水道課（庁舎2階211番窓口）が担当です。\nどちらも電話は町役場代表の 0276-63-3111 です。\n街灯の球切れの担当課は確認できませんでした。\n開庁時間は午前8時30分から午後5時15分です。\n夜や休日の連絡先と、メール・LINE・アプリの通報窓口は確認できませんでした。",
+     "back": "道路の穴・道路への倒木は、都市建設部 土木管理課（庁舎2階210番窓口）が担当です。公園の遊具の故障は、都市建設部 公園下水道課（庁舎2階211番窓口）が担当です。どちらも電話は町役場代表の0276-63-3111です。街灯の球切れの担当課は確認できませんでした。開庁時間は午前8時30分から午後5時15分です。夜間や休日の連絡先、およびメール・LINE・アプリの通報窓口は確認できませんでした。",
+     "source": {
+      "title": "課の案内｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/department/index.html",
+      "where": "都市建設部 土木管理課・公園下水道課の欄"
+     },
+     "status": "pending",
+     "problems": [
+      "「道路の穴・倒木」の担当課（土木管理課）の名前が訳文では抜けている。「土木管理課」が訳文の「सिभिल इन्जिनियरिङ व्यवस्थापन शाखा」と書かれているのは意味上は合うが、訳文の「काउन्टर」の位置づけは「210番窓口」として対応している。主な問題：「公園の遊具のこわれ」の担当課が訳文では「पार्क तथा ढल शाखा」と訳されており、原文と同じ。ただし「道路の穴・倒木」の番号（210）と「遊具」の番号（211）は対応している。実際の大きな問題は、訳文の「सडकमा खाडल परेको र सडकमा रुख ढलेको विषय」は「道路の穴・道路への倒木」として合うが、「सडक बत्तीको बल्ब बिग्रेको विषय हेर्ने शाखा पुष्टि गर्न सकिएन」は「街灯の球切れ」と一致する。一方、「公園の遊具のこわれ」が訳文では「खेल उपकरण बिग्रेको」であり、遊具の意味として一致する。したがって、大きな欠落は見当たらないが、訳し戻しの結果は原文と同じ内容である。"
+     ],
+     "ledgerId": "r00364"
+    },
+    {
+     "qid": "Q56",
+     "short": "धारामा पानी चुहिँदा वा पानी नआउँदा",
+     "text": "खानेपानी (पानी चुहिनु, पानी नआउनु, पानी धमिलो हुनु) को बारेमा सोध्ने ठाउँ गुन्मा तोबु खानेपानी संस्था (群馬東部水道企業団) को ताteबायासी शाखा कार्यालय (館林支所) हो। फोन 0276-80-3201।\nराति र बिदाको दिनको विशेष नम्बर नगरको आधिकारिक पृष्ठमा पुष्टि गर्न सकिएन।\nढलको बारेमा सोध्ने ठाउँ नगरको सहरी निर्माण विभाग (都市建設部) को पार्क तथा ढल शाखा (公園下水道課) हो (0276-63-3111, नगर कार्यालय भवन (庁舎) दोस्रो तला, काउन्टर नं. 211)। कार्यालय खुल्ने समय बिहान 8:30 देखि साँझ 5:15 सम्म हो।\nढल निकास व्यवस्थाको तोकिएको निर्माण पसल (下水道指定工事店) हरूको सूची नगरको \"大泉町下水道排水設備指定工事事業者\" पृष्ठमा छ।\nखानेपानीको पानी आपूर्ति उपकरण (給水装置) को तोकिएको निर्माण पसलहरूको सूची पुष्टि गर्न सकिएको दायराभित्र फेला परेको छैन।",
+     "original": "水道（水漏れ・水が出ない・濁り）は群馬東部水道企業団 館林支所（電話 0276-80-3201）が問い合わせ先です。\n夜間・休日の専用番号は、町の公式ページでは確認できませんでした。\n下水の問い合わせは、町の都市建設部 公園下水道課（0276-63-3111、庁舎2階211番窓口）です。開庁時間は午前8時30分から午後5時15分です。\n排水設備の指定工事店（下水道指定工事店）の一覧は、町の「大泉町下水道排水設備指定工事事業者」ページにあります。\n水道の給水装置の指定工事店の一覧は、確認できた範囲では見つかっていません。",
+     "back": "水道（漏水・水が出ない・濁り）は群馬東部水道企業団 館林支所（電話0276-80-3201）が問い合わせ先です。夜間・休日の専用番号は、町の公式ページでは確認できませんでした。下水の問い合わせは、町の都市建設部 公園下水道課（0276-63-3111、庁舎2階211番窓口）です。開庁時間は午前8時30分から午後5時15分です。排水設備の指定工事店（下水道指定工事店）の一覧は、町の「大泉町下水道排水設備指定工事事業者」ページにあります。水道の給水装置の指定工事店の一覧は、確認できた範囲では見つかっていません。",
+     "source": {
+      "title": "群馬東部水道企業団のご案内｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s025/kurashi/020/020/210/20200814150558.html",
+      "where": "本文"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q58",
+     "short": "हराएका कुकुर र बिरालो",
+     "text": "【हराउँदा (मालिकले)】\nगुन्मा प्रान्त पशु संरक्षण केन्द्र पूर्वी शाखा (群馬県動物愛護センター東部出張所), गुन्मा प्रान्त प्रहरी ओइजुमी प्रहरी स्टेशन (群馬県警察大泉警察署), वा ओइजुमी नगर कार्यालय (大泉町役場) को वातावरण व्यवस्थापन शाखा (環境整備課) मध्ये कुनै एकमा सम्पर्क गर्नुहोस्।\nनगर कार्यालय (वातावरण व्यवस्थापन शाखा): 0276-63-3111। सोमबार देखि शुक्रबारसम्म बिहान 8:30 देखि साँझ 5:15 सम्म खुल्छ।\nपशु संरक्षण केन्द्र पूर्वी शाखा: 0276-55-0731।\nओइजुमी प्रहरी स्टेशन (大泉警察署) को फोन नम्बर मैले पढेको नगरको पृष्ठमा थिएन।\n\n【हराएको कुकुर वा बिरालो भेट्टाउँदा】\nहराएको कुकुर वा आवारा कुकुरको बारेमा पशु संरक्षण केन्द्र पूर्वी शाखा (0276-55-0731) मा सम्पर्क गर्नुहोस्।\nनगर कार्यालयले संरक्षण गरेको कुकुरको बारेमा पहिले नै हराएको सूचना आएको भए मालिकलाई जानकारी दिइन्छ। सूचना नआएको भए पूर्वी शाखालाई सुम्पिइन्छ र निश्चित अवधिसम्म राखिन्छ।\n\n【संरक्षण गरिएका कुकुर र बिरालोको जानकारी】\nप्रान्तको पृष्ठ \"犬\" संरक्षण (राखिएको) जानकारी, \"猫等\" संरक्षण (घाइते) जानकारी, र हराएका कुकुर・बिरालो संरक्षण・बेपत्ता जानकारीमा हेर्न सकिन्छ।\nनगरको पृष्ठ \"飼い犬・飼い猫の迷子の情報を公開します\" मा पनि प्रकाशन चाहेका हराएका जनावरको जानकारी राखिन्छ। प्रकाशन अवधि 1 महिना हो।",
+     "original": "【迷子になったとき（飼い主）】\n群馬県動物愛護センター東部出張所、群馬県警察大泉警察署、大泉町役場環境整備課のいずれかに連絡します。\n町役場（環境整備課）：0276-63-3111。受付は平日の午前8時30分〜午後5時15分です。\n動物愛護センター東部出張所：0276-55-0731。\n大泉警察署の電話番号は、読んだ町のページには載っていませんでした。\n\n【迷子の犬や猫を見つけたとき】\n迷い犬や野犬は、動物愛護センター東部出張所（0276-55-0731）に連絡します。\n役場が保護した犬は、事前に迷子の連絡があれば飼い主へ知らせます。連絡がなければ東部出張所へ引き渡し、一定期間収容されます。\n\n【保護された犬や猫の情報】\n県のページ「犬」保護（収容）情報、「猫等」保護（負傷）情報、迷い犬・猫保護・行方不明情報で見られます。\n町のページ「飼い犬・飼い猫の迷子の情報を公開します」にも、掲載を希望した迷子の情報が載ります。掲載期間は1か月です。",
+     "back": "【迷子になったとき（飼い主）】群馬県動物愛護センター東部出張所、群馬県警察大泉警察署、大泉町役場環境整備課のいずれかに連絡します。町役場（環境整備課）：0276-63-3111。受付は平日の午前8時30分〜午後5時15分です。動物愛護センター東部出張所：0276-55-0731。大泉警察署の電話番号は、読んだ町のページには載っていませんでした。【迷子の犬や猫を見つけたとき】迷い犬や野犬は、動物愛護センター東部出張所（0276-55-0731）に連絡します。役場が保護した犬は、事前に迷子の連絡があれば飼い主へ知らせます。連絡がなければ東部出張所へ引き渡し、一定期間収容されます。【保護された犬や猫の情報】県のページ「犬」保護（収容）情報、「猫等」保護（負傷）情報、迷い犬・猫保護・行方不明情報で見られます。町のページ「飼い犬・飼い猫の迷子の情報を公開します」にも、掲載を希望した迷子の情報が載ります。掲載期間は1か月です。",
+     "source": {
+      "title": "飼い犬・飼い猫が迷子になってしまったとき｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s024/kurashi/020/110/20200727195400.html",
+      "where": "本文冒頭、「動物愛護センターなどでの保護情報」"
      },
      "status": "auto",
      "problems": []
@@ -4058,6 +4317,54 @@
      },
      "status": "auto",
      "problems": []
+    },
+    {
+     "qid": "Q55",
+     "short": "Nơi báo hư hỏng đường sá, đèn đường, công viên",
+     "text": "Ổ gà trên đường và cây đổ chắn đường do Phòng Quản lý Công chính (土木管理課) thuộc Ban Xây dựng Đô thị (都市建設部) phụ trách (quầy số 210, tầng 2 tòa nhà hành chính (庁舎)).\nHư hỏng thiết bị vui chơi trong công viên do Phòng Công viên và Cống thoát nước (公園下水道課) thuộc Ban Xây dựng Đô thị (都市建設部) phụ trách (quầy số 211, tầng 2 tòa nhà hành chính (庁舎)).\nCả hai nơi đều liên lạc qua số tổng đài của Văn phòng hành chính thị trấn (町役場): 0276-63-3111.\nChưa xác nhận được phòng phụ trách việc bóng đèn đường bị cháy.\nGiờ làm việc là từ 8 giờ 30 sáng đến 5 giờ 15 chiều.\nChưa xác nhận được nơi liên lạc vào ban đêm và ngày nghỉ, cũng như cổng tiếp nhận báo qua email, LINE hoặc ứng dụng.",
+     "original": "道路の穴・道路への倒木は、都市建設部 土木管理課（庁舎2階210番窓口）が担当です。\n公園の遊具のこわれは、都市建設部 公園下水道課（庁舎2階211番窓口）が担当です。\nどちらも電話は町役場代表の 0276-63-3111 です。\n街灯の球切れの担当課は確認できませんでした。\n開庁時間は午前8時30分から午後5時15分です。\n夜や休日の連絡先と、メール・LINE・アプリの通報窓口は確認できませんでした。",
+     "back": "道路の穴・道路の倒木は、都市建設部の土木管理課（庁舎2階210番窓口）が担当です。公園の遊具の破損は、都市建設部の公園下水道課（庁舎2階211番窓口）が担当です。どちらも電話は町役場代表の0276-63-3111です。街灯の球切れの担当課は確認できませんでした。開庁時間は午前8時30分から午後5時15分です。夜間や休日の連絡先、およびメール・LINE・アプリの通報窓口は確認できませんでした。",
+     "source": {
+      "title": "課の案内｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/department/index.html",
+      "where": "都市建設部 土木管理課・公園下水道課の欄"
+     },
+     "status": "auto",
+     "problems": [
+      "「道路への倒木」は「道路の倒木」とほぼ同じ。「こわれ」は「破損」で意味は同じ。"
+     ]
+    },
+    {
+     "qid": "Q56",
+     "short": "Khi nước máy bị rò rỉ hoặc không có nước",
+     "text": "Về nước máy (rò rỉ nước, không có nước, nước đục), nơi tiếp nhận hỏi đáp là Chi nhánh Tatebayashi (館林支所) của Liên hiệp doanh nghiệp cấp nước Đông Gunma (群馬東部水道企業団) (điện thoại 0276-80-3201).\nSố điện thoại riêng cho ban đêm và ngày nghỉ không xác nhận được trên trang chính thức của thị trấn.\nVề cống thoát nước, xin liên hệ Phòng Công viên và Cống thoát nước (公園下水道課) thuộc Ban Xây dựng Đô thị (都市建設部) của thị trấn (0276-63-3111, quầy số 211, tầng 2 tòa nhà hành chính (庁舎)). Giờ làm việc là từ 8 giờ 30 sáng đến 5 giờ 15 chiều.\nDanh sách các cửa hàng thi công được chỉ định về thiết bị thoát nước (下水道指定工事店) có trên trang \"大泉町下水道排水設備指定工事事業者\" (Các đơn vị thi công thiết bị thoát nước được chỉ định về cống thoát nước thị trấn Oizumi) của thị trấn.\nDanh sách các cửa hàng thi công được chỉ định về thiết bị cấp nước máy (給水装置) thì trong phạm vi đã kiểm tra vẫn chưa tìm thấy.",
+     "original": "水道（水漏れ・水が出ない・濁り）は群馬東部水道企業団 館林支所（電話 0276-80-3201）が問い合わせ先です。\n夜間・休日の専用番号は、町の公式ページでは確認できませんでした。\n下水の問い合わせは、町の都市建設部 公園下水道課（0276-63-3111、庁舎2階211番窓口）です。開庁時間は午前8時30分から午後5時15分です。\n排水設備の指定工事店（下水道指定工事店）の一覧は、町の「大泉町下水道排水設備指定工事事業者」ページにあります。\n水道の給水装置の指定工事店の一覧は、確認できた範囲では見つかっていません。",
+     "back": "水道（漏水・断水・濁り）は群馬東部水道企業団館林支所（電話0276-80-3201）が問い合わせ先です。夜間・休日の専用番号は、町の公式ページでは確認できませんでした。下水の問い合わせは、町の都市建設部公園下水道課（0276-63-3111、庁舎2階211番窓口）です。開庁時間は午前8時30分から午後5時15分です。排水設備の指定工事店（下水道指定工事店）の一覧は、町の「大泉町下水道排水設備指定工事事業者」ページにあります。水道の給水装置の指定工事店の一覧は、確認できた範囲では見つかっていません。",
+     "source": {
+      "title": "群馬東部水道企業団のご案内｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s025/kurashi/020/020/210/20200814150558.html",
+      "where": "本文"
+     },
+     "status": "auto",
+     "problems": [
+      "「水漏れ」「水が出ない」を「断水」とまとめているが、「水が出ない」は断水と同じ意味として伝わるため実質的な差はない。"
+     ]
+    },
+    {
+     "qid": "Q58",
+     "short": "Chó, mèo bị lạc",
+     "text": "【Khi thú cưng bị lạc (dành cho chủ nuôi)】\nHãy liên lạc với một trong các nơi sau: Văn phòng chi nhánh Đông Bộ (東部出張所) của Trung tâm Bảo vệ Động vật tỉnh Gunma (群馬県動物愛護センター), Sở Cảnh sát Oizumi (大泉警察署) thuộc Cảnh sát tỉnh Gunma (群馬県警察), hoặc Phòng Cải thiện Môi trường (環境整備課) của Văn phòng hành chính thị trấn Oizumi (大泉町役場).\nVăn phòng hành chính thị trấn (Phòng Cải thiện Môi trường (環境整備課)): 0276-63-3111. Tiếp nhận vào các ngày trong tuần, từ 8 giờ 30 sáng đến 5 giờ 15 chiều.\nVăn phòng chi nhánh Đông Bộ của Trung tâm Bảo vệ Động vật (動物愛護センター東部出張所): 0276-55-0731.\nSố điện thoại của Sở Cảnh sát Oizumi (大泉警察署) không có trong trang của thị trấn mà chúng tôi đã đọc.\n\n【Khi bạn tìm thấy chó hoặc mèo bị lạc】\nVới chó lạc hoặc chó hoang, hãy liên lạc với Văn phòng chi nhánh Đông Bộ của Trung tâm Bảo vệ Động vật (動物愛護センター東部出張所) (0276-55-0731).\nVới chó do văn phòng hành chính thị trấn bảo hộ, nếu trước đó đã có liên lạc báo lạc thì sẽ thông báo cho chủ nuôi. Nếu chưa có liên lạc nào, chó sẽ được bàn giao cho Văn phòng chi nhánh Đông Bộ (東部出張所) và được giữ trong một thời gian nhất định.\n\n【Thông tin về chó, mèo đã được bảo hộ】\nBạn có thể xem trên các trang của tỉnh: thông tin bảo hộ (thu giữ) \"犬\" (chó), thông tin bảo hộ (bị thương) \"猫等\" (mèo, v.v.), và thông tin chó mèo lạc được bảo hộ và mất tích (迷い犬・猫保護・行方不明情報).\nTrên trang của thị trấn \"飼い犬・飼い猫の迷子の情報を公開します\" (Công bố thông tin chó, mèo nuôi bị lạc) cũng đăng thông tin thú cưng lạc của những người muốn đăng. Thời gian đăng là 1 tháng.",
+     "original": "【迷子になったとき（飼い主）】\n群馬県動物愛護センター東部出張所、群馬県警察大泉警察署、大泉町役場環境整備課のいずれかに連絡します。\n町役場（環境整備課）：0276-63-3111。受付は平日の午前8時30分〜午後5時15分です。\n動物愛護センター東部出張所：0276-55-0731。\n大泉警察署の電話番号は、読んだ町のページには載っていませんでした。\n\n【迷子の犬や猫を見つけたとき】\n迷い犬や野犬は、動物愛護センター東部出張所（0276-55-0731）に連絡します。\n役場が保護した犬は、事前に迷子の連絡があれば飼い主へ知らせます。連絡がなければ東部出張所へ引き渡し、一定期間収容されます。\n\n【保護された犬や猫の情報】\n県のページ「犬」保護（収容）情報、「猫等」保護（負傷）情報、迷い犬・猫保護・行方不明情報で見られます。\n町のページ「飼い犬・飼い猫の迷子の情報を公開します」にも、掲載を希望した迷子の情報が載ります。掲載期間は1か月です。",
+     "back": "【迷子になったとき（飼い主）】群馬県動物愛護センター東部出張所、群馬県警察大泉警察署、大泉町役場環境整備課のいずれかに連絡します。町役場（環境整備課）：0276-63-3111。受付は平日の午前8時30分〜午後5時15分です。動物愛護センター東部出張所：0276-55-0731。大泉警察署の電話番号は、読んだ町のページには載っていませんでした。【迷子の犬や猫を見つけたとき】迷い犬や野犬は、動物愛護センター東部出張所（0276-55-0731）に連絡します。役場が保護した犬は、事前に迷子の連絡があれば飼い主へ知らせます。連絡がなければ東部出張所へ引き渡し、一定期間収容されます。【保護された犬や猫の情報】県のページ「犬」保護（収容）情報、「猫等」保護（負傷）情報、迷い犬・猫保護・行方不明情報で見られます。町のページ「飼い犬・飼い猫の迷子の情報を公開します」にも、掲載を希望した迷子の情報が載ります。掲載期間は1か月です。",
+     "source": {
+      "title": "飼い犬・飼い猫が迷子になってしまったとき｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s024/kurashi/020/110/20200727195400.html",
+      "where": "本文冒頭、「動物愛護センターなどでの保護情報」"
+     },
+     "status": "auto",
+     "problems": [
+      "「町のページ」は「町の公式ページ」に近く、意味の違いはない。訳文は「Văn phòng chi nhánh Đông Bộ」など表記上の差のみ。"
+     ]
     }
    ]
   }

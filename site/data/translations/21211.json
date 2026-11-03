@@ -1,7 +1,7 @@
 {
  "code": "21211",
  "name": "美濃加茂市",
- "createdAt": "2026-11-03T05:02:45.698Z",
+ "createdAt": "2026-11-03T12:09:53.236Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
  "langs": {
@@ -300,6 +300,20 @@
       "確かめ役の答えが読めなかった"
      ],
      "ledgerId": "r00294"
+    },
+    {
+     "qid": "Q60",
+     "short": "Exames de saúde para bebês e crianças pequenas e aulas para bebês",
+     "text": "O setor responsável pelos exames de saúde de bebês e crianças pequenas e pela consulta sobre cuidados com os filhos é a Seção de Saúde Materno-Infantil (母子保健係), da Divisão de Saúde (健康課), do Departamento de Saúde e Crianças (健康こども部).\nO telefone é 0574-25-4145.\nO local é o Minokamo Health Plaza (みのかも健康プラザ), em Kenkō-no-machi 1-chōme, 2-banchi (健康のまち一丁目2番地).\nNa aula de convivência entre pais e filhos para bebês de 6 a 7 meses (6〜7か月児 親子ふれあい教室), há uma palestra sobre como introduzir a alimentação complementar (離乳食).\nDestina-se a bebês com 6 a 7 meses de vida, e o aviso é entregue no exame de saúde de 3 a 4 meses (3〜4か月児健診).\nAs datas são definidas de acordo com o mês de nascimento (exemplo: quem nasceu em setembro de Reiwa 7 tem a aula em 2 de abril de Reiwa 8).\nPara perguntas, ligue para a Divisão de Apoio à Criação de Filhos (子育て支援課): 0574-66-1380.\nNão foi possível confirmar, nos materiais consultados, as datas, os locais e a forma de inscrição dos exames de saúde de 4 meses, 1 ano e 6 meses e 3 anos, nem os detalhes da aula para pais (両親学級).",
+     "original": "乳幼児健診・育児相談の担当は、健康こども部 健康課 母子保健係です。\n電話は 0574-25-4145 です。\n場所は みのかも健康プラザ(健康のまち一丁目2番地)です。\n6〜7か月児 親子ふれあい教室では、離乳食の進め方の話があります。\n対象は生後6〜7か月で、案内は3〜4か月児健診で渡されます。\n日程は生まれ月ごとに決まっています(例:令和7年9月生まれは令和8年4月2日)。\n問い合わせは子育て支援課 0574-66-1380 です。\n4か月・1歳6か月・3歳健診の日程・会場・申し込み方法と、両親学級の詳細は、確認できた資料からはわかりませんでした。",
+     "back": "乳幼児健診・育児相談の担当は、健康こども部健康課母子保健係です。電話番号は0574-25-4145です。場所はみのかも健康プラザ（健康のまち一丁目2番地）です。6〜7か月児親子ふれあい教室では、離乳食の進め方についての話があります。対象は生後6〜7か月で、案内は3〜4か月児健診で渡されます。日程は生まれ月ごとに決まっています（例：令和7年9月生まれは令和8年4月2日）。問い合わせは子育て支援課0574-66-1380です。4か月・1歳6か月・3歳健診の日程・会場・申し込み方法と、両親学級の詳細は、確認できた資料からはわかりませんでした。",
+     "source": {
+      "title": "６〜７か月児 親子ふれあい教室",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/7/21164.html",
+      "where": "内容・対象・開催日"
+     },
+     "status": "auto",
+     "problems": []
     }
    ]
   },
@@ -589,6 +603,22 @@
       "確かめ役の答えが読めなかった"
      ],
      "ledgerId": "r00295"
+    },
+    {
+     "qid": "Q60",
+     "short": "Pagsusuri ng Kalusugan para sa mga Sanggol at Batang Paslit / Klase para sa mga Sanggol",
+     "text": "Ang namamahala sa pagsusuri ng kalusugan ng mga sanggol at batang paslit at sa konsultasyon sa pag-aalaga ng bata ay ang Seksyon ng Kalusugan ng Ina at Bata (母子保健係), Dibisyon ng Kalusugan (健康課), Kagawaran ng Kalusugan at Kabataan (健康こども部).\nAng numero ng telepono ay 0574-25-4145.\nAng lugar ay ang Minokamo Kenkō Plaza (みのかも健康プラザ), Kenkō no Machi 1-chome 2-banchi (健康のまち一丁目2番地).\nSa Klase ng Pagsasama ng Magulang at Anak para sa mga Sanggol na 6–7 Buwang Gulang (6〜7か月児 親子ふれあい教室), may talakayan tungkol sa pagpapakain ng pagkaing pang-sanggol (離乳食).\nPara ito sa mga sanggol na 6–7 buwang gulang, at ibinibigay ang abiso sa pagsusuri ng kalusugan ng mga sanggol na 3–4 na buwang gulang.\nAng iskedyul ay itinakda ayon sa buwan ng kapanganakan (halimbawa: ang mga ipinanganak noong Setyembre ng Reiwa 7 (令和7年) ay sa Abril 2, Reiwa 8 (令和8年)).\nPara sa mga katanungan, makipag-ugnayan sa Dibisyon ng Suporta sa Pag-aalaga ng Bata (子育て支援課) sa 0574-66-1380.\nAng iskedyul, lugar, at paraan ng pag-apply para sa mga pagsusuri ng kalusugan sa 4 na buwan, 1 taon at 6 na buwan, at 3 taong gulang, pati ang mga detalye ng klase para sa mga magulang (両親学級), ay hindi malaman mula sa mga materyales na nakumpirma.",
+     "original": "乳幼児健診・育児相談の担当は、健康こども部 健康課 母子保健係です。\n電話は 0574-25-4145 です。\n場所は みのかも健康プラザ(健康のまち一丁目2番地)です。\n6〜7か月児 親子ふれあい教室では、離乳食の進め方の話があります。\n対象は生後6〜7か月で、案内は3〜4か月児健診で渡されます。\n日程は生まれ月ごとに決まっています(例:令和7年9月生まれは令和8年4月2日)。\n問い合わせは子育て支援課 0574-66-1380 です。\n4か月・1歳6か月・3歳健診の日程・会場・申し込み方法と、両親学級の詳細は、確認できた資料からはわかりませんでした。",
+     "back": "乳幼児健診・育児相談の担当は、健康こども部 健康課 母子保健係です。電話番号は0574-25-4145です。場所はみのかも健康プラザ(健康のまち一丁目2番地)です。6〜7か月児親子ふれあい教室では、離乳食についての話があります。対象は生後6〜7か月で、案内は3〜4か月児健診で渡されます。日程は生まれ月ごとに決まっています(例:令和7年9月生まれは令和8年4月2日)。問い合わせは子育て支援課 0574-66-1380です。4か月・1歳6か月・3歳健診の日程・会場・申し込み方法と、両親学級の詳細は、確認できた資料からはわかりませんでした。",
+     "source": {
+      "title": "６〜７か月児 親子ふれあい教室",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/7/21164.html",
+      "where": "内容・対象・開催日"
+     },
+     "status": "auto",
+     "problems": [
+      "「離乳食の進め方」が「離乳食の与え方(食べさせ方)」に近い言い方になっている。中身の違いは小さい。"
+     ]
     }
    ]
   },
@@ -878,6 +908,20 @@
       "確かめ役の答えが読めなかった"
      ],
      "ledgerId": "r00296"
+    },
+    {
+     "qid": "Q60",
+     "short": "Khám sức khỏe cho trẻ sơ sinh và trẻ nhỏ・Lớp học dành cho em bé",
+     "text": "Bộ phận phụ trách khám sức khỏe cho trẻ sơ sinh và trẻ nhỏ cũng như tư vấn nuôi dạy con là Phòng Sức khỏe Mẹ và Bé (母子保健係), Ban Sức khỏe (健康課), Sở Sức khỏe và Trẻ em (健康こども部).\nSố điện thoại là 0574-25-4145.\nĐịa điểm là Trung tâm Sức khỏe Minokamo (みのかも健康プラザ) (健康のまち一丁目2番地).\nTại Lớp giao lưu cha mẹ và bé dành cho trẻ 6〜7 tháng tuổi (6〜7か月児 親子ふれあい教室), có phần hướng dẫn cách cho trẻ ăn dặm.\nĐối tượng là trẻ từ 6〜7 tháng tuổi, và thông báo sẽ được phát tại buổi khám sức khỏe cho trẻ 3〜4 tháng tuổi.\nLịch học được quyết định theo tháng sinh của trẻ (ví dụ: trẻ sinh tháng 9 năm Reiwa 7 thì học vào ngày 2 tháng 4 năm Reiwa 8).\nMọi thắc mắc xin liên hệ Phòng Hỗ trợ Nuôi dạy con (子育て支援課), số điện thoại 0574-66-1380.\nVề lịch, địa điểm và cách đăng ký các buổi khám sức khỏe lúc 4 tháng, 1 tuổi 6 tháng và 3 tuổi, cũng như chi tiết về lớp học dành cho cha mẹ (両親学級), chúng tôi chưa tìm thấy thông tin trong các tài liệu đã xác nhận được.",
+     "original": "乳幼児健診・育児相談の担当は、健康こども部 健康課 母子保健係です。\n電話は 0574-25-4145 です。\n場所は みのかも健康プラザ(健康のまち一丁目2番地)です。\n6〜7か月児 親子ふれあい教室では、離乳食の進め方の話があります。\n対象は生後6〜7か月で、案内は3〜4か月児健診で渡されます。\n日程は生まれ月ごとに決まっています(例:令和7年9月生まれは令和8年4月2日)。\n問い合わせは子育て支援課 0574-66-1380 です。\n4か月・1歳6か月・3歳健診の日程・会場・申し込み方法と、両親学級の詳細は、確認できた資料からはわかりませんでした。",
+     "back": "乳幼児健診・育児相談の担当は、健康こども部 健康課 母子保健係です。電話番号は 0574-25-4145 です。場所はみのかも健康プラザ（健康のまち一丁目2番地）です。6〜7か月児親子ふれあい教室では、離乳食の進め方の話があります。対象は生後6〜7か月の子で、案内は3〜4か月児健診で渡されます。日程は生まれ月ごとに決まっています（例：令和7年9月生まれは令和8年4月2日）。問い合わせは子育て支援課 0574-66-1380 です。4か月・1歳6か月・3歳健診の日程・会場・申し込み方法と、両親学級の詳細は、確認できた資料からはわかりませんでした。",
+     "source": {
+      "title": "６〜７か月児 親子ふれあい教室",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/7/21164.html",
+      "where": "内容・対象・開催日"
+     },
+     "status": "auto",
+     "problems": []
     }
    ]
   },
@@ -1164,6 +1208,22 @@
      },
      "status": "auto",
      "problems": []
+    },
+    {
+     "qid": "Q60",
+     "short": "Infant and Toddler Health Checkups / Baby Classes",
+     "text": "The person in charge of infant and toddler health checkups and child-rearing consultations is the Maternal and Child Health Section (母子保健係), Health Division (健康課), Health and Children Department (健康こども部).\nThe phone number is 0574-25-4145.\nThe location is Minokamo Health Plaza (みのかも健康プラザ), at Kenko-no-machi 1-chome, 2-banchi (健康のまち一丁目2番地).\nAt the Parent-Child Fureai Class for 6- to 7-Month-Old Babies (6〜7か月児 親子ふれあい教室), there is a talk about how to move forward with baby food (weaning food).\nThe class is for babies aged 6 to 7 months. The notice is handed out at the 3- to 4-month checkup.\nThe schedule is set by birth month (example: babies born in September of Reiwa 7 [2025] have their class on April 2, Reiwa 8 [2026]).\nFor inquiries, contact the Child-Rearing Support Division (子育て支援課) at 0574-66-1380.\nThe schedules, venues, and how to apply for the 4-month, 1-year-6-month, and 3-year checkups, as well as details of the parent classes (両親学級), could not be confirmed from the materials available.",
+     "original": "乳幼児健診・育児相談の担当は、健康こども部 健康課 母子保健係です。\n電話は 0574-25-4145 です。\n場所は みのかも健康プラザ(健康のまち一丁目2番地)です。\n6〜7か月児 親子ふれあい教室では、離乳食の進め方の話があります。\n対象は生後6〜7か月で、案内は3〜4か月児健診で渡されます。\n日程は生まれ月ごとに決まっています(例:令和7年9月生まれは令和8年4月2日)。\n問い合わせは子育て支援課 0574-66-1380 です。\n4か月・1歳6か月・3歳健診の日程・会場・申し込み方法と、両親学級の詳細は、確認できた資料からはわかりませんでした。",
+     "back": "乳幼児健診・育児相談の担当は、健康こども部健康課母子保健係です。電話番号は0574-25-4145です。場所はみのかも健康プラザ（健康のまち一丁目2番地）です。6〜7か月児親子ふれあい教室では、離乳食の進め方について話があります。対象は生後6〜7か月で、案内は3〜4か月児健診で渡されます。日程は生まれ月ごとに決まっています（例：令和7年9月生まれは令和8年4月2日（2025年・2026年））。問い合わせは子育て支援課（0574-66-1380）です。4か月・1歳6か月・3歳健診の日程・会場・申し込み方法と、両親学級の詳細は、確認できた資料からはわかりませんでした。",
+     "source": {
+      "title": "６〜７か月児 親子ふれあい教室",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/7/21164.html",
+      "where": "内容・対象・開催日"
+     },
+     "status": "auto",
+     "problems": [
+      "原文にない西暦の併記（2025年・2026年）が足されている。内容は正しく、意味は変わらない。「離乳食の進め方の話」は「離乳食の進め方について話」と言い回しが違うだけ。"
+     ]
     }
    ]
   },
@@ -1456,6 +1516,22 @@
      },
      "status": "auto",
      "problems": []
+    },
+    {
+     "qid": "Q60",
+     "short": "赤ちゃんの健診（けんしん）・赤ちゃんの教室（きょうしつ）",
+     "text": "赤ちゃんの健診（けんしん）と、子育て（こそだて）の相談（そうだん）の担当（たんとう）は、健康（けんこう）こども部（ぶ） 健康課（けんこうか） 母子保健係（ぼしほけんがかり）です。\n電話（でんわ）は 0574-25-4145 です。\n場所（ばしょ）は みのかも健康（けんこう）プラザ（健康のまち一丁目2番地）です。\n「6〜7か月児 親子ふれあい教室」では、離乳食（りにゅうしょく：ミルクから ふつうの食事に ちかづけていくときの食べもの）の進（すす）め方（かた）の話があります。\n対象（たいしょう）は、生まれて6〜7か月の赤ちゃんです。案内（あんない）は、3〜4か月児健診のときに渡（わた）されます。\n日（ひ）にちは、生まれた月ごとに決（き）まっています。例（れい）：令和7年9月生まれは 令和8年4月2日です。\n問（と）い合（あ）わせは 子育て支援課（こそだてしえんか） 0574-66-1380 です。\n4か月・1歳6か月・3歳の健診の日（ひ）にち・会場（かいじょう）・申（もう）し込（こ）み方法（ほうほう）と、両親学級（りょうしんがっきゅう）のくわしいことは、確（たし）かめられた資料（しりょう）では わかりませんでした。",
+     "original": "乳幼児健診・育児相談の担当は、健康こども部 健康課 母子保健係です。\n電話は 0574-25-4145 です。\n場所は みのかも健康プラザ(健康のまち一丁目2番地)です。\n6〜7か月児 親子ふれあい教室では、離乳食の進め方の話があります。\n対象は生後6〜7か月で、案内は3〜4か月児健診で渡されます。\n日程は生まれ月ごとに決まっています(例:令和7年9月生まれは令和8年4月2日)。\n問い合わせは子育て支援課 0574-66-1380 です。\n4か月・1歳6か月・3歳健診の日程・会場・申し込み方法と、両親学級の詳細は、確認できた資料からはわかりませんでした。",
+     "back": "乳幼児健診・育児相談の担当は、健康こども部 健康課 母子保健係です。電話は 0574-25-4145 です。場所は みのかも健康プラザ（健康のまち一丁目2番地）です。「6〜7か月児 親子ふれあい教室」では、離乳食（ミルクから普通の食事に近づけていくときの食べ物）の進め方の話があります。対象は生後6〜7か月の赤ちゃんです。案内は3〜4か月児健診のときに渡されます。日にちは、生まれた月ごとに決まっています。例：令和7年9月生まれは令和8年4月2日です。問い合わせは子育て支援課 0574-66-1380 です。4か月・1歳6か月・3歳の健診の日にち・会場・申し込み方法と、両親学級のくわしいことは、確かめられた資料ではわかりませんでした。",
+     "source": {
+      "title": "６〜７か月児 親子ふれあい教室",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/7/21164.html",
+      "where": "内容・対象・開催日"
+     },
+     "status": "auto",
+     "problems": [
+      "「離乳食」の説明（ミルクから普通の食事に近づけていくときの食べ物）が原文にない追加です。内容は正しいですが、足された説明なので削るか、注釈として分けるとよいです。その他の数字・日付・電話番号・場所・対象・案内の条件は原文と一致しています。"
+     ]
     }
    ]
   }
