@@ -1,11 +1,11 @@
 {
  "lang": "id",
  "name": "Bahasa Indonesia",
- "createdAt": "2026-11-02T23:45:36.416Z",
+ "createdAt": "2026-11-03T00:41:38.280Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 413,
- "of": 408,
+ "count": 417,
+ "of": 411,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Ini adalah panduan hidup tidak resmi untuk kota ini. Claude mengumpulkannya dari situs resmi kota dan sumber lain, dengan mencantumkan sumbernya (Machishirube)",
   "すべてのページ": "Semua halaman",
@@ -419,6 +419,10 @@
   "町の支援を見る": "Lihat dukungan dari kota",
   "ほかに": "Lainnya",
   "公式の情報ではありません。": "Ini bukan informasi resmi.",
-  "出典のページが見つからなくなっています": "Halaman sumber tidak dapat ditemukan lagi"
+  "出典のページが見つからなくなっています": "Halaman sumber tidak dapat ditemukan lagi",
+  "想定収容": "Perkiraan kapasitas tampung",
+  "建物の中": "Di dalam gedung",
+  "屋外の広場などを含むことがあります": "Mungkin termasuk area terbuka di luar ruangan seperti lapangan",
+  "町の公式のサイトで新しいページを探して確かめてください。": "Silakan cari dan periksa halaman terbaru di situs resmi kota."
  }
 }

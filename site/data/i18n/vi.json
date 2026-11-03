@@ -1,11 +1,11 @@
 {
  "lang": "vi",
  "name": "Tiếng Việt",
- "createdAt": "2026-11-02T23:45:43.010Z",
+ "createdAt": "2026-11-03T00:41:44.147Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 414,
- "of": 408,
+ "count": 417,
+ "of": 411,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Đây là trang hướng dẫn đời sống không chính thức của thị trấn này. Claude thu thập từ các trang chính thức của thị trấn v.v. và ghi rõ nguồn (Machi-shirube)",
   "すべてのページ": "Tất cả các trang",
@@ -420,6 +420,9 @@
   "ほかに": "Mục khác",
   "公式の情報ではありません。": "Đây không phải là thông tin chính thức.",
   "出典のページが見つからなくなっています": "Không tìm thấy trang nguồn",
-  "町の公式のサイトで新しいページを探して確かめてください。": "Hãy tìm trang mới trên trang web chính thức của thị trấn để xác nhận."
+  "町の公式のサイトで新しいページを探して確かめてください。": "Hãy tìm trang mới trên trang web chính thức của thị trấn để xác nhận.",
+  "想定収容": "Sức chứa dự kiến",
+  "建物の中": "Bên trong tòa nhà",
+  "屋外の広場などを含むことがあります": "Có thể bao gồm cả khu vực ngoài trời như quảng trường"
  }
 }

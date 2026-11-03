@@ -47,7 +47,8 @@
     "translate-ai": "node --env-file=.env scripts/translate-ai.mjs",
     "build:lore": "node scripts/build-lore.mjs",
     "mitate-ask": "node --env-file=.env scripts/mitate-ask.mjs",
-    "local-sites": "node --env-file=.env scripts/local-sites.mjs"
+    "local-sites": "node --env-file=.env scripts/local-sites.mjs",
+    "build:shelter-inside": "node scripts/build-shelter-inside.mjs"
   },
   "devDependencies": {
     "mapshaper": "^0.7.101"

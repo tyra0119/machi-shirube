@@ -1,11 +1,11 @@
 {
  "lang": "en",
  "name": "English",
- "createdAt": "2026-11-02T23:45:29.599Z",
+ "createdAt": "2026-11-03T00:41:28.836Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 417,
- "of": 408,
+ "count": 420,
+ "of": 411,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "This is an unofficial guide to living in this town. Claude gathers information from the town's official website and other sources, and cites each source (Machishirube)",
   "すべてのページ": "All pages",
@@ -423,6 +423,9 @@
   "ほかに": "Others",
   "公式の情報ではありません。": "This is not official information.",
   "出典のページが見つからなくなっています": "The source page can no longer be found",
-  "町の公式のサイトで新しいページを探して確かめてください。": "Please search the town's official website for the new page and confirm."
+  "町の公式のサイトで新しいページを探して確かめてください。": "Please search the town's official website for the new page and confirm.",
+  "想定収容": "Expected Capacity",
+  "建物の中": "Indoors",
+  "屋外の広場などを含むことがあります": "May include outdoor open spaces, etc."
  }
 }

@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-02T23:45:27.131Z",
+ "createdAt": "2026-11-03T00:41:25.793Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 415,
- "of": 408,
+ "count": 418,
+ "of": 411,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -421,6 +421,9 @@
   "町の支援を見る": "Ver ayudas del municipio",
   "ほかに": "Otros",
   "公式の情報ではありません。": "No es información oficial.",
-  "町の公式のサイトで新しいページを探して確かめてください。": "Busque la página nueva en el sitio web oficial del municipio y compruébelo."
+  "町の公式のサイトで新しいページを探して確かめてください。": "Busque la página nueva en el sitio web oficial del municipio y compruébelo.",
+  "建物の中": "Dentro del edificio",
+  "屋外の広場などを含むことがあります": "Puede incluir espacios al aire libre, como plazas",
+  "出典のページが見つからなくなっています": "La página de origen ya no se encuentra"
  }
 }
