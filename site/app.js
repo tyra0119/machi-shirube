@@ -1160,16 +1160,20 @@ setInterval(() => {
 for (const el of document.querySelectorAll(".step-ic[data-ic]")) el.innerHTML = icon(el.dataset.ic);
 for (const b of document.querySelectorAll(".examples button[data-il]")) b.insertAdjacentHTML("afterbegin", illust(b.dataset.il));
 
-// 録画用の「灯りの波」（?wave で開く。W のキーでもう一度）。全国の市区町村を、黒潮町から波が広がるように次々と灯す。
+// 録画用の「灯りの波」（?wave で開く。W のキーでもう一度）。全国の市区町村を、九州から北へ波が進むように次々と灯す
+// （作者「波は九州から北へ広げて」。前の演出の飛行〈沖縄から北海道へ〉と向きをそろえる）。
 // 塗るのは本物のデータ：どの町も国の統計（住民基本台帳）で特色のカードができている。最後に、Claude が深く調べた町だけが濃く光る
 // （作者「日本地図の町がどんどん塗りつぶされていく……ここでわくわく感を演出してみたい」。作り物の数字は出さない）
 async function playWave() {
   while (!map.getSource("labels") || !stats || !progress) await new Promise((r) => setTimeout(r, 200));
   const labels = (await getJSON("data/labels.json")).features;
-  const start = byCode.get("39428") ? [133.03, 33.03] : [137.5, 36];
+  // 九州の南（鹿児島）から札幌へ向かう線の上で、どこまで進んだ所かの順に灯す。九州より南の島（沖縄・奄美）は最初に一緒に灯る
+  const from = [130.55, 31.4], to = [141.35, 43.06];
+  const kx = Math.cos((37 * Math.PI) / 180);
+  const ax = (to[0] - from[0]) * kx, ay = to[1] - from[1], alen = Math.hypot(ax, ay);
   const order = labels
     .filter((f) => byCode.has(f.properties.code) && !byCode.get(f.properties.code).properties.noData)
-    .map((f) => { const [x, y] = f.geometry.coordinates; return { code: f.properties.code, d: Math.hypot((x - start[0]) * Math.cos((y * Math.PI) / 180), y - start[1]) }; })
+    .map((f) => { const [x, y] = f.geometry.coordinates; return { code: f.properties.code, d: Math.max(0, ((x - from[0]) * kx * ax + (y - from[1]) * ay) / alen) }; })
     .sort((a, b) => a.d - b.d);
   const total = Object.values(stats.towns).filter((t) => !t.ward).length; // 1,741
   if (!map.getLayer("muni-wave")) map.addLayer({ id: "muni-wave", type: "fill", source: "munis", paint: { "fill-color": color("--accent"), "fill-opacity": ["coalesce", ["feature-state", "wave"], 0] } }, "muni-lit");
