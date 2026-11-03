@@ -7,7 +7,7 @@ const JMA_TILE = "https://www.jma.go.jp/bosai/jmatile/data";
 async function showLayerMap(code, townFeatures, at, esc, part = null) {
   const box = document.getElementById("layer-map");
   if (!box) return;
-  const get = (url) => fetch(url).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const get = (url) => getData(url); // town.js の、同じファイルを1回だけ読む仕組み
   const [japan, flood, quake, slope, hito, shelters, med, acc, bus, nowc, risk, lore, aed] = await Promise.all([
     get("data/japan.topo.json"), get(`data/flood-pop/${code}.json`), get(`data/quake-pop/${code}.json`), get(`data/slope/${code}.json`), get(`data/hitokoto/${code}.json`),
     get(`data/shelters/${code}.json`), loadMedical(code), get(`data/accidents/${code}.json`), get(`data/bus/${code}.json`),

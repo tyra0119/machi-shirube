@@ -45,7 +45,7 @@ const WIDGETS = { frost: frostWidget, sea: seaWidget, snow: snowWidget };
 
 // 町の特徴のページを作る：PAGES に足し、ページの枠を作り、国のデータの部品を描く
 async function showFeatures(code, at) {
-  const d = await fetch("data/features.json").then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const d = await getData("data/features.json");
   const mine = d?.towns?.[code] ?? [];
   const ind = mine.some((f) => f === "nougyou" || f === "gyogyou") ? (await fetch("data/industry.json").then((r) => r.json()).catch(() => null))?.towns?.[code] : null;
   for (const id of mine) {

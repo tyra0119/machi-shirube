@@ -5,6 +5,12 @@ const color = (name) => getComputedStyle(document.documentElement).getPropertyVa
 const $ = (id) => document.getElementById(id);
 const q = new URLSearchParams(location.search);
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+// データのファイルを読む（同じファイルは1回だけ読み、使うたびに写しを渡す。読んだあとに書きかえる所があるので、写しにして混ざらないように）
+const dataCache = new Map();
+const getData = (url) => {
+  if (!dataCache.has(url)) dataCache.set(url, fetch(url).then((r) => (r.ok ? r.json() : null)).catch(() => null));
+  return dataCache.get(url).then((d) => (d == null ? null : structuredClone(d)));
+};
 // 避難場所の想定収容人数：町の表の人数は屋内と屋外（校庭や広場）の合計のことがある。建物の中の人数が分かれば添える（scripts/build-shelter-inside.mjs）
 const capText = (p) => `${T("想定収容")} ${esc(p.capacity)}${p.inside != null ? `（${T("建物の中")} ${Number(p.inside).toLocaleString("ja-JP")}${T("人")}）` : `（${T("屋外の広場などを含むことがあります")}）`}`;
 // Google マップで、選んだ場所から避難場所までの歩く道を開く（画面と同じ出発地にするため、選んだ場所も渡す。
@@ -15,9 +21,9 @@ const KU = () => (LANG && LANG !== "easy" ? ". " : "。");
 
 async function getJSON(path) {
   try {
-    const res = await fetch(path);
-    if (!res.ok) throw new Error(`${res.status}`);
-    return await res.json();
+    const d = await getData(path); // 同じファイルは1回だけ読む
+    if (d == null) throw new Error(T("読めませんでした"));
+    return d;
   } catch (e) {
     $("problems").insertAdjacentHTML("beforeend", `<li>${path} が読み込めませんでした（${e.message}）</li>`);
     $("problems-box").hidden = false;
@@ -114,7 +120,7 @@ async function showTypes(code, stats, scopeNote) {
   $("types").innerHTML = typeCandidatesHTML(t, f, stats.summary);
   // 町のページのいちばん上に：この町で届きにくい人と、その人のためのページ
   const list = typeCandidates(t, f, stats.summary);
-  const sh = await fetch(`data/shelters/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const sh = await getData(`data/shelters/${code}.json`);
   const tsunami = sh?.features.filter((x) => x.properties.kinds.includes("津波")).length ?? 0;
   const fp = (await floodPop(code))?.kinds ?? {};
   const n = (v) => v.toLocaleString("ja-JP");
@@ -139,18 +145,18 @@ async function showTypes(code, stats, scopeNote) {
   const page = (type) => { const v = TYPE_PAGE[type], f = v?.startsWith("feat-") && FEATURES[v.slice(5)]; return PAGES.find((p) => p.view === v) ?? (f ? { view: v, title: f.title } : null); };
   $("mitate-top").hidden = false;
   // Claude の見立て（scripts/mitate.mjs）があれば、それを出す。ほかの言葉は、確かめの通った訳があるときだけ（無ければ下の決まりによる見立て）
-  let cm = await fetch(`data/mitate/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  let cm = await getData(`data/mitate/${code}.json`);
   const tr = cm && (await aiTr(code, "mitate", cm.createdAt));
   if (cm && LANG && LANG !== "easy" && !tr) cm = null;
   if (cm?.who?.length) {
     const pg = (v) => PAGES.find((p) => p.view === v);
     const t = tr ?? ((id, ja) => ja);
     // 見立てを手がかりに調べた答え（scripts/mitate-ask.mjs が人ごとに問いを結ぶ）。見つかった答えがあれば、そこへ飛ぶ
-    const ans = (await fetch(`data/answers/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null))?.answers ?? [];
+    const ans = (await getData(`data/answers/${code}.json`))?.answers ?? [];
     const yard = (await getJSON("data/yardstick.json")).questions;
     const found = (qid) => { const a = ans.find((x) => x.qid === qid && x.value !== "見つからなかった"); const q = yard.find((x) => x.id === qid); return a && q ? q : null; };
     // ほかの言葉では、答えの訳の見出しを使う（訳が無ければ見出しを付けない）
-    const trItems = LANG ? (await fetch(`data/translations/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null))?.langs?.[LANG]?.items ?? [] : [];
+    const trItems = LANG ? (await getData(`data/translations/${code}.json`))?.langs?.[LANG]?.items ?? [] : [];
     const askShort = (q) => (LANG ? trItems.find((x) => x.qid === q.id && (x.status === "auto" || x.status === "ok"))?.short : q.short);
     $("mitate-top").innerHTML = `<h2>${T("この町で、暮らしの情報が届きにくいのは")}</h2>
       <ul class="mitate-list">${cm.who.map((w, i) => { const p = pg(w.page); const q = w.ask && found(w.ask); return `<li><strong>${esc(t(`m${i}.person`, w.person))}</strong><span class="wall">${icon("alert")} ${esc(t(`m${i}.wall`, w.wall))}</span><span class="why">${esc(t(`m${i}.why`, w.why))}</span><span class="gos">${q ? `<a class="go ask" href="#${q.page}" data-target="a-${q.id}">${icon("search")}${T("町の支援を見る")}${askShort(q) ? `：${esc(askShort(q))}` : ""}</a>` : ""}${p ? `<a class="go" href="#${p.view}">${icon(ILLUST[p.view]?.main ?? "map")}${LANG ? esc(T(p.title)) : `${esc(p.title)}へ`}</a>` : ""}</span></li>`; }).join("")}</ul>
@@ -165,7 +171,7 @@ async function showTypes(code, stats, scopeNote) {
 // 浸水が想定される所に住む人（めやす。scripts/build-flood-pop.mjs が作る）
 let floodPopCache;
 function floodPop(code) {
-  return (floodPopCache ??= fetch(`data/flood-pop/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null));
+  return (floodPopCache ??= getData(`data/flood-pop/${code}.json`));
 }
 async function showFloodPop(code, part) {
   const d = await floodPop(code);
@@ -191,7 +197,7 @@ const depthColor = (label) => { const c = DEPTH_COLORS.find(([, l]) => l === lab
 let aiTrCache;
 async function aiTr(code, kind, createdAt) {
   if (!LANG) return null;
-  aiTrCache ??= fetch(`data/translations/${code}-ai.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  aiTrCache ??= getData(`data/translations/${code}-ai.json`);
   const t = await aiTrCache;
   const x = t?.made?.[kind] === createdAt && t.langs?.[LANG]?.texts;
   return x ? (id, ja) => x[id] ?? ja : null;
@@ -199,7 +205,7 @@ async function aiTr(code, kind, createdAt) {
 // ごみを出す日の文の訳（もとの文 → 訳。確かめの通ったものだけ）
 async function aiTrGomi(code, createdAt) {
   if (!LANG) return null;
-  aiTrCache ??= fetch(`data/translations/${code}-ai.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  aiTrCache ??= getData(`data/translations/${code}-ai.json`);
   const t = await aiTrCache;
   return t?.made?.gomi === createdAt ? t.langs?.[LANG]?.gomi ?? null : null;
 }
@@ -208,7 +214,7 @@ async function aiTrGomi(code, createdAt) {
 // ほかの言葉は、確かめの通った訳があるときだけ
 async function showHitokoto(code, part) {
   if (!part) return;
-  const d = await fetch(`data/hitokoto/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const d = await getData(`data/hitokoto/${code}.json`);
   const h = d?.parts?.[part.properties.part];
   if (!h) return;
   const tr = await aiTr(code, "hitokoto", d.createdAt);
@@ -225,7 +231,7 @@ async function showHitokoto(code, part) {
 // 人が確かめてから出す。町のページ（市区町村）のいちばん上、見立ての下に
 async function showDekiru(code, part) {
   if (part) return;
-  const d = await fetch(`data/dekiru/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const d = await getData(`data/dekiru/${code}.json`);
   if (!d || (d.status !== "ok" && d.status !== "auto") || !d.links?.length) return;
   // ほかの言葉は、確かめの通った訳があるときだけ（訳の無い文は日本語のまま）
   const tr = await aiTr(code, "dekiru", d.createdAt);
@@ -245,7 +251,7 @@ async function showDekiru(code, part) {
 // このページで新しくなったこと（scripts/ledger.mjs の exportChanges。町のページに出るようになった日ごと）。押すとその答えへ
 async function showChanges(code, part) {
   if (part) return;
-  const d = await fetch(`data/changes/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const d = await getData(`data/changes/${code}.json`);
   if (!d?.changes?.length) return;
   const yard = (await getJSON("data/yardstick.json")).questions;
   const pageOf = (c) => ({ "gomi-days": "gomi", "plan-excerpt": "bousai", dekiru: "today" })[c.kind] ?? yard.find((q) => q.id === c.qid)?.page ?? "today";
@@ -261,7 +267,7 @@ async function showChanges(code, part) {
 
 // 町のことが分かるほかのサイト（公式ではない。scripts/local-sites.mjs で AI が探し、作者が使ってよいとしたものだけ）。リンクと短い紹介
 async function showLocalSites(code) {
-  const d = await fetch(`data/local-sites/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const d = await getData(`data/local-sites/${code}.json`);
   if (!d?.sites?.length) return;
   $("local-block").hidden = false;
   const short = (x) => String(x ?? "").replace(/[（(][^）)]*[）)]/g, "").trim(); // AI が添えた「〜の記載による」などの注記は外す
@@ -271,7 +277,7 @@ async function showLocalSites(code) {
 
 // 町のクイズ（scripts/quiz.mjs。確かめた町の答えと国のデータから AI が作り、正しい答えが材料にあるかを PC で照らしたもの）。1問ずつ。答えの並びは毎回まぜる
 async function showQuiz(code) {
-  const d = await fetch(`data/quiz/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const d = await getData(`data/quiz/${code}.json`);
   if (!d?.questions?.length) return;
   const tr = await aiTr(code, "quiz", d.createdAt);
   if (LANG && LANG !== "easy" && !tr) return; // ほかの言葉は訳があるときだけ
@@ -305,7 +311,7 @@ async function showQuiz(code) {
 
 // 昔の災害を伝える碑（国土地理院 自然災害伝承碑。scripts/build-lore.mjs）。碑の文は公開のまま出す。町の碑がなければ近くの町の碑
 async function showLore(code) {
-  const d = await fetch(`data/lore/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const d = await getData(`data/lore/${code}.json`);
   if (!d) return;
   $("lore-block").hidden = false;
   const card = (x) => `<li>
@@ -321,7 +327,7 @@ async function showLore(code) {
 
 // 町の気候（平年値メッシュ × 住む人。scripts/build-climate.mjs）。東京都心と並べ、良い所は明るい話題として添える
 async function showClimate(code) {
-  const d = await fetch(`data/climate/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const d = await getData(`data/climate/${code}.json`);
   if (!d) return;
   $("climate-block").hidden = false;
   const n = (v) => Math.round(v).toLocaleString("ja-JP");
@@ -339,7 +345,7 @@ async function showClimate(code) {
 
 // 坂の多い所に住む人（国土地理院の標高 × 250m 四方の人口。scripts/build-slope.mjs）
 async function showSlope(code, part) {
-  const d = await fetch(`data/slope/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const d = await getData(`data/slope/${code}.json`);
   if (!d || d.slope.people < 10 || d.slope.rate < 1) return; // 平らな町（住む人の1%未満）は出さない
   $("slope-block").hidden = false;
   const n = (v) => v.toLocaleString("ja-JP");
@@ -355,7 +361,7 @@ async function showSlope(code, part) {
 
 // 防災計画の、町・字に関係する所（scripts/plan-excerpts.mjs。Claude が引用つきで抜き出し、人が確かめてから出す）
 async function showPlan(code, part) {
-  const d = await fetch(`data/plan/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const d = await getData(`data/plan/${code}.json`);
   if (!d) return;
   $("plan-block").hidden = false;
   const src = d.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join("・");
@@ -382,7 +388,7 @@ async function showPlan(code, part) {
 
 // 大きな地震の揺れの確率（J-SHIS × 250m 四方の人口。scripts/build-quake-pop.mjs が作る）
 async function showQuake(code, part) {
-  const d = await fetch(`data/quake-pop/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const d = await getData(`data/quake-pop/${code}.json`);
   if (!d) return;
   $("quake-block").hidden = false;
   const n = (v) => v.toLocaleString("ja-JP");
@@ -400,7 +406,7 @@ async function showQuake(code, part) {
 
 // 買い物に困っているお年寄り（農林水産政策研究所の推計を引用。scripts/build-shop-access.mjs）
 async function showShopAccess(code) {
-  const d = await fetch(`data/shop-access/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const d = await getData(`data/shop-access/${code}.json`);
   if (!d) return;
   $("shop-block").hidden = false;
   const n = (v) => v.toLocaleString("ja-JP");
@@ -434,7 +440,7 @@ async function showFuture(code) {
 
 // バスの便利さ（公開されている時刻表データ × 250m 四方の65歳以上。scripts/build-bus.mjs）
 async function showBus(code, part) {
-  const d = await fetch(`data/bus/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const d = await getData(`data/bus/${code}.json`);
   if (!d) return;
   $("bus-block").hidden = false;
   const n = (v) => v.toLocaleString("ja-JP");
@@ -472,7 +478,7 @@ async function showBus(code, part) {
 
 // 道の安全（交通事故。scripts/build-accidents.mjs が警察庁のオープンデータから作る）
 async function showAccidents(code, part) {
-  const d = await fetch(`data/accidents/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const d = await getData(`data/accidents/${code}.json`);
   if (!d?.total) return;
   $("acc-block").hidden = false;
   const n = (v) => v.toLocaleString("ja-JP");
@@ -523,9 +529,8 @@ const TYPE_PAGE = {
 // わが家の避難（いちばん細い段）：場所（町・字・地図を押す・現在地）から、近い避難場所をまっすぐの距離で出す。
 // 場所はブラウザの中だけで使い、送らず残さない。坂・道・浸水の深さは、計算の部品ができてから足す
 async function showHinan(code, townFeatures, startPart) {
-  const res = await fetch(`data/shelters/${code}.json`).catch(() => null);
-  if (!res?.ok) return false;
-  const shelters = await res.json();
+  const shelters = await getData(`data/shelters/${code}.json`);
+  if (!shelters) return false;
   $("hinan-block").hidden = false;
   // 災害の種類のボタンは、この町のデータにある種類から作る（津波の避難場所がない町もある）
   const ORDER = ["津波", "洪水", "土砂", "高潮", "地震", "火事", "内水", "火山"];
@@ -734,14 +739,14 @@ async function showAnswers(code, scopeNote, partKey, partName) {
   const answers = [...partAnswers, ...muniAnswers];
   // ほかの言葉のときは、訳があり確かめられた答えをその言葉で出す（無いものは日本語のまま）
   if (LANG) {
-    const tr = await fetch(`data/translations/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+    const tr = await getData(`data/translations/${code}.json`);
     for (const a of answers) {
       const x = tr?.langs?.[LANG]?.items.find((i) => i.qid === a.qid && (i.status === "auto" || i.status === "ok") && i.original === a.value);
       if (x) Object.assign(a, { valueJa: a.value, value: x.text, translated: true, shortT: x.short });
     }
   }
-  yardstick = await fetch("data/yardstick.json").then((r) => r.json()).catch(() => ({ questions: [] }));
-  health = await fetch("data/health.json").then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  yardstick = (await getData("data/yardstick.json")) ?? { questions: [] };
+  health = await getData("data/health.json");
   answers.sort((x, y) => Boolean(y.level) - Boolean(x.level) || String(x.qid ?? "").localeCompare(String(y.qid ?? "")));
   answersByPage = {};
   for (const a of answers) {
@@ -923,7 +928,7 @@ const TR_NOTE = {
 };
 const TR_PENDING = { pt: "Tradução em verificação. Original em japonês:", es: "Traducción en verificación. Original en japonés:", en: "Translation being checked. Original Japanese:", easy: "いま たしかめて います。もとの にほんご：" };
 async function showTranslations(code) {
-  const t = await fetch(`data/translations/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const t = await getData(`data/translations/${code}.json`);
   if (!t) return;
   const langs = Object.keys(t.langs);
   let lang = LANG ?? new URLSearchParams(location.search).get("lang");
@@ -965,7 +970,7 @@ async function showTranslations(code) {
 // ひらがな・カタカナ・全角半角の違いは吸収する。見つからなければ、町の表へ案内する
 const kana = (s) => String(s ?? "").normalize("NFKC").toLowerCase().replace(/[ァ-ヶ]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0x60)).replace(/[\s　・･]/g, "");
 async function showGomi(code) {
-  const d = await fetch(`data/gomi/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const d = await getData(`data/gomi/${code}.json`);
   if (!d) return;
   $("gomi-block").hidden = false;
   const hue = (k) => [140, 205, 45, 275, 185, 320, 100, 235, 30, 165][d.kinds.indexOf(k) % 10];
@@ -1019,7 +1024,7 @@ function onDay(when, date) {
   return nth[1].normalize("NFKC").split(/[・、]/).map(Number).includes(n);
 }
 async function showGomiDays(code, partName) {
-  const g = await fetch(`data/gomi-days/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const g = await getData(`data/gomi-days/${code}.json`);
   if (!g) return null;
   $("gomi-days-block").hidden = false;
   // ほかの言葉では、確かめの通った訳で出す（無い文は日本語のまま）
@@ -1273,7 +1278,7 @@ async function muniPage(code, stats) {
   const at = await muniPoint(code);
   showToday(code, at);
   await showMedical(code, null); // 市区町村まるごとは、近い順にしない（真ん中が決められないため）
-  const towns = await fetch(`data/towns/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const towns = await getData(`data/towns/${code}.json`);
   await finishPage(code, towns ? topojson.feature(towns, towns.objects.towns).features : [], null, "", at);
   sources([`${stats.source.name}（${stats.source.asOf}。増減は${stats.source.changePeriod}）を加工`, N03, WEATHER, MEDICAL, BASEMAP], code);
   const topo = await getJSON("data/japan.topo.json");
@@ -1303,7 +1308,7 @@ function sources(list, code) {
   // 情報源カード（作者が使ってよいと確かめたサイト）
   if (!code) return;
   // 避難場所のデータ（わが家の避難で使ったもの）
-  fetch(`data/shelters/${code}.json`).then((r) => (r.ok ? r.json() : null)).then((d) => d && $("sources").insertAdjacentHTML("beforeend",
+  getData(`data/shelters/${code}.json`).then((d) => d && $("sources").insertAdjacentHTML("beforeend",
     `<li><a href="${esc(d.source.url)}" target="_blank" rel="noopener">${esc(d.source.title)}</a>（${esc(d.source.license)}・${esc(d.source.fetchedAt)} に取得）を加工（わが家の避難）</li>`)).catch(() => {});
   fetch(`data/sources/${code}.json`).then((r) => (r.ok ? r.json() : null)).then((d) => {
     if (!d?.cards?.length) return;
