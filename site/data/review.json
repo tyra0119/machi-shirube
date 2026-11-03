@@ -1,9 +1,9 @@
 {
- "updatedAt": "2026-11-03T12:57:34.189Z",
+ "updatedAt": "2026-11-03T13:09:25.750Z",
  "counts": {
   "auto": 66,
-  "ok": 170,
-  "pending": 1,
+  "ok": 171,
+  "pending": 0,
   "fix": 28,
   "rejected": 9,
   "unknown": 0
@@ -5931,11 +5931,16 @@
    "kind": "answer",
    "question": "道路の穴・街灯の球切れ・公園の遊具のこわれ・道路への倒木などを見つけたときに、町に知らせる窓口（電話・メール・LINE・アプリなど）。担当の課と電話番号、夜や休日の連絡先",
    "why": "Claude が返した元の文が、答えに使ったページの中に見つからなかった",
-   "status": "pending",
-   "score": null,
+   "status": "ok",
+   "score": 2,
    "source": {
     "title": "国土交通省LINE通報アプリ - 朝霞市",
     "url": "https://www.city.asaka.lg.jp/soshiki/28/dourokinnkyuu.html"
+   },
+   "decided": {
+    "at": "2026-11-03T13:09:25.733Z",
+    "action": "ok",
+    "reason": ""
    }
   }
  ]
