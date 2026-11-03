@@ -794,13 +794,13 @@ function answersHTML(answers) {
       <h3 class="short">${esc(a.shortT ?? T(yardstick.questions.find((x) => x.id === a.qid)?.short ?? ""))}${a.level ? `<span class="lvl">${esc(a.level)}${T("の答え")}</span>${a.translated ? `<span class="lvl ai">${T("AI による訳")}</span>` : ""}` : ""}</h3>
       ${notFound(a)
         ? `<p class="lead">${T("公開の資料では見つかりませんでした")}</p><p class="src">${a.checkedAt ? `${esc(a.checkedAt.slice(0, 10))}・` : ""}${T("町の人に聞きたいことです")}</p>`
-        : `${a.items ? "" : answerBody(a)}
-      ${a.items ? `<ul class="topics">${a.items.map((x) => `<li><span class="tx">${esc(x.text)}</span>
+        : `${a.items && !a.translated ? "" : answerBody(a)}
+      ${a.items ? `<ul class="topics${a.translated ? " src-only" : ""}">${a.items.map((x) => `<li>${a.translated ? "" : `<span class="tx">${esc(x.text)}</span>`}
         <span class="src">${x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.title ?? x.url)}</a>` : esc(x.title ?? "")}${x.asOf ? `・${esc(x.asOf)}` : ""}</span></li>`).join("")}</ul>` : ""}
       ${a.recheckedAt ? `<p class="src rechecked">${icon("eye")}${T("公式のページが変わったので、照らし直しました")}（${esc(a.recheckedAt.slice(0, 10))}）</p>` : ""}
       ${health?.links?.[a.source?.url]?.kind === "gone" ? `<p class="gone">${T("出典のページが見つからなくなっています")}（${esc(health.links[a.source.url].checkedAt.slice(0, 10))}）。${T("町の公式のサイトで新しいページを探して確かめてください。")}</p>` : ""}
-      ${a.outdated ? `<p class="outdated"><strong>古いデータに気づきました</strong>：${esc(a.outdated.what)}。古い：${a.outdated.old?.url ? `<a href="${esc(a.outdated.old.url)}" target="_blank" rel="noopener">${esc(a.outdated.old.asOf ?? "")}</a>` : esc(a.outdated.old?.asOf ?? "")}／新しい：${a.outdated.new?.url ? `<a href="${esc(a.outdated.new.url)}" target="_blank" rel="noopener">${esc(a.outdated.new.asOf ?? "")}</a>` : esc(a.outdated.new?.asOf ?? "")}</p>` : ""}
-      <p class="src chip">${icon("link")} ${a.source?.url ? `<a href="${esc(a.source.url)}" target="_blank" rel="noopener"${a.source.where ? ` title="${esc(T("出典の中の場所"))}：${esc(a.source.where)}"` : ""}>${esc(a.source.title ?? a.source.url)}</a>` : esc(a.source?.title ?? "")}${a.asOf ? `・時点 ${esc(a.asOf)}` : ""}・${T(a.status === "auto" ? "自動で承認" : "人が確かめた")}</p>`}
+      ${a.outdated ? `<p class="outdated"><strong>${T("古いデータに気づきました")}</strong>：${esc(a.outdated.what)}。${T("古い")}：${a.outdated.old?.url ? `<a href="${esc(a.outdated.old.url)}" target="_blank" rel="noopener">${esc(a.outdated.old.asOf ?? "")}</a>` : esc(a.outdated.old?.asOf ?? "")}／${T("新しい")}：${a.outdated.new?.url ? `<a href="${esc(a.outdated.new.url)}" target="_blank" rel="noopener">${esc(a.outdated.new.asOf ?? "")}</a>` : esc(a.outdated.new?.asOf ?? "")}</p>` : ""}
+      <p class="src chip">${icon("link")} ${a.source?.url ? `<a href="${esc(a.source.url)}" target="_blank" rel="noopener"${a.source.where ? ` title="${esc(T("出典の中の場所"))}：${esc(a.source.where)}"` : ""}>${esc(a.source.title ?? a.source.url)}</a>` : esc(a.source?.title ?? "")}${a.asOf ? `・${T("時点")} ${esc(a.asOf)}` : ""}・${T(a.status === "auto" ? "自動で承認" : "人が確かめた")}</p>`}
       </div>
     </li>`;
   }).join("")}</ul>`;
@@ -953,7 +953,7 @@ async function showLangGap(code) {
   $("langgap-block").hidden = false;
   $("langgap-lead").innerHTML = TN("外国の住民のうち、町の防災マップを母語で読める人は約 <strong>{map}%</strong>。このページの訳を足すと約 <strong>{here}%</strong>（めやす）", { map: sum((r) => onMap.has(r.tongue)), here: sum((r) => onMap.has(r.tongue) || here.has(r.tongue)) });
   $("langgap").innerHTML = `<li class="lg-head"><span>${T("国籍")}</span><span>${T("母語（めやす）")}</span><span>${T("町の防災マップ")}</span><span>${T("このページ")}</span></li>`
-    + rows.map((r) => `<li><span class="lg-nat">${esc(r.name)}<small>${r.n}${T("人")}・${r.rate}%</small><i class="lg-bar" style="width:${(r.rate / max) * 100}%"></i></span><span>${esc(T(TONGUE_JA[r.tongue] ?? "—"))}</span><span>${mark(onMap.has(r.tongue))}</span><span>${mark(here.has(r.tongue))}</span></li>`).join("");
+    + rows.map((r) => `<li><span class="lg-nat">${esc(T(r.name))}<small>${r.n}${LANG ? " " : ""}${T("人")}・${r.rate}%</small><i class="lg-bar" style="width:${(r.rate / max) * 100}%"></i></span><span>${esc(T(TONGUE_JA[r.tongue] ?? "—"))}</span><span>${mark(onMap.has(r.tongue))}</span><span>${mark(here.has(r.tongue))}</span></li>`).join("");
   $("langgap-note").innerHTML = `${T("母語は国籍から推し量ったものです（ブラジル＝ポルトガル語、ペルー・ボリビア＝スペイン語など）。英語やほかの言葉が読める人もいます。")}${KU()}${[nat, map].map((a) => a.source?.url ? `<a href="${esc(a.source.url)}" target="_blank" rel="noopener">${esc(a.source.title ?? a.source.url)}</a>` : "").filter(Boolean).join("・")}`;
 }
 
@@ -1327,7 +1327,7 @@ async function main() {
   // 数字：人口と世帯は足し算、割合は人数（世帯の数）で重みをつけて合わせる（めやす）
   const list = chosen.map((f) => f.properties);
   const sum = (k) => list.reduce((s, p) => s + (p[k] ?? 0), 0);
-  $("pop").textContent = sum("population") ? `人口 ${sum("population").toLocaleString("ja-JP")}人・${sum("households").toLocaleString("ja-JP")}世帯` : "人の住んでいない町・字です";
+  $("pop").textContent = sum("population") ? TN("人口 {n}人・{h}世帯", { n: sum("population").toLocaleString("ja-JP"), h: sum("households").toLocaleString("ja-JP") }) : "人の住んでいない町・字です";
   const rows = [];
   for (const [m, label, w] of TOWN_ROWS) {
     const have = list.filter((p) => p[m] != null && p[w]);
@@ -1358,7 +1358,7 @@ async function muniPage(code, stats) {
   if (!t) return notFound("この市区町村は見つかりませんでした");
   const name = shortName(t.name);
   header(name, `${t.pref}・市区町村コード ${code}`, [["日本", "./"], [t.pref, `./?pref=${encodeURIComponent(t.pref)}`], [name, null]]);
-  $("pop").textContent = `人口 ${t.population.toLocaleString("ja-JP")}人`;
+  $("pop").textContent = TN("人口 {n}人", { n: t.population.toLocaleString("ja-JP") });
   const rows = [
     ["over65Rate", "65歳以上の人の割合"], ["under15Rate", "15歳未満の子どもの割合"], ["foreignRate", "外国の住民の割合"],
     ["changeRate", "1年の人口の増減"], ["socialChangeRate", "引っ越しによる1年の増減"],

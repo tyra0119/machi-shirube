@@ -143,7 +143,8 @@
     "q3.a": "Honmaru (recinto principal) e Ninomaru (segundo recinto) do Castelo de Koizumi (小泉城)",
     "q3.b": "Torre principal do Castelo de Okawa (大川城)",
     "q3.c": "Sannomaru (terceiro recinto) do Castelo de Tatebayashi (館林城)",
-    "q3.why": "O Parque Jonouchi (城之内公園) foi criado a partir de uma parte do Honmaru (recinto principal) e do Ninomaru (segundo recinto) do Castelo de Koizumi (小泉城), e é um local famoso pelas cerejeiras."
+    "q3.why": "O Parque Jonouchi (城之内公園) foi criado a partir de uma parte do Honmaru (recinto principal) e do Ninomaru (segundo recinto) do Castelo de Koizumi (小泉城), e é um local famoso pelas cerejeiras.",
+    "n.quiz": "Este é um quiz criado por IA a partir das respostas confirmadas pela cidade e dos dados do governo nacional. Um PC confere se a resposta correta está entre as respostas e os números usados como base."
    },
    "gomi": {
     "第4区": "Distrito 4 (第4区)",
@@ -358,7 +359,8 @@
     "q3.b": "La torre del homenaje del Castillo de Ōkawa (大川城)",
     "q3.c": "El tercer recinto (sannomaru) del Castillo de Tatebayashi (館林城)",
     "q3.why": "El Parque Jōnouchi (城之内公園) es un parque que se acondicionó en una parte del recinto principal (honmaru) y el segundo recinto (ninomaru) del Castillo de Koizumi (小泉城), y es un lugar famoso por sus cerezos.",
-    "g64": "Deposite los tubos fluorescentes, las bombillas y los termómetros, tensiómetros y termómetros de ambiente de mercurio en el contenedor celeste. Los objetos que se rompen, métalos en una bolsa."
+    "g64": "Deposite los tubos fluorescentes, las bombillas y los termómetros, tensiómetros y termómetros de ambiente de mercurio en el contenedor celeste. Los objetos que se rompen, métalos en una bolsa.",
+    "n.quiz": "Este es un cuestionario creado por una IA a partir de respuestas verificadas del municipio y de datos del país. Con una PC se comprueba si la respuesta correcta está entre las respuestas o las cifras que se usaron como base."
    },
    "gomi": {
     "第4区": "Distrito 4 (第4区)",
@@ -1003,7 +1005,9 @@
     "q3.b": "Menara utama Kastel Okawa（大川城）",
     "q3.c": "Lingkaran ketiga (sannomaru) Kastel Tatebayashi（館林城）",
     "q3.why": "Taman Jonouchi（城之内公園） adalah taman yang dibangun dengan menata sebagian dari bagian utama (honmaru) dan lingkaran kedua (ninomaru) Kastel Koizumi（小泉城）, dan merupakan tempat terkenal untuk bunga sakura.",
-    "g62": "Kulkas dan freezer: serahkan ke tempat pengambilan yang ditentukan（指定引取場所）, perusahaan spesialis, atau toko penjual."
+    "g62": "Kulkas dan freezer: serahkan ke tempat pengambilan yang ditentukan（指定引取場所）, perusahaan spesialis, atau toko penjual.",
+    "q0.q": "Kota Oizumi (大泉町) terbentuk pada tahun Showa 32 dari penggabungan Desa Okawa (大川村) dengan wilayah mana?",
+    "n.quiz": "Ini adalah kuis yang dibuat oleh AI berdasarkan jawaban dari pihak kota yang telah dipastikan dan data dari pemerintah pusat. Apakah jawaban yang benar ada di antara jawaban atau angka yang menjadi dasarnya, diperiksa dengan PC."
    },
    "gomi": {
     "第4区": "Distrik 4 (第4区)",
@@ -1509,7 +1513,7 @@
   }
  },
  "name": "邑楽郡大泉町",
- "createdAt": "2026-11-03T02:48:28.899Z",
+ "createdAt": "2026-11-03T08:38:31.744Z",
  "model": "claude-sonnet-5-5",
  "made": {
   "mitate": "2026-11-02T14:22:12.243Z",
