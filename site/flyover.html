@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>まちしるべ｜これからの姿（演出）</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.css">
+<style>
+  /* 録画用の演出のページ。夜の日本の上を、黒潮町から北海道へ低く飛び、通った町が灯っていく */
+  html, body { margin: 0; height: 100%; background: #050b14; overflow: hidden; font-family: "M PLUS 1p", "Hiragino Sans", "Yu Gothic", sans-serif; }
+  #map { position: absolute; inset: 0; }
+  .badge { position: absolute; top: 24px; right: 28px; z-index: 5; padding: 6px 14px; border: 1px solid rgba(255, 255, 255, 0.35); border-radius: 999px; color: rgba(255, 255, 255, 0.8); font-size: 15px; letter-spacing: 0.08em; background: rgba(5, 11, 20, 0.45); }
+  .cap { position: absolute; left: 0; right: 0; bottom: 12%; z-index: 5; text-align: center; color: #fff; opacity: 0; transition: opacity 1.2s ease; text-shadow: 0 2px 18px rgba(0, 0, 0, 0.9); pointer-events: none; }
+  .cap.on { opacity: 1; }
+  .cap .s { display: block; font-size: 22px; letter-spacing: 0.3em; color: #ffd28a; margin-bottom: 10px; }
+  .cap .l { display: block; font-size: 46px; font-weight: 700; letter-spacing: 0.06em; }
+  .vignette { position: absolute; inset: 0; z-index: 4; pointer-events: none; background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, 0.55) 100%); }
+  .start { position: absolute; inset: 0; z-index: 6; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 14px; color: #fff; background: rgba(5, 11, 20, 0.6); font-size: 18px; }
+  .start button { padding: 14px 32px; border: 0; border-radius: 999px; background: #ffb547; color: #1a1205; font-size: 20px; font-weight: 700; cursor: pointer; }
+  .start small { color: rgba(255, 255, 255, 0.7); font-size: 14px; }
+  .start[hidden] { display: none; }
+  .maplibregl-ctrl-attrib { background: rgba(5, 11, 20, 0.5) !important; color: rgba(255, 255, 255, 0.6) !important; font-size: 11px; }
+  .maplibregl-ctrl-attrib a { color: rgba(255, 255, 255, 0.7) !important; }
+</style>
+</head>
+<body>
+<div id="map"></div>
+<div class="vignette"></div>
+<div class="badge">演出（イメージ）</div>
+<p class="cap" id="cap"><span class="s" id="cap-s"></span><span class="l" id="cap-l"></span></p>
+<div class="start" id="start">
+  <button type="button" id="go">飛ぶ</button>
+  <small>標高を読み込んでから飛びます。1回目は読み込みでかくつくことがあるので、2回目を録ってください（R でもう一度）</small>
+</div>
+<script src="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+<script>
+// 録画用の演出：「全国の町を調べていくと、こうなっていく」というこれからの姿（イメージ）。画面の右上に「演出（イメージ）」といつも出す。
+// 作り物の数は出さない（灯るのは「これから」の絵で、調べた町の数ではない）。
+// 地形：地理院の標高タイル（dem_png）を、ブラウザの中で MapLibre の読める形（terrarium）に直して使う。町の形：国土数値情報 N03
+// （作者「立体地図の日本を黒潮町から北海道のほうへ高度数百メートルの高さでかっこよくスクロールしていくような動画」「演出ですと出すのはOK」）
+const q = new URLSearchParams(location.search);
+const SECONDS = Number(q.get("s")) || 26; // 飛ぶ時間
+const ZOOM = Number(q.get("z")) || 9.2; // 高さ（大きいほど低い）
+const PITCH = Number(q.get("p")) || 74; // 傾き
+const CAPTIONS = !q.has("nocap");
+
+// 地理院の標高タイル → terrarium（標高 + 32768 を R・G・B に）。海などの値の無い所は 0m
+maplibregl.addProtocol("gsidem", async (params, abort) => {
+  const url = params.url.replace("gsidem://", "https://cyberjapandata.gsi.go.jp/xyz/dem_png/") + ".png";
+  const res = await fetch(url, { signal: abort.signal });
+  if (!res.ok) { // 標高の無い所（海の上など）は平らな 0m の絵を返す
+    const c = new OffscreenCanvas(256, 256); const g = c.getContext("2d"); g.fillStyle = "rgb(128,0,0)"; g.fillRect(0, 0, 256, 256);
+    return { data: await (await c.convertToBlob()).arrayBuffer() };
+  }
+  const bmp = await createImageBitmap(await res.blob());
+  const c = new OffscreenCanvas(bmp.width, bmp.height);
+  const g = c.getContext("2d", { willReadFrequently: true });
+  g.drawImage(bmp, 0, 0);
+  const img = g.getImageData(0, 0, bmp.width, bmp.height);
+  const d = img.data;
+  for (let i = 0; i < d.length; i += 4) {
+    const x = d[i] * 65536 + d[i + 1] * 256 + d[i + 2];
+    let h = x === 8388608 ? 0 : x < 8388608 ? x * 0.01 : (x - 16777216) * 0.01;
+    if (h < 0) h = 0;
+    const v = h + 32768;
+    d[i] = Math.floor(v / 256); d[i + 1] = Math.floor(v % 256); d[i + 2] = Math.floor((v % 1) * 256); d[i + 3] = 255;
+  }
+  g.putImageData(img, 0, 0);
+  return { data: await (await c.convertToBlob()).arrayBuffer() };
+});
+
+// 飛ぶ道：黒潮町 → 高知 → 瀬戸内 → 大阪 → 名古屋 → 富士山 → 東京 → 仙台 → 盛岡 → 青森 → 函館 → 札幌
+const PATH = [[133.03, 32.99], [133.53, 33.56], [133.93, 34.66], [135.5, 34.69], [136.9, 35.18], [138.73, 35.36], [139.69, 35.69], [140.87, 38.27], [141.15, 39.7], [140.74, 40.82], [140.73, 41.77], [141.35, 43.06]];
+const CAPS = [[0.02, "黒潮町から", "届きにくい人に、届くページを"], [0.38, "どの町にも", "その町ならではの、届きにくい人がいる"], [0.72, "全国", "1,741 の市区町村へ"]];
+
+const map = new maplibregl.Map({
+  container: "map",
+  style: {
+    version: 8,
+    sources: {
+      dem: { type: "raster-dem", tiles: ["gsidem://{z}/{x}/{y}"], tileSize: 256, maxzoom: 12, encoding: "terrarium", attribution: "地理院タイル（標高タイル）を加工" },
+    },
+    layers: [{ id: "sea", type: "background", paint: { "background-color": "#071423" } }],
+  },
+  center: PATH[0], zoom: ZOOM, pitch: PITCH, bearing: 20,
+  attributionControl: { compact: false },
+  interactive: false, maxPitch: 85,
+});
+
+let munis, order;
+map.on("load", async () => {
+  const topo = await fetch("data/japan.topo.json").then((r) => r.json());
+  munis = topojson.feature(topo, topo.objects.municipalities);
+  const prefLines = topojson.mesh(topo, topo.objects.prefectures, (a, b) => a !== b);
+  const labels = await fetch("data/labels.json").then((r) => r.json());
+  const at = new Map(labels.features.filter((f) => f.geometry).map((f) => [f.properties.code, f.geometry.coordinates]));
+  order = munis.features.map((f) => ({ code: f.properties.code, c: at.get(f.properties.code) })).filter((o) => o.c);
+  map.addSource("munis", { type: "geojson", data: munis, promoteId: "code", attribution: "国土数値情報（行政区域データ N03）" });
+  map.addSource("prefs", { type: "geojson", data: prefLines });
+  map.addSource("points", { type: "geojson", data: { type: "FeatureCollection", features: order.map((o) => ({ type: "Feature", id: Number(o.code), properties: { code: o.code }, geometry: { type: "Point", coordinates: o.c } })) } });
+  map.addLayer({ id: "land", type: "fill", source: "munis", paint: { "fill-color": "#13202c" } });
+  map.addLayer({ id: "hill", type: "hillshade", source: "dem", paint: { "hillshade-shadow-color": "#02060c", "hillshade-highlight-color": "#3b5873", "hillshade-accent-color": "#0c1824", "hillshade-exaggeration": 0.6 } });
+  map.addLayer({ id: "lit", type: "fill", source: "munis", paint: { "fill-color": "#ffb547", "fill-opacity": ["coalesce", ["feature-state", "v"], 0] } });
+  map.addLayer({ id: "edge", type: "line", source: "munis", paint: { "line-color": "#ffd28a", "line-width": 0.6, "line-opacity": ["*", ["coalesce", ["feature-state", "v"], 0], 0.9] } });
+  map.addLayer({ id: "pref", type: "line", source: "prefs", paint: { "line-color": "#6f8aa3", "line-width": 0.8, "line-opacity": 0.35 } });
+  map.addLayer({ id: "glow", type: "circle", source: "points", paint: { "circle-color": "#ffcf7a", "circle-radius": ["interpolate", ["linear"], ["zoom"], 5, 5, 10, 13], "circle-blur": 1, "circle-opacity": ["coalesce", ["feature-state", "g"], 0] } });
+  map.setTerrain({ source: "dem", exaggeration: 1.6 });
+  try { map.setSky({ "sky-color": "#0a1830", "horizon-color": "#1d3550", "fog-color": "#0a1626", "sky-horizon-blend": 0.6, "horizon-fog-blend": 0.7, "fog-ground-blend": 0.35 }); } catch {}
+  if (q.has("auto")) setTimeout(fly, 3000);
+});
+
+// 道の長さで割り振った位置（0〜1）→ 地図の位置と、少し先を向く向き
+const segs = PATH.slice(1).map((p, i) => { const a = PATH[i]; return { a, b: p, len: Math.hypot((p[0] - a[0]) * Math.cos((a[1] * Math.PI) / 180), p[1] - a[1]) }; });
+const TOTAL = segs.reduce((s, x) => s + x.len, 0);
+function pointAt(t) {
+  let d = Math.max(0, Math.min(1, t)) * TOTAL;
+  for (const s of segs) { if (d <= s.len) { const k = d / s.len; return [s.a[0] + (s.b[0] - s.a[0]) * k, s.a[1] + (s.b[1] - s.a[1]) * k]; } d -= s.len; }
+  return PATH.at(-1);
+}
+const ease = (t) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
+const bearingTo = (a, b) => (Math.atan2((b[0] - a[0]) * Math.cos((a[1] * Math.PI) / 180), b[1] - a[1]) * 180) / Math.PI;
+
+let running = false;
+function fly() {
+  if (running || !order) return;
+  running = true;
+  document.getElementById("start").hidden = true;
+  const litAt = new Map();
+  for (const o of order) { map.setFeatureState({ source: "munis", id: o.code }, { v: 0 }); map.setFeatureState({ source: "points", id: Number(o.code) }, { g: 0 }); }
+  const cap = document.getElementById("cap");
+  let capI = -1;
+  let bearing = null;
+  const t0 = performance.now();
+  const step = (now) => {
+    const raw = (now - t0) / (SECONDS * 1000);
+    const t = ease(Math.min(1, raw));
+    const here = pointAt(t);
+    const ahead = pointAt(Math.min(1, t + 0.03));
+    const want = bearingTo(here, ahead);
+    bearing = bearing == null ? want : bearing + (((want - bearing + 540) % 360) - 180) * 0.04; // 向きはゆっくり変える
+    // 少し先の地面を見る（画面の真ん中より先に町が灯る）
+    map.jumpTo({ center: here, bearing, pitch: PITCH, zoom: ZOOM - 0.6 * Math.sin(Math.PI * Math.min(1, raw)) });
+    // 近づいた町から灯す（いまの位置から 70km 以内）
+    const cos = Math.cos((here[1] * Math.PI) / 180);
+    for (const o of order) {
+      if (litAt.has(o.code)) continue;
+      const dk = Math.hypot((o.c[0] - here[0]) * cos, o.c[1] - here[1]) * 111;
+      if (dk < 70) litAt.set(o.code, now + dk * 8);
+    }
+    for (const [code, s] of litAt) {
+      const k = (now - s) / 1400;
+      if (k < 0 || k > 1.05) continue;
+      const v = k < 0.25 ? (k / 0.25) * 0.75 : 0.75 - 0.4 * Math.min(1, (k - 0.25) / 0.75); // ぱっと灯って、やわらかく残る
+      map.setFeatureState({ source: "munis", id: code }, { v });
+      map.setFeatureState({ source: "points", id: Number(code) }, { g: (k < 0.3 ? k / 0.3 : Math.max(0.15, 1 - (k - 0.3) / 0.7)) * 0.8 });
+    }
+    if (CAPTIONS) {
+      const i = CAPS.findLastIndex(([p]) => raw >= p);
+      if (i !== capI) {
+        capI = i;
+        cap.classList.remove("on");
+        setTimeout(() => { document.getElementById("cap-s").textContent = CAPS[i][1]; document.getElementById("cap-l").textContent = CAPS[i][2]; cap.classList.add("on"); }, i === 0 ? 0 : 900);
+      }
+      if (raw > 0.3 && raw < 0.38 || raw > 0.66 && raw < 0.72 || raw > 0.97) cap.classList.remove("on");
+    }
+    if (raw < 1) requestAnimationFrame(step);
+    else { running = false; finale(litAt); }
+  };
+  requestAnimationFrame(step);
+}
+// 最後：上へ引きながら、まだ灯っていない町（飛んだ道から遠い町）も、道から近い順に灯して、日本じゅうが灯った姿を見せる
+function finale(litAt) {
+  map.easeTo({ center: [137.6, 37.6], zoom: 4.9, pitch: 35, bearing: 0, duration: 4500, easing: (t) => 1 - Math.pow(1 - t, 3) });
+  const rest = order.filter((o) => !litAt.has(o.code))
+    .map((o) => ({ ...o, d: Math.min(...PATH.map((p) => Math.hypot((o.c[0] - p[0]) * Math.cos((p[1] * Math.PI) / 180), o.c[1] - p[1]))) }))
+    .sort((a, b) => a.d - b.d);
+  const maxD = rest.at(-1)?.d ?? 1;
+  const t0 = performance.now();
+  const step = (now) => {
+    const t = now - t0;
+    for (const o of rest) {
+      const k = (t - 400 - (o.d / maxD) * 3000) / 1400;
+      if (k < 0) break;
+      if (k > 1.05) continue;
+      map.setFeatureState({ source: "munis", id: o.code }, { v: k < 0.25 ? (k / 0.25) * 0.75 : 0.75 - 0.4 * Math.min(1, (k - 0.25) / 0.75) });
+      map.setFeatureState({ source: "points", id: Number(o.code) }, { g: (k < 0.3 ? k / 0.3 : Math.max(0.15, 1 - (k - 0.3) / 0.7)) * 0.8 });
+    }
+    if (t < 5000) requestAnimationFrame(step);
+  };
+  requestAnimationFrame(step);
+  if (CAPTIONS) setTimeout(() => {
+    document.getElementById("cap-s").textContent = "まちしるべ";
+    document.getElementById("cap-l").textContent = "町の名前を選ぶだけで";
+    document.getElementById("cap").classList.add("on");
+  }, 2500);
+}
+document.getElementById("go").addEventListener("click", fly);
+addEventListener("keydown", (e) => {
+  if (e.key === "r" || e.key === "R") { document.getElementById("cap").classList.remove("on"); map.jumpTo({ center: PATH[0], zoom: ZOOM, pitch: PITCH, bearing: 20 }); setTimeout(fly, 800); }
+});
+</script>
+</body>
+</html>
