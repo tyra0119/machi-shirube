@@ -1,10 +1,10 @@
 {
- "updatedAt": "2026-11-03T06:31:53.128Z",
+ "updatedAt": "2026-11-03T07:26:05.207Z",
  "counts": {
-  "auto": 54,
+  "auto": 57,
   "ok": 150,
-  "pending": 1,
-  "fix": 13,
+  "pending": 2,
+  "fix": 17,
   "rejected": 9,
   "unknown": 0
  },
@@ -5096,6 +5096,101 @@
    "source": {
     "title": "大泉町総合防災マップ｜大泉町",
     "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/170/20200828141906.html"
+   }
+  },
+  {
+   "id": "r00318",
+   "scope": "muni:11227",
+   "scopeName": "埼玉県 朝霞市",
+   "qid": "Q21",
+   "kind": "watch",
+   "question": "これから3か月のあいだに町で開かれる催し（祭り・イベント・講座など）。多くても5つ。1つずつ1文で、日付・場所と出典をつけて",
+   "why": "見張り：出典のページが見つからない（404）。2026-11-03 から。「直して」で Claude が新しいページを探して調べ直します",
+   "status": "fix",
+   "score": null,
+   "source": {
+    "title": "「あさか冬のあかりテラス2026」の協賛にご協力ください！ - 朝霞市",
+    "url": "https://www.city.asaka.lg.jp/soshiki/52/asakairumi-2025.html"
+   },
+   "decided": {
+    "at": "2026-11-03T07:24:46.737Z",
+    "action": "fix",
+    "reason": "��҂��`���b�g�Łu���ג����āv�i2026-11-03 ������j"
+   }
+  },
+  {
+   "id": "r00319",
+   "scope": "muni:11227",
+   "scopeName": "埼玉県 朝霞市",
+   "qid": "Q18",
+   "kind": "watch",
+   "question": "介護や高齢者の暮らしの相談の窓口（地域包括支援センターなど）の名前・担当する地区・電話番号",
+   "why": "見張り：出典のページが見つからない（404）。2026-11-03 から。「直して」で Claude が新しいページを探して調べ直します",
+   "status": "fix",
+   "score": null,
+   "source": {
+    "title": "地域包括支援センター - 朝霞市",
+    "url": "https://www.city.asaka.lg.jp/soshiki/23/tiikihoukatusiennsennta-.html"
+   },
+   "decided": {
+    "at": "2026-11-03T07:24:47.425Z",
+    "action": "fix",
+    "reason": "��҂��`���b�g�Łu���ג����āv�i2026-11-03 ������j"
+   }
+  },
+  {
+   "id": "r00320",
+   "scope": "muni:11227",
+   "scopeName": "埼玉県 朝霞市",
+   "qid": "Q47",
+   "kind": "watch",
+   "question": "この町の特産の野菜や果物と、その旬の時期。買える直売所（農産物直売所・道の駅など）の名前と場所（町の公式のページか資料から）",
+   "why": "見張り：出典のページが見つからない（404）。2026-11-03 から。「直して」で Claude が新しいページを探して調べ直します",
+   "status": "fix",
+   "score": null,
+   "source": {
+    "title": "朝霞市 浜崎農業交流センター(農産物直売所)案内(PDF)",
+    "url": "https://www.city.asaka.lg.jp/uploaded/attachment/52903.pdf"
+   },
+   "decided": {
+    "at": "2026-11-03T07:24:48.057Z",
+    "action": "fix",
+    "reason": "��҂��`���b�g�Łu���ג����āv�i2026-11-03 ������j"
+   }
+  },
+  {
+   "id": "r00321",
+   "scope": "muni:39428",
+   "scopeName": "高知県 黒潮町",
+   "qid": "Q13",
+   "kind": "watch",
+   "question": "この町でいま動いていること（新しい施設・大きな計画や工事・制度の変わり目・町の取り組み）。ここ1年ほどの公式の発表から、多くても5つ。1つずつ1文で、それぞれ出典をつけて",
+   "why": "見張り：出典のページの中身が変わり、答えと合わない所がある（食い違い）。「直して」で Claude が調べ直します",
+   "status": "fix",
+   "score": null,
+   "source": {
+    "title": "黒潮町公式ホームページ(トップページ)",
+    "url": "https://www.town.kuroshio.lg.jp/"
+   },
+   "decided": {
+    "at": "2026-11-03T07:24:48.693Z",
+    "action": "fix",
+    "reason": "��҂��`���b�g�Łu���ג����āv�i2026-11-03 ������j"
+   }
+  },
+  {
+   "id": "r00322",
+   "scope": "muni:11227",
+   "scopeName": "埼玉県 朝霞市",
+   "qid": "Q18",
+   "kind": "answer",
+   "question": "介護や高齢者の暮らしの相談の窓口（地域包括支援センターなど）の名前・担当する地区・電話番号",
+   "why": "Claude が返した元の文が、答えに使ったページの中に見つからなかった",
+   "status": "pending",
+   "score": null,
+   "source": {
+    "title": "地域包括支援センター - 朝霞市",
+    "url": "https://www.city.asaka.lg.jp/soshiki/23/tiikihoukatusiennsennta-.html"
    }
   }
  ]

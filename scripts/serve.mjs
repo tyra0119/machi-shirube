@@ -213,7 +213,9 @@ async function decideItem(req, res, id) {
     if (action === "fix" && process.env.ANTHROPIC_API_KEY && (it.kind === "answer" || it.kind === "watch")) {
       const code = it.scope.match(/(\d{5})/)?.[1];
       const part = it.scope.startsWith("town:") ? it.scope.slice(-4) : undefined;
-      research(code, it.question, { log: () => {}, qid: it.qid, hint: reason, redoOf: it.redoOf ?? it.id, part })
+      // 指摘には、作者の理由に加えて、見張りが見つけたこと（ページが消えた・中身が変わった）も渡す
+      const hint = [it.kind === "watch" ? it.why : "", reason].filter(Boolean).join(" ／ ");
+      research(code, it.question, { log: () => {}, qid: it.qid, hint, redoOf: it.redoOf ?? it.id, part })
         .catch((e) => console.error(`${it.id} の調べ直しができませんでした：${e.message}`));
     }
   } catch (e) {
