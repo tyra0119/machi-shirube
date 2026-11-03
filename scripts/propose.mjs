@@ -7,6 +7,7 @@ import fs from "node:fs";
 import Anthropic from "@anthropic-ai/sdk";
 import { record, spent, japanDay, DAILY_LIMIT_USD, TOTAL_LIMIT_USD } from "../src/cost.mjs";
 import * as ledger from "./ledger.mjs";
+import { proposeWithAgent } from "./managed-propose.mjs";
 
 const MODEL = "claude-sonnet-5-5";
 const FILE = "local/ledger/proposals.json";
@@ -41,6 +42,21 @@ export async function propose(code, { part, log = console.log } = {}) {
     人口: t.population,
     "65歳以上の割合": t.over65Rate, "外国の住民の割合": t.foreignRate, "15歳未満の割合": t.under15Rate, "1年の人口の増減": t.changeRate,
   };
+  const payload = {
+    町の数字: facts,
+    物差し: yard.questions.map((q) => ({ id: q.id, text: q.text })),
+    答え: items.map((it) => ({ qid: it.qid, value: it.value, source: it.source?.title, 読んだページ: read[it.qid] ?? [] })),
+  };
+  // まず Managed Agents（outcomes：物差しに合うまで採点役がやり直させる）。うまくいかなければ、下のふつうの呼び出しで作る
+  if (process.env.PROPOSE_ENGINE !== "messages") {
+    try {
+      log("Managed Agents が、答えの全体を見て提案を考えています");
+      const r = await proposeWithAgent({ title: `提案：${t.pref} ${t.name}`, payload, log });
+      return saveProposed(r.p, r.usd, { engine: "managed-agents", sessionId: r.sessionId, rounds: r.rounds, result: r.result });
+    } catch (e) {
+      log(`Managed Agents で作れませんでした（${e.message}）。ふつうの呼び出しで作ります`);
+    }
+  }
   const client = new Anthropic();
   log("Claude が、答えの全体を見て提案を考えています");
   const res = await client.messages.create({
@@ -54,17 +70,17 @@ export async function propose(code, { part, log = console.log } = {}) {
 2. 答えに使ったページを見て、次に別の町で同じことを調べるときに役に立つ「調べ方」（どの種類の公式ページを、どの順で見るか）を、スキルとして1つにまとめてください。
    町の名前や個別の URL ではなく、どの町でも使える言い方で。役に立ちそうに無ければ null。
 <proposal>{"questions": [{"text": "問い", "short": "短い見出し", "why": "なぜこの町で大事か（数字があれば）", "reach": "all" | "town" | "rule", "rule": "決まり（rule のとき）", "page": "bousai|gomi|iryo|komatta|kosodate|kaigo|koutsuu|tetsuzuki|foreign|okane|shisetsu|shiru"}], "skill": {"name": "スキルの名前", "forQids": ["使える問いの番号"], "steps": ["手順1", "手順2"], "why": "なぜ役に立つか"} または null}</proposal> の形だけで答えてください。`,
-    messages: [{ role: "user", content: JSON.stringify({
-      町の数字: facts,
-      物差し: yard.questions.map((q) => ({ id: q.id, text: q.text })),
-      答え: items.map((it) => ({ qid: it.qid, value: it.value, source: it.source?.title, 読んだページ: read[it.qid] ?? [] })),
-    }, null, 1) }],
+    messages: [{ role: "user", content: JSON.stringify(payload, null, 1) }],
   });
   const usd = record(MODEL, res.usage, `提案を考える：${t.name}`);
   const p = JSON.parse(between(res.content.filter((b) => b.type === "text").map((b) => b.text).join(""), "proposal") ?? "{}");
+  return saveProposed(p, usd, { engine: "messages" });
+
+  // 提案を一覧に入れる（どちらの作り方でも同じ）
+  function saveProposed(p, usd, how) {
   const d = loadProposals();
   const at = new Date().toISOString();
-  const add = (x) => { const id = `p${String(d.proposals.length + 1).padStart(4, "0")}`; d.proposals.push({ id, scope, scopeName: `${t.pref} ${t.name}`, at, status: "open", ...x }); return id; };
+  const add = (x) => { const id = `p${String(d.proposals.length + 1).padStart(4, "0")}`; d.proposals.push({ id, scope, scopeName: `${t.pref} ${t.name}`, at, status: "open", ...how, ...x }); return id; };
   // もうある問いと重なる提案は出さない（文字の2つ組の重なりで照らす。物差しを渡しても、Q32 とほぼ同じ問いが出たことがある）
   for (const q of (p.questions ?? []).slice(0, 2)) {
     const near = yard.questions.map((y) => ({ id: y.id, s: overlap(q.text ?? "", y.text) })).sort((a, b) => b.s - a.s)[0];
@@ -73,8 +89,9 @@ export async function propose(code, { part, log = console.log } = {}) {
   }
   if (p.skill?.name) add({ kind: "skill", ...p.skill });
   saveProposals(d);
-  log(`提案 ${(p.questions ?? []).length}つ・スキル ${p.skill?.name ? 1 : 0}つ（$${usd.toFixed(3)}）`);
+  log(`提案 ${(p.questions ?? []).length}つ・スキル ${p.skill?.name ? 1 : 0}つ（$${usd.toFixed(3)}${how.engine === "managed-agents" ? `・Managed Agents、採点 ${how.rounds}回` : ""}）`);
   return { proposals: d.proposals.filter((x) => x.at === at), usd };
+  }
 }
 
 // 人が選ぶ：town（この町だけ）・all（ほかの町にも）・later（今はしない）・skill（スキルにする）

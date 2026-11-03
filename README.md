@@ -53,7 +53,8 @@ AI が作った文は、どれも「渡した数と、確かめ済みの答え�
 | 防災計画の抜き出し | Sonnet 5.5 | PDF のページを文書として渡し、citations で引用つきに（`scripts/plan-excerpts.mjs`） |
 | PDF を絵として読む | Opus 5.5 | 文字の取れない防災マップなど（`scripts/try-pdf.mjs`） |
 | 確かめ役・採点役・訳し戻し | Haiku 5.5 | 答えと資料を照らす、0〜3 点、訳を日本語に戻して意味を比べる |
-| 見立て・ひとこと・数から、できることへ・提案 | Sonnet 5.5 | 渡した数だけで書かせ、数と引用を PC で照らす（`scripts/mitate.mjs` ほか） |
+| 見立て・ひとこと・数から、できることへ・クイズ | Sonnet 5.5 | 渡した数だけで書かせ、数と引用を PC で照らす（`scripts/mitate.mjs` ほか） |
+| 調べ終わりの提案（物差しに無い問い・調べ方のスキル） | Managed Agents（Sonnet 5.5） | outcomes：物差し（ルーブリック）に合うまで別の採点役がやり直させる（`scripts/managed-propose.mjs`） |
 
 作る側（Claude Code。この作品はすべて Claude Code で作った）
 
