@@ -570,6 +570,8 @@ section.block.folded { padding-bottom: 12px; }
 /* 目次：画面の右下に動かないボタン。押すと上に欄の一覧 */
 .toc-fab { position: fixed; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom)); z-index: 40; display: flex; flex-direction: column; align-items: flex-end; gap: 8px; }
 .toc-fab[hidden] { display: none; }
+.toc-fab { transition: opacity 0.2s; }
+.toc-fab.over-map { opacity: 0; pointer-events: none; }
 #toc-btn { display: inline-flex; align-items: center; gap: 6px; min-height: 48px; padding: 0 18px; border: 1px solid var(--line); border-radius: 24px; background: var(--surface); color: var(--text); font-size: 15px; font-weight: 600; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.18); cursor: pointer; }
 #toc-btn svg { width: 20px; height: 20px; }
 #toc-btn[aria-expanded="true"] { background: var(--accent); color: var(--accent-text); border-color: var(--accent); }

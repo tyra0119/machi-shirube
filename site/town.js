@@ -926,8 +926,12 @@ const TR_NOTE = {
   es: "Traducción hecha por IA. Otra IA la tradujo de nuevo al japonés para comprobar el sentido. Confirme la información oficial en el sitio del municipio.",
   en: "Translated by AI. Another AI translated it back into Japanese to check the meaning. Please check the official information on the town's website.",
   easy: "AI が やさしい にほんごに しました。べつの AI が もとの ことばと おなじ いみか たしかめました。ただしい ことは まちの ホームページで たしかめて ください。",
+  id: "Diterjemahkan oleh AI. AI lain menerjemahkannya kembali ke bahasa Jepang untuk memeriksa artinya. Silakan periksa informasi resmi di situs web kota.",
+  ne: "AI ले अनुवाद गरेको। अर्को AI ले अर्थ जाँच्न फेरि जापानीमा अनुवाद गर्‍यो। आधिकारिक जानकारी नगरको वेबसाइटमा जाँच गर्नुहोस्।",
+  vi: "Bản dịch do AI thực hiện. Một AI khác đã dịch ngược lại sang tiếng Nhật để kiểm tra ý nghĩa. Vui lòng xem thông tin chính thức trên trang web của thành phố.",
+  tl: "Isinalin ng AI. Isinalin muli ito ng isa pang AI sa wikang Hapon para suriin ang kahulugan. Pakitingnan ang opisyal na impormasyon sa website ng lungsod.",
 };
-const TR_PENDING = { pt: "Tradução em verificação. Original em japonês:", es: "Traducción en verificación. Original en japonés:", en: "Translation being checked. Original Japanese:", easy: "いま たしかめて います。もとの にほんご：" };
+const TR_PENDING = { pt: "Tradução em verificação. Original em japonês:", es: "Traducción en verificación. Original en japonés:", en: "Translation being checked. Original Japanese:", easy: "いま たしかめて います。もとの にほんご：", id: "Terjemahan sedang diperiksa. Teks asli bahasa Jepang:", ne: "अनुवाद जाँच हुँदैछ। मूल जापानी:", vi: "Bản dịch đang được kiểm tra. Bản gốc tiếng Nhật:", tl: "Sinusuri pa ang salin. Orihinal na Hapon:" };
 async function showTranslations(code) {
   const t = await getData(`data/translations/${code}.json`);
   if (!t) return;
@@ -1158,6 +1162,13 @@ function updateToc() {
   fab.hidden = tocSections().length < 3; // 欄が少ないページは目次なし
   closeToc();
 }
+function tocOverMap() {
+  const fab = $("toc-fab");
+  if (!fab || fab.hidden) return;
+  const b = $("toc-btn").getBoundingClientRect();
+  const hit = maps.some((m) => { const r = m.getContainer().getBoundingClientRect(); return r.width && r.top < b.bottom && r.bottom > b.top - 10 && r.right > b.left; });
+  fab.classList.toggle("over-map", hit && $("toc-panel").hidden);
+}
 function closeToc() {
   if (!$("toc-panel")) return;
   $("toc-panel").hidden = true;
@@ -1185,8 +1196,17 @@ function setupToc() {
     });
     document.addEventListener("click", (e) => { if (!e.target.closest("#toc-fab")) closeToc(); });
     document.addEventListener("keydown", (e) => { if (e.key === "Escape" && !$("toc-panel").hidden) { closeToc(); $("toc-btn").focus(); } });
+    // 地図の右下のボタン（方角・現在地・拡大・縮小）と重なるあいだは、目次のボタンを薄く消す（実機のスマホで重なった）
+    let ticking = false;
+    const overMap = () => { ticking = false; tocOverMap(); };
+    addEventListener("scroll", () => { if (!ticking) { ticking = true; requestAnimationFrame(overMap); } }, { passive: true });
+    addEventListener("resize", overMap);
+    addEventListener("hashchange", () => requestAnimationFrame(overMap));
+    // 欄を開け閉めしたときも、地図の位置が動くので確かめ直す
+    document.addEventListener("click", () => requestAnimationFrame(overMap));
   }
   updateToc();
+  tocOverMap();
 }
 
 // 天気を読む場所：町・字は形のおおよその真ん中、市区町村は地図の名前の位置（政令市まるごとは最初の区）

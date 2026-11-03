@@ -85,6 +85,26 @@
     </section>
   </div>
   <div class="view" data-view="bousai" hidden>
+    <section class="block" id="hinan-block" hidden>
+      <h2>わが家の避難</h2>
+      <p class="note">場所を決めると、近い避難場所が出ます。場所はこのブラウザの中だけで使い、残しません。「Google マップで歩く道を見る」を押したときだけ、選んだ場所と避難場所を Google マップに渡します。</p>
+      <div class="hinan-controls">
+        <label class="field"><span>町・字を選ぶ</span><select id="hinan-town"></select></label>
+        <div class="hinan-kind" id="hinan-kinds" role="radiogroup" aria-label="どの災害のときか"></div>
+      </div>
+      <div id="hinan-map" class="hinan-map" aria-label="避難場所の地図（地図を押すと、その場所から近い避難場所を出します）"></div>
+      <div id="hazard-legend" class="hazard-legend" hidden></div>
+      <p class="note">地図を押すか、右下の「現在地」でも場所を決められます。</p>
+      <p id="hinan-here" class="hinan-here" hidden></p>
+      <ol id="hinan-list" class="hinan-list"></ol>
+      <div id="hinan-walk" class="hinan-walk" hidden></div>
+      <p id="hinan-note" class="note"></p>
+      <ul class="hinan-cautions">
+        <li>指定緊急避難場所は、<strong>災害の種類ごと</strong>に決められています。選んだ災害のときに使える所だけを出しています。</li>
+        <li>災害のあとしばらく過ごす「指定避難所」とは違います。いま開いているかどうかは、このページでは分かりません。</li>
+        <li>町が登録したデータで、最新でない・載っていない場所があります。<strong>町の案内で必ず確かめてください。</strong></li>
+      </ul>
+    </section>
     <section class="block" id="floodpop-block" hidden>
       <h2>浸水・土砂災害が想定される所に住む人</h2>
       <div id="floodpop"></div>
@@ -110,26 +130,6 @@
       <h2>昔の災害を伝える碑</h2>
       <div id="lore"></div>
       <p class="note" id="lore-note"></p>
-    </section>
-    <section class="block" id="hinan-block" hidden>
-      <h2>わが家の避難</h2>
-      <p class="note">場所を決めると、近い避難場所が出ます。場所はこのブラウザの中だけで使い、残しません。「Google マップで歩く道を見る」を押したときだけ、選んだ場所と避難場所を Google マップに渡します。</p>
-      <div class="hinan-controls">
-        <label class="field"><span>町・字を選ぶ</span><select id="hinan-town"></select></label>
-        <div class="hinan-kind" id="hinan-kinds" role="radiogroup" aria-label="どの災害のときか"></div>
-      </div>
-      <div id="hinan-map" class="hinan-map" aria-label="避難場所の地図（地図を押すと、その場所から近い避難場所を出します）"></div>
-      <div id="hazard-legend" class="hazard-legend" hidden></div>
-      <p class="note">地図を押すか、右下の「現在地」でも場所を決められます。</p>
-      <p id="hinan-here" class="hinan-here" hidden></p>
-      <ol id="hinan-list" class="hinan-list"></ol>
-      <div id="hinan-walk" class="hinan-walk" hidden></div>
-      <p id="hinan-note" class="note"></p>
-      <ul class="hinan-cautions">
-        <li>指定緊急避難場所は、<strong>災害の種類ごと</strong>に決められています。選んだ災害のときに使える所だけを出しています。</li>
-        <li>災害のあとしばらく過ごす「指定避難所」とは違います。いま開いているかどうかは、このページでは分かりません。</li>
-        <li>町が登録したデータで、最新でない・載っていない場所があります。<strong>町の案内で必ず確かめてください。</strong></li>
-      </ul>
     </section>
     <section class="block"><h2>防災の情報</h2><div class="answers-box" data-page="bousai"></div></section>
   </div>
