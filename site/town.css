@@ -641,3 +641,9 @@ body:has(.toc-fab:not([hidden])) { padding-bottom: 80px; }
 .gomi-q { border-radius: 10px; }
 /* 行き先のボタン：塗らずに、作品の色の枠と文字で目立たせる（塗りは「選んでいる」と見まちがえるので） */
 .mitate-top .go.ask { background: var(--surface); border: 2px solid var(--accent); color: var(--accent); }
+/* スマホのときだけ、重ねて見る地図を画面の半分の高さに（指1本で地図が動くので、高すぎると地図の外をなぞってページを進めにくい。
+   作者「スマホの時だけ地図を画面の半分にしてほしい」。svh はアドレスバーの出入りで高さが変わらない単位） */
+@media (max-width: 700px) {
+  .layer-map { height: 50vh; height: 50svh; }
+  .hinan-map { height: min(360px, 50vh); height: min(360px, 50svh); }
+}
