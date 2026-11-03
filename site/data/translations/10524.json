@@ -1,7 +1,7 @@
 {
  "code": "10524",
  "name": "邑楽郡大泉町",
- "createdAt": "2026-11-03T06:31:21.698Z",
+ "createdAt": "2026-11-03T07:29:58.665Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
  "langs": {
@@ -1739,19 +1739,18 @@
     {
      "qid": "Q52",
      "short": "Disaster Prevention Information in Multiple Languages",
-     "text": "The Oizumi Town Comprehensive Disaster Prevention Map (大泉町総合防災マップ, fiscal year 2023 edition) is written in three languages: Japanese, English, and Portuguese.\nThe guides for registering for the Safety and Security Mail (安全・安心メール), the telephone delivery service, and the steps for adding the town as a friend on LINE are also in the same three languages (map pages 3–4).\nThe town website can be switched to Portuguese, English, Spanish, Nepali, and Chinese by automatic translation. Because this is machine translation, the content may be slightly different from the original.\nPictograms are displayed at evacuation shelters.\nA Spanish-language disaster prevention map and a version in Easy Japanese (やさしい日本語) were not found in the materials that were read.\nThe language of the messages sent by email or LINE could not be confirmed from the materials.",
+     "text": "The Oizumi Town Comprehensive Disaster Prevention Map (Fiscal Year 2023 edition) (大泉町総合防災マップ) is written in three languages: Japanese, English, and Portuguese.\nThe guides for registering for the Safety and Security Mail (安全・安心メール), the telephone delivery service, and the steps for adding the town as a friend on LINE are also in the same three languages (map pages 3–4).\nThe town website can be switched to Portuguese, English, Spanish, Nepali, and Chinese by automatic translation. Because this is machine translation, the content may differ slightly.\nPictograms are displayed at evacuation shelters.\nA Spanish-language disaster prevention map and a version in Easy Japanese were not found in the materials that were read.\nThe language of the messages sent by email or LINE could not be confirmed from the materials.",
      "original": "大泉町総合防災マップ（2023年度版）は、日本語・英語・ポルトガル語の3つの言葉で書かれています。\n安全・安心メールの登録案内、電話配信サービス、LINEの友だち追加の手順も、同じ3つの言葉です（マップ3〜4ページ）。\n町のホームページは、自動翻訳でポルトガル語・英語・スペイン語・ネパール語・中国語に切り替えられます。機械翻訳なので、内容が少し違うことがあります。\n避難所ではピクトグラムを掲示します。\nスペイン語の防災マップと、やさしい日本語の版は、読んだ範囲では見つかりませんでした。\nメールやLINEで届く文章の言葉は、資料から確かめられませんでした。",
-     "back": "大泉町総合防災マップ（2023年度版）は、英語・ポルトガル語・日本語の3か国語で書かれています。安全・安心メールの登録案内、電話配信サービス、LINEの友だち追加の手順も、同じ3か国語です（マップ3〜4ページ）。町のホームページは、自動翻訳でポルトガル語・英語・スペイン語・ネパール語・中国語に切り替えられます。機械翻訳なので、内容が少し違うことがあります。避難所ではピクトグラムを掲示します。スペイン語の防災マップと、やさしい日本語の版は、読んだ範囲では見つかりませんでした。メールやLINEで届く文章の言葉は、資料から確かめられませんでした。",
+     "back": "大泉町総合防災マップ（2023年度版）は、日本語・英語・ポルトガル語の3言語で書かれています。安全・安心メールの登録案内、電話配信サービス、LINEの友だち追加の手順も、同じ3言語です（マップ3〜4ページ）。町のホームページは、自動翻訳でポルトガル語・英語・スペイン語・ネパール語・中国語に切り替えられます。機械翻訳のため、内容が少し異なる場合があります。避難所ではピクトグラムが掲示されています。スペイン語の防災マップとやさしい日本語版は、読んだ範囲では見つかりませんでした。メールやLINEで届くメッセージの言語は、資料からは確認できませんでした。",
      "source": {
       "title": "大泉町総合防災マップ｜大泉町",
       "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/170/20200828141906.html",
       "where": "主な改訂事項（翻訳の見直し）／分割版「情報を集めましょう」（3〜4ページ）のPDF"
      },
-     "status": "pending",
+     "status": "auto",
      "problems": [
-      "「日本語・英語・ポルトガル語」が「英語・ポルトガル語・日本語」と語順が変わっているだけで意味は同じ。ただし「3つの言葉」が「3か国語」になっており、言語を国の数として表す言い方に変わっている（言語と国の違い）。これは意味のずれとまでは言えないが、「言葉」を「国語」と読ませる誤解を生むおそれがある。その他の数字（2023年度、3〜4ページ、5言語）、名称、手順の内容に変更や抜けはなし。"
-     ],
-     "ledgerId": "r00317"
+      "「LINEの友だち追加」に「町を」の意味を補っている（原文にはない）。「避難所ではピクトグラムを掲示します」が「掲示されています」と、予定から状態の言い方に変わっている。どちらも伝わる内容は同じ。"
+     ]
     }
    ]
   },

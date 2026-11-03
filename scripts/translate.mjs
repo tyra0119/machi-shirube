@@ -35,19 +35,38 @@ export async function checkLang(client, list, label) {
     output_config: { effort: "low" },
     system: `あなたは訳の確かめ役です。それぞれの訳を日本語に訳し戻し、もとの日本語と意味が同じかを確かめてください。
 数字・日付・時間・名前・場所が同じか、足したことや抜けたことが無いかを見ます。言い方の違いはかまいません。
+ずれがあるときは、重さも答えてください：
+- major：数字・日付・時間・名前・場所・電話番号・条件が違う、大事なことが抜けた・足された、意味が変わった
+- minor：語順・言い回し・自然さ・敬語の違いだけで、伝わる中身は同じ
 1件ずつ、次の形だけで答えてください（JSON にしない）：
-<item id="番号"><back>訳し戻した日本語</back><ok>yes か no</ok><problems>ずれ（短く。無ければ空）</problems></item>`,
+<item id="番号"><back>訳し戻した日本語</back><ok>yes か no</ok><level>none・minor・major のどれか</level><problems>ずれ（短く。無ければ空）</problems></item>`,
     messages: [{ role: "user", content: list.map((x) => `<item id="${x.id}">\n<original>${x.original}</original>\n<translation>${x.translation}</translation>\n</item>`).join("\n") }],
   });
   const usd = record(CHECKER, chk.usage, `訳し戻して確かめる：${label}`);
   const text = textOf(chk);
-  const checks = [...text.matchAll(/<item id="([^"]+)">([\s\S]*?)<\/item>/g)].map(([, id, body]) => ({
-    id,
-    back: between(body, "back")?.trim() ?? "",
-    ok: /^\s*yes\s*$/i.test(between(body, "ok") ?? ""),
-    problems: (between(body, "problems") ?? "").trim() ? [(between(body, "problems")).trim()] : [],
-  }));
+  const byId = Object.fromEntries(list.map((x) => [String(x.id), x]));
+  const checks = [...text.matchAll(/<item id="([^"]+)">([\s\S]*?)<\/item>/g)].map(([, id, body]) => {
+    const yes = /^\s*yes\s*$/i.test(between(body, "ok") ?? "");
+    const level = (between(body, "level") ?? "").trim().toLowerCase();
+    // 語順・言い回しだけの軽いずれ（minor）は、数字が訳に残っていれば自動で通す
+    // （作者「翻訳と翻訳戻しがほぼ一致しているのに問いあわせが来ることがよくある。自動承認にはできないのか？」）
+    const minorOk = !yes && level === "minor" && numbersKept(byId[id]?.original ?? "", byId[id]?.translation ?? "");
+    return {
+      id,
+      back: between(body, "back")?.trim() ?? "",
+      ok: yes || minorOk,
+      minor: minorOk,
+      problems: (between(body, "problems") ?? "").trim() ? [(between(body, "problems")).trim()] : [],
+    };
+  });
   return { checks, usd };
+}
+
+// もとの文の3けた以上の数（人数・電話番号・郵便番号・年など）が、訳にもそのまま残っているか（全角は半角に、カンマは外して比べる）
+export function numbersKept(original, translation) {
+  const norm = (s) => s.replace(/[０-９]/g, (d) => String.fromCharCode(d.charCodeAt(0) - 0xfee0)).replace(/(\d),(?=\d{3})/g, "$1");
+  const t = norm(translation);
+  return (norm(original).match(/\d[\d\-]{2,}\d|\d{3,}/g) ?? []).every((n) => t.includes(n));
 }
 
 // 確かめだけやり直す（しくみの不具合で確かめられなかった訳）：npm run translate -- 10524 --recheck
