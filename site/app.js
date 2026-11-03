@@ -1015,7 +1015,8 @@ function loadNames() {
   loadingNames ??= getJSON("data/towns/names.json").then((d) => {
     townNames = d;
     cands = null;
-    if (searchBox.value) search();
+    // 読み終えたとき、まだ欄で入力しているときだけ候補を出し直す（町を選んだあとに開き直して、カードを隠していた）
+    if (searchBox.value && document.activeElement === searchBox) search();
   });
 }
 function search() {
