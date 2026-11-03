@@ -209,6 +209,10 @@ function fly() {
   let capI = -1;
   let bearing = null;
   let last = null;
+  // 高さは海面から一定：地図はふつう、画面の真ん中の地面の高さにカメラを合わせる（山の上で上がり、海の上で下がる）。
+  // 飛んでいるあいだはそれを止め、真ん中の高さを決まった値にしておく（作者「高度が一定してない感じがする。高度は一定のほうがいい」）
+  map._elevationFreeze = true;
+  map.transform.elevation = 0;
   const t0 = performance.now();
   const step = (now) => {
     const raw = Math.min(1, (now - t0) / (SECONDS * 1000));
@@ -232,7 +236,7 @@ function fly() {
       if ((raw > 0.3 && raw < 0.38) || (raw > 0.66 && raw < 0.72) || raw > 0.97) cap.classList.remove("on");
     }
     if (raw < 1) requestAnimationFrame(step);
-    else { running = false; finale(); }
+    else { running = false; map._elevationFreeze = false; finale(); }
   };
   requestAnimationFrame(step);
 }
