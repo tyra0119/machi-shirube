@@ -86,11 +86,11 @@ renderTabs();
 // 各ページのいちばん上の見出しに、場面の印を付ける
 for (const v of document.querySelectorAll(".view")) v.querySelector(".block > h2")?.insertAdjacentHTML("afterbegin", icon(ILLUST[v.dataset.view]?.main));
 addEventListener("hashchange", showView);
-// まちがいの知らせ方のページへ、町と見ているページを渡す（言葉は渡さない。訳でリンクが書きかわっても効くよう、押したときに決める）
+// まちがいの知らせ方のページへ、町と見ているページと言葉を渡す（訳でリンクが書きかわっても効くよう、押したときに決める）
 document.addEventListener("click", (e) => {
   const r = e.target.closest(".about-site a[href^=\"report.html\"]");
   if (!r) return;
-  const rp = new URLSearchParams(location.search); rp.delete("lang"); rp.set("page", currentView());
+  const rp = new URLSearchParams(location.search); rp.set("page", currentView());
   r.href = `report.html?${rp}`;
 });
 showView();

@@ -15,9 +15,9 @@ async function setLang(lang) {
 }
 // ページに書いてある決まった文字を置きかえる（見出し・注意書き・ボタン・入力欄の例）。印（svg）は残す
 const I18N_SEL = ".med-controls button, .town-head .unofficial, .block > h2, .block > p.note, .about-site li, .hinan-cautions li, .med-warn, .memo-link, .town-foot a, .all-head h2, #tr-block h2";
-function translateDom(root = document) {
+function translateDom(root = document, sel = I18N_SEL) {
   if (!LANG) return;
-  for (const el of root.querySelectorAll(I18N_SEL)) {
+  for (const el of root.querySelectorAll(sel)) {
     const svg = el.querySelector(":scope > svg.ic");
     const key = svg ? el.textContent.trim() : el.innerHTML.trim();
     if (!DICT[key]) continue;
@@ -27,9 +27,9 @@ function translateDom(root = document) {
   for (const el of root.querySelectorAll("[aria-label]")) if (DICT[el.getAttribute("aria-label")]) el.setAttribute("aria-label", DICT[el.getAttribute("aria-label")]);
 }
 // 辞書を作るときに使う：ページの決まった文字を集める（ブラウザで collectI18n() を呼ぶ）
-function collectI18n() {
+function collectI18n(sel = I18N_SEL) {
   const keys = new Set();
-  for (const el of document.querySelectorAll(I18N_SEL)) keys.add(el.querySelector(":scope > svg.ic") ? el.textContent.trim() : el.innerHTML.trim());
+  for (const el of document.querySelectorAll(sel)) keys.add(el.querySelector(":scope > svg.ic") ? el.textContent.trim() : el.innerHTML.trim());
   for (const el of document.querySelectorAll("[placeholder]")) keys.add(el.placeholder);
   return [...keys].filter((k) => k && /[ぁ-んァ-ヶ一-龠]/.test(k));
 }
