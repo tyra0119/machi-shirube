@@ -101,7 +101,10 @@ export async function translateTown(code, langs = ["pt", "es", "en", "easy"], lo
   for (const lang of langs) {
     const L = LANGS[lang];
     if (!L) throw new Error(`${lang} は分からない言葉です（${Object.keys(LANGS).join("・")}）`);
-    const kept = (prevT?.langs?.[lang]?.items ?? []).filter((x) => x.status !== "rejected" && all.some((a) => a.id === x.qid && a.text === x.original));
+    // 確かめ待ちの訳は、--retry のときだけ訳し直す（前の確かめ待ちは取り消す）
+    const retry = process.argv.includes("--retry");
+    const kept = (prevT?.langs?.[lang]?.items ?? []).filter((x) => x.status !== "rejected" && !(retry && x.status === "pending") && all.some((a) => a.id === x.qid && a.text === x.original));
+    if (retry) for (const x of prevT?.langs?.[lang]?.items ?? []) if (x.status === "pending" && x.ledgerId) ledger.voidItem(x.ledgerId, "訳し直した（--retry）");
     const answers = all.filter((a) => !kept.some((x) => x.qid === a.id));
     out.langs[lang] = { name: L.name, ja: L.ja, items: [...kept] };
     if (!answers.length) { log(`${L.ja}：みな訳してあります（${kept.length}件）`); continue; }

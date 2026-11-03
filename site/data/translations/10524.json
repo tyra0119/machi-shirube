@@ -1,7 +1,7 @@
 {
  "code": "10524",
  "name": "邑楽郡大泉町",
- "createdAt": "2026-11-03T02:47:09.442Z",
+ "createdAt": "2026-11-03T03:34:26.547Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
  "langs": {
@@ -1003,21 +1003,32 @@
      "problems": []
     },
     {
+     "qid": "Q44",
+     "short": "Oficina para buscar trabajo",
+     "text": "La oficina que atiende al pueblo de Oizumi es Hello Work Tatebayashi (ハローワーク館林).\nEstá en館林市大街道1-3-37 (Tatebayashi-shi Ōkaidō 1-3-37, código postal 〒374-0066).\nEl teléfono es 0276-75-8609.\nAtiende de lunes a viernes, de 8:30 a 17:15. Está cerrada los sábados, domingos, festivos y a fin de año y comienzo de año.\nEn la Sección de Fomento Económico del pueblo (経済振興課; Ayuntamiento, 2.º piso, ventanilla n.º 207, teléfono 0276-63-3111) se reparten las ofertas de empleo de Hello Work.\nEl pueblo no ofrece ni intermedia empleos ni trabajos a domicilio (内職).\nLas consultas para trabajadores, como la pérdida de empleo o problemas en el trabajo, se atienden en la Sección de Fomento Económico, Unidad de Fomento Comercial e Industrial (経済振興課商工振興係).\nEn la página web oficial del pueblo no se pudo confirmar si existe una ventanilla especial para personas mayores, extranjeros o personas con discapacidad. Para más detalles, consulte a Hello Work Tatebayashi (ハローワーク館林).",
+     "original": "大泉町を受け持つのは、ハローワーク館林です。\n場所は、館林市大街道1-3-37（〒374-0066）です。\n電話は0276-75-8609です。\n受付は平日8時30分〜17時15分です。土・日・祝日と年末年始は閉まっています。\n町の経済振興課（庁舎2階207番窓口、電話0276-63-3111）では、ハローワークの求人情報を配っています。\n町では、就職や内職の紹介・あっせんはしていません。\n離職や職場のトラブルなどの勤労者相談は、経済振興課商工振興係で受けています。\nシニア・外国人・障がいのある人向けの専用窓口は、町の公式ページでは確認できませんでした。詳しいことはハローワーク館林に問い合わせてください。",
+     "back": "大泉町を受け持つのは、ハローワーク館林です。場所は、館林市大街道1-3-37（〒374-0066）です。電話は0276-75-8609です。平日8時30分から17時15分まで受け付けています。土曜、日曜、祝日、年末年始は閉まっています。町の経済振興課（庁舎2階、207番窓口、電話0276-63-3111）では、ハローワークの求人情報を配っています。町では、就職や内職の紹介・あっせんはしていません。離職や職場のトラブルなどの勤労者相談は、経済振興課商工振興係で受けています。町の公式ページでは、シニア・外国人・障がいのある人向けの専用窓口を確認できませんでした。詳しいことはハローワーク館林に問い合わせてください。",
+     "source": {
+      "title": "ハローワーク館林（館林公共職業安定所）｜群馬労働局",
+      "url": "https://jsite.mhlw.go.jp/gunma-roudoukyoku/hw/h_map/h_map07.html",
+      "where": "管轄区域・所在地"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
      "qid": "Q46",
-     "short": "Opciones para hacer las compras",
-     "text": "La \"Guía de apoyo para las compras\" (買い物支援ガイド) del pueblo es un folleto que presenta las tiendas que hacen entregas a domicilio de alimentos y artículos de uso diario.\nSe distribuye en lugares como la ventanilla de la Sección de Atención a Personas Mayores (高齢介護課) en la planta baja (1.º piso) del ayuntamiento (役場), el centro comunitario del pueblo (町公民館), el gimnasio municipal (町民体育館), la biblioteca (図書館) y el Centro de Convivencia para Personas Mayores (高齢者ふれあいセンター).\nLa venta ambulante es un sistema en el que el pueblo otorga subvenciones a las empresas que han firmado con el pueblo un memorando de entendimiento sobre el acompañamiento y la vigilancia de personas (見守り).\nLos días, los lugares y las rutas de la venta ambulante no figuraban en la página web oficial del pueblo.\nPara consultas: Sección de Atención a Personas Mayores (高齢介護課), teléfono 0276-63-3111.",
+     "short": "Opciones para hacer compras",
+     "text": "La «Guía de apoyo para las compras» (買い物支援ガイド) del pueblo es un folleto que presenta tiendas que entregan a domicilio alimentos y artículos de uso diario.\nSe distribuye en lugares como la ventanilla de Atención a Personas Mayores y Cuidados (高齢介護課) en el 1.er piso del Ayuntamiento, el Centro Comunitario del pueblo (町公民館), el Gimnasio del pueblo (町民体育館), la Biblioteca (図書館) y el Centro de Convivencia para Personas Mayores (高齢者ふれあいセンター).\nLa venta ambulante es un sistema en el que el pueblo da subvenciones a las empresas que han firmado con el pueblo un memorando de acuerdo sobre la vigilancia y atención a las personas (見守り).\nLos días, lugares y rutas de recorrido no figuraban en la página web oficial del pueblo.\nPara consultas, comuníquese con la Sección de Atención a Personas Mayores y Cuidados (高齢介護課), teléfono 0276-63-3111.",
      "original": "町の「買い物支援ガイド」は、食品や日用品の宅配をしている店を紹介する冊子です。\n配布場所は、役場1階の高齢介護課窓口、町公民館、町民体育館、図書館、高齢者ふれあいセンターなどです。\n移動販売は、町と見守りの覚書を結んだ事業者に町が補助金を出す仕組みです。\n走る日や場所、コースは、町の公式ページには載っていませんでした。\n問い合わせ先は、高齢介護課（電話 0276-63-3111）です。",
-     "back": "町の「買い物支援ガイド」は、食品や日用品の宅配をしている店を紹介する冊子です。配布場所は、役場1階の高齢介護課窓口、町公民館、町民体育館、図書館、高齢者ふれあいセンターなどです。移動販売は、町が見守りの覚書を結んだ事業者に補助金を出す仕組みです。走る日や場所、コースは、町の公式ページには載っていませんでした。問い合わせ先は、高齢介護課（電話 0276-63-3111）です。",
+     "back": "町の「買い物支援ガイド」は、食品や日用品の宅配をしている店を紹介する冊子です。配布場所は、役場1階の高齢介護課窓口、町公民館、町民体育館、図書館、高齢者ふれあいセンターなどです。移動販売は、町と見守りの覚書を結んだ事業者に町が補助金を出す仕組みです。走る日や場所、コースは、町の公式ページには載っていませんでした。問い合わせ先は、高齢介護課（電話 0276-63-3111）です。",
      "source": {
       "title": "大泉町買い物支援ガイド",
       "url": "https://www.town.oizumi.gunma.jp/s014/kenko/010/010/200/20200803094355.html",
       "where": "本文・配布場所"
      },
-     "status": "pending",
-     "problems": [
-      "訳文で「町と見守りの覚書を結んだ事業者」の「見守り」を「acompañamiento y la vigilancia de personas」と二重に訳しており、意味がやや広がっている。「町と」は「町が…覚書を結んだ事業者」の関係を「firmado con el pueblo」で示しているため大きなずれはないが、「見守り」は「見守りの覚書」（見守り活動に関する覚書）とすべき。ほか数字・名前・場所は一致。"
-     ],
-     "ledgerId": "r00268"
+     "status": "auto",
+     "problems": []
     }
    ]
   },
@@ -1519,21 +1530,32 @@
      "problems": []
     },
     {
+     "qid": "Q44",
+     "short": "Job Search Help Desk",
+     "text": "The office in charge of Oizumi Town is Hello Work Tatebayashi (ハローワーク館林).\nIt is located at 1-3-37 Odaikaido, Tatebayashi City (〒374-0066).\nThe phone number is 0276-75-8609.\nIt is open on weekdays from 8:30 to 17:15. It is closed on Saturdays, Sundays, national holidays, and at the end and beginning of the year.\nThe town's Economic Promotion Division (経済振興課) (Town Hall 2nd floor, Window 207, phone 0276-63-3111) hands out Hello Work job listings.\nThe town does not provide job referrals or placement, or referrals for home-based piecework.\nConsultations for workers, such as about leaving a job or trouble at work, are handled by the Commerce and Industry Promotion Section (商工振興係) of the Economic Promotion Division.\nA special window for seniors, foreign residents, or people with disabilities could not be confirmed on the town's official page. For details, please contact Hello Work Tatebayashi.",
+     "original": "大泉町を受け持つのは、ハローワーク館林です。\n場所は、館林市大街道1-3-37（〒374-0066）です。\n電話は0276-75-8609です。\n受付は平日8時30分〜17時15分です。土・日・祝日と年末年始は閉まっています。\n町の経済振興課（庁舎2階207番窓口、電話0276-63-3111）では、ハローワークの求人情報を配っています。\n町では、就職や内職の紹介・あっせんはしていません。\n離職や職場のトラブルなどの勤労者相談は、経済振興課商工振興係で受けています。\nシニア・外国人・障がいのある人向けの専用窓口は、町の公式ページでは確認できませんでした。詳しいことはハローワーク館林に問い合わせてください。",
+     "back": "大泉町を担当するのはハローワーク館林です。所在地は館林市大街道1-3-37（〒374-0066）です。電話番号は0276-75-8609です。受付時間は平日8時30分から17時15分です。土・日・祝日および年末年始は閉まっています。町の経済振興課（庁舎2階207番窓口、電話0276-63-3111）では、ハローワークの求人情報を配布しています。町では、就職や内職の紹介・あっせんは行っていません。離職や職場のトラブルなどの勤労者相談は、経済振興課の商工振興係で受け付けています。シニア・外国人・障がいのある人向けの専用窓口は、町の公式ページでは確認できませんでした。詳しくはハローワーク館林にお問い合わせください。",
+     "source": {
+      "title": "ハローワーク館林（館林公共職業安定所）｜群馬労働局",
+      "url": "https://jsite.mhlw.go.jp/gunma-roudoukyoku/hw/h_map/h_map07.html",
+      "where": "管轄区域・所在地"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
      "qid": "Q46",
      "short": "Ways to Shop",
-     "text": "The town's \"Shopping Support Guide\" (買い物支援ガイド) is a booklet that introduces stores that deliver food and daily necessities to your home.\nIt is available at the Elderly Care Division (高齢介護課) counter on the 1st floor of the Town Office (役場), the Town Community Center (町公民館), the Town Gymnasium (町民体育館), the library (図書館), the Senior Citizens' Fureai Center (高齢者ふれあいセンター), and other places.\nFor mobile sales (移動販売), the town gives subsidies to businesses that have signed a memorandum of understanding with the town about watching over residents.\nThe days, places, and routes of the mobile sales were not listed on the town's official web page.\nFor inquiries, contact the Elderly Care Division (高齢介護課) (phone 0276-63-3111).",
+     "text": "The town's \"Shopping Support Guide\" (買い物支援ガイド) is a booklet that introduces stores that deliver food and daily necessities.\nIt is available at places such as the Elderly Care Division (高齢介護課) window on the 1st floor of Town Hall, the Town Community Center (町公民館), the Town Gymnasium (町民体育館), the Library (図書館), and the Senior Fureai Center (高齢者ふれあいセンター).\nFor mobile sales, the town gives subsidies to businesses that have signed a memorandum of understanding with the town on watching over residents.\nThe days, locations, and routes for the mobile sales were not listed on the town's official page.\nFor inquiries, contact the Elderly Care Division (高齢介護課) (phone 0276-63-3111).",
      "original": "町の「買い物支援ガイド」は、食品や日用品の宅配をしている店を紹介する冊子です。\n配布場所は、役場1階の高齢介護課窓口、町公民館、町民体育館、図書館、高齢者ふれあいセンターなどです。\n移動販売は、町と見守りの覚書を結んだ事業者に町が補助金を出す仕組みです。\n走る日や場所、コースは、町の公式ページには載っていませんでした。\n問い合わせ先は、高齢介護課（電話 0276-63-3111）です。",
-     "back": "町の「買い物支援ガイド」は、食品や日用品を自宅へ届けてくれる店を紹介する冊子です。配布場所は、役場1階の高齢介護課窓口、町公民館、町民体育館、図書館、高齢者ふれあいセンターなどです。移動販売は、町と見守りの覚書を結んだ事業者に町が補助金を出す仕組みです。走る日や場所、コースは、町の公式ページには載っていませんでした。問い合わせ先は、高齢介護課（電話 0276-63-3111）です。",
+     "back": "町の「買い物支援ガイド」は、食品や日用品の宅配を行っている店を紹介する冊子です。配布場所は、役場1階の高齢介護課窓口、町公民館、町民体育館、図書館、高齢者ふれあいセンターなどです。移動販売は、町と見守りの覚書を結んだ事業者に町が補助金を出す仕組みです。移動販売の運行日、場所、コースは、町の公式ページには載っていませんでした。問い合わせ先は、高齢介護課（電話 0276-63-3111）です。",
      "source": {
       "title": "大泉町買い物支援ガイド",
       "url": "https://www.town.oizumi.gunma.jp/s014/kenko/010/010/200/20200803094355.html",
       "where": "本文・配布場所"
      },
-     "status": "pending",
-     "problems": [
-      "原文の「宅配をしている店」は「宅配をしている店」であるが、訳の「住所」ではなく原文は「所在地」で、Q48は問題なし。Q46の訳は「overseeing」ではなく「見守り」を「watching over residents」としているが、原文は「見守り」で意味は合う。ただし、訳文「(phone 0276-63-3111)」は原文と一致。主な問題は、訳文の「the library (図書館)」は原文と一致し、「町民体育館」「町公民館」も一致するが、原文の「町の『買い物支援ガイド』」の「町の」が訳で「The town's」となり一致。よって実質的ずれは「Q46」の「見守り」の対象が「residents（住民）」と補われた点のみ。"
-     ],
-     "ledgerId": "r00269"
+     "status": "auto",
+     "problems": []
     }
    ]
   },
