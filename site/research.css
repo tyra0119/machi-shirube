@@ -66,7 +66,7 @@ body.research-page { display: block; height: 100%; }
 .r-legend .sq.s1 { background: color-mix(in srgb, var(--accent) 20%, var(--surface)); border-color: var(--accent); }
 .r-legend .sq.s0 { border-color: var(--pref-line); background: repeating-linear-gradient(45deg, var(--surface) 0 3px, var(--bg) 3px 6px); }
 .decide { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
-.decide button { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; min-height: 52px; padding: 4px 16px; border: 1px solid var(--line); border-radius: 14px; background: var(--surface); color: var(--text); font-size: 15px; font-weight: 600; cursor: pointer; }
+.decide button { display: inline-flex; flex-direction: column; align-items: center; justify-content: center; min-height: 52px; padding: 4px 20px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--text); font-size: 15px; font-weight: 600; cursor: pointer; }
 .decide button small { font-size: 11px; font-weight: 400; color: var(--text-sub); }
 .decide button.primary small { color: var(--accent-text); }
 .decide button.primary { border: 0; background: var(--accent); color: var(--accent-text); font-weight: 600; }
