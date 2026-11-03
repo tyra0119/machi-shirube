@@ -1,11 +1,11 @@
 {
  "lang": "easy",
  "name": "やさしい にほんご",
- "createdAt": "2026-11-03T00:43:04.745Z",
+ "createdAt": "2026-11-03T00:50:01.421Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 427,
- "of": 418,
+ "count": 428,
+ "of": 419,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "この町の 非公式（ひこうしき）の 暮（く）らしの 案内（あんない）です。Claude が 町の 公式（こうしき）の サイトなどから 集（あつ）めました。もとの 資料（しりょう）も 書（か）いています（まちしるべ）",
   "すべてのページ": "すべての ページ",
@@ -433,6 +433,7 @@
   "急ぐときは、火事・救急は 119、事件・事故は 110 へ。": "急（いそ）ぐときは、火事（かじ）・救急（きゅうきゅう）は 119、事件（じけん）・事故（じこ）は 110 へ電話（でんわ）してください。",
   "答えには確かめた日があります。そのあとに変わっていることがあります。": "答（こた）えには、確（たし）かめた日（ひ）がのっています。そのあとに変（か）わっていることがあります。",
   "数の多くは「めやす」です。必ずこうなるという意味ではありません。": "数（かず）の多（おお）くは「めやす」です。必（かなら）ずそうなるという意味（いみ）ではありません。",
-  "まちがいや古い所を見つけたら、<a href=\"https://github.com/tyra0119/machi-shirube/issues\" target=\"_blank\" rel=\"noopener\">こちら（GitHub の Issues）</a>で知らせてください。": "まちがいや古（ふる）い所（ところ）を見（み）つけたら、<a href=\"https://github.com/tyra0119/machi-shirube/issues\" target=\"_blank\" rel=\"noopener\">こちら（GitHub の Issues）</a>で知（し）らせてください。"
+  "まちがいや古い所を見つけたら、<a href=\"https://github.com/tyra0119/machi-shirube/issues\" target=\"_blank\" rel=\"noopener\">こちら（GitHub の Issues）</a>で知らせてください。": "まちがいや古（ふる）い所（ところ）を見（み）つけたら、<a href=\"https://github.com/tyra0119/machi-shirube/issues\" target=\"_blank\" rel=\"noopener\">こちら（GitHub の Issues）</a>で知（し）らせてください。",
+  "まちがいや古い所を見つけたら、<a href=\"report.html\">知らせ方</a>を見て、GitHub の Issues で知らせてください。": "まちがいや古（ふる）いところを見つけたら、<a href=\"report.html\">知（し）らせ方（かた）</a>を見て、GitHub の Issues で知（し）らせてください。"
  }
 }

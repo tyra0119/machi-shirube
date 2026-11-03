@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-03T00:42:54.230Z",
+ "createdAt": "2026-11-03T00:49:52.387Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 426,
- "of": 418,
+ "count": 427,
+ "of": 419,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -432,6 +432,7 @@
   "答えには確かめた日があります。そのあとに変わっていることがあります。": "Cada respuesta indica la fecha en que se verificó. Puede haber cambiado después.",
   "数の多くは「めやす」です。必ずこうなるという意味ではありません。": "Muchas cifras son aproximadas. No significa que siempre vaya a ser así.",
   "まちがいや古い所を見つけたら、<a href=\"https://github.com/tyra0119/machi-shirube/issues\" target=\"_blank\" rel=\"noopener\">こちら（GitHub の Issues）</a>で知らせてください。": "Si encuentra un error o información desactualizada, avísenos <a href=\"https://github.com/tyra0119/machi-shirube/issues\" target=\"_blank\" rel=\"noopener\">aquí (Issues de GitHub)</a>.",
-  "想定収容": "Capacidad prevista"
+  "想定収容": "Capacidad prevista",
+  "まちがいや古い所を見つけたら、<a href=\"report.html\">知らせ方</a>を見て、GitHub の Issues で知らせてください。": "Si encuentra algún error o información desactualizada, consulte <a href=\"report.html\">cómo informarnos</a> y avísenos en GitHub Issues."
  }
 }

@@ -1,11 +1,11 @@
 {
  "lang": "pt",
  "name": "Português",
- "createdAt": "2026-11-03T00:42:48.602Z",
+ "createdAt": "2026-11-03T00:49:49.719Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 427,
- "of": 418,
+ "count": 428,
+ "of": 419,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Guia não oficial da vida na cidade. O Claude reúne as informações em sites oficiais da cidade e outras fontes, e indica a origem de cada uma (Machishirube)",
   "すべてのページ": "Todas as páginas",
@@ -433,6 +433,7 @@
   "答えには確かめた日があります。そのあとに変わっていることがあります。": "Cada resposta traz a data em que foi verificada. As informações podem ter mudado depois dessa data.",
   "数の多くは「めやす」です。必ずこうなるという意味ではありません。": "Muitos dos números são apenas \"estimativas\". Não significa que será sempre assim.",
   "まちがいや古い所を見つけたら、<a href=\"https://github.com/tyra0119/machi-shirube/issues\" target=\"_blank\" rel=\"noopener\">こちら（GitHub の Issues）</a>で知らせてください。": "Se encontrar erros ou informações desatualizadas, avise-nos <a href=\"https://github.com/tyra0119/machi-shirube/issues\" target=\"_blank\" rel=\"noopener\">aqui (Issues do GitHub)</a>.",
-  "町の公式のサイトで新しいページを探して確かめてください。": "Procure a página mais recente no site oficial do município e confirme."
+  "町の公式のサイトで新しいページを探して確かめてください。": "Procure a página mais recente no site oficial do município e confirme.",
+  "まちがいや古い所を見つけたら、<a href=\"report.html\">知らせ方</a>を見て、GitHub の Issues で知らせてください。": "Se encontrar algum erro ou informação desatualizada, veja <a href=\"report.html\">como avisar</a> e avise-nos pelas Issues do GitHub."
  }
 }

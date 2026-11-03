@@ -1,11 +1,11 @@
 {
  "lang": "en",
  "name": "English",
- "createdAt": "2026-11-03T00:42:58.923Z",
+ "createdAt": "2026-11-03T00:49:55.045Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 427,
- "of": 418,
+ "count": 428,
+ "of": 419,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "This is an unofficial guide to living in this town. Claude gathers information from the town's official website and other sources, and cites each source (Machishirube)",
   "すべてのページ": "All pages",
@@ -433,6 +433,7 @@
   "急ぐときは、火事・救急は 119、事件・事故は 110 へ。": "In an emergency, call 119 for fire or an ambulance, and 110 for crimes or accidents.",
   "答えには確かめた日があります。そのあとに変わっていることがあります。": "Each answer shows the date it was checked. Things may have changed since then.",
   "数の多くは「めやす」です。必ずこうなるという意味ではありません。": "Most numbers are rough estimates. They do not mean things will always turn out this way.",
-  "まちがいや古い所を見つけたら、<a href=\"https://github.com/tyra0119/machi-shirube/issues\" target=\"_blank\" rel=\"noopener\">こちら（GitHub の Issues）</a>で知らせてください。": "If you find a mistake or outdated information, please let us know <a href=\"https://github.com/tyra0119/machi-shirube/issues\" target=\"_blank\" rel=\"noopener\">here (GitHub Issues)</a>."
+  "まちがいや古い所を見つけたら、<a href=\"https://github.com/tyra0119/machi-shirube/issues\" target=\"_blank\" rel=\"noopener\">こちら（GitHub の Issues）</a>で知らせてください。": "If you find a mistake or outdated information, please let us know <a href=\"https://github.com/tyra0119/machi-shirube/issues\" target=\"_blank\" rel=\"noopener\">here (GitHub Issues)</a>.",
+  "まちがいや古い所を見つけたら、<a href=\"report.html\">知らせ方</a>を見て、GitHub の Issues で知らせてください。": "If you find a mistake or outdated information, see <a href=\"report.html\">how to report it</a> and let us know through GitHub Issues."
  }
 }

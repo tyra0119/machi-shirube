@@ -1,0 +1,25 @@
+/* まちがいの知らせ方 */
+.report { max-width: 760px; margin: 0 auto; padding: 16px; }
+.report h1 { margin: 8px 0; font-size: 26px; }
+.report .lead { font-size: 16px; line-height: 1.8; }
+.report h2 { font-size: 19px; margin: 0 0 8px; }
+.report .warn { margin: 16px 0; padding: 12px 16px; border: 2px solid #c0392b; border-radius: 12px; background: var(--surface); }
+.report .warn-head { display: flex; align-items: center; gap: 6px; margin: 0 0 4px; font-weight: 700; color: #c0392b; }
+.report .warn-head svg { width: 20px; height: 20px; }
+.report .warn ul { margin: 0; padding-left: 1.2em; line-height: 1.8; }
+.report .town-box { margin: 16px 0; padding: 14px 16px; border-radius: 12px; background: var(--town-tint, var(--bg)); }
+.report .big-go { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 22px; border-radius: 999px; background: var(--accent); color: var(--accent-text, #fff); font-size: 17px; font-weight: 700; text-decoration: none; }
+.report .big-go svg { width: 20px; height: 20px; }
+.report .steps-head { margin-top: 24px; }
+.report .steps { margin: 0; padding: 0; list-style: none; counter-reset: s; display: grid; gap: 10px; }
+.report .steps > li { counter-increment: s; position: relative; padding: 12px 14px 12px 56px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+.report .steps > li::before { content: counter(s); position: absolute; left: 14px; top: 12px; width: 30px; height: 30px; border-radius: 50%; background: var(--accent); color: var(--accent-text, #fff); font-weight: 700; display: grid; place-items: center; }
+.report .steps .t { display: flex; align-items: center; gap: 6px; margin: 2px 0 6px; font-size: 17px; font-weight: 700; }
+.report .steps .t svg { width: 20px; height: 20px; color: var(--accent); }
+.report .steps p { margin: 0 0 6px; line-height: 1.8; }
+.report .tmpl { position: relative; margin-top: 8px; }
+.report .tmpl pre { margin: 0; padding: 12px; border-radius: 10px; background: var(--bg); font-size: 14px; line-height: 1.7; white-space: pre-wrap; }
+.report .tmpl button { margin-top: 8px; min-height: 44px; padding: 0 20px; border: 1px solid var(--accent); border-radius: 999px; background: var(--surface); color: var(--accent); font-size: 15px; font-weight: 700; cursor: pointer; }
+.report .faq { margin-top: 24px; }
+.report .faq dt { margin-top: 10px; font-weight: 700; }
+.report .faq dd { margin: 4px 0 0; line-height: 1.8; }

@@ -1,11 +1,11 @@
 {
  "lang": "vi",
  "name": "Tiếng Việt",
- "createdAt": "2026-11-03T00:43:25.926Z",
+ "createdAt": "2026-11-03T00:50:10.993Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 424,
- "of": 418,
+ "count": 425,
+ "of": 419,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Đây là trang hướng dẫn đời sống không chính thức của thị trấn này. Claude thu thập từ các trang chính thức của thị trấn v.v. và ghi rõ nguồn (Machi-shirube)",
   "すべてのページ": "Tất cả các trang",
@@ -430,6 +430,7 @@
   "急ぐときは、火事・救急は 119、事件・事故は 110 へ。": "Khi khẩn cấp: cháy, cấp cứu gọi 119; sự cố, tai nạn gọi 110.",
   "答えには確かめた日があります。そのあとに変わっていることがあります。": "Mỗi câu trả lời đều có ngày đã kiểm tra. Thông tin có thể đã thay đổi sau ngày đó.",
   "数の多くは「めやす」です。必ずこうなるという意味ではありません。": "Phần lớn các con số chỉ là \"ước chừng\". Không có nghĩa là chắc chắn sẽ như vậy.",
-  "まちがいや古い所を見つけたら、<a href=\"https://github.com/tyra0119/machi-shirube/issues\" target=\"_blank\" rel=\"noopener\">こちら（GitHub の Issues）</a>で知らせてください。": "Nếu thấy chỗ sai hoặc thông tin cũ, vui lòng báo cho chúng tôi tại <a href=\"https://github.com/tyra0119/machi-shirube/issues\" target=\"_blank\" rel=\"noopener\">đây (Issues trên GitHub)</a>."
+  "まちがいや古い所を見つけたら、<a href=\"https://github.com/tyra0119/machi-shirube/issues\" target=\"_blank\" rel=\"noopener\">こちら（GitHub の Issues）</a>で知らせてください。": "Nếu thấy chỗ sai hoặc thông tin cũ, vui lòng báo cho chúng tôi tại <a href=\"https://github.com/tyra0119/machi-shirube/issues\" target=\"_blank\" rel=\"noopener\">đây (Issues trên GitHub)</a>.",
+  "まちがいや古い所を見つけたら、<a href=\"report.html\">知らせ方</a>を見て、GitHub の Issues で知らせてください。": "Nếu bạn thấy chỗ nào sai hoặc đã cũ, hãy xem <a href=\"report.html\">cách báo</a> và báo cho chúng tôi qua Issues trên GitHub."
  }
 }

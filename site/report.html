@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>まちがいの知らせ方｜まちしるべ</title>
+<meta name="description" content="まちしるべのページで、まちがいや古い所を見つけたときの知らせ方（GitHub の Issues への書き方）。">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="town.css">
+<link rel="stylesheet" href="report.css">
+</head>
+<body class="town-page">
+<main class="report">
+  <nav class="town-path"><a href="./">日本</a><span id="back"></span></nav>
+  <h1>まちがいの知らせ方</h1>
+  <p class="lead">まちしるべのページで、まちがいや古い所を見つけたら、GitHub（ギットハブ）の「Issues（イシュー）」という掲示板に書いて知らせてください。作者が読んで、調べ直します。</p>
+
+  <section class="warn">
+    <p class="warn-head" id="warn-head"></p>
+    <ul>
+      <li>書いたことは、<strong>だれでも見られます</strong>（インターネットに公開されます）。</li>
+      <li>自分の住所・電話番号・名前・家族のことは、<strong>書かないでください</strong>。</li>
+      <li>急ぐこと（火事・けが・事件）は、ここではなく 119・110 へ。</li>
+    </ul>
+  </section>
+
+  <section class="town-box" id="town-box" hidden>
+    <h2>このページから知らせる</h2>
+    <p id="town-what"></p>
+    <a class="big-go" id="go-new" target="_blank" rel="noopener"></a>
+    <p class="note">押すと GitHub の書く画面が開き、町の名前と見ていたページが入っています。下の 3〜5 の所だけ書き足してください。</p>
+  </section>
+
+  <h2 class="steps-head">書き方（はじめての人へ）</h2>
+  <ol class="steps">
+    <li>
+      <p class="t" data-ic="link">GitHub のアカウントを用意する</p>
+      <p>Issues に書くには、GitHub のアカウント（無料）が要ります。<a href="https://github.com/signup" target="_blank" rel="noopener">github.com/signup</a> でメールアドレスを登録して作ります。表に出る名前は、本名でなくてかまいません。</p>
+    </li>
+    <li>
+      <p class="t" data-ic="search">知らせる画面を開く</p>
+      <p>上の「このページから知らせる」のボタンか、<a href="https://github.com/tyra0119/machi-shirube/issues/new" target="_blank" rel="noopener">新しい知らせを書く画面</a>を開きます。ログインしていなければ、ログインの画面が先に出ます。</p>
+    </li>
+    <li>
+      <p class="t" data-ic="doc">「Title」（題）を書く</p>
+      <p>町の名前と、何がちがうかを短く。例：「黒潮町 ごみ：○○地区の燃やせないごみの曜日がちがう」</p>
+    </li>
+    <li>
+      <p class="t" data-ic="pin">本文を書く</p>
+      <p>下のひな形を「写す」で写し、「Add a description」の欄に貼りつけて、□ の所を書きます。</p>
+      <div class="tmpl">
+        <pre id="tmpl"></pre>
+        <button type="button" id="copy">写す</button>
+      </div>
+    </li>
+    <li>
+      <p class="t" data-ic="eye">送る</p>
+      <p>右下の「Create」（または「Submit new issue」）を押すと、知らせが届きます。作者が読んで、ページを直したら、その知らせに返事を書きます。</p>
+    </li>
+  </ol>
+
+  <section class="faq">
+    <h2>よくあること</h2>
+    <dl>
+      <dt>英語の画面でむずかしい</dt>
+      <dd>題と本文は、日本語のほか、ポルトガル語・スペイン語など、どの言葉で書いてもかまいません。</dd>
+      <dt>アカウントを作りたくない</dt>
+      <dd>町のことの正しい答えは、町の役場にも聞けます。役場の窓口の電話は、町のページの「困ったとき」にあります。</dd>
+      <dt>出典が分からない</dt>
+      <dd>「どこで見たか」は分かる所だけでかまいません。「町のお知らせの紙で見た」なども助かります。</dd>
+    </dl>
+  </section>
+</main>
+<footer class="town-foot"><a href="./">← 日本地図に戻る</a></footer>
+<script src="icons.js"></script>
+<script src="report.js"></script>
+</body>
+</html>

@@ -67,6 +67,7 @@ function showView() {
   const v = currentView();
   for (const el of document.querySelectorAll(".view")) el.hidden = el.dataset.view !== v;
   for (const a of document.querySelectorAll(".town-tabs a")) a.toggleAttribute("aria-current", a.dataset.view === v);
+  // まちがいの知らせ方のページへ、町と見ているページを渡す（言葉は渡さない）
   // 隠れていたあいだは大きさが 0 なので、見せたときに大きさを合わせ、覚えておいた範囲に寄せ直す
   for (const m of maps) { m.resize(); if (m.fitTo) m.fitBounds(m.fitTo.box, { ...m.fitTo.opts, duration: 0 }); }
   // タブの帯を動かさない：下のほうまで読んでいたときだけ、新しいページの先頭（タブの帯のすぐ下）を出す。
@@ -85,6 +86,13 @@ renderTabs();
 // 各ページのいちばん上の見出しに、場面の印を付ける
 for (const v of document.querySelectorAll(".view")) v.querySelector(".block > h2")?.insertAdjacentHTML("afterbegin", icon(ILLUST[v.dataset.view]?.main));
 addEventListener("hashchange", showView);
+// まちがいの知らせ方のページへ、町と見ているページを渡す（言葉は渡さない。訳でリンクが書きかわっても効くよう、押したときに決める）
+document.addEventListener("click", (e) => {
+  const r = e.target.closest(".about-site a[href^=\"report.html\"]");
+  if (!r) return;
+  const rp = new URLSearchParams(location.search); rp.delete("lang"); rp.set("page", currentView());
+  r.href = `report.html?${rp}`;
+});
 showView();
 
 main().catch((e) => console.error(e));
