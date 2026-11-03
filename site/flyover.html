@@ -84,7 +84,8 @@ maplibregl.addProtocol("gsidem", async (params) => {
 // 飛ぶ道：那覇 → 奄美 → 鹿児島 → 熊本 → 福岡 → 関門 → 広島 → 岡山 → 大阪 → 名古屋 → 富士山 → 東京 → 仙台 → 盛岡 → 青森 → 函館 → 札幌
 // （作者「黒潮町は書かなくていいかな。むしろ、沖縄から北海道へ移動していくほうがいいな」）。
 // 折れ線の角で向きが急に変わらないよう、なめらかな曲線（Catmull-Rom）にして、長さで割り振る（速さが一定）
-const PATH = [[127.68, 26.21], [129.49, 28.38], [130.56, 31.6], [130.71, 32.8], [130.4, 33.59], [130.95, 33.95], [132.46, 34.39], [133.93, 34.66], [135.5, 34.69], [136.9, 35.18], [138.73, 35.36], [139.69, 35.69], [140.87, 38.27], [141.15, 39.7], [140.74, 40.82], [140.73, 41.77], [141.35, 43.06]];
+// 列島の真ん中あたりを通る道（作者「九州から、北海道まで、左右をふらふらすることなく、列島の中央付近をスムーズに移動したら」）
+const PATH = [[127.75, 26.3], [129.4, 28.3], [130.6, 31.7], [130.95, 32.9], [131.05, 33.95], [132.6, 34.75], [134.4, 35.05], [135.9, 35.15], [137.4, 35.85], [139.2, 36.4], [140.25, 37.9], [140.85, 39.5], [140.8, 40.75], [140.72, 41.85], [141.3, 43.0]];
 const CAPS = [[0.02, "沖縄から", "届きにくい人に、届くページを"], [0.38, "どの町にも", "その町ならではの、届きにくい人がいる"], [0.72, "全国", "1,741 の市区町村へ"]];
 const curve = (() => {
   const pts = [];
@@ -97,6 +98,16 @@ const curve = (() => {
     }
   }
   pts.push(PATH.at(-1));
+  // 道をならす（となりの点との平均を何度もとり、細かな曲がりを消す。はじめと終わりの点は動かさない）
+  for (let pass = 0; pass < 6; pass++) {
+    const src = pts.map((p) => [...p]);
+    for (let i = 1; i < pts.length - 1; i++) {
+      const a = Math.max(0, i - 25), b = Math.min(pts.length - 1, i + 25);
+      let x = 0, y = 0;
+      for (let j = a; j <= b; j++) { x += src[j][0]; y += src[j][1]; }
+      pts[i] = [x / (b - a + 1), y / (b - a + 1)];
+    }
+  }
   const km = (a, b) => Math.hypot((b[0] - a[0]) * Math.cos((a[1] * Math.PI) / 180), b[1] - a[1]) * 111;
   const acc = [0];
   for (let i = 1; i < pts.length; i++) acc.push(acc[i - 1] + km(pts[i - 1], pts[i]));
@@ -223,11 +234,11 @@ function fly() {
     const raw = Math.min(1, (now - t0) / (SECONDS * 1000));
     const t = ease(raw);
     const here = pointAt(t);
-    const want = bearingTo(pointAt(Math.max(0, t - 0.01)), pointAt(Math.min(1, t + 0.035)));
+    const want = bearingTo(pointAt(Math.max(0, t - 0.02)), pointAt(Math.min(1, t + 0.07)));
     // 向きはゆっくり変える（コマの間の時間に合わせる）
     const dt = last == null ? 16 : now - last;
     last = now;
-    bearing = bearing == null ? want : bearing + (((want - bearing + 540) % 360) - 180) * (1 - Math.exp(-dt / 900));
+    bearing = bearing == null ? want : bearing + (((want - bearing + 540) % 360) - 180) * (1 - Math.exp(-dt / 2200));
     map.jumpTo({ center: here, bearing, pitch: PITCH, zoom: ZOOM }); // 高さは一定（変えると地形の細かさが切り替わってちらつく）
     while (qi < queue.length && queue[qi].at <= t) { lightOn(queue[qi].code, now); qi++; }
     tickLights(now);
