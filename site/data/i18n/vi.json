@@ -1,11 +1,11 @@
 {
  "lang": "vi",
  "name": "Tiếng Việt",
- "createdAt": "2026-11-03T02:26:35.483Z",
+ "createdAt": "2026-11-03T02:52:40.452Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 645,
- "of": 639,
+ "count": 659,
+ "of": 654,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Đây là trang hướng dẫn đời sống không chính thức của thị trấn này. Claude thu thập từ các trang chính thức của thị trấn v.v. và ghi rõ nguồn (Machi-shirube)",
   "すべてのページ": "Tất cả các trang",
@@ -651,6 +651,20 @@
   "バス停を選ぶ": "Chọn trạm xe buýt",
   "平日の時刻表です。土日・祝日はちがうことがあります": "Đây là lịch trình ngày thường. Thứ Bảy, Chủ Nhật và ngày lễ có thể khác",
   "きょうの平日の便は、もうありません": "Hôm nay đã hết chuyến ngày thường",
-  "平日の時刻表です。土日・祝日はちがうことがあります。乗る前に、バス会社や町の時刻表で確かめてください。": "Đây là lịch trình ngày thường. Thứ Bảy, Chủ Nhật và ngày lễ có thể khác. Trước khi đi, hãy kiểm tra lại với công ty xe buýt hoặc lịch trình của thị trấn."
+  "平日の時刻表です。土日・祝日はちがうことがあります。乗る前に、バス会社や町の時刻表で確かめてください。": "Đây là lịch trình ngày thường. Thứ Bảy, Chủ Nhật và ngày lễ có thể khác. Trước khi đi, hãy kiểm tra lại với công ty xe buýt hoặc lịch trình của thị trấn.",
+  "AED の設置場所（町の一覧）。使える日と時間は施設によってちがいます": "Nơi đặt máy AED (danh sách trong thị trấn). Ngày và giờ sử dụng khác nhau tùy từng cơ sở",
+  "もう一度": "Thử lại",
+  "正解": "Chính xác",
+  "ざんねん": "Tiếc quá",
+  "つぎの問題": "Câu hỏi tiếp theo",
+  "けっかを見る": "Xem kết quả",
+  "{n} 問のうち {r} 問 正解でした": "Đúng {r} trên {n} câu",
+  "仕事探しの窓口": "Nơi tìm việc làm",
+  "健康診断・がん検診・予防接種": "Khám sức khỏe, tầm soát ung thư, tiêm chủng",
+  "地元の旬の野菜と直売所": "Rau củ theo mùa của địa phương và điểm bán trực tiếp",
+  "AEDの場所": "Vị trí máy AED",
+  "熊などの野生動物の出没": "Gấu và các động vật hoang dã xuất hiện",
+  "犬・猫と暮らす人へ": "Dành cho người nuôi chó, mèo",
+  "地域の集まりとボランティア": "Sinh hoạt cộng đồng và tình nguyện"
  }
 }

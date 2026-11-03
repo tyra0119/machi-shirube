@@ -1,11 +1,11 @@
 {
  "lang": "id",
  "name": "Bahasa Indonesia",
- "createdAt": "2026-11-03T02:26:24.627Z",
+ "createdAt": "2026-11-03T02:52:21.316Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 645,
- "of": 639,
+ "count": 661,
+ "of": 654,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Ini adalah panduan hidup tidak resmi untuk kota ini. Claude mengumpulkannya dari situs resmi kota dan sumber lain, dengan mencantumkan sumbernya (Machishirube)",
   "すべてのページ": "Semua halaman",
@@ -651,6 +651,22 @@
   "平日の時刻表です。土日・祝日はちがうことがあります": "Ini jadwal hari kerja. Jadwal hari Sabtu, Minggu, dan hari libur nasional bisa berbeda",
   "きょうの平日の便は、もうありません": "Hari ini tidak ada lagi bus hari kerja",
   "平日の時刻表です。土日・祝日はちがうことがあります。乗る前に、バス会社や町の時刻表で確かめてください。": "Ini jadwal hari kerja. Jadwal hari Sabtu, Minggu, dan hari libur nasional bisa berbeda. Sebelum naik, pastikan dulu di perusahaan bus atau jadwal kota.",
-  "距離はまっすぐ測ったもので、坂や道の曲がりは考えていません。歩く時間は1分60m（お年寄りの歩く速さ）のめやすで、坂はまっすぐの線の上の上り下りから見積もったものです（道の坂とは違います）。海抜は地理院タイル（標高タイル）、浸水の深さは想定の地図の色から読んだめやすです。避難の判断は町の案内に従ってください。": "Jarak diukur dalam garis lurus dan tidak memperhitungkan tanjakan atau kelokan jalan. Waktu berjalan kaki adalah perkiraan dengan kecepatan 60 m per menit (kecepatan jalan orang lanjut usia), dan tanjakan diperkirakan dari naik turunnya medan di sepanjang garis lurus (berbeda dengan tanjakan jalan yang sebenarnya). Ketinggian dari permukaan laut berasal dari Ubin Geospatial Information Authority (ubin ketinggian), dan kedalaman genangan adalah perkiraan yang dibaca dari warna pada peta perkiraan. Untuk keputusan evakuasi, ikuti panduan dari kota."
+  "距離はまっすぐ測ったもので、坂や道の曲がりは考えていません。歩く時間は1分60m（お年寄りの歩く速さ）のめやすで、坂はまっすぐの線の上の上り下りから見積もったものです（道の坂とは違います）。海抜は地理院タイル（標高タイル）、浸水の深さは想定の地図の色から読んだめやすです。避難の判断は町の案内に従ってください。": "Jarak diukur dalam garis lurus dan tidak memperhitungkan tanjakan atau kelokan jalan. Waktu berjalan kaki adalah perkiraan dengan kecepatan 60 m per menit (kecepatan jalan orang lanjut usia), dan tanjakan diperkirakan dari naik turunnya medan di sepanjang garis lurus (berbeda dengan tanjakan jalan yang sebenarnya). Ketinggian dari permukaan laut berasal dari Ubin Geospatial Information Authority (ubin ketinggian), dan kedalaman genangan adalah perkiraan yang dibaca dari warna pada peta perkiraan. Untuk keputusan evakuasi, ikuti panduan dari kota.",
+  "AED の設置場所（町の一覧）。使える日と時間は施設によってちがいます": "Lokasi AED (daftar di kota). Hari dan jam penggunaan berbeda-beda di tiap fasilitas",
+  "もう一度": "Coba lagi",
+  "正解": "Benar",
+  "ざんねん": "Sayang sekali",
+  "つぎの問題": "Soal berikutnya",
+  "けっかを見る": "Lihat hasil",
+  "{n} 問のうち {r} 問 正解でした": "Dari {n} soal, {r} soal benar",
+  "晴午後は雷雨": "Cerah, sore hujan petir",
+  "仕事探しの窓口": "Loket pencarian kerja",
+  "健康診断・がん検診・予防接種": "Pemeriksaan kesehatan, skrining kanker, dan vaksinasi",
+  "買い物の手段": "Cara berbelanja",
+  "地元の旬の野菜と直売所": "Sayuran musiman lokal dan tempat penjualan langsung",
+  "AEDの場所": "Lokasi AED",
+  "熊などの野生動物の出没": "Kemunculan beruang dan satwa liar lainnya",
+  "犬・猫と暮らす人へ": "Untuk yang hidup bersama anjing dan kucing",
+  "地域の集まりとボランティア": "Kegiatan warga dan relawan"
  }
 }

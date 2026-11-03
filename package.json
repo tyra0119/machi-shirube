@@ -50,7 +50,9 @@
     "local-sites": "node --env-file=.env scripts/local-sites.mjs",
     "build:shelter-inside": "node scripts/build-shelter-inside.mjs",
     "watch-recheck": "node --env-file=.env scripts/watch-recheck.mjs",
-    "build:telops": "node scripts/build-telops.mjs"
+    "build:telops": "node scripts/build-telops.mjs",
+    "build:aed": "node scripts/build-aed.mjs",
+    "quiz": "node --env-file=.env scripts/quiz.mjs"
   },
   "devDependencies": {
     "mapshaper": "^0.7.101"

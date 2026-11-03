@@ -1,7 +1,7 @@
 {
  "code": "10524",
  "name": "邑楽郡大泉町",
- "createdAt": "2026-11-03T01:57:59.943Z",
+ "createdAt": "2026-11-03T02:47:09.442Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
  "langs": {
@@ -473,6 +473,34 @@
       "title": "令和８年 第４回大泉町議会定例会議事日程（第１号）",
       "url": "https://www.town.oizumi.gunma.jp/g001/060/090/20260901gijinitteishin.pdf",
       "where": "議事日程 第12・第14号議案"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q48",
+     "short": "Locais com AED (desfibrilador externo automático)",
+     "text": "Os locais com AED (desfibrilador externo automático) instalados pela cidade podem ser consultados na página da cidade \"Informações sobre os locais com AED instalados\" (AEDの設置施設のお知らせ).\nConstam o nome, o endereço e o telefone de instalações como a prefeitura (役場), o Centro Geral de Saúde e Bem-Estar (保健福祉総合センター), o centro comunitário (公民館), a biblioteca (図書館), as escolas de ensino fundamental (小学校) e médio (中学校), e o centro infantil (児童館).\nNesta pesquisa, não foi encontrado nenhum arquivo de lista, como CSV.",
+     "original": "町のAED設置施設は、町のページ「AEDの設置施設のお知らせ」で見られます。\n役場、保健福祉総合センター、公民館、図書館、小中学校、児童館などの施設名・所在地・電話が載っています。\nCSVなどの一覧ファイルは、今回の調べでは見つかりませんでした。",
+     "back": "町が設置しているAED（自動体外式除細動器）の設置施設は、町のページ「AEDの設置施設のお知らせ」で見られます。役場、保健福祉総合センター、公民館、図書館、小学校・中学校、児童館などの施設名・所在地・電話番号が載っています。今回の調べでは、CSVなどの一覧ファイルは見つかりませんでした。",
+     "source": {
+      "title": "AED（自動体外式除細動器）の設置施設のお知らせ｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s016/kenko/010/070/20201222110047.html",
+      "where": "AEDの設置施設"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q46",
+     "short": "Meios para fazer compras",
+     "text": "O \"Guia de Apoio às Compras\" (買い物支援ガイド) da cidade é um folheto que apresenta lojas que fazem entrega a domicílio de alimentos e artigos de uso diário.\nOs locais de distribuição são: o balcão da Divisão de Cuidados a Idosos (高齢介護課) no 1º andar da prefeitura (役場), o centro comunitário da cidade (町公民館), o ginásio municipal (町民体育館), a biblioteca (図書館), o Centro de Convivência para Idosos (高齢者ふれあいセンター), entre outros.\nA venda itinerante é um sistema em que a cidade concede subsídio a empresas que firmaram com a cidade um memorando de acordo sobre o acompanhamento e a vigilância de pessoas (見守り).\nOs dias, os locais e os percursos não constavam na página oficial da cidade.\nContato: Divisão de Cuidados a Idosos (高齢介護課) (telefone 0276-63-3111).",
+     "original": "町の「買い物支援ガイド」は、食品や日用品の宅配をしている店を紹介する冊子です。\n配布場所は、役場1階の高齢介護課窓口、町公民館、町民体育館、図書館、高齢者ふれあいセンターなどです。\n移動販売は、町と見守りの覚書を結んだ事業者に町が補助金を出す仕組みです。\n走る日や場所、コースは、町の公式ページには載っていませんでした。\n問い合わせ先は、高齢介護課（電話 0276-63-3111）です。",
+     "back": "町の「買い物支援ガイド」は、食品や日用品を宅配している店を紹介する冊子です。配布場所は、役場1階の高齢介護課窓口、町公民館、町民体育館、図書館、高齢者ふれあいセンターなどです。移動販売は、町と見守りの覚書を結んだ事業者に町が補助金を出す仕組みです。走る日や場所、コースは、町の公式ページには載っていませんでした。問い合わせ先は、高齢介護課（電話 0276-63-3111）です。",
+     "source": {
+      "title": "大泉町買い物支援ガイド",
+      "url": "https://www.town.oizumi.gunma.jp/s014/kenko/010/010/200/20200803094355.html",
+      "where": "本文・配布場所"
      },
      "status": "auto",
      "problems": []
@@ -959,6 +987,37 @@
      },
      "status": "auto",
      "problems": []
+    },
+    {
+     "qid": "Q48",
+     "short": "Ubicación de los DEA (desfibriladores externos automáticos)",
+     "text": "Puede consultar los establecimientos del pueblo que cuentan con un DEA (AED) en la página web del pueblo \"Aviso sobre los establecimientos con DEA\" (AEDの設置施設のお知らせ).\nEn ella figuran el nombre, la dirección y el teléfono de establecimientos como el ayuntamiento (役場), el Centro General de Salud y Bienestar (保健福祉総合センター), el centro comunitario (公民館), la biblioteca (図書館), las escuelas primarias y secundarias (小中学校) y el centro infantil (児童館).\nEn esta investigación no se encontró ningún archivo de lista, como un CSV.",
+     "original": "町のAED設置施設は、町のページ「AEDの設置施設のお知らせ」で見られます。\n役場、保健福祉総合センター、公民館、図書館、小中学校、児童館などの施設名・所在地・電話が載っています。\nCSVなどの一覧ファイルは、今回の調べでは見つかりませんでした。",
+     "back": "町のページ「AEDの設置施設のお知らせ」で、町のAED設置施設を見ることができます。役場、保健福祉総合センター、公民館、図書館、小中学校、児童館などの施設名・所在地・電話が載っています。今回の調べでは、CSVなどの一覧ファイルは見つかりませんでした。",
+     "source": {
+      "title": "AED（自動体外式除細動器）の設置施設のお知らせ｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s016/kenko/010/070/20201222110047.html",
+      "where": "AEDの設置施設"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q46",
+     "short": "Opciones para hacer las compras",
+     "text": "La \"Guía de apoyo para las compras\" (買い物支援ガイド) del pueblo es un folleto que presenta las tiendas que hacen entregas a domicilio de alimentos y artículos de uso diario.\nSe distribuye en lugares como la ventanilla de la Sección de Atención a Personas Mayores (高齢介護課) en la planta baja (1.º piso) del ayuntamiento (役場), el centro comunitario del pueblo (町公民館), el gimnasio municipal (町民体育館), la biblioteca (図書館) y el Centro de Convivencia para Personas Mayores (高齢者ふれあいセンター).\nLa venta ambulante es un sistema en el que el pueblo otorga subvenciones a las empresas que han firmado con el pueblo un memorando de entendimiento sobre el acompañamiento y la vigilancia de personas (見守り).\nLos días, los lugares y las rutas de la venta ambulante no figuraban en la página web oficial del pueblo.\nPara consultas: Sección de Atención a Personas Mayores (高齢介護課), teléfono 0276-63-3111.",
+     "original": "町の「買い物支援ガイド」は、食品や日用品の宅配をしている店を紹介する冊子です。\n配布場所は、役場1階の高齢介護課窓口、町公民館、町民体育館、図書館、高齢者ふれあいセンターなどです。\n移動販売は、町と見守りの覚書を結んだ事業者に町が補助金を出す仕組みです。\n走る日や場所、コースは、町の公式ページには載っていませんでした。\n問い合わせ先は、高齢介護課（電話 0276-63-3111）です。",
+     "back": "町の「買い物支援ガイド」は、食品や日用品の宅配をしている店を紹介する冊子です。配布場所は、役場1階の高齢介護課窓口、町公民館、町民体育館、図書館、高齢者ふれあいセンターなどです。移動販売は、町が見守りの覚書を結んだ事業者に補助金を出す仕組みです。走る日や場所、コースは、町の公式ページには載っていませんでした。問い合わせ先は、高齢介護課（電話 0276-63-3111）です。",
+     "source": {
+      "title": "大泉町買い物支援ガイド",
+      "url": "https://www.town.oizumi.gunma.jp/s014/kenko/010/010/200/20200803094355.html",
+      "where": "本文・配布場所"
+     },
+     "status": "pending",
+     "problems": [
+      "訳文で「町と見守りの覚書を結んだ事業者」の「見守り」を「acompañamiento y la vigilancia de personas」と二重に訳しており、意味がやや広がっている。「町と」は「町が…覚書を結んだ事業者」の関係を「firmado con el pueblo」で示しているため大きなずれはないが、「見守り」は「見守りの覚書」（見守り活動に関する覚書）とすべき。ほか数字・名前・場所は一致。"
+     ],
+     "ledgerId": "r00268"
     }
    ]
   },
@@ -1444,6 +1503,37 @@
      "problems": [
       "西暦の併記は令和8年の換算として正しい。「per resident」は「町民」と同じ意味の範囲。"
      ]
+    },
+    {
+     "qid": "Q48",
+     "short": "Where to Find AEDs",
+     "text": "You can see the facilities in the town where AEDs are installed on the town web page \"Notice of AED Installation Facilities\" (AEDの設置施設のお知らせ).\nThe page lists the facility names, addresses, and phone numbers for places such as the Town Office (役場), the Health and Welfare Comprehensive Center (保健福祉総合センター), community centers (公民館), the library (図書館), elementary and junior high schools (小中学校), and children's centers (児童館).\nNo list file, such as a CSV file, was found in this research.",
+     "original": "町のAED設置施設は、町のページ「AEDの設置施設のお知らせ」で見られます。\n役場、保健福祉総合センター、公民館、図書館、小中学校、児童館などの施設名・所在地・電話が載っています。\nCSVなどの一覧ファイルは、今回の調べでは見つかりませんでした。",
+     "back": "町のAED設置施設は、町のページ「AEDの設置施設のお知らせ」で見られます。役場、保健福祉総合センター、公民館、図書館、小中学校、児童館などの施設名・住所・電話番号が載っています。CSVなどの一覧ファイルは、今回の調べでは見つかりませんでした。",
+     "source": {
+      "title": "AED（自動体外式除細動器）の設置施設のお知らせ｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s016/kenko/010/070/20201222110047.html",
+      "where": "AEDの設置施設"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q46",
+     "short": "Ways to Shop",
+     "text": "The town's \"Shopping Support Guide\" (買い物支援ガイド) is a booklet that introduces stores that deliver food and daily necessities to your home.\nIt is available at the Elderly Care Division (高齢介護課) counter on the 1st floor of the Town Office (役場), the Town Community Center (町公民館), the Town Gymnasium (町民体育館), the library (図書館), the Senior Citizens' Fureai Center (高齢者ふれあいセンター), and other places.\nFor mobile sales (移動販売), the town gives subsidies to businesses that have signed a memorandum of understanding with the town about watching over residents.\nThe days, places, and routes of the mobile sales were not listed on the town's official web page.\nFor inquiries, contact the Elderly Care Division (高齢介護課) (phone 0276-63-3111).",
+     "original": "町の「買い物支援ガイド」は、食品や日用品の宅配をしている店を紹介する冊子です。\n配布場所は、役場1階の高齢介護課窓口、町公民館、町民体育館、図書館、高齢者ふれあいセンターなどです。\n移動販売は、町と見守りの覚書を結んだ事業者に町が補助金を出す仕組みです。\n走る日や場所、コースは、町の公式ページには載っていませんでした。\n問い合わせ先は、高齢介護課（電話 0276-63-3111）です。",
+     "back": "町の「買い物支援ガイド」は、食品や日用品を自宅へ届けてくれる店を紹介する冊子です。配布場所は、役場1階の高齢介護課窓口、町公民館、町民体育館、図書館、高齢者ふれあいセンターなどです。移動販売は、町と見守りの覚書を結んだ事業者に町が補助金を出す仕組みです。走る日や場所、コースは、町の公式ページには載っていませんでした。問い合わせ先は、高齢介護課（電話 0276-63-3111）です。",
+     "source": {
+      "title": "大泉町買い物支援ガイド",
+      "url": "https://www.town.oizumi.gunma.jp/s014/kenko/010/010/200/20200803094355.html",
+      "where": "本文・配布場所"
+     },
+     "status": "pending",
+     "problems": [
+      "原文の「宅配をしている店」は「宅配をしている店」であるが、訳の「住所」ではなく原文は「所在地」で、Q48は問題なし。Q46の訳は「overseeing」ではなく「見守り」を「watching over residents」としているが、原文は「見守り」で意味は合う。ただし、訳文「(phone 0276-63-3111)」は原文と一致。主な問題は、訳文の「the library (図書館)」は原文と一致し、「町民体育館」「町公民館」も一致するが、原文の「町の『買い物支援ガイド』」の「町の」が訳で「The town's」となり一致。よって実質的ずれは「Q46」の「見守り」の対象が「residents（住民）」と補われた点のみ。"
+     ],
+     "ledgerId": "r00269"
     }
    ]
   },
@@ -1929,6 +2019,36 @@
      },
      "status": "auto",
      "problems": []
+    },
+    {
+     "qid": "Q48",
+     "short": "AEDの場所（ばしょ）",
+     "text": "AEDが ある 施設（しせつ）は、町（まち）のページ「AEDの設置施設のお知らせ」で 見（み）られます。\n役場（やくば）、保健福祉総合センター、公民館（こうみんかん）、図書館（としょかん）、小学校（しょうがっこう）、中学校（ちゅうがっこう）、児童館（じどうかん）などの 名前（なまえ）、場所（ばしょ）、電話番号（でんわばんごう）が のっています。\nCSVなどの 一覧（いちらん）ファイルは、今回（こんかい）の 調（しら）べでは 見（み）つかりませんでした。",
+     "original": "町のAED設置施設は、町のページ「AEDの設置施設のお知らせ」で見られます。\n役場、保健福祉総合センター、公民館、図書館、小中学校、児童館などの施設名・所在地・電話が載っています。\nCSVなどの一覧ファイルは、今回の調べでは見つかりませんでした。",
+     "back": "町のAED設置施設は、町のページ「AEDの設置施設のお知らせ」で見られます。役場、保健福祉総合センター、公民館、図書館、小学校、中学校、児童館などの施設名、所在地、電話番号が載っています。CSVなどの一覧ファイルは、今回の調べでは見つかりませんでした。",
+     "source": {
+      "title": "AED（自動体外式除細動器）の設置施設のお知らせ｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s016/kenko/010/070/20201222110047.html",
+      "where": "AEDの設置施設"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q46",
+     "short": "買（か）い物（もの）の方法（ほうほう）",
+     "text": "町の「買い物支援ガイド」は、食（た）べ物（もの）や 毎日（まいにち）の くらしに 使（つか）う物（もの）を 家（いえ）まで 届（とど）けて くれる お店（みせ）を しょうかいする 冊子（さっし）（小（ちい）さい 本（ほん））です。\nもらえる 場所（ばしょ）は、役場（やくば）1階（かい）の 高齢介護課（こうれいかいごか）の 窓口（まどぐち）、町公民館（まちこうみんかん）、町民体育館（ちょうみんたいいくかん）、図書館（としょかん）、高齢者ふれあいセンターなどです。\n移動販売（いどうはんばい）（車（くるま）で 物（もの）を 売（う）りに 来（く）ること）は、町と 見守（みまも）りの 約束（やくそく）の 書類（しょるい）（覚書（おぼえがき））を むすんだ 会社（かいしゃ）などに、町が 補助金（ほじょきん）（町が 出（だ）す お金（かね））を 出（だ）す しくみです。\n走（はし）る 日（ひ）や 場所（ばしょ）、コースは、町の 公式（こうしき）ページには のっていませんでした。\n問（と）い合（あ）わせは、高齢介護課（こうれいかいごか）です。電話（でんわ）は 0276-63-3111 です。",
+     "original": "町の「買い物支援ガイド」は、食品や日用品の宅配をしている店を紹介する冊子です。\n配布場所は、役場1階の高齢介護課窓口、町公民館、町民体育館、図書館、高齢者ふれあいセンターなどです。\n移動販売は、町と見守りの覚書を結んだ事業者に町が補助金を出す仕組みです。\n走る日や場所、コースは、町の公式ページには載っていませんでした。\n問い合わせ先は、高齢介護課（電話 0276-63-3111）です。",
+     "back": "町の「買い物支援ガイド」は、食べ物や毎日のくらしに使う物を家まで届けてくれるお店を紹介する、小さい本（冊子）です。もらえる場所は、役場1階の高齢介護課の窓口、町公民館、町民体育館、図書館、高齢者ふれあいセンターなどです。移動販売（車で物を売りに来ること）は、町と見守りの約束の書類（覚書）を結んだ会社などに、町が補助金（町が出すお金）を出す仕組みです。走る日や場所、コースは、町の公式ページには載っていませんでした。問い合わせは、高齢介護課です。電話は0276-63-3111です。",
+     "source": {
+      "title": "大泉町買い物支援ガイド",
+      "url": "https://www.town.oizumi.gunma.jp/s014/kenko/010/010/200/20200803094355.html",
+      "where": "本文・配布場所"
+     },
+     "status": "auto",
+     "problems": [
+      "意味のずれはないが、「冊子」「移動販売」「覚書」「補助金」に説明の言葉（小さい本、車で物を売りに来ること、約束の書類、町が出すお金）を足している。原文にない注釈なので、必要なら外すか注釈と分かる形にする。「事業者」を「会社など」と訳しているが、意味の範囲はほぼ同じ。"
+     ]
     }
    ]
   },
@@ -2405,6 +2525,34 @@
       "確かめ役の答えが読めなかった"
      ],
      "ledgerId": "r00243"
+    },
+    {
+     "qid": "Q48",
+     "short": "Lokasi AED",
+     "text": "Fasilitas di kota yang memiliki AED dapat dilihat di halaman kota \"Pemberitahuan Fasilitas Pemasangan AED\" (AEDの設置施設のお知らせ).\nHalaman itu memuat nama fasilitas, alamat, dan nomor telepon dari kantor kota (役場), Pusat Kesehatan dan Kesejahteraan Terpadu (保健福祉総合センター), balai warga (公民館), perpustakaan (図書館), SD dan SMP (小中学校), balai anak (児童館), dan fasilitas lainnya.\nDaftar dalam bentuk berkas seperti CSV tidak ditemukan dalam penelusuran kali ini.",
+     "original": "町のAED設置施設は、町のページ「AEDの設置施設のお知らせ」で見られます。\n役場、保健福祉総合センター、公民館、図書館、小中学校、児童館などの施設名・所在地・電話が載っています。\nCSVなどの一覧ファイルは、今回の調べでは見つかりませんでした。",
+     "back": "町のAED設置施設は、町のページ「AEDの設置施設のお知らせ」で見られます。役場、保健福祉総合センター、公民館、図書館、小中学校、児童館などの施設名・所在地・電話が載っています。今回の調べではCSVなどの一覧ファイルは見つかりませんでした。",
+     "source": {
+      "title": "AED（自動体外式除細動器）の設置施設のお知らせ｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s016/kenko/010/070/20201222110047.html",
+      "where": "AEDの設置施設"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q46",
+     "short": "Cara berbelanja",
+     "text": "\"Panduan Dukungan Belanja\" (買い物支援ガイド) dari kota adalah buku kecil yang memperkenalkan toko-toko yang melayani pengantaran bahan makanan dan kebutuhan sehari-hari.\nTempat pembagiannya antara lain loket Bagian Lansia dan Perawatan (高齢介護課) di lantai 1 kantor kota (役場), balai warga kota (町公民館), gimnasium warga kota (町民体育館), perpustakaan (図書館), dan Pusat Interaksi Lansia (高齢者ふれあいセンター).\nPenjualan keliling adalah sistem di mana kota memberikan subsidi kepada pelaku usaha yang telah menandatangani nota kesepahaman pengawasan (mimamori) dengan kota.\nHari, lokasi, dan rute operasinya tidak tercantum di halaman resmi kota.\nUntuk pertanyaan, hubungi Bagian Lansia dan Perawatan (高齢介護課) (telepon 0276-63-3111).",
+     "original": "町の「買い物支援ガイド」は、食品や日用品の宅配をしている店を紹介する冊子です。\n配布場所は、役場1階の高齢介護課窓口、町公民館、町民体育館、図書館、高齢者ふれあいセンターなどです。\n移動販売は、町と見守りの覚書を結んだ事業者に町が補助金を出す仕組みです。\n走る日や場所、コースは、町の公式ページには載っていませんでした。\n問い合わせ先は、高齢介護課（電話 0276-63-3111）です。",
+     "back": "町の「買い物支援ガイド」は、食品や日用品の宅配をしている店を紹介する冊子です。配布場所は、役場1階の高齢介護課窓口、町公民館、町民体育館、図書館、高齢者ふれあいセンターなどです。移動販売は、町と見守りの覚書を結んだ事業者に町が補助金を出す仕組みです。運行日、場所、ルートは町の公式ページに記載されていません。問い合わせ先は、高齢介護課（電話 0276-63-3111）です。",
+     "source": {
+      "title": "大泉町買い物支援ガイド",
+      "url": "https://www.town.oizumi.gunma.jp/s014/kenko/010/010/200/20200803094355.html",
+      "where": "本文・配布場所"
+     },
+     "status": "auto",
+     "problems": []
     }
    ]
   },
@@ -2879,6 +3027,34 @@
       "「町議会」が「नगर सभा」と訳されている点は許容範囲。主な問題は「町民1人あたり」が「नगरका प्रत्येक व्यक्तिलाई」となっており「町民」（町の住民）と「नगरका」（市町村の）の範囲が一致するか曖昧な点。「いずみ総合公園町民野球場」を「इजुमी सामान्य पार्क नगर बेसबल मैदान」と訳しているが「総合」を「सामान्य」（一般）としており、「総合」の意味が正確に伝わっていない。「5,000円」は数字が同じ。「予定されています」が「वितरण गर्ने योजना छ」で意味は同じ。"
      ],
      "ledgerId": "r00245"
+    },
+    {
+     "qid": "Q48",
+     "short": "AED को स्थान",
+     "text": "नगरमा AED राखिएका सुविधाहरू नगरको पृष्ठ \"AED राखिएका सुविधाहरूको जानकारी\" (AEDの設置施設のお知らせ) मा हेर्न सकिन्छ।\nत्यहाँ नगर कार्यालय (役場)、स्वास्थ्य तथा कल्याण सामान्य केन्द्र (保健福祉総合センター)、सामुदायिक भवन (公民館)、पुस्तकालय (図書館)、प्राथमिक तथा माध्यमिक विद्यालय (小中学校)、बाल भवन (児童館) आदि सुविधाहरूको नाम, ठेगाना र फोन नम्बर दिइएको छ।\nCSV जस्ता सूची फाइल यस पटकको खोजीमा भेटिएन।",
+     "original": "町のAED設置施設は、町のページ「AEDの設置施設のお知らせ」で見られます。\n役場、保健福祉総合センター、公民館、図書館、小中学校、児童館などの施設名・所在地・電話が載っています。\nCSVなどの一覧ファイルは、今回の調べでは見つかりませんでした。",
+     "back": "町のAED設置施設は、町のページ「AEDの設置施設のお知らせ」で見られます。役場、保健福祉総合センター、公民館、図書館、小中学校、児童館などの施設の名前・所在地・電話番号が載っています。CSVなどの一覧ファイルは、今回の調べでは見つかりませんでした。",
+     "source": {
+      "title": "AED（自動体外式除細動器）の設置施設のお知らせ｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s016/kenko/010/070/20201222110047.html",
+      "where": "AEDの設置施設"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q46",
+     "short": "किनमेलका उपाय",
+     "text": "नगरको \"किनमेल सहयोग गाइड\" (買い物支援ガイド) खाद्यपदार्थ र दैनिक प्रयोगका सामान घरमै पुर्‍याइदिने पसलहरू चिनाउने पुस्तिका हो।\nयो वितरण गरिने ठाउँहरू: नगर कार्यालय (役場) को पहिलो तलामा रहेको वृद्ध स्याहार शाखा (高齢介護課) को काउन्टर, नगर सामुदायिक भवन (町公民館)、नगर व्यायामशाला (町民体育館)、पुस्तकालय (図書館)、वृद्धवृद्धा भेटघाट केन्द्र (高齢者ふれあいセンター) आदि।\nचल्ती-फिर्ती बिक्री (移動販売) भनेको नगरसँग निगरानी/हेरचाहसम्बन्धी समझदारी पत्र (覚書) गरेका व्यवसायीलाई नगरले अनुदान दिने व्यवस्था हो।\nकुन दिन, कुन ठाउँमा र कुन रुटमा जान्छ भन्ने कुरा नगरको आधिकारिक पृष्ठमा उल्लेख थिएन।\nसोधपुछ: वृद्ध स्याहार शाखा (高齢介護課)、फोन 0276-63-3111",
+     "original": "町の「買い物支援ガイド」は、食品や日用品の宅配をしている店を紹介する冊子です。\n配布場所は、役場1階の高齢介護課窓口、町公民館、町民体育館、図書館、高齢者ふれあいセンターなどです。\n移動販売は、町と見守りの覚書を結んだ事業者に町が補助金を出す仕組みです。\n走る日や場所、コースは、町の公式ページには載っていませんでした。\n問い合わせ先は、高齢介護課（電話 0276-63-3111）です。",
+     "back": "町の「買い物支援ガイド」は、食品や日用品を宅配している店を紹介する冊子です。配布場所は、役場1階の高齢介護課窓口、町公民館、町民体育館、図書館、高齢者ふれあいセンターなどです。移動販売は、町と見守りの覚書を結んだ事業者に町が補助金を出す仕組みです。走る日や場所、コースは、町の公式ページには載っていませんでした。問い合わせ先は、高齢介護課（電話 0276-63-3111）です。",
+     "source": {
+      "title": "大泉町買い物支援ガイド",
+      "url": "https://www.town.oizumi.gunma.jp/s014/kenko/010/010/200/20200803094355.html",
+      "where": "本文・配布場所"
+     },
+     "status": "auto",
+     "problems": []
     }
    ]
   },
@@ -3349,6 +3525,34 @@
       "title": "令和８年 第４回大泉町議会定例会議事日程（第１号）",
       "url": "https://www.town.oizumi.gunma.jp/g001/060/090/20260901gijinitteishin.pdf",
       "where": "議事日程 第12・第14号議案"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q48",
+     "short": "Địa điểm đặt máy AED",
+     "text": "Bạn có thể xem các cơ sở trong thị trấn có đặt máy AED trên trang của thị trấn “Thông báo về các cơ sở đặt AED” (AEDの設置施設のお知らせ).\nTrang này có tên cơ sở, địa chỉ và số điện thoại của Ủy ban thị trấn (役場), Trung tâm Tổng hợp Y tế và Phúc lợi (保健福祉総合センター), nhà văn hóa cộng đồng (公民館), thư viện (図書館), các trường tiểu học và trung học cơ sở (小中学校), nhà thiếu nhi (児童館), v.v.\nTrong lần tìm hiểu này, chúng tôi không tìm thấy tệp danh sách như CSV.",
+     "original": "町のAED設置施設は、町のページ「AEDの設置施設のお知らせ」で見られます。\n役場、保健福祉総合センター、公民館、図書館、小中学校、児童館などの施設名・所在地・電話が載っています。\nCSVなどの一覧ファイルは、今回の調べでは見つかりませんでした。",
+     "back": "町のAED設置施設は、町のページ「AEDの設置施設のお知らせ」で見られます。役場、保健福祉総合センター、公民館、図書館、小中学校、児童館などの施設名・所在地・電話番号が載っています。CSVなどの一覧ファイルは、今回の調べでは見つかりませんでした。",
+     "source": {
+      "title": "AED（自動体外式除細動器）の設置施設のお知らせ｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s016/kenko/010/070/20201222110047.html",
+      "where": "AEDの設置施設"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q46",
+     "short": "Cách mua sắm",
+     "text": "“Sổ tay hướng dẫn hỗ trợ mua sắm” (買い物支援ガイド) của thị trấn là tập sách nhỏ giới thiệu các cửa hàng giao thực phẩm và đồ dùng hằng ngày tận nhà.\nNơi phát: quầy Phòng Chăm sóc Người cao tuổi (高齢介護課) ở tầng 1 Ủy ban thị trấn (役場), Nhà văn hóa thị trấn (町公民館), Nhà thi đấu thể thao thị trấn (町民体育館), thư viện (図書館), Trung tâm Giao lưu Người cao tuổi (高齢者ふれあいセンター), v.v.\nVề bán hàng lưu động: thị trấn hỗ trợ kinh phí cho các doanh nghiệp đã ký biên bản ghi nhớ với thị trấn về việc trông chừng, thăm hỏi người dân (見守り).\nNgày chạy, địa điểm và tuyến đường không được đăng trên trang chính thức của thị trấn.\nLiên hệ: Phòng Chăm sóc Người cao tuổi (高齢介護課) (điện thoại 0276-63-3111).",
+     "original": "町の「買い物支援ガイド」は、食品や日用品の宅配をしている店を紹介する冊子です。\n配布場所は、役場1階の高齢介護課窓口、町公民館、町民体育館、図書館、高齢者ふれあいセンターなどです。\n移動販売は、町と見守りの覚書を結んだ事業者に町が補助金を出す仕組みです。\n走る日や場所、コースは、町の公式ページには載っていませんでした。\n問い合わせ先は、高齢介護課（電話 0276-63-3111）です。",
+     "back": "町の「買い物支援ガイド」は、食品や日用品を宅配している店を紹介する冊子です。配布場所は、役場1階の高齢介護課窓口、町公民館、町民体育館、図書館、高齢者ふれあいセンターなどです。移動販売は、町と見守りの覚書を結んだ事業者に町が補助金を出す仕組みです。走る日や場所、コースは、町の公式ページには載っていませんでした。問い合わせ先は、高齢介護課（電話 0276-63-3111）です。",
+     "source": {
+      "title": "大泉町買い物支援ガイド",
+      "url": "https://www.town.oizumi.gunma.jp/s014/kenko/010/010/200/20200803094355.html",
+      "where": "本文・配布場所"
      },
      "status": "auto",
      "problems": []

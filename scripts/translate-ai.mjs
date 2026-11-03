@@ -26,11 +26,15 @@ function collect(code) {
   const d = read(`site/data/dekiru/${code}.json`);
   d?.links.forEach((l, i) => { push(`d${i}.who`, l.who); push(`d${i}.num`, l.num); push(`d${i}.todo`, l.todo); push(`d${i}.quote`, l.quote); });
   push("n.dekiru", d?.note);
+  // 町のクイズ（scripts/quiz.mjs）
+  const qz = read(`site/data/quiz/${code}.json`);
+  qz?.questions.forEach((x, i) => { for (const k of ["q", "a", "b", "c", "why"]) push(`q${i}.${k}`, x[k]); });
+  push("n.quiz", qz?.note);
   // ごみを出す日（AI が町の収集日の表から読み取った、ごみの種類・曜日・出し方の要点）。同じ文は1回だけ。id は g0, g1 …、もとの文は gomi に残す
   const gd = read(`site/data/gomi-days/${code}.json`);
   const gomi = [...new Set([...(gd?.areas ?? []).flatMap((a) => [a.area, ...a.days.flatMap((x) => [x.kind, x.when])]), ...(gd?.rules ?? []).flatMap((r) => [r.kind, r.how, r.time])].filter(Boolean))];
   gomi.forEach((t, i) => push(`g${i}`, t));
-  return { list, gomi, made: { mitate: m?.createdAt ?? null, hitokoto: h?.createdAt ?? null, dekiru: d?.createdAt ?? null, gomi: gd?.createdAt ?? null } };
+  return { list, gomi, made: { mitate: m?.createdAt ?? null, hitokoto: h?.createdAt ?? null, dekiru: d?.createdAt ?? null, gomi: gd?.createdAt ?? null, quiz: qz?.createdAt ?? null } };
 }
 
 export async function translateAI(code, langs = Object.keys(LANGS), log = console.log) {
@@ -42,7 +46,7 @@ export async function translateAI(code, langs = Object.keys(LANGS), log = consol
   const file = `site/data/translations/${code}-ai.json`;
   const out = read(file) ?? { code, langs: {} };
   // もとの文が前と同じ種類は、確かめの通った訳を使い回す（通らなかった文だけ訳し直す）
-  const kindOf = (id) => ({ m: "mitate", h: "hitokoto", d: "dekiru", g: "gomi" })[id[0]] ?? id.split(".")[1];
+  const kindOf = (id) => ({ m: "mitate", h: "hitokoto", d: "dekiru", g: "gomi", q: "quiz" })[id[0]] ?? id.split(".")[1];
   const same = (id) => out.made?.[kindOf(id)] && out.made[kindOf(id)] === made[kindOf(id)];
   const prevOk = Object.fromEntries(Object.entries(out.langs).map(([l, v]) => [l, Object.fromEntries(Object.entries(v.texts).filter(([id]) => same(id)))]));
   Object.assign(out, { name: town?.name, createdAt: new Date().toISOString(), model: MODEL, made });

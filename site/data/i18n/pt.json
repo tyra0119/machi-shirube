@@ -1,11 +1,11 @@
 {
  "lang": "pt",
  "name": "Português",
- "createdAt": "2026-11-03T02:25:19.278Z",
+ "createdAt": "2026-11-03T02:51:46.752Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 645,
- "of": 639,
+ "count": 664,
+ "of": 654,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Guia não oficial da vida na cidade. O Claude reúne as informações em sites oficiais da cidade e outras fontes, e indica a origem de cada uma (Machishirube)",
   "すべてのページ": "Todas as páginas",
@@ -651,6 +651,25 @@
   "平日の時刻表です。土日・祝日はちがうことがあります。乗る前に、バス会社や町の時刻表で確かめてください。": "Horários de dias úteis. Aos sábados, domingos e feriados podem ser diferentes. Antes de embarcar, confirme na empresa de ônibus ou na tabela de horários da cidade.",
   "晴昼頃から雨": "Sol, com chuva a partir do meio-dia",
   "曇昼頃から雨": "Nublado, com chuva a partir do meio-dia",
-  "雨朝晩一時雪": "Chuva, com neve passageira de manhã e à noite"
+  "雨朝晩一時雪": "Chuva, com neve passageira de manhã e à noite",
+  "AED の設置場所（町の一覧）。使える日と時間は施設によってちがいます": "Locais com AED (lista do município). Os dias e horários de uso variam conforme a instalação",
+  "線はバスの路線（時刻表データから）。バス停を押すと、この先の発車": "As linhas são as rotas de ônibus (a partir dos dados de horários). Toque em um ponto de ônibus para ver as próximas partidas",
+  "もう一度": "Tentar de novo",
+  "正解": "Correto",
+  "ざんねん": "Que pena",
+  "つぎの問題": "Próxima pergunta",
+  "けっかを見る": "Ver o resultado",
+  "{n} 問のうち {r} 問 正解でした": "Você acertou {r} de {n} perguntas",
+  "晴朝夕一時雨": "Sol, chuva passageira de manhã e à tarde",
+  "晴朝夕曇": "Sol, nublado de manhã e à tarde",
+  "曇朝夕一時雨": "Nublado, chuva passageira de manhã e à tarde",
+  "仕事探しの窓口": "Balcão de procura de emprego",
+  "健康診断・がん検診・予防接種": "Exames de saúde, exames de câncer e vacinas",
+  "買い物の手段": "Como fazer compras",
+  "地元の旬の野菜と直売所": "Legumes da estação locais e lojas de venda direta",
+  "AEDの場所": "Onde há AED",
+  "熊などの野生動物の出没": "Aparição de ursos e outros animais selvagens",
+  "犬・猫と暮らす人へ": "Para quem vive com cães e gatos",
+  "地域の集まりとボランティア": "Encontros da comunidade e voluntariado"
  }
 }

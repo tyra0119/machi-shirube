@@ -557,3 +557,15 @@ section.block.folded { padding-bottom: 12px; }
 .tt th { width: 2.5em; padding: 3px 8px 3px 0; text-align: right; color: var(--text-sub); font-weight: 700; border-right: 1px solid var(--line); }
 .tt td { padding: 3px 10px; letter-spacing: 0.08em; }
 .tt tr + tr th, .tt tr + tr td { border-top: 1px dashed var(--line); }
+/* 町のクイズ */
+.quiz-n { margin: 0; color: var(--text-sub); font-size: 13px; }
+.quiz-q { margin: 4px 0 10px; font-size: 17px; font-weight: 700; line-height: 1.6; }
+.quiz-opts { display: grid; gap: 8px; }
+.quiz-opts button { min-height: 48px; padding: 8px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); color: var(--text); font-size: 16px; text-align: left; cursor: pointer; }
+.quiz-opts button:hover:not(:disabled) { border-color: var(--accent); }
+.quiz-opts button.right { border: 2px solid var(--accent); background: var(--town-tint, var(--bg)); font-weight: 700; }
+.quiz-opts button.wrong { opacity: 0.6; text-decoration: line-through; }
+.quiz-ans { margin-top: 10px; padding: 10px 12px; border-radius: 10px; background: var(--bg); line-height: 1.7; }
+.quiz-ans p { margin: 0 0 6px; }
+.quiz-next { display: block; margin-top: 10px; min-height: 44px; padding: 0 20px; border: 0; border-radius: 999px; background: var(--accent); color: var(--accent-text, #fff); font-size: 15px; font-weight: 700; cursor: pointer; }
+.quiz-end { font-size: 18px; font-weight: 700; }

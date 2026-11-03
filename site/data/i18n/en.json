@@ -1,11 +1,11 @@
 {
  "lang": "en",
  "name": "English",
- "createdAt": "2026-11-03T02:25:59.723Z",
+ "createdAt": "2026-11-03T02:52:05.871Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 648,
- "of": 639,
+ "count": 663,
+ "of": 654,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "This is an unofficial guide to living in this town. Claude gathers information from the town's official website and other sources, and cites each source (Machishirube)",
   "すべてのページ": "All pages",
@@ -654,6 +654,21 @@
   "雪一時強く降る": "Snow, heavy at times",
   "雪後みぞれ": "Snow, then sleet",
   "雪一時みぞれ": "Snow, with occasional sleet",
-  "雪で雷を伴う": "Snow with thunder"
+  "雪で雷を伴う": "Snow with thunder",
+  "AED の設置場所（町の一覧）。使える日と時間は施設によってちがいます": "AED locations (town list). Available days and hours vary by facility",
+  "もう一度": "Try again",
+  "正解": "Correct",
+  "ざんねん": "Incorrect",
+  "つぎの問題": "Next question",
+  "けっかを見る": "See results",
+  "{n} 問のうち {r} 問 正解でした": "You got {r} of {n} questions correct",
+  "仕事探しの窓口": "Job search help",
+  "健康診断・がん検診・予防接種": "Health checkups, cancer screenings, and vaccinations",
+  "買い物の手段": "Ways to shop",
+  "地元の旬の野菜と直売所": "Local seasonal vegetables and farm stands",
+  "AEDの場所": "AED locations",
+  "熊などの野生動物の出没": "Bears and other wildlife sightings",
+  "犬・猫と暮らす人へ": "For people living with dogs and cats",
+  "地域の集まりとボランティア": "Community gatherings and volunteering"
  }
 }

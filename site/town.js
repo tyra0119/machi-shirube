@@ -269,6 +269,40 @@ async function showLocalSites(code) {
   $("local-note").textContent = `${T(d.note)}${KU()}${T("公式の情報ではありません。")}`;
 }
 
+// 町のクイズ（scripts/quiz.mjs。確かめた町の答えと国のデータから AI が作り、正しい答えが材料にあるかを PC で照らしたもの）。1問ずつ。答えの並びは毎回まぜる
+async function showQuiz(code) {
+  const d = await fetch(`data/quiz/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  if (!d?.questions?.length) return;
+  const tr = await aiTr(code, "quiz", d.createdAt);
+  if (LANG && LANG !== "easy" && !tr) return; // ほかの言葉は訳があるときだけ
+  const t = tr ?? ((id, ja) => ja);
+  $("quiz-block").hidden = false;
+  let i = 0, right = 0;
+  const draw = () => {
+    if (i >= d.questions.length) {
+      $("quiz").innerHTML = `<p class="quiz-end">${TN("{n} 問のうち {r} 問 正解でした", { n: d.questions.length, r: right })}</p><button type="button" class="quiz-next" id="quiz-again">${T("もう一度")}</button>`;
+      $("quiz-again").addEventListener("click", () => { i = 0; right = 0; draw(); });
+      return;
+    }
+    const q = d.questions[i];
+    const opts = [["a", q.a], ["b", q.b], ["c", q.c]].sort(() => Math.random() - 0.5);
+    $("quiz").innerHTML = `<p class="quiz-n">${i + 1} / ${d.questions.length}</p><p class="quiz-q">${esc(t(`q${i}.q`, q.q))}</p>
+      <div class="quiz-opts">${opts.map(([k, v]) => `<button type="button" data-k="${k}">${esc(t(`q${i}.${k}`, v))}</button>`).join("")}</div><div class="quiz-ans" hidden></div>`;
+    for (const b of $("quiz").querySelectorAll(".quiz-opts button")) b.addEventListener("click", () => {
+      const ok = b.dataset.k === "a";
+      if (ok) right++;
+      for (const x of $("quiz").querySelectorAll(".quiz-opts button")) { x.disabled = true; x.classList.toggle("right", x.dataset.k === "a"); x.classList.toggle("wrong", x === b && !ok); }
+      const ans = $("quiz").querySelector(".quiz-ans");
+      ans.hidden = false;
+      ans.innerHTML = `<p><strong>${ok ? T("正解") : T("ざんねん")}</strong> ${esc(t(`q${i}.why`, q.why))}</p>${q.source?.url ? `<a href="${esc(q.source.url)}" target="_blank" rel="noopener">${esc(q.source.title)}</a>` : `<small>${esc(q.source?.title ?? "")}</small>`}
+        <button type="button" class="quiz-next">${i + 1 < d.questions.length ? T("つぎの問題") : T("けっかを見る")}</button>`;
+      ans.querySelector(".quiz-next").addEventListener("click", () => { i++; draw(); });
+    });
+  };
+  draw();
+  $("quiz-note").textContent = `${t("n.quiz", d.note)}${tr ? ` ${T("（AI による訳）")}` : ""}`;
+}
+
 // 昔の災害を伝える碑（国土地理院 自然災害伝承碑。scripts/build-lore.mjs）。碑の文は公開のまま出す。町の碑がなければ近くの町の碑
 async function showLore(code) {
   const d = await fetch(`data/lore/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
@@ -1051,6 +1085,7 @@ async function finishPage(code, townFeatures, startPart, scopeNote, at) {
   await showFuture(code);
   await showClimate(code);
   await showLocalSites(code);
+  await showQuiz(code);
   const hasHinan = await showHinan(code, townFeatures, startPart);
   await showTranslations(code);
   await showGomi(code);

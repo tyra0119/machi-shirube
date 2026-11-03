@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-03T02:25:26.618Z",
+ "createdAt": "2026-11-03T02:51:59.110Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 646,
- "of": 639,
+ "count": 662,
+ "of": 654,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -652,6 +652,22 @@
   "バス停を選ぶ": "Elige una parada de autobús",
   "平日の時刻表です。土日・祝日はちがうことがあります": "Este es el horario de días laborables. Los sábados, domingos y festivos puede ser distinto",
   "きょうの平日の便は、もうありません": "Hoy ya no hay más servicios de días laborables",
-  "雨で暴風を伴う": "Lluvia con vientos fuertes"
+  "雨で暴風を伴う": "Lluvia con vientos fuertes",
+  "AED の設置場所（町の一覧）。使える日と時間は施設によってちがいます": "Ubicación de los DEA (lista del municipio). Los días y horarios de uso varían según la instalación",
+  "もう一度": "Otra vez",
+  "正解": "Correcto",
+  "ざんねん": "Lástima",
+  "つぎの問題": "Siguiente pregunta",
+  "けっかを見る": "Ver resultados",
+  "平日の時刻表です。土日・祝日はちがうことがあります。乗る前に、バス会社や町の時刻表で確かめてください。": "Son los horarios de días laborables. Los sábados, domingos y festivos pueden ser diferentes. Antes de subir, confírmelos con la empresa de autobuses o en el horario del municipio.",
+  "{n} 問のうち {r} 問 正解でした": "Acertó {r} de {n} preguntas",
+  "仕事探しの窓口": "Oficina de búsqueda de empleo",
+  "健康診断・がん検診・予防接種": "Chequeos médicos, detección de cáncer y vacunas",
+  "買い物の手段": "Formas de hacer las compras",
+  "地元の旬の野菜と直売所": "Verduras de temporada locales y puestos de venta directa",
+  "AEDの場所": "Ubicación de los DEA",
+  "熊などの野生動物の出没": "Aparición de osos y otros animales salvajes",
+  "犬・猫と暮らす人へ": "Para quienes viven con perros y gatos",
+  "地域の集まりとボランティア": "Reuniones comunitarias y voluntariado"
  }
 }
