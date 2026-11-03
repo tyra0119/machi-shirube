@@ -21,3 +21,21 @@ function prettyText(s, esc) {
   }
   return out.split("\n").map((line) => esc(line.trim())).filter(Boolean).join("<br>");
 }
+
+// 和暦の年を西暦にして前に出す：令和9年 → 2027（令和9年）。ほかの言葉とやさしい日本語のときだけ使う（和暦を知らない人がいるので）。
+// すでに西暦が並んで書いてある所（2026年（令和8年）・令和8年（2026年））はそのまま
+function seireki(s, lang) {
+  const base = { 令和: 2018, 平成: 1988, 昭和: 1925 };
+  let t = String(s ?? "");
+  if (lang !== "easy") {
+    // ほかの言葉：年月日のそろった和暦は 2026/11/1 (令和8年11月1日)、月日だけは 11/1 に
+    t = t.replace(/(令和|平成|昭和)(元|\d{1,2})年(\d{1,2})月(\d{1,2})日/g, (m, era, n, mo, d) => `${base[era] + (n === "元" ? 1 : Number(n))}/${mo}/${d} (${m})`)
+      .replace(/(?<![\d年(（])(\d{1,2})月(\d{1,2})日/g, "$1/$2");
+  }
+  return t.replace(/(?<!\d年[（(])(令和|平成|昭和)(元|\d{1,2})年(度)?(?!\s*[（(]\s*\d{4})(?!\d{1,2}月\d{1,2}日\))/g, (m, era, n, _d, at, all) => {
+    const y = base[era] + (n === "元" ? 1 : Number(n));
+    // すでにかっこの中（Reiwa 9 (令和9年度) など）なら、かっこを重ねずに並べる
+    if (/[（(]$/.test(all.slice(0, at))) return lang === "easy" ? `${y}年・${m}` : `${y}, ${m}`;
+    return lang === "easy" ? `${y}年（${m}）` : `${y} (${m})`;
+  });
+}

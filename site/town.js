@@ -201,7 +201,7 @@ async function aiTr(code, kind, createdAt) {
   aiTrCache ??= getData(`data/translations/${code}-ai.json`);
   const t = await aiTrCache;
   const x = t?.made?.[kind] === createdAt && t.langs?.[LANG]?.texts;
-  return x ? (id, ja) => x[id] ?? ja : null;
+  return x ? (id, ja) => (x[id] ? seireki(x[id], LANG) : ja) : null;
 }
 // ごみを出す日の文の訳（もとの文 → 訳。確かめの通ったものだけ）
 async function aiTrGomi(code, createdAt) {
@@ -746,7 +746,7 @@ async function showAnswers(code, scopeNote, partKey, partName) {
     const tr = await getData(`data/translations/${code}.json`);
     for (const a of answers) {
       const x = tr?.langs?.[LANG]?.items.find((i) => i.qid === a.qid && (i.status === "auto" || i.status === "ok") && i.original === a.value);
-      if (x) Object.assign(a, { valueJa: a.value, value: x.text, translated: true, shortT: x.short });
+      if (x) Object.assign(a, { valueJa: a.value, value: seireki(x.text, LANG), translated: true, shortT: x.short });
     }
   }
   yardstick = (await getData("data/yardstick.json")) ?? { questions: [] };
@@ -992,7 +992,7 @@ async function showTranslations(code) {
     $("tr-list").innerHTML = L.items.filter((x) => live.has(x.original)).map((x) => {
       const ok = x.status === "auto" || x.status === "ok";
       const ill = ILLUST[PAGE_OF(x.qid)] ?? ILLUST.foreign;
-      const lines = prettyText(ok ? x.text : x.original, esc).split("<br>").filter(Boolean);
+      const lines = prettyText(ok ? seireki(x.text, lang) : x.original, esc).split("<br>").filter(Boolean);
       return `<li lang="${ok && lang !== "easy" ? lang : "ja"}" style="--h:${ill.h}">
         <span class="badge" aria-hidden="true">${icon(ANSWER_ICON[x.qid] ?? ill.main)}</span>
         <div class="body">
