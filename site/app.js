@@ -1159,3 +1159,60 @@ setInterval(() => {
 // 左のパネルの「はじめかた」の印と、「たとえば」のイラスト（site/icons.js）
 for (const el of document.querySelectorAll(".step-ic[data-ic]")) el.innerHTML = icon(el.dataset.ic);
 for (const b of document.querySelectorAll(".examples button[data-il]")) b.insertAdjacentHTML("afterbegin", illust(b.dataset.il));
+
+// 録画用の「灯りの波」（?wave で開く。W のキーでもう一度）。全国の市区町村を、黒潮町から波が広がるように次々と灯す。
+// 塗るのは本物のデータ：どの町も国の統計（住民基本台帳）で特色のカードができている。最後に、Claude が深く調べた町だけが濃く光る
+// （作者「日本地図の町がどんどん塗りつぶされていく……ここでわくわく感を演出してみたい」。作り物の数字は出さない）
+async function playWave() {
+  while (!map.getSource("labels") || !stats || !progress) await new Promise((r) => setTimeout(r, 200));
+  const labels = (await getJSON("data/labels.json")).features;
+  const start = byCode.get("39428") ? [133.03, 33.03] : [137.5, 36];
+  const order = labels
+    .filter((f) => byCode.has(f.properties.code) && !byCode.get(f.properties.code).properties.noData)
+    .map((f) => { const [x, y] = f.geometry.coordinates; return { code: f.properties.code, d: Math.hypot((x - start[0]) * Math.cos((y * Math.PI) / 180), y - start[1]) }; })
+    .sort((a, b) => a.d - b.d);
+  const total = Object.values(stats.towns).filter((t) => !t.ward).length; // 1,741
+  if (!map.getLayer("muni-wave")) map.addLayer({ id: "muni-wave", type: "fill", source: "munis", paint: { "fill-color": color("--accent"), "fill-opacity": ["coalesce", ["feature-state", "wave"], 0] } }, "muni-lit");
+  for (const id of ["muni-lit", "muni-lit-line", "lit-glow", "lit-dot"]) map.setLayoutProperty(id, "visibility", "none");
+  for (const o of order) map.setFeatureState({ source: "munis", id: o.code }, { wave: 0 });
+  let box = document.getElementById("wave-count");
+  if (!box) { document.body.insertAdjacentHTML("beforeend", `<div id="wave-count" class="wave-count"></div>`); box = document.getElementById("wave-count"); }
+  const SPREAD = 7000; // 全国に広がるまで
+  const FADE = 900; // 灯ってから落ち着くまで
+  const maxD = order.at(-1).d;
+  const t0 = performance.now();
+  const lastSet = new Map();
+  await new Promise((done) => {
+    const step = (now) => {
+      const t = now - t0;
+      let shown = 0;
+      for (const o of order) {
+        const at = (o.d / maxD) * SPREAD;
+        if (t < at) break;
+        shown++;
+        const k = Math.min(1, (t - at) / FADE);
+        const v = Math.round((0.95 - 0.5 * k) * 100) / 100; // 明るく灯って、半分ほどの濃さで残る（日本が塗りつぶされていく）
+        if (lastSet.get(o.code) !== v) { map.setFeatureState({ source: "munis", id: o.code }, { wave: v }); lastSet.set(o.code, v); }
+      }
+      box.innerHTML = `<strong>${Math.round((total * shown) / order.length).toLocaleString("ja-JP")}</strong> / ${total.toLocaleString("ja-JP")} の市区町村を、国の統計で比べました<small>住民基本台帳（令和8年1月1日）</small>`;
+      if (t < SPREAD + FADE) requestAnimationFrame(step); else done();
+    };
+    requestAnimationFrame(step);
+  });
+  // 最後に、波の色を薄くしていき、深く調べた町が浮かび上がる
+  for (const id of ["muni-lit", "muni-lit-line", "lit-glow", "lit-dot"]) map.setLayoutProperty(id, "visibility", "visible");
+  await new Promise((done) => {
+    const t1 = performance.now();
+    const step = (now) => {
+      const k = Math.min(1, (now - t1) / 1200);
+      for (const o of order) map.setFeatureState({ source: "munis", id: o.code }, { wave: Math.round((0.45 - 0.33 * k) * 100) / 100 });
+      if (k < 1) requestAnimationFrame(step); else done();
+    };
+    requestAnimationFrame(step);
+  });
+  box.innerHTML = `<strong>${progress.totals.towns}</strong> の町を、Claude が深く調べました<small>${total.toLocaleString("ja-JP")} の市区町村は、国の統計で比べてあります</small>`;
+}
+if (new URLSearchParams(location.search).has("wave")) {
+  map.on("load", () => setTimeout(playWave, 1500));
+  addEventListener("keydown", (e) => { if (e.key === "w" || e.key === "W") playWave(); });
+}
