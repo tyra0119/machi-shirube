@@ -6,6 +6,7 @@
 //  - プログラムからの読み取りを断るサイトの返事（403）と、robots.txt で取らない所は、切れた数に入れない
 //  - 一度にたくさん切れたら、1件ずつ並べず「見張る側のずれを疑う」1件にまとめる
 import fs from "node:fs";
+import crypto from "node:crypto";
 
 const UA = "machi-shirube/0.1 (+https://github.com/tyra0119/machi-shirube)";
 const OUT = "site/data/health.json";
@@ -46,8 +47,17 @@ async function check(url) {
   try {
     const res = await fetch(url, { headers: { "User-Agent": UA }, redirect: "follow", signal: AbortSignal.timeout(15000) });
     lastHit.set(u.host, Date.now());
+    if (res.ok) {
+      // 中身が変わったかも見る：HTML は文字だけ（スクリプト・タグ・空白を外す）、ほかはそのままの中身で、指紋（ハッシュ）を取る。
+      // HTML の文字は local/cache/watch/ にだけ置き、中身が変わったときの照らし直しに使う（scripts/watch-recheck.mjs）
+      const buf = Buffer.from(await res.arrayBuffer());
+      const html = /html/i.test(res.headers.get("content-type") ?? "");
+      const body = html ? pageText(buf.toString("utf8")) : buf;
+      const hash = crypto.createHash("sha1").update(body).digest("hex").slice(0, 16);
+      if (html) { fs.mkdirSync("local/cache/watch", { recursive: true }); fs.writeFileSync(`local/cache/watch/${keyOf(url)}.txt`, body); }
+      return { kind: "ok", status: res.status, moved: res.redirected ? res.url : undefined, hash };
+    }
     res.body?.cancel();
-    if (res.ok) return { kind: "ok", status: res.status, moved: res.redirected ? res.url : undefined };
     if (res.status === 404 || res.status === 410) return { kind: "gone", status: res.status };
     if (res.status === 403) return { kind: "refused", status: 403 };
     if (res.status === 503) return { kind: "maint", status: 503 };
@@ -57,6 +67,12 @@ async function check(url) {
     return { kind: "error", status: e.name === "TimeoutError" ? "timeout" : "network" };
   }
 }
+// ページの文字だけ（スクリプト・スタイル・タグを外し、空白をまとめる）
+function pageText(html) {
+  return html.replace(/<script[\s\S]*?<\/script>/gi, " ").replace(/<style[\s\S]*?<\/style>/gi, " ").replace(/<[^>]+>/g, " ")
+    .replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").replace(/\s+/g, " ").trim();
+}
+const keyOf = (url) => crypto.createHash("sha1").update(url).digest("hex").slice(0, 16);
 function disallowed(txt, path) {
   let mine = false;
   const rules = [];
@@ -82,6 +98,8 @@ for (const [url, where] of used) {
     checkedAt: at,
     since: r.kind === "ok" ? undefined : before && before.kind === r.kind ? before.since : at,
     streak: failing ? (before?.kind === r.kind ? (before.streak ?? 1) + 1 : 1) : undefined,
+    // 中身が前と変わった日（前の指紋があり、違うとき）。照らし直しが済むまで残す
+    changedAt: r.hash && before?.hash && before.hash !== r.hash ? at : r.hash && before?.hash === r.hash ? before.changedAt : undefined,
   };
   process.stdout.write(`\r${++i}/${used.size}`);
 }
@@ -109,7 +127,8 @@ if (!burst) {
   const open = new Set(all.filter((x) => x.kind === "watch" && x.status === "pending").map((x) => x.watchUrl));
   const answers = (page) => JSON.parse(fs.readFileSync(`site/data/answers/${page}.json`, "utf8")).answers;
   for (const p of problems.filter((x) => !open.has(x.url))) {
-    for (const u of p.used.filter((x) => x.qid)) {
+    // 1つの答えが同じページを2か所（出典と、答えの中の一覧）で使っていても、知らせは1件
+    for (const u of p.used.filter((x, i, all) => x.qid && all.findIndex((y) => y.page === x.page && y.qid === x.qid) === i)) {
       const a = answers(u.page).find((x) => x.qid === u.qid);
       if (!a) continue;
       const label = p.kind === "gone" ? `ページが見つからない（${p.status}）` : p.kind === "maint" ? "相手のサイトがメンテナンス中かも（503 が続いている）" : `つながらない状態が続いている（${p.status}）`;

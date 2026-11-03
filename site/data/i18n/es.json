@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-03T00:56:13.926Z",
+ "createdAt": "2026-11-03T01:14:22.400Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 466,
- "of": 458,
+ "count": 469,
+ "of": 460,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -472,6 +472,9 @@
   "写す": "Copiar",
   "写しました": "Copiado",
   "写せませんでした。長押しで選んで写してください": "No se pudo copiar. Mantenga pulsado para seleccionar y copie",
-  "まちしるべのページで、まちがいや古い所を見つけたら、GitHub（ギットハブ）の「Issues（イシュー）」という掲示板に書いて知らせてください。作者が読んで、調べ直します。": "Si encuentra un error o información desactualizada en la página de Machishirube, escríbalo en el tablón «Issues» de GitHub para avisarnos. El autor lo leerá y volverá a revisarlo."
+  "まちしるべのページで、まちがいや古い所を見つけたら、GitHub（ギットハブ）の「Issues（イシュー）」という掲示板に書いて知らせてください。作者が読んで、調べ直します。": "Si encuentra un error o información desactualizada en la página de Machishirube, escríbalo en el tablón «Issues» de GitHub para avisarnos. El autor lo leerá y volverá a revisarlo.",
+  "場所を決めると、近い避難場所が出ます。場所はこのブラウザの中だけで使い、残しません。「Google マップで歩く道を見る」を押したときだけ、選んだ場所と避難場所を Google マップに渡します。": "Al elegir una ubicación, se muestran los refugios cercanos. La ubicación se usa solo en este navegador y no se guarda. Solo al pulsar «Ver la ruta a pie en Google Maps», se envían a Google Maps la ubicación elegida y el refugio.",
+  "Google マップで歩く道を見る": "Ver la ruta a pie en Google Maps",
+  "公式のページが変わったので、照らし直しました": "La página oficial ha cambiado, así que hemos vuelto a contrastar la información"
  }
 }

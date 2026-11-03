@@ -210,7 +210,7 @@ export function decide(id, action, { user = "owner", reason = "" } = {}) {
 }
 
 // 公開してよいものだけを書き出す
-const PUBLIC_FIELDS = ["id", "qid", "scope", "question", "value", "asOf", "source", "method", "status", "outdated", "detail", "items"];
+const PUBLIC_FIELDS = ["id", "qid", "scope", "question", "value", "asOf", "source", "method", "status", "outdated", "detail", "items", "recheckedAt"];
 const pick = (it) => ({ ...Object.fromEntries(PUBLIC_FIELDS.filter((k) => it[k] !== undefined).map((k) => [k, it[k]])), checkedAt: it.createdAt, score: scoreOf(it) });
 
 // 物差しの点数（1つの答えごと、0〜3。人の判断待ちは点を付けず null＝保留）。Claude を呼ばず、台帳の確かめの結果から決める
@@ -366,7 +366,10 @@ export function exportChanges(data = load()) {
     seen.add(key);
     if (!byMuni.has(code)) byMuni.set(code, []);
     byMuni.get(code).push({ at: shown(it), label, what, qid: it.qid ?? null, kind: it.kind ?? "answer" });
+    // 見張りで出典のページが変わったあと、答えがまだ合っていると照らし直したもの（scripts/watch-recheck.mjs）
+    if (it.recheckedAt) byMuni.get(code).push({ at: it.recheckedAt, label, what: "照らし直しました", qid: it.qid ?? null, kind: it.kind ?? "answer" });
   }
+  for (const list of byMuni.values()) list.sort((a, b) => a.at.localeCompare(b.at));
   const dir = "site/data/changes";
   fs.mkdirSync(dir, { recursive: true });
   for (const [code, list] of byMuni) fs.writeFileSync(`${dir}/${code}.json`, JSON.stringify({ code, changes: list.reverse().slice(0, 40) }, null, 1));

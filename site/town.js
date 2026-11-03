@@ -7,6 +7,9 @@ const q = new URLSearchParams(location.search);
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 // 避難場所の想定収容人数：町の表の人数は屋内と屋外（校庭や広場）の合計のことがある。建物の中の人数が分かれば添える（scripts/build-shelter-inside.mjs）
 const capText = (p) => `${T("想定収容")} ${esc(p.capacity)}${p.inside != null ? `（${T("建物の中")} ${Number(p.inside).toLocaleString("ja-JP")}${T("人")}）` : `（${T("屋外の広場などを含むことがあります")}）`}`;
+// Google マップで、選んだ場所から避難場所までの歩く道を開く（画面と同じ出発地にするため、選んだ場所も渡す。
+// ボタンを押したときだけ Google マップに渡る、と画面に書いている。作者「場所は送りたいな。じゃないと画面と違う経路になってしまう」）
+const gmapWalk = ([lon, lat], from) => `https://www.google.com/maps/dir/?api=1${from ? `&origin=${from[1].toFixed(5)},${from[0].toFixed(5)}` : ""}&destination=${lat},${lon}&travelmode=walking`;
 // 文をつなぐ句点：ほかの言葉では「. 」（日本語とやさしい日本語は「。」）
 const KU = () => (LANG && LANG !== "easy" ? ". " : "。");
 
@@ -587,9 +590,11 @@ async function showHinan(code, townFeatures, startPart) {
     if (token !== setHere.token || !walks.length) return;
     const w = walks.sort((a, b) => a.up - b.up || a.m - b.m)[0];
     $("hinan-walk").hidden = false;
+    const wc = cand[w.i].f.geometry.coordinates;
     $("hinan-walk").innerHTML = `<p class="t">${icon("heart")}防災散歩</p>`
       + `<p>ふだんの散歩で、一度 <strong>${esc(w.name)}</strong>（${w.i + 1}）まで歩いてみませんか。往復 約 ${(w.m * 2).toLocaleString("ja-JP")}m・約 ${w.min * 2}分（行きの上り ${w.up}m）。近い ${walks.length} つの中で、上りがいちばん少ない所です。</p>`
-      + `<p class="note">長さと上りは、まっすぐの線で測っためやすです。歩く道は、町の地図や現地で選んでください。夜や雨の日の道も、明るいうちに一度見ておくと安心です。</p>`;
+      + `<p class="note">長さと上りは、まっすぐの線で測っためやすです。歩く道は、町の地図や現地で選んでください。夜や雨の日の道も、明るいうちに一度見ておくと安心です。</p>`
+      + `<a class="gmap" href="${gmapWalk(wc, at)}" target="_blank" rel="noopener">${icon("map")}${T("Google マップで歩く道を見る")}</a>`;
   }
   // まっすぐの距離（m）。歩くめやすは 1分 60m（お年寄りの歩く速さのめやす）
   const meters = ([a, b], [c, d]) => {
@@ -638,9 +643,10 @@ async function showHinan(code, townFeatures, startPart) {
     $("hinan-list").innerHTML = cand.map((c, i) => `
       <li data-i="${i}" tabindex="0" role="button" aria-label="地図で ${esc(c.f.properties.name)} を見る"><span class="pin" aria-hidden="true">${i + 1}</span><span class="n">${esc(c.f.properties.name)}</span>
         <span class="d">まっすぐ ${c.m.toLocaleString("ja-JP")}m・歩いて約 ${Math.max(1, Math.round(c.m / 60))}分（めやす）</span>
-        <span class="k">${esc(String(c.f.properties.address ?? "").replace(/(\S{2,}?[郡市区町村])\1/g, "$1"))}・${esc(c.f.properties.kinds.join("・"))}${c.f.properties.capacity ? `・${capText(c.f.properties)}` : ""}${c.f.properties.note ? `・${esc(c.f.properties.note)}` : ""}</span></li>`).join("");
+        <span class="k">${esc(String(c.f.properties.address ?? "").replace(/(\S{2,}?[郡市区町村])\1/g, "$1"))}・${esc(c.f.properties.kinds.join("・"))}${c.f.properties.capacity ? `・${capText(c.f.properties)}` : ""}${c.f.properties.note ? `・${esc(c.f.properties.note)}` : ""}</span>
+        <a class="gmap" href="${gmapWalk(c.f.geometry.coordinates, at)}" target="_blank" rel="noopener">${icon("map")}${T("Google マップで歩く道を見る")}</a></li>`).join("");
     for (const li of document.querySelectorAll("#hinan-list li")) {
-      li.addEventListener("click", () => select(Number(li.dataset.i)));
+      li.addEventListener("click", (e) => { if (!e.target.closest("a")) select(Number(li.dataset.i)); }); // Google マップのボタンは地図を動かさない
       li.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); select(Number(li.dataset.i)); } });
     }
     const token = (setHere.token = (setHere.token ?? 0) + 1);
@@ -716,6 +722,7 @@ function answersHTML(answers) {
         : `${a.items ? "" : answerBody(a)}
       ${a.items ? `<ul class="topics">${a.items.map((x) => `<li><span class="tx">${esc(x.text)}</span>
         <span class="src">${x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.title ?? x.url)}</a>` : esc(x.title ?? "")}${x.asOf ? `・${esc(x.asOf)}` : ""}</span></li>`).join("")}</ul>` : ""}
+      ${a.recheckedAt ? `<p class="src rechecked">${icon("eye")}${T("公式のページが変わったので、照らし直しました")}（${esc(a.recheckedAt.slice(0, 10))}）</p>` : ""}
       ${health?.links?.[a.source?.url]?.kind === "gone" ? `<p class="gone">${T("出典のページが見つからなくなっています")}（${esc(health.links[a.source.url].checkedAt.slice(0, 10))}）。${T("町の公式のサイトで新しいページを探して確かめてください。")}</p>` : ""}
       ${a.outdated ? `<p class="outdated"><strong>古いデータに気づきました</strong>：${esc(a.outdated.what)}。古い：${a.outdated.old?.url ? `<a href="${esc(a.outdated.old.url)}" target="_blank" rel="noopener">${esc(a.outdated.old.asOf ?? "")}</a>` : esc(a.outdated.old?.asOf ?? "")}／新しい：${a.outdated.new?.url ? `<a href="${esc(a.outdated.new.url)}" target="_blank" rel="noopener">${esc(a.outdated.new.asOf ?? "")}</a>` : esc(a.outdated.new?.asOf ?? "")}</p>` : ""}
       <p class="src chip">${icon("link")} ${a.source?.url ? `<a href="${esc(a.source.url)}" target="_blank" rel="noopener"${a.source.where ? ` title="${esc(T("出典の中の場所"))}：${esc(a.source.where)}"` : ""}>${esc(a.source.title ?? a.source.url)}</a>` : esc(a.source?.title ?? "")}${a.asOf ? `・時点 ${esc(a.asOf)}` : ""}・${T(a.status === "auto" ? "自動で承認" : "人が確かめた")}</p>`}

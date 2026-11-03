@@ -1,11 +1,11 @@
 {
  "lang": "pt",
  "name": "Português",
- "createdAt": "2026-11-03T00:53:47.918Z",
+ "createdAt": "2026-11-03T01:14:18.454Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 467,
- "of": 458,
+ "count": 470,
+ "of": 460,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Guia não oficial da vida na cidade. O Claude reúne as informações em sites oficiais da cidade e outras fontes, e indica a origem de cada uma (Machishirube)",
   "すべてのページ": "Todas as páginas",
@@ -473,6 +473,9 @@
   "GitHub で知らせる": "Avisar pelo GitHub",
   "写す": "Copiar",
   "写しました": "Copiado",
-  "写せませんでした。長押しで選んで写してください": "Não foi possível copiar. Mantenha pressionado para selecionar e copiar"
+  "写せませんでした。長押しで選んで写してください": "Não foi possível copiar. Mantenha pressionado para selecionar e copiar",
+  "Google マップで歩く道を見る": "Ver o caminho a pé no Google Maps",
+  "公式のページが変わったので、照らし直しました": "A página oficial mudou, por isso as informações foram conferidas novamente",
+  "場所を決めると、近い避難場所が出ます。場所はこのブラウザの中だけで使い、残しません。「Google マップで歩く道を見る」を押したときだけ、選んだ場所と避難場所を Google マップに渡します。": "Ao definir a sua localização, são exibidos os abrigos mais próximos. A localização é usada apenas neste navegador e não é guardada. Somente ao clicar em \"Ver o caminho a pé no Google Maps\", a localização escolhida e o abrigo são enviados ao Google Maps."
  }
 }

@@ -1734,7 +1734,7 @@
       "url": "https://www.town.oizumi.gunma.jp/s004/anzen/050/050/20200827165944.html",
       "where": "配信内容／メールアドレスの登録について／町公式LINEでも配信内容を受け取れます"
      },
-     "status": "pending",
+     "status": "ok",
      "problems": [
       "「（何も書いていないメール）」は原文にない説明の追加です。他の数字・名前・アドレス・内容は一致しています。"
      ],
@@ -3019,7 +3019,7 @@
       "url": "https://www.town.oizumi.gunma.jp/s004/anzen/050/050/20200827165944.html",
       "where": "配信内容／メールアドレスの登録について／町公式LINEでも配信内容を受け取れます"
      },
-     "status": "pending",
+     "status": "ok",
      "problems": [
       "「LINEでも同じ内容」が訳し戻しでは「同様の内容」になっている。原文は「同じ内容」で、訳文の「nội dung tương tự（似た内容）」は少しずれている。「nội dung giống nhau（同じ内容）」にすると合う。その他の数字・アドレス・名前・手順は一致している。"
      ],

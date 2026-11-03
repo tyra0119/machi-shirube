@@ -1,11 +1,11 @@
 {
  "lang": "vi",
  "name": "Tiếng Việt",
- "createdAt": "2026-11-03T00:56:33.495Z",
+ "createdAt": "2026-11-03T01:14:34.914Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 463,
- "of": 458,
+ "count": 467,
+ "of": 460,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Đây là trang hướng dẫn đời sống không chính thức của thị trấn này. Claude thu thập từ các trang chính thức của thị trấn v.v. và ghi rõ nguồn (Machi-shirube)",
   "すべてのページ": "Tất cả các trang",
@@ -469,6 +469,10 @@
   "写す": "Sao chép",
   "写しました": "Đã sao chép",
   "写せませんでした。長押しで選んで写してください": "Không sao chép được. Hãy nhấn giữ để chọn rồi sao chép",
-  "右下の「Create」（または「Submit new issue」）を押すと、知らせが届きます。作者が読んで、ページを直したら、その知らせに返事を書きます。": "Nhấn “Create” (hoặc “Submit new issue”) ở phía dưới bên phải thì thông báo sẽ được gửi đi. Tác giả sẽ đọc, và khi sửa trang xong sẽ trả lời vào thông báo đó."
+  "右下の「Create」（または「Submit new issue」）を押すと、知らせが届きます。作者が読んで、ページを直したら、その知らせに返事を書きます。": "Nhấn “Create” (hoặc “Submit new issue”) ở phía dưới bên phải thì thông báo sẽ được gửi đi. Tác giả sẽ đọc, và khi sửa trang xong sẽ trả lời vào thông báo đó.",
+  "場所を決めると、近い避難場所が出ます。場所はこのブラウザの中だけで使い、残しません。「Google マップで歩く道を見る」を押したときだけ、選んだ場所と避難場所を Google マップに渡します。": "Khi chọn vị trí, nơi sơ tán gần nhất sẽ hiện ra. Vị trí chỉ được dùng trong trình duyệt này và không được lưu lại. Chỉ khi bấm \"Xem đường đi bộ trên Google Maps\", vị trí đã chọn và nơi sơ tán mới được chuyển sang Google Maps.",
+  "Google マップで歩く道を見る": "Xem đường đi bộ trên Google Maps",
+  "公式のページが変わったので、照らし直しました": "Trang chính thức đã thay đổi nên đã đối chiếu lại",
+  "急ぐこと（火事・けが・事件）は、ここではなく 119・110 へ。": "Trường hợp khẩn cấp (hỏa hoạn, bị thương, vụ án) hãy gọi 119・110, không phải liên hệ ở đây."
  }
 }
