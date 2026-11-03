@@ -1157,7 +1157,8 @@ async function finishPage(code, townFeatures, startPart, scopeNote, at) {
 // 縦に長いページを短く：各欄を「見出し＋いちばん大事な数の1行」にたたみ、見出しを押すと開く。ページの上に目次の札。
 // 最初から開いておくのは、わが家の避難・今日のページの見立てと数から、できることへ・今日と明日と、各ページの最初の1つ
 // （作者「やたらと縦が長くなってしまうと、読むのが大変。何か工夫できないかな？」→「たたむ＋目次」）
-const FOLD_OPEN = new Set(["hinan-block", "mitate-top", "dekiru-block", "sec-today", "hitokoto-block"]);
+// 暮らしの場面（ほかのページへの入口の札）も開いておく（作者「『暮らしの場面』は開いていてもいいと思う」）
+const FOLD_OPEN = new Set(["hinan-block", "mitate-top", "dekiru-block", "sec-today", "hitokoto-block", "sec-scenes"]);
 function foldSummary(sec) {
   // 確かめた答えの欄は、答えの数
   const answers = sec.querySelectorAll(".answers-box [id^=\"a-\"]").length;
