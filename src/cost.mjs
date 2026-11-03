@@ -30,7 +30,7 @@ export function costOf(model, usage) {
 // ハッカソンの API の使える額は $500。作者「$500使えるなら、1日の使用量はもっと増やしていいのでは？」（2026-11-02）で、
 // 1日 $40（6日で $240。残りは仕上げとやり直しに）にした。合計は $450 で止める（ここで数える額は値段の表からの見積もりなので、$50 の余裕を残す）。
 // 作者が決めた日だけ、環境変数 DAILY_LIMIT_USD・TOTAL_LIMIT_USD で変える
-export const DAILY_LIMIT_USD = Number(process.env.DAILY_LIMIT_USD ?? 40);
+export const DAILY_LIMIT_USD = Number(process.env.DAILY_LIMIT_USD ?? 80);
 export const TOTAL_LIMIT_USD = Number(process.env.TOTAL_LIMIT_USD ?? 550); // 2026-11-03 作者「APIの上限を$450から$550に変更する」（残高 $532.60、作品の数えた合計 $68.36 のとき）
 
 // 1回の呼び出しを記録して、その回の費用を返す。what は人が読める「何のための呼び出しか」
