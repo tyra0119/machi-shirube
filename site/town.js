@@ -1217,7 +1217,8 @@ function setupToc() {
   if (!$("toc-fab")) {
     document.body.insertAdjacentHTML("beforeend", `<nav class="toc-fab" id="toc-fab" aria-label="${esc(T("このページの中身"))}" hidden>
       <ol class="toc-panel" id="toc-panel" hidden></ol>
-      <button type="button" id="toc-btn" aria-expanded="false" aria-controls="toc-panel">${icon("list")}<span>${esc(T("目次"))}</span></button></nav>`);
+      <button type="button" id="toc-btn" aria-expanded="false" aria-controls="toc-panel" aria-label="${esc(T("目次"))}" title="${esc(T("目次"))}"${T("目次").length > 6 ? " class=\"icon-only\"" : ""}>${icon("list")}<span>${esc(T("目次"))}</span></button></nav>`);
+    // ほかの言葉で「目次」が長くなると（Talaan ng nilalaman など）ページのボタンに重なるので、印だけの丸いボタンにする
     $("toc-btn").addEventListener("click", () => {
       const panel = $("toc-panel");
       if (!panel.hidden) { closeToc(); return; }

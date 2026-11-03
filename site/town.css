@@ -603,3 +603,6 @@ body:has(.toc-fab:not([hidden])) { padding-bottom: 80px; }
 .lg-yes, .lg-no { display: inline-block; min-width: 3em; padding: 2px 8px; border-radius: 12px; text-align: center; font-size: 13px; font-weight: 600; }
 .lg-yes { background: var(--accent); color: var(--accent-text); }
 .lg-no { border: 1px solid var(--line); color: var(--text-sub); }
+#toc-btn.icon-only { width: 52px; min-height: 52px; padding: 0; justify-content: center; border-radius: 50%; }
+#toc-btn.icon-only span { display: none; }
+#toc-btn.icon-only svg { width: 24px; height: 24px; }
