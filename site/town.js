@@ -73,9 +73,20 @@ function currentView() {
   const h = location.hash.slice(1);
   return PAGES.some((p) => p.view === h) ? h : OLD_VIEW[h] ?? "today";
 }
+// タブを押したときの動き：右のタブへ移るときは右から、左のタブへ移るときは左から、中身がすっと入る（作者「タブを押した時、アニメーションにできる？」）
+let lastView = null;
 function showView() {
   const v = currentView();
-  for (const el of document.querySelectorAll(".view")) el.hidden = el.dataset.view !== v;
+  const order = (x) => PAGES.findIndex((p) => p.view === x);
+  for (const el of document.querySelectorAll(".view")) {
+    el.hidden = el.dataset.view !== v;
+    if (!el.hidden && lastView && lastView !== v) {
+      el.classList.remove("enter-r", "enter-l");
+      void el.offsetWidth; // 同じ向きが続いても動き直すように
+      el.classList.add(order(v) >= order(lastView) ? "enter-r" : "enter-l");
+    }
+  }
+  lastView = v;
   for (const a of document.querySelectorAll(".town-tabs a")) a.toggleAttribute("aria-current", a.dataset.view === v);
   updateToc();
   // まちがいの知らせ方のページへ、町と見ているページを渡す（言葉は渡さない）
@@ -1204,7 +1215,7 @@ function foldPages() {
         if (!FOLD_OPEN.has(sec.id) && i > 0) sec.classList.add("folded");
         h.setAttribute("role", "button");
         h.tabIndex = 0;
-        const toggle = () => { sec.classList.toggle("folded"); h.setAttribute("aria-expanded", String(!sec.classList.contains("folded"))); if (!sec.classList.contains("folded")) for (const m of maps) { m.resize(); if (m.fitTo && sec.contains(m.getContainer())) m.fitBounds(m.fitTo.box, { ...m.fitTo.opts, duration: 0 }); } };
+        const toggle = () => { slide(sec, () => sec.classList.toggle("folded")); h.setAttribute("aria-expanded", String(!sec.classList.contains("folded"))); if (!sec.classList.contains("folded")) for (const m of maps) { m.resize(); if (m.fitTo && sec.contains(m.getContainer())) m.fitBounds(m.fitTo.box, { ...m.fitTo.opts, duration: 0 }); } };
         h.addEventListener("click", toggle);
         h.addEventListener("keydown", (e) => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); } });
         h.insertAdjacentHTML("afterend", `<p class="fold-sum"></p>`);
@@ -1480,3 +1491,25 @@ $("tabs").addEventListener("scroll", tabsHint, { passive: true });
 addEventListener("resize", tabsHint);
 new MutationObserver(tabsHint).observe($("tabs"), { childList: true, subtree: true, attributes: true });
 setTimeout(tabsHint, 0);
+
+// カードの開け閉めの動き（作者「カードの開く・閉じるもアニメーションにしてみたい」）：変える前と後の高さを測り、その間をなめらかにつなぐ。
+// 開くときは中身もうすく現れる。動きを減らす設定の人には動かさない
+const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)");
+function slide(el, change) {
+  const h0 = el.offsetHeight;
+  change();
+  const h1 = el.offsetHeight;
+  if (reduceMotion.matches || h0 === h1 || !el.animate) return;
+  el.style.overflow = "hidden";
+  const a = el.animate([{ height: `${h0}px` }, { height: `${h1}px` }], { duration: Math.min(360, 160 + Math.abs(h1 - h0) / 6), easing: "cubic-bezier(.2,.7,.2,1)" });
+  if (h1 > h0) for (const c of el.children) if (c.tagName !== "H2" && c.tagName !== "SUMMARY") c.animate([{ opacity: 0 }, { opacity: 1 }], { duration: 260, easing: "ease-out" });
+  a.onfinish = a.oncancel = () => { el.style.overflow = ""; };
+}
+// たたむ札（くわしく・介護の事業所のまとまり・はじめかたなど、details の開け閉め）にも同じ動き
+document.addEventListener("click", (e) => {
+  const sum = e.target.closest("details > summary");
+  if (!sum || reduceMotion.matches) return;
+  const d = sum.parentElement;
+  e.preventDefault();
+  slide(d, () => { d.open = !d.open; });
+});

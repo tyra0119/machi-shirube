@@ -679,3 +679,10 @@ body:has(.toc-fab:not([hidden])) { padding-bottom: 80px; }
 .kaigo-items small { color: var(--text-sub); }
 .kaigo-items .tel { display: inline-flex; align-items: center; gap: 4px; align-self: flex-start; min-height: 36px; color: var(--accent); font-weight: 600; }
 .kaigo-items .tel svg { width: 16px; height: 16px; }
+/* タブを押したときの動き（town.js の showView）。動きを減らす設定の人には動かさない */
+@keyframes view-in-r { from { opacity: 0; transform: translateX(28px); } to { opacity: 1; transform: none; } }
+@keyframes view-in-l { from { opacity: 0; transform: translateX(-28px); } to { opacity: 1; transform: none; } }
+.view.enter-r { animation: view-in-r 0.24s ease-out; }
+.view.enter-l { animation: view-in-l 0.24s ease-out; }
+.town-tabs a, .town-tabs .all-pages button { transition: background-color 0.2s, color 0.2s; }
+@media (prefers-reduced-motion: reduce) { .view.enter-r, .view.enter-l { animation: none; } .town-tabs a { transition: none; } }
