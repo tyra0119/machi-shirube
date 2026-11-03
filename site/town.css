@@ -534,3 +534,4 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .hitokoto details.facts summary { cursor: pointer; }
 .cards-box > summary { cursor: pointer; list-style: none; } .cards-box > summary h2 { display: inline; } .cards-box > summary::after { content: " ▾"; color: var(--text-sub); } .cards-box[open] > summary::after { content: " ▴"; }
 .about-site ul { margin: 0 0 8px; padding-left: 1.2em; } .about-site li { margin: 4px 0; font-size: 14px; line-height: 1.7; }
+.hinan-walk { margin: 10px 0; padding: 12px 14px; border-radius: 10px; background: var(--town-tint, var(--bg)); } .hinan-walk p { margin: 0 0 6px; line-height: 1.7; } .hinan-walk .t { display: flex; align-items: center; gap: 6px; font-weight: 700; font-size: 16px; } .hinan-walk .t svg { width: 20px; height: 20px; color: var(--accent); }

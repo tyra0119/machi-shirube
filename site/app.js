@@ -399,9 +399,12 @@ function paint() {
   map.setPaintProperty("muni-casing", "line-width", ["interpolate", ["linear"], ["zoom"], 7, 2, 12, 6]);
   map.setPaintProperty("muni-casing", "line-opacity", basemapOn ? ["interpolate", ["linear"], ["zoom"], 7, 0, 9, 0.9] : 0);
   const dark = matchMedia("(prefers-color-scheme: dark)").matches && document.documentElement.dataset.theme !== "light";
-  map.setPaintProperty("gsi-pale", "raster-brightness-max", dark ? 0.4 : 1);
-  map.setPaintProperty("gsi-pale", "raster-saturation", dark ? -0.6 : 0);
-  map.setPaintProperty("gsi-pale", "raster-opacity", ["interpolate", ["linear"], ["zoom"], 7, 0, 8.5, 1]);
+  // 絵の背景（淡色地図）は、地理院地図 Vector が読めなかったときだけある。無いのに塗ると、ここで止まって続きの線の色が付かなかった
+  if (map.getLayer("gsi-pale")) {
+    map.setPaintProperty("gsi-pale", "raster-brightness-max", dark ? 0.4 : 1);
+    map.setPaintProperty("gsi-pale", "raster-saturation", dark ? -0.6 : 0);
+    map.setPaintProperty("gsi-pale", "raster-opacity", ["interpolate", ["linear"], ["zoom"], 7, 0, 8.5, 1]);
+  }
   map.setPaintProperty("muni-line", "line-color", color("--pref-line"));
   map.setPaintProperty("muni-line", "line-opacity", ["interpolate", ["linear"], ["zoom"], 4, 0.3, 9, 0.9]);
   map.setPaintProperty("muni-line", "line-width", ["interpolate", ["linear"], ["zoom"], 4, 0.2, 9, 1, 12, 2]);

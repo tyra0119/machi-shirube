@@ -569,10 +569,13 @@ async function showHinan(code, townFeatures, startPart) {
     const [h0, d0] = await Promise.all([elevationAt(...at), hz ? depthAt(hz, ...at) : null]);
     if (token !== setHere.token) return;
     $("hinan-here").innerHTML = `選んだ場所：海抜 約 ${h0 != null ? `${Math.round(h0)}m` : "（分からない）"}${hz ? `・${hz}の浸水の想定 <strong>${d0?.label ?? "区域の外（想定なし）"}</strong>` : ""}`;
+    const walks = [];
+    $("hinan-walk").hidden = true;
     await Promise.all(cand.map(async (c, i) => {
       const p = c.f.geometry.coordinates;
       const [h, d, w] = await Promise.all([elevationAt(...p), hz ? depthAt(hz, ...p) : null, walkMinutes(at, p, c.m)]);
       if (token !== setHere.token) return;
+      if (w.hasElevation) walks.push({ i, name: c.f.properties.name, m: c.m, up: w.up, min: w.min });
       const li = document.querySelector(`#hinan-list li[data-i="${i}"] .d`);
       if (!li) return;
       li.innerHTML = `まっすぐ ${c.m.toLocaleString("ja-JP")}m・歩いて約 ${Math.max(1, Math.round(c.m / 60))}分`
@@ -580,6 +583,13 @@ async function showHinan(code, townFeatures, startPart) {
         + `<br>避難場所の海抜 約 ${h != null ? `${Math.round(h)}m` : "（分からない）"}`
         + (hz ? `・${hz}の浸水の想定 ${d?.label ? `<strong class="warn">${d.label}</strong>` : "区域の外"}` : "");
     }));
+    // 防災散歩：近い3つのうち、上りがいちばん少ない避難場所まで、ふだんの散歩で一度歩いてみる。道は持っていないので、まっすぐの線のめやすだと書く
+    if (token !== setHere.token || !walks.length) return;
+    const w = walks.sort((a, b) => a.up - b.up || a.m - b.m)[0];
+    $("hinan-walk").hidden = false;
+    $("hinan-walk").innerHTML = `<p class="t">${icon("heart")}防災散歩</p>`
+      + `<p>ふだんの散歩で、一度 <strong>${esc(w.name)}</strong>（${w.i + 1}）まで歩いてみませんか。往復 約 ${(w.m * 2).toLocaleString("ja-JP")}m・約 ${w.min * 2}分（行きの上り ${w.up}m）。近い ${walks.length} つの中で、上りがいちばん少ない所です。</p>`
+      + `<p class="note">長さと上りは、まっすぐの線で測っためやすです。歩く道は、町の地図や現地で選んでください。夜や雨の日の道も、明るいうちに一度見ておくと安心です。</p>`;
   }
   // まっすぐの距離（m）。歩くめやすは 1分 60m（お年寄りの歩く速さのめやす）
   const meters = ([a, b], [c, d]) => {
@@ -601,6 +611,8 @@ async function showHinan(code, townFeatures, startPart) {
     if (r.top < 60 || r.bottom > innerHeight) $("hinan-map").scrollIntoView({ behavior: "smooth", block: "center" });
   }
   function setHere(at, label) {
+    // 地図の読み込みが終わる前に町・字を選んだときは、読み込みのあとにする（印を置く所がまだ無い）
+    if (!map.getSource("here")) { setTimeout(() => setHere(at, label), 300); return; }
     here = { at, label };
     pop?.remove();
     cand = shelters.features.filter((f) => !kind || f.properties.kinds.includes(kind))
