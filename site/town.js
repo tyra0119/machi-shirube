@@ -12,7 +12,7 @@ const getData = (url) => {
   return dataCache.get(url).then((d) => (d == null ? null : structuredClone(d)));
 };
 // 避難場所の想定収容人数：町の表の人数は屋内と屋外（校庭や広場）の合計のことがある。建物の中の人数が分かれば添える（scripts/build-shelter-inside.mjs）
-const capText = (p) => `${T("想定収容")} ${esc(p.capacity)}${p.inside != null ? `（${T("建物の中")} ${Number(p.inside).toLocaleString("ja-JP")}${T("人")}）` : `（${T("屋外の広場などを含むことがあります")}）`}`;
+const capText = (p) => `${T("想定収容")} ${/^\d+$/.test(String(p.capacity)) ? Number(p.capacity).toLocaleString("ja-JP") : esc(p.capacity)}${p.inside != null ? `（${T("建物の中")} ${Number(p.inside).toLocaleString("ja-JP")}${T("人")}）` : `（${T("屋外の広場などを含むことがあります")}）`}`;
 // Google マップで、選んだ場所から避難場所までの歩く道を開く（画面と同じ出発地にするため、選んだ場所も渡す。
 // ボタンを押したときだけ Google マップに渡る、と画面に書いている。作者「場所は送りたいな。じゃないと画面と違う経路になってしまう」）
 const gmapWalk = ([lon, lat], from) => `https://www.google.com/maps/dir/?api=1${from ? `&origin=${from[1].toFixed(5)},${from[0].toFixed(5)}` : ""}&destination=${lat},${lon}&travelmode=walking`;
@@ -379,7 +379,7 @@ async function showPlan(code, part) {
   if (part && d.parts[part.properties.part]) { sel.value = part.properties.part; $("plan-pick").hidden = true; }
   const draw = () => {
     const p = d.parts[sel.value];
-    $("plan").innerHTML = p ? `<ol class="plan-points">${p.points.map((x) => `<li><p>${esc(x.text)}</p>${x.cites.map((c) => `<a class="cite" href="${esc(c.url)}#page=${c.page}" target="_blank" rel="noopener" title="${esc(c.quote)}">${esc(c.doc.replace(/^.*?（.*?）/, ""))} ${c.page}${T("ページ")}</a>`).join("")}</li>`).join("")}</ol>`
+    $("plan").innerHTML = p ? `<ol class="plan-points">${p.points.map((x) => `<li><p>${esc(x.text).replace(/\d{4,}(?=人)/g, (n) => Number(n).toLocaleString("ja-JP"))}</p>${x.cites.map((c) => `<a class="cite" href="${esc(c.url)}#page=${c.page}" target="_blank" rel="noopener" title="${esc(c.quote)}">${esc(c.doc.replace(/^.*?（.*?）/, ""))} ${c.page}${T("ページ")}</a>`).join("")}</li>`).join("")}</ol>`
       : `<p>${T("この町・字の名前が出てくる所は、防災計画に見つかりませんでした。")}</p>`;
   };
   sel.addEventListener("change", draw);
@@ -607,6 +607,9 @@ async function showHinan(code, townFeatures, startPart) {
   sel.addEventListener("change", () => {
     const f = townFeatures.find((x) => x.properties.part === sel.value);
     if (f) setHere(center(f), `${f.properties.name}（町・字のおおよその真ん中）`);
+    // 防災計画の欄も同じ町・字に合わせる（別々に選び直さなくてよいように）
+    const plan = $("plan-part");
+    if (f && plan && [...plan.options].some((o) => o.value === sel.value)) { plan.value = sel.value; plan.dispatchEvent(new Event("change")); }
   });
   for (const b of document.querySelectorAll("#hinan-block .hinan-kind button")) {
     b.addEventListener("click", () => {

@@ -882,7 +882,8 @@ async function rankRows() {
   const want = [...document.querySelectorAll("#rank-filters input:checked")].map((i) => i.value);
   const pass = (code, t) => {
     const f = flagsOf(code, t);
-    return want.every((w) => (w === "specialSnow" ? f.snow === "特別豪雪地帯" : !!f[w]));
+    // 人口2万人以上：大泉町の外国の住民の割合が「人口2万人以上で全国一」なのを、並べて確かめられるように
+    return want.every((w) => (w === "pop20k" ? t.population >= 20000 : w === "specialSnow" ? f.snow === "特別豪雪地帯" : !!f[w]));
   };
   return Object.entries(stats.towns)
     .filter(([code, t]) => !t.ward && (!pref || t.pref === pref) && pass(code, t))
@@ -923,11 +924,15 @@ async function renderRank() {
   paintTowns();
   document.getElementById("rank-legend").innerHTML =
     `<span>${fmt(colorBy.low, def)}</span><span class="bar" style="background:linear-gradient(to right, ${color("--land")}, ${color("--accent")})"></span><span>${fmt(colorBy.high, def)}</span>`;
-  document.getElementById("rank-cite").textContent = towns
+  // 絞ったときは、いくつ残ったかと、絞りの出典も添える（例：南海トラフの特別強化地域 139市町村）
+  const want = towns ? [] : [...document.querySelectorAll("#rank-filters input:checked")].map((i) => (i.value === "specialSnow" ? "snow" : i.value));
+  const filterSrc = [...new Set(want)].map((w) => flagData.sources[w]).filter(Boolean);
+  document.getElementById("rank-cite").textContent = (want.length ? `絞った市区町村 ${rows.length}。` : "") + (towns
     ? `出典：${townIndex.source}（${townIndex.asOf}）`
     : def.src === "census"
       ? `出典：${stats.census.name}（${stats.census.asOf}）を加工。政令市は区を足して計算`
-      : `出典：${stats.source.name}（${stats.source.asOf}。増減・転入は${stats.source.changePeriod}）を加工`;
+      : `出典：${stats.source.name}（${stats.source.asOf}。増減・転入は${stats.source.changePeriod}）を加工`)
+    + (filterSrc.length ? `。絞り：${filterSrc.join("・")}` : "");
   if (!towns) {
     const pref = rankState.scope.startsWith("pref:") ? rankState.scope.slice(5) : null;
     if (pref) fit(munis.features.filter((f) => f.properties.pref === pref), 10);
@@ -1100,6 +1105,7 @@ function showCounter(running = []) {
   box.hidden = false;
   box.innerHTML = `
     <span><strong>${t.towns}</strong>町を Claude が調べた</span>
+    ${t.questions ? `<span><strong>${t.questions}</strong>問の物差し</span>` : ""}
     <span><strong>${t.answers}</strong>の答え</span>
     <span><strong>${t.pages.toLocaleString("ja-JP")}</strong>ページを読んだ</span>
     <span><strong>$${t.usd.toFixed(2)}</strong>使った</span>
