@@ -338,3 +338,32 @@ a.secondary.as-button { display: flex; align-items: center; justify-content: cen
 .search input { border-radius: 8px; }
 .order { border-radius: 8px; }
 .order button[aria-pressed="true"]::before { content: "✓"; margin-right: 4px; }
+
+/* 作る側の帯（手元の画面だけ）：確かめ待ちがあるときは作品の色の枠で目立たせる（赤は使わない） */
+.builder-box { margin: 12px 0 4px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); }
+.builder-box.has { border: 2px solid var(--accent); background: var(--surface); }
+.builder-box .bb-title { display: flex; align-items: center; gap: 6px; margin: 0 0 6px; font-size: 13px; font-weight: 700; color: var(--text-sub); }
+.builder-box .bb-title svg { width: 16px; height: 16px; }
+.builder-box .bb-nums { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 0 0 8px; font-size: 14px; }
+.builder-box .bb-nums strong { margin-right: 2px; font-size: 22px; color: var(--accent); }
+.builder-box .bb-none { margin: 0 0 8px; font-size: 13px; color: var(--text-sub); }
+.builder-box .as-button { margin-top: 6px; }
+/* はじめかた：たたんでおき、押すと開く */
+.guide .howto { margin: 16px 0 0; }
+.guide .howto summary { min-height: 40px; display: flex; align-items: center; font-size: 16px; font-weight: 700; cursor: pointer; }
+.guide #open-rank { margin-top: 12px; }
+.about-links { margin: 8px 0 0; padding: 0; list-style: none; display: grid; gap: 6px; font-size: 14px; }
+.about-links a { color: var(--accent); }
+/* 地図の見方の札（公開のサイトでも出す。手元の画面ではカウンターの帯に同じ見方が出る） */
+.map-key { position: absolute; left: 12px; bottom: 28px; z-index: 2; display: flex; flex-wrap: wrap; gap: 4px 12px; margin: 0; padding: 6px 10px; background: var(--surface); border-radius: 10px; box-shadow: var(--shadow); font-size: 12px; color: var(--text-sub); }
+.map-key[hidden] { display: none; }
+.map-key span { display: inline-flex; align-items: center; gap: 6px; }
+.map-key i { display: inline-block; width: 14px; height: 10px; border-radius: 2px; }
+.map-key i.lit { width: 12px; height: 12px; border-radius: 6px; background: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 35%, transparent); }
+.map-key i.sel { background: var(--accent); }
+.map-key i.base { background: var(--land); border: 1px solid var(--line); }
+@media (max-width: 700px) { .map-key { left: 8px; bottom: 22px; font-size: 11px; } }
+.guide .howto summary { list-style: none; gap: 6px; }
+.guide .howto summary::-webkit-details-marker { display: none; }
+.guide .howto summary::before { content: "▸"; color: var(--accent); }
+.guide .howto[open] summary::before { content: "▾"; }

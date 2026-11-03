@@ -26,40 +26,32 @@
     </div>
     <div class="panel-body">
       <section id="guide" class="guide">
-        <p class="about">町を選ぶと、その町の<strong>暮らしのページ</strong>が開きます。今日の天気・今日やっている病院・近い避難場所は、全国のどの町でも。<br>
-          さらに町の公式サイトや国の公開データを読み、<strong>暮らしの情報が届きにくい人</strong>に届く情報を、出典つきで足していきます。</p>
-        <button type="button" id="open-rank" class="secondary">数字で並べて探す（高い順・低い順）</button>
-
-        <h2>はじめかた</h2>
-        <ol class="steps">
-          <li><span class="step-ic" data-ic="search"></span><span class="step-title">町を探す</span>上の欄に町の名前を入れるか、地図で町を押します。</li>
-          <li><span class="step-ic" data-ic="eye"></span><span class="step-title">町の特色を見る</span>全国の市区町村と比べて目立つ数字が出ます。</li>
-          <li><span class="step-ic" data-ic="pin"></span><span class="step-title">市・区なら、中の町を選ぶ</span>広い市や区は、中の町（町・字）ごとに見られます。</li>
-          <li><span class="step-ic" data-ic="sun"></span><span class="step-title">町のページを開く</span>今日の天気・病院・避難場所、公式のサイトから確かめた答え、印刷用のくらしのメモ。</li>
-        </ol>
-
+        <!-- 作る側の帯：確かめ待ち・判断待ちの提案と、確かめる一覧への入口（作者の手元の画面だけ。app.js の showBuilderBox） -->
+        <div id="builder-box" class="builder-box" hidden></div>
+        <p class="about">町を選ぶと、その町の<strong>暮らしのページ</strong>が開きます。<strong>暮らしの情報が届きにくい人</strong>に届く情報を、出典つきで足していきます。</p>
         <h2>たとえば</h2>
         <div class="examples">
           <button type="button" data-muni="39428" data-il="bousai"><span class="name">黒潮町</span><span class="sub">高知県・お年寄りが多く、津波の想定が大きい町。わが家の避難で、坂を考えた歩く時間</span></button>
           <button type="button" data-muni="10524" data-il="foreign"><span class="name">大泉町</span><span class="sub">群馬県・外国の住民が多い町。防災をポルトガル語・スペイン語・やさしい日本語で</span></button>
           <button type="button" data-town="11227:0130" data-il="kosodate"><span class="name">根岸台</span><span class="sub">埼玉県朝霞市・若い家族が多い市の中の町。町・字ごとの小学校区や計画</span></button>
         </div>
-
-        <h2>地図の見方</h2>
-        <ul class="legend">
-          <li><span class="swatch lit"></span>くわしく調べた町（光る丸。濃いほど答えが多い）</li>
-          <li><span class="swatch selected"></span>選んでいる町</li>
-          <li><span class="swatch nodata"></span>国の統計がない所（北方領土など）</li>
-          <li><span class="line pref"></span>県境</li>
-          <li><span class="line muni"></span>市区町村の境目</li>
+        <button type="button" id="open-rank" class="secondary">数字で並べて探す（高い順・低い順）</button>
+        <details class="howto">
+          <summary>はじめかた</summary>
+          <ol class="steps">
+          <li><span class="step-ic" data-ic="search"></span><span class="step-title">町を探す</span>上の欄に町の名前を入れるか、地図で町を押します。</li>
+          <li><span class="step-ic" data-ic="eye"></span><span class="step-title">町の特色を見る</span>全国の市区町村と比べて目立つ数字が出ます。</li>
+          <li><span class="step-ic" data-ic="pin"></span><span class="step-title">市・区なら、中の町を選ぶ</span>広い市や区は、中の町（町・字）ごとに見られます。</li>
+          <li><span class="step-ic" data-ic="sun"></span><span class="step-title">町のページを開く</span>今日の天気・病院・避難場所、公式のサイトから確かめた答え、印刷用のくらしのメモ。</li>
+        </ol>
+        </details>
+        <h2>このサイトについて</h2>
+        <p class="hint">AI が集めた答えのうち、権利・食い違い・気をつけたい話題など危ない所だけを人が確かめ、ほかは自動で承認します。拡大すると、道路や線路の見える背景の地図が出ます（右上のボタンで消せます）。</p>
+        <ul class="about-links">
+          <li><a href="review.html">AI の答えを人がどう確かめたかの記録</a></li>
+          <li><a href="report.html">まちがいの知らせ方</a></li>
         </ul>
-        <p class="hint">拡大すると、道路や線路の見える背景の地図が出ます（右上のボタンで消せます）。</p>
-
-        <h2>しくみ</h2>
-        <p class="hint">AI が集めた答えのうち、権利・食い違い・気をつけたい話題など危ない所だけを人が確かめ、ほかは自動で承認します。</p>
-        <a class="secondary as-button" href="review.html">確かめる一覧を見る</a>
       </section>
-
       <section id="card" class="card" hidden aria-live="polite"></section>
 
       <section id="rank" class="rank card" hidden>
@@ -95,6 +87,7 @@
     <div id="map" aria-label="日本の市区町村の地図"></div>
     <div id="tip" class="tip" hidden></div>
     <div id="counter" class="counter" aria-live="polite" hidden></div>
+    <p id="map-key" class="map-key"><span><i class="lit"></i>くわしく調べた町</span><span><i class="sel"></i>選んでいる町</span><span><i class="base"></i>国のデータだけの町</span></p>
     <nav id="crumb" class="crumb" aria-label="いま見ている所" hidden>
       <ol class="path"></ol>
     </nav>

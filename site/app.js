@@ -1096,13 +1096,37 @@ async function lightTowns() {
     lightTowns.polling = true;
     pollRuns();
   }
-  if (lightTowns.local) showCounter();
+  if (lightTowns.local) { showCounter(); showBuilderBox(); }
 }
+// 作る側の帯（左メニューの検索のすぐ下。手元の画面だけ）：確かめ待ちと判断待ちの提案の数と、確かめる一覧への入口
+// （作者「確かめ待ちのような大事な情報がどこかに表示されていると分かりやすい」「『確かめる一覧を見る』が左メニューの一番下にあるのが不自然」）
+async function showBuilderBox() {
+  const box = document.getElementById("builder-box");
+  const [rev, prop] = await Promise.all([
+    fetch("api/review").then((r) => r.json()).catch(() => null),
+    fetch("api/proposals").then((r) => r.json()).catch(() => null),
+  ]);
+  if (!rev) return;
+  const pending = rev.items.filter((x) => x.status === "pending").length;
+  const props = prop?.proposals ?? [];
+  const towns = [...new Set(props.map((p) => p.scope.match(/(\d{5})/)?.[1]).filter(Boolean))];
+  box.hidden = false;
+  box.classList.toggle("has", pending + props.length > 0);
+  box.innerHTML = `<p class="bb-title">${icon("eye")}作る側（この PC の画面だけ）</p>
+    ${pending + props.length
+      ? `<p class="bb-nums"><span><strong>${pending}</strong>件 確かめ待ち</span>${props.length ? `<span><strong>${props.length}</strong>件 判断待ちの提案</span>` : ""}</p>`
+      : `<p class="bb-none">確かめ待ちと判断待ちの提案はありません</p>`}
+    <a class="secondary as-button" href="review.html">確かめる一覧を開く</a>
+    ${towns.map((c) => `<a class="secondary as-button" href="research.html?muni=${c}">提案を見る：${String(stats?.towns?.[c]?.name ?? c).replace(/[&<>"]/g, "")}</a>`).join("")}`;
+}
+
 function showCounter(running = []) {
   const t = progress?.totals;
   if (!t) return;
   const box = document.getElementById("counter");
   box.hidden = false;
+  // カウンターの帯に地図の見方も出るので、地図の見方の札は隠す
+  document.getElementById("map-key").hidden = true;
   box.innerHTML = `
     <span><strong>${t.towns}</strong>町を Claude が調べた</span>
     ${t.questions ? `<span><strong>${t.questions}</strong>問の物差し</span>` : ""}
