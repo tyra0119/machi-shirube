@@ -235,7 +235,7 @@ function estimate() {
 http
   .createServer((req, res) => {
     const url = new URL(req.url, "http://localhost");
-    if (url.pathname === "/api/ping") return send(res, 200, { local: true, estimate: estimate() });
+    if (url.pathname === "/api/ping") return send(res, 200, { local: true, estimate: estimate(), runLimit: RUN_LIMIT_USD });
     if (url.pathname === "/api/areas" && req.method === "POST") return saveArea(req, res);
     if (url.pathname === "/api/review" && req.method === "GET") { const d = ledger.load(); return send(res, 200, { ...d, items: d.items.map((it) => ({ ...it, score: ledger.scoreOf(it) })) }); }
     if (url.pathname === "/api/research" && req.method === "POST") return startResearch(req, res);

@@ -348,7 +348,8 @@ function disallowed(robots, path) {
 
 // 1つの町を、物差しの問い（site/data/yardstick.json）でまとめて調べる。
 // もう答えのある問い（確かめ待ち・OK・自動）は飛ばす。1回の調べの費用の上限を超えたら止める
-export const RUN_LIMIT_USD = 4;
+// 1回の調べの上限。ふだんは $4。デモを録る日だけ、.env に RUN_LIMIT_USD=8 などと書いて上げる（作者「2：見せる」：その場で押す町で多くの問いが埋まるところを見せる）
+export const RUN_LIMIT_USD = Number(process.env.RUN_LIMIT_USD) > 0 ? Number(process.env.RUN_LIMIT_USD) : 4;
 // まとめて調べる。part を渡すと町・字の問い（物差しで level が town のもの）、渡さなければ市区町村の問い
 export async function researchTown(code, { log = console.log, onItem = () => {}, shouldStop = () => false, part } = {}) {
   const { questions } = JSON.parse(fs.readFileSync("site/data/yardstick.json", "utf8"));
