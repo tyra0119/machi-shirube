@@ -872,7 +872,10 @@ function todayLife(hasHinan) {
   ].join("");
   $("tiles").innerHTML = PAGES.filter((p) => !["today", "source", "research", "mitate"].includes(p.view)).map((p) => {
     // 中身があるか：Claude の答え・わが家の避難・病院のデータ・町のデータ
-    const n = (p.feature ? 1 : 0) + has(p.view) + (p.view === "bousai" && hasHinan ? 1 : 0) + (p.view === "shiru" ? 1 : 0) + (p.view === "iryo" && medicalRow && !medicalRow.includes("later") ? 1 : 0) + (p.view === "foreign" && !$("tr-block").hidden ? 1 : 0);
+    // 答えが無くても、国のデータの欄（重ねて見る地図・バス・事故・買い物など）が出ていれば中身がある
+    // （作者「大泉町、暮らしの場面、地図が準備中になっているのは正しい？」：地図のページは答えが無く、地図だけなので準備中と出ていた）
+    const blocks = [...document.querySelectorAll(`.view[data-view="${p.view}"] > section.block`)].filter((s) => !s.hidden && !s.querySelector(".answers-box")).length;
+    const n = (p.feature ? 1 : 0) + has(p.view) + blocks + (p.view === "bousai" && hasHinan ? 1 : 0) + (p.view === "shiru" ? 1 : 0) + (p.view === "iryo" && medicalRow && !medicalRow.includes("later") ? 1 : 0) + (p.view === "foreign" && !$("tr-block").hidden ? 1 : 0);
     return `<li${p.feature ? " class=\"feat\"" : ""}><a href="#${p.view}">${p.feature ? `<span class="feat-badge">${T("この町ならでは")}</span>` : ""}${illust(p.view)}<span class="t">${esc(T(p.title))}</span><span class="d">${esc(T(p.desc))}</span>${n ? "" : `<span class="later">${T("準備中")}</span>`}</a></li>`;
   }).join("");
 }
