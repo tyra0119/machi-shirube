@@ -57,15 +57,16 @@ async function demTile(z, x, y) {
   if (!demCache.has(key)) demCache.set(key, (async () => {
     const res = await fetch(`https://cyberjapandata.gsi.go.jp/xyz/dem_png/${key}.png`).catch(() => null);
     if (!res?.ok) return FLAT; // 標高の無い所（海の上など）は平らな 0m
-    const bmp = await createImageBitmap(await res.blob());
+    // 色の補正をかけずに読む（補正がかかると標高の数が狂い、陸が台のように持ち上がって周りが崖に見えた）
+    const bmp = await createImageBitmap(await res.blob(), { colorSpaceConversion: "none", premultiplyAlpha: "none" });
     const c = new OffscreenCanvas(bmp.width, bmp.height);
-    const g = c.getContext("2d", { willReadFrequently: true });
+    const g = c.getContext("2d", { willReadFrequently: true, colorSpace: "srgb" });
     g.drawImage(bmp, 0, 0);
     const img = g.getImageData(0, 0, bmp.width, bmp.height);
     const d = img.data;
     for (let i = 0; i < d.length; i += 4) {
       const v = d[i] * 65536 + d[i + 1] * 256 + d[i + 2];
-      const h = v === 8388608 ? 0 : Math.max(0, (v < 8388608 ? v : v - 16777216) * 0.01) + 32768;
+      const h = (v === 8388608 ? 0 : Math.max(0, (v < 8388608 ? v : v - 16777216) * 0.01)) + 32768; // 海など値の無い所は 0m
       d[i] = Math.floor(h / 256); d[i + 1] = Math.floor(h % 256); d[i + 2] = Math.floor((h % 1) * 256); d[i + 3] = 255;
     }
     g.putImageData(img, 0, 0);
@@ -180,7 +181,8 @@ map.on("load", async () => {
 
 // 町の灯り：ぱっと灯って（明るい）、やわらかく残る（うすい）。町ごとの色の変化は地図の側でなめらかにならないので、
 // 灯ってからの時間で段を決め、段が変わったときだけ塗り直す（1つの町で7回）
-const STAGES = [[0, 0.3, 0.4], [70, 0.55, 0.75], [160, 0.7, 0.9], [330, 0.6, 0.7], [520, 0.5, 0.5], [760, 0.4, 0.32], [1050, 0.32, 0.2]];
+// 一度強く光ってから落ちる形はチカチカして見えた（作者「画面がチカチカして見辛い」）ので、ゆっくり明るくなるだけにする
+const STAGES = [[0, 0.04, 0.05], [150, 0.08, 0.1], [300, 0.12, 0.15], [450, 0.16, 0.2], [600, 0.2, 0.24], [800, 0.24, 0.28], [1000, 0.27, 0.3]];
 const active = [];
 const lightOn = (code, now) => active.push({ code, t: now, i: -1 });
 function tickLights(now) {
@@ -217,7 +219,7 @@ function fly() {
     const dt = last == null ? 16 : now - last;
     last = now;
     bearing = bearing == null ? want : bearing + (((want - bearing + 540) % 360) - 180) * (1 - Math.exp(-dt / 900));
-    map.jumpTo({ center: here, bearing, pitch: PITCH, zoom: ZOOM - 0.5 * Math.sin(Math.PI * raw) });
+    map.jumpTo({ center: here, bearing, pitch: PITCH, zoom: ZOOM }); // 高さは一定（変えると地形の細かさが切り替わってちらつく）
     while (qi < queue.length && queue[qi].at <= t) { lightOn(queue[qi].code, now); qi++; }
     tickLights(now);
     if (CAPTIONS) {
