@@ -1,7 +1,7 @@
 {
  "code": "10524",
  "name": "邑楽郡大泉町",
- "createdAt": "2026-11-03T03:34:26.547Z",
+ "createdAt": "2026-11-03T03:54:57.510Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
  "langs": {
@@ -501,6 +501,48 @@
       "title": "大泉町買い物支援ガイド",
       "url": "https://www.town.oizumi.gunma.jp/s014/kenko/010/010/200/20200803094355.html",
       "where": "本文・配布場所"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q44",
+     "short": "Onde procurar emprego",
+     "text": "A agência responsável por Oizumi é o Hello Work Tatebayashi (ハローワーク館林).\nEndereço: Tatebayashi-shi, Ōkaidō 1-3-37 (館林市大街道1-3-37, 〒374-0066).\nTelefone: 0276-75-8609.\nAtendimento: dias úteis, das 8h30 às 17h15. Fecha aos sábados, domingos, feriados e no fim e início do ano.\nO Departamento de Promoção Econômica da cidade (経済振興課), no balcão 207 do 2º andar da prefeitura (庁舎2階207番窓口, telefone 0276-63-3111), distribui as ofertas de emprego do Hello Work.\nA cidade não faz apresentação nem intermediação de empregos ou de trabalho em domicílio (内職).\nConsultas para trabalhadores, como perda de emprego ou problemas no local de trabalho, são atendidas pela Divisão de Promoção Comercial e Industrial do Departamento de Promoção Econômica (経済振興課商工振興係).\nNão foi possível confirmar, na página oficial da cidade, a existência de balcões exclusivos para idosos, estrangeiros ou pessoas com deficiência. Para mais detalhes, consulte o Hello Work Tatebayashi (ハローワーク館林).",
+     "original": "大泉町を受け持つのは、ハローワーク館林です。\n場所は、館林市大街道1-3-37（〒374-0066）です。\n電話は0276-75-8609です。\n受付は平日8時30分〜17時15分です。土・日・祝日と年末年始は閉まっています。\n町の経済振興課（庁舎2階207番窓口、電話0276-63-3111）では、ハローワークの求人情報を配っています。\n町では、就職や内職の紹介・あっせんはしていません。\n離職や職場のトラブルなどの勤労者相談は、経済振興課商工振興係で受けています。\nシニア・外国人・障がいのある人向けの専用窓口は、町の公式ページでは確認できませんでした。詳しいことはハローワーク館林に問い合わせてください。",
+     "back": "大泉町を担当するのはハローワーク館林です。場所は館林市大街道1-3-37（〒374-0066）です。電話は0276-75-8609です。受付は平日8時30分から17時15分までです。土曜・日曜・祝日と年末年始は閉まっています。町の経済振興課（庁舎2階207番窓口、電話0276-63-3111）では、ハローワークの求人情報を配布しています。町では就職や内職の紹介・あっせんは行っていません。離職や職場のトラブルなどの勤労者相談は、経済振興課商工振興係で受け付けています。高齢者・外国人・障がいのある人向けの専用窓口は、町の公式ページでは確認できませんでした。詳しくはハローワーク館林に問い合わせてください。",
+     "source": {
+      "title": "ハローワーク館林（館林公共職業安定所）｜群馬労働局",
+      "url": "https://jsite.mhlw.go.jp/gunma-roudoukyoku/hw/h_map/h_map07.html",
+      "where": "管轄区域・所在地"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q45",
+     "short": "Exames de saúde, exames de câncer e vacinas",
+     "text": "As informações sobre exames de saúde e exames de câncer estão no site oficial da cidade, em \"Saúde e Bem-estar > Saúde e Medicina > Exames de saúde e exames de câncer\" (「健康・福祉＞健康・医療＞健診・検診」). As vacinas para adultos estão na mesma categoria, em \"Vacinas\" (「予防接種」).\nO balcão é o Departamento de Promoção da Saúde (健康づくり課), da Divisão de Bem-estar e Crianças (福祉こども部), sala 105 do 1º andar da prefeitura (庁舎1階105番, telefone 0276-63-3111). O exame de saúde específico (特定健診) é com o Departamento de Seguro Nacional de Saúde e Previdência (国保年金課), sala 102 do 1º andar (庁舎1階102番).\nOs exames de câncer exigem inscrição prévia. A inscrição pode ser feita no balcão, por telefone ou pelo LINE oficial da cidade.\nValor a pagar pelo participante (exame coletivo): câncer de estômago 500 ienes, câncer de intestino grosso 500 ienes, câncer de mama 1,000 ienes, câncer do colo do útero 500 ienes. Existe sistema de isenção.\nO exame de saúde específico (特定健診) é para pessoas de 40 a 74 anos inscritas no Seguro Nacional de Saúde (国保), e é feito de forma coletiva ou individual (conforme o guia do ano fiscal de Reiwa 7).\nVacina da gripe para idosos: 1,000 ienes. Vacina pneumocócica: 2,000 ienes. Vacina de rotina contra herpes-zóster: vacina viva 2,000 ienes; vacina inativada 5,000 ienes por dose.\nA vacinação é feita em instituições médicas conveniadas, com hora marcada por telefone.",
+     "original": "健診・がん検診は町公式サイトの「健康・福祉＞健康・医療＞健診・検診」に、大人の予防接種は同じ分類の「予防接種」にまとまっています。\n窓口は福祉こども部 健康づくり課（庁舎1階105番、電話0276-63-3111）です。特定健診は国保年金課（庁舎1階102番）です。\nがん検診は事前申し込みが必要です。窓口・電話・町公式LINEで申し込みます。\n自己負担は胃がん500円、大腸がん500円、乳がん1,000円、子宮頸がん500円です（集団検診）。免除制度があります。\n特定健診は40〜74歳の国保加入者が対象で、集団または個別で受けます（令和7年度案内）。\n高齢者インフルエンザは1,000円、肺炎球菌は2,000円、帯状疱疹の定期接種は生ワクチン2,000円・不活化ワクチン1回5,000円です。\n接種は契約医療機関に電話で予約します。",
+     "back": "健診・がん検診は町公式サイトの「健康・福祉＞健康・医療＞健診・検診」に、大人の予防接種は同じ分類の「予防接種」にまとめられています。窓口は福祉こども部健康づくり課（庁舎1階105番、電話0276-63-3111）です。特定健診は国保年金課（庁舎1階102番）です。がん検診は事前申し込みが必要です。窓口、電話、町公式LINEで申し込めます。自己負担は胃がん500円、大腸がん500円、乳がん1,000円、子宮頸がん500円です（集団検診）。免除制度があります。特定健診は40〜74歳の国保加入者が対象で、集団または個別で受けられます（令和7年度の案内による）。高齢者インフルエンザは1,000円、肺炎球菌は2,000円、帯状疱疹の定期接種は生ワクチン2,000円、不活化ワクチンは1回5,000円です。接種は契約医療機関に電話で予約します。",
+     "source": {
+      "title": "集団検診（胃がん・大腸がん・乳がん・子宮頸がん検診）のお知らせ",
+      "url": "https://www.town.oizumi.gunma.jp/s016/kenko/010/010/020/20200915090552.html",
+      "where": "事前申し込みについて"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q50",
+     "short": "Para quem vive com cães e gatos",
+     "text": "O balcão para registro de cães, vacina antirrábica e subsídio para castração/esterilização é o Departamento de Melhoria Ambiental (環境整備課), da Divisão de Urbanismo e Construção (都市建設部), balcão 108 do 1º andar da prefeitura (庁舎1階108番窓口).\nTelefone: 0276-63-3111.\nO registro do cão deve ser feito em até 30 dias após adquiri-lo. A taxa é de 3,000 ienes.\nA vacina antirrábica é anual (1 vez por ano). A vacinação coletiva acontece na primavera (por volta de maio) e no outono (por volta de outubro), e custa 2,950 ienes. A taxa da etiqueta de vacinação (注射済票) é de 550 ienes.\nSubsídio para castração/esterilização: 3,000 ienes para machos e 5,000 ienes para fêmeas.\nNão foi possível confirmar o contato em caso de animal perdido nem a evacuação com animais de estimação em desastres. Consulte o Departamento de Melhoria Ambiental (環境整備課).",
+     "original": "犬の登録・狂犬病予防注射・避妊去勢手術の補助金の窓口は、都市建設部 環境整備課（庁舎1階108番窓口）です。\n電話は 0276-63-3111 です。\n犬の登録は、取得から30日以内に行います。手数料は3,000円です。\n狂犬病予防注射は毎年1回です。集合注射は春（5月頃）と秋（10月頃）で、料金は2,950円です。注射済票の手数料は550円です。\n避妊・去勢手術の補助金は、オス3,000円、メス5,000円です。\n迷子の連絡先と災害時のペットとの避難は、確認できませんでした。環境整備課に問い合わせてください。",
+     "back": "犬の登録・狂犬病予防注射・避妊去勢手術の補助金の窓口は、都市建設部環境整備課（庁舎1階108番窓口）です。電話は0276-63-3111です。犬の登録は取得から30日以内に行います。手数料は3,000円です。狂犬病予防注射は年1回です。集合注射は春（5月頃）と秋（10月頃）で、料金は2,950円です。注射済票の手数料は550円です。避妊・去勢手術の補助金は、オス3,000円、メス5,000円です。迷子の連絡先と災害時のペットとの避難は確認できませんでした。環境整備課に問い合わせてください。",
+     "source": {
+      "title": "犬および猫の避妊または断種手術費補助金｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s024/kurashi/020/010/20200727130746.html",
+      "where": "犬および猫の避妊または断種手術費補助金／このページに関する問い合わせ先"
      },
      "status": "auto",
      "problems": []
@@ -1026,6 +1068,34 @@
       "title": "大泉町買い物支援ガイド",
       "url": "https://www.town.oizumi.gunma.jp/s014/kenko/010/010/200/20200803094355.html",
       "where": "本文・配布場所"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q45",
+     "short": "Chequeos de salud, detección de cáncer y vacunas",
+     "text": "Los chequeos de salud y las pruebas de detección de cáncer están reunidos en el sitio web oficial del pueblo, en \"Salud y Bienestar > Salud y Atención médica > Chequeos y detección\" (健康・福祉＞健康・医療＞健診・検診). Las vacunas para adultos están en la misma categoría, en \"Vacunas\" (予防接種).\nLa ventanilla es la Sección de Promoción de la Salud (健康づくり課) del Departamento de Bienestar e Infancia (福祉こども部), en la ventanilla n.º 105 de la planta baja del ayuntamiento (庁舎), teléfono 0276-63-3111. El chequeo médico específico (特定健診) lo atiende la Sección de Seguro Nacional de Salud y Pensiones (国保年金課), en la ventanilla n.º 102 de la planta baja del ayuntamiento (庁舎).\nPara las pruebas de detección de cáncer hay que inscribirse con antelación. La inscripción se hace en la ventanilla, por teléfono o por el LINE oficial del pueblo.\nEl pago a cargo de la persona es: cáncer de estómago 500 yenes, cáncer de colon 500 yenes, cáncer de mama 1,000 yenes, cáncer de cuello uterino 500 yenes (chequeo colectivo). Existe un sistema de exención.\nEl chequeo médico específico (特定健診) es para las personas de 40 a 74 años afiliadas al Seguro Nacional de Salud (国保). Se realiza de forma colectiva o individual (según la información del año fiscal 7 de Reiwa, 令和7年度).\nLa vacuna contra la gripe para personas mayores cuesta 1,000 yenes y la vacuna contra el neumococo, 2,000 yenes. La vacuna de rutina contra el herpes zóster cuesta 2,000 yenes la vacuna de virus vivo y 5,000 yenes por dosis la vacuna inactivada.\nPara vacunarse, hay que reservar por teléfono en un centro médico con convenio con el pueblo.",
+     "original": "健診・がん検診は町公式サイトの「健康・福祉＞健康・医療＞健診・検診」に、大人の予防接種は同じ分類の「予防接種」にまとまっています。\n窓口は福祉こども部 健康づくり課（庁舎1階105番、電話0276-63-3111）です。特定健診は国保年金課（庁舎1階102番）です。\nがん検診は事前申し込みが必要です。窓口・電話・町公式LINEで申し込みます。\n自己負担は胃がん500円、大腸がん500円、乳がん1,000円、子宮頸がん500円です（集団検診）。免除制度があります。\n特定健診は40〜74歳の国保加入者が対象で、集団または個別で受けます（令和7年度案内）。\n高齢者インフルエンザは1,000円、肺炎球菌は2,000円、帯状疱疹の定期接種は生ワクチン2,000円・不活化ワクチン1回5,000円です。\n接種は契約医療機関に電話で予約します。",
+     "back": "健診・がん検診は町公式サイトの「健康・福祉＞健康・医療＞健診・検診」に、大人の予防接種は同じ分類の「予防接種」にまとめられています。窓口は福祉こども部 健康づくり課（庁舎1階105番、電話0276-63-3111）です。特定健診は国保年金課（庁舎1階102番）が担当します。がん検診は事前申し込みが必要で、窓口・電話・町公式LINEで申し込みます。自己負担は胃がん500円、大腸がん500円、乳がん1,000円、子宮頸がん500円です（集団検診）。免除制度があります。特定健診は40〜74歳の国保加入者が対象で、集団または個別で受けられます（令和7年度の案内による）。高齢者インフルエンザは1,000円、肺炎球菌は2,000円、帯状疱疹の定期接種は生ワクチン2,000円、不活化ワクチンは1回5,000円です。接種は契約医療機関に電話で予約します。",
+     "source": {
+      "title": "集団検診（胃がん・大腸がん・乳がん・子宮頸がん検診）のお知らせ",
+      "url": "https://www.town.oizumi.gunma.jp/s016/kenko/010/010/020/20200915090552.html",
+      "where": "事前申し込みについて"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q50",
+     "short": "Para quienes viven con perros y gatos",
+     "text": "La ventanilla para el registro de perros, la vacuna antirrábica y las ayudas para la esterilización y castración es la Sección de Mejora del Entorno (環境整備課) del Departamento de Urbanismo y Construcción (都市建設部), en la ventanilla n.º 108 de la planta baja del ayuntamiento (庁舎).\nEl teléfono es 0276-63-3111.\nEl registro del perro se hace dentro de los 30 días posteriores a su adquisición. La tarifa es de 3,000 yenes.\nLa vacuna antirrábica se pone una vez al año. Las vacunaciones colectivas son en primavera (alrededor de mayo) y en otoño (alrededor de octubre), y cuestan 2,950 yenes. La tarifa de la placa de vacunación (注射済票) es de 550 yenes.\nLa ayuda para la esterilización y la castración es de 3,000 yenes para machos y 5,000 yenes para hembras.\nNo se pudo confirmar a quién llamar si se pierde la mascota, ni cómo evacuar con mascotas en caso de desastre. Consulte en la Sección de Mejora del Entorno (環境整備課).",
+     "original": "犬の登録・狂犬病予防注射・避妊去勢手術の補助金の窓口は、都市建設部 環境整備課（庁舎1階108番窓口）です。\n電話は 0276-63-3111 です。\n犬の登録は、取得から30日以内に行います。手数料は3,000円です。\n狂犬病予防注射は毎年1回です。集合注射は春（5月頃）と秋（10月頃）で、料金は2,950円です。注射済票の手数料は550円です。\n避妊・去勢手術の補助金は、オス3,000円、メス5,000円です。\n迷子の連絡先と災害時のペットとの避難は、確認できませんでした。環境整備課に問い合わせてください。",
+     "back": "犬の登録・狂犬病予防注射・避妊去勢手術の補助金の窓口は、都市建設部 環境整備課（庁舎1階108番窓口）です。電話は0276-63-3111です。犬の登録は取得から30日以内に行います。手数料は3,000円です。狂犬病予防注射は毎年1回です。集合注射は春（5月頃）と秋（10月頃）で、料金は2,950円です。注射済票の手数料は550円です。避妊・去勢手術の補助金は、オス3,000円、メス5,000円です。迷子の連絡先と災害時のペットとの避難は確認できませんでした。環境整備課に問い合わせてください。",
+     "source": {
+      "title": "犬および猫の避妊または断種手術費補助金｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s024/kurashi/020/010/20200727130746.html",
+      "where": "犬および猫の避妊または断種手術費補助金／このページに関する問い合わせ先"
      },
      "status": "auto",
      "problems": []
@@ -1556,6 +1626,34 @@
      },
      "status": "auto",
      "problems": []
+    },
+    {
+     "qid": "Q45",
+     "short": "Health checkups, cancer screenings, and vaccinations",
+     "text": "Information on health checkups and cancer screenings is gathered on the town's official website under \"Health and Welfare > Health and Medical Care > Health Checkups and Screenings\" (健康・福祉＞健康・医療＞健診・検診). Information on adult vaccinations is under \"Vaccinations\" (予防接種) in the same category.\nThe contact office is the Health Promotion Division (健康づくり課), Welfare and Children Department (福祉こども部), Town Hall 1st floor, Room 105, phone 0276-63-3111. For specific health checkups (特定健診), contact the National Health Insurance and Pension Division (国保年金課), Town Hall 1st floor, Room 102.\nAdvance registration is required for cancer screenings. You can register at the counter, by phone, or through the town's official LINE account.\nOut-of-pocket costs (group screening) are: stomach cancer 500 yen, colorectal cancer 500 yen, breast cancer 1,000 yen, and cervical cancer 500 yen. There is an exemption system.\nSpecific health checkups are for National Health Insurance members aged 40 to 74, and can be received either as a group checkup or an individual checkup (based on the Reiwa 7 fiscal year guide).\nFor seniors, the influenza vaccine costs 1,000 yen and the pneumococcal vaccine costs 2,000 yen. For the routine shingles vaccination, the live vaccine costs 2,000 yen, and the inactivated vaccine costs 5,000 yen per dose.\nFor vaccinations, make a reservation by phone with a contracted medical institution.",
+     "original": "健診・がん検診は町公式サイトの「健康・福祉＞健康・医療＞健診・検診」に、大人の予防接種は同じ分類の「予防接種」にまとまっています。\n窓口は福祉こども部 健康づくり課（庁舎1階105番、電話0276-63-3111）です。特定健診は国保年金課（庁舎1階102番）です。\nがん検診は事前申し込みが必要です。窓口・電話・町公式LINEで申し込みます。\n自己負担は胃がん500円、大腸がん500円、乳がん1,000円、子宮頸がん500円です（集団検診）。免除制度があります。\n特定健診は40〜74歳の国保加入者が対象で、集団または個別で受けます（令和7年度案内）。\n高齢者インフルエンザは1,000円、肺炎球菌は2,000円、帯状疱疹の定期接種は生ワクチン2,000円・不活化ワクチン1回5,000円です。\n接種は契約医療機関に電話で予約します。",
+     "back": "健診・がん検診は町公式サイトの「健康・福祉＞健康・医療＞健診・検診」に、大人の予防接種は同じ分類の「予防接種」にまとまっています。窓口は福祉こども部 健康づくり課（庁舎1階105番、電話0276-63-3111）です。特定健診は国保年金課（庁舎1階102番）です。がん検診は事前申し込みが必要です。窓口・電話・町公式LINEで申し込みます。自己負担は胃がん500円、大腸がん500円、乳がん1,000円、子宮頸がん500円です（集団検診）。免除制度があります。特定健診は40〜74歳の国保加入者が対象で、集団または個別で受けます（令和7年度案内）。高齢者インフルエンザは1,000円、肺炎球菌は2,000円、帯状疱疹の定期接種は生ワクチン2,000円・不活化ワクチン1回5,000円です。接種は契約医療機関に電話で予約します。",
+     "source": {
+      "title": "集団検診（胃がん・大腸がん・乳がん・子宮頸がん検診）のお知らせ",
+      "url": "https://www.town.oizumi.gunma.jp/s016/kenko/010/010/020/20200915090552.html",
+      "where": "事前申し込みについて"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q50",
+     "short": "For people living with dogs and cats",
+     "text": "The contact office for dog registration, rabies vaccination, and the subsidy for spay/neuter surgery is the Environmental Maintenance Division (環境整備課), Urban Construction Department (都市建設部), Town Hall 1st floor, Counter 108.\nThe phone number is 0276-63-3111.\nRegister your dog within 30 days of getting it. The fee is 3,000 yen.\nThe rabies vaccination is required once every year. Group vaccinations are held in spring (around May) and autumn (around October), and the fee is 2,950 yen. The fee for the vaccination certificate tag (注射済票) is 550 yen.\nThe subsidy for spay/neuter surgery is 3,000 yen for males and 5,000 yen for females.\nWe could not confirm who to contact for lost pets, or how to evacuate with pets during a disaster. Please ask the Environmental Maintenance Division (環境整備課).",
+     "original": "犬の登録・狂犬病予防注射・避妊去勢手術の補助金の窓口は、都市建設部 環境整備課（庁舎1階108番窓口）です。\n電話は 0276-63-3111 です。\n犬の登録は、取得から30日以内に行います。手数料は3,000円です。\n狂犬病予防注射は毎年1回です。集合注射は春（5月頃）と秋（10月頃）で、料金は2,950円です。注射済票の手数料は550円です。\n避妊・去勢手術の補助金は、オス3,000円、メス5,000円です。\n迷子の連絡先と災害時のペットとの避難は、確認できませんでした。環境整備課に問い合わせてください。",
+     "back": "犬の登録・狂犬病予防注射・避妊去勢手術の補助金の窓口は、都市建設部 環境整備課（庁舎1階108番窓口）です。電話は 0276-63-3111 です。犬の登録は、取得から30日以内に行います。手数料は3,000円です。狂犬病予防注射は毎年1回です。集合注射は春（5月頃）と秋（10月頃）で、料金は2,950円です。注射済票の手数料は550円です。避妊・去勢手術の補助金は、オス3,000円、メス5,000円です。迷子の連絡先と災害時のペットとの避難は、確認できませんでした。環境整備課に問い合わせてください。",
+     "source": {
+      "title": "犬および猫の避妊または断種手術費補助金｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s024/kurashi/020/010/20200727130746.html",
+      "where": "犬および猫の避妊または断種手術費補助金／このページに関する問い合わせ先"
+     },
+     "status": "auto",
+     "problems": []
     }
    ]
   },
@@ -2071,6 +2169,48 @@
      "problems": [
       "意味のずれはないが、「冊子」「移動販売」「覚書」「補助金」に説明の言葉（小さい本、車で物を売りに来ること、約束の書類、町が出すお金）を足している。原文にない注釈なので、必要なら外すか注釈と分かる形にする。「事業者」を「会社など」と訳しているが、意味の範囲はほぼ同じ。"
      ]
+    },
+    {
+     "qid": "Q44",
+     "short": "仕事（しごと）をさがす まどぐち",
+     "text": "大泉町（おおいずみまち）の担当（たんとう）は、ハローワーク館林（たてばやし）です。\n場所（ばしょ）は、館林市（たてばやしし）大街道（おおかいどう）1-3-37（〒374-0066）です。\n電話（でんわ）は 0276-75-8609 です。\n受付（うけつけ）は、平日（へいじつ）の8時30分から17時15分までです。土曜日（どようび）・日曜日（にちようび）・祝日（しゅくじつ）と年末年始（ねんまつねんし）は休（やす）みです。\n町の経済振興課（けいざいしんこうか）（庁舎（ちょうしゃ）2階（かい）207番窓口（ばんまどぐち）、電話 0276-63-3111）では、ハローワークの求人（きゅうじん）の情報（じょうほう）をくばっています。\n町では、就職（しゅうしょく）や内職（ないしょく）の紹介（しょうかい）・あっせんはしていません。\n仕事をやめたときや、職場（しょくば）のトラブルなどの勤労者相談（きんろうしゃそうだん）は、経済振興課 商工振興係（しょうこうしんこうがかり）で受（う）けています。\nシニア・外国人（がいこくじん）・障（しょう）がいのある人（ひと）のための専用（せんよう）の窓口（まどぐち）は、町の公式（こうしき）ページでは確認（かくにん）できませんでした。くわしいことは、ハローワーク館林に聞（き）いてください。",
+     "original": "大泉町を受け持つのは、ハローワーク館林です。\n場所は、館林市大街道1-3-37（〒374-0066）です。\n電話は0276-75-8609です。\n受付は平日8時30分〜17時15分です。土・日・祝日と年末年始は閉まっています。\n町の経済振興課（庁舎2階207番窓口、電話0276-63-3111）では、ハローワークの求人情報を配っています。\n町では、就職や内職の紹介・あっせんはしていません。\n離職や職場のトラブルなどの勤労者相談は、経済振興課商工振興係で受けています。\nシニア・外国人・障がいのある人向けの専用窓口は、町の公式ページでは確認できませんでした。詳しいことはハローワーク館林に問い合わせてください。",
+     "back": "大泉町を担当するのは、ハローワーク館林です。場所は、館林市大街道1-3-37（〒374-0066）です。電話は0276-75-8609です。受付は平日8時30分〜17時15分です。土曜・日曜・祝日と年末年始は休みです。町の経済振興課（庁舎2階207番窓口、電話0276-63-3111）では、ハローワークの求人情報を配っています。町では、就職や内職の紹介・あっせんはしていません。離職や職場のトラブルなどの勤労者相談は、経済振興課商工振興係で受けています。シニア・外国人・障がいのある人向けの専用窓口は、町の公式ページでは確認できませんでした。詳しいことはハローワーク館林に聞いてください。",
+     "source": {
+      "title": "ハローワーク館林（館林公共職業安定所）｜群馬労働局",
+      "url": "https://jsite.mhlw.go.jp/gunma-roudoukyoku/hw/h_map/h_map07.html",
+      "where": "管轄区域・所在地"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q45",
+     "short": "健康診断（けんこうしんだん）・がん検診（けんしん）・予防接種（よぼうせっしゅ）",
+     "text": "健診（けんしん）・がん検診は、町の公式（こうしき）サイトの「健康・福祉＞健康・医療＞健診・検診」にまとまっています。大人（おとな）の予防接種は、同（おな）じ分類（ぶんるい）の「予防接種」にまとまっています。\n窓口（まどぐち）は、福祉（ふくし）こども部 健康（けんこう）づくり課（庁舎（ちょうしゃ）1階（かい）105番、電話（でんわ）0276-63-3111）です。特定健診（とくていけんしん）は、国保年金課（こくほねんきんか）（庁舎1階102番）です。\nがん検診は、先（さき）に申（もう）し込（こ）みが必要（ひつよう）です。窓口・電話・町の公式LINEで申し込みます。\n自分（じぶん）で払（はら）うお金は、胃（い）がん 500円、大腸（だいちょう）がん 500円、乳（にゅう）がん 1,000円、子宮頸（しきゅうけい）がん 500円です（集団検診（しゅうだんけんしん））。お金を払わなくてよくなる「免除（めんじょ）」の制度（せいど）があります。\n特定健診は、40歳から74歳までの国保（こくほ）に入（はい）っている人が対象（たいしょう）です。集団（しゅうだん）または個別（こべつ）で受（う）けます（令和（れいわ）7年度（ねんど）の案内（あんない））。\n高齢者（こうれいしゃ）のインフルエンザは 1,000円、肺炎球菌（はいえんきゅうきん）は 2,000円です。帯状疱疹（たいじょうほうしん）の定期接種（ていきせっしゅ）は、生（なま）ワクチンが 2,000円、不活化（ふかつか）ワクチンが1回（かい）5,000円です。\n接種は、町と契約（けいやく）している医療機関（いりょうきかん）に電話（でんわ）して予約（よやく）します。",
+     "original": "健診・がん検診は町公式サイトの「健康・福祉＞健康・医療＞健診・検診」に、大人の予防接種は同じ分類の「予防接種」にまとまっています。\n窓口は福祉こども部 健康づくり課（庁舎1階105番、電話0276-63-3111）です。特定健診は国保年金課（庁舎1階102番）です。\nがん検診は事前申し込みが必要です。窓口・電話・町公式LINEで申し込みます。\n自己負担は胃がん500円、大腸がん500円、乳がん1,000円、子宮頸がん500円です（集団検診）。免除制度があります。\n特定健診は40〜74歳の国保加入者が対象で、集団または個別で受けます（令和7年度案内）。\n高齢者インフルエンザは1,000円、肺炎球菌は2,000円、帯状疱疹の定期接種は生ワクチン2,000円・不活化ワクチン1回5,000円です。\n接種は契約医療機関に電話で予約します。",
+     "back": "健診・がん検診は町の公式サイトの「健康・福祉＞健康・医療＞健診・検診」に、大人の予防接種は同じ分類の「予防接種」にまとまっています。窓口は福祉こども部健康づくり課（庁舎1階105番、電話0276-63-3111）です。特定健診は国保年金課（庁舎1階102番）です。がん検診は事前に申し込みが必要です。窓口・電話・町の公式LINEで申し込みます。自己負担は胃がん500円、大腸がん500円、乳がん1,000円、子宮頸がん500円です（集団検診）。免除制度があります。特定健診は40〜74歳の国保加入者が対象で、集団または個別で受けます（令和7年度の案内）。高齢者のインフルエンザは1,000円、肺炎球菌は2,000円です。帯状疱疹の定期接種は、生ワクチン2,000円、不活化ワクチン1回5,000円です。接種は、町と契約している医療機関に電話して予約します。",
+     "source": {
+      "title": "集団検診（胃がん・大腸がん・乳がん・子宮頸がん検診）のお知らせ",
+      "url": "https://www.town.oizumi.gunma.jp/s016/kenko/010/010/020/20200915090552.html",
+      "where": "事前申し込みについて"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q50",
+     "short": "犬（いぬ）・猫（ねこ）といっしょに暮（く）らす人（ひと）へ",
+     "text": "犬の登録（とうろく）、狂犬病（きょうけんびょう）の予防注射（よぼうちゅうしゃ）、避妊（ひにん）・去勢（きょせい）手術（しゅじゅつ）の補助金（ほじょきん）の窓口（まどぐち）は、都市建設部（としけんせつぶ）環境整備課（かんきょうせいびか）（庁舎（ちょうしゃ）1階（かい）108番窓口）です。\n電話（でんわ）は 0276-63-3111 です。\n犬の登録は、犬を飼（か）い始（はじ）めてから30日（にち）以内（いない）にします。手数料（てすうりょう）は 3,000円です。\n狂犬病の予防注射は、毎年（まいとし）1回（かい）です。集合注射（しゅうごうちゅうしゃ）は、春（はる）（5月ごろ）と秋（あき）（10月ごろ）にあります。料金（りょうきん）は 2,950円です。注射済票（ちゅうしゃずみひょう）の手数料は 550円です。\n避妊・去勢手術の補助金は、オスが 3,000円、メスが 5,000円です。\n迷子（まいご）になったときの連絡先（れんらくさき）と、災害（さいがい）のときにペットといっしょに避難（ひなん）する方法（ほうほう）は、確認（かくにん）できませんでした。環境整備課に聞（き）いてください。",
+     "original": "犬の登録・狂犬病予防注射・避妊去勢手術の補助金の窓口は、都市建設部 環境整備課（庁舎1階108番窓口）です。\n電話は 0276-63-3111 です。\n犬の登録は、取得から30日以内に行います。手数料は3,000円です。\n狂犬病予防注射は毎年1回です。集合注射は春（5月頃）と秋（10月頃）で、料金は2,950円です。注射済票の手数料は550円です。\n避妊・去勢手術の補助金は、オス3,000円、メス5,000円です。\n迷子の連絡先と災害時のペットとの避難は、確認できませんでした。環境整備課に問い合わせてください。",
+     "back": "犬の登録・狂犬病予防注射・避妊去勢手術の補助金の窓口は、都市建設部環境整備課（庁舎1階108番窓口）です。電話は0276-63-3111です。犬の登録は、犬を飼い始めてから30日以内に行います。手数料は3,000円です。狂犬病予防注射は毎年1回です。集合注射は春（5月頃）と秋（10月頃）で、料金は2,950円です。注射済票の手数料は550円です。避妊・去勢手術の補助金は、オス3,000円、メス5,000円です。迷子の連絡先と災害時のペットとの避難は、確認できませんでした。環境整備課に聞いてください。",
+     "source": {
+      "title": "犬および猫の避妊または断種手術費補助金｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s024/kurashi/020/010/20200727130746.html",
+      "where": "犬および猫の避妊または断種手術費補助金／このページに関する問い合わせ先"
+     },
+     "status": "auto",
+     "problems": []
     }
    ]
   },
@@ -2572,6 +2712,48 @@
       "title": "大泉町買い物支援ガイド",
       "url": "https://www.town.oizumi.gunma.jp/s014/kenko/010/010/200/20200803094355.html",
       "where": "本文・配布場所"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q44",
+     "short": "Tempat mencari pekerjaan (仕事探しの窓口)",
+     "text": "Kantor yang melayani Kota Oizumi adalah Hello Work Tatebayashi (ハローワーク館林).\nLokasinya di Tatebayashi-shi Okaido 1-3-37 (館林市大街道1-3-37, 〒374-0066).\nTeleponnya 0276-75-8609.\nJam layanan hari kerja pukul 08.30–17.15. Tutup pada hari Sabtu, Minggu, hari libur nasional, dan libur akhir tahun/awal tahun.\nDi Bagian Promosi Ekonomi kota (経済振興課, gedung kantor lantai 2, loket nomor 207, telepon 0276-63-3111), dibagikan informasi lowongan kerja dari Hello Work.\nKota tidak menyediakan layanan pengenalan atau perantaraan pekerjaan, baik kerja tetap maupun kerja sampingan di rumah (内職).\nKonsultasi untuk pekerja, seperti kehilangan pekerjaan atau masalah di tempat kerja, diterima oleh Seksi Promosi Perdagangan dan Industri (商工振興係) di Bagian Promosi Ekonomi (経済振興課).\nLoket khusus untuk lansia, warga asing, dan penyandang disabilitas tidak dapat dipastikan di halaman resmi kota. Untuk informasi lebih lanjut, silakan hubungi Hello Work Tatebayashi (ハローワーク館林).",
+     "original": "大泉町を受け持つのは、ハローワーク館林です。\n場所は、館林市大街道1-3-37（〒374-0066）です。\n電話は0276-75-8609です。\n受付は平日8時30分〜17時15分です。土・日・祝日と年末年始は閉まっています。\n町の経済振興課（庁舎2階207番窓口、電話0276-63-3111）では、ハローワークの求人情報を配っています。\n町では、就職や内職の紹介・あっせんはしていません。\n離職や職場のトラブルなどの勤労者相談は、経済振興課商工振興係で受けています。\nシニア・外国人・障がいのある人向けの専用窓口は、町の公式ページでは確認できませんでした。詳しいことはハローワーク館林に問い合わせてください。",
+     "back": "大泉町を受け持つのは、ハローワーク館林です。場所は、館林市大街道1-3-37（〒374-0066）です。電話は0276-75-8609です。受付は平日8時30分〜17時15分です。土・日・祝日と年末年始は閉まっています。町の経済振興課（庁舎2階207番窓口、電話0276-63-3111）では、ハローワークの求人情報を配っています。町では、就職や内職の紹介・あっせんはしていません。離職や職場のトラブルなどの勤労者相談は、経済振興課商工振興係で受けています。シニア・外国人・障がいのある人向けの専用窓口は、町の公式ページでは確認できませんでした。詳しいことはハローワーク館林に問い合わせてください。",
+     "source": {
+      "title": "ハローワーク館林（館林公共職業安定所）｜群馬労働局",
+      "url": "https://jsite.mhlw.go.jp/gunma-roudoukyoku/hw/h_map/h_map07.html",
+      "where": "管轄区域・所在地"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q45",
+     "short": "Pemeriksaan kesehatan, skrining kanker, dan vaksinasi (健康診断・がん検診・予防接種)",
+     "text": "Informasi pemeriksaan kesehatan dan skrining kanker ada di situs resmi kota pada kategori 「健康・福祉＞健康・医療＞健診・検診」 (Kesehatan dan Kesejahteraan > Kesehatan dan Pengobatan > Pemeriksaan Kesehatan/Skrining). Informasi vaksinasi untuk orang dewasa ada di kategori yang sama, pada 「予防接種」 (Vaksinasi).\nLoketnya adalah Bagian Promosi Kesehatan (健康づくり課), Departemen Kesejahteraan dan Anak (福祉こども部), gedung kantor lantai 1, ruang 105, telepon 0276-63-3111. Untuk pemeriksaan kesehatan khusus (特定健診), loketnya adalah Bagian Asuransi Kesehatan Nasional dan Pensiun (国保年金課), gedung kantor lantai 1, ruang 102.\nSkrining kanker harus didaftarkan terlebih dahulu. Pendaftaran dapat dilakukan di loket, melalui telepon, atau melalui LINE resmi kota.\nBiaya yang ditanggung sendiri: kanker lambung 500 yen, kanker usus besar 500 yen, kanker payudara 1.000 yen, kanker leher rahim 500 yen (pemeriksaan kelompok/集団検診). Ada sistem pembebasan biaya.\nPemeriksaan kesehatan khusus (特定健診) ditujukan bagi peserta Asuransi Kesehatan Nasional (国保) berusia 40–74 tahun, dan dapat dilakukan secara kelompok atau individu (sesuai panduan tahun fiskal Reiwa 7).\nVaksin influenza untuk lansia 1.000 yen, vaksin pneumokokus 2.000 yen. Vaksinasi rutin herpes zoster: vaksin hidup 2.000 yen, vaksin non-aktif 5.000 yen per dosis.\nUntuk vaksinasi, buat janji melalui telepon ke fasilitas medis yang bekerja sama dengan kota.",
+     "original": "健診・がん検診は町公式サイトの「健康・福祉＞健康・医療＞健診・検診」に、大人の予防接種は同じ分類の「予防接種」にまとまっています。\n窓口は福祉こども部 健康づくり課（庁舎1階105番、電話0276-63-3111）です。特定健診は国保年金課（庁舎1階102番）です。\nがん検診は事前申し込みが必要です。窓口・電話・町公式LINEで申し込みます。\n自己負担は胃がん500円、大腸がん500円、乳がん1,000円、子宮頸がん500円です（集団検診）。免除制度があります。\n特定健診は40〜74歳の国保加入者が対象で、集団または個別で受けます（令和7年度案内）。\n高齢者インフルエンザは1,000円、肺炎球菌は2,000円、帯状疱疹の定期接種は生ワクチン2,000円・不活化ワクチン1回5,000円です。\n接種は契約医療機関に電話で予約します。",
+     "back": "健診・がん検診は町公式サイトの「健康・福祉＞健康・医療＞健診・検診」に、大人の予防接種は同じ分類の「予防接種」にまとまっています。窓口は福祉こども部 健康づくり課（庁舎1階105番、電話0276-63-3111）です。特定健診は国保年金課（庁舎1階102番）です。がん検診は事前申し込みが必要です。窓口・電話・町公式LINEで申し込みます。自己負担は胃がん500円、大腸がん500円、乳がん1,000円、子宮頸がん500円です（集団検診）。免除制度があります。特定健診は40〜74歳の国保加入者が対象で、集団または個別で受けます（令和7年度案内）。高齢者インフルエンザは1,000円、肺炎球菌は2,000円、帯状疱疹の定期接種は生ワクチン2,000円・不活化ワクチン1回5,000円です。接種は契約医療機関に電話で予約します。",
+     "source": {
+      "title": "集団検診（胃がん・大腸がん・乳がん・子宮頸がん検診）のお知らせ",
+      "url": "https://www.town.oizumi.gunma.jp/s016/kenko/010/010/020/20200915090552.html",
+      "where": "事前申し込みについて"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q50",
+     "short": "Bagi yang memelihara anjing dan kucing (犬・猫と暮らす人へ)",
+     "text": "Loket untuk pendaftaran anjing, suntik rabies, dan subsidi operasi sterilisasi/kastrasi adalah Bagian Pengelolaan Lingkungan (環境整備課), Departemen Pembangunan Kota (都市建設部), gedung kantor lantai 1, loket nomor 108.\nTeleponnya 0276-63-3111.\nPendaftaran anjing dilakukan dalam 30 hari sejak anjing diperoleh. Biayanya 3.000 yen.\nSuntik rabies dilakukan satu kali setiap tahun. Suntik massal diadakan pada musim semi (sekitar bulan Mei) dan musim gugur (sekitar bulan Oktober), dengan biaya 2.950 yen. Biaya label bukti suntik (注射済票) adalah 550 yen.\nSubsidi operasi sterilisasi/kastrasi: jantan 3.000 yen, betina 5.000 yen.\nKontak jika hewan peliharaan hilang dan evakuasi bersama hewan peliharaan saat bencana tidak dapat dipastikan. Silakan tanyakan ke Bagian Pengelolaan Lingkungan (環境整備課).",
+     "original": "犬の登録・狂犬病予防注射・避妊去勢手術の補助金の窓口は、都市建設部 環境整備課（庁舎1階108番窓口）です。\n電話は 0276-63-3111 です。\n犬の登録は、取得から30日以内に行います。手数料は3,000円です。\n狂犬病予防注射は毎年1回です。集合注射は春（5月頃）と秋（10月頃）で、料金は2,950円です。注射済票の手数料は550円です。\n避妊・去勢手術の補助金は、オス3,000円、メス5,000円です。\n迷子の連絡先と災害時のペットとの避難は、確認できませんでした。環境整備課に問い合わせてください。",
+     "back": "犬の登録・狂犬病予防注射・避妊去勢手術の補助金の窓口は、都市建設部 環境整備課（庁舎1階108番窓口）です。電話は0276-63-3111です。犬の登録は、取得から30日以内に行います。手数料は3,000円です。狂犬病予防注射は毎年1回です。集合注射は春（5月頃）と秋（10月頃）で、料金は2,950円です。注射済票の手数料は550円です。避妊・去勢手術の補助金は、オス3,000円、メス5,000円です。迷子の連絡先と災害時のペットとの避難は、確認できませんでした。環境整備課に問い合わせてください。",
+     "source": {
+      "title": "犬および猫の避妊または断種手術費補助金｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s024/kurashi/020/010/20200727130746.html",
+      "where": "犬および猫の避妊または断種手術費補助金／このページに関する問い合わせ先"
      },
      "status": "auto",
      "problems": []
@@ -3077,6 +3259,48 @@
      },
      "status": "auto",
      "problems": []
+    },
+    {
+     "qid": "Q44",
+     "short": "काम खोज्ने कार्यालय (ハローワーク)",
+     "text": "ओइजुमी नगर (大泉町) को जिम्मा लिने कार्यालय हेलो वर्क ताटेबायाशी (ハローワーク館林) हो।\nठेगाना: ताटेबायाशी सहर (館林市) ओकाइदो (大街道) 1-3-37 (〒374-0066)।\nफोन: 0276-75-8609।\nखुल्ने समय: हप्ताका कार्यदिन (सोमबार–शुक्रबार) बिहान 8:30 देखि बेलुका 17:15 सम्म। शनिबार, आइतबार, सार्वजनिक बिदा र वर्षान्त–नयाँ वर्षको बिदामा बन्द हुन्छ।\nनगरको आर्थिक प्रवर्द्धन शाखा (経済振興課) (नगर कार्यालय भवन (庁舎) दोस्रो तला, 207 नम्बर काउन्टर, फोन 0276-63-3111) ले हेलो वर्कको जागिर सम्बन्धी जानकारी (求人情報) बाँड्छ।\nनगरले जागिर वा घरमै गर्ने सानातिना काम (内職) को परिचय वा मिलान गर्दैन।\nजागिर छोड्ने वा कार्यस्थलको समस्या जस्ता श्रमिक परामर्श आर्थिक प्रवर्द्धन शाखाको वाणिज्य–उद्योग प्रवर्द्धन इकाई (経済振興課商工振興係) ले लिन्छ।\nsenior (वृद्ध), विदेशी र अपाङ्गता भएका व्यक्तिका लागि छुट्टै काउन्टर नगरको आधिकारिक पेजमा पुष्टि गर्न सकिएन। विस्तृत कुरा हेलो वर्क ताटेबायाशी (ハローワーク館林) मा सोध्नुहोस्।",
+     "original": "大泉町を受け持つのは、ハローワーク館林です。\n場所は、館林市大街道1-3-37（〒374-0066）です。\n電話は0276-75-8609です。\n受付は平日8時30分〜17時15分です。土・日・祝日と年末年始は閉まっています。\n町の経済振興課（庁舎2階207番窓口、電話0276-63-3111）では、ハローワークの求人情報を配っています。\n町では、就職や内職の紹介・あっせんはしていません。\n離職や職場のトラブルなどの勤労者相談は、経済振興課商工振興係で受けています。\nシニア・外国人・障がいのある人向けの専用窓口は、町の公式ページでは確認できませんでした。詳しいことはハローワーク館林に問い合わせてください。",
+     "back": "大泉町を担当するのは、ハローワーク館林です。場所は、館林市大街道1-3-37（〒374-0066）です。電話は0276-75-8609です。受付は平日8時30分〜17時15分です。土・日・祝日と年末年始は閉まっています。町の経済振興課（庁舎2階207番窓口、電話0276-63-3111）では、ハローワークの求人情報を配っています。町では、就職や内職の紹介・あっせんはしていません。離職や職場のトラブルなどの勤労者相談は、経済振興課商工振興係で受けています。シニア・外国人・障がいのある人向けの専用窓口は、町の公式ページでは確認できませんでした。詳しいことはハローワーク館林に問い合わせてください。",
+     "source": {
+      "title": "ハローワーク館林（館林公共職業安定所）｜群馬労働局",
+      "url": "https://jsite.mhlw.go.jp/gunma-roudoukyoku/hw/h_map/h_map07.html",
+      "where": "管轄区域・所在地"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q45",
+     "short": "स्वास्थ्य जाँच, क्यान्सर जाँच, खोप",
+     "text": "स्वास्थ्य जाँच र क्यान्सर जाँचको जानकारी नगरको आधिकारिक वेबसाइटको “स्वास्थ्य·कल्याण (健康・福祉) > स्वास्थ्य·चिकित्सा (健康・医療) > स्वास्थ्य जाँच·परीक्षण (健診・検診)” मा, र वयस्कको खोपको जानकारी सोही वर्गको “खोप (予防接種)” मा एकै ठाउँमा छ।\nकाउन्टर: कल्याण·बाल विभाग (福祉こども部) को स्वास्थ्य निर्माण शाखा (健康づくり課) (नगर कार्यालय भवन (庁舎) पहिलो तला, 105 नम्बर, फोन 0276-63-3111)। विशेष स्वास्थ्य जाँच (特定健診) राष्ट्रिय स्वास्थ्य बीमा·पेन्सन शाखा (国保年金課) (भवन पहिलो तला, 102 नम्बर) मा हुन्छ।\nक्यान्सर जाँचका लागि पहिले नै आवेदन दिनुपर्छ। काउन्टर, फोन वा नगरको आधिकारिक LINE (町公式LINE) बाट आवेदन दिनुहोस्।\nआफैंले तिर्ने रकम: पेटको क्यान्सर 500 येन, ठूलो आन्द्राको क्यान्सर 500 येन, स्तन क्यान्सर 1,000 येन, पाठेघरको मुखको क्यान्सर 500 येन (सामूहिक जाँच)। छुट दिने व्यवस्था छ।\nविशेष स्वास्थ्य जाँच (特定健診) 40 देखि 74 वर्षसम्मका राष्ट्रिय स्वास्थ्य बीमा सदस्यका लागि हो, र सामूहिक वा व्यक्तिगत रूपमा गरिन्छ (रेवा 7 आर्थिक वर्षको जानकारी अनुसार)।\nवृद्धवृद्धाको इन्फ्लुएन्जा खोप 1,000 येन, न्यूमोकोकस (肺炎球菌) खोप 2,000 येन हो। हर्पिस जोस्टर (帯状疱疹) को नियमित खोप: जीवित खोप 2,000 येन, निष्क्रिय खोप (不活化ワクチン) प्रति पटक 5,000 येन।\nखोपका लागि सम्झौता गरिएको स्वास्थ्य संस्थामा फोन गरेर समय बुक गर्नुहोस्।",
+     "original": "健診・がん検診は町公式サイトの「健康・福祉＞健康・医療＞健診・検診」に、大人の予防接種は同じ分類の「予防接種」にまとまっています。\n窓口は福祉こども部 健康づくり課（庁舎1階105番、電話0276-63-3111）です。特定健診は国保年金課（庁舎1階102番）です。\nがん検診は事前申し込みが必要です。窓口・電話・町公式LINEで申し込みます。\n自己負担は胃がん500円、大腸がん500円、乳がん1,000円、子宮頸がん500円です（集団検診）。免除制度があります。\n特定健診は40〜74歳の国保加入者が対象で、集団または個別で受けます（令和7年度案内）。\n高齢者インフルエンザは1,000円、肺炎球菌は2,000円、帯状疱疹の定期接種は生ワクチン2,000円・不活化ワクチン1回5,000円です。\n接種は契約医療機関に電話で予約します。",
+     "back": "健診・がん検診は町公式サイトの「健康・福祉＞健康・医療＞健診・検診」に、大人の予防接種は同じ分類の「予防接種」にまとまっています。窓口は福祉こども部 健康づくり課（庁舎1階105番、電話0276-63-3111）です。特定健診は国保年金課（庁舎1階102番）です。がん検診は事前申し込みが必要です。窓口・電話・町公式LINEで申し込みます。自己負担は胃がん500円、大腸がん500円、乳がん1,000円、子宮頸がん500円です（集団検診）。免除制度があります。特定健診は40〜74歳の国保加入者が対象で、集団または個別で受けます（令和7年度案内）。高齢者インフルエンザは1,000円、肺炎球菌は2,000円、帯状疱疹の定期接種は生ワクチン2,000円・不活化ワクチン1回5,000円です。接種は契約医療機関に電話で予約します。",
+     "source": {
+      "title": "集団検診（胃がん・大腸がん・乳がん・子宮頸がん検診）のお知らせ",
+      "url": "https://www.town.oizumi.gunma.jp/s016/kenko/010/010/020/20200915090552.html",
+      "where": "事前申し込みについて"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q50",
+     "short": "कुकुर र बिरालो पाल्नेहरूका लागि",
+     "text": "कुकुर दर्ता, रेबिज रोकथाम खोप र बन्ध्याकरण शल्यक्रियाको अनुदानको काउन्टर: सहरी निर्माण विभाग (都市建設部) को वातावरण व्यवस्थापन शाखा (環境整備課) (नगर कार्यालय भवन (庁舎) पहिलो तला, 108 नम्बर काउन्टर)।\nफोन: 0276-63-3111।\nकुकुर पाएको 30 दिनभित्र दर्ता गर्नुपर्छ। शुल्क 3,000 येन हो।\nरेबिज रोकथाम खोप वर्षमा एक पटक लगाउनुपर्छ। सामूहिक खोप वसन्तमा (करिब मे) र शरद ऋतुमा (करिब अक्टोबर) हुन्छ, शुल्क 2,950 येन। खोप लगाएको प्रमाण-ट्याग (注射済票) को शुल्क 550 येन हो।\nबन्ध्याकरण (避妊・去勢) शल्यक्रियाको अनुदान: भाले 3,000 येन, पोथी 5,000 येन।\nहराएका पाल्तु जनावरको सम्पर्क ठाउँ र विपद्‌को समयमा पाल्तु जनावरसँग शरण लिने कुरा पुष्टि गर्न सकिएन। वातावरण व्यवस्थापन शाखा (環境整備課) मा सोध्नुहोस्।",
+     "original": "犬の登録・狂犬病予防注射・避妊去勢手術の補助金の窓口は、都市建設部 環境整備課（庁舎1階108番窓口）です。\n電話は 0276-63-3111 です。\n犬の登録は、取得から30日以内に行います。手数料は3,000円です。\n狂犬病予防注射は毎年1回です。集合注射は春（5月頃）と秋（10月頃）で、料金は2,950円です。注射済票の手数料は550円です。\n避妊・去勢手術の補助金は、オス3,000円、メス5,000円です。\n迷子の連絡先と災害時のペットとの避難は、確認できませんでした。環境整備課に問い合わせてください。",
+     "back": "犬の登録・狂犬病予防注射・避妊去勢手術の補助金の窓口は、都市建設部 環境整備課（庁舎1階108番窓口）です。電話は0276-63-3111です。犬の登録は、取得から30日以内に行います。手数料は3,000円です。狂犬病予防注射は毎年1回です。集合注射は春（5月頃）と秋（10月頃）で、料金は2,950円です。注射済票の手数料は550円です。避妊・去勢手術の補助金は、オス3,000円、メス5,000円です。迷子の連絡先と災害時のペットとの避難は、確認できませんでした。環境整備課に問い合わせてください。",
+     "source": {
+      "title": "犬および猫の避妊または断種手術費補助金｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s024/kurashi/020/010/20200727130746.html",
+      "where": "犬および猫の避妊または断種手術費補助金／このページに関する問い合わせ先"
+     },
+     "status": "auto",
+     "problems": []
     }
    ]
   },
@@ -3575,6 +3799,48 @@
       "title": "大泉町買い物支援ガイド",
       "url": "https://www.town.oizumi.gunma.jp/s014/kenko/010/010/200/20200803094355.html",
       "where": "本文・配布場所"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q44",
+     "short": "Nơi tìm việc làm",
+     "text": "Cơ quan phụ trách thị trấn Oizumi là Hello Work Tatebayashi (ハローワーク館林).\nĐịa chỉ: Ōkaidō 1-3-37, thành phố Tatebayashi (館林市大街道1-3-37, 〒374-0066).\nĐiện thoại: 0276-75-8609.\nGiờ tiếp nhận: các ngày trong tuần từ 8:30 đến 17:15. Nghỉ thứ Bảy, Chủ nhật, ngày lễ và dịp cuối năm đầu năm.\nPhòng Xúc tiến Kinh tế (経済振興課) của thị trấn (tầng 2 tòa thị chính, quầy số 207, điện thoại 0276-63-3111) phát thông tin tuyển dụng của Hello Work.\nThị trấn không giới thiệu hay môi giới việc làm, kể cả việc làm tại nhà (内職).\nTư vấn cho người lao động về việc nghỉ việc hoặc rắc rối ở nơi làm việc do Bộ phận Xúc tiến Thương công nghiệp (商工振興係), Phòng Xúc tiến Kinh tế (経済振興課) tiếp nhận.\nTrên trang chính thức của thị trấn không xác nhận được quầy chuyên dành cho người cao tuổi, người nước ngoài và người khuyết tật. Muốn biết chi tiết, vui lòng hỏi Hello Work Tatebayashi (ハローワーク館林).",
+     "original": "大泉町を受け持つのは、ハローワーク館林です。\n場所は、館林市大街道1-3-37（〒374-0066）です。\n電話は0276-75-8609です。\n受付は平日8時30分〜17時15分です。土・日・祝日と年末年始は閉まっています。\n町の経済振興課（庁舎2階207番窓口、電話0276-63-3111）では、ハローワークの求人情報を配っています。\n町では、就職や内職の紹介・あっせんはしていません。\n離職や職場のトラブルなどの勤労者相談は、経済振興課商工振興係で受けています。\nシニア・外国人・障がいのある人向けの専用窓口は、町の公式ページでは確認できませんでした。詳しいことはハローワーク館林に問い合わせてください。",
+     "back": "大泉町を担当するのはハローワーク館林です。場所は館林市大街道1-3-37（〒374-0066）です。電話は0276-75-8609です。受付は平日8時30分から17時15分までです。土・日・祝日と年末年始は閉まっています。町の経済振興課（庁舎2階207番窓口、電話0276-63-3111）では、ハローワークの求人情報を配布しています。町では、就職や内職の紹介・あっせんはしていません。離職や職場のトラブルなどの勤労者相談は、経済振興課商工振興係で受けています。シニア・外国人・障がいのある人向けの専用窓口は、町の公式ページでは確認できませんでした。詳しいことはハローワーク館林に問い合わせてください。",
+     "source": {
+      "title": "ハローワーク館林（館林公共職業安定所）｜群馬労働局",
+      "url": "https://jsite.mhlw.go.jp/gunma-roudoukyoku/hw/h_map/h_map07.html",
+      "where": "管轄区域・所在地"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q45",
+     "short": "Khám sức khỏe, tầm soát ung thư, tiêm chủng",
+     "text": "Thông tin về khám sức khỏe và tầm soát ung thư có trên trang web chính thức của thị trấn, trong mục \"Sức khỏe・Phúc lợi > Sức khỏe・Y tế > Khám sức khỏe・Tầm soát\" (健康・福祉＞健康・医療＞健診・検診). Thông tin tiêm chủng cho người lớn nằm trong cùng nhóm, ở mục \"Tiêm chủng\" (予防接種).\nQuầy liên hệ là Phòng Xây dựng Sức khỏe (健康づくり課), Bộ Phúc lợi・Trẻ em (福祉こども部), tầng 1 tòa thị chính, phòng 105, điện thoại 0276-63-3111. Khám sức khỏe đặc định (特定健診) do Phòng Bảo hiểm Quốc dân・Lương hưu (国保年金課), tầng 1, phòng 102 phụ trách.\nTầm soát ung thư cần đăng ký trước. Đăng ký tại quầy, qua điện thoại hoặc qua LINE chính thức của thị trấn.\nChi phí tự trả (khám tập thể): ung thư dạ dày 500 yên, ung thư đại tràng 500 yên, ung thư vú 1,000 yên, ung thư cổ tử cung 500 yên. Có chế độ miễn phí.\nKhám sức khỏe đặc định dành cho người tham gia bảo hiểm quốc dân từ 40 đến 74 tuổi, khám theo hình thức tập thể hoặc cá nhân (theo hướng dẫn năm Reiwa 7).\nTiêm cúm cho người cao tuổi 1,000 yên, phế cầu khuẩn 2,000 yên. Tiêm định kỳ bệnh zona (bệnh giời leo): vắc-xin sống 2,000 yên, vắc-xin bất hoạt 5,000 yên mỗi lần.\nMuốn tiêm, hãy gọi điện đặt lịch với cơ sở y tế có hợp đồng với thị trấn (契約医療機関).",
+     "original": "健診・がん検診は町公式サイトの「健康・福祉＞健康・医療＞健診・検診」に、大人の予防接種は同じ分類の「予防接種」にまとまっています。\n窓口は福祉こども部 健康づくり課（庁舎1階105番、電話0276-63-3111）です。特定健診は国保年金課（庁舎1階102番）です。\nがん検診は事前申し込みが必要です。窓口・電話・町公式LINEで申し込みます。\n自己負担は胃がん500円、大腸がん500円、乳がん1,000円、子宮頸がん500円です（集団検診）。免除制度があります。\n特定健診は40〜74歳の国保加入者が対象で、集団または個別で受けます（令和7年度案内）。\n高齢者インフルエンザは1,000円、肺炎球菌は2,000円、帯状疱疹の定期接種は生ワクチン2,000円・不活化ワクチン1回5,000円です。\n接種は契約医療機関に電話で予約します。",
+     "back": "健診・がん検診は町公式サイトの「健康・福祉＞健康・医療＞健診・検診」に、大人の予防接種は同じ分類の「予防接種」にまとめられています。窓口は福祉こども部健康づくり課（庁舎1階105番、電話0276-63-3111）です。特定健診は国保年金課（庁舎1階102番）です。がん検診は事前申し込みが必要です。窓口・電話・町公式LINEで申し込みます。自己負担は胃がん500円、大腸がん500円、乳がん1,000円、子宮頸がん500円です（集団検診）。免除制度があります。特定健診は40〜74歳の国保加入者が対象で、集団または個別で受けます（令和7年度案内）。高齢者インフルエンザは1,000円、肺炎球菌は2,000円、帯状疱疹の定期接種は生ワクチン2,000円・不活化ワクチン1回5,000円です。接種は契約医療機関に電話で予約します。",
+     "source": {
+      "title": "集団検診（胃がん・大腸がん・乳がん・子宮頸がん検診）のお知らせ",
+      "url": "https://www.town.oizumi.gunma.jp/s016/kenko/010/010/020/20200915090552.html",
+      "where": "事前申し込みについて"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q50",
+     "short": "Dành cho người nuôi chó, mèo",
+     "text": "Quầy phụ trách đăng ký chó, tiêm phòng bệnh dại và trợ cấp phẫu thuật triệt sản là Phòng Cải thiện Môi trường (環境整備課), Bộ Xây dựng Đô thị (都市建設部), quầy số 108 tầng 1 tòa thị chính.\nĐiện thoại: 0276-63-3111.\nĐăng ký chó phải làm trong vòng 30 ngày kể từ khi có chó. Lệ phí 3,000 yên.\nTiêm phòng bệnh dại mỗi năm 1 lần. Tiêm tập trung vào mùa xuân (khoảng tháng 5) và mùa thu (khoảng tháng 10), phí 2,950 yên. Lệ phí cấp thẻ chứng nhận đã tiêm (注射済票) là 550 yên.\nTrợ cấp phẫu thuật triệt sản: chó/mèo đực 3,000 yên, cái 5,000 yên.\nChưa xác nhận được nơi liên lạc khi thú cưng bị lạc và việc đi sơ tán cùng thú cưng khi có thiên tai. Vui lòng hỏi Phòng Cải thiện Môi trường (環境整備課).",
+     "original": "犬の登録・狂犬病予防注射・避妊去勢手術の補助金の窓口は、都市建設部 環境整備課（庁舎1階108番窓口）です。\n電話は 0276-63-3111 です。\n犬の登録は、取得から30日以内に行います。手数料は3,000円です。\n狂犬病予防注射は毎年1回です。集合注射は春（5月頃）と秋（10月頃）で、料金は2,950円です。注射済票の手数料は550円です。\n避妊・去勢手術の補助金は、オス3,000円、メス5,000円です。\n迷子の連絡先と災害時のペットとの避難は、確認できませんでした。環境整備課に問い合わせてください。",
+     "back": "犬の登録・狂犬病予防注射・避妊去勢手術の補助金の窓口は、都市建設部環境整備課（庁舎1階108番窓口）です。電話は0276-63-3111です。犬の登録は取得から30日以内に行います。手数料は3,000円です。狂犬病予防注射は毎年1回です。集合注射は春（5月頃）と秋（10月頃）で、料金は2,950円です。注射済票の手数料は550円です。避妊・去勢手術の補助金は、オス3,000円、メス5,000円です。迷子の連絡先と災害時のペットとの避難は確認できませんでした。環境整備課に問い合わせてください。",
+     "source": {
+      "title": "犬および猫の避妊または断種手術費補助金｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s024/kurashi/020/010/20200727130746.html",
+      "where": "犬および猫の避妊または断種手術費補助金／このページに関する問い合わせ先"
      },
      "status": "auto",
      "problems": []
