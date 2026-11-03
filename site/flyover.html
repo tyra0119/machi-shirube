@@ -14,6 +14,7 @@
   .cap { position: absolute; left: 0; right: 0; bottom: 12%; z-index: 5; text-align: center; color: #fff; opacity: 0; transition: opacity 1.2s ease; text-shadow: 0 2px 18px rgba(0, 0, 0, 0.9); pointer-events: none; }
   .cap.on { opacity: 1; }
   .cap .s { display: block; font-size: max(22px, 1.9vw); letter-spacing: 0.3em; color: #ffd28a; margin-bottom: 0.8vw; }
+  .cap .s:empty { display: none; } /* 小さい行の無い字幕（作者「『沖縄から』不要」） */
   .cap .l { display: block; font-size: max(46px, 3.6vw); font-weight: 700; letter-spacing: 0.06em; }
   .vignette { position: absolute; inset: 0; z-index: 4; pointer-events: none; background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, 0.55) 100%); }
   .start { position: absolute; inset: 0; z-index: 6; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 14px; color: #fff; background: rgba(5, 11, 20, 0.6); font-size: 18px; }
@@ -86,7 +87,7 @@ maplibregl.addProtocol("gsidem", async (params) => {
 // 折れ線の角で向きが急に変わらないよう、なめらかな曲線（Catmull-Rom）にして、長さで割り振る（速さが一定）
 // 列島の真ん中あたりを通る道（作者「九州から、北海道まで、左右をふらふらすることなく、列島の中央付近をスムーズに移動したら」）
 const PATH = [[127.75, 26.3], [129.4, 28.3], [130.6, 31.7], [130.95, 32.9], [131.05, 33.95], [132.6, 34.75], [134.4, 35.05], [135.9, 35.15], [137.4, 35.85], [139.2, 36.4], [140.25, 37.9], [140.85, 39.5], [140.8, 40.75], [140.72, 41.85], [141.3, 43.0]];
-const CAPS = [[0.02, "沖縄から", "届きにくい人に、届くページを"], [0.38, "どの町にも", "その町ならではの、届きにくい人がいる"], [0.72, "全国", "1,741 の市区町村へ"]];
+const CAPS = [[0.02, "", "届きにくい人に、届くページを"], [0.38, "どの町にも", "その町ならではの、届きにくい人がいる"], [0.72, "全国", "1,741 の市区町村へ"]];
 const curve = (() => {
   const pts = [];
   const P = [PATH[0], ...PATH, PATH.at(-1)];
