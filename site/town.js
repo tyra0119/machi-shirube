@@ -1122,7 +1122,8 @@ async function finishPage(code, townFeatures, startPart, scopeNote, at) {
   const sym = applyTownColor(Object.values(answersByPage).flat().find((x) => x.qid === "Q11"));
   if (sym) {
     $("town-color-note").hidden = false;
-    $("town-color-note").innerHTML = `<span class="swatch" aria-hidden="true"></span>${LANG ? `${T("ページの上の帯の色は、町が定めた花・木の色から作りました（町の公式の色ではありません）。")}（${esc(sym.name)}）` : `ページの上の帯の色は、町が定めた「${esc(sym.name)}」の色から作りました（町の公式の色ではありません）。`}<a href="#shiru" id="color-src">${T("出典")}</a>`;
+    // 帯の色の説明は「帯の色について」を押すと開く（スマホでは町のページの頭が長く、毎日見たい天気が押し出されていた）
+    $("town-color-note").innerHTML = `<summary><span class="swatch" aria-hidden="true"></span>${T("帯の色について")}</summary><span class="cn-body">${LANG ? `${T("ページの上の帯の色は、町が定めた花・木の色から作りました（町の公式の色ではありません）。")}（${esc(sym.name)}）` : `ページの上の帯の色は、町が定めた「${esc(sym.name)}」の色から作りました（町の公式の色ではありません）。`}<a href="#shiru" id="color-src">${T("出典")}</a></span>`;
     $("color-src").addEventListener("click", () => setTimeout(() => $("a-Q11")?.scrollIntoView({ behavior: "smooth", block: "start" }), 50));
   }
   showLayerMap(code, townFeatures, at, esc, part);
@@ -1158,7 +1159,7 @@ async function finishPage(code, townFeatures, startPart, scopeNote, at) {
 // 最初から開いておくのは、わが家の避難・今日のページの見立てと数から、できることへ・今日と明日と、各ページの最初の1つ
 // （作者「やたらと縦が長くなってしまうと、読むのが大変。何か工夫できないかな？」→「たたむ＋目次」）
 // 暮らしの場面（ほかのページへの入口の札）も開いておく（作者「『暮らしの場面』は開いていてもいいと思う」）
-const FOLD_OPEN = new Set(["hinan-block", "mitate-top", "dekiru-block", "sec-today", "hitokoto-block", "sec-scenes"]);
+const FOLD_OPEN = new Set(["hinan-block", "mitate-top", "dekiru-block", "sec-today", "hitokoto-block", "sec-scenes", "sec-today-life"]);
 function foldSummary(sec) {
   // 確かめた答えの欄は、答えの数
   const answers = sec.querySelectorAll(".answers-box [id^=\"a-\"]").length;
@@ -1448,3 +1449,15 @@ async function drawMap(features) {
     map.fitBounds(box, { padding: 24, duration: 0, maxZoom: 15 });
   });
 }
+
+// タブの帯：右にまだタブが隠れているあいだだけ、右端に「›」を出す（スマホで横に動かせることが分かりにくかった）
+function tabsHint() {
+  const nav = document.querySelector(".town-tabs");
+  const ul = $("tabs");
+  if (!nav || !ul) return;
+  nav.classList.toggle("more-right", ul.scrollLeft + ul.clientWidth < ul.scrollWidth - 4);
+}
+$("tabs").addEventListener("scroll", tabsHint, { passive: true });
+addEventListener("resize", tabsHint);
+new MutationObserver(tabsHint).observe($("tabs"), { childList: true, subtree: true, attributes: true });
+setTimeout(tabsHint, 0);

@@ -654,3 +654,15 @@ body:has(.toc-fab:not([hidden])) { padding-bottom: 80px; }
 .mitate-top .why-more summary::before { content: "▸"; color: var(--accent); }
 .mitate-top .why-more[open] summary::before { content: "▾"; }
 .mitate-top .why-more .wall, .mitate-top .why-more .why { display: block; margin-top: 4px; }
+/* 町のページの頭を短く：非公式の文は1行、帯の色の説明は押すと開く（スマホで天気が押し出されないように） */
+.head-notes { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 12px; margin: 8px 0 0; }
+.head-notes .unofficial { margin: 0; padding: 3px 10px; font-size: 12px; }
+.head-notes .color-note { display: block; margin: 0; font-size: 12px; }
+.head-notes .color-note summary { display: inline-flex; align-items: center; gap: 6px; min-height: 32px; cursor: pointer; color: var(--text-sub); list-style: none; }
+.head-notes .color-note summary::-webkit-details-marker { display: none; }
+.head-notes .color-note .cn-body { display: block; margin: 2px 0 4px; }
+.head-notes .color-note[hidden] { display: none; }
+/* タブの帯の続きに気づける印：右に続きがあるあいだは、右端を薄くして「›」を出す（town.js の tabsHint） */
+.town-tabs { position: sticky; }
+.town-tabs::after { content: "›"; position: absolute; right: 0; top: 0; bottom: 1px; width: 40px; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; font-size: 26px; font-weight: 700; color: var(--accent); background: linear-gradient(to right, transparent, var(--bg) 60%); pointer-events: none; opacity: 0; transition: opacity 0.2s; }
+.town-tabs.more-right::after { opacity: 1; }

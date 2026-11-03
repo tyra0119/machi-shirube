@@ -1,11 +1,11 @@
 {
  "lang": "id",
  "name": "Bahasa Indonesia",
- "createdAt": "2026-11-03T10:14:56.523Z",
+ "createdAt": "2026-11-03T10:23:56.879Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 733,
- "of": 726,
+ "count": 735,
+ "of": 728,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Ini adalah panduan hidup tidak resmi untuk kota ini. Claude mengumpulkannya dari situs resmi kota dan sumber lain, dengan mencantumkan sumbernya (Machishirube)",
   "すべてのページ": "Semua halaman",
@@ -739,6 +739,8 @@
   "この町の、こんな人へ（くわしく）": "Untuk warga seperti Anda di kota ini (selengkapnya)",
   "国の数字をもとに、AI が見立てたものです。町の評価ではありません。": "Ini adalah perkiraan AI berdasarkan data nasional. Bukan penilaian dari pemerintah kota.",
   "いま、できること": "Yang bisa dilakukan sekarang",
-  "この町の坂（避難のときの上り）": "Tanjakan di kota ini (mendaki saat evakuasi)"
+  "この町の坂（避難のときの上り）": "Tanjakan di kota ini (mendaki saat evakuasi)",
+  "非公式の暮らしの案内です。どの情報にも出典があります": "Ini adalah panduan hidup tidak resmi. Setiap informasi mencantumkan sumbernya",
+  "帯の色について": "Tentang warna pita"
  }
 }
