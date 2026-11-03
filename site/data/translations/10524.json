@@ -1,7 +1,7 @@
 {
  "code": "10524",
  "name": "邑楽郡大泉町",
- "createdAt": "2026-11-03T04:20:46.789Z",
+ "createdAt": "2026-11-03T06:31:21.698Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
  "langs": {
@@ -548,20 +548,6 @@
      "problems": []
     },
     {
-     "qid": "Q52",
-     "short": "Informações de prevenção de desastres em vários idiomas",
-     "text": "O Mapa Geral de Prevenção de Desastres (総合防災マップ, edição do ano fiscal de 2023) tem tradução em inglês.\nNa revisão, a tradução foi revista para ter \"expressões que soem naturais para quem fala inglês\".\nNos abrigos de evacuação (避難所), serão afixados pictogramas (símbolos em desenho) que podem ser entendidos sem depender de palavras. Eles também estão na página 42 do mapa de prevenção de desastres.\nO PDF do mapa pode ser visto no site da cidade. Também pode ser visto em \"Mapa de prevenção de desastres\" (防災マップ) no LINE oficial da cidade.\nA busca de abrigos de evacuação (rota a partir do local onde você está) pode ser feita em \"Busca de abrigos\" (避難所検索) no LINE oficial da cidade.\nO e-mail de segurança e tranquilidade (安全・安心メール) também pode ser recebido pelo LINE.\nNos documentos encontrados, não foi possível confirmar se existem versões em português, espanhol e outros idiomas, nem versão em japonês simples (やさしい日本語), nem quais são os idiomas aceitos pelo e-mail e pelo LINE.",
-     "original": "総合防災マップ（2023年度版）には英語の翻訳があります。\n改訂では「英語圏の人が自然に読める表現に」翻訳が見直されました。\n避難所では、言葉によらず分かるピクトグラム（絵記号）を掲示します。防災マップ42ページにも載っています。\nマップのPDFは町ホームページで見られます。町公式LINEの「防災マップ」からも見られます。\n避難所の検索（現在地からのルート）は、町公式LINEの「避難所検索」でできます。\n安全・安心メールは、LINEでも受け取れます。\nポルトガル語やスペイン語などの版、やさしい日本語版、メール・LINEの対応言語は、見つかった資料では確認できませんでした。",
-     "back": "総合防災マップ（2023年度版）には英語の翻訳があります。改訂では「英語圏の人が自然に読める表現に」翻訳が見直されました。避難所では、言葉によらず分かるピクトグラム（絵記号）を掲示します。防災マップ42ページにも載っています。マップのPDFは町ホームページで見られます。町公式LINEの「防災マップ」からも見られます。避難所の検索（現在地からのルート）は、町公式LINEの「避難所検索」でできます。安全・安心メールは、LINEでも受け取れます。見つかった資料では、ポルトガル語やスペイン語などの版、やさしい日本語版、メール・LINEの対応言語は確認できませんでした。",
-     "source": {
-      "title": "大泉町総合防災マップ｜大泉町",
-      "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/170/20200828141906.html",
-      "where": "主な改訂事項／避難所でピクトグラムを掲示します(42ページ)"
-     },
-     "status": "auto",
-     "problems": []
-    },
-    {
      "qid": "Q54",
      "short": "Inscrição em creche e no programa extraescolar (学童保育)",
      "text": "【Creche (保育所) e Centro de Educação Infantil certificado (認定こども園) – certificações tipo 2 e 3 (2・3号認定)】\nA inscrição é feita na Divisão de Educação e Cuidados Infantis (教育保育課), guichê nº 107 no 1º andar da sede da prefeitura (庁舎).\nO período de inscrição para a entrada em abril do ano fiscal Reiwa 9 (令和9年度) é de 9 de outubro a 10 de novembro de Reiwa 8 (令和8年), exceto sábados, domingos e feriados.\nO horário é das 8h30 da manhã às 5h15 da tarde.\nEm princípio, a entrega deve ser feita pessoalmente. Se for difícil, também é possível enviar pelo correio (o documento deve chegar dentro do período).\nPara a certificação tipo 1 (1号認定) de jardim de infância (幼稚園) e de Centro de Educação Infantil certificado (認定こども園), a inscrição é feita diretamente na própria instituição.\nPessoas de nacionalidade estrangeira precisam de uma cópia do cartão de residência (在留カード).\n【Programa extraescolar (学童保育)】\nA inscrição é feita no Centro Infantil (児童館) da área da escola primária (小学校) que a criança frequenta.\nPara o ano fiscal Reiwa 9 (令和9年度), o período é de 2 de novembro a 15 de dezembro de Reiwa 8 (令和8年), das 9h às 17h (exceto das 12h às 13h e nos dias de fechamento).\nPara uso a partir do meio do ano fiscal, as inscrições são aceitas a qualquer momento, e também é possível solicitar online.\nCentro Infantil Norte (北児童館) 0276-63-3820, Centro Infantil Oeste (西児童館) 0276-62-4689, Centro Infantil Sul (南児童館) 0276-63-1721, Centro Infantil Leste (東児童館) 0276-62-0133.\n【Telefone】\nDivisão de Educação e Cuidados Infantis (教育保育課) 0276-63-3111.\n【Idiomas】\nO site da cidade tem uma função de exibição multilíngue por tradução automática (tradução feita por máquina).\nNão foi encontrado um guia em língua estrangeira nem em japonês fácil (やさしい日本語) específico para creches e programa extraescolar.",
@@ -577,6 +563,22 @@
       "「町サイト」が「市のサイト」になっています。原文は「町」で、訳文の \"cidade\"（市）は行政区分が違います。その他の数字・日付・時間・名前・場所は一致しています。"
      ],
      "ledgerId": "r00288"
+    },
+    {
+     "qid": "Q52",
+     "short": "Informações de prevenção de desastres em vários idiomas",
+     "text": "O Mapa Geral de Prevenção de Desastres da Cidade de Oizumi (Oizumi-machi Sōgō Bōsai Mappu, edição do ano fiscal de 2023) está escrito em 3 idiomas: japonês, inglês e português.\nO guia de cadastro no e-mail \"Anzen・Anshin Mēru\" (安全・安心メール), o serviço de aviso por telefone e o passo a passo para adicionar o LINE como amigo também estão nesses mesmos 3 idiomas (páginas 3 a 4 do mapa).\nO site da cidade pode ser trocado, por tradução automática, para português, inglês, espanhol, nepalês e chinês. Como é tradução automática, o conteúdo pode ser um pouco diferente do original.\nNos abrigos (避難所) são exibidos pictogramas.\nNão foi encontrado, nos materiais lidos, um mapa de prevenção de desastres em espanhol nem uma versão em japonês fácil (やさしい日本語).\nNão foi possível confirmar, pelos materiais, em que idioma são escritos os textos enviados por e-mail ou LINE.",
+     "original": "大泉町総合防災マップ（2023年度版）は、日本語・英語・ポルトガル語の3つの言葉で書かれています。\n安全・安心メールの登録案内、電話配信サービス、LINEの友だち追加の手順も、同じ3つの言葉です（マップ3〜4ページ）。\n町のホームページは、自動翻訳でポルトガル語・英語・スペイン語・ネパール語・中国語に切り替えられます。機械翻訳なので、内容が少し違うことがあります。\n避難所ではピクトグラムを掲示します。\nスペイン語の防災マップと、やさしい日本語の版は、読んだ範囲では見つかりませんでした。\nメールやLINEで届く文章の言葉は、資料から確かめられませんでした。",
+     "back": "大泉町総合防災マップ（2023年度版）は、日本語・英語・ポルトガル語の3つの言語で書かれています。安全・安心メールの登録案内、電話配信サービス、LINEの友だち追加の手順も、同じ3つの言語です（マップ3〜4ページ）。町のホームページは、自動翻訳でポルトガル語・英語・スペイン語・ネパール語・中国語に切り替えられます。機械翻訳なので、内容が少し違うことがあります。避難所ではピクトグラムを掲示します。読んだ範囲では、スペイン語の防災マップも、やさしい日本語の版も見つかりませんでした。資料からは、メールやLINEで届く文章の言葉を確かめられませんでした。",
+     "source": {
+      "title": "大泉町総合防災マップ｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/170/20200828141906.html",
+      "where": "主な改訂事項（翻訳の見直し）／分割版「情報を集めましょう」（3〜4ページ）のPDF"
+     },
+     "status": "auto",
+     "problems": [
+      "意味のずれはなし。「Anzen・Anshin Mēru」は原文にない英字表記（「安全・安心メール」の訳語として付けられたもの）。意味は同じ。"
+     ]
     }
    ]
   },
@@ -1132,20 +1134,6 @@
      "problems": []
     },
     {
-     "qid": "Q52",
-     "short": "Información de prevención de desastres en varios idiomas",
-     "text": "El Mapa Integral de Prevención de Desastres (edición del año fiscal 2023) (総合防災マップ) tiene una traducción al inglés.\nEn la revisión, se revisó la traducción para que \"suene natural a las personas de habla inglesa\".\nEn los refugios (避難所) se colocarán pictogramas (símbolos gráficos) que se entienden sin necesidad de palabras. También aparecen en la página 42 del mapa de prevención de desastres.\nEl PDF del mapa se puede ver en la página web del pueblo. También se puede ver en \"防災マップ\" (Mapa de prevención de desastres) del LINE oficial del pueblo.\nLa búsqueda de refugios (con la ruta desde su ubicación actual) se puede hacer en \"避難所検索\" (Búsqueda de refugios) del LINE oficial del pueblo.\nEl correo de seguridad y tranquilidad (安全・安心メール) también se puede recibir por LINE.\nEn los materiales encontrados no se pudo confirmar si existen versiones en portugués, español u otros idiomas, una versión en japonés fácil (やさしい日本語), ni los idiomas disponibles para el correo y el LINE.",
-     "original": "総合防災マップ（2023年度版）には英語の翻訳があります。\n改訂では「英語圏の人が自然に読める表現に」翻訳が見直されました。\n避難所では、言葉によらず分かるピクトグラム（絵記号）を掲示します。防災マップ42ページにも載っています。\nマップのPDFは町ホームページで見られます。町公式LINEの「防災マップ」からも見られます。\n避難所の検索（現在地からのルート）は、町公式LINEの「避難所検索」でできます。\n安全・安心メールは、LINEでも受け取れます。\nポルトガル語やスペイン語などの版、やさしい日本語版、メール・LINEの対応言語は、見つかった資料では確認できませんでした。",
-     "back": "総合防災マップ（2023年度版）には英語の翻訳があります。改訂では「英語圏の人が自然に読める表現に」翻訳が見直されました。避難所では、言葉によらず分かるピクトグラム（絵記号）を掲示します。防災マップ42ページにも載っています。マップのPDFは町ホームページで見られます。また、町公式LINEの「防災マップ」からも見られます。避難所の検索（現在地からのルート）は、町公式LINEの「避難所検索」でできます。安全・安心メールは、LINEでも受け取れます。見つかった資料では、ポルトガル語やスペイン語などの版、やさしい日本語版、メール・LINEの対応言語は確認できませんでした。",
-     "source": {
-      "title": "大泉町総合防災マップ｜大泉町",
-      "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/170/20200828141906.html",
-      "where": "主な改訂事項／避難所でピクトグラムを掲示します(42ページ)"
-     },
-     "status": "auto",
-     "problems": []
-    },
-    {
      "qid": "Q54",
      "short": "Solicitud para guarderías (hoikusho) y clubes extraescolares (gakudo)",
      "text": "【Guarderías (保育所) y centros de educación infantil certificados (認定こども園) (certificación tipo 2 y 3)】\nLa solicitud se presenta en la Sección de Educación y Cuidado Infantil (教育保育課), ventanilla n.º 107 de la planta baja (1階) del ayuntamiento (庁舎).\nPara la admisión de abril del año fiscal Reiwa 9 (令和9年度), las solicitudes se reciben del 9 de octubre al 10 de noviembre de Reiwa 8 (令和8年), sin contar sábados, domingos ni festivos.\nEl horario es de 8:30 a.m. a 5:15 p.m.\nEn principio, los documentos se entregan en persona. Si es difícil, también se pueden enviar por correo (deben llegar dentro del plazo).\nPara la certificación tipo 1 de jardines de infancia (幼稚園) y centros de educación infantil certificados (認定こども園), la solicitud se hace directamente en el centro.\nLas personas de nacionalidad extranjera necesitan una copia de la tarjeta de residencia (在留カード).\n【Club extraescolar (学童保育)】\nLa solicitud se presenta en el centro infantil (児童館) del distrito de la escuela primaria a la que asiste el niño.\nPara el año fiscal Reiwa 9 (令和9年度), el plazo es del 2 de noviembre al 15 de diciembre de Reiwa 8 (令和8年), de 9:00 a 17:00 (excepto de 12:00 a 13:00 y los días de cierre del centro).\nPara empezar a usarlo a mitad de año, la solicitud se recibe en cualquier momento y también se puede hacer en línea.\nCentro Infantil Norte (北児童館) 0276-63-3820, Centro Infantil Oeste (西児童館) 0276-62-4689, Centro Infantil Sur (南児童館) 0276-63-1721, Centro Infantil Este (東児童館) 0276-62-0133.\n【Teléfono】\nSección de Educación y Cuidado Infantil (教育保育課) 0276-63-3111.\n【Idioma】\nEl sitio web del municipio tiene una guía para mostrar la página en varios idiomas mediante traducción automática (traducción automática).\nNo se encontró una guía específica sobre guarderías y clubes extraescolares en idiomas extranjeros ni en japonés sencillo.",
@@ -1158,6 +1146,23 @@
      },
      "status": "auto",
      "problems": []
+    },
+    {
+     "qid": "Q52",
+     "short": "Información de prevención de desastres en varios idiomas",
+     "text": "El Mapa General de Prevención de Desastres del Municipio de Oizumi (大泉町総合防災マップ), edición del año fiscal 2023, está escrito en tres idiomas: japonés, inglés y portugués.\nLas instrucciones para registrarse en el correo de seguridad y tranquilidad (安全・安心メール), el servicio de avisos por teléfono (電話配信サービス) y los pasos para agregar el LINE como amigo también están en esos mismos tres idiomas (páginas 3 y 4 del mapa).\nEl sitio web del municipio se puede cambiar, con traducción automática, a portugués, inglés, español, nepalés y chino. Como es traducción automática, el contenido puede ser un poco diferente del original.\nEn los refugios (避難所) se colocan pictogramas.\nEn lo que se leyó, no se encontró un mapa de prevención de desastres en español ni una versión en japonés sencillo (やさしい日本語).\nNo se pudo confirmar en los documentos en qué idioma están los mensajes que llegan por correo o por LINE.",
+     "original": "大泉町総合防災マップ（2023年度版）は、日本語・英語・ポルトガル語の3つの言葉で書かれています。\n安全・安心メールの登録案内、電話配信サービス、LINEの友だち追加の手順も、同じ3つの言葉です（マップ3〜4ページ）。\n町のホームページは、自動翻訳でポルトガル語・英語・スペイン語・ネパール語・中国語に切り替えられます。機械翻訳なので、内容が少し違うことがあります。\n避難所ではピクトグラムを掲示します。\nスペイン語の防災マップと、やさしい日本語の版は、読んだ範囲では見つかりませんでした。\nメールやLINEで届く文章の言葉は、資料から確かめられませんでした。",
+     "back": "大泉町総合防災マップ（2023年度版）は、日本語・英語・ポルトガル語の3つの言語で書かれています。安全・安心メールの登録案内、電話配信サービス、LINEの友だち追加の手順も、同じ3つの言語です（マップ3〜4ページ）。町のホームページは、自動翻訳でスペイン語・英語・ポルトガル語・ネパール語・中国語に切り替えられます。機械翻訳なので、内容が少し違うことがあります。避難所ではピクトグラムを掲示します。読んだ範囲では、スペイン語の防災マップも、やさしい日本語の版も見つかりませんでした。メールやLINEで届く文章の言語は、資料から確かめられませんでした。",
+     "source": {
+      "title": "大泉町総合防災マップ｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/170/20200828141906.html",
+      "where": "主な改訂事項（翻訳の見直し）／分割版「情報を集めましょう」（3〜4ページ）のPDF"
+     },
+     "status": "ok",
+     "problems": [
+      "自動翻訳の言語が原文と違う。原文は「ポルトガル語・英語・スペイン語・ネパール語・中国語」だが、訳し戻しでは「スペイン語・英語・ポルトガル語・ネパール語・中国語」になっている。並びは変わっているが言語の組み合わせは同じで、意味の違いは小さい。また、訳文の「Oizumi」は町名の表記として正しい。原文の「日本語・英語・ポルトガル語」以外の数字（2023年度、3〜4ページ）は一致している。"
+     ],
+     "ledgerId": "r00313"
     }
    ]
   },
@@ -1715,22 +1720,6 @@
      "problems": []
     },
     {
-     "qid": "Q52",
-     "short": "Disaster Prevention Information in Multiple Languages",
-     "text": "The Comprehensive Disaster Prevention Map (総合防災マップ, fiscal year 2023 edition) is available with an English translation.\nIn the revision, the translation was reviewed so that it would be \"worded naturally for English speakers.\"\nAt evacuation shelters (避難所), pictograms (絵記号) that can be understood without words will be displayed. They are also shown on page 42 of the Disaster Prevention Map.\nThe PDF of the map can be viewed on the town website. It can also be viewed from \"防災マップ\" (Disaster Prevention Map) on the town's official LINE.\nYou can search for evacuation shelters (including the route from your current location) with \"避難所検索\" (Evacuation Shelter Search) on the town's official LINE.\nSafety and Security Emails (安全・安心メール) can also be received through LINE.\nVersions in Portuguese, Spanish, and other languages, a Easy Japanese (やさしい日本語) version, and the languages supported by the emails and LINE could not be confirmed in the materials that were found.",
-     "original": "総合防災マップ（2023年度版）には英語の翻訳があります。\n改訂では「英語圏の人が自然に読める表現に」翻訳が見直されました。\n避難所では、言葉によらず分かるピクトグラム（絵記号）を掲示します。防災マップ42ページにも載っています。\nマップのPDFは町ホームページで見られます。町公式LINEの「防災マップ」からも見られます。\n避難所の検索（現在地からのルート）は、町公式LINEの「避難所検索」でできます。\n安全・安心メールは、LINEでも受け取れます。\nポルトガル語やスペイン語などの版、やさしい日本語版、メール・LINEの対応言語は、見つかった資料では確認できませんでした。",
-     "back": "総合防災マップ（2023年度版）には英語の翻訳があります。改訂では、翻訳が「英語圏の人が自然に読める表現に」なるよう見直されました。避難所では、言葉によらず分かるピクトグラム（絵記号）を掲示します。防災マップの42ページにも載っています。マップのPDFは町のホームページで見られます。町公式LINEの「防災マップ」からも見られます。避難所の検索（現在地からのルート）は、町公式LINEの「避難所検索」でできます。安全・安心メールは、LINEでも受け取れます。ポルトガル語やスペイン語などの版、やさしい日本語版、メール・LINEの対応言語は、見つかった資料では確認できませんでした。",
-     "source": {
-      "title": "大泉町総合防災マップ｜大泉町",
-      "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/170/20200828141906.html",
-      "where": "主な改訂事項／避難所でピクトグラムを掲示します(42ページ)"
-     },
-     "status": "auto",
-     "problems": [
-      "意味のずれはなし。訳文に冠詞の誤り「a Easy Japanese」があるが、意味には影響しない。"
-     ]
-    },
-    {
      "qid": "Q54",
      "short": "Applying for Nursery Schools and After-School Care (Gakudō)",
      "text": "[Nursery Schools and Certified Centers for Early Childhood Education and Care (Category 2 and 3 certification)]\nApply at the Education and Childcare Division (教育保育課), Town Hall 1st floor, Window No. 107.\nApplications for admission in April of Reiwa 9 (fiscal year 2027) are accepted from October 9 to November 10, Reiwa 8 (2026) (excluding Saturdays, Sundays, and public holidays).\nHours are 8:30 a.m. to 5:15 p.m.\nApplications must in principle be submitted in person. If that is difficult, you may also send them by mail (they must arrive within the application period).\nFor Category 1 certification at kindergartens and certified centers for early childhood education and care, apply directly to the kindergarten or center.\nForeign nationals must submit a copy of their residence card (在留カード).\n[After-School Care (Gakudō Hoiku)]\nApply at the children's center (児童館) in the elementary school district your child attends.\nFor Reiwa 9 (fiscal year 2027), applications are accepted from November 2 to December 15, Reiwa 8 (2026) (9:00 a.m. to 5:00 p.m., excluding 12:00 to 1:00 p.m. and the center's closed days).\nFor use starting partway through the school year, applications are accepted at any time, and you can also apply online.\nNorth Children's Center (北児童館) 0276-63-3820, West Children's Center (西児童館) 0276-62-4689, South Children's Center (南児童館) 0276-63-1721, East Children's Center (東児童館) 0276-62-0133.\n[Phone]\nEducation and Childcare Division (教育保育課) 0276-63-3111.\n[Languages]\nThe town website has a guide for displaying the site in multiple languages by automatic translation (machine translation).\nNo guide in foreign languages or Plain Japanese specifically for nursery school and after-school care was found.",
@@ -1746,6 +1735,23 @@
       "「令和9年度」の後に「(fiscal year 2027)」と西暦年度の補足が追加されています。内容自体は正しいですが、原文にない追記です。ほかの数字・日付・時間・名前・場所は一致しています。"
      ],
      "ledgerId": "r00289"
+    },
+    {
+     "qid": "Q52",
+     "short": "Disaster Prevention Information in Multiple Languages",
+     "text": "The Oizumi Town Comprehensive Disaster Prevention Map (大泉町総合防災マップ, fiscal year 2023 edition) is written in three languages: Japanese, English, and Portuguese.\nThe guides for registering for the Safety and Security Mail (安全・安心メール), the telephone delivery service, and the steps for adding the town as a friend on LINE are also in the same three languages (map pages 3–4).\nThe town website can be switched to Portuguese, English, Spanish, Nepali, and Chinese by automatic translation. Because this is machine translation, the content may be slightly different from the original.\nPictograms are displayed at evacuation shelters.\nA Spanish-language disaster prevention map and a version in Easy Japanese (やさしい日本語) were not found in the materials that were read.\nThe language of the messages sent by email or LINE could not be confirmed from the materials.",
+     "original": "大泉町総合防災マップ（2023年度版）は、日本語・英語・ポルトガル語の3つの言葉で書かれています。\n安全・安心メールの登録案内、電話配信サービス、LINEの友だち追加の手順も、同じ3つの言葉です（マップ3〜4ページ）。\n町のホームページは、自動翻訳でポルトガル語・英語・スペイン語・ネパール語・中国語に切り替えられます。機械翻訳なので、内容が少し違うことがあります。\n避難所ではピクトグラムを掲示します。\nスペイン語の防災マップと、やさしい日本語の版は、読んだ範囲では見つかりませんでした。\nメールやLINEで届く文章の言葉は、資料から確かめられませんでした。",
+     "back": "大泉町総合防災マップ（2023年度版）は、英語・ポルトガル語・日本語の3か国語で書かれています。安全・安心メールの登録案内、電話配信サービス、LINEの友だち追加の手順も、同じ3か国語です（マップ3〜4ページ）。町のホームページは、自動翻訳でポルトガル語・英語・スペイン語・ネパール語・中国語に切り替えられます。機械翻訳なので、内容が少し違うことがあります。避難所ではピクトグラムを掲示します。スペイン語の防災マップと、やさしい日本語の版は、読んだ範囲では見つかりませんでした。メールやLINEで届く文章の言葉は、資料から確かめられませんでした。",
+     "source": {
+      "title": "大泉町総合防災マップ｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/170/20200828141906.html",
+      "where": "主な改訂事項（翻訳の見直し）／分割版「情報を集めましょう」（3〜4ページ）のPDF"
+     },
+     "status": "pending",
+     "problems": [
+      "「日本語・英語・ポルトガル語」が「英語・ポルトガル語・日本語」と語順が変わっているだけで意味は同じ。ただし「3つの言葉」が「3か国語」になっており、言語を国の数として表す言い方に変わっている（言語と国の違い）。これは意味のずれとまでは言えないが、「言葉」を「国語」と読ませる誤解を生むおそれがある。その他の数字（2023年度、3〜4ページ、5言語）、名称、手順の内容に変更や抜けはなし。"
+     ],
+     "ledgerId": "r00317"
     }
    ]
   },
@@ -2305,20 +2311,6 @@
      "problems": []
     },
     {
-     "qid": "Q52",
-     "short": "いろいろな言葉(ことば)での防災(ぼうさい)の情報(じょうほう)",
-     "text": "「総合防災(そうごうぼうさい)マップ」（2023年度版(ねんどばん)）には、英語(えいご)の翻訳(ほんやく)があります。\nマップを新(あたら)しくしたとき、「英語(えいご)を話(はな)す人(ひと)が自然(しぜん)に読(よ)める言葉(ことば)」になるように、翻訳(ほんやく)を見直(みなお)しました。\n避難所(ひなんじょ)には、言葉(ことば)がわからなくても分(わ)かる絵(え)の記号(きごう)（ピクトグラム）をはります。防災(ぼうさい)マップの42ページにものっています。\nマップのPDFは、町(まち)のホームページで見(み)られます。町(まち)の公式(こうしき)LINEの「防災(ぼうさい)マップ」からも見(み)られます。\n避難所(ひなんじょ)をさがすこと（今(いま)いる場所(ばしょ)から行(い)く道(みち)）は、町(まち)の公式(こうしき)LINEの「避難所検索(ひなんじょけんさく)」でできます。\n「安全(あんぜん)・安心(あんしん)メール」は、LINEでも受(う)け取(と)れます。\nポルトガル語(ご)やスペイン語(ご)などのマップ、やさしい日本語(にほんご)のマップ、メールとLINEで使(つか)える言葉(ことば)は、見(み)つかった資料(しりょう)ではわかりませんでした。",
-     "original": "総合防災マップ（2023年度版）には英語の翻訳があります。\n改訂では「英語圏の人が自然に読める表現に」翻訳が見直されました。\n避難所では、言葉によらず分かるピクトグラム（絵記号）を掲示します。防災マップ42ページにも載っています。\nマップのPDFは町ホームページで見られます。町公式LINEの「防災マップ」からも見られます。\n避難所の検索（現在地からのルート）は、町公式LINEの「避難所検索」でできます。\n安全・安心メールは、LINEでも受け取れます。\nポルトガル語やスペイン語などの版、やさしい日本語版、メール・LINEの対応言語は、見つかった資料では確認できませんでした。",
-     "back": "「総合防災マップ」（2023年度版）には、英語の翻訳があります。マップを新しくしたとき、「英語を話す人が自然に読める言葉」になるように、翻訳を見直しました。避難所には、言葉がわからなくても分かる絵の記号（ピクトグラム）をはります。防災マップの42ページにものっています。マップのPDFは、町のホームページで見られます。町の公式LINEの「防災マップ」からも見られます。避難所をさがすこと（今いる場所から行く道）は、町の公式LINEの「避難所検索」でできます。「安全・安心メール」は、LINEでも受け取れます。ポルトガル語やスペイン語などのマップ、やさしい日本語のマップ、メールとLINEで使える言葉は、見つかった資料ではわかりませんでした。",
-     "source": {
-      "title": "大泉町総合防災マップ｜大泉町",
-      "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/170/20200828141906.html",
-      "where": "主な改訂事項／避難所でピクトグラムを掲示します(42ページ)"
-     },
-     "status": "auto",
-     "problems": []
-    },
-    {
      "qid": "Q54",
      "short": "保育所（ほいくしょ）・学童（がくどう）の申（もう）し込（こ）み",
      "text": "【保育所（ほいくしょ）・認定（にんてい）こども園（えん）（2・3号認定（ごうにんてい））】\n教育保育課（きょういくほいくか）の107番（ばん）の窓口（まどぐち）（庁舎（ちょうしゃ）1階（かい））で申（もう）し込（こ）みます。\n令和（れいわ）9年度（ねんど）4月（がつ）に入園（にゅうえん）したい人（ひと）の受付（うけつけ）は、令和8年10月9日から11月10日までです。土曜日（どようび）・日曜日（にちようび）・祝日（しゅくじつ）は受付（うけつけ）がありません。\n時間（じかん）は午前（ごぜん）8時30分から午後（ごご）5時15分までです。\n自分（じぶん）で持（も）って行（い）くのが基本（きほん）です。行（い）くのが難（むずか）しいときは、郵便（ゆうびん）で送（おく）ることもできます。受付（うけつけ）の期間（きかん）の中（なか）に着（つ）くようにしてください。\n幼稚園（ようちえん）と認定（にんてい）こども園（えん）の1号認定（ごうにんてい）は、園（えん）に直接（ちょくせつ）申（もう）し込（こ）みます。\n外国（がいこく）の国籍（こくせき）の人（ひと）は、在留（ざいりゅう）カードのコピーが必要（ひつよう）です。\n\n【学童保育（がくどうほいく）】\n通（かよ）っている小学校（しょうがっこう）の地区（ちく）の児童館（じどうかん）で申（もう）し込（こ）みます。\n令和（れいわ）9年度（ねんど）の分（ぶん）の受付（うけつけ）は、令和8年11月2日から12月15日までです。時間（じかん）は9時から17時までです。ただし、12時から13時までと、休館日（きゅうかんび）は受付（うけつけ）がありません。\n年度（ねんど）の途中（とちゅう）から使（つか）いたいときは、いつでも受付（うけつけ）をしています。オンラインでも申請（しんせい）できます。\n北児童館（きたじどうかん） 0276-63-3820\n西児童館（にしじどうかん） 0276-62-4689\n南児童館（みなみじどうかん） 0276-63-1721\n東児童館（ひがしじどうかん） 0276-62-0133\n\n【電話（でんわ）】\n教育保育課（きょういくほいくか） 0276-63-3111\n\n【言葉（ことば）】\n町（まち）のサイトに、自動翻訳（じどうほんやく）でいろいろな言葉（ことば）で見（み）られる案内（あんない）があります（機械翻訳（きかいほんやく））。\n保育（ほいく）・学童（がくどう）だけの外国語（がいこくご）の案内（あんない）も、やさしい日本語（にほんご）の案内（あんない）も、見（み）つかりませんでした。",
@@ -2331,6 +2323,22 @@
      },
      "status": "auto",
      "problems": []
+    },
+    {
+     "qid": "Q52",
+     "short": "防災(ぼうさい)の情報(じょうほう)を いろいろな言葉(ことば)で 出(だ)しているか",
+     "text": "大泉町総合防災(おおいずみまち そうごうぼうさい)マップ（2023年度版(ねんどばん)）は、日本語(にほんご)・英語(えいご)・ポルトガル語(ご)の3つの言葉(ことば)で書(か)いてあります。\n「安全(あんぜん)・安心(あんしん)メール」の登録(とうろく)のしかた、電話(でんわ)で知(し)らせるサービス、LINEの友(とも)だち追加(ついか)のしかたも、同(おな)じ3つの言葉(ことば)で書(か)いてあります（マップの3〜4ページ）。\n町(まち)のホームページは、自動(じどう)で翻訳(ほんやく)して、ポルトガル語・英語・スペイン語・ネパール語・中国語(ちゅうごくご)に切(き)りかえられます。機械(きかい)が訳(やく)すので、内容(ないよう)が少(すこ)しちがうことがあります。\n避難所(ひなんじょ)には、ピクトグラム（絵(え)で見(み)せるマーク）をはります。\nスペイン語の防災マップと、やさしい日本語の版(ばん)は、読(よ)んだ資料(しりょう)の中(なか)では見(み)つかりませんでした。\nメールやLINEで届(とど)く文(ぶん)の言葉(ことば)は、資料(しりょう)からは確(たし)かめられませんでした。",
+     "original": "大泉町総合防災マップ（2023年度版）は、日本語・英語・ポルトガル語の3つの言葉で書かれています。\n安全・安心メールの登録案内、電話配信サービス、LINEの友だち追加の手順も、同じ3つの言葉です（マップ3〜4ページ）。\n町のホームページは、自動翻訳でポルトガル語・英語・スペイン語・ネパール語・中国語に切り替えられます。機械翻訳なので、内容が少し違うことがあります。\n避難所ではピクトグラムを掲示します。\nスペイン語の防災マップと、やさしい日本語の版は、読んだ範囲では見つかりませんでした。\nメールやLINEで届く文章の言葉は、資料から確かめられませんでした。",
+     "back": "大泉町総合防災マップ（2023年度版）は、日本語・英語・ポルトガル語の3つの言葉で書かれています。安全・安心メールの登録の仕方、電話で知らせるサービス、LINEの友だち追加の仕方も、同じ3つの言葉で書いてあります（マップの3〜4ページ）。町のホームページは、自動で翻訳して、ポルトガル語・英語・スペイン語・ネパール語・中国語に切り替えられます。機械が訳すので、内容が少し違うことがあります。避難所には、ピクトグラム（絵で見せるマーク）を貼ります。スペイン語の防災マップと、やさしい日本語の版は、読んだ資料の中では見つかりませんでした。メールやLINEで届く文の言葉は、資料からは確かめられませんでした。",
+     "source": {
+      "title": "大泉町総合防災マップ｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/170/20200828141906.html",
+      "where": "主な改訂事項（翻訳の見直し）／分割版「情報を集めましょう」（3〜4ページ）のPDF"
+     },
+     "status": "auto",
+     "problems": [
+      "「ピクトグラム」に「（絵で見せるマーク）」という補足が加わっています（意味は変わらない）。「登録案内」が「登録の仕方」、「電話配信サービス」が「電話で知らせるサービス」と言い換えられていますが、意味のずれはありません。"
+     ]
     }
    ]
   },
@@ -2879,22 +2887,6 @@
      "problems": []
     },
     {
-     "qid": "Q52",
-     "short": "Informasi penanggulangan bencana dalam berbagai bahasa",
-     "text": "Peta Penanggulangan Bencana Terpadu (edisi tahun anggaran 2023) tersedia dalam terjemahan bahasa Inggris.\nDalam revisinya, terjemahan ditinjau ulang agar \"menggunakan ungkapan yang terbaca alami bagi penutur bahasa Inggris\".\nDi tempat pengungsian (避難所), dipasang piktogram (simbol gambar) yang dapat dipahami tanpa bergantung pada bahasa. Piktogram ini juga dimuat di halaman 42 peta penanggulangan bencana.\nPDF peta dapat dilihat di situs web resmi kota/desa (町ホームページ). PDF juga dapat dilihat melalui menu \"防災マップ\" (Peta Penanggulangan Bencana) di LINE resmi (町公式LINE).\nPencarian tempat pengungsian (rute dari lokasi Anda saat ini) dapat dilakukan melalui menu \"避難所検索\" (Pencarian Tempat Pengungsian) di LINE resmi (町公式LINE).\nSurel Keselamatan dan Ketenteraman (安全・安心メール) juga dapat diterima melalui LINE.\nVersi dalam bahasa Portugis, bahasa Spanyol, dan bahasa lainnya, versi bahasa Jepang sederhana (やさしい日本語), serta bahasa-bahasa yang didukung oleh surel dan LINE tidak dapat dipastikan dari dokumen yang ditemukan.",
-     "original": "総合防災マップ（2023年度版）には英語の翻訳があります。\n改訂では「英語圏の人が自然に読める表現に」翻訳が見直されました。\n避難所では、言葉によらず分かるピクトグラム（絵記号）を掲示します。防災マップ42ページにも載っています。\nマップのPDFは町ホームページで見られます。町公式LINEの「防災マップ」からも見られます。\n避難所の検索（現在地からのルート）は、町公式LINEの「避難所検索」でできます。\n安全・安心メールは、LINEでも受け取れます。\nポルトガル語やスペイン語などの版、やさしい日本語版、メール・LINEの対応言語は、見つかった資料では確認できませんでした。",
-     "back": "総合防災マップ（2023年度版）には英語の翻訳があります。改訂では、翻訳が「英語を母語とする人が自然に読める表現」になるよう見直されました。避難所では、言葉によらず分かるピクトグラム（絵記号）を掲示します。このピクトグラムは防災マップの42ページにも掲載されています。マップのPDFは町のホームページで見られます。また、町公式LINEの「防災マップ」からも見られます。避難所の検索（現在地からのルート）は、町公式LINEの「避難所検索」でできます。安全・安心メールは、LINEでも受け取れます。ポルトガル語やスペイン語などの版、やさしい日本語版、メールやLINEの対応言語は、見つかった資料では確認できませんでした。",
-     "source": {
-      "title": "大泉町総合防災マップ｜大泉町",
-      "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/170/20200828141906.html",
-      "where": "主な改訂事項／避難所でピクトグラムを掲示します(42ページ)"
-     },
-     "status": "auto",
-     "problems": [
-      "「町ホームページ」の「町」を「kota/desa（市または村）」と訳しており、原文の「町」より範囲が広く読めます。「menu」の語を足していますが、意味は同じです。"
-     ]
-    },
-    {
      "qid": "Q54",
      "short": "Pendaftaran penitipan anak (保育所) dan penitipan sepulang sekolah (学童保育)",
      "text": "【Tempat penitipan anak (保育所) dan lembaga PAUD terpadu (認定こども園) (Sertifikasi Kategori 2 dan 3)】\nDaftar ke Seksi Pendidikan dan Penitipan Anak (教育保育課), loket nomor 107 di lantai 1 gedung kantor pemerintah (庁舎).\nPendaftaran untuk masuk bulan April tahun ajaran Reiwa 9 (令和9年度) dibuka dari 9 Oktober Reiwa 8 (令和8年) sampai 10 November (kecuali Sabtu, Minggu, dan hari libur nasional).\nJam layanan: pukul 8.30 pagi sampai 5.15 sore.\nPada prinsipnya berkas diserahkan langsung. Jika sulit, bisa juga dikirim lewat pos (harus sudah sampai dalam periode pendaftaran).\nUntuk Kategori 1 di taman kanak-kanak (幼稚園) dan lembaga PAUD terpadu (認定こども園), daftar langsung ke lembaga yang bersangkutan.\nWarga negara asing memerlukan fotokopi kartu izin tinggal (在留カード).\n【Penitipan sepulang sekolah (学童保育)】\nDaftar di pusat anak (児童館) yang berada di wilayah sekolah dasar tempat anak bersekolah.\nUntuk tahun ajaran Reiwa 9 (令和9年度), pendaftaran dibuka dari 2 November Reiwa 8 (令和8年) sampai 15 Desember (pukul 9.00 sampai 17.00, kecuali pukul 12.00 sampai 13.00 dan hari tutup).\nUntuk mulai menggunakan layanan di tengah tahun ajaran, pendaftaran diterima kapan saja, dan bisa juga diajukan secara online.\nPusat Anak Utara (北児童館) 0276-63-3820, Pusat Anak Barat (西児童館) 0276-62-4689, Pusat Anak Selatan (南児童館) 0276-63-1721, Pusat Anak Timur (東児童館) 0276-62-0133.\n【Telepon】\nSeksi Pendidikan dan Penitipan Anak (教育保育課) 0276-63-3111.\n【Bahasa】\nSitus web kota memiliki panduan untuk menampilkan halaman dalam berbagai bahasa dengan terjemahan otomatis (terjemahan mesin).\nPanduan khusus penitipan anak dan penitipan sepulang sekolah dalam bahasa asing atau bahasa Jepang mudah tidak ditemukan.",
@@ -2910,6 +2902,20 @@
       "「町サイト」が「Situs web kota（市のサイト）」になっている。町と市の違い。それ以外の数字・日付・時間・電話番号・場所は一致。"
      ],
      "ledgerId": "r00290"
+    },
+    {
+     "qid": "Q52",
+     "short": "Informasi bencana dalam berbagai bahasa",
+     "text": "Peta Pencegahan Bencana Terpadu Kota Oizumi (大泉町総合防災マップ) versi tahun anggaran 2023 ditulis dalam tiga bahasa: bahasa Jepang, Inggris, dan Portugis.\nPanduan pendaftaran Surel Aman dan Tenteram (安全・安心メール), layanan pemberitahuan lewat telepon, dan langkah-langkah menambahkan teman LINE juga tersedia dalam tiga bahasa yang sama (peta halaman 3〜4).\nSitus web kota dapat diganti ke bahasa Portugis, Inggris, Spanyol, Nepal, dan Mandarin dengan terjemahan otomatis. Karena merupakan terjemahan mesin, isinya mungkin sedikit berbeda.\nDi tempat pengungsian (避難所) dipasang piktogram.\nPeta bencana dalam bahasa Spanyol dan versi bahasa Jepang yang mudah (やさしい日本語) tidak ditemukan dalam bagian yang sudah dibaca.\nBahasa yang digunakan pada pesan yang dikirim lewat surel atau LINE tidak dapat dipastikan dari dokumen.",
+     "original": "大泉町総合防災マップ（2023年度版）は、日本語・英語・ポルトガル語の3つの言葉で書かれています。\n安全・安心メールの登録案内、電話配信サービス、LINEの友だち追加の手順も、同じ3つの言葉です（マップ3〜4ページ）。\n町のホームページは、自動翻訳でポルトガル語・英語・スペイン語・ネパール語・中国語に切り替えられます。機械翻訳なので、内容が少し違うことがあります。\n避難所ではピクトグラムを掲示します。\nスペイン語の防災マップと、やさしい日本語の版は、読んだ範囲では見つかりませんでした。\nメールやLINEで届く文章の言葉は、資料から確かめられませんでした。",
+     "back": "大泉町総合防災マップ（2023年度版）は、日本語・英語・ポルトガル語の3つの言葉で書かれています。安全・安心メールの登録案内、電話配信サービス、LINEの友だち追加の手順も、同じ3つの言葉です（マップ3〜4ページ）。町のホームページは、自動翻訳でポルトガル語・英語・スペイン語・ネパール語・中国語に切り替えられます。機械翻訳なので、内容が少し違うことがあります。避難所ではピクトグラムを掲示します。スペイン語の防災マップと、やさしい日本語の版は、読んだ範囲では見つかりませんでした。メールやLINEで届く文章の言葉は、資料から確かめられませんでした。",
+     "source": {
+      "title": "大泉町総合防災マップ｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/170/20200828141906.html",
+      "where": "主な改訂事項（翻訳の見直し）／分割版「情報を集めましょう」（3〜4ページ）のPDF"
+     },
+     "status": "auto",
+     "problems": []
     }
    ]
   },
@@ -3456,20 +3462,6 @@
      "problems": []
     },
     {
-     "qid": "Q52",
-     "short": "विपद् तयारी जानकारीको बहुभाषिक सहायता",
-     "text": "सम्पूर्ण विपद् रोकथाम नक्सा (総合防災マップ) को 2023 आर्थिक वर्षको संस्करण (2023年度版) को अंग्रेजी अनुवाद छ।\nसंशोधन गर्दा अनुवाद \"अंग्रेजी बोल्ने मानिसहरूले स्वाभाविक रूपमा पढ्न सक्ने अभिव्यक्तिमा\" हुने गरी पुनरावलोकन गरिएको छ।\nआश्रयस्थल (避難所) मा भाषामा भर नपरी बुझिने पिक्टोग्राम (चित्र चिन्ह) टाँसिन्छ। यो विपद् नक्सा (防災マップ) को पृष्ठ 42 मा पनि छ।\nनक्साको PDF नगरको होमपेजमा हेर्न सकिन्छ। नगरको आधिकारिक LINE (町公式LINE) को 「防災マップ」बाट पनि हेर्न सकिन्छ।\nआश्रयस्थल खोजी (हालको स्थानबाट मार्ग) नगरको आधिकारिक LINE (町公式LINE) को 「避難所検索」बाट गर्न सकिन्छ।\nसुरक्षा·शान्ति मेल (安全・安心メール) LINE मा पनि प्राप्त गर्न सकिन्छ।\nपोर्चुगिज, स्पेनिश आदि भाषाका संस्करण, सरल जापानी (やさしい日本語) संस्करण, र मेल·LINE ले समर्थन गर्ने भाषाहरू फेला परेका सामग्रीमा पुष्टि गर्न सकिएन।",
-     "original": "総合防災マップ（2023年度版）には英語の翻訳があります。\n改訂では「英語圏の人が自然に読める表現に」翻訳が見直されました。\n避難所では、言葉によらず分かるピクトグラム（絵記号）を掲示します。防災マップ42ページにも載っています。\nマップのPDFは町ホームページで見られます。町公式LINEの「防災マップ」からも見られます。\n避難所の検索（現在地からのルート）は、町公式LINEの「避難所検索」でできます。\n安全・安心メールは、LINEでも受け取れます。\nポルトガル語やスペイン語などの版、やさしい日本語版、メール・LINEの対応言語は、見つかった資料では確認できませんでした。",
-     "back": "総合防災マップ（2023年度版）には英語の翻訳があります。改訂では「英語圏の人が自然に読める表現に」翻訳が見直されました。避難所では、言葉によらず分かるピクトグラム（絵記号）を掲示します。これは防災マップ42ページにもあります。マップのPDFは町のホームページで見られます。町公式LINEの「防災マップ」からも見られます。避難所の検索（現在地からのルート）は、町公式LINEの「避難所検索」でできます。安全・安心メールは、LINEでも受け取れます。ポルトガル語やスペイン語などの版、やさしい日本語版、メール・LINEの対応言語は、見つかった資料では確認できませんでした。",
-     "source": {
-      "title": "大泉町総合防災マップ｜大泉町",
-      "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/170/20200828141906.html",
-      "where": "主な改訂事項／避難所でピクトグラムを掲示します(42ページ)"
-     },
-     "status": "auto",
-     "problems": []
-    },
-    {
      "qid": "Q54",
      "short": "डे-केयर केन्द्र (保育所) र विद्यालयपछिको बालबालिका हेरचाह (学童保育) को आवेदन",
      "text": "【डे-केयर केन्द्र・प्रमाणित बाल केन्द्र (保育所・認定こども園) (वर्ग 2・3 प्रमाणीकरण)】\nशिक्षा तथा बालबालिका हेरचाह शाखा (教育保育課) (नगर कार्यालय भवनको पहिलो तल्ला, काउन्टर नम्बर 107 / 庁舎1階107番窓口) मा आवेदन दिनुहोस्।\nरेइवा 9 वर्षको अप्रिल भर्नाको लागि आवेदन रेइवा 8 वर्षको अक्टोबर 9 देखि नोभेम्बर 10 सम्म लिइन्छ (शनिबार, आइतबार र सार्वजनिक बिदा बाहेक)।\nसमय बिहान 8:30 देखि साँझ 5:15 सम्म हो।\nआफैँ बुझाउनु सामान्य नियम हो। गाह्रो भएमा हुलाकबाट पनि पठाउन सकिन्छ (तोकिएको अवधिभित्र पुगिसक्नुपर्छ)।\nकिन्डरगार्टन (幼稚園) र प्रमाणित बाल केन्द्र (認定こども園) को वर्ग 1 प्रमाणीकरणको लागि सम्बन्धित केन्द्रमै सिधै आवेदन दिनुहोस्।\nविदेशी नागरिकलाई निवास कार्ड (在留カード) को प्रतिलिपि चाहिन्छ।\n【विद्यालयपछिको बालबालिका हेरचाह (学童保育)】\nबच्चा पढ्ने प्राथमिक विद्यालयको क्षेत्रको बाल केन्द्र (児童館) मा आवेदन दिनुहोस्।\nरेइवा 9 वर्षको लागि रेइवा 8 वर्षको नोभेम्बर 2 देखि डिसेम्बर 15 सम्म हो (9 बजे देखि 17 बजेसम्म; 12 बजे देखि 13 बजेसम्म र बन्द रहने दिन बाहेक)।\nवर्षको बीचमा सुरु गर्न चाहनेको आवेदन जुनसुकै बेला लिइन्छ, अनलाइन आवेदन पनि गर्न सकिन्छ।\nउत्तर बाल केन्द्र (北児童館) 0276-63-3820, पश्चिम बाल केन्द्र (西児童館) 0276-62-4689, दक्षिण बाल केन्द्र (南児童館) 0276-63-1721, पूर्व बाल केन्द्र (東児童館) 0276-62-0133।\n【फोन】\nशिक्षा तथा बालबालिका हेरचाह शाखा (教育保育課) 0276-63-3111।\n【भाषा】\nनगरको वेबसाइटमा स्वचालित अनुवादद्वारा धेरै भाषामा देखाउने व्यवस्था छ (मेसिन अनुवाद)।\nडे-केयर र विद्यालयपछिको बालबालिका हेरचाहका लागि विशेष रूपमा बनाइएको विदेशी भाषा वा सरल जापानी भाषाको जानकारी फेला परेन।",
@@ -3479,6 +3471,20 @@
       "title": "令和9年度保育施設の園児募集のお知らせ｜大泉町",
       "url": "https://www.town.oizumi.gunma.jp/s030/kosodate/010/010/050/20200826145316.html",
       "where": "申込方法（受付期間・提出場所）"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q52",
+     "short": "विपद् सम्बन्धी जानकारीको बहुभाषिक व्यवस्था (防災情報の多言語対応)",
+     "text": "ओइज्मी नगरको समग्र विपद् नक्सा (大泉町総合防災マップ) (2023 आर्थिक वर्षको संस्करण) जापानी, अंग्रेजी र पोर्तुगाली गरी 3 भाषामा लेखिएको छ।\nसुरक्षा·शान्ति इमेल (安全・安心メール) दर्ता गर्ने जानकारी, फोनबाट सूचना पठाउने सेवा, र LINE मा साथी थप्ने तरिका पनि यही 3 भाषामा छन् (नक्सा पृष्ठ 3〜4)।\nनगरको वेबसाइट स्वचालित अनुवादबाट पोर्तुगाली, अंग्रेजी, स्पेनिश, नेपाली र चिनियाँ भाषामा बदल्न सकिन्छ। यो मेसिन अनुवाद भएकाले सामग्री अलि फरक हुन सक्छ।\nआश्रयस्थल (避難所) मा पिक्टोग्राम (चित्र-चिन्ह) टाँसिन्छ।\nस्पेनिश भाषाको विपद् नक्सा र सरल जापानी भाषा (やさしい日本語) को संस्करण पढिएको दायराभित्र फेला परेन।\nइमेल वा LINE मा आउने सन्देश कुन भाषामा आउँछ भन्ने कुरा कागजातबाट पुष्टि गर्न सकिएन।",
+     "original": "大泉町総合防災マップ（2023年度版）は、日本語・英語・ポルトガル語の3つの言葉で書かれています。\n安全・安心メールの登録案内、電話配信サービス、LINEの友だち追加の手順も、同じ3つの言葉です（マップ3〜4ページ）。\n町のホームページは、自動翻訳でポルトガル語・英語・スペイン語・ネパール語・中国語に切り替えられます。機械翻訳なので、内容が少し違うことがあります。\n避難所ではピクトグラムを掲示します。\nスペイン語の防災マップと、やさしい日本語の版は、読んだ範囲では見つかりませんでした。\nメールやLINEで届く文章の言葉は、資料から確かめられませんでした。",
+     "back": "大泉町総合防災マップ（2023年度版）は、日本語・英語・ポルトガル語の3つの言語で書かれています。安全・安心メールの登録案内、電話配信サービス、LINEの友だち追加の手順も、同じ3つの言語です（マップ3〜4ページ）。町のウェブサイトは、自動翻訳でポルトガル語・英語・スペイン語・ネパール語・中国語に切り替えられます。機械翻訳のため、内容が少し異なることがあります。避難所ではピクトグラム（絵記号）が掲示されます。スペイン語の防災マップと、やさしい日本語の版は、読んだ範囲では見つかりませんでした。メールやLINEで届く文章の言語は、資料からは確認できませんでした。",
+     "source": {
+      "title": "大泉町総合防災マップ｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/170/20200828141906.html",
+      "where": "主な改訂事項（翻訳の見直し）／分割版「情報を集めましょう」（3〜4ページ）のPDF"
      },
      "status": "auto",
      "problems": []
@@ -4027,20 +4033,6 @@
      "problems": []
     },
     {
-     "qid": "Q52",
-     "short": "Thông tin phòng chống thiên tai bằng nhiều ngôn ngữ",
-     "text": "Bản đồ phòng chống thiên tai tổng hợp (Sōgō Bōsai Map, bản năm tài khóa 2023) có bản dịch tiếng Anh.\nTrong lần sửa đổi này, bản dịch đã được xem xét lại để \"người sử dụng tiếng Anh đọc thấy tự nhiên\".\nTại các nơi lánh nạn (避難所), thị trấn sẽ treo các pictogram (ký hiệu hình ảnh) giúp hiểu được mà không cần dùng ngôn ngữ. Các pictogram này cũng có trên trang 42 của bản đồ phòng chống thiên tai.\nBạn có thể xem file PDF của bản đồ trên trang web của thị trấn. Bạn cũng có thể xem từ mục \"防災マップ\" (bản đồ phòng chống thiên tai) trong LINE chính thức của thị trấn.\nViệc tìm nơi lánh nạn (đường đi từ vị trí hiện tại) có thể thực hiện bằng mục \"避難所検索\" (tìm nơi lánh nạn) trong LINE chính thức của thị trấn.\nEmail An toàn・An tâm (安全・安心メール) cũng có thể nhận qua LINE.\nTrong các tài liệu đã tìm được, chưa xác nhận được các phiên bản tiếng Bồ Đào Nha, tiếng Tây Ban Nha và các ngôn ngữ khác, phiên bản tiếng Nhật dễ hiểu (やさしい日本語), cũng như các ngôn ngữ mà email và LINE hỗ trợ.",
-     "original": "総合防災マップ（2023年度版）には英語の翻訳があります。\n改訂では「英語圏の人が自然に読める表現に」翻訳が見直されました。\n避難所では、言葉によらず分かるピクトグラム（絵記号）を掲示します。防災マップ42ページにも載っています。\nマップのPDFは町ホームページで見られます。町公式LINEの「防災マップ」からも見られます。\n避難所の検索（現在地からのルート）は、町公式LINEの「避難所検索」でできます。\n安全・安心メールは、LINEでも受け取れます。\nポルトガル語やスペイン語などの版、やさしい日本語版、メール・LINEの対応言語は、見つかった資料では確認できませんでした。",
-     "back": "総合防災マップ（2023年度版）には英語の翻訳があります。改訂では「英語圏の人が自然に読める表現に」翻訳が見直されました。避難所では、言葉によらず分かるピクトグラム（絵記号）を掲示します。防災マップ42ページにも載っています。マップのPDFは町ホームページで見られます。町公式LINEの「防災マップ」からも見られます。避難所の検索（現在地からのルート）は、町公式LINEの「避難所検索」でできます。安全・安心メールは、LINEでも受け取れます。見つかった資料では、ポルトガル語、スペイン語などの言語版、やさしい日本語版、メールとLINEが対応する言語は確認できていません。",
-     "source": {
-      "title": "大泉町総合防災マップ｜大泉町",
-      "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/170/20200828141906.html",
-      "where": "主な改訂事項／避難所でピクトグラムを掲示します(42ページ)"
-     },
-     "status": "auto",
-     "problems": []
-    },
-    {
      "qid": "Q54",
      "short": "Đăng ký nhà trẻ・lớp giữ trẻ sau giờ học (học đường保育)",
      "text": "【Nhà trẻ・Cơ sở giáo dục và chăm sóc mầm non được công nhận (認定こども園) (chứng nhận loại 2 và 3)】\nĐăng ký tại Phòng Giáo dục và Chăm sóc trẻ (教育保育課), quầy số 107 tầng 1 của tòa nhà hành chính (庁舎1階107番窓口).\nThời gian tiếp nhận hồ sơ nhập học tháng 4 năm tài khóa 令和9 (Reiwa 9): từ 令和8年10月9日 (ngày 9 tháng 10 năm Reiwa 8) đến 11月10日 (ngày 10 tháng 11), trừ thứ Bảy, Chủ nhật và ngày lễ.\nGiờ tiếp nhận: từ 8:30 sáng đến 5:15 chiều.\nNguyên tắc là nộp trực tiếp. Nếu khó thì cũng có thể gửi qua đường bưu điện (hồ sơ phải đến nơi trong thời hạn tiếp nhận).\nĐối với chứng nhận loại 1 của trường mẫu giáo (幼稚園)・cơ sở giáo dục và chăm sóc mầm non được công nhận (認定こども園), hãy đăng ký trực tiếp với trường/cơ sở đó.\nNgười mang quốc tịch nước ngoài cần có bản sao thẻ cư trú (在留カード).\n【Lớp giữ trẻ sau giờ học (学童保育)】\nĐăng ký tại nhà thiếu nhi (児童館) thuộc khu vực trường tiểu học mà trẻ theo học.\nThời gian tiếp nhận cho năm tài khóa 令和9 (Reiwa 9): từ 令和8年11月2日 (ngày 2 tháng 11 năm Reiwa 8) đến 12月15日 (ngày 15 tháng 12) (từ 9:00 đến 17:00, trừ khoảng 12:00 đến 13:00 và các ngày nhà thiếu nhi nghỉ).\nNếu muốn sử dụng từ giữa năm học thì tiếp nhận bất cứ lúc nào, và cũng có thể đăng ký trực tuyến.\nNhà thiếu nhi phía Bắc (北児童館) 0276-63-3820, nhà thiếu nhi phía Tây (西児童館) 0276-62-4689, nhà thiếu nhi phía Nam (南児童館) 0276-63-1721, nhà thiếu nhi phía Đông (東児童館) 0276-62-0133.\n【Điện thoại】\nPhòng Giáo dục và Chăm sóc trẻ (教育保育課) 0276-63-3111.\n【Ngôn ngữ】\nTrang web của thị trấn có hướng dẫn hiển thị nhiều ngôn ngữ bằng dịch tự động (dịch máy).\nChúng tôi không tìm thấy tài liệu hướng dẫn riêng về nhà trẻ và lớp giữ trẻ sau giờ học bằng tiếng nước ngoài hoặc tiếng Nhật đơn giản (やさしい日本語).",
@@ -4050,6 +4042,20 @@
       "title": "令和9年度保育施設の園児募集のお知らせ｜大泉町",
       "url": "https://www.town.oizumi.gunma.jp/s030/kosodate/010/010/050/20200826145316.html",
       "where": "申込方法（受付期間・提出場所）"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q52",
+     "short": "Thông tin phòng chống thiên tai bằng nhiều ngôn ngữ",
+     "text": "Bản đồ phòng chống thiên tai tổng hợp thị trấn Oizumi (大泉町総合防災マップ) (phiên bản năm tài chính 2023) được viết bằng 3 ngôn ngữ: tiếng Nhật, tiếng Anh và tiếng Bồ Đào Nha.\nHướng dẫn đăng ký Email An toàn・An tâm (安全・安心メール), dịch vụ phát tin qua điện thoại và các bước thêm bạn LINE cũng bằng 3 ngôn ngữ đó (trang 3〜4 của bản đồ).\nTrang chủ của thị trấn có thể chuyển sang tiếng Bồ Đào Nha, tiếng Anh, tiếng Tây Ban Nha, tiếng Nepal và tiếng Trung bằng dịch tự động. Vì là dịch máy nên nội dung có thể hơi khác.\nTại nơi lánh nạn (避難所) sẽ dán biểu tượng hình ảnh (pictogram).\nTrong phạm vi đã đọc, không tìm thấy bản đồ phòng chống thiên tai bằng tiếng Tây Ban Nha và bản tiếng Nhật dễ hiểu (やさしい日本語).\nTừ tài liệu, không thể xác nhận được nội dung gửi qua email hoặc LINE được viết bằng ngôn ngữ nào.",
+     "original": "大泉町総合防災マップ（2023年度版）は、日本語・英語・ポルトガル語の3つの言葉で書かれています。\n安全・安心メールの登録案内、電話配信サービス、LINEの友だち追加の手順も、同じ3つの言葉です（マップ3〜4ページ）。\n町のホームページは、自動翻訳でポルトガル語・英語・スペイン語・ネパール語・中国語に切り替えられます。機械翻訳なので、内容が少し違うことがあります。\n避難所ではピクトグラムを掲示します。\nスペイン語の防災マップと、やさしい日本語の版は、読んだ範囲では見つかりませんでした。\nメールやLINEで届く文章の言葉は、資料から確かめられませんでした。",
+     "back": "大泉町総合防災マップ（2023年度版）は、日本語・英語・ポルトガル語の3つの言語で書かれています。安全・安心メールの登録案内、電話配信サービス、LINEの友だち追加の手順も、同じ3つの言語です（マップ3〜4ページ）。町のホームページは、自動翻訳でポルトガル語・英語・スペイン語・ネパール語・中国語に切り替えられます。機械翻訳なので、内容が少し違うことがあります。避難所ではピクトグラムを掲示します。スペイン語の防災マップと、やさしい日本語の版は、読んだ範囲では見つかりませんでした。メールやLINEで届く文章の言語は、資料から確かめられませんでした。",
+     "source": {
+      "title": "大泉町総合防災マップ｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/170/20200828141906.html",
+      "where": "主な改訂事項（翻訳の見直し）／分割版「情報を集めましょう」（3〜4ページ）のPDF"
      },
      "status": "auto",
      "problems": []
