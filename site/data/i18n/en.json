@@ -1,11 +1,11 @@
 {
  "lang": "en",
  "name": "English",
- "createdAt": "2026-11-03T02:52:05.871Z",
+ "createdAt": "2026-11-03T03:09:53.948Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 663,
- "of": 654,
+ "count": 665,
+ "of": 656,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "This is an unofficial guide to living in this town. Claude gathers information from the town's official website and other sources, and cites each source (Machishirube)",
   "すべてのページ": "All pages",
@@ -669,6 +669,8 @@
   "AEDの場所": "AED locations",
   "熊などの野生動物の出没": "Bears and other wildlife sightings",
   "犬・猫と暮らす人へ": "For people living with dogs and cats",
-  "地域の集まりとボランティア": "Community gatherings and volunteering"
+  "地域の集まりとボランティア": "Community gatherings and volunteering",
+  "今日はごみの収集はありません": "No garbage collection today",
+  "人が住む 250m 四方ごとに、中の 6×6 か所（およそ 40m おき）の標高から平均の坂のきつさを出し、5% 以上を「坂が多い」、10% 以上を「急な坂が多い」とした、めやすです（道の坂ではなく、土地の傾き）。人は四角の中に均等に住むとみなしています": "This is a rough guide. For each inhabited 250m square, we calculate the average steepness from elevations at 6×6 points inside it (about 40m apart). 5% or more is classed as \"many slopes,\" and 10% or more as \"many steep slopes\" (this measures the tilt of the land, not of roads). People are assumed to live evenly across the square"
  }
 }

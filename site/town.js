@@ -854,10 +854,10 @@ function todayLife(hasHinan) {
   const has = (v) => (answersByPage[v] ?? []).filter((a) => a.value !== "見つからなかった").length;
   const row = (view, k, v, ready) => `<li><a href="#${view}"><span class="k">${icon(ILLUST[view]?.main)}${T(k)}</span><span class="v${ready ? "" : " later"}">${esc(T(v))}</span></a></li>`;
   $("today-life").innerHTML = [
-    row("gomi", "ごみ", gomiToday ? (gomiToday.length ? `今日は ${gomiToday.join("・")} の日` : "今日はごみの収集はありません") : has("gomi") ? "ごみの出し方を見る" : "今日の収集は、これから出します", has("gomi") || !!gomiToday),
-    medicalRow ?? row("iryo", "病院", "この町の病院のデータはまだありません", false),
-    row("bousai", "避難", hasHinan ? "わが家から近い避難場所を出す" : has("bousai") ? "避難場所の案内を見る" : "避難場所は、これから出します", hasHinan || has("bousai")),
-    row("komatta", "困ったとき", has("komatta") ? "電話・メールの窓口を見る" : "電話・メールの窓口は、これから出します", has("komatta")),
+    row("gomi", T("ごみ"), gomiToday ? (gomiToday.length ? TN("今日は {k} の日", { k: gomiToday.join("・") }) : T("今日はごみの収集はありません")) : has("gomi") ? T("ごみの出し方を見る") : T("今日の収集は、これから出します"), has("gomi") || !!gomiToday),
+    medicalRow ?? row("iryo", T("病院"), T("この町の病院のデータはまだありません"), false),
+    row("bousai", T("避難"), hasHinan ? T("わが家から近い避難場所を出す") : has("bousai") ? T("避難場所の案内を見る") : T("避難場所は、これから出します"), hasHinan || has("bousai")),
+    row("komatta", T("困ったとき"), has("komatta") ? T("電話・メールの窓口を見る") : T("電話・メールの窓口は、これから出します"), has("komatta")),
   ].join("");
   $("tiles").innerHTML = PAGES.filter((p) => !["today", "source", "research", "mitate"].includes(p.view)).map((p) => {
     // 中身があるか：Claude の答え・わが家の避難・病院のデータ・町のデータ
