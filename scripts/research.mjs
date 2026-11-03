@@ -208,6 +208,8 @@ export async function assess({ a, content, code, question, step = () => {}, doma
         docs.push({ url: u, text: u.toLowerCase().endsWith(".csv") ? await politeText(u, { raw: true }) : await politeText(u) });
       } catch (e) {
         step(`取れませんでした（${e.message}）`);
+        // 答えの出典そのものが開けないときは、理由に書く（検索の結果に残った古いページを使ったことがある。朝霞市の Q18、11/3）
+        if (u === url && /404|410/.test(e.message)) why.push(`出典のページが開けない（${e.message.match(/404|410/)[0]}）。検索に残った古い内容を使った可能性がある`);
       }
     }
   }

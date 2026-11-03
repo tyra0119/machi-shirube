@@ -1,10 +1,10 @@
 {
- "updatedAt": "2026-11-03T07:30:08.039Z",
+ "updatedAt": "2026-11-03T07:37:00.379Z",
  "counts": {
   "auto": 57,
   "ok": 150,
-  "pending": 1,
-  "fix": 17,
+  "pending": 0,
+  "fix": 19,
   "rejected": 9,
   "unknown": 0
  },
@@ -5191,11 +5191,36 @@
    "kind": "answer",
    "question": "介護や高齢者の暮らしの相談の窓口（地域包括支援センターなど）の名前・担当する地区・電話番号",
    "why": "Claude が返した元の文が、答えに使ったページの中に見つからなかった",
-   "status": "pending",
+   "status": "fix",
    "score": null,
    "source": {
     "title": "地域包括支援センター - 朝霞市",
     "url": "https://www.city.asaka.lg.jp/soshiki/23/tiikihoukatusiennsennta-.html"
+   },
+   "decided": {
+    "at": "2026-11-03T07:31:50.978Z",
+    "action": "fix",
+    "reason": "�o�T�� URL�isoshiki/23/tiikihoukatusiennsennta-.html�j�͎s�̃T�C�g�ŏ����Ă���i404�j�B�����̌��ʂɎc�����Â����e�ł͂Ȃ��A���܊J����s�̌����y�[�W�i�n���x���Z���^�[�̈ꗗ�j��T���ē�����B��ҁu���ג����āv�i2026-11-03�j"
+   }
+  },
+  {
+   "id": "r00326",
+   "scope": "muni:11227",
+   "scopeName": "埼玉県 朝霞市",
+   "qid": "Q18",
+   "kind": "answer",
+   "question": "介護や高齢者の暮らしの相談の窓口（地域包括支援センターなど）の名前・担当する地区・電話番号",
+   "why": "出典のページが開けない（404）。検索に残った古い内容を使った可能性がある／Claude が返した元の文が、答えに使ったページの中に見つからなかった",
+   "status": "fix",
+   "score": null,
+   "source": {
+    "title": "地域包括支援センター - 朝霞市",
+    "url": "https://www.city.asaka.lg.jp/soshiki/23/tiikihoukatusiennsennta-.html"
+   },
+   "decided": {
+    "at": "2026-11-03T07:37:00.358Z",
+    "action": "fix",
+    "reason": "出典の市のページ（soshiki/23/tiikihoukatusiennsennta-.html）は消えている（404）。検索に残った古い内容は使わない。埼玉県の公表する一覧 https://www.pref.saitama.lg.jp/documents/19801/23asakashir7.pdf （県内の地域包括支援センター一覧、令和7年4月1日現在）に朝霞市の6か所がある。電話番号はこの"
    }
   }
  ]
