@@ -364,7 +364,12 @@ export async function researchTown(code, { log = console.log, onItem = () => {},
   const t = stats.towns[code], s = stats.summary;
   const loud = new Set(["bousai", ...(t?.foreignRate >= s.foreignRate.top10 ? ["foreign"] : []), ...(t?.over65Rate >= s.over65Rate.top10 ? ["kaigo"] : [])]);
   const rank = (q) => (q.feature ? 0 : q.only ? 1 : loud.has(q.page) ? 2 : 3);
-  const list = questions.filter((x) => (x.level === "town") === Boolean(part) && (!x.only || x.only === code) && (!x.feature || feats.includes(x.feature)))
+  // 決まりつきの問い（rule：「外国の住民の割合が 10% 以上の町」など）は、その決まりに合う町だけ。数の書いてない決まりは、どの町にも聞く
+  const ruleOk = (q) => {
+    const fr = q.rule?.match(/外国の住民.*?(\d+(?:\.\d+)?)\s*%/), old = q.rule?.match(/65歳以上.*?(\d+(?:\.\d+)?)\s*%/);
+    return (!fr || (t?.foreignRate ?? 0) >= Number(fr[1])) && (!old || (t?.over65Rate ?? 0) >= Number(old[1]));
+  };
+  const list = questions.filter((x) => (x.level === "town") === Boolean(part) && (!x.only || x.only === code) && (!x.feature || feats.includes(x.feature)) && ruleOk(x))
     .map((q, i) => ({ q, i })).sort((a, b) => rank(a.q) - rank(b.q) || a.i - b.i).map((x) => x.q);
   for (const q of list) {
     if (done.has(q.id) || done.has(q.text)) { log(`${q.id} はもう答えがあるので飛ばします`); continue; }

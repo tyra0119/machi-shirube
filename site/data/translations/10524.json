@@ -1,7 +1,7 @@
 {
  "code": "10524",
  "name": "邑楽郡大泉町",
- "createdAt": "2026-11-03T03:54:57.510Z",
+ "createdAt": "2026-11-03T04:09:51.785Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
  "langs": {
@@ -543,6 +543,20 @@
       "title": "犬および猫の避妊または断種手術費補助金｜大泉町",
       "url": "https://www.town.oizumi.gunma.jp/s024/kurashi/020/010/20200727130746.html",
       "where": "犬および猫の避妊または断種手術費補助金／このページに関する問い合わせ先"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q52",
+     "short": "Informações de prevenção de desastres em vários idiomas",
+     "text": "O Mapa Geral de Prevenção de Desastres (総合防災マップ, edição do ano fiscal de 2023) tem tradução em inglês.\nNa revisão, a tradução foi revista para ter \"expressões que soem naturais para quem fala inglês\".\nNos abrigos de evacuação (避難所), serão afixados pictogramas (símbolos em desenho) que podem ser entendidos sem depender de palavras. Eles também estão na página 42 do mapa de prevenção de desastres.\nO PDF do mapa pode ser visto no site da cidade. Também pode ser visto em \"Mapa de prevenção de desastres\" (防災マップ) no LINE oficial da cidade.\nA busca de abrigos de evacuação (rota a partir do local onde você está) pode ser feita em \"Busca de abrigos\" (避難所検索) no LINE oficial da cidade.\nO e-mail de segurança e tranquilidade (安全・安心メール) também pode ser recebido pelo LINE.\nNos documentos encontrados, não foi possível confirmar se existem versões em português, espanhol e outros idiomas, nem versão em japonês simples (やさしい日本語), nem quais são os idiomas aceitos pelo e-mail e pelo LINE.",
+     "original": "総合防災マップ（2023年度版）には英語の翻訳があります。\n改訂では「英語圏の人が自然に読める表現に」翻訳が見直されました。\n避難所では、言葉によらず分かるピクトグラム（絵記号）を掲示します。防災マップ42ページにも載っています。\nマップのPDFは町ホームページで見られます。町公式LINEの「防災マップ」からも見られます。\n避難所の検索（現在地からのルート）は、町公式LINEの「避難所検索」でできます。\n安全・安心メールは、LINEでも受け取れます。\nポルトガル語やスペイン語などの版、やさしい日本語版、メール・LINEの対応言語は、見つかった資料では確認できませんでした。",
+     "back": "総合防災マップ（2023年度版）には英語の翻訳があります。改訂では「英語圏の人が自然に読める表現に」翻訳が見直されました。避難所では、言葉によらず分かるピクトグラム（絵記号）を掲示します。防災マップ42ページにも載っています。マップのPDFは町ホームページで見られます。町公式LINEの「防災マップ」からも見られます。避難所の検索（現在地からのルート）は、町公式LINEの「避難所検索」でできます。安全・安心メールは、LINEでも受け取れます。見つかった資料では、ポルトガル語やスペイン語などの版、やさしい日本語版、メール・LINEの対応言語は確認できませんでした。",
+     "source": {
+      "title": "大泉町総合防災マップ｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/170/20200828141906.html",
+      "where": "主な改訂事項／避難所でピクトグラムを掲示します(42ページ)"
      },
      "status": "auto",
      "problems": []
@@ -1096,6 +1110,20 @@
       "title": "犬および猫の避妊または断種手術費補助金｜大泉町",
       "url": "https://www.town.oizumi.gunma.jp/s024/kurashi/020/010/20200727130746.html",
       "where": "犬および猫の避妊または断種手術費補助金／このページに関する問い合わせ先"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q52",
+     "short": "Información de prevención de desastres en varios idiomas",
+     "text": "El Mapa Integral de Prevención de Desastres (edición del año fiscal 2023) (総合防災マップ) tiene una traducción al inglés.\nEn la revisión, se revisó la traducción para que \"suene natural a las personas de habla inglesa\".\nEn los refugios (避難所) se colocarán pictogramas (símbolos gráficos) que se entienden sin necesidad de palabras. También aparecen en la página 42 del mapa de prevención de desastres.\nEl PDF del mapa se puede ver en la página web del pueblo. También se puede ver en \"防災マップ\" (Mapa de prevención de desastres) del LINE oficial del pueblo.\nLa búsqueda de refugios (con la ruta desde su ubicación actual) se puede hacer en \"避難所検索\" (Búsqueda de refugios) del LINE oficial del pueblo.\nEl correo de seguridad y tranquilidad (安全・安心メール) también se puede recibir por LINE.\nEn los materiales encontrados no se pudo confirmar si existen versiones en portugués, español u otros idiomas, una versión en japonés fácil (やさしい日本語), ni los idiomas disponibles para el correo y el LINE.",
+     "original": "総合防災マップ（2023年度版）には英語の翻訳があります。\n改訂では「英語圏の人が自然に読める表現に」翻訳が見直されました。\n避難所では、言葉によらず分かるピクトグラム（絵記号）を掲示します。防災マップ42ページにも載っています。\nマップのPDFは町ホームページで見られます。町公式LINEの「防災マップ」からも見られます。\n避難所の検索（現在地からのルート）は、町公式LINEの「避難所検索」でできます。\n安全・安心メールは、LINEでも受け取れます。\nポルトガル語やスペイン語などの版、やさしい日本語版、メール・LINEの対応言語は、見つかった資料では確認できませんでした。",
+     "back": "総合防災マップ（2023年度版）には英語の翻訳があります。改訂では「英語圏の人が自然に読める表現に」翻訳が見直されました。避難所では、言葉によらず分かるピクトグラム（絵記号）を掲示します。防災マップ42ページにも載っています。マップのPDFは町ホームページで見られます。また、町公式LINEの「防災マップ」からも見られます。避難所の検索（現在地からのルート）は、町公式LINEの「避難所検索」でできます。安全・安心メールは、LINEでも受け取れます。見つかった資料では、ポルトガル語やスペイン語などの版、やさしい日本語版、メール・LINEの対応言語は確認できませんでした。",
+     "source": {
+      "title": "大泉町総合防災マップ｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/170/20200828141906.html",
+      "where": "主な改訂事項／避難所でピクトグラムを掲示します(42ページ)"
      },
      "status": "auto",
      "problems": []
@@ -1654,6 +1682,22 @@
      },
      "status": "auto",
      "problems": []
+    },
+    {
+     "qid": "Q52",
+     "short": "Disaster Prevention Information in Multiple Languages",
+     "text": "The Comprehensive Disaster Prevention Map (総合防災マップ, fiscal year 2023 edition) is available with an English translation.\nIn the revision, the translation was reviewed so that it would be \"worded naturally for English speakers.\"\nAt evacuation shelters (避難所), pictograms (絵記号) that can be understood without words will be displayed. They are also shown on page 42 of the Disaster Prevention Map.\nThe PDF of the map can be viewed on the town website. It can also be viewed from \"防災マップ\" (Disaster Prevention Map) on the town's official LINE.\nYou can search for evacuation shelters (including the route from your current location) with \"避難所検索\" (Evacuation Shelter Search) on the town's official LINE.\nSafety and Security Emails (安全・安心メール) can also be received through LINE.\nVersions in Portuguese, Spanish, and other languages, a Easy Japanese (やさしい日本語) version, and the languages supported by the emails and LINE could not be confirmed in the materials that were found.",
+     "original": "総合防災マップ（2023年度版）には英語の翻訳があります。\n改訂では「英語圏の人が自然に読める表現に」翻訳が見直されました。\n避難所では、言葉によらず分かるピクトグラム（絵記号）を掲示します。防災マップ42ページにも載っています。\nマップのPDFは町ホームページで見られます。町公式LINEの「防災マップ」からも見られます。\n避難所の検索（現在地からのルート）は、町公式LINEの「避難所検索」でできます。\n安全・安心メールは、LINEでも受け取れます。\nポルトガル語やスペイン語などの版、やさしい日本語版、メール・LINEの対応言語は、見つかった資料では確認できませんでした。",
+     "back": "総合防災マップ（2023年度版）には英語の翻訳があります。改訂では、翻訳が「英語圏の人が自然に読める表現に」なるよう見直されました。避難所では、言葉によらず分かるピクトグラム（絵記号）を掲示します。防災マップの42ページにも載っています。マップのPDFは町のホームページで見られます。町公式LINEの「防災マップ」からも見られます。避難所の検索（現在地からのルート）は、町公式LINEの「避難所検索」でできます。安全・安心メールは、LINEでも受け取れます。ポルトガル語やスペイン語などの版、やさしい日本語版、メール・LINEの対応言語は、見つかった資料では確認できませんでした。",
+     "source": {
+      "title": "大泉町総合防災マップ｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/170/20200828141906.html",
+      "where": "主な改訂事項／避難所でピクトグラムを掲示します(42ページ)"
+     },
+     "status": "auto",
+     "problems": [
+      "意味のずれはなし。訳文に冠詞の誤り「a Easy Japanese」があるが、意味には影響しない。"
+     ]
     }
    ]
   },
@@ -2211,6 +2255,20 @@
      },
      "status": "auto",
      "problems": []
+    },
+    {
+     "qid": "Q52",
+     "short": "いろいろな言葉(ことば)での防災(ぼうさい)の情報(じょうほう)",
+     "text": "「総合防災(そうごうぼうさい)マップ」（2023年度版(ねんどばん)）には、英語(えいご)の翻訳(ほんやく)があります。\nマップを新(あたら)しくしたとき、「英語(えいご)を話(はな)す人(ひと)が自然(しぜん)に読(よ)める言葉(ことば)」になるように、翻訳(ほんやく)を見直(みなお)しました。\n避難所(ひなんじょ)には、言葉(ことば)がわからなくても分(わ)かる絵(え)の記号(きごう)（ピクトグラム）をはります。防災(ぼうさい)マップの42ページにものっています。\nマップのPDFは、町(まち)のホームページで見(み)られます。町(まち)の公式(こうしき)LINEの「防災(ぼうさい)マップ」からも見(み)られます。\n避難所(ひなんじょ)をさがすこと（今(いま)いる場所(ばしょ)から行(い)く道(みち)）は、町(まち)の公式(こうしき)LINEの「避難所検索(ひなんじょけんさく)」でできます。\n「安全(あんぜん)・安心(あんしん)メール」は、LINEでも受(う)け取(と)れます。\nポルトガル語(ご)やスペイン語(ご)などのマップ、やさしい日本語(にほんご)のマップ、メールとLINEで使(つか)える言葉(ことば)は、見(み)つかった資料(しりょう)ではわかりませんでした。",
+     "original": "総合防災マップ（2023年度版）には英語の翻訳があります。\n改訂では「英語圏の人が自然に読める表現に」翻訳が見直されました。\n避難所では、言葉によらず分かるピクトグラム（絵記号）を掲示します。防災マップ42ページにも載っています。\nマップのPDFは町ホームページで見られます。町公式LINEの「防災マップ」からも見られます。\n避難所の検索（現在地からのルート）は、町公式LINEの「避難所検索」でできます。\n安全・安心メールは、LINEでも受け取れます。\nポルトガル語やスペイン語などの版、やさしい日本語版、メール・LINEの対応言語は、見つかった資料では確認できませんでした。",
+     "back": "「総合防災マップ」（2023年度版）には、英語の翻訳があります。マップを新しくしたとき、「英語を話す人が自然に読める言葉」になるように、翻訳を見直しました。避難所には、言葉がわからなくても分かる絵の記号（ピクトグラム）をはります。防災マップの42ページにものっています。マップのPDFは、町のホームページで見られます。町の公式LINEの「防災マップ」からも見られます。避難所をさがすこと（今いる場所から行く道）は、町の公式LINEの「避難所検索」でできます。「安全・安心メール」は、LINEでも受け取れます。ポルトガル語やスペイン語などのマップ、やさしい日本語のマップ、メールとLINEで使える言葉は、見つかった資料ではわかりませんでした。",
+     "source": {
+      "title": "大泉町総合防災マップ｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/170/20200828141906.html",
+      "where": "主な改訂事項／避難所でピクトグラムを掲示します(42ページ)"
+     },
+     "status": "auto",
+     "problems": []
     }
    ]
   },
@@ -2757,6 +2815,22 @@
      },
      "status": "auto",
      "problems": []
+    },
+    {
+     "qid": "Q52",
+     "short": "Informasi penanggulangan bencana dalam berbagai bahasa",
+     "text": "Peta Penanggulangan Bencana Terpadu (edisi tahun anggaran 2023) tersedia dalam terjemahan bahasa Inggris.\nDalam revisinya, terjemahan ditinjau ulang agar \"menggunakan ungkapan yang terbaca alami bagi penutur bahasa Inggris\".\nDi tempat pengungsian (避難所), dipasang piktogram (simbol gambar) yang dapat dipahami tanpa bergantung pada bahasa. Piktogram ini juga dimuat di halaman 42 peta penanggulangan bencana.\nPDF peta dapat dilihat di situs web resmi kota/desa (町ホームページ). PDF juga dapat dilihat melalui menu \"防災マップ\" (Peta Penanggulangan Bencana) di LINE resmi (町公式LINE).\nPencarian tempat pengungsian (rute dari lokasi Anda saat ini) dapat dilakukan melalui menu \"避難所検索\" (Pencarian Tempat Pengungsian) di LINE resmi (町公式LINE).\nSurel Keselamatan dan Ketenteraman (安全・安心メール) juga dapat diterima melalui LINE.\nVersi dalam bahasa Portugis, bahasa Spanyol, dan bahasa lainnya, versi bahasa Jepang sederhana (やさしい日本語), serta bahasa-bahasa yang didukung oleh surel dan LINE tidak dapat dipastikan dari dokumen yang ditemukan.",
+     "original": "総合防災マップ（2023年度版）には英語の翻訳があります。\n改訂では「英語圏の人が自然に読める表現に」翻訳が見直されました。\n避難所では、言葉によらず分かるピクトグラム（絵記号）を掲示します。防災マップ42ページにも載っています。\nマップのPDFは町ホームページで見られます。町公式LINEの「防災マップ」からも見られます。\n避難所の検索（現在地からのルート）は、町公式LINEの「避難所検索」でできます。\n安全・安心メールは、LINEでも受け取れます。\nポルトガル語やスペイン語などの版、やさしい日本語版、メール・LINEの対応言語は、見つかった資料では確認できませんでした。",
+     "back": "総合防災マップ（2023年度版）には英語の翻訳があります。改訂では、翻訳が「英語を母語とする人が自然に読める表現」になるよう見直されました。避難所では、言葉によらず分かるピクトグラム（絵記号）を掲示します。このピクトグラムは防災マップの42ページにも掲載されています。マップのPDFは町のホームページで見られます。また、町公式LINEの「防災マップ」からも見られます。避難所の検索（現在地からのルート）は、町公式LINEの「避難所検索」でできます。安全・安心メールは、LINEでも受け取れます。ポルトガル語やスペイン語などの版、やさしい日本語版、メールやLINEの対応言語は、見つかった資料では確認できませんでした。",
+     "source": {
+      "title": "大泉町総合防災マップ｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/170/20200828141906.html",
+      "where": "主な改訂事項／避難所でピクトグラムを掲示します(42ページ)"
+     },
+     "status": "auto",
+     "problems": [
+      "「町ホームページ」の「町」を「kota/desa（市または村）」と訳しており、原文の「町」より範囲が広く読めます。「menu」の語を足していますが、意味は同じです。"
+     ]
     }
    ]
   },
@@ -3301,6 +3375,20 @@
      },
      "status": "auto",
      "problems": []
+    },
+    {
+     "qid": "Q52",
+     "short": "विपद् तयारी जानकारीको बहुभाषिक सहायता",
+     "text": "सम्पूर्ण विपद् रोकथाम नक्सा (総合防災マップ) को 2023 आर्थिक वर्षको संस्करण (2023年度版) को अंग्रेजी अनुवाद छ।\nसंशोधन गर्दा अनुवाद \"अंग्रेजी बोल्ने मानिसहरूले स्वाभाविक रूपमा पढ्न सक्ने अभिव्यक्तिमा\" हुने गरी पुनरावलोकन गरिएको छ।\nआश्रयस्थल (避難所) मा भाषामा भर नपरी बुझिने पिक्टोग्राम (चित्र चिन्ह) टाँसिन्छ। यो विपद् नक्सा (防災マップ) को पृष्ठ 42 मा पनि छ।\nनक्साको PDF नगरको होमपेजमा हेर्न सकिन्छ। नगरको आधिकारिक LINE (町公式LINE) को 「防災マップ」बाट पनि हेर्न सकिन्छ।\nआश्रयस्थल खोजी (हालको स्थानबाट मार्ग) नगरको आधिकारिक LINE (町公式LINE) को 「避難所検索」बाट गर्न सकिन्छ।\nसुरक्षा·शान्ति मेल (安全・安心メール) LINE मा पनि प्राप्त गर्न सकिन्छ।\nपोर्चुगिज, स्पेनिश आदि भाषाका संस्करण, सरल जापानी (やさしい日本語) संस्करण, र मेल·LINE ले समर्थन गर्ने भाषाहरू फेला परेका सामग्रीमा पुष्टि गर्न सकिएन।",
+     "original": "総合防災マップ（2023年度版）には英語の翻訳があります。\n改訂では「英語圏の人が自然に読める表現に」翻訳が見直されました。\n避難所では、言葉によらず分かるピクトグラム（絵記号）を掲示します。防災マップ42ページにも載っています。\nマップのPDFは町ホームページで見られます。町公式LINEの「防災マップ」からも見られます。\n避難所の検索（現在地からのルート）は、町公式LINEの「避難所検索」でできます。\n安全・安心メールは、LINEでも受け取れます。\nポルトガル語やスペイン語などの版、やさしい日本語版、メール・LINEの対応言語は、見つかった資料では確認できませんでした。",
+     "back": "総合防災マップ（2023年度版）には英語の翻訳があります。改訂では「英語圏の人が自然に読める表現に」翻訳が見直されました。避難所では、言葉によらず分かるピクトグラム（絵記号）を掲示します。これは防災マップ42ページにもあります。マップのPDFは町のホームページで見られます。町公式LINEの「防災マップ」からも見られます。避難所の検索（現在地からのルート）は、町公式LINEの「避難所検索」でできます。安全・安心メールは、LINEでも受け取れます。ポルトガル語やスペイン語などの版、やさしい日本語版、メール・LINEの対応言語は、見つかった資料では確認できませんでした。",
+     "source": {
+      "title": "大泉町総合防災マップ｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/170/20200828141906.html",
+      "where": "主な改訂事項／避難所でピクトグラムを掲示します(42ページ)"
+     },
+     "status": "auto",
+     "problems": []
     }
    ]
   },
@@ -3841,6 +3929,20 @@
       "title": "犬および猫の避妊または断種手術費補助金｜大泉町",
       "url": "https://www.town.oizumi.gunma.jp/s024/kurashi/020/010/20200727130746.html",
       "where": "犬および猫の避妊または断種手術費補助金／このページに関する問い合わせ先"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q52",
+     "short": "Thông tin phòng chống thiên tai bằng nhiều ngôn ngữ",
+     "text": "Bản đồ phòng chống thiên tai tổng hợp (Sōgō Bōsai Map, bản năm tài khóa 2023) có bản dịch tiếng Anh.\nTrong lần sửa đổi này, bản dịch đã được xem xét lại để \"người sử dụng tiếng Anh đọc thấy tự nhiên\".\nTại các nơi lánh nạn (避難所), thị trấn sẽ treo các pictogram (ký hiệu hình ảnh) giúp hiểu được mà không cần dùng ngôn ngữ. Các pictogram này cũng có trên trang 42 của bản đồ phòng chống thiên tai.\nBạn có thể xem file PDF của bản đồ trên trang web của thị trấn. Bạn cũng có thể xem từ mục \"防災マップ\" (bản đồ phòng chống thiên tai) trong LINE chính thức của thị trấn.\nViệc tìm nơi lánh nạn (đường đi từ vị trí hiện tại) có thể thực hiện bằng mục \"避難所検索\" (tìm nơi lánh nạn) trong LINE chính thức của thị trấn.\nEmail An toàn・An tâm (安全・安心メール) cũng có thể nhận qua LINE.\nTrong các tài liệu đã tìm được, chưa xác nhận được các phiên bản tiếng Bồ Đào Nha, tiếng Tây Ban Nha và các ngôn ngữ khác, phiên bản tiếng Nhật dễ hiểu (やさしい日本語), cũng như các ngôn ngữ mà email và LINE hỗ trợ.",
+     "original": "総合防災マップ（2023年度版）には英語の翻訳があります。\n改訂では「英語圏の人が自然に読める表現に」翻訳が見直されました。\n避難所では、言葉によらず分かるピクトグラム（絵記号）を掲示します。防災マップ42ページにも載っています。\nマップのPDFは町ホームページで見られます。町公式LINEの「防災マップ」からも見られます。\n避難所の検索（現在地からのルート）は、町公式LINEの「避難所検索」でできます。\n安全・安心メールは、LINEでも受け取れます。\nポルトガル語やスペイン語などの版、やさしい日本語版、メール・LINEの対応言語は、見つかった資料では確認できませんでした。",
+     "back": "総合防災マップ（2023年度版）には英語の翻訳があります。改訂では「英語圏の人が自然に読める表現に」翻訳が見直されました。避難所では、言葉によらず分かるピクトグラム（絵記号）を掲示します。防災マップ42ページにも載っています。マップのPDFは町ホームページで見られます。町公式LINEの「防災マップ」からも見られます。避難所の検索（現在地からのルート）は、町公式LINEの「避難所検索」でできます。安全・安心メールは、LINEでも受け取れます。見つかった資料では、ポルトガル語、スペイン語などの言語版、やさしい日本語版、メールとLINEが対応する言語は確認できていません。",
+     "source": {
+      "title": "大泉町総合防災マップ｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/170/20200828141906.html",
+      "where": "主な改訂事項／避難所でピクトグラムを掲示します(42ページ)"
      },
      "status": "auto",
      "problems": []
