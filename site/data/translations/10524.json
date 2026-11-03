@@ -1,7 +1,7 @@
 {
  "code": "10524",
  "name": "邑楽郡大泉町",
- "createdAt": "2026-11-03T00:13:24.691Z",
+ "createdAt": "2026-11-03T01:33:46.163Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
  "langs": {
@@ -187,20 +187,6 @@
       "title": "皆さんの子育てを応援します こども家庭センター（チラシPDF）",
       "url": "https://www.town.oizumi.gunma.jp/s006/gyosei/010/020/020/oizumi980_kodomokateisenta.pdf",
       "where": "本文冒頭・下部の「詳しくは、こども未来課保健・相談係（内線520）へ」"
-     },
-     "status": "auto",
-     "problems": []
-    },
-    {
-     "qid": "Q21",
-     "short": "Próximos eventos",
-     "text": "① Em 11 de novembro (quarta-feira), haverá a Conferência da Cidade para a Promoção da Educação em Direitos Humanos (町ぐるみ人権教育推進大会) no Salão Grande da Yosen Kogyo Oizumi-machi Bunka-mura (洋泉興業大泉町文化むら大ホール).\n② Em 13 e 20 de novembro (sextas-feiras), haverá o curso de hobby \"Exercícios de fortalecimento muscular para fazer juntos com alegria\" (趣味講座「みんなで楽しく貯筋運動」) na sala audiovisual do 2º andar do Centro Comunitário da Cidade (町公民館).\n③ Em 15 de novembro (domingo), haverá a palestra do Festival de Saúde e Bem-Estar (保健福祉まつり講演会) no Salão Pequeno do Bunka-mura (文化むら小ホール).\n④ Em 5 de dezembro (sábado), haverá a palestra sobre construção de cidade em cooperação e o seminário de igualdade de gênero (協働のまちづくり講演会・男女共同参画セミナー) no Salão Multiuso do 1º andar da Prefeitura (町役場1階多目的ホール).",
-     "original": "①11月11日(水)、洋泉興業大泉町文化むら大ホールで町ぐるみ人権教育推進大会があります。\n②11月13日・20日(金)、町公民館2階視聴覚室で趣味講座「みんなで楽しく貯筋運動」があります。\n③11月15日(日)、文化むら小ホールで保健福祉まつり講演会があります。\n④12月5日(土)、町役場1階多目的ホールで協働のまちづくり講演会・男女共同参画セミナーがあります。",
-     "back": "①11月11日（水）、洋泉興業大泉町文化むら大ホールで町ぐるみ人権教育推進大会があります。②11月13日・20日（金）、町公民館2階視聴覚室で趣味講座「みんなで楽しく貯筋運動」があります。③11月15日（日）、文化むら小ホールで保健福祉まつり講演会があります。④12月5日（土）、町役場1階多目的ホールで協働のまちづくり講演会・男女共同参画セミナーがあります。",
-     "source": {
-      "title": "町ぐるみ人権教育推進大会を開催します",
-      "url": "https://www.town.oizumi.gunma.jp/s031/kanko/010/020/20221007175044.html",
-      "where": "日時・場所"
      },
      "status": "auto",
      "problems": []
@@ -431,6 +417,37 @@
       "「通信料」に「(internet)」が足されている。原文は単に「通信料は自己負担です」で、インターネットに限定されていない。"
      ],
      "ledgerId": "r00210"
+    },
+    {
+     "qid": "Q42",
+     "short": "Delegacia de polícia e postos policiais (警察署と交番)",
+     "text": "A delegacia responsável pela região é a Delegacia de Polícia de Oizumi (大泉警察署).\nA área de jurisdição abrange a cidade de Oizumi (大泉町), a cidade de Chiyoda (千代田町) e a cidade de Ora (邑楽町).\nO endereço é: Distrito de Ora (邑楽郡), Oizumi-machi (大泉町), Asahi 2-27-1 (朝日2-27-1).\nO número de telefone é 0276-62-0110 (lido a partir da disposição da tabela no documento).\nNão foi possível confirmar, nos documentos oficiais, a existência de postos policiais (Koban 交番 e Chuzaisho 駐在所) na cidade.\nPara consultas que não são urgentes, ligue para #9110 ou 027-224-8080 (Chefatura de Polícia da Província de Gunma, 群馬県警察本部).\nO atendimento funciona 24 horas. À noite, aos sábados, domingos e feriados, o atendimento é feito pelo pessoal de plantão.",
+     "original": "管轄の警察署は大泉警察署です。\n管轄は大泉町・千代田町・邑楽町です。\n場所は邑楽郡大泉町朝日2-27-1です。\n電話番号は 0276-62-0110 です（資料の表の配置から読み取りました）。\n町内の交番・駐在所は、公式の資料で確認できませんでした。\n急ぎでない相談は #9110 または 027-224-8080（群馬県警察本部）です。\n受付は24時間で、夜間・土日祝日は当直勤務員が対応します。",
+     "back": "管轄の警察署は大泉警察署です。管轄は大泉町・千代田町・邑楽町です。場所は邑楽郡大泉町朝日2-27-1です。電話番号は 0276-62-0110 です（資料の表の配置から読み取りました）。町内の交番・駐在所は、公式の資料で確認できませんでした。急ぎでない相談は #9110 または 027-224-8080（群馬県警察本部）です。受付は24時間で、夜間・土日祝日は当直勤務員が対応します。",
+     "source": {
+      "title": "犯罪被害・非行の相談 関係機関・相談窓口（総務省 PDF）",
+      "url": "https://www.soumu.go.jp/main_content/000612577.pdf",
+      "where": "2ページ目 警察署の一覧（大泉警察署）"
+     },
+     "status": "pending",
+     "problems": [
+      "原文の「大泉町・千代田町・邑楽町」の訳で、原文では千代田町は「千代田町」だが訳文は「Chiyoda」の町とし、邑楽町は「Ora」とあるが問題なし。ただし訳文で「Asahi 2-27-1」の後に「朝日2-27-1」を併記した点は原文どおり。主な問題: 「Ora」は邑楽町の訳として妥当だが、「Koban 交番 and Chuzaisho 駐在所」は原文の「交番・駐在所」に相当し問題なし。訳文の「lido a partir da disposição da tabela」は原文の注記と同じ。実質的なずれは見当たらないが、「Delegacia de Polícia de Oizumi」の住所表記「Distrito de Ora (邑楽郡)」は原文の「邑楽郡大泉町」と一致。よって意味の違いは確認できなかった。"
+     ],
+     "ledgerId": "r00236"
+    },
+    {
+     "qid": "Q21",
+     "short": "Próximos eventos (これからの催し)",
+     "text": "No dia 15 de novembro do ano 8 da era Reiwa (令和8年), domingo, das 10h às 14h, serão realizados ao mesmo tempo o Festival de Saúde e Bem-Estar Social (保健福祉まつり) e a Feira de Prevenção de Desastres (防災フェア). O local é o Yosen Kogyo Oizumi-machi Bunka Mura (洋泉興業大泉町文化むら), em Asahi 5-chome 24-1 (朝日5丁目24番1号).\nA palestra será das 13h às 14h.\nNão incluímos outros eventos, porque não foi possível confirmar a data e o local nos documentos.",
+     "original": "令和8年11月15日（日曜日）の午前10時から午後2時まで、洋泉興業大泉町文化むら（朝日5丁目24番1号）で、保健福祉まつりと防災フェアが同時に開かれます。\n講演会は午後1時から午後2時までです。\nほかの催しは、日付と場所が資料で確かめられなかったので入れていません。",
+     "back": "令和8年11月15日（日曜日）の午前10時から午後2時まで、洋泉興業大泉町文化むら（朝日5丁目24番1号）で、保健福祉まつりと防災フェアが同時に開かれます。講演会は午後1時から午後2時までです。ほかの催しは、日付と場所が資料で確かめられなかったので入れていません。",
+     "source": {
+      "title": "令和8年度大泉町保健福祉まつり&防災フェアについて｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/300/20240829152035.html",
+      "where": "期日・時間・場所"
+     },
+     "status": "auto",
+     "problems": []
     }
    ]
   },
@@ -620,20 +637,6 @@
       "title": "皆さんの子育てを応援します こども家庭センター（チラシPDF）",
       "url": "https://www.town.oizumi.gunma.jp/s006/gyosei/010/020/020/oizumi980_kodomokateisenta.pdf",
       "where": "本文冒頭・下部の「詳しくは、こども未来課保健・相談係（内線520）へ」"
-     },
-     "status": "auto",
-     "problems": []
-    },
-    {
-     "qid": "Q21",
-     "short": "Próximos eventos",
-     "text": "① El miércoles 11 de noviembre, en la Gran Sala del Centro Cultural de Oizumi, Yoizumi Kogyo (洋泉興業大泉町文化むら大ホール), se celebra la Convención Municipal de Promoción de la Educación en Derechos Humanos (町ぐるみ人権教育推進大会).\n② Los viernes 13 y 20 de noviembre, en la Sala Audiovisual del 2.º piso del Centro Comunitario del Municipio (町公民館2階視聴覚室), hay un curso de aficiones: «Ejercicio para ahorrar músculo, divertido para todos» (みんなで楽しく貯筋運動).\n③ El domingo 15 de noviembre, en la Sala Pequeña del Centro Cultural (文化むら小ホール), se celebra la conferencia del Festival de Salud y Bienestar (保健福祉まつり講演会).\n④ El sábado 5 de diciembre, en el Salón Polivalente del 1.er piso del Ayuntamiento (町役場1階多目的ホール), se celebran la conferencia sobre el desarrollo del municipio mediante la cooperación (協働のまちづくり講演会) y el seminario sobre igualdad de género (男女共同参画セミナー).",
-     "original": "①11月11日(水)、洋泉興業大泉町文化むら大ホールで町ぐるみ人権教育推進大会があります。\n②11月13日・20日(金)、町公民館2階視聴覚室で趣味講座「みんなで楽しく貯筋運動」があります。\n③11月15日(日)、文化むら小ホールで保健福祉まつり講演会があります。\n④12月5日(土)、町役場1階多目的ホールで協働のまちづくり講演会・男女共同参画セミナーがあります。",
-     "back": "①11月11日(水)、洋泉興業大泉町文化むら大ホールで町ぐるみ人権教育推進大会があります。②11月13日・20日(金)、町公民館2階視聴覚室で趣味講座「みんなで楽しく貯筋運動」があります。③11月15日(日)、文化むら小ホールで保健福祉まつり講演会があります。④12月5日(土)、町役場1階多目的ホールで協働のまちづくり講演会・男女共同参画セミナーがあります。",
-     "source": {
-      "title": "町ぐるみ人権教育推進大会を開催します",
-      "url": "https://www.town.oizumi.gunma.jp/s031/kanko/010/020/20221007175044.html",
-      "where": "日時・場所"
      },
      "status": "auto",
      "problems": []
@@ -866,6 +869,37 @@
       "意味のずれはないが、原文にない説明を足している。「二次元コード」に「(código QR)」に相当する「QRコード」の補足、「空メール」に「(sin texto)」に相当する「本文のない」の補足が、訳文の括弧内で加えられている。"
      ],
      "ledgerId": "r00211"
+    },
+    {
+     "qid": "Q42",
+     "short": "Comisaría de policía y puestos de policía (kōban) (警察署と交番)",
+     "text": "La comisaría que tiene jurisdicción es la Comisaría de Oizumi (大泉警察署).\nSu jurisdicción abarca Oizumi (大泉町), Chiyoda (千代田町) y Ora (邑楽町).\nEstá en Asahi 2-27-1, Oizumi-machi, Ora-gun (邑楽郡大泉町朝日2-27-1).\nEl número de teléfono es 0276-62-0110 (se leyó a partir de la disposición de la tabla del documento).\nNo se pudo confirmar en los documentos oficiales si hay kōban (puestos de policía) o chūzaisho (puestos de policía residenciales) dentro del municipio.\nPara consultas no urgentes: #9110 o 027-224-8080 (Jefatura de la Policía de la Prefectura de Gunma, 群馬県警察本部).\nLa atención es las 24 horas; por la noche, sábados, domingos y festivos responde el personal de guardia.",
+     "original": "管轄の警察署は大泉警察署です。\n管轄は大泉町・千代田町・邑楽町です。\n場所は邑楽郡大泉町朝日2-27-1です。\n電話番号は 0276-62-0110 です（資料の表の配置から読み取りました）。\n町内の交番・駐在所は、公式の資料で確認できませんでした。\n急ぎでない相談は #9110 または 027-224-8080（群馬県警察本部）です。\n受付は24時間で、夜間・土日祝日は当直勤務員が対応します。",
+     "back": "管轄の警察署は大泉警察署です。管轄は大泉町・千代田町・邑楽町です。場所は邑楽郡大泉町朝日2-27-1です。電話番号は0276-62-0110です（資料の表の配置から読み取りました）。町内の交番・駐在所は、公式の資料で確認できませんでした。急ぎでない相談は#9110または027-224-8080（群馬県警察本部）です。受付は24時間で、夜間・土日祝日は当直勤務員が対応します。",
+     "source": {
+      "title": "犯罪被害・非行の相談 関係機関・相談窓口（総務省 PDF）",
+      "url": "https://www.soumu.go.jp/main_content/000612577.pdf",
+      "where": "2ページ目 警察署の一覧（大泉警察署）"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q21",
+     "short": "Próximos eventos (これからの催し)",
+     "text": "El domingo 15 de noviembre de Reiwa 8 (2026), de las 10:00 a las 14:00, se celebrarán al mismo tiempo el Festival de Salud y Bienestar (保健福祉まつり) y la Feria de Prevención de Desastres (防災フェア) en el Yosen Kōgyō Oizumi-machi Bunka Mura (洋泉興業大泉町文化むら), en Asahi 5-chōme 24-1 (朝日5丁目24番1号).\nLa conferencia es de las 13:00 a las 14:00.\nNo se incluyen otros eventos porque no se pudieron confirmar su fecha y lugar en los documentos.",
+     "original": "令和8年11月15日（日曜日）の午前10時から午後2時まで、洋泉興業大泉町文化むら（朝日5丁目24番1号）で、保健福祉まつりと防災フェアが同時に開かれます。\n講演会は午後1時から午後2時までです。\nほかの催しは、日付と場所が資料で確かめられなかったので入れていません。",
+     "back": "令和8年（2026年）11月15日（日曜日）の午前10時から午後2時まで、洋泉興業大泉町文化むら（朝日5丁目24番1号）で、保健福祉まつりと防災フェアが同時に開かれます。講演会は午後1時から午後2時までです。ほかの催しは、日付と場所が資料で確かめられなかったので入れていません。",
+     "source": {
+      "title": "令和8年度大泉町保健福祉まつり&防災フェアについて｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/300/20240829152035.html",
+      "where": "期日・時間・場所"
+     },
+     "status": "pending",
+     "problems": [
+      "訳文に「(2026)」（西暦）が追加されている。原文にはない。令和8年が2026年に当たるのは正しいが、足した情報になっている。"
+     ],
+     "ledgerId": "r00237"
     }
    ]
   },
@@ -1060,20 +1094,6 @@
      "problems": [
       "「（2026年）」を補って追加しているが、内容は同じ。"
      ]
-    },
-    {
-     "qid": "Q21",
-     "short": "Upcoming events",
-     "text": "(1) Wednesday, November 11: Town-wide Human Rights Education Promotion Conference at the Yosen Kogyo Oizumi Town Bunkamura Main Hall (洋泉興業大泉町文化むら大ホール).\n(2) Fridays, November 13 and 20: Hobby course \"Let's Enjoy Muscle-Building Exercise Together\" in the Audio-Visual Room on the 2nd floor of the Town Community Hall (町公民館).\n(3) Sunday, November 15: Health and Welfare Festival lecture at the Bunkamura Small Hall (文化むら小ホール).\n(4) Saturday, December 5: Lecture on Collaborative Town Development and Gender Equality Seminar in the Multipurpose Hall on the 1st floor of the Town Hall (町役場).",
-     "original": "①11月11日(水)、洋泉興業大泉町文化むら大ホールで町ぐるみ人権教育推進大会があります。\n②11月13日・20日(金)、町公民館2階視聴覚室で趣味講座「みんなで楽しく貯筋運動」があります。\n③11月15日(日)、文化むら小ホールで保健福祉まつり講演会があります。\n④12月5日(土)、町役場1階多目的ホールで協働のまちづくり講演会・男女共同参画セミナーがあります。",
-     "back": "①11月11日（水）、洋泉興業大泉町文化むら大ホールで町ぐるみ人権教育推進大会があります。②11月13日・20日（金）、町公民館2階視聴覚室で趣味講座「みんなで楽しく貯筋運動」があります。③11月15日（日）、文化むら小ホールで保健福祉まつり講演会があります。④12月5日（土）、町役場1階多目的ホールで協働のまちづくり講演会・男女共同参画セミナーがあります。",
-     "source": {
-      "title": "町ぐるみ人権教育推進大会を開催します",
-      "url": "https://www.town.oizumi.gunma.jp/s031/kanko/010/020/20221007175044.html",
-      "where": "日時・場所"
-     },
-     "status": "auto",
-     "problems": []
     },
     {
      "qid": "Q18",
@@ -1302,6 +1322,37 @@
      },
      "status": "auto",
      "problems": []
+    },
+    {
+     "qid": "Q42",
+     "short": "Police Station and Police Boxes",
+     "text": "The police station with jurisdiction is Oizumi Police Station (大泉警察署).\nIts jurisdiction covers Oizumi Town (大泉町), Chiyoda Town (千代田町), and Ora Town (邑楽町).\nIt is located at 2-27-1 Asahi, Oizumi Town (大泉町), Ora District (邑楽郡).\nThe phone number is 0276-62-0110 (this was read from the layout of a table in the official material).\nPolice boxes (koban) and residential police boxes (chuzaisho) in the town could not be confirmed in official materials.\nFor non-urgent consultations, call #9110 or 027-224-8080 (Gunma Prefectural Police Headquarters, 群馬県警察本部).\nCalls are accepted 24 hours a day. At night and on weekends and holidays, the officer on duty responds.",
+     "original": "管轄の警察署は大泉警察署です。\n管轄は大泉町・千代田町・邑楽町です。\n場所は邑楽郡大泉町朝日2-27-1です。\n電話番号は 0276-62-0110 です（資料の表の配置から読み取りました）。\n町内の交番・駐在所は、公式の資料で確認できませんでした。\n急ぎでない相談は #9110 または 027-224-8080（群馬県警察本部）です。\n受付は24時間で、夜間・土日祝日は当直勤務員が対応します。",
+     "back": "管轄の警察署は大泉警察署です。管轄は大泉町・千代田町・邑楽町です。場所は邑楽郡大泉町朝日2-27-1です。電話番号は 0276-62-0110 です（資料の表の配置から読み取りました）。町内の交番・駐在所は、公式の資料で確認できませんでした。急ぎでない相談は #9110 または 027-224-8080（群馬県警察本部）です。受付は24時間で、夜間・土日祝日は当直勤務員が対応します。",
+     "source": {
+      "title": "犯罪被害・非行の相談 関係機関・相談窓口（総務省 PDF）",
+      "url": "https://www.soumu.go.jp/main_content/000612577.pdf",
+      "where": "2ページ目 警察署の一覧（大泉警察署）"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q21",
+     "short": "Upcoming Events",
+     "text": "On Sunday, November 15, Reiwa 8 (2026), from 10:00 a.m. to 2:00 p.m., the Health and Welfare Festival (保健福祉まつり) and the Disaster Prevention Fair (防災フェア) will be held at the same time at Yosen Kogyo Oizumi Town Cultural Center \"Bunka Mura\" (洋泉興業大泉町文化むら), 5-chome 24-1 Asahi (朝日5丁目24番1号).\nThe lecture is from 1:00 p.m. to 2:00 p.m.\nOther events are not included, because their dates and locations could not be confirmed in the materials.",
+     "original": "令和8年11月15日（日曜日）の午前10時から午後2時まで、洋泉興業大泉町文化むら（朝日5丁目24番1号）で、保健福祉まつりと防災フェアが同時に開かれます。\n講演会は午後1時から午後2時までです。\nほかの催しは、日付と場所が資料で確かめられなかったので入れていません。",
+     "back": "令和8年（2026年）11月15日（日曜日）の午前10時から午後2時まで、洋泉興業大泉町文化むら（朝日5丁目24番1号）で、保健福祉まつりと防災フェアが同時に開かれます。講演会は午後1時から午後2時までです。ほかの催しは、日付と場所が資料で確かめられなかったので入れていません。",
+     "source": {
+      "title": "令和8年度大泉町保健福祉まつり&防災フェアについて｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/300/20240829152035.html",
+      "where": "期日・時間・場所"
+     },
+     "status": "pending",
+     "problems": [
+      "「Reiwa 8 (2026)」の「(2026)」は原文にない追加です。令和8年が2026年に当たるとしても、訳文で西暦を補っています。"
+     ],
+     "ledgerId": "r00238"
     }
    ]
   },
@@ -1542,20 +1593,6 @@
      "problems": []
     },
     {
-     "qid": "Q21",
-     "short": "これからの イベント",
-     "text": "①11月11日(水)　洋泉興業大泉町文化（ぶんか）むら 大（おお）ホールで、町ぐるみ人権教育推進大会（まちぐるみじんけんきょういくすいしんたいかい）が あります。\n②11月13日・20日(金)　町公民館（ちょうこうみんかん）2階（かい）の 視聴覚室（しちょうかくしつ）で、趣味講座（しゅみこうざ）「みんなで楽（たの）しく貯筋運動（ちょきんうんどう）」が あります。\n③11月15日(日)　文化むら 小（しょう）ホールで、保健福祉（ほけんふくし）まつり 講演会（こうえんかい）が あります。\n④12月5日(土)　町役場（ちょうやくば）1階の 多目的（たもくてき）ホールで、協働（きょうどう）の まちづくり 講演会と 男女共同参画（だんじょきょうどうさんかく）セミナーが あります。",
-     "original": "①11月11日(水)、洋泉興業大泉町文化むら大ホールで町ぐるみ人権教育推進大会があります。\n②11月13日・20日(金)、町公民館2階視聴覚室で趣味講座「みんなで楽しく貯筋運動」があります。\n③11月15日(日)、文化むら小ホールで保健福祉まつり講演会があります。\n④12月5日(土)、町役場1階多目的ホールで協働のまちづくり講演会・男女共同参画セミナーがあります。",
-     "back": "①11月11日(水)、洋泉興業大泉町文化むら大ホールで町ぐるみ人権教育推進大会があります。②11月13日・20日(金)、町公民館2階の視聴覚室で趣味講座「みんなで楽しく貯筋運動」があります。③11月15日(日)、文化むら小ホールで保健福祉まつり講演会があります。④12月5日(土)、町役場1階の多目的ホールで協働のまちづくり講演会と男女共同参画セミナーがあります。",
-     "source": {
-      "title": "町ぐるみ人権教育推進大会を開催します",
-      "url": "https://www.town.oizumi.gunma.jp/s031/kanko/010/020/20221007175044.html",
-      "where": "日時・場所"
-     },
-     "status": "auto",
-     "problems": []
-    },
-    {
      "qid": "Q30",
      "short": "国籍（こくせき）ごとの 人数（にんずう）",
      "text": "令和（れいわ）8年9月30日の、国籍（こくせき）ごとの 外国人（がいこくじん）の 人数です。\n1位（い）　ブラジル　4,845人（52.12%）\n2位　ペルー　1,077人（11.59%）\n3位　インドネシア　708人（7.62%）\n4位　ネパール　677人（7.28%）\n5位　ベトナム　506人（5.44%）\n6位　フィリピン　359人（3.86%）\n7位　ボリビア　191人（2.05%）\n8位　中国（ちゅうごく）　174人（1.87%）\n9位　ミャンマー　120人（1.29%）\n10位　バングラディシュ　81人（0.87%）\nその他（ほか）　558人（6.00%）\n合計（ごうけい）は 9,296人です。",
@@ -1739,6 +1776,37 @@
       "「（何も書いていないメール）」は原文にない説明の追加です。他の数字・名前・アドレス・内容は一致しています。"
      ],
      "ledgerId": "r00212"
+    },
+    {
+     "qid": "Q42",
+     "short": "警察署（けいさつしょ）と交番（こうばん）",
+     "text": "この町を受（う）け持（も）つ警察署は、大泉警察署（おおいずみけいさつしょ）です。\n受け持つ町は、大泉町（おおいずみまち）・千代田町（ちよだまち）・邑楽町（おうらまち）です。\n場所（ばしょ）は、邑楽郡大泉町朝日（おうらぐん おおいずみまち あさひ）2-27-1です。\n電話番号（でんわばんごう）は 0276-62-0110 です。資料（しりょう）の表（ひょう）の並（なら）びから読（よ）みとりました。\n町の中の交番や駐在所（ちゅうざいしょ）は、町の公式（こうしき）の資料では確かめられませんでした。\n急（いそ）ぎではない相談（そうだん）は、#9110 または 027-224-8080（群馬県警察本部：ぐんまけんけいさつほんぶ）です。\n受付（うけつけ）は24時間（じかん）です。夜（よる）と、土曜日・日曜日・祝日（しゅくじつ）は、当直（とうちょく）で働（はたら）いている職員（しょくいん）が対応（たいおう）します。",
+     "original": "管轄の警察署は大泉警察署です。\n管轄は大泉町・千代田町・邑楽町です。\n場所は邑楽郡大泉町朝日2-27-1です。\n電話番号は 0276-62-0110 です（資料の表の配置から読み取りました）。\n町内の交番・駐在所は、公式の資料で確認できませんでした。\n急ぎでない相談は #9110 または 027-224-8080（群馬県警察本部）です。\n受付は24時間で、夜間・土日祝日は当直勤務員が対応します。",
+     "back": "この町を受け持つ警察署は大泉警察署です。受け持つ町は大泉町・千代田町・邑楽町です。場所は邑楽郡大泉町朝日2-27-1です。電話番号は0276-62-0110です。資料の表の並びから読み取りました。町の中の交番や駐在所は、町の公式の資料では確かめられませんでした。急ぎではない相談は、#9110 または027-224-8080（群馬県警察本部）です。受付は24時間です。夜と、土曜日・日曜日・祝日は、当直で働いている職員が対応します。",
+     "source": {
+      "title": "犯罪被害・非行の相談 関係機関・相談窓口（総務省 PDF）",
+      "url": "https://www.soumu.go.jp/main_content/000612577.pdf",
+      "where": "2ページ目 警察署の一覧（大泉警察署）"
+     },
+     "status": "pending",
+     "problems": [
+      "「町の公式の資料」と訳したところで「町の」を足している。原文は「公式の資料」で、町の資料とは限定していない。"
+     ],
+     "ledgerId": "r00239"
+    },
+    {
+     "qid": "Q21",
+     "short": "これからの催（もよお）し",
+     "text": "令和（れいわ）8年11月15日（日曜日）の午前10時から午後2時まで、洋泉興業大泉町文化むら（朝日5丁目24番1号）で、保健福祉（ほけんふくし）まつりと防災（ぼうさい）フェアが同時（どうじ）にあります。\n講演会（こうえんかい）は、午後1時から午後2時までです。\nほかの催しは、日付と場所が資料で確かめられなかったので、入れていません。",
+     "original": "令和8年11月15日（日曜日）の午前10時から午後2時まで、洋泉興業大泉町文化むら（朝日5丁目24番1号）で、保健福祉まつりと防災フェアが同時に開かれます。\n講演会は午後1時から午後2時までです。\nほかの催しは、日付と場所が資料で確かめられなかったので入れていません。",
+     "back": "令和8年11月15日（日曜日）の午前10時から午後2時まで、洋泉興業大泉町文化むら（朝日5丁目24番1号）で、保健福祉まつりと防災フェアが同時にあります。講演会は、午後1時から午後2時までです。ほかの催しは、日付と場所が資料で確かめられなかったので、入れていません。",
+     "source": {
+      "title": "令和8年度大泉町保健福祉まつり&防災フェアについて｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/300/20240829152035.html",
+      "where": "期日・時間・場所"
+     },
+     "status": "auto",
+     "problems": []
     }
    ]
   },
@@ -2099,20 +2167,6 @@
      "problems": []
     },
     {
-     "qid": "Q21",
-     "short": "Acara yang akan datang",
-     "text": "① Rabu, 11 November, di Aula Besar Bunka Mura Kota Oizumi \"Yosen Kogyo\" (洋泉興業大泉町文化むら大ホール) diadakan Konvensi Promosi Pendidikan Hak Asasi Manusia seluruh kota (町ぐるみ人権教育推進大会).\n② Jumat, 13 dan 20 November, di Ruang Audiovisual lantai 2 Balai Warga Kota (町公民館) diadakan kursus hobi \"Senam menabung otot yang menyenangkan bersama\" (みんなで楽しく貯筋運動).\n③ Minggu, 15 November, di Aula Kecil Bunka Mura (文化むら小ホール) diadakan ceramah Festival Kesehatan dan Kesejahteraan (保健福祉まつり講演会).\n④ Sabtu, 5 Desember, di Aula Serbaguna lantai 1 Kantor Kota (町役場) diadakan ceramah pembangunan kota secara kolaboratif dan seminar kesetaraan gender (協働のまちづくり講演会・男女共同参画セミナー).",
-     "original": "①11月11日(水)、洋泉興業大泉町文化むら大ホールで町ぐるみ人権教育推進大会があります。\n②11月13日・20日(金)、町公民館2階視聴覚室で趣味講座「みんなで楽しく貯筋運動」があります。\n③11月15日(日)、文化むら小ホールで保健福祉まつり講演会があります。\n④12月5日(土)、町役場1階多目的ホールで協働のまちづくり講演会・男女共同参画セミナーがあります。",
-     "back": "①11月11日(水)、洋泉興業大泉町文化むら大ホールで町ぐるみ人権教育推進大会があります。②11月13日・20日(金)、町公民館2階視聴覚室で趣味講座「みんなで楽しく貯筋運動」があります。③11月15日(日)、文化むら小ホールで保健福祉まつり講演会があります。④12月5日(土)、町役場1階多目的ホールで協働のまちづくり講演会・男女共同参画セミナーがあります。",
-     "source": {
-      "title": "町ぐるみ人権教育推進大会を開催します",
-      "url": "https://www.town.oizumi.gunma.jp/s031/kanko/010/020/20221007175044.html",
-      "where": "日時・場所"
-     },
-     "status": "auto",
-     "problems": []
-    },
-    {
      "qid": "Q30",
      "short": "Jumlah penduduk asing menurut kewarganegaraan",
      "text": "Ini adalah jumlah penduduk asing menurut kewarganegaraan per 30 September Reiwa 8.\nPeringkat 1: Brasil 4.845 orang (52,12%)\nPeringkat 2: Peru 1.077 orang (11,59%)\nPeringkat 3: Indonesia 708 orang (7,62%)\nPeringkat 4: Nepal 677 orang (7,28%)\nPeringkat 5: Vietnam 506 orang (5,44%)\nPeringkat 6: Filipina 359 orang (3,86%)\nPeringkat 7: Bolivia 191 orang (2,05%)\nPeringkat 8: Tiongkok 174 orang (1,87%)\nPeringkat 9: Myanmar 120 orang (1,29%)\nPeringkat 10: Bangladesh 81 orang (0,87%)\nLainnya: 558 orang (6,00%)\nTotal: 9.296 orang.",
@@ -2164,6 +2218,34 @@
       "title": "安全・安心メールをご利用ください｜大泉町",
       "url": "https://www.town.oizumi.gunma.jp/s004/anzen/050/050/20200827165944.html",
       "where": "配信内容／メールアドレスの登録について／町公式LINEでも配信内容を受け取れます"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q42",
+     "short": "Kantor Polisi dan Pos Polisi (Koban)",
+     "text": "Kantor polisi yang berwenang adalah Kantor Polisi Oizumi (大泉警察署).\nWilayah hukumnya meliputi Kota Oizumi (大泉町), Kota Chiyoda (千代田町), dan Kota Ora (邑楽町).\nLokasinya di 2-27-1 Asahi, Oizumi-machi, Ora-gun (邑楽郡大泉町朝日2-27-1).\nNomor teleponnya 0276-62-0110 (dibaca dari tata letak tabel dalam dokumen).\nPos polisi (koban/chuzaisho, 交番・駐在所) di dalam kota tidak dapat dipastikan dari dokumen resmi.\nUntuk konsultasi yang tidak mendesak, hubungi #9110 atau 027-224-8080 (Markas Besar Kepolisian Prefektur Gunma, 群馬県警察本部).\nLayanan penerimaan buka 24 jam. Pada malam hari, hari Sabtu, Minggu, dan hari libur nasional, petugas jaga yang menangani.",
+     "original": "管轄の警察署は大泉警察署です。\n管轄は大泉町・千代田町・邑楽町です。\n場所は邑楽郡大泉町朝日2-27-1です。\n電話番号は 0276-62-0110 です（資料の表の配置から読み取りました）。\n町内の交番・駐在所は、公式の資料で確認できませんでした。\n急ぎでない相談は #9110 または 027-224-8080（群馬県警察本部）です。\n受付は24時間で、夜間・土日祝日は当直勤務員が対応します。",
+     "back": "管轄の警察署は大泉警察署です。管轄は大泉町・千代田町・邑楽町です。場所は邑楽郡大泉町朝日2-27-1です。電話番号は 0276-62-0110 です（資料の表の配置から読み取りました）。町内の交番・駐在所は、公式の資料で確認できませんでした。急ぎでない相談は #9110 または 027-224-8080（群馬県警察本部）です。受付は24時間で、夜間・土日祝日は当直勤務員が対応します。",
+     "source": {
+      "title": "犯罪被害・非行の相談 関係機関・相談窓口（総務省 PDF）",
+      "url": "https://www.soumu.go.jp/main_content/000612577.pdf",
+      "where": "2ページ目 警察署の一覧（大泉警察署）"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q21",
+     "short": "Acara yang akan datang",
+     "text": "Pada hari Minggu, 15 November tahun Reiwa 8 (令和8年11月15日), pukul 10.00 sampai 14.00, Festival Kesehatan dan Kesejahteraan (保健福祉まつり) dan Pameran Penanggulangan Bencana (防災フェア) diadakan bersamaan di Yosen Kogyo Oizumi-machi Bunka Mura (洋泉興業大泉町文化むら), 5-chome 24-1 Asahi (朝日5丁目24番1号).\nCeramah berlangsung dari pukul 13.00 sampai 14.00.\nAcara-acara lain tidak dimasukkan karena tanggal dan tempatnya tidak dapat dipastikan dari dokumen.",
+     "original": "令和8年11月15日（日曜日）の午前10時から午後2時まで、洋泉興業大泉町文化むら（朝日5丁目24番1号）で、保健福祉まつりと防災フェアが同時に開かれます。\n講演会は午後1時から午後2時までです。\nほかの催しは、日付と場所が資料で確かめられなかったので入れていません。",
+     "back": "令和8年11月15日（日曜日）の午前10時から午後2時まで、洋泉興業大泉町文化むら（朝日5丁目24番1号）で、保健福祉まつりと防災フェアが同時に開かれます。講演会は午後1時から午後2時までです。ほかの催しは、日付と場所が資料で確かめられなかったので入れていません。",
+     "source": {
+      "title": "令和8年度大泉町保健福祉まつり&防災フェアについて｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/300/20240829152035.html",
+      "where": "期日・時間・場所"
      },
      "status": "auto",
      "problems": []
@@ -2352,20 +2434,6 @@
       "title": "皆さんの子育てを応援します こども家庭センター（チラシPDF）",
       "url": "https://www.town.oizumi.gunma.jp/s006/gyosei/010/020/020/oizumi980_kodomokateisenta.pdf",
       "where": "本文冒頭・下部の「詳しくは、こども未来課保健・相談係（内線520）へ」"
-     },
-     "status": "auto",
-     "problems": []
-    },
-    {
-     "qid": "Q21",
-     "short": "आगामी कार्यक्रमहरू",
-     "text": "① नोभेम्बर 11 (बुधबार), योइजुमी कोग्योउ ओइजुमी-माची बुन्का-मुरा ठूलो हल (洋泉興業大泉町文化むら大ホール) मा नगरव्यापी मानव अधिकार शिक्षा प्रवर्द्धन सम्मेलन (町ぐるみ人権教育推進大会) हुन्छ।\n② नोभेम्बर 13 र 20 (शुक्रबार), नगर सार्वजनिक भवन (町公民館) दोस्रो तल्ला श्रव्य-दृश्य कोठा (視聴覚室) मा रुचि कक्षा \"सबै मिलेर रमाइलो गरी मांसपेशी बचत व्यायाम (みんなで楽しく貯筋運動)\" हुन्छ।\n③ नोभेम्बर 15 (आइतबार), बुन्का-मुरा (文化むら) सानो हल (小ホール) मा स्वास्थ्य तथा कल्याण मेला व्याख्यान (保健福祉まつり講演会) हुन्छ।\n④ डिसेम्बर 5 (शनिबार), नगर कार्यालय (町役場) पहिलो तल्ला बहुउद्देश्यीय हल (多目的ホール) मा सहकार्यात्मक नगर निर्माण व्याख्यान (協働のまちづくり講演会) र लैंगिक समानता सेमिनार (男女共同参画セミナー) हुन्छ।",
-     "original": "①11月11日(水)、洋泉興業大泉町文化むら大ホールで町ぐるみ人権教育推進大会があります。\n②11月13日・20日(金)、町公民館2階視聴覚室で趣味講座「みんなで楽しく貯筋運動」があります。\n③11月15日(日)、文化むら小ホールで保健福祉まつり講演会があります。\n④12月5日(土)、町役場1階多目的ホールで協働のまちづくり講演会・男女共同参画セミナーがあります。",
-     "back": "①11月11日(水)、洋泉興業大泉町文化むら大ホールで町ぐるみ人権教育推進大会がある。②11月13日・20日(金)、町公民館2階視聴覚室で趣味講座「みんなで楽しく貯筋運動」がある。③11月15日(日)、文化むら小ホールで保健福祉まつり講演会がある。④12月5日(土)、町役場1階多目的ホールで協働のまちづくり講演会・男女共同参画セミナーがある。",
-     "source": {
-      "title": "町ぐるみ人権教育推進大会を開催します",
-      "url": "https://www.town.oizumi.gunma.jp/s031/kanko/010/020/20221007175044.html",
-      "where": "日時・場所"
      },
      "status": "auto",
      "problems": []
@@ -2593,6 +2661,34 @@
      },
      "status": "auto",
      "problems": []
+    },
+    {
+     "qid": "Q42",
+     "short": "प्रहरी कार्यालय र कोबान (警察署と交番)",
+     "text": "क्षेत्र हेर्ने प्रहरी कार्यालय ओइजुमी प्रहरी कार्यालय (大泉警察署) हो।\nयसको क्षेत्रमा ओइजुमी नगर (大泉町)・चियोदा नगर (千代田町)・ओउरा नगर (邑楽町) पर्छन्।\nठेगाना: ओउरा जिल्ला (邑楽郡) ओइजुमी नगर (大泉町) आसाही (朝日) 2-27-1।\nफोन नम्बर 0276-62-0110 हो (सामग्रीको तालिकाको ढाँचाबाट पढेर लिइएको हो)।\nनगरभित्रका कोबान (प्रहरी चौकी, 交番) र चुजाइसो (आवासीय प्रहरी चौकी, 駐在所) आधिकारिक सामग्रीमा पुष्टि गर्न सकिएन।\nजरुरी नभएको परामर्शका लागि #9110 वा 027-224-8080 (गुन्मा प्रान्तीय प्रहरी मुख्यालय, 群馬県警察本部)।\n24 घण्टा खुला हुन्छ। राति र शनिबार, आइतबार तथा सार्वजनिक बिदामा ड्युटीमा रहेका कर्मचारीले जवाफ दिन्छन्।",
+     "original": "管轄の警察署は大泉警察署です。\n管轄は大泉町・千代田町・邑楽町です。\n場所は邑楽郡大泉町朝日2-27-1です。\n電話番号は 0276-62-0110 です（資料の表の配置から読み取りました）。\n町内の交番・駐在所は、公式の資料で確認できませんでした。\n急ぎでない相談は #9110 または 027-224-8080（群馬県警察本部）です。\n受付は24時間で、夜間・土日祝日は当直勤務員が対応します。",
+     "back": "管轄の警察署は大泉警察署です。管轄は大泉町・千代田町・邑楽町です。場所は邑楽郡大泉町朝日2-27-1です。電話番号は 0276-62-0110 です（資料の表の配置から読み取りました）。町内の交番・駐在所は、公式の資料で確認できませんでした。急ぎでない相談は #9110 または 027-224-8080（群馬県警察本部）です。24時間受付で、夜間・土日祝日は当直勤務員が対応します。",
+     "source": {
+      "title": "犯罪被害・非行の相談 関係機関・相談窓口（総務省 PDF）",
+      "url": "https://www.soumu.go.jp/main_content/000612577.pdf",
+      "where": "2ページ目 警察署の一覧（大泉警察署）"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q21",
+     "short": "आगामी कार्यक्रम (これからの催し)",
+     "text": "रेइवा 8 वर्ष (令和8年) नोभेम्बर 15 (11月15日), आइतबार (日曜日) बिहान 10 बजेदेखि दिउँसो 2 बजेसम्म, योसेन कोग्यो ओइजुमी नगर संस्कृति गाउँ (洋泉興業大泉町文化むら) (आसाही 5-चोम 24-बan 1-गो, 朝日5丁目24番1号) मा स्वास्थ्य तथा कल्याण महोत्सव (保健福祉まつり) र विपद् रोकथाम मेला (防災フェア) एकैसाथ हुनेछन्।\nव्याख्यान कार्यक्रम (講演会) दिउँसो 1 बजेदेखि दिउँसो 2 बजेसम्म हुन्छ।\nअन्य कार्यक्रमको मिति र स्थान सामग्रीबाट पुष्टि गर्न नसकिएकाले समावेश गरिएको छैन।",
+     "original": "令和8年11月15日（日曜日）の午前10時から午後2時まで、洋泉興業大泉町文化むら（朝日5丁目24番1号）で、保健福祉まつりと防災フェアが同時に開かれます。\n講演会は午後1時から午後2時までです。\nほかの催しは、日付と場所が資料で確かめられなかったので入れていません。",
+     "back": "令和8年11月15日（日曜日）午前10時から午後2時まで、洋泉興業大泉町文化むら（朝日5丁目24番1号）で、保健福祉まつりと防災フェアが同時に開かれます。講演会は午後1時から午後2時までです。その他の催しは、日付と場所が資料で確認できなかったため、掲載していません。",
+     "source": {
+      "title": "令和8年度大泉町保健福祉まつり&防災フェアについて｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/300/20240829152035.html",
+      "where": "期日・時間・場所"
+     },
+     "status": "auto",
+     "problems": []
     }
    ]
   },
@@ -2783,20 +2879,6 @@
      "problems": [
       "「保健」が「Bảo健」と漢字が混入している（意味は同じ）。"
      ]
-    },
-    {
-     "qid": "Q21",
-     "short": "Các sự kiện sắp tới",
-     "text": "① Ngày 11 tháng 11 (thứ Tư), có Đại hội thúc đẩy giáo dục nhân quyền toàn thị trấn tại Hội trường lớn Văn hóa Mura thị trấn Oizumi Yosen Kogyo (洋泉興業大泉町文化むら大ホール).\n② Ngày 13・20 tháng 11 (thứ Sáu), có khóa học sở thích 「Cùng nhau vui vẻ tập vận động rèn luyện cơ bắp」(みんなで楽しく貯筋運動) tại phòng nghe nhìn tầng 2 Nhà văn hóa thị trấn (町公民館).\n③ Ngày 15 tháng 11 (Chủ nhật), có buổi diễn thuyết của Lễ hội Y tế・Phúc lợi (保健福祉まつり) tại Hội trường nhỏ Văn hóa Mura (文化むら小ホール).\n④ Ngày 5 tháng 12 (thứ Bảy), có buổi diễn thuyết về xây dựng thị trấn hợp tác và hội thảo về bình đẳng giới tại Hội trường đa năng tầng 1 Tòa thị chính thị trấn (町役場).",
-     "original": "①11月11日(水)、洋泉興業大泉町文化むら大ホールで町ぐるみ人権教育推進大会があります。\n②11月13日・20日(金)、町公民館2階視聴覚室で趣味講座「みんなで楽しく貯筋運動」があります。\n③11月15日(日)、文化むら小ホールで保健福祉まつり講演会があります。\n④12月5日(土)、町役場1階多目的ホールで協働のまちづくり講演会・男女共同参画セミナーがあります。",
-     "back": "①11月11日(水)、洋泉興業大泉町文化むら大ホールで町ぐるみ人権教育推進大会があります。②11月13日・20日(金)、町公民館2階視聴覚室で趣味講座「みんなで楽しく貯筋運動」があります。③11月15日(日)、文化むら小ホールで保健福祉まつり講演会があります。④12月5日(土)、町役場1階多目的ホールで協働のまちづくり講演会・男女共同参画セミナーがあります。",
-     "source": {
-      "title": "町ぐるみ人権教育推進大会を開催します",
-      "url": "https://www.town.oizumi.gunma.jp/s031/kanko/010/020/20221007175044.html",
-      "where": "日時・場所"
-     },
-     "status": "auto",
-     "problems": []
     },
     {
      "qid": "Q30",
@@ -3024,6 +3106,34 @@
       "「LINEでも同じ内容」が訳し戻しでは「同様の内容」になっている。原文は「同じ内容」で、訳文の「nội dung tương tự（似た内容）」は少しずれている。「nội dung giống nhau（同じ内容）」にすると合う。その他の数字・アドレス・名前・手順は一致している。"
      ],
      "ledgerId": "r00213"
+    },
+    {
+     "qid": "Q42",
+     "short": "Sở cảnh sát và đồn cảnh sát khu vực (警察署と交番)",
+     "text": "Sở cảnh sát phụ trách khu vực này là Sở Cảnh sát Oizumi (大泉警察署).\nKhu vực phụ trách gồm thị trấn Oizumi (大泉町), thị trấn Chiyoda (千代田町) và thị trấn Oura (邑楽町).\nĐịa chỉ: Asahi 2-27-1, thị trấn Oizumi, huyện Oura (邑楽郡大泉町朝日2-27-1).\nSố điện thoại là 0276-62-0110 (số này được đọc từ cách sắp xếp trong bảng của tài liệu).\nChưa xác nhận được đồn cảnh sát khu vực (交番) hay trạm cảnh sát thường trú (駐在所) trong thị trấn qua tài liệu chính thức.\nNếu cần tư vấn không khẩn cấp, hãy gọi #9110 hoặc 027-224-8080 (Sở Cảnh sát tỉnh Gunma (群馬県警察本部)).\nTiếp nhận 24 giờ. Vào ban đêm và thứ Bảy, Chủ nhật, ngày lễ, nhân viên trực sẽ xử lý.",
+     "original": "管轄の警察署は大泉警察署です。\n管轄は大泉町・千代田町・邑楽町です。\n場所は邑楽郡大泉町朝日2-27-1です。\n電話番号は 0276-62-0110 です（資料の表の配置から読み取りました）。\n町内の交番・駐在所は、公式の資料で確認できませんでした。\n急ぎでない相談は #9110 または 027-224-8080（群馬県警察本部）です。\n受付は24時間で、夜間・土日祝日は当直勤務員が対応します。",
+     "back": "管轄の警察署は大泉警察署です。管轄は大泉町・千代田町・邑楽町です。場所は邑楽郡大泉町朝日2-27-1です。電話番号は0276-62-0110です（資料の表の配置から読み取りました）。町内の交番・駐在所は、公式の資料で確認できませんでした。急ぎでない相談は#9110または027-224-8080（群馬県警察本部）です。受付は24時間で、夜間・土日祝日は当直勤務員が対応します。",
+     "source": {
+      "title": "犯罪被害・非行の相談 関係機関・相談窓口（総務省 PDF）",
+      "url": "https://www.soumu.go.jp/main_content/000612577.pdf",
+      "where": "2ページ目 警察署の一覧（大泉警察署）"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q21",
+     "short": "Các sự kiện sắp tới (これからの催し)",
+     "text": "Vào ngày 15 tháng 11 năm Reiwa 8 (Chủ nhật), từ 10 giờ sáng đến 2 giờ chiều, Lễ hội Y tế Phúc lợi (保健福祉まつり) và Hội chợ Phòng chống thiên tai (防災フェア) sẽ được tổ chức cùng lúc tại Làng Văn hóa thị trấn Oizumi Yosen Kōgyō (洋泉興業大泉町文化むら) (Asahi 5-chome 24-ban 1-gō, 朝日5丁目24番1号).\nBuổi diễn thuyết diễn ra từ 1 giờ chiều đến 2 giờ chiều.\nCác sự kiện khác chưa được đưa vào vì không xác nhận được ngày và địa điểm trong tài liệu.",
+     "original": "令和8年11月15日（日曜日）の午前10時から午後2時まで、洋泉興業大泉町文化むら（朝日5丁目24番1号）で、保健福祉まつりと防災フェアが同時に開かれます。\n講演会は午後1時から午後2時までです。\nほかの催しは、日付と場所が資料で確かめられなかったので入れていません。",
+     "back": "令和8年11月15日（日曜日）の午前10時から午後2時まで、洋泉興業大泉町文化むら（朝日5丁目24番1号）で、保健福祉まつりと防災フェアが同時に開かれます。講演会は午後1時から午後2時までです。ほかの催しは、日付と場所が資料で確かめられなかったので入れていません。",
+     "source": {
+      "title": "令和8年度大泉町保健福祉まつり&防災フェアについて｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/300/20240829152035.html",
+      "where": "期日・時間・場所"
+     },
+     "status": "auto",
+     "problems": []
     }
    ]
   }
