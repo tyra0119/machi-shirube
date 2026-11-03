@@ -12,7 +12,7 @@ const getData = (url) => {
   return dataCache.get(url).then((d) => (d == null ? null : structuredClone(d)));
 };
 // 避難場所の想定収容人数：町の表の人数は屋内と屋外（校庭や広場）の合計のことがある。建物の中の人数が分かれば添える（scripts/build-shelter-inside.mjs）
-const capText = (p) => `${T("想定収容")} ${/^\d+$/.test(String(p.capacity)) ? Number(p.capacity).toLocaleString("ja-JP") : esc(p.capacity)}${p.inside != null ? `（${T("建物の中")} ${Number(p.inside).toLocaleString("ja-JP")}${T("人")}）` : `（${T("屋外の広場などを含むことがあります")}）`}`;
+const capText = (p) => `${T("想定収容")} ${esc(String(p.capacity ?? "").replace(/\d{4,}/g, (n) => Number(n).toLocaleString("ja-JP")))}${p.inside != null ? `（${T("建物の中")} ${Number(p.inside).toLocaleString("ja-JP")}${T("人")}）` : `（${T("屋外の広場などを含むことがあります")}）`}`;
 // Google マップで、選んだ場所から避難場所までの歩く道を開く（画面と同じ出発地にするため、選んだ場所も渡す。
 // ボタンを押したときだけ Google マップに渡る、と画面に書いている。作者「場所は送りたいな。じゃないと画面と違う経路になってしまう」）
 const gmapWalk = ([lon, lat], from) => `https://www.google.com/maps/dir/?api=1${from ? `&origin=${from[1].toFixed(5)},${from[0].toFixed(5)}` : ""}&destination=${lat},${lon}&travelmode=walking`;
