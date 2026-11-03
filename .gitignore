@@ -19,3 +19,12 @@ Thumbs.db
 desktop.ini
 .DS_Store
 .claude/settings.local.json
+
+# デモ動画の曲・録画のファイルは入れない（YouTube オーディオ ライブラリの曲は単体で配布できない）
+*.mp3
+*.wav
+*.m4a
+*.aac
+*.mp4
+*.mov
+*.prproj
