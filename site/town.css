@@ -647,3 +647,10 @@ body:has(.toc-fab:not([hidden])) { padding-bottom: 80px; }
   .layer-map { height: 50vh; height: 50svh; }
   .hinan-map { height: min(360px, 50vh); height: min(360px, 50svh); }
 }
+/* この町の、こんな人へ：壁と数を使った理由は「くわしく」の中にたたむ（住む人には、人と町の支援のボタンを先に） */
+.mitate-top .why-more { margin-top: 2px; }
+.mitate-top .why-more summary { display: inline-flex; align-items: center; gap: 4px; min-height: 32px; font-size: 13px; color: var(--text-sub); cursor: pointer; list-style: none; }
+.mitate-top .why-more summary::-webkit-details-marker { display: none; }
+.mitate-top .why-more summary::before { content: "▸"; color: var(--accent); }
+.mitate-top .why-more[open] summary::before { content: "▾"; }
+.mitate-top .why-more .wall, .mitate-top .why-more .why { display: block; margin-top: 4px; }

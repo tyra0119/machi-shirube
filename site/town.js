@@ -159,14 +159,16 @@ async function showTypes(code, stats, scopeNote) {
     // ほかの言葉では、答えの訳の見出しを使う（訳が無ければ見出しを付けない）
     const trItems = LANG ? (await getData(`data/translations/${code}.json`))?.langs?.[LANG]?.items ?? [] : [];
     const askShort = (q) => (LANG ? trItems.find((x) => x.qid === q.id && (x.status === "auto" || x.status === "ok"))?.short : q.short);
-    $("mitate-top").innerHTML = `<h2>${T("この町で、暮らしの情報が届きにくいのは")}</h2>
-      <ul class="mitate-list">${cm.who.map((w, i) => { const p = pg(w.page); const q = w.ask && found(w.ask); return `<li><strong>${esc(t(`m${i}.person`, w.person))}</strong><span class="wall">${icon("alert")} ${esc(t(`m${i}.wall`, w.wall))}</span><span class="why">${esc(t(`m${i}.why`, w.why))}</span><span class="gos">${q ? `<a class="go ask" href="#${q.page}" data-target="a-${q.id}">${icon("search")}${T("町の支援を見る")}${askShort(q) ? `：${esc(askShort(q))}` : ""}</a>` : ""}${p ? `<a class="go" href="#${p.view}">${icon(ILLUST[p.view]?.main ?? "map")}${LANG ? esc(T(p.title)) : `${esc(p.title)}${p.title.endsWith("へ") ? "" : "へ"}`}</a>` : ""}</span></li>`; }).join("")}</ul>
-      <p class="note">${esc(t("n.mitate", cm.note))}${tr ? ` ${T("（AI による訳）")} ` : "。"}<a href="#mitate">${T("くわしく")}</a></p>`;
+    // 住む人の目線で：見出しは「この町の、こんな人へ」。先に人と「町の支援を見る」、壁と数を使った理由は「くわしく」の中
+    // （作者「今日のページに『この町で、暮らしの情報が届きにくいのは』を表示するのは自然？」→「その案で直して。町のページを見るのは住民なので、その想定で」）
+    $("mitate-top").innerHTML = `<h2>${T("この町の、こんな人へ")}</h2>
+      <ul class="mitate-list">${cm.who.map((w, i) => { const p = pg(w.page); const q = w.ask && found(w.ask); return `<li><strong>${esc(t(`m${i}.person`, w.person))}</strong><span class="gos">${q ? `<a class="go ask" href="#${q.page}" data-target="a-${q.id}">${icon("search")}${T("町の支援を見る")}${askShort(q) ? `：${esc(askShort(q))}` : ""}</a>` : ""}${p ? `<a class="go" href="#${p.view}">${icon(ILLUST[p.view]?.main ?? "map")}${LANG ? esc(T(p.title)) : `${esc(p.title)}${p.title.endsWith("へ") ? "" : "へ"}`}</a>` : ""}</span><details class="why-more"><summary>${T("くわしく")}</summary><span class="wall">${icon("alert")} ${esc(t(`m${i}.wall`, w.wall))}</span><span class="why">${esc(t(`m${i}.why`, w.why))}</span></details></li>`; }).join("")}</ul>
+      <p class="note">${T("国の数字をもとに、AI が見立てたものです。町の評価ではありません。")}${tr ? ` ${T("（AI による訳）")}` : ""} <a href="#mitate">${T("くわしく")}</a></p>`;
     for (const a of $("mitate-top").querySelectorAll("a.ask")) a.addEventListener("click", () => setTimeout(() => $(a.dataset.target)?.scrollIntoView({ behavior: "smooth", block: "start" }), 50));
     return;
   }
-  $("mitate-top").innerHTML = `<h2>${T("この町で、暮らしの情報が届きにくいのは")}</h2>
-    <ul class="mitate-list">${list.slice(0, 2).map((c) => { const p = page(c.type); return `<li><strong>${esc(T(c.who))}</strong><span class="why">${esc(reasonOf(c))}</span>${p ? `<a class="go" href="#${p.view}">${icon(ILLUST[p.view]?.main ?? "map")}${LANG ? esc(T(p.title)) : `${esc(p.title)}${p.title.endsWith("へ") ? "" : "へ"}`}</a>` : ""}</li>`; }).join("")}</ul>
+  $("mitate-top").innerHTML = `<h2>${T("この町の、こんな人へ")}</h2>
+    <ul class="mitate-list">${list.slice(0, 2).map((c) => { const p = page(c.type); return `<li><strong>${esc(T(c.who))}</strong><details class="why-more"><summary>${T("くわしく")}</summary><span class="why">${esc(reasonOf(c))}</span></details>${p ? `<a class="go" href="#${p.view}">${icon(ILLUST[p.view]?.main ?? "map")}${LANG ? esc(T(p.title)) : `${esc(p.title)}${p.title.endsWith("へ") ? "" : "へ"}`}</a>` : ""}</li>`; }).join("")}</ul>
     <p class="note">${T("全国の市区町村と国の数字で比べた、まちしるべの見立てです（町の評価ではありません）。")} <a href="#mitate">${T("くわしく")}</a></p>`;
 }
 // 浸水が想定される所に住む人（めやす。scripts/build-flood-pop.mjs が作る）

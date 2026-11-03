@@ -48,15 +48,16 @@
       <p class="hitokoto-text" id="hitokoto"></p>
       <p class="note" id="hitokoto-note"></p>
     </section>
+    <!-- 今日のページは住む人が毎日開く：天気・警報を先に、そのあとに「この町の、こんな人へ」と「数から、できることへ」（作者「町のページを見るのは住民なので、その想定で」） -->
+    <section class="block" id="sec-today">
+      <h2>今日と明日</h2>
+      <div id="today-box"><p class="note">読み込んでいます…</p></div>
+    </section>
     <section class="block mitate-top" id="mitate-top" hidden></section>
     <section class="block dekiru" id="dekiru-block" hidden>
       <h2>数から、できることへ</h2>
       <ul class="dekiru-list" id="dekiru"></ul>
       <p class="note" id="dekiru-note"></p>
-    </section>
-    <section class="block" id="sec-today">
-      <h2>今日と明日</h2>
-      <div id="today-box"><p class="note">読み込んでいます…</p></div>
     </section>
     <section class="block" id="changes-block" hidden>
       <h2>このページで新しくなったこと</h2>
@@ -288,7 +289,7 @@
   <!-- まちしるべの見立て（作る側の情報） -->
   <div class="view" data-view="mitate" hidden>
     <section class="block" id="sec-types">
-      <h2>この町で、暮らしの情報が届きにくいのは</h2>
+      <h2>この町の、こんな人へ（くわしく）</h2>
       <p class="note" id="types-scope"></p>
       <div id="types"></div>
     </section>
