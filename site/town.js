@@ -1084,7 +1084,9 @@ async function main() {
     if (!weight) continue;
     const v = have.reduce((s, p) => s + p[m] * p[w], 0) / weight;
     const others = all.map((f) => f.properties[m]).filter((x) => typeof x === "number");
-    const place = list.length === 1 ? `${muniName}の ${others.length} の町・字で高いほうから ${others.filter((x) => x > v).length + 1} 番目` : "";
+    const top = ((others.filter((x) => x > v).length + 1) / others.length) * 100;
+    // 順位は言わず、町・字の中で高いほう（低いほう）から ○% と言う
+    const place = list.length === 1 ? `${muniName}の町・字の中で${top <= 50 ? `高いほうから ${Math.max(top, 0.1).toFixed(0)}%` : `低いほうから ${Math.max(100 - top + 100 / others.length, 0.1).toFixed(0)}%`}` : "";
     rows.push(`<li><span class="label">${label}</span><span class="value">${pct(v)}</span>${place ? `<span class="place">${place}</span>` : ""}</li>`);
   }
   $("features").innerHTML = rows.join("");
@@ -1112,7 +1114,7 @@ async function muniPage(code, stats) {
   ];
   $("features").innerHTML = rows.map(([m, label]) => {
     const top = t.top[m];
-    const place = t.rank[m] <= 10 ? `全国で ${t.rank[m]} 番目に高い` : top <= 50 ? `全国で高いほうから ${Math.max(top, 0.1).toFixed(1)}%` : `全国で低いほうから ${Math.max(100 - top, 0.1).toFixed(1)}%`;
+    const place = top <= 50 ? `全国で高いほうから ${Math.max(top, 0.1).toFixed(1)}%` : `全国で低いほうから ${Math.max(100 - top, 0.1).toFixed(1)}%`;
     const v = t[m];
     return `<li><span class="label">${label}</span><span class="value">${/change/i.test(m) && v > 0 ? "+" : ""}${pct(v)}</span><span class="place">${place}</span></li>`;
   }).join("");

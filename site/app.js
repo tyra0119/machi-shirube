@@ -722,12 +722,16 @@ function showTownCard(p) {
   openCard();
 }
 
-// 町・字の数字が、同じ市・区の中で高いほうから何番目か
+// 町・字の数字が、同じ市・区の中で高いほう（低いほう）から何%の所か（順位は言わない）
 function townPlace(p, m) {
   const vals = townData.features.map((f) => f.properties[m]).filter((v) => typeof v === "number");
-  const rank = vals.filter((v) => v > p[m]).length + 1;
   const muni = byCode.get(shownTowns)?.properties.fullName ?? "";
-  return `${muni}の ${vals.length} の町・字で高いほうから ${rank} 番目`;
+  return `${muni}の町・字の中で${partShare(vals, p[m])}`;
+}
+// 高いほうから ○%（50% を超えるときは 低いほうから ○%）
+function partShare(vals, v) {
+  const top = ((vals.filter((x) => x > v).length + 1) / vals.length) * 100;
+  return top <= 50 ? `高いほうから ${Math.max(top, 0.1).toFixed(0)}%` : `低いほうから ${Math.max(100 - top + 100 / vals.length, 0.1).toFixed(0)}%`;
 }
 
 // 選ぶ（名前で探したときも、地図で押したときと同じ形にする）
@@ -769,8 +773,7 @@ function featureCard(t) {
     const value = `${signed && v > 0 ? "+" : ""}${v.toFixed(1)}${unit}`;
     const top = t.top[m];
     const place =
-      t.rank[m] <= 10 ? `全国で ${t.rank[m]} 番目に高い`
-      : top <= 50 ? `全国で高いほうから ${Math.max(top, 0.1).toFixed(1)}%`
+      top <= 50 ? `全国で高いほうから ${Math.max(top, 0.1).toFixed(1)}%`
       : `全国で低いほうから ${Math.max(100 - top, 0.1).toFixed(1)}%`;
     // 人の少ない村の大きな割合に埋もれる町は、人口2万人以上の中での順位も添える（3番目まで）
     const big = t.rankBig?.[m];
