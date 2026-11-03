@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-03T10:12:34.644Z",
+ "createdAt": "2026-11-03T10:14:43.271Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 733,
- "of": 724,
+ "count": 735,
+ "of": 726,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -739,6 +739,8 @@
   "町のことが分かるほかのサイト": "Otros sitios web con información sobre la ciudad",
   "この町の、こんな人へ": "Para quienes viven en este pueblo",
   "この町の、こんな人へ（くわしく）": "Para quienes viven en este pueblo (más información)",
-  "国の数字をもとに、AI が見立てたものです。町の評価ではありません。": "Estimación realizada por una IA a partir de datos nacionales. No es una evaluación del municipio."
+  "国の数字をもとに、AI が見立てたものです。町の評価ではありません。": "Estimación realizada por una IA a partir de datos nacionales. No es una evaluación del municipio.",
+  "いま、できること": "Qué puedes hacer ahora",
+  "この町の坂（避難のときの上り）": "Las cuestas de este pueblo (subida en caso de evacuación)"
  }
 }

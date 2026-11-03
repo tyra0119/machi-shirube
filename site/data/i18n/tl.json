@@ -1,11 +1,11 @@
 {
  "lang": "tl",
  "name": "Filipino",
- "createdAt": "2026-11-03T10:13:00.327Z",
+ "createdAt": "2026-11-03T10:15:08.921Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 724,
- "of": 724,
+ "count": 726,
+ "of": 726,
  "dict": {
   "この町の非公式の暮らしの案内です。町の公式のサイトや国の公開データから集め、出典をつけています（まちしるべ）": "Ito ay isang di-opisyal na gabay sa pamumuhay sa bayang ito. Kinuha ito mula sa opisyal na website ng bayan at sa pampublikong datos ng bansa, at may nakasaad na pinagmulan (Machishirube)",
   "すべてのページ": "Lahat ng pahina",
@@ -730,6 +730,8 @@
   "町のことが分かるほかのサイト": "Iba pang website na makakatulong para malaman ang tungkol sa bayan",
   "この町の、こんな人へ": "Para sa mga taong ito sa bayan",
   "この町の、こんな人へ（くわしく）": "Para sa mga taong ito sa bayan (detalyado)",
-  "国の数字をもとに、AI が見立てたものです。町の評価ではありません。": "Ito ay pagtataya ng AI batay sa mga numero ng bansa. Hindi ito pagsusuri ng bayan."
+  "国の数字をもとに、AI が見立てたものです。町の評価ではありません。": "Ito ay pagtataya ng AI batay sa mga numero ng bansa. Hindi ito pagsusuri ng bayan.",
+  "いま、できること": "Mga magagawa ngayon",
+  "この町の坂（避難のときの上り）": "Ang mga akyatin sa bayan na ito (pag-akyat kapag lumilikas)"
  }
 }

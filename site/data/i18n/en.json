@@ -1,11 +1,11 @@
 {
  "lang": "en",
  "name": "English",
- "createdAt": "2026-11-03T10:12:38.789Z",
+ "createdAt": "2026-11-03T10:14:45.670Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 734,
- "of": 724,
+ "count": 736,
+ "of": 726,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "This is an unofficial guide to living in this town. Claude gathers information from the town's official website and other sources, and cites each source (Machishirube)",
   "すべてのページ": "All pages",
@@ -740,6 +740,8 @@
   "町のことが分かるほかのサイト": "Other websites about the town",
   "この町の、こんな人へ": "For people like you in this town",
   "この町の、こんな人へ（くわしく）": "For people like you in this town (details)",
-  "国の数字をもとに、AI が見立てたものです。町の評価ではありません。": "This is an AI estimate based on national figures. It is not an official town assessment."
+  "国の数字をもとに、AI が見立てたものです。町の評価ではありません。": "This is an AI estimate based on national figures. It is not an official town assessment.",
+  "いま、できること": "What You Can Do Now",
+  "この町の坂（避難のときの上り）": "Hills in This Town (Uphill Climbs During Evacuation)"
  }
 }

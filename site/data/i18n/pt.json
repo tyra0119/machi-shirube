@@ -1,11 +1,11 @@
 {
  "lang": "pt",
  "name": "Português",
- "createdAt": "2026-11-03T10:12:32.192Z",
+ "createdAt": "2026-11-03T10:14:40.396Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 731,
- "of": 724,
+ "count": 734,
+ "of": 726,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Guia não oficial da vida na cidade. O Claude reúne as informações em sites oficiais da cidade e outras fontes, e indica a origem de cada uma (Machishirube)",
   "すべてのページ": "Todas as páginas",
@@ -737,6 +737,9 @@
   "人口 {n}人": "População: {n} pessoas",
   "（選ぶ）": "(Selecionar)",
   "坂の多い所に住む人": "Quem mora em área com muitas ladeiras",
-  "町のことが分かるほかのサイト": "Outros sites com informações sobre a cidade"
+  "町のことが分かるほかのサイト": "Outros sites com informações sobre a cidade",
+  "いま、できること": "O que você pode fazer agora",
+  "この町の坂（避難のときの上り）": "As ladeiras da cidade (subidas na hora de evacuar)",
+  "国の数字をもとに、AI が見立てたものです。町の評価ではありません。": "Estimativa feita por IA com base em dados do governo. Não é uma avaliação da prefeitura."
  }
 }
