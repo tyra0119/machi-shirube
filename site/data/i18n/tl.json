@@ -1,11 +1,11 @@
 {
  "lang": "tl",
  "name": "Filipino",
- "createdAt": "2026-11-03T05:00:19.606Z",
+ "createdAt": "2026-11-03T05:17:02.869Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 652,
- "of": 662,
+ "count": 668,
+ "of": 670,
  "dict": {
   "この町の非公式の暮らしの案内です。町の公式のサイトや国の公開データから集め、出典をつけています（まちしるべ）": "Ito ay isang di-opisyal na gabay sa pamumuhay sa bayang ito. Kinuha ito mula sa opisyal na website ng bayan at sa pampublikong datos ng bansa, at may nakasaad na pinagmulan (Machishirube)",
   "すべてのページ": "Lahat ng pahina",
@@ -658,6 +658,22 @@
   "人が住む 250m 四方ごとに、中の 6×6 か所（およそ 40m おき）の標高から平均の坂のきつさを出し、5% 以上を「坂が多い」、10% 以上を「急な坂が多い」とした、めやすです（道の坂ではなく、土地の傾き）。人は四角の中に均等に住むとみなしています": "Gabay lamang ito: sa bawat 250m × 250m na lugar na may nakatira, kinukuha ang karaniwang tarik ng dalisdis mula sa taas ng 6×6 na punto sa loob (bawat mga 40m); 5% pataas ay \"maraming dalisdis\" at 10% pataas ay \"maraming matarik na dalisdis\" (tarik ng lupa ito, hindi ng kalsada). Ipinapalagay na pantay-pantay ang tirahan ng mga tao sa loob ng parisukat",
   "気象庁の過去30年（1991〜2020年）の観測から 1km 四方ごとに推定した平年値を、人が住む所の人口で重みをつけて町の値にした、めやすです": "Gabay lamang ito: ang tinatayang normal na halaga bawat 1km × 1km mula sa obserbasyon ng Japan Meteorological Agency sa nakaraang 30 taon (1991–2020), na tinimbang ayon sa populasyon ng mga lugar na may nakatira upang makuha ang halaga para sa bayan",
   "日の当たる時間が、東京都心より年に約180時間長い": "Mas mahaba nang humigit-kumulang 180 oras kada taon ang oras ng sikat ng araw kaysa sa sentro ng Tokyo",
-  "日の当たる時間が、東京都心より年に約120時間長い": "Mas mahaba nang humigit-kumulang 120 oras kada taon ang oras ng sikat ng araw kaysa sa sentro ng Tokyo"
+  "日の当たる時間が、東京都心より年に約120時間長い": "Mas mahaba nang humigit-kumulang 120 oras kada taon ang oras ng sikat ng araw kaysa sa sentro ng Tokyo",
+  "まちしるべの見立て": "Pagtataya ng Machishirube",
+  "国の数字から決めたもの": "Batay sa datos ng bansa",
+  "洪水で浸かる想定の所に住む人": "Mga taong nakatira sa lugar na inaasahang malulubog sa baha",
+  "基あります。": "yunit ang mayroon.",
+  "急な坂が多い所に住む人": "Mga taong nakatira sa lugar na maraming matarik na dalisdis",
+  "坂が多い所に住む人の割合": "Porsyento ng mga nakatira sa lugar na maraming dalisdis",
+  "あり": "Mayroon",
+  "なし": "Wala",
+  "国籍": "Nasyonalidad",
+  "母語（めやす）": "Katutubong wika (tantiya)",
+  "町の防災マップ": "Mapang pangsakuna ng bayan",
+  "このページ": "Ang pahinang ito",
+  "母語は国籍から推し量ったものです（ブラジル＝ポルトガル語、ペルー・ボリビア＝スペイン語など）。英語やほかの言葉が読める人もいます。": "Ang katutubong wika ay hinuha mula sa nasyonalidad (Brazil = Portuguese, Peru at Bolivia = Spanish, atbp.). May mga nakakabasa rin ng Ingles o ng ibang wika.",
+  "外国の住民のうち、町の防災マップを母語で読める人は約 <strong>{map}%</strong>。このページの訳を足すと約 <strong>{here}%</strong>（めやす）": "Sa mga dayuhang residente, humigit-kumulang <strong>{map}%</strong> ang nakakabasa ng mapang pangsakuna ng bayan sa kanilang katutubong wika. Kapag idinagdag ang salin ng pahinang ito, humigit-kumulang <strong>{here}%</strong> (tantiya)",
+  "雨夕方から雪": "Ulan, niyebe mula hapon",
+  "雪夕方から雨": "Niyebe, ulan mula hapon"
  }
 }

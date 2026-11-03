@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-03T04:52:45.486Z",
+ "createdAt": "2026-11-03T05:16:03.650Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 670,
- "of": 662,
+ "count": 679,
+ "of": 670,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -676,6 +676,15 @@
   "防災情報の多言語対応": "Información de prevención de desastres en varios idiomas",
   "日本語教室と就学案内": "Clases de japonés e información de escolarización",
   "保育所・学童の申し込み": "Inscripción en guarderías y clubes extraescolares",
-  "日の当たる時間が、東京都心より年に約120時間長い": "Las horas de sol son unas 120 horas más al año que en el centro de Tokio"
+  "日の当たる時間が、東京都心より年に約120時間長い": "Las horas de sol son unas 120 horas más al año que en el centro de Tokio",
+  "線はバスの路線（時刻表データから）。バス停を押すと、この先の発車": "Las líneas son las rutas de autobús (a partir de los datos de horarios). Al pulsar una parada, se muestran las próximas salidas",
+  "あり": "Sí",
+  "なし": "No",
+  "国籍": "Nacionalidad",
+  "母語（めやす）": "Lengua materna (aprox.)",
+  "町の防災マップ": "Mapa de prevención de desastres del municipio",
+  "このページ": "Esta página",
+  "母語は国籍から推し量ったものです（ブラジル＝ポルトガル語、ペルー・ボリビア＝スペイン語など）。英語やほかの言葉が読める人もいます。": "La lengua materna se ha estimado a partir de la nacionalidad (Brasil = portugués; Perú y Bolivia = español, etc.). Algunas personas también leen inglés u otros idiomas.",
+  "外国の住民のうち、町の防災マップを母語で読める人は約 <strong>{map}%</strong>。このページの訳を足すと約 <strong>{here}%</strong>（めやす）": "Entre los residentes extranjeros, aproximadamente el <strong>{map}%</strong> puede leer el mapa de prevención de desastres del municipio en su lengua materna. Con la traducción de esta página, aproximadamente el <strong>{here}%</strong> (aprox.)"
  }
 }

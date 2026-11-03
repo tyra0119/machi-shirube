@@ -922,6 +922,41 @@ function wireAllPages() {
 }
 wireAllPages();
 
+// 母語で読める人：確かめ済みの答え「国籍ごとの人数」と「防災マップの外国語版」を並べ、国籍ごとに
+// 町の防災マップに母語の版があるか・このページで母語で読めるかを出す（台本の大泉町の場面「マップの言葉と国籍の割合を並べる」）。
+// 母語は国籍から推し量ったものなので「めやす」と書く
+const MOTHER_TONGUE = {
+  ブラジル: "pt", ポルトガル: "pt", ペルー: "es", ボリビア: "es", アルゼンチン: "es", パラグアイ: "es", コロンビア: "es", メキシコ: "es", スペイン: "es",
+  インドネシア: "id", ネパール: "ne", ベトナム: "vi", フィリピン: "tl", 中国: "zh", 台湾: "zh", 韓国: "ko", ミャンマー: "my",
+  バングラデシュ: "bn", バングラディシュ: "bn", スリランカ: "si", タイ: "th", 米国: "en", アメリカ: "en", 英国: "en", イギリス: "en",
+};
+const TONGUE_JA = { pt: "ポルトガル語", es: "スペイン語", id: "インドネシア語", ne: "ネパール語", vi: "ベトナム語", tl: "フィリピノ語", zh: "中国語", ko: "韓国語", my: "ミャンマー語", bn: "ベンガル語", si: "シンハラ語", th: "タイ語", en: "英語" };
+async function showLangGap(code) {
+  const all = Object.values(answersByPage).flat();
+  const shortOf = (a) => yardstick.questions.find((q) => q.id === a.qid)?.short ?? "";
+  const nat = all.find((a) => shortOf(a) === "国籍ごとの人数");
+  const map = all.find((a) => shortOf(a) === "防災マップの外国語版");
+  if (!nat || !map) return;
+  const natText = nat.valueJa ?? nat.value;
+  const mapText = (map.valueJa ?? map.value).split("\n")[0];
+  const rows = [...natText.matchAll(/([^\s\d位]+?) ([\d,]+)人（([\d.]+)%）/g)]
+    .map(([, name, n, rate]) => ({ name, n, rate: Number(rate), tongue: MOTHER_TONGUE[name] }))
+    .filter((r) => r.name !== "その他" && r.name !== "合計");
+  if (rows.length < 3) return;
+  // 町のマップの言葉：答えの1行目に出てくる言葉の名前
+  const onMap = new Set(Object.entries(TONGUE_JA).filter(([, ja]) => mapText.includes(ja)).map(([k]) => k));
+  const tr = await getData(`data/translations/${code}.json`);
+  const here = new Set(Object.keys(tr?.langs ?? {}));
+  const sum = (f) => rows.filter(f).reduce((s, r) => s + r.rate, 0).toFixed(1);
+  const mark = (ok) => (ok ? `<span class="lg-yes">${T("あり")}</span>` : `<span class="lg-no">${T("なし")}</span>`);
+  const max = Math.max(...rows.map((r) => r.rate));
+  $("langgap-block").hidden = false;
+  $("langgap-lead").innerHTML = TN("外国の住民のうち、町の防災マップを母語で読める人は約 <strong>{map}%</strong>。このページの訳を足すと約 <strong>{here}%</strong>（めやす）", { map: sum((r) => onMap.has(r.tongue)), here: sum((r) => onMap.has(r.tongue) || here.has(r.tongue)) });
+  $("langgap").innerHTML = `<li class="lg-head"><span>${T("国籍")}</span><span>${T("母語（めやす）")}</span><span>${T("町の防災マップ")}</span><span>${T("このページ")}</span></li>`
+    + rows.map((r) => `<li><span class="lg-nat">${esc(r.name)}<small>${r.n}${T("人")}・${r.rate}%</small><i class="lg-bar" style="width:${(r.rate / max) * 100}%"></i></span><span>${esc(T(TONGUE_JA[r.tongue] ?? "—"))}</span><span>${mark(onMap.has(r.tongue))}</span><span>${mark(here.has(r.tongue))}</span></li>`).join("");
+  $("langgap-note").innerHTML = `${T("母語は国籍から推し量ったものです（ブラジル＝ポルトガル語、ペルー・ボリビア＝スペイン語など）。英語やほかの言葉が読める人もいます。")}${KU()}${[nat, map].map((a) => a.source?.url ? `<a href="${esc(a.source.url)}" target="_blank" rel="noopener">${esc(a.source.title ?? a.source.url)}</a>` : "").filter(Boolean).join("・")}`;
+}
+
 // 母語で防災：Claude が訳し、別の Claude が訳し戻して確かめた訳（site/data/translations/{コード}.json）。
 // 確かめで意味がずれた訳は、人が OK するまで出さず、もとの日本語を出す
 const TR_NOTE = {
@@ -937,7 +972,7 @@ const TR_NOTE = {
 const TR_PENDING = { pt: "Tradução em verificação. Original em japonês:", es: "Traducción en verificación. Original en japonés:", en: "Translation being checked. Original Japanese:", easy: "いま たしかめて います。もとの にほんご：", id: "Terjemahan sedang diperiksa. Teks asli bahasa Jepang:", ne: "अनुवाद जाँच हुँदैछ। मूल जापानी:", vi: "Bản dịch đang được kiểm tra. Bản gốc tiếng Nhật:", tl: "Sinusuri pa ang salin. Orihinal na Hapon:" };
 async function showTranslations(code) {
   const t = await getData(`data/translations/${code}.json`);
-  if (!t) return;
+  if (!t) { $("foreign-guide").hidden = false; return; } // 訳の無い町だけ、いくつかの言葉で「ブラウザの翻訳を」と案内する
   const langs = Object.keys(t.langs);
   let lang = LANG ?? new URLSearchParams(location.search).get("lang");
   if (!langs.includes(lang)) lang = langs[0];
@@ -1102,6 +1137,7 @@ async function finishPage(code, townFeatures, startPart, scopeNote, at) {
   await showQuiz(code);
   const hasHinan = await showHinan(code, townFeatures, startPart);
   await showTranslations(code);
+  await showLangGap(code);
   await showGomi(code);
   gomiToday = await showGomiDays(code, part?.properties.name);
   await showAsk(code, part ? `${code}-${startPart}` : null);

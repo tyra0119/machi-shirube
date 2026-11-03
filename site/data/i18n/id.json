@@ -1,11 +1,11 @@
 {
  "lang": "id",
  "name": "Bahasa Indonesia",
- "createdAt": "2026-11-03T04:52:59.055Z",
+ "createdAt": "2026-11-03T05:16:28.654Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 669,
- "of": 662,
+ "count": 677,
+ "of": 670,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Ini adalah panduan hidup tidak resmi untuk kota ini. Claude mengumpulkannya dari situs resmi kota dan sumber lain, dengan mencantumkan sumbernya (Machishirube)",
   "すべてのページ": "Semua halaman",
@@ -675,6 +675,14 @@
   "防災情報の多言語対応": "Informasi Penanggulangan Bencana dalam Berbagai Bahasa",
   "日本語教室と就学案内": "Kelas Bahasa Jepang dan Informasi Masuk Sekolah",
   "保育所・学童の申し込み": "Pendaftaran Tempat Penitipan Anak dan Klub Anak Sepulang Sekolah",
-  "日の当たる時間が、東京都心より年に約120時間長い": "Waktu terkena sinar matahari sekitar 120 jam per tahun lebih lama daripada pusat kota Tokyo"
+  "日の当たる時間が、東京都心より年に約120時間長い": "Waktu terkena sinar matahari sekitar 120 jam per tahun lebih lama daripada pusat kota Tokyo",
+  "あり": "Ada",
+  "なし": "Tidak ada",
+  "国籍": "Kewarganegaraan",
+  "母語（めやす）": "Bahasa ibu (perkiraan)",
+  "町の防災マップ": "Peta Penanggulangan Bencana Kota",
+  "このページ": "Halaman ini",
+  "母語は国籍から推し量ったものです（ブラジル＝ポルトガル語、ペルー・ボリビア＝スペイン語など）。英語やほかの言葉が読める人もいます。": "Bahasa ibu diperkirakan dari kewarganegaraan (Brasil = bahasa Portugis, Peru dan Bolivia = bahasa Spanyol, dll.). Ada juga orang yang bisa membaca bahasa Inggris atau bahasa lain.",
+  "外国の住民のうち、町の防災マップを母語で読める人は約 <strong>{map}%</strong>。このページの訳を足すと約 <strong>{here}%</strong>（めやす）": "Di antara warga asing, yang bisa membaca peta penanggulangan bencana kota dalam bahasa ibunya sekitar <strong>{map}%</strong>. Dengan menambahkan terjemahan halaman ini, menjadi sekitar <strong>{here}%</strong> (perkiraan)"
  }
 }

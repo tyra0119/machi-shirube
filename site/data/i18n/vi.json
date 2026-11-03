@@ -1,11 +1,11 @@
 {
  "lang": "vi",
  "name": "Tiếng Việt",
- "createdAt": "2026-11-03T04:53:13.591Z",
+ "createdAt": "2026-11-03T05:16:40.978Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 668,
- "of": 662,
+ "count": 675,
+ "of": 670,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Đây là trang hướng dẫn đời sống không chính thức của thị trấn này. Claude thu thập từ các trang chính thức của thị trấn v.v. và ghi rõ nguồn (Machi-shirube)",
   "すべてのページ": "Tất cả các trang",
@@ -674,6 +674,13 @@
   "防災情報の多言語対応": "Thông tin phòng chống thiên tai bằng nhiều ngôn ngữ",
   "日本語教室と就学案内": "Lớp tiếng Nhật và hướng dẫn nhập học",
   "保育所・学童の申し込み": "Đăng ký nhà trẻ và lớp giữ trẻ sau giờ học",
-  "日の当たる時間が、東京都心より年に約120時間長い": "Số giờ có nắng nhiều hơn trung tâm Tokyo khoảng 120 giờ mỗi năm"
+  "日の当たる時間が、東京都心より年に約120時間長い": "Số giờ có nắng nhiều hơn trung tâm Tokyo khoảng 120 giờ mỗi năm",
+  "あり": "Có",
+  "なし": "Không",
+  "国籍": "Quốc tịch",
+  "母語（めやす）": "Tiếng mẹ đẻ (ước chừng)",
+  "町の防災マップ": "Bản đồ phòng chống thiên tai của thị trấn",
+  "このページ": "Trang này",
+  "母語は国籍から推し量ったものです（ブラジル＝ポルトガル語、ペルー・ボリビア＝スペイン語など）。英語やほかの言葉が読める人もいます。": "Tiếng mẹ đẻ được suy ra từ quốc tịch (Brazil = tiếng Bồ Đào Nha, Peru・Bolivia = tiếng Tây Ban Nha, v.v.). Cũng có người đọc được tiếng Anh hoặc các ngôn ngữ khác."
  }
 }

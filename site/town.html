@@ -205,7 +205,7 @@
   <div class="view" data-view="tetsuzuki" hidden><section class="block"><h2>手続き</h2><div class="answers-box" data-page="tetsuzuki"></div></section></div>
   <div class="view" data-view="foreign" hidden>
     <!-- この町の訳がまだ無いときの、いくつかの言葉での案内（訳のある町では隠す） -->
-    <div class="foreign-guide" id="foreign-guide">
+    <div class="foreign-guide" id="foreign-guide" hidden>
       <p class="fg-lead">この町の案内は、まだ日本語だけです。ブラウザの「翻訳」を使うと、自分の言葉で読めます。</p>
       <ul class="fg-list">
         <li lang="ja"><span class="fg-name">やさしい にほんご</span>この ページは にほんごです。ブラウザの「ほんやく」を つかって ください。</li>
@@ -221,6 +221,12 @@
       </ul>
       <p class="fg-link"><a href="https://www.moj.go.jp/isa/support/portal/index.html" target="_blank" rel="noopener">外国人生活支援ポータルサイト（出入国在留管理庁） / Foreign Residents Support Portal</a></p>
     </div>
+    <section class="block" id="langgap-block" hidden>
+      <h2>母語で読める人</h2>
+      <p class="langgap-lead" id="langgap-lead"></p>
+      <ol class="langgap" id="langgap"></ol>
+      <p class="note" id="langgap-note"></p>
+    </section>
     <section class="block" id="tr-block" hidden>
       <h2>母語で防災・暮らし</h2>
       <div class="tr-langs" id="tr-langs" role="radiogroup" aria-label="言葉を選ぶ"></div>

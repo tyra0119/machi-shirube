@@ -1,11 +1,11 @@
 {
  "lang": "en",
  "name": "English",
- "createdAt": "2026-11-03T04:52:47.909Z",
+ "createdAt": "2026-11-03T05:16:09.922Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 672,
- "of": 662,
+ "count": 680,
+ "of": 670,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "This is an unofficial guide to living in this town. Claude gathers information from the town's official website and other sources, and cites each source (Machishirube)",
   "すべてのページ": "All pages",
@@ -678,6 +678,14 @@
   "日本語教室と就学案内": "Japanese Classes and School Enrollment Guide",
   "保育所・学童の申し込み": "Applying for Daycare and After-School Care",
   "今日は {k} の日": "Today is {k} day",
-  "日の当たる時間が、東京都心より年に約120時間長い": "Gets about 120 more hours of sunlight per year than central Tokyo"
+  "日の当たる時間が、東京都心より年に約120時間長い": "Gets about 120 more hours of sunlight per year than central Tokyo",
+  "あり": "Yes",
+  "なし": "No",
+  "国籍": "Nationality",
+  "母語（めやす）": "First language (approx.)",
+  "町の防災マップ": "Town Disaster Prevention Map",
+  "このページ": "This page",
+  "母語は国籍から推し量ったものです（ブラジル＝ポルトガル語、ペルー・ボリビア＝スペイン語など）。英語やほかの言葉が読める人もいます。": "First language is estimated from nationality (Brazil = Portuguese; Peru and Bolivia = Spanish, etc.). Some people can also read English or other languages.",
+  "外国の住民のうち、町の防災マップを母語で読める人は約 <strong>{map}%</strong>。このページの訳を足すと約 <strong>{here}%</strong>（めやす）": "Among foreign residents, about <strong>{map}%</strong> can read the town's disaster prevention map in their first language. With the translations on this page added, about <strong>{here}%</strong> (approx.)"
  }
 }

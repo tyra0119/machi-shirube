@@ -590,3 +590,16 @@ body:has(.toc-fab:not([hidden])) { padding-bottom: 80px; }
 .fg-list li { font-size: 14px; line-height: 1.6; }
 .fg-name { display: block; font-size: 12px; font-weight: 700; color: var(--text-sub); }
 .fg-link { margin: 12px 0 0; font-size: 14px; }
+
+/* 母語で読める人：国籍ごとに、町の防災マップとこのページに母語の版があるか */
+.langgap-lead { font-size: 16px; line-height: 1.7; }
+.langgap-lead strong { font-size: 22px; }
+.langgap { list-style: none; margin: 8px 0 0; padding: 0; }
+.langgap li { display: grid; grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.2fr) 4.5em 4.5em; gap: 8px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+.langgap li.lg-head { font-size: 12px; color: var(--text-sub); padding-top: 0; }
+.lg-nat { position: relative; display: flex; flex-direction: column; font-weight: 600; }
+.lg-nat small { font-weight: 400; font-size: 12px; color: var(--text-sub); }
+.lg-bar { display: block; height: 6px; margin-top: 4px; border-radius: 3px; background: var(--accent); opacity: 0.5; }
+.lg-yes, .lg-no { display: inline-block; min-width: 3em; padding: 2px 8px; border-radius: 12px; text-align: center; font-size: 13px; font-weight: 600; }
+.lg-yes { background: var(--accent); color: var(--accent-text); }
+.lg-no { border: 1px solid var(--line); color: var(--text-sub); }

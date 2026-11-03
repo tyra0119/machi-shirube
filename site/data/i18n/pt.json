@@ -1,11 +1,11 @@
 {
  "lang": "pt",
  "name": "Português",
- "createdAt": "2026-11-03T04:52:41.772Z",
+ "createdAt": "2026-11-03T05:15:55.409Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 672,
- "of": 662,
+ "count": 680,
+ "of": 670,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Guia não oficial da vida na cidade. O Claude reúne as informações em sites oficiais da cidade e outras fontes, e indica a origem de cada uma (Machishirube)",
   "すべてのページ": "Todas as páginas",
@@ -678,6 +678,14 @@
   "防災情報の多言語対応": "Informações de prevenção de desastres em vários idiomas",
   "日本語教室と就学案内": "Aulas de japonês e informações sobre matrícula escolar",
   "保育所・学童の申し込み": "Inscrição em creches e no after-school (gakudō)",
-  "日の当たる時間が、東京都心より年に約120時間長い": "As horas de sol por ano são cerca de 120 horas a mais do que no centro de Tóquio"
+  "日の当たる時間が、東京都心より年に約120時間長い": "As horas de sol por ano são cerca de 120 horas a mais do que no centro de Tóquio",
+  "あり": "Sim",
+  "なし": "Não",
+  "国籍": "Nacionalidade",
+  "母語（めやす）": "Língua materna (estimativa)",
+  "町の防災マップ": "Mapa de prevenção de desastres da cidade",
+  "このページ": "Esta página",
+  "母語は国籍から推し量ったものです（ブラジル＝ポルトガル語、ペルー・ボリビア＝スペイン語など）。英語やほかの言葉が読める人もいます。": "A língua materna foi deduzida a partir da nacionalidade (Brasil = português, Peru e Bolívia = espanhol, etc.). Algumas pessoas também sabem ler inglês ou outras línguas.",
+  "外国の住民のうち、町の防災マップを母語で読める人は約 <strong>{map}%</strong>。このページの訳を足すと約 <strong>{here}%</strong>（めやす）": "Entre os moradores estrangeiros, cerca de <strong>{map}%</strong> conseguem ler o mapa de prevenção de desastres da cidade na sua língua materna. Com a tradução desta página, passa a ser cerca de <strong>{here}%</strong> (estimativa)"
  }
 }
