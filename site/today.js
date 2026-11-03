@@ -23,10 +23,13 @@ async function loadToday(code, lat, lon) {
     fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat.toFixed(3)}&longitude=${lon.toFixed(3)}&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,relative_humidity_2m_mean,wind_speed_10m_max,sunshine_duration,uv_index_max&timezone=Asia%2FTokyo&forecast_days=2&wind_speed_unit=ms`)
       .then((r) => r.json()).catch(() => null),
   ]);
+  // ほかの言葉では、天気コードの決まった言い方（気象庁の一覧。scripts/build-telops.mjs）を訳して出す
+  if (LANG && !TELOPS) TELOPS = (await fetch("data/jma-telops.json").then((r) => (r.ok ? r.json() : null)).catch(() => null))?.telops ?? {};
   return { jma, days: days(jma, fc, om), warnings: warnings(jma, warn), quakes: myQuakes(code, whole, quakes) };
 }
 
 // 今日・明日：気象庁の天気の文と降水確率、Open-Meteo の気温など
+let TELOPS = null;
 function days(jma, fc, om) {
   const out = [];
   const series = fc?.[0]?.timeSeries;
@@ -38,6 +41,8 @@ function days(jma, fc, om) {
       label: T(i === 0 ? "今日" : "明日"),
       date: d?.time?.[i],
       weather: area?.weathers?.[i]?.replace(/　/g, " "),
+      // ほかの言葉：天気コードの決まった言い方（英語は気象庁の英語、ほかは日本語の決まった言い方を訳したもの）
+      weatherLang: (() => { const t = LANG && TELOPS?.[area?.weatherCodes?.[i]]; return !t ? null : LANG === "en" ? t.en.charAt(0) + t.en.slice(1).toLowerCase() : T(t.ja) !== t.ja || LANG === "easy" ? T(t.ja) : null; })(),
       weatherCode: area?.weatherCodes?.[i],
       max: d?.temperature_2m_max?.[i], min: d?.temperature_2m_min?.[i],
       pop: d?.precipitation_probability_max?.[i],
@@ -117,7 +122,7 @@ function todayHTML(t, esc) {
   const dayCard = (d) => `
     <article class="day">
       <h3>${d.label}<small>${d.date ? ` ${LANG ? new Date(`${d.date}T12:00:00`).toLocaleDateString(LANG === "easy" ? "ja" : LANG, { month: "short", day: "numeric" }) : `${Number(d.date.slice(5, 7))}月${Number(d.date.slice(8, 10))}日`}` : ""}</small></h3>
-      <p class="w"><span class="icon" aria-hidden="true">${WEATHER_ICON(d.weatherCode)}</span>${d.weather ? `${esc(d.weather)}<small class="by">${T("気象庁の予報")}${LANG && LANG !== "easy" ? `（${T("日本語")}）` : ""}</small>` : T("気象庁の予報を読み込めませんでした")}</p>
+      <p class="w"><span class="icon" aria-hidden="true">${WEATHER_ICON(d.weatherCode)}</span>${d.weather ? `${esc(d.weatherLang ?? d.weather)}<small class="by">${T("気象庁の予報")}${LANG && LANG !== "easy" && !d.weatherLang ? `（${T("日本語")}）` : ""}</small>` : T("気象庁の予報を読み込めませんでした")}</p>
       <p class="t">${d.max != null ? `<strong>${Math.round(d.max)}℃</strong> / ${Math.round(d.min)}℃` : ""}${d.pop != null ? `<span>${T("雨")} ${d.pop}%</span>` : ""}</p>
       ${d.laundry ? `<p class="row"><span class="k">${icon("laundry")}${T("洗濯")}</span><span class="v lv${d.laundry.level}">${T(d.laundry.text)}</span></p>` : ""}
       ${d.clothes ? `<p class="row"><span class="k">${icon("shirt")}${T("服装")}</span><span class="v">${esc(d.clothes.text)}${d.clothes.notes.length ? `<small>${esc(d.clothes.notes.join("。"))}</small>` : ""}</span></p>` : ""}

@@ -19,6 +19,8 @@ for (const f of fs.readdirSync("site").filter((x) => x.endsWith(".js"))) {
   for (const m of fs.readFileSync(`site/${f}`, "utf8").matchAll(/TN\("([^"]+)",/g)) keys.add(m[1]);
 }
 for (const k of ["日本語", "（AI による訳）", "足しました", "新しくしました", "照らし直しました"]) keys.add(k);
+// 天気コードの決まった言い方（気象庁の一覧。site/data/jma-telops.json。today.js が T(日本語) で出す）
+if (fs.existsSync("site/data/jma-telops.json")) for (const t of Object.values(JSON.parse(fs.readFileSync("site/data/jma-telops.json", "utf8")).telops)) keys.add(t.ja);
 // 物差しの問いの見出し（新しくなったこと・見立てのボタンなどで T(見出し) と出す）
 for (const q of JSON.parse(fs.readFileSync("site/data/yardstick.json", "utf8")).questions) if (q.short) keys.add(q.short);
 // 訳のある町（site/data/translations/{コード}.json がある町）のデータの注意書き・明るい話題（町のページが T(d.note) などで出す）
