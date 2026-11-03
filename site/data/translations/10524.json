@@ -1,7 +1,7 @@
 {
  "code": "10524",
  "name": "邑楽郡大泉町",
- "createdAt": "2026-11-03T04:09:51.785Z",
+ "createdAt": "2026-11-03T04:20:46.789Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
  "langs": {
@@ -560,6 +560,23 @@
      },
      "status": "auto",
      "problems": []
+    },
+    {
+     "qid": "Q54",
+     "short": "Inscrição em creche e no programa extraescolar (学童保育)",
+     "text": "【Creche (保育所) e Centro de Educação Infantil certificado (認定こども園) – certificações tipo 2 e 3 (2・3号認定)】\nA inscrição é feita na Divisão de Educação e Cuidados Infantis (教育保育課), guichê nº 107 no 1º andar da sede da prefeitura (庁舎).\nO período de inscrição para a entrada em abril do ano fiscal Reiwa 9 (令和9年度) é de 9 de outubro a 10 de novembro de Reiwa 8 (令和8年), exceto sábados, domingos e feriados.\nO horário é das 8h30 da manhã às 5h15 da tarde.\nEm princípio, a entrega deve ser feita pessoalmente. Se for difícil, também é possível enviar pelo correio (o documento deve chegar dentro do período).\nPara a certificação tipo 1 (1号認定) de jardim de infância (幼稚園) e de Centro de Educação Infantil certificado (認定こども園), a inscrição é feita diretamente na própria instituição.\nPessoas de nacionalidade estrangeira precisam de uma cópia do cartão de residência (在留カード).\n【Programa extraescolar (学童保育)】\nA inscrição é feita no Centro Infantil (児童館) da área da escola primária (小学校) que a criança frequenta.\nPara o ano fiscal Reiwa 9 (令和9年度), o período é de 2 de novembro a 15 de dezembro de Reiwa 8 (令和8年), das 9h às 17h (exceto das 12h às 13h e nos dias de fechamento).\nPara uso a partir do meio do ano fiscal, as inscrições são aceitas a qualquer momento, e também é possível solicitar online.\nCentro Infantil Norte (北児童館) 0276-63-3820, Centro Infantil Oeste (西児童館) 0276-62-4689, Centro Infantil Sul (南児童館) 0276-63-1721, Centro Infantil Leste (東児童館) 0276-62-0133.\n【Telefone】\nDivisão de Educação e Cuidados Infantis (教育保育課) 0276-63-3111.\n【Idiomas】\nO site da cidade tem uma função de exibição multilíngue por tradução automática (tradução feita por máquina).\nNão foi encontrado um guia em língua estrangeira nem em japonês fácil (やさしい日本語) específico para creches e programa extraescolar.",
+     "original": "【保育所・認定こども園（2・3号認定）】\n教育保育課（庁舎1階107番窓口）に申し込みます。\n令和9年度4月入園の受付は、令和8年10月9日から11月10日までです（土日祝日を除く）。\n時間は午前8時30分から午後5時15分です。\n直接の提出が原則です。難しいときは郵送もできます（期間内必着）。\n幼稚園・認定こども園の1号認定は、園に直接申し込みます。\n外国籍の人は在留カードの写しが必要です。\n【学童保育】\n通学する小学校区の児童館で申し込みます。\n令和9年度分は、令和8年11月2日から12月15日までです（9時から17時、12時から13時と休館日を除く）。\n年度の途中からの利用は随時受付で、オンライン申請もできます。\n北児童館 0276-63-3820、西児童館 0276-62-4689、南児童館 0276-63-1721、東児童館 0276-62-0133。\n【電話】\n教育保育課 0276-63-3111。\n【言語】\n町サイトに自動翻訳で多言語表示する案内があります（機械翻訳）。\n保育・学童専用の外国語やさしい日本語の案内は見つかりませんでした。",
+     "back": "【保育所・認定こども園（2・3号認定）】教育保育課（庁舎1階107番窓口）に申し込みます。令和9年度4月入園の受付は令和8年10月9日から11月10日までです（土日祝日を除く）。時間は午前8時30分から午後5時15分です。原則として直接提出します。難しいときは郵送もできます（期間内必着）。幼稚園・認定こども園の1号認定は、園に直接申し込みます。外国籍の人は在留カードの写しが必要です。【学童保育】通学する小学校区の児童館で申し込みます。令和9年度分は令和8年11月2日から12月15日までです（9時から17時、12時から13時と休館日を除く）。年度の途中からの利用は随時受付で、オンライン申請もできます。北児童館 0276-63-3820、西児童館 0276-62-4689、南児童館 0276-63-1721、東児童館 0276-62-0133。【電話】教育保育課 0276-63-3111。【言語】市のサイトに自動翻訳で多言語表示する案内があります（機械翻訳）。保育・学童専用の外国語やさしい日本語の案内は見つかりませんでした。",
+     "source": {
+      "title": "令和9年度保育施設の園児募集のお知らせ｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s030/kosodate/010/010/050/20200826145316.html",
+      "where": "申込方法（受付期間・提出場所）"
+     },
+     "status": "pending",
+     "problems": [
+      "「町サイト」が「市のサイト」になっています。原文は「町」で、訳文の \"cidade\"（市）は行政区分が違います。その他の数字・日付・時間・名前・場所は一致しています。"
+     ],
+     "ledgerId": "r00288"
     }
    ]
   },
@@ -1124,6 +1141,20 @@
       "title": "大泉町総合防災マップ｜大泉町",
       "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/170/20200828141906.html",
       "where": "主な改訂事項／避難所でピクトグラムを掲示します(42ページ)"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q54",
+     "short": "Solicitud para guarderías (hoikusho) y clubes extraescolares (gakudo)",
+     "text": "【Guarderías (保育所) y centros de educación infantil certificados (認定こども園) (certificación tipo 2 y 3)】\nLa solicitud se presenta en la Sección de Educación y Cuidado Infantil (教育保育課), ventanilla n.º 107 de la planta baja (1階) del ayuntamiento (庁舎).\nPara la admisión de abril del año fiscal Reiwa 9 (令和9年度), las solicitudes se reciben del 9 de octubre al 10 de noviembre de Reiwa 8 (令和8年), sin contar sábados, domingos ni festivos.\nEl horario es de 8:30 a.m. a 5:15 p.m.\nEn principio, los documentos se entregan en persona. Si es difícil, también se pueden enviar por correo (deben llegar dentro del plazo).\nPara la certificación tipo 1 de jardines de infancia (幼稚園) y centros de educación infantil certificados (認定こども園), la solicitud se hace directamente en el centro.\nLas personas de nacionalidad extranjera necesitan una copia de la tarjeta de residencia (在留カード).\n【Club extraescolar (学童保育)】\nLa solicitud se presenta en el centro infantil (児童館) del distrito de la escuela primaria a la que asiste el niño.\nPara el año fiscal Reiwa 9 (令和9年度), el plazo es del 2 de noviembre al 15 de diciembre de Reiwa 8 (令和8年), de 9:00 a 17:00 (excepto de 12:00 a 13:00 y los días de cierre del centro).\nPara empezar a usarlo a mitad de año, la solicitud se recibe en cualquier momento y también se puede hacer en línea.\nCentro Infantil Norte (北児童館) 0276-63-3820, Centro Infantil Oeste (西児童館) 0276-62-4689, Centro Infantil Sur (南児童館) 0276-63-1721, Centro Infantil Este (東児童館) 0276-62-0133.\n【Teléfono】\nSección de Educación y Cuidado Infantil (教育保育課) 0276-63-3111.\n【Idioma】\nEl sitio web del municipio tiene una guía para mostrar la página en varios idiomas mediante traducción automática (traducción automática).\nNo se encontró una guía específica sobre guarderías y clubes extraescolares en idiomas extranjeros ni en japonés sencillo.",
+     "original": "【保育所・認定こども園（2・3号認定）】\n教育保育課（庁舎1階107番窓口）に申し込みます。\n令和9年度4月入園の受付は、令和8年10月9日から11月10日までです（土日祝日を除く）。\n時間は午前8時30分から午後5時15分です。\n直接の提出が原則です。難しいときは郵送もできます（期間内必着）。\n幼稚園・認定こども園の1号認定は、園に直接申し込みます。\n外国籍の人は在留カードの写しが必要です。\n【学童保育】\n通学する小学校区の児童館で申し込みます。\n令和9年度分は、令和8年11月2日から12月15日までです（9時から17時、12時から13時と休館日を除く）。\n年度の途中からの利用は随時受付で、オンライン申請もできます。\n北児童館 0276-63-3820、西児童館 0276-62-4689、南児童館 0276-63-1721、東児童館 0276-62-0133。\n【電話】\n教育保育課 0276-63-3111。\n【言語】\n町サイトに自動翻訳で多言語表示する案内があります（機械翻訳）。\n保育・学童専用の外国語やさしい日本語の案内は見つかりませんでした。",
+     "back": "【保育所・認定こども園（2・3号認定）】教育保育課（庁舎1階107番窓口）に申し込みます。令和9年度4月入園の受付は、令和8年10月9日から11月10日までです（土日祝日を除く）。時間は午前8時30分から午後5時15分です。直接の提出が原則です。難しいときは郵送もできます（期間内必着）。幼稚園・認定こども園の1号認定は、園に直接申し込みます。外国籍の人は在留カードの写しが必要です。【学童保育】通学する小学校区の児童館で申し込みます。令和9年度分は、令和8年11月2日から12月15日までです（9時から17時、12時から13時と休館日を除く）。年度の途中からの利用は随時受付で、オンライン申請もできます。北児童館 0276-63-3820、西児童館 0276-62-4689、南児童館 0276-63-1721、東児童館 0276-62-0133。【電話】教育保育課 0276-63-3111。【言語】町サイトに自動翻訳で多言語表示する案内があります（機械翻訳）。保育・学童専用の外国語やさしい日本語の案内は見つかりませんでした。",
+     "source": {
+      "title": "令和9年度保育施設の園児募集のお知らせ｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s030/kosodate/010/010/050/20200826145316.html",
+      "where": "申込方法（受付期間・提出場所）"
      },
      "status": "auto",
      "problems": []
@@ -1698,6 +1729,23 @@
      "problems": [
       "意味のずれはなし。訳文に冠詞の誤り「a Easy Japanese」があるが、意味には影響しない。"
      ]
+    },
+    {
+     "qid": "Q54",
+     "short": "Applying for Nursery Schools and After-School Care (Gakudō)",
+     "text": "[Nursery Schools and Certified Centers for Early Childhood Education and Care (Category 2 and 3 certification)]\nApply at the Education and Childcare Division (教育保育課), Town Hall 1st floor, Window No. 107.\nApplications for admission in April of Reiwa 9 (fiscal year 2027) are accepted from October 9 to November 10, Reiwa 8 (2026) (excluding Saturdays, Sundays, and public holidays).\nHours are 8:30 a.m. to 5:15 p.m.\nApplications must in principle be submitted in person. If that is difficult, you may also send them by mail (they must arrive within the application period).\nFor Category 1 certification at kindergartens and certified centers for early childhood education and care, apply directly to the kindergarten or center.\nForeign nationals must submit a copy of their residence card (在留カード).\n[After-School Care (Gakudō Hoiku)]\nApply at the children's center (児童館) in the elementary school district your child attends.\nFor Reiwa 9 (fiscal year 2027), applications are accepted from November 2 to December 15, Reiwa 8 (2026) (9:00 a.m. to 5:00 p.m., excluding 12:00 to 1:00 p.m. and the center's closed days).\nFor use starting partway through the school year, applications are accepted at any time, and you can also apply online.\nNorth Children's Center (北児童館) 0276-63-3820, West Children's Center (西児童館) 0276-62-4689, South Children's Center (南児童館) 0276-63-1721, East Children's Center (東児童館) 0276-62-0133.\n[Phone]\nEducation and Childcare Division (教育保育課) 0276-63-3111.\n[Languages]\nThe town website has a guide for displaying the site in multiple languages by automatic translation (machine translation).\nNo guide in foreign languages or Plain Japanese specifically for nursery school and after-school care was found.",
+     "original": "【保育所・認定こども園（2・3号認定）】\n教育保育課（庁舎1階107番窓口）に申し込みます。\n令和9年度4月入園の受付は、令和8年10月9日から11月10日までです（土日祝日を除く）。\n時間は午前8時30分から午後5時15分です。\n直接の提出が原則です。難しいときは郵送もできます（期間内必着）。\n幼稚園・認定こども園の1号認定は、園に直接申し込みます。\n外国籍の人は在留カードの写しが必要です。\n【学童保育】\n通学する小学校区の児童館で申し込みます。\n令和9年度分は、令和8年11月2日から12月15日までです（9時から17時、12時から13時と休館日を除く）。\n年度の途中からの利用は随時受付で、オンライン申請もできます。\n北児童館 0276-63-3820、西児童館 0276-62-4689、南児童館 0276-63-1721、東児童館 0276-62-0133。\n【電話】\n教育保育課 0276-63-3111。\n【言語】\n町サイトに自動翻訳で多言語表示する案内があります（機械翻訳）。\n保育・学童専用の外国語やさしい日本語の案内は見つかりませんでした。",
+     "back": "【保育所・認定こども園（2・3号認定）】教育保育課（庁舎1階107番窓口）に申し込みます。令和8年10月9日から11月10日までに、令和9年度4月入園の受付を行います（土日祝日を除く）。時間は午前8時30分から午後5時15分です。原則として直接提出してください。難しい場合は郵送もできます（期間内必着）。幼稚園・認定こども園の1号認定は、園に直接申し込みます。外国籍の方は在留カードの写しが必要です。【学童保育】通学する小学校区の児童館で申し込みます。令和9年度分は、令和8年11月2日から12月15日までです（9時から17時、12時から13時と休館日を除く）。年度の途中からの利用は随時受付で、オンライン申請もできます。北児童館 0276-63-3820、西児童館 0276-62-4689、南児童館 0276-63-1721、東児童館 0276-62-0133。【電話】教育保育課 0276-63-3111。【言語】町サイトに自動翻訳で多言語表示する案内があります（機械翻訳）。保育・学童専用の外国語やさしい日本語の案内は見つかりませんでした。",
+     "source": {
+      "title": "令和9年度保育施設の園児募集のお知らせ｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s030/kosodate/010/010/050/20200826145316.html",
+      "where": "申込方法（受付期間・提出場所）"
+     },
+     "status": "pending",
+     "problems": [
+      "「令和9年度」の後に「(fiscal year 2027)」と西暦年度の補足が追加されています。内容自体は正しいですが、原文にない追記です。ほかの数字・日付・時間・名前・場所は一致しています。"
+     ],
+     "ledgerId": "r00289"
     }
    ]
   },
@@ -2269,6 +2317,20 @@
      },
      "status": "auto",
      "problems": []
+    },
+    {
+     "qid": "Q54",
+     "short": "保育所（ほいくしょ）・学童（がくどう）の申（もう）し込（こ）み",
+     "text": "【保育所（ほいくしょ）・認定（にんてい）こども園（えん）（2・3号認定（ごうにんてい））】\n教育保育課（きょういくほいくか）の107番（ばん）の窓口（まどぐち）（庁舎（ちょうしゃ）1階（かい））で申（もう）し込（こ）みます。\n令和（れいわ）9年度（ねんど）4月（がつ）に入園（にゅうえん）したい人（ひと）の受付（うけつけ）は、令和8年10月9日から11月10日までです。土曜日（どようび）・日曜日（にちようび）・祝日（しゅくじつ）は受付（うけつけ）がありません。\n時間（じかん）は午前（ごぜん）8時30分から午後（ごご）5時15分までです。\n自分（じぶん）で持（も）って行（い）くのが基本（きほん）です。行（い）くのが難（むずか）しいときは、郵便（ゆうびん）で送（おく）ることもできます。受付（うけつけ）の期間（きかん）の中（なか）に着（つ）くようにしてください。\n幼稚園（ようちえん）と認定（にんてい）こども園（えん）の1号認定（ごうにんてい）は、園（えん）に直接（ちょくせつ）申（もう）し込（こ）みます。\n外国（がいこく）の国籍（こくせき）の人（ひと）は、在留（ざいりゅう）カードのコピーが必要（ひつよう）です。\n\n【学童保育（がくどうほいく）】\n通（かよ）っている小学校（しょうがっこう）の地区（ちく）の児童館（じどうかん）で申（もう）し込（こ）みます。\n令和（れいわ）9年度（ねんど）の分（ぶん）の受付（うけつけ）は、令和8年11月2日から12月15日までです。時間（じかん）は9時から17時までです。ただし、12時から13時までと、休館日（きゅうかんび）は受付（うけつけ）がありません。\n年度（ねんど）の途中（とちゅう）から使（つか）いたいときは、いつでも受付（うけつけ）をしています。オンラインでも申請（しんせい）できます。\n北児童館（きたじどうかん） 0276-63-3820\n西児童館（にしじどうかん） 0276-62-4689\n南児童館（みなみじどうかん） 0276-63-1721\n東児童館（ひがしじどうかん） 0276-62-0133\n\n【電話（でんわ）】\n教育保育課（きょういくほいくか） 0276-63-3111\n\n【言葉（ことば）】\n町（まち）のサイトに、自動翻訳（じどうほんやく）でいろいろな言葉（ことば）で見（み）られる案内（あんない）があります（機械翻訳（きかいほんやく））。\n保育（ほいく）・学童（がくどう）だけの外国語（がいこくご）の案内（あんない）も、やさしい日本語（にほんご）の案内（あんない）も、見（み）つかりませんでした。",
+     "original": "【保育所・認定こども園（2・3号認定）】\n教育保育課（庁舎1階107番窓口）に申し込みます。\n令和9年度4月入園の受付は、令和8年10月9日から11月10日までです（土日祝日を除く）。\n時間は午前8時30分から午後5時15分です。\n直接の提出が原則です。難しいときは郵送もできます（期間内必着）。\n幼稚園・認定こども園の1号認定は、園に直接申し込みます。\n外国籍の人は在留カードの写しが必要です。\n【学童保育】\n通学する小学校区の児童館で申し込みます。\n令和9年度分は、令和8年11月2日から12月15日までです（9時から17時、12時から13時と休館日を除く）。\n年度の途中からの利用は随時受付で、オンライン申請もできます。\n北児童館 0276-63-3820、西児童館 0276-62-4689、南児童館 0276-63-1721、東児童館 0276-62-0133。\n【電話】\n教育保育課 0276-63-3111。\n【言語】\n町サイトに自動翻訳で多言語表示する案内があります（機械翻訳）。\n保育・学童専用の外国語やさしい日本語の案内は見つかりませんでした。",
+     "back": "【保育所・認定こども園（2・3号認定）】\n教育保育課（庁舎1階107番窓口）で申し込みます。\n令和9年度4月入園の受付は、令和8年10月9日から11月10日までです。土曜日・日曜日・祝日は受付がありません。\n時間は午前8時30分から午後5時15分までです。\n自分で持って行くのが基本です。行くのが難しいときは、郵便で送ることもできます。受付期間の中に着くようにしてください。\n幼稚園と認定こども園の1号認定は、園に直接申し込みます。\n外国の国籍の人は、在留カードのコピーが必要です。\n【学童保育】\n通っている小学校の地区の児童館で申し込みます。\n令和9年度分の受付は、令和8年11月2日から12月15日までです。時間は9時から17時までです。ただし、12時から13時までと、休館日は受付がありません。\n年度の途中から使いたいときは、いつでも受付をしています。オンラインでも申請できます。\n北児童館 0276-63-3820\n西児童館 0276-62-4689\n南児童館 0276-63-1721\n東児童館 0276-62-0133\n【電話】\n教育保育課 0276-63-3111\n【言葉】\n町のサイトに、自動翻訳でいろいろな言葉で見られる案内があります（機械翻訳）。\n保育・学童だけの外国語の案内も、やさしい日本語の案内も、見つかりませんでした。",
+     "source": {
+      "title": "令和9年度保育施設の園児募集のお知らせ｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s030/kosodate/010/010/050/20200826145316.html",
+      "where": "申込方法（受付期間・提出場所）"
+     },
+     "status": "auto",
+     "problems": []
     }
    ]
   },
@@ -2831,6 +2893,23 @@
      "problems": [
       "「町ホームページ」の「町」を「kota/desa（市または村）」と訳しており、原文の「町」より範囲が広く読めます。「menu」の語を足していますが、意味は同じです。"
      ]
+    },
+    {
+     "qid": "Q54",
+     "short": "Pendaftaran penitipan anak (保育所) dan penitipan sepulang sekolah (学童保育)",
+     "text": "【Tempat penitipan anak (保育所) dan lembaga PAUD terpadu (認定こども園) (Sertifikasi Kategori 2 dan 3)】\nDaftar ke Seksi Pendidikan dan Penitipan Anak (教育保育課), loket nomor 107 di lantai 1 gedung kantor pemerintah (庁舎).\nPendaftaran untuk masuk bulan April tahun ajaran Reiwa 9 (令和9年度) dibuka dari 9 Oktober Reiwa 8 (令和8年) sampai 10 November (kecuali Sabtu, Minggu, dan hari libur nasional).\nJam layanan: pukul 8.30 pagi sampai 5.15 sore.\nPada prinsipnya berkas diserahkan langsung. Jika sulit, bisa juga dikirim lewat pos (harus sudah sampai dalam periode pendaftaran).\nUntuk Kategori 1 di taman kanak-kanak (幼稚園) dan lembaga PAUD terpadu (認定こども園), daftar langsung ke lembaga yang bersangkutan.\nWarga negara asing memerlukan fotokopi kartu izin tinggal (在留カード).\n【Penitipan sepulang sekolah (学童保育)】\nDaftar di pusat anak (児童館) yang berada di wilayah sekolah dasar tempat anak bersekolah.\nUntuk tahun ajaran Reiwa 9 (令和9年度), pendaftaran dibuka dari 2 November Reiwa 8 (令和8年) sampai 15 Desember (pukul 9.00 sampai 17.00, kecuali pukul 12.00 sampai 13.00 dan hari tutup).\nUntuk mulai menggunakan layanan di tengah tahun ajaran, pendaftaran diterima kapan saja, dan bisa juga diajukan secara online.\nPusat Anak Utara (北児童館) 0276-63-3820, Pusat Anak Barat (西児童館) 0276-62-4689, Pusat Anak Selatan (南児童館) 0276-63-1721, Pusat Anak Timur (東児童館) 0276-62-0133.\n【Telepon】\nSeksi Pendidikan dan Penitipan Anak (教育保育課) 0276-63-3111.\n【Bahasa】\nSitus web kota memiliki panduan untuk menampilkan halaman dalam berbagai bahasa dengan terjemahan otomatis (terjemahan mesin).\nPanduan khusus penitipan anak dan penitipan sepulang sekolah dalam bahasa asing atau bahasa Jepang mudah tidak ditemukan.",
+     "original": "【保育所・認定こども園（2・3号認定）】\n教育保育課（庁舎1階107番窓口）に申し込みます。\n令和9年度4月入園の受付は、令和8年10月9日から11月10日までです（土日祝日を除く）。\n時間は午前8時30分から午後5時15分です。\n直接の提出が原則です。難しいときは郵送もできます（期間内必着）。\n幼稚園・認定こども園の1号認定は、園に直接申し込みます。\n外国籍の人は在留カードの写しが必要です。\n【学童保育】\n通学する小学校区の児童館で申し込みます。\n令和9年度分は、令和8年11月2日から12月15日までです（9時から17時、12時から13時と休館日を除く）。\n年度の途中からの利用は随時受付で、オンライン申請もできます。\n北児童館 0276-63-3820、西児童館 0276-62-4689、南児童館 0276-63-1721、東児童館 0276-62-0133。\n【電話】\n教育保育課 0276-63-3111。\n【言語】\n町サイトに自動翻訳で多言語表示する案内があります（機械翻訳）。\n保育・学童専用の外国語やさしい日本語の案内は見つかりませんでした。",
+     "back": "【保育所・認定こども園（2・3号認定）】教育保育課（庁舎1階107番窓口）に申し込みます。令和9年度4月入園の受付は、令和8年10月9日から11月10日までです（土日祝日を除く）。時間は午前8時30分から午後5時15分です。原則として直接提出します。難しい場合は郵送もできます（期間内必着）。幼稚園・認定こども園の1号認定は、園に直接申し込みます。外国籍の人は在留カードの写しが必要です。【学童保育】通学する小学校区の児童館で申し込みます。令和9年度分は、令和8年11月2日から12月15日までです（9時から17時、12時から13時と休館日を除く）。年度途中からの利用は随時受付で、オンライン申請もできます。北児童館 0276-63-3820、西児童館 0276-62-4689、南児童館 0276-63-1721、東児童館 0276-62-0133。【電話】教育保育課 0276-63-3111。【言語】市サイトに自動翻訳で多言語表示する案内があります（機械翻訳）。保育・学童専用の外国語やさしい日本語の案内は見つかりませんでした。",
+     "source": {
+      "title": "令和9年度保育施設の園児募集のお知らせ｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s030/kosodate/010/010/050/20200826145316.html",
+      "where": "申込方法（受付期間・提出場所）"
+     },
+     "status": "pending",
+     "problems": [
+      "「町サイト」が「Situs web kota（市のサイト）」になっている。町と市の違い。それ以外の数字・日付・時間・電話番号・場所は一致。"
+     ],
+     "ledgerId": "r00290"
     }
    ]
   },
@@ -3389,6 +3468,20 @@
      },
      "status": "auto",
      "problems": []
+    },
+    {
+     "qid": "Q54",
+     "short": "डे-केयर केन्द्र (保育所) र विद्यालयपछिको बालबालिका हेरचाह (学童保育) को आवेदन",
+     "text": "【डे-केयर केन्द्र・प्रमाणित बाल केन्द्र (保育所・認定こども園) (वर्ग 2・3 प्रमाणीकरण)】\nशिक्षा तथा बालबालिका हेरचाह शाखा (教育保育課) (नगर कार्यालय भवनको पहिलो तल्ला, काउन्टर नम्बर 107 / 庁舎1階107番窓口) मा आवेदन दिनुहोस्।\nरेइवा 9 वर्षको अप्रिल भर्नाको लागि आवेदन रेइवा 8 वर्षको अक्टोबर 9 देखि नोभेम्बर 10 सम्म लिइन्छ (शनिबार, आइतबार र सार्वजनिक बिदा बाहेक)।\nसमय बिहान 8:30 देखि साँझ 5:15 सम्म हो।\nआफैँ बुझाउनु सामान्य नियम हो। गाह्रो भएमा हुलाकबाट पनि पठाउन सकिन्छ (तोकिएको अवधिभित्र पुगिसक्नुपर्छ)।\nकिन्डरगार्टन (幼稚園) र प्रमाणित बाल केन्द्र (認定こども園) को वर्ग 1 प्रमाणीकरणको लागि सम्बन्धित केन्द्रमै सिधै आवेदन दिनुहोस्।\nविदेशी नागरिकलाई निवास कार्ड (在留カード) को प्रतिलिपि चाहिन्छ।\n【विद्यालयपछिको बालबालिका हेरचाह (学童保育)】\nबच्चा पढ्ने प्राथमिक विद्यालयको क्षेत्रको बाल केन्द्र (児童館) मा आवेदन दिनुहोस्।\nरेइवा 9 वर्षको लागि रेइवा 8 वर्षको नोभेम्बर 2 देखि डिसेम्बर 15 सम्म हो (9 बजे देखि 17 बजेसम्म; 12 बजे देखि 13 बजेसम्म र बन्द रहने दिन बाहेक)।\nवर्षको बीचमा सुरु गर्न चाहनेको आवेदन जुनसुकै बेला लिइन्छ, अनलाइन आवेदन पनि गर्न सकिन्छ।\nउत्तर बाल केन्द्र (北児童館) 0276-63-3820, पश्चिम बाल केन्द्र (西児童館) 0276-62-4689, दक्षिण बाल केन्द्र (南児童館) 0276-63-1721, पूर्व बाल केन्द्र (東児童館) 0276-62-0133।\n【फोन】\nशिक्षा तथा बालबालिका हेरचाह शाखा (教育保育課) 0276-63-3111।\n【भाषा】\nनगरको वेबसाइटमा स्वचालित अनुवादद्वारा धेरै भाषामा देखाउने व्यवस्था छ (मेसिन अनुवाद)।\nडे-केयर र विद्यालयपछिको बालबालिका हेरचाहका लागि विशेष रूपमा बनाइएको विदेशी भाषा वा सरल जापानी भाषाको जानकारी फेला परेन।",
+     "original": "【保育所・認定こども園（2・3号認定）】\n教育保育課（庁舎1階107番窓口）に申し込みます。\n令和9年度4月入園の受付は、令和8年10月9日から11月10日までです（土日祝日を除く）。\n時間は午前8時30分から午後5時15分です。\n直接の提出が原則です。難しいときは郵送もできます（期間内必着）。\n幼稚園・認定こども園の1号認定は、園に直接申し込みます。\n外国籍の人は在留カードの写しが必要です。\n【学童保育】\n通学する小学校区の児童館で申し込みます。\n令和9年度分は、令和8年11月2日から12月15日までです（9時から17時、12時から13時と休館日を除く）。\n年度の途中からの利用は随時受付で、オンライン申請もできます。\n北児童館 0276-63-3820、西児童館 0276-62-4689、南児童館 0276-63-1721、東児童館 0276-62-0133。\n【電話】\n教育保育課 0276-63-3111。\n【言語】\n町サイトに自動翻訳で多言語表示する案内があります（機械翻訳）。\n保育・学童専用の外国語やさしい日本語の案内は見つかりませんでした。",
+     "back": "【保育所・認定こども園（2・3号認定）】\n教育保育課（庁舎1階107番窓口）に申し込みます。\n令和9年度4月入園の受付は、令和8年10月9日から11月10日までです（土日祝日を除く）。\n時間は午前8時30分から午後5時15分までです。\n直接の提出が原則です。難しい場合は郵送もできます（期間内必着）。\n幼稚園・認定こども園の1号認定は、園に直接申し込みます。\n外国籍の人は在留カードの写しが必要です。\n【学童保育】\n通学する小学校区の児童館で申し込みます。\n令和9年度分は、令和8年11月2日から12月15日までです（9時から17時、12時から13時と休館日を除く）。\n年度の途中からの利用は随時受付で、オンライン申請もできます。\n北児童館 0276-63-3820、西児童館 0276-62-4689、南児童館 0276-63-1721、東児童館 0276-62-0133。\n【電話】\n教育保育課 0276-63-3111。\n【言語】\n町サイトに自動翻訳で多言語表示する案内があります（機械翻訳）。\n保育・学童専用の外国語やさしい日本語の案内は見つかりませんでした。",
+     "source": {
+      "title": "令和9年度保育施設の園児募集のお知らせ｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s030/kosodate/010/010/050/20200826145316.html",
+      "where": "申込方法（受付期間・提出場所）"
+     },
+     "status": "auto",
+     "problems": []
     }
    ]
   },
@@ -3943,6 +4036,20 @@
       "title": "大泉町総合防災マップ｜大泉町",
       "url": "https://www.town.oizumi.gunma.jp/s004/anzen/060/170/20200828141906.html",
       "where": "主な改訂事項／避難所でピクトグラムを掲示します(42ページ)"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q54",
+     "short": "Đăng ký nhà trẻ・lớp giữ trẻ sau giờ học (học đường保育)",
+     "text": "【Nhà trẻ・Cơ sở giáo dục và chăm sóc mầm non được công nhận (認定こども園) (chứng nhận loại 2 và 3)】\nĐăng ký tại Phòng Giáo dục và Chăm sóc trẻ (教育保育課), quầy số 107 tầng 1 của tòa nhà hành chính (庁舎1階107番窓口).\nThời gian tiếp nhận hồ sơ nhập học tháng 4 năm tài khóa 令和9 (Reiwa 9): từ 令和8年10月9日 (ngày 9 tháng 10 năm Reiwa 8) đến 11月10日 (ngày 10 tháng 11), trừ thứ Bảy, Chủ nhật và ngày lễ.\nGiờ tiếp nhận: từ 8:30 sáng đến 5:15 chiều.\nNguyên tắc là nộp trực tiếp. Nếu khó thì cũng có thể gửi qua đường bưu điện (hồ sơ phải đến nơi trong thời hạn tiếp nhận).\nĐối với chứng nhận loại 1 của trường mẫu giáo (幼稚園)・cơ sở giáo dục và chăm sóc mầm non được công nhận (認定こども園), hãy đăng ký trực tiếp với trường/cơ sở đó.\nNgười mang quốc tịch nước ngoài cần có bản sao thẻ cư trú (在留カード).\n【Lớp giữ trẻ sau giờ học (学童保育)】\nĐăng ký tại nhà thiếu nhi (児童館) thuộc khu vực trường tiểu học mà trẻ theo học.\nThời gian tiếp nhận cho năm tài khóa 令和9 (Reiwa 9): từ 令和8年11月2日 (ngày 2 tháng 11 năm Reiwa 8) đến 12月15日 (ngày 15 tháng 12) (từ 9:00 đến 17:00, trừ khoảng 12:00 đến 13:00 và các ngày nhà thiếu nhi nghỉ).\nNếu muốn sử dụng từ giữa năm học thì tiếp nhận bất cứ lúc nào, và cũng có thể đăng ký trực tuyến.\nNhà thiếu nhi phía Bắc (北児童館) 0276-63-3820, nhà thiếu nhi phía Tây (西児童館) 0276-62-4689, nhà thiếu nhi phía Nam (南児童館) 0276-63-1721, nhà thiếu nhi phía Đông (東児童館) 0276-62-0133.\n【Điện thoại】\nPhòng Giáo dục và Chăm sóc trẻ (教育保育課) 0276-63-3111.\n【Ngôn ngữ】\nTrang web của thị trấn có hướng dẫn hiển thị nhiều ngôn ngữ bằng dịch tự động (dịch máy).\nChúng tôi không tìm thấy tài liệu hướng dẫn riêng về nhà trẻ và lớp giữ trẻ sau giờ học bằng tiếng nước ngoài hoặc tiếng Nhật đơn giản (やさしい日本語).",
+     "original": "【保育所・認定こども園（2・3号認定）】\n教育保育課（庁舎1階107番窓口）に申し込みます。\n令和9年度4月入園の受付は、令和8年10月9日から11月10日までです（土日祝日を除く）。\n時間は午前8時30分から午後5時15分です。\n直接の提出が原則です。難しいときは郵送もできます（期間内必着）。\n幼稚園・認定こども園の1号認定は、園に直接申し込みます。\n外国籍の人は在留カードの写しが必要です。\n【学童保育】\n通学する小学校区の児童館で申し込みます。\n令和9年度分は、令和8年11月2日から12月15日までです（9時から17時、12時から13時と休館日を除く）。\n年度の途中からの利用は随時受付で、オンライン申請もできます。\n北児童館 0276-63-3820、西児童館 0276-62-4689、南児童館 0276-63-1721、東児童館 0276-62-0133。\n【電話】\n教育保育課 0276-63-3111。\n【言語】\n町サイトに自動翻訳で多言語表示する案内があります（機械翻訳）。\n保育・学童専用の外国語やさしい日本語の案内は見つかりませんでした。",
+     "back": "【保育所・認定こども園（2・3号認定）】教育保育課（庁舎1階107番窓口）で申し込みます。令和9年度4月入園の受付は、令和8年10月9日から11月10日までです（土日祝日を除く）。時間は午前8時30分から午後5時15分です。原則として直接提出します。難しい場合は郵送もできます（期間内必着）。幼稚園・認定こども園の1号認定は、園に直接申し込みます。外国籍の方は在留カードの写しが必要です。【学童保育】通学する小学校区の児童館で申し込みます。令和9年度分は、令和8年11月2日から12月15日までです（9時から17時、12時から13時と休館日を除く）。年度の途中からの利用は随時受付で、オンライン申請もできます。北児童館 0276-63-3820、西児童館 0276-62-4689、南児童館 0276-63-1721、東児童館 0276-62-0133。【電話】教育保育課 0276-63-3111。【言語】町のサイトに自動翻訳で多言語表示する案内があります（機械翻訳）。保育・学童専用の外国語やさしい日本語の案内は見つかりませんでした。",
+     "source": {
+      "title": "令和9年度保育施設の園児募集のお知らせ｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s030/kosodate/010/010/050/20200826145316.html",
+      "where": "申込方法（受付期間・提出場所）"
      },
      "status": "auto",
      "problems": []
