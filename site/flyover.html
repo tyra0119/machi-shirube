@@ -17,6 +17,7 @@
   .vignette { position: absolute; inset: 0; z-index: 4; pointer-events: none; background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, 0.55) 100%); }
   .start { position: absolute; inset: 0; z-index: 6; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 14px; color: #fff; background: rgba(5, 11, 20, 0.6); font-size: 18px; }
   .start button { padding: 14px 32px; border: 0; border-radius: 999px; background: #ffb547; color: #1a1205; font-size: 20px; font-weight: 700; cursor: pointer; }
+  .start button:disabled { opacity: 0.5; cursor: wait; }
   .start small { color: rgba(255, 255, 255, 0.7); font-size: 14px; }
   .start[hidden] { display: none; }
   .maplibregl-ctrl-attrib { background: rgba(5, 11, 20, 0.5) !important; color: rgba(255, 255, 255, 0.6) !important; font-size: 11px; }
@@ -29,76 +30,138 @@
 <div class="badge">演出（イメージ）</div>
 <p class="cap" id="cap"><span class="s" id="cap-s"></span><span class="l" id="cap-l"></span></p>
 <div class="start" id="start">
-  <button type="button" id="go">飛ぶ</button>
-  <small>標高を読み込んでから飛びます。1回目は読み込みでかくつくことがあるので、2回目を録ってください（R でもう一度）</small>
+  <button type="button" id="go" disabled>読み込んでいます</button>
+  <small id="load-note">飛ぶ道すじの標高を、先に読み込んでいます</small>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
 <script>
 // 録画用の演出：「全国の町を調べていくと、こうなっていく」というこれからの姿（イメージ）。画面の右上に「演出（イメージ）」といつも出す。
 // 作り物の数は出さない（灯るのは「これから」の絵で、調べた町の数ではない）。
-// 地形：地理院の標高タイル（dem_png）を、ブラウザの中で MapLibre の読める形（terrarium）に直して使う。町の形：国土数値情報 N03
-// （作者「立体地図の日本を黒潮町から北海道のほうへ高度数百メートルの高さでかっこよくスクロールしていくような動画」「演出ですと出すのはOK」）
+// 地形：地理院の標高タイル（dem_png）を MapLibre の読める形（terrarium）に直して使う。町の形：国土数値情報 N03
+// （作者「立体地図の日本を黒潮町から北海道のほうへ高度数百メートルの高さでかっこよくスクロールしていくような動画」「演出ですと出すのはOK」
+//  →「スクロールがカクつくな。もっと舐めるように移動できない？」：標高は飛ぶ前に読み込んでおき、道はなめらかな曲線を一定の速さで、
+//  町の灯りは時刻を先に決めて塗り直しを減らした）
 const q = new URLSearchParams(location.search);
-const SECONDS = Number(q.get("s")) || 26; // 飛ぶ時間
-const ZOOM = Number(q.get("z")) || 9.2; // 高さ（大きいほど低い）
-const PITCH = Number(q.get("p")) || 74; // 傾き
+const SECONDS = Number(q.get("s")) || 40; // 飛ぶ時間（録画を早送りにしてもなめらかなよう、ゆっくりめ）
+const ZOOM = Number(q.get("z")) || 9.6; // 高さ（大きいほど低い）
+const PITCH = Number(q.get("p")) || 76; // 傾き
 const CAPTIONS = !q.has("nocap");
+const DEM_MAX = 10; // 標高の細かさ（これより細かいと読み込みが多すぎる）
 
-// 地理院の標高タイル → terrarium（標高 + 32768 を R・G・B に）。海などの値の無い所は 0m
-maplibregl.addProtocol("gsidem", async (params, abort) => {
-  const url = params.url.replace("gsidem://", "https://cyberjapandata.gsi.go.jp/xyz/dem_png/") + ".png";
-  const res = await fetch(url, { signal: abort.signal });
-  if (!res.ok) { // 標高の無い所（海の上など）は平らな 0m の絵を返す
-    const c = new OffscreenCanvas(256, 256); const g = c.getContext("2d"); g.fillStyle = "rgb(128,0,0)"; g.fillRect(0, 0, 256, 256);
-    return { data: await (await c.convertToBlob()).arrayBuffer() };
-  }
-  const bmp = await createImageBitmap(await res.blob());
-  const c = new OffscreenCanvas(bmp.width, bmp.height);
-  const g = c.getContext("2d", { willReadFrequently: true });
-  g.drawImage(bmp, 0, 0);
-  const img = g.getImageData(0, 0, bmp.width, bmp.height);
-  const d = img.data;
-  for (let i = 0; i < d.length; i += 4) {
-    const x = d[i] * 65536 + d[i + 1] * 256 + d[i + 2];
-    let h = x === 8388608 ? 0 : x < 8388608 ? x * 0.01 : (x - 16777216) * 0.01;
-    if (h < 0) h = 0;
-    const v = h + 32768;
-    d[i] = Math.floor(v / 256); d[i + 1] = Math.floor(v % 256); d[i + 2] = Math.floor((v % 1) * 256); d[i + 3] = 255;
-  }
-  g.putImageData(img, 0, 0);
-  return { data: await (await c.convertToBlob()).arrayBuffer() };
+// 地理院の標高タイル → terrarium（標高 + 32768 を R・G・B に）。直したものは覚えておき、飛んでいる最中は直さない
+const demCache = new Map();
+const FLAT = (async () => { const c = new OffscreenCanvas(256, 256); const g = c.getContext("2d"); g.fillStyle = "rgb(128,0,0)"; g.fillRect(0, 0, 256, 256); return (await c.convertToBlob()).arrayBuffer(); })();
+async function demTile(z, x, y) {
+  const key = `${z}/${x}/${y}`;
+  if (!demCache.has(key)) demCache.set(key, (async () => {
+    const res = await fetch(`https://cyberjapandata.gsi.go.jp/xyz/dem_png/${key}.png`).catch(() => null);
+    if (!res?.ok) return FLAT; // 標高の無い所（海の上など）は平らな 0m
+    const bmp = await createImageBitmap(await res.blob());
+    const c = new OffscreenCanvas(bmp.width, bmp.height);
+    const g = c.getContext("2d", { willReadFrequently: true });
+    g.drawImage(bmp, 0, 0);
+    const img = g.getImageData(0, 0, bmp.width, bmp.height);
+    const d = img.data;
+    for (let i = 0; i < d.length; i += 4) {
+      const v = d[i] * 65536 + d[i + 1] * 256 + d[i + 2];
+      const h = v === 8388608 ? 0 : Math.max(0, (v < 8388608 ? v : v - 16777216) * 0.01) + 32768;
+      d[i] = Math.floor(h / 256); d[i + 1] = Math.floor(h % 256); d[i + 2] = Math.floor((h % 1) * 256); d[i + 3] = 255;
+    }
+    g.putImageData(img, 0, 0);
+    return (await c.convertToBlob()).arrayBuffer();
+  })());
+  return demCache.get(key);
+}
+maplibregl.addProtocol("gsidem", async (params) => {
+  const [z, x, y] = params.url.replace("gsidem://", "").split("/").map(Number);
+  return { data: (await demTile(z, x, y)).slice(0) };
 });
 
-// 飛ぶ道：黒潮町 → 高知 → 瀬戸内 → 大阪 → 名古屋 → 富士山 → 東京 → 仙台 → 盛岡 → 青森 → 函館 → 札幌
+// 飛ぶ道：黒潮町 → 高知 → 瀬戸内 → 大阪 → 名古屋 → 富士山 → 東京 → 仙台 → 盛岡 → 青森 → 函館 → 札幌。
+// 折れ線の角で向きが急に変わらないよう、なめらかな曲線（Catmull-Rom）にして、長さで割り振る（速さが一定）
 const PATH = [[133.03, 32.99], [133.53, 33.56], [133.93, 34.66], [135.5, 34.69], [136.9, 35.18], [138.73, 35.36], [139.69, 35.69], [140.87, 38.27], [141.15, 39.7], [140.74, 40.82], [140.73, 41.77], [141.35, 43.06]];
 const CAPS = [[0.02, "黒潮町から", "届きにくい人に、届くページを"], [0.38, "どの町にも", "その町ならではの、届きにくい人がいる"], [0.72, "全国", "1,741 の市区町村へ"]];
+const curve = (() => {
+  const pts = [];
+  const P = [PATH[0], ...PATH, PATH.at(-1)];
+  for (let i = 1; i < P.length - 2; i++) {
+    for (let s = 0; s < 60; s++) {
+      const t = s / 60, t2 = t * t, t3 = t2 * t;
+      const f = (k) => 0.5 * (2 * P[i][k] + (-P[i - 1][k] + P[i + 1][k]) * t + (2 * P[i - 1][k] - 5 * P[i][k] + 4 * P[i + 1][k] - P[i + 2][k]) * t2 + (-P[i - 1][k] + 3 * P[i][k] - 3 * P[i + 1][k] + P[i + 2][k]) * t3);
+      pts.push([f(0), f(1)]);
+    }
+  }
+  pts.push(PATH.at(-1));
+  const km = (a, b) => Math.hypot((b[0] - a[0]) * Math.cos((a[1] * Math.PI) / 180), b[1] - a[1]) * 111;
+  const acc = [0];
+  for (let i = 1; i < pts.length; i++) acc.push(acc[i - 1] + km(pts[i - 1], pts[i]));
+  return { pts, acc, total: acc.at(-1) };
+})();
+function pointAt(t) {
+  const d = Math.max(0, Math.min(1, t)) * curve.total;
+  let lo = 0, hi = curve.acc.length - 1;
+  while (hi - lo > 1) { const m = (lo + hi) >> 1; if (curve.acc[m] <= d) lo = m; else hi = m; }
+  const k = (d - curve.acc[lo]) / ((curve.acc[hi] - curve.acc[lo]) || 1);
+  const a = curve.pts[lo], b = curve.pts[hi];
+  return [a[0] + (b[0] - a[0]) * k, a[1] + (b[1] - a[1]) * k];
+}
+// 始めと終わりだけゆるやかに、あいだは一定の速さ
+const ease = (t) => { const r = 0.08; if (t < r) return (t * t) / (2 * r * (1 - r)); if (t > 1 - r) return 1 - ((1 - t) * (1 - t)) / (2 * r * (1 - r)); return (t - r / 2) / (1 - r); };
+const bearingTo = (a, b) => (Math.atan2((b[0] - a[0]) * Math.cos((a[1] * Math.PI) / 180), b[1] - a[1]) * 180) / Math.PI;
+
+// 飛ぶ道すじの標高を、先に読み込む（細かさ 7〜10、道の近くだけ）
+function lonLatToTile([lon, lat], z) {
+  const n = 2 ** z;
+  return [Math.floor(((lon + 180) / 360) * n), Math.floor(((1 - Math.log(Math.tan((lat * Math.PI) / 180) + 1 / Math.cos((lat * Math.PI) / 180)) / Math.PI) / 2) * n)];
+}
+async function preload() {
+  const want = new Set();
+  for (const [z, r] of [[6, 2], [7, 2], [8, 2], [9, 2], [10, 1]]) {
+    for (let i = 0; i <= 400; i++) {
+      const [x, y] = lonLatToTile(pointAt(i / 400), z);
+      for (let dx = -r; dx <= r; dx++) for (let dy = -r; dy <= r; dy++) want.add(`${z}/${x + dx}/${y + dy}`);
+    }
+  }
+  const list = [...want];
+  let done = 0;
+  const note = document.getElementById("load-note");
+  // 同じサイトに同時に頼むのは 4 つまで
+  const worker = async () => { while (list.length) { const [z, x, y] = list.pop().split("/").map(Number); await demTile(z, x, y); done++; note.textContent = `飛ぶ道すじの標高を、先に読み込んでいます（${done} / ${want.size}）`; } };
+  await Promise.all([worker(), worker(), worker(), worker()]);
+}
 
 const map = new maplibregl.Map({
   container: "map",
   style: {
     version: 8,
     sources: {
-      dem: { type: "raster-dem", tiles: ["gsidem://{z}/{x}/{y}"], tileSize: 256, maxzoom: 12, encoding: "terrarium", attribution: "地理院タイル（標高タイル）を加工" },
+      dem: { type: "raster-dem", tiles: ["gsidem://{z}/{x}/{y}"], tileSize: 256, maxzoom: DEM_MAX, encoding: "terrarium", attribution: "地理院タイル（標高タイル）を加工" },
     },
     layers: [{ id: "sea", type: "background", paint: { "background-color": "#071423" } }],
   },
   center: PATH[0], zoom: ZOOM, pitch: PITCH, bearing: 20,
   attributionControl: { compact: false },
-  interactive: false, maxPitch: 85,
+  interactive: false, maxPitch: 85, fadeDuration: 0,
 });
 
-let munis, order;
+let order;
 map.on("load", async () => {
-  const topo = await fetch("data/japan.topo.json").then((r) => r.json());
-  munis = topojson.feature(topo, topo.objects.municipalities);
+  const [topo, labels] = await Promise.all([fetch("data/japan.topo.json").then((r) => r.json()), fetch("data/labels.json").then((r) => r.json())]);
+  const munis = topojson.feature(topo, topo.objects.municipalities);
   const prefLines = topojson.mesh(topo, topo.objects.prefectures, (a, b) => a !== b);
-  const labels = await fetch("data/labels.json").then((r) => r.json());
   const at = new Map(labels.features.filter((f) => f.geometry).map((f) => [f.properties.code, f.geometry.coordinates]));
-  order = munis.features.map((f) => ({ code: f.properties.code, c: at.get(f.properties.code) })).filter((o) => o.c);
+  // 町ごとに、灯る時刻（道のどこで近づくか。0〜1）を先に決める。道から遠い町は、最後に上へ引くときに灯る
+  const samples = Array.from({ length: 1201 }, (_, i) => pointAt(i / 1200));
+  order = munis.features.map((f) => ({ code: f.properties.code, c: at.get(f.properties.code) })).filter((o) => o.c).map((o) => {
+    let best = Infinity, bi = 0;
+    const cos = Math.cos((o.c[1] * Math.PI) / 180);
+    for (let i = 0; i < samples.length; i += 2) { const d = Math.hypot((o.c[0] - samples[i][0]) * cos, o.c[1] - samples[i][1]) * 111; if (d < best) { best = d; bi = i; } }
+    return { ...o, km: best, at: best < 70 ? Math.max(0, bi / 1200 - 0.012 + best / 9000) : null };
+  });
   map.addSource("munis", { type: "geojson", data: munis, promoteId: "code", attribution: "国土数値情報（行政区域データ N03）" });
   map.addSource("prefs", { type: "geojson", data: prefLines });
-  map.addSource("points", { type: "geojson", data: { type: "FeatureCollection", features: order.map((o) => ({ type: "Feature", id: Number(o.code), properties: { code: o.code }, geometry: { type: "Point", coordinates: o.c } })) } });
+  map.addSource("points", { type: "geojson", data: { type: "FeatureCollection", features: order.map((o) => ({ type: "Feature", properties: { code: o.code }, geometry: { type: "Point", coordinates: o.c } })) }, promoteId: "code" });
   map.addLayer({ id: "land", type: "fill", source: "munis", paint: { "fill-color": "#13202c" } });
   map.addLayer({ id: "hill", type: "hillshade", source: "dem", paint: { "hillshade-shadow-color": "#02060c", "hillshade-highlight-color": "#3b5873", "hillshade-accent-color": "#0c1824", "hillshade-exaggeration": 0.6 } });
   map.addLayer({ id: "lit", type: "fill", source: "munis", paint: { "fill-color": "#ffb547", "fill-opacity": ["coalesce", ["feature-state", "v"], 0] } });
@@ -107,54 +170,56 @@ map.on("load", async () => {
   map.addLayer({ id: "glow", type: "circle", source: "points", paint: { "circle-color": "#ffcf7a", "circle-radius": ["interpolate", ["linear"], ["zoom"], 5, 5, 10, 13], "circle-blur": 1, "circle-opacity": ["coalesce", ["feature-state", "g"], 0] } });
   map.setTerrain({ source: "dem", exaggeration: 1.6 });
   try { map.setSky({ "sky-color": "#0a1830", "horizon-color": "#1d3550", "fog-color": "#0a1626", "sky-horizon-blend": 0.6, "horizon-fog-blend": 0.7, "fog-ground-blend": 0.35 }); } catch {}
-  if (q.has("auto")) setTimeout(fly, 3000);
+  await preload();
+  const go = document.getElementById("go");
+  go.disabled = false;
+  go.textContent = "飛ぶ";
+  document.getElementById("load-note").textContent = "読み込めました。R のキーでもう一度飛べます";
+  if (q.has("auto")) setTimeout(fly, 1500);
 });
 
-// 道の長さで割り振った位置（0〜1）→ 地図の位置と、少し先を向く向き
-const segs = PATH.slice(1).map((p, i) => { const a = PATH[i]; return { a, b: p, len: Math.hypot((p[0] - a[0]) * Math.cos((a[1] * Math.PI) / 180), p[1] - a[1]) }; });
-const TOTAL = segs.reduce((s, x) => s + x.len, 0);
-function pointAt(t) {
-  let d = Math.max(0, Math.min(1, t)) * TOTAL;
-  for (const s of segs) { if (d <= s.len) { const k = d / s.len; return [s.a[0] + (s.b[0] - s.a[0]) * k, s.a[1] + (s.b[1] - s.a[1]) * k]; } d -= s.len; }
-  return PATH.at(-1);
+// 町の灯り：ぱっと灯って（明るい）、やわらかく残る（うすい）。町ごとの色の変化は地図の側でなめらかにならないので、
+// 灯ってからの時間で段を決め、段が変わったときだけ塗り直す（1つの町で7回）
+const STAGES = [[0, 0.3, 0.4], [70, 0.55, 0.75], [160, 0.7, 0.9], [330, 0.6, 0.7], [520, 0.5, 0.5], [760, 0.4, 0.32], [1050, 0.32, 0.2]];
+const active = [];
+const lightOn = (code, now) => active.push({ code, t: now, i: -1 });
+function tickLights(now) {
+  for (let j = active.length - 1; j >= 0; j--) {
+    const a = active[j];
+    const el = now - a.t;
+    let i = a.i;
+    while (i + 1 < STAGES.length && STAGES[i + 1][0] <= el) i++;
+    if (i !== a.i) { a.i = i; map.setFeatureState({ source: "munis", id: a.code }, { v: STAGES[i][1] }); map.setFeatureState({ source: "points", id: a.code }, { g: STAGES[i][2] }); }
+    if (i === STAGES.length - 1) active.splice(j, 1);
+  }
 }
-const ease = (t) => (t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2);
-const bearingTo = (a, b) => (Math.atan2((b[0] - a[0]) * Math.cos((a[1] * Math.PI) / 180), b[1] - a[1]) * 180) / Math.PI;
 
 let running = false;
 function fly() {
   if (running || !order) return;
   running = true;
   document.getElementById("start").hidden = true;
-  const litAt = new Map();
-  for (const o of order) { map.setFeatureState({ source: "munis", id: o.code }, { v: 0 }); map.setFeatureState({ source: "points", id: Number(o.code) }, { g: 0 }); }
+  for (const o of order) { map.setFeatureState({ source: "munis", id: o.code }, { v: 0 }); map.setFeatureState({ source: "points", id: o.code }, { g: 0 }); }
+  const queue = order.filter((o) => o.at != null).sort((a, b) => a.at - b.at);
+  active.length = 0;
+  let qi = 0;
   const cap = document.getElementById("cap");
   let capI = -1;
   let bearing = null;
+  let last = null;
   const t0 = performance.now();
   const step = (now) => {
-    const raw = (now - t0) / (SECONDS * 1000);
-    const t = ease(Math.min(1, raw));
+    const raw = Math.min(1, (now - t0) / (SECONDS * 1000));
+    const t = ease(raw);
     const here = pointAt(t);
-    const ahead = pointAt(Math.min(1, t + 0.03));
-    const want = bearingTo(here, ahead);
-    bearing = bearing == null ? want : bearing + (((want - bearing + 540) % 360) - 180) * 0.04; // 向きはゆっくり変える
-    // 少し先の地面を見る（画面の真ん中より先に町が灯る）
-    map.jumpTo({ center: here, bearing, pitch: PITCH, zoom: ZOOM - 0.6 * Math.sin(Math.PI * Math.min(1, raw)) });
-    // 近づいた町から灯す（いまの位置から 70km 以内）
-    const cos = Math.cos((here[1] * Math.PI) / 180);
-    for (const o of order) {
-      if (litAt.has(o.code)) continue;
-      const dk = Math.hypot((o.c[0] - here[0]) * cos, o.c[1] - here[1]) * 111;
-      if (dk < 70) litAt.set(o.code, now + dk * 8);
-    }
-    for (const [code, s] of litAt) {
-      const k = (now - s) / 1400;
-      if (k < 0 || k > 1.05) continue;
-      const v = k < 0.25 ? (k / 0.25) * 0.75 : 0.75 - 0.4 * Math.min(1, (k - 0.25) / 0.75); // ぱっと灯って、やわらかく残る
-      map.setFeatureState({ source: "munis", id: code }, { v });
-      map.setFeatureState({ source: "points", id: Number(code) }, { g: (k < 0.3 ? k / 0.3 : Math.max(0.15, 1 - (k - 0.3) / 0.7)) * 0.8 });
-    }
+    const want = bearingTo(pointAt(Math.max(0, t - 0.01)), pointAt(Math.min(1, t + 0.035)));
+    // 向きはゆっくり変える（コマの間の時間に合わせる）
+    const dt = last == null ? 16 : now - last;
+    last = now;
+    bearing = bearing == null ? want : bearing + (((want - bearing + 540) % 360) - 180) * (1 - Math.exp(-dt / 900));
+    map.jumpTo({ center: here, bearing, pitch: PITCH, zoom: ZOOM - 0.5 * Math.sin(Math.PI * raw) });
+    while (qi < queue.length && queue[qi].at <= t) { lightOn(queue[qi].code, now); qi++; }
+    tickLights(now);
     if (CAPTIONS) {
       const i = CAPS.findLastIndex(([p]) => raw >= p);
       if (i !== capI) {
@@ -162,31 +227,25 @@ function fly() {
         cap.classList.remove("on");
         setTimeout(() => { document.getElementById("cap-s").textContent = CAPS[i][1]; document.getElementById("cap-l").textContent = CAPS[i][2]; cap.classList.add("on"); }, i === 0 ? 0 : 900);
       }
-      if (raw > 0.3 && raw < 0.38 || raw > 0.66 && raw < 0.72 || raw > 0.97) cap.classList.remove("on");
+      if ((raw > 0.3 && raw < 0.38) || (raw > 0.66 && raw < 0.72) || raw > 0.97) cap.classList.remove("on");
     }
     if (raw < 1) requestAnimationFrame(step);
-    else { running = false; finale(litAt); }
+    else { running = false; finale(); }
   };
   requestAnimationFrame(step);
 }
-// 最後：上へ引きながら、まだ灯っていない町（飛んだ道から遠い町）も、道から近い順に灯して、日本じゅうが灯った姿を見せる
-function finale(litAt) {
-  map.easeTo({ center: [137.6, 37.6], zoom: 4.9, pitch: 35, bearing: 0, duration: 4500, easing: (t) => 1 - Math.pow(1 - t, 3) });
-  const rest = order.filter((o) => !litAt.has(o.code))
-    .map((o) => ({ ...o, d: Math.min(...PATH.map((p) => Math.hypot((o.c[0] - p[0]) * Math.cos((p[1] * Math.PI) / 180), o.c[1] - p[1]))) }))
-    .sort((a, b) => a.d - b.d);
-  const maxD = rest.at(-1)?.d ?? 1;
+// 最後：上へ引きながら、道から遠い町も、道から近い順に灯して、日本じゅうが灯った姿を見せる
+function finale() {
+  map.easeTo({ center: [137.6, 37.6], zoom: 4.9, pitch: 35, bearing: 0, duration: 5000, easing: (t) => 1 - Math.pow(1 - t, 3) });
+  const rest = order.filter((o) => o.at == null).sort((a, b) => a.km - b.km);
+  const maxKm = rest.at(-1)?.km ?? 1;
   const t0 = performance.now();
+  let i = 0;
   const step = (now) => {
     const t = now - t0;
-    for (const o of rest) {
-      const k = (t - 400 - (o.d / maxD) * 3000) / 1400;
-      if (k < 0) break;
-      if (k > 1.05) continue;
-      map.setFeatureState({ source: "munis", id: o.code }, { v: k < 0.25 ? (k / 0.25) * 0.75 : 0.75 - 0.4 * Math.min(1, (k - 0.25) / 0.75) });
-      map.setFeatureState({ source: "points", id: Number(o.code) }, { g: (k < 0.3 ? k / 0.3 : Math.max(0.15, 1 - (k - 0.3) / 0.7)) * 0.8 });
-    }
-    if (t < 5000) requestAnimationFrame(step);
+    while (i < rest.length && 400 + (rest[i].km / maxKm) * 3200 <= t) { lightOn(rest[i].code, now); i++; }
+    tickLights(now);
+    if (i < rest.length || active.length) requestAnimationFrame(step);
   };
   requestAnimationFrame(step);
   if (CAPTIONS) setTimeout(() => {
@@ -197,7 +256,7 @@ function finale(litAt) {
 }
 document.getElementById("go").addEventListener("click", fly);
 addEventListener("keydown", (e) => {
-  if (e.key === "r" || e.key === "R") { document.getElementById("cap").classList.remove("on"); map.jumpTo({ center: PATH[0], zoom: ZOOM, pitch: PITCH, bearing: 20 }); setTimeout(fly, 800); }
+  if ((e.key === "r" || e.key === "R") && !running) { document.getElementById("cap").classList.remove("on"); map.jumpTo({ center: PATH[0], zoom: ZOOM, pitch: PITCH, bearing: 20 }); setTimeout(fly, 1200); }
 });
 </script>
 </body>
