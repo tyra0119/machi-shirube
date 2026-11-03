@@ -9,6 +9,7 @@ import { buildAccidents } from "./build-accidents.mjs";
 import { buildShopAccess } from "./build-shop-access.mjs";
 import { buildSlope } from "./build-slope.mjs";
 import { buildClimate } from "./build-climate.mjs";
+import { buildKaigo } from "./build-kaigo.mjs";
 
 export async function buildOverlays(code, log = console.log, { force = false } = {}) {
   const steps = [
@@ -18,6 +19,7 @@ export async function buildOverlays(code, log = console.log, { force = false } =
     ["買い物に困っているお年寄り", `site/data/shop-access/${code}.json`, (l) => buildShopAccess([code], l)],
     ["坂の多い所に住む人", `site/data/slope/${code}.json`, (l) => buildSlope(code, l)],
     ["町の気候（平年値）", `site/data/climate/${code}.json`, (l) => buildClimate(code, l)],
+    ["近くの介護の事業所", `site/data/kaigo/${code}.json`, (l) => buildKaigo(code, l)],
   ];
   // 250m 四方の人口の表は、どの計算も使うので先に1回だけ読む（e-Stat へ同時に取りに行かないように）
   const todo = steps.filter(([, file]) => force || !fs.existsSync(file));

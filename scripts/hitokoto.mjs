@@ -54,7 +54,7 @@ export async function hitokoto(code, log = console.log) {
     const chunk = list.slice(i, i + BATCH);
     const res = await client.messages.create({
       model: MODEL, max_tokens: 3000, output_config: { effort: "low" },
-      system: "町・字に住む人に向けて、その地区の暮らしと備えで気をつけたいことを、やさしい短い日本語でまとめます。渡す数だけを使い、数を変えたり計算したり足したりしません。地区を評価したり、怖がらせたりしません。",
+      system: "町・字に住む人に向けて、その地区の暮らしと備えで気をつけたいことを、やさしい短い日本語でまとめます。渡す数だけを使い、数を変えたり計算したり足したりしません。地区を評価したり、怖がらせたりしません。書き方の決まり：避難場所（まず逃げる先）と避難所（あとで過ごす所）を混ぜない。地震の確率には「今後30年に」を付ける。人身事故を「車の事故」と言いかえない。市なら「市」、町なら「町」、村なら「村」と書く。お年寄りは「お年寄り」と書き、数を言う所だけ「65歳以上」。和暦の略（R7年度など）は「令和7年度」と書く。かっこは全角の（）。英語の単語を混ぜない。低い数を「なので」で備えの理由にしない（低くても備える、と書く）。区域の中に住む人に「近づかない」と書かない。本人が経験していない昔のことを「思い出す」と書かない。",
       messages: [{ role: "user", content: `${name}の町・字ごとの数です。\n${chunk.map((x) => `<part id="${x.part}" name="${x.name}">\n${x.facts.map((f) => `- ${f}`).join("\n")}\n</part>`).join("\n")}\n\nそれぞれの町・字について、そこに住む人に向けた「ひとこと」を2〜3文（あわせて90字ほど）で書いてください。特に気をつけたいことを先に、数を1つ以上そのまま使って。地区の中に碑があれば、昔の災害といまの想定をつないでください（碑の名前と年はそのまま）。次の形だけで：\n<hitokoto id="番号">文</hitokoto>` }],
     });
     usd += record(MODEL, res.usage, `わが町のひとこと：${name}`);
@@ -73,7 +73,7 @@ export async function hitokoto(code, log = console.log) {
   fs.mkdirSync("site/data/hitokoto", { recursive: true });
   fs.writeFileSync(`site/data/hitokoto/${code}.json`, JSON.stringify({
     code, name, createdAt: new Date().toISOString(), model: MODEL, parts: out,
-    note: "町・字ごとの国のデータ（年齢・浸水や土砂の想定・坂・揺れ・事故・避難場所・昔の災害を伝える碑）から、AI がまとめたものです。文の中の数は、渡した数にあるかを照らしています。めやすの数を含みます",
+    note: "町・字ごとの国のデータ（年齢・浸水や土砂の想定・坂・揺れ・事故・避難場所・昔の災害を伝える碑）から、AI がまとめたものです。文の中の数は、国のデータと合っているかを確かめています。めやすの数を含みます",
   }, null, 1));
   log(`${name}：町・字 ${Object.keys(out).length} / ${list.length}（$${usd.toFixed(3)}）`);
   return { parts: Object.keys(out).length, usd };

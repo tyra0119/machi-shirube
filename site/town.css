@@ -666,3 +666,16 @@ body:has(.toc-fab:not([hidden])) { padding-bottom: 80px; }
 .town-tabs { position: sticky; }
 .town-tabs::after { content: "›"; position: absolute; right: 0; top: 0; bottom: 1px; width: 40px; display: flex; align-items: center; justify-content: flex-end; padding-right: 8px; font-size: 26px; font-weight: 700; color: var(--accent); background: linear-gradient(to right, transparent, var(--bg) 60%); pointer-events: none; opacity: 0; transition: opacity 0.2s; }
 .town-tabs.more-right::after { opacity: 1; }
+/* 近くの介護の事業所：4つのまとまりごとにたたむ */
+.kaigo-group { margin: 6px 0; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+.kaigo-group summary { display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 0 12px; cursor: pointer; list-style: none; }
+.kaigo-group summary::-webkit-details-marker { display: none; }
+.kaigo-group summary::before { content: "▸"; color: var(--accent); }
+.kaigo-group[open] summary::before { content: "▾"; }
+.kaigo-group .n { margin-left: auto; padding: 0 8px; border-radius: 10px; background: var(--bg); font-size: 13px; }
+.kaigo-items { list-style: none; margin: 0; padding: 0 12px 10px; display: grid; gap: 8px; }
+.kaigo-items li { display: flex; flex-direction: column; gap: 2px; padding: 8px 0; border-top: 1px solid var(--line); }
+.kaigo-items .kn { font-weight: 700; }
+.kaigo-items small { color: var(--text-sub); }
+.kaigo-items .tel { display: inline-flex; align-items: center; gap: 4px; align-self: flex-start; min-height: 36px; color: var(--accent); font-weight: 600; }
+.kaigo-items .tel svg { width: 16px; height: 16px; }

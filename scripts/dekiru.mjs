@@ -25,7 +25,7 @@ export async function dekiru(code, log = console.log) {
   const client = new Anthropic();
   const res = await client.messages.create({
     model: MODEL, max_tokens: 3000, output_config: { effort: "medium" },
-    system: "町の数と、町の公式のページから調べた案内をつないで、住む人が次に何をすればいいかを示す手伝いをします。案内の文に書いてあることだけを使い、書いていないこと（電話番号・場所・決まり）を足しません。数を変えたり計算したりしません。医療の助言はしません。怖がらせず、やさしい短い日本語で書きます。",
+    system: "町の数と、町の公式のページから調べた案内をつないで、住む人が次に何をすればいいかを示す手伝いをします。案内の文に書いてあることだけを使い、書いていないこと（電話番号・場所・決まり）を足しません。数を変えたり計算したりしません。医療の助言はしません。怖がらせず、やさしい短い日本語で書きます。書き方の決まり：避難場所（まず逃げる先）と避難所（あとで過ごす所）を混ぜない。地震の確率には「今後30年に」を付ける。人身事故を「車の事故」と言いかえない。市なら「市」、町なら「町」、村なら「村」と書く。お年寄りは「お年寄り」と書き、数を言う所だけ「65歳以上」。和暦の略（R7年度など）は「令和7年度」と書く。かっこは全角の（）。英語の単語を混ぜない。低い数を「なので」で備えの理由にしない（低くても備える、と書く）。区域の中に住む人に「近づかない」と書かない。本人が経験していない昔のことを「思い出す」と書かない。",
     messages: [{ role: "user", content: `町：${name}\n\n町の数（F番号つき）：\n${facts.map((x, i) => `F${i + 1} ${x}`).join("\n")}\n\n町の公式のページから調べた案内（番号つき）：\n${answers.map((a) => `<answer id="${a.id}">\n問い：${a.question}\n答え：${a.value}\n</answer>`).join("\n")}\n\n上の数のうち、住む人の備えや暮らしにかかわる大事なものを選び、それぞれ「その数にあてはまる人が、町の案内のどれを使えばいいか」をつないでください。多くても5つ、大事な順に。案内にあてはまるものが無い数は、選ばないでください。全国と比べて目立つ数や、あてはまる人の多い数を先に。数と案内が、そのまま結びつくもの（津波の想定の所に住む人 → 津波のときの避難場所、など）だけにしてください。次の形だけで：\n<link>\n<fact>F番号</fact>\n<num>その数の行から、そのまま写した所（30字まで。数を含めて。言い換えない）</num>\n<who>あてはまる人（15字ほど。数は書かない。数は PC が横に出す）</who>\n<todo>その人が次にできること（40字ほど。「〜を見る」「〜に登録する」「〜に相談する」のように動きで。案内に書いてあることだけ）</todo>\n<ref>答えの id</ref>\n<quote>その答えの文から、そのまま写した所（60字まで。言い換えない）</quote>\n</link>` }],
   });
   const usd = record(MODEL, res.usage, `数から、できることへ：${name}`);
@@ -60,7 +60,7 @@ export async function dekiru(code, log = console.log) {
   fs.mkdirSync("site/data/dekiru", { recursive: true });
   fs.writeFileSync(`site/data/dekiru/${code}.json`, JSON.stringify({
     code, name, createdAt: new Date().toISOString(), model: MODEL, status: "pending", ledgerId: item.id, links: out,
-    note: "町の数と、町の公式のページから調べた案内を、AI がつないだものです。案内の文は、調べた答えからそのまま写し、PC で照らしています",
+    note: "町の数と、町の公式のページから調べた案内を、AI がつないだものです。案内の文は町の公式のページから写し、合っているかを確かめています",
   }, null, 1));
   log(`${name}：${out.length} つ（${out.map((o) => o.who).join("／")}）・確かめ待ち ${item.id}（$${usd.toFixed(3)}）`);
   return { links: out.length, usd };

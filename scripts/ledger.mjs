@@ -367,7 +367,7 @@ export function exportChanges(data = load()) {
     if (!byMuni.has(code)) byMuni.set(code, []);
     byMuni.get(code).push({ at: shown(it), label, what, qid: it.qid ?? null, kind: it.kind ?? "answer" });
     // 見張りで出典のページが変わったあと、答えがまだ合っていると照らし直したもの（scripts/watch-recheck.mjs）
-    if (it.recheckedAt) byMuni.get(code).push({ at: it.recheckedAt, label, what: "照らし直しました", qid: it.qid ?? null, kind: it.kind ?? "answer" });
+    if (it.recheckedAt) byMuni.get(code).push({ at: it.recheckedAt, label, what: "確かめ直しました", qid: it.qid ?? null, kind: it.kind ?? "answer" });
   }
   for (const list of byMuni.values()) list.sort((a, b) => a.at.localeCompare(b.at));
   const dir = "site/data/changes";

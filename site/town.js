@@ -12,7 +12,8 @@ const getData = (url) => {
   return dataCache.get(url).then((d) => (d == null ? null : structuredClone(d)));
 };
 // 避難場所の想定収容人数：町の表の人数は屋内と屋外（校庭や広場）の合計のことがある。建物の中の人数が分かれば添える（scripts/build-shelter-inside.mjs）
-const capText = (p) => `${T("想定収容")} ${esc(String(p.capacity ?? "").replace(/\d{4,}/g, (n) => Number(n).toLocaleString("ja-JP")))}${p.inside != null ? `（${T("建物の中")} ${Number(p.inside).toLocaleString("ja-JP")}${T("人")}）` : `（${T("屋外の広場などを含むことがあります")}）`}`;
+const KIND_LABEL = { 内水: "内水（下水があふれる）" };
+const capText = (p) => `${T("受け入れの人数")} ${esc(String(p.capacity ?? "").replace(/\d{4,}/g, (n) => Number(n).toLocaleString("ja-JP")))}${p.inside != null ? `（${T("建物の中")} ${Number(p.inside).toLocaleString("ja-JP")}${T("人")}）` : `（${T("屋外の広場などを含むことがあります")}）`}`;
 // Google マップで、選んだ場所から避難場所までの歩く道を開く（画面と同じ出発地にするため、選んだ場所も渡す。
 // ボタンを押したときだけ Google マップに渡る、と画面に書いている。作者「場所は送りたいな。じゃないと画面と違う経路になってしまう」）
 const gmapWalk = ([lon, lat], from) => `https://www.google.com/maps/dir/?api=1${from ? `&origin=${from[1].toFixed(5)},${from[0].toFixed(5)}` : ""}&destination=${lat},${lon}&travelmode=walking`;
@@ -370,7 +371,7 @@ async function showPlan(code, part) {
   const src = d.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join("・");
   if (d.status !== "ok" && d.status !== "auto") {
     $("plan-pick").hidden = true;
-    $("plan").innerHTML = `<p class="gomi-today">${icon("eye")} ${T("防災計画から町・字ごとに抜き出したものを、いま人が確かめています（元のページと合っているか）。それまでは町の防災計画をご覧ください。")}</p>`;
+    $("plan").innerHTML = `<p class="gomi-today">${icon("eye")} ${T("防災計画から町・字ごとに抜き出したものは、まだ確認中です。それまでは町の防災計画をご覧ください。")}</p>`;
     $("plan-note").innerHTML = src;
     return;
   }
@@ -537,11 +538,12 @@ async function showHinan(code, townFeatures, startPart) {
   $("hinan-block").hidden = false;
   // 災害の種類のボタンは、この町のデータにある種類から作る（津波の避難場所がない町もある）
   const ORDER = ["津波", "洪水", "土砂", "高潮", "地震", "火事", "内水", "火山"];
+  // 札に出す言葉（データの種類の名前はそのまま）。「内水」は住む人に分かりにくいので添える
   const count = (k) => shelters.features.filter((f) => f.properties.kinds.includes(k)).length;
   const kinds = ORDER.filter((k) => count(k));
   let kind = kinds.includes("津波") ? "津波" : kinds.includes("地震") ? "地震" : kinds[0] ?? "";
   $("hinan-kinds").innerHTML = [...kinds, ""].map((k) =>
-    `<button type="button" data-kind="${k}" aria-pressed="${k === kind}">${k ? T(k) : T("すべて")}<small>${k ? count(k) : shelters.features.length}</small></button>`).join("");
+    `<button type="button" data-kind="${k}" aria-pressed="${k === kind}">${k ? T(KIND_LABEL[k] ?? k) : T("すべて")}<small>${k ? count(k) : shelters.features.length}</small></button>`).join("");
   let here = null; // [経度, 緯度]
 
   // 町・字を選ぶ（形のおおよその真ん中を、その町・字の場所のめやすにする）
@@ -799,10 +801,10 @@ function answersHTML(answers) {
         : `${a.items && !a.translated ? "" : answerBody(a)}
       ${a.items ? `<ul class="topics${a.translated ? " src-only" : ""}">${a.items.map((x) => `<li>${a.translated ? "" : `<span class="tx">${esc(x.text)}</span>`}
         <span class="src">${x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.title ?? x.url)}</a>` : esc(x.title ?? "")}${x.asOf ? `・${esc(x.asOf)}` : ""}</span></li>`).join("")}</ul>` : ""}
-      ${a.recheckedAt ? `<p class="src rechecked">${icon("eye")}${T("公式のページが変わったので、照らし直しました")}（${esc(a.recheckedAt.slice(0, 10))}）</p>` : ""}
+      ${a.recheckedAt ? `<p class="src rechecked">${icon("eye")}${T("公式のページが変わったので、確かめ直しました")}（${esc(a.recheckedAt.slice(0, 10))}）</p>` : ""}
       ${health?.links?.[a.source?.url]?.kind === "gone" ? `<p class="gone">${T("出典のページが見つからなくなっています")}（${esc(health.links[a.source.url].checkedAt.slice(0, 10))}）。${T("町の公式のサイトで新しいページを探して確かめてください。")}</p>` : ""}
-      ${a.outdated ? `<p class="outdated"><strong>${T("古いデータに気づきました")}</strong>：${esc(a.outdated.what)}。${T("古い")}：${a.outdated.old?.url ? `<a href="${esc(a.outdated.old.url)}" target="_blank" rel="noopener">${esc(a.outdated.old.asOf ?? "")}</a>` : esc(a.outdated.old?.asOf ?? "")}／${T("新しい")}：${a.outdated.new?.url ? `<a href="${esc(a.outdated.new.url)}" target="_blank" rel="noopener">${esc(a.outdated.new.asOf ?? "")}</a>` : esc(a.outdated.new?.asOf ?? "")}</p>` : ""}
-      <p class="src chip">${icon("link")} ${a.source?.url ? `<a href="${esc(a.source.url)}" target="_blank" rel="noopener"${a.source.where ? ` title="${esc(T("出典の中の場所"))}：${esc(a.source.where)}"` : ""}>${esc(a.source.title ?? a.source.url)}</a>` : esc(a.source?.title ?? "")}${a.asOf ? `・${T("時点")} ${esc(a.asOf)}` : ""}・${T(a.status === "auto" ? "自動で承認" : "人が確かめた")}</p>`}
+      ${a.outdated ? `<p class="outdated"><strong>${T("もっと新しい資料があります")}</strong>：${esc(a.outdated.what)}。${T("古い")}：${a.outdated.old?.url ? `<a href="${esc(a.outdated.old.url)}" target="_blank" rel="noopener">${esc(a.outdated.old.asOf ?? "")}</a>` : esc(a.outdated.old?.asOf ?? "")}／${T("新しい")}：${a.outdated.new?.url ? `<a href="${esc(a.outdated.new.url)}" target="_blank" rel="noopener">${esc(a.outdated.new.asOf ?? "")}</a>` : esc(a.outdated.new?.asOf ?? "")}</p>` : ""}
+      <p class="src chip">${icon("link")} ${a.source?.url ? `<a href="${esc(a.source.url)}" target="_blank" rel="noopener"${a.source.where ? ` title="${esc(T("出典のどこに書いてあるか"))}：${esc(a.source.where)}"` : ""}>${esc(a.source.title ?? a.source.url)}</a>` : esc(a.source?.title ?? "")}${a.asOf ? `・${T("時点")} ${esc(a.asOf)}` : ""}・${T(a.status === "auto" ? "自動で承認" : "人が確かめた")}</p>`}
       </div>
     </li>`;
   }).join("")}</ul>`;
@@ -865,10 +867,10 @@ function todayLife(hasHinan) {
   const has = (v) => (answersByPage[v] ?? []).filter((a) => a.value !== "見つからなかった").length;
   const row = (view, k, v, ready) => `<li><a href="#${view}"><span class="k">${icon(ILLUST[view]?.main)}${T(k)}</span><span class="v${ready ? "" : " later"}">${esc(T(v))}</span></a></li>`;
   $("today-life").innerHTML = [
-    row("gomi", T("ごみ"), gomiToday ? (gomiToday.length ? TN("今日は {k} の日", { k: gomiToday.join("・") }) : T("今日はごみの収集はありません")) : has("gomi") ? T("ごみの出し方を見る") : T("今日の収集は、これから出します"), has("gomi") || !!gomiToday),
+    row("gomi", T("ごみ"), gomiToday ? (gomiToday.length ? TN("今日は {k} の日", { k: gomiToday.join("・") }) : T("今日はごみの収集はありません")) : has("gomi") ? T("ごみの出し方を見る") : T("地区ごとの収集日は準備中です"), has("gomi") || !!gomiToday),
     medicalRow ?? row("iryo", T("病院"), T("この町の病院のデータはまだありません"), false),
-    row("bousai", T("避難"), hasHinan ? T("わが家から近い避難場所を出す") : has("bousai") ? T("避難場所の案内を見る") : T("避難場所は、これから出します"), hasHinan || has("bousai")),
-    row("komatta", T("困ったとき"), has("komatta") ? T("電話・メールの窓口を見る") : T("電話・メールの窓口は、これから出します"), has("komatta")),
+    row("bousai", T("避難"), hasHinan ? T("わが家から近い避難場所を出す") : has("bousai") ? T("避難場所の案内を見る") : T("避難場所は準備中です"), hasHinan || has("bousai")),
+    row("komatta", T("困ったとき"), has("komatta") ? T("電話・メールの窓口を見る") : T("電話・メールの窓口は準備中です"), has("komatta")),
   ].join("");
   $("tiles").innerHTML = PAGES.filter((p) => !["today", "source", "research", "mitate"].includes(p.view)).map((p) => {
     // 中身があるか：Claude の答え・わが家の避難・病院のデータ・町のデータ
@@ -927,6 +929,22 @@ function wireAllPages() {
   });
 }
 wireAllPages();
+
+// 近くの介護の事業所（厚生労働省の介護サービス情報公表システムのオープンデータ。scripts/build-kaigo.mjs）。
+// 相談・通う・家に来る・泊まる／住む の4つに分け、名前・種類・電話・住所を出す。重ねて見る地図にも点が出る
+const KAIGO_GROUPS = [["相談", "まず相談するなら（ケアマネジャーのいる事業所）"], ["通う", "日中に通う"], ["家に来る", "家に来てもらう"], ["泊まる・住む", "泊まる・住む"]];
+async function showKaigo(code) {
+  const d = await getData(`data/kaigo/${code}.json`);
+  if (!d?.items?.length) return;
+  $("kaigo-block").hidden = false;
+  $("kaigo-list").innerHTML = KAIGO_GROUPS.map(([g, label], gi) => {
+    const list = d.items.filter((x) => x.group === g);
+    if (!list.length) return "";
+    return `<details class="kaigo-group"${gi === 0 ? " open" : ""}><summary><strong>${esc(T(label))}</strong> <span class="n">${list.length}</span></summary>
+      <ul class="kaigo-items">${list.map((x) => `<li><span class="kn">${esc(x.name)}</span><small>${esc(T(x.kind))}</small>${x.tel ? `<a class="tel" href="tel:${esc(x.tel)}">${icon("phone")}${esc(x.tel)}</a>` : ""}<small class="ad">${esc(x.addr)}</small></li>`).join("")}</ul></details>`;
+  }).join("");
+  $("kaigo-note").innerHTML = `${esc(T(d.note))}${KU()}${d.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(T(s.title))}</a>`).join("")}`;
+}
 
 // 母語で読める人：確かめ済みの答え「国籍ごとの人数」と「防災マップの外国語版」を並べ、国籍ごとに
 // 町の防災マップに母語の版があるか・このページで母語で読めるかを出す（台本の大泉町の場面「マップの言葉と国籍の割合を並べる」）。
@@ -1087,7 +1105,7 @@ async function showGomiDays(code, partName) {
   $("gomi-days-note").innerHTML = `${esc(T(g.note))}${KU()}${T("出典")}：${g.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title ?? s.url)}</a>`).join("・")}`;
   if (!ok) {
     $("gomi-area").closest("label").hidden = true;
-    $("gomi-today").innerHTML = `${icon("eye")} ${T("地区ごとの曜日は、いま人が確かめています（公式の表から読み取ったものが、町のカレンダーと合っているか）。それまでは町の収集日の表をご覧ください。")}`;
+    $("gomi-today").innerHTML = `${icon("eye")} ${T("地区ごとの曜日は、まだ確認中です。それまでは町の収集日の表をご覧ください。")}`;
     return null;
   }
   const sel = $("gomi-area");
@@ -1138,6 +1156,7 @@ async function finishPage(code, townFeatures, startPart, scopeNote, at) {
   await showBus(code, part);
   await showAccidents(code, part);
   await showShopAccess(code);
+  await showKaigo(code);
   await showFuture(code);
   await showClimate(code);
   await showLocalSites(code);

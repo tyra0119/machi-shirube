@@ -353,7 +353,7 @@ function disallowed(robots, path) {
 // 1回の調べの上限。ふだんは $4。デモを録る日だけ、.env に RUN_LIMIT_USD=8 などと書いて上げる（作者「2：見せる」：その場で押す町で多くの問いが埋まるところを見せる）
 export const RUN_LIMIT_USD = Number(process.env.RUN_LIMIT_USD) > 0 ? Number(process.env.RUN_LIMIT_USD) : 4;
 // まとめて調べる。part を渡すと町・字の問い（物差しで level が town のもの）、渡さなければ市区町村の問い
-export async function researchTown(code, { log = console.log, onItem = () => {}, shouldStop = () => false, part } = {}) {
+export async function researchTown(code, { log = console.log, onItem = () => {}, shouldStop = () => false, part, qids } = {}) {
   const { questions } = JSON.parse(fs.readFileSync("site/data/yardstick.json", "utf8"));
   const scope = part ? `town:${code}-${part}` : `muni:${code}`;
   const done = new Set(ledger.load().items.filter((x) => x.scope === scope && ["pending", "ok", "auto"].includes(x.status)).map((x) => x.qid ?? x.question));
@@ -371,7 +371,8 @@ export async function researchTown(code, { log = console.log, onItem = () => {},
     const fr = q.rule?.match(/外国の住民.*?(\d+(?:\.\d+)?)\s*%/), old = q.rule?.match(/65歳以上.*?(\d+(?:\.\d+)?)\s*%/);
     return (!fr || (t?.foreignRate ?? 0) >= Number(fr[1])) && (!old || (t?.over65Rate ?? 0) >= Number(old[1]));
   };
-  const list = questions.filter((x) => (x.level === "town") === Boolean(part) && (!x.only || x.only === code) && (!x.feature || feats.includes(x.feature)) && ruleOk(x))
+  // qids：この問いだけ調べる（物差しに新しく足した問いを、調べた町で調べるとき）
+  const list = questions.filter((x) => (!qids || qids.includes(x.id)) && (x.level === "town") === Boolean(part) && (!x.only || x.only === code) && (!x.feature || feats.includes(x.feature)) && ruleOk(x))
     .map((q, i) => ({ q, i })).sort((a, b) => rank(a.q) - rank(b.q) || a.i - b.i).map((x) => x.q);
   for (const q of list) {
     if (done.has(q.id) || done.has(q.text)) { log(`${q.id} はもう答えがあるので飛ばします`); continue; }
