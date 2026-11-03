@@ -549,7 +549,7 @@ async function showHinan(code, townFeatures, startPart) {
     return ring.reduce((s, p) => [s[0] + p[0] / ring.length, s[1] + p[1] / ring.length], [0, 0]);
   };
   const sel = $("hinan-town");
-  sel.innerHTML = `<option value="">（選ぶ）</option>` + townFeatures.map((f) => `<option value="${f.properties.part}">${esc(f.properties.name)}</option>`).join("");
+  sel.innerHTML = `<option value="">${T("（選ぶ）")}</option>` + townFeatures.map((f) => `<option value="${f.properties.part}">${esc(f.properties.name)}</option>`).join("");
 
   const map = new maplibregl.Map({
     container: "hinan-map",
@@ -1085,7 +1085,7 @@ async function showGomiDays(code, partName) {
     return null;
   }
   const sel = $("gomi-area");
-  sel.innerHTML = `<option value="">（選ぶ）</option>` + g.areas.map((a, i) => `<option value="${i}">${esc(gt(a.area))}${a.towns.length ? `（${esc(a.towns.slice(0, 3).join("・"))}${a.towns.length > 3 ? "…" : ""}）` : ""}</option>`).join("");
+  sel.innerHTML = `<option value="">${T("（選ぶ）")}</option>` + g.areas.map((a, i) => `<option value="${i}">${esc(gt(a.area))}${a.towns.length ? `（${esc(a.towns.slice(0, 3).join("・"))}${a.towns.length > 3 ? "…" : ""}）` : ""}</option>`).join("");
   // 町・字のページなら、その名前の地区を選んでおく
   const guess = partName ? g.areas.findIndex((a) => a.area.includes(partName) || a.towns.some((t) => t.includes(partName))) : -1;
   let todayKinds = null;

@@ -1,11 +1,11 @@
 {
  "lang": "tl",
  "name": "Filipino",
- "createdAt": "2026-11-03T08:38:30.872Z",
+ "createdAt": "2026-11-03T08:58:17.688Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 718,
- "of": 718,
+ "count": 719,
+ "of": 719,
  "dict": {
   "この町の非公式の暮らしの案内です。町の公式のサイトや国の公開データから集め、出典をつけています（まちしるべ）": "Ito ay isang di-opisyal na gabay sa pamumuhay sa bayang ito. Kinuha ito mula sa opisyal na website ng bayan at sa pampublikong datos ng bansa, at may nakasaad na pinagmulan (Machishirube)",
   "すべてのページ": "Lahat ng pahina",
@@ -724,6 +724,7 @@
   "町のクイズ": "Quiz tungkol sa bayan",
   "町の気候（平年値）": "Klima ng bayan (karaniwang halaga)",
   "人口 {n}人・{h}世帯": "Populasyon: {n} katao · {h} sambahayan",
-  "人口 {n}人": "Populasyon: {n} katao"
+  "人口 {n}人": "Populasyon: {n} katao",
+  "（選ぶ）": "(Pumili)"
  }
 }

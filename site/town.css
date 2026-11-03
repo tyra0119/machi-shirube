@@ -606,3 +606,38 @@ body:has(.toc-fab:not([hidden])) { padding-bottom: 80px; }
 #toc-btn.icon-only { width: 52px; min-height: 52px; padding: 0; justify-content: center; border-radius: 50%; }
 #toc-btn.icon-only span { display: none; }
 #toc-btn.icon-only svg { width: 24px; height: 24px; }
+
+/* ===== 部品の形のそろえ方（作者「部品の形が混同したりしないか。統一性があるか」→「その案で直して」） =====
+   丸い札＝押すと動く（操作・行き先）。ふだんは白に枠、その場でいちばん大事な1つだけ塗る
+   角の丸い四角（小さめ）＝選ぶ札。選んだものは塗って、頭に ✓
+   角の丸い四角＝入力欄（プルダウン・文字を入れる欄）。同じ高さ・同じ角
+   塗りの意味は「選んでいる」と「いちばん大事」の2つだけ */
+.hinan-kind { gap: 6px; flex-wrap: wrap; border: 0; border-radius: 0; overflow: visible; }
+.hinan-kind button,
+.tr-langs button,
+.lang-bar a,
+.layer-chips button,
+.r-tabs button,
+.r-kinds button {
+  min-height: 40px; padding: 0 12px; border: 1px solid var(--line); border-radius: 8px;
+  background: var(--surface); color: var(--text); font-weight: 600;
+}
+.hinan-kind button[aria-pressed="true"],
+.tr-langs button[aria-pressed="true"],
+.lang-bar a[aria-current],
+.layer-chips button[aria-pressed="true"],
+.r-tabs button[aria-selected="true"],
+.r-kinds button[aria-pressed="true"] {
+  border-color: var(--accent); background: var(--accent); color: var(--accent-text); font-weight: 700;
+}
+.hinan-kind button[aria-pressed="true"]::before,
+.tr-langs button[aria-pressed="true"]::before,
+.lang-bar a[aria-current]::before,
+.layer-chips button[aria-pressed="true"]::before,
+.r-tabs button[aria-selected="true"]::before,
+.r-kinds button[aria-pressed="true"]::before { content: "✓"; margin-right: 4px; }
+/* 入力欄：文字を入れる欄もプルダウンと同じ角に */
+#all-search, #med-filter { border-radius: 8px; }
+.gomi-q { border-radius: 10px; }
+/* 行き先のボタン：塗らずに、作品の色の枠と文字で目立たせる（塗りは「選んでいる」と見まちがえるので） */
+.mitate-top .go.ask { background: var(--surface); border: 2px solid var(--accent); color: var(--accent); }
