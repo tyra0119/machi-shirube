@@ -1042,7 +1042,19 @@ async function showTranslations(code) {
   $("foreign-guide").hidden = true;
   $("lang-bar").hidden = false;
   const href = (l) => { const u = new URL(location.href); if (l) u.searchParams.set("lang", l); else u.searchParams.delete("lang"); return u.pathname.split("/").pop() + u.search + u.hash; };
-  $("lang-bar").innerHTML = [["", "日本語"], ...langs.map((l) => [l, t.langs[l].name])].map(([l, n]) => `<a href="${href(l)}"${(LANG ?? "") === l ? " aria-current=\"true\"" : ""}>${esc(n)}</a>`).join("") + `<span>${T("（AI による訳）")}</span>`;
+  // 言葉の選び方（作者「言語選択が横に並んでるのも気になる」→ 案B）：地球の印と今の言葉のボタンを1つ置き、押すと全部の言葉の一覧が開く。
+  // 横には、すぐ選べる言葉を2つだけ出す（訳はその町に多い国籍の言葉から並べているので、その先頭から。日本語以外を見ているときは日本語を先に）
+  const all = [["", "日本語"], ...langs.map((l) => [l, t.langs[l].name])];
+  const cur = LANG ?? "";
+  const quick = [...(cur ? [all[0]] : []), ...all.slice(1)].filter(([l]) => l !== cur).slice(0, 2);
+  const curName = all.find(([l]) => l === cur)?.[1] ?? "日本語";
+  $("lang-bar").innerHTML = `<button type="button" class="lang-btn" aria-haspopup="dialog" aria-label="Language / 言語：${esc(curName)}">${icon("globe")}<span>${esc(curName)}</span><span aria-hidden="true">▾</span></button>`
+    + quick.map(([l, n]) => `<a href="${href(l)}" lang="${l || "ja"}">${esc(n)}</a>`).join("") + `<span>${T("（AI による訳）")}</span>`;
+  $("lang-list").innerHTML = all.map(([l, n]) => `<li><a href="${href(l)}" lang="${l || "ja"}"${cur === l ? " aria-current=\"true\"" : ""}>${esc(n)}</a></li>`).join("");
+  const dlg = $("lang-dialog");
+  $("lang-bar").querySelector(".lang-btn").addEventListener("click", () => dlg.showModal());
+  $("close-lang").onclick = () => dlg.close();
+  dlg.onclick = (e) => { if (e.target === dlg) dlg.close(); };
   const draw = () => {
     const L = t.langs[lang];
     $("tr-langs").innerHTML = langs.map((l) => `<button type="button" data-lang="${l}" aria-pressed="${l === lang}">${esc(t.langs[l].name)}</button>`).join("");

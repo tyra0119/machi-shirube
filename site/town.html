@@ -18,8 +18,17 @@
     <p class="unofficial">非公式の暮らしの案内です。どの情報にも出典があります</p>
     <details id="town-color-note" class="color-note" hidden></details>
   </div>
-  <p id="lang-bar" class="lang-bar" hidden></p>
+  <div id="lang-bar" class="lang-bar" hidden></div>
 </header>
+
+<!-- 言葉を選ぶ（見出しは、どの言葉の人にも分かるように英語と日本語を並べる） -->
+<dialog id="lang-dialog" class="all-pages-dialog lang-dialog" aria-labelledby="lang-title">
+  <div class="all-head">
+    <h2 id="lang-title" translate="no">Language / 言語</h2>
+    <button type="button" class="close" id="close-lang" aria-label="Close / 閉じる">×</button>
+  </div>
+  <ul id="lang-list" class="lang-list"></ul>
+</dialog>
 
 <!-- いつも上に残るメニュー（パソコン）：ページの名前と、右の端に「すべてのページ」 -->
 <nav class="town-tabs" aria-label="町のページのメニュー">

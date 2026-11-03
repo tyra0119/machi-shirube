@@ -247,7 +247,15 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 /* 母語で防災 */
 .lang-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin: 6px 0 0; }
 .lang-bar a { display: inline-flex; align-items: center; min-height: 36px; padding: 0 12px; border: 1px solid var(--accent); border-radius: 18px; color: var(--accent); text-decoration: none; font-size: 14px; font-weight: 600; }
-.lang-bar span { font-size: 12px; color: var(--text-sub); }
+.lang-bar > span { font-size: 12px; color: var(--text-sub); }
+/* 言葉のボタン（押すと一覧が開く＝動きのボタンなので丸い形） */
+.lang-bar .lang-btn { display: inline-flex; align-items: center; gap: 6px; min-height: 40px; padding: 0 14px; border: 1px solid var(--accent); border-radius: 999px; background: var(--surface); color: var(--accent); font-size: 15px; font-weight: 700; cursor: pointer; }
+.lang-bar .lang-btn .ic { width: 20px; height: 20px; }
+.lang-list { display: grid; gap: 6px; margin: 8px 0 0; padding: 0; list-style: none; }
+.lang-list a { display: flex; align-items: center; min-height: 48px; padding: 0 14px; border: 1px solid var(--line); border-radius: 8px; color: var(--text); text-decoration: none; font-size: 17px; font-weight: 600; }
+.lang-list a:hover { background: var(--bg); }
+.lang-list a[aria-current] { border-color: var(--accent); background: var(--accent); color: var(--accent-text); }
+.lang-list a[aria-current]::before { content: "✓"; margin-right: 8px; }
 .tr-langs { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 8px; }
 .tr-langs button { min-height: 44px; padding: 0 16px; border: 1px solid var(--line); border-radius: 22px; background: var(--surface); color: var(--text); font-size: 15px; cursor: pointer; }
 .tr-langs button[aria-pressed="true"] { border-color: var(--accent); background: var(--accent); color: var(--accent-text); font-weight: 700; }
