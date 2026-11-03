@@ -51,7 +51,7 @@ async function showLayerMap(code, townFeatures, at, esc, part = null) {
     { id: "flood", name: "洪水の想定", ok: true, legend: LT("洪水浸水想定区域（想定最大規模）。色が濃いほど深い") },
     { id: "dosha", name: "土砂災害警戒区域", ok: true, legend: LT("土石流・急傾斜地の崩壊・地すべりの警戒区域（赤みの濃い所は特別警戒区域）") },
     { id: "acc", name: "事故が重なる所", ok: !!acc?.spots?.length, legend: `<i class="dot" style="background:#e8833a"></i>${LT("3年で3件以上の人身事故（警察庁）")}` },
-    { id: "bus", name: "バス停", ok: !!bus?.stops?.length, legend: `<i class="dot" style="background:#5b8fc7"></i>${LT("大きいほど平日の本数が多い")}` },
+    { id: "bus", name: "バス停", ok: !!bus?.stops?.length, legend: `<i class="dot" style="background:#5b8fc7"></i>${LT("大きいほど平日の本数が多い")}${bus?.lines?.length ? `　${LT("線はバスの路線（時刻表データから）。バス停を押すと、この先の発車")}` : ""}` },
   ].filter((l) => l.ok);
 
   const map = new maplibregl.Map({
@@ -103,6 +103,13 @@ async function showLayerMap(code, townFeatures, at, esc, part = null) {
       map.addSource("acc", { type: "geojson", data: fc(acc.spots.map((s) => pt([s.lon, s.lat], s))) });
       map.addLayer({ id: "acc", type: "circle", source: "acc", layout: { visibility: "none" }, paint: { "circle-radius": ["interpolate", ["linear"], ["get", "n"], 3, 7, 10, 13], "circle-color": "#e8833a", "circle-stroke-color": "#fff", "circle-stroke-width": 1.5 } });
     }
+    // バスの路線の線（時刻表データの道の形か、バス停を順につないだ線）。路線ごとに色を分ける
+    if (bus?.lines?.length) {
+      const PAL = ["#2f6fb0", "#d0731f", "#3d9a5b", "#8a4fb5", "#c0413b", "#2a9ba6", "#9a7b2f", "#5a5a5a"];
+      const names = [...new Set(bus.lines.map((l) => l.name))];
+      map.addSource("bus-route", { type: "geojson", data: fc(bus.lines.map((l) => ({ type: "Feature", geometry: { type: "LineString", coordinates: l.coords }, properties: { name: l.name, color: PAL[names.indexOf(l.name) % PAL.length] } }))) });
+      map.addLayer({ id: "bus-route", type: "line", source: "bus-route", layout: { visibility: "none", "line-cap": "round", "line-join": "round" }, paint: { "line-color": ["get", "color"], "line-width": ["interpolate", ["linear"], ["zoom"], 10, 2, 15, 5], "line-opacity": 0.8 } });
+    }
     if (bus?.stops?.length) {
       map.addSource("bus", { type: "geojson", data: fc(bus.stops.map((s) => pt([s.lon, s.lat], s))) });
       map.addLayer({ id: "bus", type: "circle", source: "bus", layout: { visibility: "none" }, paint: { "circle-radius": ["interpolate", ["linear"], ["get", "n"], 1, 4, 30, 10], "circle-color": "#5b8fc7", "circle-stroke-color": "#fff", "circle-stroke-width": 1 } });
@@ -140,7 +147,13 @@ async function showLayerMap(code, townFeatures, at, esc, part = null) {
   pop("acc", (p) => `<strong>${esc(p.part)}</strong><br>${LT("3年で")} ${p.n} ${LT("件")}${Number(p.ped) ? `・${LT("歩行者")} ${p.ped}` : ""}${Number(p.bike) ? `・${LT("自転車")} ${p.bike}` : ""}`);
   pop("overlap", (p) => `<strong>${esc(p.name)}</strong><br>${p.n ? `${LT("重なり")} ${p.n}：${esc(p.hit)}` : LT("重なりはありません")}${hito?.parts?.[p.part] && (!LANG || LANG === "easy") ? `<p class="pop-hito">${esc(hito.parts[p.part].text)}<small>（${LT("AI のまとめ")}）</small></p>` : ""}`);
   pop("lore", (p) => `<strong>${esc(p.name)}</strong>${p.muniName ? `<br><small>${esc(p.muniName)}</small>` : ""}<br>${esc(p.disaster)}<p class="pop-hito">${esc(p.text)}<small>（${LT("国土地理院 自然災害伝承碑")}）</small></p>`);
-  pop("bus", (p) => `<strong>${esc(p.name)}</strong><br>${LT("平日")} ${p.n} ${LT("本")}`);
+  pop("bus", (p) => {
+    // この先の発車（平日の時刻表から5つまで）。土日・祝日はちがうことがある
+    const now = new Date(), hm = `${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
+    const next = JSON.parse(p.times || "[]").filter((x) => x.t >= hm).slice(0, 5);
+    return `<strong>${esc(p.name)}</strong><br>${LT("平日")} ${p.n} ${LT("本")}`
+      + (next.length ? `<ul class="pop-times">${next.map((x) => `<li><b>${esc(x.t)}</b> ${esc(x.r)}${x.h ? ` → ${esc(x.h)}` : ""}</li>`).join("")}</ul><small>${LT("平日の時刻表です。土日・祝日はちがうことがあります")}</small>` : `<br><small>${LT("きょうの平日の便は、もうありません")}</small>`);
+  });
   for (const id of ["shelter", "lore", "iryo", "acc", "bus", "overlap"]) {
     map.on("mouseenter", id, () => (map.getCanvas().style.cursor = "pointer"));
     map.on("mouseleave", id, () => (map.getCanvas().style.cursor = ""));
@@ -149,7 +162,7 @@ async function showLayerMap(code, townFeatures, at, esc, part = null) {
   const on = new Set(LAYERS.filter((l) => l.on).map((l) => l.id));
   let openOnly = false;
   function setVis(id, v) {
-    for (const lid of id === "dosha" ? ["dosha0", "dosha1", "dosha2"] : [id]) if (map.getLayer(lid)) map.setLayoutProperty(lid, "visibility", v ? "visible" : "none");
+    for (const lid of id === "dosha" ? ["dosha0", "dosha1", "dosha2"] : id === "bus" ? ["bus-route", "bus"] : [id]) if (map.getLayer(lid)) map.setLayoutProperty(lid, "visibility", v ? "visible" : "none");
   }
   function draw() {
     const chips = document.getElementById("layer-chips");

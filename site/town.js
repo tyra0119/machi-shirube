@@ -411,6 +411,27 @@ async function showBus(code, part) {
     [T("近いバス停が1日10本未満の所に住む65歳以上"), `${d.fewRate}%`, `${T("約")} ${n(d.few)} ${T("人")}`],
     ...(here ? [[esc(here.name), `${here.farRate}%`, `${T("バス停まで 500m 以上")}・${T("1日10本未満")} ${here.fewRate}%`]] : []),
   ].map(([l, v, s]) => `<li><span class="l">${l}</span><strong>${v}</strong><span class="s">${s}</span></li>`).join("");
+  // 平日の時刻表（作者「余裕があったら、バスのルートを地図に表示、もしくは、時刻表を表示ができるといいな」）。バス停を選ぶと、路線と行き先ごとに、時間ごとの分を並べる
+  const withTimes = d.stops.filter((s) => s.times?.length).sort((a, b) => a.name.localeCompare(b.name, "ja"));
+  if (withTimes.length) {
+    $("bus-tt-box").hidden = false;
+    const sel = $("bus-stop");
+    sel.innerHTML = withTimes.map((s, i) => `<option value="${i}">${esc(s.name)}（${s.times.length}）</option>`).join("");
+    const draw = () => {
+      const st = withTimes[Number(sel.value)];
+      const groups = new Map();
+      for (const x of st.times) { const k = `${x.r}${x.h ? ` → ${x.h}` : ""}`; if (!groups.has(k)) groups.set(k, []); groups.get(k).push(x.t); }
+      $("bus-tt").innerHTML = [...groups].map(([k, ts]) => {
+        const byH = new Map();
+        for (const t of ts) { const [hh, mm] = t.split(":"); if (!byH.has(hh)) byH.set(hh, []); byH.get(hh).push(mm); }
+        return `<div class="tt"><p class="tt-head">${icon("bus")}${esc(k)}</p><table>${[...byH].map(([hh, ms]) => `<tr><th>${Number(hh)}</th><td>${ms.join(" ")}</td></tr>`).join("")}</table></div>`;
+      }).join("") + `<p class="note">${T("平日の時刻表です。土日・祝日はちがうことがあります。乗る前に、バス会社や町の時刻表で確かめてください。")}</p>`;
+    };
+    sel.addEventListener("change", draw);
+    // いちばん本数の多いバス停を、はじめに選んでおく
+    sel.value = String(withTimes.indexOf(withTimes.reduce((a, b) => (b.n > a.n ? b : a))));
+    draw();
+  }
   $("bus-stops").innerHTML = d.stops.slice(0, 8).map((s) => `<li><span class="no">${s.n}</span><span>${esc(s.name)}</span></li>`).join("");
   $("bus-note").innerHTML = `${esc(T(d.note))}${KU()}${T("丸の中の数は、平日1日に出る便の数です。")}${d.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join("・")}`;
 }

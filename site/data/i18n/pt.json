@@ -1,11 +1,11 @@
 {
  "lang": "pt",
  "name": "Português",
- "createdAt": "2026-11-03T02:16:51.115Z",
+ "createdAt": "2026-11-03T02:25:19.278Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 637,
- "of": 633,
+ "count": 645,
+ "of": 639,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Guia não oficial da vida na cidade. O Claude reúne as informações em sites oficiais da cidade e outras fontes, e indica a origem de cada uma (Machishirube)",
   "すべてのページ": "Todas as páginas",
@@ -643,6 +643,14 @@
   "雪後みぞれ": "Neve, depois chuva com neve",
   "雪一時みぞれ": "Neve, com chuva com neve por um período",
   "雪で雷を伴う": "Neve com trovoadas",
-  "人が住む 250m 四方ごとに、中の 6×6 か所（およそ 40m おき）の標高から平均の坂のきつさを出し、5% 以上を「坂が多い」、10% 以上を「急な坂が多い」とした、めやすです（道の坂ではなく、土地の傾き）。人は四角の中に均等に住むとみなしています": "Estimativa: para cada quadrado de 250 m de lado onde há moradores, calcula-se a inclinação média a partir da altitude de 6×6 pontos dentro dele (cerca de 40 m de distância entre si). 5% ou mais é considerado \"muitas ladeiras\" e 10% ou mais, \"muitas ladeiras íngremes\" (é a inclinação do terreno, não das ruas). Considera-se que os moradores vivem distribuídos de forma uniforme dentro do quadrado"
+  "人が住む 250m 四方ごとに、中の 6×6 か所（およそ 40m おき）の標高から平均の坂のきつさを出し、5% 以上を「坂が多い」、10% 以上を「急な坂が多い」とした、めやすです（道の坂ではなく、土地の傾き）。人は四角の中に均等に住むとみなしています": "Estimativa: para cada quadrado de 250 m de lado onde há moradores, calcula-se a inclinação média a partir da altitude de 6×6 pontos dentro dele (cerca de 40 m de distância entre si). 5% ou mais é considerado \"muitas ladeiras\" e 10% ou mais, \"muitas ladeiras íngremes\" (é a inclinação do terreno, não das ruas). Considera-se que os moradores vivem distribuídos de forma uniforme dentro do quadrado",
+  "平日の時刻表": "Horários em dias úteis",
+  "バス停を選ぶ": "Escolher a parada de ônibus",
+  "平日の時刻表です。土日・祝日はちがうことがあります": "Horários de dias úteis. Aos sábados, domingos e feriados podem ser diferentes",
+  "きょうの平日の便は、もうありません": "Hoje não há mais ônibus de dia útil",
+  "平日の時刻表です。土日・祝日はちがうことがあります。乗る前に、バス会社や町の時刻表で確かめてください。": "Horários de dias úteis. Aos sábados, domingos e feriados podem ser diferentes. Antes de embarcar, confirme na empresa de ônibus ou na tabela de horários da cidade.",
+  "晴昼頃から雨": "Sol, com chuva a partir do meio-dia",
+  "曇昼頃から雨": "Nublado, com chuva a partir do meio-dia",
+  "雨朝晩一時雪": "Chuva, com neve passageira de manhã e à noite"
  }
 }

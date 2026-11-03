@@ -27,7 +27,10 @@ const table = (zip, name) => {
 // 次の平日（今日から見て）に走る便の service_id
 function weekdayServices(zip) {
   const d = new Date();
-  while ([0, 6].includes(d.getDay())) d.setDate(d.getDate() + 1);
+  // 土日と祝日は飛ばす（祝日は便が少ないダイヤのことがある。11/3 文化の日に数えて、バス停が遠い人が 100% と出たことがある）
+  const holidays = JSON.parse(fs.readFileSync("site/data/holidays.json", "utf8")).holidays;
+  const iso = (x) => `${x.getFullYear()}-${String(x.getMonth() + 1).padStart(2, "0")}-${String(x.getDate()).padStart(2, "0")}`;
+  while ([0, 6].includes(d.getDay()) || holidays[iso(d)]) d.setDate(d.getDate() + 1);
   const ymd = `${d.getFullYear()}${String(d.getMonth() + 1).padStart(2, "0")}${String(d.getDate()).padStart(2, "0")}`;
   const wd = ["sunday", "monday", "tuesday", "wednesday", "thursday", "friday", "saturday"][d.getDay()];
   const on = new Set(table(zip, "calendar.txt").filter((c) => c[wd] === "1" && c.start_date <= ymd && ymd <= c.end_date).map((c) => c.service_id));
@@ -42,6 +45,8 @@ export async function buildBus(code, log = console.log) {
   const lons = inTown.map((m) => m.b.lon), lats = inTown.map((m) => m.b.lat);
   const box = [Math.min(...lons) - 0.01, Math.min(...lats) - 0.01, Math.max(...lons) + 0.01, Math.max(...lats) + 0.01];
   const stops = new Map(); // 名前ごと（のりばが分かれていても1つに）
+  const lines = []; // ルートの線（作者「余裕があったら、バスのルートを地図に表示、もしくは、時刻表を表示ができるといいな」）
+  const inBox = (p, m = 0) => p[0] >= box[0] - m && p[0] <= box[2] + m && p[1] >= box[1] - m && p[1] <= box[3] + m;
   let ymd = "";
   for (const f of feeds) {
     const buf = await cached(f.url, `local/cache/gtfs/${code}-${feeds.indexOf(f)}.zip`);
@@ -52,9 +57,40 @@ export async function buildBus(code, log = console.log) {
     if (inner) zip = new AdmZip(inner.getData());
     const sv = weekdayServices(zip);
     ymd = sv.ymd;
-    const trips = new Set(table(zip, "trips.txt").filter((t) => sv.on.has(t.service_id)).map((t) => t.trip_id));
+    const tripRows = table(zip, "trips.txt").filter((t) => sv.on.has(t.service_id));
+    const trips = new Set(tripRows.map((t) => t.trip_id));
+    const tripOf = new Map(tripRows.map((t) => [t.trip_id, t]));
+    const routeName = new Map(table(zip, "routes.txt").map((r) => [r.route_id, (r.route_short_name || r.route_long_name || r.route_id).replace(/　/g, " ").trim()]));
+    const stopPos = new Map(table(zip, "stops.txt").map((x) => [x.stop_id, { name: x.stop_name, p: [Number(x.stop_lon), Number(x.stop_lat)] }]));
     const count = new Map();
-    for (const st of table(zip, "stop_times.txt")) if (trips.has(st.trip_id)) count.set(st.stop_id, (count.get(st.stop_id) ?? 0) + 1);
+    const times = new Map(); // バス停の名前 → 平日の発車（時刻・路線・行き先）
+    const seq = new Map(); // 便ごとのバス停の並び（道の形が無いときの線に使う）
+    for (const st of table(zip, "stop_times.txt")) {
+      if (!trips.has(st.trip_id)) continue;
+      count.set(st.stop_id, (count.get(st.stop_id) ?? 0) + 1);
+      const sp = stopPos.get(st.stop_id);
+      if (!seq.has(st.trip_id)) seq.set(st.trip_id, []);
+      if (sp) seq.get(st.trip_id).push([Number(st.stop_sequence), sp.p]);
+      if (!sp || !inBox(sp.p) || st.drop_off_type === "1" && st.pickup_type === "1") continue;
+      const t = tripOf.get(st.trip_id);
+      const h = (st.stop_headsign || t.trip_headsign || "").trim();
+      if (st.pickup_type === "1" || (h && sp.name.startsWith(h.replace(/（.*$/, "")))) continue; // 乗れない便・終点に着くだけの便は、発車の時刻表に入れない
+      if (!times.has(sp.name)) times.set(sp.name, []);
+      times.get(sp.name).push({ t: (st.departure_time || st.arrival_time).slice(0, 5), r: routeName.get(t.route_id) ?? "", h });
+    }
+    // ルートの線：町の中のバス停を通る路線ごとに、道の形（shapes.txt）か、無ければバス停を順につないだ線。同じ形は1本
+    const shapes = new Map();
+    for (const r of table(zip, "shapes.txt")) { if (!shapes.has(r.shape_id)) shapes.set(r.shape_id, []); shapes.get(r.shape_id).push([Number(r.shape_pt_sequence), [Number(r.shape_pt_lon), Number(r.shape_pt_lat)]]); }
+    const seen = new Set();
+    for (const t of tripRows) {
+      const sq = (seq.get(t.trip_id) ?? []).sort((a, b) => a[0] - b[0]).map((x) => x[1]);
+      if (!sq.some((p) => inBox(p))) continue;
+      const key = t.shape_id && shapes.has(t.shape_id) ? `s:${t.shape_id}` : `q:${sq.map((p) => p.join()).join(";")}`;
+      if (seen.has(key)) continue;
+      seen.add(key);
+      const pts = (t.shape_id && shapes.has(t.shape_id) ? shapes.get(t.shape_id).sort((a, b) => a[0] - b[0]).map((x) => x[1]) : sq).filter((p) => inBox(p, 0.03));
+      if (pts.length > 1) lines.push({ name: routeName.get(t.route_id) ?? "", coords: pts.map((p) => [Math.round(p[0] * 1e5) / 1e5, Math.round(p[1] * 1e5) / 1e5]) });
+    }
     for (const s of table(zip, "stops.txt")) {
       const p = [Number(s.stop_lon), Number(s.stop_lat)];
       if (!(p[0] >= box[0] && p[0] <= box[2] && p[1] >= box[1] && p[1] <= box[3])) continue;
@@ -63,6 +99,7 @@ export async function buildBus(code, log = console.log) {
       cur.n += count.get(s.stop_id) ?? 0;
       stops.set(k, cur);
     }
+    for (const [k, list] of times) { const cur = stops.get(k); if (cur) cur.times = [...(cur.times ?? []), ...list]; }
   }
   const list = [...stops.values()].filter((s) => s.n > 0);
   log(`平日（${ymd}）に便のあるバス停 ${list.length}`);
@@ -82,7 +119,10 @@ export async function buildBus(code, log = console.log) {
   const out = {
     code, date: ymd, createdAt: new Date().toISOString(),
     routes: feeds.map((f) => f.name),
-    stops: list.sort((a, b) => b.n - a.n).map((s) => ({ name: s.name, lon: Math.round(s.lon * 1e5) / 1e5, lat: Math.round(s.lat * 1e5) / 1e5, n: s.n })),
+    stops: list.sort((a, b) => b.n - a.n).map((s) => ({ name: s.name, lon: Math.round(s.lon * 1e5) / 1e5, lat: Math.round(s.lat * 1e5) / 1e5, n: s.n,
+      // 平日の発車（時刻の順。同じ時刻・路線・行き先は1つ）
+      times: [...new Map((s.times ?? []).map((x) => [`${x.t}|${x.r}|${x.h}`, x])).values()].sort((a, b) => a.t.localeCompare(b.t)) })),
+    lines,
     over65: r10(old), far: r10(far), farRate: pct(far, old), few: r10(few), fewRate: pct(few, old),
     parts: Object.fromEntries(Object.entries(byPart).filter(([, v]) => v.old >= 20).map(([k, v]) => [k, { name: parts.find((p) => p.props.part === k)?.props.name, farRate: pct(v.far, v.old), fewRate: pct(v.few, v.old) }])),
     note: `公開されているバスの時刻表データ（GTFS）にあるバスだけで数えた、めやすです（${feeds.map((f) => f.name).join("・")}）。デマンド交通・スクールバス・時刻表データが公開されていないバスは入っていません。本数は平日1日の、そのバス停を出る便の数（行き・帰りの両方）。250m 四方の真ん中からバス停までのまっすぐの距離で見ています`,
@@ -92,7 +132,7 @@ export async function buildBus(code, log = console.log) {
     ],
   };
   fs.mkdirSync("site/data/bus", { recursive: true });
-  fs.writeFileSync(`site/data/bus/${code}.json`, JSON.stringify(out, null, 1));
+  fs.writeFileSync(`site/data/bus/${code}.json`, JSON.stringify(out)); // 時刻表と線で大きいので、空白は入れない
   log(`${code}：バス停まで500m以上の65歳以上 ${out.farRate}%・近いバス停が1日${FEW}本未満 ${out.fewRate}%`);
   return out;
 }

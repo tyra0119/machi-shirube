@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-03T02:17:35.082Z",
+ "createdAt": "2026-11-03T02:25:26.618Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 641,
- "of": 633,
+ "count": 646,
+ "of": 639,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -647,6 +647,11 @@
   "雪で雷を伴う": "Nieve con tormenta eléctrica",
   "除雪・雪下ろしの支援": "Ayuda para quitar nieve y despejar tejados",
   "人が住む 250m 四方ごとに、中の 6×6 か所（およそ 40m おき）の標高から平均の坂のきつさを出し、5% 以上を「坂が多い」、10% 以上を「急な坂が多い」とした、めやすです（道の坂ではなく、土地の傾き）。人は四角の中に均等に住むとみなしています": "Valor orientativo: para cada cuadro de 250 m de lado donde vive gente, se calcula la pendiente media a partir de las altitudes de 6×6 puntos dentro del cuadro (cada unos 40 m). Se considera «muchas pendientes» a partir del 5 % y «muchas pendientes pronunciadas» a partir del 10 % (es la inclinación del terreno, no la de las calles). Se supone que la gente vive repartida de forma uniforme dentro del cuadro.",
-  "気象庁の過去30年（1991〜2020年）の観測から 1km 四方ごとに推定した平年値を、人が住む所の人口で重みをつけて町の値にした、めやすです": "Valor orientativo: los valores normales estimados por cuadrículas de 1 km de lado a partir de las observaciones de los últimos 30 años (1991–2020) de la Agencia Meteorológica de Japón se ponderan según la población de las zonas habitadas para obtener el valor del municipio."
+  "気象庁の過去30年（1991〜2020年）の観測から 1km 四方ごとに推定した平年値を、人が住む所の人口で重みをつけて町の値にした、めやすです": "Valor orientativo: los valores normales estimados por cuadrículas de 1 km de lado a partir de las observaciones de los últimos 30 años (1991–2020) de la Agencia Meteorológica de Japón se ponderan según la población de las zonas habitadas para obtener el valor del municipio.",
+  "平日の時刻表": "Horario de días laborables",
+  "バス停を選ぶ": "Elige una parada de autobús",
+  "平日の時刻表です。土日・祝日はちがうことがあります": "Este es el horario de días laborables. Los sábados, domingos y festivos puede ser distinto",
+  "きょうの平日の便は、もうありません": "Hoy ya no hay más servicios de días laborables",
+  "雨で暴風を伴う": "Lluvia con vientos fuertes"
  }
 }

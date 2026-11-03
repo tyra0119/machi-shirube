@@ -1,11 +1,11 @@
 {
  "lang": "id",
  "name": "Bahasa Indonesia",
- "createdAt": "2026-11-03T02:19:27.164Z",
+ "createdAt": "2026-11-03T02:26:24.627Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 638,
- "of": 633,
+ "count": 645,
+ "of": 639,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Ini adalah panduan hidup tidak resmi untuk kota ini. Claude mengumpulkannya dari situs resmi kota dan sumber lain, dengan mencantumkan sumbernya (Machishirube)",
   "すべてのページ": "Semua halaman",
@@ -644,6 +644,13 @@
   "雪一時みぞれ": "Salju, sesekali hujan bercampur salju",
   "雪で雷を伴う": "Salju disertai petir",
   "人が住む 250m 四方ごとに、中の 6×6 か所（およそ 40m おき）の標高から平均の坂のきつさを出し、5% 以上を「坂が多い」、10% 以上を「急な坂が多い」とした、めやすです（道の坂ではなく、土地の傾き）。人は四角の中に均等に住むとみなしています": "Perkiraan kasar: untuk setiap kotak 250 m persegi tempat orang tinggal, kemiringan rata-rata dihitung dari ketinggian di 6×6 titik di dalamnya (kira-kira setiap 40 m). 5% ke atas disebut \"banyak tanjakan\", 10% ke atas disebut \"banyak tanjakan curam\" (ini kemiringan tanah, bukan kemiringan jalan). Penduduk dianggap tinggal merata di dalam kotak.",
-  "気象庁の過去30年（1991〜2020年）の観測から 1km 四方ごとに推定した平年値を、人が住む所の人口で重みをつけて町の値にした、めやすです": "Perkiraan kasar: nilai normal yang diperkirakan per kotak 1 km persegi dari pengamatan Badan Meteorologi Jepang selama 30 tahun terakhir (1991–2020), lalu dibobot dengan jumlah penduduk di tempat tinggal untuk mendapatkan nilai kota."
+  "気象庁の過去30年（1991〜2020年）の観測から 1km 四方ごとに推定した平年値を、人が住む所の人口で重みをつけて町の値にした、めやすです": "Perkiraan kasar: nilai normal yang diperkirakan per kotak 1 km persegi dari pengamatan Badan Meteorologi Jepang selama 30 tahun terakhir (1991–2020), lalu dibobot dengan jumlah penduduk di tempat tinggal untuk mendapatkan nilai kota.",
+  "平日の時刻表": "Jadwal hari kerja",
+  "バス停を選ぶ": "Pilih halte bus",
+  "線はバスの路線（時刻表データから）。バス停を押すと、この先の発車": "Garis menunjukkan rute bus (dari data jadwal). Tekan halte bus untuk melihat keberangkatan berikutnya",
+  "平日の時刻表です。土日・祝日はちがうことがあります": "Ini jadwal hari kerja. Jadwal hari Sabtu, Minggu, dan hari libur nasional bisa berbeda",
+  "きょうの平日の便は、もうありません": "Hari ini tidak ada lagi bus hari kerja",
+  "平日の時刻表です。土日・祝日はちがうことがあります。乗る前に、バス会社や町の時刻表で確かめてください。": "Ini jadwal hari kerja. Jadwal hari Sabtu, Minggu, dan hari libur nasional bisa berbeda. Sebelum naik, pastikan dulu di perusahaan bus atau jadwal kota.",
+  "距離はまっすぐ測ったもので、坂や道の曲がりは考えていません。歩く時間は1分60m（お年寄りの歩く速さ）のめやすで、坂はまっすぐの線の上の上り下りから見積もったものです（道の坂とは違います）。海抜は地理院タイル（標高タイル）、浸水の深さは想定の地図の色から読んだめやすです。避難の判断は町の案内に従ってください。": "Jarak diukur dalam garis lurus dan tidak memperhitungkan tanjakan atau kelokan jalan. Waktu berjalan kaki adalah perkiraan dengan kecepatan 60 m per menit (kecepatan jalan orang lanjut usia), dan tanjakan diperkirakan dari naik turunnya medan di sepanjang garis lurus (berbeda dengan tanjakan jalan yang sebenarnya). Ketinggian dari permukaan laut berasal dari Ubin Geospatial Information Authority (ubin ketinggian), dan kedalaman genangan adalah perkiraan yang dibaca dari warna pada peta perkiraan. Untuk keputusan evakuasi, ikuti panduan dari kota."
  }
 }
