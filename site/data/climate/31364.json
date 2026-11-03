@@ -1,0 +1,33 @@
+{
+ "code": "31364",
+ "createdAt": "2026-11-03T03:36:59.095Z",
+ "town": {
+  "sun": 1527,
+  "jan": 2.7,
+  "aug": 25.3,
+  "rain": 2215,
+  "snow": 72.1
+ },
+ "tokyo": {
+  "sun": 1960,
+  "jan": 5.8,
+  "aug": 27.1,
+  "rain": 1508.9,
+  "snow": 3,
+  "name": "東京都心（千代田区）"
+ },
+ "bright": [
+  "8月の平均気温が、東京都心より約1.8℃低い（夏は比べて涼しい）"
+ ],
+ "note": "気象庁の過去30年（1991〜2020年）の観測から 1km 四方ごとに推定した平年値を、人が住む所の人口で重みをつけて町の値にした、めやすです",
+ "sources": [
+  {
+   "title": "国土数値情報（平年値メッシュデータ、2022年度）国土交通省 を加工して作成（非商用）",
+   "url": "https://nlftp.mlit.go.jp/ksj/gml/datalist/KsjTmplt-G02-2022.html"
+  },
+  {
+   "title": "国勢調査 2020年 地域メッシュ統計（250m）人口（総務省統計局 e-Stat）",
+   "url": "https://www.e-stat.go.jp/gis/statmap-search?page=1&type=1&toukeiCode=00200521&toukeiYear=2020&aggregateUnit=Q"
+  }
+ ]
+}

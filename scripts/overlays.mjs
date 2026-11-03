@@ -3,7 +3,7 @@
 // これからの人口（site/data/future.json）は全国の分がもうある。バス（GTFS）は町ごとに時刻表を選ぶので、ここでは動かさない
 // 動かし方: node scripts/overlays.mjs 39428
 import fs from "node:fs";
-import { buildFloodPop } from "./build-flood-pop.mjs";
+import { buildFloodPop, townMeshes } from "./build-flood-pop.mjs";
 import { buildQuakePop } from "./build-quake-pop.mjs";
 import { buildAccidents } from "./build-accidents.mjs";
 import { buildShopAccess } from "./build-shop-access.mjs";
@@ -19,12 +19,16 @@ export async function buildOverlays(code, log = console.log, { force = false } =
     ["坂の多い所に住む人", `site/data/slope/${code}.json`, (l) => buildSlope(code, l)],
     ["町の気候（平年値）", `site/data/climate/${code}.json`, (l) => buildClimate(code, l)],
   ];
-  for (const [name, file, run] of steps) {
-    if (!force && fs.existsSync(file)) continue;
+  // 250m 四方の人口の表は、どの計算も使うので先に1回だけ読む（e-Stat へ同時に取りに行かないように）
+  const todo = steps.filter(([, file]) => force || !fs.existsSync(file));
+  if (!todo.length) { log("国のデータを重ねる計算は、もう済んでいます"); return; }
+  await townMeshes(code, () => {}).catch(() => {});
+  // 計算ごとに読みに行くサイトがちがうので、同時に動かす（同じサイトへの行儀は build-flood-pop.mjs の polite が守る）
+  await Promise.all(todo.map(async ([name, file, run]) => {
     log(`国のデータを重ねています：${name}`);
     // 途中の進み具合も画面の作業の流れに出す（揺れの確率などは数分かかり、出さないと止まって見える）
     try { await run((t) => log(`${name}：${String(t).trim()}`)); } catch (e) { log(`${name}は出せませんでした：${e.message}`); }
-  }
+  }));
   log("国のデータを重ねる計算が終わりました");
 }
 

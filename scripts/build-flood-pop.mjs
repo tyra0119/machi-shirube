@@ -24,12 +24,19 @@ const DEPTH_COLORS = [
 const Z = 15; // 1画素 およそ 4m
 const STEP = 5; // 250m 四方の中を 5×5 か所で見る
 
-let last = 0;
-async function polite(url) {
-  const wait = last + 1000 - Date.now();
-  if (wait > 0) await new Promise((r) => setTimeout(r, wait));
-  last = Date.now();
-  return fetch(url, { headers: { "User-Agent": UA } });
+// 行儀よく取る：サイト（ホスト）ごとに順番待ちの列を作り、同じサイトへは1つずつ、前の取得のあと1秒あける。
+// ちがうサイトは同時に取ってよい（重ねる計算を同時に動かして、町を調べる時間を短くするため）
+const queues = new Map();
+function polite(url) {
+  const host = new URL(url).host;
+  const turn = (queues.get(host) ?? Promise.resolve()).catch(() => {}).then(async () => {
+    const res = await fetch(url, { headers: { "User-Agent": UA } });
+    const body = Buffer.from(await res.arrayBuffer()); // 中身まで受け取ってから次へ（同じサイトへ同時に取らない）
+    await new Promise((r) => setTimeout(r, 1000));
+    return { ok: res.ok, status: res.status, arrayBuffer: async () => body };
+  });
+  queues.set(host, turn);
+  return turn;
 }
 export async function cached(url, file) {
   if (fs.existsSync(file)) return fs.readFileSync(file);
