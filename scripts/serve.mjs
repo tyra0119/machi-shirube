@@ -11,6 +11,7 @@ import fs from "node:fs";
 import path from "node:path";
 import * as ledger from "./ledger.mjs";
 import { research, researchTown, RUN_LIMIT_USD } from "./research.mjs";
+import { backupLedger } from "./backup-ledger.mjs";
 import { propose, decideProposal, loadProposals, requestToQuestion } from "./propose.mjs";
 import { buildOverlays } from "./overlays.mjs";
 import { mitate } from "./mitate.mjs";
@@ -276,3 +277,8 @@ http
     fs.createReadStream(file).pipe(res);
   })
   .listen(PORT, "127.0.0.1", () => console.log(`http://127.0.0.1:${PORT}/`));
+
+// 承認の台帳の控え：始めたときと、6時間ごとに作品のフォルダの外へ写す（scripts/backup-ledger.mjs）
+const backupNow = () => { try { backupLedger(); } catch (e) { console.error(`台帳の控えを写せませんでした：${e.message}`); } };
+backupNow();
+setInterval(backupNow, 6 * 60 * 60 * 1000);

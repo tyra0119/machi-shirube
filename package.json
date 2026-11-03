@@ -52,7 +52,9 @@
     "watch-recheck": "node --env-file=.env scripts/watch-recheck.mjs",
     "build:telops": "node scripts/build-telops.mjs",
     "build:aed": "node scripts/build-aed.mjs",
-    "quiz": "node --env-file=.env scripts/quiz.mjs"
+    "quiz": "node --env-file=.env scripts/quiz.mjs",
+    "backup": "node scripts/backup-ledger.mjs",
+    "preflight": "node scripts/preflight.mjs"
   },
   "devDependencies": {
     "mapshaper": "^0.7.101"

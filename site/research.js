@@ -45,6 +45,11 @@ async function main() {
     $("note").textContent = `見込み：問い1つ 約 $${ping.estimate?.usd ?? 0.3}・${ping.estimate?.min ?? 1}分${ping.estimate ? `（これまでの調べ ${ping.estimate.n} 件の中ほどの値。採点と探し直しは別）` : ""}。まだ答えの無い問いだけを調べます。1回の調べの上限は $${ping.runLimit ?? 4}、1日の上限は $80、合計の上限は $550。`;
   }
   $("start").addEventListener("click", start);
+  // 終わりの通知の許しは、調べ始める前に別のボタンで聞く（「調べ始める」で聞くと、録画の最中に確かめの窓が出る。断られても音とタブの名前で知らせる）
+  if ("Notification" in window && Notification.permission === "default") {
+    $("start").insertAdjacentHTML("afterend", `<button type="button" id="notify-ok" class="secondary r-notify">終わったら通知を出す</button>`);
+    $("notify-ok").addEventListener("click", async () => { await Notification.requestPermission(); $("notify-ok").remove(); });
+  }
   $("stop").addEventListener("click", () => run && fetch(`api/runs/${run.id}/stop`, { method: "POST" }));
   await loadItems();
   renderGrid();
@@ -147,6 +152,26 @@ async function poll() {
   const label = { done: "調べ終わり", stopped: "止めました", failed: "止まりました" }[run.status];
   $("note").textContent = `${label}（確かめ待ち ${$("pending").textContent}件）。見つからなかった問いは、町の人に聞くことの候補です。`;
   await showProposals();
+  doneNotice(label);
+}
+
+// 調べ終わったら知らせる：タブの名前を変え、短い音を鳴らし、許されていれば Windows の通知も出す
+// （作者「全部やる」の F：その場で押す町は20〜45分かかるので、待つあいだ別のことができるように。音はファイルを使わず、その場で作る）
+function doneNotice(label) {
+  const baseTitle = document.title.replace(/^【[^】]*】/, ""); // 町の名前の入ったいまの名前
+  document.title = `【${label}】${baseTitle}`;
+  addEventListener("focus", () => { document.title = baseTitle; }, { once: true });
+  try {
+    const ac = new AudioContext();
+    for (const [i, f] of [660, 880].entries()) {
+      const o = ac.createOscillator(), g = ac.createGain();
+      o.frequency.value = f; g.gain.setValueAtTime(0.0001, ac.currentTime + i * 0.25);
+      g.gain.exponentialRampToValueAtTime(0.2, ac.currentTime + i * 0.25 + 0.02);
+      g.gain.exponentialRampToValueAtTime(0.0001, ac.currentTime + i * 0.25 + 0.22);
+      o.connect(g).connect(ac.destination); o.start(ac.currentTime + i * 0.25); o.stop(ac.currentTime + i * 0.25 + 0.25);
+    }
+  } catch {}
+  if ("Notification" in window && Notification.permission === "granted") new Notification(`まちしるべ：${label}`, { body: document.querySelector("h1")?.textContent ?? "" });
 }
 
 // 地図が育つ：町の形から始まり、答えが出るたびに重なっていく（避難場所の答え → 避難場所の点、ハザードマップの答え → 浸水の想定）

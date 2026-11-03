@@ -99,3 +99,4 @@ body.research-page { display: block; height: 100%; }
 .r-proposals .steps { margin: 6px 0 8px; padding-left: 22px; }
 .r-proposals .steps li { margin: 4px 0; }
 .r-proposals .decide { margin-top: 10px; }
+.r-notify { min-height: 40px; padding: 0 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); color: var(--text-sub); font-size: 13px; cursor: pointer; }
