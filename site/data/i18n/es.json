@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-04T12:44:56.110Z",
+ "createdAt": "2026-11-04T13:00:31.522Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 962,
- "of": 927,
+ "count": 963,
+ "of": 928,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -968,6 +968,7 @@
   "見出しは町のサイトの日本語のままです。": "Los títulos se muestran en japonés, tal como aparecen en el sitio web del municipio.",
   "{d} 発行": "Publicado el {d}",
   "町の公式サイトの新着と広報紙から、見出しとリンクだけを出しています（{d} に取得）。": "Solo se muestran los títulos y los enlaces de las novedades del sitio web oficial del municipio y del boletín municipal (obtenidos el {d}).",
-  "町からのお知らせ": "Avisos del municipio"
+  "町からのお知らせ": "Avisos del municipio",
+  "印刷用のくらしのメモ（A4 1枚・冷蔵庫に貼れる・PDF にもできる）": "Hoja informativa para imprimir (1 hoja A4, para pegar en el refrigerador, también en PDF)"
  }
 }

@@ -20,10 +20,20 @@ async function main() {
   if (q.get("town")) [code, fixedPart] = q.get("town").split("-");
   else code = q.get("muni");
   const muniName = stats.towns[code].name.replace(/^.+?郡/, "");
-  const [topo, labels, sh, ansMuni, gd, m, yard] = await Promise.all([
+  const [topo, labels, sh, ansMuni, gd, m, yard, shList] = await Promise.all([
     json(`data/towns/${code}.json`), json("data/labels.json"), json(`data/shelters/${code}.json`),
     json(`data/answers/${code}.json`), json(`data/gomi-days/${code}.json`), loadMedical(code), json("data/yardstick.json"),
+    json(`data/shelter-list/${code}.json`),
   ]);
+  // 位置つきの避難場所が無い町（阿賀町）は、地域防災計画の資料の避難施設を行政区で選ぶ（町のページで選んだ行政区が入る）
+  const areaSel = $("pick-area");
+  if (!sh && shList) {
+    const areas = [...new Set(shList.rows.map((r) => r.area))];
+    areaSel.innerHTML = `<option value="">広域避難所（町全体）</option>` + areas.map((a) => `<option>${esc(a)}</option>`).join("");
+    if (areas.includes(remember.get(`slarea:${code}`))) areaSel.value = remember.get(`slarea:${code}`);
+    $("pick-area-l").hidden = false;
+    areaSel.addEventListener("change", async () => { remember.set(`slarea:${code}`, areaSel.value); await draw(); fitA4(); });
+  }
   const parts = topo ? topojson.feature(topo, topo.objects.towns).features : [];
   const gomiOk = gd && (gd.status === "ok" || gd.status === "auto") && gd.areas?.length;
 
@@ -78,6 +88,14 @@ async function main() {
         <span>${esc(f.properties.kinds.join("・"))}のとき　まっすぐ ${d >= 1000 ? `${(d / 1000).toFixed(1)}km` : `${d}m`}</span></li>`).join("");
       $("hinan-note").textContent = `${part ? `${part.properties.name}のおおよその真ん中` : "町の真ん中のあたり（上で町・字を選ぶと、その近くになります）"}から近い順。避難場所は災害の種類ごとに決まっています。`;
       src.push(sh.source.title);
+      $("hinan").hidden = false;
+    } else if (shList) {
+      const rows = areaSel.value ? shList.rows.filter((r) => r.area === areaSel.value) : shList.rows.filter((r) => /広域/.test(r.note));
+      $("hinan-list").innerHTML = rows.slice(0, 4).map((r) => `<li><strong>${esc(r.name)}</strong>
+        <span>${r.address === "非表示" ? "" : `${esc(r.address)}　`}収容 ${r.capacity} 人${r.note ? `・${esc(r.note)}` : ""}</span></li>`).join("");
+      $("hinan-note").textContent = `${areaSel.value ? `${areaSel.value}の避難施設` : "広域避難所（上で行政区を選ぶと、その区の施設になります）"}。町の地域防災計画の資料から。どの災害のときに使えるかは資料に無いので、町の案内で確かめてください。`;
+      src.push(shList.source.title);
+      $("hinan").querySelector("h2").textContent = "避難施設";
       $("hinan").hidden = false;
     } else $("hinan").hidden = true;
 

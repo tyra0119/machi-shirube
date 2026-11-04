@@ -1,11 +1,11 @@
 {
  "lang": "pt",
  "name": "Português",
- "createdAt": "2026-11-04T12:44:53.687Z",
+ "createdAt": "2026-11-04T13:00:27.905Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 963,
- "of": 927,
+ "count": 964,
+ "of": 928,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Guia não oficial da vida na cidade. O Claude reúne as informações em sites oficiais da cidade e outras fontes, e indica a origem de cada uma (Machishirube)",
   "すべてのページ": "Todas as páginas",
@@ -969,6 +969,7 @@
   "見出しは町のサイトの日本語のままです。": "Os títulos permanecem em japonês, como no site do município.",
   "{d} 発行": "Publicado em {d}",
   "町の公式サイトの新着と広報紙から、見出しとリンクだけを出しています（{d} に取得）。": "Mostramos apenas os títulos e os links das novidades do site oficial do município e do informativo municipal (obtidos em {d}).",
-  "町からのお知らせ": "Avisos da prefeitura"
+  "町からのお知らせ": "Avisos da prefeitura",
+  "印刷用のくらしのメモ（A4 1枚・冷蔵庫に貼れる・PDF にもできる）": "Resumo prático para imprimir (1 folha A4, pode ser colado na geladeira, também em PDF)"
  }
 }

@@ -1,11 +1,11 @@
 {
  "lang": "en",
  "name": "English",
- "createdAt": "2026-11-04T12:44:58.292Z",
+ "createdAt": "2026-11-04T13:00:34.326Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 962,
- "of": 927,
+ "count": 963,
+ "of": 928,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "This is an unofficial guide to living in this town. Claude gathers information from the town's official website and other sources, and cites each source (Machishirube)",
   "すべてのページ": "All pages",
@@ -968,6 +968,7 @@
   "見出しは町のサイトの日本語のままです。": "Headlines are shown in Japanese, as on the town website.",
   "{d} 発行": "Published {d}",
   "町の公式サイトの新着と広報紙から、見出しとリンクだけを出しています（{d} に取得）。": "Only headlines and links are shown, taken from the town's official website updates and newsletter (retrieved {d}).",
-  "町からのお知らせ": "Announcements from the Town"
+  "町からのお知らせ": "Announcements from the Town",
+  "印刷用のくらしのメモ（A4 1枚・冷蔵庫に貼れる・PDF にもできる）": "Printable Living Memo (1 A4 page · fits on your fridge · can be saved as a PDF)"
  }
 }

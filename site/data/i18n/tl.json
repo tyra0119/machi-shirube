@@ -1,11 +1,11 @@
 {
  "lang": "tl",
  "name": "Filipino",
- "createdAt": "2026-11-04T12:45:12.524Z",
+ "createdAt": "2026-11-04T13:01:07.803Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 953,
- "of": 927,
+ "count": 954,
+ "of": 928,
  "dict": {
   "この町の非公式の暮らしの案内です。町の公式のサイトや国の公開データから集め、出典をつけています（まちしるべ）": "Ito ay isang di-opisyal na gabay sa pamumuhay sa bayang ito. Kinuha ito mula sa opisyal na website ng bayan at sa pampublikong datos ng bansa, at may nakasaad na pinagmulan (Machishirube)",
   "すべてのページ": "Lahat ng pahina",
@@ -959,6 +959,7 @@
   "見出しは町のサイトの日本語のままです。": "Ang mga pamagat ay nananatiling nasa Japanese gaya ng nasa website ng bayan.",
   "{d} 発行": "Inilathala noong {d}",
   "町の公式サイトの新着と広報紙から、見出しとリンクだけを出しています（{d} に取得）。": "Mga pamagat at link lang ang ipinapakita mula sa mga bagong post sa opisyal na website ng bayan at sa newsletter ng bayan (kinuha noong {d}).",
-  "町からのお知らせ": "Mga Abiso mula sa Bayan"
+  "町からのお知らせ": "Mga Abiso mula sa Bayan",
+  "印刷用のくらしのメモ（A4 1枚・冷蔵庫に貼れる・PDF にもできる）": "Printable na tala sa pang-araw-araw na buhay (1 pahinang A4, puwedeng idikit sa refrigerator, puwede ring gawing PDF)"
  }
 }

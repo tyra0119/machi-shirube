@@ -10,10 +10,11 @@
 <body>
 <div class="no-print bar">
   <a href="javascript:history.back()">← 戻る</a>
-  <button type="button" id="print">印刷する</button>
-  <span class="hint">A4 の紙 1枚に、白黒で印刷できます</span>
+  <button type="button" id="print">印刷・PDF で保存</button>
+  <span class="hint">A4 の紙 1枚に、白黒で印刷できます。印刷の画面で「PDF に保存」を選ぶと、ファイルにもできます（スマホでも）</span>
   <div class="picks">
     <label>町・字<select id="pick-part"></select></label>
+    <label id="pick-area-l" hidden>避難施設の行政区<select id="pick-area"></select></label>
     <label>ごみの地区<select id="pick-gomi"></select></label>
     <span class="hint">町のページで選んだものが入っています。変えると、メモも変わります</span>
   </div>
