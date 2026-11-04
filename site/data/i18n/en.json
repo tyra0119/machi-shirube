@@ -1,11 +1,11 @@
 {
  "lang": "en",
  "name": "English",
- "createdAt": "2026-11-04T00:15:54.855Z",
+ "createdAt": "2026-11-04T00:49:07.328Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 790,
- "of": 768,
+ "count": 791,
+ "of": 769,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "This is an unofficial guide to living in this town. Claude gathers information from the town's official website and other sources, and cites each source (Machishirube)",
   "すべてのページ": "All pages",
@@ -796,6 +796,7 @@
   "人口の減りにくさは、全国でも高いほうです": "Its population is among the most resistant to decline in the country",
   "人が確かめた": "Verified by a person",
   "読む言葉を選ぶと、町のページ全体とこの欄がその言葉になります。": "Choose a reading language, and the whole town page and this section will switch to that language.",
-  "人口の減りにくさは、全国 {n} の市区町村で {r} 番目です": "Out of {n} municipalities nationwide, it ranks #{r} in resistance to population decline"
+  "人口の減りにくさは、全国 {n} の市区町村で {r} 番目です": "Out of {n} municipalities nationwide, it ranks #{r} in resistance to population decline",
+  "電話番号と道を Google マップで見る": "View phone number and directions on Google Maps"
  }
 }

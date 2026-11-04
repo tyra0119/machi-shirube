@@ -23,7 +23,7 @@ async function showLayerMap(code, townFeatures, at, esc, part = null) {
   const openIds = new Map((today?.list ?? []).map((x) => [x.f, x]));
   const medFeatures = (med?.list ?? []).filter((f) => f.p).map((f) => {
     const x = openIds.get(f);
-    return pt(f.p, { name: f.n, kind: f.k, s: (f.s ?? []).slice(0, 4).join("・"), state: x?.openNow ? 2 : x ? 1 : 0, hours: x ? x.h.map(([a, b]) => `${hhmm(a)}〜${hhmm(b)}`).join("、") : "" });
+    return pt(f.p, { name: f.n, addr: f.a ?? "", kind: f.k, s: (f.s ?? []).slice(0, 4).join("・"), state: x?.openNow ? 2 : x ? 1 : 0, hours: x ? x.h.map(([a, b]) => `${hhmm(a)}〜${hhmm(b)}`).join("、") : "" });
   });
 
   // 気をつけたいことの重なり：町・字ごとに、次の条件がいくつ重なるか（国の数字から。町の評価ではない）
@@ -153,7 +153,7 @@ async function showLayerMap(code, townFeatures, at, esc, part = null) {
     }
   });
   pop("shelter", (p) => `<strong>${esc(p.name)}</strong><br>${esc(JSON.parse(p.kinds || "[]").join("・"))}${p.capacity ? `<br>${capText(p)}` : ""}`);
-  pop("iryo", (p) => `<strong>${esc(p.name)}</strong><br>${esc(p.kind)}${p.s ? `・${esc(p.s)}` : ""}<br>${p.state ? `${LT("今日")} ${esc(p.hours)}` : LT("今日は休み")}<br><small>${LT("行く前に電話で確かめてください")}</small>`);
+  pop("iryo", (p) => `<strong>${esc(p.name)}</strong><br>${esc(p.kind)}${p.s ? `・${esc(p.s)}` : ""}<br>${p.state ? `${LT("今日")} ${esc(p.hours)}` : LT("今日は休み")}<br><small>${LT("行く前に電話で確かめてください")}</small>${typeof gmapPlace === "function" ? `<br><a href="${esc(gmapPlace(p.name, p.addr))}" target="_blank" rel="noopener">${LT("電話番号と道を Google マップで見る")}</a>` : ""}`);
   pop("acc", (p) => `<strong>${esc(p.part)}</strong><br>${LT("3年で")} ${p.n} ${LT("件")}${Number(p.ped) ? `・${LT("歩行者")} ${p.ped}` : ""}${Number(p.bike) ? `・${LT("自転車")} ${p.bike}` : ""}`);
   pop("overlap", (p) => `<strong>${esc(p.name)}</strong><br>${p.n ? `${LT("重なり")} ${p.n}：${esc(p.hit)}` : LT("重なりはありません")}${hito?.parts?.[p.part] && (!LANG || LANG === "easy") ? `<p class="pop-hito">${esc(hito.parts[p.part].text)}<small>（${LT("AI のまとめ")}）</small></p>` : ""}`);
   pop("lore", (p) => `<strong>${esc(p.name)}</strong>${p.muniName ? `<br><small>${esc(p.muniName)}</small>` : ""}<br>${esc(p.disaster)}<p class="pop-hito">${esc(p.text)}<small>（${LT("国土地理院 自然災害伝承碑")}）</small></p>`);

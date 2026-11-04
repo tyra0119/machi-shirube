@@ -1,6 +1,9 @@
 // 医療・健康のページ：今日（明日）やっている病院・診療所。見る人のブラウザで、曜日・祝日・第何週の休みから決める。
 // 元は厚生労働省「医療情報ネット」のオープンデータ（医療機関から届けられた内容）。変わっていることがあるので、行く前に電話で確かめてもらう
 const TT = (s) => (typeof T === "function" ? T(s) : s);
+// 病院の電話：国の医療情報ネットのオープンデータには電話番号の列が無いので、名前と住所で Google マップを開く（電話番号と道が見られる）。
+// 押したときだけ、名前と住所を Google に渡す（わが家の避難の「Google マップで歩く道を見る」と同じ）
+const gmapPlace = (name, addr) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${name} ${addr ?? ""}`.trim())}`;
 const DAY_KEYS = ["日", "月", "火", "水", "木", "金", "土"];
 const MONDAY_FIRST = ["月", "火", "水", "木", "金", "土", "日"];
 
@@ -67,6 +70,7 @@ function medicalHTML(m, offset, center, esc, filter = "", limit = 5) {
         <span class="h">${x.h.map(([s, e]) => `${hhmm(s)}–${hhmm(e)}`).join("、")}${x.m != null ? `・まっすぐ ${x.m >= 1000 ? `${(x.m / 1000).toFixed(1)}km` : `${x.m}m`}` : ""}</span>
         ${x.f.s ? `<span class="s">${esc(x.f.s.slice(0, 6).join("・"))}${x.f.s.length > 6 ? ` ほか ${x.f.s.length - 6}` : ""}</span>` : ""}
         <span class="a">${esc(x.f.a)}${x.f.other ? `・休み：${esc(x.f.other.slice(0, 60))}` : ""}</span>
+        <a class="med-gmap" href="${esc(gmapPlace(x.f.n, x.f.a))}" target="_blank" rel="noopener">${icon("phone")}${TT("電話番号と道を Google マップで見る")}</a>
       </li>`).join("")}</ul>
     ${list.length > shown.length ? `<button type="button" class="more-btn" data-more>${TT("続きを見る")}（${list.length - shown.length}）</button>` : ""}
     ${!day.list.length ? `<p class="note">${TT("届けられた診療時間では、この日にやっている所はありません。急ぐときは、下の窓口へ。")}</p>` : ""}`;

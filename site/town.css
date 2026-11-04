@@ -728,3 +728,6 @@ section.block.folded { padding-bottom: 12px; }
 /* 重ねて見る地図：しまってある札を出すボタン（動きのボタンなので丸い形） */
 .layer-chips .more-layers { min-height: 40px; padding: 0 14px; border: 1px dashed var(--accent); border-radius: 999px; background: var(--surface); color: var(--accent); font-weight: 700; cursor: pointer; }
 .tr-note:empty { display: none; }
+/* 病院の一覧：電話番号と道を Google マップで見る（国のオープンデータに電話番号が無いので） */
+.med-list .med-gmap { display: inline-flex; align-items: center; gap: 6px; align-self: flex-start; min-height: 40px; margin-top: 2px; color: var(--accent); font-size: 14px; font-weight: 600; }
+.med-list .med-gmap .ic { width: 16px; height: 16px; }

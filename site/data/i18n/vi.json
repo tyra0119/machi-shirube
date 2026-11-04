@@ -1,11 +1,11 @@
 {
  "lang": "vi",
  "name": "Tiếng Việt",
- "createdAt": "2026-11-04T00:16:40.421Z",
+ "createdAt": "2026-11-04T00:49:28.805Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 787,
- "of": 768,
+ "count": 788,
+ "of": 769,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Đây là trang hướng dẫn đời sống không chính thức của thị trấn này. Claude thu thập từ các trang chính thức của thị trấn v.v. và ghi rõ nguồn (Machi-shirube)",
   "すべてのページ": "Tất cả các trang",
@@ -793,6 +793,7 @@
   "人口の減りにくさは、全国でも高いほうです": "Mức độ dân số khó giảm thuộc nhóm cao trong cả nước",
   "人が確かめた": "Đã được người kiểm tra",
   "読む言葉を選ぶと、町のページ全体とこの欄がその言葉になります。": "Khi bạn chọn ngôn ngữ đọc, toàn bộ trang của thị trấn và mục này sẽ hiển thị bằng ngôn ngữ đó.",
-  "人口の減りにくさは、全国 {n} の市区町村で {r} 番目です": "Mức độ dân số khó giảm xếp thứ {r} trong {n} thành phố, quận, thị trấn, làng trên toàn quốc"
+  "人口の減りにくさは、全国 {n} の市区町村で {r} 番目です": "Mức độ dân số khó giảm xếp thứ {r} trong {n} thành phố, quận, thị trấn, làng trên toàn quốc",
+  "電話番号と道を Google マップで見る": "Xem số điện thoại và đường đi trên Google Maps"
  }
 }
