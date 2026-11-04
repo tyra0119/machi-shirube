@@ -1253,6 +1253,7 @@ async function finishPage(code, townFeatures, startPart, scopeNote, at) {
   showView();
   const part = startPart && townFeatures.find((f) => f.properties.part === startPart);
   $("memo-link").href = part ? `memo.html?town=${code}-${startPart}` : `memo.html?muni=${code}`;
+  $("kairan-link").href = part ? `kairan.html?town=${code}-${startPart}` : `kairan.html?muni=${code}`;
   await showAnswers(code, scopeNote, part ? `${code}-${startPart}` : null, part?.properties.name);
   // 町の色（町の花・木から。地図を描く前に決める）
   const sym = applyTownColor(Object.values(answersByPage).flat().find((x) => x.qid === "Q11"));

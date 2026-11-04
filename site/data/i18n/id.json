@@ -1,11 +1,11 @@
 {
  "lang": "id",
  "name": "Bahasa Indonesia",
- "createdAt": "2026-11-04T01:21:03.895Z",
+ "createdAt": "2026-11-04T01:25:53.053Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 792,
- "of": 773,
+ "count": 794,
+ "of": 774,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Ini adalah panduan hidup tidak resmi untuk kota ini. Claude mengumpulkannya dari situs resmi kota dan sumber lain, dengan mencantumkan sumbernya (Machishirube)",
   "すべてのページ": "Semua halaman",
@@ -798,6 +798,8 @@
   "今いる所から、近い避難場所を探す": "Cari tempat pengungsian terdekat dari lokasi Anda saat ini",
   "現在地はこの端末の中だけで使い、残しません。選んだ町・字は、次に開いたときのために、この端末に覚えます。「Google マップで歩く道を見る」を押したときだけ、選んだ場所と避難場所を Google マップに渡します。": "Lokasi Anda saat ini hanya digunakan di dalam perangkat ini dan tidak disimpan. Kota dan wilayah (aza) yang Anda pilih akan diingat di perangkat ini untuk saat Anda membukanya lagi. Hanya saat Anda menekan \"Lihat rute jalan kaki di Google Maps\", tempat yang Anda pilih dan tempat pengungsian akan diteruskan ke Google Maps.",
   "バスの時刻表": "Jadwal bus",
-  "次の便": "Keberangkatan berikutnya"
+  "次の便": "Keberangkatan berikutnya",
+  "バスの便利さ（町の数字）": "Kemudahan bus (angka-angka kota)",
+  "回覧板にはさむお知らせ（A4 1枚・QR コードつき）": "Pengumuman untuk disisipkan di papan edaran (1 lembar A4, dengan kode QR)"
  }
 }

@@ -1,11 +1,11 @@
 {
  "lang": "pt",
  "name": "Português",
- "createdAt": "2026-11-04T01:20:39.218Z",
+ "createdAt": "2026-11-04T01:25:39.296Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 796,
- "of": 773,
+ "count": 797,
+ "of": 774,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Guia não oficial da vida na cidade. O Claude reúne as informações em sites oficiais da cidade e outras fontes, e indica a origem de cada uma (Machishirube)",
   "すべてのページ": "Todas as páginas",
@@ -802,6 +802,7 @@
   "現在地はこの端末の中だけで使い、残しません。選んだ町・字は、次に開いたときのために、この端末に覚えます。「Google マップで歩く道を見る」を押したときだけ、選んだ場所と避難場所を Google マップに渡します。": "A sua localização atual é usada apenas neste dispositivo e não é guardada. O município e o bairro (distrito) escolhidos ficam memorizados neste dispositivo para a próxima vez que abrir a página. Só quando você toca em \"Ver o caminho a pé no Google Maps\" é que o local escolhido e o abrigo são enviados ao Google Maps.",
   "バスの時刻表": "Horários de ônibus",
   "バスの便利さ（町の数字）": "Conveniência do ônibus (números do município)",
-  "次の便": "Próximo ônibus"
+  "次の便": "Próximo ônibus",
+  "回覧板にはさむお知らせ（A4 1枚・QR コードつき）": "Aviso para anexar ao kairanban (circular do bairro) (1 folha A4, com código QR)"
  }
 }

@@ -1,11 +1,11 @@
 {
  "lang": "en",
  "name": "English",
- "createdAt": "2026-11-04T01:20:48.964Z",
+ "createdAt": "2026-11-04T01:25:45.560Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 796,
- "of": 773,
+ "count": 797,
+ "of": 774,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "This is an unofficial guide to living in this town. Claude gathers information from the town's official website and other sources, and cites each source (Machishirube)",
   "すべてのページ": "All pages",
@@ -802,6 +802,7 @@
   "現在地はこの端末の中だけで使い、残しません。選んだ町・字は、次に開いたときのために、この端末に覚えます。「Google マップで歩く道を見る」を押したときだけ、選んだ場所と避難場所を Google マップに渡します。": "Your current location is used only on this device and is not saved. The town and district you select are remembered on this device for the next time you open this page. Only when you press \"View walking route in Google Maps\" are the selected place and the shelter sent to Google Maps.",
   "バスの時刻表": "Bus timetable",
   "バスの便利さ（町の数字）": "Bus convenience (town figures)",
-  "次の便": "Next bus"
+  "次の便": "Next bus",
+  "回覧板にはさむお知らせ（A4 1枚・QR コードつき）": "Notice to attach to the circulating bulletin (1 A4 page, with QR code)"
  }
 }

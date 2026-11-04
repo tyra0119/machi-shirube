@@ -1,0 +1,42 @@
+/* 回覧板のお知らせ：A4 1枚・白黒。memo.css の上に重ねる。お年寄りが読めるよう、文字は大きめ */
+.kairan { display: flex; flex-direction: column; }
+.k-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10mm; }
+.k-tag { display: inline-block; margin: 0 0 4px; padding: 0 10px; border: 2px solid #111; border-radius: 4px; font-size: 14pt; font-weight: 700; letter-spacing: 0.3em; }
+.kairan h1 { font-size: 22pt; line-height: 1.3; }
+/* 見た家の印：回覧板の確認の欄 */
+.k-head > div { flex: 1; min-width: 0; }
+.k-seen { flex: none; width: auto; border-collapse: collapse; }
+.k-seen caption { font-size: 9pt; text-align: left; padding-bottom: 2px; }
+.k-seen td { width: 9mm; height: 9mm; padding: 0; border: 1px solid #111; }
+.k-lead { margin: 8px 0 4px; font-size: 13pt; line-height: 1.6; }
+.k-main { display: flex; gap: 8mm; align-items: flex-start; }
+.k-can { flex: 1; }
+.k-can ul { margin: 0; padding: 0; list-style: none; }
+.k-can li { position: relative; margin: 0 0 4px; padding-left: 6mm; font-size: 13pt; line-height: 1.4; }
+.k-can li::before { content: "●"; position: absolute; left: 0; top: 0; font-size: 10pt; line-height: 1.6; }
+.k-can li span { display: block; font-size: 10.5pt; color: #333; }
+.k-qr { flex: none; width: 54mm; margin-top: 10px; text-align: center; }
+.qr-big svg { width: 46mm; height: 46mm; }
+.k-how { margin: 4px 0 2px; font-size: 11pt; font-weight: 700; line-height: 1.4; }
+.k-safe ul { margin: 0; padding-left: 20px; }
+.k-safe li { font-size: 11.5pt; line-height: 1.55; }
+.k-memo { margin: 6px 0 0; font-size: 10.5pt; }
+.k-made { margin: 6px 0 0; font-size: 8.5pt; color: #333; }
+/* 切り取って残せる小さな QR の札（紙のいちばん下） */
+.k-slips { margin-top: auto; padding-top: 4mm; border-top: 1.5px dashed #111; }
+.k-cut { margin: 0 0 3mm; font-size: 9pt; }
+.slips { display: grid; grid-template-columns: repeat(3, 1fr); }
+.slip { display: flex; align-items: center; gap: 3mm; padding: 2mm 3mm; border-left: 1.5px dashed #111; }
+.slip:first-child { border-left: 0; }
+.slip svg { flex: none; width: 20mm; height: 20mm; }
+.slip p { margin: 0; font-size: 8.5pt; line-height: 1.5; }
+.slip strong { display: block; font-size: 9.5pt; }
+/* 画面が狭いとき（スマホで見たとき）は縦に並べる。印刷はいつも A4 の形 */
+@media screen and (max-width: 640px) {
+  .k-head, .k-main { flex-direction: column; }
+  .k-qr { width: 100%; }
+  .slips { grid-template-columns: 1fr; }
+  .slip { border-left: 0; border-top: 1px dashed #111; }
+}
+.kairan h2 { margin: 10px 0 6px; font-size: 13.5pt; }
+.kairan { padding-top: 10mm; padding-bottom: 8mm; }

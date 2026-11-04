@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-04T01:20:44.783Z",
+ "createdAt": "2026-11-04T01:25:43.625Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 795,
- "of": 773,
+ "count": 796,
+ "of": 774,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -801,6 +801,7 @@
   "現在地はこの端末の中だけで使い、残しません。選んだ町・字は、次に開いたときのために、この端末に覚えます。「Google マップで歩く道を見る」を押したときだけ、選んだ場所と避難場所を Google マップに渡します。": "Tu ubicación actual se usa solo dentro de este dispositivo y no se guarda. El municipio y el distrito (字) que elijas se recordarán en este dispositivo para la próxima vez que abras la página. Solo cuando pulses «Ver la ruta a pie en Google Maps», el lugar elegido y el refugio se enviarán a Google Maps.",
   "バスの時刻表": "Horario de autobuses",
   "バスの便利さ（町の数字）": "Comodidad del autobús (cifras del municipio)",
-  "次の便": "Próximo servicio"
+  "次の便": "Próximo servicio",
+  "回覧板にはさむお知らせ（A4 1枚・QR コードつき）": "Aviso para adjuntar al kairanban (carpeta de avisos vecinales) (1 hoja A4, con código QR)"
  }
 }

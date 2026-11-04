@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>回覧板のお知らせ｜まちしるべ</title>
+<meta name="description" content="紙の回覧板で回せる、町のくらしの案内のお知らせ（A4 1枚・白黒で印刷できる）。このサイトの説明と、町のページを開く QR コード。">
+<link rel="stylesheet" href="memo.css">
+<link rel="stylesheet" href="kairan.css">
+</head>
+<body>
+<div class="no-print bar">
+  <a href="javascript:history.back()">← 戻る</a>
+  <button type="button" id="print">印刷する</button>
+  <span class="hint">A4 の紙 1枚に、白黒で印刷できます。回覧板にはさんで回してください</span>
+</div>
+<main class="sheet kairan">
+  <header class="k-head">
+    <div>
+      <p class="k-tag">回覧</p>
+      <h1>スマホで見られる<br><span id="name">町</span>のくらしの案内</h1>
+    </div>
+    <table class="k-seen" aria-label="見た家の印">
+      <caption>見たら印を</caption>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+      <tr><td></td><td></td><td></td><td></td><td></td></tr>
+    </table>
+  </header>
+
+  <p class="k-lead" id="lead"></p>
+
+  <div class="k-main">
+    <section class="k-can">
+      <h2>見られること</h2>
+      <ul id="can"></ul>
+    </section>
+    <section class="k-qr">
+      <div id="qr" class="qr-big" aria-label="町のページの QR コード"></div>
+      <p class="k-how">スマホのカメラを、この四角に向けると開きます</p>
+      <p class="url" id="url"></p>
+    </section>
+  </div>
+
+  <section class="k-safe">
+    <h2>安心して使えるように</h2>
+    <ul>
+      <li>町の公式のサイトではありません。町の公式のサイトや国の公開データから集め、どの情報にも出典（もとのページ）を付けています。</li>
+      <li>無料で、登録もいりません。名前や住所を入れることはありません。</li>
+      <li>避難するかどうか、病院にかかるかどうかは決めません。急ぐときは、火事・救急は <strong>119</strong>、事件・事故は <strong>110</strong> へ。</li>
+    </ul>
+    <p class="k-memo" id="memo-note">スマホを使わない方には、家に貼れる「くらしのメモ」（近い避難場所・ごみ・病院）も、町のページから印刷できます。</p>
+  </section>
+
+  <p class="k-made" id="made"></p>
+
+  <section class="k-slips" aria-label="切り取って使える QR コード">
+    <p class="k-cut">✂ きりとって、手元に残せます</p>
+    <div class="slips" id="slips"></div>
+  </section>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/topojson-client@3.1.0/dist/topojson-client.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode-generator@1.4.4/qrcode.js"></script>
+<script src="kairan.js"></script>
+</body>
+</html>
