@@ -73,14 +73,15 @@ function medicalHTML(m, offset, center, esc, filter = "", limit = 5) {
   const label = other
     ? `${TT(offset === 0 ? "今日" : "明日")}（${day.date.toLocaleDateString(LANG, { weekday: "short", month: "short", day: "numeric" })}${day.holiday ? `・${TT("祝日")}` : ""}）`
     : `${TT(offset === 0 ? "今日" : "明日")}（${day.date.getMonth() + 1}月${day.date.getDate()}日 ${DAY_KEYS[day.date.getDay()]}曜${day.holiday ? `・${day.holiday}` : ""}）`;
-  const f = filter.replace(/\s/g, "");
-  const list = day.list.filter((x) => !f || (x.f.n + (x.f.s ?? []).join("")).replace(/\s/g, "").includes(f));
+  // 訳した診療科目の名前でも絞れるように（ポルトガル語の画面で「pediatria」が 0 か所だった）。大文字と小文字は区別しない
+  const f = filter.replace(/\s/g, "").toLowerCase();
+  const list = day.list.filter((x) => !f || (x.f.n + (x.f.s ?? []).join("") + (x.f.s ?? []).map(TT).join("")).replace(/\s/g, "").toLowerCase().includes(f));
   const shown = list.slice(0, limit);
   return `
     <p class="med-sum">${other
       ? `<strong>${esc(label)}</strong>：${TT("やっている所")} <strong>${day.list.length}</strong> / ${m.list.length}${offset === 0 ? `・${TT("いま開いている")} ${day.list.filter((x) => x.openNow).length}` : ""}`
       : `<strong>${esc(label)}</strong>にやっているのは、この市区町村の ${m.list.length} か所のうち <strong>${day.list.length} か所</strong>${offset === 0 ? `（いま開いている ${day.list.filter((x) => x.openNow).length} か所）` : ""}`}</p>
-    ${f ? `<p class="note">「${esc(filter)}」で絞ると ${list.length} か所</p>` : ""}
+    ${f ? `<p class="note">${esc(typeof TN === "function" ? TN("「{q}」で絞ると {n} か所", { q: filter, n: list.length }) : `「${filter}」で絞ると ${list.length} か所`)}</p>` : ""}
     <ul class="med-list">${shown.map((x) => `
       <li${x.openNow ? ` class="open"` : ""}>
         <span class="n">${icon(x.f.k === "病院" ? "hospital" : "medical")}${x.f.u ? `<a href="${esc(x.f.u)}" target="_blank" rel="noopener">${esc(x.f.n)}</a>` : esc(x.f.n)}<small>${esc(TT(x.f.k))}</small>${x.openNow ? `<em>${TT("いま開いている")}</em>` : ""}</span>

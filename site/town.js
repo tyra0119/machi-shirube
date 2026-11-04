@@ -1012,8 +1012,9 @@ function buildAllPages(hasHinan, local) {
   allPages = PAGES.filter((p) => !p.local || local).map((p) => ({
     ...p,
     items: [
-      ...(extra[p.view] ?? []).map(([label, target]) => ({ label, view: p.view, target })),
-      ...(answersByPage[p.view] ?? []).map((a) => ({ label: shortOf(a), view: p.view, target: `a-${a.qid}` })),
+      // 名前は見ている言葉で（ja は日本語の名前。どちらでも引ける）
+      ...(extra[p.view] ?? []).map(([label, target]) => ({ label: T(label), ja: label, view: p.view, target })),
+      ...(answersByPage[p.view] ?? []).map((a) => ({ label: a.shortT ?? T(shortOf(a)), ja: shortOf(a), view: p.view, target: `a-${a.qid}` })),
     ],
   }));
 }
@@ -1021,8 +1022,9 @@ function buildAllPages(hasHinan, local) {
 // （右下の「目次」のボタンをやめて、ここにまとめた。作者「目次は他の一覧にまとめて」）
 let hereSecs = [];
 function renderAllPages(filter = "") {
-  const f = filter.replace(/\s/g, "");
-  const hit = (s) => !f || s.replace(/\s/g, "").includes(f);
+  // 訳した名前でも引けるように（ポルトガル語の画面で「lixo」で、ごみのページが出なかった）。大文字と小文字は区別しない
+  const f = filter.replace(/\s/g, "").toLowerCase();
+  const hit = (s) => !f || String(s ?? "").replace(/\s/g, "").toLowerCase().includes(f);
   const view = document.querySelector(`.view[data-view="${currentView()}"]`);
   hereSecs = view ? [...view.querySelectorAll(":scope > section.block")].filter((s) => !s.hidden && s.querySelector(":scope > h2")) : [];
   const page = PAGES.find((p) => p.view === currentView());
@@ -1031,8 +1033,8 @@ function renderAllPages(filter = "") {
       <p class="all-page"><span class="t">${icon(ILLUST[page?.view]?.main)}${esc(T("このページの中"))}</span><span class="d">${esc(page?.local ? T("調べる") : T(page?.title ?? ""))}</span></p>
       <ul>${here.map(([t, i]) => `<li><button type="button" data-sec="${i}">${esc(t)}</button></li>`).join("")}</ul>
     </section>` : "") + `<a class="all-report" href="${esc(reportHref(currentView()))}">${icon("alert")}${T("まちがいや古い所を知らせる")}</a>` + allPages.map((p) => {
-    const its = p.items.filter((i) => hit(i.label) || hit(p.title));
-    if (f && !its.length && !hit(p.title) && !hit(p.desc)) return "";
+    const its = p.items.filter((i) => hit(i.label) || hit(i.ja) || hit(p.title) || hit(T(p.title)));
+    if (f && !its.length && !hit(p.title) && !hit(p.desc) && !hit(T(p.title)) && !hit(T(p.desc))) return "";
     return `<section class="all-sec">
       <a class="all-page" href="#${p.view}" data-view="${p.view}"><span class="t">${icon(ILLUST[p.view]?.main)}${esc(T(p.title))}</span><span class="d">${esc(T(p.desc))}</span></a>
       ${its.length ? `<ul>${its.map((i) => `<li><a href="#${i.view}" data-view="${i.view}" data-target="${i.target}">${esc(i.label)}</a></li>`).join("")}</ul>` : ""}

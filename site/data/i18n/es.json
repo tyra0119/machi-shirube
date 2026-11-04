@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-04T04:38:51.167Z",
+ "createdAt": "2026-11-04T04:41:41.376Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 925,
- "of": 891,
+ "count": 929,
+ "of": 895,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -931,6 +931,10 @@
   "見つかりません。": "No se encontró.",
   "もとの日本語": "Texto original en japonés",
   "{k}のときに使える": "Se puede usar en caso de {k}",
-  "{n} 品目": "{n} artículos"
+  "{n} 品目": "{n} artículos",
+  "今日と明日（天気・洗濯・服装）": "Hoy y mañana (clima, colada y ropa)",
+  "わが家の避難（近い避難場所）": "Evacuación de mi hogar (refugios cercanos)",
+  "町のデータ（全国と比べた数字）": "Datos del municipio (cifras comparadas con el promedio nacional)",
+  "「{q}」で絞ると {n} か所": "Al filtrar por «{q}»: {n} lugares"
  }
 }

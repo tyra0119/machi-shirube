@@ -1,11 +1,11 @@
 {
  "lang": "id",
  "name": "Bahasa Indonesia",
- "createdAt": "2026-11-04T04:39:16.515Z",
+ "createdAt": "2026-11-04T04:42:02.170Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 923,
- "of": 891,
+ "count": 927,
+ "of": 895,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Ini adalah panduan hidup tidak resmi untuk kota ini. Claude mengumpulkannya dari situs resmi kota dan sumber lain, dengan mencantumkan sumbernya (Machishirube)",
   "すべてのページ": "Semua halaman",
@@ -929,6 +929,10 @@
   "見つかりません。": "Tidak ditemukan.",
   "もとの日本語": "Teks asli bahasa Jepang",
   "{k}のときに使える": "Bisa digunakan saat {k}",
-  "{n} 品目": "{n} item"
+  "{n} 品目": "{n} item",
+  "今日と明日（天気・洗濯・服装）": "Hari Ini dan Besok (Cuaca・Cucian・Pakaian)",
+  "わが家の避難（近い避難場所）": "Evakuasi Rumah Kita (Tempat Evakuasi Terdekat)",
+  "町のデータ（全国と比べた数字）": "Data Kota (Angka Dibandingkan dengan Nasional)",
+  "「{q}」で絞ると {n} か所": "Disaring dengan \"{q}\": {n} lokasi"
  }
 }

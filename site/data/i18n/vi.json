@@ -1,11 +1,11 @@
 {
  "lang": "vi",
  "name": "Tiếng Việt",
- "createdAt": "2026-11-04T04:39:36.415Z",
+ "createdAt": "2026-11-04T04:42:19.619Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 922,
- "of": 891,
+ "count": 927,
+ "of": 895,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Đây là trang hướng dẫn đời sống không chính thức của thị trấn này. Claude thu thập từ các trang chính thức của thị trấn v.v. và ghi rõ nguồn (Machi-shirube)",
   "すべてのページ": "Tất cả các trang",
@@ -928,6 +928,11 @@
   "見つかりません。": "Không tìm thấy.",
   "もとの日本語": "Bản tiếng Nhật gốc",
   "{k}のときに使える": "Dùng được khi {k}",
-  "{n} 品目": "{n} món"
+  "{n} 品目": "{n} món",
+  "今日と明日（天気・洗濯・服装）": "Hôm nay và ngày mai (thời tiết・giặt đồ・trang phục)",
+  "わが家の避難（近い避難場所）": "Sơ tán của gia đình tôi (nơi sơ tán gần nhất)",
+  "町のデータ（全国と比べた数字）": "Số liệu của thị trấn (các con số so với cả nước)",
+  "「{q}」で絞ると {n} か所": "Lọc theo \"{q}\": có {n} địa điểm",
+  "出典：「ハザードマップポータルサイト」を加工して作成。くわしくは町のハザードマップで": "Nguồn: Được tạo ra từ việc xử lý dữ liệu của \"Cổng thông tin bản đồ cảnh báo thiên tai (Hazard Map Portal Site)\". Xem chi tiết tại bản đồ cảnh báo thiên tai của thị trấn"
  }
 }
