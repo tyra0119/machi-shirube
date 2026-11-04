@@ -72,11 +72,18 @@ async function sceneCard() {
 
 // 物差しのます目が埋まっていく
 async function sceneGrid() {
-  const [yard, ans, name] = await Promise.all([json("data/yardstick.json"), json(`data/answers/${CODE}.json`), townName()]);
-  const qs = yard.questions;
+  const [yard, ans, name, feats, muni] = await Promise.all([json("data/yardstick.json"), json(`data/answers/${CODE}.json`), townName(), json("data/features.json"), json(`data/muni/${CODE}.json`)]);
+  // その町に当てはまる問いだけ（町を調べるときと同じ決まり：町・字の問い・ほかの町だけの問い・その町に無い特徴の問い・数の条件に合わない問いは除く。scripts/research.mjs の researchTown）
+  const f = feats?.towns?.[CODE] ?? [];
+  const t = muni?.stats?.towns?.[CODE];
+  const ruleOk = (x) => {
+    const fr = x.rule?.match(/外国の住民.*?(\d+(?:\.\d+)?)\s*%/), old = x.rule?.match(/65歳以上.*?(\d+(?:\.\d+)?)\s*%/);
+    return (!fr || (t?.foreignRate ?? 0) >= Number(fr[1])) && (!old || (t?.over65Rate ?? 0) >= Number(old[1]));
+  };
+  const qs = yard.questions.filter((x) => x.level !== "town" && (!x.only || x.only === CODE) && (!x.feature || f.includes(x.feature)) && ruleOk(x));
   const st = new Map();
   for (const a of ans?.answers ?? []) st.set(a.qid, a.value === "見つからなかった" ? "none" : "ok");
-  const okN = [...st.values()].filter((v) => v === "ok").length;
+  const okN = qs.filter((x) => st.get(x.id) === "ok").length;
   $("stage").innerHTML = `<div class="gwrap"><div class="ghead"><span class="gt">${esc(name)}：物差しの ${qs.length} 問</span><span class="gc"><b id="gn">0</b> 問に、出典つきで答えた</span></div>
     <div class="grid">${qs.map((x) => `<div class="cell" data-q="${x.id}">${esc(x.short ?? "")}</div>`).join("")}</div>
     <div class="glegend"><span><i></i>出典つきで答えた</span><span><i class="n"></i>公式の資料に見つからなかった（町の人に聞きたいこと）</span></div></div>`;
