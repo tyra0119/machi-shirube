@@ -1,11 +1,11 @@
 {
  "lang": "id",
  "name": "Bahasa Indonesia",
- "createdAt": "2026-11-04T02:30:12.217Z",
+ "createdAt": "2026-11-04T03:11:43.489Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 900,
- "of": 868,
+ "count": 905,
+ "of": 873,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Ini adalah panduan hidup tidak resmi untuk kota ini. Claude mengumpulkannya dari situs resmi kota dan sumber lain, dengan mencantumkan sumbernya (Machishirube)",
   "すべてのページ": "Semua halaman",
@@ -906,6 +906,11 @@
   "「正しいこと」は分かる所だけでかまいません。「町のお知らせの紙で見た」なども助かります。": "\"Yang benar\" cukup diisi bagian yang Anda ketahui saja. Keterangan seperti \"dilihat di selebaran pengumuman kota\" juga sangat membantu.",
   "GitHub を使っている": "Menggunakan GitHub",
   "<a href=\"https://github.com/tyra0119/machi-shirube/issues/new\" target=\"_blank\" rel=\"noopener\">GitHub の Issues</a> でも受け付けています（書いたことは公開されます）。": "Laporan juga diterima melalui <a href=\"https://github.com/tyra0119/machi-shirube/issues/new\" target=\"_blank\" rel=\"noopener\">GitHub Issues</a> (yang Anda tulis akan dipublikasikan).",
-  "まちがいや古い所を見つけたら、<a href=\"report.html\">知らせ方</a>のページの「知らせる」から送ってください（アカウントも登録もいりません）。": "Jika Anda menemukan kesalahan atau informasi yang sudah lama, silakan kirimkan melalui \"Kirim laporan\" di halaman <a href=\"report.html\">Cara melapor</a> (tidak perlu akun maupun pendaftaran)."
+  "まちがいや古い所を見つけたら、<a href=\"report.html\">知らせ方</a>のページの「知らせる」から送ってください（アカウントも登録もいりません）。": "Jika Anda menemukan kesalahan atau informasi yang sudah lama, silakan kirimkan melalui \"Kirim laporan\" di halaman <a href=\"report.html\">Cara melapor</a> (tidak perlu akun maupun pendaftaran).",
+  "町の公式のサイトを探しても、公開の資料では分からなかったことです。知っている方は「知っていたら教える」から教えてください（書く画面が開きます。アカウントはいりません）。": "Hal ini tidak ditemukan di situs resmi kota maupun dalam materi yang dipublikasikan. Jika Anda mengetahuinya, silakan beri tahu kami lewat \"Beri tahu jika Anda tahu\" (layar untuk menulis akan terbuka. Tidak perlu akun).",
+  "新しく載せました": "Baru ditambahkan",
+  "まちがいを知らせる": "Laporkan kesalahan",
+  "まちがいや古い所を知らせる": "Laporkan kesalahan atau bagian yang sudah usang",
+  "知っていたら教える": "Beri tahu jika Anda tahu"
  }
 }

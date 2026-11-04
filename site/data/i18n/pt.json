@@ -1,11 +1,11 @@
 {
  "lang": "pt",
  "name": "Português",
- "createdAt": "2026-11-04T02:29:52.724Z",
+ "createdAt": "2026-11-04T03:11:19.298Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 903,
- "of": 868,
+ "count": 908,
+ "of": 873,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Guia não oficial da vida na cidade. O Claude reúne as informações em sites oficiais da cidade e outras fontes, e indica a origem de cada uma (Machishirube)",
   "すべてのページ": "Todas as páginas",
@@ -909,6 +909,11 @@
   "「正しいこと」は分かる所だけでかまいません。「町のお知らせの紙で見た」なども助かります。": "Em \"o que está correto\", escreva apenas o que souber. Informações como \"vi no folheto de avisos da cidade\" também ajudam.",
   "GitHub を使っている": "Uso o GitHub",
   "<a href=\"https://github.com/tyra0119/machi-shirube/issues/new\" target=\"_blank\" rel=\"noopener\">GitHub の Issues</a> でも受け付けています（書いたことは公開されます）。": "Também recebemos pelo <a href=\"https://github.com/tyra0119/machi-shirube/issues/new\" target=\"_blank\" rel=\"noopener\">GitHub Issues</a> (o que você escrever será público).",
-  "まちがいや古い所を見つけたら、<a href=\"report.html\">知らせ方</a>のページの「知らせる」から送ってください（アカウントも登録もいりません）。": "Se encontrar algum erro ou informação desatualizada, envie pelo botão \"Informar\" na página <a href=\"report.html\">Como informar</a> (não é preciso conta nem cadastro)."
+  "まちがいや古い所を見つけたら、<a href=\"report.html\">知らせ方</a>のページの「知らせる」から送ってください（アカウントも登録もいりません）。": "Se encontrar algum erro ou informação desatualizada, envie pelo botão \"Informar\" na página <a href=\"report.html\">Como informar</a> (não é preciso conta nem cadastro).",
+  "町の公式のサイトを探しても、公開の資料では分からなかったことです。知っている方は「知っていたら教える」から教えてください（書く画面が開きます。アカウントはいりません）。": "Procuramos no site oficial da cidade, mas não encontramos esta informação nos materiais públicos. Se você souber, envie por \"Sei a resposta\" (abre uma tela para escrever; não é preciso ter conta).",
+  "新しく載せました": "Novidade",
+  "まちがいを知らせる": "Avisar sobre um erro",
+  "まちがいや古い所を知らせる": "Avisar sobre erros ou informações desatualizadas",
+  "知っていたら教える": "Sei a resposta"
  }
 }

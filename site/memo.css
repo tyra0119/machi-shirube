@@ -33,3 +33,36 @@ footer p { margin: 0 0 4px; }
   .no-print { display: none !important; }
   .sheet { margin: 0; box-shadow: none; }
 }
+
+/* 画面の上で選ぶ（印刷には出ない） */
+.picks { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; width: 100%; }
+.picks label { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; }
+.picks select { min-height: 40px; padding: 0 8px; border: 1px solid #999; border-radius: 8px; font-size: 15px; }
+/* まず電話：確かめ済みの答えにある番号（2列） */
+.tels { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 16px; margin: 6px 0 0; padding: 0; list-style: none; }
+.tels li { display: flex; justify-content: space-between; gap: 8px; margin: 0; padding: 2px 0; border-bottom: 1px solid #bbb; font-size: 10.5pt; }
+.tels strong { white-space: nowrap; font-size: 12pt; }
+/* ごみ：選んだ地区の出す曜日 */
+.g-area { display: block; font-weight: 700; margin-bottom: 2px; }
+.g-days { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; margin: 0; padding: 0; list-style: none; }
+.g-days li { margin: 2px 0; font-size: 11pt; }
+.g-days strong { margin-right: 6px; }
+.g-pick { display: block; font-size: 9.5pt; color: #444; }
+@media print { .g-pick { display: none; } }
+/* A4 1枚に収める（前は黒潮町で 329mm になり、2枚に分かれた） */
+.sheet { padding: 11mm 13mm 8mm; }
+h1 { font-size: 24pt; }
+h2 { margin: 8px 0 4px; font-size: 13pt; }
+.call strong { font-size: 26pt; }
+li { margin: 2px 0; font-size: 11.5pt; }
+#gomi-text { font-size: 11pt; line-height: 1.55; }
+footer { margin-top: 8px; }
+.call .tels strong { margin: 0; font-size: 12pt; }
+.tels span { font-size: 9.5pt; }
+.made { margin: 2px 0 6px; font-size: 8.5pt; }
+#hinan-list li span, .note { font-size: 9.5pt; }
+table { font-size: 10pt; }
+th, td { padding: 3px 6px; }
+h1 { font-size: 21pt; }
+.call strong { font-size: 22pt; }
+.sheet { padding-top: 9mm; padding-bottom: 6mm; }

@@ -764,3 +764,9 @@ ruby rt { font-size: 0.55em; font-weight: 400; letter-spacing: 0; }
 .share-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 8px 0 4px; }
 .share-btn { display: inline-flex; align-items: center; min-height: 40px; padding: 0 16px; border: 1px solid var(--accent); border-radius: 999px; background: var(--surface); color: var(--accent); font-size: 14px; font-weight: 700; cursor: pointer; }
 .share-done { font-size: 13px; color: var(--text-sub); }
+
+/* まちがいを知らせる（答えのカードの中・「ほか」の一覧）と、町の人に聞きたいことの「知っていたら教える」 */
+.answers .report-a { display: inline-flex; align-items: center; min-height: 36px; margin-top: 2px; font-size: 13px; color: var(--text-sub); }
+.all-report { display: flex; align-items: center; gap: 6px; min-height: 44px; margin: 0 0 8px; padding: 0 8px; border: 1px dashed var(--line); border-radius: 8px; color: var(--text-sub); font-size: 14px; text-decoration: none; }
+.all-report .ic { width: 18px; height: 18px; }
+.ask-tell { display: inline-flex; align-items: center; min-height: 36px; margin-top: 2px; padding: 0 12px; border: 1px solid var(--accent); border-radius: 999px; color: var(--accent); font-size: 13px; font-weight: 700; text-decoration: none; align-self: flex-start; }

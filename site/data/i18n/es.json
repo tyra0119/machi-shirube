@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-04T02:29:55.430Z",
+ "createdAt": "2026-11-04T03:11:23.017Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 902,
- "of": 868,
+ "count": 907,
+ "of": 873,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -908,6 +908,11 @@
   "「正しいこと」は分かる所だけでかまいません。「町のお知らせの紙で見た」なども助かります。": "En «lo correcto», basta con escribir lo que sepa. También ayuda que nos diga, por ejemplo, «lo vi en el aviso en papel del municipio».",
   "GitHub を使っている": "Uso GitHub",
   "<a href=\"https://github.com/tyra0119/machi-shirube/issues/new\" target=\"_blank\" rel=\"noopener\">GitHub の Issues</a> でも受け付けています（書いたことは公開されます）。": "También recibimos avisos en <a href=\"https://github.com/tyra0119/machi-shirube/issues/new\" target=\"_blank\" rel=\"noopener\">GitHub Issues</a> (lo que escriba será público).",
-  "まちがいや古い所を見つけたら、<a href=\"report.html\">知らせ方</a>のページの「知らせる」から送ってください（アカウントも登録もいりません）。": "Si encuentra algún error o información desactualizada, envíelo desde «Avisar» en la página <a href=\"report.html\">Cómo avisar</a> (no se necesita cuenta ni registro)."
+  "まちがいや古い所を見つけたら、<a href=\"report.html\">知らせ方</a>のページの「知らせる」から送ってください（アカウントも登録もいりません）。": "Si encuentra algún error o información desactualizada, envíelo desde «Avisar» en la página <a href=\"report.html\">Cómo avisar</a> (no se necesita cuenta ni registro).",
+  "町の公式のサイトを探しても、公開の資料では分からなかったことです。知っている方は「知っていたら教える」から教えてください（書く画面が開きます。アカウントはいりません）。": "Es algo que no pudimos averiguar en los documentos públicos, ni buscando en el sitio web oficial del municipio. Si usted lo sabe, cuéntenoslo con «Si lo sabe, cuéntenos» (se abrirá una pantalla para escribir; no se necesita cuenta).",
+  "新しく載せました": "Recién publicado",
+  "まちがいを知らせる": "Avisar de un error",
+  "まちがいや古い所を知らせる": "Avisar de errores o datos desactualizados",
+  "知っていたら教える": "Si lo sabe, cuéntenos"
  }
 }

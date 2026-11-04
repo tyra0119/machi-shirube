@@ -116,6 +116,11 @@ $("share").addEventListener("click", async () => {
   try { await navigator.clipboard.writeText(`${text}\n${url}`); $("share-done").innerHTML = `${T("リンクを写しました。")} <a href="https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(url)}" target="_blank" rel="noopener">${T("LINE で送る")}</a>`; }
   catch { $("share-done").innerHTML = `<a href="https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(url)}" target="_blank" rel="noopener">${T("LINE で送る")}</a>`; }
 });
+// まちがいを知らせる：知らせ方のページへ、町と見ていたページと言葉を渡す（住む人の目で見ると、知らせ方のページはいちばん下にしか無かった）
+const reportHref = (page) => { const rp = new URLSearchParams(location.search); rp.set("page", page); return `report.html?${rp}`; };
+// 町の人に聞きたいこと：知っている人が、作者の Google フォームから教えられるように（町の名前と問いを入れて開く）
+const ASK_FORM = "https://docs.google.com/forms/d/e/1FAIpQLSdc1pzMimJcJer_TDa4yiwjsY39I1GttFui0bWaeQf9RasRlQ/viewform";
+const askHref = (what) => `${ASK_FORM}?usp=pp_url&entry.1957422775=${encodeURIComponent(`${$("where").textContent} ${$("name").textContent}`.trim())}&entry.1140291794=${encodeURIComponent(`町の人に聞きたいこと：${what}`)}`;
 // 上のメニュー（パソコン）：よく使うページと、右の端に「すべてのページ」
 // 下のメニュー（スマホ）：親指の届く所に、よく使う4つと「ほか」（すべてのページ）だけを並べる。横に動かさなくても全部が見える
 // （作者「上部の『今日』『地図』などのボタンがただ並んでいるだけで本当に使いやすいのか？」→ 案A）
@@ -299,7 +304,7 @@ async function showChanges(code, part) {
   const days = [...new Set(list.map((c) => day(c.at)))];
   $("changes-block").hidden = false;
   $("changes").innerHTML = days.map((dd) => `<h3 class="ch-day">${icon("calendar")}${esc(dd)}</h3><ul class="ch-list">${list.filter((c) => day(c.at) === dd).map((c) =>
-    `<li><a href="#${pageOf(c)}" data-target="${c.qid ? `a-${c.qid}` : ""}"><span class="ch-what ${c.what === "新しくしました" ? "up" : ""}">${esc(T(c.what))}</span>${esc(T(c.label))}</a></li>`).join("")}</ul>`).join("")
+    `<li><a href="#${pageOf(c)}" data-target="${c.qid ? `a-${c.qid}` : ""}"><span class="ch-what ${c.what === "新しくしました" ? "up" : ""}">${esc(T(c.what === "足しました" ? "新しく載せました" : c.what))}</span>${esc(T(c.label))}</a></li>`).join("")}</ul>`).join("")
     + (d.changes.length > list.length ? `<p class="note">${T("ほかに")} ${d.changes.length - list.length} ${T("件")}</p>` : "");
   for (const a of $("changes").querySelectorAll("a[data-target]")) if (a.dataset.target) a.addEventListener("click", () => setTimeout(() => $(a.dataset.target)?.scrollIntoView({ behavior: "smooth", block: "start" }), 50));
 }
@@ -899,7 +904,8 @@ function answersHTML(answers) {
       ${a.recheckedAt ? `<p class="src rechecked">${icon("eye")}${T("公式のページが変わったので、確かめ直しました")}（${esc(a.recheckedAt.slice(0, 10))}）</p>` : ""}
       ${health?.links?.[a.source?.url]?.kind === "gone" ? `<p class="gone">${T("出典のページが見つからなくなっています")}（${esc(health.links[a.source.url].checkedAt.slice(0, 10))}）。${T("町の公式のサイトで新しいページを探して確かめてください。")}</p>` : ""}
       ${a.outdated ? `<p class="outdated"><strong>${T("もっと新しい資料があります")}</strong>：${esc(a.outdated.what)}。${T("古い")}：${a.outdated.old?.url ? `<a href="${esc(a.outdated.old.url)}" target="_blank" rel="noopener">${esc(a.outdated.old.asOf ?? "")}</a>` : esc(a.outdated.old?.asOf ?? "")}／${T("新しい")}：${a.outdated.new?.url ? `<a href="${esc(a.outdated.new.url)}" target="_blank" rel="noopener">${esc(a.outdated.new.asOf ?? "")}</a>` : esc(a.outdated.new?.asOf ?? "")}</p>` : ""}
-      <p class="src chip">${icon("link")} ${a.source?.url ? `<a href="${esc(a.source.url)}" target="_blank" rel="noopener"${a.source.where ? ` title="${esc(T("出典のどこに書いてあるか"))}：${esc(a.source.where)}"` : ""}>${esc(a.source.title ?? a.source.url)}</a>` : esc(a.source?.title ?? "")}${a.asOf ? `・${T("時点")} ${esc(a.asOf.replace("（ページの更新日は不明）", ""))}` : ""}${a.status === "auto" ? "" : `・${T("人が確かめた")}`}</p>`)}`}
+      <p class="src chip">${icon("link")} ${a.source?.url ? `<a href="${esc(a.source.url)}" target="_blank" rel="noopener"${a.source.where ? ` title="${esc(T("出典のどこに書いてあるか"))}：${esc(a.source.where)}"` : ""}>${esc(a.source.title ?? a.source.url)}</a>` : esc(a.source?.title ?? "")}${a.asOf ? `・${T("時点")} ${esc(a.asOf.replace("（ページの更新日は不明）", ""))}` : ""}${a.status === "auto" ? "" : `・${T("人が確かめた")}`}</p>
+      <a class="report-a" href="${esc(reportHref(PAGE_OF(a.qid) ?? "today"))}">${T("まちがいを知らせる")}</a>`)}`}
       </div>
     </li>`;
   }).join("")}</ul>`;
@@ -1007,7 +1013,7 @@ function renderAllPages(filter = "") {
   $("all-list").innerHTML = (hereSecs.length >= 2 && here.length ? `<section class="all-sec all-here">
       <p class="all-page"><span class="t">${icon(ILLUST[page?.view]?.main)}${esc(T("このページの中"))}</span><span class="d">${esc(page?.local ? T("調べる") : T(page?.title ?? ""))}</span></p>
       <ul>${here.map(([t, i]) => `<li><button type="button" data-sec="${i}">${esc(t)}</button></li>`).join("")}</ul>
-    </section>` : "") + allPages.map((p) => {
+    </section>` : "") + `<a class="all-report" href="${esc(reportHref(currentView()))}">${icon("alert")}${T("まちがいや古い所を知らせる")}</a>` + allPages.map((p) => {
     const its = p.items.filter((i) => hit(i.label) || hit(p.title));
     if (f && !its.length && !hit(p.title) && !hit(p.desc)) return "";
     return `<section class="all-sec">
@@ -1223,7 +1229,7 @@ async function showAsk(code, partKey) {
   const uniq = list.filter((x) => (seen.has(x.q) ? false : seen.add(x.q)));
   if (!uniq.length) return;
   $("ask-block").hidden = false;
-  $("ask-list").innerHTML = uniq.map((x) => `<li>${icon("search")}<span><strong>${esc(T(yardstick.questions.find((y) => y.id === x.qid)?.short ?? x.q.slice(0, 20)))}</strong>${x.why ? `<small>${esc(x.why)}</small>` : ""}${x.at ? `<small>${esc(x.at.slice(0, 10))} に調べた</small>` : ""}</span></li>`).join("");
+  $("ask-list").innerHTML = uniq.map((x) => `<li>${icon("search")}<span><strong>${esc(T(yardstick.questions.find((y) => y.id === x.qid)?.short ?? x.q.slice(0, 20)))}</strong>${x.why ? `<small>${esc(x.why)}</small>` : ""}<a class="ask-tell" href="${esc(askHref(yardstick.questions.find((y) => y.id === x.qid)?.short ?? x.q.slice(0, 40)))}" target="_blank" rel="noopener">${T("知っていたら教える")}</a></span></li>`).join("");
 }
 
 // ごみを出す日：町の公式の収集日の表から読み取った地区ごとの曜日（site/data/gomi-days/{コード}.json）。

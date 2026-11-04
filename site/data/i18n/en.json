@@ -1,11 +1,11 @@
 {
  "lang": "en",
  "name": "English",
- "createdAt": "2026-11-04T02:29:58.580Z",
+ "createdAt": "2026-11-04T03:11:27.301Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 903,
- "of": 868,
+ "count": 908,
+ "of": 873,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "This is an unofficial guide to living in this town. Claude gathers information from the town's official website and other sources, and cites each source (Machishirube)",
   "すべてのページ": "All pages",
@@ -909,6 +909,11 @@
   "「正しいこと」は分かる所だけでかまいません。「町のお知らせの紙で見た」なども助かります。": "You only need to fill in \"What is correct\" for the parts you know. Notes like \"I saw it on the town notice paper\" are also helpful.",
   "GitHub を使っている": "I use GitHub",
   "<a href=\"https://github.com/tyra0119/machi-shirube/issues/new\" target=\"_blank\" rel=\"noopener\">GitHub の Issues</a> でも受け付けています（書いたことは公開されます）。": "We also accept reports through <a href=\"https://github.com/tyra0119/machi-shirube/issues/new\" target=\"_blank\" rel=\"noopener\">GitHub Issues</a> (what you write will be made public).",
-  "まちがいや古い所を見つけたら、<a href=\"report.html\">知らせ方</a>のページの「知らせる」から送ってください（アカウントも登録もいりません）。": "If you find a mistake or outdated information, please send it using \"Report\" on the <a href=\"report.html\">How to Report</a> page (no account or registration needed)."
+  "まちがいや古い所を見つけたら、<a href=\"report.html\">知らせ方</a>のページの「知らせる」から送ってください（アカウントも登録もいりません）。": "If you find a mistake or outdated information, please send it using \"Report\" on the <a href=\"report.html\">How to Report</a> page (no account or registration needed).",
+  "町の公式のサイトを探しても、公開の資料では分からなかったことです。知っている方は「知っていたら教える」から教えてください（書く画面が開きます。アカウントはいりません）。": "We looked on the town's official website, but this could not be found in the public materials. If you know, please tell us by clicking \"Tell us if you know\" (a form will open; no account needed).",
+  "新しく載せました": "Newly added",
+  "まちがいを知らせる": "Report an error",
+  "まちがいや古い所を知らせる": "Report an error or outdated info",
+  "知っていたら教える": "Tell us if you know"
  }
 }

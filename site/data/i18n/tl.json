@@ -1,11 +1,11 @@
 {
  "lang": "tl",
  "name": "Filipino",
- "createdAt": "2026-11-04T02:30:28.247Z",
+ "createdAt": "2026-11-04T03:12:00.655Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 893,
- "of": 868,
+ "count": 898,
+ "of": 873,
  "dict": {
   "この町の非公式の暮らしの案内です。町の公式のサイトや国の公開データから集め、出典をつけています（まちしるべ）": "Ito ay isang di-opisyal na gabay sa pamumuhay sa bayang ito. Kinuha ito mula sa opisyal na website ng bayan at sa pampublikong datos ng bansa, at may nakasaad na pinagmulan (Machishirube)",
   "すべてのページ": "Lahat ng pahina",
@@ -899,6 +899,11 @@
   "「正しいこと」は分かる所だけでかまいません。「町のお知らせの紙で見た」なども助かります。": "Sapat na po na isulat ang \"tamang impormasyon\" sa mga bahaging alam ninyo. Malaking tulong din kung isusulat ninyo ang tulad ng \"nakita ko sa papel ng abiso ng bayan.\"",
   "GitHub を使っている": "Gumagamit ng GitHub",
   "<a href=\"https://github.com/tyra0119/machi-shirube/issues/new\" target=\"_blank\" rel=\"noopener\">GitHub の Issues</a> でも受け付けています（書いたことは公開されます）。": "Tumatanggap din kami sa <a href=\"https://github.com/tyra0119/machi-shirube/issues/new\" target=\"_blank\" rel=\"noopener\">GitHub Issues</a> (ilalathala ang isinulat ninyo).",
-  "まちがいや古い所を見つけたら、<a href=\"report.html\">知らせ方</a>のページの「知らせる」から送ってください（アカウントも登録もいりません）。": "Kung may makita kayong mali o luma nang impormasyon, ipadala ito sa pamamagitan ng \"Ipaalam\" sa pahina ng <a href=\"report.html\">Paano Magpaalam</a> (hindi kailangan ng account o pagpaparehistro)."
+  "まちがいや古い所を見つけたら、<a href=\"report.html\">知らせ方</a>のページの「知らせる」から送ってください（アカウントも登録もいりません）。": "Kung may makita kayong mali o luma nang impormasyon, ipadala ito sa pamamagitan ng \"Ipaalam\" sa pahina ng <a href=\"report.html\">Paano Magpaalam</a> (hindi kailangan ng account o pagpaparehistro).",
+  "町の公式のサイトを探しても、公開の資料では分からなかったことです。知っている方は「知っていたら教える」から教えてください（書く画面が開きます。アカウントはいりません）。": "Hinanap na namin ito sa opisyal na website ng bayan, pero hindi ito makita sa mga pampublikong materyal. Kung alam ninyo ang sagot, pakibahagi sa pamamagitan ng \"Ibahagi kung alam mo\" (magbubukas ang isang screen para sa pagsulat. Hindi kailangan ng account).",
+  "新しく載せました": "Bagong dagdag",
+  "まちがいを知らせる": "Mag-ulat ng mali",
+  "まちがいや古い所を知らせる": "Mag-ulat ng mali o luma na",
+  "知っていたら教える": "Ibahagi kung alam mo"
  }
 }

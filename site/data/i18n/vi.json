@@ -1,11 +1,11 @@
 {
  "lang": "vi",
  "name": "Tiếng Việt",
- "createdAt": "2026-11-04T02:30:22.451Z",
+ "createdAt": "2026-11-04T03:11:55.876Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 900,
- "of": 868,
+ "count": 905,
+ "of": 873,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Đây là trang hướng dẫn đời sống không chính thức của thị trấn này. Claude thu thập từ các trang chính thức của thị trấn v.v. và ghi rõ nguồn (Machi-shirube)",
   "すべてのページ": "Tất cả các trang",
@@ -906,6 +906,11 @@
   "GitHub を使っている": "Tôi đang dùng GitHub",
   "<a href=\"https://github.com/tyra0119/machi-shirube/issues/new\" target=\"_blank\" rel=\"noopener\">GitHub の Issues</a> でも受け付けています（書いたことは公開されます）。": "Chúng tôi cũng nhận báo lỗi qua <a href=\"https://github.com/tyra0119/machi-shirube/issues/new\" target=\"_blank\" rel=\"noopener\">GitHub Issues</a> (nội dung bạn viết sẽ được công khai).",
   "まちしるべのページで、まちがいや古い所を見つけたら、下の「知らせる」から送ってください。書く画面（Google フォーム）が開きます。アカウントも登録もいりません。作者が読んで、調べ直します。": "Nếu bạn thấy chỗ nào trên trang Machishirube bị sai hoặc đã cũ, vui lòng gửi cho chúng tôi qua nút「Gửi thông báo」bên dưới. Màn hình để điền thông tin (Google Biểu mẫu) sẽ mở ra. Không cần tài khoản và cũng không cần đăng ký. Tác giả sẽ đọc và kiểm tra lại.",
-  "まちがいや古い所を見つけたら、<a href=\"report.html\">知らせ方</a>のページの「知らせる」から送ってください（アカウントも登録もいりません）。": "Nếu bạn thấy chỗ nào bị sai hoặc đã cũ, vui lòng gửi qua nút「Gửi thông báo」trong trang <a href=\"report.html\">Cách gửi thông báo</a> (không cần tài khoản và cũng không cần đăng ký)."
+  "まちがいや古い所を見つけたら、<a href=\"report.html\">知らせ方</a>のページの「知らせる」から送ってください（アカウントも登録もいりません）。": "Nếu bạn thấy chỗ nào bị sai hoặc đã cũ, vui lòng gửi qua nút「Gửi thông báo」trong trang <a href=\"report.html\">Cách gửi thông báo</a> (không cần tài khoản và cũng không cần đăng ký).",
+  "町の公式のサイトを探しても、公開の資料では分からなかったことです。知っている方は「知っていたら教える」から教えてください（書く画面が開きます。アカウントはいりません）。": "Chúng tôi đã tìm trên trang web chính thức của thị trấn nhưng không thấy trong tài liệu công khai. Nếu bạn biết, xin hãy chia sẻ qua nút \"Biết thì chia sẻ\" (màn hình để viết sẽ mở ra. Không cần tài khoản).",
+  "新しく載せました": "Mới đăng",
+  "まちがいを知らせる": "Báo lỗi",
+  "まちがいや古い所を知らせる": "Báo chỗ sai hoặc đã cũ",
+  "知っていたら教える": "Biết thì chia sẻ"
  }
 }

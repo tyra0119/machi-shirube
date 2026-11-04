@@ -12,6 +12,11 @@
   <a href="javascript:history.back()">← 戻る</a>
   <button type="button" id="print">印刷する</button>
   <span class="hint">A4 の紙 1枚に、白黒で印刷できます</span>
+  <div class="picks">
+    <label>町・字<select id="pick-part"></select></label>
+    <label>ごみの地区<select id="pick-gomi"></select></label>
+    <span class="hint">町のページで選んだものが入っています。変えると、メモも変わります</span>
+  </div>
 </div>
 <main class="sheet">
   <header>
@@ -24,6 +29,7 @@
       <p><strong>119</strong>火事・救急車</p>
       <p><strong>110</strong>事件・事故</p>
     </div>
+    <ul class="tels" id="tels"></ul>
   </section>
   <section id="hinan"><h2>近い避難場所</h2><ol id="hinan-list"></ol><p class="note" id="hinan-note"></p></section>
   <section id="gomi"><h2>ごみ</h2><p id="gomi-text"></p></section>
