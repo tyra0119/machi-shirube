@@ -1,11 +1,11 @@
 {
  "lang": "tl",
  "name": "Filipino",
- "createdAt": "2026-11-04T04:15:56.640Z",
+ "createdAt": "2026-11-04T04:39:42.575Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 906,
- "of": 881,
+ "count": 916,
+ "of": 891,
  "dict": {
   "この町の非公式の暮らしの案内です。町の公式のサイトや国の公開データから集め、出典をつけています（まちしるべ）": "Ito ay isang di-opisyal na gabay sa pamumuhay sa bayang ito. Kinuha ito mula sa opisyal na website ng bayan at sa pampublikong datos ng bansa, at may nakasaad na pinagmulan (Machishirube)",
   "すべてのページ": "Lahat ng pahina",
@@ -912,6 +912,16 @@
   "町の公式サイトを開く": "Buksan ang opisyal na website ng bayan",
   "町の公式サイトで探す（Google 検索）": "Maghanap sa opisyal na website ng bayan (Google Search)",
   "この町も調べてほしい": "Pakisuri rin ang bayang ito",
-  "地図は2本指で動かせます": "Maaaring igalaw ang mapa gamit ang dalawang daliri"
+  "地図は2本指で動かせます": "Maaaring igalaw ang mapa gamit ang dalawang daliri",
+  "万": "libo (万, 10,000)",
+  "町・字のおおよその真ん中": "Humigit-kumulang na sentro ng bayan/distrito (chō/aza)",
+  "浸水の深さ": "Lalim ng baha",
+  "出典：「ハザードマップポータルサイト」を加工して作成。くわしくは町のハザードマップで": "Pinagmulan: Ginawa mula sa binagong \"Hazard Map Portal Site\". Para sa detalye, tingnan ang hazard map ng bayan",
+  "まだありません。": "Wala pa.",
+  "天気を読み込めませんでした。時間をおいて開き直してください。": "Hindi nai-load ang panahon. Maghintay sandali at buksan muli.",
+  "見つかりません。": "Walang nakita.",
+  "もとの日本語": "Orihinal na Hapones",
+  "{k}のときに使える": "Magagamit kapag {k}",
+  "{n} 品目": "{n} aytem"
  }
 }

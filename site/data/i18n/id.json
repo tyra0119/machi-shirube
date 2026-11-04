@@ -1,11 +1,11 @@
 {
  "lang": "id",
  "name": "Bahasa Indonesia",
- "createdAt": "2026-11-04T04:15:48.876Z",
+ "createdAt": "2026-11-04T04:39:16.515Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 913,
- "of": 881,
+ "count": 923,
+ "of": 891,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Ini adalah panduan hidup tidak resmi untuk kota ini. Claude mengumpulkannya dari situs resmi kota dan sumber lain, dengan mencantumkan sumbernya (Machishirube)",
   "すべてのページ": "Semua halaman",
@@ -919,6 +919,16 @@
   "町の公式サイトで探す（Google 検索）": "Cari di situs resmi kota (pencarian Google)",
   "この町も調べてほしい": "Tolong periksa kota ini juga",
   "現在地と、選んだ町・字の扱い": "Penanganan lokasi saat ini serta kota dan wilayah (aza) yang dipilih",
-  "地図は2本指で動かせます": "Peta dapat digeser dengan dua jari"
+  "地図は2本指で動かせます": "Peta dapat digeser dengan dua jari",
+  "万": "puluh ribu (万)",
+  "町・字のおおよその真ん中": "Perkiraan titik tengah machi/aza (kota/desa)",
+  "浸水の深さ": "Kedalaman genangan",
+  "出典：「ハザードマップポータルサイト」を加工して作成。くわしくは町のハザードマップで": "Sumber: dibuat dengan mengolah \"Situs Portal Peta Bahaya (Hazard Map Portal Site)\". Untuk detailnya, lihat peta bahaya kota",
+  "まだありません。": "Belum ada.",
+  "天気を読み込めませんでした。時間をおいて開き直してください。": "Gagal memuat cuaca. Tunggu sebentar, lalu buka kembali.",
+  "見つかりません。": "Tidak ditemukan.",
+  "もとの日本語": "Teks asli bahasa Jepang",
+  "{k}のときに使える": "Bisa digunakan saat {k}",
+  "{n} 品目": "{n} item"
  }
 }

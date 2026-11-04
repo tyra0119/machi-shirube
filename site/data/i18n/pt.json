@@ -1,11 +1,11 @@
 {
  "lang": "pt",
  "name": "Português",
- "createdAt": "2026-11-04T04:15:38.763Z",
+ "createdAt": "2026-11-04T04:38:46.231Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 916,
- "of": 881,
+ "count": 926,
+ "of": 891,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Guia não oficial da vida na cidade. O Claude reúne as informações em sites oficiais da cidade e outras fontes, e indica a origem de cada uma (Machishirube)",
   "すべてのページ": "Todas as páginas",
@@ -922,6 +922,16 @@
   "町の公式サイトを開く": "Abrir o site oficial da cidade",
   "町の公式サイトで探す（Google 検索）": "Buscar no site oficial da cidade (pesquisa do Google)",
   "この町も調べてほしい": "Quero que pesquisem esta cidade também",
-  "地図は2本指で動かせます": "Use dois dedos para mover o mapa"
+  "地図は2本指で動かせます": "Use dois dedos para mover o mapa",
+  "万": "mil (万 = 10.000)",
+  "町・字のおおよその真ん中": "Centro aproximado do bairro/localidade",
+  "浸水の深さ": "Profundidade da inundação",
+  "出典：「ハザードマップポータルサイト」を加工して作成。くわしくは町のハザードマップで": "Fonte: elaborado a partir do \"Portal de Mapas de Perigo (Hazard Map)\". Para mais detalhes, consulte o mapa de perigos do município",
+  "まだありません。": "Ainda não há.",
+  "天気を読み込めませんでした。時間をおいて開き直してください。": "Não foi possível carregar a previsão do tempo. Aguarde um pouco e abra novamente.",
+  "見つかりません。": "Não encontrado.",
+  "もとの日本語": "Texto original em japonês",
+  "{k}のときに使える": "Pode ser usado em caso de {k}",
+  "{n} 品目": "{n} itens"
  }
 }

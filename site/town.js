@@ -478,13 +478,15 @@ async function showFuture(code) {
   const n = (v) => v.toLocaleString("ja-JP");
   const idx = (p) => Math.round((p.at(-1) / p[0]) * 100);
   const max = Math.max(...t.pop);
+  // 人口の多い町（10万人以上）は「360.4万」の形に（横浜市で「3,603,800」が7本並び、スマホの幅からはみ出した）
+  const big = max >= 100000;
   // 明るい話題：2050年まで人口が減りにくい町（全国の上から1割）は、それを添える（10番目までは順番で、それより下は「全国でも減りにくいほう」）
   const ratio = (p) => p.at(-1) / p[0];
   const rank = d.rank ?? Object.values(d.towns).filter((x) => ratio(x.pop) > ratio(t.pop)).length + 1;
   const total = d.total ?? Object.keys(d.towns).length;
   const bright = rank <= total / 10 ? `<span class="bright">${icon("sun")} ${ratio(t.pop) > 1 ? T("2050年まで人口が増えると推計される町です。") : ""}${rank <= 10 ? TN("人口の減りにくさは、全国 {n} の市区町村で {r} 番目です", { n: total.toLocaleString("ja-JP"), r: rank }) : T("人口の減りにくさは、全国でも高いほうです")}</span>` : "";
   $("future-head").innerHTML = `${T("2050年の人口は、2020年の")} <strong>${idx(t.pop)}%</strong>（${T("約")} ${n(Math.round(t.pop.at(-1) / 10) * 10)} ${T("人")}）<span>${T("全国")} ${idx(d.nation.pop)}%${t.old ? `・${T("65歳以上の割合")} ${t.old[0]}% → ${t.old.at(-1)}%（${T("全国")} ${d.nation.old.at(-1)}%）` : ""}</span>${bright}`;
-  $("future").innerHTML = d.years.map((y, i) => `<li><span class="y">${y}</span><span class="bar"><i style="height:${(t.pop[i] / max) * 100}%"></i></span><span class="v">${n(Math.round(t.pop[i] / 100) * 100)}</span>${t.old ? `<span class="o">${t.old[i]}%</span>` : ""}</li>`).join("");
+  $("future").innerHTML = d.years.map((y, i) => `<li><span class="y">${y}</span><span class="bar"><i style="height:${(t.pop[i] / max) * 100}%"></i></span><span class="v">${big ? `${(t.pop[i] / 10000).toFixed(1)}${T("万")}` : n(Math.round(t.pop[i] / 100) * 100)}</span>${t.old ? `<span class="o">${t.old[i]}%</span>` : ""}</li>`).join("");
   $("future-note").innerHTML = `${T("棒は総人口、下の % は65歳以上の割合です。")}${esc(T(d.note))}。<a href="${esc(d.source.url)}" target="_blank" rel="noopener">${esc(d.source.title)}</a>`;
 }
 
@@ -661,12 +663,12 @@ async function showHinan(code, townFeatures, startPart) {
   function popup(at, name, kinds) {
     pop?.remove();
     pop = new maplibregl.Popup({ offset: 16, maxWidth: "240px" }).setLngLat(at)
-      .setHTML(`<strong>${esc(name)}</strong><br><small>${esc(kinds.join("・"))}のときに使える</small>`).addTo(map);
+      .setHTML(`<strong>${esc(name)}</strong><br><small>${esc(TN("{k}のときに使える", { k: kinds.map((k) => T(k)).join("・") }))}</small>`).addTo(map);
   }
   sel.addEventListener("change", () => {
     remember.set(`hinan:${code}`, sel.value);
     const f = townFeatures.find((x) => x.properties.part === sel.value);
-    if (f) setHere(center(f), `${f.properties.name}（町・字のおおよその真ん中）`);
+    if (f) setHere(center(f), `${f.properties.name}（${T("町・字のおおよその真ん中")}）`);
     // 防災計画の欄も同じ町・字に合わせる（別々に選び直さなくてよいように）
     const plan = $("plan-part");
     if (f && plan && [...plan.options].some((o) => o.value === sel.value)) { plan.value = sel.value; plan.dispatchEvent(new Event("change")); }
@@ -691,9 +693,9 @@ async function showHinan(code, townFeatures, startPart) {
     if (!t) return;
     map.addSource("hazard", { type: "raster", tiles: [t.url], tileSize: 256, minzoom: 2, maxzoom: 17 });
     map.addLayer({ id: "hazard", type: "raster", source: "hazard", paint: { "raster-opacity": 0.65 } }, "shelters");
-    $("hazard-legend").innerHTML = `<span class="t">${esc(t.name)}（浸水の深さ）</span>`
+    $("hazard-legend").innerHTML = `<span class="t">${esc(T(t.name))}（${T("浸水の深さ")}）</span>`
       + DEPTH_COLORS.map(([c, label]) => `<span class="c"><i style="background:rgb(${c.join(",")})"></i>${label}</span>`).join("")
-      + `<span class="src">出典：「ハザードマップポータルサイト」を加工して作成。くわしくは町のハザードマップで</span>`;
+      + `<span class="src">${T("出典：「ハザードマップポータルサイト」を加工して作成。くわしくは町のハザードマップで")}</span>`;
   }
   // 海抜・浸水の想定・坂を考えた歩く時間（hazard.js）。あとから出る（地図の絵を読むので少し待つ）
   async function calc(at, token) {
@@ -832,7 +834,7 @@ async function showAnswers(code, scopeNote, partKey, partName) {
       + (list.length && scopeNote && !list.some((a) => a.level) ? `<p class="note">${esc(scopeNote)}</p>` : "")
       + (list.length ? answersHTML(list) : "")
       + (p?.later && !list.length ? `<p class="later"><span>${T("準備中")}</span>${LANG ? `${esc(T(p.later))} — ${T("町の公式のサイトから探して、出典つきでここに出します。")}` : `${esc(p.later)}を、町の公式のサイトから探して、出典つきでここに出します。`}</p>${laterGo(p)}` : "")
-      + (!list.length && !p?.later ? `<p class="note">まだありません。</p>` : "");
+      + (!list.length && !p?.later ? `<p class="note">${T("まだありません。")}</p>` : "");
   }
 }
 // 答えのカード：左に問いごとの絵、はじめの1文を要点として大きく、残りは箇条に。数（327 か所など）は目立たせる。出典は小さな札に
@@ -941,7 +943,7 @@ async function showToday(code, at) {
       band.innerHTML = `${icon("alert")}<strong>${T(danger ? "警報が出ています" : "注意報が出ています")}</strong><span>${w.map((x) => esc(T(x))).join("・")}</span><small>${T("気象庁の発表")} ›</small>`;
     }
   } catch (e) {
-    $("today-box").innerHTML = `<p class="note">天気を読み込めませんでした。時間をおいて開き直してください。</p>`;
+    $("today-box").innerHTML = `<p class="note">${T("天気を読み込めませんでした。時間をおいて開き直してください。")}</p>`;
     console.error(e);
   }
 }
@@ -970,7 +972,7 @@ async function showMedical(code, center) {
   }
   $("med-filter").addEventListener("input", () => { limit = 5; draw(); });
   draw();
-  $("med-cite").innerHTML = `出典：<a href="${esc(m.source.url)}" target="_blank" rel="noopener">${esc(m.source.title)}</a>（${esc(m.source.asOf)}・${esc(m.source.license)}）を加工。祝日：${esc(m.holidaySource?.title ?? "")}${KU()}${center ? "距離は町・字のおおよその真ん中からまっすぐ測ったものです。" : ""}`;
+  $("med-cite").innerHTML = `${T("出典")}：<a href="${esc(m.source.url)}" target="_blank" rel="noopener">${esc(m.source.title)}</a>（${esc(m.source.asOf)}・${esc(m.source.license)}）を加工。祝日：${esc(m.holidaySource?.title ?? "")}${KU()}${center ? "距離は町・字のおおよその真ん中からまっすぐ測ったものです。" : ""}`;
   const today = medicalList(m, 0, center);
   const open = today.list.filter((x) => x.openNow).length;
   medicalRow = `<li><a href="#iryo"><span class="k">${icon("hospital")}${T("病院")}</span><span class="v">${LANG ? `${T("今日やっている所")} ${today.list.length}（${T("いま開いている")} ${open}）` : `${today.holiday ? `今日は${esc(today.holiday)}。` : ""}今日やっている所 ${today.list.length} か所（いま開いている ${open}）`}</span></a></li>`;
@@ -1035,7 +1037,7 @@ function renderAllPages(filter = "") {
       <a class="all-page" href="#${p.view}" data-view="${p.view}"><span class="t">${icon(ILLUST[p.view]?.main)}${esc(T(p.title))}</span><span class="d">${esc(T(p.desc))}</span></a>
       ${its.length ? `<ul>${its.map((i) => `<li><a href="#${i.view}" data-view="${i.view}" data-target="${i.target}">${esc(i.label)}</a></li>`).join("")}</ul>` : ""}
     </section>`;
-  }).join("") || `<p class="note">見つかりません。</p>`;
+  }).join("") || `<p class="note">${T("見つかりません。")}</p>`;
 }
 function wireAllPages() {
   const dlg = $("all-pages");
@@ -1183,7 +1185,7 @@ async function showTranslations(code) {
           <p class="lead">${telLinks(numbers(lines[0] ?? ""))}</p>
           ${lines.length > 1 ? `<ul class="pts">${lines.slice(1).map((l) => `<li>${telLinks(numbers(l))}</li>`).join("")}</ul>` : ""}
           ${x.source?.url ? `<p class="src chip">${icon("link")} <a href="${esc(x.source.url)}" target="_blank" rel="noopener">${esc(x.source.title ?? x.source.url)}</a></p>` : ""}
-          ${ok ? `<details class="q"><summary>もとの日本語</summary><span lang="ja">${prettyText(x.original, esc)}</span></details>` : ""}
+          ${ok ? `<details class="q"><summary>${T("もとの日本語")}</summary><span lang="ja">${prettyText(x.original, esc)}</span></details>` : ""}
         </div>
       </li>`;
     };
@@ -1229,7 +1231,7 @@ async function showGomi(code) {
   };
   $("gomi-q").addEventListener("input", draw);
   for (const b of $("gomi-ex").querySelectorAll("button")) b.addEventListener("click", () => { $("gomi-q").value = b.dataset.w; draw(); $("gomi-q").focus(); });
-  $("gomi-note").innerHTML = `${esc(d.note)}（${d.items.length} 品目）。出典：${d.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title ?? s.url)}</a>`).join("・")}`;
+  $("gomi-note").innerHTML = `${esc(T(d.note))}（${TN("{n} 品目", { n: d.items.length })}）。${T("出典")}：${d.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title ?? s.url)}</a>`).join("・")}`;
 }
 
 // 町の人に聞きたいこと：公開の資料では見つからなかった問い（答えが「見つからなかった」）と、作者が「分からない（町の人に聞く）」とした問い

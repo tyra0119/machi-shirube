@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-04T04:15:41.192Z",
+ "createdAt": "2026-11-04T04:38:51.167Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 915,
- "of": 881,
+ "count": 925,
+ "of": 891,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -921,6 +921,16 @@
   "町の公式サイトを開く": "Abrir el sitio web oficial del municipio",
   "町の公式サイトで探す（Google 検索）": "Buscar en el sitio oficial del municipio (búsqueda de Google)",
   "この町も調べてほしい": "Quiero que investiguen también este municipio",
-  "地図は2本指で動かせます": "Mueve el mapa con dos dedos"
+  "地図は2本指で動かせます": "Mueve el mapa con dos dedos",
+  "万": "万 (10.000)",
+  "町・字のおおよその真ん中": "Centro aproximado del pueblo o del distrito (aza)",
+  "浸水の深さ": "Profundidad de la inundación",
+  "出典：「ハザードマップポータルサイト」を加工して作成。くわしくは町のハザードマップで": "Fuente: elaborado a partir del «Portal de mapas de peligros» (Hazard Map Portal Site). Para más detalles, consulte el mapa de peligros del municipio",
+  "まだありません。": "Todavía no hay.",
+  "天気を読み込めませんでした。時間をおいて開き直してください。": "No se pudo cargar el pronóstico del tiempo. Espere un momento y vuelva a abrir la página.",
+  "見つかりません。": "No se encontró.",
+  "もとの日本語": "Texto original en japonés",
+  "{k}のときに使える": "Se puede usar en caso de {k}",
+  "{n} 品目": "{n} artículos"
  }
 }

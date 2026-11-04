@@ -1,11 +1,11 @@
 {
  "lang": "vi",
  "name": "Tiếng Việt",
- "createdAt": "2026-11-04T04:15:54.426Z",
+ "createdAt": "2026-11-04T04:39:36.415Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 913,
- "of": 881,
+ "count": 922,
+ "of": 891,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Đây là trang hướng dẫn đời sống không chính thức của thị trấn này. Claude thu thập từ các trang chính thức của thị trấn v.v. và ghi rõ nguồn (Machi-shirube)",
   "すべてのページ": "Tất cả các trang",
@@ -919,6 +919,15 @@
   "町の公式サイトを開く": "Mở trang web chính thức của thị trấn",
   "町の公式サイトで探す（Google 検索）": "Tìm trên trang web chính thức của thị trấn (Tìm kiếm Google)",
   "この町も調べてほしい": "Mong tìm hiểu cả thị trấn này",
-  "地図は2本指で動かせます": "Dùng hai ngón tay để di chuyển bản đồ"
+  "地図は2本指で動かせます": "Dùng hai ngón tay để di chuyển bản đồ",
+  "万": "vạn (10.000)",
+  "町・字のおおよその真ん中": "Khoảng trung tâm của thị trấn / khu phố (aza)",
+  "浸水の深さ": "Độ sâu ngập nước",
+  "まだありません。": "Chưa có.",
+  "天気を読み込めませんでした。時間をおいて開き直してください。": "Không tải được thông tin thời tiết. Vui lòng đợi một lúc rồi mở lại.",
+  "見つかりません。": "Không tìm thấy.",
+  "もとの日本語": "Bản tiếng Nhật gốc",
+  "{k}のときに使える": "Dùng được khi {k}",
+  "{n} 品目": "{n} món"
  }
 }
