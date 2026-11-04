@@ -1,9 +1,9 @@
 {
- "updatedAt": "2026-11-04T12:58:06.389Z",
+ "updatedAt": "2026-11-04T13:03:45.301Z",
  "counts": {
   "auto": 82,
-  "ok": 190,
-  "pending": 1,
+  "ok": 191,
+  "pending": 0,
   "fix": 28,
   "rejected": 20,
   "unknown": 0
@@ -6714,11 +6714,16 @@
    "kind": "answer",
    "question": "この町を受け持つ警察署の名前・場所・電話番号と、町の中の主な交番・駐在所。急ぎでない相談の電話（#9110 など）の受付時間も（県警か町の公式のページから）",
    "why": "確かめ役：資料と合わない所がある（「交番はありません。」は資料に明記されていない（資料には駐在所6か所の一覧のみ））",
-   "status": "pending",
-   "score": null,
+   "status": "ok",
+   "score": 2,
    "source": {
     "title": "県内の警察署【津川警察署】（新潟県警察）",
     "url": "https://www.pref.niigata.lg.jp/site/kenkei/station-tsugawa-index.html"
+   },
+   "decided": {
+    "at": "2026-11-04T13:03:45.276Z",
+    "action": "ok",
+    "reason": ""
    }
   }
  ]

@@ -146,6 +146,8 @@ function telsOf(text, fallback) {
       // 同じ行の2つめの番号で、名前が無いもの（「または 088-…」）は、同じ窓口の別の番号なので出さない
       if (!label && out.at(-1)?.line === line) { last = m.index + m[0].length; continue; }
       if (!label) label = head || fallback;
+      // 名前が課の名前だけのときは、見出し（【消費生活】など）を前に添える（「町のまちづくり観光課」だけでは何の窓口か分からない）
+      else if (head && !label.includes(head) && /(課|係|室)$/.test(label)) label = `${head}：${label.replace(/^町の/, "")}`;
       out.push({ label: label.slice(0, 22), num: m[0], line });
       last = m.index + m[0].length;
     }
