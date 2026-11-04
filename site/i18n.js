@@ -13,6 +13,9 @@ async function setLang(lang) {
   DICT = d.dict;
   document.documentElement.lang = lang === "easy" ? "ja" : lang;
   document.body.classList.add("lang-other");
+  // まちしるべの訳で見ているときは、ブラウザの「ページを翻訳しますか？」を出さない（日本語のスマホでポルトガル語のページを開くと出て、紛らわしかった）。
+  // 日本語のページは今までどおり翻訳できる（訳の無い町では、ブラウザの翻訳を使うよう案内している）
+  document.documentElement.setAttribute("translate", "no");
   return true;
 }
 // ページに書いてある決まった文字を置きかえる（見出し・注意書き・ボタン・入力欄の例）。印（svg）は残す

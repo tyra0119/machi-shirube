@@ -34,8 +34,8 @@ async function main() {
   if (gomiOk) gomiSel.innerHTML = `<option value="">（選ぶ）</option>` + gd.areas.map((a, i) => `<option value="${i}">${esc(a.area)}${a.towns.length ? `（${esc(a.towns.slice(0, 3).join("・"))}${a.towns.length > 3 ? "ほか" : ""}）` : ""}</option>`).join("");
   else gomiSel.closest("label").hidden = true;
   gomiSel.value = remember.get(`gomi:${code}`) ?? "";
-  partSel.addEventListener("change", () => { remember.set(`hinan:${code}`, partSel.value); draw(); });
-  gomiSel.addEventListener("change", () => { remember.set(`gomi:${code}`, gomiSel.value); draw(); });
+  partSel.addEventListener("change", async () => { remember.set(`hinan:${code}`, partSel.value); await draw(); fitA4(); });
+  gomiSel.addEventListener("change", async () => { remember.set(`gomi:${code}`, gomiSel.value); await draw(); fitA4(); });
 
   const pageUrlOf = (part) => new URL(`town.html?${part ? `town=${code}-${part}` : `muni=${code}`}`, location.href.replace(/memo\.html.*$/, "")).href;
   const page = Object.fromEntries((yard?.questions ?? []).map((x) => [x.id, x]));
@@ -103,6 +103,7 @@ async function main() {
     $("src").textContent = `出典：${[...new Set(src.filter(Boolean))].join("／")}`;
   }
   await draw();
+  fitA4();
 }
 
 // 答えの文から、電話番号と、その前の言葉（名前）を取り出す。
@@ -151,4 +152,13 @@ function centerOf(f) {
   const box = [Infinity, Infinity, -Infinity, -Infinity];
   for (const p of f.geometry.type === "Polygon" ? [f.geometry.coordinates] : f.geometry.coordinates) for (const [x, y] of p[0]) { box[0] = Math.min(box[0], x); box[1] = Math.min(box[1], y); box[2] = Math.max(box[2], x); box[3] = Math.max(box[3], y); }
   return [(box[0] + box[2]) / 2, (box[1] + box[3]) / 2];
+}
+
+// A4 1枚に収める：町ごとに中身の長さが違う（美濃加茂市は病院の名前と時間が長く 313mm になった）ので、
+// 長いときだけ全体を少し縮める（印刷で2枚に分かれないように）
+function fitA4() {
+  const sheet = document.querySelector(".sheet");
+  sheet.style.zoom = "";
+  const max = (297 * 96) / 25.4;
+  if (sheet.scrollHeight > max) sheet.style.zoom = String(Math.floor((max / sheet.scrollHeight) * 1000) / 1000);
 }

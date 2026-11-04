@@ -1,11 +1,11 @@
 {
  "lang": "tl",
  "name": "Filipino",
- "createdAt": "2026-11-04T04:42:25.743Z",
+ "createdAt": "2026-11-04T05:16:49.251Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 920,
- "of": 895,
+ "count": 921,
+ "of": 896,
  "dict": {
   "この町の非公式の暮らしの案内です。町の公式のサイトや国の公開データから集め、出典をつけています（まちしるべ）": "Ito ay isang di-opisyal na gabay sa pamumuhay sa bayang ito. Kinuha ito mula sa opisyal na website ng bayan at sa pampublikong datos ng bansa, at may nakasaad na pinagmulan (Machishirube)",
   "すべてのページ": "Lahat ng pahina",
@@ -926,6 +926,7 @@
   "今日と明日（天気・洗濯・服装）": "Ngayon at Bukas (Panahon, Paglalaba, Susuotin)",
   "わが家の避難（近い避難場所）": "Paglikas ng Aming Tahanan (Pinakamalapit na Evacuation Site)",
   "町のデータ（全国と比べた数字）": "Datos ng Bayan (Mga Bilang Kumpara sa Buong Bansa)",
-  "「{q}」で絞ると {n} か所": "Kapag sinala gamit ang \"{q}\", {n} na lugar"
+  "「{q}」で絞ると {n} か所": "Kapag sinala gamit ang \"{q}\", {n} na lugar",
+  "ごみの名前を日本語で入れる（例：電池、ペットボトル）": "Ilagay ang pangalan ng basura sa Japanese (hal.: baterya, bote ng PET)"
  }
 }

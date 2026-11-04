@@ -34,19 +34,24 @@ function collect(code) {
   const gd = read(`site/data/gomi-days/${code}.json`);
   const gomi = [...new Set([...(gd?.areas ?? []).flatMap((a) => [a.area, ...a.days.flatMap((x) => [x.kind, x.when])]), ...(gd?.rules ?? []).flatMap((r) => [r.kind, r.how, r.time])].filter(Boolean))];
   gomi.forEach((t, i) => push(`g${i}`, t));
-  return { list, gomi, made: { mitate: m?.createdAt ?? null, hitokoto: h?.createdAt ?? null, dekiru: d?.createdAt ?? null, gomi: gd?.createdAt ?? null, quiz: qz?.createdAt ?? null } };
+  // このごみは何ごみ？の辞書（町の公式の一覧表から作ったもの）：品目の名前・ごみの種類・注意。同じ文は1回だけ。id は w0, w1 …
+  // （作者「A」：ポルトガル語の画面で「pilha」と入れても見つからず、答えも日本語だけだった）
+  const gdict = read(`site/data/gomi/${code}.json`);
+  const words = [...new Set((gdict?.items ?? []).flatMap((x) => [x.n, x.k, ...(x.also ?? []), x.note]).filter(Boolean))];
+  words.forEach((t, i) => push(`w${i}`, t));
+  return { list, gomi, words, made: { mitate: m?.createdAt ?? null, hitokoto: h?.createdAt ?? null, dekiru: d?.createdAt ?? null, gomi: gd?.createdAt ?? null, quiz: qz?.createdAt ?? null, gomidict: gdict?.createdAt ?? null } };
 }
 
 export async function translateAI(code, langs = Object.keys(LANGS), log = console.log) {
   if (spent(japanDay(new Date().toISOString())) >= DAILY_LIMIT_USD || spent() >= TOTAL_LIMIT_USD) throw new Error("費用の上限に達しています");
-  const { list, gomi, made } = collect(code);
+  const { list, gomi, words, made } = collect(code);
   if (!list.length) throw new Error("訳す文がありません（見立て・ひとこと・数から、できることへ）");
   const town = read("site/data/stats.json").towns[code];
   const client = new Anthropic();
   const file = `site/data/translations/${code}-ai.json`;
   const out = read(file) ?? { code, langs: {} };
   // もとの文が前と同じ種類は、確かめの通った訳を使い回す（通らなかった文だけ訳し直す）
-  const kindOf = (id) => ({ m: "mitate", h: "hitokoto", d: "dekiru", g: "gomi", q: "quiz" })[id[0]] ?? id.split(".")[1];
+  const kindOf = (id) => ({ m: "mitate", h: "hitokoto", d: "dekiru", g: "gomi", q: "quiz", w: "gomidict" })[id[0]] ?? id.split(".")[1];
   const same = (id) => out.made?.[kindOf(id)] && out.made[kindOf(id)] === made[kindOf(id)];
   const prevOk = Object.fromEntries(Object.entries(out.langs).map(([l, v]) => [l, Object.fromEntries(Object.entries(v.texts).filter(([id]) => same(id)))]));
   Object.assign(out, { name: town?.name, createdAt: new Date().toISOString(), model: MODEL, made });
@@ -87,7 +92,8 @@ export async function translateAI(code, langs = Object.keys(LANGS), log = consol
     }
     // ごみの文は、もとの文 → 訳 で引けるようにしておく（町のページはもとの文で引く）
     const gomiTr = Object.fromEntries(gomi.map((ja, i) => [ja, ok[`g${i}`]]).filter(([, v]) => v));
-    out.langs[lang] = { name: L.name, ja: L.ja, texts: ok, gomi: gomiTr };
+    const gomiDictTr = Object.fromEntries(words.map((ja, i) => [ja, ok[`w${i}`]]).filter(([, v]) => v));
+    out.langs[lang] = { name: L.name, ja: L.ja, texts: ok, gomi: gomiTr, gomiDict: gomiDictTr };
     log(`${L.ja}：${Object.keys(ok).length} / ${all.length}${bad.length ? `。出さない：${bad.join("／")}` : ""}`);
   }
   fs.mkdirSync("site/data/translations", { recursive: true });

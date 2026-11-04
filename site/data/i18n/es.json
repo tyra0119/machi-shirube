@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-04T04:41:41.376Z",
+ "createdAt": "2026-11-04T05:16:28.360Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 929,
- "of": 895,
+ "count": 930,
+ "of": 896,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -935,6 +935,7 @@
   "今日と明日（天気・洗濯・服装）": "Hoy y mañana (clima, colada y ropa)",
   "わが家の避難（近い避難場所）": "Evacuación de mi hogar (refugios cercanos)",
   "町のデータ（全国と比べた数字）": "Datos del municipio (cifras comparadas con el promedio nacional)",
-  "「{q}」で絞ると {n} か所": "Al filtrar por «{q}»: {n} lugares"
+  "「{q}」で絞ると {n} か所": "Al filtrar por «{q}»: {n} lugares",
+  "ごみの名前を日本語で入れる（例：電池、ペットボトル）": "Escriba el nombre de la basura en japonés (ej.: 電池, ペットボトル)"
  }
 }

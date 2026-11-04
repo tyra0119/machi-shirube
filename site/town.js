@@ -252,6 +252,13 @@ async function aiTr(code, kind, createdAt) {
   const x = t?.made?.[kind] === createdAt && t.langs?.[LANG]?.texts;
   return x ? (id, ja) => (x[id] ? seireki(x[id], LANG) : ja) : null;
 }
+// このごみは何ごみ？の辞書の訳（もとの文 → 訳。確かめの通ったものだけ。scripts/translate-ai.mjs の w0, w1 …）
+async function aiTrGomiDict(code, createdAt) {
+  if (!LANG) return null;
+  aiTrCache ??= getData(`data/translations/${code}-ai.json`);
+  const t = await aiTrCache;
+  return t?.made?.gomidict === createdAt ? t.langs?.[LANG]?.gomiDict ?? null : null;
+}
 // ごみを出す日の文の訳（もとの文 → 訳。確かめの通ったものだけ）
 async function aiTrGomi(code, createdAt) {
   if (!LANG) return null;
@@ -1215,19 +1222,25 @@ async function showGomi(code) {
   if (!d) return;
   $("gomi-block").hidden = false;
   const hue = (k) => [140, 205, 45, 275, 185, 320, 100, 235, 30, 165][d.kinds.indexOf(k) % 10];
-  const items = d.items.map((x) => ({ ...x, key: kana(x.n), ykey: kana(x.y) }));
-  const examples = ["ペットボトル", "乾電池", "スプレー缶", "フライパン", "蛍光灯", "傘"].filter((w) => items.some((x) => x.key.includes(kana(w)))).slice(0, 5);
+  // ほかの言葉では、確かめの通った訳で探せて、答えもその言葉で出す。日本語の名前も小さく添える（集積所の表示や町の表と見比べられるように）
+  // （作者「A」：ポルトガル語の画面で「pilha」と入れても見つからず、答えも日本語だけだった）
+  const wtr = await aiTrGomiDict(code, d.createdAt);
+  const wt = (x) => wtr?.[x] ?? x;
+  const items = d.items.map((x) => ({ ...x, key: kana(x.n), ykey: kana(x.y), tkey: wtr?.[x.n] ? kana(wtr[x.n]) : "" }));
+  const examples = ["ペットボトル", "乾電池", "スプレー缶", "フライパン", "蛍光灯", "傘"].map((w) => items.find((x) => x.key.includes(kana(w)))).filter(Boolean).slice(0, 5)
+    .map((x) => (wtr?.[x.n] ? wt(x.n).replace(/[（(].*$/, "").trim() : x.n));
   $("gomi-ex").innerHTML = examples.length ? `${T("例：")}${examples.map((w) => `<button type="button" data-w="${esc(w)}">${esc(w)}</button>`).join("")}` : "";
+  if (LANG && !wtr) $("gomi-q").placeholder = T("ごみの名前を日本語で入れる（例：電池、ペットボトル）");
   const draw = () => {
     const q = kana($("gomi-q").value);
     if (!q) { $("gomi-hits").innerHTML = ""; return; }
-    const hits = items.map((x) => ({ x, s: x.key === q || x.ykey === q ? 0 : x.key.startsWith(q) || x.ykey?.startsWith(q) ? 1 : x.key.includes(q) || x.ykey?.includes(q) ? 2 : 9 }))
+    const hits = items.map((x) => ({ x, s: x.key === q || x.ykey === q || x.tkey === q ? 0 : x.key.startsWith(q) || x.ykey?.startsWith(q) || x.tkey.startsWith(q) ? 1 : x.key.includes(q) || x.ykey?.includes(q) || x.tkey.includes(q) ? 2 : 9 }))
       .filter((h) => h.s < 9).sort((a, b) => a.s - b.s || a.x.n.length - b.x.n.length).slice(0, 8);
     $("gomi-hits").innerHTML = hits.length ? hits.map(({ x }) => `<li style="--h:${hue(x.k)}">
-        <span class="n">${esc(x.n)}</span>
-        <span class="k">${esc(x.k)}</span>
-        ${x.also ? `<span class="also">${T("場合によって：")}${x.also.map((k) => `<b style="--h:${hue(k)}">${esc(k)}</b>`).join("")}</span>` : ""}
-        ${x.note ? `<span class="nt">${esc(x.note)}</span>` : ""}
+        <span class="n">${esc(wt(x.n))}${wtr?.[x.n] ? `<small lang="ja">${esc(x.n)}</small>` : ""}</span>
+        <span class="k">${esc(wt(x.k))}</span>
+        ${x.also ? `<span class="also">${T("場合によって：")}${x.also.map((k) => `<b style="--h:${hue(k)}">${esc(wt(k))}</b>`).join("")}</span>` : ""}
+        ${x.note ? `<span class="nt">${esc(wt(x.note))}</span>` : ""}
       </li>`).join("")
       : `<li class="none">「${esc($("gomi-q").value)}」${T("は、町の表に見つかりませんでした。言いかえて探すか、町の一覧表で確かめてください。")}</li>`;
   };

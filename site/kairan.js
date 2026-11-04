@@ -50,3 +50,10 @@ async function main() {
   $("slips").innerHTML = [0, 1, 2].map(() => `<div class="slip">${qrSvg(2)}<p><strong>${esc(name)}のくらしの案内</strong>まちしるべ（非公式）<br>スマホのカメラで読むと開きます</p></div>`).join("");
   $("made").textContent = `${new Date().toLocaleDateString("ja-JP")} に印刷用に作りました。まちしるべ（非公式）。中身は変わることがあります。`;
 }
+
+// A4 1枚に収める（町の名前や言葉の数で長さが変わるので、長いときだけ全体を少し縮める）
+(function waitAndFit() {
+  const sheet = document.querySelector(".sheet");
+  const fit = () => { sheet.style.zoom = ""; const max = (297 * 96) / 25.4; if (sheet.scrollHeight > max) sheet.style.zoom = String(Math.floor((max / sheet.scrollHeight) * 1000) / 1000); };
+  new MutationObserver(() => requestAnimationFrame(fit)).observe($("can"), { childList: true });
+})();
