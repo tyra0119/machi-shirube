@@ -554,6 +554,7 @@ async function showAccidents(code, part) {
     container: "acc-map",
     style: await baseStyle(),
     attributionControl: false,
+    ...pageMapOptions(),
   });
   maps.push(map);
   map.addControl(new MapButtons({}), "bottom-right");
@@ -611,6 +612,7 @@ async function showHinan(code, townFeatures, startPart) {
     style: await baseStyle(),
     attributionControl: false,
     dragRotate: true,
+    ...pageMapOptions(),
   });
   maps.push(map);
   // 地図のボタン：右下に縦に（方角・現在地・＋・−）。現在地はその場所から近い避難場所を出す

@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-04T03:27:05.641Z",
+ "createdAt": "2026-11-04T04:15:41.192Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 914,
- "of": 880,
+ "count": 915,
+ "of": 881,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -920,6 +920,7 @@
   "この町は、まだ AI が町の公式のサイトを調べていません。いまは国の公開データ（天気・警報・病院・避難場所・人口など）だけで作っています。どの情報にも出典をつけています。": "La IA todavía no ha consultado el sitio web oficial de este municipio. Por ahora, la página se ha creado solo con datos públicos del país (clima, alertas, hospitales, refugios, población, etc.). Toda la información incluye su fuente.",
   "町の公式サイトを開く": "Abrir el sitio web oficial del municipio",
   "町の公式サイトで探す（Google 検索）": "Buscar en el sitio oficial del municipio (búsqueda de Google)",
-  "この町も調べてほしい": "Quiero que investiguen también este municipio"
+  "この町も調べてほしい": "Quiero que investiguen también este municipio",
+  "地図は2本指で動かせます": "Mueve el mapa con dos dedos"
  }
 }

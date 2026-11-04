@@ -46,3 +46,16 @@ function raiseLabels(map) {
   for (const l of map.getStyle().layers) if (l.type === "symbol" && !l.source?.startsWith?.("my-")) map.moveLayer(l.id);
 }
 const BASEMAP_NOTE = "背景の地図：地理院地図 Vector（国土地理院）";
+
+// ページの中の地図（防災・地図・事故）：指で触る端末では、指1本はページを動かし、2本指で地図を動かす。指1本で触ると「地図は2本指で動かせます」と出る。
+// （実機で、ページを読み進めようと地図の上を払うと、ページが止まって地図が動き、避難場所の点が画面の外へ出た → 作者「A」。
+//   Google マップを他のサイトに埋め込んだときと同じ形。マウスのホイールでの拡大・縮小は、全体設定のとおり、そのまま）
+// 画面いっぱいの日本地図（app.js）には使わない
+function pageMapOptions() {
+  const touch = matchMedia("(pointer: coarse)").matches;
+  const t = typeof T === "function" ? T : (s) => s;
+  return touch ? {
+    cooperativeGestures: true,
+    locale: { "CooperativeGesturesHandler.MobileHelpText": t("地図は2本指で動かせます"), "CooperativeGesturesHandler.WindowsHelpText": t("地図は2本指で動かせます"), "CooperativeGesturesHandler.MacHelpText": t("地図は2本指で動かせます") },
+  } : {};
+}

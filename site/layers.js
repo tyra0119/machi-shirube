@@ -62,6 +62,7 @@ async function showLayerMap(code, townFeatures, at, esc, part = null) {
     style: await baseStyle(),
     attributionControl: false,
     center: at ?? [139.7, 35.7], zoom: 12,
+    ...pageMapOptions(),
   });
   maps.push(map);
   const buttons = new MapButtons({});
