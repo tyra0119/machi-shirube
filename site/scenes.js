@@ -4,6 +4,7 @@
 //  ?scene=grid&code=39428 … 物差しの問いのます目が、出典つきの答えで埋まっていく
 //  ?scene=num&code=39428&kind=津波 … 浸かる想定の所に住む人の数が数え上がる（?v=&unit=&who=&src= でほかの数も）
 //  ?scene=pages … 町の防災計画のページ（黒潮町 本編 298・資料編 156）が積み上がり、住む人に要る所だけの1枚に縮まる
+//  ?scene=end … 終わりの札（まちしるべ・あなたの町も。・サイトの URL）
 //  ?scene=bar&a=52.1&b=86.1 … 大泉町の「母語で読める人」の棒が伸びる（数は録る日に町のページの「母語で読める人」と合わせる）
 //  押すか ?auto で始まる。R でやり直す。?nobadge で右上の札を消す
 const q = new URLSearchParams(location.search);
@@ -186,7 +187,16 @@ async function scenePages() {
   $("one").classList.add("on");
 }
 
-const SCENES = { card: sceneCard, grid: sceneGrid, num: sceneNum, bar: sceneBar, pages: scenePages };
+// 終わりの札：作品の名前・「あなたの町も」・サイトの URL（作者「1~3直して」）
+//  ?scene=end
+async function sceneEnd() {
+  $("badge").hidden = true;
+  $("stage").innerHTML = `<div class="end" id="end"><p class="en-t">まちしるべ</p><p class="en-s">あなたの町も。</p><p class="en-u">tyra0119.github.io/machi-shirube</p></div>`;
+  await wait(300);
+  $("end").classList.add("on");
+}
+
+const SCENES = { card: sceneCard, grid: sceneGrid, num: sceneNum, bar: sceneBar, pages: scenePages, end: sceneEnd };
 async function run() {
   $("start").hidden = true;
   $("cap").classList.remove("on");

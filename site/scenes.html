@@ -85,6 +85,13 @@
   .pcount.shrink { opacity: 0; }
   .ans.one { left: 50%; right: auto; top: 26vh; transform: translateX(-50%) scale(0.94); }
   .ans.one.on { transform: translateX(-50%) scale(1); }
+  /* end：終わりの札 */
+  .end { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 1.2vw; background: radial-gradient(ellipse at center, rgba(255, 181, 71, 0.12) 0%, rgba(7, 20, 35, 0) 60%); }
+  .end p { margin: 0; opacity: 0; transform: translateY(1.2vh); transition: opacity 1.2s ease, transform 1.2s ease; }
+  .end.on p { opacity: 1; transform: none; }
+  .end .en-t { font-size: max(72px, 6vw); font-weight: 800; letter-spacing: 0.12em; }
+  .end .en-s { font-size: max(30px, 2.4vw); color: var(--accent); letter-spacing: 0.1em; transition-delay: 0.6s; }
+  .end .en-u { margin-top: 1.4vw; font-size: max(18px, 1.3vw); color: var(--sub); letter-spacing: 0.04em; transition-delay: 1.2s; }
 </style>
 </head>
 <body>

@@ -1236,20 +1236,14 @@ async function playWave() {
     };
     requestAnimationFrame(step);
   });
-  // 最後に、波の色を薄くしていき、深く調べた町が浮かび上がる
+  // 最後は、灯りきった日本のまま止め、その上に深く調べた町を光らせる
+  // （前は波の色を薄くしていき、ほとんど灯っていない地図で終わって見えた。作者「1~3直して」）
   for (const id of ["muni-lit", "muni-lit-line", "lit-glow", "lit-dot"]) map.setLayoutProperty(id, "visibility", "visible");
-  await new Promise((done) => {
-    const t1 = performance.now();
-    const step = (now) => {
-      const k = Math.min(1, (now - t1) / 1200);
-      for (const o of order) map.setFeatureState({ source: "munis", id: o.code }, { wave: Math.round((0.45 - 0.33 * k) * 100) / 100 });
-      if (k < 1) requestAnimationFrame(step); else done();
-    };
-    requestAnimationFrame(step);
-  });
-  box.innerHTML = `<strong>${progress.totals.towns}</strong> の町を、Claude が深く調べました<small>${total.toLocaleString("ja-JP")} の市区町村は、国の統計で比べてあります</small>`;
+  box.innerHTML = `<strong>${total.toLocaleString("ja-JP")}</strong> の市区町村を、国の統計で比べ、<strong>${progress.totals.towns}</strong> の町を Claude が深く調べました<small>住民基本台帳（令和8年1月1日）・まちしるべ</small>`;
 }
 if (new URLSearchParams(location.search).has("wave")) {
+  // 録画用：?wave&clean で、左のメニュー・左下のカウンター・地図の札・地図のボタンを隠し、地図だけにする（地図の出典は残す）
+  if (new URLSearchParams(location.search).has("clean")) { document.body.classList.add("clean"); requestAnimationFrame(() => map.resize()); }
   map.on("load", () => setTimeout(playWave, 1500));
   addEventListener("keydown", (e) => { if (e.key === "w" || e.key === "W") playWave(); });
 }
