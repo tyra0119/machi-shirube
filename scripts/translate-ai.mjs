@@ -57,17 +57,19 @@ export async function translateAI(code, langs = Object.keys(LANGS), log = consol
   Object.assign(out, { name: town?.name, createdAt: new Date().toISOString(), model: MODEL, made });
   let usd = 0;
   const all = list;
-  for (const lang of langs) {
+  // 言葉ごとに同時に進める（ごみの辞書の 721 の言葉を足すと、1つの言葉ずつでは3時間ほどかかった）
+  await Promise.all(langs.map(async (lang) => {
     const L = LANGS[lang];
     if (!L) throw new Error(`${lang} は分からない言葉です（${Object.keys(LANGS).join("・")}）`);
     const kept = prevOk[lang] ?? {};
     const list = all.filter((x) => !kept[x.id]);
-    if (!list.length) { log(`${L.ja}：みな訳してあります`); continue; }
+    if (!list.length) { log(`${L.ja}：みな訳してあります`); return; }
     // 20件ずつ頼む（町・字の多い町〈美濃加茂市 78件〉をまとめて頼むと、訳か確かめの答えが長さの上限で切れ、後ろの文が読めなかった）
     const tr = {};
     const checks = [];
-    for (let i = 0; i < list.length; i += 20) {
-      const part = list.slice(i, i + 20);
+    // 20件ずつ頼む。ごみの辞書の品目（w…）は短いので 60件ずつ
+    const chunk = (xs, n) => Array.from({ length: Math.ceil(xs.length / n) }, (_, i) => xs.slice(i * n, i * n + n));
+    for (const part of [...chunk(list.filter((x) => !x.id.startsWith("w")), 20), ...chunk(list.filter((x) => x.id.startsWith("w")), 60)]) {
       const res = await client.messages.create({
         model: MODEL, max_tokens: 12000,
         system: `町に住む人に向けた、暮らしと防災の短い文を訳します。
@@ -94,8 +96,8 @@ export async function translateAI(code, langs = Object.keys(LANGS), log = consol
     const gomiTr = Object.fromEntries(gomi.map((ja, i) => [ja, ok[`g${i}`]]).filter(([, v]) => v));
     const gomiDictTr = Object.fromEntries(words.map((ja, i) => [ja, ok[`w${i}`]]).filter(([, v]) => v));
     out.langs[lang] = { name: L.name, ja: L.ja, texts: ok, gomi: gomiTr, gomiDict: gomiDictTr };
-    log(`${L.ja}：${Object.keys(ok).length} / ${all.length}${bad.length ? `。出さない：${bad.join("／")}` : ""}`);
-  }
+    log(`${L.ja}：${Object.keys(ok).length} / ${all.length}${bad.length ? `。出さない：${bad.length} 件（${bad.slice(0, 5).join("／")}${bad.length > 5 ? " ほか" : ""}）` : ""}`);
+  }));
   fs.mkdirSync("site/data/translations", { recursive: true });
   fs.writeFileSync(file, JSON.stringify(out, null, 1));
   log(`できました：${file}（$${usd.toFixed(3)}）`);

@@ -890,7 +890,12 @@ function rubyEasy(root) {
 // 中身はあとから少しずつ描かれるので、変わるたびに（まとめて）書き足す
 {
   let t = null;
-  const run = () => { t = null; for (const el of document.querySelectorAll(".town-main, .about-site")) linkUrgent(el); rubyEasy(document.body); };
+  // 注意書きの文の終わりの「。」と、出典の前のつなぎの「。」が重なって「。。」になる所がある（母語で読める人の注意書きなど）。出す前に1つにそろえる
+  const oneMaru = (root) => {
+    const w = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    for (let n = w.nextNode(); n; n = w.nextNode()) if (n.nodeValue.includes("。。")) n.nodeValue = n.nodeValue.replace(/。。+/g, "。");
+  };
+  const run = () => { t = null; for (const el of document.querySelectorAll(".town-main, .about-site")) { linkUrgent(el); oneMaru(el); } rubyEasy(document.body); };
   new MutationObserver(() => { t ??= setTimeout(run, 300); }).observe(document.body, { childList: true, subtree: true });
 }
 // 調べた側の言い方を、住む人向けに（「今回調べた範囲では」「今回は」など。日本語の答えだけ）
