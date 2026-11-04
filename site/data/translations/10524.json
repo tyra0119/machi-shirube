@@ -1,7 +1,7 @@
 {
  "code": "10524",
  "name": "邑楽郡大泉町",
- "createdAt": "2026-11-04T01:55:32.778Z",
+ "createdAt": "2026-11-04T12:33:14.720Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
  "langs": {
@@ -680,6 +680,22 @@
      "status": "auto",
      "problems": [
       "「両親学級」を「casais grávidos（妊娠中の夫婦）」と訳している。両親学級は主に妊婦とその配偶者向けなので実質的には同じだが、訳語としては少しずれている。「令和8年度（2026年）」の西暦補足も、年の換算として正しい。"
+     ]
+    },
+    {
+     "qid": "Q66",
+     "short": "Aparelho de chamada de emergência para idosos",
+     "text": "A cidade empresta um aparelho de chamada de emergência para idosos que moram sozinhos e outras pessoas na mesma situação.\nAo apertar o botão do aparelho, a ligação é feita para uma central de atendimento contratada pela cidade. Quando você precisar de ajuda por causa de uma doença repentina, a central toma as providências de acordo com a situação.\nTambém é possível pedir orientação sobre saúde. Uma vez por mês, a central pergunta sobre as condições de saúde e outros assuntos, e também confirma se você está bem.\nPara quem tem telefone fixo em casa, é emprestado um aparelho que se instala no telefone fixo. Acompanha um dispositivo de chamada sem fio em forma de pingente.\nPara quem não tem telefone fixo, é emprestado um aparelho portátil que consegue enviar uma chamada de emergência (sem função de telefone).\nO público-alvo são idosos que moram sozinhos, em geral com 65 anos ou mais, e outras pessoas que, por doença crônica ou motivo semelhante, sempre precisam de acompanhamento no dia a dia.\nO serviço é gratuito.\nAntes de fazer o pedido, consulte o setor de Bem-Estar do Idoso da Divisão de Idosos e Assistência de Longa Duração (高齢介護課 高齢福祉係). O formulário de pedido está no balcão. Também pode ser baixado no site da cidade.\nPara informações e inscrição, entre em contato com o setor de Bem-Estar do Idoso da Divisão de Idosos e Assistência de Longa Duração (高齢介護課 高齢福祉係), telefone 62-2121. No informativo da cidade, o código de área não está escrito.\nTambém há o pedido on-line \"Empréstimo de aparelho de chamada de emergência\" (緊急通報装置貸与).",
+     "original": "ひとり暮らしの高齢者などに、緊急通報装置を貸し出しています。\n装置のボタンを押すと、町が委託する受信センターにつながります。急病で助けが必要なときは、状況に応じた対応をしてくれます。\n健康の相談もできます。センターが月に1度、体調などを聞いて安否確認もします。\n自宅に固定電話がある人には、固定電話に取り付ける装置を貸し出します。ペンダント型のワイヤレス通報装置がセットです。\n固定電話がない人には、緊急通報を送れる携帯型電話機（電話機能なし）を貸し出します。\n対象は、慢性的な病気などで日常生活に常に見守りが必要な、おおむね65歳以上のひとり暮らし高齢者などです。\n費用は無料です。\n申請の前に、高齢介護課 高齢福祉係に相談してください。申請書は窓口にあります。町のホームページからもダウンロードできます。\n問い合わせと申し込みは、高齢介護課 高齢福祉係（電話 62-2121）です。広報紙には市外局番が書かれていません。\nオンライン申請「緊急通報装置貸与」もあります。",
+     "back": "町は、ひとり暮らしの高齢者などに緊急通報装置を貸し出しています。装置のボタンを押すと、町が委託する受信センターにつながります。急病で助けが必要なときは、センターが状況に応じた対応をします。健康の相談もできます。センターは月に1度、体調などを聞き、安否確認もします。自宅に固定電話がある人には、固定電話に取り付ける装置を貸し出します。ペンダント型のワイヤレス通報装置がセットになっています。固定電話がない人には、緊急通報を送れる携帯型電話機（電話機能なし）を貸し出します。対象は、慢性的な病気などで日常生活に常に見守りが必要な、おおむね65歳以上のひとり暮らしの高齢者などです。費用は無料です。申請の前に、高齢介護課 高齢福祉係に相談してください。申請書は窓口にあります。町のホームページからもダウンロードできます。問い合わせと申し込みは、高齢介護課 高齢福祉係（電話 62-2121）です。広報紙には市外局番が書かれていません。オンライン申請「緊急通報装置貸与」もあります。",
+     "source": {
+      "title": "広報おおいずみ（oizumi949.pdf）緊急通報装置の貸し出し記事",
+      "url": "https://www.town.oizumi.gunma.jp/s006/gyosei/010/020/170/oizumi949.pdf",
+      "where": "福祉の記事「緊急通報装置」"
+     },
+     "status": "auto",
+     "problems": [
+      "「ひとり暮らしの高齢者などに」の「など」の範囲を「na mesma situação（同じ状況の）」と補っている点のみ。数字・日付・名前・電話番号・条件は一致。"
      ]
     }
    ]
@@ -1365,6 +1381,23 @@
      },
      "status": "auto",
      "problems": []
+    },
+    {
+     "qid": "Q66",
+     "short": "Dispositivo de alerta de emergencia para personas mayores",
+     "text": "La ciudad presta dispositivos de alerta de emergencia a personas mayores que viven solas y a otras personas que lo necesiten.\nAl pulsar el botón del dispositivo, se conecta con un centro receptor contratado por la ciudad. Si usted necesita ayuda por una enfermedad repentina, el centro actúa según la situación.\nTambién se pueden hacer consultas sobre la salud. Una vez al mes, el centro llama para preguntar por su estado de salud y confirmar que usted se encuentra bien.\nA las personas que tienen teléfono fijo en casa, se les presta un dispositivo que se conecta al teléfono fijo. Se entrega junto con un dispositivo de alerta inalámbrico en forma de colgante.\nA las personas que no tienen teléfono fijo, se les presta un teléfono portátil que puede enviar alertas de emergencia (sin función de llamada telefónica).\nPueden solicitarlo las personas mayores que viven solas, de aproximadamente 65 años o más, y otras personas que, por una enfermedad crónica u otro motivo, necesitan siempre supervisión en su vida diaria.\nEl servicio es gratuito.\nAntes de presentar la solicitud, consulte con la Sección de Bienestar para Personas Mayores (高齢福祉係) del Departamento de Atención a Personas Mayores y Cuidados (高齢介護課). El formulario de solicitud está en la ventanilla. También se puede descargar desde la página web de la ciudad.\nPara consultas y solicitudes: Sección de Bienestar para Personas Mayores (高齢福祉係) del Departamento de Atención a Personas Mayores y Cuidados (高齢介護課), teléfono 62-2121. En el boletín municipal no figura el prefijo telefónico.\nTambién existe la solicitud en línea «Préstamo de dispositivo de alerta de emergencia» (緊急通報装置貸与).",
+     "original": "ひとり暮らしの高齢者などに、緊急通報装置を貸し出しています。\n装置のボタンを押すと、町が委託する受信センターにつながります。急病で助けが必要なときは、状況に応じた対応をしてくれます。\n健康の相談もできます。センターが月に1度、体調などを聞いて安否確認もします。\n自宅に固定電話がある人には、固定電話に取り付ける装置を貸し出します。ペンダント型のワイヤレス通報装置がセットです。\n固定電話がない人には、緊急通報を送れる携帯型電話機（電話機能なし）を貸し出します。\n対象は、慢性的な病気などで日常生活に常に見守りが必要な、おおむね65歳以上のひとり暮らし高齢者などです。\n費用は無料です。\n申請の前に、高齢介護課 高齢福祉係に相談してください。申請書は窓口にあります。町のホームページからもダウンロードできます。\n問い合わせと申し込みは、高齢介護課 高齢福祉係（電話 62-2121）です。広報紙には市外局番が書かれていません。\nオンライン申請「緊急通報装置貸与」もあります。",
+     "back": "ひとり暮らしの高齢者などや、助けが必要な人などに、緊急通報装置を貸し出しています。ボタンを押すと、市が委託する受信センターにつながります。急病で助けが必要なときは、状況に応じた対応をしてくれます。健康の相談もできます。センターが月に1度、体調などを聞いて安否確認もします。自宅に固定電話がある人には、固定電話に取り付ける装置を貸し出します。ペンダント型のワイヤレス通報装置がセットです。固定電話がない人には、緊急通報を送れる携帯型電話機（電話機能なし）を貸し出します。対象は、慢性的な病気などで日常生活に常に見守りが必要な、おおむね65歳以上のひとり暮らし高齢者などです。費用は無料です。申請の前に、高齢介護課 高齢福祉係に相談してください。申請書は窓口にあります。市のホームページからもダウンロードできます。問い合わせと申し込みは、高齢介護課 高齢福祉係（電話 62-2121）です。広報紙には市外局番が書かれていません。オンライン申請「緊急通報装置貸与」もあります。",
+     "source": {
+      "title": "広報おおいずみ（oizumi949.pdf）緊急通報装置の貸し出し記事",
+      "url": "https://www.town.oizumi.gunma.jp/s006/gyosei/010/020/170/oizumi949.pdf",
+      "where": "福祉の記事「緊急通報装置」"
+     },
+     "status": "pending",
+     "problems": [
+      "原文は「町」だが、訳文は「ciudad（市）」になっている。自治体の種類が違う。「などに」の訳に「lo necesiten（助けが必要な）」が足されている（小さな足し）。"
+     ],
+     "ledgerId": "r00423"
     }
    ]
   },
@@ -2055,6 +2088,22 @@
      "problems": [
       "「令和8年度」に「2026」という西暦の注記が足されているが、同じ年を指すので意味は変わらない。"
      ]
+    },
+    {
+     "qid": "Q66",
+     "short": "Emergency Call Device for Older Adults",
+     "text": "The town lends emergency call devices to older adults who live alone and others who may need one.\nWhen you press the button on the device, it connects you to a reception center that the town contracts to run. If you suddenly become ill and need help, the center will respond according to your situation.\nYou can also get health advice. Once a month, the center also calls to ask about your physical condition and to check that you are safe.\nIf you have a landline phone at home, the town will lend you a device that attaches to the landline. It comes as a set with a wireless pendant-type call device.\nIf you do not have a landline, the town will lend you a portable phone unit that can send emergency calls (it has no telephone function).\nThe service is for older adults, generally aged 65 or over, who live alone and always need someone to watch over them in daily life because of a chronic illness or similar condition, and for others in a similar situation.\nThere is no charge.\nBefore you apply, please talk to the Senior Care Division, Senior Welfare Section (高齢介護課 高齢福祉係). Application forms are available at the counter. You can also download them from the town website.\nFor inquiries and applications, contact the Senior Care Division, Senior Welfare Section (高齢介護課 高齢福祉係) at 62-2121 (phone). The town newsletter does not give the area code.\nYou can also apply online: \"緊急通報装置貸与\" (Emergency Call Device Loan).",
+     "original": "ひとり暮らしの高齢者などに、緊急通報装置を貸し出しています。\n装置のボタンを押すと、町が委託する受信センターにつながります。急病で助けが必要なときは、状況に応じた対応をしてくれます。\n健康の相談もできます。センターが月に1度、体調などを聞いて安否確認もします。\n自宅に固定電話がある人には、固定電話に取り付ける装置を貸し出します。ペンダント型のワイヤレス通報装置がセットです。\n固定電話がない人には、緊急通報を送れる携帯型電話機（電話機能なし）を貸し出します。\n対象は、慢性的な病気などで日常生活に常に見守りが必要な、おおむね65歳以上のひとり暮らし高齢者などです。\n費用は無料です。\n申請の前に、高齢介護課 高齢福祉係に相談してください。申請書は窓口にあります。町のホームページからもダウンロードできます。\n問い合わせと申し込みは、高齢介護課 高齢福祉係（電話 62-2121）です。広報紙には市外局番が書かれていません。\nオンライン申請「緊急通報装置貸与」もあります。",
+     "back": "町では、ひとり暮らしの高齢者などに緊急通報装置を貸し出しています。装置のボタンを押すと、町が委託する受信センターにつながります。急病で助けが必要なときは、状況に応じた対応をしてくれます。健康の相談もできます。センターが月に1度、体調などを聞いて安否確認もします。自宅に固定電話がある人には、固定電話に取り付ける装置を貸し出します。ペンダント型のワイヤレス通報装置がセットです。固定電話がない人には、緊急通報を送れる携帯型電話機（電話機能なし）を貸し出します。対象は、慢性的な病気などで日常生活に常に見守りが必要な、おおむね65歳以上のひとり暮らし高齢者などです。費用は無料です。申請の前に、高齢介護課 高齢福祉係に相談してください。申請書は窓口にあります。町のホームページからもダウンロードできます。問い合わせと申し込みは、高齢介護課 高齢福祉係（電話 62-2121）です。広報紙には市外局番が書かれていません。オンライン申請「緊急通報装置貸与」もあります。",
+     "source": {
+      "title": "広報おおいずみ（oizumi949.pdf）緊急通報装置の貸し出し記事",
+      "url": "https://www.town.oizumi.gunma.jp/s006/gyosei/010/020/170/oizumi949.pdf",
+      "where": "福祉の記事「緊急通報装置」"
+     },
+     "status": "auto",
+     "problems": [
+      "「など」の範囲を英訳で「others who may need one」「others in a similar situation」と広げて書いているが、原文の「など」の意味と大きくは違わない。数字・名前・場所・条件は一致。"
+     ]
     }
    ]
   },
@@ -2742,6 +2791,22 @@
      },
      "status": "auto",
      "problems": []
+    },
+    {
+     "qid": "Q66",
+     "short": "高齢者（こうれいしゃ）の緊急（きんきゅう）通報（つうほう）装置（そうち）",
+     "text": "ひとりで暮（く）らしている高齢者（こうれいしゃ）などに、緊急（きんきゅう）通報（つうほう）装置（そうち）を貸（か）します。\n装置のボタンを押（お）すと、町が頼（たの）んでいる受信（じゅしん）センターにつながります。急（きゅう）に病気になって助（たす）けが必要（ひつよう）なときは、そのときの様子（ようす）に合（あ）わせて対応（たいおう）してくれます。\n健康（けんこう）の相談（そうだん）もできます。センターは月に1回、体（からだ）の調子（ちょうし）などを聞（き）いて、元気かどうかも確（たし）かめます。\n家に固定電話（こていでんわ）がある人には、固定電話につける装置を貸します。ペンダントの形（かたち）で、線（せん）のない通報装置がセットです。\n固定電話がない人には、緊急通報を送（おく）れる携帯型（けいたいがた）の電話機（でんわき）を貸します。この電話機は、話す機能（きのう）はありません。\n対象（たいしょう）は、長（なが）く続（つづ）く病気などで、毎日の生活（せいかつ）にいつも見守（みまも）りが必要な、だいたい65歳（さい）以上（いじょう）のひとり暮らしの高齢者などです。\nお金はかかりません（無料（むりょう））。\n申（もう）し込（こ）む前（まえ）に、高齢介護課（こうれいかいごか） 高齢福祉係（こうれいふくしがかり）に相談（そうだん）してください。申請書（しんせいしょ）は窓口（まどぐち）にあります。町のホームページからもダウンロードできます。\n問（と）い合（あ）わせと申し込みは、高齢介護課 高齢福祉係（電話 62-2121）です。広報紙（こうほうし）には市外局番（しがいきょくばん）が書（か）いてありません。\nオンラインで申し込む方法（ほうほう）もあります。名前は「緊急通報装置貸与（きんきゅうつうほうそうちたいよ）」です。",
+     "original": "ひとり暮らしの高齢者などに、緊急通報装置を貸し出しています。\n装置のボタンを押すと、町が委託する受信センターにつながります。急病で助けが必要なときは、状況に応じた対応をしてくれます。\n健康の相談もできます。センターが月に1度、体調などを聞いて安否確認もします。\n自宅に固定電話がある人には、固定電話に取り付ける装置を貸し出します。ペンダント型のワイヤレス通報装置がセットです。\n固定電話がない人には、緊急通報を送れる携帯型電話機（電話機能なし）を貸し出します。\n対象は、慢性的な病気などで日常生活に常に見守りが必要な、おおむね65歳以上のひとり暮らし高齢者などです。\n費用は無料です。\n申請の前に、高齢介護課 高齢福祉係に相談してください。申請書は窓口にあります。町のホームページからもダウンロードできます。\n問い合わせと申し込みは、高齢介護課 高齢福祉係（電話 62-2121）です。広報紙には市外局番が書かれていません。\nオンライン申請「緊急通報装置貸与」もあります。",
+     "back": "ひとり暮らしの高齢者などに、緊急通報装置を貸し出しています。装置のボタンを押すと、町が委託する受信センターにつながります。急病で助けが必要なときは、状況に応じた対応をしてくれます。健康の相談もできます。センターが月に1回、体調などを聞いて安否確認もします。自宅に固定電話がある人には、固定電話に取り付ける装置を貸し出します。ペンダント型のワイヤレス通報装置がセットです。固定電話がない人には、緊急通報を送れる携帯型電話機（電話機能なし）を貸し出します。対象は、慢性的な病気などで日常生活に常に見守りが必要な、おおむね65歳以上のひとり暮らし高齢者などです。費用は無料です。申請の前に、高齢介護課 高齢福祉係に相談してください。申請書は窓口にあります。町のホームページからもダウンロードできます。問い合わせと申し込みは、高齢介護課 高齢福祉係（電話 62-2121）です。広報紙には市外局番が書かれていません。オンライン申請「緊急通報装置貸与」もあります。",
+     "source": {
+      "title": "広報おおいずみ（oizumi949.pdf）緊急通報装置の貸し出し記事",
+      "url": "https://www.town.oizumi.gunma.jp/s006/gyosei/010/020/170/oizumi949.pdf",
+      "where": "福祉の記事「緊急通報装置」"
+     },
+     "status": "auto",
+     "problems": [
+      "「貸し出しています」→「貸します」、「委託する」→「頼んでいる」、「安否確認」→「元気かどうか確かめる」、「電話機能なし」→「話す機能はない」、「慢性的な」→「長く続く」、「費用は無料」→「お金はかかりません（無料）」、「申請」→「申し込む」の言い換えなど。数字・日付・名前・電話番号・条件・場所は原文と同じで、足し引きや意味の変化はない。"
+     ]
     }
    ]
   },
@@ -3422,6 +3487,22 @@
      },
      "status": "auto",
      "problems": []
+    },
+    {
+     "qid": "Q66",
+     "short": "Alat Panggilan Darurat untuk Lansia",
+     "text": "Kami meminjamkan alat panggilan darurat kepada lansia yang tinggal sendirian dan warga lain yang memenuhi syarat.\nJika Anda menekan tombol pada alat, panggilan akan tersambung ke pusat penerima yang dipercayakan oleh kota/desa (町). Jika Anda sakit mendadak dan butuh pertolongan, pusat akan menangani sesuai dengan keadaan Anda.\nAnda juga bisa berkonsultasi tentang kesehatan. Sebulan sekali, pusat menanyakan kondisi tubuh Anda dan sebagainya, sekaligus memastikan Anda dalam keadaan selamat.\nBagi yang memiliki telepon rumah (telepon tetap), kami meminjamkan alat yang dipasang pada telepon rumah. Alat ini satu paket dengan alat panggilan nirkabel model liontin.\nBagi yang tidak memiliki telepon rumah, kami meminjamkan telepon portabel yang dapat mengirim panggilan darurat (tanpa fungsi telepon).\nSasarannya adalah lansia yang tinggal sendirian, berusia kira-kira 65 tahun ke atas, dan sebagainya, yang karena penyakit kronis atau hal lain selalu membutuhkan pengawasan dalam kehidupan sehari-hari.\nBiayanya gratis.\nSebelum mengajukan permohonan, silakan berkonsultasi terlebih dahulu dengan Bagian Kesejahteraan Lansia (高齢福祉係), Seksi Lansia dan Perawatan (高齢介護課). Formulir permohonan tersedia di loket. Formulir juga bisa diunduh dari situs web resmi kota/desa.\nUntuk pertanyaan dan pendaftaran, hubungi Bagian Kesejahteraan Lansia (高齢福祉係), Seksi Lansia dan Perawatan (高齢介護課), telepon 62-2121. Kode area tidak tercantum di majalah/buletin kota (広報紙).\nTersedia juga permohonan online \"Peminjaman Alat Panggilan Darurat\" (「緊急通報装置貸与」).",
+     "original": "ひとり暮らしの高齢者などに、緊急通報装置を貸し出しています。\n装置のボタンを押すと、町が委託する受信センターにつながります。急病で助けが必要なときは、状況に応じた対応をしてくれます。\n健康の相談もできます。センターが月に1度、体調などを聞いて安否確認もします。\n自宅に固定電話がある人には、固定電話に取り付ける装置を貸し出します。ペンダント型のワイヤレス通報装置がセットです。\n固定電話がない人には、緊急通報を送れる携帯型電話機（電話機能なし）を貸し出します。\n対象は、慢性的な病気などで日常生活に常に見守りが必要な、おおむね65歳以上のひとり暮らし高齢者などです。\n費用は無料です。\n申請の前に、高齢介護課 高齢福祉係に相談してください。申請書は窓口にあります。町のホームページからもダウンロードできます。\n問い合わせと申し込みは、高齢介護課 高齢福祉係（電話 62-2121）です。広報紙には市外局番が書かれていません。\nオンライン申請「緊急通報装置貸与」もあります。",
+     "back": "ひとり暮らしの高齢者などや、条件を満たすその他の住民に、緊急通報装置を貸し出しています。装置のボタンを押すと、町が委託する受信センターにつながります。急病で助けが必要なときは、状況に応じた対応をしてくれます。健康の相談もできます。センターが月に1度、体調などを聞き、安否確認もします。固定電話がある人には、固定電話に取り付ける装置を貸し出します。ペンダント型のワイヤレス通報装置がセットです。固定電話がない人には、緊急通報を送れる携帯型電話機（電話機能なし）を貸し出します。対象は、慢性的な病気などで日常生活に常に見守りが必要な、おおむね65歳以上のひとり暮らし高齢者などです。費用は無料です。申請の前に、高齢介護課高齢福祉係に相談してください。申請書は窓口にあります。町のホームページからもダウンロードできます。問い合わせと申し込みは、高齢介護課高齢福祉係（電話 62-2121）です。広報紙には市外局番が書かれていません。オンライン申請「緊急通報装置貸与」もあります。",
+     "source": {
+      "title": "広報おおいずみ（oizumi949.pdf）緊急通報装置の貸し出し記事",
+      "url": "https://www.town.oizumi.gunma.jp/s006/gyosei/010/020/170/oizumi949.pdf",
+      "where": "福祉の記事「緊急通報装置」"
+     },
+     "status": "auto",
+     "problems": [
+      "「kota/desa」は原文の「町」よりも広い言い方になっている。「town（町）」と訳すのが近い。"
+     ]
     }
    ]
   },
@@ -4095,6 +4176,22 @@
      },
      "status": "auto",
      "problems": []
+    },
+    {
+     "qid": "Q66",
+     "short": "वृद्धवृद्धाका लागि आपतकालीन सम्पर्क उपकरण",
+     "text": "एक्लै बस्ने वृद्धवृद्धा आदिलाई आपतकालीन सम्पर्क उपकरण (緊急通報装置) भाडामा दिइन्छ।\nउपकरणको बटन थिच्दा नगरपालिकाले जिम्मा दिएको प्राप्ति केन्द्रमा सम्पर्क हुन्छ। अचानक बिरामी भएर सहयोग चाहिएमा अवस्था अनुसारको सहयोग गरिन्छ।\nस्वास्थ्यबारे परामर्श पनि गर्न सकिन्छ। केन्द्रले महिनामा एक पटक स्वास्थ्य अवस्था आदि सोधेर सुरक्षित छ कि छैन भनेर पनि पुष्टि गर्छ।\nघरमा ल्यान्डलाइन फोन भएका व्यक्तिलाई ल्यान्डलाइन फोनमा जोड्ने उपकरण भाडामा दिइन्छ। पेन्डेन्ट आकारको वायरलेस सम्पर्क उपकरण सँगै सेटमा आउँछ।\nल्यान्डलाइन फोन नभएका व्यक्तिलाई आपतकालीन सन्देश पठाउन सकिने बोक्न मिल्ने फोन उपकरण (फोन गर्ने सुविधा नभएको) भाडामा दिइन्छ।\nलक्षित व्यक्ति: दीर्घकालीन रोग आदिका कारण दैनिक जीवनमा सधैं हेरचाह चाहिने, लगभग ६५ वर्ष वा सोभन्दा माथिका एक्लै बस्ने वृद्धवृद्धा आदि हुन्।\nशुल्क निःशुल्क छ।\nआवेदन दिनुअघि वृद्ध हेरचाह शाखा, वृद्ध कल्याण समूह (高齢介護課 高齢福祉係) मा परामर्श गर्नुहोस्। आवेदन फारम काउन्टरमा छ। नगरपालिकाको वेबसाइटबाट पनि डाउनलोड गर्न सकिन्छ।\nसोधपुछ र आवेदन: वृद्ध हेरचाह शाखा, वृद्ध कल्याण समूह (高齢介護課 高齢福祉係) (फोन 62-2121)। नगरपालिकाको सूचना पत्रिकामा एरिया कोड (市外局番) लेखिएको छैन।\nअनलाइन आवेदन \"आपतकालीन सम्पर्क उपकरण भाडा (緊急通報装置貸与)\" पनि छ।",
+     "original": "ひとり暮らしの高齢者などに、緊急通報装置を貸し出しています。\n装置のボタンを押すと、町が委託する受信センターにつながります。急病で助けが必要なときは、状況に応じた対応をしてくれます。\n健康の相談もできます。センターが月に1度、体調などを聞いて安否確認もします。\n自宅に固定電話がある人には、固定電話に取り付ける装置を貸し出します。ペンダント型のワイヤレス通報装置がセットです。\n固定電話がない人には、緊急通報を送れる携帯型電話機（電話機能なし）を貸し出します。\n対象は、慢性的な病気などで日常生活に常に見守りが必要な、おおむね65歳以上のひとり暮らし高齢者などです。\n費用は無料です。\n申請の前に、高齢介護課 高齢福祉係に相談してください。申請書は窓口にあります。町のホームページからもダウンロードできます。\n問い合わせと申し込みは、高齢介護課 高齢福祉係（電話 62-2121）です。広報紙には市外局番が書かれていません。\nオンライン申請「緊急通報装置貸与」もあります。",
+     "back": "ひとり暮らしの高齢者などに、緊急通報装置を貸し出しています。装置のボタンを押すと、市が委託する受信センターにつながります。急病で助けが必要なときは、状況に応じた対応をしてくれます。健康の相談もできます。センターが月に1度、健康状態などを聞いて安否確認もします。自宅に固定電話がある人には、固定電話に取り付ける装置を貸し出します。ペンダント型のワイヤレス通報装置がセットです。固定電話がない人には、緊急通報を送れる携帯型電話機（電話機能なし）を貸し出します。対象は、慢性的な病気などで日常生活に常に見守りが必要な、およそ65歳以上のひとり暮らし高齢者などです。費用は無料です。申請の前に、高齢介護課 高齢福祉係に相談してください。申請書は窓口にあります。市のホームページからもダウンロードできます。問い合わせと申し込みは、高齢介護課 高齢福祉係（電話 62-2121）です。広報紙には市外局番が書かれていません。オンライン申請「緊急通報装置貸与」もあります。",
+     "source": {
+      "title": "広報おおいずみ（oizumi949.pdf）緊急通報装置の貸し出し記事",
+      "url": "https://www.town.oizumi.gunma.jp/s006/gyosei/010/020/170/oizumi949.pdf",
+      "where": "福祉の記事「緊急通報装置」"
+     },
+     "status": "auto",
+     "problems": [
+      "「町」が「市（नगरपालिका）」になっている。自治体の種類を示す語の違いで、同じ自治体を指しているため意味は変わらない。ただし原文に合わせるなら「町」に統一するとよい。"
+     ]
     }
    ]
   },
@@ -4767,6 +4864,20 @@
       "title": "5歳児健康診査｜大泉町",
       "url": "https://www.town.oizumi.gunma.jp/s042/04/030/010/20200814201224.html",
       "where": "「このページに関する問い合わせ先」・「日程」"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q66",
+     "short": "Thiết bị báo khẩn cấp cho người cao tuổi",
+     "text": "Thị trấn cho mượn thiết bị báo khẩn cấp đối với người cao tuổi sống một mình và những người tương tự.\nKhi bấm nút trên thiết bị, cuộc gọi sẽ được nối đến trung tâm tiếp nhận do thị trấn ủy thác. Khi bị bệnh đột ngột và cần giúp đỡ, trung tâm sẽ xử lý tùy theo tình hình.\nBạn cũng có thể trao đổi về sức khỏe. Mỗi tháng một lần, trung tâm sẽ hỏi thăm tình trạng sức khỏe và xác nhận bạn có an toàn không.\nVới người có điện thoại cố định ở nhà, thị trấn cho mượn thiết bị gắn vào điện thoại cố định. Bộ thiết bị đi kèm một thiết bị báo khẩn cấp không dây dạng mặt dây chuyền.\nVới người không có điện thoại cố định, thị trấn cho mượn máy điện thoại cầm tay có thể gửi cuộc báo khẩn cấp (không có chức năng gọi điện thoại).\nĐối tượng là người cao tuổi sống một mình, từ khoảng 65 tuổi trở lên, do mắc bệnh mãn tính v.v. nên trong sinh hoạt hằng ngày luôn cần có người trông nom, và những người tương tự.\nMiễn phí.\nTrước khi nộp đơn, hãy trao đổi với Bộ phận Phúc lợi người cao tuổi, Phòng Người cao tuổi và Điều dưỡng (高齢介護課 高齢福祉係). Đơn đăng ký có ở quầy. Bạn cũng có thể tải về từ trang web của thị trấn.\nGiải đáp thắc mắc và đăng ký tại Bộ phận Phúc lợi người cao tuổi, Phòng Người cao tuổi và Điều dưỡng (高齢介護課 高齢福祉係) (điện thoại 62-2121). Trên bản tin của thị trấn không ghi mã vùng.\nCũng có thể đăng ký trực tuyến qua mục \"緊急通報装置貸与\" (Cho mượn thiết bị báo khẩn cấp).",
+     "original": "ひとり暮らしの高齢者などに、緊急通報装置を貸し出しています。\n装置のボタンを押すと、町が委託する受信センターにつながります。急病で助けが必要なときは、状況に応じた対応をしてくれます。\n健康の相談もできます。センターが月に1度、体調などを聞いて安否確認もします。\n自宅に固定電話がある人には、固定電話に取り付ける装置を貸し出します。ペンダント型のワイヤレス通報装置がセットです。\n固定電話がない人には、緊急通報を送れる携帯型電話機（電話機能なし）を貸し出します。\n対象は、慢性的な病気などで日常生活に常に見守りが必要な、おおむね65歳以上のひとり暮らし高齢者などです。\n費用は無料です。\n申請の前に、高齢介護課 高齢福祉係に相談してください。申請書は窓口にあります。町のホームページからもダウンロードできます。\n問い合わせと申し込みは、高齢介護課 高齢福祉係（電話 62-2121）です。広報紙には市外局番が書かれていません。\nオンライン申請「緊急通報装置貸与」もあります。",
+     "back": "町は、ひとり暮らしの高齢者などに緊急通報装置を貸し出しています。装置のボタンを押すと、町が委託する受信センターにつながります。急病で助けが必要なときは、状況に応じた対応をしてくれます。健康の相談もできます。センターは月に1度、体調などを聞いて安否確認もします。自宅に固定電話がある人には、固定電話に取り付ける装置を貸し出します。ペンダント型のワイヤレス通報装置がセットになっています。固定電話がない人には、緊急通報を送れる携帯型電話機（電話機能なし）を貸し出します。対象は、慢性的な病気などで日常生活に常に見守りが必要な、おおむね65歳以上のひとり暮らし高齢者などです。費用は無料です。申請の前に、高齢介護課 高齢福祉係に相談してください。申請書は窓口にあります。町のホームページからもダウンロードできます。問い合わせと申し込みは、高齢介護課 高齢福祉係（電話 62-2121）です。広報紙には市外局番が書かれていません。オンライン申請「緊急通報装置貸与」もあります。",
+     "source": {
+      "title": "広報おおいずみ（oizumi949.pdf）緊急通報装置の貸し出し記事",
+      "url": "https://www.town.oizumi.gunma.jp/s006/gyosei/010/020/170/oizumi949.pdf",
+      "where": "福祉の記事「緊急通報装置」"
      },
      "status": "auto",
      "problems": []

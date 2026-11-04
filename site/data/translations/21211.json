@@ -1,7 +1,7 @@
 {
  "code": "21211",
  "name": "美濃加茂市",
- "createdAt": "2026-11-04T01:58:55.534Z",
+ "createdAt": "2026-11-04T12:34:53.468Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
  "langs": {
@@ -398,6 +398,20 @@
      },
      "status": "auto",
      "problems": []
+    },
+    {
+     "qid": "Q66",
+     "short": "Aparelho de chamada de emergência para idosos",
+     "text": "Sim, há. Emprestamos o equipamento do sistema de chamada de emergência.\nQuando a pessoa passa mal de repente, ela aperta o botão de emergência e um atendente da central de atendimento responde. Se necessário, ele chama uma ambulância e também avisa os colaboradores cadastrados previamente.\nO aparelho só pode ser usado dentro da residência.\n\n【Quem pode usar】Pessoas que se enquadram em todas as condições abaixo.\n・Pessoas com doença crônica que pode colocar a vida em risco de repente, como doença do coração ou do cérebro, e que precisam de confirmação de segurança.\n・Pessoas com 65 anos ou mais que moram sozinhas na cidade, sendo que moram sozinhas tanto no registro de residência (住民票) quanto na prática.\n・Pessoas que têm, no Japão, um parente que possa receber contato de instituições médicas etc. em caso de emergência.\n・Pessoas que não têm parentes até o 2º grau morando na cidade.\n・Pessoas isentas do imposto municipal (市民税). De abril a junho, considera-se a situação tributária do ano fiscal anterior.\n・Pessoas que têm 2 ou mais colaboradores que, em princípio, consigam chegar em até 30 minutos em caso de emergência.\n\n【Custo】Gratuito.\n\n【Onde se inscrever】Seção de Bem-Estar do Idoso (高齢福祉係) da Divisão de Bem-Estar do Idoso (高齢福祉課), 1º andar do Anexo Oeste (西館) da Prefeitura (市役所).\nPreencha o formulário de solicitação e obtenha a assinatura do comissário de bem-estar social (民生委員) da sua região. Entregue-o junto com um mapa residencial (住宅地図).\n\n【Telefone】0574-25-2111 (ramal 505)",
+     "original": "あります。緊急通報システムの機器を貸し出しています。\n体調が急に悪くなったときに緊急ボタンを押すと、コールセンターのスタッフが応答します。必要なときは救急車を要請し、事前に登録した協力員にも連絡します。\n使えるのは自宅の中だけです。\n\n【対象】次の条件にすべて当てはまる人です。\n・心臓や脳の病気など、突然命に危険が及ぶ持病があり、安否確認が必要な人。\n・市内に住む65歳以上のひとり暮らしで、住民票も実態も独居の人。\n・緊急時に医療機関などからの連絡を受けられる親族が、国内にいる人。\n・2親等以内の親族が、市内に住んでいない人。\n・市民税が非課税の人（4〜6月は前年度の課税状況で見ます）。\n・緊急時に原則30分以内に駆けつけられる協力員が、2名以上いる人。\n\n【費用】無料です。\n\n【申し込み先】市役所西館1階の高齢福祉課 高齢福祉係です。\n申請書を書き、住んでいる地域の民生委員の署名をもらいます。住宅地図を添えて提出してください。\n\n【電話】0574-25-2111（内線505）",
+     "back": "はい、あります。緊急通報システムの機器を貸し出しています。\n体調が急に悪くなったとき、緊急ボタンを押すと、コールセンターのスタッフが応答します。必要な場合は救急車を要請し、事前に登録された協力員にも連絡します。\n使用できるのは自宅の中だけです。\n\n【対象】次のすべての条件に当てはまる人です。\n・心臓や脳の病気など、突然命に危険が及ぶ持病があり、安否確認が必要な人。\n・市内に住む65歳以上のひとり暮らしで、住民票上も実態上も独居の人。\n・緊急時に医療機関などからの連絡を受けられる親族が、国内にいる人。\n・2親等以内の親族が市内に住んでいない人。\n・市民税が非課税の人（4〜6月は前年度の課税状況で判断します）。\n・緊急時に原則30分以内に駆けつけられる協力員が2名以上いる人。\n\n【費用】無料です。\n\n【申し込み先】市役所西館1階、高齢福祉課 高齢福祉係です。\n申請書に記入し、お住まいの地域の民生委員の署名をもらいます。住宅地図を添えて提出してください。\n\n【電話】0574-25-2111（内線505）",
+     "source": {
+      "title": "緊急通報システムについて - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/10/6912.html",
+      "where": "対象者の要件／利用料／申請方法／お問い合わせ"
+     },
+     "status": "auto",
+     "problems": []
     }
    ]
   },
@@ -789,6 +803,22 @@
      },
      "status": "auto",
      "problems": []
+    },
+    {
+     "qid": "Q66",
+     "short": "Emergency alert device para sa mga matatanda",
+     "text": "Mayroon. Nagpapahiram kami ng device ng emergency alert system.\nKapag bigla kang nakaramdam ng matinding sama ng pakiramdam at pinindot mo ang emergency button, sasagot ang staff ng call center. Kung kinakailangan, tatawag sila ng ambulansya at kokontakin din nila ang mga katuwang na tumutulong (協力員) na nairehistro mo nang maaga.\nMagagamit lamang ito sa loob ng bahay.\n\n【Sino ang kwalipikado】Ang mga taong pasok sa lahat ng sumusunod na kondisyon:\n・May malalang sakit tulad ng sakit sa puso o sa utak na maaaring biglang maglagay sa panganib ng buhay, at kailangang regular na tiyakin ang kaligtasan.\n・Edad 65 pataas, nakatira nang mag-isa sa lungsod, at nag-iisa sa tirahan ayon sa residence record (住民票) at sa totoong sitwasyon.\n・May kamag-anak sa loob ng Japan na makakatanggap ng tawag mula sa ospital o iba pang institusyong medikal sa oras ng emergency.\n・Walang kamag-anak sa loob ng 2nd degree na nakatira sa loob ng lungsod.\n・Exempted sa buwis ng lungsod (市民税). (Sa Abril hanggang Hunyo, ang batayan ay ang kalagayan ng pagbubuwis noong nakaraang fiscal year.)\n・May 2 o higit pang katuwang (協力員) na karaniwang makakarating sa loob ng 30 minuto sa oras ng emergency.\n\n【Bayad】Libre.\n\n【Saan mag-a-apply】Sa Koreifukushi-ka Koreifukushi-gakari (高齢福祉課 高齢福祉係), 1st floor ng West Building ng city hall (市役所西館).\nPunan ang application form at ipalagay ang pirma ng minsei-iin (民生委員, lokal na volunteer sa kapakanan ng komunidad) sa inyong lugar. Isumite ito kasama ang mapa ng mga bahay (住宅地図).\n\n【Telepono】0574-25-2111 (extension 505)",
+     "original": "あります。緊急通報システムの機器を貸し出しています。\n体調が急に悪くなったときに緊急ボタンを押すと、コールセンターのスタッフが応答します。必要なときは救急車を要請し、事前に登録した協力員にも連絡します。\n使えるのは自宅の中だけです。\n\n【対象】次の条件にすべて当てはまる人です。\n・心臓や脳の病気など、突然命に危険が及ぶ持病があり、安否確認が必要な人。\n・市内に住む65歳以上のひとり暮らしで、住民票も実態も独居の人。\n・緊急時に医療機関などからの連絡を受けられる親族が、国内にいる人。\n・2親等以内の親族が、市内に住んでいない人。\n・市民税が非課税の人（4〜6月は前年度の課税状況で見ます）。\n・緊急時に原則30分以内に駆けつけられる協力員が、2名以上いる人。\n\n【費用】無料です。\n\n【申し込み先】市役所西館1階の高齢福祉課 高齢福祉係です。\n申請書を書き、住んでいる地域の民生委員の署名をもらいます。住宅地図を添えて提出してください。\n\n【電話】0574-25-2111（内線505）",
+     "back": "あります。緊急通報システムの機器を貸し出しています。体調が急に悪くなったときに緊急ボタンを押すと、コールセンターのスタッフが応答します。必要なときは救急車を要請し、事前に登録した協力員にも連絡します。使えるのは家の中だけです。\n\n【対象】次の条件にすべて当てはまる人です。\n・心臓や脳の病気など、突然命に危険が及ぶ持病があり、定期的に安否確認が必要な人。\n・市内に住む65歳以上のひとり暮らしで、住民票上も実態も独居の人。\n・緊急時に医療機関などからの連絡を受けられる親族が、国内にいる人。\n・2親等以内の親族が、市内に住んでいない人。\n・市民税が非課税の人（4〜6月は前年度の課税状況で見ます）。\n・緊急時に原則30分以内に駆けつけられる協力員が、2名以上いる人。\n\n【費用】無料です。\n\n【申し込み先】市役所西館1階の高齢福祉課 高齢福祉係です。申請書を記入し、住んでいる地域の民生委員の署名をもらいます。住宅地図を添えて提出してください。\n\n【電話】0574-25-2111（内線505）",
+     "source": {
+      "title": "緊急通報システムについて - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/10/6912.html",
+      "where": "対象者の要件／利用料／申請方法／お問い合わせ"
+     },
+     "status": "auto",
+     "problems": [
+      "「家の中」は「自宅の中」と同じ意味で問題なし。「karaniwan（通常）」は「原則」より少し柔らかいが意味は同じ。「定期的に」「住民票上も」は原文にない語を補ったが、中身は同じと判断。「exempted sa buwis ng lungsod」は市民税の非課税を指し、意味は一致。重大なずれはなし。"
+     ]
     }
    ]
   },
@@ -1176,6 +1206,22 @@
      },
      "status": "auto",
      "problems": []
+    },
+    {
+     "qid": "Q66",
+     "short": "Thiết bị báo động khẩn cấp cho người cao tuổi",
+     "text": "Có. Thành phố cho mượn thiết bị của hệ thống báo động khẩn cấp.\nKhi sức khỏe đột nhiên xấu đi, nếu bấm nút khẩn cấp thì nhân viên tổng đài (コールセンター) sẽ trả lời. Khi cần, họ sẽ gọi xe cấp cứu và cũng liên lạc với những người hỗ trợ (協力員) đã đăng ký trước.\nChỉ dùng được bên trong nhà của mình.\n\n【Đối tượng】Người đáp ứng tất cả các điều kiện sau.\n・Người có bệnh mãn tính như bệnh tim hoặc bệnh về não, có thể đột ngột nguy hiểm đến tính mạng và cần được xác nhận an toàn.\n・Người từ 65 tuổi trở lên sống một mình trong thành phố, sống một mình cả trên giấy đăng ký cư trú (住民票) lẫn trong thực tế.\n・Người có người thân ở trong nước Nhật có thể nhận liên lạc từ cơ sở y tế v.v. khi khẩn cấp.\n・Người không có người thân trong phạm vi quan hệ 2 đời (2親等) sống trong thành phố.\n・Người được miễn thuế cư trú thành phố (市民税) (từ tháng 4 đến tháng 6 sẽ xét theo tình trạng đánh thuế của năm tài chính trước).\n・Người có từ 2 người hỗ trợ (協力員) trở lên, về nguyên tắc có thể đến nơi trong vòng 30 phút khi khẩn cấp.\n\n【Chi phí】Miễn phí.\n\n【Nơi đăng ký】Bộ phận Phúc lợi Người cao tuổi (高齢福祉係), Phòng Phúc lợi Người cao tuổi (高齢福祉課), tầng 1 tòa nhà phía Tây (西館) của Tòa thị chính (市役所).\nHãy điền đơn đăng ký và nhờ ủy viên phúc lợi dân sinh (民生委員) của khu vực nơi bạn sống ký tên. Nộp kèm bản đồ nhà ở (住宅地図).\n\n【Điện thoại】0574-25-2111 (số nội bộ 505)",
+     "original": "あります。緊急通報システムの機器を貸し出しています。\n体調が急に悪くなったときに緊急ボタンを押すと、コールセンターのスタッフが応答します。必要なときは救急車を要請し、事前に登録した協力員にも連絡します。\n使えるのは自宅の中だけです。\n\n【対象】次の条件にすべて当てはまる人です。\n・心臓や脳の病気など、突然命に危険が及ぶ持病があり、安否確認が必要な人。\n・市内に住む65歳以上のひとり暮らしで、住民票も実態も独居の人。\n・緊急時に医療機関などからの連絡を受けられる親族が、国内にいる人。\n・2親等以内の親族が、市内に住んでいない人。\n・市民税が非課税の人（4〜6月は前年度の課税状況で見ます）。\n・緊急時に原則30分以内に駆けつけられる協力員が、2名以上いる人。\n\n【費用】無料です。\n\n【申し込み先】市役所西館1階の高齢福祉課 高齢福祉係です。\n申請書を書き、住んでいる地域の民生委員の署名をもらいます。住宅地図を添えて提出してください。\n\n【電話】0574-25-2111（内線505）",
+     "back": "あります。市は緊急通報システムの機器を貸し出しています。体調が急に悪くなったときに緊急ボタンを押すと、コールセンターのスタッフが応答します。必要なときは救急車を要請し、事前に登録した協力員にも連絡します。使えるのは自宅の中だけです。【対象】次の条件にすべて当てはまる人です。・心臓や脳の病気など、突然命に危険が及ぶ持病があり、安否確認が必要な人。・市内に住む65歳以上のひとり暮らしで、住民票も実態も独居の人。・緊急時に医療機関などからの連絡を受けられる親族が、国内にいる人。・2親等以内の親族が、市内に住んでいない人。・市民税が非課税の人（4〜6月は前年度の課税状況で見ます）。・緊急時に原則30分以内に駆けつけられる協力員が、2名以上いる人。【費用】無料です。【申し込み先】市役所西館1階の高齢福祉係（高齢福祉課）です。申請書を書き、住んでいる地域の民生委員の署名をもらいます。住宅地図を添えて提出してください。【電話】0574-25-2111（内線505）",
+     "source": {
+      "title": "緊急通報システムについて - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/10/6912.html",
+      "where": "対象者の要件／利用料／申請方法／お問い合わせ"
+     },
+     "status": "auto",
+     "problems": [
+      "申し込み先の「高齢福祉課」と「高齢福祉係」の順序が入れ替わっているが、内容は同じ。「住宅地図」を「住宅の地図」に近い「bản đồ nhà ở」と訳しており、表現がやや違うだけ。"
+     ]
     }
    ]
   },
@@ -1562,6 +1608,22 @@
      },
      "status": "auto",
      "problems": []
+    },
+    {
+     "qid": "Q66",
+     "short": "Emergency alert device for older adults",
+     "text": "Yes. The city lends out an emergency alert system device.\nIf you suddenly feel unwell, press the emergency button and a call center staff member will respond. If needed, they will call an ambulance and also contact the cooperating helpers you registered in advance.\nThe device can only be used inside your home.\n\n[Who is eligible] People who meet all of the following conditions:\n・You have a chronic condition, such as a heart or brain disease, that could suddenly become life-threatening, and you need regular safety checks.\n・You are 65 or older and live alone in the city, and you are listed as living alone on your resident record and actually live alone.\n・You have a relative in Japan who can receive calls from medical institutions and others in an emergency.\n・You have no relatives within the 2nd degree of kinship living in the city.\n・You are exempt from municipal tax (for April to June, the previous fiscal year's tax status is used).\n・You have at least 2 cooperating helpers who can, in principle, reach you within 30 minutes in an emergency.\n\n[Cost] Free.\n\n[Where to apply] Elderly Welfare Section (高齢福祉係), Elderly Welfare Division (高齢福祉課), 1st floor, City Hall West Building (市役所西館).\nFill out the application form and get the signature of the welfare commissioner (民生委員) for your area. Submit it with a residential map attached.\n\n[Phone] 0574-25-2111 (ext. 505)",
+     "original": "あります。緊急通報システムの機器を貸し出しています。\n体調が急に悪くなったときに緊急ボタンを押すと、コールセンターのスタッフが応答します。必要なときは救急車を要請し、事前に登録した協力員にも連絡します。\n使えるのは自宅の中だけです。\n\n【対象】次の条件にすべて当てはまる人です。\n・心臓や脳の病気など、突然命に危険が及ぶ持病があり、安否確認が必要な人。\n・市内に住む65歳以上のひとり暮らしで、住民票も実態も独居の人。\n・緊急時に医療機関などからの連絡を受けられる親族が、国内にいる人。\n・2親等以内の親族が、市内に住んでいない人。\n・市民税が非課税の人（4〜6月は前年度の課税状況で見ます）。\n・緊急時に原則30分以内に駆けつけられる協力員が、2名以上いる人。\n\n【費用】無料です。\n\n【申し込み先】市役所西館1階の高齢福祉課 高齢福祉係です。\n申請書を書き、住んでいる地域の民生委員の署名をもらいます。住宅地図を添えて提出してください。\n\n【電話】0574-25-2111（内線505）",
+     "back": "はい。市は緊急通報システムの機器を貸し出しています。体調が急に悪くなったときに緊急ボタンを押すと、コールセンターのスタッフが応答します。必要なときは救急車を要請し、事前に登録した協力員にも連絡します。使えるのは自宅の中だけです。【対象】次の条件をすべて満たす人です。・心臓や脳の病気など、突然命に危険が及ぶ持病があり、定期的な安否確認が必要な人。・市内に住む65歳以上のひとり暮らしで、住民票も実態も独居の人。・緊急時に医療機関などからの連絡を受けられる親族が、国内にいる人。・2親等以内の親族が、市内に住んでいない人。・市民税が非課税の人（4〜6月は前年度の課税状況で見ます）。・緊急時に原則30分以内に駆けつけられる協力員が、2名以上いる人。【費用】無料です。【申し込み先】市役所西館1階の高齢福祉課 高齢福祉係です。申請書を書き、住んでいる地域の民生委員の署名をもらいます。住宅地図を添えて提出してください。【電話】0574-25-2111（内線505）",
+     "source": {
+      "title": "緊急通報システムについて - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/10/6912.html",
+      "where": "対象者の要件／利用料／申請方法／お問い合わせ"
+     },
+     "status": "auto",
+     "problems": [
+      "「安否確認が必要」に「定期的な」が足されている。「あります」を「はい」と訳しているが、伝わる中身は同じ。"
+     ]
     }
    ]
   },
@@ -1954,6 +2016,22 @@
      },
      "status": "auto",
      "problems": []
+    },
+    {
+     "qid": "Q66",
+     "short": "お年寄(としよ)りの 緊急(きんきゅう)通報(つうほう)の機械(きかい)",
+     "text": "あります。緊急通報(きんきゅうつうほう)システムの機械(きかい)を貸(か)しています。\n具合(ぐあい)が急(きゅう)に悪(わる)くなったとき、緊急(きんきゅう)ボタンを押(お)すと、コールセンターの人(ひと)が answer します。→ コールセンターの人(ひと)が答(こた)えます。必要(ひつよう)なときは、救急車(きゅうきゅうしゃ)を呼(よ)びます。前(まえ)もって登録(とうろく)した協力員(きょうりょくいん)にも連絡(れんらく)します。\n使(つか)えるのは、家(いえ)の中(なか)だけです。\n\n【対象(たいしょう)】次(つぎ)のこと全部(ぜんぶ)に当(あ)てはまる人(ひと)です。\n・心臓(しんぞう)や脳(のう)の病気(びょうき)など、急(きゅう)に命(いのち)があぶなくなる持病(じびょう)があって、安否確認(あんぴかくにん)（無事(ぶじ)かどうかの確認(かくにん)）が必要(ひつよう)な人(ひと)。\n・市内(しない)に住(す)んでいる65歳(さい)以上(いじょう)で、ひとり暮(ぐ)らしの人(ひと)。住民票(じゅうみんひょう)でも、実際(じっさい)の生活(せいかつ)でも、ひとり暮(ぐ)らしの人(ひと)。\n・緊急(きんきゅう)のとき、病院(びょういん)などからの連絡(れんらく)を受(う)けられる親族(しんぞく)（家族(かぞく)や親(しん)せき）が、国内(こくない)（日本(にほん)の中(なか)）にいる人(ひと)。\n・2親等(しんとう)以内(いない)の親族(しんぞく)が、市内(しない)に住(す)んでいない人(ひと)。\n・市民税(しみんぜい)がかからない人(ひと)（非課税(ひかぜい)の人(ひと)）。4月(がつ)から6月(がつ)は、前(まえ)の年度(ねんど)の課税(かぜい)の状況(じょうきょう)で見(み)ます。\n・緊急(きんきゅう)のとき、原則(げんそく)30分(ぷん)以内(いない)に来(こ)られる協力員(きょうりょくいん)が、2人(にん)以上(いじょう)いる人(ひと)。\n\n【費用(ひよう)】無料(むりょう)です。\n\n【申(もう)し込(こ)み先(さき)】市役所(しやくしょ)西館(にしかん)1階(かい)の高齢福祉課(こうれいふくしか) 高齢福祉係(こうれいふくしがかり)です。\n申請書(しんせいしょ)を書(か)いて、住(す)んでいる地域(ちいき)の民生委員(みんせいいいん)のサインをもらいます。住宅地図(じゅうたくちず)をつけて出(だ)してください。\n\n【電話(でんわ)】0574-25-2111（内線(ないせん)505）",
+     "original": "あります。緊急通報システムの機器を貸し出しています。\n体調が急に悪くなったときに緊急ボタンを押すと、コールセンターのスタッフが応答します。必要なときは救急車を要請し、事前に登録した協力員にも連絡します。\n使えるのは自宅の中だけです。\n\n【対象】次の条件にすべて当てはまる人です。\n・心臓や脳の病気など、突然命に危険が及ぶ持病があり、安否確認が必要な人。\n・市内に住む65歳以上のひとり暮らしで、住民票も実態も独居の人。\n・緊急時に医療機関などからの連絡を受けられる親族が、国内にいる人。\n・2親等以内の親族が、市内に住んでいない人。\n・市民税が非課税の人（4〜6月は前年度の課税状況で見ます）。\n・緊急時に原則30分以内に駆けつけられる協力員が、2名以上いる人。\n\n【費用】無料です。\n\n【申し込み先】市役所西館1階の高齢福祉課 高齢福祉係です。\n申請書を書き、住んでいる地域の民生委員の署名をもらいます。住宅地図を添えて提出してください。\n\n【電話】0574-25-2111（内線505）",
+     "back": "あります。緊急通報システムの機器を貸し出しています。体調が急に悪くなったとき、緊急ボタンを押すと、コールセンターの人が答えます。必要なときは救急車を呼びます。事前に登録した協力員にも連絡します。使えるのは家の中だけです。【対象】次のすべてに当てはまる人です。・心臓や脳の病気など、急に命が危険になる持病があり、安否確認が必要な人。・市内に住む65歳以上のひとり暮らしで、住民票でも実際の生活でもひとり暮らしの人。・緊急時に病院などからの連絡を受けられる親族が、国内にいる人。・2親等以内の親族が、市内に住んでいない人。・市民税が非課税の人。4〜6月は前の年度の課税状況で見ます。・緊急時に原則30分以内に来られる協力員が、2人以上いる人。【費用】無料です。【申し込み先】市役所西館1階の高齢福祉課高齢福祉係です。申請書を書いて、住んでいる地域の民生委員のサインをもらいます。住宅地図をつけて出してください。【電話】0574-25-2111（内線505）",
+     "source": {
+      "title": "緊急通報システムについて - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/10/6912.html",
+      "where": "対象者の要件／利用料／申請方法／お問い合わせ"
+     },
+     "status": "auto",
+     "problems": [
+      "「answer」の英語と「→」の修正メモが訳文に残っている（意味は「答えます」で正しい）。「安否確認」「国内」「親族」の言い換えや補足、「署名」→「サイン」、「要請し」→「呼び」は言い回しの違いのみ。数字・条件・連絡先は一致。"
+     ]
     }
    ]
   }

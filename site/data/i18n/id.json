@@ -1,11 +1,11 @@
 {
  "lang": "id",
  "name": "Bahasa Indonesia",
- "createdAt": "2026-11-04T12:20:27.531Z",
+ "createdAt": "2026-11-04T12:32:28.954Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 948,
- "of": 916,
+ "count": 952,
+ "of": 920,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Ini adalah panduan hidup tidak resmi untuk kota ini. Claude mengumpulkannya dari situs resmi kota dan sumber lain, dengan mencantumkan sumbernya (Machishirube)",
   "すべてのページ": "Semua halaman",
@@ -954,6 +954,10 @@
   "町の診療所と訪問診療": "Klinik kota dan layanan kunjungan dokter ke rumah",
   "車なしの通院・買い物の足": "Transportasi ke rumah sakit dan belanja tanpa mobil",
   "高齢者の緊急通報装置": "Alat panggilan darurat untuk lansia",
-  "子どもの通学の支え": "Dukungan untuk anak berangkat ke sekolah"
+  "子どもの通学の支え": "Dukungan untuk anak berangkat ke sekolah",
+  "距離は町・字のおおよその真ん中からまっすぐ測ったものです。": "Jarak diukur dalam garis lurus dari titik kira-kira di tengah kota/desa (chō/aza).",
+  "うまく表示できていない所があります。時間をおいて開き直してください。": "Ada bagian yang tidak dapat ditampilkan dengan benar. Silakan tunggu beberapa saat, lalu buka kembali.",
+  "町の公式の一覧表から AI が読み取り、品目名が表にあるかを確かめたもの。分け方の区分と注意は短くしています。迷ったら町の表で確かめてください": "Dibaca oleh AI dari tabel resmi kota, lalu dicek apakah nama barangnya ada di tabel. Kategori pemilahan dan catatan peringatan dipersingkat. Jika ragu, periksa tabel resmi kota.",
+  "出典：{src}（{asOf}・{lic}）を加工。祝日：{hol}": "Sumber: diolah dari {src} ({asOf}・{lic}). Hari libur: {hol}"
  }
 }

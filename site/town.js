@@ -1016,7 +1016,7 @@ async function showMedical(code, center) {
   }
   $("med-filter").addEventListener("input", () => { limit = 5; draw(); });
   draw();
-  $("med-cite").innerHTML = `${T("出典")}：<a href="${esc(m.source.url)}" target="_blank" rel="noopener">${esc(m.source.title)}</a>（${esc(m.source.asOf)}・${esc(m.source.license)}）を加工。祝日：${esc(m.holidaySource?.title ?? "")}${KU()}${center ? "距離は町・字のおおよその真ん中からまっすぐ測ったものです。" : ""}`;
+  $("med-cite").innerHTML = `${TN("出典：{src}（{asOf}・{lic}）を加工。祝日：{hol}", { src: `<a href="${esc(m.source.url)}" target="_blank" rel="noopener">${esc(m.source.title)}</a>`, asOf: esc(m.source.asOf), lic: esc(m.source.license), hol: esc(m.holidaySource?.title ?? "") })}${KU()}${center ? T("距離は町・字のおおよその真ん中からまっすぐ測ったものです。") : ""}`;
   const today = medicalList(m, 0, center);
   const open = today.list.filter((x) => x.openNow).length;
   medicalRow = `<li><a href="#iryo"><span class="k">${icon("hospital")}${T("病院")}</span><span class="v">${LANG ? `${T("今日やっている所")} ${today.list.length}（${T("いま開いている")} ${open}）` : `${today.holiday ? `今日は${esc(today.holiday)}。` : ""}今日やっている所 ${today.list.length} か所（いま開いている ${open}）`}</span></a></li>`;

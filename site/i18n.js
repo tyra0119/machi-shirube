@@ -19,7 +19,7 @@ async function setLang(lang) {
   return true;
 }
 // ページに書いてある決まった文字を置きかえる（見出し・注意書き・ボタン・入力欄の例）。印（svg）は残す
-const I18N_SEL = ".med-controls button, .town-head .unofficial, .block > h2, .block > p.note, .about-site li, label.field > span, .hinan-cautions li, .med-warn, .memo-link, .town-foot a, .all-head h2, #tr-block h2, .block h3.sub, .here-btn, .share-btn, .hinan-privacy summary, .hinan-privacy p, #how-note";
+const I18N_SEL = ".med-controls button, .town-head .unofficial, .block > h2, .block > p.note, .about-site li, label.field > span, .hinan-cautions li, .med-warn, .memo-link, .town-foot a, .all-head h2, #tr-block h2, .block h3.sub, .here-btn, .share-btn, .hinan-privacy summary, .hinan-privacy p, #how-note, .problems > p";
 function translateDom(root = document, sel = I18N_SEL) {
   if (!LANG) return;
   for (const el of root.querySelectorAll(sel)) {

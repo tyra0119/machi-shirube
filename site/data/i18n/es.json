@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-04T12:19:38.698Z",
+ "createdAt": "2026-11-04T12:32:15.237Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 948,
- "of": 916,
+ "count": 955,
+ "of": 920,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -954,6 +954,13 @@
   "町の診療所と訪問診療": "Clínica municipal y atención médica a domicilio",
   "車なしの通院・買い物の足": "Transporte para ir al médico y de compras sin coche",
   "高齢者の緊急通報装置": "Dispositivo de alarma de emergencia para personas mayores",
-  "子どもの通学の支え": "Apoyo para el traslado escolar de los niños"
+  "子どもの通学の支え": "Apoyo para el traslado escolar de los niños",
+  "所在地は資料で非表示": "La ubicación no se muestra en los datos",
+  "テレビ電話": "Videollamada",
+  "距離は町・字のおおよその真ん中からまっすぐ測ったものです。": "La distancia se mide en línea recta desde el punto central aproximado del pueblo o de la zona (aza).",
+  "うまく表示できていない所があります。時間をおいて開き直してください。": "Hay partes que no se muestran correctamente. Espere un momento y vuelva a abrir la página.",
+  "町の公式の一覧表から AI が読み取り、品目名が表にあるかを確かめたもの。分け方の区分と注意は短くしています。迷ったら町の表で確かめてください": "Información que la IA ha leído de la tabla oficial del municipio, comprobando si el nombre del artículo figura en ella. Las categorías de separación y las advertencias están abreviadas. En caso de duda, consulte la tabla del municipio.",
+  "を加工": "Adaptado de",
+  "出典：{src}（{asOf}・{lic}）を加工。祝日：{hol}": "Fuente: {src} ({asOf}・{lic}), con modificaciones. Festivos: {hol}"
  }
 }

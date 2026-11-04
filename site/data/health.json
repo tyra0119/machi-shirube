@@ -1,33 +1,17 @@
 {
- "checkedAt": "2026-11-03T07:18:27.995Z",
- "total": 219,
+ "checkedAt": "2026-11-04T12:22:32.487Z",
+ "total": 279,
  "counts": {
-  "ok": 215,
+  "ok": 275,
   "gone": 3,
   "refused": 1
  },
  "problems": [
   {
-   "url": "https://www.city.asaka.lg.jp/soshiki/52/asakairumi-2025.html",
+   "url": "https://www.pref.saitama.lg.jp/documents/19801/23asakashir7.pdf",
    "kind": "gone",
    "status": 404,
-   "since": "2026-11-03T07:18:27.995Z",
-   "used": [
-    {
-     "page": "11227",
-     "qid": "Q21"
-    },
-    {
-     "page": "11227",
-     "qid": "Q21"
-    }
-   ]
-  },
-  {
-   "url": "https://www.city.asaka.lg.jp/soshiki/23/tiikihoukatusiennsennta-.html",
-   "kind": "gone",
-   "status": 404,
-   "since": "2026-11-03T01:08:39.535Z",
+   "since": "2026-11-04T12:22:32.487Z",
    "used": [
     {
      "page": "11227",
@@ -36,14 +20,26 @@
    ]
   },
   {
-   "url": "https://www.city.asaka.lg.jp/soshiki/13/niwasaki-mizonuma.html",
+   "url": "https://www.town.aga.niigata.jp/agamachi_soshiki/seisakusuishin/3252.html",
    "kind": "gone",
    "status": 404,
-   "since": "2026-11-03T07:18:27.995Z",
+   "since": "2026-11-04T12:22:32.487Z",
    "used": [
     {
-     "page": "11227",
-     "qid": "Q47"
+     "page": "15385",
+     "qid": "Q13"
+    }
+   ]
+  },
+  {
+   "url": "https://www.town.aga.niigata.jp/agamachi_soshiki/kensetsu/jutaku_doro/3246.html",
+   "kind": "gone",
+   "status": 404,
+   "since": "2026-11-04T12:22:32.487Z",
+   "used": [
+    {
+     "page": "15385",
+     "qid": "Q13"
     }
    ]
   }
@@ -63,7 +59,7 @@
      "qid": "Q32"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s004/anzen/060/170/20200828141906.html": {
    "kind": "ok",
@@ -87,7 +83,7 @@
      "qid": "Q52"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s004/gyosei/010/010/020/20200903104414.html": {
    "kind": "ok",
@@ -99,7 +95,7 @@
      "qid": "Q03"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s004/anzen/050/050/20200827165944.html": {
    "kind": "ok",
@@ -115,7 +111,7 @@
      "qid": "Q43"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s024/kurashi/010/010/090/20200723200709.html": {
    "kind": "ok",
@@ -127,7 +123,7 @@
      "qid": "Q05"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s017/kurashi/020/050/030/20200804203647.html": {
    "kind": "ok",
@@ -139,7 +135,7 @@
      "qid": "Q06"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s014/kurashi/010/010/010/20200730120027.html": {
    "kind": "ok",
@@ -155,7 +151,7 @@
      "qid": "Q40"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s005/gyosei/010/010/140/20220218115627.html": {
    "kind": "ok",
@@ -167,7 +163,7 @@
      "qid": "Q09"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s020/kanko/010/030/20200825133615.html": {
    "kind": "ok",
@@ -179,7 +175,7 @@
      "qid": "Q10"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s006/gyosei/020/040/1287974347-3.html": {
    "kind": "ok",
@@ -191,7 +187,7 @@
      "qid": "Q11"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s017/kurashi/030/020/030/20200804170449.html": {
    "kind": "ok",
@@ -203,7 +199,7 @@
      "qid": "Q15"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s016/kenko/010/020/030/20200822202636.html": {
    "kind": "ok",
@@ -215,7 +211,7 @@
      "qid": "Q16"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s006/gyosei/010/020/020/oizumi980_kodomokateisenta.pdf": {
    "kind": "ok",
@@ -227,7 +223,7 @@
      "qid": "Q17"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s015/kenko/010/010/040/20200727133358.html": {
    "kind": "ok",
@@ -239,7 +235,7 @@
      "qid": "Q18"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s024/kurashi/030/020/100/20220319124247.html": {
    "kind": "ok",
@@ -255,7 +251,7 @@
      "qid": "Q19"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s031/map/010/20200707183053.html": {
    "kind": "ok",
@@ -271,7 +267,7 @@
      "qid": "Q20"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s040/map/060/20200701144209.html": {
    "kind": "ok",
@@ -283,7 +279,7 @@
      "qid": "Q20"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s040/map/040/20200630231658.html": {
    "kind": "ok",
@@ -299,7 +295,7 @@
      "qid": "Q39"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s040/map/120/20200703135124.html": {
    "kind": "ok",
@@ -311,7 +307,7 @@
      "qid": "Q20"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s040/map/110/20200703133441.html": {
    "kind": "ok",
@@ -323,7 +319,7 @@
      "qid": "Q20"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s008/gyosei/020/010/800/20260422182503.html": {
    "kind": "ok",
@@ -339,7 +335,7 @@
      "qid": "Q28"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s005/gyosei/010/020/030/20260406/dai3kijisshikeikaku2kibanseibi.pdf": {
    "kind": "ok",
@@ -359,7 +355,7 @@
      "qid": "Q28"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s017/gyosei/010/010/010/R0810gaikokuzin.pdf": {
    "kind": "ok",
@@ -371,7 +367,7 @@
      "qid": "Q30"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/department/20200707153849.html": {
    "kind": "ok",
@@ -383,7 +379,7 @@
      "qid": "Q33"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s014/kurashi/010/010/20250328140036.html": {
    "kind": "ok",
@@ -395,7 +391,7 @@
      "qid": "Q33"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s014/kenko/010/010/200/20200803094355.html": {
    "kind": "ok",
@@ -411,7 +407,7 @@
      "qid": "Q46"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s014/kenko/010/010/050/20200730130419.html": {
    "kind": "ok",
@@ -423,7 +419,7 @@
      "qid": "Q33"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s014/kenko/010/010/370/20250319170138.html": {
    "kind": "ok",
@@ -435,7 +431,7 @@
      "qid": "Q33"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/g001/060/090/20260901gijinitteishin.pdf": {
    "kind": "ok",
@@ -455,7 +451,7 @@
      "qid": "Q13"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s006/gyosei/010/020/190/20200827185513.html": {
    "kind": "ok",
@@ -471,7 +467,7 @@
      "qid": "Q13"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s006/gyosei/010/020/020/oizumi974.pdf": {
    "kind": "ok",
@@ -483,7 +479,7 @@
      "qid": "Q13"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s004/anzen/060/CONT000000000000017826.pdf": {
    "kind": "ok",
@@ -495,7 +491,7 @@
      "qid": "Q32"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s017/kurashi/020/030/100/20200805204253.html": {
    "kind": "ok",
@@ -507,7 +503,7 @@
      "qid": "Q34"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s017/kurashi/020/010/020/20200804212514.html": {
    "kind": "ok",
@@ -519,7 +515,7 @@
      "qid": "Q35"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s017/kurashi/020/040/050/20200805203252.html": {
    "kind": "ok",
@@ -531,7 +527,7 @@
      "qid": "Q36"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s018/kurashi/010/020/090/20200821170302.html": {
    "kind": "ok",
@@ -543,7 +539,7 @@
      "qid": "Q37"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s003/kurashi/020/020/010/20200811135511.html": {
    "kind": "ok",
@@ -555,7 +551,7 @@
      "qid": "Q38"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s032/kanko/040/010/20210202110007.html": {
    "kind": "ok",
@@ -571,7 +567,7 @@
      "qid": "Q39"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s032/kanko/040/040/20220111114256.html": {
    "kind": "ok",
@@ -583,7 +579,7 @@
      "qid": "Q39"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s006/gyosei/020/070/1287993566-3.html": {
    "kind": "ok",
@@ -595,7 +591,7 @@
      "qid": "Q39"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s020/qa/010/010/030/20200725151101.html": {
    "kind": "ok",
@@ -607,7 +603,7 @@
      "qid": "Q39"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s007/qa/020/020/010/20200714165211.html": {
    "kind": "ok",
@@ -619,7 +615,7 @@
      "qid": "Q08"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.soumu.go.jp/main_content/000612577.pdf": {
    "kind": "ok",
@@ -629,9 +625,13 @@
     {
      "page": "10524",
      "qid": "Q42"
+    },
+    {
+     "page": "10524",
+     "qid": "Q59"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s004/anzen/060/300/20240829152035.html": {
    "kind": "ok",
@@ -647,7 +647,7 @@
      "qid": "Q21"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s016/kenko/010/070/20201222110047.html": {
    "kind": "ok",
@@ -659,7 +659,7 @@
      "qid": "Q48"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://jsite.mhlw.go.jp/gunma-roudoukyoku/hw/h_map/h_map07.html": {
    "kind": "ok",
@@ -671,7 +671,7 @@
      "qid": "Q44"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s016/kenko/010/010/020/20200915090552.html": {
    "kind": "ok",
@@ -687,7 +687,7 @@
      "qid": "Q45"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s016/kenko/010/060/210/20210826194556.html": {
    "kind": "ok",
@@ -699,7 +699,7 @@
      "qid": "Q45"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s016/kenko/010/060/170/20200817224904.html": {
    "kind": "ok",
@@ -711,7 +711,7 @@
      "qid": "Q45"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s016/kenko/010/060/300/20210826194556.html": {
    "kind": "ok",
@@ -723,7 +723,7 @@
      "qid": "Q45"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s018/kenko/020/010/010/R6tokuteikennsinnannnai2.pdf": {
    "kind": "ok",
@@ -735,7 +735,7 @@
      "qid": "Q45"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s024/kurashi/020/010/20200727130746.html": {
    "kind": "ok",
@@ -747,7 +747,7 @@
      "qid": "Q50"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/s030/kosodate/010/010/050/20200826145316.html": {
    "kind": "ok",
@@ -759,7 +759,91 @@
      "qid": "Q54"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.oizumi.gunma.jp/department/index.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "5a69d8ea960b5aff",
+   "used": [
+    {
+     "page": "10524",
+     "qid": "Q55"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.oizumi.gunma.jp/s025/kurashi/020/020/210/20200814150558.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "e5537e488be29135",
+   "used": [
+    {
+     "page": "10524",
+     "qid": "Q56"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.oizumi.gunma.jp/s024/kurashi/020/110/20200727195400.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "13fa85a122b52998",
+   "used": [
+    {
+     "page": "10524",
+     "qid": "Q58"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.oizumi.gunma.jp/s030/kosodate/010/010/090/20200826152923.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "4355710c1d05366d",
+   "used": [
+    {
+     "page": "10524",
+     "qid": "Q61"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.oizumi.gunma.jp/s024/kurashi/030/030/010/20200728214344.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "e8451c83a8a548e5",
+   "used": [
+    {
+     "page": "10524",
+     "qid": "Q57"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.oizumi.gunma.jp/s042/04/030/010/20200814201224.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "da23a7e1580e1c8a",
+   "used": [
+    {
+     "page": "10524",
+     "qid": "Q60"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.oizumi.gunma.jp/s006/gyosei/010/020/170/oizumi949.pdf": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "3447ed713370ac32",
+   "used": [
+    {
+     "page": "10524",
+     "qid": "Q66"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/15/dust-syuusyuu.html": {
    "kind": "ok",
@@ -771,7 +855,7 @@
      "qid": "T01"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/site/kosodate/tyuugaku-ichiran.html": {
    "kind": "ok",
@@ -783,7 +867,7 @@
      "qid": "T02"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/12/azuma.html": {
    "kind": "ok",
@@ -795,7 +879,7 @@
      "qid": "T03"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/26/negisidaisanntyoumetikutikukeikakuhennkou.html": {
    "kind": "ok",
@@ -807,7 +891,7 @@
      "qid": "T04"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/6/hinanbasho.html": {
    "kind": "ok",
@@ -819,7 +903,7 @@
      "qid": "Q01"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/6/shinsui-kurome-shingashi-arakawa.html": {
    "kind": "ok",
@@ -835,7 +919,7 @@
      "qid": "Q12"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/6/chikibousai.html": {
    "kind": "ok",
@@ -847,7 +931,7 @@
      "qid": "Q03"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/55/mail-service.html": {
    "kind": "ok",
@@ -867,7 +951,7 @@
      "qid": "Q13"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/15/dust-katei.html": {
    "kind": "ok",
@@ -879,7 +963,7 @@
      "qid": "Q05"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/11/jyuuki-tennyuu.html": {
    "kind": "ok",
@@ -891,7 +975,7 @@
      "qid": "Q06"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/26/norikaeannnai.html": {
    "kind": "ok",
@@ -903,7 +987,7 @@
      "qid": "Q07"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/site/kosodate/gaikokujinsoudan2021.html": {
    "kind": "ok",
@@ -915,7 +999,7 @@
      "qid": "Q08"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/uploaded/attachment/17867.pdf": {
    "kind": "ok",
@@ -927,7 +1011,7 @@
      "qid": "Q09"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/55/kisya-260727.html": {
    "kind": "ok",
@@ -939,7 +1023,7 @@
      "qid": "Q10"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/55/asaka-sisyou.html": {
    "kind": "ok",
@@ -951,7 +1035,7 @@
      "qid": "Q11"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/8/siyakusho.html": {
    "kind": "ok",
@@ -963,7 +1047,7 @@
      "qid": "Q15"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/24/kyuujitsuyakankyuukyuu2024.html": {
    "kind": "ok",
@@ -975,7 +1059,7 @@
      "qid": "Q16"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/site/kosodate/itenn.html": {
    "kind": "ok",
@@ -987,7 +1071,7 @@
      "qid": "Q17"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/14/souenesyouene.html": {
    "kind": "ok",
@@ -1003,7 +1087,7 @@
      "qid": "Q19"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/44/riyouannai.html": {
    "kind": "ok",
@@ -1019,7 +1103,7 @@
      "qid": "Q20"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/site/kosodate/asakanomori-kaien2021.html": {
    "kind": "ok",
@@ -1031,7 +1115,7 @@
      "qid": "Q20"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/52/toshikouenichiran.html": {
    "kind": "ok",
@@ -1043,7 +1127,7 @@
      "qid": "Q20"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/life/4/32/": {
    "kind": "ok",
@@ -1055,7 +1139,7 @@
      "qid": "Q28"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/life/4/32/160/": {
    "kind": "ok",
@@ -1067,7 +1151,7 @@
      "qid": "Q28"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/2/zissikeikakureiwa8.html": {
    "kind": "ok",
@@ -1079,7 +1163,7 @@
      "qid": "Q28"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/2/shiminkoment-yonshikasouba.html": {
    "kind": "ok",
@@ -1091,7 +1175,7 @@
      "qid": "Q28"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/52/midorinokeikaku.html": {
    "kind": "ok",
@@ -1103,7 +1187,7 @@
      "qid": "Q28"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/26/asakadaiekiminamigutidouro-jisshoujikken.html": {
    "kind": "ok",
@@ -1115,7 +1199,7 @@
      "qid": "Q28"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/uploaded/attachment/112300.pdf": {
    "kind": "ok",
@@ -1127,7 +1211,7 @@
      "qid": "Q31"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/uploaded/attachment/100914.pdf": {
    "kind": "ok",
@@ -1139,7 +1223,7 @@
      "qid": "Q32"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/58/koureisyafukushi-service.html": {
    "kind": "ok",
@@ -1151,7 +1235,7 @@
      "qid": "Q33"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/55/kisya-261027-1.html": {
    "kind": "ok",
@@ -1163,7 +1247,7 @@
      "qid": "Q13"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/55/kisya-261027-3.html": {
    "kind": "ok",
@@ -1175,7 +1259,7 @@
      "qid": "Q13"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/44/tosyosystem26-10.html": {
    "kind": "ok",
@@ -1187,7 +1271,7 @@
      "qid": "Q13"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/55/kisya-261028.html": {
    "kind": "ok",
@@ -1199,7 +1283,7 @@
      "qid": "Q13"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/11/convenience-issue.html": {
    "kind": "ok",
@@ -1211,7 +1295,7 @@
      "qid": "Q34"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/11/mynumber-uketori.html": {
    "kind": "ok",
@@ -1223,7 +1307,7 @@
      "qid": "Q35"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/11/koseki-sibo-kaso.html": {
    "kind": "ok",
@@ -1239,7 +1323,7 @@
      "qid": "Q36"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/11/koseki-syussei.html": {
    "kind": "ok",
@@ -1251,7 +1335,7 @@
      "qid": "Q36"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/11/goizokusien.html": {
    "kind": "ok",
@@ -1263,7 +1347,7 @@
      "qid": "Q36"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/17/asakadaisyuttyouzyo-annai.html": {
    "kind": "ok",
@@ -1275,7 +1359,7 @@
      "qid": "Q38"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/site/musashino-front-asaka/citysales-asakabrand.html": {
    "kind": "ok",
@@ -1291,7 +1375,7 @@
      "qid": "Q39"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/uploaded/attachment/101966.pdf": {
    "kind": "ok",
@@ -1307,7 +1391,7 @@
      "qid": "Q39"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/site/olympic/tokyo2020-kinenhi.html": {
    "kind": "ok",
@@ -1319,7 +1403,7 @@
      "qid": "Q39"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.police.pref.saitama.lg.jp/c0011/kurashi/jouhoukan-newmailtouroku.html": {
    "kind": "ok",
@@ -1331,7 +1415,7 @@
      "qid": "Q43"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/6/keisatukouban.html": {
    "kind": "ok",
@@ -1341,61 +1425,13 @@
     {
      "page": "11227",
      "qid": "Q42"
-    }
-   ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
-  },
-  "https://www.city.asaka.lg.jp/soshiki/52/asakairumi-2025.html": {
-   "kind": "gone",
-   "status": 404,
-   "used": [
-    {
-     "page": "11227",
-     "qid": "Q21"
     },
     {
      "page": "11227",
-     "qid": "Q21"
+     "qid": "Q59"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z",
-   "since": "2026-11-03T07:18:27.995Z"
-  },
-  "https://www.city.asaka.lg.jp/uploaded/attachment/111598.pdf": {
-   "kind": "ok",
-   "status": 200,
-   "hash": "52cf92e8cbceba2a",
-   "used": [
-    {
-     "page": "11227",
-     "qid": "Q21"
-    }
-   ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
-  },
-  "https://www.city.asaka.lg.jp/site/kosodate/jidougyakutaibousisemina-.html": {
-   "kind": "ok",
-   "status": 200,
-   "hash": "ea9755d6130aa6b6",
-   "used": [
-    {
-     "page": "11227",
-     "qid": "Q21"
-    }
-   ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
-  },
-  "https://www.city.asaka.lg.jp/soshiki/23/tiikihoukatusiennsennta-.html": {
-   "kind": "gone",
-   "status": 404,
-   "used": [
-    {
-     "page": "11227",
-     "qid": "Q18"
-    }
-   ],
-   "checkedAt": "2026-11-03T07:18:27.995Z",
-   "since": "2026-11-03T01:08:39.535Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/59/nenkin-hoken20200423.html": {
    "kind": "ok",
@@ -1411,7 +1447,7 @@
      "qid": "Q37"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/59/kokuho-kanyu.html": {
    "kind": "ok",
@@ -1423,7 +1459,7 @@
      "qid": "Q37"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/59/nenkin-kanyuu.html": {
    "kind": "ok",
@@ -1435,7 +1471,7 @@
      "qid": "Q37"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/59/": {
    "kind": "ok",
@@ -1447,7 +1483,7 @@
      "qid": "Q37"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/24/saitamakenaed.html": {
    "kind": "ok",
@@ -1459,7 +1495,7 @@
      "qid": "Q48"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/50/syogai-sigoto.html": {
    "kind": "ok",
@@ -1479,7 +1515,7 @@
      "qid": "Q44"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/13/roudou-sodan.html": {
    "kind": "ok",
@@ -1491,7 +1527,7 @@
      "qid": "Q44"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/24/shudankensin.html": {
    "kind": "ok",
@@ -1507,7 +1543,7 @@
      "qid": "Q45"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/24/kourei-inhuruenza.html": {
    "kind": "ok",
@@ -1519,7 +1555,7 @@
      "qid": "Q45"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/24/taijyoteiki.html": {
    "kind": "ok",
@@ -1531,7 +1567,7 @@
      "qid": "Q45"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/24/kourei-haien-teiki.html": {
    "kind": "ok",
@@ -1543,7 +1579,7 @@
      "qid": "Q45"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/24/teikiyobousesyu-iryoukikan.html": {
    "kind": "ok",
@@ -1555,55 +1591,7 @@
      "qid": "Q45"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
-  },
-  "https://www.city.asaka.lg.jp/uploaded/attachment/52903.pdf": {
-   "kind": "ok",
-   "status": 200,
-   "hash": "57d6e5982d4119a4",
-   "used": [
-    {
-     "page": "11227",
-     "qid": "Q47"
-    }
-   ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
-  },
-  "https://www.city.asaka.lg.jp/soshiki/13/nougyoukouryuu.html": {
-   "kind": "ok",
-   "status": 200,
-   "hash": "7ce416f358d415c5",
-   "used": [
-    {
-     "page": "11227",
-     "qid": "Q47"
-    }
-   ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
-  },
-  "https://www.city.asaka.lg.jp/soshiki/13/niwasakihanbai.html": {
-   "kind": "ok",
-   "status": 200,
-   "hash": "1d34e90e5fe096e2",
-   "used": [
-    {
-     "page": "11227",
-     "qid": "Q47"
-    }
-   ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
-  },
-  "https://www.city.asaka.lg.jp/soshiki/13/niwasaki-mizonuma.html": {
-   "kind": "gone",
-   "status": 404,
-   "used": [
-    {
-     "page": "11227",
-     "qid": "Q47"
-    }
-   ],
-   "checkedAt": "2026-11-03T07:18:27.995Z",
-   "since": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/14/inutetuzuki.html": {
    "kind": "ok",
@@ -1619,7 +1607,7 @@
      "qid": "Q50"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/14/catinfo.html": {
    "kind": "ok",
@@ -1631,7 +1619,7 @@
      "qid": "Q50"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/14/pet-bousai.html": {
    "kind": "ok",
@@ -1643,7 +1631,7 @@
      "qid": "Q50"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/soshiki/12/jichiren20182397.html": {
    "kind": "ok",
@@ -1659,7 +1647,7 @@
      "qid": "Q51"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/life/1/15/": {
    "kind": "ok",
@@ -1671,7 +1659,7 @@
      "qid": "Q51"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/site/kosodate/r8-hoikusinsei.html": {
    "kind": "ok",
@@ -1683,7 +1671,543 @@
      "qid": "Q54"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.city.asaka.lg.jp/calendar/": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "509b08a5e3b25ada",
+   "used": [
+    {
+     "page": "11227",
+     "qid": "Q21"
+    },
+    {
+     "page": "11227",
+     "qid": "Q21"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.city.asaka.lg.jp/soshiki/13/nougyoukouryuu.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "7ce416f358d415c5",
+   "used": [
+    {
+     "page": "11227",
+     "qid": "Q47"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.pref.saitama.lg.jp/documents/19801/23asakashir7.pdf": {
+   "kind": "gone",
+   "status": 404,
+   "used": [
+    {
+     "page": "11227",
+     "qid": "Q18"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z",
+   "since": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.city.asaka.lg.jp/soshiki/34/suido-syuuritouban.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "f649348f15f5b576",
+   "used": [
+    {
+     "page": "11227",
+     "qid": "Q56"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.pref.saitama.lg.jp/b0702/syuuyoujyouhou/asaka.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "da07e8becc55c417",
+   "used": [
+    {
+     "page": "11227",
+     "qid": "Q58"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.city.asaka.lg.jp/soshiki/61/yonkenn.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "fe69e3d377f8c25d",
+   "used": [
+    {
+     "page": "11227",
+     "qid": "Q60"
+    },
+    {
+     "page": "11227",
+     "qid": "Q60"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.city.asaka.lg.jp/soshiki/61/issaihann.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "a5698e5de37f167c",
+   "used": [
+    {
+     "page": "11227",
+     "qid": "Q60"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.city.asaka.lg.jp/soshiki/61/10kagetsujikenshin.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "38c5521449c908f8",
+   "used": [
+    {
+     "page": "11227",
+     "qid": "Q60"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.city.asaka.lg.jp/site/kosodate/hoiku-ninzu.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "634de323b10dad72",
+   "used": [
+    {
+     "page": "11227",
+     "qid": "Q61"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.city.asaka.lg.jp/soshiki/28/dourokinnkyuu.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "6415cc1b008af6ad",
+   "used": [
+    {
+     "page": "11227",
+     "qid": "Q55"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.city.asaka.lg.jp/soshiki/14/hatinigocyuuikudasai.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "113af3ad4cb8b3c0",
+   "used": [
+    {
+     "page": "11227",
+     "qid": "Q57"
+    },
+    {
+     "page": "11227",
+     "qid": "Q57"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.city.asaka.lg.jp/soshiki/14/karasunohigai.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "85ea9bebc22e6424",
+   "used": [
+    {
+     "page": "11227",
+     "qid": "Q57"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.city.asaka.lg.jp/soshiki/14/araiguma.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "90a99ac19bfdef36",
+   "used": [
+    {
+     "page": "11227",
+     "qid": "Q57"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.city.asaka.lg.jp/soshiki/50/kinkyutuho.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "784c4e52214e96e1",
+   "used": [
+    {
+     "page": "11227",
+     "qid": "Q66"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.city.asaka.lg.jp/site/kosodate/tokubetusien-shoureihi2021.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "67118f6c8ebef98c",
+   "used": [
+    {
+     "page": "11227",
+     "qid": "Q67"
+    },
+    {
+     "page": "11227",
+     "qid": "Q67"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.city.asaka.lg.jp/site/kosodate/shuugakuennjyoseido2021.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "8f91976a2f61a490",
+   "used": [
+    {
+     "page": "11227",
+     "qid": "Q67"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.aga.niigata.jp/agamachi_soshiki/fukushikaigo/koreisha_kaigo/313.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "945f016ad0684894",
+   "used": [
+    {
+     "page": "15385",
+     "qid": "Q25"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.aga.niigata.jp/agamachi_soshiki/soumu/shobo_bosai/453.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "38fc84727d74ef07",
+   "used": [
+    {
+     "page": "15385",
+     "qid": "Q02"
+    },
+    {
+     "page": "15385",
+     "qid": "Q12"
+    },
+    {
+     "page": "15385",
+     "qid": "Q12"
+    },
+    {
+     "page": "15385",
+     "qid": "Q12"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.aga.niigata.jp/agamachi_soshiki/soumu/seisaku_keikaku/231.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "9b5a1f10a8421365",
+   "used": [
+    {
+     "page": "15385",
+     "qid": "Q03"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.pref.niigata.lg.jp/sec/kasenkanri/1356922670428.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "ae05323985d46fb8",
+   "used": [
+    {
+     "page": "15385",
+     "qid": "Q12"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.aga.niigata.jp/agamachi_soshiki/fukushikaigo/chiikihokatsu_shiencenter/393.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "a2a15ab74781880c",
+   "used": [
+    {
+     "page": "15385",
+     "qid": "Q18"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.aga.niigata.jp/material/files/group/3/aga_bousaikeikaku01.pdf": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "eca573c5723a0aed",
+   "used": [
+    {
+     "page": "15385",
+     "qid": "Q32"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.aga.niigata.jp/agamachi_soshiki/fukushikaigo/koreisha_kaigo/index.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "027bac31adfa42a7",
+   "used": [
+    {
+     "page": "15385",
+     "qid": "Q33"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.aga.niigata.jp/agamachi_soshiki/fukushikaigo/koreisha_kaigo/307.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "4e09eaad10e7cef0",
+   "used": [
+    {
+     "page": "15385",
+     "qid": "Q33"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.aga.niigata.jp/agamachi_soshiki/fukushikaigo/koreisha_kaigo/311.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "152c5335472cca2c",
+   "used": [
+    {
+     "page": "15385",
+     "qid": "Q33"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.aga.niigata.jp/agamachi_soshiki/fukushikaigo/koreisha_kaigo/2285.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "f2aa43b62e6bf7f7",
+   "used": [
+    {
+     "page": "15385",
+     "qid": "Q33"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.aga.niigata.jp/agamachi_soshiki/machizukuri_kanko/terebi/997.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "70d825185d14ded0",
+   "used": [
+    {
+     "page": "15385",
+     "qid": "Q04"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.pref.niigata.lg.jp/site/kenkei/niigata-police.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "671e6349cefe0ade",
+   "used": [
+    {
+     "page": "15385",
+     "qid": "Q43"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.aga.niigata.jp/kurashi_tetsuzuki/anzen_anshin/shobo_bosai/index.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "ba31ed18921cf4a2",
+   "used": [
+    {
+     "page": "15385",
+     "qid": "Q48"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.aga.niigata.jp/kenko_iryo_fukushi/koreisha_kaigo/kaigo/572.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "bd627e8c914f573d",
+   "used": [
+    {
+     "page": "15385",
+     "qid": "Q63"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.aga.niigata.jp/agamachi_soshiki/chomin_seikatsu/gomi_seikatsukankyo/212.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "955229e24836947f",
+   "used": [
+    {
+     "page": "15385",
+     "qid": "Q05"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.aga.niigata.jp/lifeseane/hikkoshi_sumai/782.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "36fbf9d22c0f0eaa",
+   "used": [
+    {
+     "page": "15385",
+     "qid": "Q06"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.aga.niigata.jp/agamachi_soshiki/machizukuri_kanko/kokyokotsu/218.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "ff57639ad3140651",
+   "used": [
+    {
+     "page": "15385",
+     "qid": "Q07"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.aga.niigata.jp/translate.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "6c81e1092f12e166",
+   "used": [
+    {
+     "page": "15385",
+     "qid": "Q08"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.pref.niigata.lg.jp/uploaded/attachment/92437.pdf": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "a2892936b11411f8",
+   "used": [
+    {
+     "page": "15385",
+     "qid": "Q09"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.aga.niigata.jp/agamachi_soshiki/machizukuri_kanko/kanko_event/3207.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "2e0792816455014d",
+   "used": [
+    {
+     "page": "15385",
+     "qid": "Q10"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.aga.niigata.jp/agamachi_soshiki/machizukuri_kanko/kanko_event/3080.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "aef76a6b84e523d1",
+   "used": [
+    {
+     "page": "15385",
+     "qid": "Q10"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.aga.niigata.jp/agamachi_soshiki/soumu/agamachinitsuite/273.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "96bd9d46b45b82f3",
+   "used": [
+    {
+     "page": "15385",
+     "qid": "Q11"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.aga.niigata.jp/agamachi_soshiki/soumu/seisaku_keikaku/3159.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "991cbd693ea6caf6",
+   "used": [
+    {
+     "page": "15385",
+     "qid": "Q13"
+    },
+    {
+     "page": "15385",
+     "qid": "Q13"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.aga.niigata.jp/agamachi_soshiki/seisakusuishin/3252.html": {
+   "kind": "gone",
+   "status": 404,
+   "used": [
+    {
+     "page": "15385",
+     "qid": "Q13"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z",
+   "since": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.aga.niigata.jp/agamachi_soshiki/kensetsu/jutaku_doro/3246.html": {
+   "kind": "gone",
+   "status": 404,
+   "used": [
+    {
+     "page": "15385",
+     "qid": "Q13"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z",
+   "since": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.aga.niigata.jp/sangyo_business/nyusatsu_keiyaku/491.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "a2f4f31ab7c81954",
+   "used": [
+    {
+     "page": "15385",
+     "qid": "Q13"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.minokamo.lg.jp/site/bousai/2343.html": {
    "kind": "ok",
@@ -1695,7 +2219,7 @@
      "qid": "Q01"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.minokamo.gifu.jp/bousai/guide/": {
    "kind": "ok",
@@ -1707,7 +2231,7 @@
      "qid": "Q02"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.minokamo.lg.jp/site/bousai/": {
    "kind": "ok",
@@ -1719,7 +2243,7 @@
      "qid": "Q03"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.minokamo.lg.jp/soshiki/15/1744.html": {
    "kind": "ok",
@@ -1731,7 +2255,7 @@
      "qid": "Q05"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.minokamo.lg.jp/soshiki/23/2408.html": {
    "kind": "ok",
@@ -1743,7 +2267,7 @@
      "qid": "Q06"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.minokamo.lg.jp/soshiki/2/1109.html": {
    "kind": "ok",
@@ -1755,7 +2279,7 @@
      "qid": "Q07"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.minokamo.lg.jp/soshiki/12/16223.html": {
    "kind": "ok",
@@ -1779,7 +2303,7 @@
      "qid": "Q10"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.minokamo.lg.jp/soshiki/12/1587.html": {
    "kind": "ok",
@@ -1791,7 +2315,7 @@
      "qid": "Q10"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.minokamo.lg.jp/uploaded/attachment/15172.pdf": {
    "kind": "ok",
@@ -1803,7 +2327,7 @@
      "qid": "Q11"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.cbr.mlit.go.jp/kisojyo/shinsuisoutei/index.html": {
    "kind": "ok",
@@ -1815,13 +2339,13 @@
      "qid": "Q12"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.minokamo.gifu.jp/": {
    "kind": "ok",
    "status": 200,
    "moved": "https://www.city.minokamo.lg.jp/",
-   "hash": "d824880c13e9e841",
+   "hash": "5c7a3c03d6a8c933",
    "used": [
     {
      "page": "21211",
@@ -1832,7 +2356,8 @@
      "card": "c0011"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z",
+   "changedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.minokamo.lg.jp/soshiki/10/24849.html": {
    "kind": "ok",
@@ -1844,7 +2369,7 @@
      "qid": "Q13"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.minokamo.lg.jp/soshiki/10/24848.html": {
    "kind": "ok",
@@ -1856,7 +2381,7 @@
      "qid": "Q13"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.minokamo.lg.jp/soshiki/4/24773.html": {
    "kind": "ok",
@@ -1868,7 +2393,7 @@
      "qid": "Q13"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.minokamo.lg.jp/soshiki/12/1631.html": {
    "kind": "ok",
@@ -1884,7 +2409,7 @@
      "qid": "Q15"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.minokamo.lg.jp/soshiki/1/2131.html": {
    "kind": "ok",
@@ -1896,13 +2421,13 @@
      "qid": "Q15"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.minokamo.gifu.jp/shimin/contents.cfm?base_id=4068&mi_id=3&g1_id=12&g2_id=52": {
    "kind": "ok",
    "status": 200,
    "moved": "https://www.city.minokamo.lg.jp/",
-   "hash": "d824880c13e9e841",
+   "hash": "5c7a3c03d6a8c933",
    "used": [
     {
      "page": "21211",
@@ -1913,7 +2438,8 @@
      "qid": "Q16"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z",
+   "changedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://shienjoho.go.jp/3613.html": {
    "kind": "ok",
@@ -1925,7 +2451,7 @@
      "qid": "Q16"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.pref.gifu.lg.jp/page/1633.html": {
    "kind": "ok",
@@ -1937,7 +2463,7 @@
      "qid": "Q16"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.minokamo.lg.jp/soshiki/7/11916.html": {
    "kind": "ok",
@@ -1949,20 +2475,21 @@
      "qid": "Q17"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.minokamo.gifu.jp/shimin/contents.cfm?base_id=7534&mi_id=3&g1_id=12&g2_id=48": {
    "kind": "ok",
    "status": 200,
    "moved": "https://www.city.minokamo.lg.jp/",
-   "hash": "d824880c13e9e841",
+   "hash": "5c7a3c03d6a8c933",
    "used": [
     {
      "page": "21211",
      "qid": "Q18"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z",
+   "changedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.minokamo.lg.jp/site/bousai/2340.html": {
    "kind": "ok",
@@ -1974,7 +2501,7 @@
      "qid": "Q04"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.minokamo.lg.jp/site/70th-anniversary/": {
    "kind": "refused",
@@ -1985,7 +2512,7 @@
      "qid": "Q09"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z",
+   "checkedAt": "2026-11-04T12:22:32.487Z",
    "since": "2026-11-03T07:18:27.995Z"
   },
   "https://www.city.minokamo.lg.jp/soshiki/37/20430.html": {
@@ -1998,7 +2525,7 @@
      "qid": "Q08"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.minokamo.gifu.jp/bousai/guide/port/index.htm": {
    "kind": "ok",
@@ -2010,7 +2537,7 @@
      "qid": "Q52"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.minokamo.lg.jp/soshiki/37/10413.html": {
    "kind": "ok",
@@ -2026,7 +2553,7 @@
      "qid": "Q53"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.minokamo.lg.jp/soshiki/35/2753.html": {
    "kind": "ok",
@@ -2042,7 +2569,7 @@
      "qid": "Q53"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.minokamo.lg.jp/soshiki/37/": {
    "kind": "ok",
@@ -2054,7 +2581,7 @@
      "qid": "Q53"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.minokamo.lg.jp/soshiki/8/13155.html": {
    "kind": "ok",
@@ -2064,9 +2591,113 @@
     {
      "page": "21211",
      "qid": "Q54"
+    },
+    {
+     "page": "21211",
+     "qid": "Q61"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.city.minokamo.lg.jp/soshiki/17/1993.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "5d8dcbbb44600cb2",
+   "used": [
+    {
+     "page": "21211",
+     "qid": "Q56"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.city.minokamo.lg.jp/soshiki/13/1685.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "d3c60ce02d6579ae",
+   "used": [
+    {
+     "page": "21211",
+     "qid": "Q57"
+    },
+    {
+     "page": "21211",
+     "qid": "Q57"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.city.minokamo.lg.jp/soshiki/15/1772.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "c4e9a8a9901c1953",
+   "used": [
+    {
+     "page": "21211",
+     "qid": "Q57"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.city.minokamo.lg.jp/soshiki/15/1785.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "55247064ab056097",
+   "used": [
+    {
+     "page": "21211",
+     "qid": "Q58"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.pref.gifu.lg.jp/site/police/3561.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "ccaf6cf8132f6c3b",
+   "used": [
+    {
+     "page": "21211",
+     "qid": "Q59"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.city.minokamo.lg.jp/soshiki/7/21164.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "836bb90871afa0e3",
+   "used": [
+    {
+     "page": "21211",
+     "qid": "Q60"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.city.minokamo.lg.jp/soshiki/16/2093.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "d3931b42736b7fc1",
+   "used": [
+    {
+     "page": "21211",
+     "qid": "Q55"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.city.minokamo.lg.jp/soshiki/10/6912.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "157b6dda4182d958",
+   "used": [
+    {
+     "page": "21211",
+     "qid": "Q66"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.kuroshio.lg.jp/pb/cont/501": {
    "kind": "ok",
@@ -2083,7 +2714,7 @@
      "qid": "Q12"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.kuroshio.lg.jp/pb/cont/499": {
    "kind": "ok",
@@ -2096,7 +2727,7 @@
      "qid": "Q03"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.kuroshio.lg.jp/pb/cont/jouhoubousai-osirase/22656": {
    "kind": "ok",
@@ -2108,7 +2739,7 @@
      "qid": "Q04"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.kuroshio.lg.jp/pb/cont/kankyo-gomi/35942": {
    "kind": "ok",
@@ -2120,7 +2751,7 @@
      "qid": "Q05"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.kuroshio.lg.jp/pb/cont/hikkosi": {
    "kind": "ok",
@@ -2132,7 +2763,7 @@
      "qid": "Q06"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.kuroshio.lg.jp/pb/cont/kikaku-koutu/44351": {
    "kind": "ok",
@@ -2144,7 +2775,7 @@
      "qid": "Q07"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.kuroshio.lg.jp/pb/cont/machi-shokai/257": {
    "kind": "ok",
@@ -2160,7 +2791,7 @@
      "qid": "Q11"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.kuroshio.lg.jp/pb/cont/541": {
    "kind": "ok",
@@ -2173,7 +2804,7 @@
      "qid": "Q10"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.kuroshio.lg.jp/img/files/pv/sosiki/docs/open-date/2026/evacuation_space2025.csv": {
    "kind": "ok",
@@ -2185,102 +2816,7 @@
      "qid": "Q01"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
-  },
-  "https://www.town.kuroshio.lg.jp/": {
-   "kind": "ok",
-   "status": 200,
-   "hash": "31e4055998627a9d",
-   "used": [
-    {
-     "page": "39428",
-     "qid": "Q13"
-    },
-    {
-     "page": "39428",
-     "qid": "Q21"
-    },
-    {
-     "page": "39428",
-     "card": "c0001"
-    }
-   ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
-  },
-  "https://www.town.kuroshio.lg.jp/pb/cont/44351": {
-   "kind": "ok",
-   "status": 200,
-   "moved": "https://www.town.kuroshio.lg.jp/pb/cont/kikaku-koutu/44351",
-   "hash": "0c94b6f9e2a124c3",
-   "used": [
-    {
-     "page": "39428",
-     "qid": "Q13"
-    }
-   ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
-  },
-  "https://www.town.kuroshio.lg.jp/pb/cont/1384": {
-   "kind": "ok",
-   "status": 200,
-   "moved": "https://www.town.kuroshio.lg.jp/pb/cont/emergency/1384",
-   "hash": "c5b6ee318596a130",
-   "used": [
-    {
-     "page": "39428",
-     "qid": "Q13"
-    },
-    {
-     "page": "39428",
-     "qid": "Q21"
-    }
-   ],
-   "checkedAt": "2026-11-03T07:18:27.995Z",
-   "changedAt": "2026-11-03T07:18:27.995Z",
-   "recheckedAt": "2026-11-03T07:22:19.321Z"
-  },
-  "https://www.town.kuroshio.lg.jp/pb/cont/7345": {
-   "kind": "ok",
-   "status": 200,
-   "moved": "https://www.town.kuroshio.lg.jp/pb/cont/kyouiku-syugakumae/7345",
-   "hash": "7eef2ea468000922",
-   "used": [
-    {
-     "page": "39428",
-     "qid": "Q13"
-    },
-    {
-     "page": "39428",
-     "qid": "Q54"
-    }
-   ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
-  },
-  "https://www.town.kuroshio.lg.jp/pb/cont/43393": {
-   "kind": "ok",
-   "status": 200,
-   "moved": "https://www.town.kuroshio.lg.jp/pb/cont/jouhoubousai-digital/43393",
-   "hash": "64c542b54b98ffeb",
-   "used": [
-    {
-     "page": "39428",
-     "qid": "Q13"
-    }
-   ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
-  },
-  "https://www.town.kuroshio.lg.jp/pb/cont/36269": {
-   "kind": "ok",
-   "status": 200,
-   "moved": "https://www.town.kuroshio.lg.jp/pb/cont/sangyo-osirase/36269",
-   "hash": "e44dfb41ce074dd7",
-   "used": [
-    {
-     "page": "39428",
-     "qid": "Q13"
-    }
-   ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.kuroshio.lg.jp/pb/cont/18806": {
    "kind": "ok",
@@ -2303,9 +2839,13 @@
     {
      "page": "39428",
      "qid": "Q33"
+    },
+    {
+     "page": "39428",
+     "qid": "Q55"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.kuroshio.lg.jp/pb/cont/byouki/1735": {
    "kind": "ok",
@@ -2317,19 +2857,20 @@
      "qid": "Q16"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.kuroshio.lg.jp/pb/cont/kenkou-hoken/40482": {
    "kind": "ok",
    "status": 200,
-   "hash": "9cce00e3ae72cf50",
+   "hash": "44eb8b9db3f27deb",
    "used": [
     {
      "page": "39428",
      "qid": "Q17"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z",
+   "changedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.kuroshio.lg.jp/pb/cont/37491": {
    "kind": "ok",
@@ -2346,7 +2887,7 @@
      "qid": "Q19"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.kuroshio.lg.jp/pb/cont/kankyo-carbonneutral/44144": {
    "kind": "ok",
@@ -2358,7 +2899,7 @@
      "qid": "Q19"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.kuroshio.lg.jp/pb/cont/4": {
    "kind": "ok",
@@ -2375,7 +2916,28 @@
      "qid": "Q51"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.kuroshio.lg.jp/": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "587bb5f0e3f1611e",
+   "used": [
+    {
+     "page": "39428",
+     "qid": "Q21"
+    },
+    {
+     "page": "39428",
+     "qid": "Q13"
+    },
+    {
+     "page": "39428",
+     "card": "c0001"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z",
+   "changedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.kuroshio.lg.jp/pb/cont/1880": {
    "kind": "ok",
@@ -2388,7 +2950,7 @@
      "qid": "Q21"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.kuroshio.lg.jp/pb/cont/43649": {
    "kind": "ok",
@@ -2401,7 +2963,25 @@
      "qid": "Q21"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.kuroshio.lg.jp/pb/cont/1384": {
+   "kind": "ok",
+   "status": 200,
+   "moved": "https://www.town.kuroshio.lg.jp/pb/cont/emergency/1384",
+   "hash": "ab9a9c015cda6fbd",
+   "used": [
+    {
+     "page": "39428",
+     "qid": "Q21"
+    },
+    {
+     "page": "39428",
+     "qid": "Q13"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z",
+   "changedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.nogyo.tosa.pref.kochi.lg.jp/info/dtl.php?ID=5700": {
    "kind": "ok",
@@ -2421,12 +3001,12 @@
      "qid": "Q22"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.kuroshio.lg.jp/pb/cont/kikaku-sougou-senryaku/45943": {
    "kind": "ok",
    "status": 200,
-   "hash": "0a401d9c8c46fb99",
+   "hash": "e9e2c1e000092818",
    "used": [
     {
      "page": "39428",
@@ -2437,7 +3017,8 @@
      "qid": "Q28"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z",
+   "changedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.kuroshio.lg.jp/img/files/pv/sosiki/2026/04/r8-siseihousin(1).pdf": {
    "kind": "ok",
@@ -2461,7 +3042,7 @@
      "qid": "Q28"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.kuroshio.lg.jp/pb/cont/kenkou-hukusi/9248": {
    "kind": "ok",
@@ -2473,7 +3054,7 @@
      "qid": "Q33"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.kuroshio.lg.jp/img/files/pv/sosiki/2012/06/02/tiikihukusikeikaku.pdf": {
    "kind": "ok",
@@ -2485,7 +3066,7 @@
      "qid": "Q33"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.kuroshio.lg.jp/img/files/pv/sosiki/2021/06/r3kuroshio_koureisyahukushi_kaigohoken_jigyoukeikaku.pdf": {
    "kind": "ok",
@@ -2497,7 +3078,7 @@
      "qid": "Q33"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.pref.kochi.lg.jp/doc/2025041700175/": {
    "kind": "ok",
@@ -2509,7 +3090,7 @@
      "qid": "Q08"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.kuroshio.lg.jp/pb/cont/37238": {
    "kind": "ok",
@@ -2522,7 +3103,7 @@
      "qid": "Q34"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.kuroshio.lg.jp/pb/cont/3540": {
    "kind": "ok",
@@ -2535,7 +3116,7 @@
      "qid": "Q35"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.kuroshio.lg.jp/pb/cont/juumin-tetuduki/72": {
    "kind": "ok",
@@ -2547,7 +3128,7 @@
      "qid": "Q36"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.kuroshio.lg.jp/pb/cont/juumin-tetuduki/67": {
    "kind": "ok",
@@ -2559,7 +3140,7 @@
      "qid": "Q37"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.kuroshio.lg.jp/pb/cont/juumin-syoumei/37238": {
    "kind": "ok",
@@ -2571,7 +3152,7 @@
      "qid": "Q38"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.kuroshio.lg.jp/pb/cont/34502": {
    "kind": "ok",
@@ -2604,7 +3185,7 @@
      "qid": "Q39"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.kuroshio.lg.jp/img/files/pv/sosiki/2024/04/tiiki-bousaikeikaku202404.pdf": {
    "kind": "ok",
@@ -2616,7 +3197,7 @@
      "qid": "Q32"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.police.pref.kochi.lg.jp/police-docs/2023112900233/": {
    "kind": "ok",
@@ -2628,7 +3209,7 @@
      "qid": "Q42"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.kuroshio.lg.jp/pb/cont/faq-snngyousigoto/3706": {
    "kind": "ok",
@@ -2640,7 +3221,7 @@
      "qid": "Q23"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.police.pref.kochi.lg.jp/docs/2023103000225/": {
    "kind": "ok",
@@ -2652,7 +3233,7 @@
      "qid": "Q43"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.kuroshio.lg.jp/pb/cont/bousai-aed/512": {
    "kind": "ok",
@@ -2664,7 +3245,7 @@
      "qid": "Q48"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.kuroshio.lg.jp/pb/cont/kenkou-hoken/41494": {
    "kind": "ok",
@@ -2676,7 +3257,7 @@
      "qid": "Q44"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.kuroshio.lg.jp/pb/cont/kenkou-hoken/121": {
    "kind": "ok",
@@ -2692,7 +3273,7 @@
      "qid": "Q45"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.kuroshio.lg.jp/pb/cont/13266": {
    "kind": "ok",
@@ -2705,20 +3286,21 @@
      "qid": "Q45"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.kuroshio.lg.jp/pb/cont/47124": {
    "kind": "ok",
    "status": 200,
    "moved": "https://www.town.kuroshio.lg.jp/pb/cont/kenkou-hoken/47124",
-   "hash": "8af34bf2e454860c",
+   "hash": "99fca6539a6e0053",
    "used": [
     {
      "page": "39428",
      "qid": "Q45"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z",
+   "changedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.kuroshio.lg.jp/pb/cont/48399": {
    "kind": "ok",
@@ -2731,7 +3313,7 @@
      "qid": "Q45"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.kuroshio.lg.jp/pb/cont/45556": {
    "kind": "ok",
@@ -2744,7 +3326,7 @@
      "qid": "Q45"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.kuroshio.lg.jp/pb/cont/kuronavi-omiyage-tyokubai/9283": {
    "kind": "ok",
@@ -2757,12 +3339,12 @@
      "qid": "Q47"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.kuroshio.lg.jp/pb/cont/kankyo-pet/95": {
    "kind": "ok",
    "status": 200,
-   "hash": "df82f4a8bb97a220",
+   "hash": "a9ea83b8bd1a6619",
    "used": [
     {
      "page": "39428",
@@ -2773,20 +3355,22 @@
      "qid": "Q50"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z",
+   "changedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.kuroshio.lg.jp/pb/cont/48038": {
    "kind": "ok",
    "status": 200,
    "moved": "https://www.town.kuroshio.lg.jp/pb/cont/kankyo-pet/48038",
-   "hash": "542451e5580f93b9",
+   "hash": "c71f0806b44df16d",
    "used": [
     {
      "page": "39428",
      "qid": "Q50"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z",
+   "changedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.kuroshio.lg.jp/pb/cont/24915": {
    "kind": "ok",
@@ -2799,31 +3383,178 @@
      "qid": "Q50"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.kuroshio.lg.jp/pb/cont/7345": {
+   "kind": "ok",
+   "status": 200,
+   "moved": "https://www.town.kuroshio.lg.jp/pb/cont/kyouiku-syugakumae/7345",
+   "hash": "7eef2ea468000922",
+   "used": [
+    {
+     "page": "39428",
+     "qid": "Q54"
+    },
+    {
+     "page": "39428",
+     "qid": "Q13"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.kuroshio.lg.jp/pb/cont/44351": {
+   "kind": "ok",
+   "status": 200,
+   "moved": "https://www.town.kuroshio.lg.jp/pb/cont/kikaku-koutu/44351",
+   "hash": "0c94b6f9e2a124c3",
+   "used": [
+    {
+     "page": "39428",
+     "qid": "Q13"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.kuroshio.lg.jp/pb/cont/43393": {
+   "kind": "ok",
+   "status": 200,
+   "moved": "https://www.town.kuroshio.lg.jp/pb/cont/jouhoubousai-digital/43393",
+   "hash": "64c542b54b98ffeb",
+   "used": [
+    {
+     "page": "39428",
+     "qid": "Q13"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.kuroshio.lg.jp/pb/cont/36269": {
+   "kind": "ok",
+   "status": 200,
+   "moved": "https://www.town.kuroshio.lg.jp/pb/cont/sangyo-osirase/36269",
+   "hash": "e44dfb41ce074dd7",
+   "used": [
+    {
+     "page": "39428",
+     "qid": "Q13"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.kuroshio.lg.jp/pb/cont/faq-sonota/3670": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "ef7e9fc847d79a2f",
+   "used": [
+    {
+     "page": "39428",
+     "qid": "Q57"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.kuroshio.lg.jp/pb/cont/kensetsu-suidou/2677": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "2fc61818d22de91c",
+   "used": [
+    {
+     "page": "39428",
+     "qid": "Q56"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.kuroshio.lg.jp/pb/cont/chiiki-osirase/4824": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "9a7a0c5f23d1301f",
+   "used": [
+    {
+     "page": "39428",
+     "qid": "Q60"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.kuroshio.lg.jp/pb/cont/111": {
+   "kind": "ok",
+   "status": 200,
+   "moved": "https://www.town.kuroshio.lg.jp/pb/cont/kenkou-hukusi/111",
+   "hash": "406f640b76ed6acd",
+   "used": [
+    {
+     "page": "39428",
+     "qid": "Q66"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.kuroshio.lg.jp/reiki_int/reiki_honbun/r256RG00001295.html": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "bd555eab59826fe9",
+   "used": [
+    {
+     "page": "39428",
+     "qid": "Q67"
+    },
+    {
+     "page": "39428",
+     "qid": "Q67"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.kuroshio.lg.jp/pb/cont/kikaku-koutu/44604": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "246408d150fcceff",
+   "used": [
+    {
+     "page": "39428",
+     "qid": "Q67"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.kuroshio.lg.jp/pb/cont/kyouiku-gakkou": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "5b3d6fb047fcc7d7",
+   "used": [
+    {
+     "page": "39428",
+     "qid": "Q67"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.town.oizumi.gunma.jp/": {
    "kind": "ok",
    "status": 200,
-   "hash": "d035e6bba0ff4339",
+   "hash": "c6855e9e10ea6fb4",
    "used": [
     {
      "page": "10524",
      "card": "c0003"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z",
+   "changedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.soumu.go.jp/": {
    "kind": "ok",
    "status": 200,
-   "hash": "da930c3db45b981d",
+   "hash": "53fa5e2b77256184",
    "used": [
     {
      "page": "10524",
      "card": "c0014"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z",
+   "changedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://jsite.mhlw.go.jp/": {
    "kind": "ok",
@@ -2836,79 +3567,133 @@
      "card": "c0016"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.asaka.lg.jp/": {
    "kind": "ok",
    "status": 200,
-   "hash": "d85a61e2930c479f",
+   "hash": "48677ce51e09c3c2",
    "used": [
     {
      "page": "11227",
      "card": "c0002"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z",
+   "changedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.police.pref.saitama.lg.jp/": {
    "kind": "ok",
    "status": 200,
-   "hash": "9e32b067007e8c17",
+   "hash": "68feb18bc37b057c",
    "used": [
     {
      "page": "11227",
      "card": "c0015"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z",
+   "changedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.pref.saitama.lg.jp/": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "c22827c0495e3649",
+   "used": [
+    {
+     "page": "11227",
+     "card": "c0017"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.town.aga.niigata.jp/": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "924d07346f493d1d",
+   "used": [
+    {
+     "page": "15385",
+     "card": "c0019"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.pref.niigata.lg.jp/": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "89cf186d6f6edbe7",
+   "used": [
+    {
+     "page": "15385",
+     "card": "c0020"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.city.minokamo.lg.jp/": {
    "kind": "ok",
    "status": 200,
-   "hash": "d824880c13e9e841",
+   "hash": "5c7a3c03d6a8c933",
    "used": [
     {
      "page": "21211",
      "card": "c0010"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z",
+   "changedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.cbr.mlit.go.jp/": {
    "kind": "ok",
    "status": 200,
-   "hash": "aaf9207b85f9b14e",
+   "hash": "decb148fd74596f9",
    "used": [
     {
      "page": "21211",
      "card": "c0012"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z",
+   "changedAt": "2026-11-04T12:22:32.487Z"
+  },
+  "https://www.pref.gifu.lg.jp/": {
+   "kind": "ok",
+   "status": 200,
+   "hash": "e7b51fcac6a58ce9",
+   "used": [
+    {
+     "page": "21211",
+     "card": "c0018"
+    }
+   ],
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.nogyo.tosa.pref.kochi.lg.jp/": {
    "kind": "ok",
    "status": 200,
-   "hash": "aba76b6aca9bd76e",
+   "hash": "ed05914cf3d2874b",
    "used": [
     {
      "page": "39428",
      "card": "c0004"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z",
+   "changedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.pref.kochi.lg.jp/": {
    "kind": "ok",
    "status": 200,
-   "hash": "4e797536ee7c3bde",
+   "hash": "9aded0d62e7b6295",
    "used": [
     {
      "page": "39428",
      "card": "c0005"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z",
+   "changedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://kuroshio-kanko.net/": {
    "kind": "ok",
@@ -2920,7 +3705,7 @@
      "card": "c0006"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://sunabi.com/": {
    "kind": "ok",
@@ -2932,7 +3717,7 @@
      "card": "c0007"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://r.goope.jp/": {
    "kind": "ok",
@@ -2945,7 +3730,7 @@
      "card": "c0008"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://nitarikujira.com/": {
    "kind": "ok",
@@ -2957,7 +3742,7 @@
      "card": "c0009"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   },
   "https://www.police.pref.kochi.lg.jp/": {
    "kind": "ok",
@@ -2969,7 +3754,7 @@
      "card": "c0013"
     }
    ],
-   "checkedAt": "2026-11-03T07:18:27.995Z"
+   "checkedAt": "2026-11-04T12:22:32.487Z"
   }
  }
 }

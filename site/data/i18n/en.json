@@ -1,11 +1,11 @@
 {
  "lang": "en",
  "name": "English",
- "createdAt": "2026-11-04T12:19:51.253Z",
+ "createdAt": "2026-11-04T12:32:17.574Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 951,
- "of": 916,
+ "count": 955,
+ "of": 920,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "This is an unofficial guide to living in this town. Claude gathers information from the town's official website and other sources, and cites each source (Machishirube)",
   "すべてのページ": "All pages",
@@ -957,6 +957,10 @@
   "町の診療所と訪問診療": "Town clinic and home-visit medical care",
   "車なしの通院・買い物の足": "Transportation for medical visits and shopping without a car",
   "高齢者の緊急通報装置": "Emergency alert devices for older adults",
-  "子どもの通学の支え": "Support for children's commute to school"
+  "子どもの通学の支え": "Support for children's commute to school",
+  "距離は町・字のおおよその真ん中からまっすぐ測ったものです。": "Distances are measured in a straight line from the approximate center of each town or district.",
+  "うまく表示できていない所があります。時間をおいて開き直してください。": "Some parts of this page aren't displaying correctly. Please wait a moment and reopen it.",
+  "町の公式の一覧表から AI が読み取り、品目名が表にあるかを確かめたもの。分け方の区分と注意は短くしています。迷ったら町の表で確かめてください": "Read by AI from the town's official list, with item names checked against the list. Sorting categories and notes are shortened. If unsure, check the town's list.",
+  "出典：{src}（{asOf}・{lic}）を加工。祝日：{hol}": "Source: {src} ({asOf}, {lic}), adapted. Holidays: {hol}"
  }
 }

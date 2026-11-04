@@ -1,11 +1,11 @@
 {
  "lang": "vi",
  "name": "Tiếng Việt",
- "createdAt": "2026-11-04T12:20:49.244Z",
+ "createdAt": "2026-11-04T12:32:35.893Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 947,
- "of": 916,
+ "count": 953,
+ "of": 920,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Đây là trang hướng dẫn đời sống không chính thức của thị trấn này. Claude thu thập từ các trang chính thức của thị trấn v.v. và ghi rõ nguồn (Machi-shirube)",
   "すべてのページ": "Tất cả các trang",
@@ -953,6 +953,12 @@
   "町の診療所と訪問診療": "Phòng khám của thị trấn và khám bệnh tại nhà",
   "車なしの通院・買い物の足": "Phương tiện đi khám bệnh, đi mua sắm khi không có xe",
   "高齢者の緊急通報装置": "Thiết bị báo khẩn cấp cho người cao tuổi",
-  "子どもの通学の支え": "Hỗ trợ trẻ em đi học"
+  "子どもの通学の支え": "Hỗ trợ trẻ em đi học",
+  "テレビ電話": "Gọi video",
+  "を加工": "Chỉnh sửa",
+  "距離は町・字のおおよその真ん中からまっすぐ測ったものです。": "Khoảng cách được đo theo đường thẳng từ khoảng chính giữa của khu phố/thôn (町・字).",
+  "うまく表示できていない所があります。時間をおいて開き直してください。": "Một số phần chưa hiển thị đúng. Vui lòng đợi một lúc rồi mở lại trang.",
+  "町の公式の一覧表から AI が読み取り、品目名が表にあるかを確かめたもの。分け方の区分と注意は短くしています。迷ったら町の表で確かめてください": "Nội dung do AI đọc từ bảng danh mục chính thức của thị trấn và đã kiểm tra tên mặt hàng có trong bảng hay không. Phần phân loại và lưu ý được rút gọn. Nếu còn phân vân, hãy kiểm tra lại bảng của thị trấn.",
+  "出典：{src}（{asOf}・{lic}）を加工。祝日：{hol}": "Nguồn: {src} ({asOf}・{lic}) đã được chỉnh sửa. Ngày lễ: {hol}"
  }
 }

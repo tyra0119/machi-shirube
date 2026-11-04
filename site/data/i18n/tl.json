@@ -1,11 +1,11 @@
 {
  "lang": "tl",
  "name": "Filipino",
- "createdAt": "2026-11-04T12:21:00.841Z",
+ "createdAt": "2026-11-04T12:32:39.157Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 941,
- "of": 916,
+ "count": 946,
+ "of": 920,
  "dict": {
   "この町の非公式の暮らしの案内です。町の公式のサイトや国の公開データから集め、出典をつけています（まちしるべ）": "Ito ay isang di-opisyal na gabay sa pamumuhay sa bayang ito. Kinuha ito mula sa opisyal na website ng bayan at sa pampublikong datos ng bansa, at may nakasaad na pinagmulan (Machishirube)",
   "すべてのページ": "Lahat ng pahina",
@@ -947,6 +947,11 @@
   "町の診療所と訪問診療": "Klinika ng bayan at pagbisita ng doktor sa bahay",
   "車なしの通院・買い物の足": "Transportasyon sa pagpapagamot at pamimili para sa walang sasakyan",
   "高齢者の緊急通報装置": "Emergency alarm device para sa matatanda",
-  "子どもの通学の支え": "Suporta sa pagpasok ng mga bata sa paaralan"
+  "子どもの通学の支え": "Suporta sa pagpasok ng mga bata sa paaralan",
+  "を加工": "Pinroseso",
+  "距離は町・字のおおよその真ん中からまっすぐ測ったものです。": "Ang distansya ay sinukat nang tuwid na linya mula sa tinatayang sentro ng bayan o aza (subdibisyon ng bayan).",
+  "うまく表示できていない所があります。時間をおいて開き直してください。": "May bahagi ng pahina na hindi maipakita nang maayos. Maghintay muna sandali at buksan itong muli.",
+  "町の公式の一覧表から AI が読み取り、品目名が表にあるかを確かめたもの。分け方の区分と注意は短くしています。迷ったら町の表で確かめてください": "Binasa ito ng AI mula sa opisyal na talaan ng bayan, at tiniyak kung nasa talaan ang pangalan ng item. Pinaikli ang mga kategorya ng paghihiwalay at ang mga paalala. Kung nag-aalangan, tingnan sa talaan ng bayan.",
+  "出典：{src}（{asOf}・{lic}）を加工。祝日：{hol}": "Pinagmulan: Hinango at inayos mula sa {src} ({asOf}・{lic}). Mga pista opisyal: {hol}"
  }
 }
