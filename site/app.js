@@ -985,16 +985,22 @@ for (const b of document.querySelectorAll(".examples button")) {
 const searchBox = document.getElementById("search");
 const results = document.getElementById("results");
 const normalize = (s) => s.replace(/\s/g, "").replace(/[ヶヵ]/g, "ケ");
+// かなとローマ字で探すときの形：カタカナはひらがなに、ローマ字は小文字にして、長音の印・つなぎの印・空白を外す
+const kanaOf = (s) => s.normalize("NFKC").replace(/[ァ-ヶ]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0x60)).replace(/\s/g, "");
+const romaOf = (s) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase().replace(/[^a-z]/g, "").replace(/ou/g, "o").replace(/uu/g, "u");
+let kana = null; // 市区町村の読みがなとローマ字（scripts/build-kana.mjs）
 function candidates() {
   const list = [];
   const cities = new Set();
   for (const f of munis?.features ?? []) {
     const p = f.properties;
     if (p.noData && !p.city) continue;
-    list.push({ name: p.fullName, sub: [p.pref, p.county].filter(Boolean).join(" "), go: () => selectMuni(p.code) });
+    // 市区町村は、読みがな（k）とローマ字（r）でも探せる。町・字より先に並べる（kind）
+    const [k, r] = kana?.[p.code] ?? kana?.[p.code.slice(0, 4) + "0"] ?? [];
+    list.push({ name: p.fullName, sub: [p.pref, p.county].filter(Boolean).join(" "), go: () => selectMuni(p.code), kind: 0, k: k ?? "", r: romaOf(r ?? "") });
     if (p.ward && !cities.has(p.pref + p.city)) {
       cities.add(p.pref + p.city);
-      list.push({ name: p.city, sub: `${p.pref}（区を選ぶ）`, go: () => showCityCard(p.city, p.pref) });
+      list.push({ name: p.city, sub: `${p.pref}（区を選ぶ）`, go: () => showCityCard(p.city, p.pref), kind: 0, k: k ?? "", r: romaOf(r ?? "") });
     }
   }
   for (const a of areas) {
@@ -1014,8 +1020,9 @@ let townNames = null;
 let cands = null;
 let loadingNames = null;
 function loadNames() {
-  loadingNames ??= getJSON("data/towns/names.json").then((d) => {
+  loadingNames ??= Promise.all([getJSON("data/towns/names.json"), getJSON("data/muni-kana.json").catch(() => null)]).then(([d, k]) => {
     townNames = d;
+    kana = k;
     cands = null;
     // 読み終えたとき、まだ欄で入力しているときだけ候補を出し直す（町を選んだあとに開き直して、カードを隠していた）
     if (searchBox.value && document.activeElement === searchBox) search();
@@ -1029,15 +1036,23 @@ function search() {
   if (!q) return closeResults();
   // 候補は一度だけ作り、名前を整えたものも持っておく（全国の町・字で 10万ほどになるため）
   cands ??= candidates().map((c) => ({ ...c, n: normalize(c.name), s: normalize(c.sub) }));
+  // かな・ローマ字の形（ひらがなだけ、ローマ字だけの入力のときに使う）
+  const qk = /^[ぁ-ゖー]+$/.test(kanaOf(q)) ? kanaOf(q) : "";
+  const qr = /^[a-zA-Z\s'-]+$/.test(q) ? romaOf(q) : "";
+  const pos = (c) => {
+    const ats = [c.n.indexOf(q), qk && c.k ? c.k.indexOf(qk) : -1, qr && c.r ? c.r.indexOf(qr) : -1].filter((x) => x >= 0);
+    return ats.length ? Math.min(...ats) : -1;
+  };
+  // 名前の頭から合うもの → 市区町村（町・字より先）→ 短い名前 の順（「大泉」で大泉町が、桜川市の町・字「大泉」より先に出るように）
   found = cands
-    .map((c) => ({ c, at: c.n.indexOf(q), also: c.s.includes(q) }))
+    .map((c) => ({ c, at: pos(c), also: c.s.includes(q) }))
     .filter((x) => x.at >= 0 || x.also)
-    .sort((a, b) => (a.at < 0) - (b.at < 0) || (a.at !== 0) - (b.at !== 0) || a.c.name.length - b.c.name.length)
+    .sort((a, b) => (a.at < 0) - (b.at < 0) || (a.at !== 0) - (b.at !== 0) || (a.c.kind ?? 2) - (b.c.kind ?? 2) || a.c.name.length - b.c.name.length)
     .slice(0, 8)
     .map((x) => x.c);
   results.innerHTML = found.length
     ? found.map((c, i) => `<li role="option" id="r${i}"><button type="button" data-i="${i}"><span class="name">${c.name}</span><span class="sub">${c.sub}</span></button></li>`).join("")
-    : `<li class="none">見つかりません。市区町村の名前か、町・字の名前で探せます</li>`;
+    : `<li class="none">見つかりません。市区町村の名前（かな・ローマ字でも）か、町・字の名前で探せます</li>`;
   results.hidden = false;
   searchBox.setAttribute("aria-expanded", "true");
 }
