@@ -1328,16 +1328,30 @@ const WD = "日月火水木金土";
 function onDay(when, date) {
   // 組ごとの日付が別の表にあるもの（「5週ごとの水曜日（組ごとの日付は町の表で）」）は、今日・明日に数えない
   if (/町の表で|カレンダーで/.test(when)) return false;
+  // 例外の日（「11月7日（土）は処理場の年次点検のため収集なし」）
+  for (const [, m, d] of when.matchAll(/(\d{1,2})月(\d{1,2})日[^／）]*?(?:（.）)?は[^／]*?収集なし/g)) if (Number(m) === date.getMonth() + 1 && Number(d) === date.getDate()) return false;
+  // 季節で変わる決まり（「4・5月 毎週月・木曜日／6〜9月 毎週月・水・金曜日／10〜3月 毎週月・木曜日」）は、その月の分だけを見る
+  if (/毎週/.test(when) && /^\s*\d{1,2}(?:[・〜]\d{1,2})*月\s*毎週/.test(when)) {
+    const mo = date.getMonth() + 1;
+    for (const seg of when.split("／")) {
+      const r = seg.match(/^\s*(\d{1,2})\s*〜\s*(\d{1,2})月/), l = seg.match(/^\s*(\d{1,2}(?:・\d{1,2})*)月/);
+      const hit = r ? (Number(r[1]) <= Number(r[2]) ? mo >= Number(r[1]) && mo <= Number(r[2]) : mo >= Number(r[1]) || mo <= Number(r[2])) : l ? l[1].split("・").map(Number).includes(mo) : false;
+      if (hit) return onDay(seg.replace(/^\s*[\d・〜]+月\s*/, "").replace(/（[^）]*収集なし[^）]*）/g, ""), date);
+    }
+    return false;
+  }
   // 「1月 8・22日／2月 5・19日」「2月4日、4月1日」の形：月と日で当てる
   const dates = [...when.matchAll(/(\d{1,2})月\s*(\d{1,2}(?:\s*[・、]\s*\d{1,2})*)\s*日/g)];
   if (dates.length && !/毎週|第/.test(when)) return dates.some(([, m, ds]) => Number(m) === date.getMonth() + 1 && ds.split(/[・、]/).map((x) => Number(x.trim())).includes(date.getDate()));
   const w = WD[date.getDay()];
   const days = (when.match(/[月火水木金土日](?=[・、曜]|$)/g) ?? []);
   if (!days.includes(w)) return false;
-  const nth = when.match(/第([0-9０-９・、]+)/);
+  const nth = when.match(/第([0-9０-９・、〜~]+)/);
   if (!nth) return /毎週|曜/.test(when);
   const n = Math.ceil(date.getDate() / 7);
-  return nth[1].normalize("NFKC").split(/[・、]/).map(Number).includes(n);
+  // 「第1〜4」は 1・2・3・4
+  const ns = nth[1].normalize("NFKC").split(/[・、]/).flatMap((x) => { const r = x.match(/^(\d)[〜~](\d)$/); return r ? Array.from({ length: Number(r[2]) - Number(r[1]) + 1 }, (_, i) => Number(r[1]) + i) : [Number(x)]; });
+  return ns.includes(n);
 }
 async function showGomiDays(code, partName, softName) {
   const g = await getData(`data/gomi-days/${code}.json`);
@@ -1360,7 +1374,14 @@ async function showGomiDays(code, partName, softName) {
   sel.innerHTML = `<option value="">${T("（選ぶ）")}</option>` + g.areas.map((a, i) => `<option value="${i}">${esc(gt(a.area))}${a.towns.length ? `（${esc(a.towns.slice(0, 3).join("・"))}${a.towns.length > 3 ? "…" : ""}）` : ""}</option>`).join("");
   // 町・字のページなら、その名前の地区を選んでおく
   // 町・字の名前から地区を当てる（「入野早咲」→ 町・字の欄に「早咲」がある組）。1文字の名前（「町」）では当てない
-  const find = (n) => (n ? g.areas.findIndex((a) => a.area.includes(n) || a.towns.some((t) => t.includes(n) || (t.length >= 2 && n.includes(t)))) : -1);
+  // 町・字の欄で当たらなければ、地区の名前の一部から（美濃加茂市「加茂野町市橋」→「蜂屋・加茂野・伊深」）。「ヶ」と「ケ」は同じとみなす
+  const kk = (s) => String(s ?? "").replace(/ヶ/g, "ケ");
+  const find = (raw) => {
+    const n = kk(raw);
+    if (!n) return -1;
+    const i = g.areas.findIndex((a) => kk(a.area).includes(n) || a.towns.some((t) => kk(t).includes(n) || (t.length >= 2 && n.includes(kk(t)))));
+    return i >= 0 ? i : g.areas.findIndex((a) => kk(a.area).split(/[・\s]/).some((p) => p.length >= 2 && !/組$/.test(p) && n.includes(p)));
+  };
   const guess = find(partName);
   const soft = find(softName); // わが家の避難で選んだ町・字（自分で地区を選んでいなければ使う）
   let todayKinds = null;
