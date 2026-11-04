@@ -3375,7 +3375,7 @@
       "url": "https://www.soumu.go.jp/main_content/000612577.pdf",
       "where": "群馬県警察本部・警察署一覧 大泉警察署の欄"
      },
-     "status": "pending",
+     "status": "ok",
      "problems": [
       "引用されたページ名の「落とし物の届出・検索」が「落とși物の届出・検索」と文字化けしている。"
      ],

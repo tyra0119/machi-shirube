@@ -11,6 +11,12 @@
   "checkedAt": "2026-11-02",
   "how": "Claude が探し、市町村の公式サイトの形とトップの町の名前を機械で確かめた"
  },
+ "15385": {
+  "url": "http://www.town.aga.niigata.jp/",
+  "host": "www.town.aga.niigata.jp",
+  "checkedAt": "2026-11-04",
+  "how": "Claude が探し、市町村の公式サイトの形とトップの町の名前を機械で確かめた"
+ },
  "21211": {
   "url": "https://www.city.minokamo.gifu.jp/",
   "host": "www.city.minokamo.gifu.jp",
