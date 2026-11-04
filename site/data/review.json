@@ -1,11 +1,11 @@
 {
- "updatedAt": "2026-11-04T06:31:26.576Z",
+ "updatedAt": "2026-11-04T06:41:44.964Z",
  "counts": {
-  "auto": 75,
-  "ok": 176,
-  "pending": 9,
+  "auto": 76,
+  "ok": 182,
+  "pending": 0,
   "fix": 28,
-  "rejected": 13,
+  "rejected": 16,
   "unknown": 0
  },
  "items": [
@@ -6163,8 +6163,13 @@
    "kind": "answer",
    "question": "阿賀町で洪水の浸水想定区域に住み、自力で避難しにくいお年寄りが、避難のときに送迎や手助けを受けられる支援はあるか。申し込み方法、窓口の担当課、電話番号を、町の公式ページから答えて。",
    "why": "公開の資料で答えが見つからなかった（町の人に聞くことの候補）",
-   "status": "pending",
-   "score": null
+   "status": "rejected",
+   "score": 0,
+   "decided": {
+    "at": "2026-11-04T06:41:21.875Z",
+    "action": "reject",
+    "reason": "見つからなかった"
+   }
   },
   {
    "id": "r00390",
@@ -6190,8 +6195,13 @@
    "kind": "answer",
    "question": "この町の指定緊急避難場所の一覧は、どこで見られるか（公式のページか資料）。全部でいくつあるか",
    "why": "公開の資料で答えが見つからなかった（町の人に聞くことの候補）",
-   "status": "pending",
-   "score": null
+   "status": "rejected",
+   "score": 0,
+   "decided": {
+    "at": "2026-11-04T06:41:26.547Z",
+    "action": "reject",
+    "reason": "見つからなかった"
+   }
   },
   {
    "id": "r00392",
@@ -6226,21 +6236,6 @@
    }
   },
   {
-   "id": "r00395",
-   "scope": "muni:15385",
-   "scopeName": "新潟県 阿賀町",
-   "qid": "Q43",
-   "kind": "answer",
-   "question": "県警が出している防犯メールや不審者情報・犯罪の発生情報は、どうやって受け取れるか（メール・アプリの名前と登録の方法）。県警か町の公式のページから",
-   "why": "はじめて使う情報源（www.pref.niigata.lg.jp）。使ってよい範囲を人が確かめる",
-   "status": "pending",
-   "score": null,
-   "source": {
-    "title": "新潟県警察防犯アプリ「にいがたポリス」 - 新潟県ホームページ(新潟県警察)",
-    "url": "https://www.pref.niigata.lg.jp/site/kenkei/niigata-police.html"
-   }
-  },
-  {
    "id": "r00396",
    "scope": "muni:15385",
    "scopeName": "新潟県 阿賀町",
@@ -6248,8 +6243,13 @@
    "kind": "answer",
    "question": "買い物に行きにくい人のための手段（移動販売・宅配・買い物の送迎・買い物代行など）の案内はあるか。走る日や場所と、申し込み先",
    "why": "公開の資料で答えが見つからなかった（町の人に聞くことの候補）",
-   "status": "pending",
-   "score": null
+   "status": "rejected",
+   "score": 0,
+   "decided": {
+    "at": "2026-11-04T06:41:31.578Z",
+    "action": "reject",
+    "reason": "見つからなかった"
+   }
   },
   {
    "id": "r00397",
@@ -6275,11 +6275,16 @@
    "kind": "answer",
    "question": "AED（自動体外式除細動器）の設置場所の一覧は、どこで見られるか（町のページやオープンデータ）。一覧のファイル（CSV など）があれば、その場所",
    "why": "確かめ役：資料と合わない所がある（「令和2年11月版」の「令和2年」は資料に書かれておらず、ファイル名「202011」から換算した推測である）",
-   "status": "pending",
-   "score": null,
+   "status": "ok",
+   "score": 2,
    "source": {
     "title": "消防・防災｜阿賀町",
     "url": "https://www.town.aga.niigata.jp/kurashi_tetsuzuki/anzen_anshin/shobo_bosai/index.html"
+   },
+   "decided": {
+    "at": "2026-11-04T06:41:34.575Z",
+    "action": "ok",
+    "reason": ""
    }
   },
   {
@@ -6290,11 +6295,16 @@
    "kind": "answer",
    "question": "介護が必要になったとき、介護保険の「要介護認定」はどう申し込むか。申し込みの窓口と電話番号、必要なもの、認定が出るまでの流れはどこで案内されているか（町の公式のページか資料から）",
    "why": "確かめ役：資料と合わない所がある（「申請の窓口は、福祉介護課」は資料に明記されていない。資料にあるのは福祉介護課が問い合わせ先であることだけ。）",
-   "status": "pending",
-   "score": null,
+   "status": "ok",
+   "score": 2,
    "source": {
     "title": "要介護認定の申請について／阿賀町",
     "url": "https://www.town.aga.niigata.jp/kenko_iryo_fukushi/koreisha_kaigo/kaigo/572.html"
+   },
+   "decided": {
+    "at": "2026-11-04T06:41:37.030Z",
+    "action": "ok",
+    "reason": ""
    }
   },
   {
@@ -6304,12 +6314,17 @@
    "qid": "Q09",
    "kind": "answer",
    "question": "この町はどうやってできたか（合わさった町や村と、その年）",
-   "why": "Claude が返した元の文が、答えに使ったページの中に見つからなかった／はじめて使う情報源（www.pref.niigata.lg.jp）。使ってよい範囲を人が確かめる",
-   "status": "pending",
-   "score": null,
+   "why": "Claude が返した元の文が、答えに使ったページの中に見つからなかった",
+   "status": "ok",
+   "score": 2,
    "source": {
     "title": "東蒲原郡「阿賀町」の合併経過（新潟県）",
     "url": "https://www.pref.niigata.lg.jp/uploaded/attachment/92437.pdf"
+   },
+   "decided": {
+    "at": "2026-11-04T06:41:39.946Z",
+    "action": "ok",
+    "reason": ""
    }
   },
   {
@@ -6320,11 +6335,16 @@
    "kind": "answer",
    "question": "この町で毎年ひらかれる大きな催しや祭りは何か。時期と場所",
    "why": "確かめ役：資料と合わない所がある（5月3日の花嫁・花婿オーディションは、資料では「開催されました」と過去の出来事として書かれており、「あります」という現在・未来の表現は合いません。）",
-   "status": "pending",
-   "score": null,
+   "status": "ok",
+   "score": 3,
    "source": {
     "title": "第34回「つがわ狐の嫁入り行列」見どころ・駐車場マップについて|阿賀町",
     "url": "https://www.town.aga.niigata.jp/agamachi_soshiki/machizukuri_kanko/kanko_event/3207.html"
+   },
+   "decided": {
+    "at": "2026-11-04T06:41:41.780Z",
+    "action": "ok",
+    "reason": ""
    }
   },
   {
@@ -6335,11 +6355,35 @@
    "kind": "answer",
    "question": "この町が定めた町の花・町の木（あれば町の鳥も）は何か。定めた年と、載っている公式のページ",
    "why": "確かめ役：資料と合わない所がある（「制定した年は、公式のページでは確認できませんでした」は資料と合わない。PDFの記念誌（阿賀町町制施行20周年記念誌）の年表に「2006年（平成18年）2月 町の「花」「木」「鳥」制定」とあり、制定年は確認できる。）",
-   "status": "pending",
-   "score": null,
+   "status": "ok",
+   "score": 2,
    "source": {
     "title": "阿賀町の概要／阿賀町",
     "url": "https://www.town.aga.niigata.jp/agamachi_soshiki/soumu/agamachinitsuite/273.html"
+   },
+   "decided": {
+    "at": "2026-11-04T06:41:43.311Z",
+    "action": "ok",
+    "reason": ""
+   }
+  },
+  {
+   "id": "r00408",
+   "scope": "muni:15385",
+   "scopeName": "新潟県 阿賀町",
+   "kind": "dekiru",
+   "question": "町の数と、町の案内のつなぎ方は正しいか（その数の人に、その案内が合っているか）",
+   "why": "避難や暮らしの判断にひびくので、つなぎ方が合っているかと、引用の元の答えが今も正しいかを人が見る",
+   "status": "ok",
+   "score": 2,
+   "source": {
+    "title": "高齢者・介護（福祉介護課）",
+    "url": "https://www.town.aga.niigata.jp/agamachi_soshiki/fukushikaigo/koreisha_kaigo/index.html"
+   },
+   "decided": {
+    "at": "2026-11-04T06:41:44.948Z",
+    "action": "ok",
+    "reason": ""
    }
   }
  ]

@@ -3,7 +3,7 @@
  "name": "新潟県 阿賀町",
  "createdAt": "2026-11-04T06:32:05.992Z",
  "model": "claude-sonnet-5-5",
- "status": "pending",
+ "status": "ok",
  "ledgerId": "r00408",
  "links": [
   {
