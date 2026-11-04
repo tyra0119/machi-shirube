@@ -1393,7 +1393,7 @@
       "url": "https://www.town.oizumi.gunma.jp/s006/gyosei/010/020/170/oizumi949.pdf",
       "where": "福祉の記事「緊急通報装置」"
      },
-     "status": "pending",
+     "status": "ok",
      "problems": [
       "原文は「町」だが、訳文は「ciudad（市）」になっている。自治体の種類が違う。「などに」の訳に「lo necesiten（助けが必要な）」が足されている（小さな足し）。"
      ],
