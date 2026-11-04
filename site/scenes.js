@@ -51,7 +51,7 @@ async function sceneCard() {
     <div class="ans" id="ans"><p class="ak">${esc(hit.part)}の避難（町のページ）</p>
       <p class="at">${esc(hit.text).replace(/(\d[\d,]*)(人)/g, "<b>$1</b>$2")}</p>
       <span class="src">出典：${esc(cite.doc)} ${cite.page}ページ</span></div>`;
-  if (!q.has("nobadge")) $("badge").textContent = `${await townName()}の本物の答えと出典`;
+  // 隅の札は「演出（イメージ）」（作者「出す」）。数と文は本物のデータ
   await wait(300);
   $("doc").classList.add("on");
   caption("公式の資料", `${cite.doc.replace(/（.+?）/, "")}　${cite.page}ページ`);
@@ -79,7 +79,7 @@ async function sceneGrid() {
   $("stage").innerHTML = `<div class="gwrap"><div class="ghead"><span class="gt">${esc(name)}：物差しの ${qs.length} 問</span><span class="gc"><b id="gn">0</b> 問に、出典つきで答えた</span></div>
     <div class="grid">${qs.map((x) => `<div class="cell" data-q="${x.id}">${esc(x.short ?? "")}</div>`).join("")}</div>
     <div class="glegend"><span><i></i>出典つきで答えた</span><span><i class="n"></i>公式の資料に見つからなかった（町の人に聞きたいこと）</span></div></div>`;
-  if (!q.has("nobadge")) $("badge").textContent = `${name}の本物の答え`;
+
   caption("物差しで、町を調べる", `Claude が公式の資料を読み、${qs.length}の問いに答えていく`);
   await wait(1200);
   // 埋まる順は毎回同じ（録り直しても同じ絵に）
@@ -108,7 +108,7 @@ async function sceneNum() {
     src ??= `町の人の ${k?.rate}%。国勢調査の 250m 四方の人口 × ${kind}の想定から出した、めやすです`;
   }
   $("stage").innerHTML = `<div class="big" id="big"><div class="who">${esc(who ?? "")}</div><div class="v"><span id="vn">0</span><small>${esc(unit)}</small></div><div class="src">${esc(src ?? "")}</div></div>`;
-  $("badge").hidden = true;
+
   await wait(300);
   $("big").classList.add("on");
   await wait(600);
@@ -131,7 +131,7 @@ async function sceneBar() {
     <div class="bar"><i id="ba"></i><span>${esc(q.get("la") ?? "町の防災マップ")}</span><b id="na">0%</b></div>
     <div class="bar b"><i id="bb"></i><span>${esc(q.get("lb") ?? "まちしるべの訳を足すと")}</span><b id="nb">0%</b></div>
     <p class="src">${esc(q.get("src") ?? "母語は国籍から推し量ったもの（めやす）。町の国籍ごとの人数と、防災マップの言葉から")}</p></div>`;
-  $("badge").hidden = true;
+
   const grow = async (bar, num, v) => {
     await wait(200);
     $(bar).style.width = `${v}%`;

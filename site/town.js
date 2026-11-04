@@ -626,7 +626,11 @@ async function showHinan(code, townFeatures, startPart) {
   maps.push(map);
   // 地図のボタン：右下に縦に（方角・現在地・＋・−）。現在地はその場所から近い避難場所を出す
   const buttons = new MapButtons({ onNoLocation: (t) => ($("hinan-note").textContent = t) });
+  // 録画用：URL に ?here=経度,緯度 があれば、端末の現在地の代わりにその場所を使う（作者の家の近くが映らないよう、公共の場所を入れる。
+  // 例：黒潮町の大方クリニック（入野2016-1）&here=133.01135,33.02425）。ふだんの住む人の使い方では出てこない
+  const demoHere = (q.get("here") ?? "").split(",").map(Number);
   buttons.locate = () => {
+    if (demoHere.length === 2 && demoHere.every((v) => Number.isFinite(v) && v)) return setHere(demoHere, "現在地");
     if (!navigator.geolocation) return ($("hinan-note").textContent = "この端末では現在地が使えません");
     navigator.geolocation.getCurrentPosition(
       (pos) => setHere([pos.coords.longitude, pos.coords.latitude], "現在地"),
