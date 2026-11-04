@@ -1,7 +1,7 @@
 {
  "code": "10524",
  "name": "邑楽郡大泉町",
- "createdAt": "2026-11-03T12:07:08.278Z",
+ "createdAt": "2026-11-04T01:55:32.778Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
  "langs": {
@@ -621,6 +621,66 @@
      },
      "status": "auto",
      "problems": []
+    },
+    {
+     "qid": "Q59",
+     "short": "Objetos perdidos e esquecidos",
+     "text": "A delegacia de polícia responsável por Oizumi é a Delegacia de Polícia de Oizumi (大泉警察署).\nO telefone é 0276-62-0110.\nO endereço é 邑楽郡大泉町朝日2-27-1.\nPara notificar ou procurar um objeto perdido, acesse a página \"Notificação e busca de objetos perdidos\" (落とし物の届出・検索) da Agência Nacional de Polícia (警察庁). Dela, você pode ir para a página da Polícia da Província de Gunma (群馬県警).\nOs locais de entrega da prefeitura, das estações e das empresas de ônibus não foram confirmados nos documentos oficiais.",
+     "original": "大泉町を受け持つ警察署は大泉警察署です。\n電話は 0276-62-0110 です。\n所在地は 邑楽郡大泉町朝日2-27-1 です。\n落とし物の届出・検索は、警察庁の「落とし物の届出・検索」ページから群馬県警のページに進めます。\n役所や駅・バス会社の届け先は、公式資料では確認できていません。",
+     "back": "大泉町を担当する警察署は大泉警察署です。電話は0276-62-0110です。所在地は邑楽郡大泉町朝日2-27-1です。落とし物の届出・検索は、警察庁の「落とし物の届出・検索」ページから群馬県警のページに進めます。役所や駅・バス会社の届け先は、公式資料では確認できていません。",
+     "source": {
+      "title": "群馬県警察本部・警察署一覧（総務省）",
+      "url": "https://www.soumu.go.jp/main_content/000612577.pdf",
+      "where": "群馬県警察本部・警察署一覧 大泉警察署の欄"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q61",
+     "short": "Vagas em creches (hoikusho) e em centros de educação infantil certificados (nintei kodomoen)",
+     "text": "Não foi possível encontrar, no site oficial da cidade, uma página com a situação das vagas. Por isso, não se sabe onde ela pode ser consultada nem quando é atualizada.\nSe quiser saber sobre vagas, consulte a Divisão de Educação e Creches (教育保育課).\nO balcão para os pedidos de matrícula é o da Divisão de Educação e Creches (教育保育課), do Departamento de Educação (教育部), no balcão nº 107 do 1º andar da Prefeitura de Oizumi (大泉町役場).\nO telefone é 0276-63-3111.\nPara creches, para a parte de creche (certificação nº 2 e nº 3) dos centros de educação infantil certificados e para creches de pequeno porte, o pedido deve ser feito à Divisão de Educação e Creches (教育保育課).\nMesmo para quem deseja uma instituição fora da cidade, o pedido também é feito à Divisão de Educação e Creches (教育保育課).\nPara jardins de infância (yochien) e para a certificação nº 1 dos centros de educação infantil certificados, o pedido é feito diretamente em cada instituição.\nO prazo para pedidos durante o ano letivo é o dia 10 do mês anterior ao mês em que se deseja a matrícula.",
+     "original": "空き状況を載せたページは、町の公式サイトでは確認できませんでした。そのため、見られる場所と更新の時期は分かりません。\n空きを知りたいときは、教育保育課に問い合わせてください。\n入園申込みの窓口は、大泉町役場 庁舎1階107番窓口の教育部 教育保育課です。\n電話は 0276-63-3111 です。\n保育所・認定こども園の保育部分（2・3号認定）・小規模保育は、どれも教育保育課への申込みが必要です。\n町外の施設を希望する場合も、申込み先は教育保育課です。\n幼稚園と認定こども園の1号認定は、各施設に直接申し込みます。\n年度途中の申込みの締切は、入園希望月の前月10日です。",
+     "back": "町の公式サイトでは、空き状況を載せたページは確認できませんでした。そのため、見られる場所と更新の時期は分かりません。空きを知りたいときは、教育保育課に問い合わせてください。入園申込みの窓口は、大泉町役場庁舎1階107番窓口の教育部教育保育課です。電話は0276-63-3111です。保育所・認定こども園の保育部分（2・3号認定）・小規模保育は、どれも教育保育課への申込みが必要です。町外の施設を希望する場合も、申込み先は教育保育課です。幼稚園と認定こども園の1号認定は、各施設に直接申し込みます。年度途中の申込みの締切は、入園希望月の前月10日です。",
+     "source": {
+      "title": "保育施設の入園申込み｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s030/kosodate/010/010/090/20200826152923.html",
+      "where": "「保育施設」の項"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q57",
+     "short": "Consultas sobre ninhos de vespas e outros animais",
+     "text": "Para a remoção de ninhos de vespão (suzumebachi), a cidade oferece um subsídio.\nSão elegíveis as remoções feitas a partir de 1º de abril do ano Reiwa 2 (2020).\nTerrenos e edifícios de uso comercial não são elegíveis.\nO pedido deve ser entregue à Divisão de Gestão Ambiental (環境整備課) em até 30 dias a partir da data do recibo.\nComo empresas de remoção na cidade, constam a Chichibu Kensetsu Co., Ltd. (株式会社秩父建設, 0276-63-5161) e a Buddy LLC (合同会社バディ, 0276-62-5379).\nO setor responsável é a Divisão de Gestão Ambiental (環境整備課), do Departamento de Urbanismo e Construção (都市建設部). O telefone é 0276-63-3111 (balcão nº 108 do 1º andar da prefeitura).\nA porcentagem do subsídio e o valor máximo não puderam ser confirmados.\nTambém não foi possível confirmar onde consultar sobre cobras, corvos, guaxinins e civetas (hakubishin).",
+     "original": "スズメバチの巣の駆除には、町の補助金があります。\n対象は令和2年4月1日以降に駆除したものです。\n事業用の土地や建物は対象外です。\n申請は、領収書の日から30日以内に環境整備課へ出します。\n町内の駆除業者として、株式会社秩父建設（0276-63-5161）と合同会社バディ（0276-62-5379）が載っています。\n担当は都市建設部 環境整備課で、電話は0276-63-3111（庁舎1階108番窓口）です。\n補助の割合と上限額は、確かめられませんでした。\nヘビ・カラス・アライグマ・ハクビシンの相談先は、確かめられませんでした。",
+     "back": "スズメバチの巣の駆除には、町の補助金があります。対象は令和2年（2020年）4月1日以降に駆除したものです。事業用の土地や建物は対象外です。申請は、領収書の日から30日以内に環境整備課へ出します。町内の駆除業者として、株式会社秩父建設（0276-63-5161）と合同会社バディ（0276-62-5379）が載っています。担当は都市建設部環境整備課で、電話は0276-63-3111（庁舎1階108番窓口）です。補助の割合と上限額は確かめられませんでした。ヘビ・カラス・アライグマ・ハクビシンの相談先は確かめられませんでした。",
+     "source": {
+      "title": "スズメバチの巣の駆除｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s024/kurashi/030/030/010/20200728214344.html",
+      "where": "スズメバチの巣駆除費補助金／駆除業者／問い合わせ先"
+     },
+     "status": "auto",
+     "problems": [
+      "「令和2年」に西暦「2020」を添えている。年の換算として正しく、日付の意味は変わらない。"
+     ]
+    },
+    {
+     "qid": "Q60",
+     "short": "Exames de saúde de bebês e crianças pequenas e aulas para bebês",
+     "text": "Se você não puder comparecer a um exame de saúde de bebês e crianças pequenas, entre em contato com a Divisão Futuro das Crianças (こども未来課).\nO telefone é 0276-63-3111 e o balcão é o nº 106 do 1º andar da prefeitura.\nO \"Divisão de Promoção da Saúde (健康づくり課) 0276-62-2121\" constava em uma página antiga do exame de saúde de 1 ano e 6 meses.\nO exame de saúde de 5 anos segue o calendário do ano Reiwa 8 (2026) e é realizado às quartas-feiras no Centro Geral de Saúde e Bem-Estar (保健福祉総合センター).\nAs pessoas elegíveis recebem um aviso com antecedência.\nA página mais recente do exame de saúde de 1 ano e 6 meses não pôde ser obtida e, por isso, não foi confirmada.\nAs datas e os locais dos exames de 4 meses, 7 meses e 3 anos, bem como as informações sobre as aulas para bebês, as aulas de introdução alimentar e as aulas para casais grávidos (ryoshin gakkyu), não foram confirmados.",
+     "original": "乳幼児健診で都合が悪いときの連絡先は、こども未来課です。\n電話は0276-63-3111、窓口は庁舎1階106番です。\n「健康づくり課 0276-62-2121」は古い1歳6か月児健診ページの記載でした。\n5歳児健診は令和8年度の日程で、水曜日に保健福祉総合センターで行います。\n対象の方には事前に通知が届きます。\n1歳6か月児健診の最新ページは、取得できず確認できていません。\n4か月・7か月・3歳の日程と会場、赤ちゃんの教室・離乳食の教室・両親学級の案内は確認できていません。",
+     "back": "乳幼児健診で都合が悪いときの連絡先は、こども未来課です。電話は0276-63-3111、窓口は庁舎1階106番です。「健康づくり課 0276-62-2121」は、古い1歳6か月児健診ページの記載でした。5歳児健診は令和8年度（2026年）の日程で、水曜日に保健福祉総合センターで行います。対象の方には事前に通知が届きます。1歳6か月児健診の最新ページは取得できず、確認できていません。4か月・7か月・3歳の日程と会場、赤ちゃんの教室・離乳食の教室・妊娠中の夫婦向けの教室（両親学級）の案内は、確認できていません。",
+     "source": {
+      "title": "5歳児健康診査｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s042/04/030/010/20200814201224.html",
+      "where": "「このページに関する問い合わせ先」・「日程」"
+     },
+     "status": "auto",
+     "problems": [
+      "「両親学級」を「casais grávidos（妊娠中の夫婦）」と訳している。両親学級は主に妊婦とその配偶者向けなので実質的には同じだが、訳語としては少しずれている。「令和8年度（2026年）」の西暦補足も、年の換算として正しい。"
+     ]
     }
    ]
   },
@@ -1244,6 +1304,64 @@
       "title": "飼い犬・飼い猫が迷子になってしまったとき｜大泉町",
       "url": "https://www.town.oizumi.gunma.jp/s024/kurashi/020/110/20200727195400.html",
       "where": "本文冒頭、「動物愛護センターなどでの保護情報」"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q59",
+     "short": "Objetos perdidos y olvidados",
+     "text": "La comisaría que atiende Oizumi es la Comisaría de Oizumi (大泉警察署).\nSu teléfono es 0276-62-0110.\nSu dirección es 邑楽郡大泉町朝日2-27-1.\nPara declarar o buscar un objeto perdido, desde la página \"落とし物の届出・検索\" de la Agencia Nacional de Policía (警察庁) se puede pasar a la página de la Policía de la Prefectura de Gunma (群馬県警).\nLos lugares de entrega del Ayuntamiento, de las estaciones y de las empresas de autobús no se han podido confirmar en los documentos oficiales.",
+     "original": "大泉町を受け持つ警察署は大泉警察署です。\n電話は 0276-62-0110 です。\n所在地は 邑楽郡大泉町朝日2-27-1 です。\n落とし物の届出・検索は、警察庁の「落とし物の届出・検索」ページから群馬県警のページに進めます。\n役所や駅・バス会社の届け先は、公式資料では確認できていません。",
+     "back": "大泉町を受け持つ警察署は大泉警察署です。電話は0276-62-0110です。所在地は邑楽郡大泉町朝日2-27-1です。落とし物の届出・検索は、警察庁の「落とし物の届出・検索」ページから群馬県警のページに進めます。役所や駅・バス会社の届け先は、公式資料では確認できていません。",
+     "source": {
+      "title": "群馬県警察本部・警察署一覧（総務省）",
+      "url": "https://www.soumu.go.jp/main_content/000612577.pdf",
+      "where": "群馬県警察本部・警察署一覧 大泉警察署の欄"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q61",
+     "short": "Plazas libres en guarderías y centros certificados de educación infantil",
+     "text": "No se encontró en el sitio web oficial de la ciudad ninguna página con la situación de plazas libres. Por eso no se sabe dónde se puede consultar ni cuándo se actualiza.\nSi quiere saber si hay plazas libres, consulte a la Sección de Educación y Cuidado Infantil (教育保育課).\nLa ventanilla para solicitar el ingreso es la Sección de Educación y Cuidado Infantil (教育保育課) del Departamento de Educación (教育部), en la ventanilla n.º 107 del primer piso del Ayuntamiento de Oizumi (大泉町役場).\nEl teléfono es 0276-63-3111.\nPara las guarderías, la parte de cuidado infantil de los centros certificados de educación infantil (認定こども園) (certificación tipo 2 y 3) y el cuidado infantil a pequeña escala, en todos los casos hay que presentar la solicitud en la Sección de Educación y Cuidado Infantil (教育保育課).\nSi desea un centro fuera de la ciudad, la solicitud también se presenta en la Sección de Educación y Cuidado Infantil (教育保育課).\nPara los jardines de infancia (幼稚園) y la certificación tipo 1 de los centros certificados de educación infantil (認定こども園), la solicitud se hace directamente en cada centro.\nPara solicitudes durante el año escolar, el plazo es el día 10 del mes anterior al mes en que se desea ingresar.",
+     "original": "空き状況を載せたページは、町の公式サイトでは確認できませんでした。そのため、見られる場所と更新の時期は分かりません。\n空きを知りたいときは、教育保育課に問い合わせてください。\n入園申込みの窓口は、大泉町役場 庁舎1階107番窓口の教育部 教育保育課です。\n電話は 0276-63-3111 です。\n保育所・認定こども園の保育部分（2・3号認定）・小規模保育は、どれも教育保育課への申込みが必要です。\n町外の施設を希望する場合も、申込み先は教育保育課です。\n幼稚園と認定こども園の1号認定は、各施設に直接申し込みます。\n年度途中の申込みの締切は、入園希望月の前月10日です。",
+     "back": "空き状況を載せたページは、町の公式サイトでは確認できませんでした。そのため、見られる場所と更新の時期は分かりません。空きを知りたいときは、教育保育課に問い合わせてください。入園申込みの窓口は、大泉町役場の1階107番窓口にある教育部教育保育課です。電話は0276-63-3111です。保育所・認定こども園の保育部分（2・3号認定）・小規模保育は、どれも教育保育課への申込みが必要です。町外の施設を希望する場合も、申込み先は教育保育課です。幼稚園と認定こども園の1号認定は、各施設に直接申し込みます。年度途中の申込みの締切は、入園希望月の前月10日です。",
+     "source": {
+      "title": "保育施設の入園申込み｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s030/kosodate/010/010/090/20200826152923.html",
+      "where": "「保育施設」の項"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q57",
+     "short": "Consultas sobre nidos de avispas y otros animales",
+     "text": "Para la eliminación de nidos de avispón (スズメバチ) hay una subvención de la ciudad.\nSe aplica a las eliminaciones realizadas a partir del 1 de abril de Reiwa 2 (2020).\nLos terrenos y edificios de uso comercial no están incluidos.\nLa solicitud se presenta en la Sección de Mejora Ambiental (環境整備課) dentro de los 30 días desde la fecha del recibo.\nComo empresas de eliminación dentro de la ciudad figuran 株式会社秩父建設 (0276-63-5161) y 合同会社バディ (0276-62-5379).\nLa sección responsable es la Sección de Mejora Ambiental (環境整備課) del Departamento de Urbanismo y Construcción (都市建設部), teléfono 0276-63-3111 (ventanilla n.º 108 del primer piso del Ayuntamiento, 庁舎1階108番窓口).\nNo se pudo confirmar el porcentaje de la subvención ni el importe máximo.\nNo se pudo confirmar a dónde dirigirse para consultas sobre serpientes, cuervos, mapaches (アライグマ) y civetas (ハクビシン).",
+     "original": "スズメバチの巣の駆除には、町の補助金があります。\n対象は令和2年4月1日以降に駆除したものです。\n事業用の土地や建物は対象外です。\n申請は、領収書の日から30日以内に環境整備課へ出します。\n町内の駆除業者として、株式会社秩父建設（0276-63-5161）と合同会社バディ（0276-62-5379）が載っています。\n担当は都市建設部 環境整備課で、電話は0276-63-3111（庁舎1階108番窓口）です。\n補助の割合と上限額は、確かめられませんでした。\nヘビ・カラス・アライグマ・ハクビシンの相談先は、確かめられませんでした。",
+     "back": "スズメバチの巣の駆除には、町の補助金があります。対象は令和2年4月1日以降に駆除したものです。事業用の土地や建物は対象外です。申請は、領収書の日から30日以内に環境整備課へ出します。町内の駆除業者として、株式会社秩父建設（0276-63-5161）と合同会社バディ（0276-62-5379）が載っています。担当は都市建設部環境整備課で、電話は0276-63-3111（庁舎1階108番窓口）です。補助の割合と上限額は、確かめられませんでした。ヘビ・カラス・アライグマ・ハクビシンの相談先は、確かめられませんでした。",
+     "source": {
+      "title": "スズメバチの巣の駆除｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s024/kurashi/030/030/010/20200728214344.html",
+      "where": "スズメバチの巣駆除費補助金／駆除業者／問い合わせ先"
+     },
+     "status": "auto",
+     "problems": [
+      "「令和2年4月1日」に西暦「2020」を括弧で補っている。換算として正しく内容は変わらないが、原文にない追記。"
+     ]
+    },
+    {
+     "qid": "Q60",
+     "short": "Chequeos de bebés y niños pequeños y clases para bebés",
+     "text": "Si no puede asistir a un chequeo de bebés y niños pequeños, el contacto es la Sección Futuro de la Infancia (こども未来課).\nEl teléfono es 0276-63-3111 y la ventanilla es la n.º 106 del primer piso del Ayuntamiento.\n\"Sección de Promoción de la Salud (健康づくり課) 0276-62-2121\" era lo que figuraba en una página antigua del chequeo de 1 año y 6 meses.\nEl chequeo de los 5 años corresponde al calendario del año fiscal Reiwa 8 (2026) y se realiza los miércoles en el Centro Integral de Salud y Bienestar (保健福祉総合センター).\nA las personas que corresponda se les enviará un aviso con anticipación.\nNo se pudo obtener la página más reciente del chequeo de 1 año y 6 meses, por lo que no se ha podido confirmar.\nNo se han podido confirmar las fechas y los lugares de los chequeos de 4 meses, 7 meses y 3 años, ni la información sobre las clases para bebés, las clases de alimentación complementaria y las clases para padres.",
+     "original": "乳幼児健診で都合が悪いときの連絡先は、こども未来課です。\n電話は0276-63-3111、窓口は庁舎1階106番です。\n「健康づくり課 0276-62-2121」は古い1歳6か月児健診ページの記載でした。\n5歳児健診は令和8年度の日程で、水曜日に保健福祉総合センターで行います。\n対象の方には事前に通知が届きます。\n1歳6か月児健診の最新ページは、取得できず確認できていません。\n4か月・7か月・3歳の日程と会場、赤ちゃんの教室・離乳食の教室・両親学級の案内は確認できていません。",
+     "back": "乳幼児健診で都合が悪いときの連絡先は、こども未来課です。電話は0276-63-3111、窓口は庁舎1階106番です。「健康づくり課 0276-62-2121」は古い1歳6か月児健診ページの記載でした。5歳児健診は令和8年度の日程で、水曜日に保健福祉総合センターで行います。対象の方には事前に通知が届きます。1歳6か月児健診の最新ページは、取得できず確認できていません。4か月・7か月・3歳の日程と会場、赤ちゃんの教室・離乳食の教室・両親学級の案内は確認できていません。",
+     "source": {
+      "title": "5歳児健康診査｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s042/04/030/010/20200814201224.html",
+      "where": "「このページに関する問い合わせ先」・「日程」"
      },
      "status": "auto",
      "problems": []
@@ -1877,6 +1995,66 @@
      },
      "status": "auto",
      "problems": []
+    },
+    {
+     "qid": "Q59",
+     "short": "Lost and Found",
+     "text": "The police station responsible for Oizumi Town is the Oizumi Police Station (大泉警察署).\nPhone: 0276-62-0110.\nAddress: 2-27-1 Asahi, Oizumi-machi, Oura-gun (邑楽郡大泉町朝日2-27-1).\nTo report or search for a lost item, go to the National Police Agency's \"落とし物の届出・検索\" (report and search for lost items) page. From there you can proceed to the Gunma Prefectural Police page.\nWhere to report at the town office, train stations, or bus companies could not be confirmed in official materials.",
+     "original": "大泉町を受け持つ警察署は大泉警察署です。\n電話は 0276-62-0110 です。\n所在地は 邑楽郡大泉町朝日2-27-1 です。\n落とし物の届出・検索は、警察庁の「落とし物の届出・検索」ページから群馬県警のページに進めます。\n役所や駅・バス会社の届け先は、公式資料では確認できていません。",
+     "back": "大泉町を受け持つ警察署は大泉警察署です。電話は0276-62-0110です。所在地は邑楽郡大泉町朝日2-27-1です。落とし物の届出・検索は、警察庁の「落とし物の届出・検索」ページから群馬県警のページに進めます。役所や駅・バス会社の届け先は、公式資料では確認できていません。",
+     "source": {
+      "title": "群馬県警察本部・警察署一覧（総務省）",
+      "url": "https://www.soumu.go.jp/main_content/000612577.pdf",
+      "where": "群馬県警察本部・警察署一覧 大泉警察署の欄"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q61",
+     "short": "Vacancies at Nursery Schools and Certified Centers for Early Childhood Education and Care",
+     "text": "We could not find a page showing vacancy information on the town's official website, so we do not know where it can be viewed or when it is updated.\nIf you want to know about vacancies, please contact the Education and Childcare Division (教育保育課).\nThe counter for enrollment applications is the Education and Childcare Division (教育保育課), Education Department (教育部), at Counter 107 on the 1st floor of the Oizumi Town Hall (大泉町役場).\nPhone: 0276-63-3111.\nFor nursery schools, the childcare part of certified centers for early childhood education and care (Type 2 and Type 3 certification), and small-scale childcare, you must apply through the Education and Childcare Division (教育保育課).\nIf you want a facility outside the town, you also apply through the Education and Childcare Division (教育保育課).\nFor kindergartens and Type 1 certification at certified centers for early childhood education and care, you apply directly to each facility.\nFor applications during the school year, the deadline is the 10th of the month before the month you want to enroll.",
+     "original": "空き状況を載せたページは、町の公式サイトでは確認できませんでした。そのため、見られる場所と更新の時期は分かりません。\n空きを知りたいときは、教育保育課に問い合わせてください。\n入園申込みの窓口は、大泉町役場 庁舎1階107番窓口の教育部 教育保育課です。\n電話は 0276-63-3111 です。\n保育所・認定こども園の保育部分（2・3号認定）・小規模保育は、どれも教育保育課への申込みが必要です。\n町外の施設を希望する場合も、申込み先は教育保育課です。\n幼稚園と認定こども園の1号認定は、各施設に直接申し込みます。\n年度途中の申込みの締切は、入園希望月の前月10日です。",
+     "back": "町の公式サイトでは、空き状況を載せたページは確認できませんでした。そのため、見られる場所と更新の時期は分かりません。空きを知りたいときは、教育保育課に問い合わせてください。入園申込みの窓口は、大泉町役場庁舎1階107番窓口の教育部教育保育課です。電話は0276-63-3111です。保育所・認定こども園の保育部分（2・3号認定）・小規模保育は、どれも教育保育課への申込みが必要です。町外の施設を希望する場合も、申込み先は教育保育課です。幼稚園と認定こども園の1号認定は、各施設に直接申し込みます。年度途中の申込みの締切は、入園希望月の前月10日です。",
+     "source": {
+      "title": "保育施設の入園申込み｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s030/kosodate/010/010/090/20200826152923.html",
+      "where": "「保育施設」の項"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q57",
+     "short": "Consultation on Wasp Nests and Other Animals",
+     "text": "The town has a subsidy for removing hornet nests.\nIt applies to removals done on or after April 1, Reiwa 2 (2020).\nLand and buildings used for business are not eligible.\nSubmit your application to the Environmental Improvement Division (環境整備課) within 30 days of the date on the receipt.\nTwo removal companies in the town are listed: Chichibu Kensetsu Co., Ltd. (株式会社秩父建設) (0276-63-5161) and Buddy LLC (合同会社バディ) (0276-62-5379).\nThe department in charge is the Environmental Improvement Division (環境整備課), Urban Construction Department (都市建設部). Phone: 0276-63-3111 (Counter 108, 1st floor of the town hall).\nThe subsidy rate and the maximum amount could not be confirmed.\nWhere to consult about snakes, crows, raccoons, and masked palm civets (hakubishin) could not be confirmed.",
+     "original": "スズメバチの巣の駆除には、町の補助金があります。\n対象は令和2年4月1日以降に駆除したものです。\n事業用の土地や建物は対象外です。\n申請は、領収書の日から30日以内に環境整備課へ出します。\n町内の駆除業者として、株式会社秩父建設（0276-63-5161）と合同会社バディ（0276-62-5379）が載っています。\n担当は都市建設部 環境整備課で、電話は0276-63-3111（庁舎1階108番窓口）です。\n補助の割合と上限額は、確かめられませんでした。\nヘビ・カラス・アライグマ・ハクビシンの相談先は、確かめられませんでした。",
+     "back": "スズメバチの巣の駆除には、町の補助金があります。対象は令和2年（2020年）4月1日以降に駆除したものです。事業用の土地や建物は対象外です。申請は、領収書の日から30日以内に環境整備課へ出します。町内の駆除業者として、株式会社秩父建設（0276-63-5161）と合同会社バディ（0276-62-5379）が載っています。担当は都市建設部環境整備課で、電話は0276-63-3111（庁舎1階108番窓口）です。補助の割合と上限額は、確かめられませんでした。ヘビ・カラス・アライグマ・ハクビシンの相談先は、確かめられませんでした。",
+     "source": {
+      "title": "スズメバチの巣の駆除｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s024/kurashi/030/030/010/20200728214344.html",
+      "where": "スズメバチの巣駆除費補助金／駆除業者／問い合わせ先"
+     },
+     "status": "auto",
+     "problems": [
+      "「令和2年」に「2020年」という西暦の注記が足されているが、同じ年を指すので意味は変わらない。"
+     ]
+    },
+    {
+     "qid": "Q60",
+     "short": "Infant Health Checkups and Classes for Babies",
+     "text": "If you cannot attend an infant health checkup, contact the Children's Future Division (こども未来課).\nPhone: 0276-63-3111. The counter is Counter 106 on the 1st floor.\n\"Health Promotion Division (健康づくり課) 0276-62-2121\" was the contact listed on an old page for the 1-year-6-month checkup.\nThe 5-year-old checkup follows the Reiwa 8 (2026) fiscal year schedule and is held on Wednesdays at the Health and Welfare General Center (保健福祉総合センター).\nEligible families will receive a notice in advance.\nThe latest page for the 1-year-6-month checkup could not be retrieved and has not been confirmed.\nThe schedules and venues for the 4-month, 7-month, and 3-year-old checkups, and information on classes for babies, weaning food classes, and parent classes, have not been confirmed.",
+     "original": "乳幼児健診で都合が悪いときの連絡先は、こども未来課です。\n電話は0276-63-3111、窓口は庁舎1階106番です。\n「健康づくり課 0276-62-2121」は古い1歳6か月児健診ページの記載でした。\n5歳児健診は令和8年度の日程で、水曜日に保健福祉総合センターで行います。\n対象の方には事前に通知が届きます。\n1歳6か月児健診の最新ページは、取得できず確認できていません。\n4か月・7か月・3歳の日程と会場、赤ちゃんの教室・離乳食の教室・両親学級の案内は確認できていません。",
+     "back": "乳幼児健診で都合が悪いときの連絡先は、こども未来課です。電話は0276-63-3111、窓口は庁舎1階106番です。「健康づくり課 0276-62-2121」は古い1歳6か月児健診ページの記載でした。5歳児健診は令和8年（2026年）度の日程で、水曜日に保健福祉総合センターで行います。対象の方には事前に通知が届きます。1歳6か月児健診の最新ページは、取得できず確認できていません。4か月・7か月・3歳の日程と会場、赤ちゃんの教室・離乳食の教室・両親学級の案内は確認できていません。",
+     "source": {
+      "title": "5歳児健康診査｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s042/04/030/010/20200814201224.html",
+      "where": "「このページに関する問い合わせ先」・「日程」"
+     },
+     "status": "auto",
+     "problems": [
+      "「令和8年度」に「2026」という西暦の注記が足されているが、同じ年を指すので意味は変わらない。"
+     ]
     }
    ]
   },
@@ -2508,6 +2686,62 @@
      "problems": [
       "「一定期間収容されます」が「決まった期間あずかります」になっており、「収容（保護して入れておく）」の強さが弱まっている。「あずかる」より「収容」を使うほうが原文に近い。"
      ]
+    },
+    {
+     "qid": "Q59",
+     "short": "落（お）とし物（もの）・忘（わす）れ物（もの）",
+     "text": "大泉町（おおいずみまち）の警察署（けいさつしょ）は、大泉警察署（おおいずみけいさつしょ）です。\n電話（でんわ）は 0276-62-0110 です。\n場所（ばしょ）は、邑楽郡大泉町朝日（おうらぐん おおいずみまち あさひ）2-27-1 です。\n落とし物を届（とど）けるときや探（さが）すときは、警察庁（けいさつちょう）の「落とし物の届出・検索」のページを開（ひら）いてください。そこから群馬県警（ぐんまけんけい）のページに進（すす）めます。\n役所（やくしょ）、駅（えき）、バス会社（がいしゃ）の届け先（さき）は、公式（こうしき）の資料（しりょう）では確認（かくにん）できていません。",
+     "original": "大泉町を受け持つ警察署は大泉警察署です。\n電話は 0276-62-0110 です。\n所在地は 邑楽郡大泉町朝日2-27-1 です。\n落とし物の届出・検索は、警察庁の「落とし物の届出・検索」ページから群馬県警のページに進めます。\n役所や駅・バス会社の届け先は、公式資料では確認できていません。",
+     "back": "大泉町を受け持つ警察署は大泉警察署です。電話は 0276-62-0110 です。所在地は邑楽郡大泉町朝日2-27-1 です。落とし物の届出・検索は、警察庁の「落とし物の届出・検索」ページから群馬県警のページに進めます。役所や駅・バス会社の届け先は、公式資料では確認できていません。",
+     "source": {
+      "title": "群馬県警察本部・警察署一覧（総務省）",
+      "url": "https://www.soumu.go.jp/main_content/000612577.pdf",
+      "where": "群馬県警察本部・警察署一覧 大泉警察署の欄"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q61",
+     "short": "保育所（ほいくしょ）・認定（にんてい）こども園（えん）の空（あ）き",
+     "text": "空き状況（じょうきょう）をのせたページは、町の公式サイトでは確認できませんでした。だから、どこで見られるか、いつ新しくなるかは分かりません。\n空きを知りたいときは、教育保育課（きょういくほいくか）に聞いてください。\n入園（にゅうえん）の申込（もうしこ）みの窓口（まどぐち）は、大泉町役場（おおいずみまちやくば）庁舎（ちょうしゃ）1階（かい）107番（ばん）窓口の、教育部（きょういくぶ）教育保育課です。\n電話は 0276-63-3111 です。\n保育所と、認定こども園の保育部分（ほいくぶぶん）（2・3号認定（ごうにんてい））と、小規模保育（しょうきぼほいく）は、どれも教育保育課に申し込む必要（ひつよう）があります。\n町の外の施設（しせつ）を希望（きぼう）するときも、申込み先は教育保育課です。\n幼稚園（ようちえん）と、認定こども園の1号認定（ごうにんてい）は、それぞれの施設に直接（ちょくせつ）申し込みます。\n年度（ねんど）の途中（とちゅう）で申し込むときの締切（しめきり）は、入園したい月の前の月の10日です。",
+     "original": "空き状況を載せたページは、町の公式サイトでは確認できませんでした。そのため、見られる場所と更新の時期は分かりません。\n空きを知りたいときは、教育保育課に問い合わせてください。\n入園申込みの窓口は、大泉町役場 庁舎1階107番窓口の教育部 教育保育課です。\n電話は 0276-63-3111 です。\n保育所・認定こども園の保育部分（2・3号認定）・小規模保育は、どれも教育保育課への申込みが必要です。\n町外の施設を希望する場合も、申込み先は教育保育課です。\n幼稚園と認定こども園の1号認定は、各施設に直接申し込みます。\n年度途中の申込みの締切は、入園希望月の前月10日です。",
+     "back": "空き状況を載せたページは、町の公式サイトでは確認できませんでした。だから、どこで見られるか、いつ新しくなるかは分かりません。空きを知りたいときは、教育保育課に聞いてください。入園の申込みの窓口は、大泉町役場庁舎1階107番窓口の、教育部教育保育課です。電話は 0276-63-3111 です。保育所と、認定こども園の保育部分（2・3号認定）と、小規模保育は、どれも教育保育課に申し込む必要があります。町の外の施設を希望するときも、申込み先は教育保育課です。幼稚園と、認定こども園の1号認定は、それぞれの施設に直接申し込みます。年度の途中で申し込むときの締切は、入園したい月の前の月の10日です。",
+     "source": {
+      "title": "保育施設の入園申込み｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s030/kosodate/010/010/090/20200826152923.html",
+      "where": "「保育施設」の項"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q57",
+     "short": "ハチの巣（す）など生（い）き物（もの）の相談（そうだん）",
+     "text": "スズメバチの巣（す）を駆除（くじょ）（とってなくすこと）するときは、町の補助金（ほじょきん）があります。\n対象（たいしょう）は、令和（れいわ）2年4月1日かそれより後（あと）に駆除したものです。\n事業（じぎょう）に使う土地（とち）や建物（たてもの）は、対象になりません。\n申請（しんせい）は、領収書（りょうしゅうしょ）の日から30日以内（いない）に、環境整備課（かんきょうせいびか）に出（だ）してください。\n町の中の駆除業者（くじょぎょうしゃ）として、株式会社秩父建設（かぶしきがいしゃ ちちぶけんせつ）（0276-63-5161）と合同会社（ごうどうがいしゃ）バディ（0276-62-5379）がのっています。\n担当（たんとう）は都市建設部（としけんせつぶ）環境整備課で、電話は 0276-63-3111（庁舎1階108番窓口）です。\n補助の割合（わりあい）と上限額（じょうげんがく）は、確（たし）かめられませんでした。\nヘビ・カラス・アライグマ・ハクビシンの相談先（そうだんさき）は、確かめられませんでした。",
+     "original": "スズメバチの巣の駆除には、町の補助金があります。\n対象は令和2年4月1日以降に駆除したものです。\n事業用の土地や建物は対象外です。\n申請は、領収書の日から30日以内に環境整備課へ出します。\n町内の駆除業者として、株式会社秩父建設（0276-63-5161）と合同会社バディ（0276-62-5379）が載っています。\n担当は都市建設部 環境整備課で、電話は0276-63-3111（庁舎1階108番窓口）です。\n補助の割合と上限額は、確かめられませんでした。\nヘビ・カラス・アライグマ・ハクビシンの相談先は、確かめられませんでした。",
+     "back": "スズメバチの巣の駆除には、町の補助金があります。対象は令和2年4月1日かそれより後に駆除したものです。事業に使う土地や建物は対象外です。申請は、領収書の日から30日以内に環境整備課に出してください。町の中の駆除業者として、株式会社秩父建設（0276-63-5161）と合同会社バディ（0276-62-5379）がのっています。担当は都市建設部環境整備課で、電話は0276-63-3111（庁舎1階108番窓口）です。補助の割合と上限額は、確かめられませんでした。ヘビ・カラス・アライグマ・ハクビシンの相談先は、確かめられませんでした。",
+     "source": {
+      "title": "スズメバチの巣の駆除｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s024/kurashi/030/030/010/20200728214344.html",
+      "where": "スズメバチの巣駆除費補助金／駆除業者／問い合わせ先"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q60",
+     "short": "乳幼児健診（にゅうようじけんしん）・赤（あか）ちゃんの教室（きょうしつ）",
+     "text": "乳幼児健診で都合（つごう）が悪（わる）いときの連絡先（れんらくさき）は、こども未来課（みらいか）です。\n電話は 0276-63-3111、窓口は庁舎1階106番です。\n「健康（けんこう）づくり課 0276-62-2121」は、古い1歳6か月児健診のページに書（か）いてあったものです。\n5歳児健診は令和8年度の日程（にってい）で、水曜日（すいようび）に保健福祉総合（ほけんふくしそうごう）センターで行（おこな）います。\n対象（たいしょう）の方には、前もって通知（つうち）が届（とど）きます。\n1歳6か月児健診の最新（さいしん）のページは、手に入れることができず、確認できていません。\n4か月・7か月・3歳の日程と会場（かいじょう）、赤ちゃんの教室・離乳食（りにゅうしょく）の教室・両親学級（りょうしんがっきゅう）の案内（あんない）は、確認できていません。",
+     "original": "乳幼児健診で都合が悪いときの連絡先は、こども未来課です。\n電話は0276-63-3111、窓口は庁舎1階106番です。\n「健康づくり課 0276-62-2121」は古い1歳6か月児健診ページの記載でした。\n5歳児健診は令和8年度の日程で、水曜日に保健福祉総合センターで行います。\n対象の方には事前に通知が届きます。\n1歳6か月児健診の最新ページは、取得できず確認できていません。\n4か月・7か月・3歳の日程と会場、赤ちゃんの教室・離乳食の教室・両親学級の案内は確認できていません。",
+     "back": "乳幼児健診で都合が悪いときの連絡先は、こども未来課です。電話は0276-63-3111、窓口は庁舎1階106番です。「健康づくり課 0276-62-2121」は、古い1歳6か月児健診のページに書いてあったものです。5歳児健診は令和8年度の日程で、水曜日に保健福祉総合センターで行います。対象の方には、前もって通知が届きます。1歳6か月児健診の最新のページは、手に入れることができず、確認できていません。4か月・7か月・3歳の日程と会場、赤ちゃんの教室・離乳食の教室・両親学級の案内は、確認できていません。",
+     "source": {
+      "title": "5歳児健康診査｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s042/04/030/010/20200814201224.html",
+      "where": "「このページに関する問い合わせ先」・「日程」"
+     },
+     "status": "auto",
+     "problems": []
     }
    ]
   },
@@ -3129,6 +3363,65 @@
      },
      "status": "auto",
      "problems": []
+    },
+    {
+     "qid": "Q59",
+     "short": "Barang hilang・barang tertinggal",
+     "text": "Kantor polisi yang membawahi Kota Oizumi adalah Kantor Polisi Oizumi (大泉警察署).\nTelepon: 0276-62-0110.\nAlamat: Asahi 2-27-1, Oizumi-machi, Ora-gun (邑楽郡大泉町朝日2-27-1).\nLaporan dan pencarian barang hilang bisa dilakukan lewat halaman \"落とși物の届出・検索\" milik Badan Kepolisian Nasional (警察庁). Dari halaman itu, Anda bisa melanjutkan ke halaman Kepolisian Prefektur Gunma (群馬県警).\nTempat pelaporan di kantor pemerintahan, stasiun, atau perusahaan bus tidak dapat dipastikan dalam sumber resmi.",
+     "original": "大泉町を受け持つ警察署は大泉警察署です。\n電話は 0276-62-0110 です。\n所在地は 邑楽郡大泉町朝日2-27-1 です。\n落とし物の届出・検索は、警察庁の「落とし物の届出・検索」ページから群馬県警のページに進めます。\n役所や駅・バス会社の届け先は、公式資料では確認できていません。",
+     "back": "大泉町を担当する警察署は大泉警察署です。電話は0276-62-0110です。所在地は邑楽郡大泉町朝日2-27-1です。落とし物の届出・検索は、警察庁の「落とし物の届出・検索」ページから群馬県警のページに進めます。役所・駅・バス会社の届け先は、公式資料では確認できません。",
+     "source": {
+      "title": "群馬県警察本部・警察署一覧（総務省）",
+      "url": "https://www.soumu.go.jp/main_content/000612577.pdf",
+      "where": "群馬県警察本部・警察署一覧 大泉警察署の欄"
+     },
+     "status": "pending",
+     "problems": [
+      "引用されたページ名の「落とし物の届出・検索」が「落とși物の届出・検索」と文字化けしている。"
+     ],
+     "ledgerId": "r00374"
+    },
+    {
+     "qid": "Q61",
+     "short": "Kekosongan kuota di tempat penitipan anak (保育所) dan lembaga PAUD terpadu (認定こども園)",
+     "text": "Halaman yang memuat informasi kekosongan kuota tidak ditemukan di situs resmi kota. Karena itu, tempat untuk melihatnya dan waktu pembaruannya tidak diketahui.\nJika ingin mengetahui kekosongan kuota, silakan tanyakan ke Bagian Pendidikan dan Pengasuhan (教育保育課).\nLoket pendaftaran masuk ada di Bagian Pendidikan dan Pengasuhan (教育保育課), Departemen Pendidikan (教育部), Balai Kota Oizumi (大泉町役場), Loket No. 107 di lantai 1 gedung (庁舎1階107番窓口).\nTelepon: 0276-63-3111.\nUntuk tempat penitipan anak (保育所), bagian pengasuhan di lembaga PAUD terpadu (認定こども園) (Sertifikasi No. 2 dan No. 3), dan penitipan skala kecil (小規模保育), semuanya harus mendaftar ke Bagian Pendidikan dan Pengasuhan.\nJika ingin masuk ke fasilitas di luar kota, tempat mendaftarnya tetap Bagian Pendidikan dan Pengasuhan.\nUntuk taman kanak-kanak (幼稚園) dan Sertifikasi No. 1 di lembaga PAUD terpadu, daftar langsung ke masing-masing fasilitas.\nBatas pendaftaran di tengah tahun ajaran adalah tanggal 10 bulan sebelum bulan masuk yang diinginkan.",
+     "original": "空き状況を載せたページは、町の公式サイトでは確認できませんでした。そのため、見られる場所と更新の時期は分かりません。\n空きを知りたいときは、教育保育課に問い合わせてください。\n入園申込みの窓口は、大泉町役場 庁舎1階107番窓口の教育部 教育保育課です。\n電話は 0276-63-3111 です。\n保育所・認定こども園の保育部分（2・3号認定）・小規模保育は、どれも教育保育課への申込みが必要です。\n町外の施設を希望する場合も、申込み先は教育保育課です。\n幼稚園と認定こども園の1号認定は、各施設に直接申し込みます。\n年度途中の申込みの締切は、入園希望月の前月10日です。",
+     "back": "空き状況を載せたページは、町の公式サイトでは見つかりませんでした。そのため、見られる場所と更新時期は分かりません。空きを知りたい場合は、教育保育課に問い合わせてください。入園申込みの窓口は、大泉町役場庁舎1階107番窓口の教育部教育保育課です。電話は0276-63-3111です。保育所・認定こども園の保育部分（2・3号認定）・小規模保育は、いずれも教育保育課への申込みが必要です。町外の施設を希望する場合も、申込み先は教育保育課です。幼稚園と認定こども園の1号認定は、各施設に直接申し込みます。年度途中の申込みの締切は、入園希望月の前月10日です。",
+     "source": {
+      "title": "保育施設の入園申込み｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s030/kosodate/010/010/090/20200826152923.html",
+      "where": "「保育施設」の項"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q57",
+     "short": "Konsultasi sarang tawon dan hewan lainnya",
+     "text": "Untuk pembasmian sarang tawon hornet (スズメバチ), kota menyediakan subsidi.\nYang ditanggung adalah pembasmian yang dilakukan sejak tanggal 1 April tahun Reiwa 2 (令和2年4月1日).\nTanah dan bangunan untuk keperluan usaha tidak termasuk.\nPengajuan dilakukan ke Bagian Pengelolaan Lingkungan (環境整備課) dalam waktu 30 hari sejak tanggal kuitansi.\nSebagai penyedia jasa pembasmian di dalam kota, tercantum 株式会社秩父建設 (PT Chichibu Kensetsu) (0276-63-5161) dan 合同会社バディ (Buddy LLC) (0276-62-5379).\nYang menangani adalah Bagian Pengelolaan Lingkungan (環境整備課), Departemen Pembangunan Kota (都市建設部). Telepon: 0276-63-3111 (Loket No. 108 di lantai 1 gedung balai kota (庁舎1階108番窓口)).\nPersentase subsidi dan batas jumlahnya tidak dapat dipastikan.\nTempat konsultasi untuk ular, gagak, rakun, dan musang hidung putih (ハクビシン) tidak dapat dipastikan.",
+     "original": "スズメバチの巣の駆除には、町の補助金があります。\n対象は令和2年4月1日以降に駆除したものです。\n事業用の土地や建物は対象外です。\n申請は、領収書の日から30日以内に環境整備課へ出します。\n町内の駆除業者として、株式会社秩父建設（0276-63-5161）と合同会社バディ（0276-62-5379）が載っています。\n担当は都市建設部 環境整備課で、電話は0276-63-3111（庁舎1階108番窓口）です。\n補助の割合と上限額は、確かめられませんでした。\nヘビ・カラス・アライグマ・ハクビシンの相談先は、確かめられませんでした。",
+     "back": "スズメバチの巣の駆除には、町の補助金があります。対象は令和2年4月1日以降に駆除したものです。事業用の土地や建物は対象外です。申請は、領収書の日から30日以内に環境整備課へ出します。町内の駆除業者として、株式会社秩父建設（0276-63-5161）と合同会社バディ（0276-62-5379）が載っています。担当は都市建設部環境整備課で、電話は0276-63-3111（庁舎1階108番窓口）です。補助の割合と上限額は、確かめられませんでした。ヘビ・カラス・アライグマ・ハクビシンの相談先は、確かめられませんでした。",
+     "source": {
+      "title": "スズメバチの巣の駆除｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s024/kurashi/030/030/010/20200728214344.html",
+      "where": "スズメバチの巣駆除費補助金／駆除業者／問い合わせ先"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q60",
+     "short": "Pemeriksaan kesehatan bayi dan balita・kelas untuk bayi",
+     "text": "Jika Anda berhalangan hadir pada pemeriksaan kesehatan bayi dan balita, hubungi Bagian Masa Depan Anak (こども未来課).\nTelepon: 0276-63-3111, loket No. 106 di lantai 1 gedung balai kota (庁舎1階106番).\nNomor \"Bagian Promosi Kesehatan (健康づくり課) 0276-62-2121\" adalah keterangan di halaman lama pemeriksaan kesehatan anak usia 1 tahun 6 bulan.\nPemeriksaan kesehatan anak usia 5 tahun dijadwalkan untuk tahun fiskal Reiwa 8 (令和8年度), diadakan pada hari Rabu di Pusat Kesejahteraan dan Kesehatan Terpadu (保健福祉総合センター).\nPemberitahuan akan dikirim lebih dulu kepada yang menjadi sasaran.\nHalaman terbaru pemeriksaan kesehatan anak usia 1 tahun 6 bulan tidak dapat diakses sehingga belum dapat dipastikan.\nJadwal dan tempat pemeriksaan usia 4 bulan, 7 bulan, dan 3 tahun, serta informasi kelas untuk bayi, kelas makanan pendamping ASI, dan kelas untuk calon orang tua, belum dapat dipastikan.",
+     "original": "乳幼児健診で都合が悪いときの連絡先は、こども未来課です。\n電話は0276-63-3111、窓口は庁舎1階106番です。\n「健康づくり課 0276-62-2121」は古い1歳6か月児健診ページの記載でした。\n5歳児健診は令和8年度の日程で、水曜日に保健福祉総合センターで行います。\n対象の方には事前に通知が届きます。\n1歳6か月児健診の最新ページは、取得できず確認できていません。\n4か月・7か月・3歳の日程と会場、赤ちゃんの教室・離乳食の教室・両親学級の案内は確認できていません。",
+     "back": "乳幼児健診で都合が悪いときの連絡先は、こども未来課です。電話は0276-63-3111、窓口は庁舎1階106番です。「健康づくり課 0276-62-2121」は古い1歳6か月児健診ページの記載でした。5歳児健診は令和8年度の日程で、水曜日に保健福祉総合センターで行います。対象の方には事前に通知が届きます。1歳6か月児健診の最新ページは、取得できず確認できていません。4か月・7か月・3歳の日程と会場、赤ちゃんの教室・離乳食の教室・両親学級の案内は確認できていません。",
+     "source": {
+      "title": "5歳児健康診査｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s042/04/030/010/20200814201224.html",
+      "where": "「このページに関する問い合わせ先」・「日程」"
+     },
+     "status": "auto",
+     "problems": []
     }
    ]
   },
@@ -3743,6 +4036,62 @@
       "title": "飼い犬・飼い猫が迷子になってしまったとき｜大泉町",
       "url": "https://www.town.oizumi.gunma.jp/s024/kurashi/020/110/20200727195400.html",
       "where": "本文冒頭、「動物愛護センターなどでの保護情報」"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q59",
+     "short": "हराएको सामान · बिर्सेको सामान (落とし物・忘れ物)",
+     "text": "ओइज्युमी नगर (大泉町) को क्षेत्र हेर्ने प्रहरी कार्यालय ओइज्युमी प्रहरी कार्यालय (大泉警察署) हो।\nफोन 0276-62-0110 हो।\nठेगाना: ओरा जिल्ला ओइज्युमी नगर असाही 2-27-1 (邑楽郡大泉町朝日2-27-1)।\nहराएको सामानको सूचना दिन र खोज्न राष्ट्रिय प्रहरी एजेन्सी (警察庁) को \"落とし物の届出・検索\" पृष्ठबाट गुन्मा प्रान्तीय प्रहरी (群馬県警) को पृष्ठमा जान सकिन्छ।\nनगर कार्यालय (役所), स्टेशन र बस कम्पनीमा सूचना दिने ठाउँ आधिकारिक सामग्रीमा पुष्टि भएको छैन।",
+     "original": "大泉町を受け持つ警察署は大泉警察署です。\n電話は 0276-62-0110 です。\n所在地は 邑楽郡大泉町朝日2-27-1 です。\n落とし物の届出・検索は、警察庁の「落とし物の届出・検索」ページから群馬県警のページに進めます。\n役所や駅・バス会社の届け先は、公式資料では確認できていません。",
+     "back": "大泉町を受け持つ警察署は大泉警察署です。電話は0276-62-0110です。所在地は邑楽郡大泉町朝日2-27-1です。落とし物の届出・検索は、警察庁の「落とし物の届出・検索」ページから群馬県警のページに進めます。役所・駅・バス会社の届け先は、公式資料では確認できていません。",
+     "source": {
+      "title": "群馬県警察本部・警察署一覧（総務省）",
+      "url": "https://www.soumu.go.jp/main_content/000612577.pdf",
+      "where": "群馬県警察本部・警察署一覧 大泉警察署の欄"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q61",
+     "short": "बाल संरक्षण केन्द्र · प्रमाणित बाल केन्द्रमा खाली ठाउँ (保育所・認定こども園の空き)",
+     "text": "खाली ठाउँको अवस्था देखाउने पृष्ठ नगरको आधिकारिक वेबसाइटमा पुष्टि हुन सकेन। त्यसैले कहाँ हेर्न सकिन्छ र कहिले अद्यावधिक हुन्छ भन्ने थाहा छैन।\nखाली ठाउँ जान्न चाहनुभयो भने शिक्षा तथा बाल संरक्षण शाखा (教育保育課) मा सोध्नुहोस्।\nभर्नाको आवेदन बुझाउने ठाउँ ओइज्युमी नगर कार्यालय (大泉町役場) को भवन पहिलो तल्ला, 107 नम्बर काउन्टरमा रहेको शिक्षा विभाग (教育部) को शिक्षा तथा बाल संरक्षण शाखा (教育保育課) हो।\nफोन 0276-63-3111 हो।\nबाल संरक्षण केन्द्र (保育所), प्रमाणित बाल केन्द्र (認定こども園) को बाल संरक्षण भाग (2·3 नम्बर प्रमाणीकरण) र साना बाल संरक्षण (小規模保育) — सबैमा शिक्षा तथा बाल संरक्षण शाखा (教育保育課) मा आवेदन दिनुपर्छ।\nनगर बाहिरको सुविधा चाहे पनि आवेदन दिने ठाउँ शिक्षा तथा बाल संरक्षण शाखा (教育保育課) नै हो।\nकिन्डरगार्टेन (幼稚園) र प्रमाणित बाल केन्द्र (認定こども園) को 1 नम्बर प्रमाणीकरणमा सम्बन्धित सुविधामा सिधै आवेदन दिनुहोस्।\nशैक्षिक वर्षको बीचमा आवेदन दिँदा अन्तिम मिति भर्ना चाहेको महिनाको अघिल्लो महिनाको 10 तारिख हो।",
+     "original": "空き状況を載せたページは、町の公式サイトでは確認できませんでした。そのため、見られる場所と更新の時期は分かりません。\n空きを知りたいときは、教育保育課に問い合わせてください。\n入園申込みの窓口は、大泉町役場 庁舎1階107番窓口の教育部 教育保育課です。\n電話は 0276-63-3111 です。\n保育所・認定こども園の保育部分（2・3号認定）・小規模保育は、どれも教育保育課への申込みが必要です。\n町外の施設を希望する場合も、申込み先は教育保育課です。\n幼稚園と認定こども園の1号認定は、各施設に直接申し込みます。\n年度途中の申込みの締切は、入園希望月の前月10日です。",
+     "back": "空き状況を載せたページは、町の公式サイトでは確認できませんでした。そのため、見られる場所と更新の時期は分かりません。空きを知りたいときは、教育保育課に問い合わせてください。入園申込みの窓口は、大泉町役場 庁舎1階107番窓口の教育部 教育保育課です。電話は0276-63-3111です。保育所・認定こども園の保育部分（2・3号認定）・小規模保育は、どれも教育保育課への申込みが必要です。町外の施設を希望する場合も、申込み先は教育保育課です。幼稚園と認定こども園の1号認定は、各施設に直接申し込みます。年度途中の申込みの締切は、入園希望月の前月10日です。",
+     "source": {
+      "title": "保育施設の入園申込み｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s030/kosodate/010/010/090/20200826152923.html",
+      "where": "「保育施設」の項"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q57",
+     "short": "मौरीको गुँड आदि जीवजन्तुसम्बन्धी परामर्श (ハチの巣など生き物の相談)",
+     "text": "भिमरुल (スズメバチ) को गुँड हटाउनका लागि नगरको अनुदान छ।\n2020 सालको अप्रिल 1 (令和2年4月1日) पछि हटाइएका गुँड मात्र योग्य हुन्।\nव्यावसायिक प्रयोजनको जग्गा वा भवन योग्य छैन।\nआवेदन रसिदको मितिले 30 दिनभित्र वातावरण व्यवस्थापन शाखा (環境整備課) मा बुझाउनुहोस्।\nनगरभित्रका हटाउने कम्पनीका रूपमा 株式会社秩父建設 (0276-63-5161) र 合同会社バディ (0276-62-5379) सूचीमा छन्।\nजिम्मेवार निकाय नगर निर्माण विभाग (都市建設部) को वातावरण व्यवस्थापन शाखा (環境整備課) हो, फोन 0276-63-3111 (भवन पहिलो तल्ला, 108 नम्बर काउन्टर)।\nअनुदानको दर र अधिकतम रकम पुष्टि हुन सकेन।\nसर्प, काग, र्‍याकुन (アライグマ) र हाकुबिशिन (ハクビシン) सम्बन्धी परामर्श कहाँ गर्ने भन्ने पुष्टि हुन सकेन।",
+     "original": "スズメバチの巣の駆除には、町の補助金があります。\n対象は令和2年4月1日以降に駆除したものです。\n事業用の土地や建物は対象外です。\n申請は、領収書の日から30日以内に環境整備課へ出します。\n町内の駆除業者として、株式会社秩父建設（0276-63-5161）と合同会社バディ（0276-62-5379）が載っています。\n担当は都市建設部 環境整備課で、電話は0276-63-3111（庁舎1階108番窓口）です。\n補助の割合と上限額は、確かめられませんでした。\nヘビ・カラス・アライグマ・ハクビシンの相談先は、確かめられませんでした。",
+     "back": "スズメバチの巣の駆除には、町の補助金があります。対象は令和2年4月1日以降に駆除したものです。事業用の土地や建物は対象外です。申請は、領収書の日から30日以内に環境整備課へ出します。町内の駆除業者として、株式会社秩父建設（0276-63-5161）と合同会社バディ（0276-62-5379）が載っています。担当は都市建設部 環境整備課で、電話は0276-63-3111（庁舎1階108番窓口）です。補助の割合と上限額は、確かめられませんでした。ヘビ・カラス・アライグマ・ハクビシンの相談先は、確かめられませんでした。",
+     "source": {
+      "title": "スズメバチの巣の駆除｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s024/kurashi/030/030/010/20200728214344.html",
+      "where": "スズメバチの巣駆除費補助金／駆除業者／問い合わせ先"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q60",
+     "short": "शिशु तथा साना बालबालिकाको स्वास्थ्य जाँच · शिशुको कक्षा (乳幼児健診・赤ちゃんの教室)",
+     "text": "शिशु तथा साना बालबालिकाको स्वास्थ्य जाँचमा सुविधा नभए सम्पर्क गर्ने ठाउँ बाल भविष्य शाखा (こども未来課) हो।\nफोन 0276-63-3111 हो, काउन्टर भवन पहिलो तल्ला 106 नम्बर हो।\n\"स्वास्थ्य निर्माण शाखा (健康づくり課) 0276-62-2121\" पुरानो 1 वर्ष 6 महिनाको बालबालिका स्वास्थ्य जाँच पृष्ठमा लेखिएको थियो।\n5 वर्षका बालबालिकाको स्वास्थ्य जाँच 2026 सालको कार्यक्रम (令和8年度) अनुसार बुधबार स्वास्थ्य कल्याण एकीकृत केन्द्र (保健福祉総合センター) मा हुन्छ।\nयोग्य व्यक्तिहरूलाई पहिले नै सूचना आउँछ।\n1 वर्ष 6 महिनाको बालबालिका स्वास्थ्य जाँचको नवीनतम पृष्ठ प्राप्त हुन नसकेकाले पुष्टि भएको छैन।\n4 महिना, 7 महिना र 3 वर्षको तालिका र स्थान, तथा शिशुको कक्षा, पूरक आहार (離乳食) कक्षा र अभिभावक कक्षाको जानकारी पुष्टि भएको छैन।",
+     "original": "乳幼児健診で都合が悪いときの連絡先は、こども未来課です。\n電話は0276-63-3111、窓口は庁舎1階106番です。\n「健康づくり課 0276-62-2121」は古い1歳6か月児健診ページの記載でした。\n5歳児健診は令和8年度の日程で、水曜日に保健福祉総合センターで行います。\n対象の方には事前に通知が届きます。\n1歳6か月児健診の最新ページは、取得できず確認できていません。\n4か月・7か月・3歳の日程と会場、赤ちゃんの教室・離乳食の教室・両親学級の案内は確認できていません。",
+     "back": "乳幼児健診で都合が悪いときの連絡先は、こども未来課です。電話は0276-63-3111、窓口は庁舎1階106番です。「健康づくり課 0276-62-2121」は古い1歳6か月児健診ページの記載でした。5歳児健診は令和8年度の日程で、水曜日に保健福祉総合センターで行います。対象の方には事前に通知が届きます。1歳6か月児健診の最新ページは、取得できず確認できていません。4か月・7か月・3歳の日程と会場、赤ちゃんの教室・離乳食の教室・両親学級の案内は確認できていません。",
+     "source": {
+      "title": "5歳児健康診査｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s042/04/030/010/20200814201224.html",
+      "where": "「このページに関する問い合わせ先」・「日程」"
      },
      "status": "auto",
      "problems": []
@@ -4365,6 +4714,62 @@
      "problems": [
       "「町のページ」は「町の公式ページ」に近く、意味の違いはない。訳文は「Văn phòng chi nhánh Đông Bộ」など表記上の差のみ。"
      ]
+    },
+    {
+     "qid": "Q59",
+     "short": "Đồ thất lạc・đồ bỏ quên",
+     "text": "Đồn cảnh sát phụ trách thị trấn Oizumi là Đồn cảnh sát Oizumi（大泉警察署）.\nSố điện thoại là 0276-62-0110.\nĐịa chỉ là 邑楽郡大泉町朝日2-27-1 (Quận Ora, thị trấn Oizumi, Asahi 2-27-1).\nĐể khai báo hoặc tìm kiếm đồ thất lạc, bạn có thể vào trang「落とし物の届出・検索」(Khai báo・Tìm kiếm đồ thất lạc) của Cơ quan Cảnh sát Quốc gia（警察庁）, rồi chuyển sang trang của Cảnh sát tỉnh Gunma（群馬県警）.\nNơi tiếp nhận đồ thất lạc của văn phòng hành chính, nhà ga và công ty xe buýt thì chưa xác nhận được trong tài liệu chính thức.",
+     "original": "大泉町を受け持つ警察署は大泉警察署です。\n電話は 0276-62-0110 です。\n所在地は 邑楽郡大泉町朝日2-27-1 です。\n落とし物の届出・検索は、警察庁の「落とし物の届出・検索」ページから群馬県警のページに進めます。\n役所や駅・バス会社の届け先は、公式資料では確認できていません。",
+     "back": "大泉町を担当する警察署は大泉警察署です。電話は0276-62-0110です。所在地は邑楽郡大泉町朝日2-27-1です。落とし物の届出・検索は、警察庁の「落とし物の届出・検索」ページから群馬県警のページに進めます。役所・駅・バス会社の届け先は、公式資料では確認できていません。",
+     "source": {
+      "title": "群馬県警察本部・警察署一覧（総務省）",
+      "url": "https://www.soumu.go.jp/main_content/000612577.pdf",
+      "where": "群馬県警察本部・警察署一覧 大泉警察署の欄"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q61",
+     "short": "Chỗ trống tại nhà trẻ・trường mầm non được công nhận (nintei kodomo-en)",
+     "text": "Trên trang web chính thức của thị trấn, chúng tôi chưa tìm thấy trang đăng tình trạng chỗ trống. Vì vậy, chưa rõ xem ở đâu được và khi nào được cập nhật.\nNếu muốn biết còn chỗ trống hay không, hãy hỏi Phòng Giáo dục và Chăm sóc trẻ（教育保育課）.\nNơi nhận đơn xin nhập học là Phòng Giáo dục và Chăm sóc trẻ（教育保育課）thuộc Khối Giáo dục（教育部）, quầy số 107 tầng 1 tòa nhà Văn phòng thị trấn Oizumi（大泉町役場）.\nSố điện thoại là 0276-63-3111.\nVới nhà trẻ, phần chăm sóc trẻ của trường mầm non được công nhận (diện công nhận số 2・số 3) và cơ sở chăm sóc trẻ quy mô nhỏ, tất cả đều phải nộp đơn cho Phòng Giáo dục và Chăm sóc trẻ（教育保育課）.\nNếu muốn vào cơ sở ngoài thị trấn, nơi nộp đơn cũng là Phòng Giáo dục và Chăm sóc trẻ（教育保育課）.\nVới trường mẫu giáo và diện công nhận số 1 của trường mầm non được công nhận, bạn nộp đơn trực tiếp cho từng cơ sở.\nHạn nộp đơn giữa năm học là ngày 10 của tháng trước tháng muốn nhập học.",
+     "original": "空き状況を載せたページは、町の公式サイトでは確認できませんでした。そのため、見られる場所と更新の時期は分かりません。\n空きを知りたいときは、教育保育課に問い合わせてください。\n入園申込みの窓口は、大泉町役場 庁舎1階107番窓口の教育部 教育保育課です。\n電話は 0276-63-3111 です。\n保育所・認定こども園の保育部分（2・3号認定）・小規模保育は、どれも教育保育課への申込みが必要です。\n町外の施設を希望する場合も、申込み先は教育保育課です。\n幼稚園と認定こども園の1号認定は、各施設に直接申し込みます。\n年度途中の申込みの締切は、入園希望月の前月10日です。",
+     "back": "町の公式サイトでは、空き状況を載せたページは確認できませんでした。そのため、見られる場所と更新の時期は分かりません。空きを知りたいときは、教育保育課に問い合わせてください。入園申込みの窓口は、大泉町役場庁舎1階107番窓口の教育部教育保育課です。電話は0276-63-3111です。保育所・認定こども園の保育部分（2・3号認定）・小規模保育は、どれも教育保育課への申込みが必要です。町外の施設を希望する場合も、申込み先は教育保育課です。幼稚園と認定こども園の1号認定は、各施設に直接申し込みます。年度途中の申込みの締切は、入園希望月の前月10日です。",
+     "source": {
+      "title": "保育施設の入園申込み｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s030/kosodate/010/010/090/20200826152923.html",
+      "where": "「保育施設」の項"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q57",
+     "short": "Tư vấn về tổ ong và các loài vật",
+     "text": "Thị trấn có trợ cấp cho việc diệt tổ ong bắp cày.\nĐối tượng là những tổ đã được diệt từ ngày 1 tháng 4 năm Reiwa 2（令和2年）trở về sau.\nĐất hoặc công trình dùng cho mục đích kinh doanh không thuộc đối tượng.\nĐơn đăng ký nộp cho Phòng Cải thiện Môi trường（環境整備課）trong vòng 30 ngày kể từ ngày ghi trên biên lai.\nCác đơn vị diệt tổ ong trong thị trấn được đăng tải là Công ty cổ phần Chichibu Kensetsu（株式会社秩父建設）(0276-63-5161) và Công ty TNHH Buddy（合同会社バディ）(0276-62-5379).\nBộ phận phụ trách là Phòng Cải thiện Môi trường（環境整備課）thuộc Khối Xây dựng Đô thị（都市建設部）, số điện thoại 0276-63-3111 (quầy số 108 tầng 1 tòa nhà văn phòng thị trấn（庁舎1階108番窓口）).\nTỷ lệ hỗ trợ và mức tối đa thì chưa xác nhận được.\nNơi tư vấn về rắn, quạ, gấu mèo Bắc Mỹ (araiguma) và cầy hương (hakubishin) cũng chưa xác nhận được.",
+     "original": "スズメバチの巣の駆除には、町の補助金があります。\n対象は令和2年4月1日以降に駆除したものです。\n事業用の土地や建物は対象外です。\n申請は、領収書の日から30日以内に環境整備課へ出します。\n町内の駆除業者として、株式会社秩父建設（0276-63-5161）と合同会社バディ（0276-62-5379）が載っています。\n担当は都市建設部 環境整備課で、電話は0276-63-3111（庁舎1階108番窓口）です。\n補助の割合と上限額は、確かめられませんでした。\nヘビ・カラス・アライグマ・ハクビシンの相談先は、確かめられませんでした。",
+     "back": "スズメバチの巣の駆除には、町の補助金があります。対象は令和2年4月1日以降に駆除したものです。事業用の土地や建物は対象外です。申請は、領収書の日から30日以内に環境整備課へ出します。町内の駆除業者として、株式会社秩父建設（0276-63-5161）と合同会社バディ（0276-62-5379）が載っています。担当は都市建設部環境整備課で、電話は0276-63-3111（庁舎1階108番窓口）です。補助の割合と上限額は、確かめられませんでした。ヘビ・カラス・アライグマ・ハクビシンの相談先は、確かめられませんでした。",
+     "source": {
+      "title": "スズメバチの巣の駆除｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s024/kurashi/030/030/010/20200728214344.html",
+      "where": "スズメバチの巣駆除費補助金／駆除業者／問い合わせ先"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q60",
+     "short": "Khám sức khỏe cho trẻ nhỏ・lớp học cho em bé",
+     "text": "Nếu bạn không thể đi khám sức khỏe cho trẻ nhỏ theo lịch, nơi liên lạc là Phòng Tương lai Trẻ em（こども未来課）.\nSố điện thoại là 0276-63-3111, quầy số 106 tầng 1 tòa nhà văn phòng thị trấn（庁舎1階106番）.\n「健康づくり課 0276-62-2121」(Phòng Xây dựng Sức khỏe, 0276-62-2121) là thông tin ghi trong trang cũ về khám sức khỏe cho trẻ 1 tuổi 6 tháng.\nKhám sức khỏe cho trẻ 5 tuổi theo lịch năm Reiwa 8（令和8年度）được tổ chức vào thứ Tư tại Trung tâm Tổng hợp Phúc lợi Y tế（保健福祉総合センター）.\nNhững người thuộc đối tượng sẽ nhận được thông báo trước.\nTrang mới nhất về khám sức khỏe cho trẻ 1 tuổi 6 tháng không truy cập được nên chưa xác nhận được.\nLịch và địa điểm khám cho trẻ 4 tháng, 7 tháng và 3 tuổi, cũng như thông tin về lớp học cho em bé, lớp ăn dặm và lớp học cho bố mẹ (ryōshin gakkyū) thì chưa xác nhận được.",
+     "original": "乳幼児健診で都合が悪いときの連絡先は、こども未来課です。\n電話は0276-63-3111、窓口は庁舎1階106番です。\n「健康づくり課 0276-62-2121」は古い1歳6か月児健診ページの記載でした。\n5歳児健診は令和8年度の日程で、水曜日に保健福祉総合センターで行います。\n対象の方には事前に通知が届きます。\n1歳6か月児健診の最新ページは、取得できず確認できていません。\n4か月・7か月・3歳の日程と会場、赤ちゃんの教室・離乳食の教室・両親学級の案内は確認できていません。",
+     "back": "乳幼児健診で都合が悪いときの連絡先は、こども未来課です。電話は0276-63-3111、窓口は庁舎1階106番です。「健康づくり課 0276-62-2121」は古い1歳6か月児健診ページの記載でした。5歳児健診は令和8年度の日程で、水曜日に保健福祉総合センターで行います。対象の方には事前に通知が届きます。1歳6か月児健診の最新ページは、取得できず確認できていません。4か月・7か月・3歳の日程と会場、赤ちゃんの教室・離乳食の教室・両親学級の案内は確認できていません。",
+     "source": {
+      "title": "5歳児健康診査｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s042/04/030/010/20200814201224.html",
+      "where": "「このページに関する問い合わせ先」・「日程」"
+     },
+     "status": "auto",
+     "problems": []
     }
    ]
   }

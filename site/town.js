@@ -107,6 +107,15 @@ const remember = {
   get(k) { try { return localStorage.getItem(`machi-shirube:${k}`); } catch { return null; } },
   set(k, v) { try { if (v) localStorage.setItem(`machi-shirube:${k}`, v); else localStorage.removeItem(`machi-shirube:${k}`); } catch {} },
 };
+// このページを家族に送る：スマホでは共有の画面（LINE・メールなど）を開く。無い端末では、リンクを写して LINE で送るボタンを出す
+// （住む人の目で見ると、家族に送る方法がなく、LINE で送っても町の名前が出なかった）
+$("share").addEventListener("click", async () => {
+  const url = location.href.split("#")[0];
+  const text = TN("{name}のくらしの案内（今日の天気・ごみの日・近い避難場所・病院）", { name: $("name").textContent });
+  if (navigator.share) { try { await navigator.share({ title: document.title, text, url }); return; } catch (e) { if (e.name === "AbortError") return; } }
+  try { await navigator.clipboard.writeText(`${text}\n${url}`); $("share-done").innerHTML = `${T("リンクを写しました。")} <a href="https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(url)}" target="_blank" rel="noopener">${T("LINE で送る")}</a>`; }
+  catch { $("share-done").innerHTML = `<a href="https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(url)}" target="_blank" rel="noopener">${T("LINE で送る")}</a>`; }
+});
 // 上のメニュー（パソコン）：よく使うページと、右の端に「すべてのページ」
 // 下のメニュー（スマホ）：親指の届く所に、よく使う4つと「ほか」（すべてのページ）だけを並べる。横に動かさなくても全部が見える
 // （作者「上部の『今日』『地図』などのボタンがただ並んでいるだけで本当に使いやすいのか？」→ 案A）
@@ -833,10 +842,26 @@ function linkUrgent(root) {
     n.replaceWith(...span.childNodes);
   }
 }
+// やさしい日本語：「今日（きょう）」のように、かっこで本文に入っているふりがなを、漢字の上に小さく出す（ルビ）。
+// かっこの中がひらがなだけで、すぐ前が漢字のときだけ（ほかのかっこは、そのまま）
+const FURI = /([一-鿿々〆ヵヶ]+)[（(]([ぁ-ゖー]+)[）)]/g;
+function rubyEasy(root) {
+  if (LANG !== "easy") return;
+  const walk = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode: (n) => (n.parentElement.closest("rt, script, style, textarea, select, option") ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT),
+  });
+  const hits = [];
+  for (let n = walk.nextNode(); n; n = walk.nextNode()) { FURI.lastIndex = 0; if (FURI.test(n.nodeValue)) hits.push(n); }
+  for (const n of hits) {
+    const span = document.createElement("span");
+    span.innerHTML = esc(n.nodeValue).replace(FURI, "<ruby>$1<rt>$2</rt></ruby>");
+    n.replaceWith(...span.childNodes);
+  }
+}
 // 中身はあとから少しずつ描かれるので、変わるたびに（まとめて）書き足す
 {
   let t = null;
-  const run = () => { t = null; for (const el of document.querySelectorAll(".town-main, .about-site")) linkUrgent(el); };
+  const run = () => { t = null; for (const el of document.querySelectorAll(".town-main, .about-site")) linkUrgent(el); rubyEasy(document.body); };
   new MutationObserver(() => { t ??= setTimeout(run, 300); }).observe(document.body, { childList: true, subtree: true });
 }
 // 調べた側の言い方を、住む人向けに（「今回調べた範囲では」「今回は」など。日本語の答えだけ）
@@ -874,7 +899,7 @@ function answersHTML(answers) {
       ${a.recheckedAt ? `<p class="src rechecked">${icon("eye")}${T("公式のページが変わったので、確かめ直しました")}（${esc(a.recheckedAt.slice(0, 10))}）</p>` : ""}
       ${health?.links?.[a.source?.url]?.kind === "gone" ? `<p class="gone">${T("出典のページが見つからなくなっています")}（${esc(health.links[a.source.url].checkedAt.slice(0, 10))}）。${T("町の公式のサイトで新しいページを探して確かめてください。")}</p>` : ""}
       ${a.outdated ? `<p class="outdated"><strong>${T("もっと新しい資料があります")}</strong>：${esc(a.outdated.what)}。${T("古い")}：${a.outdated.old?.url ? `<a href="${esc(a.outdated.old.url)}" target="_blank" rel="noopener">${esc(a.outdated.old.asOf ?? "")}</a>` : esc(a.outdated.old?.asOf ?? "")}／${T("新しい")}：${a.outdated.new?.url ? `<a href="${esc(a.outdated.new.url)}" target="_blank" rel="noopener">${esc(a.outdated.new.asOf ?? "")}</a>` : esc(a.outdated.new?.asOf ?? "")}</p>` : ""}
-      <p class="src chip">${icon("link")} ${a.source?.url ? `<a href="${esc(a.source.url)}" target="_blank" rel="noopener"${a.source.where ? ` title="${esc(T("出典のどこに書いてあるか"))}：${esc(a.source.where)}"` : ""}>${esc(a.source.title ?? a.source.url)}</a>` : esc(a.source?.title ?? "")}${a.asOf ? `・${T("時点")} ${esc(a.asOf)}` : ""}${a.status === "auto" ? "" : `・${T("人が確かめた")}`}</p>`)}`}
+      <p class="src chip">${icon("link")} ${a.source?.url ? `<a href="${esc(a.source.url)}" target="_blank" rel="noopener"${a.source.where ? ` title="${esc(T("出典のどこに書いてあるか"))}：${esc(a.source.where)}"` : ""}>${esc(a.source.title ?? a.source.url)}</a>` : esc(a.source?.title ?? "")}${a.asOf ? `・${T("時点")} ${esc(a.asOf.replace("（ページの更新日は不明）", ""))}` : ""}${a.status === "auto" ? "" : `・${T("人が確かめた")}`}</p>`)}`}
       </div>
     </li>`;
   }).join("")}</ul>`;

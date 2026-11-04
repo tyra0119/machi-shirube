@@ -5,6 +5,11 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>町のページ｜まちしるべ</title>
 <meta name="description" content="まちしるべの町のページ。今日の天気・ごみ・病院・困ったとき・災害のときの行動など、暮らしの情報を出典つきで。">
+<!-- LINE などで送ったときの見え方（町の名前は送る文に入れる） -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="まちしるべ">
+<meta property="og:title" content="まちしるべ｜町のくらしの案内">
+<meta property="og:description" content="今日の天気・ごみの日・近い避難場所・今日やっている病院・困ったときの窓口を、公式の情報から出典つきで。非公式・無料・登録なし。">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.css">
 <link rel="stylesheet" href="style.css">
 <link rel="stylesheet" href="town.css">
@@ -19,6 +24,7 @@
     <details id="town-color-note" class="color-note" hidden></details>
   </div>
   <div id="lang-bar" class="lang-bar" hidden></div>
+  <div class="share-row"><button type="button" class="share-btn" id="share">このページを家族に送る</button><span id="share-done" class="share-done" role="status"></span></div>
 </header>
 
 <!-- 言葉を選ぶ（見出しは、どの言葉の人にも分かるように英語と日本語を並べる） -->

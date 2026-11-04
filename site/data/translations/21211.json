@@ -1,7 +1,7 @@
 {
  "code": "21211",
  "name": "美濃加茂市",
- "createdAt": "2026-11-03T12:09:53.236Z",
+ "createdAt": "2026-11-04T01:58:55.534Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
  "langs": {
@@ -314,6 +314,90 @@
      },
      "status": "auto",
      "problems": []
+    },
+    {
+     "qid": "Q56",
+     "short": "Vazamento de água ou falta de água",
+     "text": "Se não sair água ou se a água estiver turva, ligue para o Departamento de Água e Esgoto (上下水道課): 0574-25-2111, ramais 321 e 322.\nÀ noite e em feriados, contate o plantão da prefeitura (市役所宿日直).\nPara vazamento de água, procure uma empresa de obras designada pela cidade (市の指定工事店). Aos sábados, domingos e feriados as empresas trabalham em regime de plantão rotativo; confira a tabela de plantão de feriados (休日当番表).\nO contato para problemas de água é o telefone direto do Setor de Contabilidade (経理係): 0574-28-1132.\nPara entupimento ou transbordamento de caixas públicas ou de tubulações de esgoto público, ligue para o Setor de Manutenção de Esgoto (下水道維持係) do Departamento de Água e Esgoto (上下水道課): 0574-25-2111, ramal 424.\nPara entupimento de tubulações de drenagem dentro do terreno ou de caixas particulares, procure uma empresa designada para instalações de drenagem e esgoto (下水道排水設備等指定工事店).\nA lista das empresas designadas está na página da cidade \"Lista de empresas designadas de água e esgoto\" (上下水道指定工事店一覧), com PDFs para empresas dentro e fora da cidade.",
+     "original": "水が出ない・濁るときは上下水道課（0574-25-2111、内線321・322）。\n夜間・休日は市役所宿日直に連絡する。\n水漏れは市の指定工事店へ。土日祝は当番制なので休日当番表で確認する。\n水道トラブルの窓口は経理係の直通0574-28-1132。\n公共ますや下水道管の詰まり・あふれは上下水道課下水道維持係（0574-25-2111、内線424）。\n宅地内の排水管や私設ますの詰まりは、下水道排水設備等指定工事店へ。\n指定工事店の一覧は市の「上下水道指定工事店一覧」ページ（市内・市外のPDF）にある。",
+     "back": "水が出ない、または水が濁るときは、上下水道課（0574-25-2111、内線321・322）に連絡します。夜間・休日は市役所宿日直に連絡します。水漏れは市の指定工事店へ。土日祝は当番制なので、休日当番表で確認します。水道トラブルの窓口は経理係の直通0574-28-1132です。公共ますや下水道管の詰まり・あふれは、上下水道課下水道維持係（0574-25-2111、内線424）へ。宅地内の排水管や私設ますの詰まりは、下水道排水設備等指定工事店へ。指定工事店の一覧は、市の「上下水道指定工事店一覧」ページ（市内・市外のPDF）にあります。",
+     "source": {
+      "title": "水が出ない場合、またはにごった水が出るときは - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/17/1993.html",
+      "where": "本文・お問い合わせ先"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q57",
+     "short": "Ninho de vespas e consultas sobre animais",
+     "text": "Ninho de vespas: o proprietário ou administrador do local cuida pessoalmente dos ninhos dentro do seu terreno. Entre em contato diretamente com uma empresa de controle de pragas.\nA cidade não indica empresas.\nPara ninhos em ruas, parques e instalações públicas, contate a Divisão de Obras Civis (土木課): 0574-25-2111, ramal 411.\nGuaxinim (araiguma): a Divisão de Agricultura e Florestas (農林課) empresta armadilhas. Depois de capturar o animal, avise o Setor de Revitalização do Satoyama (里山再生係) da Divisão de Agricultura e Florestas.\nPara consultas sobre animais selvagens nocivos, procure o Setor de Revitalização do Satoyama (里山再生係) da Divisão de Agricultura e Florestas (農林課): 0574-25-2111, ramais 331 e 335.\nSobre cobras, corvos e civetas-de-nariz-branco (ハクビシン), não foi encontrada nenhuma orientação no site oficial.\nQuanto a auxílio para as despesas, nada consta no que foi encontrado.",
+     "original": "ハチの巣：敷地内の巣は所有者・管理者が自分で処理します。害虫駆除業者に直接問い合わせてください。\n市は業者を紹介していません。\n道路・公園・公共施設の巣は土木課（0574-25-2111 内線411）へ。\nアライグマ：農林課が捕獲用の檻を貸し出しています。捕まえたら農林課 里山再生係に連絡します。\n有害鳥獣の相談先は農林課 里山再生係（0574-25-2111 内線331・335）です。\nヘビ・カラス・ハクビシンについては、公式サイトに案内が見つかりませんでした。\n費用の助成制度は、見つかった範囲では書かれていません。",
+     "back": "ハチの巣：敷地内の巣は、所有者・管理者が自分で処理します。害虫駆除業者に直接問い合わせてください。市は業者を紹介していません。道路・公園・公共施設の巣は、土木課（0574-25-2111 内線411）へ。アライグマ：農林課が捕獲用の檻を貸し出しています。捕まえたら農林課 里山再生係に連絡します。有害鳥獣の相談先は、農林課 里山再生係（0574-25-2111 内線331・335）です。ヘビ・カラス・ハクビシンについては、公式サイトに案内が見つかりませんでした。費用の助成制度は、見つかった範囲では書かれていません。",
+     "source": {
+      "title": "アライグマなど有害鳥獣を駆除してほしい",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/13/1685.html",
+      "where": "本文・有害鳥獣駆除についての相談、お問い合わせ"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q58",
+     "short": "Cão ou gato perdido",
+     "text": "Se o seu cão ou gato desapareceu, avise com urgência os 3 locais abaixo.\n・Delegacia de Polícia de Kamo (加茂警察署): 0574-25-0110\n・Centro de Saúde de Kamo (可茂保健所), Divisão de Saúde Ambiental (生活衛生課): 0574-25-3111\n・Prefeitura, Divisão de Meio Ambiente (環境課): 0574-25-2111 (o ramal 306 do Setor de Vida Cidadã (市民生活係) da Divisão de Meio Ambiente é de uma orientação antiga)\nEles podem verificar se o animal foi acolhido em algum lugar.\nO animal também pode ter sido recolhido pela polícia, por isso comunique também ao posto policial mais próximo (交番).\nQuando você encontra um animal de estimação sem dono conhecido, a mesma página também indica esses locais como contato.\nAs informações sobre cães acolhidos podem ser vistas na página \"Informações sobre cães perdidos\" (迷い犬情報) da província de Gifu.\nEssa página é dividida por centro de saúde, e Minokamo pertence à área do Centro de Saúde de Kamo (可茂保健所).\nNão foi possível confirmar uma página para ver informações sobre gatos.\nO Centro de Proteção Animal da Província de Gifu (岐阜県動物愛護センター, 0575-34-0050) aparece na página da cidade como local de inscrição para as atividades de gatos comunitários. Não é indicado como local para comunicar animais perdidos.",
+     "original": "飼っている犬や猫がいなくなったときは、至急、次の3か所に連絡します。\n・加茂警察署：0574-25-0110\n・可茂保健所 生活衛生課：0574-25-3111\n・市役所 環境課：0574-25-2111（環境課 市民生活係は内線306。古い案内の内線です）\nどこかに保護されていないか、照合してもらえます。\n警察に保護されることもあるので、最寄りの交番にも届けます。\n所有者不明のペットを見つけたときも、同じページが窓口として案内しています。\n保護された犬の情報は、岐阜県の「迷い犬情報」ページで見られます。\nこのページは保健所ごとに分かれていて、美濃加茂市は可茂保健所の管内です。\n猫の情報が見られるページは、確認できませんでした。\n岐阜県動物愛護センター（0575-34-0050）は、市のページでは地域猫活動の申込み窓口として載っています。迷子の届け先としては案内されていません。",
+     "back": "飼っている犬や猫がいなくなったときは、至急、次の3か所に連絡します。・加茂警察署：0574-25-0110・可茂保健所 生活衛生課：0574-25-3111・市役所 環境課：0574-25-2111（環境課 市民生活係は内線306。古い案内の内線です）どこかに保護されていないか、照合してもらえます。警察に保護されることもあるので、最寄りの交番にも届けます。所有者不明のペットを見つけたときも、同じページが窓口として案内しています。保護された犬の情報は、岐阜県の「迷い犬情報」ページで見られます。このページは保健所ごとに分かれていて、美濃加茂市は可茂保健所の管内です。猫の情報が見られるページは、確認できませんでした。岐阜県動物愛護センター（0575-34-0050）は、市のページでは地域猫活動の申込み窓口として載っています。迷子の届け先としては案内されていません。",
+     "source": {
+      "title": "飼っていたペットが行方不明になった、所有者不明のペットを目撃した - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/15/1785.html",
+      "where": "「飼っていたペットが行方不明になった」の項"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q59",
+     "short": "Objetos perdidos e esquecidos",
+     "text": "A delegacia responsável por Minokamo é a Delegacia de Polícia de Kamo (加茂警察署).\nO telefone é 0574-25-0110.\nO endereço é 美濃加茂市古井町下古井2610番地 (Minokamo-shi, Furui-cho, Shimofurui 2610).\nPara procurar um objeto perdido ou fazer a comunicação, use a página \"Informações sobre objetos perdidos e esquecidos\" (落とし物・忘れ物情報) da Agência Nacional de Polícia (警察庁). Essa página tem link a partir da página da polícia provincial.\nSe um representante for retirar o objeto, primeiro entre em contato com a delegacia para onde o objeto foi entregue. Depois, prepare uma procuração (委任状).\nOs locais de entrega de objetos na prefeitura, em instalações públicas, nas estações e nas empresas de ônibus não foram confirmados desta vez.",
+     "original": "美濃加茂市を受け持つのは加茂警察署です。\n電話番号は 0574-25-0110 です。\n所在地は美濃加茂市古井町下古井2610番地です。\n落とし物を探したり届けを出したりするときは、警察庁の「落とし物・忘れ物情報」のページを使います。このページへは県警のページからリンクされています。\n代理人が受け取るときは、先に落とし物が届いている警察署へ連絡してください。そのうえで委任状を作ってください。\n市役所・公共施設、駅やバスの会社の届け先は、今回は確認できていません。",
+     "back": "美濃加茂市を受け持つのは加茂警察署です。電話番号は0574-25-0110です。所在地は美濃加茂市古井町下古井2610番地です。落とし物を探したり届けを出したりするときは、警察庁の「落とし物・忘れ物情報」のページを使います。このページへは県警のページからリンクされています。代理人が受け取るときは、先に落とし物が届いている警察署へ連絡してください。そのうえで委任状を作ってください。市役所・公共施設、駅やバスの会社の届け先は、今回は確認できていません。",
+     "source": {
+      "title": "落とし物の検索・届出 - 岐阜県公式ホームページ",
+      "url": "https://www.pref.gifu.lg.jp/site/police/3561.html",
+      "where": "警察署の表（加茂警察署）"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q61",
+     "short": "Vagas em creches e escolas infantis certificadas",
+     "text": "A situação das vagas pode ser vista na página da cidade \"Sobre a matrícula em creches, escolas infantis, creches de pequeno porte etc. em abril do 9º ano de Reiwa\" (令和9年度4月 保育園・こども園・小規模保育所等の入園について).\nPara encontrá-la, no site oficial da cidade vá em \"Buscar por organização\" (組織でさがす) → Departamento de Saúde e Crianças (健康こども部) → Divisão de Futuro das Crianças (こども未来課).\nNessa página consta o \"número de vagas disponíveis no primeiro ajuste para matrícula de abril\" (4月入園第一次調整の受入可能人数). São os números de 1º de outubro do 8º ano de Reiwa, exibidos em imagem.\nA página foi atualizada em 1º de novembro de 2026. Ela é atualizada conforme o ajuste de cada período de matrícula.\nNesta pesquisa não foi possível confirmar uma página mensal só com as vagas para matrícula a qualquer momento (durante o ano letivo). Consulte a Divisão de Futuro das Crianças (こども未来課).\nO nome, o endereço e o telefone de cada instalação da cidade estão em \"Sobre as instalações de cuidado infantil da cidade, 9º ano de Reiwa\" (令和9年度 市内の保育施設等について), atualizado em 1º de outubro de 2026.\nA inscrição é feita por solicitação online ou no balcão da Divisão de Futuro das Crianças (こども未来課).\nO balcão fica no 2º andar do Minokamo Kenko Plaza (みのかも健康プラザ), no anexo do Centro Médico Internacional de Chubu (中部国際医療センター付属棟).\nO telefone é 0574-25-2111 (ramal 387).\nNão há recebimento em cada creche nem inscrição por correio.\nO \"Consulta de vagas\" (空き枠確認) do LINE é para reservar o cuidado temporário (一時預かり). Não é para vagas de matrícula.",
+     "original": "空き状況は、市の「令和9年度4月 保育園・こども園・小規模保育所等の入園について」のページで見られます。\n場所は、市公式サイトの「組織でさがす」→健康こども部→こども未来課です。\nこのページには「4月入園第一次調整の受入可能人数」が載っています。令和8年10月1日時点の人数で、画像で表示されています。\nページは2026年11月1日に更新されています。入園の時期ごとの調整に合わせて更新されます。\n随時入園（年度の途中）の空きだけを載せた月ごとのページは、今回の調査では確認できませんでした。こども未来課にお問い合わせください。\n市内の各施設の名前・住所・電話番号は「令和9年度 市内の保育施設等について」（2026年10月1日更新）にあります。\n申し込みはオンライン申請か、こども未来課の窓口です。\n窓口は、みのかも健康プラザ2階（中部国際医療センター付属棟）です。\n電話は 0574-25-2111（内線387）です。\n各園での受付や郵送での申し込みはしていません。\nLINEの「空き枠確認」は、一時預かりの予約用です。入園の空きではありません。",
+     "back": "空き状況は、市の「令和9年度4月 保育園・こども園・小規模保育所等の入園について」のページで見られます。場所は、市公式サイトの「組織でさがす」→健康こども部→こども未来課です。このページには「4月入園第一次調整の受入可能人数」が載っています。令和8年10月1日時点の人数で、画像で表示されています。ページは2026年11月1日に更新されています。入園の時期ごとの調整に合わせて更新されます。随時入園（年度の途中）の空きだけを載せた月ごとのページは、今回の調査では確認できませんでした。こども未来課にお問い合わせください。市内の各施設の名前・住所・電話番号は「令和9年度 市内の保育施設等について」（2026年10月1日更新）にあります。申し込みはオンライン申請か、こども未来課の窓口です。窓口は、みのかも健康プラザ2階（中部国際医療センター付属棟）です。電話は0574-25-2111（内線387）です。各園での受付や郵送での申し込みはしていません。LINEの「空き枠確認」は、一時預かりの予約用です。入園の空きではありません。",
+     "source": {
+      "title": "令和9年度4月 保育園・こども園・小規模保育所等の入園について",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/8/13155.html",
+      "where": "「4月入園第一次調整の受入可能人数」／「このページに関するお問い合わせ先」"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q55",
+     "short": "Onde avisar sobre estragos em ruas, postes de luz e parques",
+     "text": "Para buracos na rua, lâmpada queimada em poste de luz, árvores caídas etc., se for via municipal, ligue para o Setor de Manutenção (維持係) da Divisão de Obras Civis (土木課). O telefone é 0574-25-2111.\nSe for via provincial, contate o Escritório de Obras Civis de Kamo da Província de Gifu (岐阜県可茂土木事務所): 0574-25-3111.\nSe for via nacional, contate o Posto de Manutenção de Rodovias Nacionais de Minokamo (美濃加茂国道維持出張所) do Escritório de Rodovias Nacionais de Gifu (岐阜国道事務所): 0574-26-2151.\nPara lâmpada queimada em poste de luz, ajuda se você informar o número de controle da \"etiqueta de gerenciamento de iluminação pública\" (街路灯管理票) no poste.\nPara brinquedos quebrados em parques, a Divisão de Obras Civis (土木課, 0574-25-2111) é responsável pela manutenção das instalações dos parques.\nPara a manutenção de vias em feriados e fora do horário, e para emergências em parques, também se deve contatar os respectivos escritórios.\nInforma-se que cada escritório tem funcionários ou responsáveis presentes.\nCanais de denúncia por e-mail, LINE ou aplicativo não foram confirmados nas páginas oficiais.",
+     "original": "道路の穴、街灯の球切れ、倒木などは、市道なら土木課 維持係に電話します。電話番号は 0574-25-2111 です。\n県道は岐阜県可茂土木事務所（0574-25-3111）に連絡します。\n国道は岐阜国道事務所 美濃加茂国道維持出張所（0574-26-2151）に連絡します。\n街灯の球切れは、電柱の「街路灯管理票」の管理番号を伝えると助かります。\n公園の遊具のこわれは、土木課（0574-25-2111）が公園施設の維持管理を担当しています。\n休日・時間外の道路の維持管理や公園の緊急連絡も、それぞれの事務所に連絡します。\n各事務所には職員または係員がいる、と案内されています。\nメール・LINE・アプリでの通報窓口は、公式ページでは確認できませんでした。",
+     "back": "道路の穴、街灯の球切れ、倒木などは、市道なら土木課 維持係に電話します。電話番号は0574-25-2111です。県道は岐阜県可茂土木事務所（0574-25-3111）に連絡します。国道は岐阜国道事務所 美濃加茂国道維持出張所（0574-26-2151）に連絡します。街灯の球切れは、電柱の「街路灯管理票」の管理番号を伝えると助かります。公園の遊具のこわれは、土木課（0574-25-2111）が公園施設の維持管理を担当しています。休日・時間外の道路の維持管理や公園の緊急連絡も、それぞれの事務所に連絡します。各事務所には職員または係員がいる、と案内されています。メール・LINE・アプリでの通報窓口は、公式ページでは確認できませんでした。",
+     "source": {
+      "title": "街路樹の管理（剪定・害虫対策・倒木）についての問い合わせ先はどこですか",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/16/2093.html",
+      "where": "お問い合わせ先（市道・県道・国道、休日・時間外の注記）"
+     },
+     "status": "auto",
+     "problems": []
     }
    ]
   },
@@ -619,6 +703,92 @@
      "problems": [
       "「離乳食の進め方」が「離乳食の与え方(食べさせ方)」に近い言い方になっている。中身の違いは小さい。"
      ]
+    },
+    {
+     "qid": "Q56",
+     "short": "Kapag may tagas ng tubig o walang lumalabas na tubig",
+     "text": "Kapag walang lumalabas na tubig o malabo (maputik) ang tubig, makipag-ugnayan sa Seksyon ng Tubig at Alkantarilya (上下水道課) sa 0574-25-2111, extension 321 o 322.\nSa gabi at tuwing holiday, makipag-ugnayan sa duty desk sa gabi at holiday ng city hall (市役所宿日直).\nPara sa tagas ng tubig, makipag-ugnayan sa isang kontratistang itinalaga ng lungsod (市の指定工事店). Tuwing Sabado, Linggo, at pambansang holiday, may sistema ng pagpapalitan ng naka-duty, kaya tingnan ang talaan ng naka-duty tuwing holiday (休日当番表).\nAng tanggapang tumatanggap ng mga problema sa tubig ay ang direktang linya ng Seksyon ng Accounting (経理係): 0574-28-1132.\nPara sa baradong tubo ng imburnal sa publiko o pag-apaw ng tubig mula sa pampublikong imburnal, makipag-ugnayan sa Seksyon ng Pagpapanatili ng Imburnal (下水道維持係) ng Seksyon ng Tubig at Alkantarilya (上下水道課) sa 0574-25-2111, extension 424.\nPara sa baradong tubo ng drainage sa loob ng sariling lote o baradong pribadong manhole (私設ます), makipag-ugnayan sa isang itinalagang kontratista para sa mga pasilidad ng drainage at imburnal (下水道排水設備等指定工事店).\nAng listahan ng mga itinalagang kontratista ay nasa pahina ng lungsod na \"Listahan ng mga Itinalagang Kontratista sa Tubig at Alkantarilya\" (「上下水道指定工事店一覧」), na may mga PDF para sa loob ng lungsod at labas ng lungsod.",
+     "original": "水が出ない・濁るときは上下水道課（0574-25-2111、内線321・322）。\n夜間・休日は市役所宿日直に連絡する。\n水漏れは市の指定工事店へ。土日祝は当番制なので休日当番表で確認する。\n水道トラブルの窓口は経理係の直通0574-28-1132。\n公共ますや下水道管の詰まり・あふれは上下水道課下水道維持係（0574-25-2111、内線424）。\n宅地内の排水管や私設ますの詰まりは、下水道排水設備等指定工事店へ。\n指定工事店の一覧は市の「上下水道指定工事店一覧」ページ（市内・市外のPDF）にある。",
+     "back": "水が出ない・濁るときは上下水道課（0574-25-2111、内線321・322）に連絡する。夜間・休日は市役所宿日直に連絡する。水漏れは市の指定工事店へ。土日祝は当番制なので休日当番表で確認する。水道トラブルの窓口は経理係の直通0574-28-1132。公共ますや下水道管の詰まり・あふれは上下水道課下水道維持係（0574-25-2111、内線424）。宅地内の排水管や私設ますの詰まりは、下水道排水設備等指定工事店へ。指定工事店の一覧は市の「上下水道指定工事店一覧」ページ（市内・市外のPDF）にある。",
+     "source": {
+      "title": "水が出ない場合、またはにごった水が出るときは - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/17/1993.html",
+      "where": "本文・お問い合わせ先"
+     },
+     "status": "auto",
+     "problems": [
+      "「公共ます」（公共の桝）が「public sewer pipe（公共の下水管）」に含まれ、「ます（桝）」の語が抜けている。「当番制」を「pagpapalitan（交代）」と訳しており、ニュアンスがわずかに違う。"
+     ]
+    },
+    {
+     "qid": "Q57",
+     "short": "Konsultasyon tungkol sa pugad ng bubuyog at iba pang hayop",
+     "text": "Pugad ng bubuyog (ハチ): Ang pugad na nasa loob ng sariling lote ay ang may-ari o tagapamahala mismo ang aayos. Direktang makipag-ugnayan sa isang kumpanya ng pest control (害虫駆除業者).\nHindi nagrerekomenda o nagpapakilala ng mga kumpanya ang lungsod.\nPara sa mga pugad sa kalsada, parke, at pampublikong pasilidad, makipag-ugnayan sa Seksyon ng Gawaing Sibil (土木課) sa 0574-25-2111, extension 411.\nRaccoon (アライグマ): Nagpapahiram ang Seksyon ng Agrikultura at Gubat (農林課) ng bitag na kulungan. Kapag nakahuli, makipag-ugnayan sa Seksyon ng Pagbabalik-buhay ng Satoyama (里山再生係) ng Seksyon ng Agrikultura at Gubat (農林課).\nAng tanggapang pinagtatanungan tungkol sa mapaminsalang ibon at hayop ay ang Seksyon ng Pagbabalik-buhay ng Satoyama (里山再生係) ng Seksyon ng Agrikultura at Gubat (農林課): 0574-25-2111, extension 331 o 335.\nTungkol sa ahas, uwak, at hakubishin (ハクビシン, palm civet), walang nakitang gabay sa opisyal na website.\nTungkol sa tulong pinansyal para sa gastos, wala itong nakasulat sa mga nakita.",
+     "original": "ハチの巣：敷地内の巣は所有者・管理者が自分で処理します。害虫駆除業者に直接問い合わせてください。\n市は業者を紹介していません。\n道路・公園・公共施設の巣は土木課（0574-25-2111 内線411）へ。\nアライグマ：農林課が捕獲用の檻を貸し出しています。捕まえたら農林課 里山再生係に連絡します。\n有害鳥獣の相談先は農林課 里山再生係（0574-25-2111 内線331・335）です。\nヘビ・カラス・ハクビシンについては、公式サイトに案内が見つかりませんでした。\n費用の助成制度は、見つかった範囲では書かれていません。",
+     "back": "ハチの巣：敷地内の巣は所有者・管理者が自分で処理する。害虫駆除業者に直接問い合わせる。市は業者を紹介していない。道路・公園・公共施設の巣は土木課（0574-25-2111 内線411）へ。アライグマ：農林課が捕獲用の檻を貸し出している。捕まえたら農林課 里山再生係に連絡する。有害鳥獣の相談先は農林課 里山再生係（0574-25-2111 内線331・335）。ヘビ・カラス・ハクビシンについては、公式サイトに案内が見つからなかった。費用の助成制度は、見つかった範囲では書かれていない。",
+     "source": {
+      "title": "アライグマなど有害鳥獣を駆除してほしい",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/13/1685.html",
+      "where": "本文・有害鳥獣駆除についての相談、お問い合わせ"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q58",
+     "short": "Nawawalang aso at pusa",
+     "text": "Kapag nawala ang alaga mong aso o pusa, agad na makipag-ugnayan sa sumusunod na 3 lugar.\n・Himpilan ng Pulisya ng Kamo (加茂警察署): 0574-25-0110\n・Seksyon ng Kalusugang Pangkapaligiran (生活衛生課) ng Health Center ng Kamo (可茂保健所): 0574-25-3111\n・Seksyon ng Kapaligiran (環境課) ng city hall (市役所): 0574-25-2111 (Ang Seksyon ng Pamumuhay ng mga Mamamayan (市民生活係) ng Seksyon ng Kapaligiran ay extension 306. Ito ay extension mula sa lumang gabay.)\nMaaari nilang tingnan kung may nagkupkop na sa alaga mo.\nMaaaring makupkop din ito ng pulisya, kaya mag-ulat din sa pinakamalapit na koban (交番, maliit na himpilan ng pulis).\nKapag nakakita ka ng alagang hayop na hindi alam kung sino ang may-ari, ang parehong pahina ang nagbibigay-gabay bilang tanggapang lalapitan.\nAng impormasyon tungkol sa mga asong nakupkop ay makikita sa pahina ng Prepektura ng Gifu na \"Impormasyon sa Naliligaw na Aso\" (「迷い犬情報」).\nHiwalay ang pahinang ito ayon sa health center, at ang Lungsod ng Minokamo ay nasa nasasakupan ng Health Center ng Kamo (可茂保健所).\nHindi namin natiyak kung may pahinang makikita ang impormasyon tungkol sa pusa.\nAng Sentro ng Pangangalaga sa Hayop ng Prepektura ng Gifu (岐阜県動物愛護センター, 0575-34-0050) ay nakalista sa pahina ng lungsod bilang tanggapan ng aplikasyon para sa programang community cat (地域猫活動). Hindi ito ibinibigay bilang lugar na pag-uulatan ng nawawalang alaga.",
+     "original": "飼っている犬や猫がいなくなったときは、至急、次の3か所に連絡します。\n・加茂警察署：0574-25-0110\n・可茂保健所 生活衛生課：0574-25-3111\n・市役所 環境課：0574-25-2111（環境課 市民生活係は内線306。古い案内の内線です）\nどこかに保護されていないか、照合してもらえます。\n警察に保護されることもあるので、最寄りの交番にも届けます。\n所有者不明のペットを見つけたときも、同じページが窓口として案内しています。\n保護された犬の情報は、岐阜県の「迷い犬情報」ページで見られます。\nこのページは保健所ごとに分かれていて、美濃加茂市は可茂保健所の管内です。\n猫の情報が見られるページは、確認できませんでした。\n岐阜県動物愛護センター（0575-34-0050）は、市のページでは地域猫活動の申込み窓口として載っています。迷子の届け先としては案内されていません。",
+     "back": "飼っている犬や猫がいなくなったときは、至急、次の3か所に連絡する。・加茂警察署：0574-25-0110・可茂保健所 生活衛生課：0574-25-3111・市役所 環境課：0574-25-2111（環境課 市民生活係は内線306。古い案内の内線）。どこかに保護されていないか、照合してもらえる。警察に保護されることもあるので、最寄りの交番にも届ける。所有者不明のペットを見つけたときも、同じページが窓口として案内している。保護された犬の情報は、岐阜県の「迷い犬情報」ページで見られる。このページは保健所ごとに分かれていて、美濃加茂市は可茂保健所の管内である。猫の情報が見られるページは確認できなかった。岐阜県動物愛護センター（0575-34-0050）は、市のページでは地域猫活動の申込み窓口として載っている。迷子の届け先としては案内されていない。",
+     "source": {
+      "title": "飼っていたペットが行方不明になった、所有者不明のペットを目撃した - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/15/1785.html",
+      "where": "「飼っていたペットが行方不明になった」の項"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q59",
+     "short": "Nawalang gamit at naiwang gamit",
+     "text": "Ang humahawak sa Lungsod ng Minokamo ay ang Himpilan ng Pulisya ng Kamo (加茂警察署).\nAng numero ng telepono ay 0574-25-0110.\nAng address ay Minokamo-shi Furui-cho Shimofurui 2610-banchi (美濃加茂市古井町下古井2610番地).\nPara maghanap ng nawalang gamit o mag-ulat nito, gamitin ang pahina ng National Police Agency na \"Impormasyon sa Nawala at Naiwang Gamit\" (「落とし物・忘れ物情報」). Ang pahinang ito ay may link mula sa pahina ng pulisya ng prepektura.\nKapag kakatawanin ka ng ibang tao sa pagkuha, mauna siyang makipag-ugnayan sa himpilan ng pulisya kung saan naipasa ang nawalang gamit. Pagkatapos, gumawa ng sulat ng pahintulot (委任状).\nHindi pa namin natiyak sa pagkakataong ito ang mga lugar na pinag-uulatan sa city hall at mga pampublikong pasilidad, at sa mga kumpanya ng tren at bus.",
+     "original": "美濃加茂市を受け持つのは加茂警察署です。\n電話番号は 0574-25-0110 です。\n所在地は美濃加茂市古井町下古井2610番地です。\n落とし物を探したり届けを出したりするときは、警察庁の「落とし物・忘れ物情報」のページを使います。このページへは県警のページからリンクされています。\n代理人が受け取るときは、先に落とし物が届いている警察署へ連絡してください。そのうえで委任状を作ってください。\n市役所・公共施設、駅やバスの会社の届け先は、今回は確認できていません。",
+     "back": "美濃加茂市を受け持つのは加茂警察署である。電話番号は0574-25-0110。所在地は美濃加茂市古井町下古井2610番地。落とし物を探したり届けを出したりするときは、警察庁の「落とし物・忘れ物情報」のページを使う。このページへは県警のページからリンクされている。代理人が受け取るときは、先に落とし物が届いている警察署へ連絡する。そのうえで委任状を作る。市役所・公共施設、駅やバスの会社の届け先は、今回は確認できていない。",
+     "source": {
+      "title": "落とし物の検索・届出 - 岐阜県公式ホームページ",
+      "url": "https://www.pref.gifu.lg.jp/site/police/3561.html",
+      "where": "警察署の表（加茂警察署）"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q61",
+     "short": "Bakante sa nursery at certified na kodomo-en",
+     "text": "Makikita ang kalagayan ng mga bakante sa pahina ng lungsod na \"Tungkol sa Pagpasok sa mga Nursery, Kodomo-en, at Maliliit na Nursery, atbp. para sa Abril ng Taong Piskal ng Reiwa 9\" (「令和9年度4月 保育園・こども園・小規模保育所等の入園について」).\nPara hanapin ito: sa opisyal na website ng lungsod, \"Hanapin ayon sa Organisasyon\" (「組織でさがす」) → Kagawaran ng Kalusugan at mga Bata (健康こども部) → Seksyon ng Kinabukasan ng mga Bata (こども未来課).\nNakalista sa pahinang ito ang \"bilang ng matatanggap sa unang pag-aayos ng pagpasok sa Abril\" (「4月入園第一次調整の受入可能人数」). Ito ang bilang noong Oktubre 1, Reiwa 8, at ipinapakita bilang larawan.\nNa-update ang pahina noong Nobyembre 1, 2026. Ina-update ito ayon sa pag-aayos para sa bawat panahon ng pagpasok.\nHindi namin natiyak sa pagsisiyasat na ito ang buwanang pahinang naglalaman lamang ng mga bakante para sa pagpasok sa kalagitnaan ng taon (随時入園). Magtanong sa Seksyon ng Kinabukasan ng mga Bata (こども未来課).\nAng pangalan, address, at numero ng telepono ng bawat pasilidad sa lungsod ay nasa \"Tungkol sa mga Pasilidad ng Nursery, atbp. sa Lungsod, Taong Piskal ng Reiwa 9\" (「令和9年度 市内の保育施設等について」), na na-update noong Oktubre 1, 2026.\nAng aplikasyon ay sa pamamagitan ng online na aplikasyon o sa counter ng Seksyon ng Kinabukasan ng mga Bata (こども未来課).\nAng counter ay nasa ika-2 palapag ng Minokamo Health Plaza (みのかも健康プラザ), sa annex ng Chubu International Medical Center (中部国際医療センター).\nAng telepono ay 0574-25-2111 (extension 387).\nHindi tumatanggap ng aplikasyon sa bawat nursery o sa pamamagitan ng koreo.\nAng \"pagsusuri ng bakanteng slot\" (「空き枠確認」) sa LINE ay para sa reserbasyon ng pansamantalang pag-aalaga (一時預かり). Hindi ito para sa mga bakante sa pagpasok.",
+     "original": "空き状況は、市の「令和9年度4月 保育園・こども園・小規模保育所等の入園について」のページで見られます。\n場所は、市公式サイトの「組織でさがす」→健康こども部→こども未来課です。\nこのページには「4月入園第一次調整の受入可能人数」が載っています。令和8年10月1日時点の人数で、画像で表示されています。\nページは2026年11月1日に更新されています。入園の時期ごとの調整に合わせて更新されます。\n随時入園（年度の途中）の空きだけを載せた月ごとのページは、今回の調査では確認できませんでした。こども未来課にお問い合わせください。\n市内の各施設の名前・住所・電話番号は「令和9年度 市内の保育施設等について」（2026年10月1日更新）にあります。\n申し込みはオンライン申請か、こども未来課の窓口です。\n窓口は、みのかも健康プラザ2階（中部国際医療センター付属棟）です。\n電話は 0574-25-2111（内線387）です。\n各園での受付や郵送での申し込みはしていません。\nLINEの「空き枠確認」は、一時預かりの予約用です。入園の空きではありません。",
+     "back": "空き状況は、市の「令和9年度4月 保育園・こども園・小規模保育所等の入園について」のページで見られる。場所は、市公式サイトの「組織でさがす」→健康こども部→こども未来課。このページには「4月入園第一次調整の受入可能人数」が載っている。令和8年10月1日時点の人数で、画像で表示されている。ページは2026年11月1日に更新されている。入園の時期ごとの調整に合わせて更新される。随時入園（年度の途中）の空きだけを載せた月ごとのページは、今回の調査では確認できなかった。こども未来課に問い合わせる。市内の各施設の名前・住所・電話番号は「令和9年度 市内の保育施設等について」（2026年10月1日更新）にある。申し込みはオンライン申請か、こども未来課の窓口。窓口はみのかも健康プラザ2階（中部国際医療センター付属棟）。電話は0574-25-2111（内線387）。各園での受付や郵送での申し込みはしていない。LINEの「空き枠確認」は、一時預かりの予約用で、入園の空きではない。",
+     "source": {
+      "title": "令和9年度4月 保育園・こども園・小規模保育所等の入園について",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/8/13155.html",
+      "where": "「4月入園第一次調整の受入可能人数」／「このページに関するお問い合わせ先」"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q55",
+     "short": "Saan magrereport ng sira sa kalsada, street light, at parke",
+     "text": "Para sa butas sa kalsada, patay na bombilya ng street light, natumbang puno, at iba pa, kung ito ay kalsada ng lungsod (市道), tumawag sa Seksyon ng Pagpapanatili (維持係) ng Seksyon ng Gawaing Sibil (土木課). Ang numero ay 0574-25-2111.\nKung ito ay kalsada ng prepektura (県道), makipag-ugnayan sa Tanggapan ng Gawaing Sibil ng Kamo ng Prepektura ng Gifu (岐阜県可茂土木事務所) sa 0574-25-3111.\nKung ito ay pambansang kalsada (国道), makipag-ugnayan sa Sangay ng Pagpapanatili ng Pambansang Kalsada ng Minokamo (美濃加茂国道維持出張所) ng Tanggapan ng Pambansang Kalsada ng Gifu (岐阜国道事務所) sa 0574-26-2151.\nPara sa patay na bombilya ng street light, makakatulong kung sasabihin mo ang numero ng pamamahala sa \"tag ng pamamahala ng street light\" (「街路灯管理票」) na nasa poste ng kuryente.\nPara sa sirang gamit sa palaruan ng parke, ang Seksyon ng Gawaing Sibil (土木課, 0574-25-2111) ang may hawak ng pagpapanatili ng mga pasilidad ng parke.\nPara sa pagpapanatili ng kalsada at emergency na ugnayan sa parke tuwing holiday at labas ng oras ng trabaho, makipag-ugnayan din sa kani-kaniyang tanggapan.\nAyon sa gabay, may mga kawani o tauhan sa bawat tanggapan.\nHindi namin natiyak sa mga opisyal na pahina ang tanggapan ng pag-uulat sa pamamagitan ng email, LINE, o app.",
+     "original": "道路の穴、街灯の球切れ、倒木などは、市道なら土木課 維持係に電話します。電話番号は 0574-25-2111 です。\n県道は岐阜県可茂土木事務所（0574-25-3111）に連絡します。\n国道は岐阜国道事務所 美濃加茂国道維持出張所（0574-26-2151）に連絡します。\n街灯の球切れは、電柱の「街路灯管理票」の管理番号を伝えると助かります。\n公園の遊具のこわれは、土木課（0574-25-2111）が公園施設の維持管理を担当しています。\n休日・時間外の道路の維持管理や公園の緊急連絡も、それぞれの事務所に連絡します。\n各事務所には職員または係員がいる、と案内されています。\nメール・LINE・アプリでの通報窓口は、公式ページでは確認できませんでした。",
+     "back": "道路の穴、街灯の球切れ、倒木などは、市道なら土木課 維持係に電話する。電話番号は0574-25-2111。県道は岐阜県可茂土木事務所（0574-25-3111）に連絡する。国道は岐阜国道事務所 美濃加茂国道維持出張所（0574-26-2151）に連絡する。街灯の球切れは、電柱の「街路灯管理票」の管理番号を伝えると助かる。公園の遊具のこわれは、土木課（0574-25-2111）が公園施設の維持管理を担当している。休日・時間外の道路の維持管理や公園の緊急連絡も、それぞれの事務所に連絡する。各事務所には職員または係員がいると案内されている。メール・LINE・アプリでの通報窓口は、公式ページでは確認できなかった。",
+     "source": {
+      "title": "街路樹の管理（剪定・害虫対策・倒木）についての問い合わせ先はどこですか",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/16/2093.html",
+      "where": "お問い合わせ先（市道・県道・国道、休日・時間外の注記）"
+     },
+     "status": "auto",
+     "problems": []
     }
    ]
   },
@@ -919,6 +1089,90 @@
       "title": "６〜７か月児 親子ふれあい教室",
       "url": "https://www.city.minokamo.lg.jp/soshiki/7/21164.html",
       "where": "内容・対象・開催日"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q56",
+     "short": "Khi nước bị rò rỉ hoặc không có nước (水道の水漏れ・水が出ないとき)",
+     "text": "Khi nước không chảy hoặc bị đục, hãy liên hệ Phòng Cấp thoát nước (上下水道課) (0574-25-2111, số nội bộ 321・322).\nVào ban đêm và ngày nghỉ, hãy liên hệ bộ phận trực của tòa thị chính (市役所宿日直).\nNếu nước bị rò rỉ, hãy gọi cửa hàng thi công do thành phố chỉ định (市の指定工事店). Thứ Bảy, Chủ nhật và ngày lễ làm theo chế độ luân phiên trực, nên hãy xem bảng trực ngày nghỉ (休日当番表) để xác nhận.\nĐầu mối tiếp nhận sự cố về nước là đường dây trực tiếp của bộ phận kế toán (経理係): 0574-28-1132.\nNếu hố ga công cộng hoặc ống thoát nước bị tắc hay tràn, hãy liên hệ Phòng Cấp thoát nước, bộ phận bảo trì cống thoát nước (上下水道課下水道維持係) (0574-25-2111, số nội bộ 424).\nNếu ống thoát nước trong khuôn viên nhà hoặc hố ga tư nhân (私設ます) bị tắc, hãy liên hệ cửa hàng thi công được chỉ định về thiết bị thoát nước (下水道排水設備等指定工事店).\nDanh sách các cửa hàng thi công được chỉ định có trên trang \"Danh sách cửa hàng thi công cấp thoát nước được chỉ định\" (上下水道指定工事店一覧) của thành phố (có file PDF cho trong thành phố và ngoài thành phố).",
+     "original": "水が出ない・濁るときは上下水道課（0574-25-2111、内線321・322）。\n夜間・休日は市役所宿日直に連絡する。\n水漏れは市の指定工事店へ。土日祝は当番制なので休日当番表で確認する。\n水道トラブルの窓口は経理係の直通0574-28-1132。\n公共ますや下水道管の詰まり・あふれは上下水道課下水道維持係（0574-25-2111、内線424）。\n宅地内の排水管や私設ますの詰まりは、下水道排水設備等指定工事店へ。\n指定工事店の一覧は市の「上下水道指定工事店一覧」ページ（市内・市外のPDF）にある。",
+     "back": "水が出ない・濁るときは上下水道課（0574-25-2111、内線321・322）。夜間・休日は市役所宿日直に連絡する。水漏れは市の指定工事店へ。土日祝は当番制なので休日当番表で確認する。水道トラブルの窓口は経理係の直通0574-28-1132。公共ますや下水道管の詰まり・あふれは上下水道課下水道維持係（0574-25-2111、内線424）。宅地内の排水管や私設ますの詰まりは、下水道排水設備等指定工事店へ。指定工事店の一覧は市の「上下水道指定工事店一覧」ページ（市内・市外のPDF）にある。",
+     "source": {
+      "title": "水が出ない場合、またはにごった水が出るときは - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/17/1993.html",
+      "where": "本文・お問い合わせ先"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q57",
+     "short": "Tư vấn về tổ ong và các loài vật khác (ハチの巣など生き物の相談)",
+     "text": "Tổ ong: Tổ ong trong khuôn viên nhà thì chủ sở hữu hoặc người quản lý tự xử lý. Hãy liên hệ trực tiếp với công ty diệt côn trùng gây hại.\nThành phố không giới thiệu công ty.\nTổ ong ở đường, công viên hoặc cơ sở công cộng thì liên hệ Phòng Xây dựng (土木課) (0574-25-2111, số nội bộ 411).\nGấu mèo Bắc Mỹ (アライグマ): Phòng Nông lâm (農林課) cho mượn lồng bẫy. Nếu bắt được, hãy liên hệ bộ phận Tái sinh vùng núi làng (里山再生係) của Phòng Nông lâm.\nNơi tư vấn về chim thú gây hại là bộ phận Tái sinh vùng núi làng (里山再生係) của Phòng Nông lâm (農林課) (0574-25-2111, số nội bộ 331・335).\nVề rắn, quạ và cầy vòi mốc (ハクビシン), chúng tôi không tìm thấy hướng dẫn trên trang web chính thức.\nVề chế độ hỗ trợ chi phí, trong phạm vi đã tìm được thì không có ghi.",
+     "original": "ハチの巣：敷地内の巣は所有者・管理者が自分で処理します。害虫駆除業者に直接問い合わせてください。\n市は業者を紹介していません。\n道路・公園・公共施設の巣は土木課（0574-25-2111 内線411）へ。\nアライグマ：農林課が捕獲用の檻を貸し出しています。捕まえたら農林課 里山再生係に連絡します。\n有害鳥獣の相談先は農林課 里山再生係（0574-25-2111 内線331・335）です。\nヘビ・カラス・ハクビシンについては、公式サイトに案内が見つかりませんでした。\n費用の助成制度は、見つかった範囲では書かれていません。",
+     "back": "ハチの巣：敷地内の巣は所有者・管理者が自分で処理します。害虫駆除業者に直接問い合わせてください。市は業者を紹介していません。道路・公園・公共施設の巣は土木課（0574-25-2111 内線411）へ。アライグマ：農林課が捕獲用の檻を貸し出しています。捕まえたら農林課 里山再生係に連絡します。有害鳥獣の相談先は農林課 里山再生係（0574-25-2111 内線331・335）です。ヘビ・カラス・ハクビシンについては、公式サイトに案内が見つかりませんでした。費用の助成制度は、見つかった範囲では書かれていません。",
+     "source": {
+      "title": "アライグマなど有害鳥獣を駆除してほしい",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/13/1685.html",
+      "where": "本文・有害鳥獣駆除についての相談、お問い合わせ"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q58",
+     "short": "Chó, mèo bị lạc (迷子の犬・猫)",
+     "text": "Khi chó hoặc mèo nuôi bị mất, hãy liên hệ gấp ba nơi sau:\n・Sở cảnh sát Kamo (加茂警察署): 0574-25-0110\n・Phòng Vệ sinh đời sống, Trung tâm y tế Kamo (可茂保健所 生活衛生課): 0574-25-3111\n・Phòng Môi trường, tòa thị chính (市役所 環境課): 0574-25-2111 (bộ phận Đời sống công dân của Phòng Môi trường (環境課 市民生活係) là số nội bộ 306. Đây là số nội bộ trong hướng dẫn cũ.)\nCác nơi này có thể đối chiếu xem con vật có đang được bảo hộ ở đâu không.\nVì cũng có trường hợp được cảnh sát bảo hộ, hãy báo cả cho đồn cảnh sát gần nhất (交番).\nKhi tìm thấy thú cưng không rõ chủ, cũng có thể liên hệ các nơi này, vì cùng trang đó hướng dẫn các nơi này là đầu mối tiếp nhận.\nThông tin về chó được bảo hộ có thể xem ở trang \"Thông tin chó lạc\" (迷い犬情報) của tỉnh Gifu.\nTrang này được chia theo từng trung tâm y tế, và thành phố Minokamo (美濃加茂市) thuộc phạm vi của Trung tâm y tế Kamo (可茂保健所).\nChúng tôi không xác nhận được trang nào cho xem thông tin về mèo.\nTrung tâm bảo vệ động vật tỉnh Gifu (岐阜県動物愛護センター) (0575-34-0050) được ghi trên trang của thành phố là nơi nhận đăng ký hoạt động mèo cộng đồng (地域猫活動). Nơi này không được hướng dẫn là nơi báo thú cưng bị lạc.",
+     "original": "飼っている犬や猫がいなくなったときは、至急、次の3か所に連絡します。\n・加茂警察署：0574-25-0110\n・可茂保健所 生活衛生課：0574-25-3111\n・市役所 環境課：0574-25-2111（環境課 市民生活係は内線306。古い案内の内線です）\nどこかに保護されていないか、照合してもらえます。\n警察に保護されることもあるので、最寄りの交番にも届けます。\n所有者不明のペットを見つけたときも、同じページが窓口として案内しています。\n保護された犬の情報は、岐阜県の「迷い犬情報」ページで見られます。\nこのページは保健所ごとに分かれていて、美濃加茂市は可茂保健所の管内です。\n猫の情報が見られるページは、確認できませんでした。\n岐阜県動物愛護センター（0575-34-0050）は、市のページでは地域猫活動の申込み窓口として載っています。迷子の届け先としては案内されていません。",
+     "back": "飼っている犬や猫がいなくなったときは、至急、次の3か所に連絡します。・加茂警察署：0574-25-0110・可茂保健所 生活衛生課：0574-25-3111・市役所 環境課：0574-25-2111（環境課 市民生活係は内線306。古い案内の内線です）どこかに保護されていないか、照合してもらえます。警察に保護されることもあるので、最寄りの交番にも届けます。所有者不明のペットを見つけたときも、同じページが窓口として案内しています。保護された犬の情報は、岐阜県の「迷い犬情報」ページで見られます。このページは保健所ごとに分かれていて、美濃加茂市は可茂保健所の管内です。猫の情報が見られるページは、確認できませんでした。岐阜県動物愛護センター（0575-34-0050）は、市のページでは地域猫活動の申込み窓口として載っています。迷子の届け先としては案内されていません。",
+     "source": {
+      "title": "飼っていたペットが行方不明になった、所有者不明のペットを目撃した - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/15/1785.html",
+      "where": "「飼っていたペットが行方不明になった」の項"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q59",
+     "short": "Đồ rơi, đồ bỏ quên (落とし物・忘れ物)",
+     "text": "Nơi phụ trách thành phố Minokamo (美濃加茂市) là Sở cảnh sát Kamo (加茂警察署).\nSố điện thoại là 0574-25-0110.\nĐịa chỉ là 美濃加茂市古井町下古井2610番地.\nKhi tìm đồ rơi hoặc khai báo, hãy dùng trang \"Thông tin đồ rơi・đồ bỏ quên\" (落とし物・忘れ物情報) của Cơ quan Cảnh sát Quốc gia (警察庁). Trang này có liên kết từ trang của cảnh sát tỉnh.\nKhi người đại diện đến nhận, trước tiên hãy liên hệ sở cảnh sát nơi đồ rơi đã được giao nộp. Sau đó hãy làm giấy ủy quyền (委任状).\nVề nơi tiếp nhận đồ rơi ở tòa thị chính, cơ sở công cộng, nhà ga và các công ty xe buýt, lần này chúng tôi chưa xác nhận được.",
+     "original": "美濃加茂市を受け持つのは加茂警察署です。\n電話番号は 0574-25-0110 です。\n所在地は美濃加茂市古井町下古井2610番地です。\n落とし物を探したり届けを出したりするときは、警察庁の「落とし物・忘れ物情報」のページを使います。このページへは県警のページからリンクされています。\n代理人が受け取るときは、先に落とし物が届いている警察署へ連絡してください。そのうえで委任状を作ってください。\n市役所・公共施設、駅やバスの会社の届け先は、今回は確認できていません。",
+     "back": "美濃加茂市を受け持つのは加茂警察署です。電話番号は 0574-25-0110 です。所在地は美濃加茂市古井町下古井2610番地です。落とし物を探したり届けを出したりするときは、警察庁の「落とし物・忘れ物情報」のページを使います。このページへは県警のページからリンクされています。代理人が受け取るときは、先に落とし物が届いている警察署へ連絡してください。そのうえで委任状を作ってください。市役所・公共施設、駅やバスの会社の届け先は、今回は確認できていません。",
+     "source": {
+      "title": "落とし物の検索・届出 - 岐阜県公式ホームページ",
+      "url": "https://www.pref.gifu.lg.jp/site/police/3561.html",
+      "where": "警察署の表（加茂警察署）"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q61",
+     "short": "Chỗ trống ở nhà trẻ・trường mầm non được công nhận (保育所・認定こども園の空き)",
+     "text": "Có thể xem tình hình chỗ trống ở trang \"Về việc nhập học năm 令和9年度 (Reiwa 9) tháng 4 vào nhà trẻ・trường mầm non・cơ sở giữ trẻ quy mô nhỏ, v.v.\" (令和9年度4月 保育園・こども園・小規模保育所等の入園について) của thành phố.\nCách tìm: trên trang web chính thức của thành phố, chọn \"Tìm theo tổ chức\" (組織でさがす) → Ban Sức khỏe và Trẻ em (健康こども部) → Phòng Tương lai Trẻ em (こども未来課).\nTrang này đăng \"Số trẻ có thể tiếp nhận trong đợt điều chỉnh thứ nhất cho nhập học tháng 4\" (4月入園第一次調整の受入可能人数). Đây là số liệu tại thời điểm 令和8年10月1日 và được hiển thị bằng hình ảnh.\nTrang được cập nhật ngày 2026年11月1日. Trang được cập nhật theo từng đợt điều chỉnh của mỗi thời kỳ nhập học.\nTrong cuộc khảo sát lần này, chúng tôi không xác nhận được trang theo từng tháng chỉ đăng chỗ trống cho nhập học bất cứ lúc nào (giữa năm học). Hãy hỏi Phòng Tương lai Trẻ em (こども未来課).\nTên, địa chỉ và số điện thoại của các cơ sở trong thành phố có trong \"Về các cơ sở giữ trẻ trong thành phố năm 令和9年度\" (令和9年度 市内の保育施設等について) (cập nhật 2026年10月1日).\nĐăng ký bằng cách nộp đơn trực tuyến hoặc tại quầy của Phòng Tương lai Trẻ em.\nQuầy nằm ở tầng 2 Minokamo Kenkō Plaza (みのかも健康プラザ) (tòa nhà phụ của Trung tâm Y tế Quốc tế Chubu (中部国際医療センター)).\nĐiện thoại là 0574-25-2111 (số nội bộ 387).\nKhông nhận đăng ký tại từng trường hoặc qua đường bưu điện.\n\"Kiểm tra chỗ trống\" (空き枠確認) trên LINE dùng để đặt chỗ giữ trẻ tạm thời. Đó không phải là chỗ trống để nhập học.",
+     "original": "空き状況は、市の「令和9年度4月 保育園・こども園・小規模保育所等の入園について」のページで見られます。\n場所は、市公式サイトの「組織でさがす」→健康こども部→こども未来課です。\nこのページには「4月入園第一次調整の受入可能人数」が載っています。令和8年10月1日時点の人数で、画像で表示されています。\nページは2026年11月1日に更新されています。入園の時期ごとの調整に合わせて更新されます。\n随時入園（年度の途中）の空きだけを載せた月ごとのページは、今回の調査では確認できませんでした。こども未来課にお問い合わせください。\n市内の各施設の名前・住所・電話番号は「令和9年度 市内の保育施設等について」（2026年10月1日更新）にあります。\n申し込みはオンライン申請か、こども未来課の窓口です。\n窓口は、みのかも健康プラザ2階（中部国際医療センター付属棟）です。\n電話は 0574-25-2111（内線387）です。\n各園での受付や郵送での申し込みはしていません。\nLINEの「空き枠確認」は、一時預かりの予約用です。入園の空きではありません。",
+     "back": "空き状況は、市の「令和9年度4月 保育園・こども園・小規模保育所等の入園について」のページで見られます。場所は、市公式サイトの「組織でさがす」→健康こども部→こども未来課です。このページには「4月入園第一次調整の受入可能人数」が載っています。令和8年10月1日時点の人数で、画像で表示されています。ページは2026年11月1日に更新されています。入園の時期ごとの調整に合わせて更新されます。随時入園（年度の途中）の空きだけを載せた月ごとのページは、今回の調査では確認できませんでした。こども未来課にお問い合わせください。市内の各施設の名前・住所・電話番号は「令和9年度 市内の保育施設等について」（2026年10月1日更新）にあります。申し込みはオンライン申請か、こども未来課の窓口です。窓口は、みのかも健康プラザ2階（中部国際医療センター付属棟）です。電話は 0574-25-2111（内線387）です。各園での受付や郵送での申し込みはしていません。LINEの「空き枠確認」は、一時預かりの予約用です。入園の空きではありません。",
+     "source": {
+      "title": "令和9年度4月 保育園・こども園・小規模保育所等の入園について",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/8/13155.html",
+      "where": "「4月入園第一次調整の受入可能人数」／「このページに関するお問い合わせ先」"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q55",
+     "short": "Nơi báo khi đường, đèn đường, công viên bị hư hỏng (道路・街灯・公園のこわれを知らせる先)",
+     "text": "Với ổ gà trên đường, bóng đèn đường bị cháy, cây đổ, v.v., nếu là đường của thành phố thì hãy gọi bộ phận bảo trì (維持係) của Phòng Xây dựng (土木課). Số điện thoại là 0574-25-2111.\nNếu là đường tỉnh lộ thì liên hệ Văn phòng Xây dựng Kamo tỉnh Gifu (岐阜県可茂土木事務所) (0574-25-3111).\nNếu là quốc lộ thì liên hệ Trạm bảo trì quốc lộ Minokamo (美濃加茂国道維持出張所) thuộc Văn phòng Quốc lộ Gifu (岐阜国道事務所) (0574-26-2151).\nVới bóng đèn đường bị cháy, nếu bạn cho biết số quản lý trên \"bảng quản lý đèn đường\" (街路灯管理票) gắn ở cột điện thì sẽ rất hữu ích.\nVề đồ chơi hỏng trong công viên, Phòng Xây dựng (土木課) (0574-25-2111) phụ trách bảo trì quản lý các cơ sở công viên.\nViệc bảo trì đường và liên lạc khẩn cấp về công viên vào ngày nghỉ・ngoài giờ cũng liên hệ với từng văn phòng tương ứng.\nCó hướng dẫn rằng mỗi văn phòng đều có nhân viên hoặc nhân viên trực.\nVề nơi báo qua email・LINE・ứng dụng, chúng tôi không xác nhận được trên trang chính thức.",
+     "original": "道路の穴、街灯の球切れ、倒木などは、市道なら土木課 維持係に電話します。電話番号は 0574-25-2111 です。\n県道は岐阜県可茂土木事務所（0574-25-3111）に連絡します。\n国道は岐阜国道事務所 美濃加茂国道維持出張所（0574-26-2151）に連絡します。\n街灯の球切れは、電柱の「街路灯管理票」の管理番号を伝えると助かります。\n公園の遊具のこわれは、土木課（0574-25-2111）が公園施設の維持管理を担当しています。\n休日・時間外の道路の維持管理や公園の緊急連絡も、それぞれの事務所に連絡します。\n各事務所には職員または係員がいる、と案内されています。\nメール・LINE・アプリでの通報窓口は、公式ページでは確認できませんでした。",
+     "back": "道路の穴、街灯の球切れ、倒木などは、市道なら土木課 維持係に電話します。電話番号は 0574-25-2111 です。県道は岐阜県可茂土木事務所（0574-25-3111）に連絡します。国道は岐阜国道事務所 美濃加茂国道維持出張所（0574-26-2151）に連絡します。街灯の球切れは、電柱の「街路灯管理票」の管理番号を伝えると助かります。公園の遊具のこわれは、土木課（0574-25-2111）が公園施設の維持管理を担当しています。休日・時間外の道路の維持管理や公園の緊急連絡も、それぞれの事務所に連絡します。各事務所には職員または係員がいる、と案内されています。メール・LINE・アプリでの通報窓口は、公式ページでは確認できませんでした。",
+     "source": {
+      "title": "街路樹の管理（剪定・害虫対策・倒木）についての問い合わせ先はどこですか",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/16/2093.html",
+      "where": "お問い合わせ先（市道・県道・国道、休日・時間外の注記）"
      },
      "status": "auto",
      "problems": []
@@ -1224,6 +1478,90 @@
      "problems": [
       "原文にない西暦の併記（2025年・2026年）が足されている。内容は正しく、意味は変わらない。「離乳食の進め方の話」は「離乳食の進め方について話」と言い回しが違うだけ。"
      ]
+    },
+    {
+     "qid": "Q56",
+     "short": "Water leaks or no water from the tap",
+     "text": "If water does not come out or is cloudy, contact the Water and Sewer Division (上下水道課) at 0574-25-2111, ext. 321 or 322.\nAt night and on holidays, contact the City Hall night and holiday duty desk (市役所宿日直).\nFor water leaks, contact a city-designated plumbing contractor (市の指定工事店). On Saturdays, Sundays and national holidays, contractors take turns being on duty, so check the holiday duty roster (休日当番表).\nThe contact point for water trouble is the Accounting Section (経理係), direct line 0574-28-1132.\nFor clogs or overflows in public drain basins (公共ます) or sewer pipes, contact the Water and Sewer Division, Sewer Maintenance Section (下水道維持係) at 0574-25-2111, ext. 424.\nFor clogs in drainage pipes or private drain basins (私設ます) on your own property, contact a designated drainage equipment contractor (下水道排水設備等指定工事店).\nThe list of designated contractors is on the city's \"上下水道指定工事店一覧\" page (PDFs for contractors in the city and outside the city).",
+     "original": "水が出ない・濁るときは上下水道課（0574-25-2111、内線321・322）。\n夜間・休日は市役所宿日直に連絡する。\n水漏れは市の指定工事店へ。土日祝は当番制なので休日当番表で確認する。\n水道トラブルの窓口は経理係の直通0574-28-1132。\n公共ますや下水道管の詰まり・あふれは上下水道課下水道維持係（0574-25-2111、内線424）。\n宅地内の排水管や私設ますの詰まりは、下水道排水設備等指定工事店へ。\n指定工事店の一覧は市の「上下水道指定工事店一覧」ページ（市内・市外のPDF）にある。",
+     "back": "水が出ない・濁るときは上下水道課（0574-25-2111、内線321・322）に連絡する。夜間・休日は市役所宿日直に連絡する。水漏れは市の指定工事店へ。土日祝は工事店が当番制なので、休日当番表で確認する。水道トラブルの窓口は経理係の直通0574-28-1132。公共ますや下水道管の詰まり・あふれは、上下水道課下水道維持係（0574-25-2111、内線424）へ。宅地内の排水管や私設ますの詰まりは、下水道排水設備等指定工事店へ。指定工事店の一覧は市の「上下水道指定工事店一覧」ページ（市内・市外のPDF）にある。",
+     "source": {
+      "title": "水が出ない場合、またはにごった水が出るときは - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/17/1993.html",
+      "where": "本文・お問い合わせ先"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q57",
+     "short": "Consultations about wasp nests and other animals",
+     "text": "Wasp nests: The owner or manager of the property must deal with a nest on their own property. Please contact a pest control company directly.\nThe city does not recommend or introduce companies.\nFor nests on roads, in parks or in public facilities, contact the Public Works Division (土木課) at 0574-25-2111, ext. 411.\nRaccoons: The Agriculture and Forestry Division (農林課) lends out traps. If you catch one, contact the Satoyama Restoration Section (里山再生係) of the Agriculture and Forestry Division.\nFor consultations about harmful birds and animals, contact the Satoyama Restoration Section (里山再生係) of the Agriculture and Forestry Division at 0574-25-2111, ext. 331 or 335.\nWe could not find any information on the official website about snakes, crows or masked palm civets (hakubishin).\nAs far as we could find, no subsidy system for costs is described.",
+     "original": "ハチの巣：敷地内の巣は所有者・管理者が自分で処理します。害虫駆除業者に直接問い合わせてください。\n市は業者を紹介していません。\n道路・公園・公共施設の巣は土木課（0574-25-2111 内線411）へ。\nアライグマ：農林課が捕獲用の檻を貸し出しています。捕まえたら農林課 里山再生係に連絡します。\n有害鳥獣の相談先は農林課 里山再生係（0574-25-2111 内線331・335）です。\nヘビ・カラス・ハクビシンについては、公式サイトに案内が見つかりませんでした。\n費用の助成制度は、見つかった範囲では書かれていません。",
+     "back": "ハチの巣：敷地内の巣は所有者・管理者が自分で処理する。害虫駆除業者に直接問い合わせてください。市は業者を紹介していない。道路・公園・公共施設の巣は土木課（0574-25-2111 内線411）へ。アライグマ：農林課が捕獲用の檻を貸し出している。捕まえたら農林課 里山再生係に連絡する。有害鳥獣の相談先は農林課 里山再生係（0574-25-2111 内線331・335）。ヘビ・カラス・ハクビシンについては、公式サイトに案内が見つからなかった。費用の助成制度は、見つかった範囲では書かれていない。",
+     "source": {
+      "title": "アライグマなど有害鳥獣を駆除してほしい",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/13/1685.html",
+      "where": "本文・有害鳥獣駆除についての相談、お問い合わせ"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q58",
+     "short": "Lost dogs and cats",
+     "text": "If your pet dog or cat is missing, contact the following 3 places right away.\n・Kamo Police Station (加茂警察署): 0574-25-0110\n・Kamo Public Health Center, Environmental Health Division (可茂保健所 生活衛生課): 0574-25-3111\n・City Hall Environment Division (環境課): 0574-25-2111 (The Citizens' Life Section (市民生活係) of the Environment Division is ext. 306. This is an extension from an old guide.)\nThey can check whether your pet has been taken into care somewhere.\nPets may also be taken in by the police, so also report to your nearest police box (交番).\nThe same page also gives these places as the contact points when you find a pet with no known owner.\nInformation on dogs that have been taken into care can be seen on Gifu Prefecture's \"迷い犬情報\" (lost dog information) page.\nThis page is divided by public health center, and Minokamo City is in the area of the Kamo Public Health Center (可茂保健所).\nWe could not confirm a page where cat information can be viewed.\nThe Gifu Prefectural Animal Welfare Center (岐阜県動物愛護センター, 0575-34-0050) is listed on the city's page as the place to apply for community cat activities. It is not given as a place to report lost pets.",
+     "original": "飼っている犬や猫がいなくなったときは、至急、次の3か所に連絡します。\n・加茂警察署：0574-25-0110\n・可茂保健所 生活衛生課：0574-25-3111\n・市役所 環境課：0574-25-2111（環境課 市民生活係は内線306。古い案内の内線です）\nどこかに保護されていないか、照合してもらえます。\n警察に保護されることもあるので、最寄りの交番にも届けます。\n所有者不明のペットを見つけたときも、同じページが窓口として案内しています。\n保護された犬の情報は、岐阜県の「迷い犬情報」ページで見られます。\nこのページは保健所ごとに分かれていて、美濃加茂市は可茂保健所の管内です。\n猫の情報が見られるページは、確認できませんでした。\n岐阜県動物愛護センター（0575-34-0050）は、市のページでは地域猫活動の申込み窓口として載っています。迷子の届け先としては案内されていません。",
+     "back": "飼っている犬や猫がいなくなったときは、至急、次の3か所に連絡する。・加茂警察署：0574-25-0110・可茂保健所 生活衛生課：0574-25-3111・市役所 環境課：0574-25-2111（環境課 市民生活係は内線306。古い案内の内線である）。どこかに保護されていないか、照合してもらえる。警察に保護されることもあるので、最寄りの交番にも届ける。所有者不明のペットを見つけたときも、同じページが窓口として案内している。保護された犬の情報は、岐阜県の「迷い犬情報」ページで見られる。このページは保健所ごとに分かれていて、美濃加茂市は可茂保健所の管内である。猫の情報が見られるページは確認できなかった。岐阜県動物愛護センター（0575-34-0050）は、市のページでは地域猫活動の申込み窓口として載っている。迷子の届け先としては案内されていない。",
+     "source": {
+      "title": "飼っていたペットが行方不明になった、所有者不明のペットを目撃した - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/15/1785.html",
+      "where": "「飼っていたペットが行方不明になった」の項"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q59",
+     "short": "Lost and found items",
+     "text": "The police station responsible for Minokamo City is the Kamo Police Station (加茂警察署).\nIts phone number is 0574-25-0110.\nIts address is 2610 Shimofurui, Furui-cho, Minokamo City (美濃加茂市古井町下古井2610番地).\nTo search for a lost item or to file a report, use the National Police Agency's \"落とし物・忘れ物情報\" (lost and found information) page. This page is linked from the prefectural police page.\nIf someone else will pick up the item for you, first contact the police station where the item was turned in. Then prepare a letter of authorization (委任状).\nWe have not been able to confirm where to report or ask at City Hall, public facilities, or railway and bus companies.",
+     "original": "美濃加茂市を受け持つのは加茂警察署です。\n電話番号は 0574-25-0110 です。\n所在地は美濃加茂市古井町下古井2610番地です。\n落とし物を探したり届けを出したりするときは、警察庁の「落とし物・忘れ物情報」のページを使います。このページへは県警のページからリンクされています。\n代理人が受け取るときは、先に落とし物が届いている警察署へ連絡してください。そのうえで委任状を作ってください。\n市役所・公共施設、駅やバスの会社の届け先は、今回は確認できていません。",
+     "back": "美濃加茂市を受け持つのは加茂警察署である。電話番号は0574-25-0110。所在地は美濃加茂市古井町下古井2610番地。落とし物を探したり届けを出したりするときは、警察庁の「落とし物・忘れ物情報」のページを使う。このページへは県警のページからリンクされている。代理人が受け取るときは、先に落とし物が届いている警察署へ連絡する。そのうえで委任状を作る。市役所・公共施設、駅やバスの会社の届け先は、今回は確認できていない。",
+     "source": {
+      "title": "落とし物の検索・届出 - 岐阜県公式ホームページ",
+      "url": "https://www.pref.gifu.lg.jp/site/police/3561.html",
+      "where": "警察署の表（加茂警察署）"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q61",
+     "short": "Vacancies at nursery schools and certified child centers",
+     "text": "You can check vacancy information on the city's page \"令和9年度4月 保育園・こども園・小規模保育所等の入園について\" (about admission in April of Reiwa 9 to nursery schools, child centers, small-scale childcare facilities, etc.).\nTo find it, go to the city's official website, \"組織でさがす\" (Search by organization) → Health and Children Department (健康こども部) → Children's Future Division (こども未来課).\nThis page lists the \"4月入園第一次調整の受入可能人数\" (number of children that can be accepted in the first round of adjustment for April admission). The numbers are as of October 1, Reiwa 8, and are shown as an image.\nThe page was updated on November 1, 2026. It is updated in line with the adjustment for each admission period.\nIn this survey we could not find a monthly page listing only vacancies for admission during the year (随時入園). Please ask the Children's Future Division (こども未来課).\nThe name, address and phone number of each facility in the city are in \"令和9年度 市内の保育施設等について\" (updated October 1, 2026).\nApplications are made online or at the counter of the Children's Future Division (こども未来課).\nThe counter is on the 2nd floor of Minokamo Health Plaza (みのかも健康プラザ), in the annex of Chubu International Medical Center (中部国際医療センター付属棟).\nThe phone number is 0574-25-2111 (ext. 387).\nApplications are not accepted at each nursery or by mail.\nThe LINE \"空き枠確認\" (vacancy check) is for reserving temporary childcare (一時預かり). It is not for admission vacancies.",
+     "original": "空き状況は、市の「令和9年度4月 保育園・こども園・小規模保育所等の入園について」のページで見られます。\n場所は、市公式サイトの「組織でさがす」→健康こども部→こども未来課です。\nこのページには「4月入園第一次調整の受入可能人数」が載っています。令和8年10月1日時点の人数で、画像で表示されています。\nページは2026年11月1日に更新されています。入園の時期ごとの調整に合わせて更新されます。\n随時入園（年度の途中）の空きだけを載せた月ごとのページは、今回の調査では確認できませんでした。こども未来課にお問い合わせください。\n市内の各施設の名前・住所・電話番号は「令和9年度 市内の保育施設等について」（2026年10月1日更新）にあります。\n申し込みはオンライン申請か、こども未来課の窓口です。\n窓口は、みのかも健康プラザ2階（中部国際医療センター付属棟）です。\n電話は 0574-25-2111（内線387）です。\n各園での受付や郵送での申し込みはしていません。\nLINEの「空き枠確認」は、一時預かりの予約用です。入園の空きではありません。",
+     "back": "空き状況は、市の「令和9年度4月 保育園・こども園・小規模保育所等の入園について」のページで見られる。場所は、市公式サイトの「組織でさがす」→健康こども部→こども未来課。このページには「4月入園第一次調整の受入可能人数」が載っている。令和8年10月1日時点の人数で、画像で表示されている。ページは2026年11月1日に更新された。入園の時期ごとの調整に合わせて更新される。随時入園（年度の途中）の空きだけを載せた月ごとのページは、今回の調査では確認できなかった。こども未来課に問い合わせてください。市内の各施設の名前・住所・電話番号は「令和9年度 市内の保育施設等について」（2026年10月1日更新）にある。申し込みはオンライン申請か、こども未来課の窓口。窓口はみのかも健康プラザ2階（中部国際医療センター付属棟）。電話は0574-25-2111（内線387）。各園での受付や郵送での申し込みはしていない。LINEの「空き枠確認」は一時預かりの予約用で、入園の空きではない。",
+     "source": {
+      "title": "令和9年度4月 保育園・こども園・小規模保育所等の入園について",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/8/13155.html",
+      "where": "「4月入園第一次調整の受入可能人数」／「このページに関するお問い合わせ先」"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q55",
+     "short": "Who to contact about damaged roads, streetlights and parks",
+     "text": "For potholes, burned-out streetlights, fallen trees and similar problems on city roads, call the Public Works Division (土木課) Maintenance Section (維持係). The phone number is 0574-25-2111.\nFor prefectural roads, contact the Gifu Prefecture Kamo Public Works Office (岐阜県可茂土木事務所) at 0574-25-3111.\nFor national roads, contact the Gifu National Highway Office, Minokamo National Highway Maintenance Branch (岐阜国道事務所 美濃加茂国道維持出張所) at 0574-26-2151.\nFor a burned-out streetlight, it helps if you tell them the management number on the \"街路灯管理票\" (streetlight management label) on the utility pole.\nFor damaged playground equipment in parks, the Public Works Division (土木課, 0574-25-2111) is in charge of maintaining park facilities.\nFor road maintenance and urgent park matters on holidays and outside office hours, also contact the respective offices.\nThe guidance says that each office has staff or personnel on duty.\nWe could not confirm any reporting channel by email, LINE or app on the official pages.",
+     "original": "道路の穴、街灯の球切れ、倒木などは、市道なら土木課 維持係に電話します。電話番号は 0574-25-2111 です。\n県道は岐阜県可茂土木事務所（0574-25-3111）に連絡します。\n国道は岐阜国道事務所 美濃加茂国道維持出張所（0574-26-2151）に連絡します。\n街灯の球切れは、電柱の「街路灯管理票」の管理番号を伝えると助かります。\n公園の遊具のこわれは、土木課（0574-25-2111）が公園施設の維持管理を担当しています。\n休日・時間外の道路の維持管理や公園の緊急連絡も、それぞれの事務所に連絡します。\n各事務所には職員または係員がいる、と案内されています。\nメール・LINE・アプリでの通報窓口は、公式ページでは確認できませんでした。",
+     "back": "道路の穴、街灯の球切れ、倒木などは、市道なら土木課 維持係に電話する。電話番号は0574-25-2111。県道は岐阜県可茂土木事務所（0574-25-3111）に連絡する。国道は岐阜国道事務所 美濃加茂国道維持出張所（0574-26-2151）に連絡する。街灯の球切れは、電柱の「街路灯管理票」の管理番号を伝えると助かる。公園の遊具のこわれは、土木課（0574-25-2111）が公園施設の維持管理を担当している。休日・時間外の道路の維持管理や公園の緊急連絡も、それぞれの事務所に連絡する。各事務所には職員または係員がいると案内されている。メール・LINE・アプリでの通報窓口は、公式ページでは確認できなかった。",
+     "source": {
+      "title": "街路樹の管理（剪定・害虫対策・倒木）についての問い合わせ先はどこですか",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/16/2093.html",
+      "where": "お問い合わせ先（市道・県道・国道、休日・時間外の注記）"
+     },
+     "status": "auto",
+     "problems": []
     }
    ]
   },
@@ -1532,6 +1870,90 @@
      "problems": [
       "「離乳食」の説明（ミルクから普通の食事に近づけていくときの食べ物）が原文にない追加です。内容は正しいですが、足された説明なので削るか、注釈として分けるとよいです。その他の数字・日付・電話番号・場所・対象・案内の条件は原文と一致しています。"
      ]
+    },
+    {
+     "qid": "Q56",
+     "short": "水道（すいどう）の水（みず）もれ・水（みず）が出（で）ないとき",
+     "text": "水（みず）が出（で）ないとき、水（みず）がにごっているときは、上下水道課（じょうげすいどうか）に連絡（れんらく）します。電話（でんわ）は 0574-25-2111、内線（ないせん）は 321 か 322 です。\n夜（よる）と休（やす）みの日（ひ）は、市役所（しやくしょ）の宿日直（しゅくにっちょく）に連絡（れんらく）します。\n水（みず）もれのときは、市（し）の指定工事店（していこうじてん）に連絡（れんらく）します。土曜日（どようび）・日曜日（にちようび）・祝日（しゅくじつ）は当番制（とうばんせい）です。休日当番表（きゅうじつとうばんひょう）で確認（かくにん）します。\n水道（すいどう）のトラブルの窓口（まどぐち）は、経理係（けいりがかり）の直通（ちょくつう）電話（でんわ）、0574-28-1132 です。\n公共（こうきょう）ますや下水道管（げすいどうかん）の詰（つ）まり、水（みず）があふれたときは、上下水道課（じょうげすいどうか）の下水道維持係（げすいどういじがかり）に連絡（れんらく）します。電話（でんわ）は 0574-25-2111、内線（ないせん）は 424 です。\n自分（じぶん）の敷地（しきち）の中（なか）の排水管（はいすいかん）や、私設（しせつ）ますの詰（つ）まりは、下水道排水設備等指定工事店（げすいどうはいすいせつびとうしていこうじてん）に連絡（れんらく）します。\n指定工事店（していこうじてん）の一覧（いちらん）は、市（し）の「上下水道指定工事店一覧（じょうげすいどうしていこうじてんいちらん）」のページにあります。市内（しない）と市外（しがい）のPDFがあります。",
+     "original": "水が出ない・濁るときは上下水道課（0574-25-2111、内線321・322）。\n夜間・休日は市役所宿日直に連絡する。\n水漏れは市の指定工事店へ。土日祝は当番制なので休日当番表で確認する。\n水道トラブルの窓口は経理係の直通0574-28-1132。\n公共ますや下水道管の詰まり・あふれは上下水道課下水道維持係（0574-25-2111、内線424）。\n宅地内の排水管や私設ますの詰まりは、下水道排水設備等指定工事店へ。\n指定工事店の一覧は市の「上下水道指定工事店一覧」ページ（市内・市外のPDF）にある。",
+     "back": "水が出ない・濁るときは上下水道課（0574-25-2111、内線321・322）に連絡する。夜間・休日は市役所宿日直に連絡する。水漏れは市の指定工事店に連絡する。土曜日・日曜日・祝日は当番制なので、休日当番表で確認する。水道トラブルの窓口は経理係の直通0574-28-1132。公共ますや下水道管の詰まり・あふれは上下水道課下水道維持係（0574-25-2111、内線424）に連絡する。敷地内の排水管や私設ますの詰まりは、下水道排水設備等指定工事店に連絡する。指定工事店の一覧は、市の「上下水道指定工事店一覧」のページにあり、市内・市外のPDFがある。",
+     "source": {
+      "title": "水が出ない場合、またはにごった水が出るときは - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/17/1993.html",
+      "where": "本文・お問い合わせ先"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q57",
+     "short": "ハチの巣（す）など生（い）き物（もの）の相談（そうだん）",
+     "text": "ハチの巣（す）：自分（じぶん）の敷地（しきち）の中（なか）にある巣（す）は、持（も）ち主（ぬし）や管理（かんり）する人（ひと）が自分（じぶん）で処理（しょり）します。害虫駆除（がいちゅうくじょ）の業者（ぎょうしゃ）に、直接（ちょくせつ）問（と）い合（あ）わせてください。\n市（し）は業者（ぎょうしゃ）を紹介（しょうかい）していません。\n道路（どうろ）・公園（こうえん）・公共施設（こうきょうしせつ）の巣（す）は、土木課（どぼくか）に連絡（れんらく）します。電話（でんわ）は 0574-25-2111、内線（ないせん）は 411 です。\nアライグマ：農林課（のうりんか）が、つかまえるための檻（おり）を貸（か）しています。つかまえたら、農林課（のうりんか）の里山再生係（さとやまさいせいがかり）に連絡（れんらく）します。\n人（ひと）や農作物（のうさくぶつ）に害（がい）がある鳥（とり）やけものの相談（そうだん）は、農林課（のうりんか）の里山再生係（さとやまさいせいがかり）です。電話（でんわ）は 0574-25-2111、内線（ないせん）は 331 か 335 です。\nヘビ・カラス・ハクビシンについては、市（し）の公式（こうしき）サイトに案内（あんない）が見（み）つかりませんでした。\nお金（かね）の助成制度（じょせいせいど）は、見（み）つかった範囲（はんい）では書（か）かれていません。",
+     "original": "ハチの巣：敷地内の巣は所有者・管理者が自分で処理します。害虫駆除業者に直接問い合わせてください。\n市は業者を紹介していません。\n道路・公園・公共施設の巣は土木課（0574-25-2111 内線411）へ。\nアライグマ：農林課が捕獲用の檻を貸し出しています。捕まえたら農林課 里山再生係に連絡します。\n有害鳥獣の相談先は農林課 里山再生係（0574-25-2111 内線331・335）です。\nヘビ・カラス・ハクビシンについては、公式サイトに案内が見つかりませんでした。\n費用の助成制度は、見つかった範囲では書かれていません。",
+     "back": "ハチの巣：自分の敷地の中にある巣は、持ち主や管理する人が自分で処理する。害虫駆除の業者に直接問い合わせる。市は業者を紹介していない。道路・公園・公共施設の巣は土木課（0574-25-2111、内線411）に連絡する。アライグマ：農林課が捕獲用の檻を貸し出している。捕まえたら農林課の里山再生係に連絡する。人や農作物に害がある鳥やけものの相談先は、農林課里山再生係（0574-25-2111、内線331・335）。ヘビ・カラス・ハクビシンについては、市の公式サイトに案内が見つからなかった。お金の助成制度は、見つかった範囲では書かれていない。",
+     "source": {
+      "title": "アライグマなど有害鳥獣を駆除してほしい",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/13/1685.html",
+      "where": "本文・有害鳥獣駆除についての相談、お問い合わせ"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q58",
+     "short": "迷子（まいご）の犬（いぬ）・猫（ねこ）",
+     "text": "飼（か）っている犬（いぬ）や猫（ねこ）がいなくなったときは、すぐに次（つぎ）の3か所（しょ）に連絡（れんらく）します。\n・加茂警察署（かもけいさつしょ）：0574-25-0110\n・可茂保健所（かもほけんじょ）生活衛生課（せいかつえいせいか）：0574-25-3111\n・市役所（しやくしょ）環境課（かんきょうか）：0574-25-2111（環境課の市民生活係（しみんせいかつがかり）の内線（ないせん）は 306 です。これは古（ふる）い案内（あんない）にある内線（ないせん）です）\nどこかで保護（ほご）されていないか、調（しら）べてもらえます。\n警察（けいさつ）が保護（ほご）していることもあるので、近（ちか）くの交番（こうばん）にも届（とど）けます。\n持（も）ち主（ぬし）がわからないペットを見（み）つけたときも、同（おな）じページが窓口（まどぐち）として案内（あんない）されています。\n保護（ほご）された犬（いぬ）の情報（じょうほう）は、岐阜県（ぎふけん）の「迷（まよ）い犬情報（いぬじょうほう）」のページで見（み）られます。\nこのページは保健所（ほけんじょ）ごとに分（わ）かれています。美濃加茂市（みのかもし）は、可茂保健所（かもほけんじょ）の管内（かんない）です。\n猫（ねこ）の情報（じょうほう）が見（み）られるページは、確認（かくにん）できませんでした。\n岐阜県動物愛護（ぎふけんどうぶつあいご）センター（0575-34-0050）は、市（し）のページでは、地域猫活動（ちいきねこかつどう）の申（もう）し込（こ）み窓口（まどぐち）として載（の）っています。迷子（まいご）の届（とど）け先（さき）としては案内（あんない）されていません。",
+     "original": "飼っている犬や猫がいなくなったときは、至急、次の3か所に連絡します。\n・加茂警察署：0574-25-0110\n・可茂保健所 生活衛生課：0574-25-3111\n・市役所 環境課：0574-25-2111（環境課 市民生活係は内線306。古い案内の内線です）\nどこかに保護されていないか、照合してもらえます。\n警察に保護されることもあるので、最寄りの交番にも届けます。\n所有者不明のペットを見つけたときも、同じページが窓口として案内しています。\n保護された犬の情報は、岐阜県の「迷い犬情報」ページで見られます。\nこのページは保健所ごとに分かれていて、美濃加茂市は可茂保健所の管内です。\n猫の情報が見られるページは、確認できませんでした。\n岐阜県動物愛護センター（0575-34-0050）は、市のページでは地域猫活動の申込み窓口として載っています。迷子の届け先としては案内されていません。",
+     "back": "飼っている犬や猫がいなくなったときは、すぐに次の3か所に連絡する。・加茂警察署：0574-25-0110・可茂保健所生活衛生課：0574-25-3111・市役所環境課：0574-25-2111（環境課市民生活係の内線は306だが、これは古い案内の内線）。どこかで保護されていないか調べてもらえる。警察が保護していることもあるので、近くの交番にも届ける。持ち主がわからないペットを見つけたときも、同じページが窓口として案内されている。保護された犬の情報は、岐阜県の「迷い犬情報」のページで見られる。このページは保健所ごとに分かれていて、美濃加茂市は可茂保健所の管内。猫の情報が見られるページは確認できなかった。岐阜県動物愛護センター（0575-34-0050）は、市のページでは地域猫活動の申し込み窓口として載っているが、迷子の届け先としては案内されていない。",
+     "source": {
+      "title": "飼っていたペットが行方不明になった、所有者不明のペットを目撃した - 美濃加茂市公式ホームページ",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/15/1785.html",
+      "where": "「飼っていたペットが行方不明になった」の項"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q59",
+     "short": "落（お）とし物（もの）・忘（わす）れ物（もの）",
+     "text": "美濃加茂市（みのかもし）を受（う）け持（も）つのは、加茂警察署（かもけいさつしょ）です。\n電話番号（でんわばんごう）は 0574-25-0110 です。\n場所（ばしょ）は、美濃加茂市古井町下古井（みのかもしふるいちょうしもふるい）2610番地（ばんち）です。\n落（お）とし物（もの）を探（さが）すときや届（とど）けを出（だ）すときは、警察庁（けいさつちょう）の「落（お）とし物（もの）・忘（わす）れ物情報（ものじょうほう）」のページを使（つか）います。このページへは、県警（けんけい）のページからリンクされています。\n代理人（だいりにん）が受（う）け取（と）るときは、先（さき）に、落（お）とし物（もの）が届（とど）いている警察署（けいさつしょ）に連絡（れんらく）してください。そのあとで、委任状（いにんじょう）を作（つく）ってください。\n市役所（しやくしょ）・公共施設（こうきょうしせつ）、駅（えき）やバスの会社（かいしゃ）の届（とど）け先（さき）は、今回（こんかい）は確認（かくにん）できていません。",
+     "original": "美濃加茂市を受け持つのは加茂警察署です。\n電話番号は 0574-25-0110 です。\n所在地は美濃加茂市古井町下古井2610番地です。\n落とし物を探したり届けを出したりするときは、警察庁の「落とし物・忘れ物情報」のページを使います。このページへは県警のページからリンクされています。\n代理人が受け取るときは、先に落とし物が届いている警察署へ連絡してください。そのうえで委任状を作ってください。\n市役所・公共施設、駅やバスの会社の届け先は、今回は確認できていません。",
+     "back": "美濃加茂市を受け持つのは加茂警察署である。電話番号は0574-25-0110。所在地は美濃加茂市古井町下古井2610番地。落とし物を探すときや届けを出すときは、警察庁の「落とし物・忘れ物情報」のページを使う。このページへは県警のページからリンクされている。代理人が受け取るときは、先に落とし物が届いている警察署に連絡し、そのあとで委任状を作る。市役所・公共施設、駅やバス会社の届け先は、今回は確認できていない。",
+     "source": {
+      "title": "落とし物の検索・届出 - 岐阜県公式ホームページ",
+      "url": "https://www.pref.gifu.lg.jp/site/police/3561.html",
+      "where": "警察署の表（加茂警察署）"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q61",
+     "short": "保育所（ほいくしょ）・認定（にんてい）こども園（えん）の空（あ）き",
+     "text": "空（あ）き状況（じょうきょう）は、市（し）の「令和（れいわ）9年度（ねんど）4月（がつ） 保育園（ほいくえん）・こども園（えん）・小規模保育所等（しょうきぼほいくしょとう）の入園（にゅうえん）について」のページで見（み）られます。\n場所（ばしょ）は、市（し）の公式（こうしき）サイトの「組織（そしき）でさがす」→健康（けんこう）こども部（ぶ）→こども未来課（みらいか）です。\nこのページには、「4月（がつ）入園（にゅうえん）第一次調整（だいいちじちょうせい）の受入可能人数（うけいれかのうにんずう）」が載（の）っています。令和（れいわ）8年（ねん）10月（がつ）1日（にち）の時点（じてん）の人数（にんずう）で、画像（がぞう）で表示（ひょうじ）されています。\nページは2026年（ねん）11月（がつ）1日（にち）に更新（こうしん）されています。入園（にゅうえん）の時期（じき）ごとの調整（ちょうせい）に合（あ）わせて更新（こうしん）されます。\n随時入園（ずいじにゅうえん）（年度（ねんど）の途中（とちゅう））の空（あ）きだけを載（の）せた月（つき）ごとのページは、今回（こんかい）の調査（ちょうさ）では確認（かくにん）できませんでした。こども未来課（みらいか）にお問（と）い合（あ）わせください。\n市内（しない）の各施設（かくしせつ）の名前（なまえ）・住所（じゅうしょ）・電話番号（でんわばんごう）は、「令和（れいわ）9年度（ねんど） 市内（しない）の保育施設等（ほいくしせつとう）について」（2026年（ねん）10月（がつ）1日（にち）更新（こうしん））にあります。\n申（もう）し込（こ）みは、オンライン申請（しんせい）か、こども未来課（みらいか）の窓口（まどぐち）です。\n窓口（まどぐち）は、みのかも健康（けんこう）プラザ2階（かい）（中部国際医療（ちゅうぶこくさいいりょう）センター付属棟（ふぞくとう））です。\n電話（でんわ）は 0574-25-2111（内線（ないせん）387）です。\n各園（かくえん）での受付（うけつけ）や、郵送（ゆうそう）での申（もう）し込（こ）みはしていません。\nLINEの「空（あ）き枠確認（わくかくにん）」は、一時預（いちじあず）かりの予約用（よやくよう）です。入園（にゅうえん）の空（あ）きではありません。",
+     "original": "空き状況は、市の「令和9年度4月 保育園・こども園・小規模保育所等の入園について」のページで見られます。\n場所は、市公式サイトの「組織でさがす」→健康こども部→こども未来課です。\nこのページには「4月入園第一次調整の受入可能人数」が載っています。令和8年10月1日時点の人数で、画像で表示されています。\nページは2026年11月1日に更新されています。入園の時期ごとの調整に合わせて更新されます。\n随時入園（年度の途中）の空きだけを載せた月ごとのページは、今回の調査では確認できませんでした。こども未来課にお問い合わせください。\n市内の各施設の名前・住所・電話番号は「令和9年度 市内の保育施設等について」（2026年10月1日更新）にあります。\n申し込みはオンライン申請か、こども未来課の窓口です。\n窓口は、みのかも健康プラザ2階（中部国際医療センター付属棟）です。\n電話は 0574-25-2111（内線387）です。\n各園での受付や郵送での申し込みはしていません。\nLINEの「空き枠確認」は、一時預かりの予約用です。入園の空きではありません。",
+     "back": "空き状況は、市の「令和9年度4月 保育園・こども園・小規模保育所等の入園について」のページで見られる。場所は市公式サイトの「組織でさがす」→健康こども部→こども未来課。このページには「4月入園第一次調整の受入可能人数」が載っている。令和8年10月1日時点の人数で、画像で表示されている。ページは2026年11月1日に更新された。入園の時期ごとの調整に合わせて更新される。随時入園（年度の途中）の空きだけを載せた月ごとのページは、今回の調査では確認できなかった。こども未来課に問い合わせる。市内の各施設の名前・住所・電話番号は「令和9年度 市内の保育施設等について」（2026年10月1日更新）にある。申し込みはオンライン申請か、こども未来課の窓口。窓口はみのかも健康プラザ2階（中部国際医療センター付属棟）。電話は0574-25-2111（内線387）。各園での受付や郵送での申し込みはしていない。LINEの「空き枠確認」は一時預かりの予約用で、入園の空きではない。",
+     "source": {
+      "title": "令和9年度4月 保育園・こども園・小規模保育所等の入園について",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/8/13155.html",
+      "where": "「4月入園第一次調整の受入可能人数」／「このページに関するお問い合わせ先」"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q55",
+     "short": "道路（どうろ）・街灯（がいとう）・公園（こうえん）のこわれを知（し）らせる先（さき）",
+     "text": "道路（どうろ）の穴（あな）、街灯（がいとう）の球切（たまぎ）れ、倒木（とうぼく）などは、市道（しどう）なら土木課（どぼくか）の維持係（いじがかり）に電話（でんわ）します。電話番号（でんわばんごう）は 0574-25-2111 です。\n県道（けんどう）は、岐阜県可茂土木事務所（ぎふけんかもどぼくじむしょ）（0574-25-3111）に連絡（れんらく）します。\n国道（こくどう）は、岐阜国道事務所（ぎふこくどうじむしょ）美濃加茂国道維持出張所（みのかもこくどういじしゅっちょうしょ）（0574-26-2151）に連絡（れんらく）します。\n街灯（がいとう）の球切（たまぎ）れは、電柱（でんちゅう）の「街路灯管理票（がいろとうかんりひょう）」にある管理番号（かんりばんごう）を伝（つた）えると助（たす）かります。\n公園（こうえん）の遊具（ゆうぐ）のこわれは、土木課（どぼくか）（0574-25-2111）が、公園施設（こうえんしせつ）の維持管理（いじかんり）を担当（たんとう）しています。\n休日（きゅうじつ）・時間外（じかんがい）の道路（どうろ）の維持管理（いじかんり）や、公園（こうえん）の緊急連絡（きんきゅうれんらく）も、それぞれの事務所（じむしょ）に連絡（れんらく）します。\n各事務所（かくじむしょ）には、職員（しょくいん）または係員（かかりいん）がいると案内（あんない）されています。\nメール・LINE・アプリで知（し）らせる窓口（まどぐち）は、公式（こうしき）ページでは確認（かくにん）できませんでした。",
+     "original": "道路の穴、街灯の球切れ、倒木などは、市道なら土木課 維持係に電話します。電話番号は 0574-25-2111 です。\n県道は岐阜県可茂土木事務所（0574-25-3111）に連絡します。\n国道は岐阜国道事務所 美濃加茂国道維持出張所（0574-26-2151）に連絡します。\n街灯の球切れは、電柱の「街路灯管理票」の管理番号を伝えると助かります。\n公園の遊具のこわれは、土木課（0574-25-2111）が公園施設の維持管理を担当しています。\n休日・時間外の道路の維持管理や公園の緊急連絡も、それぞれの事務所に連絡します。\n各事務所には職員または係員がいる、と案内されています。\nメール・LINE・アプリでの通報窓口は、公式ページでは確認できませんでした。",
+     "back": "道路の穴、街灯の球切れ、倒木などは、市道なら土木課の維持係に電話する。電話番号は0574-25-2111。県道は岐阜県可茂土木事務所（0574-25-3111）に連絡する。国道は岐阜国道事務所美濃加茂国道維持出張所（0574-26-2151）に連絡する。街灯の球切れは、電柱の「街路灯管理票」の管理番号を伝えると助かる。公園の遊具の破損は、土木課（0574-25-2111）が公園施設の維持管理を担当している。休日・時間外の道路の維持管理や公園の緊急連絡も、それぞれの事務所に連絡する。各事務所には職員または係員がいると案内されている。メール・LINE・アプリで知らせる窓口は、公式ページでは確認できなかった。",
+     "source": {
+      "title": "街路樹の管理（剪定・害虫対策・倒木）についての問い合わせ先はどこですか",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/16/2093.html",
+      "where": "お問い合わせ先（市道・県道・国道、休日・時間外の注記）"
+     },
+     "status": "auto",
+     "problems": []
     }
    ]
   }

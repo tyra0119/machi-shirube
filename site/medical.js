@@ -83,10 +83,10 @@ function medicalHTML(m, offset, center, esc, filter = "", limit = 5) {
     ${f ? `<p class="note">「${esc(filter)}」で絞ると ${list.length} か所</p>` : ""}
     <ul class="med-list">${shown.map((x) => `
       <li${x.openNow ? ` class="open"` : ""}>
-        <span class="n">${icon(x.f.k === "病院" ? "hospital" : "medical")}${x.f.u ? `<a href="${esc(x.f.u)}" target="_blank" rel="noopener">${esc(x.f.n)}</a>` : esc(x.f.n)}<small>${esc(x.f.k)}</small>${x.openNow ? `<em>${TT("いま開いている")}</em>` : ""}</span>
+        <span class="n">${icon(x.f.k === "病院" ? "hospital" : "medical")}${x.f.u ? `<a href="${esc(x.f.u)}" target="_blank" rel="noopener">${esc(x.f.n)}</a>` : esc(x.f.n)}<small>${esc(TT(x.f.k))}</small>${x.openNow ? `<em>${TT("いま開いている")}</em>` : ""}</span>
         <span class="h">${x.h.map(([s, e]) => `${hhmm(s)}–${hhmm(e)}`).join("、")}${x.m != null ? `・まっすぐ ${x.m >= 1000 ? `${(x.m / 1000).toFixed(1)}km` : `${x.m}m`}` : ""}</span>
-        ${x.f.s ? `<span class="s">${esc(x.f.s.slice(0, 6).join("・"))}${x.f.s.length > 6 ? ` ほか ${x.f.s.length - 6}` : ""}</span>` : ""}
-        <span class="a">${esc(x.f.a)}${x.f.other ? `・休み：${esc(shortDays(x.f.other).slice(0, 80))}` : ""}</span>
+        ${x.f.s ? `<span class="s">${esc(x.f.s.slice(0, 6).map(TT).join("・"))}${x.f.s.length > 6 ? ` ${TT("ほか")} ${x.f.s.length - 6}` : ""}</span>` : ""}
+        <span class="a">${esc(x.f.a)}${x.f.other ? `・${TT("休み")}：${esc(shortDays(x.f.other).slice(0, 80))}` : ""}</span>
         <a class="med-gmap" href="${esc(gmapPlace(x.f.n, x.f.a))}" target="_blank" rel="noopener">${icon("phone")}${TT("電話番号と道を Google マップで見る")}</a>
       </li>`).join("")}</ul>
     ${list.length > shown.length ? `<button type="button" class="more-btn" data-more>${TT("続きを見る")}（${list.length - shown.length}）</button>` : ""}

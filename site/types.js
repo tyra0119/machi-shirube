@@ -22,38 +22,44 @@ function placeWords(rank, total, mid, muni) {
 // 深掘りの型の候補：全国の市区町村と比べた数字と、国の一覧の印から、決まりに当てはめて選ぶ（Claude は使わない）。
 // ここで出すのは「候補」。この町で本当に情報が届きにくいのは誰かは、町を調べるときに Claude が公式の資料から見立て、人が確かめる
 // t：stats.json の町、f：flags.json の印、s：stats.json の境目（summary）
+// 町のページでは、ほかの言葉に訳す（辞書は scripts/i18n.mjs が LT("…")・LTN("…", を集める）。日本地図の画面では日本語のまま
+const typesT = () => ({
+  LT: typeof T === "function" ? T : (x) => x,
+  LTN: typeof TN === "function" ? TN : (x, v) => x.replace(/\{(\w+)\}/g, (a, k) => v[k] ?? a),
+});
 function typeCandidates(t, f, s) {
+  const { LT, LTN } = typesT();
   const out = [];
-  const add = (type, who, reason, strength) => out.push({ type, who, reason, strength });
+  const add = (type, who, reason, strength) => out.push({ type: LT(type), who: LT(who), reason, strength });
   const p = (v) => `${v.toFixed(1)}%`;
   // 上からの位置（0〜100）を、強さ（0〜1）に。境目ちょうどで 0、全国一で 1 に近い
   const from = (top, edge) => Math.max(0, (edge - top) / edge);
 
   if (t.foreignRate >= s.foreignRate.top10) {
     add("母語で防災", "外国から来て暮らす人",
-      `外国の住民が ${p(t.foreignRate)}（全国の真ん中は ${p(s.foreignRate.median)}）`,
+      LTN("外国の住民が {v}（全国の真ん中は {m}）", { v: p(t.foreignRate), m: p(s.foreignRate.median) }),
       0.5 + from(t.top.foreignRate, 10) / 2 + (t.foreignRate >= s.foreignRate.top5 ? 0.3 : 0));
   }
   if ((t.socialChangeRate >= s.socialChangeRate.top10 || t.changeRate >= s.changeRate.top10) && t.over65Rate <= s.over65Rate.bottom10) {
     add("はじめての町", "引っ越してきた人・若い家族",
-      `引っ越しで人が増えていて（1年で ${t.socialChangeRate > 0 ? "+" : ""}${p(t.socialChangeRate)}）、65歳以上は ${p(t.over65Rate)} と少ない`,
+      LTN("引っ越しで人が増えていて（1年で {c}）、65歳以上は {o} と少ない", { c: `${t.socialChangeRate > 0 ? "+" : ""}${p(t.socialChangeRate)}`, o: p(t.over65Rate) }),
       0.6 + from(t.top.socialChangeRate, 10) / 3);
   }
   if (t.changeRate <= s.changeRate.bottom10 && t.over65Rate >= s.over65Rate.top10) {
     add("人が減る町の暮らし", "町に残る人・一人暮らしのお年寄り",
-      `1年で人口が ${p(t.changeRate)}、65歳以上が ${p(t.over65Rate)}（どちらも全国でも目立つ）`,
+      LTN("1年で人口が {c}、65歳以上が {o}（どちらも全国でも目立つ）", { c: p(t.changeRate), o: p(t.over65Rate) }),
       0.6 + from(t.top.over65Rate, 10) / 3);
   }
   if (f.snow === "特別豪雪地帯" || (f.snow && t.over65Rate >= s.over65Rate.top20)) {
     add("雪の暮らし", "雪下ろしや雪かきが難しいお年寄り",
-      f.snow === "特別豪雪地帯" ? `特別豪雪地帯（65歳以上は ${p(t.over65Rate)}）` : `豪雪地帯で、65歳以上が ${p(t.over65Rate)}（全国でも高いほう）`,
+      f.snow === "特別豪雪地帯" ? LTN("特別豪雪地帯（65歳以上は {o}）", { o: p(t.over65Rate) }) : LTN("豪雪地帯で、65歳以上が {o}（全国でも高いほう）", { o: p(t.over65Rate) }),
       f.snow === "特別豪雪地帯" ? 0.8 : 0.55);
   }
-  if (f.volcano) add("火山と暮らす", "火山のふもとに住む人・訪れる人", "火山災害警戒地域に入っている", 0.7);
-  if (f.island) add("島の暮らし", "島に住む人（船や飛行機が止まると行き来できなくなる）", "離島振興対策実施地域の島がある", 0.6);
+  if (f.volcano) add("火山と暮らす", "火山のふもとに住む人・訪れる人", LT("火山災害警戒地域に入っている"), 0.7);
+  if (f.island) add("島の暮らし", "島に住む人（船や飛行機が止まると行き来できなくなる）", LT("離島振興対策実施地域の島がある"), 0.6);
   if (t.elderlySingleRate != null && t.elderlySingleRate >= s.elderlySingleRate.top10) {
     add("一人暮らしのお年寄り", "見守りや避難の声かけが届きにくい、一人で暮らすお年寄り",
-      `65歳以上の一人暮らしの世帯が ${p(t.elderlySingleRate)}（全国の真ん中は ${p(s.elderlySingleRate.median)}）`,
+      LTN("65歳以上の一人暮らしの世帯が {v}（全国の真ん中は {m}）", { v: p(t.elderlySingleRate), m: p(s.elderlySingleRate.median) }),
       0.5 + (t.elderlySingleRate >= s.elderlySingleRate.top5 ? 0.3 : 0.1));
   }
   return out.sort((a, b) => b.strength - a.strength).slice(0, 3);
@@ -61,9 +67,10 @@ function typeCandidates(t, f, s) {
 
 
 function typeCandidatesHTML(t, f, s) {
+  const { LT } = typesT();
   const list = typeCandidates(t, f, s);
   const items = list.length
     ? `<ol class="types">${list.map((c) => `<li><span class="type">${c.type}</span><span class="who">${c.who}</span><span class="why">${c.reason}</span></li>`).join("")}</ol>`
-    : `<p>全国の数字と国の一覧からは、目立つ型は見つかりませんでした。</p>`;
-  return `${items}<p class="note">全国の数字と国の一覧に、決まりを当てはめた候補です。くわしく調べた町では、浸水・揺れ・坂・事故・バスなどの国のデータを重ねた数から、AI が見立て直します（町のページのいちばん上）。</p>`;
+    : `<p>${LT("全国の数字と国の一覧からは、目立つ型は見つかりませんでした。")}</p>`;
+  return `${items}<p class="note">${LT("全国の数字と国の一覧に、決まりを当てはめた候補です。くわしく調べた町では、浸水・揺れ・坂・事故・バスなどの国のデータを重ねた数から、AI が見立て直します（町のページのいちばん上）。")}</p>`;
 }

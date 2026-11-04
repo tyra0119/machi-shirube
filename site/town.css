@@ -757,3 +757,10 @@ section.block.folded { padding-bottom: 12px; }
   .tiles .il { width: 48px; height: 38px; }
   .tiles li.feat .feat-badge { position: static; order: 3; margin: 2px 0 0; padding: 0 6px; font-size: 10px; }
 }
+/* やさしい日本語のふりがな（ルビ）：漢字の上に小さく */
+ruby rt { font-size: 0.55em; font-weight: 400; letter-spacing: 0; }
+.town-bottom ruby rt { font-size: 0.7em; }
+/* このページを家族に送る（動きのボタンなので丸い形） */
+.share-row { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 8px 0 4px; }
+.share-btn { display: inline-flex; align-items: center; min-height: 40px; padding: 0 16px; border: 1px solid var(--accent); border-radius: 999px; background: var(--surface); color: var(--accent); font-size: 14px; font-weight: 700; cursor: pointer; }
+.share-done { font-size: 13px; color: var(--text-sub); }
