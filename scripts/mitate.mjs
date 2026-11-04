@@ -17,7 +17,9 @@ export function townFacts(code) {
   const s = stats.summary;
   const f = [];
   const add = (text, src) => f.push(`${text}（${src}）`);
-  const top = (k) => (t.top?.[k] != null ? `全国の市区町村の上から ${t.top[k]}%` : "");
+  // 上から10番目までは「全国 1,741 の市区町村の上から N番目」と順番で書く（作者「6番目なら、6番目と書いたほうが分かりやすいよね」）。それより下は「上から ○%」
+  const all = Object.values(stats.towns).filter((x) => !x.ward).length;
+  const top = (k) => (t.rank?.[k] != null && t.rank[k] <= 10 ? `全国 ${all.toLocaleString("ja-JP")} の市区町村の上から ${t.rank[k]}番目` : t.top?.[k] != null ? `全国の市区町村の上から ${t.top[k]}%` : "");
   add(`人口 ${t.population.toLocaleString("ja-JP")}人、65歳以上 ${t.over65Rate}%（${top("over65Rate")}、全国の上から10%の境目は ${s.over65Rate.top10}%）、75歳以上 ${t.over75Rate}%、15歳未満 ${t.under15Rate}%`, "住民基本台帳 令和8年1月1日");
   add(`外国の住民 ${t.foreignRate}%（${top("foreignRate")}、全国の上から10%の境目は ${s.foreignRate.top10}%）、1年の人口の増減 ${t.changeRate}%、引っ越しによる増減 ${t.socialChangeRate}%`, "住民基本台帳");
   if (t.elderlySingleRate != null) add(`65歳以上の一人暮らしの世帯 ${t.elderlySingleRate}%（全国の上から10%の境目は ${s.elderlySingleRate.top10}%）`, "国勢調査 2020年");
