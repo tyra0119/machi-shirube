@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-04T12:32:15.237Z",
+ "createdAt": "2026-11-04T12:44:56.110Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 955,
- "of": 920,
+ "count": 962,
+ "of": 927,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -961,6 +961,13 @@
   "うまく表示できていない所があります。時間をおいて開き直してください。": "Hay partes que no se muestran correctamente. Espere un momento y vuelva a abrir la página.",
   "町の公式の一覧表から AI が読み取り、品目名が表にあるかを確かめたもの。分け方の区分と注意は短くしています。迷ったら町の表で確かめてください": "Información que la IA ha leído de la tabla oficial del municipio, comprobando si el nombre del artículo figura en ella. Las categorías de separación y las advertencias están abreviadas. En caso de duda, consulte la tabla del municipio.",
   "を加工": "Adaptado de",
-  "出典：{src}（{asOf}・{lic}）を加工。祝日：{hol}": "Fuente: {src} ({asOf}・{lic}), con modificaciones. Festivos: {hol}"
+  "出典：{src}（{asOf}・{lic}）を加工。祝日：{hol}": "Fuente: {src} ({asOf}・{lic}), con modificaciones. Festivos: {hol}",
+  "広報紙の最新号": "Último número del boletín municipal",
+  "町のサイトで読む": "Leer en el sitio web del municipio",
+  "新着の一覧を町のサイトで見る": "Ver las novedades en el sitio web del municipio",
+  "見出しは町のサイトの日本語のままです。": "Los títulos se muestran en japonés, tal como aparecen en el sitio web del municipio.",
+  "{d} 発行": "Publicado el {d}",
+  "町の公式サイトの新着と広報紙から、見出しとリンクだけを出しています（{d} に取得）。": "Solo se muestran los títulos y los enlaces de las novedades del sitio web oficial del municipio y del boletín municipal (obtenidos el {d}).",
+  "町からのお知らせ": "Avisos del municipio"
  }
 }

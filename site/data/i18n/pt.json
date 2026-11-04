@@ -1,11 +1,11 @@
 {
  "lang": "pt",
  "name": "Português",
- "createdAt": "2026-11-04T12:32:12.667Z",
+ "createdAt": "2026-11-04T12:44:53.687Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 956,
- "of": 920,
+ "count": 963,
+ "of": 927,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Guia não oficial da vida na cidade. O Claude reúne as informações em sites oficiais da cidade e outras fontes, e indica a origem de cada uma (Machishirube)",
   "すべてのページ": "Todas as páginas",
@@ -962,6 +962,13 @@
   "距離は町・字のおおよその真ん中からまっすぐ測ったものです。": "A distância é medida em linha reta a partir do ponto aproximadamente central do município ou do bairro.",
   "うまく表示できていない所があります。時間をおいて開き直してください。": "Algumas partes não estão sendo exibidas corretamente. Aguarde um pouco e abra a página novamente.",
   "町の公式の一覧表から AI が読み取り、品目名が表にあるかを確かめたもの。分け方の区分と注意は短くしています。迷ったら町の表で確かめてください": "Informações lidas por IA a partir da tabela oficial da cidade, com verificação de que o nome do item consta na tabela. As categorias de separação e os avisos estão resumidos. Em caso de dúvida, consulte a tabela da cidade.",
-  "出典：{src}（{asOf}・{lic}）を加工。祝日：{hol}": "Fonte: {src} ({asOf}, {lic}), com adaptações. Feriados: {hol}"
+  "出典：{src}（{asOf}・{lic}）を加工。祝日：{hol}": "Fonte: {src} ({asOf}, {lic}), com adaptações. Feriados: {hol}",
+  "広報紙の最新号": "Última edição do informativo municipal",
+  "町のサイトで読む": "Ler no site do município",
+  "新着の一覧を町のサイトで見る": "Ver a lista de novidades no site do município",
+  "見出しは町のサイトの日本語のままです。": "Os títulos permanecem em japonês, como no site do município.",
+  "{d} 発行": "Publicado em {d}",
+  "町の公式サイトの新着と広報紙から、見出しとリンクだけを出しています（{d} に取得）。": "Mostramos apenas os títulos e os links das novidades do site oficial do município e do informativo municipal (obtidos em {d}).",
+  "町からのお知らせ": "Avisos da prefeitura"
  }
 }

@@ -1,11 +1,11 @@
 {
  "lang": "vi",
  "name": "Tiếng Việt",
- "createdAt": "2026-11-04T12:32:35.893Z",
+ "createdAt": "2026-11-04T12:45:10.231Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 953,
- "of": 920,
+ "count": 960,
+ "of": 927,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Đây là trang hướng dẫn đời sống không chính thức của thị trấn này. Claude thu thập từ các trang chính thức của thị trấn v.v. và ghi rõ nguồn (Machi-shirube)",
   "すべてのページ": "Tất cả các trang",
@@ -959,6 +959,13 @@
   "距離は町・字のおおよその真ん中からまっすぐ測ったものです。": "Khoảng cách được đo theo đường thẳng từ khoảng chính giữa của khu phố/thôn (町・字).",
   "うまく表示できていない所があります。時間をおいて開き直してください。": "Một số phần chưa hiển thị đúng. Vui lòng đợi một lúc rồi mở lại trang.",
   "町の公式の一覧表から AI が読み取り、品目名が表にあるかを確かめたもの。分け方の区分と注意は短くしています。迷ったら町の表で確かめてください": "Nội dung do AI đọc từ bảng danh mục chính thức của thị trấn và đã kiểm tra tên mặt hàng có trong bảng hay không. Phần phân loại và lưu ý được rút gọn. Nếu còn phân vân, hãy kiểm tra lại bảng của thị trấn.",
-  "出典：{src}（{asOf}・{lic}）を加工。祝日：{hol}": "Nguồn: {src} ({asOf}・{lic}) đã được chỉnh sửa. Ngày lễ: {hol}"
+  "出典：{src}（{asOf}・{lic}）を加工。祝日：{hol}": "Nguồn: {src} ({asOf}・{lic}) đã được chỉnh sửa. Ngày lễ: {hol}",
+  "広報紙の最新号": "Số mới nhất của bản tin thị trấn",
+  "町のサイトで読む": "Đọc trên trang web của thị trấn",
+  "新着の一覧を町のサイトで見る": "Xem danh sách tin mới trên trang web của thị trấn",
+  "見出しは町のサイトの日本語のままです。": "Các tiêu đề vẫn giữ nguyên tiếng Nhật như trên trang web của thị trấn.",
+  "{d} 発行": "Phát hành {d}",
+  "町の公式サイトの新着と広報紙から、見出しとリンクだけを出しています（{d} に取得）。": "Chỉ hiển thị tiêu đề và liên kết lấy từ tin mới trên trang web chính thức của thị trấn và từ bản tin thị trấn (lấy vào {d}).",
+  "町からのお知らせ": "Thông báo từ thị trấn"
  }
 }

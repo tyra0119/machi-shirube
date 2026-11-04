@@ -1,11 +1,11 @@
 {
  "lang": "id",
  "name": "Bahasa Indonesia",
- "createdAt": "2026-11-04T12:32:28.954Z",
+ "createdAt": "2026-11-04T12:45:04.401Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 952,
- "of": 920,
+ "count": 959,
+ "of": 927,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Ini adalah panduan hidup tidak resmi untuk kota ini. Claude mengumpulkannya dari situs resmi kota dan sumber lain, dengan mencantumkan sumbernya (Machishirube)",
   "すべてのページ": "Semua halaman",
@@ -958,6 +958,13 @@
   "距離は町・字のおおよその真ん中からまっすぐ測ったものです。": "Jarak diukur dalam garis lurus dari titik kira-kira di tengah kota/desa (chō/aza).",
   "うまく表示できていない所があります。時間をおいて開き直してください。": "Ada bagian yang tidak dapat ditampilkan dengan benar. Silakan tunggu beberapa saat, lalu buka kembali.",
   "町の公式の一覧表から AI が読み取り、品目名が表にあるかを確かめたもの。分け方の区分と注意は短くしています。迷ったら町の表で確かめてください": "Dibaca oleh AI dari tabel resmi kota, lalu dicek apakah nama barangnya ada di tabel. Kategori pemilahan dan catatan peringatan dipersingkat. Jika ragu, periksa tabel resmi kota.",
-  "出典：{src}（{asOf}・{lic}）を加工。祝日：{hol}": "Sumber: diolah dari {src} ({asOf}・{lic}). Hari libur: {hol}"
+  "出典：{src}（{asOf}・{lic}）を加工。祝日：{hol}": "Sumber: diolah dari {src} ({asOf}・{lic}). Hari libur: {hol}",
+  "広報紙の最新号": "Edisi terbaru buletin kota",
+  "町のサイトで読む": "Baca di situs kota",
+  "新着の一覧を町のサイトで見る": "Lihat daftar berita terbaru di situs kota",
+  "見出しは町のサイトの日本語のままです。": "Judul tetap dalam bahasa Jepang seperti di situs kota.",
+  "{d} 発行": "Terbit {d}",
+  "町の公式サイトの新着と広報紙から、見出しとリンクだけを出しています（{d} に取得）。": "Hanya menampilkan judul dan tautan dari berita terbaru di situs resmi kota dan buletin kota (diambil pada {d}).",
+  "町からのお知らせ": "Pemberitahuan dari Kota"
  }
 }

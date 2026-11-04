@@ -1,11 +1,11 @@
 {
  "lang": "en",
  "name": "English",
- "createdAt": "2026-11-04T12:32:17.574Z",
+ "createdAt": "2026-11-04T12:44:58.292Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 955,
- "of": 920,
+ "count": 962,
+ "of": 927,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "This is an unofficial guide to living in this town. Claude gathers information from the town's official website and other sources, and cites each source (Machishirube)",
   "すべてのページ": "All pages",
@@ -961,6 +961,13 @@
   "距離は町・字のおおよその真ん中からまっすぐ測ったものです。": "Distances are measured in a straight line from the approximate center of each town or district.",
   "うまく表示できていない所があります。時間をおいて開き直してください。": "Some parts of this page aren't displaying correctly. Please wait a moment and reopen it.",
   "町の公式の一覧表から AI が読み取り、品目名が表にあるかを確かめたもの。分け方の区分と注意は短くしています。迷ったら町の表で確かめてください": "Read by AI from the town's official list, with item names checked against the list. Sorting categories and notes are shortened. If unsure, check the town's list.",
-  "出典：{src}（{asOf}・{lic}）を加工。祝日：{hol}": "Source: {src} ({asOf}, {lic}), adapted. Holidays: {hol}"
+  "出典：{src}（{asOf}・{lic}）を加工。祝日：{hol}": "Source: {src} ({asOf}, {lic}), adapted. Holidays: {hol}",
+  "広報紙の最新号": "Latest Issue of the Town Newsletter",
+  "町のサイトで読む": "Read on the town website",
+  "新着の一覧を町のサイトで見る": "View the latest updates on the town website",
+  "見出しは町のサイトの日本語のままです。": "Headlines are shown in Japanese, as on the town website.",
+  "{d} 発行": "Published {d}",
+  "町の公式サイトの新着と広報紙から、見出しとリンクだけを出しています（{d} に取得）。": "Only headlines and links are shown, taken from the town's official website updates and newsletter (retrieved {d}).",
+  "町からのお知らせ": "Announcements from the Town"
  }
 }

@@ -119,6 +119,16 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .hinan-kind button { min-height: 44px; padding: 0 14px; border: 0; background: var(--surface); color: var(--text); font-size: 15px; cursor: pointer; }
 .hinan-kind button[aria-pressed="true"] { background: var(--accent); color: var(--accent-text); font-weight: 700; }
 .hinan-map { height: 360px; border-radius: 8px; overflow: hidden; }
+.koho-card { display: grid; gap: 2px; margin: 4px 0 10px; padding: 12px 14px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); color: inherit; text-decoration: none; }
+.koho-card::after { content: none !important; }
+.koho-card .kk { display: flex; align-items: center; gap: 6px; font-size: 13px; color: var(--text-sub); }
+.koho-card .kk svg { width: 18px; height: 18px; }
+.koho-card .kt { font-size: 17px; font-weight: 700; }
+.koho-card .kd { font-size: 13px; color: var(--accent); }
+.news-list { margin: 0 0 6px; padding: 0; list-style: none; }
+.news-list li { display: flex; gap: 10px; padding: 7px 2px; border-bottom: 1px solid var(--line); font-size: 15px; line-height: 1.5; }
+.news-list .nd { flex: none; width: 3.2em; color: var(--text-sub); font-variant-numeric: tabular-nums; }
+.news-list li.more { border-bottom: 0; font-size: 14px; }
 .sl-list { margin: 10px 0 6px; padding: 0; list-style: none; }
 .sl-list li { padding: 8px 4px; border-bottom: 1px solid var(--line); }
 .sl-list .n { display: block; font-size: 17px; font-weight: 700; }

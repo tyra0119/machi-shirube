@@ -1,11 +1,11 @@
 {
  "lang": "tl",
  "name": "Filipino",
- "createdAt": "2026-11-04T12:32:39.157Z",
+ "createdAt": "2026-11-04T12:45:12.524Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 946,
- "of": 920,
+ "count": 953,
+ "of": 927,
  "dict": {
   "この町の非公式の暮らしの案内です。町の公式のサイトや国の公開データから集め、出典をつけています（まちしるべ）": "Ito ay isang di-opisyal na gabay sa pamumuhay sa bayang ito. Kinuha ito mula sa opisyal na website ng bayan at sa pampublikong datos ng bansa, at may nakasaad na pinagmulan (Machishirube)",
   "すべてのページ": "Lahat ng pahina",
@@ -952,6 +952,13 @@
   "距離は町・字のおおよその真ん中からまっすぐ測ったものです。": "Ang distansya ay sinukat nang tuwid na linya mula sa tinatayang sentro ng bayan o aza (subdibisyon ng bayan).",
   "うまく表示できていない所があります。時間をおいて開き直してください。": "May bahagi ng pahina na hindi maipakita nang maayos. Maghintay muna sandali at buksan itong muli.",
   "町の公式の一覧表から AI が読み取り、品目名が表にあるかを確かめたもの。分け方の区分と注意は短くしています。迷ったら町の表で確かめてください": "Binasa ito ng AI mula sa opisyal na talaan ng bayan, at tiniyak kung nasa talaan ang pangalan ng item. Pinaikli ang mga kategorya ng paghihiwalay at ang mga paalala. Kung nag-aalangan, tingnan sa talaan ng bayan.",
-  "出典：{src}（{asOf}・{lic}）を加工。祝日：{hol}": "Pinagmulan: Hinango at inayos mula sa {src} ({asOf}・{lic}). Mga pista opisyal: {hol}"
+  "出典：{src}（{asOf}・{lic}）を加工。祝日：{hol}": "Pinagmulan: Hinango at inayos mula sa {src} ({asOf}・{lic}). Mga pista opisyal: {hol}",
+  "広報紙の最新号": "Pinakabagong isyu ng newsletter ng bayan",
+  "町のサイトで読む": "Basahin sa website ng bayan",
+  "新着の一覧を町のサイトで見る": "Tingnan ang listahan ng mga bagong post sa website ng bayan",
+  "見出しは町のサイトの日本語のままです。": "Ang mga pamagat ay nananatiling nasa Japanese gaya ng nasa website ng bayan.",
+  "{d} 発行": "Inilathala noong {d}",
+  "町の公式サイトの新着と広報紙から、見出しとリンクだけを出しています（{d} に取得）。": "Mga pamagat at link lang ang ipinapakita mula sa mga bagong post sa opisyal na website ng bayan at sa newsletter ng bayan (kinuha noong {d}).",
+  "町からのお知らせ": "Mga Abiso mula sa Bayan"
  }
 }

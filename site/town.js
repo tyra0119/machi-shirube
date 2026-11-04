@@ -585,6 +585,26 @@ async function showAccidents(code, part) {
   });
 }
 
+// 町からのお知らせ：町の公式サイトの新着の見出しと、広報紙の最新号（scripts/news.mjs で取ったもの。見出し・日付・リンクだけ）。
+// 毎日・毎月開く理由になる（作者「上2つやって」）
+async function showNews(code) {
+  const d = await fetch(`data/news/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  if (!d || (!d.news && !d.koho)) return;
+  $("news-block").hidden = false;
+  const md = (s) => (s ? `${Number(s.slice(5, 7))}/${Number(s.slice(8, 10))}` : "");
+  if (d.koho) {
+    const k = $("koho-card");
+    k.hidden = false;
+    k.href = d.koho.latest.url;
+    k.innerHTML = `<span class="kk">${icon("book")}${esc(T("広報紙の最新号"))}</span><span class="kt">${esc(d.koho.latest.title)}</span><span class="kd">${esc(TN("{d} 発行", { d: d.koho.latest.date.replace(/-/g, "/").replace(/\/0/g, "/") }))}・${esc(T("町のサイトで読む"))} ↗</span>`;
+  }
+  if (d.news) {
+    $("news-list").innerHTML = d.news.items.slice(0, 5).map((x) => `<li><span class="nd">${esc(md(x.date))}</span><a href="${esc(x.url)}" target="_blank" rel="noopener" lang="ja">${esc(x.title)}</a></li>`).join("")
+      + `<li class="more"><a href="${esc(d.news.source.url)}" target="_blank" rel="noopener">${esc(T("新着の一覧を町のサイトで見る"))}</a></li>`;
+  }
+  $("news-note").textContent = `${TN("町の公式サイトの新着と広報紙から、見出しとリンクだけを出しています（{d} に取得）。", { d: d.fetchedAt.replace(/-/g, "/") })}${LANG && LANG !== "ja" ? ` ${T("見出しは町のサイトの日本語のままです。")}` : ""}`;
+}
+
 // 避難施設の一覧（位置つきの避難場所のデータが国にも町にも無い町）：町の地域防災計画の資料の表を、行政区ごとに出す（阿賀町）。
 // 位置は作らない（山あいの番地は住所から正しい位置を出せず、避難の距離をまちがえるため）。どの災害で使えるかは資料に無いので、そう書く
 async function showShelterList(code) {
@@ -1049,7 +1069,7 @@ let allPages = [];
 function buildAllPages(hasHinan, local) {
   const shortOf = (a) => yardstick.questions.find((x) => x.id === a.qid)?.short ?? a.question.slice(0, 16);
   const extra = {
-    today: [["今日と明日（天気・洗濯・服装）", "sec-today"], ["今日の暮らし", "sec-today-life"]],
+    today: [["今日と明日（天気・洗濯・服装）", "sec-today"], ["今日の暮らし", "sec-today-life"], ...($("news-block").hidden ? [] : [["町からのお知らせ（新着・広報紙）", "news-block"]])],
     bousai: hasHinan ? [["わが家の避難（近い避難場所）", "hinan-block"]] : $("shelter-list-block").hidden ? [] : [["避難施設（行政区ごと）", "shelter-list-block"]],
     shiru: [["町のデータ（全国と比べた数字）", "sec-features"]],
   };
@@ -1384,6 +1404,7 @@ async function finishPage(code, townFeatures, startPart, scopeNote, at) {
   await showClimate(code);
   await showLocalSites(code);
   await showQuiz(code);
+  await showNews(code);
   const hasHinan = await showHinan(code, townFeatures, startPart);
   if (!hasHinan) await showShelterList(code);
   await showTranslations(code);
@@ -1402,7 +1423,7 @@ async function finishPage(code, townFeatures, startPart, scopeNote, at) {
 // 最初から開いておくのは、わが家の避難・今日のページの見立てと数から、できることへ・今日と明日と、各ページの最初の1つ
 // （作者「やたらと縦が長くなってしまうと、読むのが大変。何か工夫できないかな？」→「たたむ＋目次」）
 // 暮らしの場面（ほかのページへの入口の札）も開いておく（作者「『暮らしの場面』は開いていてもいいと思う」）
-const FOLD_OPEN = new Set(["hinan-block", "shelter-list-block", "mitate-top", "sec-today", "hitokoto-block", "sec-scenes", "sec-today-life", "gomi-block"]);
+const FOLD_OPEN = new Set(["hinan-block", "shelter-list-block", "news-block", "mitate-top", "sec-today", "hitokoto-block", "sec-scenes", "sec-today-life", "gomi-block"]);
 function foldSummary(sec) {
   // 確かめた答えの欄は、答えの数
   const answers = sec.querySelectorAll(".answers-box [id^=\"a-\"]").length;
