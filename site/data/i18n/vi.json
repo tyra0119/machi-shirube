@@ -1,11 +1,11 @@
 {
  "lang": "vi",
  "name": "Tiếng Việt",
- "createdAt": "2026-11-04T05:16:46.622Z",
+ "createdAt": "2026-11-04T12:20:49.244Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 928,
- "of": 896,
+ "count": 947,
+ "of": 916,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Đây là trang hướng dẫn đời sống không chính thức của thị trấn này. Claude thu thập từ các trang chính thức của thị trấn v.v. và ghi rõ nguồn (Machi-shirube)",
   "すべてのページ": "Tất cả các trang",
@@ -934,6 +934,25 @@
   "町のデータ（全国と比べた数字）": "Số liệu của thị trấn (các con số so với cả nước)",
   "「{q}」で絞ると {n} か所": "Lọc theo \"{q}\": có {n} địa điểm",
   "出典：「ハザードマップポータルサイト」を加工して作成。くわしくは町のハザードマップで": "Nguồn: Được tạo ra từ việc xử lý dữ liệu của \"Cổng thông tin bản đồ cảnh báo thiên tai (Hazard Map Portal Site)\". Xem chi tiết tại bản đồ cảnh báo thiên tai của thị trấn",
-  "ごみの名前を日本語で入れる（例：電池、ペットボトル）": "Nhập tên rác bằng tiếng Nhật (ví dụ: 電池, ペットボトル)"
+  "ごみの名前を日本語で入れる（例：電池、ペットボトル）": "Nhập tên rác bằng tiếng Nhật (ví dụ: 電池, ペットボトル)",
+  "避難施設（行政区ごと）": "Nơi lánh nạn (theo từng khu hành chính)",
+  "行政区を選ぶ": "Chọn khu hành chính",
+  "町の地域防災計画の資料にある避難施設です。<strong>どの災害のときに使えるかは、資料に書かれていません。</strong>": "Đây là các nơi lánh nạn có trong tài liệu kế hoạch phòng chống thiên tai của khu vực trong thị trấn. <strong>Tài liệu không ghi nơi nào dùng được cho loại thiên tai nào.</strong>",
+  "洪水や土砂災害の想定の所にある施設もあります。重ねて見る地図の浸水・土砂の想定と合わせて見て、<strong>町の案内で必ず確かめてください。</strong>": "Cũng có những nơi nằm trong vùng dự báo lũ lụt hoặc sạt lở đất. Hãy xem cùng với dự báo ngập lụt và sạt lở đất trên bản đồ chồng lớp, và <strong>nhất định phải xác nhận lại qua hướng dẫn của thị trấn.</strong>",
+  "いま開いているかどうかは、このページでは分かりません。": "Trang này không cho biết hiện nơi đó có đang mở cửa hay không.",
+  "広域避難所（町全体）": "Nơi lánh nạn diện rộng (toàn thị trấn)",
+  "所在地は資料で非表示": "Địa chỉ không được công bố trong tài liệu",
+  "所在地": "Địa chỉ",
+  "Google マップで場所を見る": "Xem vị trí trên Google Maps",
+  "AI が資料の表を読み取り、全部の行を資料の文字と照らしました。": "AI đã đọc bảng trong tài liệu và đối chiếu tất cả các dòng với chữ trong tài liệu.",
+  "資料を開く": "Mở tài liệu",
+  "行政区ごとの避難施設を見る": "Xem nơi lánh nạn theo từng khu hành chính",
+  "収容 {n} 人": "Sức chứa {n} người",
+  "洪水時の避難の手助け": "Hỗ trợ lánh nạn khi có lũ",
+  "要介護認定の申し込み": "Đăng ký xét công nhận cần chăm sóc điều dưỡng",
+  "町の診療所と訪問診療": "Phòng khám của thị trấn và khám bệnh tại nhà",
+  "車なしの通院・買い物の足": "Phương tiện đi khám bệnh, đi mua sắm khi không có xe",
+  "高齢者の緊急通報装置": "Thiết bị báo khẩn cấp cho người cao tuổi",
+  "子どもの通学の支え": "Hỗ trợ trẻ em đi học"
  }
 }

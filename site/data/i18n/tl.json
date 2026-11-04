@@ -1,11 +1,11 @@
 {
  "lang": "tl",
  "name": "Filipino",
- "createdAt": "2026-11-04T05:16:49.251Z",
+ "createdAt": "2026-11-04T12:21:00.841Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 921,
- "of": 896,
+ "count": 941,
+ "of": 916,
  "dict": {
   "この町の非公式の暮らしの案内です。町の公式のサイトや国の公開データから集め、出典をつけています（まちしるべ）": "Ito ay isang di-opisyal na gabay sa pamumuhay sa bayang ito. Kinuha ito mula sa opisyal na website ng bayan at sa pampublikong datos ng bansa, at may nakasaad na pinagmulan (Machishirube)",
   "すべてのページ": "Lahat ng pahina",
@@ -927,6 +927,26 @@
   "わが家の避難（近い避難場所）": "Paglikas ng Aming Tahanan (Pinakamalapit na Evacuation Site)",
   "町のデータ（全国と比べた数字）": "Datos ng Bayan (Mga Bilang Kumpara sa Buong Bansa)",
   "「{q}」で絞ると {n} か所": "Kapag sinala gamit ang \"{q}\", {n} na lugar",
-  "ごみの名前を日本語で入れる（例：電池、ペットボトル）": "Ilagay ang pangalan ng basura sa Japanese (hal.: baterya, bote ng PET)"
+  "ごみの名前を日本語で入れる（例：電池、ペットボトル）": "Ilagay ang pangalan ng basura sa Japanese (hal.: baterya, bote ng PET)",
+  "避難施設（行政区ごと）": "Mga evacuation center (kada administratibong distrito)",
+  "行政区を選ぶ": "Pumili ng distrito",
+  "町の地域防災計画の資料にある避難施設です。<strong>どの災害のときに使えるかは、資料に書かれていません。</strong>": "Ito ang mga evacuation center na nasa dokumento ng lokal na plano sa pag-iwas sa sakuna ng bayan. <strong>Hindi nakasulat sa dokumento kung para sa anong sakuna magagamit ang mga ito.</strong>",
+  "洪水や土砂災害の想定の所にある施設もあります。重ねて見る地図の浸水・土砂の想定と合わせて見て、<strong>町の案内で必ず確かめてください。</strong>": "May mga pasilidad na nasa lugar na posibleng bahain o tamaan ng landslide. Itugma ito sa mga hazard map ng baha at landslide sa mapang may patong-patong na layer, at <strong>siguraduhing kumpirmahin sa impormasyon ng bayan.</strong>",
+  "いま開いているかどうかは、このページでは分かりません。": "Hindi malalaman sa pahinang ito kung bukas ito ngayon.",
+  "広域避難所（町全体）": "Malawakang evacuation center (buong bayan)",
+  "所在地は資料で非表示": "Hindi ipinapakita sa dokumento ang lokasyon",
+  "所在地": "Lokasyon",
+  "Google マップで場所を見る": "Tingnan ang lokasyon sa Google Maps",
+  "テレビ電話": "Video call",
+  "AI が資料の表を読み取り、全部の行を資料の文字と照らしました。": "Binasa ng AI ang talahanayan sa dokumento, at sinuri ang lahat ng hanay laban sa mga salita sa dokumento.",
+  "資料を開く": "Buksan ang dokumento",
+  "行政区ごとの避難施設を見る": "Tingnan ang mga evacuation center kada administratibong distrito",
+  "収容 {n} 人": "Kapasidad: {n} tao",
+  "洪水時の避難の手助け": "Tulong sa paglikas tuwing baha",
+  "要介護認定の申し込み": "Aplikasyon para sa pagtukoy ng antas ng pangangalaga (kaigo)",
+  "町の診療所と訪問診療": "Klinika ng bayan at pagbisita ng doktor sa bahay",
+  "車なしの通院・買い物の足": "Transportasyon sa pagpapagamot at pamimili para sa walang sasakyan",
+  "高齢者の緊急通報装置": "Emergency alarm device para sa matatanda",
+  "子どもの通学の支え": "Suporta sa pagpasok ng mga bata sa paaralan"
  }
 }

@@ -119,6 +119,11 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .hinan-kind button { min-height: 44px; padding: 0 14px; border: 0; background: var(--surface); color: var(--text); font-size: 15px; cursor: pointer; }
 .hinan-kind button[aria-pressed="true"] { background: var(--accent); color: var(--accent-text); font-weight: 700; }
 .hinan-map { height: 360px; border-radius: 8px; overflow: hidden; }
+.sl-list { margin: 10px 0 6px; padding: 0; list-style: none; }
+.sl-list li { padding: 8px 4px; border-bottom: 1px solid var(--line); }
+.sl-list .n { display: block; font-size: 17px; font-weight: 700; }
+.sl-list .k { display: block; font-size: 14px; color: var(--text-sub); }
+.sl-tag { display: inline-block; margin-left: 4px; padding: 1px 8px; border: 1px solid var(--line); border-radius: 999px; font-size: 13px; font-weight: 600; color: var(--text-sub); vertical-align: 2px; }
 .hinan-list { margin: 10px 0 6px; padding: 0; list-style: none; }
 .hinan-list li { position: relative; padding: 8px 8px 8px 44px; border-bottom: 1px solid var(--line); border-radius: 8px; cursor: pointer; }
 .hinan-list li:hover, .hinan-list li.on { background: var(--bg); }

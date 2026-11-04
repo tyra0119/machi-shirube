@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-04T05:16:28.360Z",
+ "createdAt": "2026-11-04T12:19:38.698Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 930,
- "of": 896,
+ "count": 948,
+ "of": 916,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -936,6 +936,24 @@
   "わが家の避難（近い避難場所）": "Evacuación de mi hogar (refugios cercanos)",
   "町のデータ（全国と比べた数字）": "Datos del municipio (cifras comparadas con el promedio nacional)",
   "「{q}」で絞ると {n} か所": "Al filtrar por «{q}»: {n} lugares",
-  "ごみの名前を日本語で入れる（例：電池、ペットボトル）": "Escriba el nombre de la basura en japonés (ej.: 電池, ペットボトル)"
+  "ごみの名前を日本語で入れる（例：電池、ペットボトル）": "Escriba el nombre de la basura en japonés (ej.: 電池, ペットボトル)",
+  "避難施設（行政区ごと）": "Centros de evacuación (por distrito administrativo)",
+  "行政区を選ぶ": "Elegir distrito",
+  "町の地域防災計画の資料にある避難施設です。<strong>どの災害のときに使えるかは、資料に書かれていません。</strong>": "Estos son los centros de evacuación que figuran en el documento del plan municipal de prevención de desastres. <strong>El documento no indica para qué tipo de desastre se pueden usar.</strong>",
+  "洪水や土砂災害の想定の所にある施設もあります。重ねて見る地図の浸水・土砂の想定と合わせて見て、<strong>町の案内で必ず確かめてください。</strong>": "Algunos centros están en zonas con riesgo de inundación o de deslizamiento de tierra. Compárelos con las zonas de inundación y deslizamiento del mapa superpuesto y <strong>confírmelo siempre en la información del municipio.</strong>",
+  "いま開いているかどうかは、このページでは分かりません。": "Esta página no permite saber si el centro está abierto en este momento.",
+  "広域避難所（町全体）": "Centros de evacuación de área amplia (todo el municipio)",
+  "所在地": "Dirección",
+  "Google マップで場所を見る": "Ver ubicación en Google Maps",
+  "AI が資料の表を読み取り、全部の行を資料の文字と照らしました。": "La IA leyó la tabla del documento y comparó todas las filas con el texto original.",
+  "資料を開く": "Abrir el documento",
+  "行政区ごとの避難施設を見る": "Ver centros de evacuación por distrito",
+  "収容 {n} 人": "Capacidad: {n} personas",
+  "洪水時の避難の手助け": "Ayuda para evacuar en caso de inundación",
+  "要介護認定の申し込み": "Solicitud de certificación de dependencia (cuidados de largo plazo)",
+  "町の診療所と訪問診療": "Clínica municipal y atención médica a domicilio",
+  "車なしの通院・買い物の足": "Transporte para ir al médico y de compras sin coche",
+  "高齢者の緊急通報装置": "Dispositivo de alarma de emergencia para personas mayores",
+  "子どもの通学の支え": "Apoyo para el traslado escolar de los niños"
  }
 }

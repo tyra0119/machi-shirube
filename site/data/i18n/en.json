@@ -1,11 +1,11 @@
 {
  "lang": "en",
  "name": "English",
- "createdAt": "2026-11-04T05:16:30.661Z",
+ "createdAt": "2026-11-04T12:19:51.253Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 931,
- "of": 896,
+ "count": 951,
+ "of": 916,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "This is an unofficial guide to living in this town. Claude gathers information from the town's official website and other sources, and cites each source (Machishirube)",
   "すべてのページ": "All pages",
@@ -937,6 +937,26 @@
   "わが家の避難（近い避難場所）": "Our Home's Evacuation Plan (Nearest Shelters)",
   "町のデータ（全国と比べた数字）": "Town Data (Figures Compared with the National Average)",
   "「{q}」で絞ると {n} か所": "Filtering by \"{q}\" gives {n} places",
-  "ごみの名前を日本語で入れる（例：電池、ペットボトル）": "Enter the name of the item in Japanese (e.g., 電池, ペットボトル)"
+  "ごみの名前を日本語で入れる（例：電池、ペットボトル）": "Enter the name of the item in Japanese (e.g., 電池, ペットボトル)",
+  "避難施設（行政区ごと）": "Evacuation Shelters (by Administrative District)",
+  "行政区を選ぶ": "Select a district",
+  "町の地域防災計画の資料にある避難施設です。<strong>どの災害のときに使えるかは、資料に書かれていません。</strong>": "These are the evacuation shelters listed in the town's Regional Disaster Prevention Plan. <strong>The document does not say which types of disaster each shelter can be used for.</strong>",
+  "洪水や土砂災害の想定の所にある施設もあります。重ねて見る地図の浸水・土砂の想定と合わせて見て、<strong>町の案内で必ず確かめてください。</strong>": "Some shelters are located in areas at risk of flooding or landslides. Check them against the flood and landslide risk areas on the overlay map, and <strong>be sure to confirm with the town's guidance.</strong>",
+  "いま開いているかどうかは、このページでは分かりません。": "This page cannot tell you whether a shelter is open right now.",
+  "広域避難所（町全体）": "Wide-Area Evacuation Shelters (Town-Wide)",
+  "所在地は資料で非表示": "Address not shown in the document",
+  "所在地": "Address",
+  "Google マップで場所を見る": "View location on Google Maps",
+  "テレビ電話": "Video call",
+  "AI が資料の表を読み取り、全部の行を資料の文字と照らしました。": "AI read the tables in the document, and every row was checked against the text of the document.",
+  "資料を開く": "Open the document",
+  "行政区ごとの避難施設を見る": "View shelters by administrative district",
+  "収容 {n} 人": "Capacity: {n}",
+  "洪水時の避難の手助け": "Help evacuating during floods",
+  "要介護認定の申し込み": "Applying for long-term care certification",
+  "町の診療所と訪問診療": "Town clinic and home-visit medical care",
+  "車なしの通院・買い物の足": "Transportation for medical visits and shopping without a car",
+  "高齢者の緊急通報装置": "Emergency alert devices for older adults",
+  "子どもの通学の支え": "Support for children's commute to school"
  }
 }

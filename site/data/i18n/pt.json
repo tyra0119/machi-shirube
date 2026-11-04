@@ -1,11 +1,11 @@
 {
  "lang": "pt",
  "name": "Português",
- "createdAt": "2026-11-04T05:16:25.238Z",
+ "createdAt": "2026-11-04T12:19:28.613Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 931,
- "of": 896,
+ "count": 951,
+ "of": 916,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Guia não oficial da vida na cidade. O Claude reúne as informações em sites oficiais da cidade e outras fontes, e indica a origem de cada uma (Machishirube)",
   "すべてのページ": "Todas as páginas",
@@ -937,6 +937,26 @@
   "わが家の避難（近い避難場所）": "Evacuação da minha casa (abrigos mais próximos)",
   "町のデータ（全国と比べた数字）": "Dados da cidade (números comparados com o país)",
   "「{q}」で絞ると {n} か所": "Filtrando por \"{q}\": {n} locais",
-  "ごみの名前を日本語で入れる（例：電池、ペットボトル）": "Digite o nome do lixo em japonês (ex.: 電池, ペットボトル)"
+  "ごみの名前を日本語で入れる（例：電池、ペットボトル）": "Digite o nome do lixo em japonês (ex.: 電池, ペットボトル)",
+  "避難施設（行政区ごと）": "Locais de abrigo (por distrito administrativo)",
+  "行政区を選ぶ": "Escolher o distrito",
+  "町の地域防災計画の資料にある避難施設です。<strong>どの災害のときに使えるかは、資料に書かれていません。</strong>": "São os locais de abrigo que constam nos documentos do plano municipal de prevenção de desastres. <strong>Os documentos não indicam para quais tipos de desastre cada local pode ser usado.</strong>",
+  "洪水や土砂災害の想定の所にある施設もあります。重ねて見る地図の浸水・土砂の想定と合わせて見て、<strong>町の案内で必ず確かめてください。</strong>": "Alguns locais ficam em áreas com risco de inundação ou deslizamento de terra. Veja junto com as previsões de inundação e de deslizamento no mapa sobreposto e <strong>confirme sempre nas orientações do município.</strong>",
+  "いま開いているかどうかは、このページでは分かりません。": "Esta página não mostra se o local está aberto no momento.",
+  "広域避難所（町全体）": "Abrigos de área ampla (todo o município)",
+  "所在地は資料で非表示": "Endereço não divulgado nos documentos",
+  "所在地": "Endereço",
+  "Google マップで場所を見る": "Ver o local no Google Maps",
+  "テレビ電話": "Videochamada",
+  "AI が資料の表を読み取り、全部の行を資料の文字と照らしました。": "A IA leu a tabela dos documentos e conferiu todas as linhas com o texto original.",
+  "資料を開く": "Abrir o documento",
+  "行政区ごとの避難施設を見る": "Ver os locais de abrigo por distrito administrativo",
+  "収容 {n} 人": "Capacidade: {n} pessoas",
+  "洪水時の避難の手助け": "Ajuda para evacuação em caso de inundação",
+  "要介護認定の申し込み": "Pedido de certificação de necessidade de cuidados",
+  "町の診療所と訪問診療": "Clínica do município e atendimento médico domiciliar",
+  "車なしの通院・買い物の足": "Transporte para ir ao hospital e às compras sem carro",
+  "高齢者の緊急通報装置": "Dispositivo de chamada de emergência para idosos",
+  "子どもの通学の支え": "Apoio ao transporte escolar das crianças"
  }
 }

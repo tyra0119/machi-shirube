@@ -585,6 +585,33 @@ async function showAccidents(code, part) {
   });
 }
 
+// 避難施設の一覧（位置つきの避難場所のデータが国にも町にも無い町）：町の地域防災計画の資料の表を、行政区ごとに出す（阿賀町）。
+// 位置は作らない（山あいの番地は住所から正しい位置を出せず、避難の距離をまちがえるため）。どの災害で使えるかは資料に無いので、そう書く
+async function showShelterList(code) {
+  const d = await getData(`data/shelter-list/${code}.json`);
+  if (!d) return false;
+  $("shelter-list-block").hidden = false;
+  const areas = [...new Set(d.rows.map((r) => r.area))];
+  const sel = $("sl-area");
+  sel.innerHTML = `<option value="">${esc(T("広域避難所（町全体）"))}</option>` + areas.map((a) => `<option>${esc(a)}</option>`).join("");
+  const key = `slarea:${code}`;
+  if (areas.includes(remember.get(key))) sel.value = remember.get(key);
+  const draw = () => {
+    const rows = sel.value ? d.rows.filter((r) => r.area === sel.value) : d.rows.filter((r) => /広域/.test(r.note));
+    $("sl-list").innerHTML = rows.map((r) => {
+      const hidden = r.address === "非表示";
+      const where = hidden ? T("所在地は資料で非表示") : `${T("所在地")} ${r.address}`;
+      const map = hidden ? "" : ` <a href="${esc(gmapPlace(r.name, `${d.prefix ?? ""}${r.address}`))}" target="_blank" rel="noopener">${esc(T("Google マップで場所を見る"))}</a>`;
+      return `<li><span class="n">${esc(r.name)}${r.note ? ` <span class="sl-tag">${esc(T(r.note))}</span>` : ""}</span>`
+        + `<span class="k">${esc(where)}${r.tel ? `・${esc(T("テレビ電話"))} ${esc(r.tel)}` : ""}・${esc(TN("収容 {n} 人", { n: r.capacity }))}${sel.value ? "" : `・${esc(r.area)}`}</span>${map ? `<span class="k">${map}</span>` : ""}</li>`;
+    }).join("");
+  };
+  sel.addEventListener("change", () => { remember.set(key, sel.value); draw(); });
+  draw();
+  $("sl-note").innerHTML = `${esc(T("出典"))}：${esc(d.source.title)}（${esc(d.source.asOf)}）。${esc(T("AI が資料の表を読み取り、全部の行を資料の文字と照らしました。"))} <a href="${esc(d.source.url)}" target="_blank" rel="noopener">${esc(T("資料を開く"))}</a>`;
+  return true;
+}
+
 // 届きにくい人の型 → その人のためのページ
 const TYPE_PAGE = {
   "お年寄り × 津波": "bousai", "母語で防災": "bousai", "はじめての町": "tetsuzuki", "人が減る町の暮らし": "kaigo",
@@ -1004,7 +1031,7 @@ function todayLife(hasHinan) {
   $("today-life").innerHTML = [
     row("gomi", T("ごみ"), gomiToday ? (gomiToday.length ? TN("今日は {k} の日", { k: gomiToday.join("・") }) : T("今日はごみの収集はありません")) : has("gomi") ? T("ごみの出し方を見る") : T("地区ごとの収集日は準備中です"), has("gomi") || !!gomiToday),
     medicalRow ?? row("iryo", T("病院"), T("この町の病院のデータはまだありません"), false),
-    row("bousai", T("避難"), hasHinan ? T("わが家から近い避難場所を出す") : has("bousai") ? T("避難場所の案内を見る") : T("避難場所は準備中です"), hasHinan || has("bousai")),
+    row("bousai", T("避難"), hasHinan ? T("わが家から近い避難場所を出す") : !$("shelter-list-block").hidden ? T("行政区ごとの避難施設を見る") : has("bousai") ? T("避難場所の案内を見る") : T("避難場所は準備中です"), hasHinan || !$("shelter-list-block").hidden || has("bousai")),
     row("komatta", T("困ったとき"), has("komatta") ? T("電話・メールの窓口を見る") : T("電話・メールの窓口は準備中です"), has("komatta")),
   ].join("");
   $("tiles").innerHTML = PAGES.filter((p) => !["today", "source", "research", "mitate"].includes(p.view)).map((p) => {
@@ -1023,7 +1050,7 @@ function buildAllPages(hasHinan, local) {
   const shortOf = (a) => yardstick.questions.find((x) => x.id === a.qid)?.short ?? a.question.slice(0, 16);
   const extra = {
     today: [["今日と明日（天気・洗濯・服装）", "sec-today"], ["今日の暮らし", "sec-today-life"]],
-    bousai: hasHinan ? [["わが家の避難（近い避難場所）", "hinan-block"]] : [],
+    bousai: hasHinan ? [["わが家の避難（近い避難場所）", "hinan-block"]] : $("shelter-list-block").hidden ? [] : [["避難施設（行政区ごと）", "shelter-list-block"]],
     shiru: [["町のデータ（全国と比べた数字）", "sec-features"]],
   };
   allPages = PAGES.filter((p) => !p.local || local).map((p) => ({
@@ -1358,6 +1385,7 @@ async function finishPage(code, townFeatures, startPart, scopeNote, at) {
   await showLocalSites(code);
   await showQuiz(code);
   const hasHinan = await showHinan(code, townFeatures, startPart);
+  if (!hasHinan) await showShelterList(code);
   await showTranslations(code);
   await showLangGap(code);
   await showGomi(code);
@@ -1374,7 +1402,7 @@ async function finishPage(code, townFeatures, startPart, scopeNote, at) {
 // 最初から開いておくのは、わが家の避難・今日のページの見立てと数から、できることへ・今日と明日と、各ページの最初の1つ
 // （作者「やたらと縦が長くなってしまうと、読むのが大変。何か工夫できないかな？」→「たたむ＋目次」）
 // 暮らしの場面（ほかのページへの入口の札）も開いておく（作者「『暮らしの場面』は開いていてもいいと思う」）
-const FOLD_OPEN = new Set(["hinan-block", "mitate-top", "sec-today", "hitokoto-block", "sec-scenes", "sec-today-life", "gomi-block"]);
+const FOLD_OPEN = new Set(["hinan-block", "shelter-list-block", "mitate-top", "sec-today", "hitokoto-block", "sec-scenes", "sec-today-life", "gomi-block"]);
 function foldSummary(sec) {
   // 確かめた答えの欄は、答えの数
   const answers = sec.querySelectorAll(".answers-box [id^=\"a-\"]").length;
@@ -1573,6 +1601,8 @@ function sources(list, code) {
   // 避難場所のデータ（わが家の避難で使ったもの）
   getData(`data/shelters/${code}.json`).then((d) => d && $("sources").insertAdjacentHTML("beforeend",
     `<li><a href="${esc(d.source.url)}" target="_blank" rel="noopener">${esc(d.source.title)}</a>（${esc(d.source.license)}・${esc(d.source.fetchedAt)} に取得）を加工（わが家の避難）</li>`)).catch(() => {});
+  getData(`data/shelter-list/${code}.json`).then((d) => d && $("sources").insertAdjacentHTML("beforeend",
+    `<li><a href="${esc(d.source.url)}" target="_blank" rel="noopener">${esc(d.source.title)}</a>（${esc(d.source.asOf)}）の表を AI が読み取り、資料の文字と照らした（避難施設）</li>`)).catch(() => {});
   fetch(`data/sources/${code}.json`).then((r) => (r.ok ? r.json() : null)).then((d) => {
     if (!d?.cards?.length) return;
     // 取り消したカードは出さない
