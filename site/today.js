@@ -13,7 +13,8 @@ const JMA = "https://www.jma.go.jp/bosai";
 
 async function loadToday(code, lat, lon) {
   // 政令市まるごと（例 14100）は表にないので、最初の区で代表させる。地震は区のどれかで観測したもの
-  const table = await fetch("data/jma.json").then((r) => r.json()).catch(() => ({}));
+  // 天気の地域の表は、町の分だけの小さなファイルにあれば、全国の表（0.2MB）を読まない
+  const table = (typeof MUNI !== "undefined" && MUNI?.jma && Object.keys(MUNI.jma).length && MUNI.jma) || (await fetch("data/jma.json").then((r) => r.json()).catch(() => ({})));
   const whole = !table[code];
   const jma = table[code] ?? table[Object.keys(table).find((k) => k > code && k < String(Number(code) + 30).padStart(5, "0"))];
   const [fc, warn, quakes, om] = await Promise.all([

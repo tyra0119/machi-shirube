@@ -9,11 +9,12 @@ async function showLayerMap(code, townFeatures, at, esc, part = null) {
   if (!box) return;
   const get = (url) => getData(url); // town.js の、同じファイルを1回だけ読む仕組み
   const [japan, flood, quake, slope, hito, shelters, med, acc, bus, nowc, risk, lore, aed, kaigo] = await Promise.all([
-    get("data/japan.topo.json"), get(`data/flood-pop/${code}.json`), get(`data/quake-pop/${code}.json`), get(`data/slope/${code}.json`), get(`data/hitokoto/${code}.json`),
+    // 町の形は、町の分だけの小さなファイルにあれば、日本全体の地図（0.7MB）を読まない
+    typeof MUNI !== "undefined" && MUNI?.code === code && MUNI.outline ? null : get("data/japan.topo.json"), get(`data/flood-pop/${code}.json`), get(`data/quake-pop/${code}.json`), get(`data/slope/${code}.json`), get(`data/hitokoto/${code}.json`),
     get(`data/shelters/${code}.json`), loadMedical(code), get(`data/accidents/${code}.json`), get(`data/bus/${code}.json`),
     get(`${JMA_TILE}/nowc/targetTimes_N1.json`), get(`${JMA_TILE}/risk/targetTimes.json`), get(`data/lore/${code}.json`), get(`data/aed/${code}.json`), get(`data/kaigo/${code}.json`),
   ]);
-  const outline = japan ? topojson.feature(japan, japan.objects.municipalities).features.find((f) => f.properties.code === code) : null;
+  const outline = (typeof MUNI !== "undefined" && MUNI?.code === code && MUNI.outline) || (japan ? topojson.feature(japan, japan.objects.municipalities).features.find((f) => f.properties.code === code) : null);
   const t = (s) => `${Number(s.slice(8, 10)) + 9 >= 24 ? Number(s.slice(8, 10)) - 15 : Number(s.slice(8, 10)) + 9}:${s.slice(10, 12)}`; // UTC → 日本の時刻
   const fc = (features) => ({ type: "FeatureCollection", features });
   const pt = (p, props) => ({ type: "Feature", geometry: { type: "Point", coordinates: p }, properties: props });

@@ -4,6 +4,8 @@
 const color = (name) => getComputedStyle(document.documentElement).getPropertyValue(name).trim();
 const $ = (id) => document.getElementById(id);
 const q = new URLSearchParams(location.search);
+// その町の分だけの小さなファイル（site/data/muni/{コード}.json。scripts/build-muni.mjs）。全国の分を読まずに済む。無いときは全国のファイルを読む
+let MUNI = null;
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 // データのファイルを読む（同じファイルは1回だけ読み、使うたびに写しを渡す。読んだあとに書きかえる所があるので、写しにして混ざらないように）
 const dataCache = new Map();
@@ -134,7 +136,7 @@ main().catch((e) => console.error(e));
 
 // 届きにくい人の候補（types.js）。町・字やまとまりのページでは、その市区町村の数字で出す
 async function showTypes(code, stats, scopeNote) {
-  const flags = (await getJSON("data/flags.json")).flags;
+  const flags = stats.flags ?? (await getJSON("data/flags.json")).flags;
   const t = stats.towns[code];
   if (!t) return;
   let f = flags[code] ?? {};
@@ -449,8 +451,8 @@ async function showShopAccess(code) {
 
 // これからの町の人口（社人研の推計。scripts/build-future.mjs）。政令市の区はその区、町・字のページは市区町村の数
 async function showFuture(code) {
-  const d = await getJSON("data/future.json").catch(() => null);
-  const t = d?.towns[code];
+  const d = (MUNI?.code === code && MUNI.future) || (await getJSON("data/future.json").catch(() => null));
+  const t = d?.town ?? d?.towns?.[code];
   if (!t) return;
   $("future-block").hidden = false;
   const n = (v) => v.toLocaleString("ja-JP");
@@ -458,8 +460,8 @@ async function showFuture(code) {
   const max = Math.max(...t.pop);
   // 明るい話題：2050年まで人口が減りにくい町（全国の上から1割）は、それを添える（10番目までは順番で、それより下は「全国でも減りにくいほう」）
   const ratio = (p) => p.at(-1) / p[0];
-  const rank = Object.values(d.towns).filter((x) => ratio(x.pop) > ratio(t.pop)).length + 1;
-  const total = Object.keys(d.towns).length;
+  const rank = d.rank ?? Object.values(d.towns).filter((x) => ratio(x.pop) > ratio(t.pop)).length + 1;
+  const total = d.total ?? Object.keys(d.towns).length;
   const bright = rank <= total / 10 ? `<span class="bright">${icon("sun")} ${ratio(t.pop) > 1 ? T("2050年まで人口が増えると推計される町です。") : ""}${rank <= 10 ? TN("人口の減りにくさは、全国 {n} の市区町村で {r} 番目です", { n: total.toLocaleString("ja-JP"), r: rank }) : T("人口の減りにくさは、全国でも高いほうです")}</span>` : "";
   $("future-head").innerHTML = `${T("2050年の人口は、2020年の")} <strong>${idx(t.pop)}%</strong>（${T("約")} ${n(Math.round(t.pop.at(-1) / 10) * 10)} ${T("人")}）<span>${T("全国")} ${idx(d.nation.pop)}%${t.old ? `・${T("65歳以上の割合")} ${t.old[0]}% → ${t.old.at(-1)}%（${T("全国")} ${d.nation.old.at(-1)}%）` : ""}</span>${bright}`;
   $("future").innerHTML = d.years.map((y, i) => `<li><span class="y">${y}</span><span class="bar"><i style="height:${(t.pop[i] / max) * 100}%"></i></span><span class="v">${n(Math.round(t.pop[i] / 100) * 100)}</span>${t.old ? `<span class="o">${t.old[i]}%</span>` : ""}</li>`).join("");
@@ -1057,7 +1059,7 @@ async function showLangGap(code) {
   if (rows.length < 3) return;
   // 町のマップの言葉：答えの1行目に出てくる言葉の名前
   const onMap = new Set(Object.entries(TONGUE_JA).filter(([, ja]) => mapText.includes(ja)).map(([k]) => k));
-  const tr = await getData(`data/translations/${code}.json`);
+  const tr = await trLangs(code);
   const here = new Set(Object.keys(tr?.langs ?? {}));
   const sum = (f) => rows.filter(f).reduce((s, r) => s + r.rate, 0).toFixed(1);
   const mark = (ok) => (ok ? `<span class="lg-yes">${T("あり")}</span>` : `<span class="lg-no">${T("なし")}</span>`);
@@ -1069,6 +1071,11 @@ async function showLangGap(code) {
   $("langgap-note").innerHTML = `${T("母語は国籍から推し量ったものです（ブラジル＝ポルトガル語、ペルー・ボリビア＝スペイン語など）。英語やほかの言葉が読める人もいます。")}${KU()}${[nat, map].map((a) => a.source?.url ? `<a href="${esc(a.source.url)}" target="_blank" rel="noopener">${esc(a.source.title ?? a.source.url)}</a>` : "").filter(Boolean).join("・")}`;
 }
 
+// 訳のある言葉の一覧。日本語で見ているときは、町の分だけの小さなファイルの一覧で足りる（訳そのもの 0.8MB を読まない）
+async function trLangs(code) {
+  if (!LANG && MUNI?.code === code && MUNI.langs !== undefined) return MUNI.langs ? { langs: MUNI.langs } : null;
+  return getData(`data/translations/${code}.json`);
+}
 // 母語で防災：Claude が訳し、別の Claude が訳し戻して確かめた訳（site/data/translations/{コード}.json）。
 // 確かめで意味がずれた訳は、人が OK するまで出さず、もとの日本語を出す
 const TR_NOTE = {
@@ -1083,7 +1090,7 @@ const TR_NOTE = {
 };
 const TR_PENDING = { pt: "Tradução em verificação. Original em japonês:", es: "Traducción en verificación. Original en japonés:", en: "Translation being checked. Original Japanese:", easy: "いま たしかめて います。もとの にほんご：", id: "Terjemahan sedang diperiksa. Teks asli bahasa Jepang:", ne: "अनुवाद जाँच हुँदैछ। मूल जापानी:", vi: "Bản dịch đang được kiểm tra. Bản gốc tiếng Nhật:", tl: "Sinusuri pa ang salin. Orihinal na Hapon:" };
 async function showTranslations(code) {
-  const t = await getData(`data/translations/${code}.json`);
+  const t = await trLangs(code);
   if (!t) { $("foreign-guide").hidden = false; return; } // 訳の無い町だけ、いくつかの言葉で「ブラウザの翻訳を」と案内する
   const langs = Object.keys(t.langs);
   let lang = LANG ?? new URLSearchParams(location.search).get("lang");
@@ -1340,6 +1347,7 @@ function centerOf(features) {
   return [(box[0] + box[2]) / 2, (box[1] + box[3]) / 2];
 }
 async function muniPoint(code) {
+  if (MUNI?.code === code && MUNI.label) return MUNI.label;
   const labels = (await getJSON("data/labels.json")).features;
   const f = labels.find((x) => x.properties.code === code) ?? labels.find((x) => x.properties.code.startsWith(code.slice(0, 4)));
   return f.geometry.coordinates;
@@ -1373,7 +1381,9 @@ async function main() {
   // 言葉の切り替え（?lang=pt など）：辞書があれば、タブとページの決まった文字を置きかえる
   if (q.has("lang")) remember.set("lang", q.get("lang") === "ja" ? "" : q.get("lang"));
   if (await setLang(q.get("lang") ?? remember.get("lang"))) { renderTabs(); translateDom(); }
-  const stats = await getJSON("data/stats.json");
+  const codeOf = q.get("muni") ?? q.get("town")?.split("-")[0] ?? (q.get("area") ? (await getJSON("data/areas.json")).areas.find((a) => a.id === q.get("area"))?.muni : null);
+  MUNI = codeOf ? await getData(`data/muni/${codeOf}.json`) : null;
+  const stats = MUNI?.stats ?? (await getJSON("data/stats.json"));
   if (q.get("muni")) return muniPage(q.get("muni"), stats);
 
   // 町・字（1つか複数）かまとまり
@@ -1447,7 +1457,7 @@ async function muniPage(code, stats) {
   ];
   $("features").innerHTML = rows.map(([m, label]) => {
     const mid = stats.summary[m]?.median;
-    const place = placeWords(t.rank[m], Object.values(stats.towns).filter((x) => !x.ward).length, mid == null ? null : `${mid.toFixed(1)}%`);
+    const place = placeWords(t.rank[m], stats.total ?? Object.values(stats.towns).filter((x) => !x.ward).length, mid == null ? null : `${mid.toFixed(1)}%`);
     const v = t[m];
     return `<li><span class="label">${label}</span><span class="value">${/change/i.test(m) && v > 0 ? "+" : ""}${pct(v)}</span><span class="place">${place}</span></li>`;
   }).join("");
@@ -1459,6 +1469,7 @@ async function muniPage(code, stats) {
   const towns = await getData(`data/towns/${code}.json`);
   await finishPage(code, towns ? topojson.feature(towns, towns.objects.towns).features : [], null, "", at);
   sources([`${stats.source.name}（${stats.source.asOf}。増減は${stats.source.changePeriod}）を加工`, N03, WEATHER, MEDICAL, BASEMAP], code);
+  if (MUNI?.outline) return drawMap([MUNI.outline]);
   const topo = await getJSON("data/japan.topo.json");
   drawMap(topojson.feature(topo, topo.objects.municipalities).features.filter((f) => f.properties.code === code));
 }

@@ -178,6 +178,13 @@ export async function translateTown(code, langs = ["pt", "es", "en", "easy"], lo
   const prev = fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, "utf8")) : null;
   if (prev?.langs) out.langs = { ...prev.langs, ...out.langs };
   fs.writeFileSync(file, JSON.stringify(out, null, 1));
+  // 町の分だけの小さなファイル（scripts/build-muni.mjs）の「訳のある言葉の一覧」も合わせる
+  const muniFile = `site/data/muni/${code}.json`;
+  if (fs.existsSync(muniFile)) {
+    const m = JSON.parse(fs.readFileSync(muniFile, "utf8"));
+    m.langs = Object.fromEntries(Object.entries(out.langs).map(([k, l]) => [k, { name: l.name, ja: l.ja, items: [] }]));
+    fs.writeFileSync(muniFile, JSON.stringify(m));
+  }
   ledger.exportPublic();
   log(`できました：site/data/translations/${code}.json（$${usd.toFixed(3)}）`);
   return { out, usd };
