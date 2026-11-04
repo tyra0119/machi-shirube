@@ -492,12 +492,17 @@ async function showBus(code, part) {
       $("bus-tt").innerHTML = [...groups].map(([k, ts]) => {
         const byH = new Map();
         for (const t of ts) { const [hh, mm] = t.split(":"); if (!byH.has(hh)) byH.set(hh, []); byH.get(hh).push(mm); }
-        return `<div class="tt"><p class="tt-head">${icon("bus")}${esc(k)}</p><table>${[...byH].map(([hh, ms]) => `<tr><th>${Number(hh)}</th><td>${ms.join(" ")}</td></tr>`).join("")}</table></div>`;
+        // 平日なら、今日このあとの便をいちばん上に出す
+        const now = new Date(), wd = now.getDay() >= 1 && now.getDay() <= 5;
+        const hm = now.getHours() * 60 + now.getMinutes();
+        const next = wd ? [...ts].sort().find((t) => { const [h, m] = t.split(":").map(Number); return h * 60 + m >= hm; }) : null;
+        return `<div class="tt"><p class="tt-head">${icon("bus")}${esc(k)}</p>${wd ? `<p class="tt-next">${next ? `${T("次の便")} <strong>${Number(next.split(":")[0])}:${next.split(":")[1]}</strong>` : T("平日の時刻表では、今日このあとの便はありません")}</p>` : ""}<table>${[...byH].map(([hh, ms]) => `<tr><th>${Number(hh)}</th><td>${ms.join(" ")}</td></tr>`).join("")}</table></div>`;
       }).join("") + `<p class="note">${T("平日の時刻表です。土日・祝日はちがうことがあります。乗る前に、バス会社や町の時刻表で確かめてください。")}</p>`;
     };
-    sel.addEventListener("change", draw);
-    // いちばん本数の多いバス停を、はじめに選んでおく
-    sel.value = String(withTimes.indexOf(withTimes.reduce((a, b) => (b.n > a.n ? b : a))));
+    sel.addEventListener("change", () => { remember.set(`bus:${code}`, withTimes[Number(sel.value)]?.name ?? ""); draw(); });
+    // 前に選んだバス停、なければいちばん本数の多いバス停を、はじめに選んでおく
+    const saved = withTimes.findIndex((s) => s.name === remember.get(`bus:${code}`));
+    sel.value = String(saved >= 0 ? saved : withTimes.indexOf(withTimes.reduce((a, b) => (b.n > a.n ? b : a))));
     draw();
   }
   $("bus-stops").innerHTML = d.stops.slice(0, 8).map((s) => `<li><span class="no">${s.n}</span><span>${esc(s.name)}</span></li>`).join("");
@@ -597,6 +602,7 @@ async function showHinan(code, townFeatures, startPart) {
     );
   };
   map.addControl(buttons, "bottom-right");
+  $("hinan-here").addEventListener("click", () => buttons.locate());
 
   map.on("load", () => {
     map.addSource("shelters", { type: "geojson", data: shelters });
@@ -810,6 +816,27 @@ const numbers = (html) => html.replace(/(?<![0-9０-９時:：\-－])([0-9０-�
 // 電話番号は押してかけられるように（住む人の目で見ると、答えの中の番号が押せない文字のままだった）
 const TEL = /(?<![\d-])(0\d{1,4}-\d{1,4}-\d{3,4})(?![\d-])/g;
 const telLinks = (html) => html.replace(TEL, (m) => `<a class="tel" href="tel:${m.replace(/-/g, "")}">${m}</a>`);
+// 急ぐときの番号（119・110・#7119・#8000 など）も、ページのどこに書いてあっても押してかけられるように。
+// 文字のあとから書き足すので、答えのカード・注意書き・訳のどれにも効く（「110人」「119か所」のような数は除く）
+const URGENT = /(#\d{4})(?![\d-])|(?<![\d０-９\-.,#:])(119|110)(?=\s*(?:へ|番|に|、|。|・|）|】|か|$))/g;
+function linkUrgent(root) {
+  const walk = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+    acceptNode: (n) => (n.parentElement.closest("a, button, select, option, script, style, textarea, summary") ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT),
+  });
+  const hits = [];
+  for (let n = walk.nextNode(); n; n = walk.nextNode()) { URGENT.lastIndex = 0; if (URGENT.test(n.nodeValue)) hits.push(n); }
+  for (const n of hits) {
+    const span = document.createElement("span");
+    span.innerHTML = esc(n.nodeValue).replace(URGENT, (m) => `<a class="tel" href="tel:${m.replace("#", "%23")}">${m}</a>`);
+    n.replaceWith(...span.childNodes);
+  }
+}
+// 中身はあとから少しずつ描かれるので、変わるたびに（まとめて）書き足す
+{
+  let t = null;
+  const run = () => { t = null; for (const el of document.querySelectorAll(".town-main, .about-site")) linkUrgent(el); };
+  new MutationObserver(() => { t ??= setTimeout(run, 300); }).observe(document.body, { childList: true, subtree: true });
+}
 // 調べた側の言い方を、住む人向けに（「今回調べた範囲では」「今回は」など。日本語の答えだけ）
 const residentText = (s) => String(s ?? "").replace(/今回(調べた範囲|の調べ)では、?/g, "町の公式サイトでは、").replace(/見た公式ページには/g, "町の公式サイトには").replace(/今回は/g, "");
 function answerParts(a) {
@@ -1229,12 +1256,8 @@ async function finishPage(code, townFeatures, startPart, scopeNote, at) {
   await showAnswers(code, scopeNote, part ? `${code}-${startPart}` : null, part?.properties.name);
   // 町の色（町の花・木から。地図を描く前に決める）
   const sym = applyTownColor(Object.values(answersByPage).flat().find((x) => x.qid === "Q11"));
-  if (sym) {
-    $("town-color-note").hidden = false;
-    // 帯の色の説明は「帯の色について」を押すと開く（スマホでは町のページの頭が長く、毎日見たい天気が押し出されていた）
-    $("town-color-note").innerHTML = `<summary><span class="swatch" aria-hidden="true"></span>${T("帯の色について")}</summary><span class="cn-body">${LANG ? `${T("ページの上の帯の色は、町が定めた花・木の色から作りました（町の公式の色ではありません）。")}（${esc(sym.name)}）` : `ページの上の帯の色は、町が定めた「${esc(sym.name)}」の色から作りました（町の公式の色ではありません）。`}<a href="#shiru" id="color-src">${T("出典")}</a></span>`;
-    $("color-src").addEventListener("click", () => setTimeout(() => $("a-Q11")?.scrollIntoView({ behavior: "smooth", block: "start" }), 50));
-  }
+  // 帯の色の説明（「帯の色について」）は出さない：住む人には要らない（作者「全部やる」）。色のもとは README と町を知るの答えにある
+  void sym;
   showLayerMap(code, townFeatures, at, esc, part);
   await showHitokoto(code, part);
   await showDekiru(code, part);
@@ -1370,7 +1393,7 @@ async function main() {
   const chosen = parts.map((p) => all.find((f) => f.properties.part === p)).filter(Boolean);
   if (!chosen.length) return notFound("町・字が見つかりませんでした");
   title ??= chosen.length === 1 ? chosen[0].properties.name : chosen.map((f) => f.properties.name).join("・");
-  kind ??= chosen.length === 1 ? `町・字（番号 ${chosen[0].properties.part}）` : `${chosen.length}の町・字を合わせて`;
+  kind ??= chosen.length === 1 ? "町・字" : `${chosen.length}の町・字を合わせて`;
 
   const muni = stats.towns[code];
   const muniName = muni ? shortName(muni.name) : code;

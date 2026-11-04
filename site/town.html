@@ -103,7 +103,8 @@
   <div class="view" data-view="bousai" hidden>
     <section class="block" id="hinan-block" hidden>
       <h2>わが家の避難</h2>
-      <p class="note">場所を決めると、近い避難場所が出ます。場所はこのブラウザの中だけで使い、残しません。「Google マップで歩く道を見る」を押したときだけ、選んだ場所と避難場所を Google マップに渡します。</p>
+      <button type="button" class="here-btn" id="hinan-here">今いる所から、近い避難場所を探す</button>
+      <p class="note">現在地はこの端末の中だけで使い、残しません。選んだ町・字は、次に開いたときのために、この端末に覚えます。「Google マップで歩く道を見る」を押したときだけ、選んだ場所と避難場所を Google マップに渡します。</p>
       <div class="hinan-controls">
         <label class="field"><span>町・字を選ぶ</span><select id="hinan-town"></select></label>
         <div class="hinan-kind" id="hinan-kinds" role="radiogroup" aria-label="どの災害のときか"></div>
@@ -188,29 +189,29 @@
   </div>
   <div class="view" data-view="kosodate" hidden><section class="block"><h2>子育て</h2><div class="answers-box" data-page="kosodate"></div></section></div>
   <div class="view" data-view="kaigo" hidden>
-    <section class="block" id="shop-block" hidden>
-      <h2>買い物に困っているお年寄り</h2>
-      <div id="shop"></div>
-      <p class="note" id="shop-note"></p>
-    </section>
+    <section class="block"><h2>お年寄り・介護</h2><div class="answers-box" data-page="kaigo"></div></section>
     <section class="block" id="kaigo-block" hidden>
       <h2>近くの介護の事業所</h2>
       <div id="kaigo-list"></div>
       <p class="note" id="kaigo-note"></p>
     </section>
-    <section class="block"><h2>お年寄り・介護</h2><div class="answers-box" data-page="kaigo"></div></section>
+    <section class="block" id="shop-block" hidden>
+      <h2>買い物に困っているお年寄り</h2>
+      <div id="shop"></div>
+      <p class="note" id="shop-note"></p>
+    </section>
   </div>
   <div class="view" data-view="koutsuu" hidden>
     <section class="block" id="bus-block" hidden>
-      <h2>バスの便利さ</h2>
-      <ul class="acc-stats" id="bus-stats"></ul>
-      <h3 class="sub">平日の本数が多いバス停</h3>
-      <ol class="acc-spots bus" id="bus-stops"></ol>
+      <h2>バスの時刻表</h2>
       <div id="bus-tt-box" hidden>
-        <h3 class="sub">平日の時刻表</h3>
         <label class="field"><span>バス停を選ぶ</span><select id="bus-stop"></select></label>
         <div id="bus-tt"></div>
       </div>
+      <details class="sub-box"><summary><h3 class="sub">平日の本数が多いバス停</h3></summary>
+      <ol class="acc-spots bus" id="bus-stops"></ol></details>
+      <details class="sub-box"><summary><h3 class="sub">バスの便利さ（町の数字）</h3></summary>
+      <ul class="acc-stats" id="bus-stats"></ul></details>
       <p class="note" id="bus-note"></p>
     </section>
     <section class="block" id="acc-block" hidden>

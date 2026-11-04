@@ -1,11 +1,11 @@
 {
  "lang": "tl",
  "name": "Filipino",
- "createdAt": "2026-11-04T00:49:38.557Z",
+ "createdAt": "2026-11-04T01:21:21.672Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 781,
- "of": 769,
+ "count": 785,
+ "of": 773,
  "dict": {
   "この町の非公式の暮らしの案内です。町の公式のサイトや国の公開データから集め、出典をつけています（まちしるべ）": "Ito ay isang di-opisyal na gabay sa pamumuhay sa bayang ito. Kinuha ito mula sa opisyal na website ng bayan at sa pampublikong datos ng bansa, at may nakasaad na pinagmulan (Machishirube)",
   "すべてのページ": "Lahat ng pahina",
@@ -787,6 +787,10 @@
   "読む言葉を選ぶと、町のページ全体とこの欄がその言葉になります。": "Kapag pumili ka ng wikang babasahin, magiging nasa wikang iyon ang buong pahina ng bayan at ang seksyong ito.",
   "人口の減りにくさは、全国 {n} の市区町村で {r} 番目です": "Pang-{r} ito sa {n} munisipalidad sa buong bansa pagdating sa hirap bumaba ng populasyon",
   "電話番号と道を Google マップで見る": "Tingnan ang numero ng telepono at ruta sa Google Maps",
-  "人口の減りにくさは、全国でも高いほうです": "Isa ito sa mga lugar sa buong bansa na hindi madaling bumaba ang populasyon"
+  "人口の減りにくさは、全国でも高いほうです": "Isa ito sa mga lugar sa buong bansa na hindi madaling bumaba ang populasyon",
+  "今いる所から、近い避難場所を探す": "Hanapin ang pinakamalapit na evacuation center mula sa kinaroroonan mo",
+  "現在地はこの端末の中だけで使い、残しません。選んだ町・字は、次に開いたときのために、この端末に覚えます。「Google マップで歩く道を見る」を押したときだけ、選んだ場所と避難場所を Google マップに渡します。": "Ginagamit lang ang kasalukuyan mong lokasyon sa loob ng device na ito at hindi ito sine-save. Ang napili mong bayan at distrito (aza) ay ise-save sa device na ito para sa susunod mong pagbukas. Ibibigay lang sa Google Maps ang napili mong lugar at ang evacuation center kapag pinindot mo ang \"Tingnan sa Google Maps ang daan na lalakarin\".",
+  "バスの時刻表": "Iskedyul ng bus",
+  "次の便": "Susunod na biyahe"
  }
 }

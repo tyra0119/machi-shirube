@@ -731,3 +731,29 @@ section.block.folded { padding-bottom: 12px; }
 /* 病院の一覧：電話番号と道を Google マップで見る（国のオープンデータに電話番号が無いので） */
 .med-list .med-gmap { display: inline-flex; align-items: center; gap: 6px; align-self: flex-start; min-height: 40px; margin-top: 2px; color: var(--accent); font-size: 14px; font-weight: 600; }
 .med-list .med-gmap .ic { width: 16px; height: 16px; }
+/* わが家の避難：今いる所から探す（いちばん大事なボタンなので塗る） */
+.here-btn { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 52px; margin: 4px 0 8px; padding: 0 16px; border: 0; border-radius: 999px; background: var(--accent); color: var(--accent-text); font-size: 17px; font-weight: 700; cursor: pointer; }
+/* バス：今日このあとの次の便。本数の多いバス停と町の数字はたたむ */
+.tt-next { margin: 0 0 4px; font-size: 15px; }
+.tt-next strong { font-size: 22px; color: var(--accent); }
+.sub-box { margin-top: 8px; }
+.sub-box > summary { display: flex; align-items: center; gap: 6px; min-height: 44px; cursor: pointer; list-style: none; }
+.sub-box > summary::-webkit-details-marker { display: none; }
+.sub-box > summary::before { content: "▸"; color: var(--accent); }
+.sub-box[open] > summary::before { content: "▾"; }
+.sub-box > summary h3 { margin: 0; }
+/* 明日は1行にまとめる */
+.day.short { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; padding: 10px 14px; }
+.day.short h3 { margin: 0; font-size: 16px; }
+.day.short .w, .day.short .t { margin: 0; }
+.day.short .t strong { font-size: 18px; }
+/* 暮らしの場面：スマホでは名前と絵だけの小さなタイルを3つずつ（下のメニューと「ほか」の一覧に同じ行き先がある） */
+@media (max-width: 640px) {
+  .tiles { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .tiles a { min-height: 0; padding: 8px 6px; align-items: center; text-align: center; gap: 2px; }
+  .tiles .d { display: none; }
+  .tiles .t { font-size: 14px; line-height: 1.3; }
+  .tiles a .t::after { content: ""; }
+  .tiles .il { width: 48px; height: 38px; }
+  .tiles li.feat .feat-badge { position: static; order: 3; margin: 2px 0 0; padding: 0 6px; font-size: 10px; }
+}

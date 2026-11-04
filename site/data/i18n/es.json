@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-04T00:49:04.997Z",
+ "createdAt": "2026-11-04T01:20:44.783Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 790,
- "of": 769,
+ "count": 795,
+ "of": 773,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -796,6 +796,11 @@
   "読む言葉を選ぶと、町のページ全体とこの欄がその言葉になります。": "Al elegir el idioma de lectura, toda la página del municipio y este apartado se mostrarán en ese idioma.",
   "人口の減りにくさは、全国 {n} の市区町村で {r} 番目です": "En resistencia al descenso de la población, ocupa el puesto {r} entre los {n} municipios del país",
   "しまう": "Ocultar",
-  "電話番号と道を Google マップで見る": "Ver el teléfono y cómo llegar en Google Maps"
+  "電話番号と道を Google マップで見る": "Ver el teléfono y cómo llegar en Google Maps",
+  "今いる所から、近い避難場所を探す": "Buscar el refugio más cercano a donde estás",
+  "現在地はこの端末の中だけで使い、残しません。選んだ町・字は、次に開いたときのために、この端末に覚えます。「Google マップで歩く道を見る」を押したときだけ、選んだ場所と避難場所を Google マップに渡します。": "Tu ubicación actual se usa solo dentro de este dispositivo y no se guarda. El municipio y el distrito (字) que elijas se recordarán en este dispositivo para la próxima vez que abras la página. Solo cuando pulses «Ver la ruta a pie en Google Maps», el lugar elegido y el refugio se enviarán a Google Maps.",
+  "バスの時刻表": "Horario de autobuses",
+  "バスの便利さ（町の数字）": "Comodidad del autobús (cifras del municipio)",
+  "次の便": "Próximo servicio"
  }
 }

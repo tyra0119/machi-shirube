@@ -1,11 +1,11 @@
 {
  "lang": "pt",
  "name": "Português",
- "createdAt": "2026-11-04T00:49:01.316Z",
+ "createdAt": "2026-11-04T01:20:39.218Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 791,
- "of": 769,
+ "count": 796,
+ "of": 773,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Guia não oficial da vida na cidade. O Claude reúne as informações em sites oficiais da cidade e outras fontes, e indica a origem de cada uma (Machishirube)",
   "すべてのページ": "Todas as páginas",
@@ -797,6 +797,11 @@
   "人が確かめた": "Verificado por uma pessoa",
   "読む言葉を選ぶと、町のページ全体とこの欄がその言葉になります。": "Ao escolher o idioma de leitura, toda a página da cidade e esta seção passam a usar esse idioma.",
   "人口の減りにくさは、全国 {n} の市区町村で {r} 番目です": "A resistência à queda da população é a {r}ª entre {n} municípios do país",
-  "電話番号と道を Google マップで見る": "Ver telefone e trajeto no Google Maps"
+  "電話番号と道を Google マップで見る": "Ver telefone e trajeto no Google Maps",
+  "今いる所から、近い避難場所を探す": "Encontrar o abrigo mais próximo da sua localização atual",
+  "現在地はこの端末の中だけで使い、残しません。選んだ町・字は、次に開いたときのために、この端末に覚えます。「Google マップで歩く道を見る」を押したときだけ、選んだ場所と避難場所を Google マップに渡します。": "A sua localização atual é usada apenas neste dispositivo e não é guardada. O município e o bairro (distrito) escolhidos ficam memorizados neste dispositivo para a próxima vez que abrir a página. Só quando você toca em \"Ver o caminho a pé no Google Maps\" é que o local escolhido e o abrigo são enviados ao Google Maps.",
+  "バスの時刻表": "Horários de ônibus",
+  "バスの便利さ（町の数字）": "Conveniência do ônibus (números do município)",
+  "次の便": "Próximo ônibus"
  }
 }

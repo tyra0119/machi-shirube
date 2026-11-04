@@ -1,11 +1,11 @@
 {
  "lang": "en",
  "name": "English",
- "createdAt": "2026-11-04T00:49:07.328Z",
+ "createdAt": "2026-11-04T01:20:48.964Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 791,
- "of": 769,
+ "count": 796,
+ "of": 773,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "This is an unofficial guide to living in this town. Claude gathers information from the town's official website and other sources, and cites each source (Machishirube)",
   "すべてのページ": "All pages",
@@ -797,6 +797,11 @@
   "人が確かめた": "Verified by a person",
   "読む言葉を選ぶと、町のページ全体とこの欄がその言葉になります。": "Choose a reading language, and the whole town page and this section will switch to that language.",
   "人口の減りにくさは、全国 {n} の市区町村で {r} 番目です": "Out of {n} municipalities nationwide, it ranks #{r} in resistance to population decline",
-  "電話番号と道を Google マップで見る": "View phone number and directions on Google Maps"
+  "電話番号と道を Google マップで見る": "View phone number and directions on Google Maps",
+  "今いる所から、近い避難場所を探す": "Find the nearest evacuation shelter from where you are",
+  "現在地はこの端末の中だけで使い、残しません。選んだ町・字は、次に開いたときのために、この端末に覚えます。「Google マップで歩く道を見る」を押したときだけ、選んだ場所と避難場所を Google マップに渡します。": "Your current location is used only on this device and is not saved. The town and district you select are remembered on this device for the next time you open this page. Only when you press \"View walking route in Google Maps\" are the selected place and the shelter sent to Google Maps.",
+  "バスの時刻表": "Bus timetable",
+  "バスの便利さ（町の数字）": "Bus convenience (town figures)",
+  "次の便": "Next bus"
  }
 }

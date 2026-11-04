@@ -3,6 +3,23 @@
 const TT = (s) => (typeof T === "function" ? T(s) : s);
 // 病院の電話：国の医療情報ネットのオープンデータには電話番号の列が無いので、名前と住所で Google マップを開く（電話番号と道が見られる）。
 // 押したときだけ、名前と住所を Google に渡す（わが家の避難の「Google マップで歩く道を見る」と同じ）
+// 休みの日の並び（「1月1日 1月2日 1月3日 12月29日 12月30日 12月31日」）を、続いた日でまとめる（「12/29〜1/3」）。
+// 日付だけの並びでないときは、そのまま出す
+function shortDays(s) {
+  const ds = String(s ?? "").trim().split(/\s+/).map((x) => x.match(/^(\d{1,2})月(\d{1,2})日$/));
+  if (!ds.length || ds.some((m) => !m)) return s;
+  const md = ds.map((m) => [Number(m[1]), Number(m[2])]).sort((a, b) => a[0] - b[0] || a[1] - b[1]);
+  const next = ([m, d]) => { const t = new Date(2001, m - 1, d + 1); return [t.getMonth() + 1, t.getDate()]; };
+  const runs = [];
+  for (const x of md) {
+    const last = runs.at(-1);
+    if (last && String(next(last.at(-1))) === String(x)) last.push(x); else runs.push([x]);
+  }
+  // 12月31日と1月1日がつながるときは、年をまたいだ1つの並びに
+  if (runs.length > 1 && String(next(runs.at(-1).at(-1))) === String(runs[0][0])) runs[0] = [...runs.pop(), ...runs[0]];
+  const f = ([m, d]) => `${m}/${d}`;
+  return runs.map((r) => (r.length > 2 ? `${f(r[0])}〜${f(r.at(-1))}` : r.map(f).join("・"))).join("、");
+}
 const gmapPlace = (name, addr) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${name} ${addr ?? ""}`.trim())}`;
 const DAY_KEYS = ["日", "月", "火", "水", "木", "金", "土"];
 const MONDAY_FIRST = ["月", "火", "水", "木", "金", "土", "日"];
@@ -69,7 +86,7 @@ function medicalHTML(m, offset, center, esc, filter = "", limit = 5) {
         <span class="n">${icon(x.f.k === "病院" ? "hospital" : "medical")}${x.f.u ? `<a href="${esc(x.f.u)}" target="_blank" rel="noopener">${esc(x.f.n)}</a>` : esc(x.f.n)}<small>${esc(x.f.k)}</small>${x.openNow ? `<em>${TT("いま開いている")}</em>` : ""}</span>
         <span class="h">${x.h.map(([s, e]) => `${hhmm(s)}–${hhmm(e)}`).join("、")}${x.m != null ? `・まっすぐ ${x.m >= 1000 ? `${(x.m / 1000).toFixed(1)}km` : `${x.m}m`}` : ""}</span>
         ${x.f.s ? `<span class="s">${esc(x.f.s.slice(0, 6).join("・"))}${x.f.s.length > 6 ? ` ほか ${x.f.s.length - 6}` : ""}</span>` : ""}
-        <span class="a">${esc(x.f.a)}${x.f.other ? `・休み：${esc(x.f.other.slice(0, 60))}` : ""}</span>
+        <span class="a">${esc(x.f.a)}${x.f.other ? `・休み：${esc(shortDays(x.f.other).slice(0, 80))}` : ""}</span>
         <a class="med-gmap" href="${esc(gmapPlace(x.f.n, x.f.a))}" target="_blank" rel="noopener">${icon("phone")}${TT("電話番号と道を Google マップで見る")}</a>
       </li>`).join("")}</ul>
     ${list.length > shown.length ? `<button type="button" class="more-btn" data-more>${TT("続きを見る")}（${list.length - shown.length}）</button>` : ""}

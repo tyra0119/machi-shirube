@@ -119,7 +119,12 @@ function myQuakes(code, whole, list) {
 const WEATHER_ICON = (code) => (!code ? "" : icon(code.startsWith("1") ? "sun" : code.startsWith("2") ? "cloud" : code.startsWith("3") ? "umbrella" : code.startsWith("4") ? "snow" : ""));
 
 function todayHTML(t, esc) {
-  const dayCard = (d) => `
+  const dayCard = (d, i) => i > 0 ? `
+    <article class="day short">
+      <h3>${d.label}</h3>
+      <p class="w"><span class="icon" aria-hidden="true">${WEATHER_ICON(d.weatherCode)}</span>${d.weather ? esc(d.weatherLang ?? d.weather) : T("気象庁の予報を読み込めませんでした")}</p>
+      <p class="t">${d.max != null ? `<strong>${Math.round(d.max)}℃</strong> / ${Math.round(d.min)}℃` : ""}${d.pop != null ? `<span>${T("雨")} ${d.pop}%</span>` : ""}</p>
+    </article>` : `
     <article class="day">
       <h3>${d.label}<small>${d.date ? ` ${LANG ? new Date(`${d.date}T12:00:00`).toLocaleDateString(LANG === "easy" ? "ja" : LANG, { month: "short", day: "numeric" }) : `${Number(d.date.slice(5, 7))}月${Number(d.date.slice(8, 10))}日`}` : ""}</small></h3>
       <p class="w"><span class="icon" aria-hidden="true">${WEATHER_ICON(d.weatherCode)}</span>${d.weather ? `${esc(d.weatherLang ?? d.weather)}<small class="by">${T("気象庁の予報")}${LANG && LANG !== "easy" && !d.weatherLang ? `（${T("日本語")}）` : ""}</small>` : T("気象庁の予報を読み込めませんでした")}</p>

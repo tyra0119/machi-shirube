@@ -1,11 +1,11 @@
 {
  "lang": "vi",
  "name": "Tiếng Việt",
- "createdAt": "2026-11-04T00:49:28.805Z",
+ "createdAt": "2026-11-04T01:21:15.342Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 788,
- "of": 769,
+ "count": 792,
+ "of": 773,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Đây là trang hướng dẫn đời sống không chính thức của thị trấn này. Claude thu thập từ các trang chính thức của thị trấn v.v. và ghi rõ nguồn (Machi-shirube)",
   "すべてのページ": "Tất cả các trang",
@@ -794,6 +794,10 @@
   "人が確かめた": "Đã được người kiểm tra",
   "読む言葉を選ぶと、町のページ全体とこの欄がその言葉になります。": "Khi bạn chọn ngôn ngữ đọc, toàn bộ trang của thị trấn và mục này sẽ hiển thị bằng ngôn ngữ đó.",
   "人口の減りにくさは、全国 {n} の市区町村で {r} 番目です": "Mức độ dân số khó giảm xếp thứ {r} trong {n} thành phố, quận, thị trấn, làng trên toàn quốc",
-  "電話番号と道を Google マップで見る": "Xem số điện thoại và đường đi trên Google Maps"
+  "電話番号と道を Google マップで見る": "Xem số điện thoại và đường đi trên Google Maps",
+  "今いる所から、近い避難場所を探す": "Tìm nơi sơ tán gần vị trí hiện tại của bạn",
+  "現在地はこの端末の中だけで使い、残しません。選んだ町・字は、次に開いたときのために、この端末に覚えます。「Google マップで歩く道を見る」を押したときだけ、選んだ場所と避難場所を Google マップに渡します。": "Vị trí hiện tại chỉ được dùng trong thiết bị này và không được lưu lại. Thị trấn và khu (aza) bạn đã chọn sẽ được ghi nhớ trong thiết bị này để dùng cho lần mở sau. Chỉ khi bạn nhấn \"Xem đường đi bộ trên Google Maps\", địa điểm bạn đã chọn và nơi sơ tán mới được chuyển sang Google Maps.",
+  "バスの時刻表": "Lịch trình xe buýt",
+  "次の便": "Chuyến tiếp theo"
  }
 }
