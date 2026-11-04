@@ -639,7 +639,7 @@ async function showHinan(code, townFeatures, startPart) {
     );
   };
   map.addControl(buttons, "bottom-right");
-  $("hinan-here").addEventListener("click", () => buttons.locate());
+  $("hinan-locate").addEventListener("click", () => buttons.locate());
 
   map.on("load", () => {
     map.addSource("shelters", { type: "geojson", data: shelters });
@@ -659,7 +659,8 @@ async function showHinan(code, townFeatures, startPart) {
     for (const f of shelters.features) box.extend(f.geometry.coordinates);
     map.fitTo = { box, opts: { padding: 30 } };
     map.fitBounds(box, { padding: 30, duration: 0 });
-    const pick = startPart || remember.get(`hinan:${code}`);
+    // 録画用の ?here があるときは、覚えた町・字を使わずに始める（何も選んでいない画面から「今いる所から」を押すため）
+    const pick = startPart || (q.has("here") ? null : remember.get(`hinan:${code}`));
     if (pick && [...sel.options].some((o) => o.value === pick)) { sel.value = pick; sel.dispatchEvent(new Event("change")); }
   });
   // 地図を押す：避難場所の点なら名前を出す。それ以外の所なら、そこから近い避難場所を出す
