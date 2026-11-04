@@ -1,7 +1,7 @@
 {
  "code": "21211",
  "name": "美濃加茂市",
- "createdAt": "2026-11-04T12:34:53.468Z",
+ "createdAt": "2026-11-04T13:13:22.258Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
  "langs": {
@@ -412,6 +412,20 @@
      },
      "status": "auto",
      "problems": []
+    },
+    {
+     "qid": "Q20",
+     "short": "Bibliotecas e parques",
+     "text": "【Bibliotecas】\nBiblioteca Central (中央図書館): Endereço: 太田町1921番地1 (Ōta-chō, 1921-1). Dias úteis, das 10h às 18h; sábados, domingos e feriados, das 10h às 17h15. Fecha toda segunda-feira (se for feriado, no dia seguinte), na última quarta-feira de cada mês, no fim e início do ano e no período de organização do acervo.\nBiblioteca Leste (東図書館): Endereço: 本郷町9丁目2番22号 (Hongō-chō, 9-chōme 2-22). Dias úteis, das 10h às 20h; sábados, domingos e feriados, das 10h às 17h15. Fecha toda sexta-feira (se for feriado, no dia anterior), na última quarta-feira de cada mês, no fim e início do ano e no período de organização do acervo.\nAnexo Norte (北部分室), dentro do Centro de Intercâmbio Sanwa (三和交流センター): Endereço: 三和町川浦2565 (Sanwa-chō Kawaura, 2565). Das 10h às 17h. Fecha aos sábados, domingos e feriados e no fim e início do ano.\n【Principais parques】\nFloresta da Saúde de Minokamo (みのかも健康の森): Endereço: 山之上町7559番地 (Yamanoue-chō, 7559). Aberto das 9h às 17h (de outubro a março, até as 16h). Fecha toda quarta-feira (se for feriado, no dia útil seguinte).\nParque Satoyama Seiryū de Gifu (ぎふ清流里山公園) (parque da província): Endereço: 山之上町2292-1 (Yamanoue-chō, 2292-1). Aberto das 9h às 18h (de março a novembro) e das 10h às 17h (de dezembro a fevereiro). Não fecha em nenhum dia (de dezembro a fevereiro, fecha às quartas-feiras).\nParque Linha Verde do Rio Kiso (木曽川緑地ライン公園): Endereço: 古井町下古井2740番地 (Furui-chō Shimo-furui, 2740). Horário de uso: das 6h às 18h (a cada 2 horas). De dezembro a fevereiro, a partir das 7h; de outubro a fevereiro, até as 17h. Os dias de fechamento não constam na página.",
+     "original": "【図書館】\n中央図書館：太田町1921番地1。平日10時〜18時、土日祝10時〜17時15分。休みは毎週月曜（祝日なら翌日）、毎月最終水曜、年末年始、図書整理期間。\n東図書館：本郷町9丁目2番22号。平日10時〜20時、土日祝10時〜17時15分。休みは毎週金曜（祝日なら前日）、毎月最終水曜、年末年始、図書整理期間。\n北部分室（三和交流センター内）：三和町川浦2565。10時〜17時。休みは土日祝と年末年始。\n【主な公園】\nみのかも健康の森：山之上町7559番地。開園9時〜17時（10月〜3月は16時まで）。休園は毎週水曜（祝日なら翌平日）。\nぎふ清流里山公園（県の公園）：山之上町2292-1。開園9時〜18時（3月〜11月）、10時〜17時（12月〜2月）。休園は無休（12月〜2月は水曜）。\n木曽川緑地ライン公園：古井町下古井2740番地。使用時間6時〜18時（2時間ごと）。12月〜2月は7時から、10月〜2月は17時までです。休みの日は、ページに書かれていません。",
+     "back": "【図書館】\n中央図書館：太田町1921番地1。平日10時〜18時、土日祝10時〜17時15分。休みは毎週月曜（祝日なら翌日）、毎月最終水曜、年末年始、図書整理期間。\n東図書館：本郷町9丁目2番22号。平日10時〜20時、土日祝10時〜17時15分。休みは毎週金曜（祝日なら前日）、毎月最終水曜、年末年始、図書整理期間。\n北部分室（三和交流センター内）：三和町川浦2565。10時〜17時。休みは土日祝と年末年始。\n【主な公園】\nみのかも健康の森：山之上町7559番地。開園9時〜17時（10月〜3月は16時まで）。休園は毎週水曜（祝日なら翌平日）。\nぎふ清流里山公園（県の公園）：山之上町2292-1。開園9時〜18時（3月〜11月）、10時〜17時（12月〜2月）。休園は無休（12月〜2月は水曜）。\n木曽川緑地ライン公園：古井町下古井2740番地。使用時間6時〜18時（2時間ごと）。12月〜2月は7時から、10月〜2月は17時まで。休みの日は、ページに書かれていません。",
+     "source": {
+      "title": "美濃加茂市の図書館について(中央図書館・東図書館・北部分室など)",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/3/1153.html",
+      "where": "中央図書館・東図書館・北部分室の各見出し"
+     },
+     "status": "auto",
+     "problems": []
     }
    ]
   },
@@ -819,6 +833,20 @@
      "problems": [
       "「家の中」は「自宅の中」と同じ意味で問題なし。「karaniwan（通常）」は「原則」より少し柔らかいが意味は同じ。「定期的に」「住民票上も」は原文にない語を補ったが、中身は同じと判断。「exempted sa buwis ng lungsod」は市民税の非課税を指し、意味は一致。重大なずれはなし。"
      ]
+    },
+    {
+     "qid": "Q20",
+     "short": "Mga Aklatan at Parke",
+     "text": "【Mga Aklatan】\nSentral na Aklatan (中央図書館): 太田町1921番地1. Lunes hanggang Biyernes 10:00–18:00; Sabado, Linggo, at pista opisyal 10:00–17:15. Sarado tuwing Lunes (kung pista opisyal ang Lunes, sarado sa kinabukasan), tuwing huling Miyerkules ng buwan, sa katapusan at simula ng taon, at sa panahon ng pag-aayos ng mga aklat.\nAklatan sa Silangan (東図書館): 本郷町9丁目2番22号. Lunes hanggang Biyernes 10:00–20:00; Sabado, Linggo, at pista opisyal 10:00–17:15. Sarado tuwing Biyernes (kung pista opisyal ang Biyernes, sarado sa araw bago nito), tuwing huling Miyerkules ng buwan, sa katapusan at simula ng taon, at sa panahon ng pag-aayos ng mga aklat.\nSangay sa Hilaga (北部分室), nasa loob ng Sanwa Exchange Center (三和交流センター): 三和町川浦2565. 10:00–17:00. Sarado tuwing Sabado, Linggo, at pista opisyal, at sa katapusan at simula ng taon.\n【Mga Pangunahing Parke】\nMinokamo Kenko no Mori (みのかも健康の森): 山之上町7559番地. Bukas 9:00–17:00 (mula Oktubre hanggang Marso, hanggang 16:00 lamang). Sarado tuwing Miyerkules (kung pista opisyal ang Miyerkules, sarado sa susunod na karaniwang araw).\nGifu Seiryu Satoyama Park (ぎふ清流里山公園), parke ng prefecture: 山之上町2292-1. Bukas 9:00–18:00 (Marso hanggang Nobyembre) at 10:00–17:00 (Disyembre hanggang Pebrero). Walang araw ng pagsasara (tuwing Disyembre hanggang Pebrero, sarado tuwing Miyerkules).\nKiso River Green Line Park (木曽川緑地ライン公園): 古井町下古井2740番地. Oras ng paggamit: 6:00–18:00 (bawat 2 oras). Mula Disyembre hanggang Pebrero, magsisimula sa 7:00. Mula Oktubre hanggang Pebrero, hanggang 17:00 lamang. Hindi nakasulat sa pahina ang mga araw na sarado.",
+     "original": "【図書館】\n中央図書館：太田町1921番地1。平日10時〜18時、土日祝10時〜17時15分。休みは毎週月曜（祝日なら翌日）、毎月最終水曜、年末年始、図書整理期間。\n東図書館：本郷町9丁目2番22号。平日10時〜20時、土日祝10時〜17時15分。休みは毎週金曜（祝日なら前日）、毎月最終水曜、年末年始、図書整理期間。\n北部分室（三和交流センター内）：三和町川浦2565。10時〜17時。休みは土日祝と年末年始。\n【主な公園】\nみのかも健康の森：山之上町7559番地。開園9時〜17時（10月〜3月は16時まで）。休園は毎週水曜（祝日なら翌平日）。\nぎふ清流里山公園（県の公園）：山之上町2292-1。開園9時〜18時（3月〜11月）、10時〜17時（12月〜2月）。休園は無休（12月〜2月は水曜）。\n木曽川緑地ライン公園：古井町下古井2740番地。使用時間6時〜18時（2時間ごと）。12月〜2月は7時から、10月〜2月は17時までです。休みの日は、ページに書かれていません。",
+     "back": "【図書館】\n中央図書館：太田町1921番地1。平日10時〜18時、土日祝10時〜17時15分。休みは毎週月曜（祝日なら翌日）、毎月最終水曜、年末年始、図書整理期間。\n東図書館：本郷町9丁目2番22号。平日10時〜20時、土日祝10時〜17時15分。休みは毎週金曜（祝日なら前日）、毎月最終水曜、年末年始、図書整理期間。\n北部分室（三和交流センター内）：三和町川浦2565。10時〜17時。休みは土日祝と年末年始。\n【主な公園】\nみのかも健康の森：山之上町7559番地。開園9時〜17時（10月〜3月は16時まで）。休園は毎週水曜（祝日なら翌平日）。\nぎふ清流里山公園（県の公園）：山之上町2292-1。開園9時〜18時（3月〜11月）と10時〜17時（12月〜2月）。休園日はなし（12月〜2月は水曜休園）。\n木曽川緑地ライン公園：古井町下古井2740番地。使用時間6時〜18時（2時間ごと）。12月〜2月は7時から、10月〜2月は17時までのみ。休みの日は、ページに書かれていません。",
+     "source": {
+      "title": "美濃加茂市の図書館について(中央図書館・東図書館・北部分室など)",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/3/1153.html",
+      "where": "中央図書館・東図書館・北部分室の各見出し"
+     },
+     "status": "auto",
+     "problems": []
     }
    ]
   },
@@ -1222,6 +1250,20 @@
      "problems": [
       "申し込み先の「高齢福祉課」と「高齢福祉係」の順序が入れ替わっているが、内容は同じ。「住宅地図」を「住宅の地図」に近い「bản đồ nhà ở」と訳しており、表現がやや違うだけ。"
      ]
+    },
+    {
+     "qid": "Q20",
+     "short": "Thư viện và công viên",
+     "text": "【Thư viện】\nThư viện Trung tâm (中央図書館): Ōta-chō 1921-1 (太田町1921番地1). Ngày thường 10:00〜18:00, thứ Bảy, Chủ nhật và ngày lễ 10:00〜17:15. Ngày nghỉ: thứ Hai hằng tuần (nếu là ngày lễ thì nghỉ ngày hôm sau), thứ Tư cuối cùng của tháng, cuối năm đầu năm, và thời gian chỉnh lý sách.\nThư viện Đông (東図書館): Hongō-chō 9-chōme 2-22 (本郷町9丁目2番22号). Ngày thường 10:00〜20:00, thứ Bảy, Chủ nhật và ngày lễ 10:00〜17:15. Ngày nghỉ: thứ Sáu hằng tuần (nếu là ngày lễ thì nghỉ ngày hôm trước), thứ Tư cuối cùng của tháng, cuối năm đầu năm, và thời gian chỉnh lý sách.\nChi nhánh phía Bắc (北部分室), trong Trung tâm giao lưu Sanwa (三和交流センター): Sanwa-chō Kawaura 2565 (三和町川浦2565). 10:00〜17:00. Ngày nghỉ: thứ Bảy, Chủ nhật, ngày lễ và cuối năm đầu năm.\n【Các công viên chính】\nRừng sức khỏe Minokamo (みのかも健康の森): Yamanoue-chō 7559 (山之上町7559番地). Mở cửa 9:00〜17:00 (từ tháng 10 đến tháng 3 đóng lúc 16:00). Ngày đóng cửa: thứ Tư hằng tuần (nếu là ngày lễ thì đóng vào ngày thường kế tiếp).\nCông viên Satoyama Seiryū Gifu (ぎふ清流里山公園) (công viên của tỉnh): Yamanoue-chō 2292-1 (山之上町2292-1). Mở cửa 9:00〜18:00 (tháng 3〜tháng 11), 10:00〜17:00 (tháng 12〜tháng 2). Không có ngày nghỉ (tháng 12〜tháng 2 nghỉ thứ Tư).\nCông viên Kisogawa Ryokuchi Line (木曽川緑地ライン公園): Furui-chō Shimo-furui 2740 (古井町下古井2740番地). Thời gian sử dụng 6:00〜18:00 (chia theo từng 2 tiếng). Từ tháng 12 đến tháng 2 bắt đầu từ 7:00, từ tháng 10 đến tháng 2 kết thúc lúc 17:00. Ngày nghỉ không được ghi trên trang web.",
+     "original": "【図書館】\n中央図書館：太田町1921番地1。平日10時〜18時、土日祝10時〜17時15分。休みは毎週月曜（祝日なら翌日）、毎月最終水曜、年末年始、図書整理期間。\n東図書館：本郷町9丁目2番22号。平日10時〜20時、土日祝10時〜17時15分。休みは毎週金曜（祝日なら前日）、毎月最終水曜、年末年始、図書整理期間。\n北部分室（三和交流センター内）：三和町川浦2565。10時〜17時。休みは土日祝と年末年始。\n【主な公園】\nみのかも健康の森：山之上町7559番地。開園9時〜17時（10月〜3月は16時まで）。休園は毎週水曜（祝日なら翌平日）。\nぎふ清流里山公園（県の公園）：山之上町2292-1。開園9時〜18時（3月〜11月）、10時〜17時（12月〜2月）。休園は無休（12月〜2月は水曜）。\n木曽川緑地ライン公園：古井町下古井2740番地。使用時間6時〜18時（2時間ごと）。12月〜2月は7時から、10月〜2月は17時までです。休みの日は、ページに書かれていません。",
+     "back": "【図書館】中央図書館：太田町1921番地1。平日10時〜18時、土日祝10時〜17時15分。休みは毎週月曜（祝日なら翌日）、毎月最終水曜、年末年始、図書整理期間。東図書館：本郷町9丁目2番22号。平日10時〜20時、土日祝10時〜17時15分。休みは毎週金曜（祝日なら前日）、毎月最終水曜、年末年始、図書整理期間。北部分室（三和交流センター内）：三和町川浦2565。10時〜17時。休みは土日祝と年末年始。【主な公園】みのかも健康の森：山之上町7559番地。開園9時〜17時（10月〜3月は16時まで）。休園は毎週水曜（祝日なら翌平日）。ぎふ清流里山公園（県の公園）：山之上町2292-1。開園9時〜18時（3月〜11月）、10時〜17時（12月〜2月）。休園は無休（12月〜2月は水曜）。木曽川緑地ライン公園：古井町下古井2740番地。使用時間6時〜18時（2時間ごと）。12月〜2月は7時から、10月〜2月は17時までです。休みの日は、ページに書かれていません。",
+     "source": {
+      "title": "美濃加茂市の図書館について(中央図書館・東図書館・北部分室など)",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/3/1153.html",
+      "where": "中央図書館・東図書館・北部分室の各見出し"
+     },
+     "status": "auto",
+     "problems": []
     }
    ]
   },
@@ -1624,6 +1666,20 @@
      "problems": [
       "「安否確認が必要」に「定期的な」が足されている。「あります」を「はい」と訳しているが、伝わる中身は同じ。"
      ]
+    },
+    {
+     "qid": "Q20",
+     "short": "Libraries and Parks",
+     "text": "[Libraries]\nCentral Library (中央図書館): 1921-1 Ota-machi (太田町1921番地1). Weekdays 10:00–18:00; weekends and holidays 10:00–17:15. Closed every Monday (if Monday is a holiday, the next day), the last Wednesday of every month, the year-end and New Year holidays, and book inventory periods.\nEast Library (東図書館): 9-2-22 Hongo-cho (本郷町9丁目2番22号). Weekdays 10:00–20:00; weekends and holidays 10:00–17:15. Closed every Friday (if Friday is a holiday, the previous day), the last Wednesday of every month, the year-end and New Year holidays, and book inventory periods.\nNorthern Branch (北部分室), inside the Miwa Community Center (三和交流センター): 2565 Kawaura, Miwa-cho (三和町川浦2565). 10:00–17:00. Closed on Saturdays, Sundays, holidays, and the year-end and New Year holidays.\n[Main Parks]\nMinokamo Health Forest (みのかも健康の森): 7559 Yamanoue-cho (山之上町7559番地). Open 9:00–17:00 (until 16:00 from October to March). Closed every Wednesday (if Wednesday is a holiday, the next weekday).\nGifu Seiryu Satoyama Park (ぎふ清流里山公園) (a prefectural park): 2292-1 Yamanoue-cho (山之上町2292-1). Open 9:00–18:00 (March to November) and 10:00–17:00 (December to February). No regular closing days (closed on Wednesdays from December to February).\nKisogawa Green Belt Line Park (木曽川緑地ライン公園): 2740 Shimo-Furui, Furui-cho (古井町下古井2740番地). Hours of use are 6:00–18:00 (in 2-hour slots). From December to February, it starts at 7:00, and from October to February, it ends at 17:00. Closing days are not stated on the page.",
+     "original": "【図書館】\n中央図書館：太田町1921番地1。平日10時〜18時、土日祝10時〜17時15分。休みは毎週月曜（祝日なら翌日）、毎月最終水曜、年末年始、図書整理期間。\n東図書館：本郷町9丁目2番22号。平日10時〜20時、土日祝10時〜17時15分。休みは毎週金曜（祝日なら前日）、毎月最終水曜、年末年始、図書整理期間。\n北部分室（三和交流センター内）：三和町川浦2565。10時〜17時。休みは土日祝と年末年始。\n【主な公園】\nみのかも健康の森：山之上町7559番地。開園9時〜17時（10月〜3月は16時まで）。休園は毎週水曜（祝日なら翌平日）。\nぎふ清流里山公園（県の公園）：山之上町2292-1。開園9時〜18時（3月〜11月）、10時〜17時（12月〜2月）。休園は無休（12月〜2月は水曜）。\n木曽川緑地ライン公園：古井町下古井2740番地。使用時間6時〜18時（2時間ごと）。12月〜2月は7時から、10月〜2月は17時までです。休みの日は、ページに書かれていません。",
+     "back": "【図書館】\n中央図書館：太田町1921番地1。平日10時〜18時、土日祝10時〜17時15分。休みは毎週月曜（祝日なら翌日）、毎月最終水曜、年末年始、図書整理期間。\n東図書館：本郷町9丁目2番22号。平日10時〜20時、土日祝10時〜17時15分。休みは毎週金曜（祝日なら前日）、毎月最終水曜、年末年始、図書整理期間。\n北部分室（三和交流センター内）：三和町川浦2565。10時〜17時。休みは土日祝と年末年始。\n【主な公園】\nみのかも健康の森：山之上町7559番地。開園9時〜17時（10月〜3月は16時まで）。休園は毎週水曜（祝日なら翌平日）。\nぎふ清流里山公園（県の公園）：山之上町2292-1。開園9時〜18時（3月〜11月）、10時〜17時（12月〜2月）。休園は無休（12月〜2月は水曜）。\n木曽川緑地ライン公園：古井町下古井2740番地。使用時間6時〜18時（2時間ごと）。12月〜2月は7時から、10月〜2月は17時までです。休みの日は、ページに書かれていません。",
+     "source": {
+      "title": "美濃加茂市の図書館について(中央図書館・東図書館・北部分室など)",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/3/1153.html",
+      "where": "中央図書館・東図書館・北部分室の各見出し"
+     },
+     "status": "auto",
+     "problems": []
     }
    ]
   },
@@ -2031,6 +2087,22 @@
      "status": "auto",
      "problems": [
       "「answer」の英語と「→」の修正メモが訳文に残っている（意味は「答えます」で正しい）。「安否確認」「国内」「親族」の言い換えや補足、「署名」→「サイン」、「要請し」→「呼び」は言い回しの違いのみ。数字・条件・連絡先は一致。"
+     ]
+    },
+    {
+     "qid": "Q20",
+     "short": "図書館（としょかん）と公園（こうえん）",
+     "text": "【図書館（としょかん）】\n中央図書館（ちゅうおうとしょかん）：太田町（おおたちょう）1921番地1。\n平日（へいじつ）は10時〜18時。土曜日・日曜日・祝日（しゅくじつ）は10時〜17時15分。\n休（やす）みの日：毎週月曜日。月曜日が祝日のときは、次の日が休みです。毎月、最後の水曜日。年末年始（ねんまつねんし）。図書整理期間（としょせいりきかん）。\n\n東図書館（ひがしとしょかん）：本郷町（ほんごうちょう）9丁目2番22号。\n平日は10時〜20時。土曜日・日曜日・祝日は10時〜17時15分。\n休みの日：毎週金曜日。金曜日が祝日のときは、前の日が休みです。毎月、最後の水曜日。年末年始。図書整理期間。\n\n北部分室（ほくぶぶんしつ）（三和交流センター内）：三和町（さんわちょう）川浦（かわうら）2565。10時〜17時。\n休みの日：土曜日・日曜日・祝日、年末年始。\n\n【主（おも）な公園（こうえん）】\nみのかも健康の森（けんこうのもり）：山之上町（やまのうえちょう）7559番地。\n開園（かいえん）時間：9時〜17時（10月〜3月は16時まで）。\n休園（きゅうえん）の日：毎週水曜日。水曜日が祝日のときは、次の平日が休みです。\n\nぎふ清流里山公園（せいりゅうさとやまこうえん）（県（けん）の公園）：山之上町2292-1。\n開園時間：9時〜18時（3月〜11月）、10時〜17時（12月〜2月）。\n休園の日：休みはありません（12月〜2月は水曜日が休みです）。\n\n木曽川緑地（きそがわりょくち）ライン公園（こうえん）：古井町（こいちょう）下古井（しもこい）2740番地。\n使（つか）える時間：6時〜18時（2時間ごと）。12月〜2月は7時からです。10月〜2月は17時までです。\n休みの日は、ページに書いてありません。",
+     "original": "【図書館】\n中央図書館：太田町1921番地1。平日10時〜18時、土日祝10時〜17時15分。休みは毎週月曜（祝日なら翌日）、毎月最終水曜、年末年始、図書整理期間。\n東図書館：本郷町9丁目2番22号。平日10時〜20時、土日祝10時〜17時15分。休みは毎週金曜（祝日なら前日）、毎月最終水曜、年末年始、図書整理期間。\n北部分室（三和交流センター内）：三和町川浦2565。10時〜17時。休みは土日祝と年末年始。\n【主な公園】\nみのかも健康の森：山之上町7559番地。開園9時〜17時（10月〜3月は16時まで）。休園は毎週水曜（祝日なら翌平日）。\nぎふ清流里山公園（県の公園）：山之上町2292-1。開園9時〜18時（3月〜11月）、10時〜17時（12月〜2月）。休園は無休（12月〜2月は水曜）。\n木曽川緑地ライン公園：古井町下古井2740番地。使用時間6時〜18時（2時間ごと）。12月〜2月は7時から、10月〜2月は17時までです。休みの日は、ページに書かれていません。",
+     "back": "【図書館】\n中央図書館：太田町1921番地1。平日は10時〜18時。土曜日・日曜日・祝日は10時〜17時15分。休みの日は毎週月曜日。月曜日が祝日のときは次の日が休み。毎月最後の水曜日。年末年始。図書整理期間。\n\n東図書館：本郷町9丁目2番22号。平日は10時〜20時。土曜日・日曜日・祝日は10時〜17時15分。休みの日は毎週金曜日。金曜日が祝日のときは前の日が休み。毎月最後の水曜日。年末年始。図書整理期間。\n\n北部分室（三和交流センター内）：三和町川浦2565。10時〜17時。休みの日は土曜日・日曜日・祝日、年末年始。\n\n【主な公園】\nみのかも健康の森：山之上町7559番地。開園時間は9時〜17時（10月〜3月は16時まで）。休園の日は毎週水曜日。水曜日が祝日のときは次の平日が休み。\n\nぎふ清流里山公園（県の公園）：山之上町2292-1。開園時間は9時〜18時（3月〜11月）、10時〜17時（12月〜2月）。休園の日は休みなし（12月〜2月は水曜日が休み）。\n\n木曽川緑地ライン公園：古井町下古井2740番地。使える時間は6時〜18時（2時間ごと）。12月〜2月は7時から。10月〜2月は17時まで。休みの日は、ページに書いていません。",
+     "source": {
+      "title": "美濃加茂市の図書館について(中央図書館・東図書館・北部分室など)",
+      "url": "https://www.city.minokamo.lg.jp/soshiki/3/1153.html",
+      "where": "中央図書館・東図書館・北部分室の各見出し"
+     },
+     "status": "auto",
+     "problems": [
+      "木曽川緑地ライン公園の「使用時間」が「使える時間」、「書かれていません」が「書いてありません」となっているが、言い換えのみで意味は同じ。"
      ]
     }
    ]
