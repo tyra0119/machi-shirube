@@ -68,6 +68,11 @@
       <h2>今日と明日</h2>
       <div id="today-box"><p class="note">読み込んでいます…</p></div>
     </section>
+    <section class="block" id="sec-today-life">
+      <h2>今日の暮らし</h2>
+      <ul class="today-life" id="today-life"></ul>
+      <a id="memo-link" class="memo-link" href="memo.html">印刷用のくらしのメモ（A4 1枚・冷蔵庫に貼れる）</a>
+    </section>
     <section class="block mitate-top" id="mitate-top" hidden></section>
     <section class="block dekiru" id="dekiru-block" hidden>
       <h2>いま、できること</h2>
@@ -77,11 +82,6 @@
     <section class="block" id="changes-block" hidden>
       <h2>このページで新しくなったこと</h2>
       <div id="changes"></div>
-    </section>
-    <section class="block" id="sec-today-life">
-      <h2>今日の暮らし</h2>
-      <ul class="today-life" id="today-life"></ul>
-      <a id="memo-link" class="memo-link" href="memo.html">印刷用のくらしのメモ（A4 1枚・冷蔵庫に貼れる）</a>
     </section>
     <section class="block" id="sec-scenes">
       <h2>暮らしの場面</h2>
@@ -157,8 +157,8 @@
       <label class="field"><span id="gomi-area-label">地区を選ぶ</span><select id="gomi-area"></select></label>
       <p class="gomi-today" id="gomi-today"></p>
       <ul class="gomi-days" id="gomi-days"></ul>
-      <h3 class="sub" id="gomi-rules-head">出し方の要点</h3>
-      <ul class="gomi-rules" id="gomi-rules"></ul>
+      <details class="gomi-rules-box"><summary><h3 class="sub" id="gomi-rules-head">出し方の要点</h3></summary>
+      <ul class="gomi-rules" id="gomi-rules"></ul></details>
       <p class="note" id="gomi-days-note"></p>
     </section>
     <section class="block" id="gomi-block" hidden>
@@ -244,9 +244,9 @@
     </div>
     <section class="block" id="tr-block" hidden>
       <h2>母語で防災・暮らし</h2>
-      <div class="tr-langs" id="tr-langs" role="radiogroup" aria-label="言葉を選ぶ"></div>
+      <div class="tr-langs" id="tr-langs"></div>
       <p class="tr-note" id="tr-note"></p>
-      <ol class="tr-list" id="tr-list"></ol>
+      <div id="tr-list"></div>
     </section>
     <section class="block" id="langgap-block" hidden>
       <h2>母語で読める人</h2>

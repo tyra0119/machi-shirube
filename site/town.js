@@ -99,6 +99,12 @@ function showView() {
   const top = head.offsetTop + head.offsetHeight;
   if (window.scrollY > top) window.scrollTo({ top });
 }
+// 選んだことを端末に覚えておく（ごみの地区・わが家の避難の町・字・言葉）。毎日開く人が、開くたびに選び直さなくてよいように。
+// 覚えられない端末（プライベートの窓など）でも、ふつうに動く
+const remember = {
+  get(k) { try { return localStorage.getItem(`machi-shirube:${k}`); } catch { return null; } },
+  set(k, v) { try { if (v) localStorage.setItem(`machi-shirube:${k}`, v); else localStorage.removeItem(`machi-shirube:${k}`); } catch {} },
+};
 // 上のメニュー（パソコン）：よく使うページと、右の端に「すべてのページ」
 // 下のメニュー（スマホ）：親指の届く所に、よく使う4つと「ほか」（すべてのページ）だけを並べる。横に動かさなくても全部が見える
 // （作者「上部の『今日』『地図』などのボタンがただ並んでいるだけで本当に使いやすいのか？」→ 案A）
@@ -146,8 +152,8 @@ async function showTypes(code, stats, scopeNote) {
   const n = (v) => v.toLocaleString("ja-JP");
   if ((fp.津波 || tsunami) && t.over65Rate >= stats.summary.over65Rate.top10) {
     list.unshift({ type: "お年寄り × 津波", who: "津波から坂を上って逃げる、足の弱いお年寄り", reason: fp.津波
-      ? `65歳以上が ${t.over65Rate.toFixed(1)}%（全国の上から10%に入る）。津波で浸かる想定の所に、約 ${n(fp.津波.people)} 人（町の ${fp.津波.rate}%）が住み、うち65歳以上が約 ${n(fp.津波.over65)} 人（めやす）`
-      : `65歳以上が ${t.over65Rate.toFixed(1)}%（全国の上から10%に入る）で、津波の避難場所が ${tsunami} か所ある町` });
+      ? `65歳以上が ${t.over65Rate.toFixed(1)}%（全国でも高いほう）。津波で浸かる想定の所に、約 ${n(fp.津波.people)} 人（町の ${fp.津波.rate}%）が住み、うち65歳以上が約 ${n(fp.津波.over65)} 人（めやす）`
+      : `65歳以上が ${t.over65Rate.toFixed(1)}%（全国でも高いほう）で、津波の避難場所が ${tsunami} か所ある町` });
   }
   const lang = list.find((c) => c.type === "母語で防災");
   if (lang && fp.洪水) lang.reason += `。洪水で浸かる想定の所に、町の人の約 ${fp.洪水.rate}% が住む（めやす）`;
@@ -450,11 +456,11 @@ async function showFuture(code) {
   const n = (v) => v.toLocaleString("ja-JP");
   const idx = (p) => Math.round((p.at(-1) / p[0]) * 100);
   const max = Math.max(...t.pop);
-  // 明るい話題：2050年まで人口が減りにくい町（全国の上から1割）は、それを添える。町に順位は付けない（「上から ○%」と言う）
+  // 明るい話題：2050年まで人口が減りにくい町（全国の上から1割）は、それを添える（10番目までは順番で、それより下は「全国でも減りにくいほう」）
   const ratio = (p) => p.at(-1) / p[0];
   const rank = Object.values(d.towns).filter((x) => ratio(x.pop) > ratio(t.pop)).length + 1;
   const total = Object.keys(d.towns).length;
-  const bright = rank <= total / 10 ? `<span class="bright">${icon("sun")} ${ratio(t.pop) > 1 ? T("2050年まで人口が増えると推計される町です。") : ""}${T("人口の減りにくさは、全国の市区町村の上から")} ${Math.max(1, Math.ceil((rank / total) * 100))}% ${T("に入ります")}</span>` : "";
+  const bright = rank <= total / 10 ? `<span class="bright">${icon("sun")} ${ratio(t.pop) > 1 ? T("2050年まで人口が増えると推計される町です。") : ""}${rank <= 10 ? TN("人口の減りにくさは、全国 {n} の市区町村で {r} 番目です", { n: total.toLocaleString("ja-JP"), r: rank }) : T("人口の減りにくさは、全国でも高いほうです")}</span>` : "";
   $("future-head").innerHTML = `${T("2050年の人口は、2020年の")} <strong>${idx(t.pop)}%</strong>（${T("約")} ${n(Math.round(t.pop.at(-1) / 10) * 10)} ${T("人")}）<span>${T("全国")} ${idx(d.nation.pop)}%${t.old ? `・${T("65歳以上の割合")} ${t.old[0]}% → ${t.old.at(-1)}%（${T("全国")} ${d.nation.old.at(-1)}%）` : ""}</span>${bright}`;
   $("future").innerHTML = d.years.map((y, i) => `<li><span class="y">${y}</span><span class="bar"><i style="height:${(t.pop[i] / max) * 100}%"></i></span><span class="v">${n(Math.round(t.pop[i] / 100) * 100)}</span>${t.old ? `<span class="o">${t.old[i]}%</span>` : ""}</li>`).join("");
   $("future-note").innerHTML = `${T("棒は総人口、下の % は65歳以上の割合です。")}${esc(T(d.note))}。<a href="${esc(d.source.url)}" target="_blank" rel="noopener">${esc(d.source.title)}</a>`;
@@ -610,7 +616,8 @@ async function showHinan(code, townFeatures, startPart) {
     for (const f of shelters.features) box.extend(f.geometry.coordinates);
     map.fitTo = { box, opts: { padding: 30 } };
     map.fitBounds(box, { padding: 30, duration: 0 });
-    if (startPart) { sel.value = startPart; sel.dispatchEvent(new Event("change")); }
+    const pick = startPart || remember.get(`hinan:${code}`);
+    if (pick && [...sel.options].some((o) => o.value === pick)) { sel.value = pick; sel.dispatchEvent(new Event("change")); }
   });
   // 地図を押す：避難場所の点なら名前を出す。それ以外の所なら、そこから近い避難場所を出す
   map.on("click", (e) => {
@@ -627,6 +634,7 @@ async function showHinan(code, townFeatures, startPart) {
       .setHTML(`<strong>${esc(name)}</strong><br><small>${esc(kinds.join("・"))}のときに使える</small>`).addTo(map);
   }
   sel.addEventListener("change", () => {
+    remember.set(`hinan:${code}`, sel.value);
     const f = townFeatures.find((x) => x.properties.part === sel.value);
     if (f) setHere(center(f), `${f.properties.name}（町・字のおおよその真ん中）`);
     // 防災計画の欄も同じ町・字に合わせる（別々に選び直さなくてよいように）
@@ -799,16 +807,31 @@ const PAGE_OF = (qid) => yardstick.questions.find((x) => x.id === qid)?.page;
 // 数と単位を太く（中身は変えない）
 // 時刻（8時30分・9:00）や電話番号の中の数は太くしない（前が「時」「:」「-」や数のときは除く）
 const numbers = (html) => html.replace(/(?<![0-9０-９時:：\-－])([0-9０-９][0-9０-９,，.]*)(\s*)(か所|ヶ所|カ所|件|人|世帯|分|時間|m|km|メートル|校|台|便|回|%|％)/g, '<b class="num">$1$2$3</b>');
-function answerBody(a) {
-  const lines = prettyText(a.value, esc).split("<br>").filter(Boolean);
+// 電話番号は押してかけられるように（住む人の目で見ると、答えの中の番号が押せない文字のままだった）
+const TEL = /(?<![\d-])(0\d{1,4}-\d{1,4}-\d{3,4})(?![\d-])/g;
+const telLinks = (html) => html.replace(TEL, (m) => `<a class="tel" href="tel:${m.replace(/-/g, "")}">${m}</a>`);
+// 調べた側の言い方を、住む人向けに（「今回調べた範囲では」「今回は」など。日本語の答えだけ）
+const residentText = (s) => String(s ?? "").replace(/今回(調べた範囲|の調べ)では、?/g, "町の公式サイトでは、").replace(/見た公式ページには/g, "町の公式サイトには").replace(/今回は/g, "");
+function answerParts(a) {
+  const lines = prettyText(a.translated ? a.value : residentText(a.value), esc).split("<br>").filter(Boolean);
   const [lead, ...rest] = lines;
-  return `<p class="lead">${numbers(lead ?? "")}</p>${rest.length ? `<ul class="pts">${rest.map((l) => `<li>${numbers(l)}</li>`).join("")}</ul>` : ""}`;
+  return { lead: `<p class="lead">${telLinks(numbers(lead ?? ""))}</p>`, rest: rest.length ? `<ul class="pts">${rest.map((l) => `<li>${telLinks(numbers(l))}</li>`).join("")}</ul>` : "", leadText: lead ?? "" };
+}
+function answerBody(a) {
+  const p = answerParts(a);
+  return p.lead + p.rest;
 }
 function answersHTML(answers) {
   // 見つからなかった答えも隠さず出す（届いていないことの手がかり。町の人に聞きたいこと）
   const notFound = (a) => a.value === "見つからなかった";
-  return `<ul class="answers">${answers.map((a) => {
+  // 答えが4つ以上あるページは、各カードを「見出し＋要点（＋最初の電話）」にし、残りは「くわしく」にたたむ（困ったとき・手続き・子育てが6〜7画面あった）
+  const fold = answers.length >= 4;
+  return `<ul class="answers${fold ? " folded-cards" : ""}">${answers.map((a) => {
     const ill = ILLUST[PAGE_OF(a.qid)] ?? ILLUST.shiru;
+    const p = !notFound(a) && !(a.items && !a.translated) ? answerParts(a) : null;
+    const tel = p && fold && !TEL.test(p.leadText) ? String(a.value).match(TEL)?.[0] : null;
+    TEL.lastIndex = 0;
+    const more = (inner) => (fold && p ? `${tel ? `<a class="tel-quick" href="tel:${tel.replace(/-/g, "")}">${icon("phone")}${tel}</a>` : ""}<details class="a-more"><summary>${T("くわしく")}</summary>${inner}</details>` : inner);
     return `
     <li class="${notFound(a) ? "not-found" : ""}" id="a-${esc(a.qid ?? "")}" style="--h:${ill.h}">
       <span class="badge" aria-hidden="true">${icon(ANSWER_ICON[a.qid] ?? ill.main)}</span>
@@ -816,13 +839,13 @@ function answersHTML(answers) {
       <h3 class="short">${esc(a.shortT ?? T(yardstick.questions.find((x) => x.id === a.qid)?.short ?? ""))}${a.level ? `<span class="lvl">${esc(a.level)}${T("の答え")}</span>${a.translated ? `<span class="lvl ai">${T("AI による訳")}</span>` : ""}` : ""}</h3>
       ${notFound(a)
         ? `<p class="lead">${T("公開の資料では見つかりませんでした")}</p><p class="src">${a.checkedAt ? `${esc(a.checkedAt.slice(0, 10))}・` : ""}${T("町の人に聞きたいことです")}</p>`
-        : `${a.items && !a.translated ? "" : answerBody(a)}
+        : `${p ? p.lead : ""}${more(`${p ? p.rest : ""}
       ${a.items ? `<ul class="topics${a.translated ? " src-only" : ""}">${a.items.map((x) => `<li>${a.translated ? "" : `<span class="tx">${esc(x.text)}</span>`}
         <span class="src">${x.url ? `<a href="${esc(x.url)}" target="_blank" rel="noopener">${esc(x.title ?? x.url)}</a>` : esc(x.title ?? "")}${x.asOf ? `・${esc(x.asOf)}` : ""}</span></li>`).join("")}</ul>` : ""}
       ${a.recheckedAt ? `<p class="src rechecked">${icon("eye")}${T("公式のページが変わったので、確かめ直しました")}（${esc(a.recheckedAt.slice(0, 10))}）</p>` : ""}
       ${health?.links?.[a.source?.url]?.kind === "gone" ? `<p class="gone">${T("出典のページが見つからなくなっています")}（${esc(health.links[a.source.url].checkedAt.slice(0, 10))}）。${T("町の公式のサイトで新しいページを探して確かめてください。")}</p>` : ""}
       ${a.outdated ? `<p class="outdated"><strong>${T("もっと新しい資料があります")}</strong>：${esc(a.outdated.what)}。${T("古い")}：${a.outdated.old?.url ? `<a href="${esc(a.outdated.old.url)}" target="_blank" rel="noopener">${esc(a.outdated.old.asOf ?? "")}</a>` : esc(a.outdated.old?.asOf ?? "")}／${T("新しい")}：${a.outdated.new?.url ? `<a href="${esc(a.outdated.new.url)}" target="_blank" rel="noopener">${esc(a.outdated.new.asOf ?? "")}</a>` : esc(a.outdated.new?.asOf ?? "")}</p>` : ""}
-      <p class="src chip">${icon("link")} ${a.source?.url ? `<a href="${esc(a.source.url)}" target="_blank" rel="noopener"${a.source.where ? ` title="${esc(T("出典のどこに書いてあるか"))}：${esc(a.source.where)}"` : ""}>${esc(a.source.title ?? a.source.url)}</a>` : esc(a.source?.title ?? "")}${a.asOf ? `・${T("時点")} ${esc(a.asOf)}` : ""}・${T(a.status === "auto" ? "自動で承認" : "人が確かめた")}</p>`}
+      <p class="src chip">${icon("link")} ${a.source?.url ? `<a href="${esc(a.source.url)}" target="_blank" rel="noopener"${a.source.where ? ` title="${esc(T("出典のどこに書いてあるか"))}：${esc(a.source.where)}"` : ""}>${esc(a.source.title ?? a.source.url)}</a>` : esc(a.source?.title ?? "")}${a.asOf ? `・${T("時点")} ${esc(a.asOf)}` : ""}${a.status === "auto" ? "" : `・${T("人が確かめた")}`}</p>`)}`}
       </div>
     </li>`;
   }).join("")}</ul>`;
@@ -1041,7 +1064,7 @@ async function showTranslations(code) {
   $("tr-block").hidden = false;
   $("foreign-guide").hidden = true;
   $("lang-bar").hidden = false;
-  const href = (l) => { const u = new URL(location.href); if (l) u.searchParams.set("lang", l); else u.searchParams.delete("lang"); return u.pathname.split("/").pop() + u.search + u.hash; };
+  const href = (l) => { const u = new URL(location.href); u.searchParams.set("lang", l || "ja"); return u.pathname.split("/").pop() + u.search + u.hash; };
   // 言葉の選び方（作者「言語選択が横に並んでるのも気になる」→ 案B）：地球の印と今の言葉のボタンを1つ置き、押すと全部の言葉の一覧が開く。
   // 横には、すぐ選べる言葉を2つだけ出す（訳はその町に多い国籍の言葉から並べているので、その先頭から。日本語以外を見ているときは日本語を先に）
   const all = [["", "日本語"], ...langs.map((l) => [l, t.langs[l].name])];
@@ -1055,15 +1078,20 @@ async function showTranslations(code) {
   $("lang-bar").querySelector(".lang-btn").addEventListener("click", () => dlg.showModal());
   $("close-lang").onclick = () => dlg.close();
   dlg.onclick = (e) => { if (e.target === dlg) dlg.close(); };
+  // 言葉は上の地球の印のボタンで選んだものだけに合わせる（前は欄の中にも札があり、上と別の言葉が選ばれていて迷った）。
+  // 日本語で見ているときは、欄を読む言葉を選ぶボタンだけを出す
+  $("tr-langs").innerHTML = LANG ? "" : `<p>${T("読む言葉を選ぶと、町のページ全体とこの欄がその言葉になります。")}</p>` + langs.map((l) => `<a href="${href(l)}" lang="${l}">${esc(t.langs[l].name)}</a>`).join("");
+  $("tr-langs").hidden = !!LANG;
+  if (!langs.includes(LANG)) { $("tr-note").textContent = ""; $("tr-list").innerHTML = ""; return; }
+  lang = LANG;
   const draw = () => {
     const L = t.langs[lang];
-    $("tr-langs").innerHTML = langs.map((l) => `<button type="button" data-lang="${l}" aria-pressed="${l === lang}">${esc(t.langs[l].name)}</button>`).join("");
     $("tr-note").textContent = TR_NOTE[lang] ?? "";
     // 日本語の答えと同じカードの形（左に絵・要点・箇条）。訳が確かめ中のものは、もとの日本語を出す
-    $("tr-list").className = "answers tr-list";
+    $("tr-list").className = "tr-groups";
     // 元の答えが町のページから下がった訳は出さない（元の答えと同じ文の訳だけ）
     const live = new Set(Object.values(answersByPage).flat().map((a) => a.valueJa ?? a.value));
-    $("tr-list").innerHTML = L.items.filter((x) => live.has(x.original)).map((x) => {
+    const card = (x) => {
       const ok = x.status === "auto" || x.status === "ok";
       const ill = ILLUST[PAGE_OF(x.qid)] ?? ILLUST.foreign;
       const lines = prettyText(ok ? seireki(x.text, lang) : x.original, esc).split("<br>").filter(Boolean);
@@ -1072,14 +1100,25 @@ async function showTranslations(code) {
         <div class="body">
           <h3 class="short">${esc(ok ? x.short : (yardstick.questions.find((q) => q.id === x.qid)?.short ?? x.qid))}</h3>
           ${ok ? "" : `<p class="pending-note">${esc(TR_PENDING[lang] ?? "")}</p>`}
-          <p class="lead">${numbers(lines[0] ?? "")}</p>
-          ${lines.length > 1 ? `<ul class="pts">${lines.slice(1).map((l) => `<li>${numbers(l)}</li>`).join("")}</ul>` : ""}
+          <p class="lead">${telLinks(numbers(lines[0] ?? ""))}</p>
+          ${lines.length > 1 ? `<ul class="pts">${lines.slice(1).map((l) => `<li>${telLinks(numbers(l))}</li>`).join("")}</ul>` : ""}
           ${x.source?.url ? `<p class="src chip">${icon("link")} <a href="${esc(x.source.url)}" target="_blank" rel="noopener">${esc(x.source.title ?? x.source.url)}</a></p>` : ""}
           ${ok ? `<details class="q"><summary>もとの日本語</summary><span lang="ja">${prettyText(x.original, esc)}</span></details>` : ""}
         </div>
       </li>`;
+    };
+    // 町のページの場面ごとにまとめてたたむ（前は約60画面ぶんが1列に並んでいた）。読みたい場面を押して開く
+    const groups = new Map();
+    for (const x of L.items.filter((i) => live.has(i.original))) {
+      const page = PAGE_OF(x.qid) ?? "shiru";
+      if (!groups.has(page)) groups.set(page, []);
+      groups.get(page).push(x);
+    }
+    const order = (v) => { const i = PAGES.findIndex((p) => p.view === v); return i < 0 ? 99 : i; };
+    $("tr-list").innerHTML = [...groups].sort((a, b) => order(a[0]) - order(b[0])).map(([page, xs]) => {
+      const p = PAGES.find((q) => q.view === page);
+      return `<details class="tr-group"><summary>${icon(ILLUST[page]?.main)}<strong>${esc(T(p?.title ?? page))}</strong><span class="n">${xs.length}</span></summary><ol class="answers tr-list">${xs.map(card).join("")}</ol></details>`;
     }).join("");
-    for (const b of $("tr-langs").querySelectorAll("button")) b.addEventListener("click", () => { lang = b.dataset.lang; draw(); });
   };
   draw();
 }
@@ -1172,10 +1211,12 @@ async function showGomiDays(code, partName) {
     $("gomi-today").innerHTML = `${icon("calendar")} ${T("今日")}：<strong>${t0.length ? esc(t0.join("・")) : T("収集なし")}</strong>　${T("明日")}：<strong>${t1.length ? esc(t1.join("・")) : T("収集なし")}</strong>`;
     $("gomi-days").innerHTML = a.days.map((x) => `<li class="${onDay(x.when, now) ? "today" : ""}"><span class="k">${esc(gt(x.kind))}</span><span class="w">${esc(gt(x.when))}</span></li>`).join("");
   };
-  sel.addEventListener("change", draw);
+  sel.addEventListener("change", () => { remember.set(`gomi:${code}`, sel.value); draw(); });
+  const saved = remember.get(`gomi:${code}`);
   if (guess >= 0) sel.value = String(guess);
+  else if (saved && g.areas[Number(saved)]) sel.value = saved;
   draw();
-  return guess >= 0 ? todayKinds : null;
+  return sel.value ? todayKinds : null;
 }
 
 // どの町のページも最後に同じことをする：答え・わが家の避難・今日の暮らし・すべてのページ・調べる
@@ -1228,7 +1269,7 @@ async function finishPage(code, townFeatures, startPart, scopeNote, at) {
 // 最初から開いておくのは、わが家の避難・今日のページの見立てと数から、できることへ・今日と明日と、各ページの最初の1つ
 // （作者「やたらと縦が長くなってしまうと、読むのが大変。何か工夫できないかな？」→「たたむ＋目次」）
 // 暮らしの場面（ほかのページへの入口の札）も開いておく（作者「『暮らしの場面』は開いていてもいいと思う」）
-const FOLD_OPEN = new Set(["hinan-block", "mitate-top", "dekiru-block", "sec-today", "hitokoto-block", "sec-scenes", "sec-today-life"]);
+const FOLD_OPEN = new Set(["hinan-block", "mitate-top", "sec-today", "hitokoto-block", "sec-scenes", "sec-today-life", "gomi-block"]);
 function foldSummary(sec) {
   // 確かめた答えの欄は、答えの数
   const answers = sec.querySelectorAll(".answers-box [id^=\"a-\"]").length;
@@ -1306,7 +1347,8 @@ async function researchBox(code, part, partName) {
 
 async function main() {
   // 言葉の切り替え（?lang=pt など）：辞書があれば、タブとページの決まった文字を置きかえる
-  if (await setLang(q.get("lang"))) { renderTabs(); translateDom(); }
+  if (q.has("lang")) remember.set("lang", q.get("lang") === "ja" ? "" : q.get("lang"));
+  if (await setLang(q.get("lang") ?? remember.get("lang"))) { renderTabs(); translateDom(); }
   const stats = await getJSON("data/stats.json");
   if (q.get("muni")) return muniPage(q.get("muni"), stats);
 
@@ -1351,9 +1393,9 @@ async function main() {
     if (!weight) continue;
     const v = have.reduce((s, p) => s + p[m] * p[w], 0) / weight;
     const others = all.map((f) => f.properties[m]).filter((x) => typeof x === "number");
-    const top = ((others.filter((x) => x > v).length + 1) / others.length) * 100;
-    // 順位は言わず、町・字の中で高いほう（低いほう）から ○% と言う
-    const place = list.length === 1 ? `${muniName}の町・字の中で${top <= 50 ? `高いほうから ${Math.max(top, 0.1).toFixed(0)}%` : `低いほうから ${Math.max(100 - top + 100 / others.length, 0.1).toFixed(0)}%`}` : "";
+    // 市の町・字の中でどのあたりか（types.js の placeWords）
+    const mid = [...others].sort((a, b) => a - b)[Math.floor(others.length / 2)];
+    const place = list.length === 1 ? placeWords(others.filter((x) => x > v).length + 1, others.length, mid == null ? null : pct(mid), muniName) : "";
     rows.push(`<li><span class="label">${label}</span><span class="value">${pct(v)}</span>${place ? `<span class="place">${place}</span>` : ""}</li>`);
   }
   $("features").innerHTML = rows.join("");
@@ -1373,15 +1415,15 @@ async function muniPage(code, stats) {
   const t = stats.towns[code];
   if (!t) return notFound("この市区町村は見つかりませんでした");
   const name = shortName(t.name);
-  header(name, `${t.pref}・市区町村コード ${code}`, [["日本", "./"], [t.pref, `./?pref=${encodeURIComponent(t.pref)}`], [name, null]]);
+  header(name, t.pref, [["日本", "./"], [t.pref, `./?pref=${encodeURIComponent(t.pref)}`], [name, null]]);
   $("pop").textContent = TN("人口 {n}人", { n: t.population.toLocaleString("ja-JP") });
   const rows = [
     ["over65Rate", "65歳以上の人の割合"], ["under15Rate", "15歳未満の子どもの割合"], ["foreignRate", "外国の住民の割合"],
     ["changeRate", "1年の人口の増減"], ["socialChangeRate", "引っ越しによる1年の増減"],
   ];
   $("features").innerHTML = rows.map(([m, label]) => {
-    const top = t.top[m];
-    const place = top <= 50 ? `全国で高いほうから ${Math.max(top, 0.1).toFixed(1)}%` : `全国で低いほうから ${Math.max(100 - top, 0.1).toFixed(1)}%`;
+    const mid = stats.summary[m]?.median;
+    const place = placeWords(t.rank[m], Object.values(stats.towns).filter((x) => !x.ward).length, mid == null ? null : `${mid.toFixed(1)}%`);
     const v = t[m];
     return `<li><span class="label">${label}</span><span class="value">${/change/i.test(m) && v > 0 ? "+" : ""}${pct(v)}</span><span class="place">${place}</span></li>`;
   }).join("");

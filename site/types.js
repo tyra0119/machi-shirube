@@ -1,3 +1,24 @@
+// 全国（または市の町・字）の中での位置を、住む人に分かる言葉で言う（作者「『上から ○%』これは分かりにくいからやめよう」）。
+// 上から（下から）10番目までは順番で、上から（下から）1割までは「高いほう（低いほう）」と言い、真ん中の値を添える。それ以外は真ん中の値だけ
+// rank：高いほうから何番目（同じ値は同じ順位）、total：比べた数、mid：真ん中の値の文字（「1.8%」など）、muni：市の町・字で比べるときの市の名前
+function placeWords(rank, total, mid, muni) {
+  const tn = typeof TN === "function" ? TN : (s, v) => s.replace(/\{(\w+)\}/g, (a, k) => v[k] ?? a);
+  const v = { n: total.toLocaleString("ja-JP"), muni, m: mid };
+  const low = total - rank + 1;
+  const word = muni
+    ? (rank <= 10 && rank <= total / 2 ? tn("{muni}の {n} の町・字で {r} 番目に高い", { ...v, r: rank })
+      : low <= 10 && low < total / 2 ? tn("{muni}の {n} の町・字で {r} 番目に低い", { ...v, r: low })
+      : "")
+    : (rank <= 10 ? tn("全国 {n} の市区町村で {r} 番目に高い", { ...v, r: rank })
+      : low <= 10 ? tn("全国 {n} の市区町村で {r} 番目に低い", { ...v, r: low })
+      : rank <= total / 10 ? tn("全国でも高いほう", v)
+      : low <= total / 10 ? tn("全国でも低いほう", v)
+      : "");
+  if (mid == null) return word;
+  const m = muni ? tn("{muni}の町・字の真ん中は {m}", v) : tn("全国の真ん中は {m}", v);
+  return word ? `${word}（${m}）` : m;
+}
+
 // 深掘りの型の候補：全国の市区町村と比べた数字と、国の一覧の印から、決まりに当てはめて選ぶ（Claude は使わない）。
 // ここで出すのは「候補」。この町で本当に情報が届きにくいのは誰かは、町を調べるときに Claude が公式の資料から見立て、人が確かめる
 // t：stats.json の町、f：flags.json の印、s：stats.json の境目（summary）
@@ -10,7 +31,7 @@ function typeCandidates(t, f, s) {
 
   if (t.foreignRate >= s.foreignRate.top10) {
     add("母語で防災", "外国から来て暮らす人",
-      `外国の住民が ${p(t.foreignRate)}（全国の上から10%の境目は ${p(s.foreignRate.top10)}）`,
+      `外国の住民が ${p(t.foreignRate)}（全国の真ん中は ${p(s.foreignRate.median)}）`,
       0.5 + from(t.top.foreignRate, 10) / 2 + (t.foreignRate >= s.foreignRate.top5 ? 0.3 : 0));
   }
   if ((t.socialChangeRate >= s.socialChangeRate.top10 || t.changeRate >= s.changeRate.top10) && t.over65Rate <= s.over65Rate.bottom10) {
@@ -20,19 +41,19 @@ function typeCandidates(t, f, s) {
   }
   if (t.changeRate <= s.changeRate.bottom10 && t.over65Rate >= s.over65Rate.top10) {
     add("人が減る町の暮らし", "町に残る人・一人暮らしのお年寄り",
-      `1年で人口が ${p(t.changeRate)}、65歳以上が ${p(t.over65Rate)}（どちらも全国の上下10%に入る）`,
+      `1年で人口が ${p(t.changeRate)}、65歳以上が ${p(t.over65Rate)}（どちらも全国でも目立つ）`,
       0.6 + from(t.top.over65Rate, 10) / 3);
   }
   if (f.snow === "特別豪雪地帯" || (f.snow && t.over65Rate >= s.over65Rate.top20)) {
     add("雪の暮らし", "雪下ろしや雪かきが難しいお年寄り",
-      f.snow === "特別豪雪地帯" ? `特別豪雪地帯（65歳以上は ${p(t.over65Rate)}）` : `豪雪地帯で、65歳以上が ${p(t.over65Rate)}（全国の上から20%に入る）`,
+      f.snow === "特別豪雪地帯" ? `特別豪雪地帯（65歳以上は ${p(t.over65Rate)}）` : `豪雪地帯で、65歳以上が ${p(t.over65Rate)}（全国でも高いほう）`,
       f.snow === "特別豪雪地帯" ? 0.8 : 0.55);
   }
   if (f.volcano) add("火山と暮らす", "火山のふもとに住む人・訪れる人", "火山災害警戒地域に入っている", 0.7);
   if (f.island) add("島の暮らし", "島に住む人（船や飛行機が止まると行き来できなくなる）", "離島振興対策実施地域の島がある", 0.6);
   if (t.elderlySingleRate != null && t.elderlySingleRate >= s.elderlySingleRate.top10) {
     add("一人暮らしのお年寄り", "見守りや避難の声かけが届きにくい、一人で暮らすお年寄り",
-      `65歳以上の一人暮らしの世帯が ${p(t.elderlySingleRate)}（全国の上から10%の境目は ${p(s.elderlySingleRate.top10)}）`,
+      `65歳以上の一人暮らしの世帯が ${p(t.elderlySingleRate)}（全国の真ん中は ${p(s.elderlySingleRate.median)}）`,
       0.5 + (t.elderlySingleRate >= s.elderlySingleRate.top5 ? 0.3 : 0.1));
   }
   return out.sort((a, b) => b.strength - a.strength).slice(0, 3);

@@ -1,11 +1,11 @@
 {
  "lang": "id",
  "name": "Bahasa Indonesia",
- "createdAt": "2026-11-03T23:43:31.639Z",
+ "createdAt": "2026-11-04T00:16:19.759Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 781,
- "of": 765,
+ "count": 787,
+ "of": 768,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Ini adalah panduan hidup tidak resmi untuk kota ini. Claude mengumpulkannya dari situs resmi kota dan sumber lain, dengan mencantumkan sumbernya (Machishirube)",
   "すべてのページ": "Semua halaman",
@@ -787,6 +787,12 @@
   "居宅介護支援（ケアマネジャー）": "Layanan Dukungan Perawatan di Rumah (Care Manager)",
   "防災": "Penanggulangan Bencana",
   "ほか": "Lainnya",
-  "このページの中": "Di Halaman Ini"
+  "このページの中": "Di Halaman Ini",
+  "しまう": "Tutup",
+  "もっと重ねる": "Tumpuk lebih banyak",
+  "人口の減りにくさは、全国でも高いほうです": "Ketahanan terhadap penurunan penduduk tergolong tinggi di tingkat nasional",
+  "人が確かめた": "Sudah diperiksa oleh manusia",
+  "読む言葉を選ぶと、町のページ全体とこの欄がその言葉になります。": "Jika Anda memilih bahasa bacaan, seluruh halaman kota dan kolom ini akan memakai bahasa tersebut.",
+  "人口の減りにくさは、全国 {n} の市区町村で {r} 番目です": "Ketahanan terhadap penurunan penduduk berada di peringkat ke-{r} dari {n} kota, kecamatan, dan desa se-Jepang"
  }
 }

@@ -1,11 +1,11 @@
 {
  "lang": "tl",
  "name": "Filipino",
- "createdAt": "2026-11-03T23:43:28.056Z",
+ "createdAt": "2026-11-04T00:16:52.134Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 774,
- "of": 765,
+ "count": 779,
+ "of": 768,
  "dict": {
   "この町の非公式の暮らしの案内です。町の公式のサイトや国の公開データから集め、出典をつけています（まちしるべ）": "Ito ay isang di-opisyal na gabay sa pamumuhay sa bayang ito. Kinuha ito mula sa opisyal na website ng bayan at sa pampublikong datos ng bansa, at may nakasaad na pinagmulan (Machishirube)",
   "すべてのページ": "Lahat ng pahina",
@@ -780,6 +780,11 @@
   "介護保険のサービスの事業所のうち、相談・通う・家に来る・泊まる／住むのものです。空きや受け入れの条件は、事業所に問い合わせてください": "Ito ay mga pasilidad na nagbibigay ng serbisyo ng insurance sa pangmatagalang pangangalaga (kaigo hoken), para sa konsultasyon, pagpunta sa pasilidad, pagbisita sa bahay, at pananatili/paninirahan. Para sa mga bakante at kundisyon ng pagtanggap, makipag-ugnayan sa pasilidad.",
   "防災": "Pag-iwas sa sakuna",
   "ほか": "Iba pa",
-  "このページの中": "Sa pahinang ito"
+  "このページの中": "Sa pahinang ito",
+  "しまう": "Itago",
+  "もっと重ねる": "Magpatong pa",
+  "人が確かめた": "Kinumpirma ng tao",
+  "読む言葉を選ぶと、町のページ全体とこの欄がその言葉になります。": "Kapag pumili ka ng wikang babasahin, magiging nasa wikang iyon ang buong pahina ng bayan at ang seksyong ito.",
+  "人口の減りにくさは、全国 {n} の市区町村で {r} 番目です": "Pang-{r} ito sa {n} munisipalidad sa buong bansa pagdating sa hirap bumaba ng populasyon"
  }
 }

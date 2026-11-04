@@ -725,16 +725,12 @@ function showTownCard(p) {
   openCard();
 }
 
-// 町・字の数字が、同じ市・区の中で高いほう（低いほう）から何%の所か（順位は言わない）
+// 町・字の数字が、同じ市・区の中でどのあたりか（types.js の placeWords）
 function townPlace(p, m) {
   const vals = townData.features.map((f) => f.properties[m]).filter((v) => typeof v === "number");
   const muni = byCode.get(shownTowns)?.properties.fullName ?? "";
-  return `${muni}の町・字の中で${partShare(vals, p[m])}`;
-}
-// 高いほうから ○%（50% を超えるときは 低いほうから ○%）
-function partShare(vals, v) {
-  const top = ((vals.filter((x) => x > v).length + 1) / vals.length) * 100;
-  return top <= 50 ? `高いほうから ${Math.max(top, 0.1).toFixed(0)}%` : `低いほうから ${Math.max(100 - top + 100 / vals.length, 0.1).toFixed(0)}%`;
+  const mid = [...vals].sort((a, b) => a - b)[Math.floor(vals.length / 2)];
+  return placeWords(vals.filter((x) => x > p[m]).length + 1, vals.length, mid == null ? null : `${mid.toFixed(1)}%`, muni);
 }
 
 // 選ぶ（名前で探したときも、地図で押したときと同じ形にする）
@@ -774,10 +770,8 @@ function featureCard(t) {
     const { label, unit, signed } = METRICS[m];
     const v = t[m];
     const value = `${signed && v > 0 ? "+" : ""}${v.toFixed(1)}${unit}`;
-    const top = t.top[m];
-    const place =
-      top <= 50 ? `全国で高いほうから ${Math.max(top, 0.1).toFixed(1)}%`
-      : `全国で低いほうから ${Math.max(100 - top, 0.1).toFixed(1)}%`;
+    const mid = stats.summary[m]?.median;
+    const place = placeWords(t.rank[m], Object.values(stats.towns).filter((x) => !x.ward).length, mid == null ? null : `${signed && mid > 0 ? "+" : ""}${mid.toFixed(1)}${unit}`);
     // 人の少ない村の大きな割合に埋もれる町は、人口2万人以上の中での順位も添える（3番目まで）
     const big = t.rankBig?.[m];
     const bigNote = big && big <= 3 && big < t.rank[m]

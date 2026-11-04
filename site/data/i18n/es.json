@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-03T23:42:57.448Z",
+ "createdAt": "2026-11-04T00:15:50.691Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 783,
- "of": 765,
+ "count": 788,
+ "of": 768,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -789,6 +789,11 @@
   "保育所・認定こども園の空き": "Plazas disponibles en guarderías y centros infantiles certificados",
   "防災": "Prevención de desastres",
   "ほか": "Otros",
-  "このページの中": "En esta página"
+  "このページの中": "En esta página",
+  "もっと重ねる": "Superponer más",
+  "人口の減りにくさは、全国でも高いほうです": "La resistencia al descenso de la población es de las más altas del país",
+  "人が確かめた": "Verificado por personas",
+  "読む言葉を選ぶと、町のページ全体とこの欄がその言葉になります。": "Al elegir el idioma de lectura, toda la página del municipio y este apartado se mostrarán en ese idioma.",
+  "人口の減りにくさは、全国 {n} の市区町村で {r} 番目です": "En resistencia al descenso de la población, ocupa el puesto {r} entre los {n} municipios del país"
  }
 }

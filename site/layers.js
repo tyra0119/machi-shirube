@@ -40,21 +40,21 @@ async function showLayerMap(code, townFeatures, at, esc, part = null) {
     return { ...f, properties: { ...f.properties, n: hit.length, hit: hit.join("／") } };
   });
   const LAYERS = [
-    { id: "overlap", name: "気をつけたいことの重なり", on: true, ok: (flood || quake || slope) && overlap.some((f) => f.properties.n > 0), legend: `${["#f6dfa8", "#f0b36b", "#d9773a", "#a8462a"].map((c, i) => `<i class="dot sq" style="background:${c}"></i>${i + 1}${i === 3 ? "+" : ""}`).join(" ")}　${LT("町・字ごとに、次のうちいくつが重なるか（色が濃いほど多い）")}：${CONDS.map(([l]) => LT(l)).join("・")}。${LT("国の数字から出した、めやすです")}` },
+    { id: "overlap", name: "気をつけたいことの重なり", ok: (flood || quake || slope) && overlap.some((f) => f.properties.n > 0), legend: `${["#f6dfa8", "#f0b36b", "#d9773a", "#a8462a"].map((c, i) => `<i class="dot sq" style="background:${c}"></i>${i + 1}${i === 3 ? "+" : ""}`).join(" ")}　${LT("町・字ごとに、次のうちいくつが重なるか（色が濃いほど多い）")}：${CONDS.map(([l]) => LT(l)).join("・")}。${LT("国の数字から出した、めやすです")}` },
     { id: "town", name: "町・字の境", on: true, ok: townFeatures.length > 0 },
-    { id: "shelter", name: "避難場所", on: true, ok: !!shelters, legend: `<i class="dot" style="background:#2f7d4f"></i>${LT("指定緊急避難場所（押すと名前と、使える災害）")}` },
-    { id: "lore", name: "昔の災害を伝える碑", on: true, ok: !!(lore?.own.length || lore?.near.length), legend: `<i class="dot" style="background:#7a5c3e"></i>${LT("自然災害伝承碑（国土地理院）。押すと、伝えている災害と碑の文")}` },
+    { id: "shelter", name: "避難場所", on: true, main: true, ok: !!shelters, legend: `<i class="dot" style="background:#2f7d4f"></i>${LT("指定緊急避難場所（押すと名前と、使える災害）")}` },
+    { id: "lore", name: "昔の災害を伝える碑", ok: !!(lore?.own.length || lore?.near.length), legend: `<i class="dot" style="background:#7a5c3e"></i>${LT("自然災害伝承碑（国土地理院）。押すと、伝えている災害と碑の文")}` },
     { id: "kaigo", name: "介護の事業所", ok: !!kaigo?.items?.some((x) => x.lat), legend: `<i class="dot" style="background:#8a5a9e"></i>${LT("介護の事業所（厚生労働省の介護サービス情報公表システム）。空きや受け入れは事業所に問い合わせてください")}` },
-    { id: "aed", name: "AED", ok: !!aed?.features?.length, legend: `<i class="dot" style="background:#0b7a75"></i>${LT("AED の設置場所（町の一覧）。使える日と時間は施設によってちがいます")}` },
-    { id: "iryo", name: "病院・診療所", ok: medFeatures.length > 0, legend: `<i class="dot" style="background:#2a6fdb"></i>${LT("いまやっている")} <i class="dot" style="background:#9db8e8"></i>${LT("今日やっている")} <i class="dot" style="background:#ccc"></i>${LT("今日は休み")}` },
-    { id: "rain", name: "雨雲（いま）", ok: !!nowc, legend: `${LT("気象庁の雨雲の動き（高解像度降水ナウキャスト）")}${nowc ? `：${t(nowc[0].validtime)}` : ""}。${LT("薄い水色は弱い雨、黄・赤・紫ほど強い雨")}` },
+    { id: "aed", name: "AED", main: true, ok: !!aed?.features?.length, legend: `<i class="dot" style="background:#0b7a75"></i>${LT("AED の設置場所（町の一覧）。使える日と時間は施設によってちがいます")}` },
+    { id: "iryo", name: "病院・診療所", main: true, ok: medFeatures.length > 0, legend: `<i class="dot" style="background:#2a6fdb"></i>${LT("いまやっている")} <i class="dot" style="background:#9db8e8"></i>${LT("今日やっている")} <i class="dot" style="background:#ccc"></i>${LT("今日は休み")}` },
+    { id: "rain", name: "雨雲（いま）", main: true, ok: !!nowc, legend: `${LT("気象庁の雨雲の動き（高解像度降水ナウキャスト）")}${nowc ? `：${t(nowc[0].validtime)}` : ""}。${LT("薄い水色は弱い雨、黄・赤・紫ほど強い雨")}` },
     { id: "kikikuru", name: "キキクル（土砂）", ok: !!risk, legend: `${LT("気象庁の土砂災害の危険度分布")}${risk ? `：${t(risk[0].validtime)}` : ""}。${LT("黄＝注意・赤＝警戒（お年寄りなどは危険な所から避難）・紫＝危険（危険な所から全員避難）・黒＝災害が起きているおそれ")}` },
     { id: "tsunami", name: "津波の想定", ok: true, legend: LT("津波浸水想定（最大クラス）。色が濃いほど深い") },
     { id: "flood", name: "洪水の想定", ok: true, legend: LT("洪水浸水想定区域（想定最大規模）。色が濃いほど深い") },
     { id: "dosha", name: "土砂災害警戒区域", ok: true, legend: LT("土石流・急傾斜地の崩壊・地すべりの警戒区域（赤みの濃い所は特別警戒区域）") },
     { id: "acc", name: "事故が重なる所", ok: !!acc?.spots?.length, legend: `<i class="dot" style="background:#e8833a"></i>${LT("3年で3件以上の人身事故（警察庁）")}` },
     { id: "bus", name: "バス停", ok: !!bus?.stops?.length, legend: `<i class="dot" style="background:#5b8fc7"></i>${LT("大きいほど平日の本数が多い")}${bus?.lines?.length ? `　${LT("線はバスの路線（時刻表データから）。バス停を押すと、この先の発車")}` : ""}` },
-  ].filter((l) => l.ok);
+  ].filter((l) => l.ok).sort((a, b) => Boolean(b.main) - Boolean(a.main));
 
   const map = new maplibregl.Map({
     container: box,
@@ -173,12 +173,15 @@ async function showLayerMap(code, townFeatures, at, esc, part = null) {
 
   const on = new Set(LAYERS.filter((l) => l.on).map((l) => l.id));
   let openOnly = false;
+  let more = false;
   function setVis(id, v) {
     for (const lid of id === "dosha" ? ["dosha0", "dosha1", "dosha2"] : id === "bus" ? ["bus-route", "bus"] : [id]) if (map.getLayer(lid)) map.setLayoutProperty(lid, "visibility", v ? "visible" : "none");
   }
   function draw() {
     const chips = document.getElementById("layer-chips");
-    chips.innerHTML = LAYERS.map((l) => `<button type="button" data-id="${l.id}" aria-pressed="${on.has(l.id)}">${esc(LT(l.name))}</button>`).join("")
+    // しまってある札でも、重ねているあいだは出しておく（消せるように）
+    chips.innerHTML = LAYERS.filter((l) => more || l.main || on.has(l.id)).map((l) => `<button type="button" data-id="${l.id}" aria-pressed="${on.has(l.id)}">${esc(LT(l.name))}</button>`).join("")
+      + (LAYERS.some((l) => !l.main && !on.has(l.id)) ? `<button type="button" class="more-layers" aria-expanded="${more}">${more ? LT("しまう") : `${LT("もっと重ねる")}（${LAYERS.filter((l) => !l.main && !on.has(l.id)).length}）`}</button>` : "")
       + (on.has("iryo") ? `<label class="open-only"><input type="checkbox" id="open-only" ${openOnly ? "checked" : ""}> ${LT("いまやっている病院だけ")}</label>` : "");
     document.getElementById("layer-legend").innerHTML = LAYERS.filter((l) => on.has(l.id) && l.legend).map((l) => `<li><strong>${esc(LT(l.name))}</strong> ${l.legend}</li>`).join("");
     document.getElementById("open-only")?.addEventListener("change", (e) => {
@@ -187,6 +190,7 @@ async function showLayerMap(code, townFeatures, at, esc, part = null) {
     });
   }
   document.getElementById("layer-chips").addEventListener("click", (e) => {
+    if (e.target.closest(".more-layers")) { more = !more; draw(); return; }
     const b = e.target.closest("button[data-id]");
     if (!b) return;
     const id = b.dataset.id;

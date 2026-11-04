@@ -47,13 +47,18 @@ const WIDGETS = { frost: frostWidget, sea: seaWidget, snow: snowWidget };
 async function showFeatures(code, at) {
   const d = await getData("data/features.json");
   const mine = d?.towns?.[code] ?? [];
-  const ind = mine.some((f) => f === "nougyou" || f === "gyogyou") ? (await fetch("data/industry.json").then((r) => r.json()).catch(() => null))?.towns?.[code] : null;
+  const indAll = mine.some((f) => f === "nougyou" || f === "gyogyou") ? (await fetch("data/industry.json").then((r) => r.json()).catch(() => null))?.towns : null;
+  const ind = indAll?.[code] ?? null;
+  const allInd = Object.values(indAll ?? {});
+  const rankIn = (k) => allInd.filter((x) => x[k] > ind[k]).length + 1;
+  // 全国の真ん中の値も添える（10番目まで・1割までに入らないときは、真ん中の値だけ）
+  const midOf = (k) => { const v = allInd.map((x) => x[k]).filter((x) => typeof x === "number").sort((a, b) => a - b); const m = v[Math.floor(v.length / 2)]; return m ? `${m}%` : null; };
   for (const id of mine) {
     const f = FEATURES[id];
     if (!f) continue;
     const view = `feat-${id}`;
-    const why = id === "nougyou" && ind ? `${T("働く人のうち農業・林業")} ${ind.agri}%（${T("全国の市区町村で高いほうから")} ${ind.agriTop}%）`
-      : id === "gyogyou" && ind ? `${T("働く人のうち漁業")} ${ind.fish}%（${T("全国の市区町村で高いほうから")} ${ind.fishTop}%）`
+    const why = id === "nougyou" && ind ? `${T("働く人のうち農業・林業")} ${ind.agri}%、${placeWords(rankIn("agri"), allInd.length, midOf("agri"))}`
+      : id === "gyogyou" && ind ? `${T("働く人のうち漁業")} ${ind.fish}%、${placeWords(rankIn("fish"), allInd.length, midOf("fish"))}`
       : id === "yuki" ? T("豪雪地帯") : id === "kazan" ? T("火山災害警戒地域") : id === "shima" ? T("離島がある") : "";
     PAGES.splice(1, 0, { view, title: f.title, desc: f.desc, feature: true, why, later: f.later });
     const el = document.createElement("div");

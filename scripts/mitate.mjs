@@ -17,12 +17,18 @@ export function townFacts(code) {
   const s = stats.summary;
   const f = [];
   const add = (text, src) => f.push(`${text}（${src}）`);
-  // 上から10番目までは「全国 1,741 の市区町村の上から N番目」と順番で書く（作者「6番目なら、6番目と書いたほうが分かりやすいよね」）。それより下は「上から ○%」
+  // 全国の中での位置は、町のページと同じ言い方で（site/types.js の placeWords と同じ決まり）。
+  // 上から（下から）10番目までは順番、1割までは「全国でも高い（低い）ほう」、それ以外は言わない。真ん中の値はいつも添える
+  // （作者「6番目なら、6番目と書いたほうが分かりやすいよね」「『上から ○%』これは分かりにくいからやめよう」）
   const all = Object.values(stats.towns).filter((x) => !x.ward).length;
-  const top = (k) => (t.rank?.[k] != null && t.rank[k] <= 10 ? `全国 ${all.toLocaleString("ja-JP")} の市区町村の上から ${t.rank[k]}番目` : t.top?.[k] != null ? `全国の市区町村の上から ${t.top[k]}%` : "");
-  add(`人口 ${t.population.toLocaleString("ja-JP")}人、65歳以上 ${t.over65Rate}%（${top("over65Rate")}、全国の上から10%の境目は ${s.over65Rate.top10}%）、75歳以上 ${t.over75Rate}%、15歳未満 ${t.under15Rate}%`, "住民基本台帳 令和8年1月1日");
-  add(`外国の住民 ${t.foreignRate}%（${top("foreignRate")}、全国の上から10%の境目は ${s.foreignRate.top10}%）、1年の人口の増減 ${t.changeRate}%、引っ越しによる増減 ${t.socialChangeRate}%`, "住民基本台帳");
-  if (t.elderlySingleRate != null) add(`65歳以上の一人暮らしの世帯 ${t.elderlySingleRate}%（全国の上から10%の境目は ${s.elderlySingleRate.top10}%）`, "国勢調査 2020年");
+  const top = (k) => {
+    const r = t.rank?.[k], low = all - r + 1;
+    const word = r == null ? "" : r <= 10 ? `全国 ${all.toLocaleString("ja-JP")} の市区町村で ${r} 番目に高い` : low <= 10 ? `全国 ${all.toLocaleString("ja-JP")} の市区町村で ${low} 番目に低い` : r <= all / 10 ? "全国でも高いほう" : low <= all / 10 ? "全国でも低いほう" : "";
+    return [word, s[k]?.median != null ? `全国の真ん中は ${s[k].median}%` : ""].filter(Boolean).join("、");
+  };
+  add(`人口 ${t.population.toLocaleString("ja-JP")}人、65歳以上 ${t.over65Rate}%（${top("over65Rate")}）、75歳以上 ${t.over75Rate}%、15歳未満 ${t.under15Rate}%`, "住民基本台帳 令和8年1月1日");
+  add(`外国の住民 ${t.foreignRate}%（${top("foreignRate")}）、1年の人口の増減 ${t.changeRate}%、引っ越しによる増減 ${t.socialChangeRate}%`, "住民基本台帳");
+  if (t.elderlySingleRate != null) add(`65歳以上の一人暮らしの世帯 ${t.elderlySingleRate}%（${top("elderlySingleRate")}）`, "国勢調査 2020年");
   const feats = read("site/data/features.json")?.towns?.[code];
   if (feats?.length) add(`町の特徴：${feats.map((x) => ({ nougyou: "農業", gyogyou: "漁業", yuki: "雪", kazan: "火山", shima: "島" })[x] ?? x).join("・")}`, "国勢調査・国の指定");
   const fp = read(`site/data/flood-pop/${code}.json`);
