@@ -21,10 +21,11 @@
   <p id="where" class="where"></p>
   <div class="head-notes">
     <p class="unofficial">非公式の暮らしの案内です。どの情報にも出典があります</p>
+    <button type="button" class="share-btn icon-only" id="share" aria-label="このページを家族に送る" title="このページを家族に送る"></button>
     <details id="town-color-note" class="color-note" hidden></details>
   </div>
   <div id="lang-bar" class="lang-bar" hidden></div>
-  <div class="share-row"><button type="button" class="share-btn" id="share">このページを家族に送る</button><span id="share-done" class="share-done" role="status"></span></div>
+  <div class="share-row" id="share-row" hidden><span id="share-done" class="share-done" role="status"></span></div>
 </header>
 
 <!-- 言葉を選ぶ（見出しは、どの言葉の人にも分かるように英語と日本語を並べる） -->
@@ -111,7 +112,7 @@
     <section class="block" id="hinan-block" hidden>
       <h2>わが家の避難</h2>
       <button type="button" class="here-btn" id="hinan-here">今いる所から、近い避難場所を探す</button>
-      <p class="note">現在地はこの端末の中だけで使い、残しません。選んだ町・字は、次に開いたときのために、この端末に覚えます。「Google マップで歩く道を見る」を押したときだけ、選んだ場所と避難場所を Google マップに渡します。</p>
+      <details class="hinan-privacy"><summary>現在地と、選んだ町・字の扱い</summary><p>現在地はこの端末の中だけで使い、残しません。選んだ町・字は、次に開いたときのために、この端末に覚えます。「Google マップで歩く道を見る」を押したときだけ、選んだ場所と避難場所を Google マップに渡します。</p></details>
       <div class="hinan-controls">
         <label class="field"><span>町・字を選ぶ</span><select id="hinan-town"></select></label>
         <div class="hinan-kind" id="hinan-kinds" role="radiogroup" aria-label="どの災害のときか"></div>
@@ -331,7 +332,7 @@
     </section>
     <section class="block">
       <h2>このページのしくみ</h2>
-      <p>このページの情報は、AI が町の公式のサイトや国の公開データだけを読んでまとめ、出典をつけたものです。権利や、資料どうしの食い違いなど、気をつけたい答えは人が確かめています。それ以外は、人の目を通さずに出しています。数字や距離・洗濯や服装は「めやす」です。正しい情報は町の公式のページで確かめてください。</p>
+      <p id="how-note">このページの情報は、AI が町の公式のサイトや国の公開データだけを読んでまとめ、出典をつけたものです。権利や、資料どうしの食い違いなど、気をつけたい答えは人が確かめています。それ以外は、人の目を通さずに出しています。数字や距離・洗濯や服装は「めやす」です。正しい情報は町の公式のページで確かめてください。</p>
       <a class="secondary as-button" href="review.html">確かめる一覧を見る</a>
     </section>
   </div>

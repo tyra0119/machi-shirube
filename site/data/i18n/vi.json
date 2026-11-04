@@ -1,11 +1,11 @@
 {
  "lang": "vi",
  "name": "Tiếng Việt",
- "createdAt": "2026-11-04T03:11:55.876Z",
+ "createdAt": "2026-11-04T03:27:19.822Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 905,
- "of": 873,
+ "count": 912,
+ "of": 880,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Đây là trang hướng dẫn đời sống không chính thức của thị trấn này. Claude thu thập từ các trang chính thức của thị trấn v.v. và ghi rõ nguồn (Machi-shirube)",
   "すべてのページ": "Tất cả các trang",
@@ -911,6 +911,13 @@
   "新しく載せました": "Mới đăng",
   "まちがいを知らせる": "Báo lỗi",
   "まちがいや古い所を知らせる": "Báo chỗ sai hoặc đã cũ",
-  "知っていたら教える": "Biết thì chia sẻ"
+  "知っていたら教える": "Biết thì chia sẻ",
+  "家族に送る": "Gửi cho gia đình",
+  "現在地と、選んだ町・字の扱い": "Cách xử lý vị trí hiện tại và thị trấn/khu (aza) đã chọn",
+  "このページの情報は、AI が町の公式のサイトや国の公開データだけを読んでまとめ、出典をつけたものです。権利や、資料どうしの食い違いなど、気をつけたい答えは人が確かめています。それ以外は、人の目を通さずに出しています。数字や距離・洗濯や服装は「めやす」です。正しい情報は町の公式のページで確かめてください。": "Thông tin trên trang này do AI chỉ đọc trang web chính thức của thị trấn và dữ liệu công khai của nhà nước rồi tổng hợp, có ghi rõ nguồn. Những câu trả lời cần thận trọng, như về quyền lợi hoặc chỗ các tài liệu mâu thuẫn nhau, đều do con người kiểm tra. Các phần còn lại được đưa ra mà không qua kiểm tra của con người. Các con số, khoảng cách, việc giặt giũ và trang phục chỉ là \"tham khảo\". Hãy xác nhận thông tin chính xác trên trang chính thức của thị trấn.",
+  "この町は、まだ AI が町の公式のサイトを調べていません。いまは国の公開データ（天気・警報・病院・避難場所・人口など）だけで作っています。どの情報にも出典をつけています。": "AI vẫn chưa tìm hiểu trang web chính thức của thị trấn này. Hiện tại trang chỉ được tạo từ dữ liệu công khai của nhà nước (thời tiết, cảnh báo, bệnh viện, nơi sơ tán, dân số, v.v.). Mọi thông tin đều có ghi nguồn.",
+  "町の公式サイトを開く": "Mở trang web chính thức của thị trấn",
+  "町の公式サイトで探す（Google 検索）": "Tìm trên trang web chính thức của thị trấn (Tìm kiếm Google)",
+  "この町も調べてほしい": "Mong tìm hiểu cả thị trấn này"
  }
 }

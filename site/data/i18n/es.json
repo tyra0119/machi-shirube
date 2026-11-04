@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-04T03:11:23.017Z",
+ "createdAt": "2026-11-04T03:27:05.641Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 907,
- "of": 873,
+ "count": 914,
+ "of": 880,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -913,6 +913,13 @@
   "新しく載せました": "Recién publicado",
   "まちがいを知らせる": "Avisar de un error",
   "まちがいや古い所を知らせる": "Avisar de errores o datos desactualizados",
-  "知っていたら教える": "Si lo sabe, cuéntenos"
+  "知っていたら教える": "Si lo sabe, cuéntenos",
+  "家族に送る": "Enviar a la familia",
+  "現在地と、選んだ町・字の扱い": "Ubicación actual y tratamiento del pueblo y del barrio (aza) elegidos",
+  "このページの情報は、AI が町の公式のサイトや国の公開データだけを読んでまとめ、出典をつけたものです。権利や、資料どうしの食い違いなど、気をつけたい答えは人が確かめています。それ以外は、人の目を通さずに出しています。数字や距離・洗濯や服装は「めやす」です。正しい情報は町の公式のページで確かめてください。": "La información de esta página la ha recopilado una IA leyendo únicamente los sitios web oficiales del municipio y los datos públicos del país, e incluye las fuentes. Las respuestas que requieren especial cuidado, como las relacionadas con derechos o con discrepancias entre documentos, son verificadas por personas. El resto se publica sin revisión humana. Las cifras, las distancias y los consejos sobre la colada y la ropa son solo orientativos. Consulte la información correcta en la página oficial del municipio.",
+  "この町は、まだ AI が町の公式のサイトを調べていません。いまは国の公開データ（天気・警報・病院・避難場所・人口など）だけで作っています。どの情報にも出典をつけています。": "La IA todavía no ha consultado el sitio web oficial de este municipio. Por ahora, la página se ha creado solo con datos públicos del país (clima, alertas, hospitales, refugios, población, etc.). Toda la información incluye su fuente.",
+  "町の公式サイトを開く": "Abrir el sitio web oficial del municipio",
+  "町の公式サイトで探す（Google 検索）": "Buscar en el sitio oficial del municipio (búsqueda de Google)",
+  "この町も調べてほしい": "Quiero que investiguen también este municipio"
  }
 }

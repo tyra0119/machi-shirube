@@ -109,6 +109,10 @@ const remember = {
 };
 // このページを家族に送る：スマホでは共有の画面（LINE・メールなど）を開く。無い端末では、リンクを写して LINE で送るボタンを出す
 // （住む人の目で見ると、家族に送る方法がなく、LINE で送っても町の名前が出なかった）
+// 言葉のボタンがあるときは、その並びの端に寄せる（帯を1段減らす）
+// 家族に送る：印（共有の印）だけの丸いボタンを、町の名前の行の右端に（どの言葉でも同じ所。町の名前の帯を1段減らす）
+$("share").innerHTML = icon("share");
+new MutationObserver(() => { if ($("share-done").textContent) $("share-row").hidden = false; }).observe($("share-done"), { childList: true });
 $("share").addEventListener("click", async () => {
   const url = location.href.split("#")[0];
   const text = TN("{name}のくらしの案内（今日の天気・ごみの日・近い避難場所・病院）", { name: $("name").textContent });
@@ -120,6 +124,8 @@ $("share").addEventListener("click", async () => {
 const reportHref = (page) => { const rp = new URLSearchParams(location.search); rp.set("page", page); return `report.html?${rp}`; };
 // 町の人に聞きたいこと：知っている人が、作者の Google フォームから教えられるように（町の名前と問いを入れて開く）
 const ASK_FORM = "https://docs.google.com/forms/d/e/1FAIpQLSdc1pzMimJcJer_TDa4yiwjsY39I1GttFui0bWaeQf9RasRlQ/viewform";
+// この町も調べてほしい：同じフォームで受ける（どの町の住む人が待っているかが分かる）
+const wantHref = (what) => `${ASK_FORM}?usp=pp_url&entry.1957422775=${encodeURIComponent(`${$("where").textContent} ${$("name").textContent}`.trim())}&entry.1140291794=${encodeURIComponent(`この町も調べてほしい：${what}`)}`;
 const askHref = (what) => `${ASK_FORM}?usp=pp_url&entry.1957422775=${encodeURIComponent(`${$("where").textContent} ${$("name").textContent}`.trim())}&entry.1140291794=${encodeURIComponent(`町の人に聞きたいこと：${what}`)}`;
 // 上のメニュー（パソコン）：よく使うページと、右の端に「すべてのページ」
 // 下のメニュー（スマホ）：親指の届く所に、よく使う4つと「ほか」（すべてのページ）だけを並べる。横に動かさなくても全部が見える
@@ -801,6 +807,8 @@ async function showAnswers(code, scopeNote, partKey, partName) {
       if (x) Object.assign(a, { valueJa: a.value, value: seireki(x.text, LANG), translated: true, shortT: x.short });
     }
   }
+  // 深く調べていない町では「このページのしくみ」を中身に合わせる（AI が調べた答えはまだ無く、国の公開データだけ）
+  if (!answers.length && $("how-note")) $("how-note").textContent = T("この町は、まだ AI が町の公式のサイトを調べていません。いまは国の公開データ（天気・警報・病院・避難場所・人口など）だけで作っています。どの情報にも出典をつけています。");
   yardstick = (await getData("data/yardstick.json")) ?? { questions: [] };
   health = await getData("data/health.json");
   answers.sort((x, y) => Boolean(y.level) - Boolean(x.level) || String(x.qid ?? "").localeCompare(String(y.qid ?? "")));
@@ -809,6 +817,11 @@ async function showAnswers(code, scopeNote, partKey, partName) {
     const page = yardstick.questions.find((x) => x.id === a.qid)?.page ?? "shiru";
     (answersByPage[page] ??= []).push(a);
   }
+  // 準備中の所：町の公式サイト（分かっている町）か、町の名前で探すリンクと、「この町も調べてほしい」
+  // （住む人の目で見ると、深く調べていない町はほとんどのページが「準備中」で、その先に進む道が無かった）
+  const site = (await getData("data/official-sites.json"))?.[code];
+  const town = `${$("where").textContent} ${$("name").textContent}`.split("・")[0].trim();
+  const laterGo = (p) => `<p class="later-go">${site ? `<a href="${esc(site.url)}" target="_blank" rel="noopener">${T("町の公式サイトを開く")}</a>` : `<a href="https://www.google.com/search?q=${encodeURIComponent(`${town} ${T(p.title)} 公式`)}" target="_blank" rel="noopener">${T("町の公式サイトで探す（Google 検索）")}</a>`}<a class="ask-tell" href="${esc(wantHref(p.title))}" target="_blank" rel="noopener">${T("この町も調べてほしい")}</a></p>`;
   for (const box of document.querySelectorAll(".answers-box")) {
     const list = answersByPage[box.dataset.page] ?? [];
     const p = PAGES.find((x) => x.view === box.dataset.page);
@@ -816,7 +829,7 @@ async function showAnswers(code, scopeNote, partKey, partName) {
     box.innerHTML = (p ? `<div class="page-banner" style="--h:${ILLUST[p.view]?.h ?? 200}">${illust(p.view)}<p><strong>${esc(T(p.title))}</strong>${esc(T(p.desc))}${list.length ? `<span>${T("公式のサイトから確かめた答え")} ${list.length}</span>` : ""}</p></div>` : "")
       + (list.length && scopeNote && !list.some((a) => a.level) ? `<p class="note">${esc(scopeNote)}</p>` : "")
       + (list.length ? answersHTML(list) : "")
-      + (p?.later && !list.length ? `<p class="later"><span>${T("準備中")}</span>${LANG ? `${esc(T(p.later))} — ${T("町の公式のサイトから探して、出典つきでここに出します。")}` : `${esc(p.later)}を、町の公式のサイトから探して、出典つきでここに出します。`}</p>` : "")
+      + (p?.later && !list.length ? `<p class="later"><span>${T("準備中")}</span>${LANG ? `${esc(T(p.later))} — ${T("町の公式のサイトから探して、出典つきでここに出します。")}` : `${esc(p.later)}を、町の公式のサイトから探して、出典つきでここに出します。`}</p>${laterGo(p)}` : "")
       + (!list.length && !p?.later ? `<p class="note">まだありません。</p>` : "");
   }
 }

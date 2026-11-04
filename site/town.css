@@ -770,3 +770,26 @@ ruby rt { font-size: 0.55em; font-weight: 400; letter-spacing: 0; }
 .all-report { display: flex; align-items: center; gap: 6px; min-height: 44px; margin: 0 0 8px; padding: 0 8px; border: 1px dashed var(--line); border-radius: 8px; color: var(--text-sub); font-size: 14px; text-decoration: none; }
 .all-report .ic { width: 18px; height: 18px; }
 .ask-tell { display: inline-flex; align-items: center; min-height: 36px; margin-top: 2px; padding: 0 12px; border: 1px solid var(--accent); border-radius: 999px; color: var(--accent); font-size: 13px; font-weight: 700; text-decoration: none; align-self: flex-start; }
+
+/* 町の名前の帯を低く：名前と県を1行に。家族に送るは言葉のボタンの並びの端に */
+.town-head h1 { display: inline-block; margin-right: 10px; }
+.town-head .where { display: inline-block; margin: 0 0 6px; }
+.lang-bar .share-btn { min-height: 36px; padding: 0 12px; font-size: 13px; }
+.share-row[hidden] { display: none; }
+/* わが家の避難：現在地の扱いは押すと開く */
+.hinan-privacy { margin: 0 0 6px; font-size: 13px; color: var(--text-sub); }
+.hinan-privacy summary { min-height: 32px; cursor: pointer; }
+.hinan-privacy p { margin: 2px 0 0; line-height: 1.6; }
+/* 準備中の所から、その先へ */
+.later-go { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 8px 0 0; }
+.later-go > a:first-child { display: inline-flex; align-items: center; min-height: 36px; font-size: 14px; font-weight: 600; color: var(--accent); }
+.lang-bar .share-btn.icon-only { width: 40px; min-height: 40px; padding: 0; justify-content: center; }
+.lang-bar .share-btn.icon-only .ic { width: 20px; height: 20px; margin: 0; }
+
+.head-notes { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 8px; }
+.share-btn.icon-only { width: 40px; min-height: 40px; padding: 0; justify-content: center; }
+.share-btn.icon-only .ic { width: 20px; height: 20px; margin: 0; }
+
+.town-head { position: relative; }
+.town-head .share-btn.icon-only { position: absolute; right: 16px; top: 52px; }
+.town-head h1 { max-width: calc(100% - 56px); }

@@ -1,11 +1,11 @@
 {
  "lang": "tl",
  "name": "Filipino",
- "createdAt": "2026-11-04T03:12:00.655Z",
+ "createdAt": "2026-11-04T03:27:19.824Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 898,
- "of": 873,
+ "count": 905,
+ "of": 880,
  "dict": {
   "この町の非公式の暮らしの案内です。町の公式のサイトや国の公開データから集め、出典をつけています（まちしるべ）": "Ito ay isang di-opisyal na gabay sa pamumuhay sa bayang ito. Kinuha ito mula sa opisyal na website ng bayan at sa pampublikong datos ng bansa, at may nakasaad na pinagmulan (Machishirube)",
   "すべてのページ": "Lahat ng pahina",
@@ -904,6 +904,13 @@
   "新しく載せました": "Bagong dagdag",
   "まちがいを知らせる": "Mag-ulat ng mali",
   "まちがいや古い所を知らせる": "Mag-ulat ng mali o luma na",
-  "知っていたら教える": "Ibahagi kung alam mo"
+  "知っていたら教える": "Ibahagi kung alam mo",
+  "家族に送る": "Ipadala sa pamilya",
+  "現在地と、選んだ町・字の扱い": "Paggamit sa kasalukuyang lokasyon at sa napiling bayan o distrito (字)",
+  "このページの情報は、AI が町の公式のサイトや国の公開データだけを読んでまとめ、出典をつけたものです。権利や、資料どうしの食い違いなど、気をつけたい答えは人が確かめています。それ以外は、人の目を通さずに出しています。数字や距離・洗濯や服装は「めやす」です。正しい情報は町の公式のページで確かめてください。": "Ang impormasyon sa pahinang ito ay kinalap ng AI mula lamang sa opisyal na website ng bayan at sa mga pampublikong datos ng bansa, at may kasamang pinagmulan. Ang mga sagot na dapat bigyang-pansin, gaya ng tungkol sa mga karapatan o pagkakasalungatan ng mga dokumento, ay sinuri ng tao. Ang iba pa ay inilalabas nang hindi dumaan sa pagsusuri ng tao. Ang mga numero, distansya, paglalaba, at kasuotan ay \"pangkalahatang gabay\" lamang. Para sa tamang impormasyon, tingnan ang opisyal na pahina ng bayan.",
+  "この町は、まだ AI が町の公式のサイトを調べていません。いまは国の公開データ（天気・警報・病院・避難場所・人口など）だけで作っています。どの情報にも出典をつけています。": "Hindi pa nasusuri ng AI ang opisyal na website ng bayang ito. Sa ngayon, ginawa ito gamit lamang ang mga pampublikong datos ng bansa (panahon, babala, ospital, evacuation site, populasyon, atbp.). May kasamang pinagmulan ang bawat impormasyon.",
+  "町の公式サイトを開く": "Buksan ang opisyal na website ng bayan",
+  "町の公式サイトで探す（Google 検索）": "Maghanap sa opisyal na website ng bayan (Google Search)",
+  "この町も調べてほしい": "Pakisuri rin ang bayang ito"
  }
 }

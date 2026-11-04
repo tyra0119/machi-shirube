@@ -1,11 +1,11 @@
 {
  "lang": "en",
  "name": "English",
- "createdAt": "2026-11-04T03:11:27.301Z",
+ "createdAt": "2026-11-04T03:27:05.643Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 908,
- "of": 873,
+ "count": 915,
+ "of": 880,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "This is an unofficial guide to living in this town. Claude gathers information from the town's official website and other sources, and cites each source (Machishirube)",
   "すべてのページ": "All pages",
@@ -914,6 +914,13 @@
   "新しく載せました": "Newly added",
   "まちがいを知らせる": "Report an error",
   "まちがいや古い所を知らせる": "Report an error or outdated info",
-  "知っていたら教える": "Tell us if you know"
+  "知っていたら教える": "Tell us if you know",
+  "家族に送る": "Send to family",
+  "現在地と、選んだ町・字の扱い": "How we handle your current location and your selected town or district",
+  "このページの情報は、AI が町の公式のサイトや国の公開データだけを読んでまとめ、出典をつけたものです。権利や、資料どうしの食い違いなど、気をつけたい答えは人が確かめています。それ以外は、人の目を通さずに出しています。数字や距離・洗濯や服装は「めやす」です。正しい情報は町の公式のページで確かめてください。": "The information on this page was compiled by AI, which read only the town's official website and public national data, and it includes sources. Answers that need extra care, such as those about rights or conflicts between documents, are checked by people. Everything else is published without human review. Numbers, distances, laundry and clothing tips are only a \"guide.\" Please check the town's official pages for accurate information.",
+  "この町は、まだ AI が町の公式のサイトを調べていません。いまは国の公開データ（天気・警報・病院・避難場所・人口など）だけで作っています。どの情報にも出典をつけています。": "AI has not yet checked this town's official website. For now, this page uses only public national data (weather, warnings, hospitals, evacuation sites, population, etc.). Every piece of information includes its source.",
+  "町の公式サイトを開く": "Open the town's official website",
+  "町の公式サイトで探す（Google 検索）": "Search the town's official website (Google search)",
+  "この町も調べてほしい": "Please research this town too"
  }
 }

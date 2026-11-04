@@ -1,11 +1,11 @@
 {
  "lang": "id",
  "name": "Bahasa Indonesia",
- "createdAt": "2026-11-04T03:11:43.489Z",
+ "createdAt": "2026-11-04T03:27:19.817Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 905,
- "of": 873,
+ "count": 912,
+ "of": 880,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Ini adalah panduan hidup tidak resmi untuk kota ini. Claude mengumpulkannya dari situs resmi kota dan sumber lain, dengan mencantumkan sumbernya (Machishirube)",
   "すべてのページ": "Semua halaman",
@@ -911,6 +911,13 @@
   "新しく載せました": "Baru ditambahkan",
   "まちがいを知らせる": "Laporkan kesalahan",
   "まちがいや古い所を知らせる": "Laporkan kesalahan atau bagian yang sudah usang",
-  "知っていたら教える": "Beri tahu jika Anda tahu"
+  "知っていたら教える": "Beri tahu jika Anda tahu",
+  "家族に送る": "Kirim ke keluarga",
+  "このページの情報は、AI が町の公式のサイトや国の公開データだけを読んでまとめ、出典をつけたものです。権利や、資料どうしの食い違いなど、気をつけたい答えは人が確かめています。それ以外は、人の目を通さずに出しています。数字や距離・洗濯や服装は「めやす」です。正しい情報は町の公式のページで確かめてください。": "Informasi di halaman ini dirangkum oleh AI hanya dari situs resmi kota dan data publik pemerintah, lalu diberi sumber. Jawaban yang perlu diperhatikan, seperti soal hak atau perbedaan antar-dokumen, diperiksa langsung oleh manusia. Selain itu, informasi ditampilkan tanpa melalui pemeriksaan manusia. Angka, jarak, serta saran mencuci dan berpakaian hanyalah \"perkiraan\". Pastikan informasi yang benar di halaman resmi kota.",
+  "この町は、まだ AI が町の公式のサイトを調べていません。いまは国の公開データ（天気・警報・病院・避難場所・人口など）だけで作っています。どの情報にも出典をつけています。": "Untuk kota ini, AI belum memeriksa situs resmi kota. Saat ini halaman dibuat hanya dari data publik pemerintah (cuaca, peringatan, rumah sakit, tempat evakuasi, jumlah penduduk, dll.). Setiap informasi diberi sumber.",
+  "町の公式サイトを開く": "Buka situs resmi kota",
+  "町の公式サイトで探す（Google 検索）": "Cari di situs resmi kota (pencarian Google)",
+  "この町も調べてほしい": "Tolong periksa kota ini juga",
+  "現在地と、選んだ町・字の扱い": "Penanganan lokasi saat ini serta kota dan wilayah (aza) yang dipilih"
  }
 }

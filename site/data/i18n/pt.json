@@ -1,11 +1,11 @@
 {
  "lang": "pt",
  "name": "Português",
- "createdAt": "2026-11-04T03:11:19.298Z",
+ "createdAt": "2026-11-04T03:27:05.638Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 908,
- "of": 873,
+ "count": 915,
+ "of": 880,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Guia não oficial da vida na cidade. O Claude reúne as informações em sites oficiais da cidade e outras fontes, e indica a origem de cada uma (Machishirube)",
   "すべてのページ": "Todas as páginas",
@@ -914,6 +914,13 @@
   "新しく載せました": "Novidade",
   "まちがいを知らせる": "Avisar sobre um erro",
   "まちがいや古い所を知らせる": "Avisar sobre erros ou informações desatualizadas",
-  "知っていたら教える": "Sei a resposta"
+  "知っていたら教える": "Sei a resposta",
+  "家族に送る": "Enviar para a família",
+  "現在地と、選んだ町・字の扱い": "Como tratamos a localização atual e a cidade/bairro (aza) escolhidos",
+  "このページの情報は、AI が町の公式のサイトや国の公開データだけを読んでまとめ、出典をつけたものです。権利や、資料どうしの食い違いなど、気をつけたい答えは人が確かめています。それ以外は、人の目を通さずに出しています。数字や距離・洗濯や服装は「めやす」です。正しい情報は町の公式のページで確かめてください。": "As informações desta página foram reunidas por uma IA que leu apenas os sites oficiais da cidade e dados públicos do governo, com as fontes indicadas. Respostas que exigem cuidado, como as sobre direitos ou divergências entre documentos, são verificadas por pessoas. O restante é publicado sem revisão humana. Números, distâncias, lavagem de roupa e vestuário são apenas \"estimativas\". Confirme as informações corretas nas páginas oficiais da cidade.",
+  "この町は、まだ AI が町の公式のサイトを調べていません。いまは国の公開データ（天気・警報・病院・避難場所・人口など）だけで作っています。どの情報にも出典をつけています。": "A IA ainda não pesquisou o site oficial desta cidade. Por enquanto, esta página usa apenas dados públicos do governo (clima, alertas, hospitais, locais de abrigo, população etc.). Todas as informações têm a fonte indicada.",
+  "町の公式サイトを開く": "Abrir o site oficial da cidade",
+  "町の公式サイトで探す（Google 検索）": "Buscar no site oficial da cidade (pesquisa do Google)",
+  "この町も調べてほしい": "Quero que pesquisem esta cidade também"
  }
 }
