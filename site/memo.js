@@ -148,6 +148,8 @@ function telsOf(text, fallback) {
       if (!label) label = head || fallback;
       // 名前が課の名前だけのときは、見出し（【消費生活】など）を前に添える（「町のまちづくり観光課」だけでは何の窓口か分からない）
       else if (head && !label.includes(head) && /(課|係|室)$/.test(label)) label = `${head}：${label.replace(/^町の/, "")}`;
+      // 「本庁」「佐賀支所」だけでは役場の番号と分からないので、「役場」を添える
+      if (/^(本庁|本所|.{1,6}支所|.{1,6}出張所)$/.test(label)) label = `役場（${label}）`;
       out.push({ label: label.slice(0, 22), num: m[0], line });
       last = m.index + m[0].length;
     }

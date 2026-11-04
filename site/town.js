@@ -1326,6 +1326,11 @@ async function showAsk(code, partKey) {
 const WD = "日月火水木金土";
 // 「毎週火・金曜日」「第1・3水曜日」から、その日に当たるか
 function onDay(when, date) {
+  // 組ごとの日付が別の表にあるもの（「5週ごとの水曜日（組ごとの日付は町の表で）」）は、今日・明日に数えない
+  if (/町の表で|カレンダーで/.test(when)) return false;
+  // 「1月 8・22日／2月 5・19日」「2月4日、4月1日」の形：月と日で当てる
+  const dates = [...when.matchAll(/(\d{1,2})月\s*(\d{1,2}(?:\s*[・、]\s*\d{1,2})*)\s*日/g)];
+  if (dates.length && !/毎週|第/.test(when)) return dates.some(([, m, ds]) => Number(m) === date.getMonth() + 1 && ds.split(/[・、]/).map((x) => Number(x.trim())).includes(date.getDate()));
   const w = WD[date.getDay()];
   const days = (when.match(/[月火水木金土日](?=[・、曜]|$)/g) ?? []);
   if (!days.includes(w)) return false;
@@ -1334,7 +1339,7 @@ function onDay(when, date) {
   const n = Math.ceil(date.getDate() / 7);
   return nth[1].normalize("NFKC").split(/[・、]/).map(Number).includes(n);
 }
-async function showGomiDays(code, partName) {
+async function showGomiDays(code, partName, softName) {
   const g = await getData(`data/gomi-days/${code}.json`);
   if (!g) return null;
   $("gomi-days-block").hidden = false;
@@ -1354,7 +1359,10 @@ async function showGomiDays(code, partName) {
   const sel = $("gomi-area");
   sel.innerHTML = `<option value="">${T("（選ぶ）")}</option>` + g.areas.map((a, i) => `<option value="${i}">${esc(gt(a.area))}${a.towns.length ? `（${esc(a.towns.slice(0, 3).join("・"))}${a.towns.length > 3 ? "…" : ""}）` : ""}</option>`).join("");
   // 町・字のページなら、その名前の地区を選んでおく
-  const guess = partName ? g.areas.findIndex((a) => a.area.includes(partName) || a.towns.some((t) => t.includes(partName))) : -1;
+  // 町・字の名前から地区を当てる（「入野早咲」→ 町・字の欄に「早咲」がある組）。1文字の名前（「町」）では当てない
+  const find = (n) => (n ? g.areas.findIndex((a) => a.area.includes(n) || a.towns.some((t) => t.includes(n) || (t.length >= 2 && n.includes(t)))) : -1);
+  const guess = find(partName);
+  const soft = find(softName); // わが家の避難で選んだ町・字（自分で地区を選んでいなければ使う）
   let todayKinds = null;
   const draw = () => {
     // 「（選ぶ）」のままのとき（値が空）は出さない（Number("") が 0 になり、いちばん上の地区の曜日が、選んだように出ていた）
@@ -1370,6 +1378,7 @@ async function showGomiDays(code, partName) {
   const saved = remember.get(`gomi:${code}`);
   if (guess >= 0) sel.value = String(guess);
   else if (saved && g.areas[Number(saved)]) sel.value = saved;
+  else if (soft >= 0) sel.value = String(soft);
   draw();
   return sel.value ? todayKinds : null;
 }
@@ -1410,7 +1419,7 @@ async function finishPage(code, townFeatures, startPart, scopeNote, at) {
   await showTranslations(code);
   await showLangGap(code);
   await showGomi(code);
-  gomiToday = await showGomiDays(code, part?.properties.name);
+  gomiToday = await showGomiDays(code, part?.properties.name, townFeatures?.find((f) => f.properties.part === remember.get(`hinan:${code}`))?.properties.name);
   await showAsk(code, part ? `${code}-${startPart}` : null);
   todayLife(hasHinan);
   const local = await fetch("api/ping").then((r) => r.ok).catch(() => false);

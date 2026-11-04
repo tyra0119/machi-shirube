@@ -782,7 +782,7 @@ function featureCard(t) {
   const s = stats.source;
   return `
     <p class="pop">人口 ${t.population.toLocaleString("ja-JP")}人</p>
-    <p class="note">全国の市区町村と比べると（「目立つ」は全国の上下 20% に入る数字）</p>
+    <p class="note">全国の市区町村と比べると（「目立つ」は、全国の中でとくに高いか、とくに低い数字）</p>
     <ul class="features">${items.join("")}</ul>
     <p class="note">${t.ward ? "区の数字を、" : ""}全国の市区町村 ${stats.peers.toLocaleString("ja-JP")} と比べています。</p>
     <p class="cite">出典：${s.name}（${s.asOf}。増減は${s.changePeriod}）を加工</p>`;
