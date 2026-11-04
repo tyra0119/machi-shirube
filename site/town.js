@@ -1283,7 +1283,8 @@ async function showGomiDays(code, partName) {
   const guess = partName ? g.areas.findIndex((a) => a.area.includes(partName) || a.towns.some((t) => t.includes(partName))) : -1;
   let todayKinds = null;
   const draw = () => {
-    const a = g.areas[Number(sel.value)];
+    // 「（選ぶ）」のままのとき（値が空）は出さない（Number("") が 0 になり、いちばん上の地区の曜日が、選んだように出ていた）
+    const a = sel.value === "" ? null : g.areas[Number(sel.value)];
     if (!a) { $("gomi-days").innerHTML = ""; $("gomi-today").textContent = T("地区を選ぶと、今日と明日に出せるごみが分かります。"); return; }
     const now = new Date(), tmr = new Date(now.getTime() + 86400000);
     const t0 = a.days.filter((x) => onDay(x.when, now)).map((x) => gt(x.kind)), t1 = a.days.filter((x) => onDay(x.when, tmr)).map((x) => gt(x.kind));
