@@ -73,6 +73,18 @@
   .bar span { position: absolute; left: 1.4vw; top: 50%; transform: translateY(-50%); font-size: max(20px, 1.6vw); font-weight: 700; color: var(--ink); }
   .bar b { position: absolute; right: 1.4vw; top: 50%; transform: translateY(-50%); font-size: max(36px, 3vw); font-variant-numeric: tabular-nums; }
   .bars .src { margin-top: 1.6vw; text-align: center; font-size: max(14px, 1vw); color: var(--sub); }
+  /* pages：防災計画のページが積み上がり、1枚に縮まる */
+  .pile { position: absolute; left: 36%; top: 18vh; width: 22vw; height: 52vh; transform: translateX(-50%); transition: transform 0.9s cubic-bezier(.6, 0, .4, 1), opacity 0.9s ease; }
+  .pile i { position: absolute; left: 0; right: 0; bottom: calc(var(--i) * 0.95vh); height: 2.6vh; border-radius: 0.3vw; background: var(--paper); box-shadow: 0 0.3vh 0.8vh rgba(0, 0, 0, 0.35); transform: translate(var(--x), -40vh) rotate(var(--r)); opacity: 0; transition: transform 0.45s cubic-bezier(.2, .8, .2, 1), opacity 0.3s ease; }
+  .pile i.on { transform: translate(var(--x), 0) rotate(var(--r)); opacity: 1; }
+  .pile.shrink { transform: translateX(-50%) scale(0.08); opacity: 0; }
+  .pcount { position: absolute; left: 62vw; top: 34vh; transition: opacity 0.6s ease; }
+  .pcount b { font-size: max(96px, 8vw); font-weight: 800; font-variant-numeric: tabular-nums; }
+  .pcount small { margin-left: 0.6vw; font-size: max(28px, 2.4vw); color: var(--sub); }
+  .pcount span { display: block; margin-top: 0.4vw; font-size: max(16px, 1.2vw); color: var(--sub); }
+  .pcount.shrink { opacity: 0; }
+  .ans.one { left: 50%; right: auto; top: 26vh; transform: translateX(-50%) scale(0.94); }
+  .ans.one.on { transform: translateX(-50%) scale(1); }
 </style>
 </head>
 <body>

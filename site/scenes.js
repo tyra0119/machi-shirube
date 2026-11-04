@@ -3,6 +3,7 @@
 //  ?scene=card&code=39428&hit=早咲地区津波避難タワー … 町の防災計画（PDF）の表の1行が光り、線が伸びて、町のページの答えのカードになる
 //  ?scene=grid&code=39428 … 物差しの問いのます目が、出典つきの答えで埋まっていく
 //  ?scene=num&code=39428&kind=津波 … 浸かる想定の所に住む人の数が数え上がる（?v=&unit=&who=&src= でほかの数も）
+//  ?scene=pages … 町の防災計画のページ（黒潮町 本編 298・資料編 156）が積み上がり、住む人に要る所だけの1枚に縮まる
 //  ?scene=bar&a=52.1&b=86.1 … 大泉町の「母語で読める人」の棒が伸びる（数は録る日に町のページの「母語で読める人」と合わせる）
 //  押すか ?auto で始まる。R でやり直す。?nobadge で右上の札を消す
 const q = new URLSearchParams(location.search);
@@ -144,7 +145,41 @@ async function sceneBar() {
   await grow("bb", "nb", b);
 }
 
-const SCENES = { card: sceneCard, grid: sceneGrid, num: sceneNum, bar: sceneBar };
+// 町の防災計画のページが積み上がり、住む人に要る所だけの1枚に縮まる（台本 0:24「届いていない」。数は本物の PDF のページ数）
+//  ?scene=pages&a=298&b=156&doc=黒潮町地域防災計画（令和8年3月）
+async function scenePages() {
+  const a = Number(q.get("a") ?? 298), b = Number(q.get("b") ?? 156), total = a + b;
+  const doc = q.get("doc") ?? "黒潮町地域防災計画（令和8年3月）";
+  const plan = await json(`data/plan/${CODE}.json`);
+  const hit = Object.values(plan?.parts ?? {}).flatMap((p) => p.points.map((x) => ({ ...x, part: p.name }))).find((x) => x.text.includes(q.get("hit") ?? "早咲地区津波避難タワー"));
+  const SHEETS = 46; // 画面に描く紙の枚数（数は total まで数え上がる）
+  $("stage").innerHTML = `<div class="pile" id="pile">${Array.from({ length: SHEETS }, (_, i) => `<i style="--i:${i};--r:${((i * 37) % 9) - 4}deg;--x:${((i * 53) % 13) - 6}px"></i>`).join("")}</div>
+    <div class="pcount" id="pcount"><b id="pn">0</b><small>ページ</small><span>${esc(doc)}　本編 ${a}・資料編 ${b}</span></div>
+    <div class="ans one" id="one"><p class="ak">${esc(hit?.part ?? "")}の避難（町のページ）</p><p class="at">${esc(hit?.text ?? "").replace(/(\d[\d,]*)(人)/g, "<b>$1</b>$2")}</p><span class="src">出典：${esc(hit?.cites?.[0]?.doc ?? doc)} ${hit?.cites?.[0]?.page ?? ""}ページ</span></div>`;
+  caption("町の防災計画", `${total} ページ`);
+  await wait(500);
+  // 紙が積み上がる。数は紙に合わせて total まで
+  const sheets = [...document.querySelectorAll("#pile i")];
+  const t0 = performance.now(), dur = 3600;
+  await new Promise((done) => {
+    const step = (t) => {
+      const p = Math.min(1, (t - t0) / dur), e = 1 - (1 - p) ** 2;
+      const k = Math.round(SHEETS * e);
+      sheets.forEach((s, i) => s.classList.toggle("on", i < k));
+      $("pn").textContent = Math.round(total * e).toLocaleString("ja-JP");
+      if (p < 1) requestAnimationFrame(step); else done();
+    };
+    requestAnimationFrame(step);
+  });
+  await wait(1200);
+  caption("住む人に要る所だけ", "1枚のカードに");
+  $("pile").classList.add("shrink");
+  $("pcount").classList.add("shrink");
+  await wait(900);
+  $("one").classList.add("on");
+}
+
+const SCENES = { card: sceneCard, grid: sceneGrid, num: sceneNum, bar: sceneBar, pages: scenePages };
 async function run() {
   $("start").hidden = true;
   $("cap").classList.remove("on");
