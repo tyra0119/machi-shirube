@@ -49,6 +49,11 @@ const live = await fetch(`${PAGES}town.js`, { headers: { "Cache-Control": "no-ca
 const same = live != null && sha(live) === sha(fs.readFileSync("site/town.js", "utf8"));
 say(same, "公開のサイト", live == null ? "開けませんでした" : same ? "手元と同じ（最新）" : "手元と違う（送ったばかりなら数分待つ）");
 
+// 5b. 点検（npm run check）：前に起きた不具合が戻っていないか
+let checkOut = "";
+try { checkOut = execSync("node scripts/check.mjs", { stdio: "pipe" }).toString(); say(true, "点検（npm run check）", checkOut.trim().split("\n").find((l) => /^○ \d/.test(l)) ?? ""); }
+catch (e) { checkOut = String(e.stdout ?? ""); say(false, "点検（npm run check）", `${checkOut.split("\n").filter((l) => l.startsWith("×")).join(" / ")}（くわしくは npm run check）`); }
+
 // 6. 台帳の控え
 const day = new Date().toLocaleDateString("sv-SE", { timeZone: "Asia/Tokyo" });
 say(fs.existsSync(`${backupDir()}/${day}/items.json`), "今日の台帳の控え", fs.existsSync(`${backupDir()}/${day}/items.json`) ? "あります" : "ありません（npm run backup）");

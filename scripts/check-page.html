@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>画面の点検｜まちしるべ（手元だけ）</title>
+<style>
+  :root { --bg: #f7f5f0; --surface: #fff; --text: #1d2a33; --sub: #5a6670; --line: #d9d4ca; --ok: #1f6f43; --ng: #b3261e; --warn: #8a5a00; }
+  body { margin: 0; padding: 16px; background: var(--bg); color: var(--text); font: 15px/1.6 system-ui, sans-serif; }
+  h1 { font-size: 20px; margin: 0 0 4px; }
+  p { margin: 4px 0 12px; color: var(--sub); }
+  button { min-height: 44px; padding: 0 18px; border: 0; border-radius: 999px; background: #1f5f7a; color: #fff; font-size: 15px; cursor: pointer; }
+  #sum { margin: 12px 0; font-weight: 700; }
+  table { width: 100%; border-collapse: collapse; background: var(--surface); }
+  th, td { padding: 6px 8px; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; font-size: 14px; }
+  td.r { white-space: nowrap; font-weight: 700; }
+  .ok { color: var(--ok); } .ng { color: var(--ng); } .warn { color: var(--warn); }
+  small { color: var(--sub); }
+  #stage { position: absolute; left: -10000px; top: 0; }
+  #stage iframe { border: 0; }
+</style>
+</head>
+<body>
+<h1>画面の点検</h1>
+<p>決まった町のページを開いて、前に起きた不具合（エラー・読み込み中のまま止まる・細いスマホではみ出す・字が読みにくい・ほかの言葉で日本語のまま・無いファイルを読みに行く・同じ id）が戻っていないかを調べます。数分かかります。AI は使いません。<br>
+字の読みやすさは、いまの表示（明るい・暗い）で測ります。暗い表示も測るときは、端末を暗い表示にして、もう一度押してください。</p>
+<button type="button" id="run">点検する</button>
+<p id="sum"></p>
+<table><thead><tr><th>ページ</th><th>点検</th><th>結果</th><th>くわしく</th></tr></thead><tbody id="rows"></tbody></table>
+<div id="stage"></div>
+<script>
+// 開くページと、そのページで見ること。不具合を直したら、ここに足す（scripts/check.mjs の CASES と同じ考え）
+const PAGES = [
+  { u: "town.html?muni=39428", note: "黒潮町（深く調べた町・動画の町）" },
+  { u: "town.html?muni=10524&lang=pt", note: "大泉町・ポルトガル語", lang: true },
+  { u: "town.html?muni=21211&lang=vi", note: "美濃加茂市・ベトナム語", lang: true },
+  { u: "town.html?muni=11227&lang=ja", note: "朝霞市" },
+  { u: "town.html?muni=15385&lang=ja", note: "阿賀町（避難施設の一覧の町）" },
+  { u: "town.html?town=39428-0100&lang=ja", note: "黒潮町 市野瀬（町・字のページ）" },
+  { u: "town.html?town=21211-0010&lang=tl", note: "美濃加茂市の町・字・フィリピノ語", lang: true },
+  { u: "town.html?muni=01202&lang=ja", note: "函館市（浅い町）", shallow: true },
+  { u: "town.html?muni=14100&lang=ja", note: "横浜市（政令市まるごと）", shallow: true },
+  { u: "town.html?muni=46304&lang=ja", note: "十島村（島の町）", shallow: true },
+  { u: "town.html?muni=10206&lang=es", note: "沼田市・スペイン語（雪・火山・農業の町）", shallow: true },
+  { u: "town.html?town=abc&lang=pt", note: "まちがった URL", expect: "Cidade ou bairro não encontrado" },
+  { u: "town.html?muni=99999&lang=ja", note: "無い町の番号", expect: "この市区町村は見つかりませんでした" },
+  { u: "report.html?muni=10524&lang=pt", note: "まちがいの知らせ方", page: true },
+  { u: "memo.html?town=39428-0100", note: "くらしのメモ", page: true },
+  { u: "kairan.html?muni=39428", note: "回覧板のお知らせ", page: true },
+  { u: "kairan.html?town=abc", note: "回覧板・まちがった URL", page: true, expectId: ["lead", "町が見つかりませんでした"] },
+];
+const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+const results = [];
+const add = (page, what, r, detail = "") => {
+  results.push({ page, what, r, detail });
+  document.getElementById("rows").insertAdjacentHTML("beforeend", `<tr><td>${esc(page)}</td><td>${esc(what)}</td><td class="r ${r}">${{ ok: "○", ng: "×", warn: "△" }[r]}</td><td><small>${esc(detail)}</small></td></tr>`);
+};
+// 字と背景の明るさの差（小さい字 4.5 倍・大きい字 3 倍が目安）
+const lum = (c) => { const m = c.match(/[\d.]+/g).map(Number); const f = (v) => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; }; return 0.2126 * f(m[0]) + 0.7152 * f(m[1]) + 0.0722 * f(m[2]); };
+function contrast(w, root) {
+  const bgOf = (el) => { while (el) { const c = w.getComputedStyle(el).backgroundColor; const a = c.match(/[\d.]+/g); if (a && (a.length < 4 || Number(a[3]) > 0.9)) return c; el = el.parentElement; } return "rgb(255,255,255)"; };
+  const bad = new Map();
+  for (const el of root.querySelectorAll("*")) {
+    if (el.closest("[hidden], .maplibregl-map, svg, script, style")) continue;
+    const t = [...el.childNodes].filter((n) => n.nodeType === 3 && n.textContent.trim()).map((n) => n.textContent.trim()).join("");
+    if (!t || !el.getBoundingClientRect().width) continue;
+    const cs = w.getComputedStyle(el);
+    if (cs.visibility === "hidden" || Number(cs.opacity) < 0.5) continue;
+    const a = lum(cs.color), b = lum(bgOf(el));
+    const cr = (Math.max(a, b) + 0.05) / (Math.min(a, b) + 0.05);
+    const big = parseFloat(cs.fontSize) >= 24 || (parseFloat(cs.fontSize) >= 18.6 && Number(cs.fontWeight) >= 700);
+    if (cr < (big ? 3 : 4.5)) bad.set(`${el.tagName.toLowerCase()}.${el.className}`, `${cr.toFixed(1)} 倍「${t.slice(0, 12)}」`);
+  }
+  return [...bad].map(([k, v]) => `${k} ${v}`);
+}
+async function open(u, width) {
+  const f = document.createElement("iframe");
+  f.style.width = `${width}px`; f.style.height = "800px";
+  const errs = [];
+  document.getElementById("stage").appendChild(f);
+  f.src = `/${u}${u.includes("?") ? "&" : "?"}check=${Date.now()}`;
+  // 読み込みの始めから、エラーを拾う
+  for (let i = 0; i < 100; i++) { await sleep(20); try { if (f.contentWindow.location.href !== "about:blank") { f.contentWindow.addEventListener("error", (e) => errs.push(e.message)); f.contentWindow.addEventListener("unhandledrejection", (e) => errs.push(String(e.reason?.message ?? e.reason))); break; } } catch {} }
+  await sleep(7000);
+  return { f, w: f.contentWindow, d: f.contentDocument, errs };
+}
+async function checkPage(p) {
+  const name = `${p.note}（${p.u}）`;
+  const { f, w, d, errs } = await open(p.u, 375);
+  add(name, "エラーが出ない", errs.length ? "ng" : "ok", errs.slice(0, 3).join(" / "));
+  if (p.expect) add(name, `「${p.expect}」と出る`, d.getElementById("name")?.textContent === p.expect ? "ok" : "ng", d.getElementById("name")?.textContent);
+  if (p.expectId) add(name, `「${p.expectId[1]}」と出る`, d.getElementById(p.expectId[0])?.textContent.includes(p.expectId[1]) ? "ok" : "ng", d.getElementById(p.expectId[0])?.textContent.slice(0, 40));
+  // 同じ id
+  const ids = {}; for (const e of d.querySelectorAll("[id]")) ids[e.id] = (ids[e.id] ?? 0) + 1;
+  const dup = Object.entries(ids).filter(([, n]) => n > 1).map(([k]) => k);
+  add(name, "同じ id が無い", dup.length ? "ng" : "ok", dup.join(" "));
+  if (!p.expect && !p.page) {
+    // 読み込み中のまま止まる欄
+    const stuck = [...d.querySelectorAll("section.block:not([hidden])")].filter((s) => /読み込んでいます/.test(s.textContent)).map((s) => s.id);
+    add(name, "読み込み中のまま止まる欄が無い", stuck.length ? "ng" : "ok", stuck.join(" "));
+    // 無いファイル（404）：浅い町は、町ごとの小さなファイルの一覧で読みに行かない（11/5。函館市 22 本 → 1 本）
+    const n404 = w.performance.getEntriesByType("resource").filter((e) => e.responseStatus === 404 && e.name.startsWith(location.origin)).map((e) => e.name.replace(location.origin, ""));
+    if (p.shallow) add(name, "無いファイルを読みに行かない（2 本まで）", n404.length <= 2 ? "ok" : "ng", n404.join(" "));
+    // ページごとに見る（はみ出し・字の読みやすさ・日本語の残り）
+    const views = [...d.querySelectorAll(".view")].filter((v) => !["local", "research", "source"].includes(v.dataset.view));
+    const contrastBad = [], jp = [];
+    for (const v of views) {
+      for (const x of views) x.hidden = x !== v;
+      await sleep(120);
+      contrastBad.push(...contrast(w, v).map((s) => `${v.dataset.view}: ${s}`));
+      // ほかの言葉：画面の決まった文字（見出し・ボタン・欄の名前・今日の暮らし・タイル）に、ひらがなが残っていない（町や施設の名前・資料の文は除く）
+      // 町や施設の名前・お知らせの見出しなど、資料のままの文が混じるのはよい。字のほとんどが日本語のもの（訳されていない決まった文字）だけを拾う
+      if (p.lang) for (const el of v.querySelectorAll("h2, h3, button, summary, label > span, .today-life .k, .today-life .v, .tiles .t, .tiles .d, .med-sum, .feat-why, .tt-next, [role=status]")) {
+        if (el.closest("[hidden], [lang=ja], .lore, .answers-box, .news-list, .hinan-list, .quiz-opts, .local-only, .fold-sum, .kaigo-items")) continue;
+        const t = [...el.childNodes].filter((n) => n.nodeType === 3 || !n.matches?.(".fold-sum, svg, [lang=ja]")).map((n) => n.textContent).join("").trim();
+        const ja = (t.match(/[ぁ-んァ-ヶ一-龠]/g) ?? []).length, latin = (t.match(/[A-Za-zÀ-ỹऀ-ॿ]/g) ?? []).length;
+        if (/[ぁ-ん]/.test(t) && ja > latin) jp.push(`${v.dataset.view}: ${t.slice(0, 24)}`);
+      }
+    }
+    for (const x of views) x.hidden = x.dataset.view !== "today";
+    add(name, "字が読みやすい（明るさの差の目安以上）", contrastBad.length ? "ng" : "ok", [...new Set(contrastBad)].slice(0, 5).join(" / "));
+    if (p.lang) add(name, "画面の決まった文字に日本語が残っていない", jp.length ? "ng" : "ok", [...new Set(jp)].slice(0, 5).join(" / "));
+  }
+  f.remove();
+  // 細いスマホ（幅 320px）ではみ出さない（11/5。ほかの言葉の長い単語・人口の棒・メモの選ぶ箱）
+  if (!p.expect) {
+    const s = await open(p.u, 320);
+    const views = [...s.d.querySelectorAll(".view")].filter((v) => !["local", "research", "source"].includes(v.dataset.view));
+    const bad = [];
+    for (const v of views.length ? views : [s.d.body]) {
+      if (views.length) for (const x of views) x.hidden = x !== v;
+      await sleep(120);
+      const W = s.d.documentElement.clientWidth;
+      for (const el of v.querySelectorAll("*")) {
+        const r = el.getBoundingClientRect();
+        if (r.width > 0 && r.right > W + 2 && !el.closest(".maplibregl-map, table, .tt, [hidden]")) bad.push(`${v.dataset?.view ?? ""} ${el.tagName.toLowerCase()}.${el.className}`);
+      }
+    }
+    add(name, "幅 320px ではみ出さない", bad.length || s.d.documentElement.scrollWidth > s.d.documentElement.clientWidth ? "ng" : "ok", [...new Set(bad)].slice(0, 4).join(" / "));
+    s.f.remove();
+  }
+}
+document.getElementById("run").addEventListener("click", async () => {
+  document.getElementById("rows").innerHTML = ""; results.length = 0; window.__checkDone = false;
+  document.getElementById("run").disabled = true;
+  for (const [i, p] of PAGES.entries()) { document.getElementById("sum").textContent = `点検中… ${i + 1} / ${PAGES.length}：${p.note}`; await checkPage(p); }
+  const n = (r) => results.filter((x) => x.r === r).length;
+  document.getElementById("sum").textContent = `○ ${n("ok")}　△ ${n("warn")}　× ${n("ng")}（${matchMedia("(prefers-color-scheme: dark)").matches ? "暗い表示" : "明るい表示"}で測った）`;
+  document.getElementById("run").disabled = false;
+  window.__checkResults = results; window.__checkDone = true;
+});
+</script>
+</body>
+</html>

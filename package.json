@@ -57,7 +57,8 @@
     "backup": "node scripts/backup-ledger.mjs",
     "preflight": "node scripts/preflight.mjs",
     "news": "node scripts/news.mjs",
-    "split-tr": "node scripts/split-translations.mjs"
+    "split-tr": "node scripts/split-translations.mjs",
+    "check": "node scripts/check.mjs"
   },
   "devDependencies": {
     "mapshaper": "^0.7.101"

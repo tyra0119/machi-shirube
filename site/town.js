@@ -20,7 +20,11 @@ const getData = (url) => {
   return dataCache.get(url).then((d) => (d == null ? null : structuredClone(d)));
 };
 // 訳のファイル：ほかの言葉で見ているときは、その言葉の分だけの小さなファイルを読む（全部の言葉の入ったファイルは 1MB ほどある。scripts/split-translations.mjs）。無ければ全部の入ったファイル
-const trData = async (code, ai = "") => (LANG && (await getData(`data/translations/${code}${ai}.${LANG}.json`))) || getData(`data/translations/${code}${ai}.json`);
+const trData = async (code, ai = "") => {
+  // 訳の無い町（町ごとの小さなファイルの langs が null）は読みに行かない（浅い町をほかの言葉で開くと、無い訳のファイルを2本読みに行っていた）
+  if (MUNI?.code === code && MUNI.langs === null) return null;
+  return (LANG && (await getData(`data/translations/${code}${ai}.${LANG}.json`))) || getData(`data/translations/${code}${ai}.json`);
+};
 // 避難場所の想定収容人数：町の表の人数は屋内と屋外（校庭や広場）の合計のことがある。建物の中の人数が分かれば添える（scripts/build-shelter-inside.mjs）
 const KIND_LABEL = { 内水: "内水（下水があふれる）" };
 const capText = (p) => `${T("受け入れの人数")} ${esc(String(p.capacity ?? "").replace(/\d{4,}/g, (n) => Number(n).toLocaleString("ja-JP")))}${p.inside != null ? `（${T("建物の中")} ${Number(p.inside).toLocaleString("ja-JP")}${LANG ? " " : ""}${T("人")}）` : `（${T("屋外の広場などを含むことがあります")}）`}`;
