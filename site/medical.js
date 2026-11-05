@@ -42,13 +42,12 @@ const DAY_KEYS = ["日", "月", "火", "水", "木", "金", "土"];
 const MONDAY_FIRST = ["月", "火", "水", "木", "金", "土", "日"];
 
 async function loadMedical(code) {
-  const [res, hol] = await Promise.all([
-    // 町の分だけの小さなファイルで、病院のデータが無いと分かっている町は読みに行かない（town.js の knownMissing）
-    typeof knownMissing === "function" && knownMissing(`data/iryo/${code}.json`) ? null : fetch(`data/iryo/${code}.json`).catch(() => null),
-    fetch("data/holidays.json").then((r) => r.json()).catch(() => ({ holidays: {} })),
-  ]);
-  if (!res?.ok) return null;
-  return { ...(await res.json()), holidays: hol.holidays, holidaySource: hol.source };
+  // 町のページでは town.js の読み置き（getData）を使う（同じ病院の表と祝日の表を、地図・医療・今日の暮らしで何度も読んでいた）。
+  // 病院のデータが無いと分かっている町は読みに行かない（getData の中の knownMissing）。ほかのページ（調べる画面）では、そのまま読む
+  const get = typeof getData === "function" ? getData : (u) => fetch(u).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const [m, hol] = await Promise.all([get(`data/iryo/${code}.json`), get("data/holidays.json")]);
+  if (!m) return null;
+  return { ...m, holidays: hol?.holidays ?? {}, holidaySource: hol?.source };
 }
 
 // ほかの休みの日（「8月13日，8月14日」「12月29日～1月3日」）を「月-日」の集まりにする。「年末年始」「お盆」のように日付の無いものは読まない

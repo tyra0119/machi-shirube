@@ -50,6 +50,13 @@ const siteJs = fs.readdirSync("site").filter((f) => f.endsWith(".js"));
     fs.readFileSync(f, "utf8").split("\n").forEach((line, i) => { if (/\(20dd\)|\(d\+\)|\[\^d[+#*\]]|\/d\{\d/.test(line)) lost.push(`${f}:${i + 1}`); });
   }
   check(!lost.length, "正規表現の「\\」が消えていない（シェルで書き換えたあとに起きる）", sample(lost));
+  // 町のページが読む町ごとのファイルは、はじめに同時に読む一覧（town.js の TOWN_DIRS）に入っている（入れ忘れると、また1本ずつ待つ。11/5）
+  const dirsList = (fs.readFileSync("site/town.js", "utf8").match(/const TOWN_DIRS = \[([^\]]+)\]/)?.[1] ?? "").match(/"([a-z-]+)"/g)?.map((x) => x.slice(1, -1)) ?? [];
+  const EARLY = new Set(["muni", "answers", "mitate", "iryo", "towns", "translations"]); // 町のページを作り始める前に読むもの
+  const used = new Set();
+  for (const f of ["town.js", "layers.js", "features.js", "medical.js"]) for (const m of fs.readFileSync(`site/${f}`, "utf8").matchAll(/data\/([a-z-]+)\/\$\{code\}/g)) used.add(m[1]);
+  const notPre = [...used].filter((d) => !EARLY.has(d) && !dirsList.includes(d));
+  check(dirsList.length && !notPre.length, "町のページが読む町ごとのファイルは、はじめに同時に読む一覧（TOWN_DIRS）にある", sample(notPre));
   check(!nw.length, "iOS 16 以降の新しい書き方を使っていない（Object.groupBy・toSorted など）", sample(nw));
 }
 {

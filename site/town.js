@@ -1458,7 +1458,7 @@ async function showGomi(code) {
 
 // 町の人に聞きたいこと：公開の資料では見つからなかった問い（答えが「見つからなかった」）と、作者が「分からない（町の人に聞く）」とした問い
 async function showAsk(code, partKey) {
-  const rev = await fetch("data/review.json").then((r) => (r.ok ? r.json() : { items: [] })).catch(() => ({ items: [] }));
+  const rev = (await getData("data/review.json")) ?? { items: [] };
   const scopes = [`muni:${code}`, ...(partKey ? [`town:${partKey}`] : [])];
   const fromAnswers = Object.values(answersByPage).flat().filter((a) => a.value === "見つからなかった");
   // 「分からない」と決めたものと、見つからなかったので「出さない」と決めたもの
@@ -1579,7 +1579,15 @@ async function showGomiDays(code, partName, softName) {
 }
 
 // どの町のページも最後に同じことをする：答え・わが家の避難・今日の暮らし・すべてのページ・調べる
+// 町のファイルを、はじめに全部同時に読み始める（欄ごとに1本ずつ読むのを待つと、電波の弱い所では 1本 0.3 秒 × 十数本の待ちになる）。
+// getData が読み置くので、あとの欄はそれを使う。無いと分かっているファイルは knownMissing が読まない
+const TOWN_DIRS = ["hitokoto", "dekiru", "changes", "flood-pop", "slope", "plan", "quake-pop", "lore", "bus", "accidents", "shop-access", "kaigo", "climate", "local-sites", "intro", "quiz", "news", "shelters", "shelter-list", "gomi", "gomi-days", "sources", "aed"];
+function prefetchTown(code) {
+  for (const d of TOWN_DIRS) getData(`data/${d}/${code}.json`);
+  for (const f of ["holidays", "yardstick", "features", "review"]) getData(`data/${f}.json`);
+}
 async function finishPage(code, townFeatures, startPart, scopeNote, at) {
+  prefetchTown(code);
   // その町ならではのページ（町の特徴から）を先に作る（答えの箱・タイル・すべてのページに入るように）
   await showFeatures(code, at);
   showView();
