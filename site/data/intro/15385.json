@@ -1,0 +1,45 @@
+{
+ "code": "15385",
+ "name": "新潟県 阿賀町",
+ "createdAt": "2026-11-05T07:21:56.510Z",
+ "model": "claude-sonnet-5-5",
+ "sentences": [
+  {
+   "text": "阿賀町は、平成17年4月1日に、津川町・鹿瀬町・上川村・三川村の4町村が新設合併してできた町です。",
+   "sources": [
+    {
+     "title": "東蒲原郡「阿賀町」の合併経過（新潟県）",
+     "url": "https://www.pref.niigata.lg.jp/uploaded/attachment/92437.pdf"
+    }
+   ]
+  },
+  {
+   "text": "毎年6月ごろ、津川の街中で「つがわ狐の嫁入り行列」があります。",
+   "sources": [
+    {
+     "title": "第34回「つがわ狐の嫁入り行列」見どころ・駐車場マップについて|阿賀町",
+     "url": "https://www.town.aga.niigata.jp/agamachi_soshiki/machizukuri_kanko/kanko_event/3207.html"
+    }
+   ]
+  },
+  {
+   "text": "津川に伝わる狐火伝説をもとに、江戸時代の婚礼を再現する祭りです。",
+   "sources": [
+    {
+     "title": "第34回「つがわ狐の嫁入り行列」見どころ・駐車場マップについて|阿賀町",
+     "url": "https://www.town.aga.niigata.jp/agamachi_soshiki/machizukuri_kanko/kanko_event/3207.html"
+    }
+   ]
+  },
+  {
+   "text": "町の花はユキツバキ、町の木はスギ、町の鳥はウグイスです。",
+   "sources": [
+    {
+     "title": "阿賀町の概要／阿賀町",
+     "url": "https://www.town.aga.niigata.jp/agamachi_soshiki/soumu/agamachinitsuite/273.html"
+    }
+   ]
+  }
+ ],
+ "note": "確かめた町の答えと国のデータから、AI がまとめた紹介です。文の中の数と名前が、もとにした答えや数の中にあるかを確かめています"
+}

@@ -1,0 +1,45 @@
+{
+ "code": "21211",
+ "name": "岐阜県 美濃加茂市",
+ "createdAt": "2026-11-05T07:22:21.353Z",
+ "model": "claude-sonnet-5-5",
+ "sentences": [
+  {
+   "text": "美濃加茂市は、昭和29年（1954年）4月1日に、加茂郡の太田町と古井町を中心に生まれた市です。",
+   "sources": [
+    {
+     "title": "美濃加茂市 市制施行70周年",
+     "url": "https://www.city.minokamo.lg.jp/site/70th-anniversary/"
+    }
+   ]
+  },
+  {
+   "text": "毎年ひらかれる大きな催しは、市民による手作りの「おん祭MINOKAMO」です。",
+   "sources": [
+    {
+     "title": "おん祭MINOKAMO2026の開催日について - 美濃加茂市公式ホームページ",
+     "url": "https://www.city.minokamo.lg.jp/soshiki/12/16223.html"
+    }
+   ]
+  },
+  {
+   "text": "ほかに、毎年3月ごろに小山観音初午祭、毎年4月ごろに諏訪神社の祭礼があります。",
+   "sources": [
+    {
+     "title": "おん祭MINOKAMO2026の開催日について - 美濃加茂市公式ホームページ",
+     "url": "https://www.city.minokamo.lg.jp/soshiki/12/16223.html"
+    }
+   ]
+  },
+  {
+   "text": "市の花は「あじさい」、市の木は「むく」です。",
+   "sources": [
+    {
+     "title": "美濃加茂市統計書 令和5年度版",
+     "url": "https://www.city.minokamo.lg.jp/uploaded/attachment/15172.pdf"
+    }
+   ]
+  }
+ ],
+ "note": "確かめた町の答えと国のデータから、AI がまとめた紹介です。文の中の数と名前が、もとにした答えや数の中にあるかを確かめています"
+}

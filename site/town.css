@@ -850,3 +850,10 @@ ruby rt { font-size: 0.55em; font-weight: 400; letter-spacing: 0; }
   .town-head::after { content: "印刷するなら「くらしのメモ」（A4 1枚。今日のページの下）が見やすいです"; display: block; margin: 6px 0; font-size: 12px; }
   a { color: #000 !important; }
 }
+/* どんな町？（町を知るページのいちばん上） */
+.intro-a { margin: 0 0 6px; padding: 0; list-style: none; display: grid; gap: 8px; }
+.intro-a li { padding: 10px 12px; border-radius: 10px; background: var(--town-tint, var(--bg)); font-size: 16px; line-height: 1.7; }
+.intro-a .src { display: inline-flex; align-items: center; gap: 3px; margin-left: 4px; font-size: 12px; color: var(--text-sub); }
+.intro-a .src svg { width: 13px; height: 13px; }
+.intro-b { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0; padding: 0; list-style: none; }
+.intro-b li { padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); font-size: 14px; line-height: 1.5; max-width: 100%; overflow-wrap: anywhere; }

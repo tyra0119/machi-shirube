@@ -10,6 +10,7 @@ import path from "node:path";
 import vm from "node:vm";
 import { execFileSync } from "node:child_process";
 import { collectKeys } from "./i18n-keys.mjs";
+import { checkSentence } from "./intro.mjs";
 
 const read = (f) => JSON.parse(fs.readFileSync(f, "utf8"));
 const out = []; // [段, 結果（ok/ng/warn）, 何を, くわしく]
@@ -43,6 +44,12 @@ const siteJs = fs.readdirSync("site").filter((f) => f.endsWith(".js"));
     });
   }
   check(!lb.length, "正規表現の後ろ読み (?<!…) を使っていない（古い iPhone でページ全体が止まる）", sample(lb));
+  // シェルの書き換えで「\」が消えた正規表現（/(20dd)年/・(d+)・[^d+#*]。11/5 に何度も起きた。文法は通るので気づきにくい）
+  const lost = [];
+  for (const f of [...siteJs.map((f) => `site/${f}`), ...fs.readdirSync("scripts").filter((f) => /\.mjs$/.test(f) && f !== "check.mjs").map((f) => `scripts/${f}`)]) {
+    fs.readFileSync(f, "utf8").split("\n").forEach((line, i) => { if (/\(20dd\)|\(d\+\)|\[\^d[+#*\]]|\/d\{\d/.test(line)) lost.push(`${f}:${i + 1}`); });
+  }
+  check(!lost.length, "正規表現の「\\」が消えていない（シェルで書き換えたあとに起きる）", sample(lost));
   check(!nw.length, "iOS 16 以降の新しい書き方を使っていない（Object.groupBy・toSorted など）", sample(nw));
 }
 {
@@ -127,6 +134,7 @@ const CASES = [
   // 位置の言い方（types.js）
   ["「上から ○%」と言わない", () => !/上から/.test(fn("placeWords")(5, 1741, "1.8%") + fn("placeWords")(100, 1741, "1.8%") + fn("placeWords")(1700, 1741, "1.8%"))],
   // この町ならでは（features.js）
+  ["町の紹介：材料に無い数・名前と、今年より先の日付の文を捨てる（11/5）", () => checkSentence("人口は999人です。", [{ text: "人口 9,652人" }]) !== "" && checkSentence("令和8年（2026年）は10月25日に「まつり」があります。", [{ text: "令和8年（2026年）10月25日 まつり" }]) !== "" && checkSentence("昭和29年（1954年）に生まれた市です。", [{ text: "昭和29年（1954年）" }]) === ""],
   ["予報の値が空の日は「0」ではなく「–」（11/5）", () => fn("rnd")(null) === "–" && fn("rnd")(2.4) === 2],
 ];
 for (const [what, f] of CASES) { let r = false, e = ""; try { r = f(); } catch (x) { e = x.message; } check(r === true, what, e || "答えがちがう"); }
@@ -183,6 +191,20 @@ const codeFiles = (dir) => (fs.existsSync(`site/data/${dir}`) ? fs.readdirSync(`
 }
 {
   const bad = [];
+  const y = new Date().getFullYear();
+  for (const f of codeFiles("intro")) {
+    const d = read(`site/data/intro/${f}`);
+    if ((d.sentences?.length ?? 0) < 2) bad.push(`${f} 文が2つ未満`);
+    for (const x of d.sentences ?? []) {
+      if (!x.sources?.length) bad.push(`${f} 出典が無い：${x.text.slice(0, 15)}`);
+      const ys = [...x.text.matchAll(/(20\d\d)年/g)].map((m) => Number(m[1])).concat([...x.text.matchAll(/令和(\d+)年/g)].map((m) => 2018 + Number(m[1])));
+      if (ys.some((v) => v >= y)) bad.push(`${f} 日が過ぎる日付：${x.text.slice(0, 20)}`);
+    }
+  }
+  check(!bad.length, `町の紹介：文が2つ以上・どの文にも出典・今年より先の日付が無い（${codeFiles("intro").length} 町）`, sample(bad));
+}
+{
+  const bad = [];
   for (const f of codeFiles("news")) {
     const d = read(`site/data/news/${f}`);
     for (const x of d.news?.items ?? []) if (!x.title || !/^https?:\/\//.test(x.url ?? "") || (x.date && !/^\d{4}-\d{2}-\d{2}/.test(x.date))) bad.push(`${f} ${x.title?.slice(0, 20)}`);
@@ -223,7 +245,7 @@ const codeFiles = (dir) => (fs.existsSync(`site/data/${dir}`) ? fs.readdirSync(`
 {
   // 住む人に出す AI の文に、やめた言い方（「上から ○%」。作者「分かりにくいからやめよう」）が無い。「上から ○番目」は △（「○番目に高い」がよい）
   const pct = [], nth = [];
-  for (const dir of ["mitate", "hitokoto", "dekiru", "quiz", "answers", "changes"]) {
+  for (const dir of ["mitate", "hitokoto", "dekiru", "quiz", "answers", "changes", "intro"]) {
     for (const f of codeFiles(dir)) {
       const s = fs.readFileSync(`site/data/${dir}/${f}`, "utf8");
       for (const m of s.matchAll(/.{0,12}[上下]から\s*\d+(?:\.\d+)?\s*[%％].{0,6}/g)) pct.push(`${dir}/${f} ${m[0]}`);
@@ -239,7 +261,7 @@ const codeFiles = (dir) => (fs.existsSync(`site/data/${dir}`) ? fs.readdirSync(`
     else if (Array.isArray(v)) v.forEach((x) => walkV(x, key, where));
     else if (v && typeof v === "object") for (const [k, x] of Object.entries(v)) walkV(x, k, where);
   };
-  for (const dir of ["mitate", "hitokoto", "dekiru", "quiz", "answers", "changes", "plan", "gomi-days", "news", "sources", "shelter-list", "local-sites"]) for (const f of codeFiles(dir)) walkV(read(`site/data/${dir}/${f}`), "", `${dir}/${f}`);
+  for (const dir of ["mitate", "hitokoto", "dekiru", "quiz", "answers", "changes", "intro", "plan", "gomi-days", "news", "sources", "shelter-list", "local-sites"]) for (const f of codeFiles(dir)) walkV(read(`site/data/${dir}/${f}`), "", `${dir}/${f}`);
   check(!builder.length, "住む人に出す文に、作る側の言葉（Claude・モデルの名前・プロンプト）が無い（「AI」と書く）", sample(builder, 3));
   if (nth.length) warn("住む人に出す文に「上から ○番目」がある（「○番目に高い」がよい。作り直すときに直る）", sample(nth, 3)); else ok("住む人に出す文に「上から ○番目」が無い");
 }

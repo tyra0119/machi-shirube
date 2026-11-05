@@ -356,6 +356,46 @@ async function showLocalSites(code) {
 }
 
 // 町のクイズ（scripts/quiz.mjs。確かめた町の答えと国のデータから AI が作り、正しい答えが材料にあるかを PC で照らしたもの）。1問ずつ。答えの並びは毎回まぜる
+// どんな町？（町を知るページのいちばん上。作者「町外の人が、まったく知らない町を見る楽しみが出来るかとおもった」）
+// A：確かめた町の答えから AI がまとめた紹介（scripts/intro.mjs。深く調べた町だけ。文ごとに出典）
+// B：国の数字から決まりでまとめた「数で見るこの町」（どの町でも。全国で目立つ数・国の指定・町の特徴・これからの人口・伝承碑）
+async function showIntro(code) {
+  const stats = MUNI?.code === code ? MUNI.stats : await getJSON("data/stats.json");
+  const t = stats?.towns?.[code];
+  if (!t) return;
+  const name = shortName(t.name);
+  const d = await getData(`data/intro/${code}.json`);
+  const tr = d ? await aiTr(code, "intro", d.createdAt) : null;
+  const tt = tr ?? ((id, ja) => ja);
+  const showA = d?.sentences?.length && (!LANG || LANG === "easy" || tr);
+  const total = stats.total ?? Object.values(stats.towns).filter((x) => !x.ward).length;
+  const n = (v) => Number(v).toLocaleString("ja-JP");
+  const b = [TN("人口 {n}人・{h}世帯", { n: n(t.population), h: n(t.households) })];
+  // 全国で目立つ数だけ（10番目まで・1割まで。真ん中の値も添える）
+  for (const [m, label] of [["over65Rate", "65歳以上の人の割合"], ["under15Rate", "15歳未満の子どもの割合"], ["foreignRate", "外国の住民の割合"], ["changeRate", "1年の人口の増減"]]) {
+    if (t.rank?.[m] == null || !placeWords(t.rank[m], total, null)) continue;
+    const mid = stats.summary?.[m]?.median;
+    b.push(`${T(label)} ${/change/i.test(m) && t[m] > 0 ? "+" : ""}${pct(t[m])}・${placeWords(t.rank[m], total, mid == null ? null : `${mid.toFixed(1)}%`)}`);
+  }
+  const fl = stats.flags?.[code] ?? {};
+  if (fl.tsunami) b.push(T("南海トラフの津波の特別強化地域"));
+  if (fl.volcano) b.push(T("火山の警戒地域"));
+  if (fl.snow) b.push(T(fl.snow));
+  if (fl.island) b.push(T("離島がある"));
+  const feats = (await getData("data/features.json"))?.towns?.[code] ?? [];
+  if (feats.includes("nougyou")) b.push(T("農業・林業で働く人が多い"));
+  if (feats.includes("gyogyou")) b.push(T("漁業で働く人が多い"));
+  const fu = MUNI?.code === code ? MUNI.future : null;
+  if (fu?.town?.pop?.length) b.push(TN("2050年の人口は、2020年の約 {p}%（推計）", { p: Math.round((fu.town.pop.at(-1) / fu.town.pop[0]) * 100) }));
+  const lore = (await getData(`data/lore/${code}.json`))?.own?.length;
+  if (lore) b.push(TN("昔の災害を伝える碑が {n} 基", { n: lore }));
+  $("sec-intro").hidden = false;
+  $("intro").innerHTML = (showA ? `<ul class="intro-a">${d.sentences.map((s, i) => `<li>${esc(tt(`i${i}`, s.text))}${s.sources.filter((x) => x.url).map((x) => ` <a class="src" href="${esc(x.url)}" target="_blank" rel="noopener">${icon("link")}${esc(x.title)}</a>`).join("")}</li>`).join("")}</ul>
+      <p class="note">${esc(tt("n.intro", T(d.note)))}${tr ? ` ${T("（AI による訳）")}` : ""}</p>` : "")
+    + `<h3 class="sub">${esc(TN("数で見る{name}", { name }))}</h3><ul class="intro-b">${b.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>
+      <p class="note">${T("国の数字から、決まりでまとめたもの（住民基本台帳・国勢調査・国の指定・国立社会保障・人口問題研究所の推計・国土地理院の自然災害伝承碑）。全国で目立つ数だけを出しています。")}</p>`;
+}
+
 async function showQuiz(code) {
   const d = await getData(`data/quiz/${code}.json`);
   if (!d?.questions?.length) return;
@@ -1181,7 +1221,7 @@ function buildAllPages(hasHinan, local) {
   const extra = {
     today: [["今日と明日（天気・洗濯・服装）", "sec-today"], ["今日の暮らし", "sec-today-life"], ...($("news-block").hidden ? [] : [["町からのお知らせ（新着・広報紙）", "news-block"]])],
     bousai: hasHinan ? [["わが家の避難（近い避難場所）", "hinan-block"]] : $("shelter-list-block").hidden ? [] : [["避難施設（行政区ごと）", "shelter-list-block"]],
-    shiru: [["町のデータ（全国と比べた数字）", "sec-features"]],
+    shiru: [["どんな町？", "sec-intro"], ["町のデータ（全国と比べた数字）", "sec-features"]],
   };
   allPages = PAGES.filter((p) => !p.local || local).map((p) => ({
     ...p,
@@ -1567,6 +1607,7 @@ async function finishPage(code, townFeatures, startPart, scopeNote, at) {
   await showFuture(code);
   await showClimate(code);
   await showLocalSites(code);
+  await showIntro(code);
   await showQuiz(code);
   await showNews(code);
   const hasHinan = await showHinan(code, townFeatures, startPart);
@@ -1587,7 +1628,7 @@ async function finishPage(code, townFeatures, startPart, scopeNote, at) {
 // 最初から開いておくのは、わが家の避難・今日のページの見立てと数から、できることへ・今日と明日と、各ページの最初の1つ
 // （作者「やたらと縦が長くなってしまうと、読むのが大変。何か工夫できないかな？」→「たたむ＋目次」）
 // 暮らしの場面（ほかのページへの入口の札）も開いておく（作者「『暮らしの場面』は開いていてもいいと思う」）
-const FOLD_OPEN = new Set(["wards-block", "quiz-today-block", "hinan-block", "shelter-list-block", "news-block", "mitate-top", "sec-today", "hitokoto-block", "sec-scenes", "sec-today-life", "gomi-block"]);
+const FOLD_OPEN = new Set(["wards-block", "sec-intro", "quiz-today-block", "hinan-block", "shelter-list-block", "news-block", "mitate-top", "sec-today", "hitokoto-block", "sec-scenes", "sec-today-life", "gomi-block"]);
 function foldSummary(sec) {
   // 確かめた答えの欄は、答えの数
   const answers = sec.querySelectorAll(".answers-box [id^=\"a-\"]").length;

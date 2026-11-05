@@ -1,11 +1,11 @@
 {
  "lang": "vi",
  "name": "Tiếng Việt",
- "createdAt": "2026-11-05T06:43:55.303Z",
+ "createdAt": "2026-11-05T07:26:59.793Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1052,
- "of": 1017,
+ "count": 1063,
+ "of": 1028,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Đây là trang hướng dẫn đời sống không chính thức của thị trấn này. Claude thu thập từ các trang chính thức của thị trấn v.v. và ghi rõ nguồn (Machi-shirube)",
   "すべてのページ": "Tất cả các trang",
@@ -1058,6 +1058,17 @@
   "ほかの問題も解く": "Làm thêm câu hỏi khác",
   "夕方からは、明日の分を先に出しています。": "Từ chiều tối, chúng tôi hiển thị trước thông tin của ngày mai.",
   "前に見てから {n} 件": "{n} mục kể từ lần xem trước",
-  "いまは、URL で決めた場所を「今いる所」にしています（本当の現在地ではありません）。": "Hiện tại, nơi được chỉ định bằng URL đang được dùng làm \"nơi bạn đang ở\" (không phải vị trí hiện tại thực sự)."
+  "いまは、URL で決めた場所を「今いる所」にしています（本当の現在地ではありません）。": "Hiện tại, nơi được chỉ định bằng URL đang được dùng làm \"nơi bạn đang ở\" (không phải vị trí hiện tại thực sự).",
+  "南海トラフの津波の特別強化地域": "Khu vực tăng cường đặc biệt về sóng thần của rãnh Nankai",
+  "火山の警戒地域": "Khu vực cảnh báo núi lửa",
+  "特別豪雪地帯": "Khu vực tuyết rơi dày đặc biệt",
+  "確かめた町の答えと国のデータから、AI がまとめた紹介です。文の中の数と名前が、もとにした答えや数の中にあるかを確かめています": "Đây là phần giới thiệu do AI tổng hợp từ câu trả lời đã xác nhận của thị trấn và dữ liệu của quốc gia. Hệ thống có kiểm tra xem các con số và tên trong câu có nằm trong câu trả lời hoặc số liệu gốc hay không",
+  "農業・林業で働く人が多い": "Nhiều người làm nông nghiệp, lâm nghiệp",
+  "漁業で働く人が多い": "Nhiều người làm ngư nghiệp",
+  "国の数字から、決まりでまとめたもの（住民基本台帳・国勢調査・国の指定・国立社会保障・人口問題研究所の推計・国土地理院の自然災害伝承碑）。全国で目立つ数だけを出しています。": "Được tổng hợp theo quy tắc từ số liệu của quốc gia (sổ đăng ký cư dân cơ bản, điều tra dân số, chỉ định của nhà nước, ước tính của Viện Nghiên cứu Dân số và An sinh Xã hội Quốc gia, bia truyền lại thiên tai của Viện Thông tin Địa lý Nhật Bản). Chỉ đưa ra những con số nổi bật so với cả nước.",
+  "2050年の人口は、2020年の約 {p}%（推計）": "Dân số năm 2050 bằng khoảng {p}% so với năm 2020 (ước tính)",
+  "昔の災害を伝える碑が {n} 基": "Có {n} tấm bia truyền lại thiên tai xưa",
+  "数で見る{name}": "{name} qua các con số",
+  "どんな町？": "Đây là thị trấn như thế nào?"
  }
 }

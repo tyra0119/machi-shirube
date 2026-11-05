@@ -27,6 +27,10 @@ function collect(code) {
   const d = read(`site/data/dekiru/${code}.json`);
   d?.links.forEach((l, i) => { push(`d${i}.who`, l.who); push(`d${i}.num`, l.num); push(`d${i}.todo`, l.todo); push(`d${i}.quote`, l.quote); });
   push("n.dekiru", d?.note);
+  // 町の紹介（scripts/intro.mjs。どんな町？）
+  const it = read(`site/data/intro/${code}.json`);
+  it?.sentences.forEach((x, i) => push(`i${i}`, x.text));
+  push("n.intro", it?.note);
   // 町のクイズ（scripts/quiz.mjs）
   const qz = read(`site/data/quiz/${code}.json`);
   qz?.questions.forEach((x, i) => { for (const k of ["q", "a", "b", "c", "why"]) push(`q${i}.${k}`, x[k]); });
@@ -40,7 +44,7 @@ function collect(code) {
   const gdict = read(`site/data/gomi/${code}.json`);
   const words = [...new Set((gdict?.items ?? []).flatMap((x) => [x.n, x.k, ...(x.also ?? []), x.note]).filter(Boolean))];
   words.forEach((t, i) => push(`w${i}`, t));
-  return { list, gomi, words, made: { mitate: m?.createdAt ?? null, hitokoto: h?.createdAt ?? null, dekiru: d?.createdAt ?? null, gomi: gd?.createdAt ?? null, quiz: qz?.createdAt ?? null, gomidict: gdict?.createdAt ?? null } };
+  return { list, gomi, words, made: { mitate: m?.createdAt ?? null, hitokoto: h?.createdAt ?? null, dekiru: d?.createdAt ?? null, gomi: gd?.createdAt ?? null, quiz: qz?.createdAt ?? null, intro: it?.createdAt ?? null, gomidict: gdict?.createdAt ?? null } };
 }
 
 export async function translateAI(code, langs = Object.keys(LANGS), log = console.log) {
@@ -52,7 +56,7 @@ export async function translateAI(code, langs = Object.keys(LANGS), log = consol
   const file = `site/data/translations/${code}-ai.json`;
   const out = read(file) ?? { code, langs: {} };
   // もとの文が前と同じ種類は、確かめの通った訳を使い回す（通らなかった文だけ訳し直す）
-  const kindOf = (id) => ({ m: "mitate", h: "hitokoto", d: "dekiru", g: "gomi", q: "quiz", w: "gomidict" })[id[0]] ?? id.split(".")[1];
+  const kindOf = (id) => ({ m: "mitate", h: "hitokoto", d: "dekiru", g: "gomi", q: "quiz", i: "intro", w: "gomidict" })[id[0]] ?? id.split(".")[1];
   const same = (id) => out.made?.[kindOf(id)] && out.made[kindOf(id)] === made[kindOf(id)];
   const prevOk = Object.fromEntries(Object.entries(out.langs).map(([l, v]) => [l, Object.fromEntries(Object.entries(v.texts).filter(([id]) => same(id)))]));
   Object.assign(out, { name: town?.name, createdAt: new Date().toISOString(), model: MODEL, made });

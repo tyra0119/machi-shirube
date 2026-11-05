@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-05T06:43:38.563Z",
+ "createdAt": "2026-11-05T07:27:23.796Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1054,
- "of": 1017,
+ "count": 1065,
+ "of": 1028,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -1060,6 +1060,17 @@
   "今日の一問": "La pregunta de hoy",
   "ほかの問題も解く": "Resolver otras preguntas",
   "夕方からは、明日の分を先に出しています。": "Por la tarde, ya se muestra la información de mañana.",
-  "いまは、URL で決めた場所を「今いる所」にしています（本当の現在地ではありません）。": "Ahora se usa como «dónde estás» el lugar indicado en la URL (no es tu ubicación actual real)."
+  "いまは、URL で決めた場所を「今いる所」にしています（本当の現在地ではありません）。": "Ahora se usa como «dónde estás» el lugar indicado en la URL (no es tu ubicación actual real).",
+  "南海トラフの津波の特別強化地域": "Zona de refuerzo especial contra tsunamis del Trough de Nankai",
+  "火山の警戒地域": "Zona de alerta volcánica",
+  "確かめた町の答えと国のデータから、AI がまとめた紹介です。文の中の数と名前が、もとにした答えや数の中にあるかを確かめています": "Presentación elaborada por IA a partir de las respuestas verificadas del municipio y de datos nacionales. Se comprueba que los números y nombres del texto figuren en las respuestas o cifras de origen",
+  "農業・林業で働く人が多い": "Mucha gente trabaja en la agricultura y la silvicultura",
+  "漁業で働く人が多い": "Mucha gente trabaja en la pesca",
+  "国の数字から、決まりでまとめたもの（住民基本台帳・国勢調査・国の指定・国立社会保障・人口問題研究所の推計・国土地理院の自然災害伝承碑）。全国で目立つ数だけを出しています。": "Resumen elaborado con reglas fijas a partir de cifras oficiales (Registro Básico de Residentes, Censo Nacional, designaciones del Estado, proyecciones del Instituto Nacional de Investigación de la Población y la Seguridad Social, y monumentos de tradición de desastres naturales del Instituto de Información Geoespacial de Japón). Solo se muestran las cifras que destacan a nivel nacional.",
+  "2050年の人口は、2020年の約 {p}%（推計）": "La población en 2050 será de aproximadamente el {p}% de la de 2020 (proyección)",
+  "昔の災害を伝える碑が {n} 基": "{n} monumentos que conmemoran desastres del pasado",
+  "数で見る{name}": "{name} en cifras",
+  "どんな町？": "¿Cómo es este municipio?",
+  "特別豪雪地帯": "Zona de nevadas excepcionalmente intensas"
  }
 }

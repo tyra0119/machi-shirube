@@ -1,11 +1,11 @@
 {
  "lang": "id",
  "name": "Bahasa Indonesia",
- "createdAt": "2026-11-05T06:43:49.893Z",
+ "createdAt": "2026-11-05T07:26:34.822Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1051,
- "of": 1017,
+ "count": 1062,
+ "of": 1028,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Ini adalah panduan hidup tidak resmi untuk kota ini. Claude mengumpulkannya dari situs resmi kota dan sumber lain, dengan mencantumkan sumbernya (Machishirube)",
   "すべてのページ": "Semua halaman",
@@ -1057,6 +1057,17 @@
   "今日の一問": "Satu soal hari ini",
   "ほかの問題も解く": "Kerjakan soal lainnya",
   "夕方からは、明日の分を先に出しています。": "Mulai sore hari, informasi untuk besok ditampilkan lebih dulu.",
-  "いまは、URL で決めた場所を「今いる所」にしています（本当の現在地ではありません）。": "Saat ini, tempat yang ditentukan melalui URL digunakan sebagai \"lokasi Anda saat ini\" (bukan lokasi Anda yang sebenarnya)."
+  "いまは、URL で決めた場所を「今いる所」にしています（本当の現在地ではありません）。": "Saat ini, tempat yang ditentukan melalui URL digunakan sebagai \"lokasi Anda saat ini\" (bukan lokasi Anda yang sebenarnya).",
+  "南海トラフの津波の特別強化地域": "Wilayah Penguatan Khusus Tsunami Palung Nankai",
+  "火山の警戒地域": "Wilayah Waspada Gunung Berapi",
+  "特別豪雪地帯": "Wilayah Salju Lebat Khusus",
+  "確かめた町の答えと国のデータから、AI がまとめた紹介です。文の中の数と名前が、もとにした答えや数の中にあるかを確かめています": "Ini adalah pengenalan yang dirangkum AI dari jawaban kota yang telah dipastikan dan data nasional. Kami memeriksa apakah angka dan nama dalam kalimat ada di dalam jawaban atau angka yang menjadi sumbernya",
+  "農業・林業で働く人が多い": "Banyak warga yang bekerja di bidang pertanian dan kehutanan",
+  "漁業で働く人が多い": "Banyak warga yang bekerja di bidang perikanan",
+  "国の数字から、決まりでまとめたもの（住民基本台帳・国勢調査・国の指定・国立社会保障・人口問題研究所の推計・国土地理院の自然災害伝承碑）。全国で目立つ数だけを出しています。": "Dirangkum berdasarkan aturan dari angka-angka nasional (register penduduk dasar, sensus nasional, penetapan pemerintah, perkiraan Institut Nasional Penelitian Jaminan Sosial dan Kependudukan, serta monumen bencana alam dari Badan Informasi Geospasial Jepang). Hanya angka yang menonjol di tingkat nasional yang ditampilkan.",
+  "2050年の人口は、2020年の約 {p}%（推計）": "Penduduk tahun 2050 sekitar {p}% dari tahun 2020 (perkiraan)",
+  "昔の災害を伝える碑が {n} 基": "Ada {n} monumen yang mengisahkan bencana masa lalu",
+  "数で見る{name}": "{name} dalam angka",
+  "どんな町？": "Kota seperti apa?"
  }
 }

@@ -171,7 +171,13 @@
     "g86": "Materiais recicláveis (isopor)",
     "g87": "Leve ao ponto de coleta designado (指定集積所) no dia de coleta de garrafas PET e bandejas de isopor.",
     "g88": "Materiais recicláveis (bandejas de alimentos)",
-    "g89": "Lave bem as bandejas de isopor. As que não saírem limpas são lixo queimável. Leve ao ponto de coleta designado (指定集積所) no dia de coleta de garrafas PET e bandejas de isopor."
+    "g89": "Lave bem as bandejas de isopor. As que não saírem limpas são lixo queimável. Leve ao ponto de coleta designado (指定集積所) no dia de coleta de garrafas PET e bandejas de isopor.",
+    "i0": "A cidade de Minokamo (美濃加茂市) foi criada em 1º de abril de 1954 (Shōwa 29), tendo como base principalmente as vilas de Ōta (太田町) e Furui (古井町), do distrito de Kamo (加茂郡).",
+    "i1": "O grande evento realizado todos os anos é o \"On-matsuri MINOKAMO (おん祭MINOKAMO)\", feito à mão pelos próprios moradores da cidade.",
+    "i2": "Além disso, há o Festival Hatsuuma de Koyama Kannon (小山観音初午祭), por volta de março de cada ano, e o festival do Santuário Suwa (諏訪神社), por volta de abril de cada ano.",
+    "i3": "A flor da cidade é a hortênsia (あじさい) e a árvore da cidade é o muku (むく).",
+    "n.intro": "Esta é uma apresentação resumida por IA, com base nas respostas confirmadas da cidade e em dados do país. Verifica-se se os números e os nomes nas frases constam nas respostas ou nos dados originais.",
+    "g39": "Saco designado (saco de coleta de recicláveis) (指定袋). Separe os sacos de latas e de garrafas de vidro. Retire as tampas. Leve ao ponto de coleta de lixo não combustível (不燃物集積所). Uma vez por mês."
    },
    "gomi": {
     "太田": "Ota (太田)",
@@ -213,6 +219,7 @@
     "飲食用缶": "Latas de alimentos e bebidas",
     "指定袋（資源物収集袋）。缶とビンは袋を分ける。不燃物集積所へ。月1回": "Saco designado (saco de coleta de recicláveis). Separe latas e garrafas de vidro em sacos diferentes. Leve ao ponto de coleta de lixo não combustível (不燃物集積所). Uma vez por mês",
     "飲食用ビン": "Garrafas de vidro de alimentos e bebidas",
+    "指定袋（資源物収集袋）。缶とビンは袋を分ける。キャップは外す。不燃物集積所へ。月1回": "Saco designado (saco de coleta de recicláveis) (指定袋). Separe os sacos de latas e de garrafas de vidro. Retire as tampas. Leve ao ponto de coleta de lixo não combustível (不燃物集積所). Uma vez por mês.",
     "ペットボトル": "Garrafas PET",
     "指定集積所のネットへ出す（指定集積所は各公民館等）。キャップとラベルは取る。汚れ・割れたものは燃えるごみ。隔月1回": "Coloque na rede do ponto de coleta designado (指定集積所) (os pontos de coleta designados são os centros comunitários (公民館) etc.). Retire as tampas e os rótulos. As garrafas sujas ou quebradas vão como lixo queimável. Uma vez a cada dois meses",
     "朝8時から10時まで": "Das 8h às 10h da manhã",
@@ -436,7 +443,13 @@
     "g86": "Mga Recyclable (Styrofoam)",
     "g87": "Dalhin sa itinakdang collection point sa araw ng koleksyon ng PET bottle at foam tray.",
     "g88": "Mga Recyclable (Food Tray)",
-    "g89": "Hugasang mabuti ang mga food tray na gawa sa styrofoam. Ang mga hindi matanggal ang dumi ay itapon bilang nasusunog na basura. Dalhin sa itinakdang collection point sa araw ng koleksyon ng PET bottle at foam tray."
+    "g89": "Hugasang mabuti ang mga food tray na gawa sa styrofoam. Ang mga hindi matanggal ang dumi ay itapon bilang nasusunog na basura. Dalhin sa itinakdang collection point sa araw ng koleksyon ng PET bottle at foam tray.",
+    "i0": "Ang Lungsod ng Minokamo (美濃加茂市) ay lungsod na itinatag noong Abril 1, Shōwa 29 (1954), na ang sentro ay ang Bayan ng Ota (太田町) at ang Bayan ng Furui (古井町) sa Distrito ng Kamo (加茂郡).",
+    "i1": "Ang malaking event na ginaganap taon-taon ay ang \"On Matsuri MINOKAMO\" (おん祭MINOKAMO), na gawang-kamay ng mga mamamayan ng lungsod.",
+    "i2": "Bukod dito, tuwing mga Marso ay may Koyama Kannon Hatsuuma Festival (小山観音初午祭), at tuwing mga Abril ay may pagdiriwang ng Dambana ng Suwa (諏訪神社).",
+    "i3": "Ang bulaklak ng lungsod ay ang \"hydrangea (あじさい)\", at ang puno ng lungsod ay ang \"muku (むく)\".",
+    "n.intro": "Ito ay pagpapakilalang binuo ng AI mula sa mga nakumpirmang sagot ng bayan at mga datos ng pambansang pamahalaan. Sinusuri kung ang mga numero at pangalan sa mga pangungusap ay nasa mga sagot o numerong pinagbatayan.",
+    "g79": "Para sa motorsiklo at 原付バイク (maliit na motorsiklo o moped), kumonsulta sa tindahang nagbebenta nito."
    },
    "gomi": {
     "太田": "Ota (太田)",
@@ -518,6 +531,7 @@
     "処理困難物": "Mga Bagay na Mahirap Iproseso",
     "ガスボンベ、消火器、バッテリー、タイヤ、灯油、農薬、ピアノ、土、石、医療系廃棄物など。販売店や専門業者に相談。": "Gas cylinder, fire extinguisher, baterya, gulong, kerosene, pestisidyo, piano, lupa, bato, basurang medikal, at iba pa. Komunsulta sa tindahang nagbebenta nito o sa espesyalistang kumpanya.",
     "二輪車リサイクル品": "Mga Motorsiklong Sakop ng Recycling",
+    "オートバイ、原付バイクは販売店に相談。": "Para sa motorsiklo at 原付バイク (maliit na motorsiklo o moped), kumonsulta sa tindahang nagbebenta nito.",
     "パソコンリサイクル品": "Mga Na-recycle na Personal Computer",
     "PCリサイクルマーク付きのパソコンはメーカーに問い合わせ。": "Para sa mga personal computer na may PC Recycle Mark, makipag-ugnayan sa manufacturer.",
     "資源物飲食用缶": "Mga Recyclable: Lata ng Pagkain at Inumin",
@@ -702,7 +716,12 @@
     "g86": "Tài nguyên tái chế (xốp)",
     "g87": "Mang đến điểm tập kết quy định (指定集積所) vào ngày thu gom chai nhựa PET và khay xốp.",
     "g88": "Tài nguyên tái chế (khay đựng thực phẩm)",
-    "g89": "Rửa sạch khay xốp. Khay không làm sạch được vết bẩn thì bỏ vào rác cháy được. Mang đến điểm tập kết quy định (指定集積所) vào ngày thu gom chai nhựa PET và khay xốp."
+    "g89": "Rửa sạch khay xốp. Khay không làm sạch được vết bẩn thì bỏ vào rác cháy được. Mang đến điểm tập kết quy định (指定集積所) vào ngày thu gom chai nhựa PET và khay xốp.",
+    "i0": "Thành phố Minokamo (美濃加茂市) là thành phố ra đời vào ngày 1 tháng 4 năm Showa 29 (1954), lấy thị trấn Ota (太田町) và thị trấn Furui (古井町) của huyện Kamo (加茂郡) làm trung tâm.",
+    "i1": "Sự kiện lớn được tổ chức hằng năm là \"Lễ hội On-matsuri MINOKAMO\" (おん祭MINOKAMO), do chính người dân thành phố tự tay làm nên.",
+    "i2": "Ngoài ra, còn có lễ Hatsuuma Oyama Kannon (小山観音初午祭) vào khoảng tháng 3 hằng năm, và lễ hội của đền Suwa (諏訪神社) vào khoảng tháng 4 hằng năm.",
+    "i3": "Hoa của thành phố là hoa cẩm tú cầu \"ajisai\" (あじさい), cây của thành phố là cây \"muku\" (むく).",
+    "n.intro": "Đây là phần giới thiệu do AI tổng hợp từ các câu trả lời đã được xác nhận của thị trấn và dữ liệu của quốc gia. Chúng tôi đã kiểm tra xem các con số và tên trong câu có nằm trong các câu trả lời và số liệu gốc hay không."
    },
    "gomi": {
     "太田": "Ota (太田)",
@@ -967,7 +986,14 @@
     "g86": "Recyclables (Styrofoam)",
     "g87": "Take to the designated collection point on the collection day for PET bottles and foam trays.",
     "g88": "Recyclables (food trays)",
-    "g89": "Rinse Styrofoam trays clean. Trays whose dirt cannot be removed are combustible waste. Take to the designated collection point on the collection day for PET bottles and foam trays."
+    "g89": "Rinse Styrofoam trays clean. Trays whose dirt cannot be removed are combustible waste. Take to the designated collection point on the collection day for PET bottles and foam trays.",
+    "i0": "Minokamo City (美濃加茂市) was founded on April 1, 1954 (Showa 29), centered on Ota Town (太田町) and Furui Town (古井町) in Kamo District (加茂郡).",
+    "i1": "The big event held every year is \"On Festival MINOKAMO (おん祭MINOKAMO),\" which is handmade by the citizens.",
+    "i2": "There are also the Koyama Kannon Hatsuuma Festival (小山観音初午祭) around March every year, and the festival of Suwa Shrine (諏訪神社) around April every year.",
+    "i3": "The city flower is the hydrangea, and the city tree is the muku tree.",
+    "n.intro": "This is an introduction compiled by AI from the town's confirmed answers and national data. It checks whether the numbers and names in the sentences appear in the answers or figures it was based on.",
+    "g48": "Designated bag (non-burnable waste collection bag). Take it to the non-burnable waste collection point (不燃物集積所). Use a separate bag from glass items. Items that mix plastic and metal, such as home appliances, and chunks of combustible material, such as cutting boards, also go here. Collected once every other month.",
+    "g49": "Glass items"
    },
    "gomi": {
     "太田": "Ota (太田)",
@@ -1018,6 +1044,8 @@
     "プラスチック製「容器・包装」・「製品」": "Plastic \"containers and packaging\" and \"products\"",
     "指定集積所のネットへ出す（指定集積所は各公民館等）。製品は一辺50cm未満、厚さ5mm未満のもの。隔月1回": "Put out in the net at the designated collection point (指定集積所). (Designated collection points are the community centers (公民館), etc.) Products must be less than 50cm on each side and less than 5mm thick. Collected once every two months.",
     "金属類": "Metal items",
+    "指定袋（不燃物収集袋）。不燃物集積所へ。ガラス類とは袋を分ける。家電などプラスチックと金属の混じったもの、まな板など可燃物のかたまりもここ。隔月1回": "Designated bag (non-burnable waste collection bag). Take it to the non-burnable waste collection point (不燃物集積所). Use a separate bag from glass items. Items that mix plastic and metal, such as home appliances, and chunks of combustible material, such as cutting boards, also go here. Collected once every other month.",
+    "ガラス類": "Glass items",
     "指定袋（不燃物収集袋）。不燃物集積所へ。金属類とは袋を分ける。尖った部分は新聞紙等（ダンボール不可）で包む。隔月1回": "Use the designated bag (non-burnable waste collection bag, 不燃物収集袋). Take it to the non-burnable waste collection point (不燃物集積所). Use separate bags for glass items and metal items. Wrap sharp parts in newspaper or similar (cardboard is not allowed). Collected once every two months.",
     "袋に入らなければ粗大ごみ。カーテン・ゴムマット・タオルケットなどは30cm四角に切る。ホース・ゴムホースは1m程度に切る。竹は30cmに切る。生ごみ・茶がら・残飯は水切りをしっかりする。犬やペットのフンは紙に包む。植木の枝は太さ3cmまで。": "If it does not fit in the bag, it is oversized waste. Cut curtains, rubber mats, blankets, and the like into 30cm squares. Cut hoses and rubber hoses to about 1m. Cut bamboo to 30cm. Drain kitchen waste, tea leaves, and leftover food thoroughly. Wrap dog and other pet droppings in paper. Garden tree branches may be up to 3cm thick.",
     "不燃物金属類": "Non-burnable waste: metal items",
@@ -1232,7 +1260,12 @@
     "g86": "資源物（しげんぶつ）：発泡（はっぽう）スチロール",
     "g87": "ペットボトルと発泡（はっぽう）トレイを集（あつ）める日（ひ）に、決（き）められた集積所（しゅうせきじょ）に出（だ）します。",
     "g88": "資源物（しげんぶつ）：食品（しょくひん）トレイ",
-    "g89": "発泡（はっぽう）スチロールでできたトレイを、きれいに洗（あら）います。汚（よご）れがとれないものは、燃（も）えるごみです。ペットボトルと発泡（はっぽう）トレイを集（あつ）める日（ひ）に、決（き）められた集積所（しゅうせきじょ）に出（だ）します。"
+    "g89": "発泡（はっぽう）スチロールでできたトレイを、きれいに洗（あら）います。汚（よご）れがとれないものは、燃（も）えるごみです。ペットボトルと発泡（はっぽう）トレイを集（あつ）める日（ひ）に、決（き）められた集積所（しゅうせきじょ）に出（だ）します。",
+    "i0": "美濃加茂市（みのかもし）は、昭和（しょうわ）29年（1954年）4月1日に、加茂郡（かもぐん）の太田町（おおたちょう）と古井町（こいちょう）を中心（ちゅうしん）に生まれた市です。",
+    "i1": "毎年（まいとし）ひらかれる大きなイベントは、市民（しみん）が手作（てづく）りする「おん祭MINOKAMO」です。",
+    "i2": "ほかに、毎年3月ごろに小山観音初午祭（こやまかんのんはつうまさい）、毎年4月ごろに諏訪神社（すわじんじゃ）のお祭りがあります。",
+    "i3": "市の花（はな）は「あじさい」、市の木（き）は「むく」です。",
+    "n.intro": "町（まち）が確（たし）かめた答（こた）えと、国（くに）のデータから、AI がまとめた紹介（しょうかい）です。文（ぶん）の中（なか）の数（かず）と名前（なまえ）が、もとにした答えや数の中にあるかを確かめています。"
    },
    "gomi": {
     "太田": "太田",
@@ -1330,7 +1363,7 @@
   }
  },
  "name": "美濃加茂市",
- "createdAt": "2026-11-04T22:31:55.331Z",
+ "createdAt": "2026-11-05T07:24:33.270Z",
  "model": "claude-sonnet-5-5",
  "made": {
   "mitate": "2026-11-04T00:15:23.402Z",
@@ -1338,6 +1371,7 @@
   "dekiru": "2026-11-04T00:15:23.402Z",
   "gomi": "2026-11-04T22:16:11.287Z",
   "quiz": null,
+  "intro": "2026-11-05T07:22:21.353Z",
   "gomidict": null
  }
 }

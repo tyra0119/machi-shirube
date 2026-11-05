@@ -1,11 +1,11 @@
 {
  "lang": "tl",
  "name": "Filipino",
- "createdAt": "2026-11-05T06:44:00.376Z",
+ "createdAt": "2026-11-05T07:27:15.566Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1044,
- "of": 1017,
+ "count": 1055,
+ "of": 1028,
  "dict": {
   "この町の非公式の暮らしの案内です。町の公式のサイトや国の公開データから集め、出典をつけています（まちしるべ）": "Ito ay isang di-opisyal na gabay sa pamumuhay sa bayang ito. Kinuha ito mula sa opisyal na website ng bayan at sa pampublikong datos ng bansa, at may nakasaad na pinagmulan (Machishirube)",
   "すべてのページ": "Lahat ng pahina",
@@ -1050,6 +1050,17 @@
   "今日の一問": "Tanong Ngayong Araw",
   "ほかの問題も解く": "Sagutan din ang iba pang tanong",
   "夕方からは、明日の分を先に出しています。": "Mula gabi, inilalabas na muna namin ang para sa bukas.",
-  "いまは、URL で決めた場所を「今いる所」にしています（本当の現在地ではありません）。": "Sa ngayon, ang lugar na itinakda sa URL ang ginagamit bilang \"kinaroroonan mo ngayon\" (hindi ito ang tunay mong kasalukuyang lokasyon)."
+  "いまは、URL で決めた場所を「今いる所」にしています（本当の現在地ではありません）。": "Sa ngayon, ang lugar na itinakda sa URL ang ginagamit bilang \"kinaroroonan mo ngayon\" (hindi ito ang tunay mong kasalukuyang lokasyon).",
+  "南海トラフの津波の特別強化地域": "Espesyal na lugar para sa pagpapalakas ng laban sa tsunami ng Nankai Trough",
+  "火山の警戒地域": "Lugar na dapat mag-ingat sa bulkan",
+  "特別豪雪地帯": "Lugar na may espesyal na napakalakas na niyebe",
+  "確かめた町の答えと国のデータから、AI がまとめた紹介です。文の中の数と名前が、もとにした答えや数の中にあるかを確かめています": "Ito ay pagpapakilalang binuo ng AI mula sa mga kumpirmadong sagot ng bayan at datos ng bansa. Sinusuri kung ang mga numero at pangalan sa mga pangungusap ay makikita sa mga sagot at numerong pinagbatayan.",
+  "農業・林業で働く人が多い": "Maraming nagtatrabaho sa agrikultura at panggugubat",
+  "漁業で働く人が多い": "Maraming nagtatrabaho sa pangingisda",
+  "国の数字から、決まりでまとめたもの（住民基本台帳・国勢調査・国の指定・国立社会保障・人口問題研究所の推計・国土地理院の自然災害伝承碑）。全国で目立つ数だけを出しています。": "Buod ayon sa mga patakaran, mula sa mga numero ng bansa (Basic Resident Register, census, mga itinalaga ng bansa, tantiya ng National Institute of Population and Social Security Research, at mga monumento ng natural na sakuna ng Geospatial Information Authority of Japan). Ipinapakita lamang ang mga numerong namumukod-tangi sa buong bansa.",
+  "2050年の人口は、2020年の約 {p}%（推計）": "Ang populasyon sa 2050 ay humigit-kumulang {p}% ng populasyon noong 2020 (tantiya)",
+  "昔の災害を伝える碑が {n} 基": "{n} monumentong nagpapaalala ng mga sakuna noong unang panahon",
+  "数で見る{name}": "{name} sa mga numero",
+  "どんな町？": "Anong klaseng bayan ito?"
  }
 }

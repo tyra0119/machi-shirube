@@ -1,11 +1,11 @@
 {
  "lang": "pt",
  "name": "Português",
- "createdAt": "2026-11-05T06:43:35.111Z",
+ "createdAt": "2026-11-05T07:25:53.338Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1055,
- "of": 1017,
+ "count": 1066,
+ "of": 1028,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Guia não oficial da vida na cidade. O Claude reúne as informações em sites oficiais da cidade e outras fontes, e indica a origem de cada uma (Machishirube)",
   "すべてのページ": "Todas as páginas",
@@ -1061,6 +1061,17 @@
   "今日の一問": "Pergunta do dia",
   "ほかの問題も解く": "Resolver outras perguntas",
   "夕方からは、明日の分を先に出しています。": "A partir do fim da tarde, mostramos antecipadamente as informações de amanhã.",
-  "いまは、URL で決めた場所を「今いる所」にしています（本当の現在地ではありません）。": "No momento, o local definido pelo URL está sendo usado como \"onde você está agora\" (não é a sua localização real)."
+  "いまは、URL で決めた場所を「今いる所」にしています（本当の現在地ではありません）。": "No momento, o local definido pelo URL está sendo usado como \"onde você está agora\" (não é a sua localização real).",
+  "南海トラフの津波の特別強化地域": "Zona especial de reforço contra tsunamis da Fossa de Nankai",
+  "火山の警戒地域": "Zona de alerta de vulcões",
+  "特別豪雪地帯": "Zona especial de neve intensa",
+  "確かめた町の答えと国のデータから、AI がまとめた紹介です。文の中の数と名前が、もとにした答えや数の中にあるかを確かめています": "Apresentação feita pela IA com base nas respostas confirmadas do município e em dados do governo. Verifica-se se os números e nomes do texto constam das respostas e dos números usados como base.",
+  "農業・林業で働く人が多い": "Muitas pessoas trabalham na agricultura e na silvicultura",
+  "漁業で働く人が多い": "Muitas pessoas trabalham na pesca",
+  "国の数字から、決まりでまとめたもの（住民基本台帳・国勢調査・国の指定・国立社会保障・人口問題研究所の推計・国土地理院の自然災害伝承碑）。全国で目立つ数だけを出しています。": "Resumo feito por regras a partir de números oficiais (registro civil de residentes, recenseamento, designações do governo, projeções do Instituto Nacional de Pesquisa da População e Seguridade Social, monumentos de tradição de desastres naturais do Instituto de Informação Geoespacial do Japão). Mostram-se apenas os números que se destacam no país.",
+  "2050年の人口は、2020年の約 {p}%（推計）": "A população em 2050 será cerca de {p}% da de 2020 (projeção)",
+  "昔の災害を伝える碑が {n} 基": "{n} monumentos que transmitem a memória de desastres do passado",
+  "数で見る{name}": "{name} em números",
+  "どんな町？": "Como é a cidade?"
  }
 }

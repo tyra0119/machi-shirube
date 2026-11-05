@@ -1,0 +1,45 @@
+{
+ "code": "11227",
+ "name": "埼玉県 朝霞市",
+ "createdAt": "2026-11-05T07:21:54.383Z",
+ "model": "claude-sonnet-5-5",
+ "sentences": [
+  {
+   "text": "朝霞市は埼玉県にあり、昭和42年3月15日に市制施行して「朝霞市」になりました。",
+   "sources": [
+    {
+     "title": "朝霞市主要年表（朝霞町誕生から）",
+     "url": "https://www.city.asaka.lg.jp/uploaded/attachment/17867.pdf"
+    }
+   ]
+  },
+  {
+   "text": "「朝霞駅」の南口駅前広場には、朝霞で育った歌手、本田美奈子．さんをたたえる「本田美奈子．モニュメント」があります。",
+   "sources": [
+    {
+     "title": "「シティ・セールス朝霞ブランド」を認定しました（令和6年4月～令和12年3月）",
+     "url": "https://www.city.asaka.lg.jp/site/musashino-front-asaka/citysales-asakabrand.html"
+    }
+   ]
+  },
+  {
+   "text": "毎年8月上旬に、市民まつり「彩夏祭」が開かれ、朝霞中央公園の周辺では花火もあります。",
+   "sources": [
+    {
+     "title": "【記者発表資料】第43回朝霞市民まつり「彩夏祭」を開催します - 朝霞市",
+     "url": "https://www.city.asaka.lg.jp/soshiki/55/kisya-260727.html"
+    }
+   ]
+  },
+  {
+   "text": "市の木は「ケヤキ」、市の花は「ツツジ」（サツキも含む）で、昭和53年（1978年）10月に定められました。",
+   "sources": [
+    {
+     "title": "市章・市の木・市の花 - 朝霞市",
+     "url": "https://www.city.asaka.lg.jp/soshiki/55/asaka-sisyou.html"
+    }
+   ]
+  }
+ ],
+ "note": "確かめた町の答えと国のデータから、AI がまとめた紹介です。文の中の数と名前が、もとにした答えや数の中にあるかを確かめています"
+}

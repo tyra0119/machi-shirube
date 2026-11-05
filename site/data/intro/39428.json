@@ -1,0 +1,45 @@
+{
+ "code": "39428",
+ "name": "高知県 黒潮町",
+ "createdAt": "2026-11-05T07:21:50.023Z",
+ "model": "claude-sonnet-5-5",
+ "sentences": [
+  {
+   "text": "黒潮町は、平成18年3月20日に、幡多郡の大方町と佐賀町が合併してできた町です。",
+   "sources": [
+    {
+     "title": "黒潮町について（まちの紹介）",
+     "url": "https://www.town.kuroshio.lg.jp/pb/cont/machi-shokai/257"
+    }
+   ]
+  },
+  {
+   "text": "例年5月初めのゴールデンウィークごろ、入野の浜で「Tシャツアート展」が開かれます。",
+   "sources": [
+    {
+     "title": "第38回Tシャツアート展 (～5/6) - 黒潮町",
+     "url": "https://www.town.kuroshio.lg.jp/pb/cont/541"
+    }
+   ]
+  },
+  {
+   "text": "黒潮町下田の口は、私小説家の上林暁が生まれた所で、生誕の地碑があります。",
+   "sources": [
+    {
+     "title": "黒潮町の歴史・史跡を観光してみよう！｜黒潮町公式ホームページ",
+     "url": "https://www.town.kuroshio.lg.jp/pb/cont/34502"
+    }
+   ]
+  },
+  {
+   "text": "町の花はユリとヤブツバキ、町の鳥はしろちどりとメジロです。",
+   "sources": [
+    {
+     "title": "黒潮町について｜黒潮町公式ホームページ",
+     "url": "https://www.town.kuroshio.lg.jp/pb/cont/machi-shokai/257"
+    }
+   ]
+  }
+ ],
+ "note": "確かめた町の答えと国のデータから、AI がまとめた紹介です。文の中の数と名前が、もとにした答えや数の中にあるかを確かめています"
+}

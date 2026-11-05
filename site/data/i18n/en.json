@@ -1,11 +1,11 @@
 {
  "lang": "en",
  "name": "English",
- "createdAt": "2026-11-05T06:43:41.248Z",
+ "createdAt": "2026-11-05T07:26:06.199Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1054,
- "of": 1017,
+ "count": 1065,
+ "of": 1028,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "This is an unofficial guide to living in this town. Claude gathers information from the town's official website and other sources, and cites each source (Machishirube)",
   "すべてのページ": "All pages",
@@ -1060,6 +1060,17 @@
   "今日の一問": "Today's Question",
   "ほかの問題も解く": "Try more questions",
   "夕方からは、明日の分を先に出しています。": "From the evening, we show tomorrow's information first.",
-  "いまは、URL で決めた場所を「今いる所」にしています（本当の現在地ではありません）。": "Right now, the place set by the URL is being used as \"where you are\" (it is not your actual current location)."
+  "いまは、URL で決めた場所を「今いる所」にしています（本当の現在地ではありません）。": "Right now, the place set by the URL is being used as \"where you are\" (it is not your actual current location).",
+  "南海トラフの津波の特別強化地域": "Special Tsunami Countermeasure Area for the Nankai Trough Earthquake",
+  "火山の警戒地域": "Volcano Alert Area",
+  "特別豪雪地帯": "Special Heavy Snowfall Area",
+  "確かめた町の答えと国のデータから、AI がまとめた紹介です。文の中の数と名前が、もとにした答えや数の中にあるかを確かめています": "This is an introduction written by AI from verified answers from the town and national data. We check that the numbers and names in the text appear in the source answers and figures.",
+  "農業・林業で働く人が多い": "Many residents work in agriculture and forestry",
+  "漁業で働く人が多い": "Many residents work in fishing",
+  "国の数字から、決まりでまとめたもの（住民基本台帳・国勢調査・国の指定・国立社会保障・人口問題研究所の推計・国土地理院の自然災害伝承碑）。全国で目立つ数だけを出しています。": "Compiled by fixed rules from national figures (Basic Resident Register, Population Census, national designations, National Institute of Population and Social Security Research projections, and the Geospatial Information Authority of Japan's natural disaster commemorative monuments). Only figures that stand out nationwide are shown.",
+  "2050年の人口は、2020年の約 {p}%（推計）": "The population in 2050 is about {p}% of 2020 (projected)",
+  "昔の災害を伝える碑が {n} 基": "{n} monuments recording past disasters",
+  "数で見る{name}": "{name} by the Numbers",
+  "どんな町？": "What kind of town is it?"
  }
 }
