@@ -1,11 +1,11 @@
 {
  "lang": "pt",
  "name": "Português",
- "createdAt": "2026-11-05T04:33:46.314Z",
+ "createdAt": "2026-11-05T06:43:35.111Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1054,
- "of": 1016,
+ "count": 1055,
+ "of": 1017,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Guia não oficial da vida na cidade. O Claude reúne as informações em sites oficiais da cidade e outras fontes, e indica a origem de cada uma (Machishirube)",
   "すべてのページ": "Todas as páginas",
@@ -1060,6 +1060,7 @@
   "明日やっている所": "O que abre amanhã",
   "今日の一問": "Pergunta do dia",
   "ほかの問題も解く": "Resolver outras perguntas",
-  "夕方からは、明日の分を先に出しています。": "A partir do fim da tarde, mostramos antecipadamente as informações de amanhã."
+  "夕方からは、明日の分を先に出しています。": "A partir do fim da tarde, mostramos antecipadamente as informações de amanhã.",
+  "いまは、URL で決めた場所を「今いる所」にしています（本当の現在地ではありません）。": "No momento, o local definido pelo URL está sendo usado como \"onde você está agora\" (não é a sua localização real)."
  }
 }

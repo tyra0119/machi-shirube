@@ -1,11 +1,11 @@
 {
  "lang": "id",
  "name": "Bahasa Indonesia",
- "createdAt": "2026-11-05T04:34:17.824Z",
+ "createdAt": "2026-11-05T06:43:49.893Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1050,
- "of": 1016,
+ "count": 1051,
+ "of": 1017,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Ini adalah panduan hidup tidak resmi untuk kota ini. Claude mengumpulkannya dari situs resmi kota dan sumber lain, dengan mencantumkan sumbernya (Machishirube)",
   "すべてのページ": "Semua halaman",
@@ -1056,6 +1056,7 @@
   "明日やっている所": "Tempat yang buka besok",
   "今日の一問": "Satu soal hari ini",
   "ほかの問題も解く": "Kerjakan soal lainnya",
-  "夕方からは、明日の分を先に出しています。": "Mulai sore hari, informasi untuk besok ditampilkan lebih dulu."
+  "夕方からは、明日の分を先に出しています。": "Mulai sore hari, informasi untuk besok ditampilkan lebih dulu.",
+  "いまは、URL で決めた場所を「今いる所」にしています（本当の現在地ではありません）。": "Saat ini, tempat yang ditentukan melalui URL digunakan sebagai \"lokasi Anda saat ini\" (bukan lokasi Anda yang sebenarnya)."
  }
 }

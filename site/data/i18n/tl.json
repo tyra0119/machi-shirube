@@ -1,11 +1,11 @@
 {
  "lang": "tl",
  "name": "Filipino",
- "createdAt": "2026-11-05T04:34:50.327Z",
+ "createdAt": "2026-11-05T06:44:00.376Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1042,
- "of": 1016,
+ "count": 1044,
+ "of": 1017,
  "dict": {
   "この町の非公式の暮らしの案内です。町の公式のサイトや国の公開データから集め、出典をつけています（まちしるべ）": "Ito ay isang di-opisyal na gabay sa pamumuhay sa bayang ito. Kinuha ito mula sa opisyal na website ng bayan at sa pampublikong datos ng bansa, at may nakasaad na pinagmulan (Machishirube)",
   "すべてのページ": "Lahat ng pahina",
@@ -1048,6 +1048,8 @@
   "明日は {k} の日": "Bukas ay araw ng {k}",
   "明日はごみの収集はありません": "Walang koleksyon ng basura bukas",
   "今日の一問": "Tanong Ngayong Araw",
-  "ほかの問題も解く": "Sagutan din ang iba pang tanong"
+  "ほかの問題も解く": "Sagutan din ang iba pang tanong",
+  "夕方からは、明日の分を先に出しています。": "Mula gabi, inilalabas na muna namin ang para sa bukas.",
+  "いまは、URL で決めた場所を「今いる所」にしています（本当の現在地ではありません）。": "Sa ngayon, ang lugar na itinakda sa URL ang ginagamit bilang \"kinaroroonan mo ngayon\" (hindi ito ang tunay mong kasalukuyang lokasyon)."
  }
 }

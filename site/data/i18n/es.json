@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-05T04:33:54.847Z",
+ "createdAt": "2026-11-05T06:43:38.563Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1053,
- "of": 1016,
+ "count": 1054,
+ "of": 1017,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -1059,6 +1059,7 @@
   "明日やっている所": "Lugares abiertos mañana",
   "今日の一問": "La pregunta de hoy",
   "ほかの問題も解く": "Resolver otras preguntas",
-  "夕方からは、明日の分を先に出しています。": "Por la tarde, ya se muestra la información de mañana."
+  "夕方からは、明日の分を先に出しています。": "Por la tarde, ya se muestra la información de mañana.",
+  "いまは、URL で決めた場所を「今いる所」にしています（本当の現在地ではありません）。": "Ahora se usa como «dónde estás» el lugar indicado en la URL (no es tu ubicación actual real)."
  }
 }

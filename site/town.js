@@ -130,7 +130,10 @@ const newMark = () => `<span class="new-mark">${T("新しい")}</span>`;
 $("share").innerHTML = icon("share");
 new MutationObserver(() => { if ($("share-done").textContent) $("share-row").hidden = false; }).observe($("share-done"), { childList: true });
 $("share").addEventListener("click", async () => {
-  const url = location.href.split("#")[0];
+  // 録画用の ?here=（今いる所を決めた場所にする）は送らない（受け取った家族の「今いる所」まで、その場所になってしまう）
+  const u0 = new URL(location.href.split("#")[0]);
+  u0.searchParams.delete("here");
+  const url = u0.href;
   const text = TN("{name}のくらしの案内（今日の天気・ごみの日・近い避難場所・病院）", { name: $("name").textContent });
   if (navigator.share) { try { await navigator.share({ title: document.title, text, url }); return; } catch (e) { if (e.name === "AbortError") return; } }
   try { await navigator.clipboard.writeText(`${text}\n${url}`); $("share-done").innerHTML = `${T("リンクを写しました。")} <a href="https://social-plugins.line.me/lineit/share?url=${encodeURIComponent(url)}" target="_blank" rel="noopener">${T("LINE で送る")}</a>`; }
@@ -729,7 +732,12 @@ async function showHinan(code, townFeatures, startPart) {
   // 例：黒潮町の大方クリニック（入野2016-1）&here=133.01135,33.02425）。ふだんの住む人の使い方では出てこない
   const demoHere = (q.get("here") ?? "").split(",").map(Number);
   buttons.locate = () => {
-    if (demoHere.length === 2 && demoHere.every((v) => Number.isFinite(v) && v)) return setHere(demoHere, "現在地");
+    if (demoHere.length === 2 && demoHere.every((v) => Number.isFinite(v) && v)) {
+      setHere(demoHere, "現在地");
+      // 町から離れているときの知らせがなければ、決めた場所であることを知らせる（この URL を人から送られて開いた人が、本当の現在地とまちがえないように）
+      if ($("hinan-msg").hidden) showMsg(T("いまは、URL で決めた場所を「今いる所」にしています（本当の現在地ではありません）。"));
+      return;
+    }
     if (!navigator.geolocation) return showMsg(T("この端末では現在地が使えません。下の「町・字を選ぶ」から選んでください。"));
     navigator.geolocation.getCurrentPosition(
       (pos) => setHere([pos.coords.longitude, pos.coords.latitude], "現在地"),

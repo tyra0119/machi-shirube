@@ -1,11 +1,11 @@
 {
  "lang": "vi",
  "name": "Tiếng Việt",
- "createdAt": "2026-11-05T04:34:44.582Z",
+ "createdAt": "2026-11-05T06:43:55.303Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1051,
- "of": 1016,
+ "count": 1052,
+ "of": 1017,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Đây là trang hướng dẫn đời sống không chính thức của thị trấn này. Claude thu thập từ các trang chính thức của thị trấn v.v. và ghi rõ nguồn (Machi-shirube)",
   "すべてのページ": "Tất cả các trang",
@@ -1057,6 +1057,7 @@
   "今日の一問": "Câu hỏi hôm nay",
   "ほかの問題も解く": "Làm thêm câu hỏi khác",
   "夕方からは、明日の分を先に出しています。": "Từ chiều tối, chúng tôi hiển thị trước thông tin của ngày mai.",
-  "前に見てから {n} 件": "{n} mục kể từ lần xem trước"
+  "前に見てから {n} 件": "{n} mục kể từ lần xem trước",
+  "いまは、URL で決めた場所を「今いる所」にしています（本当の現在地ではありません）。": "Hiện tại, nơi được chỉ định bằng URL đang được dùng làm \"nơi bạn đang ở\" (không phải vị trí hiện tại thực sự)."
  }
 }
