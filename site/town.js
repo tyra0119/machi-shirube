@@ -1458,11 +1458,12 @@ async function showGomi(code) {
 
 // 町の人に聞きたいこと：公開の資料では見つからなかった問い（答えが「見つからなかった」）と、作者が「分からない（町の人に聞く）」とした問い
 async function showAsk(code, partKey) {
-  const rev = (await getData("data/review.json")) ?? { items: [] };
+  // 町ごとの小さなファイル（scripts/ledger.mjs が書き出す。全国の review.json〈圧縮して 58KB〉は読まない）
+  const rev = (await getData(`data/ask/${code}.json`)) ?? { items: [] };
   const scopes = [`muni:${code}`, ...(partKey ? [`town:${partKey}`] : [])];
   const fromAnswers = Object.values(answersByPage).flat().filter((a) => a.value === "見つからなかった");
-  // 「分からない」と決めたものと、見つからなかったので「出さない」と決めたもの
-  const unknown = rev.items.filter((x) => scopes.includes(x.scope) && (x.status === "unknown" || (x.status === "rejected" && /見つからなかった/.test(`${x.why ?? ""} ${x.decided?.reason ?? ""}`))));
+  // 「分からない」と決めたものと、見つからなかったので「出さない」と決めたもの（ファイルにはこの2つだけが入っている）
+  const unknown = rev.items.filter((x) => scopes.includes(x.scope));
   const list = [...fromAnswers.map((a) => ({ qid: a.qid, q: a.question, at: a.checkedAt })), ...unknown.map((x) => ({ qid: x.qid, q: x.question, at: x.decided?.at, why: x.decided?.reason }))];
   const seen = new Set();
   const uniq = list.filter((x) => (seen.has(x.q) ? false : seen.add(x.q)));
@@ -1581,10 +1582,10 @@ async function showGomiDays(code, partName, softName) {
 // どの町のページも最後に同じことをする：答え・わが家の避難・今日の暮らし・すべてのページ・調べる
 // 町のファイルを、はじめに全部同時に読み始める（欄ごとに1本ずつ読むのを待つと、電波の弱い所では 1本 0.3 秒 × 十数本の待ちになる）。
 // getData が読み置くので、あとの欄はそれを使う。無いと分かっているファイルは knownMissing が読まない
-const TOWN_DIRS = ["hitokoto", "dekiru", "changes", "flood-pop", "slope", "plan", "quake-pop", "lore", "bus", "accidents", "shop-access", "kaigo", "climate", "local-sites", "intro", "quiz", "news", "shelters", "shelter-list", "gomi", "gomi-days", "sources", "aed"];
+const TOWN_DIRS = ["hitokoto", "dekiru", "changes", "flood-pop", "slope", "plan", "quake-pop", "lore", "bus", "accidents", "shop-access", "kaigo", "climate", "local-sites", "intro", "quiz", "news", "shelters", "shelter-list", "gomi", "gomi-days", "sources", "aed", "ask"];
 function prefetchTown(code) {
   for (const d of TOWN_DIRS) getData(`data/${d}/${code}.json`);
-  for (const f of ["holidays", "yardstick", "features", "review"]) getData(`data/${f}.json`);
+  for (const f of ["holidays", "yardstick", "features"]) getData(`data/${f}.json`);
 }
 async function finishPage(code, townFeatures, startPart, scopeNote, at) {
   prefetchTown(code);

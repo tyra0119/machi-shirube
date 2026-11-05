@@ -343,6 +343,21 @@ export function exportPublic(data = load()) {
       decided: x.decisions.at(-1) ? { at: x.decisions.at(-1).at, action: x.decisions.at(-1).action, reason: x.decisions.at(-1).reason } : undefined,
     })),
   }, null, 1));
+  // 町の人に聞きたいこと（町のページの ask-block）：町ごとに、「分からない」と決めたものと、見つからなかったので出さないと決めたものだけ。
+  // 町のページは全国の review.json（圧縮して 58KB）を読まずに、この小さなファイルを読む。無い町はファイルも作らない
+  const adir = "site/data/ask";
+  fs.mkdirSync(adir, { recursive: true });
+  for (const f of fs.readdirSync(adir)) if (/^\d{5}\.json$/.test(f)) fs.rmSync(`${adir}/${f}`);
+  const askBy = new Map();
+  for (const x of data.items) {
+    const last = x.decisions.at(-1);
+    if (!(x.status === "unknown" || (x.status === "rejected" && /見つからなかった/.test(`${x.why ?? ""} ${last?.reason ?? ""}`)))) continue;
+    const code = String(x.scope ?? "").replace(/^(?:muni|town):/, "").slice(0, 5);
+    if (!/^\d{5}$/.test(code)) continue;
+    if (!askBy.has(code)) askBy.set(code, []);
+    askBy.get(code).push({ scope: x.scope, qid: x.qid, question: x.question, why: x.why, status: x.status, decided: last ? { at: last.at, reason: last.reason } : undefined });
+  }
+  for (const [code, items] of askBy) fs.writeFileSync(`${adir}/${code}.json`, JSON.stringify({ items }, null, 1));
   exportProgress(data);
   exportChanges(data);
 }
