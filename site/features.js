@@ -9,16 +9,19 @@ const FEATURES = {
 };
 for (const [id, f] of Object.entries(FEATURES)) ILLUST[`feat-${id}`] = { h: f.h, main: f.main, sub: f.sub };
 
+// 予報の値が空の日は「–」（Math.round(null) が 0 になり、0℃ と出てしまう）
+const rnd = (v) => (v == null ? "–" : Math.round(v));
 // これから2週間の気温（Open-Meteo）から、霜・凍結・高温の日を拾う（めやす）
 async function frostWidget(at) {
   const d = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${at[1].toFixed(3)}&longitude=${at[0].toFixed(3)}&daily=temperature_2m_max,temperature_2m_min&timezone=Asia%2FTokyo&forecast_days=16`).then((r) => r.json()).catch(() => null);
   if (!d?.daily) return `<p class="note">${T("気温の予報を読み込めませんでした。")}</p>`;
   const days = d.daily.time.map((t, i) => ({ t, max: d.daily.temperature_2m_max[i], min: d.daily.temperature_2m_min[i] }));
-  const tag = (x) => (x.min <= 0 ? ["frost", T("凍結のおそれ")] : x.min <= 3 ? ["frost", T("霜のおそれ")] : x.max >= 35 ? ["hot", T("猛暑")] : x.max >= 30 ? ["hot", T("高温")] : null);
+  // 予報の値が空の日は印を付けない（null <= 0 が真になり、「凍結のおそれ」と出てしまう）
+  const tag = (x) => (x.min == null || x.max == null ? null : x.min <= 0 ?["frost", T("凍結のおそれ")] : x.min <= 3 ? ["frost", T("霜のおそれ")] : x.max >= 35 ? ["hot", T("猛暑")] : x.max >= 30 ? ["hot", T("高温")] : null);
   const md = (t) => `${Number(t.slice(5, 7))}/${Number(t.slice(8, 10))}`;
   const marks = days.filter(tag);
   return `<p class="feat-sum">${marks.length ? `${T("これから2週間で気をつけたい日")}：<strong>${marks.length}</strong>` : T("これから2週間、霜や高温のおそれは小さい見込みです")}</p>
-    <ol class="temp-strip">${days.map((x) => { const g = tag(x); return `<li class="${g?.[0] ?? ""}"><span class="d">${md(x.t)}</span><span class="hi">${Math.round(x.max)}</span><span class="lo">${Math.round(x.min)}</span>${g ? `<span class="g">${esc(g[1])}</span>` : ""}</li>`; }).join("")}</ol>
+    <ol class="temp-strip">${days.map((x) => { const g = tag(x); return `<li class="${g?.[0] ?? ""}"><span class="d">${md(x.t)}</span><span class="hi">${rnd(x.max)}</span><span class="lo">${rnd(x.min)}</span>${g ? `<span class="g">${esc(g[1])}</span>` : ""}</li>`; }).join("")}</ol>
     <p class="cite">${T("最高・最低気温の予報：Open-Meteo.com（CC BY 4.0）を加工。霜は最低3℃以下・凍結は0℃以下・高温は最高30℃以上を、めやすとして印にしています。長い先の予報ほど外れやすいので、気象庁の早期天候情報も確かめてください。")}
       <a href="https://www.data.jma.go.jp/cpd/souten/" target="_blank" rel="noopener">${T("気象庁 早期天候情報")}</a></p>`;
 }
@@ -38,7 +41,7 @@ async function snowWidget(at) {
   const d = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${at[1].toFixed(3)}&longitude=${at[0].toFixed(3)}&daily=snowfall_sum,temperature_2m_min&timezone=Asia%2FTokyo&forecast_days=7`).then((r) => r.json()).catch(() => null);
   if (!d?.daily) return `<p class="note">${T("雪の予報を読み込めませんでした。")}</p>`;
   const md = (t) => `${Number(t.slice(5, 7))}/${Number(t.slice(8, 10))}`;
-  return `<ol class="temp-strip">${d.daily.time.map((t, i) => { const s = d.daily.snowfall_sum[i]; return `<li class="${s >= 5 ? "frost" : ""}"><span class="d">${md(t)}</span><span class="hi">${s ? `${Math.round(s)}cm` : "-"}</span><span class="lo">${Math.round(d.daily.temperature_2m_min[i])}℃</span>${s >= 5 ? `<span class="g">${T("雪")}</span>` : ""}</li>`; }).join("")}</ol>
+  return `<ol class="temp-strip">${d.daily.time.map((t, i) => { const s = d.daily.snowfall_sum[i]; return `<li class="${s >= 5 ? "frost" : ""}"><span class="d">${md(t)}</span><span class="hi">${s ? `${Math.round(s)}cm` : "-"}</span><span class="lo">${d.daily.temperature_2m_min[i] == null ? "–" : `${Math.round(d.daily.temperature_2m_min[i])}℃`}</span>${s >= 5 ? `<span class="g">${T("雪")}</span>` : ""}</li>`; }).join("")}</ol>
     <p class="cite">${T("降雪の量と最低気温の予報：Open-Meteo.com（CC BY 4.0）を加工。めやすです。大雪の警報・注意報は気象庁の発表で。")}</p>`;
 }
 const WIDGETS = { frost: frostWidget, sea: seaWidget, snow: snowWidget };
