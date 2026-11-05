@@ -1605,7 +1605,9 @@ async function main() {
     parts = (list ?? "").split(",").filter(Boolean);
   } else return notFound("町が指定されていません");
 
-  const topo = await getJSON(`data/towns/${code}.json`);
+  // 町の番号がまちがっているとき（town=abc・無い市区町村の番号）は、読み込み中のまま止めずに知らせる
+  const topo = /^\d{5}$/.test(code) ? await getJSON(`data/towns/${code}.json`).catch(() => null) : null;
+  if (!topo?.objects?.towns) return notFound("町・字が見つかりませんでした");
   const all = topojson.feature(topo, topo.objects.towns).features;
   const chosen = parts.map((p) => all.find((f) => f.properties.part === p)).filter(Boolean);
   if (!chosen.length) return notFound("町・字が見つかりませんでした");
