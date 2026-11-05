@@ -227,6 +227,9 @@ const codeFiles = (dir) => (fs.existsSync(`site/data/${dir}`) ? fs.readdirSync(`
     if (d.koho && !/^https?:\/\//.test(d.koho.latest?.url ?? "")) bad.push(`${f} 広報紙`);
   }
   check(!bad.length, "町からのお知らせ：見出し・URL・日付の形", sample(bad));
+  // 毎朝の自動の取り直し（.github/workflows/news.yml）は、審査のあいだは止めておく（「11/8 20:00 以降は push しない」）
+  const wf = fs.existsSync(".github/workflows/news.yml") ? fs.readFileSync(".github/workflows/news.yml", "utf8").split("\n").filter((l) => !l.trim().startsWith("#")).join("\n") : "";
+  if (/^\s*schedule:/m.test(wf)) warn("お知らせの毎朝の自動の取り直しが動く設定になっている（審査のあいだは .github/workflows/news.yml の schedule を「#」で止める）"); else ok("お知らせの毎朝の自動の取り直しは止めてある（手で押したときだけ動く）");
   const old = codeFiles("news").filter((f) => (Date.now() - new Date(read(`site/data/news/${f}`).fetchedAt).getTime()) / 864e5 > 7);
   if (old.length) warn("町からのお知らせが 7 日より古い（npm run news で取り直す）", sample(old)); else ok("町からのお知らせが 7 日以内に取ったもの");
 }

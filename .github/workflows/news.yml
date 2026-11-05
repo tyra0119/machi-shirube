@@ -1,0 +1,44 @@
+# 町からのお知らせを、毎朝取り直す（scripts/news.mjs。町の公式サイトの新着の見出しと広報紙の最新号。AI は使わない・鍵はいらない）
+# 作者「毎朝自動で取り直す仕組みは用意して、実行しないようにできる？」→ いまは、決まった時刻には動かさない（手で押したときだけ動く）。
+# 審査のあいだは書き込みを入れない（「11/8 20:00 以降は push しない」）。審査が終わったら、下の schedule の 2 行の「#」を外すと毎朝動く
+name: お知らせの取り直し
+
+on:
+  workflow_dispatch:
+  # schedule:
+  #   - cron: "30 21 * * *" # 毎朝 6:30（日本時間。GitHub は UTC で数える）
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: news
+  cancel-in-progress: false
+
+jobs:
+  news:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # 名乗って・robots.txt を見て・同じサイトへは 1 秒以上あけて取る（scripts/news.mjs の決まりのまま）
+      - run: node scripts/news.mjs
+      - name: 変わったときだけ書き込む
+        id: commit
+        run: |
+          if git diff --quiet -- site/data/news; then echo "changed=no" >> "$GITHUB_OUTPUT"; exit 0; fi
+          git config user.name "machi-shirube お知らせの取り直し"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add site/data/news
+          git commit -m "町からのお知らせを取り直す（自動）"
+          git push
+          echo "changed=yes" >> "$GITHUB_OUTPUT"
+      # この仕組みの書き込みでは公開の仕組み（pages.yml）が自動で動かないので、呼んで公開し直す
+      - name: 公開し直す
+        if: steps.commit.outputs.changed == 'yes'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages.yml --ref main
