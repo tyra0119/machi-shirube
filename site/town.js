@@ -976,25 +976,31 @@ const ANSWER_ICON = {
 const PAGE_OF = (qid) => yardstick.questions.find((x) => x.id === qid)?.page;
 // 数と単位を太く（中身は変えない）
 // 時刻（8時30分・9:00）や電話番号の中の数は太くしない（前が「時」「:」「-」や数のときは除く）
-const numbers = (html) => html.replace(/(?<![0-9０-９時:：\-－])([0-9０-９][0-9０-９,，.]*)(\s*)(か所|ヶ所|カ所|件|人|世帯|分|時間|m|km|メートル|校|台|便|回|%|％)/g, '<b class="num">$1$2$3</b>');
+// 前の字を見る正規表現（後ろ読み (?<!…)）は iOS 16.4 より前の Safari（iOS 15 までの古い iPhone）で読めず、このファイル全体が動かなくなるので、
+// 置きかえの中で前の字を見る
+const numbers = (html) => html.replace(/([0-9０-９][0-9０-９,，.]*)(\s*)(か所|ヶ所|カ所|件|人|世帯|分|時間|m|km|メートル|校|台|便|回|%|％)/g, (m, a, b, c, at, all) => (/[0-9０-９時:：\-－]/.test(all[at - 1] ?? "") ? m : `<b class="num">${a}${b}${c}</b>`));
 // 電話番号は押してかけられるように（住む人の目で見ると、答えの中の番号が押せない文字のままだった）
-const TEL = /(?<![\d-])(0\d{1,4}-\d{1,4}-\d{3,4})(?![\d-])/g;
+// 前が数や「-」のときは番号の途中なので除く（置きかえ・探すときに前の字を見る）
+const TEL = /0\d{1,4}-\d{1,4}-\d{3,4}(?![\d-])/g;
+const telsIn = (s) => [...String(s).matchAll(TEL)].filter((x) => !/[\d-]/.test(s[x.index - 1] ?? "")).map((x) => x[0]);
 // 電話番号の形をそろえる：国のデータには全角の数字や「－」「ー」「‐」の混じったもの（「０８８０ー５５ー２３１８」）があり、押してもかからない端末があった
 const telText = (t) => String(t ?? "").normalize("NFKC").replace(/[‐‑‒–—―ー−－]/g, "-").trim();
 const telHref = (t) => telText(t).replace(/[^\d+#*]/g, "").replace("#", "%23");
-const telLinks = (html) => html.replace(TEL, (m) => `<a class="tel" href="tel:${m.replace(/-/g, "")}">${m}</a>`);
+const telLinks = (html) => html.replace(TEL, (m, at, all) => (/[\d-]/.test(all[at - 1] ?? "") ? m : `<a class="tel" href="tel:${m.replace(/-/g, "")}">${m}</a>`));
 // 急ぐときの番号（119・110・#7119・#8000 など）も、ページのどこに書いてあっても押してかけられるように。
 // 文字のあとから書き足すので、答えのカード・注意書き・訳のどれにも効く（「110人」「119か所」のような数は除く）
-const URGENT = /(#\d{4})(?![\d-])|(?<![\d０-９\-.,#:])(119|110)(?=\s*(?:へ|番|に|、|。|・|）|】|か|$))/g;
+const URGENT = /(#\d{4})(?![\d-])|(119|110)(?=\s*(?:へ|番|に|、|。|・|）|】|か|$))/g;
+const URGENT_BEFORE = /[\d０-９\-.,#:]/; // 119・110 の前がこの字なら、番号ではない（「2110」「3.110」など）
+const urgentHits = (s) => [...s.matchAll(URGENT)].filter((x) => x[1] || !URGENT_BEFORE.test(s[x.index - 1] ?? ""));
 function linkUrgent(root) {
   const walk = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
     acceptNode: (n) => (n.parentElement.closest("a, button, select, option, script, style, textarea, summary") ? NodeFilter.FILTER_REJECT : NodeFilter.FILTER_ACCEPT),
   });
   const hits = [];
-  for (let n = walk.nextNode(); n; n = walk.nextNode()) { URGENT.lastIndex = 0; if (URGENT.test(n.nodeValue)) hits.push(n); }
+  for (let n = walk.nextNode(); n; n = walk.nextNode()) if (urgentHits(n.nodeValue).length) hits.push(n);
   for (const n of hits) {
     const span = document.createElement("span");
-    span.innerHTML = esc(n.nodeValue).replace(URGENT, (m) => `<a class="tel" href="tel:${m.replace("#", "%23")}">${m}</a>`);
+    span.innerHTML = esc(n.nodeValue).replace(URGENT, (m, g1, g2, at, all) => (!g1 && URGENT_BEFORE.test(all[at - 1] ?? "") ? m : `<a class="tel" href="tel:${m.replace("#", "%23")}">${m}</a>`));
     n.replaceWith(...span.childNodes);
   }
 }
@@ -1044,8 +1050,7 @@ function answersHTML(answers) {
   return `<ul class="answers${fold ? " folded-cards" : ""}">${answers.map((a) => {
     const ill = ILLUST[PAGE_OF(a.qid)] ?? ILLUST.shiru;
     const p = !notFound(a) && !(a.items && !a.translated) ? answerParts(a) : null;
-    const tel = p && fold && !TEL.test(p.leadText) ? String(a.value).match(TEL)?.[0] : null;
-    TEL.lastIndex = 0;
+    const tel = p && fold && !telsIn(p.leadText).length ? telsIn(String(a.value))[0] ?? null : null;
     const more = (inner) => (fold && p ? `${tel ? `<a class="tel-quick" href="tel:${tel.replace(/-/g, "")}">${icon("phone")}${tel}</a>` : ""}<details class="a-more"><summary>${T("くわしく")}</summary>${inner}</details>` : inner);
     return `
     <li class="${notFound(a) ? "not-found" : ""}" id="a-${esc(a.qid ?? "")}" style="--h:${ill.h}">
@@ -1438,7 +1443,8 @@ function onDay(when, date) {
   if (dates.length && !/毎週|第/.test(when)) return dates.some(([, m, ds]) => Number(m) === date.getMonth() + 1 && ds.split(/[・、]/).map((x) => Number(x.trim())).includes(date.getDate()));
   const w = WD[date.getDay()];
   // 「曜日」の「日」は日曜日ではない（「毎週月・木曜日」の最後の「日」を日曜日と数えていた）
-  const days = (when.match(/(?<!曜)[月火水木金土日](?=[・、曜]|$)/g) ?? []);
+  // 「曜日」の「日」は日曜ではない（前の字が「曜」なら除く。後ろ読みは古い iPhone で動かないので、前の字を見る）
+  const days = [...when.matchAll(/[月火水木金土日](?=[・、曜]|$)/g)].filter((x) => when[x.index - 1] !== "曜").map((x) => x[0]);
   if (!days.includes(w)) return false;
   const nth = when.match(/第([0-9０-９・、〜~]+)/);
   if (!nth) return /毎週|曜/.test(when);
