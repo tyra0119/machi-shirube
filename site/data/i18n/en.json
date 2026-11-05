@@ -1,11 +1,11 @@
 {
  "lang": "en",
  "name": "English",
- "createdAt": "2026-11-05T03:30:20.238Z",
+ "createdAt": "2026-11-05T03:42:45.315Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 979,
- "of": 943,
+ "count": 982,
+ "of": 946,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "This is an unofficial guide to living in this town. Claude gathers information from the town's official website and other sources, and cites each source (Machishirube)",
   "すべてのページ": "All pages",
@@ -985,6 +985,9 @@
   "いちばん近い避難場所まで、まっすぐ約 {k}km あります。今いる所は、この町から離れているかもしれません。今いる町の避難場所は、その町のページで見てください。": "The nearest evacuation site is about {k}km away in a straight line. You may be far from this town. For evacuation sites in the town you're in, check that town's page.",
   "海抜と浸水の想定を計算しています…": "Calculating elevation and flood forecast…",
   "まっすぐ 約 {k}km": "Straight ahead, approx. {k} km",
-  "今日は土日・祝日です。下は平日の時刻表なので、今日の便はバス会社の時刻表で確かめてください。": "Today is a weekend or public holiday. The timetable below is for weekdays, so please check today's departures on the bus company's timetable."
+  "今日は土日・祝日です。下は平日の時刻表なので、今日の便はバス会社の時刻表で確かめてください。": "Today is a weekend or public holiday. The timetable below is for weekdays, so please check today's departures on the bus company's timetable.",
+  "今日は祝日です。祝日の収集は、町のカレンダーで確かめてください。": "Today is a public holiday. Please check the town calendar for holiday collection.",
+  "祝日は変わることがあります": "Holidays may change",
+  "明日は祝日です。祝日の収集は、町のカレンダーで確かめてください。": "Tomorrow is a public holiday. Check the town calendar for holiday collection."
  }
 }

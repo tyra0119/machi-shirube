@@ -1075,12 +1075,13 @@ async function showMedical(code, center) {
 
 // 今日の暮らし（今日すること・困ったときの入口）と、暮らしの場面のタイル
 let medicalRow = null;
+let gomiHoliday = false; // 今日が祝日か（ごみの収集が変わることがある）
 let gomiToday = null; // 町・字のページで、今日出せるごみ（ごみを出す日の表から）
 function todayLife(hasHinan) {
   const has = (v) => (answersByPage[v] ?? []).filter((a) => a.value !== "見つからなかった").length;
   const row = (view, k, v, ready) => `<li><a href="#${view}"><span class="k">${icon(ILLUST[view]?.main)}${T(k)}</span><span class="v${ready ? "" : " later"}">${esc(T(v))}</span></a></li>`;
   $("today-life").innerHTML = [
-    row("gomi", T("ごみ"), gomiToday ? (gomiToday.length ? TN("今日は {k} の日", { k: gomiToday.join("・") }) : T("今日はごみの収集はありません")) : has("gomi") ? T("ごみの出し方を見る") : T("地区ごとの収集日は準備中です"), has("gomi") || !!gomiToday),
+    row("gomi", T("ごみ"), gomiToday ? (gomiToday.length ? TN("今日は {k} の日", { k: gomiToday.join("・") }) : T("今日はごみの収集はありません")) + (gomiHoliday ? `（${T("祝日は変わることがあります")}）` : "") : has("gomi") ? T("ごみの出し方を見る") : T("地区ごとの収集日は準備中です"), has("gomi") || !!gomiToday),
     medicalRow ?? row("iryo", T("病院"), T("この町の病院のデータはまだありません"), false),
     row("bousai", T("避難"), hasHinan ? T("わが家から近い避難場所を出す") : !$("shelter-list-block").hidden ? T("行政区ごとの避難施設を見る") : has("bousai") ? T("避難場所の案内を見る") : T("避難場所は準備中です"), hasHinan || !$("shelter-list-block").hidden || has("bousai")),
     row("komatta", T("困ったとき"), has("komatta") ? T("電話・メールの窓口を見る") : T("電話・メールの窓口は準備中です"), has("komatta")),
@@ -1388,6 +1389,9 @@ function onDay(when, date) {
 async function showGomiDays(code, partName, softName) {
   const g = await getData(`data/gomi-days/${code}.json`);
   if (!g) return null;
+  // 祝日は町によって収集が変わる（祝日も収集・休み）。曜日だけで言い切らず、町のカレンダーで確かめてもらう
+  const holidays = (await getData("data/holidays.json"))?.holidays ?? {};
+  const ymd = (d) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(d.getDate()).padStart(2, "0")}`;
   $("gomi-days-block").hidden = false;
   // ほかの言葉では、確かめの通った訳で出す（無い文は日本語のまま）
   const gtr = await aiTrGomi(code, g.createdAt);
@@ -1439,7 +1443,9 @@ async function showGomiDays(code, partName, softName) {
     const now = jpNow(), tmr = new Date(now.getTime() + 86400000);
     const t0 = a.days.filter((x) => onDay(x.when, now)).map((x) => gt(x.kind)), t1 = a.days.filter((x) => onDay(x.when, tmr)).map((x) => gt(x.kind));
     todayKinds = t0;
-    $("gomi-today").innerHTML = `${icon("calendar")} ${T("今日")}：<strong>${t0.length ? esc(t0.join("・")) : T("収集なし")}</strong>　${T("明日")}：<strong>${t1.length ? esc(t1.join("・")) : T("収集なし")}</strong>`;
+    gomiHoliday = !!holidays[ymd(now)];
+    const hol = holidays[ymd(now)] ? T("今日は祝日です。祝日の収集は、町のカレンダーで確かめてください。") : holidays[ymd(tmr)] ? T("明日は祝日です。祝日の収集は、町のカレンダーで確かめてください。") : "";
+    $("gomi-today").innerHTML = `${icon("calendar")} ${T("今日")}：<strong>${t0.length ? esc(t0.join("・")) : T("収集なし")}</strong>　${T("明日")}：<strong>${t1.length ? esc(t1.join("・")) : T("収集なし")}</strong>${hol ? `<small class="gomi-hol">${hol}</small>` : ""}`;
     $("gomi-days").innerHTML = a.days.map((x) => `<li class="${onDay(x.when, now) ? "today" : ""}"><span class="k">${esc(gt(x.kind))}</span><span class="w">${esc(gt(x.when))}</span></li>`).join("");
   };
   sel.addEventListener("change", () => { remember.set(`gomi:${code}`, sel.value); draw(); });

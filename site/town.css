@@ -451,6 +451,7 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 /* ごみを出す日・出し方の要点 */
 .gomi-today { padding: 10px 12px; border-radius: 10px; background: var(--bg); font-size: 16px; }
 .gomi-today .ic { color: var(--accent); margin-right: 4px; }
+.gomi-today .gomi-hol { display: block; margin-top: 4px; font-size: 14px; color: var(--text-sub); }
 .gomi-days { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 6px; margin: 8px 0; padding: 0; list-style: none; }
 .gomi-days li { display: flex; flex-direction: column; padding: 8px 10px; border: 1px solid var(--line); border-radius: 8px; }
 .gomi-days li.today { border: 2px solid var(--accent); }

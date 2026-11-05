@@ -1,11 +1,11 @@
 {
  "lang": "pt",
  "name": "Português",
- "createdAt": "2026-11-05T03:30:15.345Z",
+ "createdAt": "2026-11-05T03:42:42.959Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 980,
- "of": 943,
+ "count": 983,
+ "of": 946,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Guia não oficial da vida na cidade. O Claude reúne as informações em sites oficiais da cidade e outras fontes, e indica a origem de cada uma (Machishirube)",
   "すべてのページ": "Todas as páginas",
@@ -986,6 +986,9 @@
   "いちばん近い避難場所まで、まっすぐ約 {k}km あります。今いる所は、この町から離れているかもしれません。今いる町の避難場所は、その町のページで見てください。": "O abrigo mais próximo fica a cerca de {k} km em linha reta. Você pode estar longe desta cidade. Para ver os abrigos da cidade onde você está, consulte a página dessa cidade.",
   "海抜と浸水の想定を計算しています…": "Calculando a altitude e a previsão de inundação…",
   "まっすぐ 約 {k}km": "Em linha reta, cerca de {k} km",
-  "今日は土日・祝日です。下は平日の時刻表なので、今日の便はバス会社の時刻表で確かめてください。": "Hoje é fim de semana ou feriado. Abaixo está o horário dos dias úteis, por isso confirme os ônibus de hoje no horário da empresa de ônibus."
+  "今日は土日・祝日です。下は平日の時刻表なので、今日の便はバス会社の時刻表で確かめてください。": "Hoje é fim de semana ou feriado. Abaixo está o horário dos dias úteis, por isso confirme os ônibus de hoje no horário da empresa de ônibus.",
+  "今日は祝日です。祝日の収集は、町のカレンダーで確かめてください。": "Hoje é feriado. Confirme a coleta em dias de feriado no calendário da cidade.",
+  "祝日は変わることがあります": "Os feriados podem mudar",
+  "明日は祝日です。祝日の収集は、町のカレンダーで確かめてください。": "Amanhã é feriado. Confira no calendário da cidade como será a coleta em feriados."
  }
 }

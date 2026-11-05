@@ -1,11 +1,11 @@
 {
  "lang": "tl",
  "name": "Filipino",
- "createdAt": "2026-11-05T03:30:40.669Z",
+ "createdAt": "2026-11-05T03:42:34.381Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 970,
- "of": 943,
+ "count": 973,
+ "of": 946,
  "dict": {
   "この町の非公式の暮らしの案内です。町の公式のサイトや国の公開データから集め、出典をつけています（まちしるべ）": "Ito ay isang di-opisyal na gabay sa pamumuhay sa bayang ito. Kinuha ito mula sa opisyal na website ng bayan at sa pampublikong datos ng bansa, at may nakasaad na pinagmulan (Machishirube)",
   "すべてのページ": "Lahat ng pahina",
@@ -976,6 +976,9 @@
   "いちばん近い避難場所まで、まっすぐ約 {k}km あります。今いる所は、この町から離れているかもしれません。今いる町の避難場所は、その町のページで見てください。": "Ang pinakamalapit na evacuation site ay mga {k}km ang layo nang tuwid na linya. Maaaring malayo na ang kinaroroonan mo sa bayang ito. Para sa mga evacuation site ng bayang kinaroroonan mo, tingnan ang pahina ng bayang iyon.",
   "海抜と浸水の想定を計算しています…": "Kinakalkula ang taas mula sa dagat at ang inaasahang pagbaha…",
   "まっすぐ 約 {k}km": "Diretso, mga {k}km",
-  "今日は土日・祝日です。下は平日の時刻表なので、今日の便はバス会社の時刻表で確かめてください。": "Ngayon ay Sabado, Linggo, o pista opisyal. Ang nasa ibaba ay ang iskedyul para sa karaniwang araw, kaya pakitiyak ang mga biyahe ngayon sa iskedyul ng kompanya ng bus."
+  "今日は土日・祝日です。下は平日の時刻表なので、今日の便はバス会社の時刻表で確かめてください。": "Ngayon ay Sabado, Linggo, o pista opisyal. Ang nasa ibaba ay ang iskedyul para sa karaniwang araw, kaya pakitiyak ang mga biyahe ngayon sa iskedyul ng kompanya ng bus.",
+  "今日は祝日です。祝日の収集は、町のカレンダーで確かめてください。": "Holiday ngayon. Tingnan sa kalendaryo ng bayan kung may koleksyon ng basura tuwing holiday.",
+  "明日は祝日です。祝日の収集は、町のカレンダーで確かめてください。": "Holiday bukas. Tingnan sa kalendaryo ng bayan kung may koleksyon ng basura tuwing holiday.",
+  "祝日は変わることがあります": "Maaaring magbago ang mga holiday"
  }
 }
