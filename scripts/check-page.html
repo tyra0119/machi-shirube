@@ -50,7 +50,7 @@ const PAGES = [
   { u: "kairan.html?town=abc", note: "回覧板・まちがった URL", page: true, expectId: ["lead", "町が見つかりませんでした"] },
   // 作る側の画面（開いてエラーが無いかだけ。決めるボタンには触らない）
   { u: "review.html", note: "確かめる一覧（作る側）", page: true },
-  { u: "research.html?muni=39428", note: "調べる画面（作る側）", page: true, expectId: ["limit", "$8"] },
+  { u: "research.html?muni=39428", note: "調べる画面（作る側）", page: true, expectLimit: true },
 ];
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
@@ -94,6 +94,7 @@ async function checkPage(p) {
   add(name, "エラーが出ない", errs.length ? "ng" : "ok", errs.slice(0, 3).join(" / "));
   if (p.expect) add(name, `「${p.expect}」と出る`, d.getElementById("name")?.textContent === p.expect ? "ok" : "ng", d.getElementById("name")?.textContent);
   if (p.expectId) add(name, `「${p.expectId[1]}」と出る`, d.getElementById(p.expectId[0])?.textContent.includes(p.expectId[1]) ? "ok" : "ng", d.getElementById(p.expectId[0])?.textContent.slice(0, 40));
+  if (p.expectLimit) { const lim = (await fetch("/api/ping").then((r) => r.json()).catch(() => ({}))).runLimit; add(name, "1回の調べの上限が、手元の設定と同じ", d.getElementById("limit")?.textContent === `$${lim}` ? "ok" : "ng", `画面 ${d.getElementById("limit")?.textContent}・設定 $${lim}`); }
   // 同じ id
   const ids = {}; for (const e of d.querySelectorAll("[id]")) ids[e.id] = (ids[e.id] ?? 0) + 1;
   const dup = Object.entries(ids).filter(([, n]) => n > 1).map(([k]) => k);
