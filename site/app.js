@@ -179,7 +179,9 @@ map.on("load", async () => {
     openArea(q.get("area"));
   } else if (q.get("town")) {
     const [code, partList] = q.get("town").split("-");
-    const parts = partList.split(",");
+    // 町の番号がまちがっているとき（town=abc）は、日本地図のまま（裏でエラーになっていた）
+    const parts = (partList ?? "").split(",").filter(Boolean);
+    if (!townIndex.codes.includes(code) || !parts.length) return;
     if (parts.length === 1) selectTown(code, parts[0]);
     else {
       await showTowns(code);
