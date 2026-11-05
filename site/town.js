@@ -944,6 +944,9 @@ const PAGE_OF = (qid) => yardstick.questions.find((x) => x.id === qid)?.page;
 const numbers = (html) => html.replace(/(?<![0-9０-９時:：\-－])([0-9０-９][0-9０-９,，.]*)(\s*)(か所|ヶ所|カ所|件|人|世帯|分|時間|m|km|メートル|校|台|便|回|%|％)/g, '<b class="num">$1$2$3</b>');
 // 電話番号は押してかけられるように（住む人の目で見ると、答えの中の番号が押せない文字のままだった）
 const TEL = /(?<![\d-])(0\d{1,4}-\d{1,4}-\d{3,4})(?![\d-])/g;
+// 電話番号の形をそろえる：国のデータには全角の数字や「－」「ー」「‐」の混じったもの（「０８８０ー５５ー２３１８」）があり、押してもかからない端末があった
+const telText = (t) => String(t ?? "").normalize("NFKC").replace(/[‐‑‒–—―ー−－]/g, "-").trim();
+const telHref = (t) => telText(t).replace(/[^\d+#*]/g, "").replace("#", "%23");
 const telLinks = (html) => html.replace(TEL, (m) => `<a class="tel" href="tel:${m.replace(/-/g, "")}">${m}</a>`);
 // 急ぐときの番号（119・110・#7119・#8000 など）も、ページのどこに書いてあっても押してかけられるように。
 // 文字のあとから書き足すので、答えのカード・注意書き・訳のどれにも効く（「110人」「119か所」のような数は除く）
@@ -1183,7 +1186,7 @@ async function showKaigo(code) {
     const list = d.items.filter((x) => x.group === g);
     if (!list.length) return "";
     return `<details class="kaigo-group"${gi === 0 ? " open" : ""}><summary><strong>${esc(T(label))}</strong> <span class="n">${list.length}</span></summary>
-      <ul class="kaigo-items">${list.map((x) => `<li><span class="kn">${esc(x.name)}</span><small>${esc(T(x.kind))}</small>${x.tel ? `<a class="tel" href="tel:${esc(x.tel)}">${icon("phone")}${esc(x.tel)}</a>` : ""}<small class="ad">${esc(x.addr)}</small></li>`).join("")}</ul></details>`;
+      <ul class="kaigo-items">${list.map((x) => `<li><span class="kn">${esc(x.name)}</span><small>${esc(T(x.kind))}</small>${x.tel ? `<a class="tel" href="tel:${telHref(x.tel)}">${icon("phone")}${esc(telText(x.tel))}</a>` : ""}<small class="ad">${esc(x.addr)}</small></li>`).join("")}</ul></details>`;
   }).join("");
   $("kaigo-note").innerHTML = `${esc(T(d.note))}${KU()}${d.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(T(s.title))}</a>`).join("")}`;
 }

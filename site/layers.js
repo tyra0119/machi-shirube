@@ -159,7 +159,7 @@ async function showLayerMap(code, townFeatures, at, esc, part = null) {
   pop("acc", (p) => `<strong>${esc(p.part)}</strong><br>${LT("3年で")} ${p.n} ${LT("件")}${Number(p.ped) ? `・${LT("歩行者")} ${p.ped}` : ""}${Number(p.bike) ? `・${LT("自転車")} ${p.bike}` : ""}`);
   pop("overlap", (p) => `<strong>${esc(p.name)}</strong><br>${p.n ? `${LT("重なり")} ${p.n}：${esc(p.hit)}` : LT("重なりはありません")}${hito?.parts?.[p.part] && (!LANG || LANG === "easy") ? `<p class="pop-hito">${esc(hito.parts[p.part].text)}<small>（${LT("AI のまとめ")}）</small></p>` : ""}`);
   pop("lore", (p) => `<strong>${esc(p.name)}</strong>${p.muniName ? `<br><small>${esc(p.muniName)}</small>` : ""}<br>${esc(p.disaster)}<p class="pop-hito">${esc(p.text)}<small>（${LT("国土地理院 自然災害伝承碑")}）</small></p>`);
-  pop("kaigo", (p) => `<strong>${esc(p.name)}</strong><br>${esc(LT(p.kind))}${p.tel ? `<br><a href="tel:${esc(p.tel)}">${esc(p.tel)}</a>` : ""}${p.addr ? `<br><small>${esc(p.addr)}</small>` : ""}`);
+  pop("kaigo", (p) => `<strong>${esc(p.name)}</strong><br>${esc(LT(p.kind))}${p.tel ? `<br><a href="tel:${telHref(p.tel)}">${esc(telText(p.tel))}</a>` : ""}${p.addr ? `<br><small>${esc(p.addr)}</small>` : ""}`);
   pop("aed", (p) => `<strong>${esc(p.name)}</strong>${p.place ? `<br>${esc(p.place)}` : ""}${p.hours ? `<br>${esc(p.hours)}` : ""}${p.address ? `<br><small>${esc(p.address)}</small>` : ""}`);
   pop("bus", (p) => {
     // この先の発車（平日の時刻表から5つまで）。土日・祝日はちがうことがある
