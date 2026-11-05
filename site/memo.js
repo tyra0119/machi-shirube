@@ -19,6 +19,12 @@ async function main() {
   let code, fixedPart;
   if (q.get("town")) [code, fixedPart] = q.get("town").split("-");
   else code = q.get("muni");
+  // 町の番号が無い・まちがっているときは、そう書いて止める（これまでは裏でエラーになり、空のメモが出ていた）
+  if (!stats?.towns?.[code]) {
+    $("made").textContent = "町が見つかりませんでした。町のページの「印刷用のくらしのメモ」から開き直してください。";
+    for (const id of ["hinan", "gomi", "iryo"]) $(id).hidden = true;
+    return;
+  }
   const muniName = stats.towns[code].name.replace(/^.+?郡/, "");
   const [topo, labels, sh, ansMuni, gd, m, yard, shList] = await Promise.all([
     json(`data/towns/${code}.json`), json("data/labels.json"), json(`data/shelters/${code}.json`),
