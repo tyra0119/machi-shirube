@@ -844,7 +844,8 @@ const scopeSel = document.getElementById("rank-scope");
 const metricSel = document.getElementById("rank-metric");
 
 function fillScopes() {
-  const prefs = [...new Set(Object.values(stats.towns).map((t) => t.pref))];
+  // 県は北から（町の番号の順）。表の並びのままだと、「10」で始まる群馬県が先になり、北海道〜栃木県（01〜09）が最後に回っていた
+  const prefs = [...new Set(Object.entries(stats.towns).sort(([a], [b]) => a.localeCompare(b)).map(([, t]) => t.pref))];
   const here = shownTowns ?? selected; // いま選んでいる市区町村（その中の町で並べられる）
   scopeSel.innerHTML = `
     <option value="all">全国の市区町村（${stats.peers.toLocaleString("ja-JP")}）</option>

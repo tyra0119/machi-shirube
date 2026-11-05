@@ -45,6 +45,8 @@ const PAGES = [
   { u: "town.html?muni=10206&lang=es", note: "沼田市・スペイン語（雪・火山・農業の町）", shallow: true },
   { u: "town.html?town=abc&lang=pt", note: "まちがった URL", expect: "Cidade ou bairro não encontrado" },
   { u: "town.html?muni=99999&lang=ja", note: "無い町の番号", expect: "この市区町村は見つかりませんでした" },
+  // トップ：数字で並べて探すの県は北から（11/5。北海道〜栃木県が最後に回っていた）
+  { u: "index.html", note: "トップ（日本地図）", page: true, test: async (d, w) => { d.getElementById("open-rank")?.click(); await sleep(2500); const o = [...(d.getElementById("rank-scope")?.options ?? [])].map((x) => x.text); return ["数字で並べて探すの県が北海道から", o[1] === "北海道" && o.at(-1) === "沖縄県", `${o[1]}…${o.at(-1)}`]; } },
   { u: "report.html?muni=10524&lang=pt", note: "まちがいの知らせ方", page: true },
   { u: "memo.html?town=39428-0100", note: "くらしのメモ", page: true },
   { u: "kairan.html?muni=39428", note: "回覧板のお知らせ", page: true },
@@ -95,6 +97,7 @@ async function checkPage(p) {
   add(name, "エラーが出ない", errs.length ? "ng" : "ok", errs.slice(0, 3).join(" / "));
   if (p.expect) add(name, `「${p.expect}」と出る`, d.getElementById("name")?.textContent === p.expect ? "ok" : "ng", d.getElementById("name")?.textContent);
   if (p.expectId) add(name, `「${p.expectId[1]}」と出る`, d.getElementById(p.expectId[0])?.textContent.includes(p.expectId[1]) ? "ok" : "ng", d.getElementById(p.expectId[0])?.textContent.slice(0, 40));
+  if (p.test) { try { const [what, good, detail] = await p.test(d, w); add(name, what, good ? "ok" : "ng", detail); } catch (e) { add(name, "このページだけの確かめ", "ng", e.message); } }
   if (p.expectLimit) { const lim = (await fetch("/api/ping").then((r) => r.json()).catch(() => ({}))).runLimit; add(name, "1回の調べの上限が、手元の設定と同じ", d.getElementById("limit")?.textContent === `$${lim}` ? "ok" : "ng", `画面 ${d.getElementById("limit")?.textContent}・設定 $${lim}`); }
   // 同じ id
   const ids = {}; for (const e of d.querySelectorAll("[id]")) ids[e.id] = (ids[e.id] ?? 0) + 1;
