@@ -1,11 +1,11 @@
 {
  "lang": "id",
  "name": "Bahasa Indonesia",
- "createdAt": "2026-11-05T03:27:38.344Z",
+ "createdAt": "2026-11-05T03:30:28.277Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 975,
- "of": 942,
+ "count": 976,
+ "of": 943,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Ini adalah panduan hidup tidak resmi untuk kota ini. Claude mengumpulkannya dari situs resmi kota dan sumber lain, dengan mencantumkan sumbernya (Machishirube)",
   "すべてのページ": "Semua halaman",
@@ -981,6 +981,7 @@
   "この端末では現在地が使えません。下の「町・字を選ぶ」から選んでください。": "Lokasi saat ini tidak dapat digunakan di perangkat ini. Silakan pilih dari \"Pilih kota/desa\" di bawah.",
   "いちばん近い避難場所まで、まっすぐ約 {k}km あります。今いる所は、この町から離れているかもしれません。今いる町の避難場所は、その町のページで見てください。": "Tempat pengungsian terdekat berjarak sekitar {k}km dalam garis lurus. Anda mungkin berada jauh dari kota ini. Untuk tempat pengungsian di kota tempat Anda berada, lihat halaman kota tersebut.",
   "海抜と浸水の想定を計算しています…": "Sedang menghitung ketinggian di atas permukaan laut dan perkiraan genangan…",
-  "まっすぐ 約 {k}km": "Lurus sekitar {k} km"
+  "まっすぐ 約 {k}km": "Lurus sekitar {k} km",
+  "今日は土日・祝日です。下は平日の時刻表なので、今日の便はバス会社の時刻表で確かめてください。": "Hari ini akhir pekan atau hari libur nasional. Jadwal di bawah adalah jadwal hari kerja, jadi silakan periksa jadwal perusahaan bus untuk layanan hari ini."
  }
 }

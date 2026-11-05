@@ -514,6 +514,8 @@ async function showBus(code, part) {
   ].map(([l, v, s]) => `<li><span class="l">${l}</span><strong>${v}</strong><span class="s">${s}</span></li>`).join("");
   // 平日の時刻表（作者「余裕があったら、バスのルートを地図に表示、もしくは、時刻表を表示ができるといいな」）。バス停を選ぶと、路線と行き先ごとに、時間ごとの分を並べる
   const withTimes = d.stops.filter((s) => s.times?.length).sort((a, b) => a.name.localeCompare(b.name, "ja"));
+  // 祝日は平日の時刻表で「次の便」を出さない（11/3 の文化の日にも、平日の便を次の便として出していた）
+  const holidays = withTimes.length ? ((await getData("data/holidays.json"))?.holidays ?? {}) : {};
   if (withTimes.length) {
     $("bus-tt-box").hidden = false;
     const sel = $("bus-stop");
@@ -521,12 +523,13 @@ async function showBus(code, part) {
     const draw = () => {
       const st = withTimes[Number(sel.value)];
       const groups = new Map();
+      const now = jpNow(), ymd = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, "0")}-${String(now.getDate()).padStart(2, "0")}`;
+      const wd = now.getDay() >= 1 && now.getDay() <= 5 && !holidays[ymd];
       for (const x of st.times) { const k = `${x.r}${x.h ? ` → ${x.h}` : ""}`; if (!groups.has(k)) groups.set(k, []); groups.get(k).push(x.t); }
-      $("bus-tt").innerHTML = [...groups].map(([k, ts]) => {
+      $("bus-tt").innerHTML = (wd ? "" : `<p class="tt-next">${T("今日は土日・祝日です。下は平日の時刻表なので、今日の便はバス会社の時刻表で確かめてください。")}</p>`) + [...groups].map(([k, ts]) => {
         const byH = new Map();
         for (const t of ts) { const [hh, mm] = t.split(":"); if (!byH.has(hh)) byH.set(hh, []); byH.get(hh).push(mm); }
         // 平日なら、今日このあとの便をいちばん上に出す
-        const now = jpNow(), wd = now.getDay() >= 1 && now.getDay() <= 5;
         const hm = now.getHours() * 60 + now.getMinutes();
         const next = wd ? [...ts].sort().find((t) => { const [h, m] = t.split(":").map(Number); return h * 60 + m >= hm; }) : null;
         return `<div class="tt"><p class="tt-head">${icon("bus")}${esc(k)}</p>${wd ? `<p class="tt-next">${next ? `${T("次の便")} <strong>${Number(next.split(":")[0])}:${next.split(":")[1]}</strong>` : T("平日の時刻表では、今日このあとの便はありません")}</p>` : ""}<table>${[...byH].map(([hh, ms]) => `<tr><th>${Number(hh)}</th><td>${ms.join(" ")}</td></tr>`).join("")}</table></div>`;
