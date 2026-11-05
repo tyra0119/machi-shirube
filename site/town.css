@@ -533,7 +533,7 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .fp-depth.q .bar i { background: #a88bd0; }
 #quake .acc-stats { margin-bottom: 8px; }
 /* これからの町の人口 */
-.future { margin: 8px 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(7, 1fr); gap: 6px; align-items: end; }
+.future { margin: 8px 0; padding: 0; list-style: none; display: grid; grid-template-columns: repeat(7, minmax(0, 1fr)); gap: 6px; align-items: end; }
 .future li { display: flex; flex-direction: column; align-items: center; gap: 2px; font-size: 12px; }
 .future .bar { width: 100%; max-width: 40px; height: 120px; display: flex; align-items: flex-end; }
 .future .bar i { display: block; width: 100%; border-radius: 6px 6px 0 0; background: var(--town, #7a9cc6); opacity: .75; }
@@ -541,6 +541,8 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .future .v { order: 0; font-variant-numeric: tabular-nums; }
 .future .bar { order: 1; }
 .future .o { order: 4; font-weight: 700; }
+/* 細いスマホでは、7つの年の数（「54,000」）が列を押し広げ、右の年が画面の外にはみ出していた */
+@media (max-width: 380px) { .future { gap: 3px; } .future li { font-size: 11px; } }
 .acc-spots.bus .no { width: auto; min-width: 26px; padding: 0 6px; border-radius: 12px; background: #5b8fc7; }
 .acc-spots.bus li { cursor: default; }
 .fp-depth.q li { grid-template-columns: 11em 1fr 4.5em; }
@@ -768,7 +770,10 @@ section.block.folded { padding-bottom: 12px; }
 .day.short .t strong { font-size: 18px; }
 /* 暮らしの場面：スマホでは名前と絵だけの小さなタイルを3つずつ（下のメニューと「ほか」の一覧に同じ行き先がある） */
 @media (max-width: 640px) {
-  .tiles { grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .tiles { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6px; }
+  /* ほかの言葉の長い単語（Cuidados・Trâmites など）が列を押し広げ、右のタイルが画面の外にはみ出していた */
+  .tiles .t { overflow-wrap: break-word; }
+  .lang-other .tiles .t { font-size: 12.5px; }
   .tiles a { min-height: 0; padding: 8px 6px; align-items: center; text-align: center; gap: 2px; }
   .tiles .d { display: none; }
   .tiles .t { font-size: 14px; line-height: 1.3; }
