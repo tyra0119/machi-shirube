@@ -48,6 +48,9 @@ const PAGES = [
   { u: "memo.html?town=39428-0100", note: "くらしのメモ", page: true },
   { u: "kairan.html?muni=39428", note: "回覧板のお知らせ", page: true },
   { u: "kairan.html?town=abc", note: "回覧板・まちがった URL", page: true, expectId: ["lead", "町が見つかりませんでした"] },
+  // 作る側の画面（開いてエラーが無いかだけ。決めるボタンには触らない）
+  { u: "review.html", note: "確かめる一覧（作る側）", page: true },
+  { u: "research.html?muni=39428", note: "調べる画面（作る側）", page: true, expectId: ["limit", "$8"] },
 ];
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);

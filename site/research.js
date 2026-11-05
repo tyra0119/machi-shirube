@@ -42,6 +42,7 @@ async function main() {
     $("note").textContent = "調べるのは作者の手元の画面だけです。ここでは、いまの答えの様子を見られます。";
     $("review-link").hidden = true;
   } else {
+    $("limit").textContent = `$${ping.runLimit ?? 4}`; // 調べ始める前から本当の上限を（画面の初めの字は $4 のままだった）
     $("note").textContent = `見込み：問い1つ 約 $${ping.estimate?.usd ?? 0.3}・${ping.estimate?.min ?? 1}分${ping.estimate ? `（これまでの調べ ${ping.estimate.n} 件の中ほどの値。採点と探し直しは別）` : ""}。まだ答えの無い問いだけを調べます。1回の調べの上限は $${ping.runLimit ?? 4}、1日の上限は $80、合計の上限は $550。`;
   }
   $("start").addEventListener("click", start);
