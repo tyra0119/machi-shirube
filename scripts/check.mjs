@@ -214,6 +214,20 @@ const codeFiles = (dir) => (fs.existsSync(`site/data/${dir}`) ? fs.readdirSync(`
   check(!bad.length, "ごみを出す日：どの曜日の決まりも、1年のどこかの日に当たる", sample(bad));
 }
 
+{
+  // 住む人に出す AI の文に、やめた言い方（「上から ○%」。作者「分かりにくいからやめよう」）が無い。「上から ○番目」は △（「○番目に高い」がよい）
+  const pct = [], nth = [];
+  for (const dir of ["mitate", "hitokoto", "dekiru", "quiz", "answers", "changes"]) {
+    for (const f of codeFiles(dir)) {
+      const s = fs.readFileSync(`site/data/${dir}/${f}`, "utf8");
+      for (const m of s.matchAll(/.{0,12}[上下]から\s*\d+(?:\.\d+)?\s*[%％].{0,6}/g)) pct.push(`${dir}/${f} ${m[0]}`);
+      for (const m of s.matchAll(/.{0,12}[上下]から\s*\d+\s*番目.{0,4}/g)) nth.push(`${dir}/${f} ${m[0]}`);
+    }
+  }
+  check(!pct.length, "住む人に出す文に「上から ○%」が無い", sample(pct, 3));
+  if (nth.length) warn("住む人に出す文に「上から ○番目」がある（「○番目に高い」がよい。作り直すときに直る）", sample(nth, 3)); else ok("住む人に出す文に「上から ○番目」が無い");
+}
+
 // ---------------------------------------------------------------- 作り直し忘れ
 section = "作り直し忘れ";
 {
