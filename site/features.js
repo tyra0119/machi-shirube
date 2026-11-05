@@ -36,12 +36,12 @@ async function seaWidget(at) {
   return `<ol class="temp-strip sea">${m.daily.time.map((t, i) => { const h = m.daily.wave_height_max[i], v = w?.daily?.wind_speed_10m_max?.[i]; const rough = h >= 2.5 || v >= 12; return `<li class="${rough ? "hot" : ""}"><span class="d">${md(t)}</span><span class="hi">${h != null ? `${h.toFixed(1)}m` : "-"}</span><span class="lo">${v != null ? `${Math.round(v)}m/s` : ""}</span>${rough ? `<span class="g">${T("しけ")}</span>` : ""}</li>`; }).join("")}</ol>
     <p class="cite">${T("波の高さ（いちばん高い波）と風の強さの予報：Open-Meteo.com（CC BY 4.0）を加工。沖の値のめやすです。出漁の判断は、気象庁の波浪警報・注意報と漁協の案内で。")}</p>`;
 }
-// 雪（Open-Meteo）：これから1週間の降雪
+// 雪（Open-Meteo）：これから1週間の降雪。雪の無い日は「0cm」（「-」のすぐ下に最低気温が並ぶと「-8℃」と読めた）
 async function snowWidget(at) {
   const d = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${at[1].toFixed(3)}&longitude=${at[0].toFixed(3)}&daily=snowfall_sum,temperature_2m_min&timezone=Asia%2FTokyo&forecast_days=7`).then((r) => r.json()).catch(() => null);
   if (!d?.daily) return `<p class="note">${T("雪の予報を読み込めませんでした。")}</p>`;
   const md = (t) => `${Number(t.slice(5, 7))}/${Number(t.slice(8, 10))}`;
-  return `<ol class="temp-strip">${d.daily.time.map((t, i) => { const s = d.daily.snowfall_sum[i]; return `<li class="${s >= 5 ? "frost" : ""}"><span class="d">${md(t)}</span><span class="hi">${s ? `${Math.round(s)}cm` : "-"}</span><span class="lo">${d.daily.temperature_2m_min[i] == null ? "–" : `${Math.round(d.daily.temperature_2m_min[i])}℃`}</span>${s >= 5 ? `<span class="g">${T("雪")}</span>` : ""}</li>`; }).join("")}</ol>
+  return `<ol class="temp-strip">${d.daily.time.map((t, i) => { const s = d.daily.snowfall_sum[i]; return `<li class="${s >= 5 ? "frost" : ""}"><span class="d">${md(t)}</span><span class="hi">${s == null ? "–" : `${Math.round(s)}cm`}</span><span class="lo">${d.daily.temperature_2m_min[i] == null ? "–" : `${Math.round(d.daily.temperature_2m_min[i])}℃`}</span>${s >= 5 ? `<span class="g">${T("雪")}</span>` : ""}</li>`; }).join("")}</ol>
     <p class="cite">${T("降雪の量と最低気温の予報：Open-Meteo.com（CC BY 4.0）を加工。めやすです。大雪の警報・注意報は気象庁の発表で。")}</p>`;
 }
 const WIDGETS = { frost: frostWidget, sea: seaWidget, snow: snowWidget };
@@ -55,7 +55,7 @@ async function showFeatures(code, at) {
   const allInd = Object.values(indAll ?? {});
   const rankIn = (k) => allInd.filter((x) => x[k] > ind[k]).length + 1;
   // 全国の真ん中の値も添える（10番目まで・1割までに入らないときは、真ん中の値だけ）
-  const midOf = (k) => { const v = allInd.map((x) => x[k]).filter((x) => typeof x === "number").sort((a, b) => a - b); const m = v[Math.floor(v.length / 2)]; return m ? `${m}%` : null; };
+  const midOf = (k) => { const v = allInd.map((x) => x[k]).filter((x) => typeof x === "number").sort((a, b) => a - b); const m = v[Math.floor(v.length / 2)]; return m != null ? `${m}%` : null; };
   for (const id of mine) {
     const f = FEATURES[id];
     if (!f) continue;
