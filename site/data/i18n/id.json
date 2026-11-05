@@ -1,11 +1,11 @@
 {
  "lang": "id",
  "name": "Bahasa Indonesia",
- "createdAt": "2026-11-05T03:42:49.513Z",
+ "createdAt": "2026-11-05T03:46:15.987Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 979,
- "of": 946,
+ "count": 981,
+ "of": 947,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Ini adalah panduan hidup tidak resmi untuk kota ini. Claude mengumpulkannya dari situs resmi kota dan sumber lain, dengan mencantumkan sumbernya (Machishirube)",
   "すべてのページ": "Semua halaman",
@@ -985,6 +985,8 @@
   "今日は土日・祝日です。下は平日の時刻表なので、今日の便はバス会社の時刻表で確かめてください。": "Hari ini akhir pekan atau hari libur nasional. Jadwal di bawah adalah jadwal hari kerja, jadi silakan periksa jadwal perusahaan bus untuk layanan hari ini.",
   "今日は祝日です。祝日の収集は、町のカレンダーで確かめてください。": "Hari ini adalah hari libur nasional. Periksa kalender kota untuk pengumpulan sampah pada hari libur.",
   "祝日は変わることがあります": "Hari libur nasional dapat berubah",
-  "明日は祝日です。祝日の収集は、町のカレンダーで確かめてください。": "Besok hari libur nasional. Periksa jadwal pengumpulan sampah hari libur di kalender kota."
+  "明日は祝日です。祝日の収集は、町のカレンダーで確かめてください。": "Besok hari libur nasional. Periksa jadwal pengumpulan sampah hari libur di kalender kota.",
+  "日本": "Jepang",
+  "祝日は収集が変わることがあります": "Pengumpulan sampah dapat berubah pada hari libur nasional"
  }
 }

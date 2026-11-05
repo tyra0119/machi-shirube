@@ -1,11 +1,11 @@
 {
  "lang": "vi",
  "name": "Tiếng Việt",
- "createdAt": "2026-11-05T03:43:01.825Z",
+ "createdAt": "2026-11-05T03:46:22.775Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 980,
- "of": 946,
+ "count": 982,
+ "of": 947,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Đây là trang hướng dẫn đời sống không chính thức của thị trấn này. Claude thu thập từ các trang chính thức của thị trấn v.v. và ghi rõ nguồn (Machi-shirube)",
   "すべてのページ": "Tất cả các trang",
@@ -986,6 +986,8 @@
   "今日は土日・祝日です。下は平日の時刻表なので、今日の便はバス会社の時刻表で確かめてください。": "Hôm nay là cuối tuần hoặc ngày lễ. Bảng giờ bên dưới là của ngày thường, nên hãy xem bảng giờ của công ty xe buýt để kiểm tra các chuyến hôm nay.",
   "今日は祝日です。祝日の収集は、町のカレンダーで確かめてください。": "Hôm nay là ngày lễ. Hãy xem lịch của thị trấn để biết việc thu gom rác ngày lễ.",
   "祝日は変わることがあります": "Ngày lễ có thể thay đổi",
-  "明日は祝日です。祝日の収集は、町のカレンダーで確かめてください。": "Ngày mai là ngày lễ. Hãy kiểm tra lịch thu gom rác ngày lễ trên lịch của thị trấn."
+  "明日は祝日です。祝日の収集は、町のカレンダーで確かめてください。": "Ngày mai là ngày lễ. Hãy kiểm tra lịch thu gom rác ngày lễ trên lịch của thị trấn.",
+  "日本": "Nhật Bản",
+  "祝日は収集が変わることがあります": "Vào ngày lễ, lịch thu gom có thể thay đổi"
  }
 }

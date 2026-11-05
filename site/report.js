@@ -19,6 +19,7 @@ let place = "";
 
 async function main() {
   if (await setLang(lang)) { translateDom(document, REPORT_SEL); document.title = `${T("まちがいの知らせ方")}｜まちしるべ`; }
+  document.querySelector(".town-path > a").textContent = T("日本");
   $("warn-head").innerHTML = `${icon("alert")} ${T("書く前に")}`;
   for (const p of document.querySelectorAll(".steps .t[data-ic]")) p.insertAdjacentHTML("afterbegin", icon(p.dataset.ic));
   // 言葉のボタン（町のページと同じ7つ）

@@ -1081,7 +1081,7 @@ function todayLife(hasHinan) {
   const has = (v) => (answersByPage[v] ?? []).filter((a) => a.value !== "見つからなかった").length;
   const row = (view, k, v, ready) => `<li><a href="#${view}"><span class="k">${icon(ILLUST[view]?.main)}${T(k)}</span><span class="v${ready ? "" : " later"}">${esc(T(v))}</span></a></li>`;
   $("today-life").innerHTML = [
-    row("gomi", T("ごみ"), gomiToday ? (gomiToday.length ? TN("今日は {k} の日", { k: gomiToday.join("・") }) : T("今日はごみの収集はありません")) + (gomiHoliday ? `（${T("祝日は変わることがあります")}）` : "") : has("gomi") ? T("ごみの出し方を見る") : T("地区ごとの収集日は準備中です"), has("gomi") || !!gomiToday),
+    row("gomi", T("ごみ"), gomiToday ? (gomiToday.length ? TN("今日は {k} の日", { k: gomiToday.join("・") }) : T("今日はごみの収集はありません")) + (gomiHoliday ? `（${T("祝日は収集が変わることがあります")}）` : "") : has("gomi") ? T("ごみの出し方を見る") : T("地区ごとの収集日は準備中です"), has("gomi") || !!gomiToday),
     medicalRow ?? row("iryo", T("病院"), T("この町の病院のデータはまだありません"), false),
     row("bousai", T("避難"), hasHinan ? T("わが家から近い避難場所を出す") : !$("shelter-list-block").hidden ? T("行政区ごとの避難施設を見る") : has("bousai") ? T("避難場所の案内を見る") : T("避難場所は準備中です"), hasHinan || !$("shelter-list-block").hidden || has("bousai")),
     row("komatta", T("困ったとき"), has("komatta") ? T("電話・メールの窓口を見る") : T("電話・メールの窓口は準備中です"), has("komatta")),
@@ -1698,7 +1698,7 @@ function header(name, where, path) {
   document.title = `${name}｜まちしるべ`;
   $("name").textContent = name;
   $("where").textContent = where;
-  $("path").innerHTML = path.filter(([l]) => l).map(([l, href]) => `<li>${href ? `<a href="${href}">${l}</a>` : `<span>${l}</span>`}</li>`).join("");
+  $("path").innerHTML = path.filter(([l]) => l).map(([l, href]) => `<li>${href ? `<a href="${href}">${l === "日本" ? T(l) : l}</a>` : `<span>${l}</span>`}</li>`).join("");
 }
 // 見張り（scripts/watch.mjs）の結果：出典のページがまだあるか
 let health = null;

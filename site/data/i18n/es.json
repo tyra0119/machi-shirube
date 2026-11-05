@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-05T03:41:59.427Z",
+ "createdAt": "2026-11-05T03:46:04.375Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 982,
- "of": 946,
+ "count": 984,
+ "of": 947,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -988,6 +988,8 @@
   "今日は土日・祝日です。下は平日の時刻表なので、今日の便はバス会社の時刻表で確かめてください。": "Hoy es fin de semana o festivo. Abajo se muestra el horario de los días laborables, así que consulte el horario de la compañía de autobuses para los servicios de hoy.",
   "今日は祝日です。祝日の収集は、町のカレンダーで確かめてください。": "Hoy es festivo. Consulte en el calendario del municipio cómo funciona la recogida en días festivos.",
   "明日は祝日です。祝日の収集は、町のカレンダーで確かめてください。": "Mañana es festivo. Consulte en el calendario del municipio cómo funciona la recogida en días festivos.",
-  "祝日は変わることがあります": "Los días festivos pueden cambiar"
+  "祝日は変わることがあります": "Los días festivos pueden cambiar",
+  "日本": "Japón",
+  "祝日は収集が変わることがあります": "En los días festivos, la recogida puede cambiar"
  }
 }

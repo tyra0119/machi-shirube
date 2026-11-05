@@ -1,11 +1,11 @@
 {
  "lang": "en",
  "name": "English",
- "createdAt": "2026-11-05T03:42:45.315Z",
+ "createdAt": "2026-11-05T03:46:06.708Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 982,
- "of": 946,
+ "count": 984,
+ "of": 947,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "This is an unofficial guide to living in this town. Claude gathers information from the town's official website and other sources, and cites each source (Machishirube)",
   "すべてのページ": "All pages",
@@ -988,6 +988,8 @@
   "今日は土日・祝日です。下は平日の時刻表なので、今日の便はバス会社の時刻表で確かめてください。": "Today is a weekend or public holiday. The timetable below is for weekdays, so please check today's departures on the bus company's timetable.",
   "今日は祝日です。祝日の収集は、町のカレンダーで確かめてください。": "Today is a public holiday. Please check the town calendar for holiday collection.",
   "祝日は変わることがあります": "Holidays may change",
-  "明日は祝日です。祝日の収集は、町のカレンダーで確かめてください。": "Tomorrow is a public holiday. Check the town calendar for holiday collection."
+  "明日は祝日です。祝日の収集は、町のカレンダーで確かめてください。": "Tomorrow is a public holiday. Check the town calendar for holiday collection.",
+  "日本": "Japan",
+  "祝日は収集が変わることがあります": "Collection schedules may change on public holidays"
  }
 }

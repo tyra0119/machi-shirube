@@ -1,11 +1,11 @@
 {
  "lang": "tl",
  "name": "Filipino",
- "createdAt": "2026-11-05T03:42:34.381Z",
+ "createdAt": "2026-11-05T03:46:37.874Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 973,
- "of": 946,
+ "count": 975,
+ "of": 947,
  "dict": {
   "この町の非公式の暮らしの案内です。町の公式のサイトや国の公開データから集め、出典をつけています（まちしるべ）": "Ito ay isang di-opisyal na gabay sa pamumuhay sa bayang ito. Kinuha ito mula sa opisyal na website ng bayan at sa pampublikong datos ng bansa, at may nakasaad na pinagmulan (Machishirube)",
   "すべてのページ": "Lahat ng pahina",
@@ -979,6 +979,8 @@
   "今日は土日・祝日です。下は平日の時刻表なので、今日の便はバス会社の時刻表で確かめてください。": "Ngayon ay Sabado, Linggo, o pista opisyal. Ang nasa ibaba ay ang iskedyul para sa karaniwang araw, kaya pakitiyak ang mga biyahe ngayon sa iskedyul ng kompanya ng bus.",
   "今日は祝日です。祝日の収集は、町のカレンダーで確かめてください。": "Holiday ngayon. Tingnan sa kalendaryo ng bayan kung may koleksyon ng basura tuwing holiday.",
   "明日は祝日です。祝日の収集は、町のカレンダーで確かめてください。": "Holiday bukas. Tingnan sa kalendaryo ng bayan kung may koleksyon ng basura tuwing holiday.",
-  "祝日は変わることがあります": "Maaaring magbago ang mga holiday"
+  "祝日は変わることがあります": "Maaaring magbago ang mga holiday",
+  "日本": "Japan",
+  "祝日は収集が変わることがあります": "Maaaring magbago ang koleksyon kapag may pista opisyal"
  }
 }
