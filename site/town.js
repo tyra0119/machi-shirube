@@ -888,6 +888,7 @@ async function showHinan(code, townFeatures, startPart) {
       const el = document.createElement("button");
       el.type = "button";
       el.className = "hinan-pin";
+      el.style.zIndex = String(10 - i); // 近い避難場所どうしが重なるときは、1番をいちばん上に（2番の下に隠れていた）
       el.textContent = String(i + 1);
       el.setAttribute("aria-label", `${i + 1}番目に近い ${c.f.properties.name}`);
       el.addEventListener("click", (e) => { e.stopPropagation(); select(i); });
@@ -902,8 +903,10 @@ async function showHinan(code, townFeatures, startPart) {
     else map.once("load", () => map.getSource("here")?.setData(hereData));
     const box = new maplibregl.LngLatBounds(at, at);
     for (const c of cand) box.extend(c.f.geometry.coordinates);
-    map.fitTo = { box, opts: { padding: 50, maxZoom: 16 } };
-    map.fitBounds(box, { padding: 50, maxZoom: 16, duration: 500 });
+    // 右は地図のボタン（方角・現在地・＋・−）の幅だけ余白を広く（1番の印がボタンの下に隠れていた）
+    const pad = { top: 50, bottom: 50, left: 50, right: 90 };
+    map.fitTo = { box, opts: { padding: pad, maxZoom: 16 } };
+    map.fitBounds(box, { padding: pad, maxZoom: 16, duration: 500 });
     $("hinan-list").innerHTML = cand.map((c, i) => `
       <li data-i="${i}" tabindex="0" role="button" aria-label="地図で ${esc(c.f.properties.name)} を見る"><span class="pin" aria-hidden="true">${i + 1}</span><span class="n">${esc(c.f.properties.name)}</span>
         <span class="d">${far() ? TN("まっすぐ 約 {k}km", { k: Math.round(c.m / 1000).toLocaleString("ja-JP") }) : `${TN("まっすぐ {m}m・歩いて約 {min}分", { m: c.m.toLocaleString("ja-JP"), min: Math.max(1, Math.round(c.m / 60)) })}（${T("めやす")}）`}</span>
