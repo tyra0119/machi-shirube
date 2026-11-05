@@ -446,8 +446,11 @@ function showCard(p) {
   // 町村はそのまま1つの町。中の地区（字）も見られるようにする
   const towns = hasTowns ? `<button type="button" class="secondary towns">${isCityOrWard ? "中の町を選ぶ" : "中の地区（字）を見る"}</button>`
     : isCityOrWard ? `<p class="note">中の町（町・字）の形は、まだ用意していません。</p>` : "";
+  // カードの上の絵：町の特徴で選ぶ（津波の指定・雪・火山・島。どれでもなければ地図。作者「それぞれのカードの上側にイラストを付けたい」）
+  const il = scene(f.tsunami ? "bousai" : f.snow ? "snow" : f.volcano ? "volcano" : f.island ? "island" : "today");
   card.innerHTML = `
     <button type="button" class="close" aria-label="閉じる">×</button>
+    ${il}
     <h2>${p.fullName}</h2>
     <p class="where">${where}</p>
     ${actions(town ? `town.html?muni=${p.code}` : null, towns)}
@@ -678,6 +681,7 @@ function showCityCard(cityName, pref) {
   const card = document.getElementById("card");
   card.innerHTML = `
     <button type="button" class="close" aria-label="閉じる">×</button>
+    ${scene("chizu")}
     <h2>${cityName}</h2>
     <p class="where">${pref}・区を選んでください</p>
     <div class="choices">${wards.map((w) => `<button type="button" data-code="${w.properties.code}">${w.properties.ward}</button>`).join("")}</div>`;
@@ -705,6 +709,7 @@ function showTownCard(p) {
     : `<p class="pop">人の住んでいない町・字です</p>`;
   card.innerHTML = `
     <button type="button" class="close" aria-label="閉じる">×</button>
+    ${scene("shiru")}
     <h2>${p.name}</h2>
     <p class="where">${muni ? `${muni.pref} ${muni.fullName}` : ""}</p>
     ${actions(`town.html?town=${shownTowns}-${p.part}`, `<button type="button" class="secondary multi">ほかの町・字も選ぶ（合わせて見る）</button>`)}

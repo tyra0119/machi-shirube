@@ -359,6 +359,8 @@ async function showLocalSites(code) {
 // どんな町？（町を知るページのいちばん上。作者「町外の人が、まったく知らない町を見る楽しみが出来るかとおもった」）
 // A：確かめた町の答えから AI がまとめた紹介（scripts/intro.mjs。深く調べた町だけ。文ごとに出典）
 // B：国の数字から決まりでまとめた「数で見るこの町」（どの町でも。全国で目立つ数・国の指定・町の特徴・これからの人口・伝承碑）
+// 紹介の文の絵：日本語の元の文の中身で選ぶ（催し・町の花と木・名所やゆかりの所・なりたち・旬のもの）
+const introIcon = (t) => (/祭|まつり|催し|展|行列|花火|イベント/.test(t) ? "calendar" : /町の花|市の花|村の花|の木|の鳥/.test(t) ? "flower" : /生まれた所|名所|公園|碑|モニュメント|ゆかり|史跡/.test(t) ? "place" : /合併|市制|なりたち|できた|生まれた市|生まれた町/.test(t) ? "history" : /野菜|旬|直売|特産|果物/.test(t) ? "food" : "shiru");
 async function showIntro(code) {
   const stats = MUNI?.code === code ? MUNI.stats : await getJSON("data/stats.json");
   const t = stats?.towns?.[code];
@@ -390,7 +392,7 @@ async function showIntro(code) {
   const lore = (await getData(`data/lore/${code}.json`))?.own?.length;
   if (lore) b.push(TN("昔の災害を伝える碑が {n} 基", { n: lore }));
   $("sec-intro").hidden = false;
-  $("intro").innerHTML = (showA ? `<ul class="intro-a">${d.sentences.map((s, i) => `<li>${esc(tt(`i${i}`, s.text))}${s.sources.filter((x) => x.url).map((x) => ` <a class="src" href="${esc(x.url)}" target="_blank" rel="noopener">${icon("link")}${esc(x.title)}</a>`).join("")}</li>`).join("")}</ul>
+  $("intro").innerHTML = (showA ? `<ul class="intro-a">${d.sentences.map((s, i) => `<li>${scene(introIcon(s.text))}${esc(tt(`i${i}`, s.text))}${s.sources.filter((x) => x.url).map((x) => ` <a class="src" href="${esc(x.url)}" target="_blank" rel="noopener">${icon("link")}${esc(x.title)}</a>`).join("")}</li>`).join("")}</ul>
       <p class="note">${esc(tt("n.intro", T(d.note)))}${tr ? ` ${T("（AI による訳）")}` : ""}</p>` : "")
     + `<h3 class="sub">${esc(TN("数で見る{name}", { name }))}</h3><ul class="intro-b">${b.map((x) => `<li>${esc(x)}</li>`).join("")}</ul>
       <p class="note">${T("国の数字から、決まりでまとめたもの（住民基本台帳・国勢調査・国の指定・国立社会保障・人口問題研究所の推計・国土地理院の自然災害伝承碑）。全国で目立つ数だけを出しています。")}</p>`;
@@ -1013,7 +1015,7 @@ async function showAnswers(code, scopeNote, partKey, partName) {
     const list = answersByPage[box.dataset.page] ?? [];
     const p = PAGES.find((x) => x.view === box.dataset.page);
     // 場面の帯：イラストと、この場面で分かること
-    box.innerHTML = (p ? `<div class="page-banner" style="--h:${ILLUST[p.view]?.h ?? 200}">${illust(p.view)}<p><strong>${esc(T(p.title))}</strong>${esc(T(p.desc))}${list.length ? `<span>${T("公式のサイトから確かめた答え")} ${list.length}</span>` : ""}</p></div>` : "")
+    box.innerHTML = (p ? `<div class="page-banner" style="--h:${ILLUST[p.view]?.h ?? 200}">${scene(p.view)}<p><strong>${esc(T(p.title))}</strong>${esc(T(p.desc))}${list.length ? `<span>${T("公式のサイトから確かめた答え")} ${list.length}</span>` : ""}</p></div>` : "")
       + (list.length && scopeNote && !list.some((a) => a.level) ? `<p class="note">${esc(scopeNote)}</p>` : "")
       + (list.length ? answersHTML(list) : "")
       + (p?.later && !list.length ? `<p class="later"><span>${T("準備中")}</span>${LANG ? `${esc(T(p.later))} — ${T("町の公式のサイトから探して、出典つきでここに出します。")}` : `${esc(p.later)}を、町の公式のサイトから探して、出典つきでここに出します。`}</p>${laterGo(p)}` : "")
@@ -1094,6 +1096,16 @@ function answerBody(a) {
   const p = answerParts(a);
   return p.lead + p.rest;
 }
+// 答えのカードの上の場面：問いの見出しの言葉で選ぶ。合うものが無ければ、ページの場面
+function answerScene(a) {
+  // 見出しだけで選ぶ（問いの長い文には、ほかの話の言葉も入る。「困ったときの窓口」に病院の絵が出ていた）
+  const t = yardstick.questions.find((x) => x.id === a.qid)?.short ?? "";
+  const rules = [[/ごみ|資源|粗大/, "gomi"], [/祭|催し|イベント|行事/, "calendar"], [/花|木|鳥/, "flower"], [/名所|ゆかり|史跡|観光/, "place"], [/野菜|旬|直売|特産/, "food"],
+    [/なりたち|歴史|合併/, "history"], [/病院|医療|健診|予防接種|夜間|休日診療/, "iryo"], [/子ども|子育て|保育|学校|通学|児童|妊娠|出産/, "kosodate"], [/介護|高齢|お年寄り|見守り|緊急通報/, "kaigo"],
+    [/バス|交通|タクシー|運転/, "koutsuu"], [/避難|防災|災害|ハザード|津波|洪水/, "bousai"], [/外国|言葉|多言語|通訳/, "foreign"], [/手当|補助|助成|お金|給付|減免/, "okane"],
+    [/公園|図書館|施設|体育/, "shisetsu"], [/窓口|電話|相談|困った/, "komatta"], [/手続き|届|証明|転入|転出/, "tetsuzuki"], [/買い物|店/, "shop"], [/計画|話題/, "keikaku"], [/集まり|自治会|ボランティア/, "mitate"]];
+  return rules.find(([re]) => re.test(t))?.[1] ?? PAGE_OF(a.qid) ?? "shiru";
+}
 function answersHTML(answers) {
   // 見つからなかった答えも隠さず出す（届いていないことの手がかり。町の人に聞きたいこと）
   const notFound = (a) => a.value === "見つからなかった";
@@ -1106,7 +1118,7 @@ function answersHTML(answers) {
     const more = (inner) => (fold && p ? `${tel ? `<a class="tel-quick" href="tel:${tel.replace(/-/g, "")}">${icon("phone")}${tel}</a>` : ""}<details class="a-more"><summary>${T("くわしく")}</summary>${inner}</details>` : inner);
     return `
     <li class="${notFound(a) ? "not-found" : ""}" id="a-${esc(a.qid ?? "")}" style="--h:${ill.h}">
-      <span class="badge" aria-hidden="true">${icon(ANSWER_ICON[a.qid] ?? ill.main)}</span>
+      ${scene(answerScene(a))}
       <div class="body">
       <h3 class="short">${esc(a.shortT ?? T(yardstick.questions.find((x) => x.id === a.qid)?.short ?? ""))}${a.level ? `<span class="lvl">${esc(a.level)}${T("の答え")}</span>${a.translated ? `<span class="lvl ai">${T("AI による訳")}</span>` : ""}` : ""}</h3>
       ${notFound(a)
@@ -1587,6 +1599,30 @@ function prefetchTown(code) {
   for (const d of TOWN_DIRS) getData(`data/${d}/${code}.json`);
   for (const f of ["holidays", "yardstick", "features"]) getData(`data/${f}.json`);
 }
+// 欄の見出しの上の絵（作者「それぞれのカードの上側にイラストを付けたい」）：欄ごとに大きな絵を決め、色と小さな絵はページの組み合わせ（icons.js の ILLUST）
+const SECTION_SCENE = {
+  "wards-block": "chizu", "hitokoto-block": "today", "sec-today": "climate", "sec-today-life": "today", "quiz-today-block": "quiz", "mitate-top": "mitate", "dekiru-block": "kaigo",
+  "news-block": "news", "changes-block": "news", "sec-scenes": "shiru", "layer-block": "chizu", "hinan-block": "bousai", "shelter-list-block": "bousai", "floodpop-block": "bousai",
+  "slope-block": "bousai", "plan-block": "news", "quake-block": "quake", "lore-block": "lore", "gomi-days-block": "gomi", "gomi-block": "gomi", "med-block": "iryo",
+  "kaigo-block": "kaigo", "shop-block": "shop", "bus-block": "koutsuu", "acc-block": "acc", "tr-block": "foreign", "langgap-block": "foreign", "future-block": "keikaku",
+  "sec-intro": "shiru", "quiz-block": "quiz", "climate-block": "climate", "local-block": "place", "ask-block": "mitate", "sec-features": "keikaku", "sec-types": "mitate",
+};
+const FEAT_SCENE = { "feat-nougyou": "farm", "feat-gyogyou": "fish", "feat-yuki": "snow", "feat-kazan": "volcano", "feat-shima": "island" };
+const SECTION_ICON = {
+  "wards-block": "map", "hitokoto-block": "pin", "sec-today": "sun", "sec-today-life": "calendar", "quiz-today-block": "book", "mitate-top": "eye", "dekiru-block": "heart",
+  "news-block": "speaker", "changes-block": "calendar", "sec-scenes": "list", "layer-block": "map", "hinan-block": "shield", "shelter-list-block": "shield", "floodpop-block": "umbrella",
+  "slope-block": "pin", "plan-block": "doc", "quake-block": "quake", "lore-block": "book", "gomi-days-block": "calendar", "gomi-block": "trash", "med-block": "hospital",
+  "kaigo-block": "heart", "shop-block": "shop", "bus-block": "bus", "acc-block": "alert", "tr-block": "globe", "langgap-block": "speaker", "future-block": "list",
+  "sec-intro": "pin", "quiz-block": "book", "climate-block": "sun", "local-block": "link", "ask-block": "search", "sec-features": "list", "sec-types": "eye",
+};
+function decorateSections() {
+  for (const sec of document.querySelectorAll(".view > section.block")) {
+    if (sec.querySelector(":scope > .scene")) continue;
+    const view = sec.closest(".view").dataset.view;
+    const key = SECTION_SCENE[sec.id] ?? FEAT_SCENE[view];
+    if (key) sec.insertAdjacentHTML("afterbegin", scene(key));
+  }
+}
 async function finishPage(code, townFeatures, startPart, scopeNote, at) {
   prefetchTown(code);
   // その町ならではのページ（町の特徴から）を先に作る（答えの箱・タイル・すべてのページに入るように）
@@ -1630,6 +1666,7 @@ async function finishPage(code, townFeatures, startPart, scopeNote, at) {
   const local = await fetch("api/ping").then((r) => r.ok).catch(() => false);
   buildAllPages(hasHinan, local);
   if (local) await researchBox(code, part ? startPart : null, part?.properties.name);
+  decorateSections();
   foldPages();
 }
 

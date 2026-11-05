@@ -342,7 +342,8 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .answers details.q summary { cursor: pointer; }
 .answers > li.not-found .lead { color: var(--text-sub); }
 /* 場面の帯 */
-.page-banner { display: flex; align-items: center; gap: 12px; margin: 0 0 12px; padding: 10px 12px; border-radius: 12px; background: hsl(var(--h) 70% 96%); }
+.page-banner { display: flex; flex-direction: column; gap: 8px; margin: 0 0 12px; padding: 10px 12px; border-radius: 12px; background: hsl(var(--h) 70% 96%); }
+.page-banner > .scene { width: calc(100% + 24px); margin: -10px -12px 0; border-radius: 12px 12px 0 0; }
 .page-banner .il { flex: none; margin: 0; }
 .page-banner p { margin: 0; font-size: 14px; color: var(--text-sub); line-height: 1.6; }
 .page-banner p strong { display: block; font-size: 17px; color: var(--text); }
@@ -589,7 +590,7 @@ section.block[data-fold] > h2::after { content: "▴"; position: absolute; right
 section.block.folded > h2::after { content: "▾"; }
 section.block > .fold-sum { display: none; margin: 4px 0 0; color: var(--text-sub); font-size: 14px; line-height: 1.6; }
 section.block.folded > .fold-sum { display: block; }
-section.block.folded > :not(h2):not(.fold-sum) { display: none !important; }
+section.block.folded > :not(h2):not(.fold-sum):not(.scene) { display: none !important; }
 section.block.folded { padding-bottom: 12px; }
 .pop-times { margin: 6px 0 2px; padding: 0; list-style: none; font-size: 13px; } .pop-times li { margin: 2px 0; } .pop-times b { font-variant-numeric: tabular-nums; margin-right: 4px; }
 /* バスの平日の時刻表 */
@@ -857,3 +858,14 @@ ruby rt { font-size: 0.55em; font-weight: 400; letter-spacing: 0; }
 .intro-a .src svg { width: 13px; height: 13px; }
 .intro-b { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0; padding: 0; list-style: none; }
 .intro-b li { padding: 4px 10px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); font-size: 14px; line-height: 1.5; max-width: 100%; overflow-wrap: anywhere; }
+/* カードと欄の上の絵（作者「それぞれのカードの上側にイラストを付けたい」） */
+/* 場面の帯（カードと欄の上。scene.js） */
+.scene { display: block; height: 76px; }
+.scene .sc-sky { fill: #e6eff5; } .scene .sc-ground { fill: #d3e1e8; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .scene .sc-sky { fill: #24323d; } :root:not([data-theme="light"]) .scene .sc-ground { fill: #34444f; } }
+.block > .scene { width: calc(100% + 32px); margin: -16px -16px 12px; border-radius: 10px 10px 0 0; }
+section.block.folded > .scene { height: 40px; margin-bottom: 8px; }
+.answers > li { flex-direction: column; gap: 0; }
+.answers > li > .scene { width: calc(100% + 28px); margin: -14px -14px 10px; border-radius: 12px 12px 0 0; }
+.intro-a li > .scene { width: calc(100% + 24px); margin: -10px -12px 8px; border-radius: 10px 10px 0 0; height: 64px; }
+@media print { .scene { display: none; } }

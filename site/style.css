@@ -372,3 +372,7 @@ a.secondary.as-button { display: flex; align-items: center; justify-content: cen
 
 /* 録画用の ?wave&clean：地図だけにする（地図の出典は残す） */
 body.clean .panel, body.clean #counter, body.clean #map-key, body.clean #basemap, body.clean .maplibregl-ctrl-bottom-right, body.clean .maplibregl-ctrl-top-right { display: none !important; }
+/* 町のカードの上の絵（作者「それぞれのカードの上側にイラストを付けたい」） */
+.scene { display: block; width: 100%; height: 60px; margin: 0 0 8px; border-radius: 10px; }
+.scene .sc-sky { fill: #e6eff5; } .scene .sc-ground { fill: #d3e1e8; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .scene .sc-sky { fill: #24323d; } :root:not([data-theme="light"]) .scene .sc-ground { fill: #34444f; } }

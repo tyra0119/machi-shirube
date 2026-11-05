@@ -62,10 +62,14 @@ const ILLUST = {
   research: { h: 200, main: "search", sub: "book" },
 };
 function illust(page) {
-  const x = ILLUST[page];
-  if (!x) return "";
+  return ILLUST[page] ? illustOf(ILLUST[page]) : "";
+}
+// 色（h）と大きな絵（main）・小さな絵（sub）を決めて描く（答えのカード・欄の見出し・町の紹介・トップの町のカードの上の絵。作者「それぞれのカードの上側にイラストを付けたい」）
+function illustOf(x, cls = "") {
+  if (!x || !ICON_PATHS[x.main]) return "";
+  if (!ICON_PATHS[x.sub]) x = { ...x, sub: x.main === "pin" ? "map" : "pin" };
   const g = (name, tx, ty, s) => `<g transform="translate(${tx} ${ty}) scale(${s})" fill="none" stroke-width="${1.8 / s * 1.4}" stroke-linecap="round" stroke-linejoin="round">${ICON_PATHS[name]}</g>`;
-  return `<svg class="il" viewBox="0 0 80 64" aria-hidden="true" style="--h:${x.h}">
+  return `<svg class="il${cls ? ` ${cls}` : ""}" viewBox="0 0 80 64" aria-hidden="true" style="--h:${x.h}">
     <rect class="il-bg" x="0" y="0" width="80" height="64" rx="14"/>
     <circle class="il-dot" cx="66" cy="50" r="10"/><circle class="il-dot" cx="12" cy="12" r="5"/>
     <path class="il-ground" d="M10 54h44"/>
