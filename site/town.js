@@ -680,6 +680,8 @@ async function showNews(code) {
   let seen = null;
   try { seen = JSON.parse(remember.get(seenKey) ?? "null"); } catch {}
   const isNew = (url) => Array.isArray(seen) && !seen.includes(url);
+  // 町の明るい話題（作者「その町のニュース（ｘｘさんがオリンピックの日本代表に選ばれた！など）」）：見出しの言葉で選ぶ（AI は使わない）
+  brightNews = (d.news?.items ?? []).find((x) => BRIGHT.test(x.title) && !BRIGHT_NOT.test(x.title)) ?? null;
   const shown = [d.koho?.latest?.url, ...(d.news?.items ?? []).slice(0, 5).map((x) => x.url)].filter(Boolean);
   newsNew = shown.filter(isNew).length;
   remember.set(seenKey, JSON.stringify([...new Set([...shown, ...(seen ?? [])])].slice(0, 60)));
@@ -1128,6 +1130,8 @@ async function showToday(code, at) {
   try {
     const t = await loadToday(code, at[1], at[0]);
     $("today-box").innerHTML = todayHTML(t, esc);
+    todayInfo = t;
+    renderMorning();
     // 危ないことはいちばん上に：警報（赤）・注意報（橙）が出ていれば、どのページを見ていてもタブの下に帯で出す
     const w = t.warnings?.list ?? [];
     if (w.length) {
@@ -1182,8 +1186,92 @@ let gomiHoliday = false; // 今日が祝日か（ごみの収集が変わるこ�
 let gomiHolidayTmr = false;
 let gomiTomorrow = null; // 明日出せるごみ（夕方から「明日の準備」に出す）
 let newsNew = 0; // 前に見てから新しくなったお知らせの数
+// きょうのひとこと（今日のページのいちばん上。作者「毎朝１度見る習慣をつけてもらうためにはどんな工夫」→ A・B・C）
+let todayInfo = null; // 天気・警報（today.js）
+let brightNews = null; // 町の明るい話題
+let morningCode = null;
+const BRIGHT = /表彰|受賞|優勝|入賞|選手|代表に|出場|おめでとう|祝|誕生|開業|オープン|完成|開通|100歳|金賞|金メダル|メダル|日本一|全国大会/;
+const BRIGHT_NOT = /募集|中止|延期|注意|詐欺|休館|休止|閉鎖|工事|停止/;
+// 今日は何の日：町のなりたち（Q09）から町の誕生日、催し（Q10・Q21）から今日・7日以内の催しと、今月の催しの季節
+const ERA = { 明治: 1867, 大正: 1911, 昭和: 1925, 平成: 1988, 令和: 2018 };
+function townDays(name) {
+  const all = Object.values(answersByPage).flat();
+  const q9 = all.find((a) => a.qid === "Q09" && a.value !== "見つからなかった");
+  const evs = all.filter((a) => (a.qid === "Q10" || a.qid === "Q21") && a.value !== "見つからなかった");
+  const out = { birthday: null, events: [], seasons: [] };
+  // 誕生日：日付と、町の名前か「市制・町制」と、「誕生・生まれ・できた・なった・発足・施行」が同じ文にあるもの
+  // 町の名前の入った文を先に（朝霞市で、朝霞町になった日を市の誕生日としていた）。無ければ「市制・町制」の文
+  const sents = String(q9?.value ?? "").split(/[。\n]/);
+  for (const pass of [(s) => s.includes(name), (s) => /市制|町制|村制/.test(s)]) {
+    for (const s of sents) {
+      // 日付ごとに、次の日付までの間を見る（「昭和30年4月1日に新『朝霞町』、昭和42年3月15日に市制施行して朝霞市」の1つの文）
+      const ds = [...s.matchAll(/(明治|大正|昭和|平成|令和)(元|\d{1,2})年(?:\s*[（(]\d{4}年[）)])?\s*(\d{1,2})月(\d{1,2})日/g)];
+      // 「阿賀町は、平成17年4月1日に…できました」のように、町の名前が最初の日付の前にある書き方もある
+      const m = ds.find((x, i) => { const seg = s.slice(x.index, ds[i + 1]?.index ?? s.length); return (pass(seg) || (i === 0 && pass(s.slice(0, x.index)))) && /誕生|生まれ|できた|でき|なった|発足|施行/.test(seg); });
+      if (m) { out.birthday = { y: ERA[m[1]] + (m[2] === "元" ? 1 : Number(m[2])), m: Number(m[3]), d: Number(m[4]), src: q9.source }; break; }
+    }
+    if (out.birthday) break;
+  }
+  for (const a of evs) {
+    const v = String(a.value);
+    const name0 = v.match(/「([^」]{2,40})」/)?.[1] ?? v.split(/[。（(\n]/)[0].slice(0, 24);
+    // 日付のある催し：文ごとに、最初の日付だけ（「9月14日から12月14日まで」の終わりの日や予備日を拾わない）。
+    // 名前は、その文の「」の中 → 「まつり・大会・講座…」で終わる言葉 → 「盆踊り：8月8日」の名前 → 第○回の文ならその答えの催しの名前。どれも無い文は使わない
+    // （はじめは文の切れ端「ペアレントトレーニング講座が、2026年9月14」や、締切の日まで催しとして拾っていた）
+    for (const s of v.split(/[\n。／①②③④⑤⑥⑦⑧⑨]| \/ /)) {
+      if (/締切|申込|申し込み|受付|募集/.test(s)) continue;
+      const dm = s.match(/(\d{1,2})月(\d{1,2})日/);
+      if (!dm) continue;
+      const nm = s.match(/「([^」]{2,40})」/)?.[1] ?? (/第\d+回は/.test(s) ? name0 : null)
+        ?? s.match(/([^\s、。「」（）()：:]{2,16}(?:まつり|祭り|祭|フェア|大会|展|講座|訓練|教室|学習会|行列|花火|オーディション|マラソン|コンサート|イベント))/)?.[1]
+        ?? s.match(/^\s*([^\s、。：:0-9０-９]{2,16})[：:]/)?.[1];
+      // 年の書いてある催しは、その年だけ（来年、同じ日付で前の年の催しを出さない）
+      const yr = Number(s.match(/(20\d\d)年/)?.[1] ?? 0) || (s.match(/令和(\d+)年/) ? 2018 + Number(s.match(/令和(\d+)年/)[1]) : null);
+      if (nm) out.events.push({ name: nm, y: yr, m: Number(dm[1]), d: Number(dm[2]), src: a.source });
+    }
+    // 毎年の時期（「毎年8月上旬」「例年5月初め」）
+    const se = v.match(/(?:毎年|例年)\s*(\d{1,2})月/);
+    if (se) out.seasons.push({ name: name0, m: Number(se[1]), src: a.source });
+  }
+  return out;
+}
+function renderMorning() {
+  if (!morningCode) return;
+  const ev = isEvening(), now = jpNow(), day = new Date(now.getFullYear(), now.getMonth(), now.getDate() + (ev ? 1 : 0));
+  const rows = [];
+  const row = (ic, k, v) => rows.push(`<li>${icon(ic)}<span class="k">${k}</span><span class="v">${v}</span></li>`);
+  // 1. ごみ
+  const g = ev ? gomiTomorrow : gomiToday;
+  if (g) row("trash", T("ごみ"), esc(g.length ? g.join("・") : T("収集なし")) + ((ev ? gomiHolidayTmr : gomiHoliday) ? `（${esc(T("祝日は収集が変わることがあります"))}）` : ""));
+  // 2. 天気（雨の確率が高ければ傘を）
+  const w = todayInfo?.days?.[ev ? 1 : 0];
+  if (w?.weather || w?.max != null) row(w.pop >= 50 ? "umbrella" : "sun", T("天気"), `${esc(w.weatherLang ?? w.weather ?? "")}${w.max != null ? ` ${Math.round(w.max)}℃` : ""}${w.pop != null ? `・${T("雨")} ${w.pop}%` : ""}${w.pop >= 50 ? `・<strong>${T("傘を持って")}</strong>` : ""}`);
+  // 3. 警報（出ていれば）
+  const wl = todayInfo?.warnings?.list ?? [];
+  if (wl.length) row("alert", T("警報・注意報"), `<strong>${wl.map((x) => esc(T(x))).join("・")}</strong>`);
+  // 4. 町の明るい話題
+  if (brightNews) row("heart", T("町の話題"), `<a href="${esc(brightNews.url)}" target="_blank" rel="noopener" lang="ja">${esc(brightNews.title)}</a>`);
+  // 5. 今日は何の日
+  const t = MUNI?.stats?.towns?.[morningCode];
+  const td = townDays(t ? shortName(t.name) : "");
+  const md = (m, d) => (LANG && LANG !== "easy" ? `${m}/${d}` : `${m}月${d}日`);
+  const b = td.birthday;
+  const evs = td.events.filter((e) => !e.y || e.y === day.getFullYear());
+  const todayEv = evs.find((e) => e.m === day.getMonth() + 1 && e.d === day.getDate());
+  const soon = evs.map((e) => ({ ...e, at: new Date(day.getFullYear(), e.m - 1, e.d) })).filter((e) => e.at > day && e.at - day <= 7 * 864e5).sort((x, y) => x.at - y.at)[0];
+  const season = td.seasons.find((s) => s.m === day.getMonth() + 1);
+  const link = (s) => (s?.url ? ` <a class="src" href="${esc(s.url)}" target="_blank" rel="noopener">${icon("link")}</a>` : "");
+  if (b && b.m === day.getMonth() + 1 && b.d === day.getDate()) row("calendar", T(ev ? "明日は何の日" : "今日は何の日"), TN("町の誕生日（{y}年{md}にできて {n} 年）", { y: b.y, md: md(b.m, b.d), n: day.getFullYear() - b.y }) + link(b.src));
+  else if (todayEv) row("calendar", T(ev ? "明日は何の日" : "今日は何の日"), `<span lang="ja">「${esc(todayEv.name)}」</span>${link(todayEv.src)}`);
+  else if (soon) row("calendar", T("もうすぐ"), `${md(soon.m, soon.d)} <span lang="ja">「${esc(soon.name)}」</span>${link(soon.src)}`);
+  else if (season) row("calendar", T("今月は"), TN("「{name}」の季節", { name: esc(season.name) }) + link(season.src));
+  $("morning-head").textContent = T(ev ? "あすのひとこと" : "きょうのひとこと");
+  $("morning").innerHTML = rows.join("");
+  $("morning-block").hidden = !rows.length;
+}
 let gomiToday = null; // 町・字のページで、今日出せるごみ（ごみを出す日の表から）
 function todayLife(hasHinan) {
+  renderMorning();
   const has = (v) => (answersByPage[v] ?? []).filter((a) => a.value !== "見つからなかった").length;
   const row = (view, k, v, ready) => `<li><a href="#${view}"><span class="k">${icon(ILLUST[view]?.main)}${T(k)}</span><span class="v${ready ? "" : " later"}">${esc(T(v))}</span></a></li>`;
   const ev = isEvening();
@@ -1588,7 +1676,7 @@ function prefetchTown(code) {
 }
 // 欄の見出しの上の絵（作者「それぞれのカードの上側にイラストを付けたい」）：欄ごとに大きな絵を決め、色と小さな絵はページの組み合わせ（icons.js の ILLUST）
 const SECTION_SCENE = {
-  "wards-block": "chizu", "hitokoto-block": "today", "sec-today": "climate", "sec-today-life": "today", "quiz-today-block": "quiz", "mitate-top": "mitate", "dekiru-block": "kaigo",
+  "morning-block": "today", "wards-block": "chizu", "hitokoto-block": "today", "sec-today": "climate", "sec-today-life": "today", "quiz-today-block": "quiz", "mitate-top": "mitate", "dekiru-block": "kaigo",
   "news-block": "news", "changes-block": "news", "sec-scenes": "shiru", "layer-block": "chizu", "hinan-block": "bousai", "shelter-list-block": "bousai", "floodpop-block": "bousai",
   "slope-block": "bousai", "plan-block": "news", "quake-block": "quake", "lore-block": "lore", "gomi-days-block": "gomi", "gomi-block": "gomi", "med-block": "iryo",
   "kaigo-block": "kaigo", "shop-block": "shop", "bus-block": "koutsuu", "acc-block": "acc", "tr-block": "foreign", "langgap-block": "foreign", "future-block": "keikaku",
@@ -1607,6 +1695,7 @@ function decorateSections() {
 }
 async function finishPage(code, townFeatures, startPart, scopeNote, at) {
   prefetchTown(code);
+  morningCode = code;
   // その町ならではのページ（町の特徴から）を先に作る（答えの箱・タイル・すべてのページに入るように）
   await showFeatures(code, at);
   showView();
@@ -1656,7 +1745,7 @@ async function finishPage(code, townFeatures, startPart, scopeNote, at) {
 // 最初から開いておくのは、わが家の避難・今日のページの見立てと数から、できることへ・今日と明日と、各ページの最初の1つ
 // （作者「やたらと縦が長くなってしまうと、読むのが大変。何か工夫できないかな？」→「たたむ＋目次」）
 // 暮らしの場面（ほかのページへの入口の札）も開いておく（作者「『暮らしの場面』は開いていてもいいと思う」）
-const FOLD_OPEN = new Set(["wards-block", "sec-intro", "quiz-today-block", "hinan-block", "shelter-list-block", "news-block", "mitate-top", "sec-today", "hitokoto-block", "sec-scenes", "sec-today-life", "gomi-block"]);
+const FOLD_OPEN = new Set(["morning-block", "wards-block", "sec-intro", "quiz-today-block", "hinan-block", "shelter-list-block", "news-block", "mitate-top", "sec-today", "hitokoto-block", "sec-scenes", "sec-today-life", "gomi-block"]);
 function foldSummary(sec) {
   // 確かめた答えの欄は、答えの数
   const answers = sec.querySelectorAll(".answers-box [id^=\"a-\"]").length;

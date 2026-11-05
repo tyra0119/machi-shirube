@@ -1,11 +1,11 @@
 {
  "lang": "tl",
  "name": "Filipino",
- "createdAt": "2026-11-05T07:38:47.547Z",
+ "createdAt": "2026-11-05T10:19:37.254Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1055,
- "of": 1028,
+ "count": 1066,
+ "of": 1037,
  "dict": {
   "この町の非公式の暮らしの案内です。町の公式のサイトや国の公開データから集め、出典をつけています（まちしるべ）": "Ito ay isang di-opisyal na gabay sa pamumuhay sa bayang ito. Kinuha ito mula sa opisyal na website ng bayan at sa pampublikong datos ng bansa, at may nakasaad na pinagmulan (Machishirube)",
   "すべてのページ": "Lahat ng pahina",
@@ -1061,6 +1061,17 @@
   "2050年の人口は、2020年の約 {p}%（推計）": "Ang populasyon sa 2050 ay humigit-kumulang {p}% ng populasyon noong 2020 (tantiya)",
   "昔の災害を伝える碑が {n} 基": "{n} monumentong nagpapaalala ng mga sakuna noong unang panahon",
   "数で見る{name}": "{name} sa mga numero",
-  "どんな町？": "Anong klaseng bayan ito?"
+  "どんな町？": "Anong klaseng bayan ito?",
+  "きょうのひとこと": "Paalala Ngayong Araw",
+  "あすのひとこと": "Paalala Bukas",
+  "今日は何の日": "Ano'ng Araw Ngayon",
+  "明日は何の日": "Ano'ng Araw Bukas",
+  "天気": "Panahon",
+  "もうすぐ": "Malapit na",
+  "今月は": "Ngayong buwan",
+  "傘を": "Magdala ng payong",
+  "町の誕生日（{y}年{md}にできて {n} 年）": "Kaarawan ng bayan (itinatag noong {md} ng {y}, {n} taon na)",
+  "「{name}」の季節": "Panahon ng \"{name}\"",
+  "傘を持って": "Magdala ng payong"
  }
 }

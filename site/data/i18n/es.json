@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-05T07:38:23.916Z",
+ "createdAt": "2026-11-05T10:19:16.842Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1066,
- "of": 1028,
+ "count": 1077,
+ "of": 1037,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -1072,6 +1072,17 @@
   "数で見る{name}": "{name} en cifras",
   "どんな町？": "¿Cómo es este municipio?",
   "特別豪雪地帯": "Zona de nevadas excepcionalmente intensas",
-  "明日やっている病院・診療所": "Hospitales y clínicas abiertos mañana"
+  "明日やっている病院・診療所": "Hospitales y clínicas abiertos mañana",
+  "きょうのひとこと": "La frase de hoy",
+  "あすのひとこと": "La frase de mañana",
+  "今日は何の日": "¿Qué día es hoy?",
+  "明日は何の日": "¿Qué día es mañana?",
+  "天気": "El tiempo",
+  "もうすぐ": "Próximamente",
+  "今月は": "Este mes",
+  "傘を": "Lleve paraguas",
+  "「{name}」の季節": "Temporada de «{name}»",
+  "傘を持って": "Lleva paraguas",
+  "町の誕生日（{y}年{md}にできて {n} 年）": "Cumpleaños del pueblo (fundado en {y}, {md}; {n} años)"
  }
 }

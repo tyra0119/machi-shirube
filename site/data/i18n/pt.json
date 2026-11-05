@@ -1,11 +1,11 @@
 {
  "lang": "pt",
  "name": "Português",
- "createdAt": "2026-11-05T07:38:19.338Z",
+ "createdAt": "2026-11-05T10:19:11.581Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1068,
- "of": 1028,
+ "count": 1078,
+ "of": 1037,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Guia não oficial da vida na cidade. O Claude reúne as informações em sites oficiais da cidade e outras fontes, e indica a origem de cada uma (Machishirube)",
   "すべてのページ": "Todas as páginas",
@@ -1074,6 +1074,16 @@
   "数で見る{name}": "{name} em números",
   "どんな町？": "Como é a cidade?",
   "明日やっている病院・診療所": "Hospitais e clínicas abertos amanhã",
-  "明日、診療している病院・診療所": "Hospitais e clínicas com atendimento amanhã"
+  "明日、診療している病院・診療所": "Hospitais e clínicas com atendimento amanhã",
+  "きょうのひとこと": "A frase de hoje",
+  "あすのひとこと": "A frase de amanhã",
+  "今日は何の日": "O que se comemora hoje",
+  "明日は何の日": "O que se comemora amanhã",
+  "天気": "Previsão do tempo",
+  "もうすぐ": "Em breve",
+  "今月は": "Neste mês",
+  "町の誕生日（{y}年{md}にできて {n} 年）": "Aniversário da cidade (fundada em {md} de {y}, {n} anos)",
+  "「{name}」の季節": "A estação de \"{name}\"",
+  "傘を持って": "Leve guarda-chuva"
  }
 }

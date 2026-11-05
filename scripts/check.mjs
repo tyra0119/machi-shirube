@@ -137,6 +137,15 @@ const CASES = [
   }],
   ["十勝地方・奄美地方の予報は、釧路・鹿児島の予報のファイルから読む（11/5）", () => fn("FORECAST_FILE")?.["014030"] === "014100" && fn("FORECAST_FILE")?.["460040"] === "460100"],
   ["日本の外の端末でも、町の時刻（日本時間）で決める（11/4）", () => { const j = fn("jpNow")(); const u = new Date(); return j.getHours() === (u.getUTCHours() + 9) % 24; }],
+  ["今日は何の日：町の誕生日を、町のなりたちの答えから正しく読む（朝霞市は市制の日。11/5）", () => {
+    const a = town.indexOf("function townDays"), b = town.indexOf("function renderMorning");
+    const ERA = { 明治: 1867, 大正: 1911, 昭和: 1925, 平成: 1988, 令和: 2018 };
+    const want = { "39428": ["黒潮町", "2006/3/20"], "11227": ["朝霞市", "1967/3/15"], "15385": ["阿賀町", "2005/4/1"], "21211": ["美濃加茂市", "1954/4/1"] };
+    return Object.entries(want).every(([c, [nm, ymd]]) => {
+      const td = new Function("answersByPage", "ERA", `${town.slice(a, b)};return townDays;`)({ x: read(`site/data/answers/${c}.json`).answers }, ERA)(nm);
+      return td.birthday && `${td.birthday.y}/${td.birthday.m}/${td.birthday.d}` === ymd;
+    });
+  }],
   ["家族に送る URL から、録画用の ?here= を外す（受け取った人の「今いる所」がその場所になる。11/5）", () => /searchParams\.delete\("here"\)/.test(town)],
   // 位置の言い方（types.js）
   ["「上から ○%」と言わない", () => !/上から/.test(fn("placeWords")(5, 1741, "1.8%") + fn("placeWords")(100, 1741, "1.8%") + fn("placeWords")(1700, 1741, "1.8%"))],

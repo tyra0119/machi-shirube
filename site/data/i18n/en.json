@@ -1,11 +1,11 @@
 {
  "lang": "en",
  "name": "English",
- "createdAt": "2026-11-05T07:38:26.222Z",
+ "createdAt": "2026-11-05T10:19:19.362Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1067,
- "of": 1028,
+ "count": 1078,
+ "of": 1037,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "This is an unofficial guide to living in this town. Claude gathers information from the town's official website and other sources, and cites each source (Machishirube)",
   "すべてのページ": "All pages",
@@ -1073,6 +1073,17 @@
   "数で見る{name}": "{name} by the Numbers",
   "どんな町？": "What kind of town is it?",
   "明日やっている病院・診療所": "Hospitals and clinics open tomorrow",
-  "明日、診療している病院・診療所": "Hospitals and clinics open tomorrow"
+  "明日、診療している病院・診療所": "Hospitals and clinics open tomorrow",
+  "きょうのひとこと": "Today's Word",
+  "あすのひとこと": "Tomorrow's Word",
+  "今日は何の日": "What Day Is Today?",
+  "明日は何の日": "What Day Is Tomorrow?",
+  "天気": "Weather",
+  "もうすぐ": "Coming Up",
+  "今月は": "This Month",
+  "傘を": "Umbrella",
+  "町の誕生日（{y}年{md}にできて {n} 年）": "Town Birthday (founded {md}, {y}; {n} years ago)",
+  "「{name}」の季節": "Season of \"{name}\"",
+  "傘を持って": "Bring an umbrella"
  }
 }

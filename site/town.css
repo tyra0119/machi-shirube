@@ -867,3 +867,11 @@ ruby rt { font-size: 0.55em; font-weight: 400; letter-spacing: 0; }
 section.block.folded > .scene { height: 40px; margin-bottom: 8px; }
 .answers > li { flex-direction: column; gap: 0; }
 @media print { .scene { display: none; } }
+/* きょうのひとこと（今日のページのいちばん上。ひと目で終わる短い行） */
+ul.morning { margin: 0; padding: 0; list-style: none; display: grid; gap: 6px; }
+ul.morning li { display: grid; grid-template-columns: 20px 5.5em minmax(0, 1fr); align-items: baseline; gap: 6px; font-size: 16px; line-height: 1.6; }
+ul.morning .ic { width: 18px; height: 18px; color: var(--accent); align-self: center; }
+ul.morning .k { color: var(--text-sub); font-size: 14px; }
+ul.morning .v { overflow-wrap: anywhere; }
+ul.morning .src svg { width: 13px; height: 13px; vertical-align: -2px; }
+.lang-other ul.morning li { grid-template-columns: 20px 7.5em minmax(0, 1fr); }
