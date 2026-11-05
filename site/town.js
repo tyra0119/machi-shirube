@@ -614,7 +614,7 @@ async function showAccidents(code, part) {
   });
   map.on("load", () => {
     const lons = d.spots.map((s) => s.lon), lats = d.spots.map((s) => s.lat);
-    map.fitBounds([[Math.min(...lons), Math.min(...lats)], [Math.max(...lons), Math.max(...lats)]], { padding: 40, maxZoom: 15, duration: 0 });
+    map.fitBounds([[Math.min(...lons), Math.min(...lats)], [Math.max(...lons), Math.max(...lats)]], { padding: { top: 40, bottom: 40, left: 40, right: 80 }, maxZoom: 15, duration: 0 }); // 右は地図のボタンの幅だけ広く（番号の印が隠れないように）
   });
   $("acc-spots").addEventListener("click", (e) => {
     const li = e.target.closest("li");
