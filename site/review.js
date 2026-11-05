@@ -20,7 +20,7 @@ async function main() {
   local = await fetch("api/ping").then((r) => r.ok).catch(() => false);
   $("mode").innerHTML = local
     ? `使い方：① 1件ずつ「判断してほしいこと」を読む　② 「出典を開く」で元のページを見る　③ 下の4つのボタンから選ぶ。<br>
-       OK すると、手元の町のページにはすぐ出ます（公開のサイトには、次の公開〈push〉で出ます）。押したあと6秒は元に戻せます。`
+       OK すると、手元の町のページにはすぐ出ます（公開のサイトには、上の「公開に送る」を押すと出ます）。押したあと6秒は元に戻せます。`
     : "公開のサイト：見るだけです。引用した元の文は出していません";
   await reload();
 }
@@ -29,6 +29,7 @@ async function reload() {
   if (local) {
     data = await (await fetch("api/review")).json();
     all = data.items;
+    showPublish();
   } else {
     const pub = await fetch("data/review.json").then((r) => (r.ok ? r.json() : { items: [] })).catch(() => ({ items: [] }));
     all = pub.items; // 公開の一覧には、人が見たもの・見ているものだけが入る
@@ -37,6 +38,42 @@ async function reload() {
   render();
 }
 let autoCount = 0;
+
+// 公開に送る（手元だけ）。決めた結果は手元のファイルにだけ入るので、ここから GitHub に送ると公開のサイトに出る
+// 押すと送る中身を見せ、「送る」でもう一度押してから動く（点検・鍵と local/ の確かめ・コミット・push は手元のサーバーがする）
+let pubBusy = false;
+async function showPublish(result) {
+  const box = $("publish");
+  if (pubBusy) return;
+  const p = await fetch("api/publish").then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  if (!p) { box.hidden = true; return; }
+  const n = p.files.length;
+  const res = result ? `<p class="${result.ok ? "pub-ok" : "pub-ng"}"><strong>${esc(result.message)}</strong>${result.ok ? "" : `（止まった所：${esc(result.step)}）`}</p>
+    ${result.steps?.length ? `<ul class="pub-steps">${result.steps.map((s) => `<li>${esc(s)}</li>`).join("")}</ul>` : ""}` : "";
+  box.hidden = false;
+  box.innerHTML = `<h2>公開に送る</h2>${res}
+    ${p.frozen ? `<p>審査のあいだ（11/8 20:00 から）は送りません。</p>`
+      : n || p.ahead ? `<p>まだ公開に出ていない変更：決めた結果など <strong>${n}</strong> ファイル${p.ahead ? `・送っていないコミット ${p.ahead} 件` : ""}。押すと、点検と、鍵や手元だけのものが入っていないかの確かめをしてから、GitHub に送ります（数分で公開のサイトに出ます）。</p>
+        <p class="note">送るのは site/data だけです${p.other ? `（ほかの変更 ${p.other} ファイルは送りません）` : ""}。</p>
+        <button type="button" class="pub-go" data-step="1">公開に送る</button>`
+      : `<p>公開のサイトと同じです（送るものはありません）。</p>`}`;
+  const btn = box.querySelector(".pub-go");
+  if (!btn) return;
+  btn.addEventListener("click", async () => {
+    if (btn.dataset.step === "1") {
+      btn.dataset.step = "2";
+      btn.textContent = `送る（${n ? `${n} ファイル` : "コミット"}）`;
+      btn.insertAdjacentHTML("afterend", `<span class="note">もう一度押すと送ります。送ったあとは、公開のサイトに出ます。</span>`);
+      return;
+    }
+    pubBusy = true;
+    btn.disabled = true;
+    btn.textContent = "送っています（30秒ほど）…";
+    const r = await fetch("api/publish", { method: "POST" }).then((x) => x.json()).catch((e) => ({ ok: false, step: "手元のサーバー", message: String(e.message) }));
+    pubBusy = false;
+    showPublish(r);
+  });
+}
 
 const inTab = (x) => (tab === "pending" ? x.status === "pending" : tab === "auto" ? x.status === "auto" : !["pending", "auto"].includes(x.status));
 function render() {

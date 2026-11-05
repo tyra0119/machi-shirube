@@ -5,6 +5,7 @@
 //   POST /api/areas  複数の町・字を「まとまり」として保存する（site/data/areas.json に書く）
 //   GET  /api/review 確かめる一覧（引用した元の文も入る。手元だけ）
 //   POST /api/review/{番号}  決める（ok・fix・reject・unknown・undo、理由1行）
+//   GET/POST /api/publish  公開に送る（GET は送る前の中身、POST で点検・確かめ・コミット・push）
 //   POST /api/sites  はじめて使うサイトを、町ごとに1回決める（scope・host・ok か reject・理由1行）
 import http from "node:http";
 import fs from "node:fs";
@@ -18,6 +19,7 @@ import { mitate } from "./mitate.mjs";
 import { hitokoto } from "./hitokoto.mjs";
 import { dekiru } from "./dekiru.mjs";
 import { mitateAsk } from "./mitate-ask.mjs";
+import { preview, publish } from "./publish.mjs";
 
 // 町をまとめて調べる（調べる画面から）。一度に1つだけ。様子はメモリに持ち、終わったら local/runs/ に残す
 const runs = new Map();
@@ -269,6 +271,9 @@ http
     }
     const pm = url.pathname.match(/^\/api\/proposals\/(p\d{4})$/);
     if (pm && req.method === "POST") return decideProposalReq(req, res, pm[1]);
+    // 公開に送る（確かめる一覧のボタン）：GET は送る前に見せる中身、POST で点検・確かめ・コミット・push（scripts/publish.mjs）
+    if (url.pathname === "/api/publish" && req.method === "GET") { try { return send(res, 200, preview()); } catch (e) { return send(res, 500, { error: e.message }); } }
+    if (url.pathname === "/api/publish" && req.method === "POST") return publish().then((r) => send(res, 200, r));
     const m = url.pathname.match(/^\/api\/review\/(r\d{5})$/);
     if (m && req.method === "POST") return decideItem(req, res, m[1]);
     let file = path.join(ROOT, decodeURIComponent(url.pathname));

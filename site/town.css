@@ -242,6 +242,14 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .sites-box { margin: 0 0 14px; padding: 12px 14px; border: 2px solid var(--accent); border-radius: 10px; }
 .sites-box h2 { margin: 0 0 4px; font-size: 18px; }
 .site-list { margin: 0; padding: 0; list-style: none; }
+/* 確かめる一覧：公開に送る（手元だけ） */
+.pub-box p { margin: 4px 0; font-size: 15px; line-height: 1.7; }
+.pub-go { min-height: 44px; margin: 6px 10px 0 0; padding: 0 20px; border: 0; border-radius: 22px; background: var(--accent); color: var(--accent-text); font-size: 16px; font-weight: 700; cursor: pointer; }
+.pub-go[data-step="2"] { outline: 3px solid var(--text); outline-offset: 2px; }
+.pub-go:disabled { opacity: .6; cursor: wait; }
+.pub-ok, .pub-ng { padding: 6px 10px; border-left: 4px solid var(--accent); background: var(--bg); }
+.pub-ng { border-left-color: var(--text); }
+.pub-steps { margin: 4px 0 8px; padding-left: 20px; font-size: 13px; color: var(--text-sub); }
 .site-list li { padding: 10px 0; border-top: 1px solid var(--line); }
 .site-list .site-name { margin: 0 0 4px; font-size: 15px; }
 .site-list .site-todo { margin: 0 0 4px; font-size: 14px; line-height: 1.7; }
