@@ -142,7 +142,8 @@ async function checkPage(p) {
       const W = s.d.documentElement.clientWidth;
       for (const el of v.querySelectorAll("*")) {
         const r = el.getBoundingClientRect();
-        if (r.width > 0 && r.right > W + 2 && !el.closest(".maplibregl-map, table, .tt, [hidden]")) bad.push(`${v.dataset?.view ?? ""} ${el.tagName.toLowerCase()}.${el.className}`);
+        // 絵（svg）の中の形は測らない（場面の帯は外にはみ出した部分を切って見せる。11/5 に、空の四角を「はみ出し」と数えていた）
+        if (r.width > 0 && r.right > W + 2 && !el.closest(".maplibregl-map, table, .tt, [hidden], svg")) bad.push(`${v.dataset?.view ?? ""} ${el.tagName.toLowerCase()}.${el.className}`);
       }
     }
     add(name, "幅 320px ではみ出さない", bad.length || s.d.documentElement.scrollWidth > s.d.documentElement.clientWidth ? "ng" : "ok", [...new Set(bad)].slice(0, 4).join(" / "));
