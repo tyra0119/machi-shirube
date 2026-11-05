@@ -1,9 +1,9 @@
 {
- "updatedAt": "2026-11-05T08:20:33.186Z",
+ "updatedAt": "2026-11-05T12:15:05.183Z",
  "counts": {
   "auto": 82,
   "ok": 194,
-  "pending": 0,
+  "pending": 9,
   "fix": 28,
   "rejected": 21,
   "unknown": 0
@@ -6814,6 +6814,141 @@
     "at": "2026-11-04T22:30:41.371Z",
     "action": "ok",
     "reason": ""
+   }
+  },
+  {
+   "id": "r00439",
+   "scope": "muni:11227",
+   "scopeName": "埼玉県 朝霞市",
+   "qid": "Q18",
+   "kind": "watch",
+   "question": "介護や高齢者の暮らしの相談の窓口（地域包括支援センターなど）の名前・担当する地区・電話番号",
+   "why": "見張り：出典のページが見つからない（404）。2026-11-04 から。「直して」で Claude が新しいページを探して調べ直します",
+   "status": "pending",
+   "score": null,
+   "source": {
+    "title": "埼玉県内地域包括支援センター一覧（朝霞市分）",
+    "url": "https://www.pref.saitama.lg.jp/documents/19801/23asakashir7.pdf"
+   }
+  },
+  {
+   "id": "r00440",
+   "scope": "muni:15385",
+   "scopeName": "新潟県 阿賀町",
+   "qid": "Q13",
+   "kind": "watch",
+   "question": "この町でいま動いていること（新しい施設・大きな計画や工事・制度の変わり目・町の取り組み）。ここ1年ほどの公式の発表から、多くても5つ。1つずつ1文で、それぞれ出典をつけて",
+   "why": "見張り：出典のページが見つからない（404）。2026-11-04 から。「直して」で Claude が新しいページを探して調べ直します",
+   "status": "pending",
+   "score": null,
+   "source": {
+    "title": "阿賀町過疎地域持続的発展計画",
+    "url": "https://www.town.aga.niigata.jp/agamachi_soshiki/soumu/seisaku_keikaku/3159.html"
+   }
+  },
+  {
+   "id": "r00441",
+   "scope": "muni:15385",
+   "scopeName": "新潟県 阿賀町",
+   "qid": "Q13",
+   "kind": "watch",
+   "question": "この町でいま動いていること（新しい施設・大きな計画や工事・制度の変わり目・町の取り組み）。ここ1年ほどの公式の発表から、多くても5つ。1つずつ1文で、それぞれ出典をつけて",
+   "why": "見張り：出典のページが見つからない（404）。2026-11-04 から。「直して」で Claude が新しいページを探して調べ直します",
+   "status": "pending",
+   "score": null,
+   "source": {
+    "title": "阿賀町過疎地域持続的発展計画",
+    "url": "https://www.town.aga.niigata.jp/agamachi_soshiki/soumu/seisaku_keikaku/3159.html"
+   }
+  },
+  {
+   "id": "r00442",
+   "scope": "muni:21211",
+   "scopeName": "岐阜県 美濃加茂市",
+   "qid": "Q13",
+   "kind": "watch",
+   "question": "この町でいま動いていること（新しい施設・大きな計画や工事・制度の変わり目・町の取り組み）。ここ1年ほどの公式の発表から、多くても5つ。1つずつ1文で、それぞれ出典をつけて",
+   "why": "見張り：出典のページの中身が変わり、答えと合わない所がある（食い違い）。「直して」で Claude が調べ直します",
+   "status": "pending",
+   "score": null,
+   "source": {
+    "title": "美濃加茂市公式ホームページ トップページ",
+    "url": "https://www.city.minokamo.gifu.jp/"
+   }
+  },
+  {
+   "id": "r00443",
+   "scope": "muni:21211",
+   "scopeName": "岐阜県 美濃加茂市",
+   "qid": "Q16",
+   "kind": "watch",
+   "question": "夜間や休日に具合が悪くなったときの窓口（休日当番医・夜間急病診療所・救急の電話相談・子どもの急病の電話相談 #8000 など）。電話番号と受付の時間",
+   "why": "見張り：出典のページの中身が変わり、答えと合わない所がある（食い違い）。「直して」で Claude が調べ直します",
+   "status": "pending",
+   "score": null,
+   "source": {
+    "title": "日曜、祝日等の急な病気やケガの際に（美濃加茂市）",
+    "url": "https://www.city.minokamo.gifu.jp/shimin/contents.cfm?base_id=4068&mi_id=3&g1_id=12&g2_id=52"
+   }
+  },
+  {
+   "id": "r00444",
+   "scope": "muni:21211",
+   "scopeName": "岐阜県 美濃加茂市",
+   "qid": "Q16",
+   "kind": "watch",
+   "question": "夜間や休日に具合が悪くなったときの窓口（休日当番医・夜間急病診療所・救急の電話相談・子どもの急病の電話相談 #8000 など）。電話番号と受付の時間",
+   "why": "見張り：出典のページの中身が変わり、答えと合わない所がある（食い違い）。「直して」で Claude が調べ直します",
+   "status": "pending",
+   "score": null,
+   "source": {
+    "title": "日曜、祝日等の急な病気やケガの際に（美濃加茂市）",
+    "url": "https://www.city.minokamo.gifu.jp/shimin/contents.cfm?base_id=4068&mi_id=3&g1_id=12&g2_id=52"
+   }
+  },
+  {
+   "id": "r00445",
+   "scope": "muni:21211",
+   "scopeName": "岐阜県 美濃加茂市",
+   "qid": "Q18",
+   "kind": "watch",
+   "question": "介護や高齢者の暮らしの相談の窓口（地域包括支援センターなど）の名前・担当する地区・電話番号",
+   "why": "見張り：出典のページの中身が変わり、答えと合わない所がある（食い違い）。「直して」で Claude が調べ直します",
+   "status": "pending",
+   "score": null,
+   "source": {
+    "title": "「長寿支援センター」は、高齢者の「総合相談窓口」です！",
+    "url": "https://www.city.minokamo.gifu.jp/shimin/contents.cfm?base_id=7534&mi_id=3&g1_id=12&g2_id=48"
+   }
+  },
+  {
+   "id": "r00446",
+   "scope": "muni:39428",
+   "scopeName": "高知県 黒潮町",
+   "qid": "Q45",
+   "kind": "watch",
+   "question": "健康診断（特定健診）・がん検診・大人の予防接種（インフルエンザ・肺炎球菌・帯状疱疹など）の案内はどこにあるか。受け方・費用の助成・申し込み先",
+   "why": "見張り：出典のページの中身が変わり、答えと合わない所がある（食い違い）。「直して」で Claude が調べ直します",
+   "status": "pending",
+   "score": null,
+   "source": {
+    "title": "各種がん検診（大方地域）│黒潮町公式ホームページ",
+    "url": "https://www.town.kuroshio.lg.jp/pb/cont/kenkou-hoken/121"
+   }
+  },
+  {
+   "id": "r00447",
+   "scope": "muni:39428",
+   "scopeName": "高知県 黒潮町",
+   "qid": "Q47",
+   "kind": "watch",
+   "question": "この町の特産の野菜や果物と、その旬の時期。買える直売所（農産物直売所・道の駅など）の名前と場所（町の公式のページか資料から）",
+   "why": "見張り：出典のページの中身が変わり、答えと合わない所がある（食い違い）。「直して」で Claude が調べ直します",
+   "status": "pending",
+   "score": null,
+   "source": {
+    "title": "直販所「さが谷三里マーケット」（集落活動センター 佐賀北部）│黒潮町公式ホームページ 観光情報",
+    "url": "https://www.town.kuroshio.lg.jp/pb/cont/kuronavi-omiyage-tyokubai/9283"
    }
   }
  ]
