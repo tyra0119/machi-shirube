@@ -714,8 +714,8 @@ async function showHinan(code, townFeatures, startPart) {
     map.addLayer({ id: "here", type: "circle", source: "here", filter: ["==", ["geometry-type"], "Point"], paint: { "circle-radius": 8, "circle-color": color("--text"), "circle-stroke-color": "#ffffff", "circle-stroke-width": 3 } });
     const box = new maplibregl.LngLatBounds();
     for (const f of shelters.features) box.extend(f.geometry.coordinates);
-    map.fitTo = { box, opts: { padding: 30 } };
-    map.fitBounds(box, { padding: 30, duration: 0 });
+    // 読み込みの前に場所を選んでいたら、その場所に寄せたままにする
+    if (!here) { map.fitTo = { box, opts: { padding: 30 } }; map.fitBounds(box, { padding: 30, duration: 0 }); }
     // 録画用の ?here があるときは、覚えた町・字を使わずに始める（何も選んでいない画面から「今いる所から」を押すため）
     const pick = startPart || (q.has("here") ? null : remember.get(`hinan:${code}`));
     if (pick && [...sel.options].some((o) => o.value === pick)) { sel.value = pick; sel.dispatchEvent(new Event("change")); }
@@ -811,7 +811,21 @@ async function showHinan(code, townFeatures, startPart) {
   // 近い順の 1・2・3 を、一覧と同じ番号の印で地図に立てる。一覧や印を押すと、その場所に寄って名前を出す
   let pins = [];
   let cand = [];
-  const far = () => cand[0]?.m > 5000;
+  // 町から離れているか：町・字の形のどれかの中なら、離れていない。形の外で、どの種類の避難場所からも 5km より遠いときだけ、離れているとする
+  // （種類で絞ったあとの近さで決めると、山あいの町で「津波」を選んだ人にも「離れています」と出てしまう）
+  let farAway = false;
+  let hereData = null;
+  const far = () => farAway;
+  const inRing = (p, ring) => {
+    let c = false;
+    for (let i = 0, j = ring.length - 1; i < ring.length; j = i++) {
+      const [xi, yi] = ring[i], [xj, yj] = ring[j];
+      if ((yi > p[1]) !== (yj > p[1]) && p[0] < ((xj - xi) * (p[1] - yi)) / (yj - yi) + xi) c = !c;
+    }
+    return c;
+  };
+  const inTown = (p) => (townFeatures ?? []).some((f) => (f.geometry?.type === "Polygon" ? [f.geometry.coordinates] : f.geometry?.coordinates ?? [])
+    .some((poly) => inRing(p, poly[0]) && !poly.slice(1).some((h) => inRing(p, h))));
   function select(i) {
     const c = cand[i];
     if (!c) return;
@@ -823,14 +837,14 @@ async function showHinan(code, townFeatures, startPart) {
     if (r.top < 60 || r.bottom > innerHeight) $("hinan-map").scrollIntoView({ behavior: "smooth", block: "center" });
   }
   function setHere(at, label) {
-    // 地図の読み込みが終わる前に町・字を選んだときは、読み込みのあとにする（印を置く所がまだ無い）
-    if (!map.getSource("here")) { setTimeout(() => setHere(at, label), 300); return; }
+    // 一覧は地図を待たずに出す（電波が弱く背景の地図が届かないときも、近い避難場所は分かるように。これまでは地図の読み込みが終わるまで何も出なかった）
     here = { at, label };
     pop?.remove();
+    farAway = !inTown(at) && Math.min(...shelters.features.map((f) => meters(at, f.geometry.coordinates))) > 5000;
     cand = shelters.features.filter((f) => !kind || f.properties.kinds.includes(kind))
       .map((f) => ({ f, m: meters(at, f.geometry.coordinates) })).sort((x, y) => x.m - y.m).slice(0, 3);
     // 町の外にいる人が押したとき（いちばん近い避難場所まで 5km より遠い）は、そう知らせる（東京で黒潮町のページを開くと、600km 先の避難場所が歩く時間つきで出ていた）
-    showMsg(far() ? TN("いちばん近い避難場所まで、まっすぐ約 {k}km あります。今いる所は、この町から離れているかもしれません。今いる町の避難場所は、その町のページで見てください。", { k: Math.round(cand[0].m / 1000).toLocaleString("ja-JP") }) : "");
+    showMsg(far() && cand[0] ? TN("いちばん近い避難場所まで、まっすぐ約 {k}km あります。今いる所は、この町から離れているかもしれません。今いる町の避難場所は、その町のページで見てください。", { k: Math.round(cand[0].m / 1000).toLocaleString("ja-JP") }) : "");
     pins.forEach((p) => p.remove());
     pins = cand.map((c, i) => {
       const el = document.createElement("button");
@@ -841,10 +855,13 @@ async function showHinan(code, townFeatures, startPart) {
       el.addEventListener("click", (e) => { e.stopPropagation(); select(i); });
       return new maplibregl.Marker({ element: el }).setLngLat(c.f.geometry.coordinates).addTo(map);
     });
-    map.getSource("here").setData({ type: "FeatureCollection", features: [
+    hereData = { type: "FeatureCollection", features: [
       { type: "Feature", geometry: { type: "Point", coordinates: at }, properties: {} },
       ...cand.map((c) => ({ type: "Feature", geometry: { type: "LineString", coordinates: [at, c.f.geometry.coordinates] }, properties: {} })),
-    ] });
+    ] };
+    // 今いる所の印と線は、地図の読み込みが終わってから引く
+    if (map.getSource("here")) map.getSource("here").setData(hereData);
+    else map.once("load", () => map.getSource("here")?.setData(hereData));
     const box = new maplibregl.LngLatBounds(at, at);
     for (const c of cand) box.extend(c.f.geometry.coordinates);
     map.fitTo = { box, opts: { padding: 50, maxZoom: 16 } };
