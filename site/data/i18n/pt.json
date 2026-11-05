@@ -1,11 +1,11 @@
 {
  "lang": "pt",
  "name": "Português",
- "createdAt": "2026-11-05T04:01:32.695Z",
+ "createdAt": "2026-11-05T04:33:46.314Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1045,
- "of": 1007,
+ "count": 1054,
+ "of": 1016,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Guia não oficial da vida na cidade. O Claude reúne as informações em sites oficiais da cidade e outras fontes, e indica a origem de cada uma (Machishirube)",
   "すべてのページ": "Todas as páginas",
@@ -1051,6 +1051,15 @@
   "人が減る町の暮らし": "A vida em um município que perde habitantes",
   "火山と暮らす": "Vivendo com um vulcão",
   "一人暮らしのお年寄り": "Idosos que moram sozinhos",
-  "答えに、資料に書かれていないことが入っていないか": "Se a resposta contém algo que não está escrito nos documentos"
+  "答えに、資料に書かれていないことが入っていないか": "Se a resposta contém algo que não está escrito nos documentos",
+  "明日の準備": "Preparação para amanhã",
+  "お知らせ": "Avisos",
+  "前に見てから {n} 件": "{n} novos desde a última visita",
+  "明日は {k} の日": "Amanhã é dia de {k}",
+  "明日はごみの収集はありません": "Amanhã não há coleta de lixo",
+  "明日やっている所": "O que abre amanhã",
+  "今日の一問": "Pergunta do dia",
+  "ほかの問題も解く": "Resolver outras perguntas",
+  "夕方からは、明日の分を先に出しています。": "A partir do fim da tarde, mostramos antecipadamente as informações de amanhã."
  }
 }

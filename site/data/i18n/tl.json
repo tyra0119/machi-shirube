@@ -1,11 +1,11 @@
 {
  "lang": "tl",
  "name": "Filipino",
- "createdAt": "2026-11-05T04:01:21.192Z",
+ "createdAt": "2026-11-05T04:34:50.327Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1035,
- "of": 1007,
+ "count": 1042,
+ "of": 1016,
  "dict": {
   "この町の非公式の暮らしの案内です。町の公式のサイトや国の公開データから集め、出典をつけています（まちしるべ）": "Ito ay isang di-opisyal na gabay sa pamumuhay sa bayang ito. Kinuha ito mula sa opisyal na website ng bayan at sa pampublikong datos ng bansa, at may nakasaad na pinagmulan (Machishirube)",
   "すべてのページ": "Lahat ng pahina",
@@ -1041,6 +1041,13 @@
   "はじめての町": "Unang beses sa bayan",
   "人が減る町の暮らし": "Buhay sa bayang nauubusan ng tao",
   "火山と暮らす": "Pamumuhay kasama ang bulkan",
-  "一人暮らしのお年寄り": "Mga matatandang mag-isang namumuhay"
+  "一人暮らしのお年寄り": "Mga matatandang mag-isang namumuhay",
+  "明日の準備": "Paghahanda para bukas",
+  "お知らせ": "Mga Abiso",
+  "前に見てから {n} 件": "{n} mula nang huli mong tingnan",
+  "明日は {k} の日": "Bukas ay araw ng {k}",
+  "明日はごみの収集はありません": "Walang koleksyon ng basura bukas",
+  "今日の一問": "Tanong Ngayong Araw",
+  "ほかの問題も解く": "Sagutan din ang iba pang tanong"
  }
 }

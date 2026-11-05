@@ -126,6 +126,8 @@ function myQuakes(code, whole, list) {
 const WEATHER_ICON = (code) => (!code ? "" : icon(code.startsWith("1") ? "sun" : code.startsWith("2") ? "cloud" : code.startsWith("3") ? "umbrella" : code.startsWith("4") ? "snow" : ""));
 
 function todayHTML(t, esc) {
+  // 夕方から（町の時刻で 18 時から）は、明日の天気・洗濯・服装を大きく先に（寝る前に明日の準備ができるように）
+  const evening = jpNow().getHours() >= 18;
   const dayCard = (d, i) => i > 0 ? `
     <article class="day short">
       <h3>${d.label}</h3>
@@ -148,7 +150,8 @@ function todayHTML(t, esc) {
     ? `<ul class="quakes">${q.map((x) => `<li>${esc(new Date(x.at).toLocaleString("ja-JP", { timeZone: "Asia/Tokyo", month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" }))} ${esc(x.place)}・M${esc(x.mag)}・${T("この町で震度")} ${esc(x.maxi)}</li>`).join("")}</ul>`
     : `<p class="note">${T("この1週間、この町で震度を観測した地震はありません。")}</p>`;
   return `
-    <div class="days">${t.days.map(dayCard).join("")}</div>
+    ${evening ? `<p class="note">${T("夕方からは、明日の分を先に出しています。")}</p>` : ""}
+    <div class="days">${(evening ? [t.days[1], t.days[0]] : t.days).filter(Boolean).map(dayCard).join("")}</div>
     <h3 class="sub">${icon("alert")} ${T("警報・注意報")}</h3>${warnHTML}
     <h3 class="sub">${icon("quake")} ${T("地震")}</h3>${quakeHTML}
     <p class="cite">${TN("出典：気象庁ホームページ（天気予報・警報・注意報・地震情報。{area}）、天気の数値：Open-Meteo.com（CC BY 4.0）を加工。洗濯・服装は、まちしるべの決まりで出しためやすです。", { area: `${esc(t.jma?.officeName ?? "")}${t.jma?.class10Name !== t.jma?.officeName ? esc(t.jma?.class10Name ?? "") : ""}` })}</p>`;

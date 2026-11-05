@@ -1,11 +1,11 @@
 {
  "lang": "id",
  "name": "Bahasa Indonesia",
- "createdAt": "2026-11-05T04:00:11.514Z",
+ "createdAt": "2026-11-05T04:34:17.824Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1041,
- "of": 1007,
+ "count": 1050,
+ "of": 1016,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Ini adalah panduan hidup tidak resmi untuk kota ini. Claude mengumpulkannya dari situs resmi kota dan sumber lain, dengan mencantumkan sumbernya (Machishirube)",
   "すべてのページ": "Semua halaman",
@@ -1047,6 +1047,15 @@
   "はじめての町": "Kota baru bagiku",
   "人が減る町の暮らし": "Hidup di kota yang penduduknya berkurang",
   "火山と暮らす": "Hidup berdampingan dengan gunung berapi",
-  "一人暮らしのお年寄り": "Lansia yang tinggal sendiri"
+  "一人暮らしのお年寄り": "Lansia yang tinggal sendiri",
+  "明日の準備": "Persiapan untuk besok",
+  "お知らせ": "Pengumuman",
+  "前に見てから {n} 件": "{n} item sejak terakhir dilihat",
+  "明日は {k} の日": "Besok hari {k}",
+  "明日はごみの収集はありません": "Besok tidak ada pengangkutan sampah",
+  "明日やっている所": "Tempat yang buka besok",
+  "今日の一問": "Satu soal hari ini",
+  "ほかの問題も解く": "Kerjakan soal lainnya",
+  "夕方からは、明日の分を先に出しています。": "Mulai sore hari, informasi untuk besok ditampilkan lebih dulu."
  }
 }

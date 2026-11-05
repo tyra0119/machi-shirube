@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-05T03:58:59.543Z",
+ "createdAt": "2026-11-05T04:33:54.847Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1044,
- "of": 1007,
+ "count": 1053,
+ "of": 1016,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -1050,6 +1050,15 @@
   "はじめての町": "Mi primer municipio",
   "人が減る町の暮らし": "La vida en un municipio que pierde población",
   "火山と暮らす": "Vivir con un volcán",
-  "一人暮らしのお年寄り": "Personas mayores que viven solas"
+  "一人暮らしのお年寄り": "Personas mayores que viven solas",
+  "明日の準備": "Prepárate para mañana",
+  "お知らせ": "Avisos",
+  "前に見てから {n} 件": "{n} nuevos desde tu última visita",
+  "明日は {k} の日": "Mañana es el día de {k}",
+  "明日はごみの収集はありません": "Mañana no hay recogida de basura",
+  "明日やっている所": "Lugares abiertos mañana",
+  "今日の一問": "La pregunta de hoy",
+  "ほかの問題も解く": "Resolver otras preguntas",
+  "夕方からは、明日の分を先に出しています。": "Por la tarde, ya se muestra la información de mañana."
  }
 }

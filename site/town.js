@@ -115,6 +115,10 @@ const remember = {
   get(k) { try { return localStorage.getItem(`machi-shirube:${k}`); } catch { return null; } },
   set(k, v) { try { if (v) localStorage.setItem(`machi-shirube:${k}`, v); else localStorage.removeItem(`machi-shirube:${k}`); } catch {} },
 };
+// 夕方から（町の時刻で 18 時から）は、明日のごみ・天気・病院を先に出す（寝る前に見て、明日の準備ができるように。作者「日々見て貰うための工夫」）
+const isEvening = () => jpNow().getHours() >= 18;
+// 前に見てから新しくなったものに付ける印
+const newMark = () => `<span class="new-mark">${T("新しい")}</span>`;
 // このページを家族に送る：スマホでは共有の画面（LINE・メールなど）を開く。無い端末では、リンクを写して LINE で送るボタンを出す
 // （住む人の目で見ると、家族に送る方法がなく、LINE で送っても町の名前が出なかった）
 // 言葉のボタンがあるときは、その並びの端に寄せる（帯を1段減らす）
@@ -323,9 +327,13 @@ async function showChanges(code, part) {
   const day = (iso) => new Date(iso).toLocaleDateString(LANG && LANG !== "easy" ? LANG : "ja-JP", { timeZone: "Asia/Tokyo", month: "long", day: "numeric" });
   const list = d.changes.slice(0, 8);
   const days = [...new Set(list.map((c) => day(c.at)))];
+  // 前に開いた時刻より後に新しくなったものに印（はじめて開いたときは付けない）
+  const last = remember.get(`seen-changes:${code}`);
+  remember.set(`seen-changes:${code}`, new Date().toISOString());
+  const fresh = (c) => last && c.at > last;
   $("changes-block").hidden = false;
   $("changes").innerHTML = days.map((dd) => `<h3 class="ch-day">${icon("calendar")}${esc(dd)}</h3><ul class="ch-list">${list.filter((c) => day(c.at) === dd).map((c) =>
-    `<li><a href="#${pageOf(c)}" data-target="${c.qid ? `a-${c.qid}` : ""}"><span class="ch-what ${c.what === "新しくしました" ? "up" : ""}">${esc(T(c.what === "足しました" ? "新しく載せました" : c.what))}</span>${esc(T(c.label))}</a></li>`).join("")}</ul>`).join("")
+    `<li><a href="#${pageOf(c)}" data-target="${c.qid ? `a-${c.qid}` : ""}">${fresh(c) ? newMark() : ""}<span class="ch-what ${c.what === "新しくしました" ? "up" : ""}">${esc(T(c.what === "足しました" ? "新しく載せました" : c.what))}</span>${esc(T(c.label))}</a></li>`).join("")}</ul>`).join("")
     + (d.changes.length > list.length ? `<p class="note">${T("ほかに")} ${d.changes.length - list.length} ${T("件")}</p>` : "");
   for (const a of $("changes").querySelectorAll("a[data-target]")) if (a.dataset.target) a.addEventListener("click", () => setTimeout(() => $(a.dataset.target)?.scrollIntoView({ behavior: "smooth", block: "start" }), 50));
 }
@@ -372,6 +380,22 @@ async function showQuiz(code) {
   };
   draw();
   $("quiz-note").textContent = `${t("n.quiz", d.note)}${tr ? ` ${T("（AI による訳）")}` : ""}`;
+  // 今日の一問：今日のページに、日替わりで1問（町の日付で決める。毎日開くと、ちがう問題）
+  const now = jpNow();
+  const k = Math.floor(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) / 86400000) % d.questions.length;
+  const q = d.questions[k];
+  const opts = [["a", q.a], ["b", q.b], ["c", q.c]].sort(() => Math.random() - 0.5);
+  $("quiz-today-block").hidden = false;
+  $("quiz-today").innerHTML = `<p class="quiz-q">${esc(t(`q${k}.q`, q.q))}</p>
+    <div class="quiz-opts">${opts.map(([key, v]) => `<button type="button" data-k="${key}">${esc(t(`q${k}.${key}`, v))}</button>`).join("")}</div><div class="quiz-ans" hidden></div>`;
+  for (const b of $("quiz-today").querySelectorAll(".quiz-opts button")) b.addEventListener("click", () => {
+    const ok = b.dataset.k === "a";
+    for (const x of $("quiz-today").querySelectorAll(".quiz-opts button")) { x.disabled = true; x.classList.toggle("right", x.dataset.k === "a"); x.classList.toggle("wrong", x === b && !ok); }
+    const ans = $("quiz-today").querySelector(".quiz-ans");
+    ans.hidden = false;
+    ans.innerHTML = `<p><strong>${ok ? T("正解") : T("ざんねん")}</strong> ${esc(t(`q${k}.why`, q.why))}</p><a href="#shiru" class="quiz-more">${T("ほかの問題も解く")}</a>`;
+    ans.querySelector(".quiz-more").addEventListener("click", () => setTimeout(() => $("quiz-block")?.scrollIntoView({ behavior: "smooth", block: "start" }), 50));
+  });
 }
 
 // 昔の災害を伝える碑（国土地理院 自然災害伝承碑。scripts/build-lore.mjs）。碑の文は公開のまま出す。町の碑がなければ近くの町の碑
@@ -604,15 +628,23 @@ async function showNews(code) {
   const d = await getData(`data/news/${code}.json`);
   if (!d || (!d.news && !d.koho)) return;
   $("news-block").hidden = false;
+  // 前に見たリンク（端末の中だけに覚える）。はじめて開いたときは印を付けない（全部が「新しい」になるので）
+  const seenKey = `seen-news:${code}`;
+  let seen = null;
+  try { seen = JSON.parse(remember.get(seenKey) ?? "null"); } catch {}
+  const isNew = (url) => Array.isArray(seen) && !seen.includes(url);
+  const shown = [d.koho?.latest?.url, ...(d.news?.items ?? []).slice(0, 5).map((x) => x.url)].filter(Boolean);
+  newsNew = shown.filter(isNew).length;
+  remember.set(seenKey, JSON.stringify([...new Set([...shown, ...(seen ?? [])])].slice(0, 60)));
   const md = (s) => (s ? `${Number(s.slice(5, 7))}/${Number(s.slice(8, 10))}` : "");
   if (d.koho) {
     const k = $("koho-card");
     k.hidden = false;
     k.href = d.koho.latest.url;
-    k.innerHTML = `<span class="kk">${icon("book")}${esc(T("広報紙の最新号"))}</span><span class="kt">${esc(d.koho.latest.title)}</span><span class="kd">${esc(TN("{d} 発行", { d: d.koho.latest.date.replace(/-/g, "/").replace(/\/0/g, "/") }))}・${esc(T("町のサイトで読む"))} ↗</span>`;
+    k.innerHTML = `<span class="kk">${icon("book")}${esc(T("広報紙の最新号"))}${isNew(d.koho.latest.url) ? newMark() : ""}</span><span class="kt">${esc(d.koho.latest.title)}</span><span class="kd">${esc(TN("{d} 発行", { d: d.koho.latest.date.replace(/-/g, "/").replace(/\/0/g, "/") }))}・${esc(T("町のサイトで読む"))} ↗</span>`;
   }
   if (d.news) {
-    $("news-list").innerHTML = d.news.items.slice(0, 5).map((x) => `<li><span class="nd">${esc(md(x.date))}</span><a href="${esc(x.url)}" target="_blank" rel="noopener" lang="ja">${esc(x.title)}</a></li>`).join("")
+    $("news-list").innerHTML = d.news.items.slice(0, 5).map((x) => `<li><span class="nd">${esc(md(x.date))}</span>${isNew(x.url) ? newMark() : ""}<a href="${esc(x.url)}" target="_blank" rel="noopener" lang="ja">${esc(x.title)}</a></li>`).join("")
       + `<li class="more"><a href="${esc(d.news.source.url)}" target="_blank" rel="noopener">${esc(T("新着の一覧を町のサイトで見る"))}</a></li>`;
   }
   $("news-note").textContent = `${TN("町の公式サイトの新着と広報紙から、見出しとリンクだけを出しています（{d} に取得）。", { d: d.fetchedAt.replace(/-/g, "/") })}${LANG && LANG !== "ja" ? ` ${T("見出しは町のサイトの日本語のままです。")}` : ""}`;
@@ -1079,22 +1111,39 @@ async function showMedical(code, center) {
   $("med-cite").innerHTML = `${TN("出典：{src}（{asOf}・{lic}）を加工。祝日：{hol}", { src: `<a href="${esc(m.source.url)}" target="_blank" rel="noopener">${esc(m.source.title)}</a>`, asOf: esc(m.source.asOf), lic: esc(m.source.license), hol: esc(m.holidaySource?.title ?? "") })}${KU()}${center ? T("距離は町・字のおおよその真ん中からまっすぐ測ったものです。") : ""}`;
   const today = medicalList(m, 0, center);
   const open = today.list.filter((x) => x.openNow).length;
-  medicalRow = `<li><a href="#iryo"><span class="k">${icon("hospital")}${T("病院")}</span><span class="v">${LANG ? `${T("今日やっている所")} ${today.list.length}（${T("いま開いている")} ${open}）` : `${today.holiday ? `今日は${esc(today.holiday)}。` : ""}今日やっている所 ${today.list.length} か所（いま開いている ${open}）`}</span></a></li>`;
+  const tmr = medicalList(m, 1, center);
+  medicalRow = isEvening()
+    ? `<li><a href="#iryo"><span class="k">${icon("hospital")}${T("病院")}</span><span class="v">${LANG ? `${T("明日やっている所")} ${tmr.list.length}` : `${tmr.holiday ? `明日は${esc(tmr.holiday)}。` : ""}明日やっている所 ${tmr.list.length} か所`}</span></a></li>`
+    : `<li><a href="#iryo"><span class="k">${icon("hospital")}${T("病院")}</span><span class="v">${LANG ? `${T("今日やっている所")} ${today.list.length}（${T("いま開いている")} ${open}）` : `${today.holiday ? `今日は${esc(today.holiday)}。` : ""}今日やっている所 ${today.list.length} か所（いま開いている ${open}）`}</span></a></li>`;
 }
 
 // 今日の暮らし（今日すること・困ったときの入口）と、暮らしの場面のタイル
 let medicalRow = null;
 let gomiHoliday = false; // 今日が祝日か（ごみの収集が変わることがある）
+let gomiHolidayTmr = false;
+let gomiTomorrow = null; // 明日出せるごみ（夕方から「明日の準備」に出す）
+let newsNew = 0; // 前に見てから新しくなったお知らせの数
 let gomiToday = null; // 町・字のページで、今日出せるごみ（ごみを出す日の表から）
 function todayLife(hasHinan) {
   const has = (v) => (answersByPage[v] ?? []).filter((a) => a.value !== "見つからなかった").length;
   const row = (view, k, v, ready) => `<li><a href="#${view}"><span class="k">${icon(ILLUST[view]?.main)}${T(k)}</span><span class="v${ready ? "" : " later"}">${esc(T(v))}</span></a></li>`;
+  const ev = isEvening();
+  if (ev) {
+    const h = document.querySelector("#sec-today-life > h2");
+    const txt = h && [...h.childNodes].find((n) => n.nodeType === 3 && n.textContent.trim());
+    if (txt) txt.textContent = T("明日の準備");
+  }
   $("today-life").innerHTML = [
-    row("gomi", T("ごみ"), gomiToday ? (gomiToday.length ? TN("今日は {k} の日", { k: gomiToday.join("・") }) : T("今日はごみの収集はありません")) + (gomiHoliday ? `（${T("祝日は収集が変わることがあります")}）` : "") : has("gomi") ? T("ごみの出し方を見る") : T("地区ごとの収集日は準備中です"), has("gomi") || !!gomiToday),
+    // 前に見てから新しくなったお知らせ（町の新着・広報紙）
+    ...(newsNew ? [`<li><a href="#today" data-scroll="news-block"><span class="k">${icon("book")}${T("お知らせ")}</span><span class="v">${newMark()}${TN("前に見てから {n} 件", { n: newsNew })}</span></a></li>`] : []),
+    ev && gomiTomorrow
+      ? row("gomi", T("ごみ"), (gomiTomorrow.length ? TN("明日は {k} の日", { k: gomiTomorrow.join("・") }) : T("明日はごみの収集はありません")) + (gomiHolidayTmr ? `（${T("祝日は収集が変わることがあります")}）` : ""), true)
+      : row("gomi", T("ごみ"), gomiToday ? (gomiToday.length ? TN("今日は {k} の日", { k: gomiToday.join("・") }) : T("今日はごみの収集はありません")) + (gomiHoliday ? `（${T("祝日は収集が変わることがあります")}）` : "") : has("gomi") ? T("ごみの出し方を見る") : T("地区ごとの収集日は準備中です"), has("gomi") || !!gomiToday),
     medicalRow ?? row("iryo", T("病院"), T("この町の病院のデータはまだありません"), false),
     row("bousai", T("避難"), hasHinan ? T("わが家から近い避難場所を出す") : !$("shelter-list-block").hidden ? T("行政区ごとの避難施設を見る") : has("bousai") ? T("避難場所の案内を見る") : T("避難場所は準備中です"), hasHinan || !$("shelter-list-block").hidden || has("bousai")),
     row("komatta", T("困ったとき"), has("komatta") ? T("電話・メールの窓口を見る") : T("電話・メールの窓口は準備中です"), has("komatta")),
   ].join("");
+  for (const a of $("today-life").querySelectorAll("a[data-scroll]")) a.addEventListener("click", (e) => { e.preventDefault(); $(a.dataset.scroll)?.scrollIntoView({ behavior: "smooth", block: "start" }); });
   $("tiles").innerHTML = PAGES.filter((p) => !["today", "source", "research", "mitate"].includes(p.view)).map((p) => {
     // 中身があるか：Claude の答え・わが家の避難・病院のデータ・町のデータ
     // 答えが無くても、国のデータの欄（重ねて見る地図・バス・事故・買い物など）が出ていれば中身がある
@@ -1452,9 +1501,12 @@ async function showGomiDays(code, partName, softName) {
     const now = jpNow(), tmr = new Date(now.getTime() + 86400000);
     const t0 = a.days.filter((x) => onDay(x.when, now)).map((x) => gt(x.kind)), t1 = a.days.filter((x) => onDay(x.when, tmr)).map((x) => gt(x.kind));
     todayKinds = t0;
+    gomiTomorrow = t1;
     gomiHoliday = !!holidays[ymd(now)];
+    gomiHolidayTmr = !!holidays[ymd(tmr)];
     const hol = holidays[ymd(now)] ? T("今日は祝日です。祝日の収集は、町のカレンダーで確かめてください。") : holidays[ymd(tmr)] ? T("明日は祝日です。祝日の収集は、町のカレンダーで確かめてください。") : "";
-    $("gomi-today").innerHTML = `${icon("calendar")} ${T("今日")}：<strong>${t0.length ? esc(t0.join("・")) : T("収集なし")}</strong>　${T("明日")}：<strong>${t1.length ? esc(t1.join("・")) : T("収集なし")}</strong>${hol ? `<small class="gomi-hol">${hol}</small>` : ""}`;
+    const p0 = `${T("今日")}：<strong>${t0.length ? esc(t0.join("・")) : T("収集なし")}</strong>`, p1 = `${T("明日")}：<strong>${t1.length ? esc(t1.join("・")) : T("収集なし")}</strong>`;
+    $("gomi-today").innerHTML = `${icon("calendar")} ${isEvening() ? `${p1}　${p0}` : `${p0}　${p1}`}${hol ? `<small class="gomi-hol">${hol}</small>` : ""}`;
     $("gomi-days").innerHTML = a.days.map((x) => `<li class="${onDay(x.when, now) ? "today" : ""}"><span class="k">${esc(gt(x.kind))}</span><span class="w">${esc(gt(x.when))}</span></li>`).join("");
   };
   sel.addEventListener("change", () => { remember.set(`gomi:${code}`, sel.value); draw(); });

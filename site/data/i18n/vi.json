@@ -1,11 +1,11 @@
 {
  "lang": "vi",
  "name": "Tiếng Việt",
- "createdAt": "2026-11-05T04:00:53.844Z",
+ "createdAt": "2026-11-05T04:34:44.582Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1042,
- "of": 1007,
+ "count": 1051,
+ "of": 1016,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Đây là trang hướng dẫn đời sống không chính thức của thị trấn này. Claude thu thập từ các trang chính thức của thị trấn v.v. và ghi rõ nguồn (Machi-shirube)",
   "すべてのページ": "Tất cả các trang",
@@ -1048,6 +1048,15 @@
   "はじめての町": "Lần đầu đến thị trấn",
   "人が減る町の暮らし": "Cuộc sống ở thị trấn đang giảm dân số",
   "火山と暮らす": "Sống cùng núi lửa",
-  "一人暮らしのお年寄り": "Người cao tuổi sống một mình"
+  "一人暮らしのお年寄り": "Người cao tuổi sống một mình",
+  "明日の準備": "Chuẩn bị cho ngày mai",
+  "お知らせ": "Thông báo",
+  "明日は {k} の日": "Ngày mai là ngày {k}",
+  "明日はごみの収集はありません": "Ngày mai không thu gom rác",
+  "明日やっている所": "Nơi mở cửa vào ngày mai",
+  "今日の一問": "Câu hỏi hôm nay",
+  "ほかの問題も解く": "Làm thêm câu hỏi khác",
+  "夕方からは、明日の分を先に出しています。": "Từ chiều tối, chúng tôi hiển thị trước thông tin của ngày mai.",
+  "前に見てから {n} 件": "{n} mục kể từ lần xem trước"
  }
 }

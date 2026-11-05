@@ -824,3 +824,6 @@ ruby rt { font-size: 0.55em; font-weight: 400; letter-spacing: 0; }
 /* このごみは何ごみ？：訳で出すときは、日本語の名前も小さく */
 .gomi-hits .n small { display: block; font-size: 12px; font-weight: 400; color: var(--text-sub); }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .hinan-msg { background: #3a2e14; color: #f3e3bf; } }
+/* 前に見てから新しくなったものの印（毎日開いてもらうために） */
+.new-mark { display: inline-block; margin: 0 6px 0 0; padding: 0 7px; border-radius: 999px; background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; line-height: 1.7; vertical-align: 1px; }
+.quiz-more { display: inline-block; margin-top: 4px; }

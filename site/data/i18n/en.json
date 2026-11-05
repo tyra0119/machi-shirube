@@ -1,11 +1,11 @@
 {
  "lang": "en",
  "name": "English",
- "createdAt": "2026-11-05T03:59:20.070Z",
+ "createdAt": "2026-11-05T04:33:58.948Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1044,
- "of": 1007,
+ "count": 1053,
+ "of": 1016,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "This is an unofficial guide to living in this town. Claude gathers information from the town's official website and other sources, and cites each source (Machishirube)",
   "すべてのページ": "All pages",
@@ -1050,6 +1050,15 @@
   "はじめての町": "New to Town",
   "人が減る町の暮らし": "Life in a Shrinking Town",
   "火山と暮らす": "Living with a Volcano",
-  "一人暮らしのお年寄り": "Older People Living Alone"
+  "一人暮らしのお年寄り": "Older People Living Alone",
+  "明日の準備": "Getting Ready for Tomorrow",
+  "お知らせ": "Notices",
+  "前に見てから {n} 件": "{n} new since your last visit",
+  "明日は {k} の日": "Tomorrow is {k} day",
+  "明日はごみの収集はありません": "No trash collection tomorrow",
+  "明日やっている所": "Open tomorrow",
+  "今日の一問": "Today's Question",
+  "ほかの問題も解く": "Try more questions",
+  "夕方からは、明日の分を先に出しています。": "From the evening, we show tomorrow's information first."
  }
 }
