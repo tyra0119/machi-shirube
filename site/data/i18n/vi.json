@@ -1,11 +1,11 @@
 {
  "lang": "vi",
  "name": "Tiếng Việt",
- "createdAt": "2026-11-05T02:56:26.435Z",
+ "createdAt": "2026-11-05T03:08:21.927Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 969,
- "of": 935,
+ "count": 971,
+ "of": 937,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Đây là trang hướng dẫn đời sống không chính thức của thị trấn này. Claude thu thập từ các trang chính thức của thị trấn v.v. và ghi rõ nguồn (Machi-shirube)",
   "すべてのページ": "Tất cả các trang",
@@ -975,6 +975,8 @@
   "合わせた町・字：{p}": "Các khu phố/xóm (町・字) đã gộp: {p}",
   "全国の市区町村 {n} と比べています。": "So sánh với {n} thành phố, quận, thị trấn và làng trên toàn quốc.",
   "ごみを出す日（地区ごとの曜日）": "Ngày đổ rác (ngày trong tuần theo từng khu vực)",
-  "防災計画の、町・字に関係する所": "Phần của kế hoạch phòng chống thiên tai liên quan đến thị trấn và khu phố (aza) của bạn"
+  "防災計画の、町・字に関係する所": "Phần của kế hoạch phòng chống thiên tai liên quan đến thị trấn và khu phố (aza) của bạn",
+  "区ごとのページ": "Trang theo từng quận",
+  "病院・避難場所・ごみの日などのくらしの案内は、区ごとのページにあります。お住まいの区を選んでください。": "Thông tin đời sống như bệnh viện, nơi sơ tán, ngày thu gom rác đều có ở trang của từng quận. Vui lòng chọn quận bạn đang sống."
  }
 }

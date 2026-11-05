@@ -1,11 +1,11 @@
 {
  "lang": "tl",
  "name": "Filipino",
- "createdAt": "2026-11-05T02:56:29.198Z",
+ "createdAt": "2026-11-05T03:08:26.805Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 962,
- "of": 935,
+ "count": 964,
+ "of": 937,
  "dict": {
   "この町の非公式の暮らしの案内です。町の公式のサイトや国の公開データから集め、出典をつけています（まちしるべ）": "Ito ay isang di-opisyal na gabay sa pamumuhay sa bayang ito. Kinuha ito mula sa opisyal na website ng bayan at sa pampublikong datos ng bansa, at may nakasaad na pinagmulan (Machishirube)",
   "すべてのページ": "Lahat ng pahina",
@@ -968,6 +968,8 @@
   "合わせた町・字：{p}": "Mga bayan at aza na pinagsama: {p}",
   "全国の市区町村 {n} と比べています。": "Inihahambing sa {n} lungsod, bayan, at distrito sa buong bansa.",
   "ごみを出す日（地区ごとの曜日）": "Mga araw ng paglalabas ng basura (araw ayon sa distrito)",
-  "防災計画の、町・字に関係する所": "Mga bahagi ng plano sa pag-iwas sa sakuna na may kinalaman sa bayan at sa aza"
+  "防災計画の、町・字に関係する所": "Mga bahagi ng plano sa pag-iwas sa sakuna na may kinalaman sa bayan at sa aza",
+  "区ごとのページ": "Mga pahina para sa bawat ward",
+  "病院・避難場所・ごみの日などのくらしの案内は、区ごとのページにあります。お住まいの区を選んでください。": "Ang mga gabay sa pang-araw-araw na buhay, gaya ng mga ospital, evacuation site, at araw ng pagkolekta ng basura, ay makikita sa pahina ng bawat ward. Piliin ang ward na tinitirhan ninyo."
  }
 }

@@ -1466,7 +1466,7 @@ async function finishPage(code, townFeatures, startPart, scopeNote, at) {
 // 最初から開いておくのは、わが家の避難・今日のページの見立てと数から、できることへ・今日と明日と、各ページの最初の1つ
 // （作者「やたらと縦が長くなってしまうと、読むのが大変。何か工夫できないかな？」→「たたむ＋目次」）
 // 暮らしの場面（ほかのページへの入口の札）も開いておく（作者「『暮らしの場面』は開いていてもいいと思う」）
-const FOLD_OPEN = new Set(["hinan-block", "shelter-list-block", "news-block", "mitate-top", "sec-today", "hitokoto-block", "sec-scenes", "sec-today-life", "gomi-block"]);
+const FOLD_OPEN = new Set(["wards-block", "hinan-block", "shelter-list-block", "news-block", "mitate-top", "sec-today", "hitokoto-block", "sec-scenes", "sec-today-life", "gomi-block"]);
 function foldSummary(sec) {
   // 確かめた答えの欄は、答えの数
   const answers = sec.querySelectorAll(".answers-box [id^=\"a-\"]").length;
@@ -1617,6 +1617,12 @@ async function muniPage(code, stats) {
   const name = shortName(t.name);
   header(name, t.pref, [["日本", "./"], [t.pref, `./?pref=${encodeURIComponent(t.pref)}`], [name, null]]);
   $("pop").textContent = TN("人口 {n}人", { n: t.population.toLocaleString("ja-JP") });
+  // 政令市そのもののページ：くらしの案内は区ごとにあるので、いちばん上に区の一覧を出す（区のデータを市の番号で探しても無い）
+  const wards = Object.entries(stats.towns).filter(([c, x]) => x.ward && c !== code && x.pref === t.pref && x.name.startsWith(t.name));
+  if (wards.length) {
+    $("wards-block").hidden = false;
+    $("wards").innerHTML = wards.map(([c, x]) => `<a href="town.html?muni=${c}">${esc(x.name.slice(t.name.length))}</a>`).join("");
+  }
   const rows = [
     ["over65Rate", "65歳以上の人の割合"], ["under15Rate", "15歳未満の子どもの割合"], ["foreignRate", "外国の住民の割合"],
     ["changeRate", "1年の人口の増減"], ["socialChangeRate", "引っ越しによる1年の増減"],
@@ -1637,7 +1643,10 @@ async function muniPage(code, stats) {
   sources([`${stats.source.name}（${stats.source.asOf}。増減は${stats.source.changePeriod}）を加工`, N03, WEATHER, MEDICAL, BASEMAP], code);
   if (MUNI?.outline) return drawMap([MUNI.outline]);
   const topo = await getJSON("data/japan.topo.json");
-  drawMap(topojson.feature(topo, topo.objects.municipalities).features.filter((f) => f.properties.code === code));
+  // 政令市そのものは形のデータに無いので、区の形を合わせて描く（無いまま描くと、地図の部品の中でエラーになっていた）
+  const wardCodes = new Set(wards.map(([c]) => c));
+  const feats = topojson.feature(topo, topo.objects.municipalities).features.filter((f) => f.properties.code === code || wardCodes.has(f.properties.code));
+  if (feats.length) drawMap(feats);
 }
 
 const N03 = "国土数値情報（行政区域データ、2026年1月1日）国土交通省 を加工して作成（CC BY 4.0）";

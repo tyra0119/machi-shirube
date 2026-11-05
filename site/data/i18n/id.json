@@ -1,11 +1,11 @@
 {
  "lang": "id",
  "name": "Bahasa Indonesia",
- "createdAt": "2026-11-05T02:56:16.533Z",
+ "createdAt": "2026-11-05T03:08:08.538Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 968,
- "of": 935,
+ "count": 970,
+ "of": 937,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Ini adalah panduan hidup tidak resmi untuk kota ini. Claude mengumpulkannya dari situs resmi kota dan sumber lain, dengan mencantumkan sumbernya (Machishirube)",
   "すべてのページ": "Semua halaman",
@@ -974,6 +974,8 @@
   "合わせた町・字：{p}": "Kota/desa (chō/aza) yang digabungkan: {p}",
   "全国の市区町村 {n} と比べています。": "Dibandingkan dengan {n} kota/kecamatan di seluruh Jepang.",
   "ごみを出す日（地区ごとの曜日）": "Hari membuang sampah (hari sesuai wilayah)",
-  "防災計画の、町・字に関係する所": "Bagian rencana penanggulangan bencana yang terkait dengan kota/desa (aza)"
+  "防災計画の、町・字に関係する所": "Bagian rencana penanggulangan bencana yang terkait dengan kota/desa (aza)",
+  "区ごとのページ": "Halaman per distrik",
+  "病院・避難場所・ごみの日などのくらしの案内は、区ごとのページにあります。お住まいの区を選んでください。": "Panduan kehidupan sehari-hari seperti rumah sakit, tempat evakuasi, dan hari pembuangan sampah tersedia di halaman masing-masing distrik. Silakan pilih distrik tempat Anda tinggal."
  }
 }

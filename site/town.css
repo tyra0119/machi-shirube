@@ -129,6 +129,8 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .news-list li { display: flex; gap: 10px; padding: 7px 2px; border-bottom: 1px solid var(--line); font-size: 15px; line-height: 1.5; }
 .news-list .nd { flex: none; width: 3.2em; color: var(--text-sub); font-variant-numeric: tabular-nums; }
 .news-list li.more { border-bottom: 0; font-size: 14px; }
+.ward-list { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 4px; }
+.ward-list a { padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--bg); color: inherit; text-decoration: none; font-size: 16px; font-weight: 600; }
 .sl-list { margin: 10px 0 6px; padding: 0; list-style: none; }
 .sl-list li { padding: 8px 4px; border-bottom: 1px solid var(--line); }
 .sl-list .n { display: block; font-size: 17px; font-weight: 700; }
