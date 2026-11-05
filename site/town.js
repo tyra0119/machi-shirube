@@ -1446,8 +1446,7 @@ function onDay(when, date) {
   const dates = [...when.matchAll(/(\d{1,2})月\s*(\d{1,2}(?:\s*[・、]\s*\d{1,2})*)\s*日/g)];
   if (dates.length && !/毎週|第/.test(when)) return dates.some(([, m, ds]) => Number(m) === date.getMonth() + 1 && ds.split(/[・、]/).map((x) => Number(x.trim())).includes(date.getDate()));
   const w = WD[date.getDay()];
-  // 「曜日」の「日」は日曜日ではない（「毎週月・木曜日」の最後の「日」を日曜日と数えていた）
-  // 「曜日」の「日」は日曜ではない（前の字が「曜」なら除く。後ろ読みは古い iPhone で動かないので、前の字を見る）
+  // 「曜日」の「日」は日曜日ではない（「毎週月・木曜日」の最後の「日」を日曜日と数えていた）。前の字が「曜」なら除く（後ろ読みは古い iPhone で動かないので、前の字を見る）
   const days = [...when.matchAll(/[月火水木金土日](?=[・、曜]|$)/g)].filter((x) => when[x.index - 1] !== "曜").map((x) => x[0]);
   if (!days.includes(w)) return false;
   const nth = when.match(/第([0-9０-９・、〜~]+)/);
