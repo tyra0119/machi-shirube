@@ -50,18 +50,21 @@ const WIDGETS = { frost: frostWidget, sea: seaWidget, snow: snowWidget };
 async function showFeatures(code, at) {
   const d = await getData("data/features.json");
   const mine = d?.towns?.[code] ?? [];
-  const indAll = mine.some((f) => f === "nougyou" || f === "gyogyou") ? (await fetch("data/industry.json").then((r) => r.json()).catch(() => null))?.towns : null;
-  const ind = indAll?.[code] ?? null;
+  // 働く人の割合と全国の中の順位・真ん中の値：町ごとの小さなファイルに前もって入れてあれば、全国の表（圧縮して 27KB）を読まない（scripts/build-muni.mjs）
+  const pre = typeof MUNI !== "undefined" && MUNI?.code === code ? MUNI.industry : null;
+  const indAll = !pre && mine.some((f) => f === "nougyou" || f === "gyogyou") ? (await fetch("data/industry.json").then((r) => r.json()).catch(() => null))?.towns : null;
+  const ind = pre ?? indAll?.[code] ?? null;
   const allInd = Object.values(indAll ?? {});
-  const rankIn = (k) => allInd.filter((x) => x[k] > ind[k]).length + 1;
+  const total = pre?.total ?? allInd.length;
+  const rankIn = (k) => pre?.rank?.[k] ?? allInd.filter((x) => x[k] > ind[k]).length + 1;
   // 全国の真ん中の値も添える（10番目まで・1割までに入らないときは、真ん中の値だけ）
-  const midOf = (k) => { const v = allInd.map((x) => x[k]).filter((x) => typeof x === "number").sort((a, b) => a - b); const m = v[Math.floor(v.length / 2)]; return m != null ? `${m}%` : null; };
+  const midOf = (k) => { if (pre) return pre.mid?.[k] != null ? `${pre.mid[k]}%` : null; const v = allInd.map((x) => x[k]).filter((x) => typeof x === "number").sort((a, b) => a - b); const m = v[Math.floor(v.length / 2)]; return m != null ? `${m}%` : null; };
   for (const id of mine) {
     const f = FEATURES[id];
     if (!f) continue;
     const view = `feat-${id}`;
-    const why = id === "nougyou" && ind ? `${T("働く人のうち農業・林業")} ${ind.agri}%、${placeWords(rankIn("agri"), allInd.length, midOf("agri"))}`
-      : id === "gyogyou" && ind ? `${T("働く人のうち漁業")} ${ind.fish}%、${placeWords(rankIn("fish"), allInd.length, midOf("fish"))}`
+    const why = id === "nougyou" && ind ? `${T("働く人のうち農業・林業")} ${ind.agri}%、${placeWords(rankIn("agri"), total, midOf("agri"))}`
+      : id === "gyogyou" && ind ? `${T("働く人のうち漁業")} ${ind.fish}%、${placeWords(rankIn("fish"), total, midOf("fish"))}`
       : id === "yuki" ? T("豪雪地帯") : id === "kazan" ? T("火山災害警戒地域") : id === "shima" ? T("離島がある") : "";
     PAGES.splice(1, 0, { view, title: f.title, desc: f.desc, feature: true, why, later: f.later });
     const el = document.createElement("div");

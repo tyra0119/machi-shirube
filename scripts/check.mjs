@@ -280,6 +280,7 @@ section = "作り直し忘れ";
   const dirSets = new Map();
   const has = (dir, code) => { if (!dirSets.has(dir)) dirSets.set(dir, new Set(codeFiles(dir).map((f) => f.slice(0, 5)))); return dirSets.get(dir).has(code); };
   const bad = [], lang = [];
+  const featuresAll = read("site/data/features.json").towns;
   for (const f of codeFiles("muni")) {
     const m = read(`site/data/muni/${f}`), code = f.slice(0, 5);
     if (m.files) {
@@ -287,6 +288,8 @@ section = "作り直し忘れ";
       else for (const d of m.files.dirs) if (has(d, code) !== m.files.have.includes(d)) { bad.push(`${code} ${d}`); break; }
     }
     if (!!m.langs !== fs.existsSync(`site/data/translations/${code}.json`)) lang.push(code);
+    // 農業・漁業の町は、働く人の割合と順位が入っている（無いと、町のページが全国の表を読みに行く）
+    if ((featuresAll[code] ?? []).some((k) => k === "nougyou" || k === "gyogyou") && !m.industry) bad.push(`${code}（農業・漁業の数が無い）`);
   }
   check(!bad.length, "町ごとの小さなファイルの「ある物の一覧」が、いまのデータと合う（ちがえば npm run build:muni）", sample(bad));
   check(!lang.length, "町ごとの小さなファイルの「訳のある言葉」が、いまの訳と合う（ちがえば npm run build:muni）", sample(lang));

@@ -28,6 +28,19 @@ const ratio = (p) => p.at(-1) / p[0];
 const futureTotal = Object.keys(future.towns).length;
 const futureRank = (code) => Object.values(future.towns).filter((x) => ratio(x.pop) > ratio(future.towns[code].pop)).length + 1;
 
+// 農業・漁業の町の、働く人の割合と全国の中の順位・真ん中の値（町のページ features.js が、全国の表 industry.json を読まずに済むように）
+const industry = read("site/data/industry.json").towns;
+const featTowns = read("site/data/features.json").towns;
+const indAll = Object.values(industry);
+const indMid = (k) => { const v = indAll.map((x) => x[k]).filter((x) => typeof x === "number").sort((a, b) => a - b); return v[Math.floor(v.length / 2)] ?? null; };
+const MID = { agri: indMid("agri"), fish: indMid("fish") };
+const industryOf = (code) => {
+  const f = featTowns[code] ?? [], x = industry[code];
+  if (!x || !f.some((k) => k === "nougyou" || k === "gyogyou")) return null;
+  const rank = (k) => indAll.filter((y) => y[k] > x[k]).length + 1;
+  return { agri: x.agri, fish: x.fish, rank: { agri: rank("agri"), fish: rank("fish") }, total: indAll.length, mid: MID };
+};
+
 fs.mkdirSync("site/data/muni", { recursive: true });
 // 町ごとのデータの置き場（site/data/{置き場}/{コード}.json）。町のページは、ここにあってこの町に無いものを読みに行かない
 // （浅い町では 20 ほどのファイルが無く、そのたびに GitHub Pages の 404 のページ〈約 9KB〉が返っていた）。
@@ -51,6 +64,7 @@ for (const [code, t] of Object.entries(stats.towns)) {
     jma: near(jma),
     // 訳のある言葉の一覧（名前だけ。訳そのものは data/translations/{コード}.json）。訳を作り直したら、これも作り直す
     langs: fs.existsSync(`site/data/translations/${code}.json`) ? Object.fromEntries(Object.entries(read(`site/data/translations/${code}.json`).langs).map(([k, l]) => [k, { name: l.name, ja: l.ja, items: [] }])) : null,
+    industry: industryOf(code),
     // ある物の一覧（深く調べた町は、日々データが増えるので入れない。町のページは全部読みに行く）
     files: dirFiles.get("answers").has(`${code}.json`) ? null : { dirs: DIRS, have: DIRS.filter((d) => dirFiles.get(d).has(`${code}.json`)) },
   };
