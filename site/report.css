@@ -6,6 +6,8 @@
 .report .warn { margin: 16px 0; padding: 12px 16px; border: 2px solid #c0392b; border-radius: 12px; background: var(--surface); }
 .report .warn-head { display: flex; align-items: center; gap: 6px; margin: 0 0 4px; font-weight: 700; color: #c0392b; }
 .report .warn-head svg { width: 20px; height: 20px; }
+/* 暗い表示では濃い赤が読みにくい（差が 2.7 倍）ので、明るい赤に */
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .report .warn-head { color: #ff8f80; } }
 .report .warn ul { margin: 0; padding-left: 1.2em; line-height: 1.8; }
 .report .town-box { margin: 16px 0; padding: 14px 16px; border-radius: 12px; background: var(--town-tint, var(--bg)); }
 .report .big-go { display: inline-flex; align-items: center; gap: 8px; min-height: 48px; padding: 0 22px; border-radius: 999px; background: var(--accent); color: var(--accent-text, #fff); font-size: 17px; font-weight: 700; text-decoration: none; }

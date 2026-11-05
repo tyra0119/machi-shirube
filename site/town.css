@@ -435,7 +435,7 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .temp-strip li.frost { border-color: hsl(205 60% 50%); background: hsl(205 70% 95%); }
 .temp-strip li.frost .g { background: hsl(205 60% 40%); color: #fff; }
 .temp-strip li.hot { border-color: #c58a00; background: #fff6dd; }
-.temp-strip li.hot .g { background: #c26a00; color: #fff; }
+.temp-strip li.hot .g { background: #a85600; color: #fff; }
 /* 入力欄・地図・フォームの下の隙間（.block p の余白の決まりに負けないように） */
 .block .gomi-ex { margin: 10px 0 8px; }
 .block .hinan-map + p, .block .hazard-legend + p { margin-top: 8px; }
@@ -529,7 +529,7 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .acc-spots { margin: 8px 0; padding: 0; list-style: none; display: grid; gap: 4px; }
 .acc-spots li { display: flex; gap: 8px; align-items: center; padding: 6px 8px; border-radius: 8px; cursor: pointer; font-size: 14px; }
 .acc-spots li:hover { background: var(--bg); }
-.acc-spots .no { flex: none; width: 22px; height: 22px; border-radius: 50%; background: #e8833a; color: #fff; font-size: 12px; font-weight: 700; display: grid; place-items: center; }
+.acc-spots .no { flex: none; width: 22px; height: 22px; border-radius: 50%; background: #b5581a; color: #fff; font-size: 12px; font-weight: 700; display: grid; place-items: center; }
 .fp-depth.q .bar i { background: #a88bd0; }
 #quake .acc-stats { margin-bottom: 8px; }
 /* これからの町の人口 */
@@ -543,7 +543,7 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .future .o { order: 4; font-weight: 700; }
 /* 細いスマホでは、7つの年の数（「54,000」）が列を押し広げ、右の年が画面の外にはみ出していた */
 @media (max-width: 380px) { .future { gap: 3px; } .future li { font-size: 11px; } }
-.acc-spots.bus .no { width: auto; min-width: 26px; padding: 0 6px; border-radius: 12px; background: #5b8fc7; }
+.acc-spots.bus .no { width: auto; min-width: 26px; padding: 0 6px; border-radius: 12px; background: #3f72aa; }
 .acc-spots.bus li { cursor: default; }
 .fp-depth.q li { grid-template-columns: 11em 1fr 4.5em; }
 .fp-head .bright { display: flex; gap: 6px; align-items: center; margin: 8px 0 0; padding: 8px 12px; border-radius: 10px; background: #fff6d6; color: #5a4a00; font-size: 15px; font-weight: 700; }
@@ -827,3 +827,13 @@ ruby rt { font-size: 0.55em; font-weight: 400; letter-spacing: 0; }
 /* 前に見てから新しくなったものの印（毎日開いてもらうために） */
 .new-mark { display: inline-block; margin: 0 6px 0 0; padding: 0 7px; border-radius: 999px; background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; line-height: 1.7; vertical-align: 1px; }
 .quiz-more { display: inline-block; margin-top: 4px; }
+/* 暗い表示では、明るい青の上に白い字だと読みにくい（差が 2.4 倍）ので、字を濃く */
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .new-mark { color: #0d1f26; } }
+/* 暗い表示：色の指定の無いリンク（答えの「くわしく」・出典・電話）がブラウザの濃い青のままで、暗い背景にほとんど見えなかった。
+   :where で強さを上げず、色を決めているボタンやリンクはそのまま */
+@media (prefers-color-scheme: dark) {
+  :where(:root:not([data-theme="light"])) a { color: var(--accent); }
+  /* 霜・高温・波の帯：明るいままの背景に薄い字になっていた */
+  :root:not([data-theme="light"]) .temp-strip li.frost { background: hsl(205 35% 20%); }
+  :root:not([data-theme="light"]) .temp-strip li.hot { background: #3a2e14; }
+}
