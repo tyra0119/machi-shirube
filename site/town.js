@@ -1173,7 +1173,7 @@ async function showMedical(code, center) {
   const open = today.list.filter((x) => x.openNow).length;
   const tmr = medicalList(m, 1, center);
   medicalRow = isEvening()
-    ? `<li><a href="#iryo"><span class="k">${icon("hospital")}${T("病院")}</span><span class="v">${LANG ? `${T("明日やっている所")} ${tmr.list.length}` : `${tmr.holiday ? `明日は${esc(tmr.holiday)}。` : ""}明日やっている所 ${tmr.list.length} か所`}</span></a></li>`
+    ? `<li><a href="#iryo"><span class="k">${icon("hospital")}${T("病院")}</span><span class="v">${LANG ? `${T("明日")}：${T("やっている所")} ${tmr.list.length}` : `${tmr.holiday ? `明日は${esc(tmr.holiday)}。` : ""}明日やっている所 ${tmr.list.length} か所`}</span></a></li>`
     : `<li><a href="#iryo"><span class="k">${icon("hospital")}${T("病院")}</span><span class="v">${LANG ? `${T("今日やっている所")} ${today.list.length}（${T("いま開いている")} ${open}）` : `${today.holiday ? `今日は${esc(today.holiday)}。` : ""}今日やっている所 ${today.list.length} か所（いま開いている ${open}）`}</span></a></li>`;
 }
 

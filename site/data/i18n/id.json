@@ -1,10 +1,10 @@
 {
  "lang": "id",
  "name": "Bahasa Indonesia",
- "createdAt": "2026-11-05T07:26:34.822Z",
+ "createdAt": "2026-11-05T07:38:36.443Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1062,
+ "count": 1064,
  "of": 1028,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Ini adalah panduan hidup tidak resmi untuk kota ini. Claude mengumpulkannya dari situs resmi kota dan sumber lain, dengan mencantumkan sumbernya (Machishirube)",
@@ -1068,6 +1068,8 @@
   "2050年の人口は、2020年の約 {p}%（推計）": "Penduduk tahun 2050 sekitar {p}% dari tahun 2020 (perkiraan)",
   "昔の災害を伝える碑が {n} 基": "Ada {n} monumen yang mengisahkan bencana masa lalu",
   "数で見る{name}": "{name} dalam angka",
-  "どんな町？": "Kota seperti apa?"
+  "どんな町？": "Kota seperti apa?",
+  "明日やっている病院・診療所": "Rumah sakit dan klinik yang buka besok",
+  "明日、診療している病院・診療所": "Rumah sakit dan klinik yang buka besok"
  }
 }

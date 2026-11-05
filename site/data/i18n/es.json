@@ -1,10 +1,10 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-05T07:27:23.796Z",
+ "createdAt": "2026-11-05T07:38:23.916Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1065,
+ "count": 1066,
  "of": 1028,
  "dict": {
   "すべてのページ": "Todas las páginas",
@@ -1071,6 +1071,7 @@
   "昔の災害を伝える碑が {n} 基": "{n} monumentos que conmemoran desastres del pasado",
   "数で見る{name}": "{name} en cifras",
   "どんな町？": "¿Cómo es este municipio?",
-  "特別豪雪地帯": "Zona de nevadas excepcionalmente intensas"
+  "特別豪雪地帯": "Zona de nevadas excepcionalmente intensas",
+  "明日やっている病院・診療所": "Hospitales y clínicas abiertos mañana"
  }
 }

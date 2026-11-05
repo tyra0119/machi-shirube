@@ -1,10 +1,10 @@
 {
  "lang": "en",
  "name": "English",
- "createdAt": "2026-11-05T07:26:06.199Z",
+ "createdAt": "2026-11-05T07:38:26.222Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1065,
+ "count": 1067,
  "of": 1028,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "This is an unofficial guide to living in this town. Claude gathers information from the town's official website and other sources, and cites each source (Machishirube)",
@@ -1071,6 +1071,8 @@
   "2050年の人口は、2020年の約 {p}%（推計）": "The population in 2050 is about {p}% of 2020 (projected)",
   "昔の災害を伝える碑が {n} 基": "{n} monuments recording past disasters",
   "数で見る{name}": "{name} by the Numbers",
-  "どんな町？": "What kind of town is it?"
+  "どんな町？": "What kind of town is it?",
+  "明日やっている病院・診療所": "Hospitals and clinics open tomorrow",
+  "明日、診療している病院・診療所": "Hospitals and clinics open tomorrow"
  }
 }

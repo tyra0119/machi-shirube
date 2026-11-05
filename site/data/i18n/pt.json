@@ -1,10 +1,10 @@
 {
  "lang": "pt",
  "name": "Português",
- "createdAt": "2026-11-05T07:25:53.338Z",
+ "createdAt": "2026-11-05T07:38:19.338Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1066,
+ "count": 1068,
  "of": 1028,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Guia não oficial da vida na cidade. O Claude reúne as informações em sites oficiais da cidade e outras fontes, e indica a origem de cada uma (Machishirube)",
@@ -1072,6 +1072,8 @@
   "2050年の人口は、2020年の約 {p}%（推計）": "A população em 2050 será cerca de {p}% da de 2020 (projeção)",
   "昔の災害を伝える碑が {n} 基": "{n} monumentos que transmitem a memória de desastres do passado",
   "数で見る{name}": "{name} em números",
-  "どんな町？": "Como é a cidade?"
+  "どんな町？": "Como é a cidade?",
+  "明日やっている病院・診療所": "Hospitais e clínicas abertos amanhã",
+  "明日、診療している病院・診療所": "Hospitais e clínicas com atendimento amanhã"
  }
 }
