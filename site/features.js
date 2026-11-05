@@ -17,7 +17,7 @@ async function frostWidget(at) {
   if (!d?.daily) return `<p class="note">${T("気温の予報を読み込めませんでした。")}</p>`;
   const days = d.daily.time.map((t, i) => ({ t, max: d.daily.temperature_2m_max[i], min: d.daily.temperature_2m_min[i] }));
   // 予報の値が空の日は印を付けない（null <= 0 が真になり、「凍結のおそれ」と出てしまう）
-  const tag = (x) => (x.min == null || x.max == null ? null : x.min <= 0 ?["frost", T("凍結のおそれ")] : x.min <= 3 ? ["frost", T("霜のおそれ")] : x.max >= 35 ? ["hot", T("猛暑")] : x.max >= 30 ? ["hot", T("高温")] : null);
+  const tag = (x) => (x.min == null || x.max == null ? null : x.min <= 0 ? ["frost", T("凍結のおそれ")] : x.min <= 3 ? ["frost", T("霜のおそれ")] : x.max >= 35 ? ["hot", T("猛暑")] : x.max >= 30 ? ["hot", T("高温")] : null);
   const md = (t) => `${Number(t.slice(5, 7))}/${Number(t.slice(8, 10))}`;
   const marks = days.filter(tag);
   return `<p class="feat-sum">${marks.length ? `${T("これから2週間で気をつけたい日")}：<strong>${marks.length}</strong>` : T("これから2週間、霜や高温のおそれは小さい見込みです")}</p>
