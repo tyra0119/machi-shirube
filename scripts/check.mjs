@@ -123,6 +123,7 @@ const CASES = [
   }],
   ["十勝地方・奄美地方の予報は、釧路・鹿児島の予報のファイルから読む（11/5）", () => fn("FORECAST_FILE")?.["014030"] === "014100" && fn("FORECAST_FILE")?.["460040"] === "460100"],
   ["日本の外の端末でも、町の時刻（日本時間）で決める（11/4）", () => { const j = fn("jpNow")(); const u = new Date(); return j.getHours() === (u.getUTCHours() + 9) % 24; }],
+  ["家族に送る URL から、録画用の ?here= を外す（受け取った人の「今いる所」がその場所になる。11/5）", () => /searchParams\.delete\("here"\)/.test(town)],
   // 位置の言い方（types.js）
   ["「上から ○%」と言わない", () => !/上から/.test(fn("placeWords")(5, 1741, "1.8%") + fn("placeWords")(100, 1741, "1.8%") + fn("placeWords")(1700, 1741, "1.8%"))],
   // この町ならでは（features.js）
