@@ -212,6 +212,11 @@ const codeFiles = (dir) => (fs.existsSync(`site/data/${dir}`) ? fs.readdirSync(`
     }
   }
   check(!bad.length, "ごみを出す日：どの曜日の決まりも、1年のどこかの日に当たる", sample(bad));
+  // 避難やごみの日にかかわるデータは、作者の OK のあとで出す（ごみを出す日は status、避難施設の一覧は approved に記録）
+  const gNot = codeFiles("gomi-days").filter((f) => !["ok", "auto"].includes(read(`site/data/gomi-days/${f}`).status));
+  if (gNot.length) warn("ごみを出す日で、作者の OK がまだのもの（町のページには曜日を出さない。確かめる一覧で決める）", sample(gNot)); else ok("ごみを出す日は、どれも作者の OK のあと");
+  const sNot = codeFiles("shelter-list").filter((f) => !read(`site/data/shelter-list/${f}`).approved);
+  check(!sNot.length, "避難施設の一覧は、どれも作者の OK の記録（approved）がある（無ければ公開しない・local/ に戻す）", sample(sNot));
 }
 
 {

@@ -2,7 +2,7 @@
 // 災害の種類ごとの指定緊急避難場所の一覧（位置つき）が国にも町にも無い町のため（阿賀町）。
 // 位置は作らない（山あいの番地は住所から正しい位置を出せず、避難の距離をまちがえるため）。行政区ごとの一覧として出す
 // 動かし方: node --env-file=.env scripts/shelter-list.mjs <市区町村コード> <PDF の手元の道> <PDF の URL> <資料の名前> <時点> <ページ…>
-// 出力は local/shelter-list/{コード}.json（作者が確かめる前のもの）。作者が OK したら site/data/shelter-list/ に写す
+// 出力は local/shelter-list/{コード}.json（作者が確かめる前のもの）。作者が OK したら site/data/shelter-list/ に写し、approved に「いつ・作者のことば」を入れる（npm run check が確かめる）
 import fs from "node:fs";
 import Anthropic from "@anthropic-ai/sdk";
 import { getDocument } from "pdfjs-dist/legacy/build/pdf.mjs";
