@@ -1,11 +1,11 @@
 {
- "updatedAt": "2026-11-05T12:26:14.140Z",
+ "updatedAt": "2026-11-05T13:38:01.705Z",
  "counts": {
   "auto": 82,
-  "ok": 203,
+  "ok": 202,
   "pending": 0,
-  "fix": 28,
-  "rejected": 21,
+  "fix": 30,
+  "rejected": 22,
   "unknown": 0
  },
  "items": [
@@ -6824,16 +6824,16 @@
    "kind": "watch",
    "question": "介護や高齢者の暮らしの相談の窓口（地域包括支援センターなど）の名前・担当する地区・電話番号",
    "why": "見張り：出典のページが見つからない（404）。2026-11-04 から。「直して」で Claude が新しいページを探して調べ直します",
-   "status": "ok",
-   "score": 3,
+   "status": "fix",
+   "score": null,
    "source": {
     "title": "埼玉県内地域包括支援センター一覧（朝霞市分）",
     "url": "https://www.pref.saitama.lg.jp/documents/19801/23asakashir7.pdf"
    },
    "decided": {
-    "at": "2026-11-05T12:25:56.194Z",
-    "action": "ok",
-    "reason": ""
+    "at": "2026-11-05T13:30:52.792Z",
+    "action": "fix",
+    "reason": "作者（チャットで 11/6）「直して」。出典の県の PDF が消えた（404）。市か県の今のページで、地域包括支援センターの名前・担当の地区・電話を探し直す"
    }
   },
   {
@@ -6844,16 +6844,16 @@
    "kind": "watch",
    "question": "この町でいま動いていること（新しい施設・大きな計画や工事・制度の変わり目・町の取り組み）。ここ1年ほどの公式の発表から、多くても5つ。1つずつ1文で、それぞれ出典をつけて",
    "why": "見張り：出典のページが見つからない（404）。2026-11-04 から。「直して」で Claude が新しいページを探して調べ直します",
-   "status": "ok",
-   "score": 2,
+   "status": "fix",
+   "score": null,
    "source": {
     "title": "阿賀町過疎地域持続的発展計画",
     "url": "https://www.town.aga.niigata.jp/agamachi_soshiki/soumu/seisaku_keikaku/3159.html"
    },
    "decided": {
-    "at": "2026-11-05T12:25:59.294Z",
-    "action": "ok",
-    "reason": ""
+    "at": "2026-11-05T13:30:53.839Z",
+    "action": "fix",
+    "reason": "作者（チャットで 11/6）「直して」。答えの中の町のページ 2 つ（seisakusuishin/3252.html と kensetsu/jutaku_doro/3246.html）が消えた（404）。今の町の発表から探し直す"
    }
   },
   {
@@ -6994,6 +6994,42 @@
     "at": "2026-11-05T12:26:14.111Z",
     "action": "ok",
     "reason": ""
+   }
+  },
+  {
+   "id": "r00448",
+   "scope": "muni:11227",
+   "scopeName": "埼玉県 朝霞市",
+   "qid": "Q18",
+   "kind": "answer",
+   "question": "介護や高齢者の暮らしの相談の窓口（地域包括支援センターなど）の名前・担当する地区・電話番号",
+   "why": "出典のページが開けない（404）。検索に残った古い内容を使った可能性がある／Claude が返した元の文が、答えに使ったページの中に見つからなかった",
+   "status": "ok",
+   "score": 3,
+   "source": {
+    "title": "地域包括支援センター - 朝霞市",
+    "url": "https://www.city.asaka.lg.jp/soshiki/23/tiikihoukatusiennsennta-.html"
+   },
+   "decided": {
+    "at": "2026-11-05T13:37:44.743Z",
+    "action": "ok",
+    "reason": ""
+   }
+  },
+  {
+   "id": "r00449",
+   "scope": "muni:15385",
+   "scopeName": "新潟県 阿賀町",
+   "qid": "Q13",
+   "kind": "answer",
+   "question": "この町でいま動いていること（新しい施設・大きな計画や工事・制度の変わり目・町の取り組み）。ここ1年ほどの公式の発表から、多くても5つ。1つずつ1文で、それぞれ出典をつけて",
+   "why": "公開の資料で答えが見つからなかった（町の人に聞くことの候補）",
+   "status": "rejected",
+   "score": 0,
+   "decided": {
+    "at": "2026-11-05T13:38:01.683Z",
+    "action": "reject",
+    "reason": "見つからなかった"
    }
   }
  ]
