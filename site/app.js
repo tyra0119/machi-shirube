@@ -447,7 +447,7 @@ function showCard(p) {
   card.innerHTML = `
     <button type="button" class="close" aria-label="閉じる">×</button>
     <h2>${p.fullName}</h2>
-    <p class="where">${where}・市区町村コード ${p.code}</p>
+    <p class="where">${where}</p>
     ${actions(town ? `town.html?muni=${p.code}` : null, towns)}
     ${body}`;
   card.querySelector(".close").addEventListener("click", hideCard);
@@ -704,7 +704,7 @@ function showTownCard(p) {
   card.innerHTML = `
     <button type="button" class="close" aria-label="閉じる">×</button>
     <h2>${p.name}</h2>
-    <p class="where">${muni ? `${muni.pref} ${muni.fullName}` : ""}・町・字の番号 ${p.part}</p>
+    <p class="where">${muni ? `${muni.pref} ${muni.fullName}` : ""}</p>
     ${actions(`town.html?town=${shownTowns}-${p.part}`, `<button type="button" class="secondary multi">ほかの町・字も選ぶ（合わせて見る）</button>`)}
     ${people}
     <p class="note">この町は、まだ深く調べていません。</p>
