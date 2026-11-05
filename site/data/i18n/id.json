@@ -1,11 +1,11 @@
 {
  "lang": "id",
  "name": "Bahasa Indonesia",
- "createdAt": "2026-11-04T13:00:48.047Z",
+ "createdAt": "2026-11-05T02:56:16.533Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 960,
- "of": 928,
+ "count": 968,
+ "of": 935,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Ini adalah panduan hidup tidak resmi untuk kota ini. Claude mengumpulkannya dari situs resmi kota dan sumber lain, dengan mencantumkan sumbernya (Machishirube)",
   "すべてのページ": "Semua halaman",
@@ -966,6 +966,14 @@
   "{d} 発行": "Terbit {d}",
   "町の公式サイトの新着と広報紙から、見出しとリンクだけを出しています（{d} に取得）。": "Hanya menampilkan judul dan tautan dari berita terbaru di situs resmi kota dan buletin kota (diambil pada {d}).",
   "町からのお知らせ": "Pemberitahuan dari Kota",
-  "印刷用のくらしのメモ（A4 1枚・冷蔵庫に貼れる・PDF にもできる）": "Catatan hidup sehari-hari untuk dicetak (1 lembar A4, bisa ditempel di kulkas, bisa juga disimpan sebagai PDF)"
+  "印刷用のくらしのメモ（A4 1枚・冷蔵庫に貼れる・PDF にもできる）": "Catatan hidup sehari-hari untuk dicetak (1 lembar A4, bisa ditempel di kulkas, bisa juga disimpan sebagai PDF)",
+  "{a}〜{b}年": "Tahun {a}〜{b}",
+  "市の公式のごみ収集日一覧表（令和8年度）を AI が表の見た目のまま読み取ったもの。日付の曜日がそろっているかを PC で確かめました。祝日や年末年始は変わることがあるので、市の一覧表で確かめてください": "Tabel jadwal pengumpulan sampah resmi kota (tahun anggaran Reiwa 8) ini dibaca oleh AI sesuai tampilan tabel aslinya. Kecocokan hari dalam seminggu pada setiap tanggal sudah diperiksa dengan PC. Hari libur nasional dan libur akhir/awal tahun bisa berubah, jadi pastikan lagi pada tabel resmi dari kota.",
+  "割合は、町・字ごとの割合に人数（世帯の割合は世帯の数）で重みをつけて合わせた、めやすです。": "Persentase ini adalah perkiraan, yang dihitung dengan menggabungkan persentase tiap kota/desa (chō/aza) dan memberi bobot sesuai jumlah penduduk (untuk persentase rumah tangga, sesuai jumlah rumah tangga).",
+  "一部の数字は、住む人が少ないため国勢調査で隠されています。": "Sebagian angka disembunyikan dalam sensus penduduk karena jumlah penduduknya sedikit.",
+  "合わせた町・字：{p}": "Kota/desa (chō/aza) yang digabungkan: {p}",
+  "全国の市区町村 {n} と比べています。": "Dibandingkan dengan {n} kota/kecamatan di seluruh Jepang.",
+  "ごみを出す日（地区ごとの曜日）": "Hari membuang sampah (hari sesuai wilayah)",
+  "防災計画の、町・字に関係する所": "Bagian rencana penanggulangan bencana yang terkait dengan kota/desa (aza)"
  }
 }

@@ -1,11 +1,11 @@
 {
  "lang": "pt",
  "name": "Português",
- "createdAt": "2026-11-04T13:00:27.905Z",
+ "createdAt": "2026-11-05T02:55:57.003Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 964,
- "of": 928,
+ "count": 972,
+ "of": 935,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Guia não oficial da vida na cidade. O Claude reúne as informações em sites oficiais da cidade e outras fontes, e indica a origem de cada uma (Machishirube)",
   "すべてのページ": "Todas as páginas",
@@ -970,6 +970,14 @@
   "{d} 発行": "Publicado em {d}",
   "町の公式サイトの新着と広報紙から、見出しとリンクだけを出しています（{d} に取得）。": "Mostramos apenas os títulos e os links das novidades do site oficial do município e do informativo municipal (obtidos em {d}).",
   "町からのお知らせ": "Avisos da prefeitura",
-  "印刷用のくらしのメモ（A4 1枚・冷蔵庫に貼れる・PDF にもできる）": "Resumo prático para imprimir (1 folha A4, pode ser colado na geladeira, também em PDF)"
+  "印刷用のくらしのメモ（A4 1枚・冷蔵庫に貼れる・PDF にもできる）": "Resumo prático para imprimir (1 folha A4, pode ser colado na geladeira, também em PDF)",
+  "市の公式のごみ収集日一覧表（令和8年度）を AI が表の見た目のまま読み取ったもの。日付の曜日がそろっているかを PC で確かめました。祝日や年末年始は変わることがあるので、市の一覧表で確かめてください": "Esta é a tabela oficial de dias de coleta de lixo da cidade (ano fiscal Reiwa 8), lida por uma IA conforme o layout original da tabela. Verificamos no computador se os dias da semana correspondem às datas. Feriados e o período de fim de ano e Ano Novo podem mudar, por isso confirme na tabela da cidade",
+  "割合は、町・字ごとの割合に人数（世帯の割合は世帯の数）で重みをつけて合わせた、めやすです。": "As porcentagens são uma estimativa: combinam as porcentagens de cada bairro/subdivisão (町・字), ponderadas pelo número de pessoas (no caso de domicílios, pelo número de domicílios).",
+  "一部の数字は、住む人が少ないため国勢調査で隠されています。": "Alguns números estão ocultos no Censo porque há poucos moradores.",
+  "合わせた町・字：{p}": "Bairros/subdivisões (町・字) combinados: {p}",
+  "全国の市区町村 {n} と比べています。": "Comparação com {n} municípios de todo o país.",
+  "{a}〜{b}年": "{a}〜{b} anos",
+  "ごみを出す日（地区ごとの曜日）": "Dias de coleta de lixo (dias da semana de cada bairro)",
+  "防災計画の、町・字に関係する所": "Partes do plano de prevenção de desastres relacionadas ao município e às localidades (aza)"
  }
 }

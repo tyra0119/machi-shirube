@@ -1,11 +1,11 @@
 {
  "lang": "tl",
  "name": "Filipino",
- "createdAt": "2026-11-04T13:01:07.803Z",
+ "createdAt": "2026-11-05T02:56:29.198Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 954,
- "of": 928,
+ "count": 962,
+ "of": 935,
  "dict": {
   "この町の非公式の暮らしの案内です。町の公式のサイトや国の公開データから集め、出典をつけています（まちしるべ）": "Ito ay isang di-opisyal na gabay sa pamumuhay sa bayang ito. Kinuha ito mula sa opisyal na website ng bayan at sa pampublikong datos ng bansa, at may nakasaad na pinagmulan (Machishirube)",
   "すべてのページ": "Lahat ng pahina",
@@ -960,6 +960,14 @@
   "{d} 発行": "Inilathala noong {d}",
   "町の公式サイトの新着と広報紙から、見出しとリンクだけを出しています（{d} に取得）。": "Mga pamagat at link lang ang ipinapakita mula sa mga bagong post sa opisyal na website ng bayan at sa newsletter ng bayan (kinuha noong {d}).",
   "町からのお知らせ": "Mga Abiso mula sa Bayan",
-  "印刷用のくらしのメモ（A4 1枚・冷蔵庫に貼れる・PDF にもできる）": "Printable na tala sa pang-araw-araw na buhay (1 pahinang A4, puwedeng idikit sa refrigerator, puwede ring gawing PDF)"
+  "印刷用のくらしのメモ（A4 1枚・冷蔵庫に貼れる・PDF にもできる）": "Printable na tala sa pang-araw-araw na buhay (1 pahinang A4, puwedeng idikit sa refrigerator, puwede ring gawing PDF)",
+  "{a}〜{b}年": "Taong {a}〜{b}",
+  "市の公式のごみ収集日一覧表（令和8年度）を AI が表の見た目のまま読み取ったもの。日付の曜日がそろっているかを PC で確かめました。祝日や年末年始は変わることがあるので、市の一覧表で確かめてください": "Ito ay binasa ng AI ang opisyal na talaan ng iskedyul ng koleksyon ng basura ng lungsod (taong piskal Reiwa 8) ayon sa hitsura ng talahanayan. Sinuri sa PC kung tugma ang mga araw ng linggo ng mga petsa. Maaaring magbago ang iskedyul tuwing may pista opisyal at sa katapusan at simula ng taon, kaya tiyakin ito sa talaan ng lungsod.",
+  "割合は、町・字ごとの割合に人数（世帯の割合は世帯の数）で重みをつけて合わせた、めやすです。": "Ang mga porsiyento ay tantiya lamang, na pinagsama sa pamamagitan ng pagtimbang sa bilang ng tao (para sa porsiyento ng mga sambahayan, sa bilang ng sambahayan) ng porsiyento sa bawat bayan at aza.",
+  "一部の数字は、住む人が少ないため国勢調査で隠されています。": "Ang ilang numero ay itinatago sa census dahil kaunti ang naninirahan doon.",
+  "合わせた町・字：{p}": "Mga bayan at aza na pinagsama: {p}",
+  "全国の市区町村 {n} と比べています。": "Inihahambing sa {n} lungsod, bayan, at distrito sa buong bansa.",
+  "ごみを出す日（地区ごとの曜日）": "Mga araw ng paglalabas ng basura (araw ayon sa distrito)",
+  "防災計画の、町・字に関係する所": "Mga bahagi ng plano sa pag-iwas sa sakuna na may kinalaman sa bayan at sa aza"
  }
 }

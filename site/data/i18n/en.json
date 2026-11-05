@@ -1,11 +1,11 @@
 {
  "lang": "en",
  "name": "English",
- "createdAt": "2026-11-04T13:00:34.326Z",
+ "createdAt": "2026-11-05T02:56:02.893Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 963,
- "of": 928,
+ "count": 971,
+ "of": 935,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "This is an unofficial guide to living in this town. Claude gathers information from the town's official website and other sources, and cites each source (Machishirube)",
   "すべてのページ": "All pages",
@@ -969,6 +969,14 @@
   "{d} 発行": "Published {d}",
   "町の公式サイトの新着と広報紙から、見出しとリンクだけを出しています（{d} に取得）。": "Only headlines and links are shown, taken from the town's official website updates and newsletter (retrieved {d}).",
   "町からのお知らせ": "Announcements from the Town",
-  "印刷用のくらしのメモ（A4 1枚・冷蔵庫に貼れる・PDF にもできる）": "Printable Living Memo (1 A4 page · fits on your fridge · can be saved as a PDF)"
+  "印刷用のくらしのメモ（A4 1枚・冷蔵庫に貼れる・PDF にもできる）": "Printable Living Memo (1 A4 page · fits on your fridge · can be saved as a PDF)",
+  "{a}〜{b}年": "{a}–{b}",
+  "市の公式のごみ収集日一覧表（令和8年度）を AI が表の見た目のまま読み取ったもの。日付の曜日がそろっているかを PC で確かめました。祝日や年末年始は変わることがあるので、市の一覧表で確かめてください": "This is the city's official garbage collection schedule (fiscal 2026) as read by AI, keeping the table's original layout. A PC was used to check that the days of the week match the dates. Holidays and the year-end/New Year period may change, so please check the city's official schedule.",
+  "割合は、町・字ごとの割合に人数（世帯の割合は世帯の数）で重みをつけて合わせた、めやすです。": "Percentages are estimates, combined from each town/district's percentage and weighted by population (for household percentages, by number of households).",
+  "一部の数字は、住む人が少ないため国勢調査で隠されています。": "Some figures are hidden in the census because of small populations.",
+  "合わせた町・字：{p}": "Combined towns/districts: {p}",
+  "全国の市区町村 {n} と比べています。": "Compared with {n} municipalities nationwide.",
+  "ごみを出す日（地区ごとの曜日）": "Garbage collection days (by district)",
+  "防災計画の、町・字に関係する所": "Disaster prevention plan: sections relevant to your town and neighborhood"
  }
 }

@@ -1,11 +1,11 @@
 {
  "lang": "vi",
  "name": "Tiếng Việt",
- "createdAt": "2026-11-04T13:00:59.981Z",
+ "createdAt": "2026-11-05T02:56:26.435Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 961,
- "of": 928,
+ "count": 969,
+ "of": 935,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Đây là trang hướng dẫn đời sống không chính thức của thị trấn này. Claude thu thập từ các trang chính thức của thị trấn v.v. và ghi rõ nguồn (Machi-shirube)",
   "すべてのページ": "Tất cả các trang",
@@ -967,6 +967,14 @@
   "{d} 発行": "Phát hành {d}",
   "町の公式サイトの新着と広報紙から、見出しとリンクだけを出しています（{d} に取得）。": "Chỉ hiển thị tiêu đề và liên kết lấy từ tin mới trên trang web chính thức của thị trấn và từ bản tin thị trấn (lấy vào {d}).",
   "町からのお知らせ": "Thông báo từ thị trấn",
-  "印刷用のくらしのメモ（A4 1枚・冷蔵庫に貼れる・PDF にもできる）": "Ghi chú đời sống để in (1 trang A4, dán được lên tủ lạnh, có thể lưu thành PDF)"
+  "印刷用のくらしのメモ（A4 1枚・冷蔵庫に貼れる・PDF にもできる）": "Ghi chú đời sống để in (1 trang A4, dán được lên tủ lạnh, có thể lưu thành PDF)",
+  "{a}〜{b}年": "Năm {a}〜{b}",
+  "市の公式のごみ収集日一覧表（令和8年度）を AI が表の見た目のまま読み取ったもの。日付の曜日がそろっているかを PC で確かめました。祝日や年末年始は変わることがあるので、市の一覧表で確かめてください": "Đây là bảng lịch thu gom rác chính thức của thành phố (năm tài chính Reiwa 8) do AI đọc lại giữ nguyên hình thức của bảng. Đã dùng máy tính (PC) kiểm tra xem thứ trong tuần của các ngày có khớp hay không. Ngày lễ và dịp cuối năm đầu năm có thể thay đổi, vì vậy hãy kiểm tra lại bằng bảng lịch của thành phố",
+  "割合は、町・字ごとの割合に人数（世帯の割合は世帯の数）で重みをつけて合わせた、めやすです。": "Tỷ lệ này là con số ước tính, được tính bằng cách lấy tỷ lệ của từng khu phố/xóm (町・字) nhân với trọng số theo số người (với tỷ lệ hộ gia đình thì theo số hộ) rồi gộp lại.",
+  "一部の数字は、住む人が少ないため国勢調査で隠されています。": "Một số con số bị ẩn trong điều tra dân số vì có ít người sinh sống.",
+  "合わせた町・字：{p}": "Các khu phố/xóm (町・字) đã gộp: {p}",
+  "全国の市区町村 {n} と比べています。": "So sánh với {n} thành phố, quận, thị trấn và làng trên toàn quốc.",
+  "ごみを出す日（地区ごとの曜日）": "Ngày đổ rác (ngày trong tuần theo từng khu vực)",
+  "防災計画の、町・字に関係する所": "Phần của kế hoạch phòng chống thiên tai liên quan đến thị trấn và khu phố (aza) của bạn"
  }
 }

@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-04T13:00:31.522Z",
+ "createdAt": "2026-11-05T02:56:00.057Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 963,
- "of": 928,
+ "count": 971,
+ "of": 935,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -969,6 +969,14 @@
   "{d} 発行": "Publicado el {d}",
   "町の公式サイトの新着と広報紙から、見出しとリンクだけを出しています（{d} に取得）。": "Solo se muestran los títulos y los enlaces de las novedades del sitio web oficial del municipio y del boletín municipal (obtenidos el {d}).",
   "町からのお知らせ": "Avisos del municipio",
-  "印刷用のくらしのメモ（A4 1枚・冷蔵庫に貼れる・PDF にもできる）": "Hoja informativa para imprimir (1 hoja A4, para pegar en el refrigerador, también en PDF)"
+  "印刷用のくらしのメモ（A4 1枚・冷蔵庫に貼れる・PDF にもできる）": "Hoja informativa para imprimir (1 hoja A4, para pegar en el refrigerador, también en PDF)",
+  "{a}〜{b}年": "Años {a}–{b}",
+  "市の公式のごみ収集日一覧表（令和8年度）を AI が表の見た目のまま読み取ったもの。日付の曜日がそろっているかを PC で確かめました。祝日や年末年始は変わることがあるので、市の一覧表で確かめてください": "Lectura hecha por una IA, conservando el aspecto de la tabla, de la tabla oficial de días de recogida de basura de la ciudad (año fiscal 8 de Reiwa). Se comprobó en un PC que los días de la semana coincidieran con las fechas. Los festivos y el fin de año y Año Nuevo pueden cambiar, así que confírmelo en la tabla de la ciudad",
+  "割合は、町・字ごとの割合に人数（世帯の割合は世帯の数）で重みをつけて合わせた、めやすです。": "Los porcentajes son una estimación que combina los porcentajes de cada barrio o zona (chō/aza), ponderados por el número de habitantes (en el caso de los porcentajes de hogares, por el número de hogares).",
+  "一部の数字は、住む人が少ないため国勢調査で隠されています。": "Algunas cifras están ocultas en el censo debido a la escasa población.",
+  "合わせた町・字：{p}": "Barrios o zonas (chō/aza) combinados: {p}",
+  "全国の市区町村 {n} と比べています。": "Se compara con {n} municipios de todo el país.",
+  "ごみを出す日（地区ごとの曜日）": "Días de recogida de basura (según el día de la semana de cada distrito)",
+  "防災計画の、町・字に関係する所": "Partes del plan de prevención de desastres relacionadas con el pueblo y sus sectores (aza)"
  }
 }

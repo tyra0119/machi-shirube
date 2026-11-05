@@ -15,7 +15,7 @@ const getData = (url) => {
 };
 // 避難場所の想定収容人数：町の表の人数は屋内と屋外（校庭や広場）の合計のことがある。建物の中の人数が分かれば添える（scripts/build-shelter-inside.mjs）
 const KIND_LABEL = { 内水: "内水（下水があふれる）" };
-const capText = (p) => `${T("受け入れの人数")} ${esc(String(p.capacity ?? "").replace(/\d{4,}/g, (n) => Number(n).toLocaleString("ja-JP")))}${p.inside != null ? `（${T("建物の中")} ${Number(p.inside).toLocaleString("ja-JP")}${T("人")}）` : `（${T("屋外の広場などを含むことがあります")}）`}`;
+const capText = (p) => `${T("受け入れの人数")} ${esc(String(p.capacity ?? "").replace(/\d{4,}/g, (n) => Number(n).toLocaleString("ja-JP")))}${p.inside != null ? `（${T("建物の中")} ${Number(p.inside).toLocaleString("ja-JP")}${LANG ? " " : ""}${T("人")}）` : `（${T("屋外の広場などを含むことがあります")}）`}`;
 // Google マップで、選んだ場所から避難場所までの歩く道を開く（画面と同じ出発地にするため、選んだ場所も渡す。
 // ボタンを押したときだけ Google マップに渡る、と画面に書いている。作者「場所は送りたいな。じゃないと画面と違う経路になってしまう」）
 const gmapWalk = ([lon, lat], from) => `https://www.google.com/maps/dir/?api=1${from ? `&origin=${from[1].toFixed(5)},${from[0].toFixed(5)}` : ""}&destination=${lat},${lon}&travelmode=walking`;
@@ -236,7 +236,7 @@ async function showFloodPop(code, part) {
       <h3 class="sub">${esc(T(kind === "土砂" ? "土砂災害警戒区域" : kind))}</h3>
       <p class="fp-head"><strong>${T("約")} ${n(k.people)} ${T("人")}</strong>（${T("町の人の")} ${k.rate}%）${k.over65 ? `<span>${T("うち65歳以上")} ${T("約")} ${n(k.over65)} ${T("人")}</span>` : ""}</p>
       ${part ? `<p class="fp-here">${esc(part.properties.name)}：${here ? `${T("約")} ${here.rate}%（${T("約")} ${n(here.people)} ${T("人")}）` : T("想定の区域に住む人は、ほとんどいません")}</p>` : ""}
-      <ul class="fp-depth">${Object.entries(k.byDepth).map(([label, v]) => `<li><span class="l">${esc(label)}</span><span class="bar"><i style="width:${(v / max) * 100}%;background:${depthColor(label)}"></i></span><span class="v">${n(v)}</span></li>`).join("")}</ul>
+      <ul class="fp-depth">${Object.entries(k.byDepth).map(([label, v]) => `<li><span class="l">${esc(T(label))}</span><span class="bar"><i style="width:${(v / max) * 100}%;background:${depthColor(label)}"></i></span><span class="v">${n(v)}</span></li>`).join("")}</ul>
     </div>`;
   }).join("");
   $("floodpop-note").innerHTML = `${esc(T(d.note))}${KU()}${T("想定は最大の規模のもので、必ずこうなるという意味ではありません。")}${d.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(s.title)}</a>`).join("・")}`;
@@ -373,7 +373,7 @@ async function showLore(code) {
   $("lore-block").hidden = false;
   const card = (x) => `<li>
     <p class="lore-name">${icon("doc")}<strong>${esc(x.name)}</strong></p>
-    <p class="lore-dis">${esc(x.disaster)}${x.kind ? `<span class="tag">${esc(x.kind)}</span>` : ""}</p>
+    <p class="lore-dis">${esc(x.disaster)}${x.kind ? `<span class="tag">${esc(T(x.kind))}</span>` : ""}</p>
     ${x.text ? `<p class="lore-text">${esc(x.text)}</p>` : ""}
     <p class="lore-at">${icon("pin")}${x.muniName ? `${esc(x.muniName)}（${T("町の真ん中から約")} ${x.km} km）・` : ""}${esc(x.address)}${x.image ? `・<a href="${esc(x.image)}" target="_blank" rel="noopener">${T("碑の写真")}</a>` : ""}</p>
   </li>`;
@@ -546,7 +546,9 @@ async function showAccidents(code, part) {
   if (!d?.total) return;
   $("acc-block").hidden = false;
   const n = (v) => v.toLocaleString("ja-JP");
-  const yrs = `${d.years[0]}〜${d.years.at(-1)}${T("年")}`;
+  // 年の幅は1つの句として訳す（「年」だけを訳すと、ポルトガル語で「2022〜2024Ano」になった）
+  const yrs0 = TN("{a}〜{b}年", { a: d.years[0], b: d.years.at(-1) });
+  const yrs = LANG && LANG !== "ja" && LANG !== "easy" && /年/.test(yrs0) ? `${d.years[0]}–${d.years.at(-1)}` : yrs0; // 訳が無い言葉では数だけ
   const here = part && d.parts[part.properties.part];
   $("acc-stats").innerHTML = [
     [T("人身事故"), `${n(d.total)} ${T("件")}`, `${yrs}・${T("死亡事故")} ${d.dead}`],
@@ -1318,7 +1320,7 @@ async function showAsk(code, partKey) {
   const uniq = list.filter((x) => (seen.has(x.q) ? false : seen.add(x.q)));
   if (!uniq.length) return;
   $("ask-block").hidden = false;
-  $("ask-list").innerHTML = uniq.map((x) => `<li>${icon("search")}<span><strong>${esc(T(yardstick.questions.find((y) => y.id === x.qid)?.short ?? x.q.slice(0, 20)))}</strong>${x.why ? `<small>${esc(x.why)}</small>` : ""}<a class="ask-tell" href="${esc(askHref(yardstick.questions.find((y) => y.id === x.qid)?.short ?? x.q.slice(0, 40)))}" target="_blank" rel="noopener">${T("知っていたら教える")}</a></span></li>`).join("");
+  $("ask-list").innerHTML = uniq.map((x) => `<li>${icon("search")}<span><strong>${esc(T(yardstick.questions.find((y) => y.id === x.qid)?.short ?? x.q.slice(0, 20)))}</strong>${x.why && (!LANG || LANG === "ja" || T(x.why) !== x.why) ? `<small>${esc(T(x.why))}</small>` : ""}<a class="ask-tell" href="${esc(askHref(yardstick.questions.find((y) => y.id === x.qid)?.short ?? x.q.slice(0, 40)))}" target="_blank" rel="noopener">${T("知っていたら教える")}</a></span></li>`).join("");
 }
 
 // ごみを出す日：町の公式の収集日の表から読み取った地区ごとの曜日（site/data/gomi-days/{コード}.json）。
@@ -1577,7 +1579,7 @@ async function main() {
     [muniName, `./?muni=${code}&towns`],
     [title, null],
   ]);
-  if (chosen.length > 1) $("parts").textContent = `合わせた町・字：${chosen.map((f) => f.properties.name).join("、")}`;
+  if (chosen.length > 1) $("parts").textContent = TN("合わせた町・字：{p}", { p: chosen.map((f) => f.properties.name).join("、") });
 
   // 数字：人口と世帯は足し算、割合は人数（世帯の数）で重みをつけて合わせる（めやす）
   const list = chosen.map((f) => f.properties);
@@ -1593,11 +1595,11 @@ async function main() {
     // 市の町・字の中でどのあたりか（types.js の placeWords）
     const mid = [...others].sort((a, b) => a - b)[Math.floor(others.length / 2)];
     const place = list.length === 1 ? placeWords(others.filter((x) => x > v).length + 1, others.length, mid == null ? null : pct(mid), muniName) : "";
-    rows.push(`<li><span class="label">${label}</span><span class="value">${pct(v)}</span>${place ? `<span class="place">${place}</span>` : ""}</li>`);
+    rows.push(`<li><span class="label">${esc(T(label))}</span><span class="value">${pct(v)}</span>${place ? `<span class="place">${place}</span>` : ""}</li>`);
   }
   $("features").innerHTML = rows.join("");
-  $("feature-note").textContent = (list.length > 1 ? "割合は、町・字ごとの割合に人数（世帯の割合は世帯の数）で重みをつけて合わせた、めやすです。" : "")
-    + (list.some((p) => p.ageHidden || p.foreignHidden || p.householdHidden) ? "一部の数字は、住む人が少ないため国勢調査で隠されています。" : "");
+  $("feature-note").textContent = (list.length > 1 ? T("割合は、町・字ごとの割合に人数（世帯の割合は世帯の数）で重みをつけて合わせた、めやすです。") : "")
+    + (list.some((p) => p.ageHidden || p.foreignHidden || p.householdHidden) ? T("一部の数字は、住む人が少ないため国勢調査で隠されています。") : "");
 
   await showTypes(code, stats, `いまは${muniName}全体の数字から選んだ候補です。この町・字の深い調べは、町を調べるときに。`);
   showToday(code, centerOf(chosen));
@@ -1622,9 +1624,9 @@ async function muniPage(code, stats) {
     const mid = stats.summary[m]?.median;
     const place = placeWords(t.rank[m], stats.total ?? Object.values(stats.towns).filter((x) => !x.ward).length, mid == null ? null : `${mid.toFixed(1)}%`);
     const v = t[m];
-    return `<li><span class="label">${label}</span><span class="value">${/change/i.test(m) && v > 0 ? "+" : ""}${pct(v)}</span><span class="place">${place}</span></li>`;
+    return `<li><span class="label">${esc(T(label))}</span><span class="value">${/change/i.test(m) && v > 0 ? "+" : ""}${pct(v)}</span><span class="place">${place}</span></li>`;
   }).join("");
-  $("feature-note").textContent = `全国の市区町村 ${stats.peers.toLocaleString("ja-JP")} と比べています。`;
+  $("feature-note").textContent = TN("全国の市区町村 {n} と比べています。", { n: stats.peers.toLocaleString("ja-JP") });
   await showTypes(code, stats, "");
   const at = await muniPoint(code);
   showToday(code, at);
