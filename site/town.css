@@ -837,3 +837,13 @@ ruby rt { font-size: 0.55em; font-weight: 400; letter-spacing: 0; }
   :root:not([data-theme="light"]) .temp-strip li.frost { background: hsl(205 35% 20%); }
   :root:not([data-theme="light"]) .temp-strip li.hot { background: #3a2e14; }
 }
+/* ブラウザの「印刷」を押したとき：下のメニュー・ページの札・地図のボタン・共有は出さない。地図は紙に白い四角で出るので出さない。
+   たたんだ欄はたたんだまま（見出しと要点だけ。開くと紙が何十枚にもなる）。いちばん上に、A4 1枚のくらしのメモがあることを書く（町のページは長い） */
+@media print {
+  .town-tabs, .town-bottom, .share-row, #share, .maplibregl-map, .hinan-map, .map-buttons, .all-pages-dialog, .lang-pick, .here-btn, .memo-link { display: none !important; }
+  body, .block { background: #fff !important; color: #000 !important; box-shadow: none !important; }
+  .block { break-inside: avoid-page; border: 1px solid #999; }
+  .lang-other .town-head::after { content: none; }
+  .town-head::after { content: "印刷するなら「くらしのメモ」（A4 1枚。今日のページの下）が見やすいです"; display: block; margin: 6px 0; font-size: 12px; }
+  a { color: #000 !important; }
+}
