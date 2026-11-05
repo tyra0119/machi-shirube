@@ -1038,7 +1038,8 @@ function search() {
   cands ??= candidates().map((c) => ({ ...c, n: normalize(c.name), s: normalize(c.sub) }));
   // かな・ローマ字の形（ひらがなだけ、ローマ字だけの入力のときに使う）
   const qk = /^[ぁ-ゖー]+$/.test(kanaOf(q)) ? kanaOf(q) : "";
-  const qr = /^[a-zA-Z\s'-]+$/.test(q) ? romaOf(q) : "";
+  // ローマ字は長音の記号（ō・ū）を外して見る
+  const qr = /^[a-zA-Z\s'-]+$/.test(q.normalize("NFD").replace(/[̀-ͯ]/g, "")) ? romaOf(q) : "";
   const pos = (c) => {
     const ats = [c.n.indexOf(q), qk && c.k ? c.k.indexOf(qk) : -1, qr && c.r ? c.r.indexOf(qr) : -1].filter((x) => x >= 0);
     return ats.length ? Math.min(...ats) : -1;
@@ -1050,9 +1051,15 @@ function search() {
     .sort((a, b) => (a.at < 0) - (b.at < 0) || (a.at !== 0) - (b.at !== 0) || (a.c.kind ?? 2) - (b.c.kind ?? 2) || a.c.name.length - b.c.name.length)
     .slice(0, 8)
     .map((x) => x.c);
+  // 「黒潮町入野」「黒潮町 入野」：市区町村の名前のあとに町・字の名前が続くときは、その市区町村の町・字から探す
+  if (!found.length) {
+    const muni = cands.filter((c) => c.kind === 0 && c.n.length >= 2 && q.startsWith(c.n)).sort((a, b) => b.n.length - a.n.length)[0];
+    const rest = muni ? q.slice(muni.n.length) : "";
+    if (rest) found = cands.filter((c) => c.kind == null && c.s.includes(muni.n) && c.n.includes(rest)).sort((a, b) => (a.n.indexOf(rest) !== 0) - (b.n.indexOf(rest) !== 0) || a.name.length - b.name.length).slice(0, 8);
+  }
   results.innerHTML = found.length
     ? found.map((c, i) => `<li role="option" id="r${i}"><button type="button" data-i="${i}"><span class="name">${c.name}</span><span class="sub">${c.sub}</span></button></li>`).join("")
-    : `<li class="none">見つかりません。市区町村の名前（かな・ローマ字でも）か、町・字の名前で探せます</li>`;
+    : townNames == null ? `<li class="none">読み込んでいます…</li>` : `<li class="none">見つかりません。市区町村の名前（かな・ローマ字でも）か、町・字の名前で探せます</li>`;
   results.hidden = false;
   searchBox.setAttribute("aria-expanded", "true");
 }
