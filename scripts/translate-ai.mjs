@@ -7,6 +7,7 @@ import fs from "node:fs";
 import Anthropic from "@anthropic-ai/sdk";
 import { record, spent, japanDay, DAILY_LIMIT_USD, TOTAL_LIMIT_USD } from "../src/cost.mjs";
 import { LANGS, checkLang } from "./translate.mjs";
+import { splitTranslations } from "./split-translations.mjs";
 
 const MODEL = "claude-sonnet-5-5";
 const read = (f) => (fs.existsSync(f) ? JSON.parse(fs.readFileSync(f, "utf8")) : null);
@@ -100,6 +101,7 @@ export async function translateAI(code, langs = Object.keys(LANGS), log = consol
   }));
   fs.mkdirSync("site/data/translations", { recursive: true });
   fs.writeFileSync(file, JSON.stringify(out, null, 1));
+  splitTranslations(code); // 言葉ごとの小さなファイル
   log(`できました：${file}（$${usd.toFixed(3)}）`);
   return { usd };
 }

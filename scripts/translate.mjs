@@ -7,6 +7,7 @@ import fs from "node:fs";
 import Anthropic from "@anthropic-ai/sdk";
 import { record, spent, japanDay, DAILY_LIMIT_USD, TOTAL_LIMIT_USD } from "../src/cost.mjs";
 import * as ledger from "./ledger.mjs";
+import { splitTranslations } from "./split-translations.mjs";
 
 const MODEL = "claude-sonnet-5-5";
 const CHECKER = "claude-haiku-5-5";
@@ -98,6 +99,7 @@ export async function recheckTown(code, log = console.log) {
     }
   }
   fs.writeFileSync(file, JSON.stringify(t, null, 1));
+  splitTranslations(code);
   ledger.exportPublic();
   log(`やり直しました（${usd.toFixed(3)}）`);
 }
@@ -178,6 +180,7 @@ export async function translateTown(code, langs = ["pt", "es", "en", "easy"], lo
   const prev = fs.existsSync(file) ? JSON.parse(fs.readFileSync(file, "utf8")) : null;
   if (prev?.langs) out.langs = { ...prev.langs, ...out.langs };
   fs.writeFileSync(file, JSON.stringify(out, null, 1));
+  splitTranslations(code); // 言葉ごとの小さなファイル（町のページをほかの言葉で見るとき読む）
   // 町の分だけの小さなファイル（scripts/build-muni.mjs）の「訳のある言葉の一覧」も合わせる
   const muniFile = `site/data/muni/${code}.json`;
   if (fs.existsSync(muniFile)) {

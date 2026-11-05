@@ -5,6 +5,7 @@
 // - site/data/review.json：公開の確かめる一覧（件数・理由・出典の URL だけ。元の文は入れない）
 import fs from "node:fs";
 import path from "node:path";
+import { splitTranslations } from "./split-translations.mjs";
 
 const DIR = "local/ledger";
 const ITEMS = `${DIR}/items.json`;
@@ -310,7 +311,7 @@ export function exportPublic(data = load()) {
         const it = x.ledgerId && data.items.find((i) => i.id === x.ledgerId);
         if (it && x.status !== it.status) { x.status = it.status; changed = true; }
       }
-      if (changed) fs.writeFileSync(`${tdir}/${f}`, JSON.stringify(t, null, 1));
+      if (changed) { fs.writeFileSync(`${tdir}/${f}`, JSON.stringify(t, null, 1)); splitTranslations(f.slice(0, 5)); } // 言葉ごとの小さなファイルも合わせる
     }
   }
   const dir = "site/data/answers";

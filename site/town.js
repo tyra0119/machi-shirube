@@ -13,6 +13,8 @@ const getData = (url) => {
   if (!dataCache.has(url)) dataCache.set(url, fetch(url).then((r) => (r.ok ? r.json() : null)).catch(() => null));
   return dataCache.get(url).then((d) => (d == null ? null : structuredClone(d)));
 };
+// 訳のファイル：ほかの言葉で見ているときは、その言葉の分だけの小さなファイルを読む（全部の言葉の入ったファイルは 1MB ほどある。scripts/split-translations.mjs）。無ければ全部の入ったファイル
+const trData = async (code, ai = "") => (LANG && (await getData(`data/translations/${code}${ai}.${LANG}.json`))) || getData(`data/translations/${code}${ai}.json`);
 // 避難場所の想定収容人数：町の表の人数は屋内と屋外（校庭や広場）の合計のことがある。建物の中の人数が分かれば添える（scripts/build-shelter-inside.mjs）
 const KIND_LABEL = { 内水: "内水（下水があふれる）" };
 const capText = (p) => `${T("受け入れの人数")} ${esc(String(p.capacity ?? "").replace(/\d{4,}/g, (n) => Number(n).toLocaleString("ja-JP")))}${p.inside != null ? `（${T("建物の中")} ${Number(p.inside).toLocaleString("ja-JP")}${LANG ? " " : ""}${T("人")}）` : `（${T("屋外の広場などを含むことがあります")}）`}`;
@@ -204,7 +206,7 @@ async function showTypes(code, stats, scopeNote) {
     const yard = (await getJSON("data/yardstick.json")).questions;
     const found = (qid) => { const a = ans.find((x) => x.qid === qid && x.value !== "見つからなかった"); const q = yard.find((x) => x.id === qid); return a && q ? q : null; };
     // ほかの言葉では、答えの訳の見出しを使う（訳が無ければ見出しを付けない）
-    const trItems = LANG ? (await getData(`data/translations/${code}.json`))?.langs?.[LANG]?.items ?? [] : [];
+    const trItems = LANG ? (await trData(code))?.langs?.[LANG]?.items ?? [] : [];
     const askShort = (q) => (LANG ? trItems.find((x) => x.qid === q.id && (x.status === "auto" || x.status === "ok"))?.short : q.short);
     // 住む人の目線で：見出しは「この町の、こんな人へ」。先に人と「町の支援を見る」、壁と数を使った理由は「くわしく」の中
     // （作者「今日のページに『この町で、暮らしの情報が届きにくいのは』を表示するのは自然？」→「その案で直して。町のページを見るのは住民なので、その想定で」）
@@ -247,7 +249,7 @@ const depthColor = (label) => { const c = DEPTH_COLORS.find(([, l]) => l === lab
 let aiTrCache;
 async function aiTr(code, kind, createdAt) {
   if (!LANG) return null;
-  aiTrCache ??= getData(`data/translations/${code}-ai.json`);
+  aiTrCache ??= trData(code, "-ai");
   const t = await aiTrCache;
   const x = t?.made?.[kind] === createdAt && t.langs?.[LANG]?.texts;
   return x ? (id, ja) => (x[id] ? seireki(x[id], LANG) : ja) : null;
@@ -255,14 +257,14 @@ async function aiTr(code, kind, createdAt) {
 // このごみは何ごみ？の辞書の訳（もとの文 → 訳。確かめの通ったものだけ。scripts/translate-ai.mjs の w0, w1 …）
 async function aiTrGomiDict(code, createdAt) {
   if (!LANG) return null;
-  aiTrCache ??= getData(`data/translations/${code}-ai.json`);
+  aiTrCache ??= trData(code, "-ai");
   const t = await aiTrCache;
   return t?.made?.gomidict === createdAt ? t.langs?.[LANG]?.gomiDict ?? null : null;
 }
 // ごみを出す日の文の訳（もとの文 → 訳。確かめの通ったものだけ）
 async function aiTrGomi(code, createdAt) {
   if (!LANG) return null;
-  aiTrCache ??= getData(`data/translations/${code}-ai.json`);
+  aiTrCache ??= trData(code, "-ai");
   const t = await aiTrCache;
   return t?.made?.gomi === createdAt ? t.langs?.[LANG]?.gomi ?? null : null;
 }
@@ -866,7 +868,7 @@ async function showAnswers(code, scopeNote, partKey, partName) {
   const answers = [...partAnswers, ...muniAnswers];
   // ほかの言葉のときは、訳があり確かめられた答えをその言葉で出す（無いものは日本語のまま）
   if (LANG) {
-    const tr = await getData(`data/translations/${code}.json`);
+    const tr = await trData(code);
     for (const a of answers) {
       const x = tr?.langs?.[LANG]?.items.find((i) => i.qid === a.qid && (i.status === "auto" || i.status === "ok") && i.original === a.value);
       if (x) Object.assign(a, { valueJa: a.value, value: seireki(x.text, LANG), translated: true, shortT: x.short });
@@ -1190,7 +1192,7 @@ async function showLangGap(code) {
 // 訳のある言葉の一覧。日本語で見ているときは、町の分だけの小さなファイルの一覧で足りる（訳そのもの 0.8MB を読まない）
 async function trLangs(code) {
   if (!LANG && MUNI?.code === code && MUNI.langs !== undefined) return MUNI.langs ? { langs: MUNI.langs } : null;
-  return getData(`data/translations/${code}.json`);
+  return trData(code);
 }
 // 母語で防災：Claude が訳し、別の Claude が訳し戻して確かめた訳（site/data/translations/{コード}.json）。
 // 確かめで意味がずれた訳は、人が OK するまで出さず、もとの日本語を出す
