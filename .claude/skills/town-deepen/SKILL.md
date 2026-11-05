@@ -30,7 +30,7 @@ description: まちしるべで、1つの市区町村を深く調べて町のペ
    - ごみを出す日：`npm run gomi-days -- <コード>`（1町 約$0.5）
    - バスの便利さ：`scripts/build-bus.mjs` の `FEEDS` に GTFS を足してから `npm run build:bus -- <コード>`（GTFS データリポジトリ https://gtfs-data.jp/ で探す。ライセンスを確かめる）
 5. **外国の住民が多い町は訳す**：`npm run translate -- <コード> pt,es,en,easy,id,ne,vi` と `npm run i18n -- <言葉>`。訳し戻してずれたものは確かめる一覧へ。AI が作った文（見立て・ひとこと・数から、できることへ）は `npm run translate-ai -- <コード> <言葉>`（作り直したら訳し直す）
-6. **公開のファイルを書き出す**：交通事故・これからの人口を作り直したら `npm run build:summary`
+6. **公開のファイルを書き出す**：交通事故・これからの人口を作り直したら `npm run build:summary`。どの町でも最後に `npm run build:muni`（町ごとの小さなファイルの「ある物の一覧」と訳のある言葉を合わせる。浅い町のファイルの一覧のままだと、町のページが新しいデータを読みに行かないことがある）
 
 ## 確かめてからコミット
 

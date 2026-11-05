@@ -9,7 +9,13 @@ let MUNI = null;
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 // データのファイルを読む（同じファイルは1回だけ読み、使うたびに写しを渡す。読んだあとに書きかえる所があるので、写しにして混ざらないように）
 const dataCache = new Map();
+// 町ごとの小さなファイルの「ある物の一覧」（scripts/build-muni.mjs）で、この町に無いと分かっているものは読みに行かない
+const knownMissing = (url) => {
+  const m = url.match(/^data\/([a-z-]+)\/(\d{5})\.json$/);
+  return !!(m && MUNI?.files && MUNI.code === m[2] && MUNI.files.dirs.includes(m[1]) && !MUNI.files.have.includes(m[1]));
+};
 const getData = (url) => {
+  if (knownMissing(url)) return Promise.resolve(null);
   if (!dataCache.has(url)) dataCache.set(url, fetch(url).then((r) => (r.ok ? r.json() : null)).catch(() => null));
   return dataCache.get(url).then((d) => (d == null ? null : structuredClone(d)));
 };
@@ -595,7 +601,7 @@ async function showAccidents(code, part) {
 // 町からのお知らせ：町の公式サイトの新着の見出しと、広報紙の最新号（scripts/news.mjs で取ったもの。見出し・日付・リンクだけ）。
 // 毎日・毎月開く理由になる（作者「上2つやって」）
 async function showNews(code) {
-  const d = await fetch(`data/news/${code}.json`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const d = await getData(`data/news/${code}.json`);
   if (!d || (!d.news && !d.koho)) return;
   $("news-block").hidden = false;
   const md = (s) => (s ? `${Number(s.slice(5, 7))}/${Number(s.slice(8, 10))}` : "");
@@ -889,7 +895,7 @@ let yardstick = { questions: [] };
 let answersByPage = {};
 // 町・字のページ（partKey＝{コード}-{番号}）では、その町・字について調べた答えを先に、市区町村全体の答えをあとに出す
 async function showAnswers(code, scopeNote, partKey, partName) {
-  const load = (k) => fetch(`data/answers/${k}.json`).then((r) => (r.ok ? r.json() : { answers: [] })).then((d) => d.answers).catch(() => []);
+  const load = (k) => getData(`data/answers/${k}.json`).then((d) => d?.answers ?? []);
   const [muniAnswers, partAnswers] = await Promise.all([load(code), partKey ? load(partKey) : []]);
   for (const a of partAnswers) a.level = partName;
   const answers = [...partAnswers, ...muniAnswers];
@@ -1046,7 +1052,7 @@ async function showToday(code, at) {
 async function showMedical(code, center) {
   const m = await loadMedical(code);
   if (!m) {
-    const text = /0$/.test(code) && !(await fetch(`data/towns/${code}.json`).then((r) => r.ok).catch(() => false)) ? "区ごとのページで見られます" : "この市区町村の病院のデータはまだありません";
+    const text = /0$/.test(code) && !(knownMissing(`data/towns/${code}.json`) ? false : await fetch(`data/towns/${code}.json`).then((r) => r.ok).catch(() => false)) ? "区ごとのページで見られます" : "この市区町村の病院のデータはまだありません";
     $("med").innerHTML = `<p class="note">${T(text)}${LANG && LANG !== "easy" ? "" : "。"}</p>`;
     medicalRow = `<li><a href="#iryo"><span class="k">${icon("hospital")}${T("病院")}</span><span class="v later">${T(text)}</span></a></li>`;
     return;
@@ -1588,7 +1594,10 @@ async function main() {
   if (q.has("lang")) remember.set("lang", q.get("lang") === "ja" ? "" : q.get("lang"));
   if (await setLang(q.get("lang") ?? remember.get("lang"))) { renderTabs(); translateDom(); }
   const codeOf = q.get("muni") ?? q.get("town")?.split("-")[0] ?? (q.get("area") ? (await getJSON("data/areas.json")).areas.find((a) => a.id === q.get("area"))?.muni : null);
-  MUNI = codeOf ? await getData(`data/muni/${codeOf}.json`) : null;
+  // 確かめた答えがあるか（あとから深く調べた町）も同時に読む。あれば「ある物の一覧」は古いので使わない（新しいデータが隠れないように）
+  const [muni0, ans0] = codeOf ? await Promise.all([getData(`data/muni/${codeOf}.json`), getData(`data/answers/${codeOf}.json`)]) : [null, null];
+  MUNI = muni0;
+  if (MUNI && ans0) MUNI.files = null;
   const stats = MUNI?.stats ?? (await getJSON("data/stats.json"));
   if (q.get("muni")) return muniPage(q.get("muni"), stats);
 
@@ -1718,7 +1727,7 @@ function sources(list, code) {
     `<li><a href="${esc(d.source.url)}" target="_blank" rel="noopener">${esc(d.source.title)}</a>（${esc(d.source.license)}・${esc(d.source.fetchedAt)} に取得）を加工（わが家の避難）</li>`)).catch(() => {});
   getData(`data/shelter-list/${code}.json`).then((d) => d && $("sources").insertAdjacentHTML("beforeend",
     `<li><a href="${esc(d.source.url)}" target="_blank" rel="noopener">${esc(d.source.title)}</a>（${esc(d.source.asOf)}）の表を AI が読み取り、資料の文字と照らした（避難施設）</li>`)).catch(() => {});
-  fetch(`data/sources/${code}.json`).then((r) => (r.ok ? r.json() : null)).then((d) => {
+  getData(`data/sources/${code}.json`).then((d) => {
     if (!d?.cards?.length) return;
     // 取り消したカードは出さない
     $("sources").insertAdjacentHTML("beforeend", d.cards.filter((c) => c.status === "ok").map((c) =>

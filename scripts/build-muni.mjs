@@ -29,6 +29,12 @@ const futureTotal = Object.keys(future.towns).length;
 const futureRank = (code) => Object.values(future.towns).filter((x) => ratio(x.pop) > ratio(future.towns[code].pop)).length + 1;
 
 fs.mkdirSync("site/data/muni", { recursive: true });
+// 町ごとのデータの置き場（site/data/{置き場}/{コード}.json）。町のページは、ここにあってこの町に無いものを読みに行かない
+// （浅い町では 20 ほどのファイルが無く、そのたびに GitHub Pages の 404 のページ〈約 9KB〉が返っていた）。
+// aed は置き場ごとまだ無い（CSV のある町が無かった）が、町のページが読みに行くので入れる。ここに無い新しい置き場は、これまでどおり読みに行く
+const NOT_TOWN = new Set(["i18n", "muni", "translations"]);
+const DIRS = [...fs.readdirSync("site/data", { withFileTypes: true }).filter((x) => x.isDirectory() && !NOT_TOWN.has(x.name)).map((x) => x.name), "aed"];
+const dirFiles = new Map(DIRS.map((d) => [d, new Set(fs.existsSync(`site/data/${d}`) ? fs.readdirSync(`site/data/${d}`) : [])]));
 let n = 0;
 for (const [code, t] of Object.entries(stats.towns)) {
   // 政令市まるごと（例 14100）は、同じ市の区も入れる（届きにくい人の候補・天気の地域で使う）
@@ -45,6 +51,8 @@ for (const [code, t] of Object.entries(stats.towns)) {
     jma: near(jma),
     // 訳のある言葉の一覧（名前だけ。訳そのものは data/translations/{コード}.json）。訳を作り直したら、これも作り直す
     langs: fs.existsSync(`site/data/translations/${code}.json`) ? Object.fromEntries(Object.entries(read(`site/data/translations/${code}.json`).langs).map(([k, l]) => [k, { name: l.name, ja: l.ja, items: [] }])) : null,
+    // ある物の一覧（深く調べた町は、日々データが増えるので入れない。町のページは全部読みに行く）
+    files: dirFiles.get("answers").has(`${code}.json`) ? null : { dirs: DIRS, have: DIRS.filter((d) => dirFiles.get(d).has(`${code}.json`)) },
   };
   fs.writeFileSync(`site/data/muni/${code}.json`, JSON.stringify(out));
   n++;

@@ -26,7 +26,8 @@ const MONDAY_FIRST = ["月", "火", "水", "木", "金", "土", "日"];
 
 async function loadMedical(code) {
   const [res, hol] = await Promise.all([
-    fetch(`data/iryo/${code}.json`).catch(() => null),
+    // 町の分だけの小さなファイルで、病院のデータが無いと分かっている町は読みに行かない（town.js の knownMissing）
+    typeof knownMissing === "function" && knownMissing(`data/iryo/${code}.json`) ? null : fetch(`data/iryo/${code}.json`).catch(() => null),
     fetch("data/holidays.json").then((r) => r.json()).catch(() => ({ holidays: {} })),
   ]);
   if (!res?.ok) return null;
