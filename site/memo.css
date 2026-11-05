@@ -36,8 +36,9 @@ footer p { margin: 0 0 4px; }
 
 /* 画面の上で選ぶ（印刷には出ない） */
 .picks { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 16px; width: 100%; }
-.picks label { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; }
-.picks select { min-height: 40px; padding: 0 8px; border: 1px solid #999; border-radius: 8px; font-size: 15px; }
+.picks label { display: inline-flex; align-items: center; gap: 6px; font-size: 14px; max-width: 100%; }
+.picks select { min-height: 40px; padding: 0 8px; border: 1px solid #999; border-radius: 8px; font-size: 15px; min-width: 0; max-width: 100%; }
+/* ごみの地区の長い名前（「大方 月・木の組（灘・伊田浦・伊田郷ほか）」）で選ぶ箱が広がり、細いスマホで画面が横に動いていた */
 /* まず電話：確かめ済みの答えにある番号（2列） */
 .tels { display: grid; grid-template-columns: 1fr 1fr; gap: 2px 16px; margin: 6px 0 0; padding: 0; list-style: none; }
 .tels li { display: flex; justify-content: space-between; gap: 8px; margin: 0; padding: 2px 0; border-bottom: 1px solid #bbb; font-size: 10.5pt; }
