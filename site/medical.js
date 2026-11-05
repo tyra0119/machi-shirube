@@ -4,9 +4,9 @@ const TT = (s) => (typeof T === "function" ? T(s) : s);
 // 病院の電話：国の医療情報ネットのオープンデータには電話番号の列が無いので、名前と住所で Google マップを開く（電話番号と道が見られる）。
 // 押したときだけ、名前と住所を Google に渡す（わが家の避難の「Google マップで歩く道を見る」と同じ）
 // 休みの日の並び（「1月1日 1月2日 1月3日 12月29日 12月30日 12月31日」）を、続いた日でまとめる（「12/29〜1/3」）。
-// 日付だけの並びでないときは、そのまま出す
+// 日付だけの並びでないときは、そのまま出す。「01月01日，01月02日」のように「，」「、」で区切ったものも同じにまとめる
 function shortDays(s) {
-  const ds = String(s ?? "").trim().split(/\s+/).map((x) => x.match(/^(\d{1,2})月(\d{1,2})日$/));
+  const ds = String(s ?? "").normalize("NFKC").trim().split(/[\s,、]+/).filter(Boolean).map((x) => x.match(/^(\d{1,2})月(\d{1,2})日$/));
   if (!ds.length || ds.some((m) => !m)) return s;
   const md = ds.map((m) => [Number(m[1]), Number(m[2])]).sort((a, b) => a[0] - b[0] || a[1] - b[1]);
   const next = ([m, d]) => { const t = new Date(2001, m - 1, d + 1); return [t.getMonth() + 1, t.getDate()]; };
@@ -103,7 +103,7 @@ function medicalHTML(m, offset, center, esc, filter = "", limit = 5) {
     <ul class="med-list">${shown.map((x) => `
       <li${x.openNow ? ` class="open"` : ""}>
         <span class="n">${icon(x.f.k === "病院" ? "hospital" : "medical")}${x.f.u ? `<a href="${esc(x.f.u)}" target="_blank" rel="noopener">${esc(x.f.n)}</a>` : esc(x.f.n)}<small>${esc(TT(x.f.k))}</small>${x.openNow ? `<em>${TT("いま開いている")}</em>` : ""}</span>
-        <span class="h">${x.h.map(([s, e]) => `${hhmm(s)}–${hhmm(e)}`).join("、")}${x.m != null ? `・まっすぐ ${x.m >= 1000 ? `${(x.m / 1000).toFixed(1)}km` : `${x.m}m`}` : ""}</span>
+        <span class="h">${x.h.map(([s, e]) => `${hhmm(s)}–${hhmm(e)}`).join("、")}${x.m != null ? `・${typeof TN === "function" ? TN("まっすぐ {d}", { d: x.m >= 1000 ? `${(x.m / 1000).toFixed(1)}km` : `${x.m}m` }) : `まっすぐ ${x.m >= 1000 ? `${(x.m / 1000).toFixed(1)}km` : `${x.m}m`}`}` : ""}</span>
         ${x.f.s ? `<span class="s">${esc(x.f.s.slice(0, 6).map(TT).join("・"))}${x.f.s.length > 6 ? ` ${TT("ほか")} ${x.f.s.length - 6}` : ""}</span>` : ""}
         <span class="a">${esc(x.f.a)}${x.f.other ? `・${TT("休み")}：${esc(shortDays(x.f.other).slice(0, 80))}` : ""}</span>
         <a class="med-gmap" href="${esc(gmapPlace(x.f.n, x.f.a))}" target="_blank" rel="noopener">${icon("phone")}${TT("電話番号と道を Google マップで見る")}</a>

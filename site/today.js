@@ -151,5 +151,5 @@ function todayHTML(t, esc) {
     <div class="days">${t.days.map(dayCard).join("")}</div>
     <h3 class="sub">${icon("alert")} ${T("警報・注意報")}</h3>${warnHTML}
     <h3 class="sub">${icon("quake")} ${T("地震")}</h3>${quakeHTML}
-    <p class="cite">出典：気象庁ホームページ（天気予報・警報・注意報・地震情報。${esc(t.jma?.officeName ?? "")}${t.jma?.class10Name !== t.jma?.officeName ? esc(t.jma?.class10Name ?? "") : ""}）、天気の数値：Open-Meteo.com（CC BY 4.0）を加工。洗濯・服装は、まちしるべの決まりで出しためやすです。</p>`;
+    <p class="cite">${TN("出典：気象庁ホームページ（天気予報・警報・注意報・地震情報。{area}）、天気の数値：Open-Meteo.com（CC BY 4.0）を加工。洗濯・服装は、まちしるべの決まりで出しためやすです。", { area: `${esc(t.jma?.officeName ?? "")}${t.jma?.class10Name !== t.jma?.officeName ? esc(t.jma?.class10Name ?? "") : ""}` })}</p>`;
 }

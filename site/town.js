@@ -877,7 +877,7 @@ async function showHinan(code, townFeatures, startPart) {
     }
     const token = (setHere.token = (setHere.token ?? 0) + 1);
     calc(at, token);
-    $("hinan-note").innerHTML = TN("{from}から、{what}の近い順。", { from: esc(label), what: kind ? TN("{kind}のときに使える指定緊急避難場所", { kind: T(kind) }) : T("すべての指定緊急避難場所") })
+    $("hinan-note").innerHTML = TN("{from}から、{what}の近い順。", { from: esc(T(label)), what: kind ? TN("{kind}のときに使える指定緊急避難場所", { kind: T(kind) }) : T("すべての指定緊急避難場所") })
       + T("距離はまっすぐ測ったもので、坂や道の曲がりは考えていません。歩く時間は1分60m（お年寄りの歩く速さ）のめやすで、坂はまっすぐの線の上の上り下りから見積もったものです（道の坂とは違います）。海抜は地理院タイル（標高タイル）、浸水の深さは想定の地図の色から読んだめやすです。避難の判断は町の案内に従ってください。") + `<br>${T("出典")}：${esc(shelters.source.title)}（${esc(shelters.source.license)}・${shelters.source.updated ? `${esc(shelters.source.updated)} 更新のものを ` : ""}${esc(shelters.source.fetchedAt)} に取得）を加工`;
   }
   return true;
@@ -1047,8 +1047,8 @@ async function showMedical(code, center) {
   const m = await loadMedical(code);
   if (!m) {
     const text = /0$/.test(code) && !(await fetch(`data/towns/${code}.json`).then((r) => r.ok).catch(() => false)) ? "区ごとのページで見られます" : "この市区町村の病院のデータはまだありません";
-    $("med").innerHTML = `<p class="note">${text}。</p>`;
-    medicalRow = `<li><a href="#iryo"><span class="k">${icon("hospital")}${T("病院")}</span><span class="v later">${text}</span></a></li>`;
+    $("med").innerHTML = `<p class="note">${T(text)}${LANG && LANG !== "easy" ? "" : "。"}</p>`;
+    medicalRow = `<li><a href="#iryo"><span class="k">${icon("hospital")}${T("病院")}</span><span class="v later">${T(text)}</span></a></li>`;
     return;
   }
   let day = 0;
@@ -1625,7 +1625,7 @@ async function main() {
   // 数字：人口と世帯は足し算、割合は人数（世帯の数）で重みをつけて合わせる（めやす）
   const list = chosen.map((f) => f.properties);
   const sum = (k) => list.reduce((s, p) => s + (p[k] ?? 0), 0);
-  $("pop").textContent = sum("population") ? TN("人口 {n}人・{h}世帯", { n: sum("population").toLocaleString("ja-JP"), h: sum("households").toLocaleString("ja-JP") }) : "人の住んでいない町・字です";
+  $("pop").textContent = sum("population") ? TN("人口 {n}人・{h}世帯", { n: sum("population").toLocaleString("ja-JP"), h: sum("households").toLocaleString("ja-JP") }) : T("人の住んでいない町・字です");
   const rows = [];
   for (const [m, label, w] of TOWN_ROWS) {
     const have = list.filter((p) => p[m] != null && p[w]);
@@ -1724,8 +1724,8 @@ function sources(list, code) {
   }).catch(() => {});
 }
 function notFound(text) {
-  $("name").textContent = text;
-  $("path").innerHTML = `<li><a href="./">日本</a></li>`;
+  $("name").textContent = T(text);
+  $("path").innerHTML = `<li><a href="./">${T("日本")}</a></li>`;
 }
 
 // 町の形の小さな地図（見るだけ。動かさない）。背景は地理院地図 Vector（色をうすくしたもの）

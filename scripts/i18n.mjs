@@ -17,6 +17,15 @@ for (const f of fs.readdirSync("site").filter((x) => x.endsWith(".js"))) {
   for (const m of fs.readFileSync(`site/${f}`, "utf8").matchAll(/T\("([^"]+)"\)/g)) keys.add(m[1]);
   // 数などの入る文（TN("…{m}…", { m })。i18n.js）も
   for (const m of fs.readFileSync(`site/${f}`, "utf8").matchAll(/TN\("([^"]+)",/g)) keys.add(m[1]);
+  // 表から T(変数) で出す文も（拾えていなかったので、ほかの言葉の画面に日本語のまま出ていた）：
+  // 町・字の中の位置の言い方（types.js の tn("…")）・型の名前と誰か（add("…", "…")）・この町ならでは（features.js の title/desc/later）・
+  // 町のデータの見出し（TOWN_ROWS）・ページの中の行き先の名前（["…", "sec-…"]）
+  const src = fs.readFileSync(`site/${f}`, "utf8");
+  for (const m of src.matchAll(/\btn\("([^"]+)",/g)) keys.add(m[1]);
+  for (const m of src.matchAll(/\badd\("([^"]+)", "([^"]+)",/g)) { keys.add(m[1]); keys.add(m[2]); }
+  for (const m of src.matchAll(/\b(?:title|desc|later): "([^"]*[ぁ-んァ-ヶ一-龠][^"]*)"/g)) keys.add(m[1]);
+  for (const m of src.matchAll(/\["\w+", "([^"]+)", "(?:population|households)"\]/g)) keys.add(m[1]);
+  for (const m of src.matchAll(/\["([^"]+)", "(?:sec|news|hinan|shelter)-[a-z-]+"\]/g)) keys.add(m[1]);
 }
 for (const k of ["日本語", "（AI による訳）", "足しました", "新しくしました", "確かめ直しました"]) keys.add(k);
 // 天気コードの決まった言い方（気象庁の一覧。site/data/jma-telops.json。today.js が T(日本語) で出す）
