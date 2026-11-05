@@ -15,7 +15,9 @@ async function main() {
     [code, part] = q.get("town").split("-");
     const topo = await json(`data/towns/${code}.json`);
     const f = topo && topojson.feature(topo, topo.objects.towns).features.find((x) => x.properties.part === part);
-    name = `${stats.towns[code].name.replace(/^.+?郡/, "")}${f ? ` ${f.properties.name}` : ""}`;
+    // 町の番号がまちがっているとき（town=abc）は、下の「町が見つかりませんでした」を出す（裏でエラーになり、町の名前の無い紙が出ていた）
+    const t = stats?.towns?.[code];
+    name = t ? `${t.name.replace(/^.+?郡/, "")}${f ? ` ${f.properties.name}` : ""}` : null;
   } else {
     code = q.get("muni");
     name = stats?.towns?.[code]?.name.replace(/^.+?郡/, "");
