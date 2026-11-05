@@ -225,6 +225,16 @@ const codeFiles = (dir) => (fs.existsSync(`site/data/${dir}`) ? fs.readdirSync(`
     }
   }
   check(!pct.length, "住む人に出す文に「上から ○%」が無い", sample(pct, 3));
+  // 作る側の言葉（Claude・モデルの名前・プロンプト）を住む人のページに出さない（「AI」と書く）。model・checker などの記録の項目は見ない
+  const SKIP = new Set(["model", "checker", "ledgerId", "id", "qid", "createdAt", "fetchedAt", "at", "url", "status", "by"]);
+  const builder = [];
+  const walkV = (v, key, where) => {
+    if (typeof v === "string") { if (!SKIP.has(key) && /Claude|Sonnet|Haiku|Opus|プロンプト/.test(v)) builder.push(`${where} ${key}: ${v.slice(0, 30)}`); }
+    else if (Array.isArray(v)) v.forEach((x) => walkV(x, key, where));
+    else if (v && typeof v === "object") for (const [k, x] of Object.entries(v)) walkV(x, k, where);
+  };
+  for (const dir of ["mitate", "hitokoto", "dekiru", "quiz", "answers", "changes", "plan", "gomi-days", "news", "sources", "shelter-list", "local-sites"]) for (const f of codeFiles(dir)) walkV(read(`site/data/${dir}/${f}`), "", `${dir}/${f}`);
+  check(!builder.length, "住む人に出す文に、作る側の言葉（Claude・モデルの名前・プロンプト）が無い（「AI」と書く）", sample(builder, 3));
   if (nth.length) warn("住む人に出す文に「上から ○番目」がある（「○番目に高い」がよい。作り直すときに直る）", sample(nth, 3)); else ok("住む人に出す文に「上から ○番目」が無い");
 }
 
