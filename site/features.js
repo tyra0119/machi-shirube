@@ -73,7 +73,7 @@ async function showFeatures(code, at) {
     if (f.widget && at) WIDGETS[f.widget](at).then((html) => ($(`w-${id}`).innerHTML = html));
   }
   // 雪の町は、冬（12〜3月）のあいだ、「今日」のページの上のほうにも雪の先読みを出す
-  if (mine.includes("yuki") && [12, 1, 2, 3].includes(new Date().getMonth() + 1) && at) {
+  if (mine.includes("yuki") && [12, 1, 2, 3].includes(jpNow().getMonth() + 1) && at) {
     const sec = document.createElement("section");
     sec.className = "block winter-first";
     sec.innerHTML = `<h2>${icon("snow")}${T("雪の先読み（冬のあいだは、ここにも出します）")}</h2><div id="w-yuki-top"><p class="note">${T("読み込んでいます…")}</p></div><a class="go" href="#feat-yuki">${icon("snow")}${T("雪の暮らしのページへ")}</a>`;

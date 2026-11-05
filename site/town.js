@@ -524,7 +524,7 @@ async function showBus(code, part) {
         const byH = new Map();
         for (const t of ts) { const [hh, mm] = t.split(":"); if (!byH.has(hh)) byH.set(hh, []); byH.get(hh).push(mm); }
         // 平日なら、今日このあとの便をいちばん上に出す
-        const now = new Date(), wd = now.getDay() >= 1 && now.getDay() <= 5;
+        const now = jpNow(), wd = now.getDay() >= 1 && now.getDay() <= 5;
         const hm = now.getHours() * 60 + now.getMinutes();
         const next = wd ? [...ts].sort().find((t) => { const [h, m] = t.split(":").map(Number); return h * 60 + m >= hm; }) : null;
         return `<div class="tt"><p class="tt-head">${icon("bus")}${esc(k)}</p>${wd ? `<p class="tt-next">${next ? `${T("次の便")} <strong>${Number(next.split(":")[0])}:${next.split(":")[1]}</strong>` : T("平日の時刻表では、今日このあとの便はありません")}</p>` : ""}<table>${[...byH].map(([hh, ms]) => `<tr><th>${Number(hh)}</th><td>${ms.join(" ")}</td></tr>`).join("")}</table></div>`;
@@ -1402,7 +1402,7 @@ async function showGomiDays(code, partName, softName) {
     // 「（選ぶ）」のままのとき（値が空）は出さない（Number("") が 0 になり、いちばん上の地区の曜日が、選んだように出ていた）
     const a = sel.value === "" ? null : g.areas[Number(sel.value)];
     if (!a) { $("gomi-days").innerHTML = ""; $("gomi-today").textContent = T("地区を選ぶと、今日と明日に出せるごみが分かります。"); return; }
-    const now = new Date(), tmr = new Date(now.getTime() + 86400000);
+    const now = jpNow(), tmr = new Date(now.getTime() + 86400000);
     const t0 = a.days.filter((x) => onDay(x.when, now)).map((x) => gt(x.kind)), t1 = a.days.filter((x) => onDay(x.when, tmr)).map((x) => gt(x.kind));
     todayKinds = t0;
     $("gomi-today").innerHTML = `${icon("calendar")} ${T("今日")}：<strong>${t0.length ? esc(t0.join("・")) : T("収集なし")}</strong>　${T("明日")}：<strong>${t1.length ? esc(t1.join("・")) : T("収集なし")}</strong>`;

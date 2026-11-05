@@ -57,7 +57,7 @@ async function main() {
     const center = part ? centerOf(part) : labels.features.find((x) => x.properties.code === code)?.geometry.coordinates;
     document.title = `${name}のくらしのメモ｜まちしるべ`;
     $("name").textContent = name;
-    $("made").textContent = `${new Date().toLocaleDateString("ja-JP")} に作りました。まちしるべ（非公式）が公式の資料から集めたものです。変わることがあるので、町の案内でも確かめてください。`;
+    $("made").textContent = `${new Date().toLocaleDateString("ja-JP", { timeZone: "Asia/Tokyo" })} に作りました。まちしるべ（非公式）が公式の資料から集めたものです。変わることがあるので、町の案内でも確かめてください。`;
     const pageUrl = pageUrlOf(part?.properties.part);
     $("url").textContent = pageUrl;
     const qr = qrcode(0, "M");

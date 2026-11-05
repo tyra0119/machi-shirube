@@ -139,7 +139,7 @@ function todayHTML(t, esc) {
     : `<p class="warn-off">${T("いま、この町に警報・注意報は出ていません")}</p>`;
   const q = t.quakes;
   const quakeHTML = !q ? `<p class="note">${T("地震の情報を読み込めませんでした（地震が無かったという意味ではありません）。")}</p>` : q.length
-    ? `<ul class="quakes">${q.map((x) => `<li>${esc(new Date(x.at).toLocaleString("ja-JP", { month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" }))} ${esc(x.place)}・M${esc(x.mag)}・${T("この町で震度")} ${esc(x.maxi)}</li>`).join("")}</ul>`
+    ? `<ul class="quakes">${q.map((x) => `<li>${esc(new Date(x.at).toLocaleString("ja-JP", { timeZone: "Asia/Tokyo", month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" }))} ${esc(x.place)}・M${esc(x.mag)}・${T("この町で震度")} ${esc(x.maxi)}</li>`).join("")}</ul>`
     : `<p class="note">${T("この1週間、この町で震度を観測した地震はありません。")}</p>`;
   return `
     <div class="days">${t.days.map(dayCard).join("")}</div>

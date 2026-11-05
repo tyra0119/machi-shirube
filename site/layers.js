@@ -163,7 +163,7 @@ async function showLayerMap(code, townFeatures, at, esc, part = null) {
   pop("aed", (p) => `<strong>${esc(p.name)}</strong>${p.place ? `<br>${esc(p.place)}` : ""}${p.hours ? `<br>${esc(p.hours)}` : ""}${p.address ? `<br><small>${esc(p.address)}</small>` : ""}`);
   pop("bus", (p) => {
     // この先の発車（平日の時刻表から5つまで）。土日・祝日はちがうことがある
-    const now = new Date(), hm = `${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
+    const now = jpNow(), hm = `${String(now.getHours()).padStart(2, "0")}:${String(now.getMinutes()).padStart(2, "0")}`;
     const next = JSON.parse(p.times || "[]").filter((x) => x.t >= hm).slice(0, 5);
     return `<strong>${esc(p.name)}</strong><br>${LT("平日")} ${p.n} ${LT("本")}`
       + (next.length ? `<ul class="pop-times">${next.map((x) => `<li><b>${esc(x.t)}</b> ${esc(x.r)}${x.h ? ` → ${esc(x.h)}` : ""}</li>`).join("")}</ul><small>${LT("平日の時刻表です。土日・祝日はちがうことがあります")}</small>` : `<br><small>${LT("平日の時刻表では、今日このあとの便はありません")}</small>`);

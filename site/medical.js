@@ -71,7 +71,7 @@ const meters = ([a, b], [c, d]) => {
 };
 
 // 今日・明日の一覧。center があれば近い順、なければ名前の順（病院が先）
-function medicalList(m, offset, center, now = new Date()) {
+function medicalList(m, offset, center, now = jpNow()) {
   const date = new Date(now.getFullYear(), now.getMonth(), now.getDate() + offset);
   const t = now.getHours() * 100 + now.getMinutes();
   const out = [];

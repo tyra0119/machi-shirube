@@ -48,7 +48,7 @@ async function main() {
   $("qr").innerHTML = qrSvg(4);
   $("url").textContent = pageUrl;
   $("slips").innerHTML = [0, 1, 2].map(() => `<div class="slip">${qrSvg(2)}<p><strong>${esc(name)}のくらしの案内</strong>まちしるべ（非公式）<br>スマホのカメラで読むと開きます</p></div>`).join("");
-  $("made").textContent = `${new Date().toLocaleDateString("ja-JP")} に印刷用に作りました。まちしるべ（非公式）。中身は変わることがあります。`;
+  $("made").textContent = `${new Date().toLocaleDateString("ja-JP", { timeZone: "Asia/Tokyo" })} に印刷用に作りました。まちしるべ（非公式）。中身は変わることがあります。`;
 }
 
 // A4 1枚に収める（町の名前や言葉の数で長さが変わるので、長いときだけ全体を少し縮める）
