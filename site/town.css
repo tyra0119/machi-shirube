@@ -866,6 +866,4 @@ ruby rt { font-size: 0.55em; font-weight: 400; letter-spacing: 0; }
 .block > .scene { width: calc(100% + 32px); margin: -16px -16px 12px; border-radius: 10px 10px 0 0; }
 section.block.folded > .scene { height: 40px; margin-bottom: 8px; }
 .answers > li { flex-direction: column; gap: 0; }
-.answers > li > .scene { width: calc(100% + 28px); margin: -14px -14px 10px; border-radius: 12px 12px 0 0; }
-.intro-a li > .scene { width: calc(100% + 24px); margin: -10px -12px 8px; border-radius: 10px 10px 0 0; height: 64px; }
 @media print { .scene { display: none; } }
