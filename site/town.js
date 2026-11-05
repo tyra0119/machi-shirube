@@ -1382,6 +1382,11 @@ async function showGomiDays(code, partName, softName) {
   // 町・字の欄で当たらなければ、地区の名前の一部から（美濃加茂市「加茂野町市橋」→「蜂屋・加茂野・伊深」）。「ヶ」と「ケ」は同じとみなす
   const kk = (s) => String(s ?? "").replace(/ヶ/g, "ケ");
   const find = (raw) => {
+    // 町・字を合わせたページ（「入野早咲・口湊川」）は、どの町・字も同じ地区に当たるときだけ当てる
+    if (String(raw ?? "").includes("・")) {
+      const each = String(raw).split("・").map((x) => find(x));
+      return each.every((i) => i >= 0 && i === each[0]) ? each[0] : -1;
+    }
     const n = kk(raw);
     if (!n) return -1;
     // 地区の名前に町・字の名前を含む組が2つ以上（黒潮町「佐賀」→ 佐賀①・佐賀②）なら、どちらか決められないので当てない
