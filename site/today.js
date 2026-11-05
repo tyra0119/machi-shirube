@@ -11,6 +11,8 @@ const WARNINGS = {
 };
 const JMA = "https://www.jma.go.jp/bosai";
 
+// 予報のファイルが別の予報区のものに入っている所（気象庁の十勝地方は釧路の、奄美地方は鹿児島のファイル。そのままでは予報を読み込めなかった）
+const FORECAST_FILE = { "014030": "014100", "460040": "460100" };
 async function loadToday(code, lat, lon) {
   // 政令市まるごと（例 14100）は表にないので、最初の区で代表させる。地震は区のどれかで観測したもの
   // 天気の地域の表は、町の分だけの小さなファイルにあれば、全国の表（0.2MB）を読まない
@@ -18,7 +20,7 @@ async function loadToday(code, lat, lon) {
   const whole = !table[code];
   const jma = table[code] ?? table[Object.keys(table).find((k) => k > code && k < String(Number(code) + 30).padStart(5, "0"))];
   const [fc, warn, quakes, om] = await Promise.all([
-    jma ? fetch(`${JMA}/forecast/data/forecast/${jma.office}.json`).then((r) => r.json()).catch(() => null) : null,
+    jma ? fetch(`${JMA}/forecast/data/forecast/${FORECAST_FILE[jma.office] ?? jma.office}.json`).then((r) => r.json()).catch(() => null) : null,
     jma ? fetch(`${JMA}/warning/data/warning/${jma.office}.json`).then((r) => r.json()).catch(() => null) : null,
     fetch(`${JMA}/quake/data/list.json`).then((r) => r.json()).catch(() => null),
     fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat.toFixed(3)}&longitude=${lon.toFixed(3)}&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,relative_humidity_2m_mean,wind_speed_10m_max,sunshine_duration,uv_index_max&timezone=Asia%2FTokyo&forecast_days=2&wind_speed_unit=ms`)
@@ -95,7 +97,11 @@ function clothes(d) {
 // 警報・注意報：この市町村（気象庁の市町村の区切り）に出ているもの
 function warnings(jma, warn) {
   if (!jma || !warn) return null;
-  const area = warn.areaTypes?.[1]?.areas?.find((a) => a.code === jma.class20);
+  // 2つに分けて予報する市（横浜市北部・南部など）は、警報のデータでは市まるごとの番号（1410000）になっている
+  const areas = warn.areaTypes?.[1]?.areas ?? [];
+  const area = areas.find((a) => a.code === jma.class20) ?? areas.find((a) => a.code === `${jma.class20.slice(0, 5)}00`);
+  // この町の区切りが見つからないときは「出ていません」と言わない（8つの市で、出ているかどうか分からないのに「出ていません」と出していた）
+  if (!area) return null;
   const list = (area?.warnings ?? []).filter((w) => w.status !== "解除" && w.status !== "発表警報・注意報はなし" && WARNINGS[w.code]).map((w) => WARNINGS[w.code]);
   return { list: [...new Set(list)], at: warn.reportDatetime, headline: warn.headlineText };
 }
@@ -145,5 +151,5 @@ function todayHTML(t, esc) {
     <div class="days">${t.days.map(dayCard).join("")}</div>
     <h3 class="sub">${icon("alert")} ${T("警報・注意報")}</h3>${warnHTML}
     <h3 class="sub">${icon("quake")} ${T("地震")}</h3>${quakeHTML}
-    <p class="cite">出典：気象庁ホームページ（天気予報・警報・注意報・地震情報。${esc(t.jma?.officeName ?? "")}${esc(t.jma?.class10Name ?? "")}）、天気の数値：Open-Meteo.com（CC BY 4.0）を加工。洗濯・服装は、まちしるべの決まりで出しためやすです。</p>`;
+    <p class="cite">出典：気象庁ホームページ（天気予報・警報・注意報・地震情報。${esc(t.jma?.officeName ?? "")}${t.jma?.class10Name !== t.jma?.officeName ? esc(t.jma?.class10Name ?? "") : ""}）、天気の数値：Open-Meteo.com（CC BY 4.0）を加工。洗濯・服装は、まちしるべの決まりで出しためやすです。</p>`;
 }
