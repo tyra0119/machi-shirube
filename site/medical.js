@@ -33,9 +33,27 @@ async function loadMedical(code) {
   return { ...(await res.json()), holidays: hol.holidays, holidaySource: hol.source };
 }
 
+// ほかの休みの日（「8月13日，8月14日」「12月29日～1月3日」）を「月-日」の集まりにする。「年末年始」「お盆」のように日付の無いものは読まない
+const offCache = new Map();
+function offDays(other) {
+  if (!other) return null;
+  if (offCache.has(other)) return offCache.get(other);
+  const set = new Set();
+  const s = String(other).normalize("NFKC");
+  for (const [, m1, d1, m2, d2] of s.matchAll(/(\d{1,2})月(\d{1,2})日\s*[～〜~ー－-]\s*(?:(\d{1,2})月)?(\d{1,2})日/g)) {
+    let t = new Date(2001, Number(m1) - 1, Number(d1));
+    const end = new Date(Number(m2 ?? m1) < Number(m1) ? 2002 : 2001, Number(m2 ?? m1) - 1, Number(d2));
+    for (let i = 0; t <= end && i < 62; i++, t = new Date(t.getFullYear(), t.getMonth(), t.getDate() + 1)) set.add(`${t.getMonth() + 1}-${t.getDate()}`);
+  }
+  for (const [, m, d] of s.matchAll(/(\d{1,2})月(\d{1,2})日/g)) set.add(`${Number(m)}-${Number(d)}`);
+  offCache.set(other, set);
+  return set;
+}
+
 // その日にやっているか、やっている時間（[[900,1200],[1400,1800]]）。休みなら null
 function hoursOn(f, date, holidays) {
   const ymd = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, "0")}-${String(date.getDate()).padStart(2, "0")}`;
+  if (offDays(f.other)?.has(`${date.getMonth() + 1}-${date.getDate()}`)) return null;
   const holiday = holidays[ymd];
   const dow = DAY_KEYS[date.getDay()];
   const idx = MONDAY_FIRST.indexOf(dow);
