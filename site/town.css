@@ -525,7 +525,7 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .acc-stats .l { font-size: 13px; color: var(--text-sub); }
 .acc-stats strong { font-size: 20px; }
 .acc-stats .s { font-size: 13px; color: var(--text-sub); }
-.acc-pin { width: var(--s); height: var(--s); border-radius: 50%; background: #e8833a; border: 2px solid #fff; color: #fff; font-size: 12px; font-weight: 700; display: grid; place-items: center; box-shadow: 0 1px 3px rgba(0, 0, 0, .3); }
+.acc-pin { width: var(--s); height: var(--s); border-radius: 50%; background: #b5581a; border: 2px solid #fff; color: #fff; font-size: 12px; font-weight: 700; display: grid; place-items: center; box-shadow: 0 1px 3px rgba(0, 0, 0, .3); }
 .acc-spots { margin: 8px 0; padding: 0; list-style: none; display: grid; gap: 4px; }
 .acc-spots li { display: flex; gap: 8px; align-items: center; padding: 6px 8px; border-radius: 8px; cursor: pointer; font-size: 14px; }
 .acc-spots li:hover { background: var(--bg); }
