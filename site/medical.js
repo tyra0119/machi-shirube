@@ -20,6 +20,23 @@ function shortDays(s) {
   const f = ([m, d]) => `${m}/${d}`;
   return runs.map((r) => (r.length > 2 ? `${f(r[0])}〜${f(r.at(-1))}` : r.map(f).join("・"))).join("、");
 }
+// 病院のホームページの URL の形をそろえる。国のデータには「www.example.com」（http:// が無い。全国で約 5,000 件）・「http//」「http:/」「htttps」「hhp://」・
+// 途中の空白・全角の混じったものがあり、そのままでは、まちしるべの中の無いページへのリンクになっていた。URL でないもの（「ﾅｼ」「0」）はリンクにしない
+function siteUrl(u) {
+  let s = String(u ?? "").normalize("NFKC").split(/[,、]/)[0].replace(/\s+/g, "").replace(/^(?:https?:\/\/)?url:/i, "").replace(/^[^a-z/:]+(?=h)/i, "");
+  s = s.replace(/^:?\/\/(?=\w)/, "http://"); // 「//www.…」「://…」
+  s = s.replace(/^h{1,2}t{0,3}p{0,2}t?(s?)(?:[:;.]\/{0,2}|\/{1,2})(?=\w)/i, (m, sc) => `http${sc.toLowerCase()}://`); // http// http:/ http: http.// hppt htts htt hhp
+  s = s.replace(/^(?:https?:\/\/)+(https?:\/\/)/i, "$1"); // 「http://http://」
+  if (!/^https?:\/\//i.test(s)) {
+    if (!/^[\w-]+(\.[\w-]+)+\.?([/?#].*)?$/.test(s)) return null;
+    s = `http://${s}`;
+  }
+  try {
+    const x = new URL(s);
+    x.hostname = x.hostname.replace(/\.$/, ""); // 「…jp./」
+    return /\.[a-z]{2,}$/i.test(x.hostname) || /^\d{1,3}(\.\d{1,3}){3}$/.test(x.hostname) ? x.href : null;
+  } catch { return null; }
+}
 const gmapPlace = (name, addr) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${name} ${addr ?? ""}`.trim())}`;
 const DAY_KEYS = ["日", "月", "火", "水", "木", "金", "土"];
 const MONDAY_FIRST = ["月", "火", "水", "木", "金", "土", "日"];
@@ -103,7 +120,7 @@ function medicalHTML(m, offset, center, esc, filter = "", limit = 5) {
     ${f ? `<p class="note">${esc(typeof TN === "function" ? TN("「{q}」で絞ると {n} か所", { q: filter, n: list.length }) : `「${filter}」で絞ると ${list.length} か所`)}</p>` : ""}
     <ul class="med-list">${shown.map((x) => `
       <li${x.openNow ? ` class="open"` : ""}>
-        <span class="n">${icon(x.f.k === "病院" ? "hospital" : "medical")}${x.f.u ? `<a href="${esc(x.f.u)}" target="_blank" rel="noopener">${esc(x.f.n)}</a>` : esc(x.f.n)}<small>${esc(TT(x.f.k))}</small>${x.openNow ? `<em>${TT("いま開いている")}</em>` : ""}</span>
+        <span class="n">${icon(x.f.k === "病院" ? "hospital" : "medical")}${siteUrl(x.f.u) ? `<a href="${esc(siteUrl(x.f.u))}" target="_blank" rel="noopener">${esc(x.f.n)}</a>` : esc(x.f.n)}<small>${esc(TT(x.f.k))}</small>${x.openNow ? `<em>${TT("いま開いている")}</em>` : ""}</span>
         <span class="h">${x.h.map(([s, e]) => `${hhmm(s)}–${hhmm(e)}`).join("、")}${x.m != null ? `・${typeof TN === "function" ? TN("まっすぐ {d}", { d: x.m >= 1000 ? `${(x.m / 1000).toFixed(1)}km` : `${x.m}m` }) : `まっすぐ ${x.m >= 1000 ? `${(x.m / 1000).toFixed(1)}km` : `${x.m}m`}`}` : ""}</span>
         ${x.f.s ? `<span class="s">${esc(x.f.s.slice(0, 6).map(TT).join("・"))}${x.f.s.length > 6 ? ` ${TT("ほか")} ${x.f.s.length - 6}` : ""}</span>` : ""}
         <span class="a">${esc(x.f.a)}${x.f.other ? `・${TT("休み")}：${esc(shortDays(x.f.other).slice(0, 80))}` : ""}</span>
