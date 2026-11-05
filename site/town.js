@@ -1379,8 +1379,18 @@ async function showGomiDays(code, partName, softName) {
   const find = (raw) => {
     const n = kk(raw);
     if (!n) return -1;
+    // 地区の名前に町・字の名前を含む組が2つ以上（黒潮町「佐賀」→ 佐賀①・佐賀②）なら、どちらか決められないので当てない
+    if (g.areas.filter((a) => kk(a.area).includes(n)).length > 1) return -1;
     const i = g.areas.findIndex((a) => kk(a.area).includes(n) || a.towns.some((t) => kk(t).includes(n) || (t.length >= 2 && n.includes(kk(t)))));
-    return i >= 0 ? i : g.areas.findIndex((a) => kk(a.area).split(/[・\s]/).some((p) => p.length >= 2 && !/組$/.test(p) && n.includes(p)));
+    if (i >= 0) {
+      // 国勢調査の町・字が、ごみの組をまたぐときは当てない（黒潮町「入野早咲」には、月・木の組の「早咲」と、火・金の組の「入野本村」「浜の宮」などが入る）。
+      // 当たった名前の残り（「入野」）で始まる地区が、ほかの組にあれば、またいでいるとみなす
+      const hit = g.areas[i].towns.map(kk).find((t) => t.length >= 2 && n.includes(t));
+      const rest = hit ? n.replace(hit, "") : "";
+      if (rest.length >= 2 && g.areas.some((a, j) => j !== i && a.towns.some((t) => kk(t).startsWith(rest)))) return -1;
+      return i;
+    }
+    return g.areas.findIndex((a) => kk(a.area).split(/[・\s]/).some((p) => p.length >= 2 && !/組$/.test(p) && n.includes(p)));
   };
   const guess = find(partName);
   const soft = find(softName); // わが家の避難で選んだ町・字（自分で地区を選んでいなければ使う）
