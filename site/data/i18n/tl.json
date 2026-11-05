@@ -1,11 +1,11 @@
 {
  "lang": "tl",
  "name": "Filipino",
- "createdAt": "2026-11-05T03:08:26.805Z",
+ "createdAt": "2026-11-05T03:27:46.592Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 964,
- "of": 937,
+ "count": 969,
+ "of": 942,
  "dict": {
   "この町の非公式の暮らしの案内です。町の公式のサイトや国の公開データから集め、出典をつけています（まちしるべ）": "Ito ay isang di-opisyal na gabay sa pamumuhay sa bayang ito. Kinuha ito mula sa opisyal na website ng bayan at sa pampublikong datos ng bansa, at may nakasaad na pinagmulan (Machishirube)",
   "すべてのページ": "Lahat ng pahina",
@@ -970,6 +970,11 @@
   "ごみを出す日（地区ごとの曜日）": "Mga araw ng paglalabas ng basura (araw ayon sa distrito)",
   "防災計画の、町・字に関係する所": "Mga bahagi ng plano sa pag-iwas sa sakuna na may kinalaman sa bayan at sa aza",
   "区ごとのページ": "Mga pahina para sa bawat ward",
-  "病院・避難場所・ごみの日などのくらしの案内は、区ごとのページにあります。お住まいの区を選んでください。": "Ang mga gabay sa pang-araw-araw na buhay, gaya ng mga ospital, evacuation site, at araw ng pagkolekta ng basura, ay makikita sa pahina ng bawat ward. Piliin ang ward na tinitirhan ninyo."
+  "病院・避難場所・ごみの日などのくらしの案内は、区ごとのページにあります。お住まいの区を選んでください。": "Ang mga gabay sa pang-araw-araw na buhay, gaya ng mga ospital, evacuation site, at araw ng pagkolekta ng basura, ay makikita sa pahina ng bawat ward. Piliin ang ward na tinitirhan ninyo.",
+  "現在地が取れませんでした。スマホの設定でこのサイトに位置情報を許可するか、下の「町・字を選ぶ」から選んでください。": "Hindi makuha ang kasalukuyang lokasyon. Payagan ang site na ito na gamitin ang lokasyon sa settings ng smartphone, o pumili sa \"Pumili ng bayan/distrito\" sa ibaba.",
+  "この端末では現在地が使えません。下の「町・字を選ぶ」から選んでください。": "Hindi magagamit ang kasalukuyang lokasyon sa device na ito. Pumili sa \"Pumili ng bayan/distrito\" sa ibaba.",
+  "いちばん近い避難場所まで、まっすぐ約 {k}km あります。今いる所は、この町から離れているかもしれません。今いる町の避難場所は、その町のページで見てください。": "Ang pinakamalapit na evacuation site ay mga {k}km ang layo nang tuwid na linya. Maaaring malayo na ang kinaroroonan mo sa bayang ito. Para sa mga evacuation site ng bayang kinaroroonan mo, tingnan ang pahina ng bayang iyon.",
+  "海抜と浸水の想定を計算しています…": "Kinakalkula ang taas mula sa dagat at ang inaasahang pagbaha…",
+  "まっすぐ 約 {k}km": "Diretso, mga {k}km"
  }
 }

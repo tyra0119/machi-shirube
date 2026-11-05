@@ -131,6 +131,7 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .news-list li.more { border-bottom: 0; font-size: 14px; }
 .ward-list { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 4px; }
 .ward-list a { padding: 8px 14px; border: 1px solid var(--line); border-radius: 999px; background: var(--bg); color: inherit; text-decoration: none; font-size: 16px; font-weight: 600; }
+.hinan-msg { margin: 8px 0; padding: 10px 12px; border-radius: 10px; background: #fff3dc; color: #3d2a00; font-size: 15px; line-height: 1.6; }
 .sl-list { margin: 10px 0 6px; padding: 0; list-style: none; }
 .sl-list li { padding: 8px 4px; border-bottom: 1px solid var(--line); }
 .sl-list .n { display: block; font-size: 17px; font-weight: 700; }
@@ -816,3 +817,4 @@ ruby rt { font-size: 0.55em; font-weight: 400; letter-spacing: 0; }
 
 /* このごみは何ごみ？：訳で出すときは、日本語の名前も小さく */
 .gomi-hits .n small { display: block; font-size: 12px; font-weight: 400; color: var(--text-sub); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .hinan-msg { background: #3a2e14; color: #f3e3bf; } }

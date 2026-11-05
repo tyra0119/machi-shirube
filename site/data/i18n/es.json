@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-05T03:07:55.973Z",
+ "createdAt": "2026-11-05T03:27:30.211Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 973,
- "of": 937,
+ "count": 978,
+ "of": 942,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -979,6 +979,11 @@
   "ごみを出す日（地区ごとの曜日）": "Días de recogida de basura (según el día de la semana de cada distrito)",
   "防災計画の、町・字に関係する所": "Partes del plan de prevención de desastres relacionadas con el pueblo y sus sectores (aza)",
   "区ごとのページ": "Páginas por distrito",
-  "病院・避難場所・ごみの日などのくらしの案内は、区ごとのページにあります。お住まいの区を選んでください。": "La información para la vida diaria, como hospitales, lugares de evacuación y días de recogida de basura, está en las páginas de cada distrito. Seleccione el distrito donde vive."
+  "病院・避難場所・ごみの日などのくらしの案内は、区ごとのページにあります。お住まいの区を選んでください。": "La información para la vida diaria, como hospitales, lugares de evacuación y días de recogida de basura, está en las páginas de cada distrito. Seleccione el distrito donde vive.",
+  "現在地が取れませんでした。スマホの設定でこのサイトに位置情報を許可するか、下の「町・字を選ぶ」から選んでください。": "No se pudo obtener su ubicación. Permita el acceso a la ubicación para este sitio en los ajustes del móvil, o elija en «Elegir barrio o localidad», más abajo.",
+  "この端末では現在地が使えません。下の「町・字を選ぶ」から選んでください。": "Este dispositivo no puede usar la ubicación actual. Elija en «Elegir barrio o localidad», más abajo.",
+  "いちばん近い避難場所まで、まっすぐ約 {k}km あります。今いる所は、この町から離れているかもしれません。今いる町の避難場所は、その町のページで見てください。": "El refugio más cercano está a unos {k} km en línea recta. Es posible que usted esté lejos de este municipio. Para ver los refugios del municipio donde se encuentra, consulte la página de ese municipio.",
+  "海抜と浸水の想定を計算しています…": "Calculando la altitud sobre el nivel del mar y la previsión de inundación…",
+  "まっすぐ 約 {k}km": "En línea recta, unos {k} km"
  }
 }

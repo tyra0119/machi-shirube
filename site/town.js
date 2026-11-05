@@ -676,16 +676,19 @@ async function showHinan(code, townFeatures, startPart) {
   });
   maps.push(map);
   // 地図のボタン：右下に縦に（方角・現在地・＋・−）。現在地はその場所から近い避難場所を出す
-  const buttons = new MapButtons({ onNoLocation: (t) => ($("hinan-note").textContent = t) });
+  // 知らせ（現在地が取れない・町から離れている）は、ボタンのすぐ下に出す（一覧の下の注意書きでは、押した人が気づかなかった）
+  const showMsg = (t) => { $("hinan-msg").hidden = !t; $("hinan-msg").textContent = t ?? ""; };
+  const NO_LOC = () => T("現在地が取れませんでした。スマホの設定でこのサイトに位置情報を許可するか、下の「町・字を選ぶ」から選んでください。");
+  const buttons = new MapButtons({ onNoLocation: () => showMsg(NO_LOC()) });
   // 録画用：URL に ?here=経度,緯度 があれば、端末の現在地の代わりにその場所を使う（作者の家の近くが映らないよう、公共の場所を入れる。
   // 例：黒潮町の大方クリニック（入野2016-1）&here=133.01135,33.02425）。ふだんの住む人の使い方では出てこない
   const demoHere = (q.get("here") ?? "").split(",").map(Number);
   buttons.locate = () => {
     if (demoHere.length === 2 && demoHere.every((v) => Number.isFinite(v) && v)) return setHere(demoHere, "現在地");
-    if (!navigator.geolocation) return ($("hinan-note").textContent = "この端末では現在地が使えません");
+    if (!navigator.geolocation) return showMsg(T("この端末では現在地が使えません。下の「町・字を選ぶ」から選んでください。"));
     navigator.geolocation.getCurrentPosition(
       (pos) => setHere([pos.coords.longitude, pos.coords.latitude], "現在地"),
-      () => ($("hinan-note").textContent = "現在地が取れませんでした"),
+      () => showMsg(NO_LOC()),
       { enableHighAccuracy: true, timeout: 10000 },
     );
   };
@@ -764,7 +767,7 @@ async function showHinan(code, townFeatures, startPart) {
   async function calc(at, token) {
     const hz = HAZARD_TILES[kind] ? kind : null;
     $("hinan-here").hidden = false;
-    $("hinan-here").textContent = "海抜と浸水の想定を計算しています…";
+    $("hinan-here").textContent = T("海抜と浸水の想定を計算しています…");
     const [h0, d0] = await Promise.all([elevationAt(...at), hz ? depthAt(hz, ...at) : null]);
     if (token !== setHere.token) return;
     // 数の入る文は {m} などの印つきで訳す（TT。i18n.js）
@@ -775,12 +778,13 @@ async function showHinan(code, townFeatures, startPart) {
     $("hinan-walk").hidden = true;
     await Promise.all(cand.map(async (c, i) => {
       const p = c.f.geometry.coordinates;
-      const [h, d, w] = await Promise.all([elevationAt(...p), hz ? depthAt(hz, ...p) : null, walkMinutes(at, p, c.m)]);
+      // 町から離れているとき（5km より遠い）は、歩く時間と坂を出さない（670km 先まで「歩いて約 11161分」と出ていた。線の上の標高もたくさん読んでしまう）
+      const [h, d, w] = await Promise.all([elevationAt(...p), hz ? depthAt(hz, ...p) : null, far() ? { hasElevation: false } : walkMinutes(at, p, c.m)]);
       if (token !== setHere.token) return;
       if (w.hasElevation) walks.push({ i, name: c.f.properties.name, m: c.m, up: w.up, min: w.min });
       const li = document.querySelector(`#hinan-list li[data-i="${i}"] .d`);
       if (!li) return;
-      li.innerHTML = TN("まっすぐ {m}m・歩いて約 {min}分", { m: c.m.toLocaleString("ja-JP"), min: Math.max(1, Math.round(c.m / 60)) })
+      li.innerHTML = (far() ? TN("まっすぐ 約 {k}km", { k: Math.round(c.m / 1000).toLocaleString("ja-JP") }) : TN("まっすぐ {m}m・歩いて約 {min}分", { m: c.m.toLocaleString("ja-JP"), min: Math.max(1, Math.round(c.m / 60)) }))
         + (w.hasElevation ? `・<strong>${TN("坂を考えると約 {min}分", { min: w.min })}</strong>（${TN("上り {up}m・下り {down}m", { up: w.up, down: w.down })}）` : "")
         + `<br>${TN("避難場所の海抜 約 {h}", { h: h != null ? `${Math.round(h)}m` : T("（分からない）") })}`
         + (hz ? `・${flood(hz, d?.label ? `<strong class="warn">${esc(T(d.label))}</strong>` : T("区域の外"))}` : "");
@@ -804,6 +808,7 @@ async function showHinan(code, townFeatures, startPart) {
   // 近い順の 1・2・3 を、一覧と同じ番号の印で地図に立てる。一覧や印を押すと、その場所に寄って名前を出す
   let pins = [];
   let cand = [];
+  const far = () => cand[0]?.m > 5000;
   function select(i) {
     const c = cand[i];
     if (!c) return;
@@ -821,6 +826,8 @@ async function showHinan(code, townFeatures, startPart) {
     pop?.remove();
     cand = shelters.features.filter((f) => !kind || f.properties.kinds.includes(kind))
       .map((f) => ({ f, m: meters(at, f.geometry.coordinates) })).sort((x, y) => x.m - y.m).slice(0, 3);
+    // 町の外にいる人が押したとき（いちばん近い避難場所まで 5km より遠い）は、そう知らせる（東京で黒潮町のページを開くと、600km 先の避難場所が歩く時間つきで出ていた）
+    showMsg(far() ? TN("いちばん近い避難場所まで、まっすぐ約 {k}km あります。今いる所は、この町から離れているかもしれません。今いる町の避難場所は、その町のページで見てください。", { k: Math.round(cand[0].m / 1000).toLocaleString("ja-JP") }) : "");
     pins.forEach((p) => p.remove());
     pins = cand.map((c, i) => {
       const el = document.createElement("button");
@@ -841,7 +848,7 @@ async function showHinan(code, townFeatures, startPart) {
     map.fitBounds(box, { padding: 50, maxZoom: 16, duration: 500 });
     $("hinan-list").innerHTML = cand.map((c, i) => `
       <li data-i="${i}" tabindex="0" role="button" aria-label="地図で ${esc(c.f.properties.name)} を見る"><span class="pin" aria-hidden="true">${i + 1}</span><span class="n">${esc(c.f.properties.name)}</span>
-        <span class="d">${TN("まっすぐ {m}m・歩いて約 {min}分", { m: c.m.toLocaleString("ja-JP"), min: Math.max(1, Math.round(c.m / 60)) })}（${T("めやす")}）</span>
+        <span class="d">${far() ? TN("まっすぐ 約 {k}km", { k: Math.round(c.m / 1000).toLocaleString("ja-JP") }) : `${TN("まっすぐ {m}m・歩いて約 {min}分", { m: c.m.toLocaleString("ja-JP"), min: Math.max(1, Math.round(c.m / 60)) })}（${T("めやす")}）`}</span>
         <span class="k">${esc(String(c.f.properties.address ?? "").replace(/(\S{2,}?[郡市区町村])\1/g, "$1"))}・${esc(c.f.properties.kinds.map((k) => T(k)).join("・"))}${c.f.properties.capacity ? `・${capText(c.f.properties)}` : ""}${c.f.properties.note ? `・${esc(c.f.properties.note)}` : ""}</span>
         <a class="gmap" href="${gmapWalk(c.f.geometry.coordinates, at)}" target="_blank" rel="noopener">${icon("map")}${T("Google マップで歩く道を見る")}</a></li>`).join("");
     for (const li of document.querySelectorAll("#hinan-list li")) {

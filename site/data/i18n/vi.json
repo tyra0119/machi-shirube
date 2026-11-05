@@ -1,11 +1,11 @@
 {
  "lang": "vi",
  "name": "Tiếng Việt",
- "createdAt": "2026-11-05T03:08:21.927Z",
+ "createdAt": "2026-11-05T03:27:43.777Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 971,
- "of": 937,
+ "count": 976,
+ "of": 942,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Đây là trang hướng dẫn đời sống không chính thức của thị trấn này. Claude thu thập từ các trang chính thức của thị trấn v.v. và ghi rõ nguồn (Machi-shirube)",
   "すべてのページ": "Tất cả các trang",
@@ -977,6 +977,11 @@
   "ごみを出す日（地区ごとの曜日）": "Ngày đổ rác (ngày trong tuần theo từng khu vực)",
   "防災計画の、町・字に関係する所": "Phần của kế hoạch phòng chống thiên tai liên quan đến thị trấn và khu phố (aza) của bạn",
   "区ごとのページ": "Trang theo từng quận",
-  "病院・避難場所・ごみの日などのくらしの案内は、区ごとのページにあります。お住まいの区を選んでください。": "Thông tin đời sống như bệnh viện, nơi sơ tán, ngày thu gom rác đều có ở trang của từng quận. Vui lòng chọn quận bạn đang sống."
+  "病院・避難場所・ごみの日などのくらしの案内は、区ごとのページにあります。お住まいの区を選んでください。": "Thông tin đời sống như bệnh viện, nơi sơ tán, ngày thu gom rác đều có ở trang của từng quận. Vui lòng chọn quận bạn đang sống.",
+  "現在地が取れませんでした。スマホの設定でこのサイトに位置情報を許可するか、下の「町・字を選ぶ」から選んでください。": "Không lấy được vị trí hiện tại. Hãy cho phép trang web này dùng vị trí trong phần cài đặt điện thoại, hoặc chọn từ mục \"Chọn thị trấn・khu phố (字)\" bên dưới.",
+  "この端末では現在地が使えません。下の「町・字を選ぶ」から選んでください。": "Thiết bị này không dùng được vị trí hiện tại. Hãy chọn từ mục \"Chọn thị trấn・khu phố (字)\" bên dưới.",
+  "いちばん近い避難場所まで、まっすぐ約 {k}km あります。今いる所は、この町から離れているかもしれません。今いる町の避難場所は、その町のページで見てください。": "Nơi lánh nạn gần nhất cách đây khoảng {k}km theo đường thẳng. Có thể bạn đang ở xa thị trấn này. Muốn xem nơi lánh nạn của thị trấn bạn đang ở, hãy xem trang của thị trấn đó.",
+  "海抜と浸水の想定を計算しています…": "Đang tính độ cao so với mực nước biển và dự báo ngập lụt…",
+  "まっすぐ 約 {k}km": "Đi thẳng khoảng {k}km"
  }
 }

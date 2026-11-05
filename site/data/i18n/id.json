@@ -1,11 +1,11 @@
 {
  "lang": "id",
  "name": "Bahasa Indonesia",
- "createdAt": "2026-11-05T03:08:08.538Z",
+ "createdAt": "2026-11-05T03:27:38.344Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 970,
- "of": 937,
+ "count": 975,
+ "of": 942,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Ini adalah panduan hidup tidak resmi untuk kota ini. Claude mengumpulkannya dari situs resmi kota dan sumber lain, dengan mencantumkan sumbernya (Machishirube)",
   "すべてのページ": "Semua halaman",
@@ -976,6 +976,11 @@
   "ごみを出す日（地区ごとの曜日）": "Hari membuang sampah (hari sesuai wilayah)",
   "防災計画の、町・字に関係する所": "Bagian rencana penanggulangan bencana yang terkait dengan kota/desa (aza)",
   "区ごとのページ": "Halaman per distrik",
-  "病院・避難場所・ごみの日などのくらしの案内は、区ごとのページにあります。お住まいの区を選んでください。": "Panduan kehidupan sehari-hari seperti rumah sakit, tempat evakuasi, dan hari pembuangan sampah tersedia di halaman masing-masing distrik. Silakan pilih distrik tempat Anda tinggal."
+  "病院・避難場所・ごみの日などのくらしの案内は、区ごとのページにあります。お住まいの区を選んでください。": "Panduan kehidupan sehari-hari seperti rumah sakit, tempat evakuasi, dan hari pembuangan sampah tersedia di halaman masing-masing distrik. Silakan pilih distrik tempat Anda tinggal.",
+  "現在地が取れませんでした。スマホの設定でこのサイトに位置情報を許可するか、下の「町・字を選ぶ」から選んでください。": "Lokasi Anda saat ini tidak dapat diperoleh. Izinkan akses lokasi untuk situs ini di pengaturan ponsel, atau pilih dari \"Pilih kota/desa\" di bawah.",
+  "この端末では現在地が使えません。下の「町・字を選ぶ」から選んでください。": "Lokasi saat ini tidak dapat digunakan di perangkat ini. Silakan pilih dari \"Pilih kota/desa\" di bawah.",
+  "いちばん近い避難場所まで、まっすぐ約 {k}km あります。今いる所は、この町から離れているかもしれません。今いる町の避難場所は、その町のページで見てください。": "Tempat pengungsian terdekat berjarak sekitar {k}km dalam garis lurus. Anda mungkin berada jauh dari kota ini. Untuk tempat pengungsian di kota tempat Anda berada, lihat halaman kota tersebut.",
+  "海抜と浸水の想定を計算しています…": "Sedang menghitung ketinggian di atas permukaan laut dan perkiraan genangan…",
+  "まっすぐ 約 {k}km": "Lurus sekitar {k} km"
  }
 }

@@ -1,11 +1,11 @@
 {
  "lang": "en",
  "name": "English",
- "createdAt": "2026-11-05T03:07:58.587Z",
+ "createdAt": "2026-11-05T03:27:32.357Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 973,
- "of": 937,
+ "count": 978,
+ "of": 942,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "This is an unofficial guide to living in this town. Claude gathers information from the town's official website and other sources, and cites each source (Machishirube)",
   "すべてのページ": "All pages",
@@ -979,6 +979,11 @@
   "ごみを出す日（地区ごとの曜日）": "Garbage collection days (by district)",
   "防災計画の、町・字に関係する所": "Disaster prevention plan: sections relevant to your town and neighborhood",
   "区ごとのページ": "Ward Pages",
-  "病院・避難場所・ごみの日などのくらしの案内は、区ごとのページにあります。お住まいの区を選んでください。": "Local information such as hospitals, evacuation shelters, and garbage collection days is on each ward's page. Please select the ward where you live."
+  "病院・避難場所・ごみの日などのくらしの案内は、区ごとのページにあります。お住まいの区を選んでください。": "Local information such as hospitals, evacuation shelters, and garbage collection days is on each ward's page. Please select the ward where you live.",
+  "現在地が取れませんでした。スマホの設定でこのサイトに位置情報を許可するか、下の「町・字を選ぶ」から選んでください。": "Couldn't get your location. Allow location access for this site in your phone settings, or choose from \"Select town/district\" below.",
+  "この端末では現在地が使えません。下の「町・字を選ぶ」から選んでください。": "Location isn't available on this device. Please choose from \"Select town/district\" below.",
+  "いちばん近い避難場所まで、まっすぐ約 {k}km あります。今いる所は、この町から離れているかもしれません。今いる町の避難場所は、その町のページで見てください。": "The nearest evacuation site is about {k}km away in a straight line. You may be far from this town. For evacuation sites in the town you're in, check that town's page.",
+  "海抜と浸水の想定を計算しています…": "Calculating elevation and flood forecast…",
+  "まっすぐ 約 {k}km": "Straight ahead, approx. {k} km"
  }
 }
