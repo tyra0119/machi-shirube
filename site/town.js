@@ -1346,7 +1346,8 @@ function onDay(when, date) {
   const dates = [...when.matchAll(/(\d{1,2})月\s*(\d{1,2}(?:\s*[・、]\s*\d{1,2})*)\s*日/g)];
   if (dates.length && !/毎週|第/.test(when)) return dates.some(([, m, ds]) => Number(m) === date.getMonth() + 1 && ds.split(/[・、]/).map((x) => Number(x.trim())).includes(date.getDate()));
   const w = WD[date.getDay()];
-  const days = (when.match(/[月火水木金土日](?=[・、曜]|$)/g) ?? []);
+  // 「曜日」の「日」は日曜日ではない（「毎週月・木曜日」の最後の「日」を日曜日と数えていた）
+  const days = (when.match(/(?<!曜)[月火水木金土日](?=[・、曜]|$)/g) ?? []);
   if (!days.includes(w)) return false;
   const nth = when.match(/第([0-9０-９・、〜~]+)/);
   if (!nth) return /毎週|曜/.test(when);
