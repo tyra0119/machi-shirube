@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-05T10:19:16.842Z",
+ "createdAt": "2026-11-05T11:56:22.860Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1077,
- "of": 1037,
+ "count": 1078,
+ "of": 1038,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -1083,6 +1083,7 @@
   "傘を": "Lleve paraguas",
   "「{name}」の季節": "Temporada de «{name}»",
   "傘を持って": "Lleva paraguas",
-  "町の誕生日（{y}年{md}にできて {n} 年）": "Cumpleaños del pueblo (fundado en {y}, {md}; {n} años)"
+  "町の誕生日（{y}年{md}にできて {n} 年）": "Cumpleaños del pueblo (fundado en {y}, {md}; {n} años)",
+  "地区を選ぶと、ここに出せるごみが出ます": "Al elegir un distrito, aquí aparecerá la basura que se puede sacar"
  }
 }

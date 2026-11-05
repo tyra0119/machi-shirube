@@ -1,11 +1,11 @@
 {
  "lang": "tl",
  "name": "Filipino",
- "createdAt": "2026-11-05T10:19:37.254Z",
+ "createdAt": "2026-11-05T11:56:46.089Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1066,
- "of": 1037,
+ "count": 1067,
+ "of": 1038,
  "dict": {
   "この町の非公式の暮らしの案内です。町の公式のサイトや国の公開データから集め、出典をつけています（まちしるべ）": "Ito ay isang di-opisyal na gabay sa pamumuhay sa bayang ito. Kinuha ito mula sa opisyal na website ng bayan at sa pampublikong datos ng bansa, at may nakasaad na pinagmulan (Machishirube)",
   "すべてのページ": "Lahat ng pahina",
@@ -1072,6 +1072,7 @@
   "傘を": "Magdala ng payong",
   "町の誕生日（{y}年{md}にできて {n} 年）": "Kaarawan ng bayan (itinatag noong {md} ng {y}, {n} taon na)",
   "「{name}」の季節": "Panahon ng \"{name}\"",
-  "傘を持って": "Magdala ng payong"
+  "傘を持って": "Magdala ng payong",
+  "地区を選ぶと、ここに出せるごみが出ます": "Kapag pumili ka ng distrito, lalabas dito ang mga basurang puwedeng itapon"
  }
 }

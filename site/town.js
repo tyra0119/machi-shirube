@@ -1243,6 +1243,8 @@ function renderMorning() {
   // 1. ごみ
   const g = ev ? gomiTomorrow : gomiToday;
   if (g) row("trash", T("ごみ"), esc(g.length ? g.join("・") : T("収集なし")) + ((ev ? gomiHolidayTmr : gomiHoliday) ? `（${esc(T("祝日は収集が変わることがあります"))}）` : ""));
+  // 地区をまだ選んでいない人には、選ぶとごみが出ることを（毎朝見てもらう入口）
+  else if (!$("gomi-days-block").hidden && !$("gomi-area").closest("label").hidden) row("trash", T("ごみ"), `<a href="#gomi">${T("地区を選ぶと、ここに出せるごみが出ます")}</a>`);
   // 2. 天気（雨の確率が高ければ傘を）
   const w = todayInfo?.days?.[ev ? 1 : 0];
   if (w?.weather || w?.max != null) row(w.pop >= 50 ? "umbrella" : "sun", T("天気"), `${esc(w.weatherLang ?? w.weather ?? "")}${w.max != null ? ` ${Math.round(w.max)}℃` : ""}${w.pop != null ? `・${T("雨")} ${w.pop}%` : ""}${w.pop >= 50 ? `・<strong>${T("傘を持って")}</strong>` : ""}`);
