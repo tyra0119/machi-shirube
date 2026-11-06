@@ -47,6 +47,12 @@ async function check(url) {
   try {
     const res = await fetch(url, { headers: { "User-Agent": UA }, redirect: "follow", signal: AbortSignal.timeout(15000) });
     lastHit.set(u.host, Date.now());
+    // 奥のページが、サイトのトップページに飛ばされる：ページが移った・消えたとみなす（11/6、美濃加茂市の古い住所が新しいサイトのトップに、
+    // 黒潮町のお土産のページが観光サイトのトップに飛ばされ、「中身が変わった」と受け取って照らし直しが空の理由で食い違いにしていた）
+    if (res.ok && res.redirected && new URL(res.url).pathname === "/" && u.pathname !== "/") {
+      res.body?.cancel();
+      return { kind: "gone", status: "top", moved: res.url };
+    }
     if (res.ok) {
       // 中身が変わったかも見る：HTML は文字だけ（スクリプト・タグ・空白を外す）、ほかはそのままの中身で、指紋（ハッシュ）を取る。
       // HTML の文字は local/cache/watch/ にだけ置き、中身が変わったときの照らし直しに使う（scripts/watch-recheck.mjs）
@@ -131,7 +137,8 @@ if (!burst) {
     for (const u of p.used.filter((x, i, all) => x.qid && all.findIndex((y) => y.page === x.page && y.qid === x.qid) === i)) {
       const a = answers(u.page).find((x) => x.qid === u.qid);
       if (!a) continue;
-      const label = p.kind === "gone" ? `ページが見つからない（${p.status}）` : p.kind === "maint" ? "相手のサイトがメンテナンス中かも（503 が続いている）" : `つながらない状態が続いている（${p.status}）`;
+      const label = p.kind === "gone" && p.status === "top" ? `ページが移った（${new URL(links[p.url].moved).host} のトップページに飛ばされる）`
+        : p.kind === "gone" ? `ページが見つからない（${p.status}）` : p.kind === "maint" ? "相手のサイトがメンテナンス中かも（503 が続いている）" : `つながらない状態が続いている（${p.status}）`;
       addItem({
         scope: a.scope, scopeName: all.find((x) => x.id === a.id)?.scopeName, kind: "watch", qid: a.qid, question: a.question, value: a.value, source: a.source,
         redoOf: a.id, watchUrl: p.url,

@@ -29,7 +29,8 @@ export async function watchRecheck(log = console.log, { dry = false, force = nul
   const at = new Date().toISOString();
   let usd = 0;
   for (const [url, l] of todo) {
-    for (const u of l.used.filter((x) => x.qid)) {
+    // 1つの答えが同じページを2か所で使っていても、照らすのは1回（11/6、美濃加茂市 Q16 が2件入った。watch.mjs と同じ）
+    for (const u of l.used.filter((x, i, all) => x.qid && all.findIndex((y) => y.page === x.page && y.qid === x.qid) === i)) {
       const a = JSON.parse(fs.readFileSync(`site/data/answers/${u.page}.json`, "utf8")).answers.find((x) => x.qid === u.qid);
       const it = a && items.find((x) => x.id === a.id);
       if (!it || open.has(url)) continue;

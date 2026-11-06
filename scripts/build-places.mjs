@@ -38,18 +38,21 @@ async function overpass(code, bbox) {
   const [w, s, e, n] = bbox;
   // 公園は relation を頼まない（黒潮町で、国立公園などの大きな relation の真ん中を出すのに時間がかかり、何度頼んでも 90 秒で切れた。11/6）
   // 種類ごとに分けて、1つずつ頼む（まとめて頼むと、混んでいるときに 504 で断られた。11/6）。断られたら 20 秒あけて 2 回まで頼み直す
+  // 取れた種類は local/cache/places/{コード}.{種類}.json に残し、頼み直しでは残りの種類だけを頼む（11/6、黒潮町で公園のあと図書館で切れた）
   const j = { elements: [] };
+  fs.mkdirSync("local/cache/places", { recursive: true });
   for (const [k, f] of KINDS) {
+    const part = `local/cache/places/${code}.${k}.json`;
+    if (fs.existsSync(part)) { j.elements.push(...JSON.parse(fs.readFileSync(part, "utf8"))); continue; }
     const q = `[out:json][timeout:60];${k === "park" ? "nw" : "nwr"}${f}(${s},${w},${n},${e});out center tags;`;
     for (let tryN = 0; ; tryN++) {
       const r = await fetch(API, { method: "POST", headers: { "User-Agent": UA, "Content-Type": "application/x-www-form-urlencoded" }, body: `data=${encodeURIComponent(q)}`, signal: AbortSignal.timeout(90000) }).catch((err) => ({ ok: false, status: err.name }));
-      if (r.ok) { j.elements.push(...((await r.json()).elements ?? [])); break; }
+      if (r.ok) { const els = (await r.json()).elements ?? []; fs.writeFileSync(part, JSON.stringify(els)); j.elements.push(...els); break; }
       if (tryN >= 2) throw new Error(`Overpass ${r.status}（${k}）`);
       await sleep(20000);
     }
     await sleep(3000);
   }
-  fs.mkdirSync("local/cache/places", { recursive: true });
   fs.writeFileSync(file, JSON.stringify(j));
   return j;
 }
