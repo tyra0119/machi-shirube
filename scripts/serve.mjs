@@ -178,8 +178,11 @@ function launch(code, part) {
         .then((r) => { run.usd += r.usd; })
         .catch((e) => run.log.push({ at: new Date().toISOString(), text: `数から、できることへは出せませんでした：${e.message}` }));
     }
-    // 調べ終わったら、Claude のほうから提案する（物差しにない問い・スキルにするか）
-    if (!run.stopRequested && total > 0) {
+    // 調べ終わったら、Claude のほうから提案する（物差しにない問い・スキルにするか）。
+    // 物差しを止めているあいだ（yardstick.json の frozen。作者「今はしないで止める」）は提案しない
+    const frozen = JSON.parse(fs.readFileSync("site/data/yardstick.json", "utf8")).frozen;
+    if (frozen && !run.stopRequested && total > 0) run.log.push({ at: new Date().toISOString(), text: "物差しを止めているので、調べ終わりの提案はしません" });
+    if (!frozen && !run.stopRequested && total > 0) {
       run.log.push({ at: new Date().toISOString(), text: "調べ終わりました。Claude が答えの全体を見て、提案を考えています" });
       await propose(code, { part, log: (text) => run.log.push({ at: new Date().toISOString(), text }) })
         .then((r) => { run.usd += r.usd; run.proposals = r.proposals.length; })

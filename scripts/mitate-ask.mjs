@@ -34,6 +34,8 @@ export async function mitateAsk(code, log = console.log) {
     const g = (tag) => a[2].match(new RegExp(`<${tag}>([\\s\\S]*?)</${tag}>`))?.[1]?.trim() ?? "";
     const use = g("use").match(/[QT]\d+/)?.[0];
     if (use && mine.some((q) => q.id === use)) { w.ask = use; log(`  ${w.person} → もう聞いている ${use}`); continue; }
+    // 物差しを止めているあいだ（yardstick.json の frozen。作者「今はしないで止める」）は、新しい問いを足さない
+    if (y.frozen) { log(`  ${w.person}：物差しを止めているので、新しい問い「${g("short").slice(0, 20)}」は足しません`); continue; }
     const q = { id: `Q${next++}`, group: "見立てから", page: PAGES.includes(g("page")) ? g("page") : "komatta", short: g("short").slice(0, 20), text: g("text"), only: code,
       origin: { from: m.name, mitate: m.createdAt, who: w.person, at: new Date().toISOString(), why: `見立て「${w.person}（${w.wall}）」の人のための町の支援や窓口を調べる` } };
     if (!q.text || !q.short) { log(`  ${w.person}：問いを読めなかった`); continue; }
