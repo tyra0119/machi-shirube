@@ -1,8 +1,8 @@
 {
- "updatedAt": "2026-11-05T13:41:32.779Z",
+ "updatedAt": "2026-11-06T06:34:59.590Z",
  "counts": {
   "auto": 82,
-  "ok": 202,
+  "ok": 209,
   "pending": 0,
   "fix": 30,
   "rejected": 22,
@@ -7030,6 +7030,166 @@
     "at": "2026-11-05T13:38:01.683Z",
     "action": "reject",
     "reason": "見つからなかった"
+   }
+  },
+  {
+   "id": "r00450",
+   "scope": "muni:11227",
+   "scopeName": "埼玉県 朝霞市",
+   "qid": "Q18",
+   "kind": "watch",
+   "question": "介護や高齢者の暮らしの相談の窓口（地域包括支援センターなど）の名前・担当する地区・電話番号",
+   "why": "見張り：出典のページが見つからない（404）。2026-11-06 から。「直して」で Claude が新しいページを探して調べ直します",
+   "status": "ok",
+   "score": 3,
+   "source": {
+    "title": "地域包括支援センター - 朝霞市",
+    "url": "https://www.city.asaka.lg.jp/soshiki/23/tiikihoukatusiennsennta-.html"
+   },
+   "decided": {
+    "at": "2026-11-06T06:34:45.958Z",
+    "action": "ok",
+    "reason": ""
+   }
+  },
+  {
+   "id": "r00451",
+   "scope": "muni:39428",
+   "scopeName": "高知県 黒潮町",
+   "qid": "Q21",
+   "kind": "watch",
+   "question": "これから3か月のあいだに町で開かれる催し（祭り・イベント・講座など）。多くても5つ。1つずつ1文で、日付・場所と出典をつけて",
+   "why": "見張り：出典のページが見つからない（404）。2026-11-06 から。「直して」で Claude が新しいページを探して調べ直します",
+   "status": "ok",
+   "score": 2,
+   "source": {
+    "title": "黒潮町公式ホームページ",
+    "url": "https://www.town.kuroshio.lg.jp/"
+   },
+   "decided": {
+    "at": "2026-11-06T06:34:49.109Z",
+    "action": "ok",
+    "reason": ""
+   }
+  },
+  {
+   "id": "r00452",
+   "scope": "muni:21211",
+   "scopeName": "岐阜県 美濃加茂市",
+   "qid": "Q13",
+   "kind": "watch",
+   "question": "この町でいま動いていること（新しい施設・大きな計画や工事・制度の変わり目・町の取り組み）。ここ1年ほどの公式の発表から、多くても5つ。1つずつ1文で、それぞれ出典をつけて",
+   "why": "見張り：出典のトップページが新しい住所（city.minokamo.lg.jp）に移り、答えに挙げた催しは、いまの新着に載っていない。「直して」で Claude が調べ直します",
+   "status": "ok",
+   "score": 2,
+   "source": {
+    "title": "美濃加茂市公式ホームページ トップページ",
+    "url": "https://www.city.minokamo.gifu.jp/"
+   },
+   "decided": {
+    "at": "2026-11-06T06:34:51.956Z",
+    "action": "ok",
+    "reason": ""
+   }
+  },
+  {
+   "id": "r00453",
+   "scope": "muni:21211",
+   "scopeName": "岐阜県 美濃加茂市",
+   "qid": "Q16",
+   "kind": "watch",
+   "question": "夜間や休日に具合が悪くなったときの窓口（休日当番医・夜間急病診療所・救急の電話相談・子どもの急病の電話相談 #8000 など）。電話番号と受付の時間",
+   "why": "見張り：出典のページが移った（美濃加茂市はサイトの住所が city.minokamo.lg.jp に変わり、古い住所はトップページに飛ばされる）。「直して」で Claude が新しいページを探して調べ直します",
+   "status": "ok",
+   "score": 2,
+   "source": {
+    "title": "日曜、祝日等の急な病気やケガの際に（美濃加茂市）",
+    "url": "https://www.city.minokamo.gifu.jp/shimin/contents.cfm?base_id=4068&mi_id=3&g1_id=12&g2_id=52"
+   },
+   "decided": {
+    "at": "2026-11-06T06:34:53.981Z",
+    "action": "ok",
+    "reason": ""
+   }
+  },
+  {
+   "id": "r00454",
+   "scope": "muni:21211",
+   "scopeName": "岐阜県 美濃加茂市",
+   "qid": "Q16",
+   "kind": "watch",
+   "question": "夜間や休日に具合が悪くなったときの窓口（休日当番医・夜間急病診療所・救急の電話相談・子どもの急病の電話相談 #8000 など）。電話番号と受付の時間",
+   "why": "見張り：出典のページの中身が変わり、答えと合わない所がある（食い違い）。「直して」で Claude が調べ直します",
+   "status": "void",
+   "score": 0,
+   "source": {
+    "title": "日曜、祝日等の急な病気やケガの際に（美濃加茂市）",
+    "url": "https://www.city.minokamo.gifu.jp/shimin/contents.cfm?base_id=4068&mi_id=3&g1_id=12&g2_id=52"
+   },
+   "decided": {
+    "at": "2026-11-06T06:15:05.923Z",
+    "action": "void",
+    "reason": "見張りの照らし直しで、同じ答え（r00453）が2件入った（しくみの重なり。11/6 に直した）"
+   }
+  },
+  {
+   "id": "r00455",
+   "scope": "muni:21211",
+   "scopeName": "岐阜県 美濃加茂市",
+   "qid": "Q18",
+   "kind": "watch",
+   "question": "介護や高齢者の暮らしの相談の窓口（地域包括支援センターなど）の名前・担当する地区・電話番号",
+   "why": "見張り：出典のページが移った（美濃加茂市はサイトの住所が city.minokamo.lg.jp に変わり、古い住所はトップページに飛ばされる）。「直して」で Claude が新しいページを探して調べ直します",
+   "status": "ok",
+   "score": 2,
+   "source": {
+    "title": "「長寿支援センター」は、高齢者の「総合相談窓口」です！",
+    "url": "https://www.city.minokamo.gifu.jp/shimin/contents.cfm?base_id=7534&mi_id=3&g1_id=12&g2_id=48"
+   },
+   "decided": {
+    "at": "2026-11-06T06:34:56.082Z",
+    "action": "ok",
+    "reason": ""
+   }
+  },
+  {
+   "id": "r00456",
+   "scope": "muni:39428",
+   "scopeName": "高知県 黒潮町",
+   "qid": "Q07",
+   "kind": "watch",
+   "question": "車を持たない人が使える町の交通（コミュニティバス・予約して乗る乗り物など）はあるか。予約先や時刻表はどこか",
+   "why": "見張り：出典のページの中身が変わった。AI は「0880-43-2177 は電話予約以外の問い合わせ先」と挙げたが、いまのページにも「電話予約の利用登録は企画調整室に問い合わせ」「企画調整室 0880-43-2177」とあり、答えと合っている（作る側で照らした）",
+   "status": "ok",
+   "score": 2,
+   "source": {
+    "title": "黒潮町のAIオンデマンド交通サービス│黒潮町公式ホームページ",
+    "url": "https://www.town.kuroshio.lg.jp/pb/cont/kikaku-koutu/44351"
+   },
+   "decided": {
+    "at": "2026-11-06T06:34:57.790Z",
+    "action": "ok",
+    "reason": ""
+   }
+  },
+  {
+   "id": "r00457",
+   "scope": "muni:39428",
+   "scopeName": "高知県 黒潮町",
+   "qid": "Q47",
+   "kind": "watch",
+   "question": "この町の特産の野菜や果物と、その旬の時期。買える直売所（農産物直売所・道の駅など）の名前と場所（町の公式のページか資料から）",
+   "why": "見張り：出典のページが移った（黒潮町観光公式サイトのトップページに飛ばされ、お土産・直売所の一覧が見えない）。「直して」で Claude が新しいページを探して調べ直します",
+   "status": "ok",
+   "score": 2,
+   "source": {
+    "title": "直販所「さが谷三里マーケット」（集落活動センター 佐賀北部）│黒潮町公式ホームページ 観光情報",
+    "url": "https://www.town.kuroshio.lg.jp/pb/cont/kuronavi-omiyage-tyokubai/9283"
+   },
+   "decided": {
+    "at": "2026-11-06T06:34:59.563Z",
+    "action": "ok",
+    "reason": ""
    }
   }
  ]
