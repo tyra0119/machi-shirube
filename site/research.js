@@ -24,7 +24,8 @@ main();
 async function main() {
   const [stats, yard] = await Promise.all([fetch("data/stats.json").then((r) => r.json()), fetch("data/yardstick.json").then((r) => r.json())]);
   // 町・字ごとの問いは、町・字を調べるときだけ。「この町だけ」の問いはその町だけ
-  const feats = (await fetch("data/features.json").then((r) => r.json()).catch(() => ({ towns: {} }))).towns[code] ?? [];
+  const featData = await fetch("data/features.json").then((r) => r.json()).catch(() => ({ towns: {} }));
+  const feats = featData.towns[code] ?? [], featRules = featData.rules;
   STATS = stats;
   const t = stats.towns[code];
   // 決まりつきの問い（rule：「外国の住民の割合が 5% 以上の町だけ」など）は、その決まりに合う町だけ（調べる側 research.mjs の townQuestions、町のページ scenes.js と同じ）。
@@ -34,12 +35,29 @@ async function main() {
     return (!fr || (t?.foreignRate ?? 0) >= Number(fr[1])) && (!old || (t?.over65Rate ?? 0) >= Number(old[1]));
   };
   // 決まりに合わない問いも、カードは出す（「聞かない」の印と理由つき）。作者「聞かない問いのカード自体は表示していい。表示していたほうがわかりやすい（なんで表示されないの？となるため）」
-  pickQs = (y) => y.questions.filter((q) => (q.level === "town") === Boolean(part) && (!q.only || q.only === code) && (!q.feature || feats.includes(q.feature)));
+  // ほかの町だけの問い（only）・町の特徴の問い（feature）も同じ（作者「Q14はなぜ表示されない？」：Q14 は黒潮町だけの問い）
+  const FEAT = { nougyou: "農業・林業の多い町", gyogyou: "漁業の多い町", yuki: "豪雪地帯の町", kazan: "火山災害警戒地域の町", shima: "離島がある町" };
+  const FEAT_RULE = Object.fromEntries(String(featRules ?? "").split("／").map((s) => s.split("：")).filter((x) => x.length === 2).map(([k, v]) => [k, v]));
+  const FEAT_KEY = { nougyou: "農業", gyogyou: "漁業", yuki: "雪", kazan: "火山", shima: "島" };
+  const nameOf = (c) => stats.towns[c]?.name.replace(/^.+?郡(?=.+[町村]$)/, "") ?? c;
+  const whyNot = (q) => {
+    if (q.only && q.only !== code) return `${nameOf(q.only)}だけの問いです（${esc(q.group ?? "その町のために足した問い")}）。この町には聞きません`;
+    if (q.feature && !feats.includes(q.feature)) return `${FEAT[q.feature] ?? q.feature}だけに聞く問いです${FEAT_RULE[FEAT_KEY[q.feature]] ? `（決まり：${FEAT_RULE[FEAT_KEY[q.feature]]}）` : ""}。この町は当てはまらないので聞きません`;
+    if (!ruleOk(q)) {
+      const fr = /外国の住民/.test(q.rule), now = fr ? t?.foreignRate : t?.over65Rate;
+      return `問いの決まり「${q.rule}」に合わないので、この町には聞きません（この町の${fr ? "外国の住民の割合" : "65歳以上の割合"}は ${now ?? "?"}%）`;
+    }
+    return null;
+  };
+  // ます目に出す問い（町・字のときは町・字の問い）と、この町には聞かない問いの理由
+  pickQs = (y) => {
+    // 番号の順に並べる（物差しの順だと Q14 が Q28 のうしろに来て、Q13 と Q15 のあいだを見ても見つからない）
+    const num = (q) => Number(q.id.slice(1)) || 0;
+    const qs = y.questions.filter((q) => (q.level === "town") === Boolean(part)).sort((a, b) => num(a) - num(b));
+    skipWhy = new Map(qs.map((q) => [q.id, whyNot(q)]).filter(([, w]) => w));
+    return qs;
+  };
   questions = pickQs(yard);
-  skipWhy = new Map(questions.filter((q) => !ruleOk(q)).map((q) => {
-    const fr = /外国の住民/.test(q.rule), now = fr ? t?.foreignRate : t?.over65Rate;
-    return [q.id, `問いの決まり「${q.rule}」に合わないので、この町には聞きません（この町の${fr ? "外国の住民の割合" : "65歳以上の割合"}は ${now ?? "?"}%）`];
-  }));
   if (!t) { $("name").textContent = "町が見つかりません"; return; }
   const muniName = t.name.replace(/^.+?郡(?=.+[町村]$)/, "");
   if (part) {
