@@ -1206,8 +1206,11 @@ async function showUnfinished() {
   // まとめて続きを調べる（作者「まとめて調査ができるようにしてほしい」11/6）：調べても予約してもいない町を、上から順に予約する
   const idle = d.list.filter((x) => !x.running && !x.queued);
   const qs = idle.reduce((n, x) => n + x.never + x.retry, 0);
+  // 費用の上限（1日・合計）に届いているときは、理由を出してボタンを押せなくする（前は押しても何もせずに終わり、反応しないように見えた）
+  const capOver = d.cap?.over && !d.list.some((x) => x.running);
   el.innerHTML = `<p class="bb-sub">調べの途中の町 ${d.list.length}</p>
-  ${idle.length >= 2 ? `<div class="bb-all"><button type="button" id="unf-all">まとめて続きを調べる（${idle.length} 町・${qs} 問）</button><span>1 町ずつ順に調べます（1 町の上限 $${d.limit ?? 30}）</span></div>` : ""}
+  ${capOver ? `<p class="bb-cap" role="status">いまは調べられません：${String(d.cap.why).replace(/[&<>"]/g, "")}</p>` : ""}
+  ${idle.length >= 2 && !capOver ? `<div class="bb-all"><button type="button" id="unf-all">まとめて続きを調べる（${idle.length} 町・${qs} 問）</button><span>1 町ずつ順に調べます（1 町の上限 $${d.limit ?? 30}）</span></div>` : ""}
   <ul class="bb-unf">${d.list.map((x, i) => x.running ? runCard(x) : x.queued ? `<li class="u-wait">
     <span class="u-badge">予約 ${x.queued} 番目</span><a href="${url(x)}" class="u-name">${nm(x)}</a>
     <span class="u-num">前の町が終わったら、自動で始まります（まだ ${x.never + x.retry} 問）</span>
@@ -1215,7 +1218,7 @@ async function showUnfinished() {
   </li>` : `<li>
     <a href="${url(x)}" class="u-name">${nm(x)}</a>
     <span class="u-num">済み ${x.done}/${x.total}・まだ ${x.never}${x.retry ? `・もう一度探す ${x.retry}` : ""}${x.notFound ? `・見つからず ${x.notFound}` : ""}</span>
-    <button type="button" class="secondary" data-i="${i}">続きを調べる</button>
+    <button type="button" class="secondary" data-i="${i}" ${capOver ? "disabled" : ""}>続きを調べる</button>
   </li>`).join("")}</ul>`;
   for (const b of el.querySelectorAll("button[data-cancel]")) b.addEventListener("click", async () => {
     b.disabled = true;

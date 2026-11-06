@@ -24,6 +24,16 @@ import { hitokoto } from "./hitokoto.mjs";
 import { dekiru } from "./dekiru.mjs";
 import { mitateAsk } from "./mitate-ask.mjs";
 import { preview, publish } from "./publish.mjs";
+import { spent, japanDay, DAILY_LIMIT_USD, TOTAL_LIMIT_USD } from "../src/cost.mjs";
+
+// 費用の上限（1日・合計）に届いているか。届いていたら調べを始めない（作者「まとめて続きを調べるを押しても反応しなくなった」11/6：
+// 1日の上限 $80 を超えたあと、押した4町が何もせずに 0.1 秒で終わり、画面には何も出なかった）
+function capNow() {
+  const today = spent(japanDay(new Date().toISOString())), total = spent();
+  const why = today >= DAILY_LIMIT_USD ? `今日の費用が 1 日の上限に届いています（$${today.toFixed(2)} ／ $${DAILY_LIMIT_USD}）。日本時間の 0 時から、また調べられます（上限は .env の DAILY_LIMIT_USD で変えられます）`
+    : total >= TOTAL_LIMIT_USD ? `費用の合計が上限に届いています（$${total.toFixed(2)} ／ $${TOTAL_LIMIT_USD}）。上限は .env の TOTAL_LIMIT_USD で変えられます` : null;
+  return { today, daily: DAILY_LIMIT_USD, total, totalLimit: TOTAL_LIMIT_USD, over: !!why, why };
+}
 
 // 町をまとめて調べる（調べる画面から）。一度に1つだけ。様子はメモリに持ち、終わったら local/runs/ に残す
 const runs = new Map();
@@ -84,6 +94,8 @@ async function saveArea(req, res) {
 // 町を調べる（API の鍵を使うので、鍵が読めるときだけ。npm run serve:research で .env を読んで動かす）
 async function startResearch(req, res) {
   if (!process.env.ANTHROPIC_API_KEY) return send(res, 400, { error: "調べるには npm run serve:research で動かしてください（.env の鍵を読む）" });
+  const cap = capNow();
+  if (cap.over) return send(res, 409, { error: cap.why, cap });
   let body = "";
   for await (const chunk of req) body += chunk;
   try {
@@ -100,6 +112,8 @@ async function startResearch(req, res) {
 // 「こういう情報も探して」：頼みごとを問いに直して物差しに足し（合わなければ理由を返す）、そのまま調べる
 async function startRequest(req, res) {
   if (!process.env.ANTHROPIC_API_KEY) return send(res, 400, { error: "調べるには npm run serve:research で動かしてください（.env の鍵を読む）" });
+  const cap = capNow();
+  if (cap.over) return send(res, 409, { error: cap.why, cap });
   let body = "";
   for await (const chunk of req) body += chunk;
   try {
@@ -119,6 +133,8 @@ async function startRequest(req, res) {
 
 async function startRun(req, res) {
   if (!process.env.ANTHROPIC_API_KEY) return send(res, 400, { error: "調べるには npm run serve:research で動かしてください（.env の鍵を読む）" });
+  const cap = capNow();
+  if (cap.over) return send(res, 409, { error: cap.why, cap });
   let body = "";
   for await (const chunk of req) body += chunk;
   const { code, part, qids: rawQids, redo } = JSON.parse(body || "{}");
@@ -143,6 +159,7 @@ async function startRun(req, res) {
 // 予約の先頭を始める（いまの調べが終わったあと）
 function next() {
   if (isBusy() || !queue.length) return;
+  if (capNow().over) { console.log(`費用の上限に届いたので、予約の ${queue.length} 町は始めずに残します`); return; }
   const q = queue.shift();
   const run = launch(q.code, q.part ?? undefined, { qids: q.qids, redo: q.redo });
   run.log.unshift({ at: run.startedAt, text: "予約していた町を、前の町の調べが終わったので始めました" });
@@ -303,7 +320,7 @@ http
       }).filter((x) => x.never + x.retry > 0 || x.running || x.queued)
         .sort((a, b) => (b.running - a.running) || ((a.queued ?? 1e9) - (b.queued ?? 1e9)));
       // 何回探して見つからなければ調べ終わりにするか（research.mjs の GIVE_UP_TRIES）。それより少ない問いだけが「続き」に数えられる
-      return send(res, 200, { list, limit: RUN_LIMIT_USD });
+      return send(res, 200, { list, limit: RUN_LIMIT_USD, cap: capNow() });
     }
     // 前の調べの記録（作者「作業ログについて、過去の分も表示することはできない？」11/6）：その町の local/runs/ から。
     // 画面から調べた回は、回ごとの作業の流れ（*.summary.json）。画面を作る前やコマンドから調べた分は、問いごとの記録（*.json）を日ごとにまとめる

@@ -464,3 +464,4 @@ html[data-wx="rain"] .scene .wx-rain, html[data-wx="snow"] .scene .wx-snow { dis
 .bb-unf .u-now { margin: 0 0 10px; padding: 6px 8px; border-radius: 6px; background: var(--bg); font-size: calc(13px * var(--fs, 1)); overflow-wrap: anywhere; }
 .bb-unf .u-now span { display: block; font-size: calc(11px * var(--fs, 1)); color: var(--text-sub); }
 .bb-unf .u-open { display: flex; align-items: center; justify-content: center; min-height: 40px; border: 1.5px solid var(--accent); border-radius: 999px; color: var(--accent); font-weight: 700; font-size: calc(14px * var(--fs, 1)); text-decoration: none; }
+.bb-cap { margin: 4px 0 8px; padding: 8px 10px; border: 2px solid var(--accent); border-radius: 8px; background: var(--surface); font-size: calc(13px * var(--fs, 1)); font-weight: 600; line-height: 1.6; }

@@ -74,3 +74,18 @@ body.try-page { height: auto; background: var(--bg); color: var(--text); font-si
 @media (prefers-reduced-motion: reduce) { .try .glow { animation: none; outline: 3px solid var(--accent); outline-offset: 2px; } }
 html { scroll-behavior: smooth; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+/* いま調べている問い（ます目の上の帯と、ます目のカード）。調べる画面（research.html）と同じ見せ方 */
+.try-now { margin: 0 0 8px; padding: 12px; border: 2px solid var(--accent); border-radius: 10px; background: var(--surface); }
+.try-now p { margin: 0; }
+.try-now .n-head { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; }
+.try-now .n-head strong { font-size: calc(17px * var(--fs, 1)); }
+.try-now .n-badge { padding: 2px 8px; border-radius: 999px; background: var(--accent); color: var(--accent-text); font-size: calc(12px * var(--fs, 1)); font-weight: 700; }
+.try-now .n-short { font-size: calc(15px * var(--fs, 1)); font-weight: 600; }
+.try-now .n-text { margin-top: 6px; font-size: calc(14px * var(--fs, 1)); line-height: 1.6; }
+.try-now .n-step { margin-top: 8px; padding: 6px 8px; border-radius: 6px; background: var(--bg); font-size: calc(13px * var(--fs, 1)); overflow-wrap: anywhere; }
+.try-now .n-step span { display: block; font-size: calc(11px * var(--fs, 1)); color: var(--text-sub); }
+.try .d-dot { display: inline-block; width: 9px; height: 9px; margin-right: 4px; border-radius: 50%; background: var(--accent); vertical-align: middle; animation: try-pulse 1.4s ease-in-out infinite; }
+@keyframes try-pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.35; transform: scale(0.7); } }
+.try-grid li.doing { border: 3px solid var(--accent); background: var(--surface); box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px var(--accent); }
+.try-grid li.doing .p { color: var(--accent); font-weight: 700; }
+@media (prefers-reduced-motion: reduce) { .try .d-dot { animation: none; } }

@@ -3,11 +3,16 @@ const $ = (id) => document.getElementById(id);
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
 const mmss = (s) => `${Math.floor(s / 60)}分${Math.floor(s % 60)}秒`;
 let D = null, t = 0, idx = 0, timer = null, usd = 0, pages = 0, reviewed = false;
+// いま調べている問い（作者「調べ中の点滅など、審査員向けのページも修正してある？」11/6）：記録の「…を調べ始めます：問いの文」から、物差しの問いの番号を引く
+let cur = null, curAt = 0, lastStep = "", finishing = false;
+const byText = new Map();
 const scores = {};
 
 main();
 async function main() {
   D = await fetch("data/replay/15385.json").then((r) => r.json());
+  const yard = await fetch("data/yardstick.json").then((r) => r.json()).catch(() => ({ questions: [] }));
+  for (const q of yard.questions) byText.set(q.text, q);
   const [y, m, d] = D.date.split("-").map(Number);
   $("when").textContent = `${y}年${m}月${d}日`;
   $("len").textContent = `${Math.round(D.seconds / 60)} 分・$${D.usd.toFixed(2)}`;
@@ -45,7 +50,7 @@ function play() {
   timer = setInterval(() => tick(0.1 * Number($("speed").value)), 100);
 }
 function pause() { clearInterval(timer); timer = null; $("play").textContent = t >= D.seconds ? "もう一度再生する" : "続きを再生する"; }
-function reset() { t = 0; idx = 0; usd = 0; pages = 0; for (const k of Object.keys(scores)) delete scores[k]; $("log").innerHTML = ""; drawGrid(); }
+function reset() { t = 0; idx = 0; usd = 0; pages = 0; cur = null; lastStep = ""; finishing = false; for (const k of Object.keys(scores)) delete scores[k]; $("log").innerHTML = ""; drawGrid(); }
 
 function tick(dt) {
   t = Math.min(D.seconds, t + dt);
@@ -57,6 +62,10 @@ function tick(dt) {
     if (/^読んでいます：/.test(st.t)) pages++;
     const sc = st.t.match(/^採点：(\w+) は (\d) 点/);
     if (sc) scores[sc[1]] = Number(sc[2]);
+    const b = st.t.match(/を調べ始めます：(.+)$/);
+    if (b) { cur = byText.get(b[1].trim())?.id ?? D.items.find((x) => b[1].includes(x.short))?.qid ?? null; curAt = st.s; finishing = false; }
+    else if (/^(国のデータを重ねた数から|見立てた人ごとに|町・字ごとの数から|町の数と、確かめ済み|調べ終わりました|物差しを止めている)/.test(st.t)) { cur = null; finishing = true; }
+    lastStep = st.t;
     add.push(st);
   }
   if (add.length) {
@@ -70,6 +79,7 @@ function tick(dt) {
   $("usd").textContent = `$${(t >= D.seconds ? D.usd : usd).toFixed(2)}`;
   $("pages").textContent = pages;
   $("done").textContent = `${Object.keys(scores).length} / ${D.items.length}`;
+  drawNow();
   if (t >= D.seconds) { pause(); $("review-sec").classList.add("ready"); if (!reviewed) stage(2); }
 }
 // 行の種類（色分けの印）
@@ -79,8 +89,24 @@ const linkify = (s) => esc(s).replace(/(https?:\/\/[^\s）)]+)/g, (u) => `<a hre
 function drawGrid() {
   $("grid").innerHTML = D.items.map((it) => {
     const s = scores[it.qid];
-    return `<li class="${s == null ? "" : `s${s}`}"><span class="q">${esc(it.qid)}</span><span class="t">${esc(it.short)}</span><span class="p">${s == null ? "まだ" : s === 0 ? "見つからず" : `${s} 点`}</span></li>`;
+    const doing = it.qid === cur && t < D.seconds;
+    return `<li class="${doing ? "doing" : s == null ? "" : `s${s}`}"><span class="q">${esc(it.qid)}</span><span class="t">${esc(it.short)}</span><span class="p">${doing ? `<span class="d-dot" aria-hidden="true"></span>調べています` : s == null ? "まだ" : s === 0 ? "見つからず" : `${s} 点`}</span></li>`;
   }).join("");
+}
+// ます目の上の帯：いま調べている問いの番号・見出し・問いの文・いまの作業（記録の最後の行）
+function drawNow() {
+  const el = $("now");
+  const it = D.items.find((x) => x.qid === cur);
+  if (t <= 0 || t >= D.seconds || (!it && !finishing)) { el.hidden = true; return; }
+  el.hidden = false;
+  const step = esc(lastStep.length > 110 ? lastStep.slice(0, 110) + "…" : lastStep);
+  const q = it && [...byText.values()].find((x) => x.id === it.qid);
+  el.innerHTML = it
+    ? `<p class="n-head"><span class="d-dot" aria-hidden="true"></span><span class="n-badge">いま調べている問い</span><strong>${esc(it.qid)}</strong><span class="n-short">${esc(it.short)}</span></p>
+      ${q ? `<p class="n-text">${esc(q.text)}</p>` : ""}
+      <p class="n-step"><span>いまの作業（この問いを調べ始めて ${mmss(t - curAt)}）</span>${step}</p>`
+    : `<p class="n-head"><span class="d-dot" aria-hidden="true"></span><span class="n-badge">仕上げ</span><strong>問いを調べ終わり、Claude が町全体をまとめています</strong></p>
+      <p class="n-step"><span>いまの作業</span>${step}</p>`;
 }
 
 // 確かめる体験：押すと、本物ならどうなるかと、作者の実際の判断を出す（保存しない）
