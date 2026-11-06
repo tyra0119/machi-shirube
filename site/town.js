@@ -1296,6 +1296,12 @@ function renderMorning() {
   // 3. 警報（出ていれば）
   const wl = todayInfo?.warnings?.list ?? [];
   if (wl.length) row("alert", T("警報・注意報"), `<strong>${wl.map((x) => esc(T(x))).join("・")}</strong>`);
+  // 3b. 年金の支給日の 3 日前から当日：詐欺の注意を1行（押すと、困ったときの「お金の話の電話が来たら」）
+  const pd = sagiRow(day);
+  if (pd) {
+    const pmd = LANG && LANG !== "easy" ? `${pd.getMonth() + 1}/${pd.getDate()}` : `${pd.getMonth() + 1}月${pd.getDate()}日`;
+    row("phone", T("気をつけて"), `${esc(TN("{md}は年金の支給日です。", { md: pmd }))}${esc(T("「還付金がある」「ATM で手続きを」という電話は詐欺です。"))} <a href="#komatta" data-sagi="1">${esc(T("お金の話の電話が来たら"))}</a>`);
+  }
   // 4. 町の明るい話題
   if (brightNews) row("heart", T("町の話題"), `${jaTag()}<a href="${esc(brightNews.url)}" target="_blank" rel="noopener" lang="ja">${esc(brightNews.title)}</a>`);
   // 5. 今日は何の日
@@ -1320,7 +1326,42 @@ function renderMorning() {
   else delete document.documentElement.dataset.festa;
   $("morning-head").textContent = T(ev ? "あすのひとこと" : "きょうのひとこと");
   $("morning").innerHTML = rows.join("");
+  // 詐欺の注意の行から：困ったときを開いて、「お金の話の電話が来たら」の所まで送る
+  for (const a of $("morning").querySelectorAll("a[data-sagi]")) a.addEventListener("click", () => setTimeout(() => $("sec-sagi").scrollIntoView({ behavior: "smooth", block: "start" }), 350));
   $("morning-block").hidden = !rows.length;
+}
+// 詐欺の注意（作者「振込詐欺対策になるか分からないけど、注意喚起のような情報をどこかに」→「A,D,B(年金の支給日の前)」）。
+// A：困ったときのいちばん上に「お金の話の電話が来たら」。どの町でも同じ中身（警察庁 SOS47・消費者庁の案内を、短く言いかえたもの。AI は使わない）
+const SAGI_SRC = [
+  ["警察庁「SOS47 特殊詐欺対策ページ」", "https://www.npa.go.jp/bureau/safetylife/sos47/case/"],
+  ["消費者庁「消費者ホットライン」", "https://www.caa.go.jp/policies/policy/local_cooperation/local_consumer_administration/hotline/"],
+];
+function showSagi() {
+  $("sagi-list").innerHTML = [
+    T("「還付金がある」「ATM で手続きができる」は詐欺です。ATM でお金が戻ることはありません。"),
+    T("警察官や銀行の人が、キャッシュカードを預かったり、暗証番号を聞いたりすることはありません。"),
+    T("お金やカードの話が出たら、いったん電話を切って、家族か、下の相談の電話へ。"),
+    T("家の電話は、相手の番号が出る設定・非通知を断る設定・国際電話を止める申し込みができます（電話の会社へ）。"),
+  ].map((t) => `<li>${esc(t)}</li>`).join("");
+  const tel = (num, href, label) => `<a class="tel-quick" href="tel:${href}">${icon("phone")}<span><strong>${num}</strong> ${esc(label)}</span></a>`;
+  $("sagi-tel").innerHTML = tel("#9110", "%239110", T("警察の相談（警察相談専用電話）")) + tel("188", "188", T("消費者ホットライン（近くの消費生活の相談窓口）"))
+    + tel("110", "110", T("家に来る・お金を渡すよう言われているとき"));
+  $("sagi-note").innerHTML = `${esc(T("出典"))}：${SAGI_SRC.map(([t, u]) => `<a href="${u}" target="_blank" rel="noopener" lang="ja">${esc(t)}</a>`).join("・")}`;
+}
+// B：年金の支給日（日本年金機構：偶数月の 15 日。土日・祝日なら、その前の平日）の 3 日前から当日まで、きょうのひとことに1行
+let HOLI = null;
+getData("data/holidays.json").then((d) => { HOLI = d?.holidays ?? {}; renderMorning(); });
+const ymdKey = (x) => `${x.getFullYear()}-${String(x.getMonth() + 1).padStart(2, "0")}-${String(x.getDate()).padStart(2, "0")}`;
+function pensionDay(y, m) {
+  const d = new Date(y, m - 1, 15);
+  while (d.getDay() === 0 || d.getDay() === 6 || HOLI?.[ymdKey(d)]) d.setDate(d.getDate() - 1);
+  return d;
+}
+function sagiRow(day) {
+  if (!HOLI || (day.getMonth() + 1) % 2) return null;
+  const p = pensionDay(day.getFullYear(), day.getMonth() + 1);
+  const left = Math.round((p - day) / 864e5);
+  return left >= 0 && left <= 3 ? p : null;
 }
 let introTip = null; // 豆知識（町の紹介の文から、日替わりで1つ）
 let morningAnim = null; // きょうのひとことの行を順に出すか（その日はじめて開いたときだけ）
@@ -1755,6 +1796,7 @@ function decorateSections() {
 }
 async function finishPage(code, townFeatures, startPart, scopeNote, at) {
   prefetchTown(code);
+  showSagi();
   morningCode = code;
   // その町ならではのページ（町の特徴から）を先に作る（答えの箱・タイル・すべてのページに入るように）
   await showFeatures(code, at);

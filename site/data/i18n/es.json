@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-06T07:07:04.247Z",
+ "createdAt": "2026-11-06T07:32:28.126Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1100,
- "of": 1060,
+ "count": 1111,
+ "of": 1071,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -1106,6 +1106,17 @@
   "場所と道（公園・図書館・公民館）": "Lugares y rutas (parques, bibliotecas, centros comunitarios)",
   "ホーム画面に置くと、アプリのように1回で開けます（ブラウザのメニューの「ホーム画面に追加」）。字が小さいときは、町の名前の下の「文字を大きく」を押してください（この端末に覚えます）。": "Si lo pone en la pantalla de inicio, se abre de una sola vez como una aplicación (en el menú del navegador, «Añadir a la pantalla de inicio»). Si la letra le parece pequeña, pulse «Letra más grande» que aparece debajo del nombre del pueblo (se guardará en este dispositivo).",
   "文字を大きく": "Letra más grande",
-  "文字をふつうに": "Texto normal"
+  "文字をふつうに": "Texto normal",
+  "お金の話の電話が来たら": "Si recibe una llamada sobre dinero",
+  "気をつけて": "Tenga cuidado",
+  "「還付金がある」「ATM で手続きを」という電話は詐欺です。": "Las llamadas que dicen «tiene un reembolso» o «haga el trámite en el cajero (ATM)» son estafas.",
+  "「還付金がある」「ATM で手続きができる」は詐欺です。ATM でお金が戻ることはありません。": "«Tiene un reembolso» o «puede hacer el trámite en el cajero (ATM)» es una estafa. El dinero no se devuelve en un cajero.",
+  "警察官や銀行の人が、キャッシュカードを預かったり、暗証番号を聞いたりすることはありません。": "La policía y los empleados del banco nunca se llevan su tarjeta de débito ni le piden su PIN.",
+  "お金やカードの話が出たら、いったん電話を切って、家族か、下の相談の電話へ。": "Si le hablan de dinero o de tarjetas, cuelgue primero y llame a un familiar o a uno de los teléfonos de consulta de abajo.",
+  "家の電話は、相手の番号が出る設定・非通知を断る設定・国際電話を止める申し込みができます（電話の会社へ）。": "En el teléfono fijo de casa puede solicitar la identificación de llamadas, el rechazo de llamadas de número oculto y el bloqueo de llamadas internacionales (a su compañía telefónica).",
+  "警察の相談（警察相談専用電話）": "Consulta con la policía (línea telefónica de consultas policiales)",
+  "消費者ホットライン（近くの消費生活の相談窓口）": "Línea directa del consumidor (oficina local de consultas para el consumidor)",
+  "家に来る・お金を渡すよう言われているとき": "Si le dicen que vendrán a su casa o que entregue dinero",
+  "{md}は年金の支給日です。": "El {md} es el día de pago de la pensión."
  }
 }

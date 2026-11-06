@@ -1,11 +1,11 @@
 {
  "lang": "en",
  "name": "English",
- "createdAt": "2026-11-06T07:07:06.567Z",
+ "createdAt": "2026-11-06T07:34:00.194Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1101,
- "of": 1060,
+ "count": 1112,
+ "of": 1071,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "This is an unofficial guide to living in this town. Claude gathers information from the town's official website and other sources, and cites each source (Machishirube)",
   "すべてのページ": "All pages",
@@ -1107,6 +1107,17 @@
   "場所と道（公園・図書館・公民館）": "Places and Routes (Parks, Libraries, Community Centers)",
   "ホーム画面に置くと、アプリのように1回で開けます（ブラウザのメニューの「ホーム画面に追加」）。字が小さいときは、町の名前の下の「文字を大きく」を押してください（この端末に覚えます）。": "Add this page to your home screen to open it in one tap, like an app (use \"Add to Home Screen\" in your browser menu). If the text is too small, tap \"Larger text\" under the town name (this device will remember your setting).",
   "文字を大きく": "Larger text",
-  "文字をふつうに": "Normal text size"
+  "文字をふつうに": "Normal text size",
+  "お金の話の電話が来たら": "If You Get a Phone Call About Money",
+  "気をつけて": "Be Careful",
+  "「還付金がある」「ATM で手続きを」という電話は詐欺です。": "Calls saying \"You have a refund\" or \"Complete the process at an ATM\" are scams.",
+  "「還付金がある」「ATM で手続きができる」は詐欺です。ATM でお金が戻ることはありません。": "\"You have a refund\" and \"You can complete the process at an ATM\" are scams. You can never get money back through an ATM.",
+  "警察官や銀行の人が、キャッシュカードを預かったり、暗証番号を聞いたりすることはありません。": "Police officers and bank staff will never take your cash card or ask for your PIN.",
+  "お金やカードの話が出たら、いったん電話を切って、家族か、下の相談の電話へ。": "If money or cards come up, hang up first, then contact your family or call one of the help lines below.",
+  "家の電話は、相手の番号が出る設定・非通知を断る設定・国際電話を止める申し込みができます（電話の会社へ）。": "For your home phone, you can set up caller ID display, blocking of calls with no caller ID, and a block on international calls (contact your phone company).",
+  "警察の相談（警察相談専用電話）": "Police Consultation (Police Consultation Hotline)",
+  "消費者ホットライン（近くの消費生活の相談窓口）": "Consumer Hotline (your nearest consumer affairs help center)",
+  "家に来る・お金を渡すよう言われているとき": "If someone is coming to your home or telling you to hand over money",
+  "{md}は年金の支給日です。": "{md} is a pension payment day."
  }
 }

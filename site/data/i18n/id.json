@@ -1,11 +1,11 @@
 {
  "lang": "id",
  "name": "Bahasa Indonesia",
- "createdAt": "2026-11-06T07:07:14.603Z",
+ "createdAt": "2026-11-06T07:34:03.213Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1099,
- "of": 1060,
+ "count": 1110,
+ "of": 1071,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Ini adalah panduan hidup tidak resmi untuk kota ini. Claude mengumpulkannya dari situs resmi kota dan sumber lain, dengan mencantumkan sumbernya (Machishirube)",
   "すべてのページ": "Semua halaman",
@@ -1105,6 +1105,17 @@
   "ホーム画面に置くと、アプリのように1回で開けます（ブラウザのメニューの「ホーム画面に追加」）。字が小さいときは、町の名前の下の「文字を大きく」を押してください（この端末に覚えます）。": "Jika disimpan di layar utama, bisa dibuka sekali sentuh seperti aplikasi (menu browser \"Tambahkan ke layar utama\"). Jika huruf terlalu kecil, tekan \"Perbesar huruf\" di bawah nama kota (akan diingat di perangkat ini).",
   "文字をもとに": "Kembalikan ukuran huruf",
   "文字を大きく": "Perbesar huruf",
-  "文字をふつうに": "Ukuran huruf normal"
+  "文字をふつうに": "Ukuran huruf normal",
+  "お金の話の電話が来たら": "Jika ada telepon tentang uang",
+  "気をつけて": "Waspadalah",
+  "「還付金がある」「ATM で手続きを」という電話は詐欺です。": "Telepon yang mengatakan \"ada uang pengembalian\" atau \"urus di ATM\" adalah penipuan.",
+  "「還付金がある」「ATM で手続きができる」は詐欺です。ATM でお金が戻ることはありません。": "\"Ada uang pengembalian\" dan \"bisa diurus di ATM\" adalah penipuan. Uang tidak akan dikembalikan lewat ATM.",
+  "警察官や銀行の人が、キャッシュカードを預かったり、暗証番号を聞いたりすることはありません。": "Polisi atau petugas bank tidak akan menyimpan kartu ATM Anda atau menanyakan PIN Anda.",
+  "お金やカードの話が出たら、いったん電話を切って、家族か、下の相談の電話へ。": "Jika disebut soal uang atau kartu, tutup telepon dulu, lalu hubungi keluarga atau nomor konsultasi di bawah.",
+  "家の電話は、相手の番号が出る設定・非通知を断る設定・国際電話を止める申し込みができます（電話の会社へ）。": "Untuk telepon rumah, Anda bisa mengajukan pengaturan agar nomor penelepon tampil, menolak panggilan tanpa nomor, dan memblokir telepon internasional (hubungi perusahaan telepon).",
+  "警察の相談（警察相談専用電話）": "Konsultasi polisi (telepon khusus konsultasi polisi)",
+  "消費者ホットライン（近くの消費生活の相談窓口）": "Hotline Konsumen (loket konsultasi konsumen terdekat)",
+  "家に来る・お金を渡すよう言われているとき": "Jika ada yang mengatakan akan datang ke rumah atau meminta Anda menyerahkan uang",
+  "{md}は年金の支給日です。": "{md} adalah tanggal pembayaran pensiun."
  }
 }

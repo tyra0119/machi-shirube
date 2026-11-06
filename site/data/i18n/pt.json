@@ -1,11 +1,11 @@
 {
  "lang": "pt",
  "name": "Português",
- "createdAt": "2026-11-06T07:07:01.832Z",
+ "createdAt": "2026-11-06T07:32:16.033Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1102,
- "of": 1060,
+ "count": 1113,
+ "of": 1071,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Guia não oficial da vida na cidade. O Claude reúne as informações em sites oficiais da cidade e outras fontes, e indica a origem de cada uma (Machishirube)",
   "すべてのページ": "Todas as páginas",
@@ -1108,6 +1108,17 @@
   "ホーム画面に置くと、アプリのように1回で開けます（ブラウザのメニューの「ホーム画面に追加」）。字が小さいときは、町の名前の下の「文字を大きく」を押してください（この端末に覚えます）。": "Se você colocar na tela inicial, abre com um só toque, como um aplicativo (no menu do navegador, \"Adicionar à tela inicial\"). Se as letras estiverem pequenas, toque em \"Aumentar letras\", logo abaixo do nome da cidade (o aparelho vai lembrar).",
   "文字をもとに": "Letras normais",
   "文字を大きく": "Aumentar letras",
-  "文字をふつうに": "Texto normal"
+  "文字をふつうに": "Texto normal",
+  "お金の話の電話が来たら": "Se receber uma ligação sobre dinheiro",
+  "気をつけて": "Atenção",
+  "「還付金がある」「ATM で手続きを」という電話は詐欺です。": "Ligações dizendo \"há um reembolso\" ou \"faça o procedimento no caixa eletrônico (ATM)\" são golpe.",
+  "「還付金がある」「ATM で手続きができる」は詐欺です。ATM でお金が戻ることはありません。": "\"Há um reembolso\" e \"dá para resolver no ATM\" são golpe. O dinheiro nunca volta por um ATM.",
+  "警察官や銀行の人が、キャッシュカードを預かったり、暗証番号を聞いたりすることはありません。": "Policiais e funcionários de banco nunca pegam o seu cartão de saque nem perguntam a sua senha.",
+  "お金やカードの話が出たら、いったん電話を切って、家族か、下の相談の電話へ。": "Se falarem de dinheiro ou de cartão, desligue na hora e ligue para a família ou para um dos telefones de ajuda abaixo.",
+  "家の電話は、相手の番号が出る設定・非通知を断る設定・国際電話を止める申し込みができます（電話の会社へ）。": "No telefone de casa, é possível ativar a exibição do número de quem liga, a recusa de chamadas sem identificação e o bloqueio de chamadas internacionais (peça à sua operadora).",
+  "警察の相談（警察相談専用電話）": "Orientação da polícia (linha exclusiva de consultas da polícia)",
+  "消費者ホットライン（近くの消費生活の相談窓口）": "Disque Consumidor (Linha direta do consumidor – central de atendimento do consumidor mais próxima)",
+  "家に来る・お金を渡すよう言われているとき": "Se pedirem para ir à sua casa ou para entregar dinheiro",
+  "{md}は年金の支給日です。": "{md} é o dia de pagamento da pensão."
  }
 }

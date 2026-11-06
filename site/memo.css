@@ -67,3 +67,7 @@ th, td { padding: 3px 6px; }
 h1 { font-size: 21pt; }
 .call strong { font-size: 22pt; }
 .sheet { padding-top: 9mm; padding-bottom: 6mm; }
+
+/* 電話のそばに（詐欺の注意）：1行の枠。A4 の1枚に収まるように小さめに */
+.call .sagi { margin: 8px 0 0; padding: 4px 8px; border: 1.5px solid #111; border-radius: 6px; font-size: 10.5pt; line-height: 1.5; }
+.call .sagi b { font-weight: 700; }

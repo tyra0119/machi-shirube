@@ -1,11 +1,11 @@
 {
  "lang": "vi",
  "name": "Tiếng Việt",
- "createdAt": "2026-11-06T07:07:20.468Z",
+ "createdAt": "2026-11-06T07:33:34.927Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1099,
- "of": 1060,
+ "count": 1110,
+ "of": 1071,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Đây là trang hướng dẫn đời sống không chính thức của thị trấn này. Claude thu thập từ các trang chính thức của thị trấn v.v. và ghi rõ nguồn (Machi-shirube)",
   "すべてのページ": "Tất cả các trang",
@@ -1105,6 +1105,17 @@
   "ホーム画面に置くと、アプリのように1回で開けます（ブラウザのメニューの「ホーム画面に追加」）。字が小さいときは、町の名前の下の「文字を大きく」を押してください（この端末に覚えます）。": "Thêm vào màn hình chính thì bạn có thể mở chỉ bằng 1 lần bấm như một ứng dụng (trong menu của trình duyệt chọn \"Thêm vào màn hình chính\"). Nếu chữ nhỏ, hãy bấm \"Phóng to chữ\" ở dưới tên thị trấn (thiết bị này sẽ ghi nhớ).",
   "文字をもとに": "Đặt lại cỡ chữ",
   "文字を大きく": "Phóng to chữ",
-  "文字をふつうに": "Chữ bình thường"
+  "文字をふつうに": "Chữ bình thường",
+  "お金の話の電話が来たら": "Khi nhận được cuộc gọi nói về tiền bạc",
+  "気をつけて": "Hãy cẩn thận",
+  "「還付金がある」「ATM で手続きを」という電話は詐欺です。": "Cuộc gọi nói \"bạn có tiền hoàn thuế\" hay \"hãy làm thủ tục ở cây ATM\" là lừa đảo.",
+  "「還付金がある」「ATM で手続きができる」は詐欺です。ATM でお金が戻ることはありません。": "\"Có tiền hoàn lại\" hay \"làm thủ tục được ở cây ATM\" là lừa đảo. Không có chuyện tiền được trả lại qua cây ATM.",
+  "警察官や銀行の人が、キャッシュカードを預かったり、暗証番号を聞いたりすることはありません。": "Cảnh sát hay nhân viên ngân hàng không bao giờ giữ thẻ ngân hàng của bạn hoặc hỏi mã số bí mật.",
+  "お金やカードの話が出たら、いったん電話を切って、家族か、下の相談の電話へ。": "Nếu họ nhắc đến tiền hoặc thẻ, hãy cúp máy ngay, rồi gọi cho người nhà hoặc số điện thoại tư vấn bên dưới.",
+  "家の電話は、相手の番号が出る設定・非通知を断る設定・国際電話を止める申し込みができます（電話の会社へ）。": "Với điện thoại bàn ở nhà, bạn có thể đăng ký cài đặt hiển thị số người gọi, từ chối cuộc gọi ẩn số và chặn cuộc gọi quốc tế (liên hệ công ty điện thoại).",
+  "警察の相談（警察相談専用電話）": "Tư vấn của cảnh sát (đường dây tư vấn riêng của cảnh sát)",
+  "消費者ホットライン（近くの消費生活の相談窓口）": "Đường dây nóng người tiêu dùng (quầy tư vấn đời sống người tiêu dùng gần nhất)",
+  "家に来る・お金を渡すよう言われているとき": "Khi có người nói sẽ đến nhà hoặc bảo bạn đưa tiền",
+  "{md}は年金の支給日です。": "{md} là ngày chi trả lương hưu."
  }
 }

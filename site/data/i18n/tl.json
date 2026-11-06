@@ -1,11 +1,11 @@
 {
  "lang": "tl",
  "name": "Filipino",
- "createdAt": "2026-11-06T07:07:28.864Z",
+ "createdAt": "2026-11-06T07:33:48.767Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1090,
- "of": 1060,
+ "count": 1101,
+ "of": 1071,
  "dict": {
   "この町の非公式の暮らしの案内です。町の公式のサイトや国の公開データから集め、出典をつけています（まちしるべ）": "Ito ay isang di-opisyal na gabay sa pamumuhay sa bayang ito. Kinuha ito mula sa opisyal na website ng bayan at sa pampublikong datos ng bansa, at may nakasaad na pinagmulan (Machishirube)",
   "すべてのページ": "Lahat ng pahina",
@@ -1096,6 +1096,17 @@
   "文字をもとに": "Ibalik ang laki ng letra",
   "文字を大きく": "Palakihin ang letra",
   "ホーム画面に置くと、アプリのように1回で開けます（ブラウザのメニューの「ホーム画面に追加」）。字が小さいときは、町の名前の下の「文字を大きく」を押してください（この端末に覚えます）。": "Kapag inilagay mo ito sa Home screen, mabubuksan mo ito nang isang tap lang, parang app (sa menu ng browser, piliin ang \"Add to Home screen\"). Kung maliit ang mga letra, pindutin ang \"Palakihin ang letra\" sa ilalim ng pangalan ng bayan (matatandaan ito ng device na ito).",
-  "文字をふつうに": "Gawing normal ang laki ng letra"
+  "文字をふつうに": "Gawing normal ang laki ng letra",
+  "お金の話の電話が来たら": "Kung may tumawag tungkol sa pera",
+  "気をつけて": "Mag-ingat",
+  "「還付金がある」「ATM で手続きを」という電話は詐欺です。": "Panloloko ang tawag na nagsasabing \"may refund ka\" at \"asikasuhin mo sa ATM\".",
+  "「還付金がある」「ATM で手続きができる」は詐欺です。ATM でお金が戻ることはありません。": "Panloloko ang \"may refund ka\" at \"maaasikaso ito sa ATM\". Walang pera na ibinabalik sa pamamagitan ng ATM.",
+  "警察官や銀行の人が、キャッシュカードを預かったり、暗証番号を聞いたりすることはありません。": "Hindi kukunin ng pulis o ng taga-bangko ang cash card mo, at hindi rin nila itatanong ang PIN mo.",
+  "お金やカードの話が出たら、いったん電話を切って、家族か、下の相談の電話へ。": "Kapag pera o card ang pinag-uusapan, ibaba muna ang telepono at kumonsulta sa pamilya o tumawag sa numero ng konsultasyon sa ibaba.",
+  "家の電話は、相手の番号が出る設定・非通知を断る設定・国際電話を止める申し込みができます（電話の会社へ）。": "Sa telepono sa bahay, puwede kang mag-apply para sa setting na nagpapakita ng numero ng tumatawag, setting na tumatanggi sa tawag na walang numero, at pagpapahinto ng international calls (sa kompanya ng telepono).",
+  "警察の相談（警察相談専用電話）": "Konsultasyon sa pulisya (Dedikadong telepono para sa konsultasyon sa pulisya)",
+  "消費者ホットライン（近くの消費生活の相談窓口）": "Consumer Hotline (pinakamalapit na tanggapan ng konsultasyon para sa mga mamimili)",
+  "家に来る・お金を渡すよう言われているとき": "Kapag may pumupunta sa bahay mo o sinasabihan kang magbigay ng pera",
+  "{md}は年金の支給日です。": "Ang {md} ay araw ng pagbibigay ng pensiyon."
  }
 }

@@ -933,3 +933,11 @@ body.town-page { font-size: calc(16px * var(--fs, 1)); }
 /* Google マップの道のリンク：文字を大きくしたとき、細いスマホで1行に収まらなければ折り返す（11/6、黒潮町の防災・医療ではみ出した） */
 .gmap, .med-list .med-gmap { max-width: 100%; box-sizing: border-box; line-height: 1.35; }
 .gmap { padding-top: 4px; padding-bottom: 4px; }
+
+/* お金の話の電話が来たら（困ったときのいちばん上。作者「A,D,B(年金の支給日の前)」）。怖がらせない落ち着いた形（赤は警報だけ） */
+.sagi-list { margin: 0 0 10px; padding: 0 0 0 1.2em; }
+.sagi-list li { margin: 4px 0; line-height: 1.6; }
+.sagi-tel { display: flex; flex-direction: column; align-items: flex-start; gap: 6px; }
+.sagi .tel-quick { display: inline-flex; align-items: center; gap: 8px; max-width: 100%; box-sizing: border-box; min-height: 44px; padding: 6px 16px; border: 1px solid var(--accent); border-radius: 22px; color: var(--accent); text-decoration: none; line-height: 1.35; font-size: calc(14px * var(--fs, 1)); }
+.sagi .tel-quick strong { font-size: calc(17px * var(--fs, 1)); margin-right: 2px; }
+.sagi .tel-quick .ic { flex: none; width: 18px; height: 18px; }
