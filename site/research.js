@@ -11,6 +11,7 @@ let partFeature = null; // 町・字の形（地図で光らせる）
 const hhmm = (iso) => new Date(iso).toLocaleTimeString("ja-JP", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
 
 let questions = [];
+let pickQs = (y) => y.questions; // この町に聞く問いを選ぶ（main で決まる）
 let items = [];
 let run = null;
 let local = false;
@@ -23,9 +24,16 @@ async function main() {
   const [stats, yard] = await Promise.all([fetch("data/stats.json").then((r) => r.json()), fetch("data/yardstick.json").then((r) => r.json())]);
   // 町・字ごとの問いは、町・字を調べるときだけ。「この町だけ」の問いはその町だけ
   const feats = (await fetch("data/features.json").then((r) => r.json()).catch(() => ({ towns: {} }))).towns[code] ?? [];
-  questions = yard.questions.filter((q) => (q.level === "town") === Boolean(part) && (!q.only || q.only === code) && (!q.feature || feats.includes(q.feature)));
   STATS = stats;
   const t = stats.towns[code];
+  // 決まりつきの問い（rule：「外国の住民の割合が 5% 以上の町だけ」など）は、その決まりに合う町だけ（調べる側 research.mjs の townQuestions、町のページ scenes.js と同じ）。
+  // 前はます目だけ決まりを見ず、朝霞市（外国の住民 3.74%）で Q76 が「まだ」と出て、押しても何も調べなかった（作者「朝霞市の76,78は『まだ』になっているが合ってる？」11/6）
+  const ruleOk = (q) => {
+    const fr = q.rule?.match(/外国の住民.*?(\d+(?:\.\d+)?)\s*%/), old = q.rule?.match(/65歳以上.*?(\d+(?:\.\d+)?)\s*%/);
+    return (!fr || (t?.foreignRate ?? 0) >= Number(fr[1])) && (!old || (t?.over65Rate ?? 0) >= Number(old[1]));
+  };
+  pickQs = (y) => y.questions.filter((q) => (q.level === "town") === Boolean(part) && (!q.only || q.only === code) && (!q.feature || feats.includes(q.feature)) && ruleOk(q));
+  questions = pickQs(yard);
   if (!t) { $("name").textContent = "町が見つかりません"; return; }
   const muniName = t.name.replace(/^.+?郡(?=.+[町村]$)/, "");
   if (part) {
@@ -256,7 +264,7 @@ async function showProposals() {
       const body = await res.json();
       if (!res.ok) return ($("note").textContent = `できませんでした：${body.error}`);
       $("note").textContent = body.addedAs?.startsWith("Q") ? `物差しに ${body.addedAs} を足しました（${body.status === "all" ? "どの町にも" : "この町だけ"}）。` : body.addedAs ? `スキル ${body.addedAs} にしました。` : "今はしないにしました。";
-      if (body.addedAs?.startsWith("Q")) { const yard = await fetch("data/yardstick.json", { cache: "no-store" }).then((r) => r.json()); questions = yard.questions.filter((q) => q.level !== "town" && (!q.only || q.only === code)); renderGrid(); }
+      if (body.addedAs?.startsWith("Q")) { const yard = await fetch("data/yardstick.json", { cache: "no-store" }).then((r) => r.json()); questions = pickQs(yard); renderGrid(); }
       await showProposals();
     });
   }

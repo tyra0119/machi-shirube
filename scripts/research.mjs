@@ -413,6 +413,8 @@ export async function researchTown(code, { log = console.log, onItem = () => {},
   const miss = missCounts(mine.filter((x) => x.kind === "answer"));
   let total = 0;
   const list = townQuestions(code, { part, qids });
+  // 名指しの問いが、この町に聞かない問い（決まり・この町だけ・特徴が合わない）だったら、そう書いて終わる
+  if (qids) for (const id of qids.filter((x) => !list.some((q) => q.id === x))) log(`${id} は、この町には聞かない問いです（問いの決まりに合わない）。調べませんでした`);
   for (const q of list) {
     const again = redo && qids?.includes(q.id);
     if (!again && (done.has(q.id) || done.has(q.text))) { log(`${q.id} はもう答えがあるので飛ばします`); continue; }
