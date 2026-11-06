@@ -1425,7 +1425,7 @@ async function showKaigo(code) {
     const list = d.items.filter((x) => x.group === g);
     if (!list.length) return "";
     return `<details class="kaigo-group"${gi === 0 ? " open" : ""}><summary><strong>${esc(T(label))}</strong> <span class="n">${list.length}</span></summary>
-      <ul class="kaigo-items">${list.map((x) => `<li><span class="kn">${esc(x.name)}</span><small>${esc(T(x.kind))}</small>${x.tel ? `<a class="tel" href="tel:${telHref(x.tel)}">${icon("phone")}${esc(telText(x.tel))}</a>` : ""}<small class="ad">${esc(x.addr)}</small></li>`).join("")}</ul></details>`;
+      <ul class="kaigo-items">${list.map((x) => `<li><span class="kn">${esc(x.name)}</span><small>${esc(T(x.kind))}</small>${x.tel ? `<a class="tel" href="tel:${telHref(x.tel)}">${icon("phone")}${esc(telText(x.tel))}</a>` : ""}<small class="ad">${esc(x.addr)}</small>${x.lat ? `<a class="gmap" href="${esc(gmapWalk([x.lon, x.lat]))}" target="_blank" rel="noopener">${icon("map")}${T("Google マップで歩く道を見る")}</a>` : ""}</li>`).join("")}</ul></details>`;
   }).join("");
   $("kaigo-note").innerHTML = `${esc(T(d.note))}${KU()}${d.sources.map((s) => `<a href="${esc(s.url)}" target="_blank" rel="noopener">${esc(T(s.title))}</a>`).join("")}`;
 }

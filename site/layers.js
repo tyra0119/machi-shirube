@@ -150,10 +150,14 @@ async function showLayerMap(code, townFeatures, at, esc, part = null) {
       const f = map.queryRenderedFeatures(e.point, { layers: [id] })[0];
       if (!f) continue;
       popup?.remove();
-      popup = new maplibregl.Popup({ maxWidth: "260px" }).setLngLat(e.lngLat).setHTML(POPS[id](f.properties)).addTo(map);
+      popup = new maplibregl.Popup({ maxWidth: "260px" }).setLngLat(e.lngLat).setHTML(POPS[id](f.properties) + (ROUTE.has(id) && typeof gmapWalk === "function" ? routeLink(f.geometry.coordinates) : "")).addTo(map);
       return;
     }
   });
+  // 場所の印には「Google マップで歩く道を見る」を添える（作者「googlemapと連携できるものは、連携してほしい（経路検索できるように）」）。
+  // 行き先は印の位置（緯度経度）だけ。今いる所は Google マップの側で決める
+  const ROUTE = new Set(["shelter", "lore", "aed", "kaigo", "bus"]);
+  const routeLink = (c) => `<br><a class="pop-route" href="${esc(gmapWalk(c))}" target="_blank" rel="noopener">${LT("Google マップで歩く道を見る")}</a>`;
   pop("shelter", (p) => `<strong>${esc(p.name)}</strong><br>${esc(JSON.parse(p.kinds || "[]").join("・"))}${p.capacity ? `<br>${capText(p)}` : ""}`);
   pop("iryo", (p) => `<strong>${esc(p.name)}</strong><br>${esc(p.kind)}${p.s ? `・${esc(p.s)}` : ""}<br>${p.state ? `${LT("今日")} ${esc(p.hours)}` : LT("今日は休み")}<br><small>${LT("行く前に電話で確かめてください")}</small>${typeof gmapPlace === "function" ? `<br><a href="${esc(gmapPlace(p.name, p.addr))}" target="_blank" rel="noopener">${LT("電話番号と道を Google マップで見る")}</a>` : ""}`);
   pop("acc", (p) => `<strong>${esc(p.part)}</strong><br>${LT("3年で")} ${p.n} ${LT("件")}${Number(p.ped) ? `・${LT("歩行者")} ${p.ped}` : ""}${Number(p.bike) ? `・${LT("自転車")} ${p.bike}` : ""}`);
