@@ -397,3 +397,32 @@ html[data-wx="rain"] .scene .wx-rain, html[data-wx="snow"] .scene .wx-snow { dis
 @keyframes sc-drop { from { transform: translateY(-4px); opacity: 0; } 30% { opacity: 1; } to { transform: translateY(18px); opacity: 0; } }
 @media (prefers-reduced-motion: reduce) { .scene * { animation: none !important; } }
 @media print { .scene * { animation: none !important; } }
+/* 季節の木の色（作者「わくわく感が欲しい」→ 1 季節）。春は桜、夏は濃い緑、秋は色づき、冬は葉が落ちた色。赤は警報だけの決まりなので、秋は橙と黄と茶 */
+:root[data-season="spring"] .scene .sc-leaf0 { fill: #f2bfd0; } :root[data-season="spring"] .scene .sc-leaf1 { fill: #f6cfdc; } :root[data-season="spring"] .scene .sc-leaf2 { fill: #eeb3c6; }
+:root[data-season="summer"] .scene .sc-leaf0 { fill: #3f8a5a; } :root[data-season="summer"] .scene .sc-leaf1 { fill: #4f9a4f; } :root[data-season="summer"] .scene .sc-leaf2 { fill: #3a7a66; }
+:root[data-season="autumn"] .scene .sc-leaf0 { fill: #d98a3a; } :root[data-season="autumn"] .scene .sc-leaf1 { fill: #e0b03a; } :root[data-season="autumn"] .scene .sc-leaf2 { fill: #b8743a; }
+:root[data-season="winter"] .scene .sc-leaf0 { fill: #c9c3b6; } :root[data-season="winter"] .scene .sc-leaf1 { fill: #bdb6a8; } :root[data-season="winter"] .scene .sc-leaf2 { fill: #d2ccc0; }
+.scene .sc-fall { display: none; }
+:root[data-season="spring"] .scene .sc-fall, :root[data-season="autumn"] .scene .sc-fall { display: inline; }
+:root[data-season="spring"] .scene .sc-fall ellipse { fill: #f2bfd0; } :root[data-season="autumn"] .scene .sc-fall ellipse { fill: #d98a3a; }
+.scene .sc-fall ellipse { animation: sc-leaf 6s linear infinite; }
+.scene .sc-fall ellipse:nth-child(2n) { animation-delay: -2.2s; } .scene .sc-fall ellipse:nth-child(3n) { animation-delay: -4s; }
+@keyframes sc-leaf { from { transform: translate(0, -4px) rotate(0deg); opacity: 0; } 15% { opacity: 1; } to { transform: translate(-14px, 52px) rotate(160deg); opacity: 0; } }
+/* 夜（18 時から朝 5 時）：空が暗くなり、月と星、家の窓に灯り（→ 2 夜） */
+.scene .sc-night { display: none; }
+:root[data-night] .scene .sc-night { display: inline; }
+:root[data-night] .scene .sc-sky, :root[data-night] .scene .sc-moon-cut { fill: #25324a !important; }
+:root[data-night] .scene .sc-ground { fill: #34405a !important; }
+:root[data-night] .scene .sc-sun, :root[data-night] .scene .wx-sun { display: none; }
+:root[data-night] .scene .sc-win { fill: #f3d27a; }
+:root[data-night] .scene .sc-cloud { opacity: 0.35; }
+.scene .sc-star { animation: sc-twinkle 2.8s ease-in-out infinite; }
+.scene .sc-star:nth-child(2n) { animation-delay: -1.3s; } .scene .sc-star:nth-child(3n) { animation-delay: -2s; }
+@keyframes sc-twinkle { 50% { opacity: 0.25; } }
+/* お祭り・町の誕生日の日だけ、今日の絵に旗と提灯（→ 3 お祭り） */
+.scene .sc-festa { display: none; }
+:root[data-festa] .scene .sc-festa { display: inline; }
+.scene .sc-flags path + path { transform-box: fill-box; transform-origin: 50% 0; animation: sc-flag 1.8s ease-in-out infinite; }
+.scene .sc-flags path:nth-child(2n) { animation-delay: -0.9s; }
+@keyframes sc-flag { 50% { transform: rotate(8deg); } }
+@media (prefers-reduced-motion: reduce) { .scene * { animation: none !important; } }

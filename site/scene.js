@@ -3,8 +3,8 @@
 // 赤は警報と戻せない操作だけに使う決まりなので、ぬる色に赤は使わない。帯は横 400・縦 70。大事な絵は真ん中 130〜270 に置く（細いスマホでは左右が切れる）
 const SC = { roof: ["#5b7fa6", "#6f9a6a", "#b08a4a", "#7a6aa6"], wall: "#f4efe4", win: "#9cc3df", trunk: "#8a6a4a", leaf: ["#5f9a6e", "#7aa86a", "#4f8a74"], ink: "#3a4a5a", skin: "#e9c9a8" };
 const SCENE_PARTS = {
-  house: (x, i = 0) => `<g transform="translate(${x} 0)"><rect x="-13" y="44" width="26" height="20" fill="${SC.wall}"/><path d="M-16 45 0 31 16 45z" fill="${SC.roof[i % 4]}"/><rect x="-7" y="50" width="6" height="6" fill="${SC.win}"/><rect x="3" y="52" width="5" height="12" fill="${SC.roof[i % 4]}" opacity=".7"/></g>`,
-  tree: (x, i = 0, s = 1) => `<g transform="translate(${x} 0)"><rect x="-1.6" y="${64 - 12 * s}" width="3.2" height="${12 * s}" fill="${SC.trunk}"/><circle cx="0" cy="${64 - 16 * s}" r="${8 * s}" fill="${SC.leaf[i % 3]}"/></g>`,
+  house: (x, i = 0) => `<g transform="translate(${x} 0)"><rect x="-13" y="44" width="26" height="20" fill="${SC.wall}"/><path d="M-16 45 0 31 16 45z" fill="${SC.roof[i % 4]}"/><rect class="sc-win" x="-7" y="50" width="6" height="6" fill="${SC.win}"/><rect x="3" y="52" width="5" height="12" fill="${SC.roof[i % 4]}" opacity=".7"/></g>`,
+  tree: (x, i = 0, s = 1) => `<g transform="translate(${x} 0)"><rect x="-1.6" y="${64 - 12 * s}" width="3.2" height="${12 * s}" fill="${SC.trunk}"/><circle class="sc-leaf sc-leaf${i % 3}" cx="0" cy="${64 - 16 * s}" r="${8 * s}" fill="${SC.leaf[i % 3]}"/></g>`,
   cloud: (x, y = 14) => `<g class="sc-cloud" fill="#fff" opacity=".95"><ellipse cx="${x}" cy="${y}" rx="11" ry="6"/><ellipse cx="${x + 9}" cy="${y + 2}" rx="8" ry="5"/><ellipse cx="${x - 9}" cy="${y + 2}" rx="7" ry="4.5"/></g>`,
   sun: (x, y = 16) => `<g class="sc-sun" transform="translate(${x} ${y})"><circle r="7" fill="#e8c35a"/><g class="sc-rays" stroke="#e8c35a" stroke-width="2" stroke-linecap="round">${[0, 45, 90, 135, 180, 225, 270, 315].map((a) => `<line x1="0" y1="-10" x2="0" y2="-13" transform="rotate(${a})"/>`).join("")}</g></g>`,
   bus: (x) => `<g transform="translate(${x} 0)"><rect x="-22" y="46" width="44" height="15" rx="4" fill="#3f8a7a"/><rect x="-18" y="49" width="30" height="6" rx="1.5" fill="#cfe6e0"/><rect x="14" y="49" width="5" height="9" rx="1" fill="#cfe6e0"/><circle cx="-12" cy="62" r="3.2" fill="${SC.ink}"/><circle cx="12" cy="62" r="3.2" fill="${SC.ink}"/></g>`,
@@ -43,7 +43,7 @@ const SCENE_PARTS = {
 };
 // 場面：どの部品を、どこに置くか
 const SCENES = {
-  today: [["wx"], ["cloud", 250, 16], ["house", 175, 0], ["house", 210, 1], ["tree", 235, 0], ["tree", 150, 1]],
+  today: [["wx"], ["festa"], ["season"], ["cloud", 250, 16], ["house", 175, 0], ["house", 210, 1], ["tree", 235, 0], ["tree", 150, 1]],
   bousai: [["wave", 150], ["hill", 235], ["person", 205, "#6a8fb0"], ["elder", 220], ["cloud", 170, 14]],
   chizu: [["pin", 200], ["house", 160, 2], ["tree", 240, 1], ["tree", 135, 0], ["cloud", 250, 14]],
   gomi: [["bin", 165, "#5f9a6e"], ["bin", 185, "#5b7fa6"], ["bin", 205, "#b08a4a"], ["bag", 228], ["tree", 255, 2], ["cloud", 150, 14]],
@@ -79,7 +79,21 @@ const SCENES = {
 };
 // 今日の天気の部品（data-wx が無いとき・晴れ・くもりは太陽、雨は雨つぶと傘、雪は雪）
 SCENE_PARTS.wx = () => `<g class="wx-sun">${SCENE_PARTS.sun(150)}</g><g class="wx-rain">${SCENE_PARTS.rain(170)}${SCENE_PARTS.umbrella(150)}</g><g class="wx-snow">${SCENE_PARTS.flakes(160)}</g>`;
+// 季節に舞うもの（春は花びら、秋は葉。今日の絵だけ）・お祭りや町の誕生日の旗と提灯（その日だけ <html data-festa>）
+SCENE_PARTS.season = () => `<g class="sc-fall">${[[150, 6], [185, 2], [215, 10], [250, 4], [275, 12], [130, 14]].map(([x, y]) => `<ellipse cx="${x}" cy="${y}" rx="2.4" ry="1.4"/>`).join("")}</g>`;
+SCENE_PARTS.festa = () => `<g class="sc-festa">${SCENE_PARTS.flags(200).replace("<g ", '<g class="sc-flags" ')}${SCENE_PARTS.lantern(262)}${SCENE_PARTS.lantern(138)}</g>`;
+// 夜の空（月と星）。どの絵にも入れておき、18 時から朝 5 時まで見せる（<html data-night>）
+const SC_NIGHT = `<g class="sc-night"><circle cx="282" cy="25" r="6.5" fill="#f3e6b0"/><circle class="sc-moon-cut" cx="285.5" cy="22.5" r="5.6"/><g fill="#fff">${[[110, 24], [134, 19], [152, 28], [196, 20], [228, 24], [262, 18], [308, 30], [92, 30]].map(([x, y]) => `<circle class="sc-star" cx="${x}" cy="${y}" r="1.1"/>`).join("")}</g></g>`;
+// 季節と夜を <html> に書く（日本の時刻で。町のページも日本地図も同じ）。開いたままでも 10 分ごとに見直す
+function sceneClock() {
+  const n = new Date(Date.now() + 9 * 3600e3), m = n.getUTCMonth() + 1, h = n.getUTCHours();
+  const r = document.documentElement;
+  r.dataset.season = m >= 3 && m <= 5 ? "spring" : m >= 6 && m <= 8 ? "summer" : m >= 9 && m <= 11 ? "autumn" : "winter";
+  if (h >= 18 || h < 5) r.dataset.night = "1"; else delete r.dataset.night;
+}
+sceneClock();
+setInterval(sceneClock, 600000);
 function scene(key, cls = "") {
   const s = SCENES[key] ?? SCENES.shiru;
-  return `<svg class="scene${cls ? ` ${cls}` : ""}" viewBox="60 0 280 70" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><rect class="sc-sky" width="400" height="70"/><rect class="sc-ground" y="64" width="400" height="6"/>${s.map(([n, ...a]) => SCENE_PARTS[n]?.(...a) ?? "").join("")}</svg>`;
+  return `<svg class="scene${cls ? ` ${cls}` : ""}" viewBox="60 0 280 70" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><rect class="sc-sky" width="400" height="70"/>${SC_NIGHT}<rect class="sc-ground" y="64" width="400" height="6"/>${s.map(([n, ...a]) => SCENE_PARTS[n]?.(...a) ?? "").join("")}</svg>`;
 }

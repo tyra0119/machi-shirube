@@ -1,11 +1,11 @@
 {
  "lang": "en",
  "name": "English",
- "createdAt": "2026-11-06T00:28:57.707Z",
+ "createdAt": "2026-11-06T00:44:44.166Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1081,
- "of": 1040,
+ "count": 1083,
+ "of": 1042,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "This is an unofficial guide to living in this town. Claude gathers information from the town's official website and other sources, and cites each source (Machishirube)",
   "すべてのページ": "All pages",
@@ -1087,6 +1087,8 @@
   "傘を持って": "Bring an umbrella",
   "地区を選ぶと、ここに出せるごみが出ます": "Select your district to see what waste you can put out here",
   "上へ": "Back to top",
-  "{n} 日つづけて正解": "{n} days in a row correct"
+  "{n} 日つづけて正解": "{n} days in a row correct",
+  "豆知識": "Did You Know?",
+  "「{name}」のページを開く": "Open the \"{name}\" page"
  }
 }

@@ -28,16 +28,25 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .all-head h2 { margin: 0; font-size: 20px; }
 .all-head .close { width: 44px; height: 44px; border: 0; border-radius: 22px; background: transparent; color: var(--text-sub); font-size: 24px; cursor: pointer; }
 #all-search { width: 100%; min-height: 44px; margin: 8px 0 12px; padding: 0 14px; border: 1px solid var(--line); border-radius: 22px; background: var(--surface); color: var(--text); font-size: 16px; }
-.all-sec { padding: 8px 0; border-top: 1px solid var(--line); }
-.all-page { display: flex; flex-direction: column; min-height: 44px; padding: 6px 8px; border-radius: 8px; color: var(--text); text-decoration: none; }
-.all-page:hover, .all-sec li a:hover { background: var(--bg); }
-.all-page .t { font-size: 17px; font-weight: 700; color: var(--accent); }
+/* すべてのページ（作者「ごちゃっとしてる」→ B）：ページを1行ずつ。押すと中の欄が1行ずつ開く。丸い札はやめた */
+.all-sec { border-top: 1px solid var(--line); }
+.all-page { display: flex; align-items: center; gap: 10px; min-height: 56px; padding: 8px 4px; border-radius: 8px; color: var(--text); text-decoration: none; cursor: pointer; list-style: none; }
+.all-page::-webkit-details-marker { display: none; }
+.all-page:hover, .all-sec li a:hover, .all-sec li button:hover { background: var(--bg); }
+.all-page .ic-wrap { display: inline-flex; width: 28px; justify-content: center; color: var(--accent); }
+.all-page .ic-wrap .ic { width: 22px; height: 22px; margin: 0; }
+.all-page .tx { display: flex; flex-direction: column; min-width: 0; flex: 1; }
+.all-page .t { font-size: 17px; font-weight: 700; color: var(--text); }
 .all-page .d { font-size: 13px; color: var(--text-sub); }
-.all-sec ul { display: flex; flex-wrap: wrap; gap: 6px; margin: 4px 0 2px; padding: 0 8px; list-style: none; }
-.all-sec li a { display: inline-flex; align-items: center; min-height: 40px; padding: 0 12px; border: 1px solid var(--line); border-radius: 20px; color: var(--text); text-decoration: none; font-size: 14px; }
-.all-sec li button { display: inline-flex; align-items: center; min-height: 40px; padding: 0 12px; border: 1px solid var(--line); border-radius: 20px; background: var(--surface); color: var(--text); font-size: 14px; cursor: pointer; }
-.all-sec li button:hover { background: var(--bg); }
-.all-here .all-page .t { color: var(--text); }
+.all-page .n { min-width: 24px; padding: 0 6px; border-radius: 10px; background: var(--bg); color: var(--text-sub); font-size: 13px; text-align: center; }
+.all-page .chev { width: 10px; height: 10px; margin: 0 6px 4px; border-right: 2px solid var(--text-sub); border-bottom: 2px solid var(--text-sub); transform: rotate(45deg); transition: transform 0.2s; }
+.all-sec[open] > .all-page .chev { transform: rotate(-135deg); margin-bottom: -4px; }
+.all-page .ar, .all-sec li .ar { margin-left: auto; padding: 0 6px; color: var(--text-sub); font-size: 20px; }
+.all-sec ul { margin: 0 0 8px; padding: 0; list-style: none; }
+.all-sec li a, .all-sec li button { display: flex; align-items: center; width: 100%; min-height: 44px; padding: 0 4px 0 42px; border: 0; border-top: 1px solid var(--line); background: none; color: var(--text); font: inherit; font-size: 15px; text-align: left; text-decoration: none; cursor: pointer; }
+.all-sec li:first-child a, .all-sec li:first-child button { border-top-color: transparent; }
+.all-sec li a.open-page { color: var(--accent); font-weight: 700; }
+@media (prefers-reduced-motion: reduce) { .all-page .chev { transition: none; } }
 /* 画面の下のメニュー（スマホだけ）：5つを同じ幅で。いま見ているページは色を塗る */
 .town-bottom { display: none; }
 @media (max-width: 640px) {
@@ -806,7 +815,7 @@ ruby rt { font-size: 0.55em; font-weight: 400; letter-spacing: 0; }
 
 /* まちがいを知らせる（答えのカードの中・「ほか」の一覧）と、町の人に聞きたいことの「知っていたら教える」 */
 .answers .report-a { display: inline-flex; align-items: center; min-height: 36px; margin-top: 2px; font-size: 13px; color: var(--text-sub); }
-.all-report { display: flex; align-items: center; gap: 6px; min-height: 44px; margin: 0 0 8px; padding: 0 8px; border: 1px dashed var(--line); border-radius: 8px; color: var(--text-sub); font-size: 14px; text-decoration: none; }
+.all-report { display: flex; align-items: center; gap: 6px; min-height: 44px; margin: 8px 0 0; padding: 0 4px; border-top: 1px solid var(--line); color: var(--text-sub); font-size: 13px; text-decoration: underline; }
 .all-report .ic { width: 18px; height: 18px; }
 .ask-tell { display: inline-flex; align-items: center; min-height: 36px; margin-top: 2px; padding: 0 12px; border: 1px solid var(--accent); border-radius: 999px; color: var(--accent); font-size: 13px; font-weight: 700; text-decoration: none; align-self: flex-start; }
 
@@ -901,3 +910,4 @@ ul.morning li.m-in { opacity: 0; animation: m-in 0.5s ease-out forwards; }
 @media (max-width: 640px) { .to-top { bottom: calc(76px + env(safe-area-inset-bottom)); } }
 @media print { .to-top { display: none; } }
 @media (prefers-reduced-motion: reduce) { ul.morning li.m-in, .quiz-pop, .quiz-streak, .to-top { animation: none; opacity: 1; } }
+ul.morning .ai-note { color: var(--text-sub); font-size: 12px; white-space: nowrap; }

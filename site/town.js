@@ -389,6 +389,13 @@ async function showIntro(code) {
   if (fu?.town?.pop?.length) b.push(TN("2050年の人口は、2020年の約 {p}%（推計）", { p: Math.round((fu.town.pop.at(-1) / fu.town.pop[0]) * 100) }));
   const lore = (await getData(`data/lore/${code}.json`))?.own?.length;
   if (lore) b.push(TN("昔の災害を伝える碑が {n} 基", { n: lore }));
+  // きょうのひとことの「豆知識」：紹介の文から、日替わりで1つ（町の日付で決める。毎朝ちがう1行）
+  if (showA) {
+    const now = jpNow(), k = Math.floor(Date.UTC(now.getFullYear(), now.getMonth(), now.getDate()) / 86400000) % d.sentences.length;
+    const s0 = d.sentences[k];
+    introTip = { text: tt(`i${k}`, s0.text), src: s0.sources.find((x) => x.url) };
+    renderMorning();
+  }
   $("sec-intro").hidden = false;
   $("intro").innerHTML = (showA ? `<ul class="intro-a">${d.sentences.map((s, i) => `<li>${esc(tt(`i${i}`, s.text))}${s.sources.filter((x) => x.url).map((x) => ` <a class="src" href="${esc(x.url)}" target="_blank" rel="noopener">${icon("link")}${esc(x.title)}</a>`).join("")}</li>`).join("")}</ul>
       <p class="note">${esc(tt("n.intro", T(d.note)))}${tr ? ` ${T("（AI による訳）")}` : ""}</p>` : "")
@@ -1288,10 +1295,17 @@ function renderMorning() {
   else if (todayEv) row("calendar", T(ev ? "明日は何の日" : "今日は何の日"), `<span lang="ja">「${esc(todayEv.name)}」</span>${link(todayEv.src)}`);
   else if (soon) row("calendar", T("もうすぐ"), `${md(soon.m, soon.d)} <span lang="ja">「${esc(soon.name)}」</span>${link(soon.src)}`);
   else if (season) row("calendar", T("今月は"), TN("「{name}」の季節", { name: esc(season.name) }) + link(season.src));
+  // 6. 豆知識（確かめた答えから AI がまとめた町の紹介の1文。出典つき）
+  if (introTip) row("book", T("豆知識"), `${esc(introTip.text)}${introTip.src ? ` <a class="src" href="${esc(introTip.src.url)}" target="_blank" rel="noopener" title="${esc(introTip.src.title)}">${icon("link")}</a>` : ""} <small class="ai-note">${esc(T("AI のまとめ"))}</small>`);
+  // お祭り・町の誕生日の日（夕方でも「今日」の日付で）は、場面の絵に旗と提灯
+  const isToday = (m, d2) => m === now.getMonth() + 1 && d2 === now.getDate();
+  if ((b && isToday(b.m, b.d)) || evs.some((e) => isToday(e.m, e.d))) document.documentElement.dataset.festa = "1";
+  else delete document.documentElement.dataset.festa;
   $("morning-head").textContent = T(ev ? "あすのひとこと" : "きょうのひとこと");
   $("morning").innerHTML = rows.join("");
   $("morning-block").hidden = !rows.length;
 }
+let introTip = null; // 豆知識（町の紹介の文から、日替わりで1つ）
 let morningAnim = null; // きょうのひとことの行を順に出すか（その日はじめて開いたときだけ）
 const morningShown = new Set(); // もう出した行（読み直しで同じ行がまた動かないように）
 let gomiToday = null; // 町・字のページで、今日出せるごみ（ごみを出す日の表から）
@@ -1355,17 +1369,21 @@ function renderAllPages(filter = "") {
   hereSecs = view ? [...view.querySelectorAll(":scope > section.block")].filter((s) => !s.hidden && s.querySelector(":scope > h2")) : [];
   const page = PAGES.find((p) => p.view === currentView());
   const here = hereSecs.map((s, i) => [s.querySelector(":scope > h2").textContent.trim(), i]).filter(([t]) => hit(t));
-  $("all-list").innerHTML = (hereSecs.length >= 2 && here.length ? `<section class="all-sec all-here">
-      <p class="all-page"><span class="t">${icon(ILLUST[page?.view]?.main)}${esc(T("このページの中"))}</span><span class="d">${esc(page?.local ? T("調べる") : T(page?.title ?? ""))}</span></p>
-      <ul>${here.map(([t, i]) => `<li><button type="button" data-sec="${i}">${esc(t)}</button></li>`).join("")}</ul>
-    </section>` : "") + `<a class="all-report" href="${esc(reportHref(currentView()))}">${icon("alert")}${T("まちがいや古い所を知らせる")}</a>` + allPages.map((p) => {
+  // 並べ方（作者「『すべてのページ』がごちゃっとしてる」→ B）：ページだけを1行ずつ並べ、押すと中の欄が開く。
+  // 探す文字を入れたときは、当たったページを開いて見せる。「まちがいや古い所を知らせる」はいちばん下に小さく
+  const row = (attrs, label) => `<li><a ${attrs}><span>${esc(label)}</span><span class="ar" aria-hidden="true">›</span></a></li>`;
+  const head = (ic, title, desc, n) => `<summary class="all-page"><span class="ic-wrap">${icon(ic)}</span><span class="tx"><span class="t">${esc(title)}</span>${desc ? `<span class="d">${esc(desc)}</span>` : ""}</span>${n ? `<span class="n">${n}</span>` : ""}<span class="chev" aria-hidden="true"></span></summary>`;
+  const herePart = hereSecs.length >= 2 && here.length ? `<details class="all-sec all-here" open>${head(ILLUST[page?.view]?.main, T("このページの中"), page?.local ? T("調べる") : T(page?.title ?? ""), here.length)}
+      <ul>${here.map(([t, i]) => `<li><button type="button" data-sec="${i}"><span>${esc(t)}</span><span class="ar" aria-hidden="true">›</span></button></li>`).join("")}</ul></details>` : "";
+  const pages = allPages.map((p) => {
     const its = p.items.filter((i) => hit(i.label) || hit(i.ja) || hit(p.title) || hit(T(p.title)));
     if (f && !its.length && !hit(p.title) && !hit(p.desc) && !hit(T(p.title)) && !hit(T(p.desc))) return "";
-    return `<section class="all-sec">
-      <a class="all-page" href="#${p.view}" data-view="${p.view}"><span class="t">${icon(ILLUST[p.view]?.main)}${esc(T(p.title))}</span><span class="d">${esc(T(p.desc))}</span></a>
-      ${its.length ? `<ul>${its.map((i) => `<li><a href="#${i.view}" data-view="${i.view}" data-target="${i.target}">${esc(i.label)}</a></li>`).join("")}</ul>` : ""}
-    </section>`;
-  }).join("") || `<p class="note">${T("見つかりません。")}</p>`;
+    // 中の欄が無いページは、押すとそのまま開く
+    if (!p.items.length) return `<div class="all-sec"><a class="all-page" href="#${p.view}" data-view="${p.view}"><span class="ic-wrap">${icon(ILLUST[p.view]?.main)}</span><span class="tx"><span class="t">${esc(T(p.title))}</span><span class="d">${esc(T(p.desc))}</span></span><span class="ar" aria-hidden="true">›</span></a></div>`;
+    return `<details class="all-sec"${f ? " open" : ""}>${head(ILLUST[p.view]?.main, T(p.title), T(p.desc), its.length)}
+      <ul>${row(`href="#${p.view}" data-view="${p.view}" class="open-page"`, TN("「{name}」のページを開く", { name: T(p.title) }))}${its.map((i) => row(`href="#${i.view}" data-view="${i.view}" data-target="${i.target}"`, i.label)).join("")}</ul></details>`;
+  }).join("");
+  $("all-list").innerHTML = (herePart + pages || `<p class="note">${T("見つかりません。")}</p>`) + `<a class="all-report" href="${esc(reportHref(currentView()))}">${icon("alert")}${T("まちがいや古い所を知らせる")}</a>`;
 }
 function wireAllPages() {
   const dlg = $("all-pages");
