@@ -11,7 +11,8 @@ let partFeature = null; // 町・字の形（地図で光らせる）
 const hhmm = (iso) => new Date(iso).toLocaleTimeString("ja-JP", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
 
 let questions = [];
-let pickQs = (y) => y.questions; // この町に聞く問いを選ぶ（main で決まる）
+let pickQs = (y) => y.questions; // この町のます目に出す問いを選ぶ（main で決まる）
+let skipWhy = new Map(); // この町には聞かない問い（決まりに合わない）と、その理由
 let items = [];
 let run = null;
 let local = false;
@@ -32,8 +33,13 @@ async function main() {
     const fr = q.rule?.match(/外国の住民.*?(\d+(?:\.\d+)?)\s*%/), old = q.rule?.match(/65歳以上.*?(\d+(?:\.\d+)?)\s*%/);
     return (!fr || (t?.foreignRate ?? 0) >= Number(fr[1])) && (!old || (t?.over65Rate ?? 0) >= Number(old[1]));
   };
-  pickQs = (y) => y.questions.filter((q) => (q.level === "town") === Boolean(part) && (!q.only || q.only === code) && (!q.feature || feats.includes(q.feature)) && ruleOk(q));
+  // 決まりに合わない問いも、カードは出す（「聞かない」の印と理由つき）。作者「聞かない問いのカード自体は表示していい。表示していたほうがわかりやすい（なんで表示されないの？となるため）」
+  pickQs = (y) => y.questions.filter((q) => (q.level === "town") === Boolean(part) && (!q.only || q.only === code) && (!q.feature || feats.includes(q.feature)));
   questions = pickQs(yard);
+  skipWhy = new Map(questions.filter((q) => !ruleOk(q)).map((q) => {
+    const fr = /外国の住民/.test(q.rule), now = fr ? t?.foreignRate : t?.over65Rate;
+    return [q.id, `問いの決まり「${q.rule}」に合わないので、この町には聞きません（この町の${fr ? "外国の住民の割合" : "65歳以上の割合"}は ${now ?? "?"}%）`];
+  }));
   if (!t) { $("name").textContent = "町が見つかりません"; return; }
   const muniName = t.name.replace(/^.+?郡(?=.+[町村]$)/, "");
   if (part) {
@@ -43,7 +49,7 @@ async function main() {
   const name = partFeature ? `${muniName} ${partFeature.properties.name}` : muniName;
   document.title = `${name}を調べる｜まちしるべ`;
   $("name").textContent = `${name}を調べる`;
-  $("where").textContent = `${t.pref}・市区町村コード ${code}${part ? `・町・字の番号 ${part}（町・字ごとの問い。市全体の答えは ${muniName}を調べる画面で）` : ""}・物差しの問い ${questions.length}（版 ${yard.version}）`;
+  $("where").textContent = `${t.pref}・市区町村コード ${code}${part ? `・町・字の番号 ${part}（町・字ごとの問い。市全体の答えは ${muniName}を調べる画面で）` : ""}・物差しの問い ${questions.length - skipWhy.size}${skipWhy.size ? `（ほかに、この町には聞かない問い ${skipWhy.size}）` : ""}（版 ${yard.version}）`;
   $("path").innerHTML = `<li><a href="./">日本</a></li><li><a href="./?pref=${encodeURIComponent(t.pref)}">${esc(t.pref)}</a></li><li><a href="town.html?muni=${code}">${esc(muniName)}</a></li>${partFeature ? `<li><a href="town.html?town=${code}-${part}">${esc(partFeature.properties.name)}</a></li>` : ""}<li><span>調べる</span></li>`;
   drawMap();
 
@@ -128,9 +134,14 @@ function latest(q) {
   return its.filter(live).at(-1) ?? its.at(-1);
 }
 function stateOf(q) {
-  const it = latest(q);
+  if (skipWhy.has(q.id)) return "skip";
   const doing = run?.status === "running" && run.log.findLast((l) => l.text.includes("調べ始めます"))?.text.includes(q.text);
-  if (doing) return "doing";
+  return doing ? "doing" : answerState(q);
+}
+// 答えの状態だけ（いま調べているかは見ない）：まだ "" ・保留 "pending"・点数 "s0"〜"s3"・聞かない "skip"
+function answerState(q) {
+  if (skipWhy.has(q.id)) return "skip";
+  const it = latest(q);
   if (!it) return "";
   // 点数（0〜3）で濃さを変える。人の判断待ちは点を付けず「保留」
   if (it.status === "pending") return "pending";
@@ -148,7 +159,7 @@ function showPick(id) {
 function pickHTML(q, st) {
   const it = latest(q);
   const has = it && live(it) && it.value !== "見つからなかった";
-  const label = st === "doing" ? "いま調べています" : st === "pending" ? "保留（確かめ待ち）" : /^s\d/.test(st) ? `${st.slice(1)}点` : it ? "見つからなかった" : "まだ調べていません";
+  const label = st === "skip" ? "この町には聞かない" : st === "doing" ? "いま調べています" : st === "pending" ? "保留（確かめ待ち）" : /^s\d/.test(st) ? `${st.slice(1)}点` : it ? "見つからなかった" : "まだ調べていません";
   const busy = run?.status === "running" || !!queued;
   const v = String(it?.value ?? "");
   return `<li class="r-pick" id="pick" aria-live="polite">
@@ -156,7 +167,7 @@ function pickHTML(q, st) {
       <button type="button" class="p-close secondary">閉じる</button></p>
     <p class="p-text">${esc(q.text)}</p>
     ${it ? `<div class="p-ans"><span>いまの答え${it.status === "pending" ? "（確かめ待ち）" : ""}</span>${esc(v.slice(0, 200))}${v.length > 200 ? "…" : ""}${it.source?.url ? `<a href="${esc(it.source.url)}" target="_blank" rel="noopener">出典</a>` : ""}</div>` : ""}
-    ${local ? `<button type="button" id="redo" class="primary" ${busy ? "disabled" : ""}>${has ? "この問いだけ調べ直す" : "この問いだけ調べる"}</button>
+    ${st === "skip" ? `<p class="p-skip">${esc(skipWhy.get(q.id))}</p>` : local ? `<button type="button" id="redo" class="primary" ${busy ? "disabled" : ""}>${has ? "この問いだけ調べ直す" : "この問いだけ調べる"}</button>
     <p class="p-note">${busy ? "いまの調べ（予約）が終わってから押せます。" : `${has ? "新しい答えは自動では出さず、確かめる一覧に入ります。OK すると、前の答えと入れかわります（それまでは前の答えのまま）。" : "見つかった答えは、確かめる一覧に入ります。"}見込み 約 $0.3〜1・数分。町全体の見立てや提案はしません。`}</p>` : ""}
   </li>`;
 }
@@ -186,7 +197,7 @@ function renderGrid() {
   // （作者「Q76 を調べているとして、カードの周りが点滅する感じだが、とても分かりにくい」11/6）
   const tile = (q, i) => states[i] === "doing"
     ? `<li class="doing${picked === q.id ? " picked" : ""}" id="doing-tile" data-q="${q.id}" tabindex="0" role="button" aria-expanded="${picked === q.id}" title="${esc(q.text)}"><span class="id">${q.id}</span><span class="d-label"><span class="d-dot" aria-hidden="true"></span>調べています</span><span class="d-short">${esc(q.short ?? q.group)}</span></li>`
-    : `<li class="${states[i]}${picked === q.id ? " picked" : ""}" data-q="${q.id}" tabindex="0" role="button" aria-expanded="${picked === q.id}" title="${esc(q.text)}"><span class="id">${q.id}</span><span class="g">${esc(q.group)}</span>${/^s\d/.test(states[i]) ? `<span class="pt">${states[i].slice(1)}点</span>` : states[i] === "pending" ? `<span class="pt">保留</span>` : ""}</li>`;
+    : `<li class="${states[i]}${picked === q.id ? " picked" : ""}" data-q="${q.id}" tabindex="0" role="button" aria-expanded="${picked === q.id}" title="${esc(q.text)}"><span class="id">${q.id}</span><span class="g">${esc(q.group)}</span>${/^s\d/.test(states[i]) ? `<span class="pt">${states[i].slice(1)}点</span>` : states[i] === "pending" ? `<span class="pt">保留</span>` : states[i] === "skip" ? `<span class="pt">聞かない</span>` : ""}</li>`;
   // 押したカードの行の終わりに、横いっぱいの欄を入れる（列の数は画面の幅で 5 か 3）
   const cols = getComputedStyle($("grid")).gridTemplateColumns.split(" ").filter(Boolean).length || 5;
   const pi = questions.findIndex((q) => q.id === picked);
@@ -198,7 +209,7 @@ function renderGrid() {
   const n = (s) => states.filter((x) => x === s).length;
   const scored = states.filter((x) => /^s\d/.test(x));
   const pass = scored.filter((x) => x >= "s2").length;
-  $("grid-sum").textContent = `3点 ${n("s3")}・2点 ${n("s2")}・1点 ${n("s1")}・0点 ${n("s0")}・保留 ${n("pending")}・まだ ${n("")}。合格（2点以上）は 保留を除いた ${scored.length}問のうち ${pass}問`;
+  $("grid-sum").textContent = `3点 ${n("s3")}・2点 ${n("s2")}・1点 ${n("s1")}・0点 ${n("s0")}・保留 ${n("pending")}・まだ ${n("")}${n("skip") ? `・この町には聞かない ${n("skip")}` : ""}。合格（2点以上）は 保留を除いた ${scored.length}問のうち ${pass}問`;
 }
 
 // extra：1問だけ調べ直すとき { qids: ["Q76"], redo: true }
@@ -373,15 +384,17 @@ const GROW_PAGES = [["bousai", "防災・避難", "shield"], ["gomi", "ごみ", 
   ["tetsuzuki", "手続き", "doc"], ["foreign", "外国の方へ", "globe"], ["kaigo", "お年寄り・介護", "heart"], ["kosodate", "子育て", "child"], ["shiru", "町を知る", "book"]];
 function renderGrow() {
   $("grow").innerHTML = GROW_PAGES.map(([page, label, ic]) => {
-    const qs = questions.filter((q) => q.page === page);
+    // この町には聞かない問いは数えない。点はます目と同じ見方（出している答え・確かめ待ちを先に見る）
+    const qs = questions.filter((q) => q.page === page && !skipWhy.has(q.id));
     if (!qs.length) return "";
-    const marks = qs.map((q) => {
-      const it = items.filter((x) => x.qid === q.id).at(-1);
-      if (!it) return `<i class="m none" title="${esc(q.short ?? q.id)}：まだ"></i>`;
-      if (it.status === "pending") return `<i class="m hold" title="${esc(q.short ?? q.id)}：保留"></i>`;
-      return `<i class="m s${it.score ?? 2}" title="${esc(q.short ?? q.id)}：${it.score ?? 2}点"></i>`;
+    const st = qs.map(answerState);
+    const marks = qs.map((q, i) => {
+      const s = st[i];
+      if (!s) return `<i class="m none" title="${esc(q.short ?? q.id)}：まだ"></i>`;
+      if (s === "pending") return `<i class="m hold" title="${esc(q.short ?? q.id)}：保留"></i>`;
+      return `<i class="m ${s}" title="${esc(q.short ?? q.id)}：${s.slice(1)}点"></i>`;
     }).join("");
-    const done = qs.filter((q) => items.some((x) => x.qid === q.id && x.status !== "pending")).length;
+    const done = st.filter((s) => /^s\d/.test(s)).length;
     return `<li class="${done ? "on" : ""}">${icon(ic)}<span class="l">${esc(label)}</span><span class="ms">${marks}</span><span class="n">${done}/${qs.length}</span></li>`;
   }).join("");
 }

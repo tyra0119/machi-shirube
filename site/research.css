@@ -147,3 +147,8 @@ body.research-page { display: block; height: 100%; }
 .r-pick .p-note { margin-top: 6px; font-size: 12px; color: var(--text-sub); }
 .r-grid li.r-pick { grid-column: 1 / -1; display: block; min-height: 0; padding: 12px; border: 2px solid var(--text); font-size: 14px; cursor: auto; }
 .r-pick .p-close { width: auto; flex: 0 0 auto; }
+/* この町には聞かない問い（決まりに合わない）：点線の枠と薄い字 */
+.r-grid li.skip { border-style: dotted; border-color: var(--line); background: var(--bg); color: var(--text-sub); }
+.r-grid li.skip .id { color: var(--text-sub); }
+.r-legend .sq.skip { border-style: dotted; background: var(--bg); }
+.r-pick .p-skip { margin-top: 8px; padding: 6px 8px; border-radius: 6px; background: var(--bg); font-size: 13px; line-height: 1.6; }
