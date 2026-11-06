@@ -49,7 +49,15 @@ async function main() {
     $("limit").textContent = `$${ping.runLimit ?? 4}`; // 調べ始める前から本当の上限を（画面の初めの字は $4 のままだった）
     $("note").textContent = `見込み：問い1つ 約 $${ping.estimate?.usd ?? 0.3}・${ping.estimate?.min ?? 1}分${ping.estimate ? `（これまでの調べ ${ping.estimate.n} 件の中ほどの値。採点と探し直しは別）` : ""}。まだ答えの無い問いだけを調べます。1回の調べの上限は $${ping.runLimit ?? 4}、1日の上限は $80、合計の上限は $550。`;
   }
-  $("start").addEventListener("click", start);
+  $("start").addEventListener("click", () => start());
+  // ます目のカードを押すと、その問いの答えと「この問いだけ調べ直す」を出す（作者「あるカード（例えばQ76）だけを再度調べることはできる？」11/6）
+  $("grid").addEventListener("click", (e) => {
+    if (e.target.closest(".p-close")) return showPick(picked);
+    if (e.target.closest("#redo")) { e.target.disabled = true; return start({ qids: [picked], redo: true }); }
+    const li = e.target.closest("li[data-q]");
+    if (li) showPick(li.dataset.q);
+  });
+  $("grid").addEventListener("keydown", (e) => { const li = e.target.closest("li[data-q]"); if (li && (e.key === "Enter" || e.key === " ")) { e.preventDefault(); showPick(li.dataset.q); } });
   // 終わりの通知の許しは、調べ始める前に別のボタンで聞く（「調べ始める」で聞くと、録画の最中に確かめの窓が出る。断られても音とタブの名前で知らせる）
   if ("Notification" in window && Notification.permission === "default") {
     $("start").insertAdjacentHTML("afterend", `<button type="button" id="notify-ok" class="secondary r-notify">終わったら通知を出す</button>`);
@@ -104,9 +112,15 @@ async function loadItems() {
   $("pending").textContent = items.filter((x) => x.status === "pending").length;
 }
 
-function stateOf(q) {
+// いまの答え：消した答え・出さないにした答えより、出している答え・確かめ待ちを先に見る
+// （前は最後の記録を見ていたので、探し直して前の答えを消したあとの問いが「0点」と出ていた。美濃加茂市の Q76）
+const live = (x) => !x.status || ["pending", "ok", "auto"].includes(x.status);
+function latest(q) {
   const its = items.filter((x) => (x.qid ?? "") === q.id || x.question === q.text);
-  const it = its.at(-1);
+  return its.filter(live).at(-1) ?? its.at(-1);
+}
+function stateOf(q) {
+  const it = latest(q);
   const doing = run?.status === "running" && run.log.findLast((l) => l.text.includes("調べ始めます"))?.text.includes(q.text);
   if (doing) return "doing";
   if (!it) return "";
@@ -114,6 +128,29 @@ function stateOf(q) {
   if (it.status === "pending") return "pending";
   if (it.score != null) return `s${it.score}`;
   return "";
+}
+// 押したカードの問い：押したカードのすぐ下の行に、いまの答え・点数と「この問いだけ調べ直す」を開く
+// （作者「あるカード（例えばQ76）だけを再度調べることはできる？」11/6。ます目の上に出すと、カードから遠くて見つけにくかった）
+let picked = null;
+function showPick(id) {
+  picked = picked === id ? null : id;
+  renderGrid();
+  if (picked) document.getElementById("pick")?.scrollIntoView({ block: "nearest", behavior: "smooth" });
+}
+function pickHTML(q, st) {
+  const it = latest(q);
+  const has = it && live(it) && it.value !== "見つからなかった";
+  const label = st === "doing" ? "いま調べています" : st === "pending" ? "保留（確かめ待ち）" : /^s\d/.test(st) ? `${st.slice(1)}点` : it ? "見つからなかった" : "まだ調べていません";
+  const busy = run?.status === "running" || !!queued;
+  const v = String(it?.value ?? "");
+  return `<li class="r-pick" id="pick" aria-live="polite">
+    <p class="p-head"><strong>${q.id}</strong><span class="p-short">${esc(q.short ?? q.group)}</span><span class="p-state">${label}</span>
+      <button type="button" class="p-close secondary">閉じる</button></p>
+    <p class="p-text">${esc(q.text)}</p>
+    ${it ? `<div class="p-ans"><span>いまの答え${it.status === "pending" ? "（確かめ待ち）" : ""}</span>${esc(v.slice(0, 200))}${v.length > 200 ? "…" : ""}${it.source?.url ? `<a href="${esc(it.source.url)}" target="_blank" rel="noopener">出典</a>` : ""}</div>` : ""}
+    ${local ? `<button type="button" id="redo" class="primary" ${busy ? "disabled" : ""}>${has ? "この問いだけ調べ直す" : "この問いだけ調べる"}</button>
+    <p class="p-note">${busy ? "いまの調べ（予約）が終わってから押せます。" : `${has ? "新しい答えは自動では出さず、確かめる一覧に入ります。OK すると、前の答えと入れかわります（それまでは前の答えのまま）。" : "見つかった答えは、確かめる一覧に入ります。"}見込み 約 $0.3〜1・数分。町全体の見立てや提案はしません。`}</p>` : ""}
+  </li>`;
 }
 function showNow(q) {
   const el = $("now");
@@ -139,9 +176,16 @@ function renderGrid() {
   const states = questions.map(stateOf);
   // いま調べている問い：ます目の上に、問いの見出しと中身・いまの作業を大きく出す。ます目のカードにも「調べています」と見出しを入れる
   // （作者「Q76 を調べているとして、カードの周りが点滅する感じだが、とても分かりにくい」11/6）
-  $("grid").innerHTML = questions.map((q, i) => states[i] === "doing"
-    ? `<li class="doing" id="doing-tile" title="${esc(q.text)}"><span class="id">${q.id}</span><span class="d-label"><span class="d-dot" aria-hidden="true"></span>調べています</span><span class="d-short">${esc(q.short ?? q.group)}</span></li>`
-    : `<li class="${states[i]}" title="${esc(q.text)}"><span class="id">${q.id}</span><span class="g">${esc(q.group)}</span>${/^s\d/.test(states[i]) ? `<span class="pt">${states[i].slice(1)}点</span>` : states[i] === "pending" ? `<span class="pt">保留</span>` : ""}</li>`).join("");
+  const tile = (q, i) => states[i] === "doing"
+    ? `<li class="doing${picked === q.id ? " picked" : ""}" id="doing-tile" data-q="${q.id}" tabindex="0" role="button" aria-expanded="${picked === q.id}" title="${esc(q.text)}"><span class="id">${q.id}</span><span class="d-label"><span class="d-dot" aria-hidden="true"></span>調べています</span><span class="d-short">${esc(q.short ?? q.group)}</span></li>`
+    : `<li class="${states[i]}${picked === q.id ? " picked" : ""}" data-q="${q.id}" tabindex="0" role="button" aria-expanded="${picked === q.id}" title="${esc(q.text)}"><span class="id">${q.id}</span><span class="g">${esc(q.group)}</span>${/^s\d/.test(states[i]) ? `<span class="pt">${states[i].slice(1)}点</span>` : states[i] === "pending" ? `<span class="pt">保留</span>` : ""}</li>`;
+  // 押したカードの行の終わりに、横いっぱいの欄を入れる（列の数は画面の幅で 5 か 3）
+  const cols = getComputedStyle($("grid")).gridTemplateColumns.split(" ").filter(Boolean).length || 5;
+  const pi = questions.findIndex((q) => q.id === picked);
+  const at = pi < 0 ? -1 : Math.min(questions.length - 1, Math.floor(pi / cols) * cols + cols - 1);
+  const keepFocus = document.activeElement?.closest?.("#grid") ? document.activeElement.dataset.q ?? document.activeElement.id : null;
+  $("grid").innerHTML = questions.map((q, i) => tile(q, i) + (i === at ? pickHTML(questions[pi], states[pi]) : "")).join("");
+  if (keepFocus) ($("grid").querySelector(`[data-q="${keepFocus}"]`) ?? document.getElementById(keepFocus))?.focus({ preventScroll: true });
   showNow(questions[states.indexOf("doing")]);
   const n = (s) => states.filter((x) => x === s).length;
   const scored = states.filter((x) => /^s\d/.test(x));
@@ -149,9 +193,10 @@ function renderGrid() {
   $("grid-sum").textContent = `3点 ${n("s3")}・2点 ${n("s2")}・1点 ${n("s1")}・0点 ${n("s0")}・保留 ${n("pending")}・まだ ${n("")}。合格（2点以上）は 保留を除いた ${scored.length}問のうち ${pass}問`;
 }
 
-async function start() {
+// extra：1問だけ調べ直すとき { qids: ["Q76"], redo: true }
+async function start(extra = {}) {
   $("start").disabled = true;
-  const res = await fetch("api/runs", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ code, part: part ?? undefined }) });
+  const res = await fetch("api/runs", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ code, part: part ?? undefined, ...(extra.qids ? extra : {}) }) });
   const body = await res.json();
   if (!res.ok) { $("note").textContent = `始められませんでした：${body.error}`; $("start").disabled = false; return; }
   // ほかの町を調べている最中なら、予約になる（作者「予約できるようにして。…調査中の町が終わったら自動実行」）

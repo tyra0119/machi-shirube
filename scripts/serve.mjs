@@ -121,38 +121,42 @@ async function startRun(req, res) {
   if (!process.env.ANTHROPIC_API_KEY) return send(res, 400, { error: "調べるには npm run serve:research で動かしてください（.env の鍵を読む）" });
   let body = "";
   for await (const chunk of req) body += chunk;
-  const { code, part } = JSON.parse(body || "{}");
+  const { code, part, qids: rawQids, redo } = JSON.parse(body || "{}");
+  // 1問だけ調べ直す（作者「あるカード（例えばQ76）だけを再度調べることはできる？」）：qids に問いの番号、redo: true
+  const qids = Array.isArray(rawQids) && rawQids.length ? rawQids.slice(0, 10).map(String) : null;
+  if (qids && !qids.every((x) => /^[QT]\d+$/.test(x))) return send(res, 400, { error: "問いの番号が正しくありません" });
   if (!/^\d{5}$/.test(code ?? "")) return send(res, 400, { error: "市区町村コードが正しくありません" });
   if (part != null && !/^\d{4}$/.test(part)) return send(res, 400, { error: "町・字の番号が正しくありません" });
   if (!ledger.can("owner", "request", `muni:${code}`)) return send(res, 403, { error: "この範囲を調べる権限がありません" });
   const same = (x) => x.code === code && (x.part ?? null) === (part ?? null);
+  const sameQ = (x) => same(x) && String(x.qids ?? "") === String(qids ?? "");
   if (isBusy()) {
     const cur = runs.get(activeRun);
     if (same(cur)) return send(res, 409, { error: "この町は、いま調べている最中です", runId: activeRun });
-    let q = queue.find(same);
-    if (!q) { q = { id: `q-${Date.now()}-${code}${part ? `-${part}` : ""}`, code, part: part ?? null, at: new Date().toISOString() }; queue.push(q); }
+    let q = queue.find(sameQ);
+    if (!q) { q = { id: `q-${Date.now()}-${code}${part ? `-${part}` : ""}`, code, part: part ?? null, qids, redo: !!redo, at: new Date().toISOString() }; queue.push(q); }
     return send(res, 202, { queued: true, id: q.id, position: queue.indexOf(q) + 1, current: { code: cur.code, part: cur.part ?? null } });
   }
-  send(res, 200, launch(code, part));
+  send(res, 200, launch(code, part, { qids, redo: !!redo }));
 }
 
 // 予約の先頭を始める（いまの調べが終わったあと）
 function next() {
   if (isBusy() || !queue.length) return;
   const q = queue.shift();
-  const run = launch(q.code, q.part ?? undefined);
+  const run = launch(q.code, q.part ?? undefined, { qids: q.qids, redo: q.redo });
   run.log.unshift({ at: run.startedAt, text: "予約していた町を、前の町の調べが終わったので始めました" });
 }
 
-function launch(code, part) {
+function launch(code, part, { qids = null, redo = false } = {}) {
   const id = `run-${new Date().toISOString().replace(/[-:T.Z]/g, "").slice(0, 14)}-${code}${part ? `-${part}` : ""}`;
-  const run = { id, code, part, startedAt: new Date().toISOString(), status: "running", usd: 0, limit: RUN_LIMIT_USD, log: [], items: [], stopRequested: false };
+  const run = { id, code, part, startedAt: new Date().toISOString(), status: "running", usd: 0, limit: RUN_LIMIT_USD, log: [], items: [], stopRequested: false, qids };
   runs.set(id, run);
   activeRun = id;
   // 国のデータを重ねる計算（PC だけ・無料）を、Claude の調べと並べて動かす。町・字のときは市区町村の分がもうあれば何もしない
   const overlays = buildOverlays(code, (text) => run.log.push({ at: new Date().toISOString(), text })).catch(() => {});
   researchTown(code, {
-    part,
+    part, qids: qids ?? undefined, redo,
     log: (text) => run.log.push({ at: new Date().toISOString(), text: text.replace(/^\d\d:\d\d:\d\d /, "") }),
     onItem: (q, it, total) => { run.usd = total; run.items.push({ qid: q.id, id: it.id, status: it.status, value: it.value, why: it.why }); },
     shouldStop: () => run.stopRequested,
@@ -160,7 +164,9 @@ function launch(code, part) {
     run.usd = total;
     await overlays;
     // 重ねた数がそろったら、Claude が「この町で届きにくい人」を見立てる（市区町村の調べのとき）
-    if (!part && !run.stopRequested) {
+    // 1問だけ調べ直したときは、町全体の見立て・ひとこと・提案はしない（費用をかけない）
+    if (qids) run.log.push({ at: new Date().toISOString(), text: `${qids.join("・")} だけを調べたので、町全体の見立て・ひとこと・提案はしません` });
+    if (!qids && !part && !run.stopRequested) {
       run.log.push({ at: new Date().toISOString(), text: "国のデータを重ねた数から、Claude が「この町で届きにくい人」を見立てています" });
       await mitate(code, (text) => run.log.push({ at: new Date().toISOString(), text }))
         .then((r) => { run.usd += r.usd; })
@@ -182,8 +188,8 @@ function launch(code, part) {
     // 調べ終わったら、Claude のほうから提案する（物差しにない問い・スキルにするか）。
     // 物差しを止めているあいだ（yardstick.json の frozen。作者「今はしないで止める」）は提案しない
     const frozen = JSON.parse(fs.readFileSync("site/data/yardstick.json", "utf8")).frozen;
-    if (frozen && !run.stopRequested && total > 0) run.log.push({ at: new Date().toISOString(), text: "物差しを止めているので、調べ終わりの提案はしません" });
-    if (!frozen && !run.stopRequested && total > 0) {
+    if (!qids && frozen && !run.stopRequested && total > 0) run.log.push({ at: new Date().toISOString(), text: "物差しを止めているので、調べ終わりの提案はしません" });
+    if (!qids && !frozen && !run.stopRequested && total > 0) {
       run.log.push({ at: new Date().toISOString(), text: "調べ終わりました。Claude が答えの全体を見て、提案を考えています" });
       await propose(code, { part, log: (text) => run.log.push({ at: new Date().toISOString(), text }) })
         .then((r) => { run.usd += r.usd; run.proposals = r.proposals.length; })
@@ -281,7 +287,7 @@ http
     if (url.pathname === "/api/requests" && req.method === "POST") return startRequest(req, res);
     if (url.pathname === "/api/runs" && req.method === "POST") return startRun(req, res);
     // いま調べている町（日本地図で点滅させる）
-    if (url.pathname === "/api/runs" && req.method === "GET") return send(res, 200, { running: [...runs.values()].filter((x) => x.status === "running").map((x) => ({ id: x.id, code: x.code, part: x.part ?? null, usd: x.usd })), queue });
+    if (url.pathname === "/api/runs" && req.method === "GET") return send(res, 200, { running: [...runs.values()].filter((x) => x.status === "running").map((x) => ({ id: x.id, code: x.code, part: x.part ?? null, qids: x.qids ?? null, usd: x.usd })), queue });
     // 調べの途中の町（作者「調査が終わってない町の一覧がほしい。そこから調査を再開できるようにしたい」）：
     // 一度でも調べた町（町・字）のうち、まだ調べていない問いか、前に見つからなかった問いが残っている所。日本地図の作る側の帯に出す
     if (url.pathname === "/api/unfinished" && req.method === "GET") {

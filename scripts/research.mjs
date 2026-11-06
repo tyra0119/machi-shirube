@@ -65,7 +65,8 @@ const SYSTEM = `あなたは、日本の町の暮らしの情報を、公式の�
 {"found": true|false, "value": "答え（短く）", "asOf": "時点", "source": {"title": "資料やページの名前", "url": "出典の URL", "where": "どこか（ページ番号や見出し）"}, "sources": [{"title": "ほかに使ったページ", "url": "URL"}], "quote": "元の文", "count": {"number": 数, "csvUrl": "数えた CSV の URL"} または null, "outdated": {"what": "何が古いか", "old": {"asOf": "時点", "url": "URL"}, "new": {"asOf": "時点", "url": "URL"}} または null, "items": [{"text": "話題を1文で", "title": "その出典のページの名前", "url": "その出典の URL", "asOf": "時点"}]（話題や計画のように、いくつも並ぶ答えのときだけ。1つずつ別の出典を付ける。無ければ []）, "detail": ["地区ごと" | "年ごと" | "重ね合わせ"]（答えに、町丁目・地区ごとの違い、年ごとの移り変わり、ほかのこととの重ね合わせ〈例：お年寄りの多い地区と津波の深さ〉があれば。無ければ []）, "note": "気づいたこと（使ってよい範囲の書き方など。なければ空）"}`;
 
 // part を渡すと、その町・字（市区町村の中の町・字。国勢調査の小地域の番号4けた）について調べる。範囲は town:{コード}-{番号}
-export async function research(code, question = DEFAULT_QUESTION, { log = console.log, qid, hint, redoOf, part } = {}) {
+// review：見つかった答えを、自動で出さずに確かめる一覧に入れる理由（作者が1問だけ調べ直したとき。前の答えと比べて決める）
+export async function research(code, question = DEFAULT_QUESTION, { log = console.log, qid, hint, redoOf, part, review } = {}) {
   const stats = JSON.parse(fs.readFileSync("site/data/stats.json", "utf8"));
   const town = stats.towns[code];
   if (!town) throw new Error(`市区町村コード ${code} が見つかりません`);
@@ -136,6 +137,7 @@ export async function research(code, question = DEFAULT_QUESTION, { log = consol
   const a = JSON.parse(m[1]);
 
   const { why, verified, quoteUrl, counted, card, check } = await assess({ a, content, code, question, step, domains });
+  if (review && a.found) why.push(review);
 
   const item = ledger.add({
     scope,
@@ -402,7 +404,9 @@ export function townProgress(code, { part } = {}) {
     never: open.filter((q) => !tried.has(q.id)).length, retry: open.filter((q) => tried.has(q.id)).length };
 }
 
-export async function researchTown(code, { log = console.log, onItem = () => {}, shouldStop = () => false, part, qids } = {}) {
+// redo：名指しの問い（qids）を、答えがあっても調べ直す（作者「あるカード（例えばQ76）だけを再度調べることはできる？」11/6）。
+// 新しい答えは前の答えを置きかえる印（redoOf）をつけ、自動では出さずに確かめる一覧へ。OK すると前の答えと入れかわる
+export async function researchTown(code, { log = console.log, onItem = () => {}, shouldStop = () => false, part, qids, redo = false } = {}) {
   const scope = part ? `town:${code}-${part}` : `muni:${code}`;
   const mine = ledger.load().items.filter((x) => x.scope === scope);
   const done = new Set(mine.filter((x) => ["pending", "ok", "auto"].includes(x.status)).map((x) => x.qid ?? x.question));
@@ -410,13 +414,17 @@ export async function researchTown(code, { log = console.log, onItem = () => {},
   let total = 0;
   const list = townQuestions(code, { part, qids });
   for (const q of list) {
-    if (done.has(q.id) || done.has(q.text)) { log(`${q.id} はもう答えがあるので飛ばします`); continue; }
+    const again = redo && qids?.includes(q.id);
+    if (!again && (done.has(q.id) || done.has(q.text))) { log(`${q.id} はもう答えがあるので飛ばします`); continue; }
+    const prev = again ? mine.filter((x) => x.kind === "answer" && (x.qid ?? x.question) === q.id && ["pending", "ok", "auto"].includes(x.status)).at(-1) : null;
+    if (again) log(prev ? `${q.id} を調べ直します（前の答え ${prev.id} は、新しい答えを OK するまで、そのまま出します）` : `${q.id} を調べます`);
+    const redoOpt = again ? { redoOf: prev?.id, review: "作者が調べ直しを頼んだ問い：前の答えと比べて決める" } : {};
     // 問いを名指しで調べるとき（qids）は、前に見つからなくても探す
     if (!qids && (miss.get(q.id) ?? 0) >= GIVE_UP_TRIES) { log(`${q.id} は ${miss.get(q.id)} 回探して見つからなかったので飛ばします`); continue; }
     if (shouldStop()) { log("止めました"); break; }
     if (total >= RUN_LIMIT_USD) { log(`この調べの費用が上限（$${RUN_LIMIT_USD}）に達したので止めます`); break; }
     try {
-      let r = await research(code, q.text, { log, qid: q.id, part });
+      let r = await research(code, q.text, { log, qid: q.id, part, ...redoOpt });
       total += r.usd;
       // 出典のページが消えていた（404）答えは、検索に残った古い内容のことがあるので、1回だけ「いま開けるページで」と探し直す
       // （朝霞市の Q18 で、消えた市のページの古い電話番号のまま答えた。11/3）
@@ -424,7 +432,7 @@ export async function researchTown(code, { log = console.log, onItem = () => {},
       const dead = whys(r).find((w) => w.startsWith("出典のページが開けない"));
       if (dead && !shouldStop() && total < RUN_LIMIT_USD) {
         log(`${q.id} の出典のページが開けないので、いま開けるページを探し直します`);
-        const r2 = await research(code, q.text, { log, qid: q.id, part, redoOf: r.item.id,
+        const r2 = await research(code, q.text, { log, qid: q.id, part, redoOf: r.item.redoOf ?? r.item.id, review: redoOpt.review,
           hint: `前の答えの出典 ${r.item.source?.url ?? ""} は開けない（${dead.match(/404|410/)?.[0] ?? "404"}）。検索に残った古い内容は使わず、いま開ける公式のページ（市のほかのページ・県や国の一覧など）を探して答える` });
         total += r2.usd;
         if (!whys(r2).some((w) => w.startsWith("出典のページが開けない"))) {
@@ -441,7 +449,7 @@ export async function researchTown(code, { log = console.log, onItem = () => {},
       log(`採点：${q.id} は ${g.score} 点${g.missing ? `（足りない所：${g.missing}）` : ""}`);
       if (g.score <= 1 && !shouldStop() && total < RUN_LIMIT_USD) {
         log(`${q.id} の足りない所を探し直します`);
-        const r2 = await research(code, q.text, { log, qid: q.id, part, hint: `採点役の指摘：${g.missing || "問いに答えられていない"}`, redoOf: r.item.id });
+        const r2 = await research(code, q.text, { log, qid: q.id, part, hint: `採点役の指摘：${g.missing || "問いに答えられていない"}`, redoOf: r.item.redoOf ?? r.item.id, review: redoOpt.review });
         total += r2.usd;
         const g2 = await grade(q.text, r2.item);
         total += g2.usd;
