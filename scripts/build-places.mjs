@@ -6,7 +6,7 @@
 // 動かし方: npm run build:places -- 10524,11227,15385,21211,39428
 import fs from "node:fs";
 
-const UA = "machi-shirube/0.1 (+https://github.com/tyra0119/machi-shirube)";
+import { UA } from "../src/ua.mjs"; // 名札（.env の MACHI_SHIRUBE_UA で変えられる）
 const API = "https://overpass.kumi.systems/api/interpreter";
 const KINDS = [
   ["park", '["leisure"="park"]'],

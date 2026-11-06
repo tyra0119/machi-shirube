@@ -3,7 +3,7 @@
 import fs from "node:fs";
 import JSZip from "jszip";
 
-const UA = "machi-shirube/0.1 (+https://github.com/tyra0119/machi-shirube)";
+import { UA } from "../src/ua.mjs"; // 名札（.env の MACHI_SHIRUBE_UA で変えられる）
 const RAW = "data/raw/estat";
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 

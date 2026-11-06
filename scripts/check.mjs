@@ -32,6 +32,11 @@ const siteJs = fs.readdirSync("site").filter((f) => f.endsWith(".js"));
   check(!bad.length, "文法（site/*.js・scripts/*.mjs）", sample(bad));
 }
 {
+  // 名札（User-Agent）は src/ua.mjs だけに書く（11/6、11 の台本に作者の名札が直に書かれ、ほかの人が動かしても作者の名で取りに行っていた）
+  const direct = fs.readdirSync("scripts").filter((f) => /\.m?js$/.test(f) && f !== "check.mjs" && /["'`]machi-shirube\/\d/.test(fs.readFileSync(`scripts/${f}`, "utf8")));
+  check(!direct.length, "名札（User-Agent）は src/ua.mjs から読む（台本に直に書かない）", sample(direct));
+}
+{
   // 古い iPhone：正規表現の後ろ読み (?<!…) (?<=…) は iOS 16.4 より前の Safari で読めず、ファイル全体が止まる（11/5 に 6 か所あった）
   // ES2023 以降の書き方も使わない（iOS 15.4 の Safari までで動くもの。structuredClone・.at() は可）
   const NEW = /\b(?:Object\.groupBy|Map\.groupBy|toSorted|toReversed|toSpliced|withResolvers|fromAsync)\b|\bstatic\s*\{/;

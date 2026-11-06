@@ -5,7 +5,7 @@
 // 使い方：node scripts/build-kaigo.mjs 39428 10524 …（町を調べるときは overlays.mjs からも動く）
 import fs from "node:fs";
 
-const UA = "machi-shirube/0.1 (+https://github.com/tyra0119/machi-shirube)";
+import { UA } from "../src/ua.mjs"; // 名札（.env の MACHI_SHIRUBE_UA で変えられる）
 const BASE = "https://www.mhlw.go.jp/content/12300000/";
 // 住む人に要る種類を、4つのまとまりに
 export const KINDS = [

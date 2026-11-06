@@ -3,7 +3,7 @@
 // 出力 site/data/jma.json。町のページが、見る人のブラウザで気象庁の予報・警報をその場で読むときに使う
 import fs from "node:fs";
 
-const UA = "machi-shirube/0.1 (+https://github.com/tyra0119/machi-shirube)";
+import { UA } from "../src/ua.mjs"; // 名札（.env の MACHI_SHIRUBE_UA で変えられる）
 const RAW = "data/raw/jma-area.json";
 if (!fs.existsSync(RAW)) {
   const res = await fetch("https://www.jma.go.jp/bosai/common/const/area.json", { headers: { "User-Agent": UA } });

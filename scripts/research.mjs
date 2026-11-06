@@ -12,7 +12,7 @@ import * as ledger from "./ledger.mjs";
 import { skillHint } from "./propose.mjs";
 
 const MODEL = "claude-sonnet-5-5"; // ページや PDF を読んで決まった形に（設計の 14 章）
-const UA = "machi-shirube/0.1 (+https://github.com/tyra0119/machi-shirube)";
+import { UA } from "../src/ua.mjs"; // 名札（.env の MACHI_SHIRUBE_UA で変えられる）
 const OFFICIAL = ["lg.jp", "go.jp"];
 
 // 町の公式サイト：lg.jp でない町もある（大泉町 town.oizumi.gunma.jp など）。はじめて調べる町は、まず公式サイトの場所を確かめる。

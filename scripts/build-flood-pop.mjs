@@ -8,7 +8,7 @@ import path from "node:path";
 import AdmZip from "adm-zip";
 import { PNG } from "pngjs";
 
-const UA = "machi-shirube/0.1 (+https://github.com/tyra0119/machi-shirube)";
+import { UA } from "../src/ua.mjs"; // 名札（.env の MACHI_SHIRUBE_UA で変えられる）
 const HZ = (layer) => `https://disaportaldata.gsi.go.jp/raster/${layer}/{z}/{x}/{y}.png`;
 const KINDS = {
   津波: [HZ("04_tsunami_newlegend_data")],

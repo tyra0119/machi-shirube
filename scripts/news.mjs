@@ -5,7 +5,7 @@
 // 取り直しは今は手で動かす。毎日の自動の取り直し（GitHub Actions）は、ハッカソンの締め切りのあとに入れる
 import fs from "node:fs";
 
-const UA = "machi-shirube/0.1 (+https://github.com/tyra0119/machi-shirube)";
+import { UA } from "../src/ua.mjs"; // 名札（.env の MACHI_SHIRUBE_UA で変えられる）
 const TOWNS = {
   "39428": {
     news: { title: "黒潮町 新着・更新情報", url: "https://www.town.kuroshio.lg.jp/pb/cont/yakuba/1346", kind: "kuroshio" },

@@ -19,7 +19,7 @@ description: まちしるべに、国や公の機関の外部データ（統計�
 
 ## 2. 行儀よく取る
 
-- 名乗る（User-Agent：`machi-shirube/0.1 (+https://github.com/tyra0119/machi-shirube)`）・robots.txt を見る・同じサイトには 1 秒以上あける・同じサイトを同時に取らない
+- 名乗る（User-Agent は `src/ua.mjs` の `UA` を使う。台本に名札の文字を直に書かない）・robots.txt を見る・同じサイトには 1 秒以上あける・同じサイトを同時に取らない
 - 取ったものそのもの（表・地図の絵・API の返事）は `local/cache/` にだけ置く。`scripts/build-flood-pop.mjs` の `cached()` を使うと、取り直さずに済む
 - 見る人のブラウザがその場で読むもの（雨雲・キキクルなど）は、CORS が通るかを確かめる
 

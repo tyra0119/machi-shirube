@@ -5,7 +5,7 @@
 import fs from "node:fs";
 import { cells } from "./csv.mjs";
 
-const UA = "machi-shirube/0.1 (+https://github.com/tyra0119/machi-shirube)";
+import { UA } from "../src/ua.mjs"; // 名札（.env の MACHI_SHIRUBE_UA で変えられる）
 const [code, url, license, title] = process.argv.slice(2);
 if (!/^\d{5}$/.test(code ?? "") || !url) throw new Error("市区町村コードと CSV の URL を渡してください");
 

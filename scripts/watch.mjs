@@ -8,7 +8,7 @@
 import fs from "node:fs";
 import crypto from "node:crypto";
 
-const UA = "machi-shirube/0.1 (+https://github.com/tyra0119/machi-shirube)";
+import { UA } from "../src/ua.mjs"; // 名札（.env の MACHI_SHIRUBE_UA で変えられる）
 const OUT = "site/data/health.json";
 const prev = fs.existsSync(OUT) ? JSON.parse(fs.readFileSync(OUT, "utf8")) : { links: {} };
 

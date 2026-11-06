@@ -96,7 +96,7 @@ npm run serve:research   # 調べる・確かめる画面も使う（.env の AN
 npm run check            # 点検（AI を使わない・数十秒）。画面の点検は http://127.0.0.1:8080/check
 ```
 
-API の鍵は、このフォルダの `.env`（`.gitignore` 済み）にだけ置く。公開のサイト（GitHub Pages）は `site/` をそのまま配る（`.github/workflows/pages.yml`）。
+API の鍵は、このフォルダの `.env`（`.gitignore` 済み）にだけ置く。町のサイトなどを取るときの名札（User-Agent）は、作者の名札（`machi-shirube/0.1 (+https://github.com/tyra0119/machi-shirube)`）になっている。自分で動かすときは、`.env` に `MACHI_SHIRUBE_UA=自分のアプリの名前/版 (+自分の連絡先の URL)` を書いて、自分の名札に変える（相手のサイトから、取りに来たのが誰か分かるように。`src/ua.mjs`）。公開のサイト（GitHub Pages）は `site/` をそのまま配る（`.github/workflows/pages.yml`）。
 
 デモ動画を録るためのページ（ふだんの画面には出ない）：
 - `flyover.html`：これからの姿の演出（イメージ）。夜の日本の上を沖縄から札幌へ立体で飛び、町が灯っていく。画面にいつも「演出（イメージ）」と出す。地形は地理院の標高タイル、町の形は国土数値情報 N03

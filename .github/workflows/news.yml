@@ -25,7 +25,10 @@ jobs:
         with:
           node-version: 22
       # 名乗って・robots.txt を見て・同じサイトへは 1 秒以上あけて取る（scripts/news.mjs の決まりのまま）
+      # 名札は、リポジトリの Variables に MACHI_SHIRUBE_UA があればそれ（fork して動かす人は自分の名札に。src/ua.mjs）
       - run: node scripts/news.mjs
+        env:
+          MACHI_SHIRUBE_UA: ${{ vars.MACHI_SHIRUBE_UA }}
       - name: 変わったときだけ書き込む
         id: commit
         run: |
