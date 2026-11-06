@@ -169,6 +169,13 @@ for (const [what, f] of CASES) { let r = false, e = ""; try { r = f(); } catch (
 
 // ---------------------------------------------------------------- データ
 section = "データ";
+{
+  // 訳の確かめ役の返事が読めなかったもの（しくみの不具合）を、人の確かめ待ちに残さない（11/6、美濃加茂市で 39 件。npm run translate -- <コード> --recheck でやり直す）
+  const led = fs.existsSync("local/ledger/items.json") ? read("local/ledger/items.json").items ?? [] : [];
+  const unread = led.filter((x) => x.kind === "translation" && x.status === "pending" && /読めなかった/.test(x.why ?? "")).map((x) => `${x.scope} ${x.qid} ${x.lang}`);
+  if (unread.length) warn("訳の確かめ役の返事が読めなかった確かめ待ちがある（npm run translate -- <コード> --recheck）", sample(unread));
+  else ok("訳の確かめ役の返事が読めなかった確かめ待ちは無い");
+}
 const walk = (d) => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => (e.isDirectory() ? walk(path.join(d, e.name)) : e.name.endsWith(".json") ? [path.join(d, e.name)] : []));
 const files = walk("site/data");
 {

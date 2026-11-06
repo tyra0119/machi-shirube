@@ -30,6 +30,16 @@ const textOf = (res) => res.content.filter((b) => b.type === "text").map((b) => 
 
 // 確かめ役：訳を日本語に訳し戻し、もとの日本語と意味が同じか。答えは1件ずつ印で囲ませる（JSON だと " でこわれる）
 export async function checkLang(client, list, label) {
+  // 一度に多く渡すと、返事が途中で切れて「確かめ役の答えが読めなかった」になる（11/6、美濃加茂市の 13 件ずつで 39 件が読めなかった）。6 件ずつに分ける
+  if (list.length > 6) {
+    const out = { checks: [], usd: 0 };
+    for (let i = 0; i < list.length; i += 6) {
+      const r = await checkLang(client, list.slice(i, i + 6), label);
+      out.checks.push(...r.checks);
+      out.usd += r.usd;
+    }
+    return out;
+  }
   const chk = await client.messages.create({
     model: CHECKER,
     max_tokens: 8000,
