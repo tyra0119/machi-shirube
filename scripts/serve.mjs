@@ -170,6 +170,11 @@ function launch(code, part, { qids = null, redo = false } = {}) {
   const run = { id, code, part, startedAt: new Date().toISOString(), status: "running", usd: 0, limit: RUN_LIMIT_USD, log: [], items: [], stopRequested: false, qids };
   runs.set(id, run);
   activeRun = id;
+  // 続きの調べ（調べる前から、この町・字に答えがある）では、町全体の仕上げ（見立て・ひとこと・つなぎ・提案）をしない
+  // （作者「A,E」11/7：1 町の費用を抑える。数問の続きでも毎回作り直し、「数から、できることへ」の確かめ待ちも毎回増えていた）
+  const scope = part ? `town:${code}-${part}` : `muni:${code}`;
+  const again = ledger.load().items.some((x) => x.scope === scope && x.kind === "answer");
+  const finish = !qids && !again;
   // 国のデータを重ねる計算（PC だけ・無料）を、Claude の調べと並べて動かす。町・字のときは市区町村の分がもうあれば何もしない
   const overlays = buildOverlays(code, (text) => run.log.push({ at: new Date().toISOString(), text })).catch(() => {});
   researchTown(code, {
@@ -183,7 +188,8 @@ function launch(code, part, { qids = null, redo = false } = {}) {
     // 重ねた数がそろったら、Claude が「この町で届きにくい人」を見立てる（市区町村の調べのとき）
     // 1問だけ調べ直したときは、町全体の見立て・ひとこと・提案はしない（費用をかけない）
     if (qids) run.log.push({ at: new Date().toISOString(), text: `${qids.join("・")} だけを調べたので、町全体の見立て・ひとこと・提案はしません` });
-    if (!qids && !part && !run.stopRequested) {
+    else if (again) run.log.push({ at: new Date().toISOString(), text: "続きの調べなので、町全体の見立て・ひとこと・つなぎ・提案は作り直しません（はじめて調べたときに作ってある）" });
+    if (finish && !part && !run.stopRequested) {
       run.log.push({ at: new Date().toISOString(), text: "国のデータを重ねた数から、Claude が「この町で届きにくい人」を見立てています" });
       await mitate(code, (text) => run.log.push({ at: new Date().toISOString(), text }))
         .then((r) => { run.usd += r.usd; })
@@ -205,8 +211,8 @@ function launch(code, part, { qids = null, redo = false } = {}) {
     // 調べ終わったら、Claude のほうから提案する（物差しにない問い・スキルにするか）。
     // 物差しを止めているあいだ（yardstick.json の frozen。作者「今はしないで止める」）は提案しない
     const frozen = JSON.parse(fs.readFileSync("site/data/yardstick.json", "utf8")).frozen;
-    if (!qids && frozen && !run.stopRequested && total > 0) run.log.push({ at: new Date().toISOString(), text: "物差しを止めているので、調べ終わりの提案はしません" });
-    if (!qids && !frozen && !run.stopRequested && total > 0) {
+    if (finish && frozen && !run.stopRequested && total > 0) run.log.push({ at: new Date().toISOString(), text: "物差しを止めているので、調べ終わりの提案はしません" });
+    if (finish && !frozen && !run.stopRequested && total > 0) {
       run.log.push({ at: new Date().toISOString(), text: "調べ終わりました。Claude が答えの全体を見て、提案を考えています" });
       await propose(code, { part, log: (text) => run.log.push({ at: new Date().toISOString(), text }) })
         .then((r) => { run.usd += r.usd; run.proposals = r.proposals.length; })
