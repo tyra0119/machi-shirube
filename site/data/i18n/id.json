@@ -1,11 +1,11 @@
 {
  "lang": "id",
  "name": "Bahasa Indonesia",
- "createdAt": "2026-11-06T08:31:40.408Z",
+ "createdAt": "2026-11-06T08:54:43.533Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1121,
- "of": 1082,
+ "count": 1123,
+ "of": 1084,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Ini adalah panduan hidup tidak resmi untuk kota ini. Claude mengumpulkannya dari situs resmi kota dan sumber lain, dengan mencantumkan sumbernya (Machishirube)",
   "すべてのページ": "Semua halaman",
@@ -1127,6 +1127,8 @@
   "場所の一覧あり": "Ada daftar tempat",
   "坂や雪で出にくい人の支援": "Dukungan bagi warga yang sulit keluar rumah karena jalan menanjak atau salju",
   "成年後見の利用支援": "Dukungan penggunaan sistem wali pengampu dewasa",
-  "冬の灯油代の助成": "Subsidi minyak tanah untuk musim dingin"
+  "冬の灯油代の助成": "Subsidi minyak tanah untuk musim dingin",
+  "空き家バンクと移住の相談": "Bank Rumah Kosong dan Konsultasi Pindah Domisili",
+  "家の耐震・家具固定の助成": "Subsidi Ketahanan Gempa Rumah dan Pengamanan Perabot"
  }
 }

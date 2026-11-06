@@ -54,6 +54,7 @@ const PAGES = [
   // 作る側の画面（開いてエラーが無いかだけ。決めるボタンには触らない）
   { u: "review.html", note: "確かめる一覧（作る側）", page: true },
   { u: "research.html?muni=39428", note: "調べる画面（作る側）", page: true, expectLimit: true },
+  { u: "try.html", note: "審査の方への体験（記録の再生）", page: true },
 ];
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);

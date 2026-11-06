@@ -1,11 +1,11 @@
 {
  "lang": "vi",
  "name": "Tiếng Việt",
- "createdAt": "2026-11-06T08:31:50.541Z",
+ "createdAt": "2026-11-06T08:54:52.400Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1121,
- "of": 1082,
+ "count": 1123,
+ "of": 1084,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Đây là trang hướng dẫn đời sống không chính thức của thị trấn này. Claude thu thập từ các trang chính thức của thị trấn v.v. và ghi rõ nguồn (Machi-shirube)",
   "すべてのページ": "Tất cả các trang",
@@ -1127,6 +1127,8 @@
   "場所の一覧あり": "Có danh sách địa điểm",
   "坂や雪で出にくい人の支援": "Hỗ trợ người khó đi lại do dốc hoặc tuyết",
   "成年後見の利用支援": "Hỗ trợ sử dụng chế độ giám hộ người trưởng thành",
-  "冬の灯油代の助成": "Trợ cấp tiền dầu hỏa mùa đông"
+  "冬の灯油代の助成": "Trợ cấp tiền dầu hỏa mùa đông",
+  "空き家バンクと移住の相談": "Ngân hàng nhà trống và tư vấn định cư",
+  "家の耐震・家具固定の助成": "Hỗ trợ kinh phí chống động đất cho nhà và cố định đồ đạc"
  }
 }

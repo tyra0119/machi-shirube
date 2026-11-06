@@ -1,0 +1,76 @@
+/* 審査の方への体験（try.html）。字の大きさは倍率 --fs をかける決まり（scripts/check.mjs） */
+body.try-page { height: auto; background: var(--bg); color: var(--text); font-size: calc(16px * var(--fs, 1)); line-height: 1.7; }
+.try { max-width: 860px; margin: 0 auto; padding: 16px 16px 48px; box-sizing: border-box; }
+.try-kicker { margin: 8px 0 0; color: var(--text-sub); font-size: calc(13px * var(--fs, 1)); font-weight: 700; }
+.try h1 { margin: 2px 0 12px; font-size: calc(28px * var(--fs, 1)); line-height: 1.3; }
+.try-notice { padding: 12px 16px; border: 2px solid var(--accent); border-radius: 12px; background: var(--surface); }
+.try-notice p { margin: 4px 0; }
+.try-flow { display: flex; flex-wrap: wrap; gap: 8px; margin: 14px 0; padding: 0; list-style: none; }
+.try-flow li { display: inline-flex; align-items: center; gap: 6px; padding: 4px 12px 4px 4px; border: 1px solid var(--line); border-radius: 999px; background: var(--surface); font-weight: 700; font-size: calc(14px * var(--fs, 1)); }
+.try .n { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; background: var(--accent); color: var(--accent-text); font-size: calc(14px * var(--fs, 1)); font-weight: 700; flex: none; }
+.try-card { margin: 14px 0; padding: 14px 16px; border: 1px solid var(--line); border-radius: 12px; background: var(--surface); }
+.try-card h2 { display: flex; align-items: center; gap: 8px; margin: 0 0 10px; font-size: calc(19px * var(--fs, 1)); }
+.try-sub { margin: 14px 0 6px; font-size: calc(14px * var(--fs, 1)); color: var(--text-sub); }
+.try-note { margin: 0 0 10px; }
+.try-ctrl { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; }
+.try-ctrl button { min-height: 44px; padding: 0 18px; border-radius: 22px; font: inherit; font-weight: 700; cursor: pointer; }
+.try-ctrl select { min-height: 40px; margin-left: 4px; padding: 0 8px; border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--text); font: inherit; }
+.try button.primary, .try a.primary { border: 1px solid var(--accent); background: var(--accent); color: var(--accent-text); }
+.try button.secondary, .try a.secondary, .try-item button { border: 1px solid var(--accent); background: var(--surface); color: var(--accent); }
+.try-stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 8px; margin: 12px 0 0; }
+.try-stats > div { padding: 8px 12px; border-radius: 10px; background: var(--bg); }
+.try-stats .k { display: block; color: var(--text-sub); font-size: calc(12px * var(--fs, 1)); }
+.try-stats .v { font-size: calc(22px * var(--fs, 1)); font-weight: 700; }
+.try-stats small { font-size: calc(13px * var(--fs, 1)); font-weight: 400; color: var(--text-sub); }
+.try-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 6px; margin: 0; padding: 0; list-style: none; }
+.try-grid li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0 6px; padding: 6px 8px; border: 1px dashed var(--line); border-radius: 8px; font-size: calc(13px * var(--fs, 1)); line-height: 1.4; transition: background 0.3s; }
+.try-grid .q { color: var(--text-sub); font-weight: 700; }
+.try-grid .t { overflow-wrap: anywhere; }
+.try-grid .p { grid-column: 2; color: var(--text-sub); font-size: calc(12px * var(--fs, 1)); }
+.try-grid li.s3, .try-grid li.s2 { border: 2px solid var(--accent); background: var(--surface); }
+.try-grid li.s3 .p, .try-grid li.s2 .p { color: var(--accent); font-weight: 700; }
+.try-grid li.s1, .try-grid li.s0 { border-style: solid; background: var(--bg); }
+.try-log { height: 320px; margin: 0; padding: 8px 10px; overflow-y: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--bg); list-style: none; font-size: calc(13px * var(--fs, 1)); line-height: 1.5; }
+.try-log li { display: grid; grid-template-columns: 5.5em minmax(0, 1fr); gap: 6px; padding: 2px 0; }
+.try-log time { color: var(--text-sub); font-variant-numeric: tabular-nums; }
+.try-log span { overflow-wrap: anywhere; }
+.try-log .k-score span, .try-log .k-limit span { font-weight: 700; }
+.try-log .k-check span { color: var(--accent); }
+.try-log .k-data span { color: var(--text-sub); }
+.try-item { margin: 10px 0 0; padding: 10px 12px; border: 1px solid var(--line); border-radius: 10px; }
+.try-item .ri-q { margin: 0 0 6px; font-weight: 700; }
+.try-item .ri-q .q { margin-right: 6px; color: var(--text-sub); }
+.try-item .ri-why { margin: 0 0 6px; font-size: calc(14px * var(--fs, 1)); }
+.try-item .ri-why strong { display: block; color: var(--text-sub); font-size: calc(12px * var(--fs, 1)); }
+.try-item .ri-val summary { min-height: 36px; color: var(--accent); cursor: pointer; }
+.try-item .ri-val p { margin: 4px 0; font-size: calc(14px * var(--fs, 1)); overflow-wrap: anywhere; }
+.try-item .ri-src { color: var(--text-sub); }
+.ri-btns { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 0; }
+.ri-btns button { min-height: 44px; padding: 0 18px; border-radius: 22px; font: inherit; font-weight: 700; cursor: pointer; }
+.ri-btns button.picked { outline: 3px solid var(--accent); outline-offset: 2px; }
+.ri-out { margin: 8px 0 0; padding: 8px 12px; border-radius: 8px; background: var(--bg); font-size: calc(14px * var(--fs, 1)); }
+.ri-out .real { font-weight: 700; color: var(--accent); }
+.try-links { display: flex; flex-wrap: wrap; gap: 8px; }
+.try-links .as-button { display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 22px; text-decoration: none; font-weight: 700; }
+.try-foot { color: var(--text-sub); font-size: calc(12px * var(--fs, 1)); }
+@media (prefers-reduced-motion: reduce) { .try-grid li { transition: none; } }
+
+/* 操作の案内（作者「操作が迷わないように、操作する場所を教えることはできる？」） */
+.try-flow a { display: inline-flex; align-items: center; gap: 6px; color: inherit; text-decoration: none; }
+.try-flow .here { display: none; margin-left: 4px; padding: 0 8px; border-radius: 999px; background: var(--accent); color: var(--accent-text); font-size: calc(11px * var(--fs, 1)); line-height: 1.8; }
+.try-flow li.now { border: 2px solid var(--accent); }
+.try-flow li.now .here { display: inline-block; }
+.try-flow li.done { opacity: 0.75; }
+.try-flow li.done .n::after { content: "✓"; }
+.try-flow li.done .n { font-size: 0; }
+.try-flow li.done .n::after { font-size: calc(14px * var(--fs, 1)); }
+.try-hint { margin: 0 0 6px; color: var(--accent); font-weight: 700; font-size: calc(15px * var(--fs, 1)); }
+.try-hint[hidden], .try-next[hidden] { display: none; }
+.try-next { display: flex; flex-wrap: wrap; align-items: center; gap: 8px 12px; margin: 12px 0 0; }
+.try-next .as-button { display: inline-flex; align-items: center; min-height: 44px; padding: 0 18px; border-radius: 22px; text-decoration: none; font-weight: 700; }
+.try-next span { font-size: calc(14px * var(--fs, 1)); color: var(--text-sub); }
+.try .glow { animation: try-glow 1.6s ease-in-out infinite; }
+@keyframes try-glow { 0%, 100% { box-shadow: 0 0 0 0 rgba(31, 111, 139, 0.55); } 50% { box-shadow: 0 0 0 8px rgba(31, 111, 139, 0); } }
+@media (prefers-reduced-motion: reduce) { .try .glow { animation: none; outline: 3px solid var(--accent); outline-offset: 2px; } }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
