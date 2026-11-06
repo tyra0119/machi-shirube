@@ -355,7 +355,7 @@ body.town-page { display: block; height: auto; min-height: 100%; }
 .answers .pts li { padding: 1px 0; border-top: 0; }
 .answers .num { font-size: 1.15em; font-weight: 700; color: hsl(var(--h) 50% 30%); }
 .answers .src.chip { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 4px; margin: 4px 0 0; padding: 3px 10px; border-radius: 12px; background: var(--bg); font-size: calc(12px * var(--fs, 1)); color: var(--text-sub); }
-.answers details.q { margin-top: 6px; font-size: calc(12px * var(--fs, 1)); color: var(--text-sub); }
+.answers details.q { margin-top: 6px; font-size: calc(12px * var(--fs, 1)); color: var(--text-sub); overflow-wrap: anywhere; }
 .answers details.q summary { cursor: pointer; }
 .answers > li.not-found .lead { color: var(--text-sub); }
 /* 場面の帯 */
@@ -948,3 +948,13 @@ body.town-page { font-size: calc(16px * var(--fs, 1)); }
 .decide .why-note { width: 100%; margin: 0; font-size: calc(13px * var(--fs, 1)); font-weight: 600; }
 .decide .why-label { display: block; margin-bottom: 4px; font-weight: 700; color: var(--text); }
 .decide .chosen-form button[type=submit] { min-height: 44px; padding: 0 20px; flex-direction: row; }
+/* 確かめる一覧：学んだこと */
+.lessons-box summary { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 12px; cursor: pointer; list-style: none; }
+.lessons-box summary h2 { margin: 0; }
+.lessons { margin: 8px 0 0; padding: 0; list-style: none; }
+.lessons li { padding: 8px 0; border-top: 1px solid var(--line); }
+.lessons li.off { opacity: 0.55; }
+.lessons li p { margin: 0 0 4px; line-height: 1.6; }
+.lessons .l-tag { display: inline-block; margin-right: 6px; padding: 0 8px; border-radius: 999px; background: var(--accent); color: var(--accent-text); font-size: calc(12px * var(--fs, 1)); font-weight: 700; }
+.lessons .l-topic { display: inline-block; margin-right: 6px; padding: 0 8px; border: 1px solid var(--line); border-radius: 999px; font-size: calc(12px * var(--fs, 1)); color: var(--text-sub); }
+.lessons button { min-height: 36px; padding: 0 12px; }

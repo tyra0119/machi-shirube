@@ -25,7 +25,8 @@ import { dekiru } from "./dekiru.mjs";
 import { mitateAsk } from "./mitate-ask.mjs";
 import { preview, publish } from "./publish.mjs";
 import { spent, japanDay, DAILY_LIMIT_USD, TOTAL_LIMIT_USD } from "../src/cost.mjs";
-import { aiJudge, plan as aiPlan } from "./ai-judge.mjs";
+import { aiJudge, plan as aiPlan, trust as aiTrust } from "./ai-judge.mjs";
+import { learnFrom, loadLessons, setLesson } from "./lessons.mjs";
 let judging = null; // AI が確かめ待ちを判断している最中（一度に1つ）
 let aiJob = null; // 確かめる一覧から動かした、いちばん新しい AI の判断（作業の流れと結果）
 
@@ -284,6 +285,8 @@ async function decideItem(req, res, id) {
     const { action, reason } = JSON.parse(body || "{}");
     const it = ledger.decide(id, action, { user: "owner", reason: String(reason ?? "").slice(0, 200) });
     send(res, 200, it);
+    // 確かめたものから学ぶ：作者が決めるたびに、次からの判断と答えの書き方の決まりを1つ書く（作者「都度学習し、今後の判断に生かせるように」11/7）
+    if (["ok", "fix", "reject", "unknown"].includes(action)) learnFrom(it, { action, reason }).catch((e) => console.error(`学べませんでした（${id}）：${e.message}`));
     // 「直して」：指摘を添えて、その問いだけを Claude に調べ直させる（新しい答えは確かめる一覧へ）
     // 見張りが見つけた切れ（kind: watch）も、「直して」で調べ直す（新しいページを探す）
     if (action === "fix" && process.env.ANTHROPIC_API_KEY && (it.kind === "answer" || it.kind === "watch")) {
@@ -371,8 +374,9 @@ http
     }
     // AI に任せられる確かめ待ち（GET：数、POST：決める）。確かめる一覧のボタンから
     if (url.pathname === "/api/ai-judge" && req.method === "GET") {
-      const p = ledger.load().items.filter((x) => x.status === "pending");
-      return send(res, 200, { pending: p.length, ai: p.filter((x) => aiPlan(x) && !x.aiFixedFrom).length, busy: !!judging, cap: capNow(), job: aiJob });
+      const all = ledger.load().items, p = all.filter((x) => x.status === "pending");
+      const t = aiTrust(all), blocked = new Set(Object.entries(t).filter(([, v]) => v.blocked).map(([k]) => k));
+      return send(res, 200, { pending: p.length, ai: p.filter((x) => aiPlan(x, blocked) && !x.aiFixedFrom).length, trust: t, busy: !!judging, cap: capNow(), job: aiJob });
     }
     if (url.pathname === "/api/ai-judge" && req.method === "POST") {
       if (!process.env.ANTHROPIC_API_KEY) return send(res, 400, { error: "AI の判断は npm run serve:research で動かしたときだけです" });
@@ -386,6 +390,15 @@ http
         .then((r) => { job.result = { ai: r.ai, human: r.human, usd: r.usd, done: r.done }; }, (e) => { job.error = e.message; })
         .finally(() => { judging = null; job.endedAt = new Date().toISOString(); });
       return send(res, 202, { started: true });
+    }
+    // 学んだこと（確かめたものから）：一覧と、作者が止める・戻す
+    if (url.pathname === "/api/lessons" && req.method === "GET") return send(res, 200, loadLessons());
+    const lm = url.pathname.match(/^\/api\/lessons\/(L\d+)$/);
+    if (lm && req.method === "POST") {
+      let b = "";
+      req.on("data", (c) => (b += c));
+      req.on("end", () => { try { send(res, 200, setLesson(lm[1], JSON.parse(b || "{}").status)); } catch (e) { send(res, e.status ?? 400, { error: e.message }); } });
+      return;
     }
     // 予約を取り消す
     const qm =url.pathname.match(/^\/api\/queue\/([\w-]+)\/cancel$/);

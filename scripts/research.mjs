@@ -10,6 +10,7 @@ import { getDocument } from "pdfjs-dist/legacy/build/pdf.mjs";
 import { record, spent, japanDay, DAILY_LIMIT_USD, TOTAL_LIMIT_USD } from "../src/cost.mjs";
 import * as ledger from "./ledger.mjs";
 import { skillHint } from "./propose.mjs";
+import { lessonsFor } from "./lessons.mjs";
 
 const MODEL = "claude-sonnet-5-5"; // ページや PDF を読んで決まった形に（設計の 14 章）
 import { UA } from "../src/ua.mjs"; // 名札（.env の MACHI_SHIRUBE_UA で変えられる）
@@ -97,7 +98,9 @@ export async function research(code, question = DEFAULT_QUESTION, { log = consol
   if (skill) step(`スキルを使います：${skill.split("\n")[0].slice(0, 60)}`);
   const domains = domainsFor(site);
   const client = new Anthropic();
-  const messages = [{ role: "user", content: `町：${name}（市区町村コード ${code}${part ? `。${muniName}の中の町・字「${partName}」` : ""}）\n公式サイト：${site.url}\n${part ? `市全体のことではなく、${partName}に当てはまることを答えてください。市の資料（地区ごとの表・校区の一覧など）の中から、${partName}の所を探してください。\n` : ""}問い：${question}${hint ? `\n前の答えへの指摘（これを直して調べ直してください。前と同じページだけで終わらせず、ほかの資料も探してください）：${hint}` : ""}${skill ? `\n前に別の町でうまくいった調べ方（スキル。この町の公式サイトに合わせて使ってください）：\n${skill}` : ""}` }];
+  // 確かめたものから学んだ、答えの書き方の決まり（作者「都度学習し、今後の判断に生かせるように」11/7。確かめ待ちになる答えそのものを減らす）
+  const written = lessonsFor({ use: "write", max: 10 });
+  const messages = [{ role: "user", content: `町：${name}（市区町村コード ${code}${part ? `。${muniName}の中の町・字「${partName}」` : ""}）\n公式サイト：${site.url}\n${part ? `市全体のことではなく、${partName}に当てはまることを答えてください。市の資料（地区ごとの表・校区の一覧など）の中から、${partName}の所を探してください。\n` : ""}問い：${question}${hint ? `\n前の答えへの指摘（これを直して調べ直してください。前と同じページだけで終わらせず、ほかの資料も探してください）：${hint}` : ""}${skill ? `\n前に別の町でうまくいった調べ方（スキル。この町の公式サイトに合わせて使ってください）：\n${skill}` : ""}${written.length ? `\n作者が答えを確かめたところから学んだ、答えの書き方の決まり（守ってください）：\n${written.map((t) => `- ${t}`).join("\n")}` : ""}` }];
   let res;
   let usd = 0;
   const content = [];

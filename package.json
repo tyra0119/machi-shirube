@@ -52,6 +52,7 @@
     "build:shelter-inside": "node scripts/build-shelter-inside.mjs",
     "watch-recheck": "node --env-file=.env scripts/watch-recheck.mjs",
     "ai-judge": "node --env-file=.env scripts/ai-judge.mjs",
+    "learn-past": "node --env-file=.env scripts/lessons.mjs --past",
     "build:telops": "node scripts/build-telops.mjs",
     "build:aed": "node scripts/build-aed.mjs",
     "quiz": "node --env-file=.env scripts/quiz.mjs",

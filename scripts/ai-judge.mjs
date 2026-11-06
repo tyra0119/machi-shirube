@@ -12,6 +12,7 @@ import fs from "node:fs";
 import Anthropic from "@anthropic-ai/sdk";
 import * as ledger from "./ledger.mjs";
 import { research, politeText } from "./research.mjs";
+import { lessonsFor, topicOf } from "./lessons.mjs";
 import { record, spent, japanDay, DAILY_LIMIT_USD, TOTAL_LIMIT_USD } from "../src/cost.mjs";
 
 const MODEL = "claude-sonnet-5-5";
@@ -31,13 +32,54 @@ function kindOf(seg, it) {
   return null; // 避難にひびく・公式どうしの食い違い・古いデータ・作者が調べ直しを頼んだ・そのほか
 }
 
-// 確かめ待ち1つの見立て：どの種類か（全部が任せられるときだけ）
-export function plan(it) {
+// 確かめ待ち1つの見立て：どの種類か（全部が任せられるときだけ）。blocked は、作者と食い違いが続いて人に戻した種類
+export function plan(it, blocked = new Set()) {
   const segs = String(it.why ?? "").split("／").filter(Boolean);
   if (!segs.length) return null;
   const kinds = segs.map((s) => kindOf(s, it));
   if (kinds.some((k) => k === null)) return null;
-  return [...new Set(kinds.filter((k) => k !== "memo"))];
+  const ks = [...new Set(kinds.filter((k) => k !== "memo"))];
+  if (ks.some((k) => blocked.has(k))) return null;
+  return ks;
+}
+
+// 確かめたものから学ぶ（作者「確かめたものを学習して、人間判断が減る工夫をしてほしい」11/7）
+// ① AI と作者の食い違い：AI が決めたあとに、作者が元に戻した・別に決め直したものを、種類ごとに数える。
+//    最近の 10 件のうち 2 件以上食い違った種類は、AI に任せず人に戻す（まちがいが続く種類を任せたままにしない）
+const ownerAfterAi = (x) => {
+  const ds = x.decisions ?? [];
+  const i = ds.map((d) => d.by).lastIndexOf("ai");
+  if (i < 0) return null;
+  const later = ds.slice(i + 1).filter((d) => d.by === "owner");
+  return { ai: ds[i].action, owner: later.at(-1)?.action ?? null, undo: later.some((d) => d.action === "undo") };
+};
+export function trust(items = ledger.load().items) {
+  const by = {};
+  for (const x of items) {
+    const o = ownerAfterAi(x);
+    if (!o) continue;
+    for (const k of plan(x) ?? []) (by[k] ??= []).push({ at: (x.decisions ?? []).findLast((d) => d.by === "ai")?.at ?? "", miss: o.undo || (o.owner && o.owner !== o.ai) });
+  }
+  const out = {};
+  for (const [k, xs] of Object.entries(by)) {
+    const last = xs.sort((a, b) => (a.at < b.at ? 1 : -1)).slice(0, 10);
+    const miss = last.filter((x) => x.miss).length;
+    out[k] = { n: last.length, miss, blocked: miss >= 2 };
+  }
+  return out;
+}
+export const blockedKinds = (items) => new Set(Object.entries(trust(items)).filter(([, v]) => v.blocked).map(([k]) => k));
+
+// ② 前の決め方を手本にする：作者が前に、同じ問い・同じ種類の気になる所をどう決めたかを、最大 5 件 AI に見せる
+export function precedents(it, items) {
+  const mine = new Set(plan(it) ?? []);
+  const owned = items.filter((x) => x.id !== it.id && (x.decisions ?? []).some((d) => d.by === "owner" && ["ok", "fix", "reject", "unknown"].includes(d.action)) && (plan(x) ?? []).some((k) => mine.has(k)));
+  const rank = (x) => (x.qid && x.qid === it.qid ? 0 : x.scope === it.scope ? 1 : 2);
+  return owned.sort((a, b) => rank(a) - rank(b) || ((b.decisions.at(-1)?.at ?? "") < (a.decisions.at(-1)?.at ?? "") ? -1 : 1)).slice(0, 5).map((x) => {
+    const d = x.decisions.filter((y) => y.by === "owner").at(-1);
+    const what = String(x.why ?? "").split("／").filter((r) => !/^Claude のメモ/.test(r)).join("／").slice(0, 120);
+    return `- ${x.qid ?? x.kind}（${x.scopeName ?? x.scope}）気になった所：${what} → 作者：${{ ok: "OK", fix: "直して", reject: "出さない", unknown: "分からない" }[d.action]}${d.reason ? `（${String(d.reason).slice(0, 80)}）` : ""}`;
+  });
 }
 
 const fence = (s) => String(s ?? "").replace(/<\/?(answer|objection|original|translated|back|verdict|page)\b[^>]*>/g, "");
@@ -45,8 +87,10 @@ const fence = (s) => String(s ?? "").replace(/<\/?(answer|objection|original|tra
 // 別の Claude が判断する：出典のページを読み直して、答えが合っているか。
 // ページは PC 側で、いまのものを取る（名札つき・robots.txt を見る・同じサイトは1秒あける）。Claude のページを開く道具は前に取った写しを返すことがあり、
 // 見張りが「今日中身が変わった」と言ったページを古い写しで判断してしまうため（11/7 の試しで、写しは前の日のものだった）
-async function judge(it, log) {
+async function judge(it, log, items) {
   const tr = it.kind === "translation";
+  const pre = precedents(it, items);
+  const learned = lessonsFor({ use: "judge", topic: topicOf(it) });
   const url = it.source?.url ?? it.watchUrl ?? "";
   let page = "";
   if (!tr) {
@@ -58,11 +102,12 @@ async function judge(it, log) {
 - ok：答え（${tr ? "訳" : "答え"}）は${tr ? "もとの日本語と同じことを言っている（言いかえ・語順・敬語のちがいは問題にしない）" : "出典のページに書いてあることと合っている（言いかえや、ページから素直に読み取れる範囲はよい）"}
 - fix：はっきりしたまちがいがある（数・電話番号・日時・窓口・対象がページとちがう、ページに無いことを言い切っている）。何を直すかを1行で
 - human：ページの文が途中で切れていて分からない・判断がつかない・避難や命にかかわる数で少しでも迷う → 人に回す
-迷ったら human。<verdict>{"verdict": "ok|fix|human", "reason": "1行の理由（住民向けではなく作者向け。やさしい日本語）"}</verdict> の形だけで答えます。`;
-  const content = tr
+作者が前に、同じような所をどう決めたかを <precedents> に入れます（あれば）。作者の決め方に合わせてください（作者が OK にしてきた種類のずれは ok、直してにしてきた種類は fix）。ただし、このページと答えを見て決めることが先です。
+${learned.length ? `作者の確かめから学んだ決まり（これに沿って決める）：\n${learned.map((t) => `- ${t}`).join("\n")}\n` : ""}迷ったら human。<verdict>{"verdict": "ok|fix|human", "reason": "1行の理由（住民向けではなく作者向け。やさしい日本語）"}</verdict> の形だけで答えます。`;
+  const content = (pre.length ? `<precedents>\n${fence(pre.join("\n"))}\n</precedents>\n` : "") + (tr
     ? `<original>${fence(it.original)}</original>\n<translated lang="${it.lang}">${fence(it.value)}</translated>\n<back>${fence(it.back)}</back>\n<objection>${fence(it.why)}</objection>`
     : `問い：${fence(it.question)}\n出典：${it.source?.url ?? it.watchUrl ?? "（無い）"}\n<answer>${fence(it.value)}</answer>\n${it.quote ? `答えの元の文：${fence(it.quote)}\n` : ""}<objection>${fence(it.why)}</objection>\n<page url="${url}">${fence(page)}</page>
-上のページ（いま取ったもの）と答えを照らして、決めてください。`;
+上のページ（いま取ったもの）と答えを照らして、決めてください。`);
   const client = new Anthropic();
   const messages = [{ role: "user", content }];
   let res, usd = 0;
@@ -100,10 +145,12 @@ export async function aiJudge({ scope = null, log = console.log, shouldStop = ()
     try { ledger.decideSite(sc, host, "ok", { user: "ai", reason: `AI の判断：国・県・市町村の公式のサイト（${host}）なので使ってよい（決まり：公のサイトは自動。作者 11/7）` }); log(`サイト ${host} を OK（公のサイト）`); }
     catch (e) { if (e.status !== 404) log(`サイト ${host}：${e.message}`); }
   }
-  // 2. 確かめ待ちを1つずつ
+  // 2. 確かめ待ちを1つずつ（作者と食い違いが続いた種類は人に戻す）
+  const blocked = blockedKinds(ledger.load().items);
+  if (blocked.size) log(`作者と食い違いが続いたので、人に戻している種類：${[...blocked].join("・")}`);
   for (const it of ledger.load().items.filter((x) => x.status === "pending" && (!scope || x.scope.includes(scope)))) {
     if (shouldStop()) break;
-    const kinds = plan(it);
+    const kinds = plan(it, blocked);
     if (!kinds) { sum.human++; continue; }
     // AI が一度「直して」にして調べ直した答えは、人が見る（AI どうしで直して・調べ直しを繰り返して費用がかかり続けないように）
     if (it.aiFixedFrom) { sum.human++; continue; }
@@ -124,7 +171,7 @@ export async function aiJudge({ scope = null, log = console.log, shouldStop = ()
       }
       if (rest.every((k) => k === "judge-answer" || k === "judge-translation")) {
         if (over()) { sum.human++; continue; }
-        const v = await judge(it, log);
+        const v = await judge(it, log, ledger.load().items);
         sum.usd += v.usd;
         if (v.verdict === "ok") decide("ok", v.reason || "出典と合っている");
         else if (v.verdict === "fix" && it.kind !== "translation") {

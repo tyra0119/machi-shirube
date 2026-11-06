@@ -30,6 +30,7 @@ async function reload() {
     data = await (await fetch("api/review")).json();
     all = data.items;
     showAi();
+    showLessons();
     showPublish();
   } else {
     const pub = await fetch("data/review.json").then((r) => (r.ok ? r.json() : { items: [] })).catch(() => ({ items: [] }));
@@ -79,6 +80,7 @@ async function showPublish(result) {
 // AI に任せる（作者「人間が確かめるものを減らすことはできる？…確実に人間判断がいるものはこれまでどおり人間が判断する」→「全部」11/7）。
 // 任せられる種類だけを別の Claude が決める（scripts/ai-judge.mjs）。決めたものは「決めたもの」の「AI が判断」で見て、元に戻せる
 let aiTimer = null;
+const TRUST_NAME = { "judge-answer": "答えと出典の照らし合わせ", "judge-translation": "訳のずれ", "not-found": "見つからなかった", "watch-gone": "見張り：消えたページ", "site-official": "公のサイト" };
 async function showAi() {
   const box = $("ai-box");
   const a = await fetch("api/ai-judge").then((r) => (r.ok ? r.json() : null)).catch(() => null);
@@ -96,6 +98,8 @@ async function showAi() {
   box.innerHTML = `<h2>AI に任せる</h2>${res}
     <p>確かめ待ち ${a.pending} 件のうち、AI に任せられるもの <strong>${a.ai}</strong> 件（確かめ役が気にした所・訳のずれ・見つからなかった・見張りで消えたページ・国や市町村のサイト）。</p>
     <p class="note">避難にひびくもの・公式どうしの食い違い・古いデータ・公のサイト以外・調べ直しを頼んだ答え・AI が一度直した答えは、人が決めます。AI が決めたものは「決めたもの」の「AI が判断」で見て、元に戻せます。</p>
+    <p class="note">確かめたものから学ぶ：AI は、あなたが前に同じ問い・同じ種類をどう決めたかを手本にします。AI が決めたものをあなたが元に戻したり決め直したりすると「食い違い」に数え、最近 10 件で 2 件以上食い違った種類は、AI に任せず人に戻します。</p>
+    ${Object.keys(a.trust ?? {}).length ? `<ul class="pub-steps">${Object.entries(a.trust).map(([k, v]) => `<li>${esc(TRUST_NAME[k] ?? k)}：AI が決めた ${v.n} 件のうち食い違い ${v.miss} 件${v.blocked ? "（人に戻しています）" : ""}</li>`).join("")}</ul>` : ""}
     ${a.busy ? "" : a.cap?.over ? `<p class="note">${esc(a.cap.why)}</p>` : a.ai ? `<button type="button" class="ai-go">AI に決めてもらう（${a.ai} 件）</button>` : ""}`;
   box.querySelector(".ai-go")?.addEventListener("click", async (e) => {
     const btn = e.currentTarget;
@@ -107,6 +111,30 @@ async function showAi() {
   // 動いている間は 4 秒ごとに出し直す。終わったら一覧も読み直す
   clearTimeout(aiTimer);
   if (a.busy) aiTimer = setTimeout(async () => { const was = true; await showAi(); if (was && !$("ai-box").querySelector(".spin")) await reload(); }, 4000);
+}
+
+// 学んだこと（作者「確かめるを行った際、都度学習し、今後の判断に生かせるように」11/7）：確かめるたびに Claude が1つ書く決まり。
+// 判断（AI が確かめ待ちを決めるとき）と書き方（Claude が答えを書くとき）に使う。合わないものは止められる
+async function showLessons() {
+  const box = $("lessons-box");
+  const d = await fetch("api/lessons").then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  if (!d) { box.hidden = true; return; }
+  const on = d.lessons.filter((l) => l.status !== "off");
+  box.hidden = false;
+  const open = box.open;
+  box.innerHTML = `<summary><h2>学んだこと ${on.length}</h2><span class="note">確かめるたびに、Claude が次からの決まりを 1 つ書きます（押すと開く）</span></summary>
+    <p class="note">「判断」は AI が確かめ待ちを決めるときに、「書き方」は Claude が町を調べて答えを書くときに使います。合わない決まりは「止める」を押すと、次から使いません。</p>
+    ${d.lessons.length ? `<ol class="lessons">${d.lessons.slice().reverse().map((l) => `<li class="${l.status === "off" ? "off" : ""}">
+      <p><span class="l-tag">${l.for === "write" ? "書き方" : "判断"}</span><span class="l-topic">${esc(l.topic ?? "")}</span>${esc(l.text)}</p>
+      <p class="note">${esc(l.id)}・${esc(l.how ?? "")}・${l.count ?? 1} 回${l.status === "off" ? "・止めています" : ""}</p>
+      <button type="button" class="secondary" data-lesson="${esc(l.id)}" data-to="${l.status === "off" ? "on" : "off"}">${l.status === "off" ? "また使う" : "止める"}</button></li>`).join("")}</ol>`
+      : `<p>まだありません。確かめる一覧で決めると、ここに増えていきます。</p>`}`;
+  box.open = open;
+  for (const b of box.querySelectorAll("button[data-lesson]")) b.addEventListener("click", async () => {
+    b.disabled = true;
+    await fetch(`api/lessons/${b.dataset.lesson}`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ status: b.dataset.to }) });
+    showLessons();
+  });
 }
 
 const inTab = (x) => (tab === "pending" ? x.status === "pending" : tab === "auto" ? x.status === "auto" : !["pending", "auto"].includes(x.status));
