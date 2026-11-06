@@ -66,10 +66,11 @@ export async function propose(code, { part, log = console.log } = {}) {
     system: `あなたは、町の暮らしの情報を集める仕組み「まちしるべ」の相談役です。渡すのは、ある町の数字と、物差し（どの町にも聞く問い）と、Claude が公式のサイトから調べた答えです。
 1. この町で、暮らしの情報が届きにくい人（お年寄り・外国の住民・子育て・引っ越してきた人など）のために大事なのに、物差しに無い問いを、多くても2つ提案してください。
    すでにある問いと重ならないこと。公式のサイトで調べられること。うわさや個人のことは問いにしない。
-   どの町にも聞くとよいか（all）、この町だけか（town）、決まりつきの町だけか（rule：例「外国の住民の割合が高い町」）も書いてください。
+   問いは、どの町にも聞く（all）か、決まりつきの町だけ（rule：例「外国の住民の割合が5%以上の町だけに聞く」）にします。この町だけの問いは作りません（作者「今後もカードを増やす場合は、町限定にしないこと」）。
+   問いの文に町の名前は入れず、「この町」と書いてください。
 2. 答えに使ったページを見て、次に別の町で同じことを調べるときに役に立つ「調べ方」（どの種類の公式ページを、どの順で見るか）を、スキルとして1つにまとめてください。
    町の名前や個別の URL ではなく、どの町でも使える言い方で。役に立ちそうに無ければ null。
-<proposal>{"questions": [{"text": "問い", "short": "短い見出し", "why": "なぜこの町で大事か（数字があれば）", "reach": "all" | "town" | "rule", "rule": "決まり（rule のとき）", "page": "bousai|gomi|iryo|komatta|kosodate|kaigo|koutsuu|tetsuzuki|foreign|okane|shisetsu|shiru"}], "skill": {"name": "スキルの名前", "forQids": ["使える問いの番号"], "steps": ["手順1", "手順2"], "why": "なぜ役に立つか"} または null}</proposal> の形だけで答えてください。`,
+<proposal>{"questions": [{"text": "問い", "short": "短い見出し", "why": "なぜこの町で大事か（数字があれば）", "reach": "all" | "rule", "rule": "決まり（rule のとき）", "page": "bousai|gomi|iryo|komatta|kosodate|kaigo|koutsuu|tetsuzuki|foreign|okane|shisetsu|shiru"}], "skill": {"name": "スキルの名前", "forQids": ["使える問いの番号"], "steps": ["手順1", "手順2"], "why": "なぜ役に立つか"} または null}</proposal> の形だけで答えてください。`,
     messages: [{ role: "user", content: JSON.stringify(payload, null, 1) }],
   });
   const usd = record(MODEL, res.usage, `提案を考える：${t.name}`);
@@ -94,21 +95,22 @@ export async function propose(code, { part, log = console.log } = {}) {
   }
 }
 
-// 人が選ぶ：town（この町だけ）・all（ほかの町にも）・later（今はしない）・skill（スキルにする）
+// 人が選ぶ：all（物差しに足す。提案に決まりがあれば、決まりに合う町だけ）・later（今はしない）・skill（スキルにする）
+// 町だけの問い（only）は作らない（作者「今後もカードを増やす場合は、町限定にしないこと」11/6）。前の画面から town が来ても all として足す
 export function decideProposal(id, action) {
   const d = loadProposals();
   const p = d.proposals.find((x) => x.id === id);
   if (!p) throw Object.assign(new Error("見つかりません"), { status: 404 });
   if (p.status !== "open") throw Object.assign(new Error("もう決めてあります"), { status: 400 });
   const at = new Date().toISOString();
-  if (p.kind === "question" && (action === "town" || action === "all")) {
+  if (action === "town") action = "all";
+  if (p.kind === "question" && action === "all") {
     const yard = JSON.parse(fs.readFileSync(YARD, "utf8"));
     const n = Math.max(...yard.questions.filter((q) => /^Q\d+$/.test(q.id)).map((q) => Number(q.id.slice(1)))) + 1;
     const code = p.scope.match(/(\d{5})/)[1];
-    const q = { id: `Q${String(n).padStart(2, "0")}`, group: action === "all" ? "Claude の提案から" : "この町だけ", text: p.text, short: p.short, page: p.page ?? "shiru",
+    const q = { id: `Q${String(n).padStart(2, "0")}`, group: "Claude の提案から", text: p.text, short: p.short, page: p.page ?? "shiru",
       origin: { from: p.scopeName, proposal: p.id, at, why: p.why } };
-    if (action === "town") q.only = code;
-    if (action === "all" && p.reach === "rule" && p.rule) q.rule = p.rule;
+    if (p.reach === "rule" && p.rule) q.rule = p.rule;
     if (p.scope.startsWith("town:")) q.level = "town";
     yard.questions.push(q);
     yard.version = (yard.version ?? 1) + 1;
@@ -130,7 +132,7 @@ export function decideProposal(id, action) {
 }
 
 // 「こういう情報も探して」：管理者の頼みごとを、物差しの問いの形に直す。まちしるべの決まりに合わない頼みは、理由を添えて断る。
-// 合えば「この町だけ」の問いとして物差しに足す（出どころ＝誰の・いつの頼みか を残す）。頼みの記録は local/ledger/requests.json
+// 合えば、どの町にも聞く問いとして物差しに足す（前は「この町だけ」。作者「町限定にしないこと」11/6）（出どころ＝誰の・いつの頼みか を残す）。頼みの記録は local/ledger/requests.json
 const REQUESTS = "local/ledger/requests.json";
 export async function requestToQuestion(code, text, { part, user = "owner" } = {}) {
   if (spent(japanDay(new Date().toISOString())) >= DAILY_LIMIT_USD || spent() >= TOTAL_LIMIT_USD) throw new Error("費用の上限に達しています");
@@ -141,7 +143,7 @@ export async function requestToQuestion(code, text, { part, user = "owner" } = {
     model: MODEL, max_tokens: 1500, output_config: { effort: "low" },
     system: `あなたは、町の暮らしの情報を集める仕組み「まちしるべ」の受付です。管理者の頼みごと（こういう情報も探して）を、町の公式のサイトで調べられる「問い」の形に直してください。
 決まり：公式の出典（国・県・市区町村のサイト）で調べられること。個人の情報・うわさ・特定の店や人の評判・医療の判断は扱わない。
-すでにある問いと同じなら、その番号を same に。合わなければ ok を false にして、理由を短く。
+問いの文に町の名前は入れず「この町」と書きます（どの町にも聞く問いとして足すため）。すでにある問いと同じなら、その番号を same に。合わなければ ok を false にして、理由を短く。
 <request>{"ok": true か false, "reason": "合わない理由（ok のときは空）", "same": "同じ問いの番号か null", "text": "問い（町の公式のサイトで答えを探せる形）", "short": "短い見出し", "page": "bousai|gomi|iryo|komatta|kosodate|kaigo|koutsuu|tetsuzuki|foreign|okane|shisetsu|shiru"}</request> の形だけで答えてください。`,
     messages: [{ role: "user", content: JSON.stringify({ 町: `${t.pref} ${t.name}`, 頼みごと: text, すでにある問い: yard.questions.map((q) => ({ id: q.id, text: q.text })) }) }],
   });
@@ -155,7 +157,7 @@ export async function requestToQuestion(code, text, { part, user = "owner" } = {
   if (r.ok && !r.same) {
     const n = Math.max(...yard.questions.filter((q) => /^Q\d+$/.test(q.id)).map((q) => Number(q.id.slice(1)))) + 1;
     qid = `Q${String(n).padStart(2, "0")}`;
-    yard.questions.push({ id: qid, group: "管理者の頼みから", text: r.text, short: r.short, page: r.page ?? "shiru", only: code, ...(part ? { level: "town" } : {}),
+    yard.questions.push({ id: qid, group: "管理者の頼みから", text: r.text, short: r.short, page: r.page ?? "shiru", ...(part ? { level: "town" } : {}),
       origin: { from: `${t.pref} ${t.name}`, request: text, by: user, at } });
     yard.version = (yard.version ?? 1) + 1;
     fs.writeFileSync(YARD, JSON.stringify(yard, null, 1));

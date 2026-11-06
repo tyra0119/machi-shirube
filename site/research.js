@@ -266,7 +266,7 @@ async function waitTurn() {
   setTimeout(waitTurn, 3000);
 }
 
-// Claude からの提案の帯：物差しにない問い［この町だけ］［ほかの町にも］［今はしない］、調べ方［スキルにする］［今はしない］
+// Claude からの提案の帯：物差しにない問い［物差しに足す］［今はしない］（町だけの問いは作らない。作者「町限定にしないこと」11/6）、調べ方［スキルにする］［今はしない］
 async function showProposals() {
   const { proposals } = await fetch(`api/proposals?code=${code}`).then((r) => r.json()).catch(() => ({ proposals: [] }));
   $("proposals").hidden = !proposals.length;
@@ -275,8 +275,7 @@ async function showProposals() {
     <div class="prop" data-id="${p.id}">
       <p class="what">物差しに無い問い：<strong>${esc(p.text)}</strong></p>
       <p class="why">${esc(p.why ?? "")}${p.reach === "rule" && p.rule ? `（Claude の見立て：${esc(p.rule)}に）` : p.reach === "all" ? "（Claude の見立て：どの町にも）" : ""}</p>
-      <div class="decide"><button type="button" data-a="town">この町だけ<small>この町の物差しに足す</small></button>
-        <button type="button" class="primary" data-a="all">ほかの町にも<small>どの町にも聞く問いにする</small></button>
+      <div class="decide"><button type="button" class="primary" data-a="all">物差しに足す<small>${p.reach === "rule" && p.rule ? `決まりに合う町に聞く（${esc(p.rule)}）` : "どの町にも聞く問いにする"}</small></button>
         <button type="button" data-a="later">今はしない</button></div>
     </div>` : `
     <div class="prop" data-id="${p.id}">
@@ -292,7 +291,7 @@ async function showProposals() {
       const res = await fetch(`api/proposals/${id}`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ action: b.dataset.a }) });
       const body = await res.json();
       if (!res.ok) return ($("note").textContent = `できませんでした：${body.error}`);
-      $("note").textContent = body.addedAs?.startsWith("Q") ? `物差しに ${body.addedAs} を足しました（${body.status === "all" ? "どの町にも" : "この町だけ"}）。` : body.addedAs ? `スキル ${body.addedAs} にしました。` : "今はしないにしました。";
+      $("note").textContent = body.addedAs?.startsWith("Q") ? `物差しに ${body.addedAs} を足しました（${body.rule ? "決まりに合う町に聞く" : "どの町にも聞く"}）。` : body.addedAs ? `スキル ${body.addedAs} にしました。` : "今はしないにしました。";
       if (body.addedAs?.startsWith("Q")) { const yard = await fetch("data/yardstick.json", { cache: "no-store" }).then((r) => r.json()); questions = pickQs(yard); renderGrid(); }
       await showProposals();
     });

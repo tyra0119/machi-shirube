@@ -16,16 +16,17 @@ const SYSTEM = `あなたは、町の暮らしの情報を集める仕組み「�
 /workspace/town.json に、ある町の数字（町の数字）と、どの町にも聞く問いの一覧（物差し）と、Claude が町の公式のサイトから調べた答え（答え）が入っています。
 読んだうえで、次の2つを作り、/mnt/session/outputs/proposal.json に JSON で書いてください。ウェブは使えません。渡したものだけで考えます。
 1. この町で、暮らしの情報が届きにくい人（お年寄り・外国の住民・子育て・引っ越してきた人など）のために大事なのに、物差しに無い問いを、多くても2つ。
-   公式のサイトで調べられること。うわさや個人のこと、町の評価は問いにしない。どの町にも聞くとよいか（all）、この町だけか（town）、決まりつきの町だけか（rule）も。
+   公式のサイトで調べられること。うわさや個人のこと、町の評価は問いにしない。どの町にも聞く（all）か、決まりつきの町だけ（rule）か。この町だけの問いは作らない。問いの文に町の名前は入れず「この町」と書く。
 2. 答えに使った公式のページの種類を見て、次に別の町で同じことを調べるときに役に立つ「調べ方」を、スキルとして1つ（役に立たなければ null）。町の名前や URL は書かない。
-形：{"questions": [{"text": "問い", "short": "15字までの見出し", "why": "なぜこの町で大事か（町の数字をそのまま使う）", "reach": "all|town|rule", "rule": "決まり（rule のとき）", "page": "bousai|gomi|iryo|komatta|kosodate|kaigo|koutsuu|tetsuzuki|foreign|okane|shisetsu|shiru"}], "skill": {"name": "名前", "forQids": ["物差しの番号"], "steps": ["手順"], "why": "なぜ役に立つか"} または null}
+形：{"questions": [{"text": "問い", "short": "15字までの見出し", "why": "なぜこの町で大事か（町の数字をそのまま使う）", "reach": "all|rule", "rule": "決まり（rule のとき）", "page": "bousai|gomi|iryo|komatta|kosodate|kaigo|koutsuu|tetsuzuki|foreign|okane|shisetsu|shiru"}], "skill": {"name": "名前", "forQids": ["物差しの番号"], "steps": ["手順"], "why": "なぜ役に立つか"} または null}
 やさしい日本語で書きます。`;
 
 // 採点役が見る物差し（ルーブリック）。どれも1つずつ合否を決められる形
 const RUBRIC = `# 提案の物差し
 - /mnt/session/outputs/proposal.json がある。JSON として読める。形は {"questions": [...], "skill": {...} または null}
-- questions は 0〜2 個。どの問いにも text・short（15字まで）・why・reach（all / town / rule のどれか）・page（bousai, gomi, iryo, komatta, kosodate, kaigo, koutsuu, tetsuzuki, foreign, okane, shisetsu, shiru のどれか）がある。reach が rule なら rule もある
+- questions は 0〜2 個。どの問いにも text・short（15字まで）・why・reach（all / rule のどちらか）・page（bousai, gomi, iryo, komatta, kosodate, kaigo, koutsuu, tetsuzuki, foreign, okane, shisetsu, shiru のどれか）がある。reach が rule なら rule もある
 - どの問いも、/workspace/town.json の「物差し」にある問いと同じことを聞いていない（言い方がちがっても、聞いている中身が同じなら不合格）
+- どの問いの text にも、町の名前（市区町村の名前）が入っていない
 - どの問いの why にも、/workspace/town.json の「町の数字」にある数が1つ以上、そのまま書かれている
 - どの問いも、町の公式のサイトを調べれば答えられる。うわさ・個人のこと・町の良し悪しを聞いていない
 - skill が null でないとき：name・steps（2〜6個）・forQids・why がある。forQids は「物差し」にある番号だけ。町の名前や URL を書いていない

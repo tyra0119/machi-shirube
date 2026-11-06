@@ -1937,7 +1937,7 @@ async function researchBox(code, part, partName) {
     const body = await res.json();
     $("research-steps").innerHTML = !res.ok ? `<li>できませんでした：${esc(body.error)}</li>`
       : !body.ok ? `<li>この頼みは、まちしるべの決まりに合わないので調べませんでした：${esc(body.reason)}（${body.usd.toFixed(3)}）</li>`
-      : `<li>${body.same ? `物差しにある問い ${esc(body.qid)} と同じでした` : `物差しに ${esc(body.qid)} を足しました（この町だけ）`}：${esc(body.question)}</li>`
+      : `<li>${body.same ? `物差しにある問い ${esc(body.qid)} と同じでした` : `物差しに ${esc(body.qid)} を足しました（どの町にも聞く問い）`}：${esc(body.question)}</li>`
         + body.steps.map((x) => `<li>${esc(x)}</li>`).join("") + `<li>答え：${esc(body.value)}（${body.usd.toFixed(3)}）</li><li>${body.status === "auto" ? "自動で承認しました" : `確かめる一覧に入りました：<a href="review.html">確かめる一覧へ</a>`}</li>`;
     button.disabled = false;
     button.textContent = "頼む";

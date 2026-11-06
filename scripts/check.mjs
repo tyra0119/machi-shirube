@@ -170,6 +170,13 @@ for (const [what, f] of CASES) { let r = false, e = ""; try { r = f(); } catch (
 // ---------------------------------------------------------------- データ
 section = "データ";
 {
+  // 町だけの問い（only）は、もう増やさない（作者「今後もカードを増やす場合は、町限定にしないこと」11/6）。
+  // 今あるのは、どの町にも聞く問いと重なるので残した 5 つだけ（Q29≒Q52、Q41・Q65≒Q40、Q62≒Q32、Q68≒Q25・Q33）
+  const KEPT = ["Q29", "Q41", "Q62", "Q65", "Q68"];
+  const extra = read("site/data/yardstick.json").questions.filter((q) => q.only && !KEPT.includes(q.id)).map((q) => `${q.id} ${q.short}（${q.only}）`);
+  check(!extra.length, "物差しに町だけの問いを増やしていない（どの町にも聞くか、決まりつきの問いにする）", sample(extra));
+}
+{
   // 訳の確かめ役の返事が読めなかったもの（しくみの不具合）を、人の確かめ待ちに残さない（11/6、美濃加茂市で 39 件。npm run translate -- <コード> --recheck でやり直す）
   const led = fs.existsSync("local/ledger/items.json") ? read("local/ledger/items.json").items ?? [] : [];
   const unread = led.filter((x) => x.kind === "translation" && x.status === "pending" && /読めなかった/.test(x.why ?? "")).map((x) => `${x.scope} ${x.qid} ${x.lang}`);

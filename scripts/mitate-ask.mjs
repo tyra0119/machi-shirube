@@ -1,6 +1,6 @@
 // 見立てを手がかりに調べる：届きにくい人の見立て（site/data/mitate/{コード}.json）の1人ずつについて、
 // 「その人のための町の支援や窓口」を調べる問いを Claude（Sonnet）に作らせる。その町に当てはまる物差しの問いで、もう聞いているものがあれば、それを使う。
-// 新しい問いは、その町だけの問い（only）として物差しに足し、見立ての人に問いの番号を結ぶ。調べるのは research.mjs（採点と探し直しつき）
+// 新しい問いは、どの町にも聞く問いとして物差しに足し（前は、その町だけの問い only。作者「町限定にしないこと」11/6）、見立ての人に問いの番号を結ぶ。調べるのは research.mjs（採点と探し直しつき）
 // 動かし方: npm run mitate-ask -- 10524 のあと npm run research -- 10524 --all
 import fs from "node:fs";
 import Anthropic from "@anthropic-ai/sdk";
@@ -22,7 +22,7 @@ export async function mitateAsk(code, log = console.log) {
   const res = await client.messages.create({
     model: MODEL, max_tokens: 3000, output_config: { effort: "medium" },
     system: "町の公式のページから調べる問いを作ります。問いは、その人のために町（や県・社会福祉協議会など公の機関）がしている支援・窓口・制度を、出典つきで答えられる形にします。町を評価する問いや、町の公式のページで答えられない問いは作りません。",
-    messages: [{ role: "user", content: `町：${m.name}\n\nこの町で、暮らしの情報が届きにくいと見立てた人：\n${m.who.map((w, i) => `<who id="${i}">\n人：${w.person}\n壁：${w.wall}\n理由：${w.why}\n</who>`).join("\n")}\n\nこの町で、もう聞いている問い：\n${mine.map((q) => `${q.id} ${q.short}：${q.text}`).join("\n")}\n\nそれぞれの人について、「その人が壁を越えるための、町の支援や窓口」を調べる問いを1つ決めてください。もう聞いている問いで足りるなら、その番号を使ってください（新しく作らない）。足りないときだけ、新しい問いを作ります。次の形だけで：\n<ask id="人の番号">\n<use>もう聞いている問いの番号（使うときだけ）</use>\n<text>新しい問い（80字ほど。窓口・申し込み方・連絡先を聞く形で）</text>\n<short>見出し（15字まで）</short>\n<page>載せるページ：${PAGES.join("・")} のどれか</page>\n</ask>` }],
+    messages: [{ role: "user", content: `町：${m.name}\n\nこの町で、暮らしの情報が届きにくいと見立てた人：\n${m.who.map((w, i) => `<who id="${i}">\n人：${w.person}\n壁：${w.wall}\n理由：${w.why}\n</who>`).join("\n")}\n\nこの町で、もう聞いている問い：\n${mine.map((q) => `${q.id} ${q.short}：${q.text}`).join("\n")}\n\nそれぞれの人について、「その人が壁を越えるための、町の支援や窓口」を調べる問いを1つ決めてください。もう聞いている問いで足りるなら、その番号を使ってください（新しく作らない）。足りないときだけ、新しい問いを作ります。次の形だけで：\n<ask id="人の番号">\n<use>もう聞いている問いの番号（使うときだけ）</use>\n<text>新しい問い（80字ほど。窓口・申し込み方・連絡先を聞く形で。町の名前は入れず「この町」と書く。どの町にも聞く問いになります）</text>\n<short>見出し（15字まで）</short>\n<page>載せるページ：${PAGES.join("・")} のどれか</page>\n</ask>` }],
   });
   const usd = record(MODEL, res.usage, `見立てから問いを作る：${m.name}`);
   const text = res.content.filter((b) => b.type === "text").map((b) => b.text).join("");
@@ -36,7 +36,7 @@ export async function mitateAsk(code, log = console.log) {
     if (use && mine.some((q) => q.id === use)) { w.ask = use; log(`  ${w.person} → もう聞いている ${use}`); continue; }
     // 物差しを止めているあいだ（yardstick.json の frozen。作者「今はしないで止める」）は、新しい問いを足さない
     if (y.frozen) { log(`  ${w.person}：物差しを止めているので、新しい問い「${g("short").slice(0, 20)}」は足しません`); continue; }
-    const q = { id: `Q${next++}`, group: "見立てから", page: PAGES.includes(g("page")) ? g("page") : "komatta", short: g("short").slice(0, 20), text: g("text"), only: code,
+    const q = { id: `Q${next++}`, group: "見立てから", page: PAGES.includes(g("page")) ? g("page") : "komatta", short: g("short").slice(0, 20), text: g("text"),
       origin: { from: m.name, mitate: m.createdAt, who: w.person, at: new Date().toISOString(), why: `見立て「${w.person}（${w.wall}）」の人のための町の支援や窓口を調べる` } };
     if (!q.text || !q.short) { log(`  ${w.person}：問いを読めなかった`); continue; }
     y.questions.push(q);
