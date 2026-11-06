@@ -37,6 +37,7 @@
 
     <section class="r-block">
       <h2>物差しのます目 <span class="note" id="grid-sum"></span></h2>
+      <div id="now" class="r-now" hidden aria-live="polite"></div>
       <ol id="grid" class="r-grid"></ol>
       <ul class="r-legend">
         <li><span class="sq"></span>まだ</li>
@@ -57,6 +58,11 @@
     <section class="r-block">
       <h2>作業の流れ</h2>
       <ol id="flow" class="r-flow" aria-live="polite"><li class="note">「調べ始める」を押すと、Claude が町の公式のサイトを探して読み、物差しの問いに出典つきで答えていきます。</li></ol>
+    </section>
+
+    <section class="r-block" id="hist-block" hidden>
+      <h2>前の調べの記録 <span class="note">押すと、その回の作業の流れが開きます</span></h2>
+      <div id="hist" class="r-hist"></div>
     </section>
   </section>
 </div>

@@ -447,3 +447,20 @@ html[data-wx="rain"] .scene .wx-rain, html[data-wx="snow"] .scene .wx-snow { dis
 .bb-all { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; margin: 4px 0 8px; }
 .bb-all button { min-height: 40px; padding: 0 14px; font-size: calc(14px * var(--fs, 1)); }
 .bb-all span { font-size: calc(12px * var(--fs, 1)); color: var(--text-sub); }
+/* 調べ中のカード：枠と色で、ほかの行と分ける */
+.bb-unf li.u-run { display: block; margin: 6px 0; padding: 12px; border: 2px solid var(--accent); border-radius: 10px; background: var(--surface); }
+.bb-unf .u-head { display: flex; flex-wrap: wrap; align-items: center; gap: 6px 10px; margin: 0 0 8px; }
+.bb-unf .u-head .u-name { font-size: calc(17px * var(--fs, 1)); }
+.bb-unf .u-badge { display: inline-block; padding: 2px 8px; border-radius: 999px; background: var(--accent); color: var(--accent-text); font-size: calc(12px * var(--fs, 1)); font-weight: 700; }
+.bb-unf .u-wait .u-badge { background: transparent; color: var(--accent); border: 1.5px solid var(--accent); }
+.bb-unf .u-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); animation: u-pulse 1.4s ease-in-out infinite; }
+@keyframes u-pulse { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: 0.35; transform: scale(0.7); } }
+@media (prefers-reduced-motion: reduce) { .bb-unf .u-dot { animation: none; } }
+.bb-unf .u-bar { height: 10px; border-radius: 999px; background: var(--line); overflow: hidden; }
+.bb-unf .u-bar i { display: block; height: 100%; background: var(--accent); transition: width 0.6s; }
+.bb-unf .u-meta { display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 6px 12px; margin: 8px 0; }
+.bb-unf .u-meta dt { font-size: calc(11px * var(--fs, 1)); color: var(--text-sub); }
+.bb-unf .u-meta dd { margin: 0; font-size: calc(14px * var(--fs, 1)); font-weight: 600; font-variant-numeric: tabular-nums; }
+.bb-unf .u-now { margin: 0 0 10px; padding: 6px 8px; border-radius: 6px; background: var(--bg); font-size: calc(13px * var(--fs, 1)); overflow-wrap: anywhere; }
+.bb-unf .u-now span { display: block; font-size: calc(11px * var(--fs, 1)); color: var(--text-sub); }
+.bb-unf .u-open { display: flex; align-items: center; justify-content: center; min-height: 40px; border: 1.5px solid var(--accent); border-radius: 999px; color: var(--accent); font-weight: 700; font-size: calc(14px * var(--fs, 1)); text-decoration: none; }

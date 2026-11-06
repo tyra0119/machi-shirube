@@ -10,6 +10,7 @@
 //   POST /api/runs   町を調べ始める（ほかの町を調べている最中なら予約。202 と何番目かを返す）／ GET /api/runs  いま調べている町と予約の列
 //   POST /api/queue/{予約の番号}/cancel  予約を取り消す
 //   GET  /api/unfinished  調べの途中の町（まだ調べていない問い・前に見つからなかった問いの数）
+//   GET  /api/history?code=&part=  その町の前の調べの記録（回ごとの作業の流れ）
 import http from "node:http";
 import fs from "node:fs";
 import path from "node:path";
@@ -288,15 +289,47 @@ http
       const list = scopes.map((s) => {
         const [code, part] = s.replace(/^(muni|town):/, "").split("-");
         const p = townProgress(code, { part });
-        const running = [...runs.values()].some((x) => x.status === "running" && x.code === code && (x.part ?? null) === (part ?? null));
+        const r = [...runs.values()].find((x) => x.status === "running" && x.code === code && (x.part ?? null) === (part ?? null));
         const q = queue.findIndex((x) => x.code === code && (x.part ?? null) === (part ?? null));
-        return { code, part: part ?? null, ...p, running, queued: q >= 0 ? q + 1 : null };
-      }).filter((x) => x.never + x.retry > 0 || x.running);
+        // 調べ中のカード（作者「調べ中のカードは、もっと分かりやすくしてほしい」）：いまの作業・費用・始めた時刻
+        const run = r && { id: r.id, usd: r.usd, limit: r.limit, startedAt: r.startedAt, now: r.log.at(-1)?.text ?? "", answers: r.items?.length ?? 0 };
+        return { code, part: part ?? null, ...p, running: !!r, run, queued: q >= 0 ? q + 1 : null, queueId: q >= 0 ? queue[q].id : null };
+      }).filter((x) => x.never + x.retry > 0 || x.running || x.queued)
+        .sort((a, b) => (b.running - a.running) || ((a.queued ?? 1e9) - (b.queued ?? 1e9)));
       // 何回探して見つからなければ調べ終わりにするか（research.mjs の GIVE_UP_TRIES）。それより少ない問いだけが「続き」に数えられる
       return send(res, 200, { list, limit: RUN_LIMIT_USD });
     }
+    // 前の調べの記録（作者「作業ログについて、過去の分も表示することはできない？」11/6）：その町の local/runs/ から。
+    // 画面から調べた回は、回ごとの作業の流れ（*.summary.json）。画面を作る前やコマンドから調べた分は、問いごとの記録（*.json）を日ごとにまとめる
+    if (url.pathname === "/api/history" && req.method === "GET") {
+      const code = url.searchParams.get("code"), part = url.searchParams.get("part");
+      if (!/^\d{5}$/.test(code ?? "") || (part && !/^\d{4}$/.test(part))) return send(res, 400, { error: "町のコードが正しくありません" });
+      const key = part ? `${code}-${part}` : code;
+      const dir = "local/runs";
+      const files = fs.existsSync(dir) ? fs.readdirSync(dir).filter((f) => new RegExp(`^run-\\d{14}-${key}(\\.summary)?\\.json$`).test(f)).sort() : [];
+      const read = (f) => { try { return JSON.parse(fs.readFileSync(`${dir}/${f}`, "utf8")); } catch { return null; } };
+      const list = files.filter((f) => f.endsWith(".summary.json")).map(read).filter(Boolean).map((r) => ({
+        kind: "run", id: r.id, startedAt: r.startedAt, endedAt: r.endedAt, status: r.status, usd: r.usd ?? 0, answers: r.items?.length ?? 0, log: r.log ?? [] }));
+      // いま調べている回の問いの記録は、その回が終わるまで出さない
+      const live = [...runs.values()].filter((x) => x.status === "running" && x.code === code && (x.part ?? null) === (part ?? null)).map((x) => x.startedAt);
+      const inRun = (at) => list.some((r) => at >= r.startedAt && at <= (r.endedAt ?? r.startedAt)) || live.some((s) => at >= s);
+      const days = new Map();
+      for (const f of files.filter((f) => !f.endsWith(".summary.json"))) {
+        const q = read(f);
+        const at = q?.steps?.[0]?.at;
+        if (!at || inRun(at)) continue;
+        const day = new Date(at).toLocaleDateString("sv-SE", { timeZone: "Asia/Tokyo" });
+        const d = days.get(day) ?? { kind: "cli", id: `cli-${day}`, startedAt: at, endedAt: at, usd: 0, questions: 0, log: [] };
+        d.usd += q.usd ?? 0; d.questions += 1; d.log.push(...q.steps);
+        const last = q.steps.at(-1)?.at ?? at;
+        if (last > d.endedAt) d.endedAt = last;
+        days.set(day, d);
+      }
+      const all = [...list, ...days.values()].sort((a, b) => (a.startedAt < b.startedAt ? 1 : -1));
+      return send(res, 200, { list: all });
+    }
     // 予約を取り消す
-    const qm = url.pathname.match(/^\/api\/queue\/([\w-]+)\/cancel$/);
+    const qm =url.pathname.match(/^\/api\/queue\/([\w-]+)\/cancel$/);
     if (qm && req.method === "POST") {
       const i = queue.findIndex((x) => x.id === qm[1]);
       if (i < 0) return send(res, 404, { error: "予約が見つかりません" });

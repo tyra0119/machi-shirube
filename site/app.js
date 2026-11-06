@@ -1174,6 +1174,29 @@ async function showBuilderBox() {
 
 // 調べの途中の町（作者「調査が終わってない町の一覧がほしい。そこから調査を再開できるようにしたい」）。
 // 「続きを調べる」：まだの問いと、前に見つからなかった問いを調べる（調べている町があれば予約になり、終わったら自動で始まる）
+let unfTimer = null;
+// 調べ中のカード（作者「調べ中のカードは、もっと分かりやすくしてほしい」11/6）：
+// いま調べている町・いまの作業（作業の流れの最後の行）・進み具合の帯・費用と上限・経った時間・様子を開くボタン
+function runCard(x) {
+  const e = (t) => String(t ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+  const name = e(String(stats?.towns?.[x.code]?.name ?? x.code).replace(/^.+?郡(?=.+[町村]$)/, "")) + (x.part ? `（町・字 ${x.part}）` : "");
+  const href = `research.html?muni=${x.code}${x.part ? `&part=${x.part}` : ""}`;
+  const r = x.run ?? {};
+  const sec = r.startedAt ? Math.max(0, Math.round((Date.now() - new Date(r.startedAt)) / 1000)) : 0;
+  const pct = x.total ? Math.round((x.done / x.total) * 100) : 0;
+  const left = x.never + x.retry;
+  return `<li class="u-run">
+    <p class="u-head"><span class="u-dot" aria-hidden="true"></span><span class="u-badge">いま調べています</span><a href="${href}" class="u-name">${name}</a></p>
+    <div class="u-bar" role="progressbar" aria-valuemin="0" aria-valuemax="${x.total}" aria-valuenow="${x.done}" aria-label="答えのある問い"><i style="width:${pct}%"></i></div>
+    <dl class="u-meta">
+      <div><dt>答えのある問い</dt><dd>${x.done} / ${x.total}${left ? `（のこり ${left}）` : "（仕上げ中）"}</dd></div>
+      <div><dt>この回の費用</dt><dd>&#36;${(r.usd ?? 0).toFixed(2)} ／ 上限 &#36;${r.limit ?? 30}</dd></div>
+      <div><dt>経った時間</dt><dd>${Math.floor(sec / 60)}分${String(sec % 60).padStart(2, "0")}秒</dd></div>
+    </dl>
+    ${r.now ? `<p class="u-now"><span>いまの作業</span>${e(r.now.length > 90 ? r.now.slice(0, 90) + "…" : r.now)}</p>` : ""}
+    <a class="u-open button" href="${href}">調べの様子を開く</a>
+  </li>`;
+}
 async function showUnfinished() {
   const el = document.getElementById("bb-unfinished");
   const d = await fetch("api/unfinished").then((r) => (r.ok ? r.json() : null)).catch(() => null);
@@ -1185,11 +1208,23 @@ async function showUnfinished() {
   const qs = idle.reduce((n, x) => n + x.never + x.retry, 0);
   el.innerHTML = `<p class="bb-sub">調べの途中の町 ${d.list.length}</p>
   ${idle.length >= 2 ? `<div class="bb-all"><button type="button" id="unf-all">まとめて続きを調べる（${idle.length} 町・${qs} 問）</button><span>1 町ずつ順に調べます（1 町の上限 $${d.limit ?? 30}）</span></div>` : ""}
-  <ul class="bb-unf">${d.list.map((x, i) => `<li>
+  <ul class="bb-unf">${d.list.map((x, i) => x.running ? runCard(x) : x.queued ? `<li class="u-wait">
+    <span class="u-badge">予約 ${x.queued} 番目</span><a href="${url(x)}" class="u-name">${nm(x)}</a>
+    <span class="u-num">前の町が終わったら、自動で始まります（まだ ${x.never + x.retry} 問）</span>
+    ${x.queueId ? `<button type="button" class="secondary" data-cancel="${x.queueId}">予約を取り消す</button>` : ""}
+  </li>` : `<li>
     <a href="${url(x)}" class="u-name">${nm(x)}</a>
     <span class="u-num">済み ${x.done}/${x.total}・まだ ${x.never}${x.retry ? `・もう一度探す ${x.retry}` : ""}${x.notFound ? `・見つからず ${x.notFound}` : ""}</span>
-    ${x.running ? `<span class="u-state">調べています</span>` : x.queued ? `<span class="u-state">予約 ${x.queued} 番目</span>` : `<button type="button" class="secondary" data-i="${i}">続きを調べる</button>`}
+    <button type="button" class="secondary" data-i="${i}">続きを調べる</button>
   </li>`).join("")}</ul>`;
+  for (const b of el.querySelectorAll("button[data-cancel]")) b.addEventListener("click", async () => {
+    b.disabled = true;
+    await fetch(`api/queue/${b.dataset.cancel}/cancel`, { method: "POST" }).catch(() => null);
+    showUnfinished();
+  });
+  // 調べている・予約のある間は、5 秒ごとに出し直す（いまの作業・費用・経った時間）
+  clearTimeout(unfTimer);
+  if (d.list.some((x) => x.running || x.queued)) unfTimer = setTimeout(showUnfinished, 5000);
   const start = (x) => fetch("api/runs", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ code: x.code, part: x.part ?? undefined }) })
     .then(async (res) => ({ ok: res.ok, body: await res.json().catch(() => ({})), status: res.status }));
   for (const b of el.querySelectorAll("button[data-i]")) b.addEventListener("click", async () => {

@@ -67,6 +67,28 @@ async function main() {
   await loadItems();
   renderGrid();
   await showProposals();
+  if (local) showHistory();
+}
+
+// 前の調べの記録（作者「作業ログについて、過去の分も表示することはできない？」11/6）：新しい回から。押すと、その回の作業の流れが開く
+async function showHistory() {
+  const d = await fetch(`api/history?code=${code}${part ? `&part=${part}` : ""}`).then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  const list = (d?.list ?? []).filter((h) => h.id !== run?.id);
+  $("hist-block").hidden = !list.length;
+  if (!list.length) return;
+  const day = (iso) => new Date(iso).toLocaleString("ja-JP", { month: "numeric", day: "numeric", hour: "2-digit", minute: "2-digit" });
+  const tm = (iso) => new Date(iso).toLocaleTimeString("ja-JP", { hour: "2-digit", minute: "2-digit" });
+  const label = { done: "調べ終わり", stopped: "止めました", failed: "止まりました", running: "途中で終わった" };
+  $("hist").innerHTML = list.map((h, i) => `<details data-i="${i}"><summary>
+    <span class="h-when">${day(h.startedAt)}〜${tm(h.endedAt ?? h.startedAt)}</span>
+    <span class="h-what">${h.kind === "run" ? `${label[h.status] ?? esc(h.status)}・答え ${h.answers}` : `コマンドから調べた分・問い ${h.questions}`}・&#36;${(h.usd ?? 0).toFixed(2)}・${h.log.length} 行</span>
+  </summary><ol class="r-flow"></ol></details>`).join("");
+  // 作業の流れは、開いたときに入れる（数百行の回がいくつもあるので）
+  for (const el of $("hist").querySelectorAll("details")) el.addEventListener("toggle", () => {
+    const ol = el.querySelector("ol");
+    if (!el.open || ol.childElementCount) return;
+    ol.innerHTML = list[Number(el.dataset.i)].log.map((l) => `<li><time>${hhmm(l.at)}</time><span>${esc(l.text)}</span></li>`).join("");
+  });
 }
 
 // いまの答え（手元なら台帳、公開なら公開の答えと確かめる一覧）
@@ -93,11 +115,34 @@ function stateOf(q) {
   if (it.score != null) return `s${it.score}`;
   return "";
 }
+function showNow(q) {
+  const el = $("now");
+  if (run?.status !== "running") { el.hidden = true; return; }
+  const last = run.log.at(-1)?.text ?? "";
+  const step = esc(last.length > 120 ? last.slice(0, 120) + "…" : last);
+  el.hidden = false;
+  if (!q) {
+    el.innerHTML = `<p class="n-head"><span class="d-dot" aria-hidden="true"></span><span class="n-badge">仕上げ</span><strong>問いを調べ終わり、全体をまとめています</strong></p>
+    <p class="n-step"><span>いまの作業</span>${step}</p>`;
+    return;
+  }
+  const began = run.log.findLast((l) => l.text.includes("調べ始めます") && l.text.includes(q.text))?.at;
+  const sec = began ? Math.max(0, Math.round((Date.now() - new Date(began)) / 1000)) : 0;
+  el.innerHTML = `<p class="n-head"><span class="d-dot" aria-hidden="true"></span><span class="n-badge">いま調べている問い</span><strong>${q.id}</strong><span class="n-short">${esc(q.short ?? q.group)}</span></p>
+    <p class="n-text">${esc(q.text)}</p>
+    <p class="n-step"><span>いまの作業（この問いを調べ始めて ${Math.floor(sec / 60)}分${String(sec % 60).padStart(2, "0")}秒）</span>${step}</p>
+    <a href="#doing-tile" class="n-jump">ます目で見る（${questions.indexOf(q) + 1} 番目）</a>`;
+}
 function renderGrid() {
   renderGrow();
   updateMap();
   const states = questions.map(stateOf);
-  $("grid").innerHTML = questions.map((q, i) => `<li class="${states[i]}" title="${esc(q.text)}"><span class="id">${q.id}</span><span class="g">${esc(q.group)}</span>${/^s\d/.test(states[i]) ? `<span class="pt">${states[i].slice(1)}点</span>` : states[i] === "pending" ? `<span class="pt">保留</span>` : ""}</li>`).join("");
+  // いま調べている問い：ます目の上に、問いの見出しと中身・いまの作業を大きく出す。ます目のカードにも「調べています」と見出しを入れる
+  // （作者「Q76 を調べているとして、カードの周りが点滅する感じだが、とても分かりにくい」11/6）
+  $("grid").innerHTML = questions.map((q, i) => states[i] === "doing"
+    ? `<li class="doing" id="doing-tile" title="${esc(q.text)}"><span class="id">${q.id}</span><span class="d-label"><span class="d-dot" aria-hidden="true"></span>調べています</span><span class="d-short">${esc(q.short ?? q.group)}</span></li>`
+    : `<li class="${states[i]}" title="${esc(q.text)}"><span class="id">${q.id}</span><span class="g">${esc(q.group)}</span>${/^s\d/.test(states[i]) ? `<span class="pt">${states[i].slice(1)}点</span>` : states[i] === "pending" ? `<span class="pt">保留</span>` : ""}</li>`).join("");
+  showNow(questions[states.indexOf("doing")]);
   const n = (s) => states.filter((x) => x === s).length;
   const scored = states.filter((x) => /^s\d/.test(x));
   const pass = scored.filter((x) => x >= "s2").length;
@@ -190,6 +235,7 @@ async function poll() {
   const label = { done: "調べ終わり", stopped: "止めました", failed: "止まりました" }[run.status];
   $("note").textContent = `${label}（確かめ待ち ${$("pending").textContent}件）。見つからなかった問いは、町の人に聞くことの候補です。`;
   await showProposals();
+  showHistory();
   doneNotice(label);
 }
 
