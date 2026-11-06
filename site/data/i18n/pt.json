@@ -1,11 +1,11 @@
 {
  "lang": "pt",
  "name": "Português",
- "createdAt": "2026-11-06T08:55:19.806Z",
+ "createdAt": "2026-11-06T10:47:34.244Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1125,
- "of": 1084,
+ "count": 1132,
+ "of": 1091,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Guia não oficial da vida na cidade. O Claude reúne as informações em sites oficiais da cidade e outras fontes, e indica a origem de cada uma (Machishirube)",
   "すべてのページ": "Todas as páginas",
@@ -1131,6 +1131,13 @@
   "坂や雪で出にくい人の支援": "Apoio a pessoas com dificuldade de sair de casa por causa de ladeiras ou neve",
   "成年後見の利用支援": "Apoio ao uso do sistema de tutela de adultos",
   "冬の灯油代の助成": "Auxílio para o custo do querosene no inverno",
-  "家の耐震・家具固定の助成": "Auxílio para reforço antissísmico da casa e fixação de móveis"
+  "家の耐震・家具固定の助成": "Auxílio para reforço antissísmico da casa e fixação de móveis",
+  "親子で行ける集いの場": "Espaços de convivência para pais e filhos",
+  "認知症の相談と見守り": "Orientação sobre demência e acompanhamento",
+  "一時預かりと産後ケア": "Guarda temporária de crianças e cuidados pós-parto",
+  "病院で使える通訳": "Intérprete para uso no hospital",
+  "就学援助（給食費など）": "Auxílio escolar (merenda escolar etc.)",
+  "介護サービスの事業所": "Prestadores de serviços de cuidados para idosos",
+  "家の手すり・段差の工事助成": "Subsídio para obras de corrimãos e eliminação de degraus em casa"
  }
 }

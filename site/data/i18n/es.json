@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-06T08:54:29.656Z",
+ "createdAt": "2026-11-06T10:47:40.032Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1124,
- "of": 1084,
+ "count": 1131,
+ "of": 1091,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -1130,6 +1130,13 @@
   "成年後見の利用支援": "Apoyo para el uso de la tutela de adultos",
   "冬の灯油代の助成": "Ayuda para el gasto de queroseno en invierno",
   "空き家バンクと移住の相談": "Banco de viviendas vacías y consultas sobre mudanza a la localidad",
-  "家の耐震・家具固定の助成": "Ayudas para la resistencia sísmica de la vivienda y la fijación de muebles"
+  "家の耐震・家具固定の助成": "Ayudas para la resistencia sísmica de la vivienda y la fijación de muebles",
+  "親子で行ける集いの場": "Espacios de encuentro para ir con tus hijos",
+  "認知症の相談と見守り": "Consultas y acompañamiento sobre la demencia",
+  "一時預かりと産後ケア": "Cuidado temporal de niños y atención posparto",
+  "病院で使える通訳": "Servicio de intérpretes en hospitales",
+  "就学援助（給食費など）": "Ayuda escolar (comedor, etc.)",
+  "介護サービスの事業所": "Centros de servicios de cuidados",
+  "家の手すり・段差の工事助成": "Subvención para obras de barandillas y eliminación de desniveles en casa"
  }
 }

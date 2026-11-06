@@ -1,11 +1,11 @@
 {
  "lang": "en",
  "name": "English",
- "createdAt": "2026-11-06T08:54:32.355Z",
+ "createdAt": "2026-11-06T10:47:44.262Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1125,
- "of": 1084,
+ "count": 1132,
+ "of": 1091,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "This is an unofficial guide to living in this town. Claude gathers information from the town's official website and other sources, and cites each source (Machishirube)",
   "すべてのページ": "All pages",
@@ -1131,6 +1131,13 @@
   "成年後見の利用支援": "Support for using the adult guardianship system",
   "冬の灯油代の助成": "Winter heating oil subsidy",
   "空き家バンクと移住の相談": "Vacant House Bank and Relocation Consultation",
-  "家の耐震・家具固定の助成": "Subsidies for Earthquake Resistance and Furniture Securing"
+  "家の耐震・家具固定の助成": "Subsidies for Earthquake Resistance and Furniture Securing",
+  "親子で行ける集いの場": "Gathering places for parents and children",
+  "認知症の相談と見守り": "Dementia consultation and community watch-over",
+  "一時預かりと産後ケア": "Temporary childcare and postpartum care",
+  "病院で使える通訳": "Interpreters available at hospitals",
+  "就学援助（給食費など）": "School expense assistance (school lunch fees, etc.)",
+  "介護サービスの事業所": "Long-term care service providers",
+  "家の手すり・段差の工事助成": "Subsidies for home handrail and step-removal work"
  }
 }

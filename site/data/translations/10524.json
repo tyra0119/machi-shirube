@@ -1,7 +1,7 @@
 {
  "code": "10524",
  "name": "邑楽郡大泉町",
- "createdAt": "2026-11-04T12:33:14.720Z",
+ "createdAt": "2026-11-06T10:23:53.908Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
  "langs": {
@@ -697,6 +697,76 @@
      "problems": [
       "「ひとり暮らしの高齢者などに」の「など」の範囲を「na mesma situação（同じ状況の）」と補っている点のみ。数字・日付・名前・電話番号・条件は一致。"
      ]
+    },
+    {
+     "qid": "Q53",
+     "short": "Aulas de japonês e informações sobre matrícula escolar",
+     "text": "As informações sobre a matrícula escolar de crianças ligadas ao exterior estão na página da prefeitura \"Reunião de orientação sobre matrícula escolar para crianças estrangeiras\" (外国籍児童就学説明会).\nO público-alvo são os responsáveis por crianças estrangeiras em idade pré-escolar que desejam matriculá-las em uma escola primária municipal em abril de Reiwa 9.\nData e horário: segunda-feira, 31 de agosto de Reiwa 8, às 15h. Local: Salão Multiuso (多目的ホール), 1º andar da Prefeitura de Oizumi (大泉町役場).\nO que levar: a carta de aviso da reunião, o cartão de residência (在留カード) e a caderneta de saúde materno-infantil (母子健康手帳).\nA explicação terá intérprete de português.\nPara consultas sobre o aprendizado de japonês: Centro Comunitário de Convivência Multicultural (多文化共生コミュニティセンター) (Prefeitura, 2º andar, Divisão de Colaboração Multicultural (多文化協働課), sala 206), telefone 0276-62-6066 (telefone geral da prefeitura: 0276-63-3111).\nNa Biblioteca Municipal (町立図書館), o \"Salão Multilíngue\" (多言語サロン) para crianças é realizado 2 dias por semana (terça e quinta) (informação do material da prefeitura do ano fiscal de Reiwa 4).\nNão foi possível confirmar nas páginas oficiais da prefeitura a data, o horário, o local e onde se inscrever nas próprias aulas de japonês. Segundo um material do Ministério da Justiça (法務省), as aulas de japonês da associação de intercâmbio (交流協会) são divulgadas.",
+     "original": "外国につながる子どもの就学の案内は、町の「外国籍児童就学説明会」のページで見られます。\n令和9年4月に町立小学校へ入学を希望する外国籍の幼児の保護者が対象です。\n日時は令和8年8月31日（月）午後3時、会場は大泉町役場1階 多目的ホールです。\n持ち物は、開催通知書、在留カード、母子健康手帳です。\nポルトガル語の通訳つきで説明します。\n日本語学習の相談は、多文化共生コミュニティセンター（役場2階 多文化協働課206番）の 0276-62-6066（役場代表 0276-63-3111）です。\n町立図書館では、子ども向けの「多言語サロン」を週2日（火・木）に行っています（令和4年度の町の資料）。\n日本語教室そのものの日時・場所・申込先は、町の公式ページでは確認できませんでした。法務省の資料では、交流協会の日本語教室が案内されているとあります。",
+     "back": "外国につながる子どもの就学の案内は、町の「外国籍児童就学説明会」のページで見られます。令和9年4月に町立小学校への入学を希望する外国籍の幼児の保護者が対象です。日時は令和8年8月31日（月）午後3時、会場は大泉町役場1階 多目的ホールです。持ち物は、開催通知書、在留カード、母子健康手帳です。ポルトガル語の通訳つきで説明します。日本語学習の相談は、多文化共生コミュニティセンター（役場2階 多文化協働課206番）の0276-62-6066（役場代表 0276-63-3111）です。町立図書館では、子ども向けの「多言語サロン」を週2日（火・木）に行っています（令和4年度の町の資料）。日本語教室そのものの日時・場所・申込先は、町の公式ページでは確認できませんでした。法務省の資料では、交流協会の日本語教室が案内されているとあります。",
+     "source": {
+      "title": "外国籍児童就学説明会を開催します｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s027/kosodate/020/080/20220719102528.html",
+      "where": "外国籍児童就学説明会（対象者・実施日時・会場・当日の持ち物）"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q63",
+     "short": "Como solicitar a certificação de necessidade de cuidados (要介護認定)",
+     "text": "A certificação de necessidade de cuidados (要介護認定) é solicitada no balcão da prefeitura, entregando o formulário de pedido.\nAlém da própria pessoa e de seus familiares, o Centro Regional de Apoio Integral (地域包括支援センター), as empresas de apoio a cuidados domiciliares (居宅介護支援事業者) e as instituições do seguro de cuidados (介護保険施設) também podem fazer o pedido em nome da pessoa.\nBalcão: Departamento de Bem-Estar e Crianças (福祉こども部), Divisão de Idosos e Cuidados (高齢介護課), 1º andar do prédio da prefeitura, guichê nº 104. Telefone: 0276-63-3111. Isso foi lido no campo \"Contato\" da página.\nO que levar:\n・Pessoas com 65 anos ou mais: o cartão de segurado do seguro de cuidados (介護保険被保険者証).\n・Pessoas de 40 a 64 anos: é necessário confirmar as informações de qualificação do seguro de saúde.\n・No formulário, escreve-se o nome, o hospital e o endereço do médico responsável.\n・Os pedidos feitos a partir de 1º de abril de Reiwa 8 usam um novo formulário.\nEtapas:\n1. Faz-se o pedido.\n2. Funcionários da prefeitura e outros visitam a casa para a pesquisa de visita. A prefeitura também solicita um parecer ao médico responsável.\n3. A avaliação é feita por computador e analisada pelo Comitê de Avaliação da Certificação de Cuidados (介護認定審査会).\n4. O resultado é comunicado. Considera-se que o prazo do pedido até o aviso é de até 30 dias. Se não for possível avisar em 30 dias, é enviado um aviso de atraso.\n5. Com o resultado, elabora-se o plano de cuidados (ケアプラン) e passa-se a usar os serviços.\nAs informações estão na página oficial da prefeitura \"Certificação de necessidade de cuidados\" (要介護認定). Os PDFs do formulário de pedido e da procuração também estão nessa página.",
+     "original": "要介護認定は、町の窓口で申請書を出して申し込みます。\n本人や家族のほか、地域包括支援センター・居宅介護支援事業者・介護保険施設も代行申請できます。\n窓口は、福祉こども部 高齢介護課（庁舎1階104番窓口）です。電話は 0276-63-3111 です。これは、ページの「問い合わせ先」の欄から読み取りました。\n持っていくものは次のとおりです。\n・65歳以上の人は、介護保険被保険者証。\n・40〜64歳の人は、医療保険の資格情報の確認が必要です。\n・申請書には主治医の氏名・病院・住所を書きます。\n・令和8年4月1日以降の申請は、新しい様式を使います。\n流れは次のとおりです。\n1. 申請します。\n2. 町職員などが家を訪ねて訪問調査をします。町から主治医に意見書も頼みます。\n3. コンピュータで判定し、介護認定審査会が審査します。\n4. 結果を通知します。申請から通知までは30日以内とされています。30日以内に通知できないときは、遅延通知を送ります。\n5. 結果が出たら、ケアプランを作ってサービスを使います。\n案内は、町の公式ページ「要介護認定」にあります。申請書・委任状のPDFもそのページにあります。",
+     "back": "要介護認定は、町の窓口で申請書を出して申し込みます。本人や家族のほか、地域包括支援センター・居宅介護支援事業者・介護保険施設も代行申請できます。窓口は福祉こども部 高齢介護課（庁舎1階104番窓口）です。電話は0276-63-3111です。これはページの「問い合わせ先」の欄から読み取りました。持っていくものは次のとおりです。65歳以上の人は介護保険被保険者証。40〜64歳の人は医療保険の資格情報の確認が必要です。申請書には主治医の氏名・病院・住所を書きます。令和8年4月1日以降の申請は新しい様式を使います。流れは次のとおりです。1．申請します。2．町職員などが家を訪ねて訪問調査をします。町から主治医に意見書も頼みます。3．コンピュータで判定し、介護認定審査会が審査します。4．結果を通知します。申請から通知までは30日以内とされています。30日以内に通知できないときは遅延通知を送ります。5．結果が出たら、ケアプランを作ってサービスを使います。案内は町の公式ページ「要介護認定」にあります。申請書・委任状のPDFもそのページにあります。",
+     "source": {
+      "title": "要介護認定（大泉町）",
+      "url": "https://www.town.oizumi.gunma.jp/s015/kenko/010/010/020/20200722111952.html",
+      "where": "「要介護認定の申請」「持参するもの」「要介護認定審査」の各見出し、「このページに関する問い合わせ先」"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q64",
+     "short": "Clínicas da cidade e atendimento médico domiciliar",
+     "text": "Os 13 hospitais e clínicas da cidade estão listados na página da prefeitura \"Informações sobre instituições médicas\" (医療機関情報).\nConstam nome, especialidades, endereço, telefone e dias de folga.\nOs horários de atendimento não constam. A prefeitura orienta confirmar por telefone antes de ir à consulta.\nNão foi encontrada uma página dedicada apenas a visitas médicas ou atendimento médico domiciliar. Também não foi encontrado como solicitá-los.\nA enfermagem domiciliar e a orientação de gestão de tratamento em domicílio estão na página \"Uso dos serviços de cuidados\" (介護サービスの利用), como serviços do seguro de cuidados.\nOs serviços domiciliares começam escolhendo uma empresa de apoio a cuidados domiciliares (居宅介護支援事業者) e pedindo a elaboração do plano de cuidados (ケアプラン).\nOs nomes e telefones das empresas de enfermagem domiciliar deveriam estar na \"Lista de estabelecimentos do seguro de cuidados de Oizumi (PDF)\" (大泉町介護保険事業所一覧), mas desta vez não foi possível lê-la.\nO local de consulta é o Centro Regional de Apoio Integral (地域包括支援センター), telefone 0276-63-2294 (segunda a sexta, das 8h30 às 17h15).\nO contato da página dos serviços de cuidados é a Divisão de Idosos e Cuidados (高齢介護課) (0276-63-3111, 1º andar do prédio da prefeitura, guichê nº 104). Isso foi lido no campo de contato e não está escrito como balcão de atendimento.",
+     "original": "町内の病院・診療所13か所は、町の「医療機関情報」ページに載っています。\n名前・診療科目・住所・電話・休診日が書かれています。\n診療時間は載っていません。町は、電話で確認してから受診するよう案内しています。\n往診・訪問診療だけを案内するページは見つかりませんでした。頼み方も見つかりませんでした。\n訪問看護と居宅療養管理指導は、介護保険のサービスとして「介護サービスの利用」ページに載っています。\n在宅サービスは、居宅介護支援事業者を決めてケアプランの作成を頼むところから始まります。\n訪問看護の事業所名と電話番号は、「大泉町介護保険事業所一覧（PDF）」にあるはずですが、今回は読めていません。\n相談窓口は地域包括支援センターで、電話は0276-63-2294です（月〜金 午前8時30分〜午後5時15分）。\n介護サービスのページの問い合わせ先は、高齢介護課（0276-63-3111、庁舎1階104番窓口）です。これは問い合わせ先の欄から読み取ったもので、窓口として書かれているわけではありません。",
+     "back": "町内の病院・診療所13か所は、町の「医療機関情報」ページに載っています。名前・診療科目・住所・電話・休診日が書かれています。診療時間は載っていません。町は電話で確認してから受診するよう案内しています。往診・訪問診療だけを案内するページは見つかりませんでした。頼み方も見つかりませんでした。訪問看護と居宅療養管理指導は、介護保険のサービスとして「介護サービスの利用」ページに載っています。在宅サービスは、居宅介護支援事業者を決めてケアプランの作成を頼むところから始まります。訪問看護の事業所名と電話番号は「大泉町介護保険事業所一覧（PDF）」にあるはずですが、今回は読めていません。相談窓口は地域包括支援センターで、電話は0276-63-2294です（月〜金 午前8時30分〜午後5時15分）。介護サービスのページの問い合わせ先は高齢介護課（0276-63-3111、庁舎1階104番窓口）です。これは問い合わせ先の欄から読み取ったもので、窓口として書かれているわけではありません。",
+     "source": {
+      "title": "医療機関情報（病院、診療所）｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s016/kenko/010/020/010/20200822195308.html",
+      "where": "大泉町の病院、診療所"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q67",
+     "short": "Apoio ao transporte escolar das crianças",
+     "text": "Não foram encontrados no site oficial ônibus escolar, auxílio para as despesas de transporte escolar em si, nem informações sobre transporte de crianças que estudam longe.\nUm sistema parecido é o Auxílio à Escolarização (就学援助制度), que ajuda com despesas como materiais escolares.\nQuem pode receber: responsáveis por alunos que moram na cidade e estão matriculados, ou vão se matricular, em escola primária ou de ensino fundamental II, e que recebem assistência social, estão isentos do imposto municipal ou têm redução dele, recebem o auxílio para o sustento de crianças (児童扶養手当), ou têm renda de até 1,2 vez o padrão da assistência social, entre outros. A certificação é feita pelo Conselho de Educação.\nComo solicitar: entregue na escola o formulário com os documentos necessários.\nContato: Departamento de Educação (教育部), Divisão de Administração Educacional (教育管理課) (prédio da prefeitura, 2º andar, guichê nº 214), telefone 0276-63-3111.\nNas páginas oficiais encontradas não há informações sobre custos de transporte para a escola nem horários de ônibus.",
+     "original": "スクールバスや通学費そのものの助成、遠距離通学児童の送迎の案内は、公式サイトで見つかりませんでした。\n近い制度として就学援助制度があります（通学用品費などを援助）。\n対象：町内に住所があり、小・中学校に在学または入学予定の児童生徒の保護者で、生活保護を受けている人、町民税非課税や減免を受けている人、児童扶養手当を受けている人、収入が生活保護基準の1.2倍以下の人など。教育委員会が認定します。\n申し込み：申請書に必要書類を添えて学校へ提出します。\n問い合わせ：教育部 教育管理課（庁舎2階214番窓口）電話 0276-63-3111。\n通学の交通費やバスの時刻の案内は、見つかった公式ページにありません。",
+     "back": "スクールバスや通学費そのものの助成、遠距離通学児童の送迎の案内は、公式サイトで見つかりませんでした。近い制度として就学援助制度があります（通学用品費などを援助）。対象：町内に住所があり、小・中学校に在学または入学予定の児童生徒の保護者で、生活保護を受けている人、町民税非課税や減免を受けている人、児童扶養手当を受けている人、収入が生活保護基準の1.2倍以下の人などです。教育委員会が認定します。申し込み：申請書に必要書類を添えて学校へ提出します。問い合わせ：教育部 教育管理課（庁舎2階214番窓口）電話0276-63-3111。通学の交通費やバスの時刻の案内は、見つかった公式ページにはありません。",
+     "source": {
+      "title": "就学援助制度｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s027/kosodate/030/010/20200813181011.html",
+      "where": "就学援助費（対象・援助内容・申請）"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q69",
+     "short": "Apoio ao uso da tutela de adultos (成年後見)",
+     "text": "Oizumi tem o \"Subsídio do projeto de apoio ao uso do sistema de tutela de adultos\" (成年後見制度利用支援事業補助金), que ajuda a usar o sistema de tutela de adultos (成年後見制度).\nSão cobertas as despesas (selo de receita, selo de registro, selos postais, atestado médico e perícia) quando o pedido é feito por alguém que não seja o prefeito.\nA remuneração dos tutores de adultos e outros também é coberta. O limite mensal é de 28.000 ienes para quem mora em casa e de 18.000 ienes para quem está em instituição.\nHá também o procedimento em que o prefeito faz o pedido em nome da pessoa. Nesse caso, a prefeitura paga antecipadamente a taxa do pedido, a taxa de registro e outras. Das pessoas que puderem arcar com essas despesas, a cobrança é feita depois.\nSobre o Projeto de Apoio à Autonomia na Vida Diária (日常生活自立支援事業), nas páginas da prefeitura verificadas não foi encontrada nenhuma informação sobre um sistema de apoio ao seu uso.",
+     "original": "大泉町には、成年後見制度の利用を助ける「成年後見制度利用支援事業補助金」があります。\n町長以外の人が申立てをしたときの経費(収入印紙、登録印紙、郵便切手、診断書、鑑定)が対象です。\n成年後見人などへの報酬も対象です。上限は月額で、自宅は28,000円、施設入所は18,000円です。\n町長が代わりに申立てをする手続きもあります。この場合、申立手数料と登記手数料などは町があらかじめ負担します。負担できる人には、後日請求します。\n日常生活自立支援事業については、確認できた町のページに、利用を助ける制度の記載は見つかりませんでした。",
+     "back": "大泉町には、成年後見制度の利用を助ける「成年後見制度利用支援事業補助金」があります。町長以外の人が申立てをしたときの経費（収入印紙、登録印紙、郵便切手、診断書、鑑定）が対象です。成年後見人などへの報酬も対象です。上限は月額で、自宅は28,000円、施設入所は18,000円です。町長が代わりに申立てをする手続きもあります。この場合、申立手数料と登記手数料などは町があらかじめ負担します。負担できる人には後日請求します。日常生活自立支援事業については、確認できた町のページに利用を助ける制度の記載は見つかりませんでした。",
+     "source": {
+      "title": "成年後見制度について｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s014/kenko/010/010/300/20240104164049.html",
+      "where": "成年後見制度の利用支援や申立について／成年後見制度利用支援事業補助金"
+     },
+     "status": "auto",
+     "problems": []
     }
    ]
   },
@@ -1398,6 +1468,76 @@
       "原文は「町」だが、訳文は「ciudad（市）」になっている。自治体の種類が違う。「などに」の訳に「lo necesiten（助けが必要な）」が足されている（小さな足し）。"
      ],
      "ledgerId": "r00423"
+    },
+    {
+     "qid": "Q53",
+     "short": "Clases de japonés e información sobre la escolarización",
+     "text": "La información sobre la escolarización de niños con vínculos con el extranjero se puede consultar en la página del municipio \"Sesión informativa de escolarización para niños de nacionalidad extranjera\" (外国籍児童就学説明会).\nEstá dirigida a los padres o tutores de niños de nacionalidad extranjera en edad preescolar que desean ingresar en una escuela primaria municipal en abril de Reiwa 9 (令和9年).\nLa fecha y hora es el lunes 31 de agosto de Reiwa 8 (令和8年), a las 3:00 p. m. El lugar es el Salón Polivalente en la planta baja del Ayuntamiento de Oizumi (大泉町役場1階 多目的ホール).\nQué llevar: la notificación de la sesión, la tarjeta de residencia (在留カード) y la libreta de salud materno-infantil (母子健康手帳).\nLa explicación se dará con intérprete de portugués.\nPara consultas sobre el aprendizaje del japonés: Centro Comunitario de Convivencia Multicultural (多文化共生コミュニティセンター) (Ayuntamiento, 2.º piso, Sección de Colaboración Multicultural, n.º 206 / 役場2階 多文化協働課206番), teléfono 0276-62-6066 (centralita del Ayuntamiento: 0276-63-3111).\nEn la Biblioteca Municipal (町立図書館) se realiza el \"Salón multilingüe\" (多言語サロン) para niños, 2 días a la semana (martes y jueves) (según un documento del municipio del año fiscal Reiwa 4).\nNo se pudo confirmar en la página oficial del municipio la fecha, hora, lugar ni dónde inscribirse para las clases de japonés en sí. Según un documento del Ministerio de Justicia, se informa de clases de japonés de la asociación de intercambio.",
+     "original": "外国につながる子どもの就学の案内は、町の「外国籍児童就学説明会」のページで見られます。\n令和9年4月に町立小学校へ入学を希望する外国籍の幼児の保護者が対象です。\n日時は令和8年8月31日（月）午後3時、会場は大泉町役場1階 多目的ホールです。\n持ち物は、開催通知書、在留カード、母子健康手帳です。\nポルトガル語の通訳つきで説明します。\n日本語学習の相談は、多文化共生コミュニティセンター（役場2階 多文化協働課206番）の 0276-62-6066（役場代表 0276-63-3111）です。\n町立図書館では、子ども向けの「多言語サロン」を週2日（火・木）に行っています（令和4年度の町の資料）。\n日本語教室そのものの日時・場所・申込先は、町の公式ページでは確認できませんでした。法務省の資料では、交流協会の日本語教室が案内されているとあります。",
+     "back": "外国につながる子どもの就学の案内は、町の「外国籍児童就学説明会」のページで見られます。令和9年4月に町立小学校への入学を希望する外国籍の幼児の保護者が対象です。日時は令和8年8月31日（月）午後3時、会場は大泉町役場1階 多目的ホールです。持ち物は、開催通知書、在留カード、母子健康手帳です。ポルトガル語の通訳つきで説明します。日本語学習の相談は、多文化共生コミュニティセンター（役場2階 多文化協働課206番）の 0276-62-6066（役場代表 0276-63-3111）です。町立図書館では、子ども向けの「多言語サロン」を週2日（火・木）に行っています（令和4年度の町の資料）。日本語教室そのものの日時・場所・申込先は、町の公式ページでは確認できませんでした。法務省の資料では、交流協会の日本語教室が案内されているとあります。",
+     "source": {
+      "title": "外国籍児童就学説明会を開催します｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s027/kosodate/020/080/20220719102528.html",
+      "where": "外国籍児童就学説明会（対象者・実施日時・会場・当日の持ち物）"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q63",
+     "short": "Solicitud de certificación de necesidad de cuidados",
+     "text": "La certificación de necesidad de cuidados (要介護認定) se solicita presentando el formulario de solicitud en la ventanilla del municipio.\nAdemás de la propia persona o su familia, también pueden presentar la solicitud en su nombre el Centro de Apoyo Integral Comunitario (地域包括支援センター), las empresas de apoyo a la atención domiciliaria (居宅介護支援事業者) y los centros del seguro de cuidados (介護保険施設).\nLa ventanilla es la Sección de Mayores y Seguro de Cuidados (高齢介護課), del Departamento de Bienestar e Infancia (福祉こども部) (Edificio del Ayuntamiento, 1.er piso, ventanilla n.º 104 / 庁舎1階104番窓口). El teléfono es 0276-63-3111. Esto se leyó en el apartado \"Contacto\" (問い合わせ先) de la página.\nLo que hay que llevar:\n・Las personas de 65 años o más: el carné de asegurado del seguro de cuidados (介護保険被保険者証).\n・Las personas de 40 a 64 años: es necesario confirmar los datos de elegibilidad de su seguro médico.\n・En el formulario se escribe el nombre, el hospital y la dirección del médico de cabecera.\n・Las solicitudes a partir del 1 de abril de Reiwa 8 (令和8年4月1日) usan un nuevo formulario.\nEl proceso es el siguiente:\n1. Se presenta la solicitud.\n2. El personal del municipio u otras personas visitan su casa y hacen una encuesta de evaluación. El municipio también pide un informe al médico de cabecera.\n3. Se hace una evaluación por ordenador y el Comité de Evaluación de Certificación de Cuidados (介護認定審査会) la examina.\n4. Se notifica el resultado. Se considera que desde la solicitud hasta la notificación pasan como máximo 30 días. Si no se puede notificar en 30 días, se envía un aviso de retraso.\n5. Cuando sale el resultado, se elabora un plan de cuidados y se usan los servicios.\nLa información está en la página oficial del municipio \"Certificación de necesidad de cuidados\" (要介護認定). En esa misma página también están los PDF del formulario de solicitud y del poder de representación.",
+     "original": "要介護認定は、町の窓口で申請書を出して申し込みます。\n本人や家族のほか、地域包括支援センター・居宅介護支援事業者・介護保険施設も代行申請できます。\n窓口は、福祉こども部 高齢介護課（庁舎1階104番窓口）です。電話は 0276-63-3111 です。これは、ページの「問い合わせ先」の欄から読み取りました。\n持っていくものは次のとおりです。\n・65歳以上の人は、介護保険被保険者証。\n・40〜64歳の人は、医療保険の資格情報の確認が必要です。\n・申請書には主治医の氏名・病院・住所を書きます。\n・令和8年4月1日以降の申請は、新しい様式を使います。\n流れは次のとおりです。\n1. 申請します。\n2. 町職員などが家を訪ねて訪問調査をします。町から主治医に意見書も頼みます。\n3. コンピュータで判定し、介護認定審査会が審査します。\n4. 結果を通知します。申請から通知までは30日以内とされています。30日以内に通知できないときは、遅延通知を送ります。\n5. 結果が出たら、ケアプランを作ってサービスを使います。\n案内は、町の公式ページ「要介護認定」にあります。申請書・委任状のPDFもそのページにあります。",
+     "back": "要介護認定は、町の窓口で申請書を出して申し込みます。本人や家族のほか、地域包括支援センター・居宅介護支援事業者・介護保険施設も代行申請できます。窓口は、福祉こども部 高齢介護課（庁舎1階104番窓口）です。電話は 0276-63-3111 です。これは、ページの「問い合わせ先」の欄から読み取りました。持っていくものは次のとおりです。・65歳以上の人は、介護保険被保険者証。・40〜64歳の人は、医療保険の資格情報の確認が必要です。・申請書には主治医の氏名・病院・住所を書きます。・令和8年4月1日以降の申請は、新しい様式を使います。流れは次のとおりです。1. 申請します。2. 町職員などが家を訪ねて訪問調査をします。町から主治医に意見書も頼みます。3. コンピュータで判定し、介護認定審査会が審査します。4. 結果を通知します。申請から通知までは30日以内とされています。30日以内に通知できないときは、遅延通知を送ります。5. 結果が出たら、ケアプランを作ってサービスを使います。案内は、町の公式ページ「要介護認定」にあります。申請書・委任状のPDFもそのページにあります。",
+     "source": {
+      "title": "要介護認定（大泉町）",
+      "url": "https://www.town.oizumi.gunma.jp/s015/kenko/010/010/020/20200722111952.html",
+      "where": "「要介護認定の申請」「持参するもの」「要介護認定審査」の各見出し、「このページに関する問い合わせ先」"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q64",
+     "short": "Clínicas del municipio y atención médica a domicilio",
+     "text": "Los 13 hospitales y clínicas del municipio figuran en la página del municipio \"Información de centros médicos\" (医療機関情報).\nSe indican el nombre, las especialidades, la dirección, el teléfono y los días de descanso.\nNo se indica el horario de atención. El municipio recomienda llamar por teléfono para confirmar antes de acudir.\nNo se encontró ninguna página que informe solo sobre visitas médicas a domicilio o atención médica domiciliaria. Tampoco se encontró cómo solicitarlas.\nLa enfermería a domicilio y la orientación para el tratamiento médico en el hogar figuran como servicios del seguro de cuidados en la página \"Uso de los servicios de cuidados\" (介護サービスの利用).\nLos servicios a domicilio empiezan eligiendo una empresa de apoyo a la atención domiciliaria (居宅介護支援事業者) y pidiéndole que elabore el plan de cuidados.\nLos nombres y teléfonos de los centros de enfermería a domicilio deberían estar en la \"Lista de centros del seguro de cuidados de Oizumi (PDF)\" (大泉町介護保険事業所一覧), pero esta vez no se pudo leer.\nLa ventanilla de consulta es el Centro de Apoyo Integral Comunitario (地域包括支援センター), teléfono 0276-63-2294 (de lunes a viernes, de 8:30 a. m. a 5:15 p. m.).\nEl contacto en la página de los servicios de cuidados es la Sección de Mayores y Seguro de Cuidados (高齢介護課) (0276-63-3111, Edificio del Ayuntamiento, 1.er piso, ventanilla n.º 104 / 庁舎1階104番窓口). Esto se leyó en el apartado de contacto y no está escrito como ventanilla de atención.",
+     "original": "町内の病院・診療所13か所は、町の「医療機関情報」ページに載っています。\n名前・診療科目・住所・電話・休診日が書かれています。\n診療時間は載っていません。町は、電話で確認してから受診するよう案内しています。\n往診・訪問診療だけを案内するページは見つかりませんでした。頼み方も見つかりませんでした。\n訪問看護と居宅療養管理指導は、介護保険のサービスとして「介護サービスの利用」ページに載っています。\n在宅サービスは、居宅介護支援事業者を決めてケアプランの作成を頼むところから始まります。\n訪問看護の事業所名と電話番号は、「大泉町介護保険事業所一覧（PDF）」にあるはずですが、今回は読めていません。\n相談窓口は地域包括支援センターで、電話は0276-63-2294です（月〜金 午前8時30分〜午後5時15分）。\n介護サービスのページの問い合わせ先は、高齢介護課（0276-63-3111、庁舎1階104番窓口）です。これは問い合わせ先の欄から読み取ったもので、窓口として書かれているわけではありません。",
+     "back": "町内の病院・診療所13か所は、町の「医療機関情報」ページに載っています。名前・診療科目・住所・電話・休診日が書かれています。診療時間は載っていません。町は、電話で確認してから受診するよう案内しています。往診・訪問診療だけを案内するページは見つかりませんでした。頼み方も見つかりませんでした。訪問看護と居宅療養管理指導は、介護保険のサービスとして「介護サービスの利用」ページに載っています。在宅サービスは、居宅介護支援事業者を決めてケアプランの作成を頼むところから始まります。訪問看護の事業所名と電話番号は、「大泉町介護保険事業所一覧（PDF）」にあるはずですが、今回は読めていません。相談窓口は地域包括支援センターで、電話は0276-63-2294です（月〜金 午前8時30分〜午後5時15分）。介護サービスのページの問い合わせ先は、高齢介護課（0276-63-3111、庁舎1階104番窓口）です。これは問い合わせ先の欄から読み取ったもので、窓口として書かれているわけではありません。",
+     "source": {
+      "title": "医療機関情報（病院、診療所）｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s016/kenko/010/020/010/20200822195308.html",
+      "where": "大泉町の病院、診療所"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q67",
+     "short": "Apoyo para el traslado de los niños a la escuela",
+     "text": "En el sitio web oficial no se encontró información sobre autobús escolar, ayudas para el gasto de transporte escolar en sí, ni transporte para niños que viven lejos de la escuela.\nUn sistema cercano es el sistema de ayuda para la escolarización (就学援助制度) (ayuda para artículos escolares, etc.).\nQuiénes pueden recibirlo: padres o tutores de alumnos con domicilio en el municipio que estén matriculados o vayan a matricularse en una escuela primaria o secundaria, y que reciban asistencia social, estén exentos del impuesto municipal o tengan reducción de este, reciban el subsidio de manutención infantil (児童扶養手当), o tengan unos ingresos de hasta 1,2 veces el nivel de la asistencia social, entre otros. Lo determina la Junta de Educación.\nCómo solicitarlo: se entrega a la escuela el formulario de solicitud junto con los documentos necesarios.\nConsultas: Sección de Gestión Educativa (教育管理課), Departamento de Educación (教育部) (Edificio del Ayuntamiento, 2.º piso, ventanilla n.º 214 / 庁舎2階214番窓口), teléfono 0276-63-3111.\nEn las páginas oficiales encontradas no hay información sobre el gasto de transporte a la escuela ni sobre los horarios de autobús.",
+     "original": "スクールバスや通学費そのものの助成、遠距離通学児童の送迎の案内は、公式サイトで見つかりませんでした。\n近い制度として就学援助制度があります（通学用品費などを援助）。\n対象：町内に住所があり、小・中学校に在学または入学予定の児童生徒の保護者で、生活保護を受けている人、町民税非課税や減免を受けている人、児童扶養手当を受けている人、収入が生活保護基準の1.2倍以下の人など。教育委員会が認定します。\n申し込み：申請書に必要書類を添えて学校へ提出します。\n問い合わせ：教育部 教育管理課（庁舎2階214番窓口）電話 0276-63-3111。\n通学の交通費やバスの時刻の案内は、見つかった公式ページにありません。",
+     "back": "スクールバスや通学費そのものの助成、遠距離通学児童の送迎の案内は、公式サイトで見つかりませんでした。近い制度として就学援助制度があります（通学用品費などを援助）。対象：町内に住所があり、小・中学校に在学または入学予定の児童生徒の保護者で、生活保護を受けている人、町民税非課税や減免を受けている人、児童扶養手当を受けている人、収入が生活保護基準の1.2倍以下の人など。教育委員会が認定します。申し込み：申請書に必要書類を添えて学校へ提出します。問い合わせ：教育部 教育管理課（庁舎2階214番窓口）電話 0276-63-3111。通学の交通費やバスの時刻の案内は、見つかった公式ページにありません。",
+     "source": {
+      "title": "就学援助制度｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s027/kosodate/030/010/20200813181011.html",
+      "where": "就学援助費（対象・援助内容・申請）"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q69",
+     "short": "Apoyo para el uso de la tutela de adultos",
+     "text": "Oizumi tiene la \"Subvención del proyecto de apoyo al uso del sistema de tutela de adultos\" (成年後見制度利用支援事業補助金), que ayuda a utilizar el sistema de tutela de adultos.\nCubre los gastos cuando la solicitud la presenta una persona que no sea el alcalde (timbres fiscales, timbres de registro, sellos de correo, certificado médico y peritaje).\nTambién cubre la remuneración de los tutores de adultos, etc. El límite mensual es de 28.000 yenes si vive en su casa y de 18.000 yenes si reside en un centro.\nTambién existe el trámite en el que el alcalde presenta la solicitud en su lugar. En ese caso, el municipio adelanta los gastos, como la tasa de solicitud y la tasa de registro. A quienes puedan asumirlos, se les cobrará más adelante.\nSobre el proyecto de apoyo a la autonomía en la vida diaria (日常生活自立支援事業), en la página del municipio que se pudo consultar no se encontró ninguna mención de un sistema de apoyo para su uso.",
+     "original": "大泉町には、成年後見制度の利用を助ける「成年後見制度利用支援事業補助金」があります。\n町長以外の人が申立てをしたときの経費(収入印紙、登録印紙、郵便切手、診断書、鑑定)が対象です。\n成年後見人などへの報酬も対象です。上限は月額で、自宅は28,000円、施設入所は18,000円です。\n町長が代わりに申立てをする手続きもあります。この場合、申立手数料と登記手数料などは町があらかじめ負担します。負担できる人には、後日請求します。\n日常生活自立支援事業については、確認できた町のページに、利用を助ける制度の記載は見つかりませんでした。",
+     "back": "大泉町には、成年後見制度の利用を助ける「成年後見制度利用支援事業補助金」があります。町長以外の人が申立てをしたときの経費(収入印紙、登録印紙、郵便切手、診断書、鑑定)が対象です。成年後見人などへの報酬も対象です。上限は月額で、自宅は28,000円、施設入所は18,000円です。町長が代わりに申立てをする手続きもあります。この場合、申立手数料と登記手数料などは町があらかじめ負担します。負担できる人には、後日請求します。日常生活自立支援事業については、確認できた町のページに、利用を助ける制度の記載は見つかりませんでした。",
+     "source": {
+      "title": "成年後見制度について｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s014/kenko/010/010/300/20240104164049.html",
+      "where": "成年後見制度の利用支援や申立について／成年後見制度利用支援事業補助金"
+     },
+     "status": "auto",
+     "problems": []
     }
    ]
   },
@@ -2104,6 +2244,78 @@
      "problems": [
       "「など」の範囲を英訳で「others who may need one」「others in a similar situation」と広げて書いているが、原文の「など」の意味と大きくは違わない。数字・名前・場所・条件は一致。"
      ]
+    },
+    {
+     "qid": "Q53",
+     "short": "Japanese Classes and School Enrollment Information",
+     "text": "Information on school enrollment for children with foreign roots is on the town's page \"Briefing Session on School Enrollment for Foreign-National Children\" (外国籍児童就学説明会).\nIt is for parents of foreign-national young children who wish to enter a town elementary school in April Reiwa 9 (2027).\nThe date and time are Monday, August 31, Reiwa 8 (2026), at 3:00 p.m. The venue is the Multipurpose Hall (多目的ホール) on the 1st floor of Oizumi Town Hall (大泉町役場).\nPlease bring the notice of the briefing session, your residence card, and your Maternal and Child Health Handbook.\nThe briefing will be given with Portuguese interpretation.\nFor consultations about learning Japanese, contact the Multicultural Coexistence Community Center (多文化共生コミュニティセンター) (Multicultural Collaboration Division (多文化協働課), Room 206, 2nd floor of the Town Hall) at 0276-62-6066 (Town Hall main number: 0276-63-3111).\nThe Town Library (町立図書館) holds a \"Multilingual Salon\" (多言語サロン) for children twice a week (Tuesday and Thursday) (according to a town document from Reiwa 4 (2022)).\nThe dates, places, and application contacts for the Japanese classes themselves could not be confirmed on the town's official pages. A Ministry of Justice document says that Japanese classes run by an exchange association (交流協会) are introduced.",
+     "original": "外国につながる子どもの就学の案内は、町の「外国籍児童就学説明会」のページで見られます。\n令和9年4月に町立小学校へ入学を希望する外国籍の幼児の保護者が対象です。\n日時は令和8年8月31日（月）午後3時、会場は大泉町役場1階 多目的ホールです。\n持ち物は、開催通知書、在留カード、母子健康手帳です。\nポルトガル語の通訳つきで説明します。\n日本語学習の相談は、多文化共生コミュニティセンター（役場2階 多文化協働課206番）の 0276-62-6066（役場代表 0276-63-3111）です。\n町立図書館では、子ども向けの「多言語サロン」を週2日（火・木）に行っています（令和4年度の町の資料）。\n日本語教室そのものの日時・場所・申込先は、町の公式ページでは確認できませんでした。法務省の資料では、交流協会の日本語教室が案内されているとあります。",
+     "back": "外国につながる子どもの就学案内は、町の「外国籍児童就学説明会」ページで見られます。令和9年（2027年）4月に町立小学校へ入学を希望する外国籍の幼児の保護者が対象です。日時は令和8年8月31日（月）午後3時、会場は大泉町役場1階多目的ホールです。持ち物は、開催通知書、在留カード、母子健康手帳です。ポルトガル語の通訳つきで説明します。日本語学習の相談は、多文化共生コミュニティセンター（役場2階多文化協働課206番）の0276-62-6066（役場代表0276-63-3111）です。町立図書館では、子ども向けの「多言語サロン」を週2日（火・木）に行っています（令和4年度の町の資料）。日本語教室そのものの日時・場所・申込先は、町の公式ページでは確認できませんでした。法務省の資料では、交流協会の日本語教室が案内されているとあります。",
+     "source": {
+      "title": "外国籍児童就学説明会を開催します｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s027/kosodate/020/080/20220719102528.html",
+      "where": "外国籍児童就学説明会（対象者・実施日時・会場・当日の持ち物）"
+     },
+     "status": "auto",
+     "problems": [
+      "「令和9年」の後に西暦「2027年」を足している。年の換算として正しく、意味は変わらない。"
+     ]
+    },
+    {
+     "qid": "Q63",
+     "short": "Applying for Long-Term Care Certification",
+     "text": "To apply for Long-Term Care Certification (要介護認定), submit an application form at the town's counter.\nIn addition to the person themselves or their family, the Community General Support Center (地域包括支援センター), a home-care support provider (居宅介護支援事業者), or a long-term care insurance facility (介護保険施設) can also apply on their behalf.\nThe counter is the Elderly Care Division (高齢介護課), Welfare and Children Department (福祉こども部), Counter 104 on the 1st floor of the Town Office Building (庁舎). The phone number is 0276-63-3111. This was read from the \"Contact\" section of the page.\nWhat to bring:\n・People aged 65 or older: the Long-Term Care Insurance Card (介護保険被保険者証).\n・People aged 40 to 64: your health insurance eligibility information needs to be confirmed.\n・On the application form, write the name, hospital, and address of your primary doctor.\n・Applications made on or after April 1, Reiwa 8 (2026) use a new form.\nThe steps are as follows.\n1. Submit your application.\n2. Town staff or others visit your home for a home-visit survey. The town also asks your primary doctor for a written opinion.\n3. A computer makes a determination, and the Long-Term Care Certification Review Committee (介護認定審査会) reviews it.\n4. The result is sent to you. The time from application to notification is set at within 30 days. If notification cannot be made within 30 days, a delay notice will be sent.\n5. Once the result is out, a care plan is made and you can use the services.\nInformation is on the town's official page \"Long-Term Care Certification\" (要介護認定). The PDFs of the application form and the power of attorney form are also on that page.",
+     "original": "要介護認定は、町の窓口で申請書を出して申し込みます。\n本人や家族のほか、地域包括支援センター・居宅介護支援事業者・介護保険施設も代行申請できます。\n窓口は、福祉こども部 高齢介護課（庁舎1階104番窓口）です。電話は 0276-63-3111 です。これは、ページの「問い合わせ先」の欄から読み取りました。\n持っていくものは次のとおりです。\n・65歳以上の人は、介護保険被保険者証。\n・40〜64歳の人は、医療保険の資格情報の確認が必要です。\n・申請書には主治医の氏名・病院・住所を書きます。\n・令和8年4月1日以降の申請は、新しい様式を使います。\n流れは次のとおりです。\n1. 申請します。\n2. 町職員などが家を訪ねて訪問調査をします。町から主治医に意見書も頼みます。\n3. コンピュータで判定し、介護認定審査会が審査します。\n4. 結果を通知します。申請から通知までは30日以内とされています。30日以内に通知できないときは、遅延通知を送ります。\n5. 結果が出たら、ケアプランを作ってサービスを使います。\n案内は、町の公式ページ「要介護認定」にあります。申請書・委任状のPDFもそのページにあります。",
+     "back": "要介護認定は、町の窓口で申請書を出して申し込みます。本人や家族のほか、地域包括支援センター・居宅介護支援事業者・介護保険施設も代行申請できます。窓口は、福祉こども部高齢介護課（庁舎1階104番窓口）です。電話は0276-63-3111です。これは、ページの「問い合わせ先」の欄から読み取りました。持っていくものは次のとおりです。・65歳以上の人は、介護保険被保険者証。・40〜64歳の人は、医療保険の資格情報の確認が必要です。・申請書には主治医の氏名・病院・住所を書きます。・令和8年4月1日以降の申請は、新しい様式を使います。流れは次のとおりです。1. 申請します。2. 町職員などが家を訪ねて訪問調査をします。町から主治医に意見書も頼みます。3. コンピュータで判定し、介護認定審査会が審査します。4. 結果を通知します。申請から通知までは30日以内とされています。30日以内に通知できないときは、遅延通知を送ります。5. 結果が出たら、ケアプランを作ってサービスを使います。案内は、町の公式ページ「要介護認定」にあります。申請書・委任状のPDFもそのページにあります。",
+     "source": {
+      "title": "要介護認定（大泉町）",
+      "url": "https://www.town.oizumi.gunma.jp/s015/kenko/010/010/020/20200722111952.html",
+      "where": "「要介護認定の申請」「持参するもの」「要介護認定審査」の各見出し、「このページに関する問い合わせ先」"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q64",
+     "short": "Town Clinics and Home-Visit Medical Care",
+     "text": "The 13 hospitals and clinics in the town are listed on the town's \"Medical Institution Information\" (医療機関情報) page.\nThe page gives each one's name, medical departments, address, phone number, and days closed.\nConsultation hours are not listed. The town advises calling to check before you go.\nWe could not find a page that gives information only on house calls or home-visit medical care. We also could not find how to request it.\nHome-visit nursing and in-home medical management guidance are listed as long-term care insurance services on the \"Using Long-Term Care Services\" (介護サービスの利用) page.\nHome services start with choosing a home-care support provider (居宅介護支援事業者) and asking them to make a care plan.\nThe names and phone numbers of home-visit nursing providers should be in the \"Oizumi Town Long-Term Care Insurance Provider List (PDF)\" (大泉町介護保険事業所一覧（PDF）), but this time it could not be read.\nThe consultation counter is the Community General Support Center (地域包括支援センター). The phone number is 0276-63-2294 (Monday to Friday, 8:30 a.m. to 5:15 p.m.).\nThe contact on the long-term care services page is the Elderly Care Division (高齢介護課) (0276-63-3111, Counter 104 on the 1st floor of the Town Office Building (庁舎)). This was read from the contact section; it is not written as a service counter.",
+     "original": "町内の病院・診療所13か所は、町の「医療機関情報」ページに載っています。\n名前・診療科目・住所・電話・休診日が書かれています。\n診療時間は載っていません。町は、電話で確認してから受診するよう案内しています。\n往診・訪問診療だけを案内するページは見つかりませんでした。頼み方も見つかりませんでした。\n訪問看護と居宅療養管理指導は、介護保険のサービスとして「介護サービスの利用」ページに載っています。\n在宅サービスは、居宅介護支援事業者を決めてケアプランの作成を頼むところから始まります。\n訪問看護の事業所名と電話番号は、「大泉町介護保険事業所一覧（PDF）」にあるはずですが、今回は読めていません。\n相談窓口は地域包括支援センターで、電話は0276-63-2294です（月〜金 午前8時30分〜午後5時15分）。\n介護サービスのページの問い合わせ先は、高齢介護課（0276-63-3111、庁舎1階104番窓口）です。これは問い合わせ先の欄から読み取ったもので、窓口として書かれているわけではありません。",
+     "back": "町内の病院・診療所13か所は、町の「医療機関情報」ページに載っています。名前・診療科目・住所・電話・休診日が書かれています。診療時間は載っていません。町は、電話で確認してから受診するよう案内しています。往診・訪問診療だけを案内するページは見つかりませんでした。頼み方も見つかりませんでした。訪問看護と居宅療養管理指導は、介護保険のサービスとして「介護サービスの利用」ページに載っています。在宅サービスは、居宅介護支援事業者を決めてケアプランの作成を頼むところから始まります。訪問看護の事業所名と電話番号は、「大泉町介護保険事業所一覧（PDF）」にあるはずですが、今回は読めていません。相談窓口は地域包括支援センターで、電話は0276-63-2294です（月〜金 午前8時30分〜午後5時15分）。介護サービスのページの問い合わせ先は、高齢介護課（0276-63-3111、庁舎1階104番窓口）です。これは問い合わせ先の欄から読み取ったもので、窓口として書かれているわけではありません。",
+     "source": {
+      "title": "医療機関情報（病院、診療所）｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s016/kenko/010/020/010/20200822195308.html",
+      "where": "大泉町の病院、診療所"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q67",
+     "short": "Support for Children's Travel to School",
+     "text": "We could not find, on the official website, any information on school buses, subsidies for commuting costs themselves, or transportation for children who commute long distances.\nA similar program is the School Attendance Assistance System (就学援助制度) (it helps pay for school supplies and similar costs).\nWho is eligible: Parents of children who live in the town and are enrolled in, or will enter, an elementary or junior high school, and who are receiving public assistance, are exempt from town resident tax or receive a reduction, receive Child Rearing Allowance, or have an income at or below 1.2 times the public assistance standard, among others. The Board of Education decides eligibility.\nHow to apply: Submit the application form with the necessary documents to the school.\nContact: Education Management Division (教育管理課), Education Department (教育部), Counter 214 on the 2nd floor of the Town Office Building (庁舎). Phone: 0276-63-3111.\nInformation on commuting transportation costs or bus timetables is not on the official pages we found.",
+     "original": "スクールバスや通学費そのものの助成、遠距離通学児童の送迎の案内は、公式サイトで見つかりませんでした。\n近い制度として就学援助制度があります（通学用品費などを援助）。\n対象：町内に住所があり、小・中学校に在学または入学予定の児童生徒の保護者で、生活保護を受けている人、町民税非課税や減免を受けている人、児童扶養手当を受けている人、収入が生活保護基準の1.2倍以下の人など。教育委員会が認定します。\n申し込み：申請書に必要書類を添えて学校へ提出します。\n問い合わせ：教育部 教育管理課（庁舎2階214番窓口）電話 0276-63-3111。\n通学の交通費やバスの時刻の案内は、見つかった公式ページにありません。",
+     "back": "スクールバスや通学費そのものの助成、遠距離通学児童の送迎の案内は、公式サイトで見つかりませんでした。近い制度として就学援助制度があります（通学用品費などを援助）。対象：町内に住所があり、小・中学校に在学または入学予定の児童生徒の保護者で、生活保護を受けている人、町民税非課税や減免を受けている人、児童扶養手当を受けている人、収入が生活保護基準の1.2倍以下の人など。教育委員会が認定します。申し込み：申請書に必要書類を添えて学校へ提出します。問い合わせ：教育部教育管理課（庁舎2階214番窓口）電話0276-63-3111。通学の交通費やバスの時刻の案内は、見つかった公式ページにありません。",
+     "source": {
+      "title": "就学援助制度｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s027/kosodate/030/010/20200813181011.html",
+      "where": "就学援助費（対象・援助内容・申請）"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q69",
+     "short": "Support for Using the Adult Guardianship System",
+     "text": "Oizumi Town has the \"Adult Guardianship System Use Support Program Subsidy\" (成年後見制度利用支援事業補助金) to help people use the adult guardianship system.\nIt covers costs (revenue stamps, registration stamps, postage stamps, medical certificates, and expert evaluation) when someone other than the town mayor files the petition.\nCompensation paid to adult guardians and similar roles is also covered. The upper limit is per month: 28,000 yen for those living at home and 18,000 yen for those living in a facility.\nThere is also a procedure in which the town mayor files the petition on the person's behalf. In this case, the town pays the filing fee, registration fee, and similar costs in advance. People who are able to bear these costs will be billed later.\nFor the Daily Life Independence Support Program (日常生活自立支援事業), we found no description of a program to help people use it on the town pages we checked.",
+     "original": "大泉町には、成年後見制度の利用を助ける「成年後見制度利用支援事業補助金」があります。\n町長以外の人が申立てをしたときの経費(収入印紙、登録印紙、郵便切手、診断書、鑑定)が対象です。\n成年後見人などへの報酬も対象です。上限は月額で、自宅は28,000円、施設入所は18,000円です。\n町長が代わりに申立てをする手続きもあります。この場合、申立手数料と登記手数料などは町があらかじめ負担します。負担できる人には、後日請求します。\n日常生活自立支援事業については、確認できた町のページに、利用を助ける制度の記載は見つかりませんでした。",
+     "back": "大泉町には、成年後見制度の利用を助ける「成年後見制度利用支援事業補助金」があります。町長以外の人が申立てをしたときの経費（収入印紙、登録印紙、郵便切手、診断書、鑑定）が対象です。成年後見人などへの報酬も対象です。上限は月額で、自宅は28,000円、施設入所は18,000円です。町長が代わりに申立てをする手続きもあります。この場合、申立手数料と登記手数料などは町があらかじめ負担します。負担できる人には、後日請求します。日常生活自立支援事業については、確認できた町のページに、利用を助ける制度の記載は見つかりませんでした。",
+     "source": {
+      "title": "成年後見制度について｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s014/kenko/010/010/300/20240104164049.html",
+      "where": "成年後見制度の利用支援や申立について／成年後見制度利用支援事業補助金"
+     },
+     "status": "auto",
+     "problems": []
     }
    ]
   },
@@ -2807,6 +3019,78 @@
      "problems": [
       "「貸し出しています」→「貸します」、「委託する」→「頼んでいる」、「安否確認」→「元気かどうか確かめる」、「電話機能なし」→「話す機能はない」、「慢性的な」→「長く続く」、「費用は無料」→「お金はかかりません（無料）」、「申請」→「申し込む」の言い換えなど。数字・日付・名前・電話番号・条件・場所は原文と同じで、足し引きや意味の変化はない。"
      ]
+    },
+    {
+     "qid": "Q53",
+     "short": "日本語教室（にほんごきょうしつ）と入学（にゅうがく）の案内（あんない）",
+     "text": "外国（がいこく）につながる子（こ）どもの入学（にゅうがく）の案内（あんない）は、町（まち）の「外国籍児童就学説明会（がいこくせきじどうしゅうがくせつめいかい）」のページで見（み）られます。\n令和9年4月に町立（ちょうりつ）小学校（しょうがっこう）に入学（にゅうがく）したい、外国籍（がいこくせき）の幼児（ようじ）の保護者（ほごしゃ）が対象（たいしょう）です。\n日時（にちじ）は令和8年8月31日（月）午後3時です。\n会場（かいじょう）は、役場（やくば）の1階（かい）にある多目的（たもくてき）ホールです（大泉町役場 1階 多目的ホール）。\n持（も）ち物（もの）は、開催通知書（かいさいつうちしょ）、在留（ざいりゅう）カード、母子健康手帳（ぼしけんこうてちょう）です。\nポルトガル語（ご）の通訳（つうやく）がついて説明（せつめい）します。\n日本語（にほんご）の勉強（べんきょう）の相談（そうだん）は、多文化共生（たぶんかきょうせい）コミュニティセンター（役場2階 多文化協働課206番）の 0276-62-6066 です。役場の代表（だいひょう）電話（でんわ）は 0276-63-3111 です。\n町（まち）の図書館（としょかん）（町立図書館）では、子（こ）ども向（む）けの「多言語（たげんご）サロン」を週（しゅう）2日（火曜日・木曜日）しています（令和4年度の町の資料）。\n日本語教室（にほんごきょうしつ）そのものの日時（にちじ）・場所（ばしょ）・申（もう）し込（こ）み先（さき）は、町の公式（こうしき）ページでは確認（かくにん）できませんでした。\n法務省（ほうむしょう）の資料（しりょう）には、交流協会（こうりゅうきょうかい）の日本語教室が案内（あんない）されている、と書（か）いてあります。",
+     "original": "外国につながる子どもの就学の案内は、町の「外国籍児童就学説明会」のページで見られます。\n令和9年4月に町立小学校へ入学を希望する外国籍の幼児の保護者が対象です。\n日時は令和8年8月31日（月）午後3時、会場は大泉町役場1階 多目的ホールです。\n持ち物は、開催通知書、在留カード、母子健康手帳です。\nポルトガル語の通訳つきで説明します。\n日本語学習の相談は、多文化共生コミュニティセンター（役場2階 多文化協働課206番）の 0276-62-6066（役場代表 0276-63-3111）です。\n町立図書館では、子ども向けの「多言語サロン」を週2日（火・木）に行っています（令和4年度の町の資料）。\n日本語教室そのものの日時・場所・申込先は、町の公式ページでは確認できませんでした。法務省の資料では、交流協会の日本語教室が案内されているとあります。",
+     "back": "外国につながる子どもの就学の案内は、町の「外国籍児童就学説明会」のページで見られます。令和9年4月に町立小学校へ入学を希望する外国籍の幼児の保護者が対象です。日時は令和8年8月31日（月）午後3時です。会場は、役場の1階にある多目的ホールです（大泉町役場 1階 多目的ホール）。持ち物は、開催通知書、在留カード、母子健康手帳です。ポルトガル語の通訳がついて説明します。日本語の勉強の相談は、多文化共生コミュニティセンター（役場2階 多文化協働課206番）の 0276-62-6066 です。役場の代表電話は 0276-63-3111 です。町の図書館（町立図書館）では、子ども向けの「多言語サロン」を週2日（火曜日・木曜日）しています（令和4年度の町の資料）。日本語教室そのものの日時・場所・申し込み先は、町の公式ページでは確認できませんでした。法務省の資料には、交流協会の日本語教室が案内されている、と書いてあります。",
+     "source": {
+      "title": "外国籍児童就学説明会を開催します｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s027/kosodate/020/080/20220719102528.html",
+      "where": "外国籍児童就学説明会（対象者・実施日時・会場・当日の持ち物）"
+     },
+     "status": "auto",
+     "problems": [
+      "「日本語学習」が「日本語の勉強」になっている。役場代表番号が別文で書かれ、括弧の付き方が変わっているが、中身は同じ。"
+     ]
+    },
+    {
+     "qid": "Q63",
+     "short": "介護（かいご）が必要（ひつよう）か決（き）める「要介護認定（ようかいごにんてい）」の申（もう）し込（こ）み",
+     "text": "要介護認定（ようかいごにんてい）は、町（まち）の窓口（まどぐち）に申請書（しんせいしょ）を出（だ）して申（もう）し込（こ）みます。\n本人（ほんにん）や家族（かぞく）のほか、地域包括支援センター（ちいきほうかつしえんセンター）・居宅介護支援事業者（きょたくかいごしえんじぎょうしゃ）・介護保険施設（かいごほけんしせつ）も、かわりに申請（しんせい）できます。\n窓口（まどぐち）は、福祉（ふくし）こども部（ぶ） 高齢介護課（こうれいかいごか）（庁舎（ちょうしゃ）1階（かい）104番窓口）です。電話（でんわ）は 0276-63-3111 です。この電話番号は、ページの「問（と）い合（あ）わせ先（さき）」のところから読（よ）み取（と）りました。\n持（も）っていくものは次（つぎ）のとおりです。\n・65歳（さい）以上（いじょう）の人（ひと）は、介護保険被保険者証（かいごほけんひほけんしゃしょう）。\n・40歳〜64歳の人は、医療保険（いりょうほけん）の資格（しかく）の情報（じょうほう）を確認（かくにん）する必要（ひつよう）があります。\n・申請書（しんせいしょ）には、主治医（しゅじい）の名前（なまえ）・病院（びょういん）・住所（じゅうしょ）を書（か）きます。\n・令和8年4月1日以降（いこう）の申請（しんせい）は、新（あたら）しい様式（ようしき）を使（つか）います。\n流（なが）れは次（つぎ）のとおりです。\n1. 申請（しんせい）します。\n2. 町（まち）の職員（しょくいん）などが家（いえ）を訪（たず）ねて、訪問調査（ほうもんちょうさ）をします。町から主治医（しゅじい）に意見書（いけんしょ）も頼（たの）みます。\n3. コンピュータで判定（はんてい）し、介護認定審査会（かいごにんていしんさかい）が審査（しんさ）します。\n4. 結果（けっか）を通知（つうち）します。申請（しんせい）から通知までは30日以内（いない）とされています。30日以内に通知できないときは、遅延通知（ちえんつうち）を送（おく）ります。\n5. 結果（けっか）が出（で）たら、ケアプランを作（つく）ってサービスを使（つか）います。\n案内（あんない）は、町の公式（こうしき）ページ「要介護認定」にあります。申請書（しんせいしょ）と委任状（いにんじょう）のPDFも、そのページにあります。",
+     "original": "要介護認定は、町の窓口で申請書を出して申し込みます。\n本人や家族のほか、地域包括支援センター・居宅介護支援事業者・介護保険施設も代行申請できます。\n窓口は、福祉こども部 高齢介護課（庁舎1階104番窓口）です。電話は 0276-63-3111 です。これは、ページの「問い合わせ先」の欄から読み取りました。\n持っていくものは次のとおりです。\n・65歳以上の人は、介護保険被保険者証。\n・40〜64歳の人は、医療保険の資格情報の確認が必要です。\n・申請書には主治医の氏名・病院・住所を書きます。\n・令和8年4月1日以降の申請は、新しい様式を使います。\n流れは次のとおりです。\n1. 申請します。\n2. 町職員などが家を訪ねて訪問調査をします。町から主治医に意見書も頼みます。\n3. コンピュータで判定し、介護認定審査会が審査します。\n4. 結果を通知します。申請から通知までは30日以内とされています。30日以内に通知できないときは、遅延通知を送ります。\n5. 結果が出たら、ケアプランを作ってサービスを使います。\n案内は、町の公式ページ「要介護認定」にあります。申請書・委任状のPDFもそのページにあります。",
+     "back": "要介護認定は、町の窓口で申請書を出して申し込みます。本人や家族のほか、地域包括支援センター・居宅介護支援事業者・介護保険施設も、かわりに申請できます。窓口は、福祉こども部 高齢介護課（庁舎1階104番窓口）です。電話は 0276-63-3111 です。この電話番号は、ページの「問い合わせ先」のところから読み取りました。持っていくものは次のとおりです。・65歳以上の人は、介護保険被保険者証。・40歳〜64歳の人は、医療保険の資格の情報を確認する必要があります。・申請書には、主治医の名前・病院・住所を書きます。・令和8年4月1日以降の申請は、新しい様式を使います。流れは次のとおりです。1. 申請します。2. 町の職員などが家を訪ねて、訪問調査をします。町から主治医に意見書も頼みます。3. コンピュータで判定し、介護認定審査会が審査します。4. 結果を通知します。申請から通知までは30日以内とされています。30日以内に通知できないときは、遅延通知を送ります。5. 結果が出たら、ケアプランを作ってサービスを使います。案内は、町の公式ページ「要介護認定」にあります。申請書と委任状のPDFも、そのページにあります。",
+     "source": {
+      "title": "要介護認定（大泉町）",
+      "url": "https://www.town.oizumi.gunma.jp/s015/kenko/010/010/020/20200722111952.html",
+      "where": "「要介護認定の申請」「持参するもの」「要介護認定審査」の各見出し、「このページに関する問い合わせ先」"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q64",
+     "short": "町（まち）の診療所（しんりょうじょ）と訪問診療（ほうもんしんりょう）",
+     "text": "町内（ちょうない）の病院（びょういん）・診療所（しんりょうじょ）13か所（しょ）は、町の「医療機関情報（いりょうきかんじょうほう）」のページに載（の）っています。\n名前（なまえ）・診療科目（しんりょうかもく）・住所（じゅうしょ）・電話（でんわ）・休診日（きゅうしんび）が書（か）いてあります。\n診療時間（しんりょうじかん）は載っていません。町は、電話で確認（かくにん）してから受診（じゅしん）するように案内（あんない）しています。\n往診（おうしん）・訪問診療（ほうもんしんりょう）だけを案内するページは、見（み）つかりませんでした。頼（たの）み方（かた）も見つかりませんでした。\n訪問看護（ほうもんかんご）と居宅療養管理指導（きょたくりょうようかんりしどう）は、介護保険（かいごほけん）のサービスとして「介護サービスの利用（りよう）」のページに載っています。\n在宅（ざいたく）サービスは、居宅介護支援事業者（きょたくかいごしえんじぎょうしゃ）を決（き）めて、ケアプランを作（つく）ってもらうように頼むところから始（はじ）まります。\n訪問看護の事業所（じぎょうしょ）の名前と電話番号は、「大泉町介護保険事業所一覧（おおいずみまちかいごほけんじぎょうしょいちらん）（PDF）」にあるはずですが、今回（こんかい）は読（よ）めませんでした。\n相談（そうだん）の窓口（まどぐち）は、地域包括支援センター（ちいきほうかつしえんセンター）です。電話は 0276-63-2294 です（月曜日〜金曜日 午前8時30分〜午後5時15分）。\n介護サービスのページの問い合わせ先は、高齢介護課（こうれいかいごか）（0276-63-3111、庁舎（ちょうしゃ）1階（かい）104番窓口）です。これは「問い合わせ先」のところから読み取ったものです。窓口として書かれているわけではありません。",
+     "original": "町内の病院・診療所13か所は、町の「医療機関情報」ページに載っています。\n名前・診療科目・住所・電話・休診日が書かれています。\n診療時間は載っていません。町は、電話で確認してから受診するよう案内しています。\n往診・訪問診療だけを案内するページは見つかりませんでした。頼み方も見つかりませんでした。\n訪問看護と居宅療養管理指導は、介護保険のサービスとして「介護サービスの利用」ページに載っています。\n在宅サービスは、居宅介護支援事業者を決めてケアプランの作成を頼むところから始まります。\n訪問看護の事業所名と電話番号は、「大泉町介護保険事業所一覧（PDF）」にあるはずですが、今回は読めていません。\n相談窓口は地域包括支援センターで、電話は0276-63-2294です（月〜金 午前8時30分〜午後5時15分）。\n介護サービスのページの問い合わせ先は、高齢介護課（0276-63-3111、庁舎1階104番窓口）です。これは問い合わせ先の欄から読み取ったもので、窓口として書かれているわけではありません。",
+     "back": "町内の病院・診療所13か所は、町の「医療機関情報」のページに載っています。名前・診療科目・住所・電話・休診日が書いてあります。診療時間は載っていません。町は、電話で確認してから受診するように案内しています。往診・訪問診療だけを案内するページは、見つかりませんでした。頼み方も見つかりませんでした。訪問看護と居宅療養管理指導は、介護保険のサービスとして「介護サービスの利用」のページに載っています。在宅サービスは、居宅介護支援事業者を決めて、ケアプランを作ってもらうように頼むところから始まります。訪問看護の事業所の名前と電話番号は、「大泉町介護保険事業所一覧（PDF）」にあるはずですが、今回は読めませんでした。相談の窓口は、地域包括支援センターです。電話は 0276-63-2294 です（月曜日〜金曜日 午前8時30分〜午後5時15分）。介護サービスのページの問い合わせ先は、高齢介護課（0276-63-3111、庁舎1階104番窓口）です。これは「問い合わせ先」のところから読み取ったものです。窓口として書かれているわけではありません。",
+     "source": {
+      "title": "医療機関情報（病院、診療所）｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s016/kenko/010/020/010/20200822195308.html",
+      "where": "大泉町の病院、診療所"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q67",
+     "short": "子（こ）どもの通学（つうがく）の支（ささ）え",
+     "text": "スクールバス、通学費（つうがくひ）そのものの助成（じょせい）、遠（とお）くから通（かよ）う児童（じどう）の送迎（そうげい）の案内（あんない）は、公式（こうしき）サイトでは見（み）つかりませんでした。\n近（ちか）い制度（せいど）として、就学援助制度（しゅうがくえんじょせいど）があります（通学用品費（つうがくようひんひ）などを援助（えんじょ）します）。\n対象（たいしょう）：町内（ちょうない）に住所（じゅうしょ）があり、小学校（しょうがっこう）・中学校（ちゅうがっこう）に通（かよ）っている、または入学（にゅうがく）する予定（よてい）の児童（じどう）・生徒（せいと）の保護者（ほごしゃ）で、次（つぎ）のような人（ひと）です。生活保護（せいかつほご）を受（う）けている人、町民税（ちょうみんぜい）が非課税（ひかぜい）の人や減免（げんめん）を受けている人、児童扶養手当（じどうふようてあて）を受けている人、収入（しゅうにゅう）が生活保護基準（せいかつほごきじゅん）の1.2倍（ばい）以下（いか）の人など。教育委員会（きょういくいいんかい）が認定（にんてい）します。\n申（もう）し込（こ）み：申請書（しんせいしょ）に必要（ひつよう）な書類（しょるい）をつけて、学校（がっこう）に出（だ）します。\n問（と）い合（あ）わせ：教育部（きょういくぶ） 教育管理課（きょういくかんりか）（庁舎（ちょうしゃ）2階（かい）214番窓口）電話（でんわ） 0276-63-3111。\n通学（つうがく）の交通費（こうつうひ）やバスの時刻（じこく）の案内は、見つかった公式ページにはありません。",
+     "original": "スクールバスや通学費そのものの助成、遠距離通学児童の送迎の案内は、公式サイトで見つかりませんでした。\n近い制度として就学援助制度があります（通学用品費などを援助）。\n対象：町内に住所があり、小・中学校に在学または入学予定の児童生徒の保護者で、生活保護を受けている人、町民税非課税や減免を受けている人、児童扶養手当を受けている人、収入が生活保護基準の1.2倍以下の人など。教育委員会が認定します。\n申し込み：申請書に必要書類を添えて学校へ提出します。\n問い合わせ：教育部 教育管理課（庁舎2階214番窓口）電話 0276-63-3111。\n通学の交通費やバスの時刻の案内は、見つかった公式ページにありません。",
+     "back": "スクールバス、通学費そのものの助成、遠くから通う児童の送迎の案内は、公式サイトでは見つかりませんでした。近い制度として、就学援助制度があります（通学用品費などを援助します）。対象：町内に住所があり、小学校・中学校に通っている、または入学する予定の児童・生徒の保護者で、次のような人です。生活保護を受けている人、町民税が非課税の人や減免を受けている人、児童扶養手当を受けている人、収入が生活保護基準の1.2倍以下の人など。教育委員会が認定します。申し込み：申請書に必要な書類をつけて、学校に出します。問い合わせ：教育部 教育管理課（庁舎2階214番窓口）電話 0276-63-3111。通学の交通費やバスの時刻の案内は、見つかった公式ページにはありません。",
+     "source": {
+      "title": "就学援助制度｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s027/kosodate/030/010/20200813181011.html",
+      "where": "就学援助費（対象・援助内容・申請）"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q69",
+     "short": "成年後見（せいねんこうけん）の利用支援（りようしえん）",
+     "text": "大泉町（おおいずみまち）には、成年後見制度（せいねんこうけんせいど）を使（つか）うのを助（たす）ける「成年後見制度利用支援事業補助金（せいねんこうけんせいどりようしえんじぎょうほじょきん）」があります。\n町長（ちょうちょう）以外（いがい）の人（ひと）が申立（もうした）てをしたときにかかるお金（かね）が対象（たいしょう）です（収入印紙（しゅうにゅういんし）、登録印紙（とうろくいんし）、郵便切手（ゆうびんきって）、診断書（しんだんしょ）、鑑定（かんてい））。\n成年後見人（せいねんこうけんにん）などへの報酬（ほうしゅう）も対象です。上限（じょうげん）は1か月（げつ）で、自宅（じたく）は28,000円、施設入所（しせつにゅうしょ）は18,000円です。\n町長が、かわりに申立てをする手続（てつづ）きもあります。この場合（ばあい）、申立手数料（もうしたててすうりょう）と登記手数料（とうきてすうりょう）などは、町があらかじめ払（はら）います。払（はら）える人には、あとで請求（せいきゅう）します。\n日常生活自立支援事業（にちじょうせいかつじりつしえんじぎょう）については、確認（かくにん）できた町のページに、利用（りよう）を助ける制度（せいど）の記載（きさい）は見つかりませんでした。",
+     "original": "大泉町には、成年後見制度の利用を助ける「成年後見制度利用支援事業補助金」があります。\n町長以外の人が申立てをしたときの経費(収入印紙、登録印紙、郵便切手、診断書、鑑定)が対象です。\n成年後見人などへの報酬も対象です。上限は月額で、自宅は28,000円、施設入所は18,000円です。\n町長が代わりに申立てをする手続きもあります。この場合、申立手数料と登記手数料などは町があらかじめ負担します。負担できる人には、後日請求します。\n日常生活自立支援事業については、確認できた町のページに、利用を助ける制度の記載は見つかりませんでした。",
+     "back": "大泉町には、成年後見制度を使うのを助ける「成年後見制度利用支援事業補助金」があります。町長以外の人が申立てをしたときにかかるお金が対象です（収入印紙、登録印紙、郵便切手、診断書、鑑定）。成年後見人などへの報酬も対象です。上限は1か月で、自宅は28,000円、施設入所は18,000円です。町長が、かわりに申立てをする手続きもあります。この場合、申立手数料と登記手数料などは、町があらかじめ払います。払える人には、あとで請求します。日常生活自立支援事業については、確認できた町のページに、利用を助ける制度の記載は見つかりませんでした。",
+     "source": {
+      "title": "成年後見制度について｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s014/kenko/010/010/300/20240104164049.html",
+      "where": "成年後見制度の利用支援や申立について／成年後見制度利用支援事業補助金"
+     },
+     "status": "auto",
+     "problems": []
     }
    ]
   },
@@ -3503,6 +3787,76 @@
      "problems": [
       "「kota/desa」は原文の「町」よりも広い言い方になっている。「town（町）」と訳すのが近い。"
      ]
+    },
+    {
+     "qid": "Q53",
+     "short": "Kelas Bahasa Jepang dan Informasi Masuk Sekolah",
+     "text": "Informasi masuk sekolah untuk anak-anak yang berlatar belakang asing dapat dilihat di halaman kota \"Sesi Penjelasan Masuk Sekolah untuk Anak Berkewarganegaraan Asing\" (外国籍児童就学説明会).\nSasarannya adalah wali dari anak usia prasekolah berkewarganegaraan asing yang ingin masuk sekolah dasar negeri kota pada bulan April Reiwa 9.\nWaktunya Senin, 31 Agustus Reiwa 8, pukul 3 sore. Tempatnya Aula Serbaguna (多目的ホール) di lantai 1 Kantor Pemerintah Kota Oizumi (大泉町役場).\nYang harus dibawa: surat pemberitahuan penyelenggaraan, kartu izin tinggal (在留カード), dan buku kesehatan ibu dan anak (母子健康手帳).\nPenjelasan diberikan dengan penerjemah bahasa Portugis.\nUntuk konsultasi belajar bahasa Jepang, hubungi Pusat Komunitas Hidup Bersama Multikultural (多文化共生コミュニティセンター) (Seksi Kerja Sama Multikultural (多文化協働課) ruang 206, lantai 2 kantor kota) di 0276-62-6066 (nomor utama kantor kota: 0276-63-3111).\nDi Perpustakaan Kota (町立図書館) diadakan \"Salon Multibahasa\" untuk anak-anak dua hari seminggu (Selasa dan Kamis) (menurut dokumen kota tahun fiskal Reiwa 4).\nJadwal, tempat, dan tempat pendaftaran kelas bahasa Jepang itu sendiri tidak dapat dipastikan di halaman resmi kota. Menurut dokumen Kementerian Kehakiman (法務省), kelas bahasa Jepang dari asosiasi pertukaran (交流協会) diinformasikan.",
+     "original": "外国につながる子どもの就学の案内は、町の「外国籍児童就学説明会」のページで見られます。\n令和9年4月に町立小学校へ入学を希望する外国籍の幼児の保護者が対象です。\n日時は令和8年8月31日（月）午後3時、会場は大泉町役場1階 多目的ホールです。\n持ち物は、開催通知書、在留カード、母子健康手帳です。\nポルトガル語の通訳つきで説明します。\n日本語学習の相談は、多文化共生コミュニティセンター（役場2階 多文化協働課206番）の 0276-62-6066（役場代表 0276-63-3111）です。\n町立図書館では、子ども向けの「多言語サロン」を週2日（火・木）に行っています（令和4年度の町の資料）。\n日本語教室そのものの日時・場所・申込先は、町の公式ページでは確認できませんでした。法務省の資料では、交流協会の日本語教室が案内されているとあります。",
+     "back": "外国につながる子どもの就学の案内は、町の「外国籍児童就学説明会」のページで見られます。令和9年4月に町立小学校へ入学を希望する外国籍の幼児の保護者が対象です。日時は令和8年8月31日（月）午後3時、会場は大泉町役場1階 多目的ホールです。持ち物は、開催通知書、在留カード、母子健康手帳です。ポルトガル語の通訳つきで説明します。日本語学習の相談は、多文化共生コミュニティセンター（役場2階 多文化協働課206番）の 0276-62-6066（役場代表 0276-63-3111）です。町立図書館では、子ども向けの「多言語サロン」を週2日（火・木）に行っています（令和4年度の町の資料）。日本語教室そのものの日時・場所・申込先は、町の公式ページでは確認できませんでした。法務省の資料では、交流協会の日本語教室が案内されているとあります。",
+     "source": {
+      "title": "外国籍児童就学説明会を開催します｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s027/kosodate/020/080/20220719102528.html",
+      "where": "外国籍児童就学説明会（対象者・実施日時・会場・当日の持ち物）"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q63",
+     "short": "Mengajukan Sertifikasi Kebutuhan Perawatan",
+     "text": "Sertifikasi kebutuhan perawatan (要介護認定) diajukan dengan menyerahkan formulir permohonan di loket kota.\nSelain yang bersangkutan atau keluarganya, Pusat Dukungan Komprehensif Regional (地域包括支援センター), penyelenggara dukungan perawatan di rumah (居宅介護支援事業者), dan fasilitas asuransi perawatan (介護保険施設) juga dapat mengajukan sebagai wakil.\nLoketnya ada di Seksi Lansia dan Perawatan (高齢介護課), Departemen Kesejahteraan dan Anak (福祉こども部), loket nomor 104 di lantai 1 gedung kantor. Teleponnya 0276-63-3111. Informasi ini dibaca dari kolom \"Kontak\" di halaman tersebut.\nYang harus dibawa:\n・Bagi yang berusia 65 tahun ke atas: kartu peserta asuransi perawatan (介護保険被保険者証).\n・Bagi yang berusia 40–64 tahun: diperlukan konfirmasi informasi kepesertaan asuransi kesehatan.\n・Pada formulir permohonan, tulis nama dokter utama, nama rumah sakit, dan alamatnya.\n・Permohonan mulai 1 April Reiwa 8 memakai formulir baru.\nAlurnya:\n1. Ajukan permohonan.\n2. Petugas kota dan lainnya datang ke rumah untuk survei kunjungan. Kota juga meminta surat pendapat kepada dokter utama.\n3. Penilaian dilakukan dengan komputer, lalu diperiksa oleh Komite Penilaian Sertifikasi Perawatan (介護認定審査会).\n4. Hasil diberitahukan. Pemberitahuan hasil diperkirakan paling lambat 30 hari sejak pengajuan. Jika tidak bisa diberitahukan dalam 30 hari, akan dikirim pemberitahuan keterlambatan.\n5. Setelah hasil keluar, susun rencana perawatan (ケアプラン) lalu gunakan layanan.\nPanduannya ada di halaman resmi kota \"Sertifikasi Kebutuhan Perawatan\" (要介護認定). PDF formulir permohonan dan surat kuasa juga ada di halaman itu.",
+     "original": "要介護認定は、町の窓口で申請書を出して申し込みます。\n本人や家族のほか、地域包括支援センター・居宅介護支援事業者・介護保険施設も代行申請できます。\n窓口は、福祉こども部 高齢介護課（庁舎1階104番窓口）です。電話は 0276-63-3111 です。これは、ページの「問い合わせ先」の欄から読み取りました。\n持っていくものは次のとおりです。\n・65歳以上の人は、介護保険被保険者証。\n・40〜64歳の人は、医療保険の資格情報の確認が必要です。\n・申請書には主治医の氏名・病院・住所を書きます。\n・令和8年4月1日以降の申請は、新しい様式を使います。\n流れは次のとおりです。\n1. 申請します。\n2. 町職員などが家を訪ねて訪問調査をします。町から主治医に意見書も頼みます。\n3. コンピュータで判定し、介護認定審査会が審査します。\n4. 結果を通知します。申請から通知までは30日以内とされています。30日以内に通知できないときは、遅延通知を送ります。\n5. 結果が出たら、ケアプランを作ってサービスを使います。\n案内は、町の公式ページ「要介護認定」にあります。申請書・委任状のPDFもそのページにあります。",
+     "back": "要介護認定は、町の窓口で申請書を出して申し込みます。本人や家族のほか、地域包括支援センター・居宅介護支援事業者・介護保険施設も代行申請できます。窓口は、福祉こども部 高齢介護課（庁舎1階104番窓口）です。電話は 0276-63-3111 です。これは、ページの「問い合わせ先」の欄から読み取りました。持っていくものは次のとおりです。・65歳以上の人は、介護保険被保険者証。・40〜64歳の人は、医療保険の資格情報の確認が必要です。・申請書には主治医の氏名・病院・住所を書きます。・令和8年4月1日以降の申請は、新しい様式を使います。流れは次のとおりです。1. 申請します。2. 町職員などが家を訪ねて訪問調査をします。町から主治医に意見書も頼みます。3. コンピュータで判定し、介護認定審査会が審査します。4. 結果を通知します。申請から通知までは30日以内とされています。30日以内に通知できないときは、遅延通知を送ります。5. 結果が出たら、ケアプランを作ってサービスを使います。案内は、町の公式ページ「要介護認定」にあります。申請書・委任状のPDFもそのページにあります。",
+     "source": {
+      "title": "要介護認定（大泉町）",
+      "url": "https://www.town.oizumi.gunma.jp/s015/kenko/010/010/020/20200722111952.html",
+      "where": "「要介護認定の申請」「持参するもの」「要介護認定審査」の各見出し、「このページに関する問い合わせ先」"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q64",
+     "short": "Klinik Kota dan Kunjungan Dokter ke Rumah",
+     "text": "Tiga belas rumah sakit dan klinik di dalam kota tercantum di halaman kota \"Informasi Fasilitas Medis\" (医療機関情報).\nDi sana tertulis nama, bidang pelayanan, alamat, telepon, dan hari libur.\nJam praktik tidak dicantumkan. Kota menyarankan agar menelepon dan memastikan dulu sebelum berobat.\nHalaman yang khusus menjelaskan kunjungan dokter ke rumah (往診・訪問診療) tidak ditemukan. Cara memintanya juga tidak ditemukan.\nPerawatan kunjungan (訪問看護) dan bimbingan manajemen perawatan medis di rumah (居宅療養管理指導) dicantumkan sebagai layanan asuransi perawatan di halaman \"Penggunaan Layanan Perawatan\" (介護サービスの利用).\nLayanan di rumah dimulai dengan menentukan penyelenggara dukungan perawatan di rumah (居宅介護支援事業者) dan meminta penyusunan rencana perawatan (ケアプラン).\nNama dan nomor telepon penyelenggara perawatan kunjungan seharusnya ada di \"Daftar Penyelenggara Asuransi Perawatan Kota Oizumi (PDF)\" (大泉町介護保険事業所一覧), tetapi kali ini belum dapat dibaca.\nTempat konsultasi adalah Pusat Dukungan Komprehensif Regional (地域包括支援センター), telepon 0276-63-2294 (Senin–Jumat, pukul 08.30–17.15).\nKontak di halaman layanan perawatan adalah Seksi Lansia dan Perawatan (高齢介護課) (0276-63-3111, loket nomor 104 di lantai 1 gedung kantor). Informasi ini dibaca dari kolom kontak, bukan tertulis sebagai loket layanan.",
+     "original": "町内の病院・診療所13か所は、町の「医療機関情報」ページに載っています。\n名前・診療科目・住所・電話・休診日が書かれています。\n診療時間は載っていません。町は、電話で確認してから受診するよう案内しています。\n往診・訪問診療だけを案内するページは見つかりませんでした。頼み方も見つかりませんでした。\n訪問看護と居宅療養管理指導は、介護保険のサービスとして「介護サービスの利用」ページに載っています。\n在宅サービスは、居宅介護支援事業者を決めてケアプランの作成を頼むところから始まります。\n訪問看護の事業所名と電話番号は、「大泉町介護保険事業所一覧（PDF）」にあるはずですが、今回は読めていません。\n相談窓口は地域包括支援センターで、電話は0276-63-2294です（月〜金 午前8時30分〜午後5時15分）。\n介護サービスのページの問い合わせ先は、高齢介護課（0276-63-3111、庁舎1階104番窓口）です。これは問い合わせ先の欄から読み取ったもので、窓口として書かれているわけではありません。",
+     "back": "町内の病院・診療所13か所は、町の「医療機関情報」ページに載っています。名前・診療科目・住所・電話・休診日が書かれています。診療時間は載っていません。町は、電話で確認してから受診するよう案内しています。往診・訪問診療だけを案内するページは見つかりませんでした。頼み方も見つかりませんでした。訪問看護と居宅療養管理指導は、介護保険のサービスとして「介護サービスの利用」ページに載っています。在宅サービスは、居宅介護支援事業者を決めてケアプランの作成を頼むところから始まります。訪問看護の事業所名と電話番号は、「大泉町介護保険事業所一覧（PDF）」にあるはずですが、今回は読めていません。相談窓口は地域包括支援センターで、電話は0276-63-2294です（月〜金 午前8時30分〜午後5時15分）。介護サービスのページの問い合わせ先は、高齢介護課（0276-63-3111、庁舎1階104番窓口）です。これは問い合わせ先の欄から読み取ったもので、窓口として書かれているわけではありません。",
+     "source": {
+      "title": "医療機関情報（病院、診療所）｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s016/kenko/010/020/010/20200822195308.html",
+      "where": "大泉町の病院、診療所"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q67",
+     "short": "Dukungan untuk Perjalanan Anak ke Sekolah",
+     "text": "Bus sekolah, subsidi biaya transportasi ke sekolah itu sendiri, maupun layanan antar-jemput bagi anak yang bersekolah jauh tidak ditemukan di situs resmi.\nSebagai program yang paling dekat, ada sistem bantuan sekolah (就学援助制度) (membantu biaya perlengkapan sekolah dan lainnya).\nSasaran: wali murid dari siswa SD/SMP yang beralamat di dalam kota dan sedang bersekolah atau akan masuk sekolah, yaitu mereka yang menerima bantuan sosial (生活保護), yang bebas pajak penduduk kota atau mendapat keringanan, yang menerima tunjangan pengasuhan anak (児童扶養手当), atau yang pendapatannya 1,2 kali standar bantuan sosial atau kurang, dan sebagainya. Dewan pendidikan (教育委員会) yang menetapkan.\nCara mendaftar: serahkan formulir permohonan beserta dokumen yang diperlukan ke sekolah.\nKontak: Seksi Manajemen Pendidikan (教育管理課), Departemen Pendidikan (教育部) (loket nomor 214, lantai 2 gedung kantor), telepon 0276-63-3111.\nInformasi tentang ongkos transportasi ke sekolah dan jadwal bus tidak ada di halaman resmi yang ditemukan.",
+     "original": "スクールバスや通学費そのものの助成、遠距離通学児童の送迎の案内は、公式サイトで見つかりませんでした。\n近い制度として就学援助制度があります（通学用品費などを援助）。\n対象：町内に住所があり、小・中学校に在学または入学予定の児童生徒の保護者で、生活保護を受けている人、町民税非課税や減免を受けている人、児童扶養手当を受けている人、収入が生活保護基準の1.2倍以下の人など。教育委員会が認定します。\n申し込み：申請書に必要書類を添えて学校へ提出します。\n問い合わせ：教育部 教育管理課（庁舎2階214番窓口）電話 0276-63-3111。\n通学の交通費やバスの時刻の案内は、見つかった公式ページにありません。",
+     "back": "スクールバスや通学費そのものの助成、遠距離通学児童の送迎の案内は、公式サイトで見つかりませんでした。近い制度として就学援助制度があります（通学用品費などを援助）。対象：町内に住所があり、小・中学校に在学または入学予定の児童生徒の保護者で、生活保護を受けている人、町民税非課税や減免を受けている人、児童扶養手当を受けている人、収入が生活保護基準の1.2倍以下の人など。教育委員会が認定します。申し込み：申請書に必要書類を添えて学校へ提出します。問い合わせ：教育部 教育管理課（庁舎2階214番窓口）電話 0276-63-3111。通学の交通費やバスの時刻の案内は、見つかった公式ページにありません。",
+     "source": {
+      "title": "就学援助制度｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s027/kosodate/030/010/20200813181011.html",
+      "where": "就学援助費（対象・援助内容・申請）"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q69",
+     "short": "Dukungan Penggunaan Perwalian Dewasa",
+     "text": "Kota Oizumi memiliki \"Subsidi Program Dukungan Penggunaan Sistem Perwalian Dewasa\" (成年後見制度利用支援事業補助金) untuk membantu penggunaan sistem perwalian dewasa.\nYang ditanggung adalah biaya pengajuan permohonan oleh orang selain wali kota (meterai pendapatan, meterai pendaftaran, prangko, surat keterangan dokter, dan pemeriksaan kejiwaan/penilaian).\nHonorarium bagi wali dewasa dan sebagainya juga ditanggung. Batasnya per bulan: 28.000 yen untuk yang tinggal di rumah, dan 18.000 yen untuk yang tinggal di fasilitas.\nAda juga prosedur ketika wali kota mengajukan permohonan sebagai pengganti. Dalam hal ini, biaya permohonan dan biaya pendaftaran dan sebagainya ditanggung kota terlebih dahulu. Bagi yang mampu menanggungnya, kota akan menagihnya kemudian.\nMengenai Program Dukungan Kemandirian Hidup Sehari-hari (日常生活自立支援事業), tidak ditemukan keterangan tentang sistem bantuan penggunaannya di halaman kota yang dapat dipastikan.",
+     "original": "大泉町には、成年後見制度の利用を助ける「成年後見制度利用支援事業補助金」があります。\n町長以外の人が申立てをしたときの経費(収入印紙、登録印紙、郵便切手、診断書、鑑定)が対象です。\n成年後見人などへの報酬も対象です。上限は月額で、自宅は28,000円、施設入所は18,000円です。\n町長が代わりに申立てをする手続きもあります。この場合、申立手数料と登記手数料などは町があらかじめ負担します。負担できる人には、後日請求します。\n日常生活自立支援事業については、確認できた町のページに、利用を助ける制度の記載は見つかりませんでした。",
+     "back": "大泉町には、成年後見制度の利用を助ける「成年後見制度利用支援事業補助金」があります。町長以外の人が申立てをしたときの経費（収入印紙、登録印紙、郵便切手、診断書、鑑定）が対象です。成年後見人などへの報酬も対象です。上限は月額で、自宅は28,000円、施設入所は18,000円です。町長が代わりに申立てをする手続きもあります。この場合、申立手数料と登記手数料などは町があらかじめ負担します。負担できる人には、後日請求します。日常生活自立支援事業については、確認できた町のページに、利用を助ける制度の記載は見つかりませんでした。",
+     "source": {
+      "title": "成年後見制度について｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s014/kenko/010/010/300/20240104164049.html",
+      "where": "成年後見制度の利用支援や申立について／成年後見制度利用支援事業補助金"
+     },
+     "status": "auto",
+     "problems": []
     }
    ]
   },
@@ -4192,6 +4546,81 @@
      "problems": [
       "「町」が「市（नगरपालिका）」になっている。自治体の種類を示す語の違いで、同じ自治体を指しているため意味は変わらない。ただし原文に合わせるなら「町」に統一するとよい。"
      ]
+    },
+    {
+     "qid": "Q53",
+     "short": "जापानी भाषा कक्षा र विद्यालय भर्ना जानकारी",
+     "text": "विदेशसँग सम्बन्धित बालबालिकाको विद्यालय भर्ना सम्बन्धी जानकारी नगरको \"विदेशी राष्ट्रियता भएका बालबालिकाको विद्यालय भर्ना बैठक\" (外国籍児童就学説明会) पृष्ठमा हेर्न सकिन्छ।\n令和9年4月 मा नगरपालिका सञ्चालित प्राथमिक विद्यालय (町立小学校) मा भर्ना हुन चाहने विदेशी राष्ट्रियता भएका बालबालिकाका अभिभावक यसका लागि लक्षित हुन्।\nमिति र समय: 令和8年8月31日（月・सोमबार）दिउँसो 3 बजे। स्थान: ओइज्युमी नगर कार्यालय (大泉町役場) को पहिलो तल्लाको बहुउद्देश्यीय हल (1階 多目的ホール)।\nल्याउनुपर्ने कागजात: बैठक सम्बन्धी सूचना पत्र (開催通知書), निवास कार्ड (在留カード), मातृ तथा बाल स्वास्थ्य पुस्तिका (母子健康手帳)।\nपोर्तुगाली भाषाको दोभाषेसहित जानकारी दिइनेछ।\nजापानी भाषा सिकाइ सम्बन्धी परामर्शका लागि बहुसांस्कृतिक सहअस्तित्व सामुदायिक केन्द्र (多文化共生コミュニティセンター) (नगर कार्यालय दोस्रो तल्ला, बहुसांस्कृतिक सहकार्य शाखा (多文化協働課) कोठा नम्बर 206) मा 0276-62-6066 मा सम्पर्क गर्नुहोस् (नगर कार्यालयको मुख्य नम्बर 0276-63-3111)।\nनगर पुस्तकालय (町立図書館) मा बालबालिकाका लागि \"बहुभाषिक सैलुन\" (多言語サロン) हप्तामा 2 दिन (मंगलबार र बिहीबार) सञ्चालन हुन्छ (令和4年度 को नगरको सामग्री अनुसार)।\nजापानी भाषा कक्षा आफैँको मिति, समय, स्थान र आवेदन दिने ठाउँ नगरको आधिकारिक पृष्ठमा पुष्टि गर्न सकिएन। न्याय मन्त्रालय (法務省) को सामग्रीमा आदानप्रदान संघ (交流協会) को जापानी भाषा कक्षा उल्लेख गरिएको छ।",
+     "original": "外国につながる子どもの就学の案内は、町の「外国籍児童就学説明会」のページで見られます。\n令和9年4月に町立小学校へ入学を希望する外国籍の幼児の保護者が対象です。\n日時は令和8年8月31日（月）午後3時、会場は大泉町役場1階 多目的ホールです。\n持ち物は、開催通知書、在留カード、母子健康手帳です。\nポルトガル語の通訳つきで説明します。\n日本語学習の相談は、多文化共生コミュニティセンター（役場2階 多文化協働課206番）の 0276-62-6066（役場代表 0276-63-3111）です。\n町立図書館では、子ども向けの「多言語サロン」を週2日（火・木）に行っています（令和4年度の町の資料）。\n日本語教室そのものの日時・場所・申込先は、町の公式ページでは確認できませんでした。法務省の資料では、交流協会の日本語教室が案内されているとあります。",
+     "back": "外国につながる子どもの就学案内は、町の「外国籍児童就学説明会」ページで見られます。令和9年4月に町立小学校への入学を希望する外国籍の子どもの保護者が対象です。日時は令和8年8月31日（月）午後3時、会場は大泉町役場1階多目的ホールです。持ち物は開催通知書、在留カード、母子健康手帳です。ポルトガル語の通訳つきで説明します。日本語学習の相談は、多文化共生コミュニティセンター（役場2階 多文化協働課206番）0276-62-6066（役場代表0276-63-3111）です。町立図書館では、子ども向けの「多言語サロン」を週2日（火・木）に行っています（令和4年度の町の資料）。日本語教室の日時・場所・申込先は町の公式ページでは確認できませんでした。法務省の資料では、交流協会の日本語教室が案内されています。",
+     "source": {
+      "title": "外国籍児童就学説明会を開催します｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s027/kosodate/020/080/20220719102528.html",
+      "where": "外国籍児童就学説明会（対象者・実施日時・会場・当日の持ち物）"
+     },
+     "status": "auto",
+     "problems": [
+      "原文の「幼児の保護者」の「幼児」が訳で「बालबालिका（子ども）」になり、幼児という限定が抜けている。対象者の意味はほぼ同じ。"
+     ]
+    },
+    {
+     "qid": "Q63",
+     "short": "दीर्घकालीन स्याहार आवश्यकता प्रमाणीकरणको आवेदन",
+     "text": "दीर्घकालीन स्याहार आवश्यकता प्रमाणीकरण (要介護認定) का लागि नगरको कार्यालयमा आवेदन फारम बुझाएर आवेदन दिनुपर्छ।\nआफैँ वा परिवारका सदस्यका अतिरिक्त क्षेत्रीय समग्र सहायता केन्द्र (地域包括支援センター), घरमै स्याहार सहयोग सेवा प्रदायक (居宅介護支援事業者) र दीर्घकालीन स्याहार बीमा संस्था (介護保険施設) ले पनि प्रतिनिधिका रूपमा आवेदन दिन सक्छन्।\nकाउन्टर: कल्याण तथा बाल विभाग वृद्ध स्याहार शाखा (福祉こども部 高齢介護課) (नगर भवन पहिलो तल्ला, काउन्टर नम्बर 104)। फोन: 0276-63-3111। यो जानकारी पृष्ठको \"सम्पर्क ठेगाना\" (問い合わせ先) खण्डबाट लिइएको हो।\nसाथमा लिएर जानुपर्ने कुरा:\n・65 वर्ष वा माथिका व्यक्ति: दीर्घकालीन स्याहार बीमा बीमित कार्ड (介護保険被保険者証)।\n・40 देखि 64 वर्षका व्यक्ति: चिकित्सा बीमाको योग्यता जानकारी पुष्टि गर्नुपर्छ।\n・आवेदन फारममा मुख्य उपचार गर्ने डाक्टर (主治医) को नाम, अस्पताल र ठेगाना लेख्नुपर्छ।\n・令和8年4月1日 पछिका आवेदनमा नयाँ ढाँचा प्रयोग गरिन्छ।\nप्रक्रिया यस प्रकार छ:\n1. आवेदन दिनुहोस्।\n2. नगरका कर्मचारी आदिले घरमा आएर भेटघाट गरी सोधपुछ गर्छन् (訪問調査)। नगरले मुख्य डाक्टरसँग राय-पत्र (意見書) पनि मगाउँछ।\n3. कम्प्युटरबाट मूल्यांकन गरिन्छ र दीर्घकालीन स्याहार प्रमाणीकरण समीक्षा समिति (介護認定審査会) ले समीक्षा गर्छ।\n4. नतिजा जानकारी गराइन्छ। आवेदन दिएदेखि सूचना दिनेसम्म 30 दिनभित्र हुने भनिएको छ। 30 दिनभित्र सूचना दिन नसकिए ढिलाइ सम्बन्धी सूचना (遅延通知) पठाइन्छ।\n5. नतिजा आएपछि स्याहार योजना (ケアプラン) बनाएर सेवा प्रयोग गर्न सकिन्छ।\nजानकारी नगरको आधिकारिक पृष्ठ \"要介護認定\" मा छ। आवेदन फारम र अख्तियारनामा (委任状) को PDF पनि त्यही पृष्ठमा छ।",
+     "original": "要介護認定は、町の窓口で申請書を出して申し込みます。\n本人や家族のほか、地域包括支援センター・居宅介護支援事業者・介護保険施設も代行申請できます。\n窓口は、福祉こども部 高齢介護課（庁舎1階104番窓口）です。電話は 0276-63-3111 です。これは、ページの「問い合わせ先」の欄から読み取りました。\n持っていくものは次のとおりです。\n・65歳以上の人は、介護保険被保険者証。\n・40〜64歳の人は、医療保険の資格情報の確認が必要です。\n・申請書には主治医の氏名・病院・住所を書きます。\n・令和8年4月1日以降の申請は、新しい様式を使います。\n流れは次のとおりです。\n1. 申請します。\n2. 町職員などが家を訪ねて訪問調査をします。町から主治医に意見書も頼みます。\n3. コンピュータで判定し、介護認定審査会が審査します。\n4. 結果を通知します。申請から通知までは30日以内とされています。30日以内に通知できないときは、遅延通知を送ります。\n5. 結果が出たら、ケアプランを作ってサービスを使います。\n案内は、町の公式ページ「要介護認定」にあります。申請書・委任状のPDFもそのページにあります。",
+     "back": "要介護認定は、町の窓口で申請書を出して申し込みます。本人や家族のほか、地域包括支援センター・居宅介護支援事業者・介護保険施設も代行申請できます。窓口は福祉こども部高齢介護課（庁舎1階104番窓口）です。電話は0276-63-3111です。これはページの「問い合わせ先」の欄から読み取りました。持っていくものは次のとおりです。65歳以上の人は介護保険被保険者証。40〜64歳の人は医療保険の資格情報の確認が必要です。申請書には主治医の氏名・病院・住所を書きます。令和8年4月1日以降の申請は新しい様式を使います。流れは次のとおりです。1. 申請します。2. 町職員などが家を訪ねて訪問調査をします。町から主治医に意見書も頼みます。3. コンピュータで判定し、介護認定審査会が審査します。4. 結果を通知します。申請から通知まで30日以内とされ、超える場合は遅延通知を送ります。5. 結果が出たら、ケアプランを作ってサービスを使います。案内は町の公式ページ「要介護認定」にあり、申請書・委任状のPDFもそのページにあります。",
+     "source": {
+      "title": "要介護認定（大泉町）",
+      "url": "https://www.town.oizumi.gunma.jp/s015/kenko/010/010/020/20200722111952.html",
+      "where": "「要介護認定の申請」「持参するもの」「要介護認定審査」の各見出し、「このページに関する問い合わせ先」"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q64",
+     "short": "नगरका क्लिनिक र घरमै उपचार",
+     "text": "नगरभित्रका 13 वटा अस्पताल र क्लिनिक नगरको \"चिकित्सा संस्था जानकारी\" (医療機関情報) पृष्ठमा सूचीबद्ध छन्।\nत्यहाँ नाम, उपचार विभाग, ठेगाना, फोन र बन्द रहने दिन लेखिएको छ।\nउपचार समय दिइएको छैन। नगरले फोनबाट पुष्टि गरेर मात्र जान सुझाव दिएको छ।\nघरमै आएर जाँच (往診) वा घरमै उपचार (訪問診療) मात्र जानकारी दिने पृष्ठ भेटिएन। अनुरोध गर्ने तरिका पनि भेटिएन।\nघरमा आएर नर्सिङ (訪問看護) र घरमै औषधि तथा उपचार सम्बन्धी निर्देशन (居宅療養管理指導) दीर्घकालीन स्याहार बीमाका सेवाका रूपमा \"दीर्घकालीन स्याहार सेवाको प्रयोग\" (介護サービスの利用) पृष्ठमा उल्लेख छन्।\nघरमै लिने सेवा घरमै स्याहार सहयोग सेवा प्रदायक (居宅介護支援事業者) छानेर स्याहार योजना (ケアプラン) बनाउन अनुरोध गर्नेबाट सुरु हुन्छ।\nघरमा आएर नर्सिङ दिने संस्थाको नाम र फोन नम्बर \"ओइज्युमी नगर दीर्घकालीन स्याहार बीमा संस्था सूची (PDF)\" (大泉町介護保険事業所一覧（PDF）) मा हुनुपर्ने हो, तर यसपटक पढ्न सकिएको छैन।\nपरामर्श केन्द्र: क्षेत्रीय समग्र सहायता केन्द्र (地域包括支援センター), फोन 0276-63-2294 (सोमबारदेखि शुक्रबार, बिहान 8:30 देखि साँझ 5:15 सम्म)।\nदीर्घकालीन स्याहार सेवा पृष्ठको सम्पर्क ठेगाना वृद्ध स्याहार शाखा (高齢介護課) (0276-63-3111, नगर भवन पहिलो तल्ला काउन्टर नम्बर 104) हो। यो सम्पर्क ठेगाना खण्डबाट लिइएको हो, काउन्टरका रूपमा नै लेखिएको भने होइन।",
+     "original": "町内の病院・診療所13か所は、町の「医療機関情報」ページに載っています。\n名前・診療科目・住所・電話・休診日が書かれています。\n診療時間は載っていません。町は、電話で確認してから受診するよう案内しています。\n往診・訪問診療だけを案内するページは見つかりませんでした。頼み方も見つかりませんでした。\n訪問看護と居宅療養管理指導は、介護保険のサービスとして「介護サービスの利用」ページに載っています。\n在宅サービスは、居宅介護支援事業者を決めてケアプランの作成を頼むところから始まります。\n訪問看護の事業所名と電話番号は、「大泉町介護保険事業所一覧（PDF）」にあるはずですが、今回は読めていません。\n相談窓口は地域包括支援センターで、電話は0276-63-2294です（月〜金 午前8時30分〜午後5時15分）。\n介護サービスのページの問い合わせ先は、高齢介護課（0276-63-3111、庁舎1階104番窓口）です。これは問い合わせ先の欄から読み取ったもので、窓口として書かれているわけではありません。",
+     "back": "町内の病院・診療所13か所は、町の「医療機関情報」ページに載っています。名前・診療科目・住所・電話・休診日が書かれています。診療時間は載っていません。町は、電話で確認してから受診するよう案内しています。往診・訪問診療だけを案内するページは見つかりませんでした。頼み方も見つかりませんでした。訪問看護と居宅療養管理指導は、介護保険のサービスとして「介護サービスの利用」ページに載っています。在宅サービスは、居宅介護支援事業者を決めてケアプランの作成を頼むところから始まります。訪問看護の事業所名と電話番号は「大泉町介護保険事業所一覧（PDF）」にあるはずですが、今回は読めていません。相談窓口は地域包括支援センターで、電話は0276-63-2294です（月〜金 午前8時30分〜午後5時15分）。介護サービスのページの問い合わせ先は高齢介護課（0276-63-3111、庁舎1階104番窓口）です。これは問い合わせ先の欄から読み取ったもので、窓口として書かれているわけではありません。",
+     "source": {
+      "title": "医療機関情報（病院、診療所）｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s016/kenko/010/020/010/20200822195308.html",
+      "where": "大泉町の病院、診療所"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q67",
+     "short": "बालबालिकाको विद्यालय आवतजावतमा सहयोग",
+     "text": "स्कुल बस वा विद्यालय जाने खर्चमा आफैँ अनुदान, टाढाबाट विद्यालय जाने बालबालिकाको ओसारपसार सम्बन्धी जानकारी आधिकारिक वेबसाइटमा भेटिएन।\nनजिकको व्यवस्थाका रूपमा विद्यालय भर्ना सहायता प्रणाली (就学援助制度) छ (विद्यालय जाने सामग्री खर्च आदिमा सहायता)।\nयोग्यता: नगरभित्र ठेगाना भएका र प्राथमिक वा माध्यमिक विद्यालयमा पढिरहेका वा भर्ना हुन लागेका बालबालिकाका अभिभावक, जसमा जीवन सुरक्षा सहायता (生活保護) पाइरहेका, नगर कर (町民税) लाग्न नपर्ने वा छुट पाएका, बाल पालनपोषण भत्ता (児童扶養手当) पाइरहेका, आम्दानी जीवन सुरक्षा मापदण्डको 1.2 गुणाभन्दा कम भएका व्यक्ति आदि पर्छन्। शिक्षा समितिले प्रमाणित गर्छ।\nआवेदन: आवेदन फारममा आवश्यक कागजात संलग्न गरेर विद्यालयमा बुझाउनुहोस्।\nसम्पर्क: शिक्षा विभाग शिक्षा व्यवस्थापन शाखा (教育部 教育管理課) (नगर भवन दोस्रो तल्ला काउन्टर नम्बर 214) फोन 0276-63-3111।\nविद्यालय जाने यातायात खर्च वा बसको समयतालिका सम्बन्धी जानकारी भेटिएका आधिकारिक पृष्ठहरूमा छैन।",
+     "original": "スクールバスや通学費そのものの助成、遠距離通学児童の送迎の案内は、公式サイトで見つかりませんでした。\n近い制度として就学援助制度があります（通学用品費などを援助）。\n対象：町内に住所があり、小・中学校に在学または入学予定の児童生徒の保護者で、生活保護を受けている人、町民税非課税や減免を受けている人、児童扶養手当を受けている人、収入が生活保護基準の1.2倍以下の人など。教育委員会が認定します。\n申し込み：申請書に必要書類を添えて学校へ提出します。\n問い合わせ：教育部 教育管理課（庁舎2階214番窓口）電話 0276-63-3111。\n通学の交通費やバスの時刻の案内は、見つかった公式ページにありません。",
+     "back": "スクールバスや通学費そのものの助成、遠距離通学児童の送迎の案内は、公式サイトで見つかりませんでした。近い制度として就学援助制度があります（通学用品費などを援助）。対象：町内に住所があり、小・中学校に在学または入学予定の児童生徒の保護者で、生活保護を受けている人、町民税非課税や減免を受けている人、児童扶養手当を受けている人、収入が生活保護基準の1.2倍未満の人など。教育委員会が認定します。申し込み：申請書に必要書類を添えて学校へ提出します。問い合わせ：教育部教育管理課（庁舎2階214番窓口）電話0276-63-3111。通学の交通費やバスの時刻の案内は、見つかった公式ページにありません。",
+     "source": {
+      "title": "就学援助制度｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s027/kosodate/030/010/20200813181011.html",
+      "where": "就学援助費（対象・援助内容・申請）"
+     },
+     "status": "ok",
+     "problems": [
+      "収入の条件が「生活保護基準の1.2倍以下」から「1.2倍未満（कम）」に変わっている。基準ちょうどの人の扱いが変わるため条件の違いにあたる。"
+     ],
+     "ledgerId": "r00596"
+    },
+    {
+     "qid": "Q69",
+     "short": "वयस्क संरक्षण प्रणाली प्रयोगमा सहयोग",
+     "text": "ओइज्युमी नगरमा वयस्क संरक्षण प्रणाली (成年後見制度) प्रयोग गर्न सहयोग गर्ने \"वयस्क संरक्षण प्रणाली प्रयोग सहयोग परियोजना अनुदान\" (成年後見制度利用支援事業補助金) छ।\nनगर प्रमुख (町長) बाहेकका व्यक्तिले निवेदन (申立て) दिएको अवस्थामा लाग्ने खर्च (राजस्व टिकट, दर्ता टिकट, हुलाक टिकट, चिकित्सकको प्रमाणपत्र, मानसिक मूल्यांकन) यसमा पर्छ।\nवयस्क संरक्षक (成年後見人) आदिलाई दिइने पारिश्रमिक पनि यसमा पर्छ। मासिक अधिकतम सीमा घरमा बस्नेका लागि 28,000円 र संस्थामा बस्नेका लागि 18,000円 हो।\nनगर प्रमुखले आफैँ निवेदन दिने प्रक्रिया पनि छ। यस अवस्थामा निवेदन शुल्क र दर्ता शुल्क आदि नगरले पहिले नै बेहोर्छ। बेहोर्न सक्ने व्यक्तिलाई पछि माग गरिन्छ।\nदैनिक जीवन स्वावलम्बन सहायता परियोजना (日常生活自立支援事業) का बारेमा, पुष्टि गरिएको नगरको पृष्ठमा प्रयोग गर्न सहयोग गर्ने व्यवस्थाको उल्लेख भेटिएन।",
+     "original": "大泉町には、成年後見制度の利用を助ける「成年後見制度利用支援事業補助金」があります。\n町長以外の人が申立てをしたときの経費(収入印紙、登録印紙、郵便切手、診断書、鑑定)が対象です。\n成年後見人などへの報酬も対象です。上限は月額で、自宅は28,000円、施設入所は18,000円です。\n町長が代わりに申立てをする手続きもあります。この場合、申立手数料と登記手数料などは町があらかじめ負担します。負担できる人には、後日請求します。\n日常生活自立支援事業については、確認できた町のページに、利用を助ける制度の記載は見つかりませんでした。",
+     "back": "大泉町には、成年後見制度の利用を助ける「成年後見制度利用支援事業補助金」があります。町長以外の人が申立てをしたときの経費（収入印紙、登録印紙、郵便切手、診断書、鑑定）が対象です。成年後見人などへの報酬も対象です。上限は月額で、自宅は28,000円、施設入所は18,000円です。町長が代わりに申立てをする手続きもあります。この場合、申立手数料と登記手数料などは町があらかじめ負担します。負担できる人には、後日請求します。日常生活自立支援事業については、確認できた町のページに、利用を助ける制度の記載は見つかりませんでした。",
+     "source": {
+      "title": "成年後見制度について｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s014/kenko/010/010/300/20240104164049.html",
+      "where": "成年後見制度の利用支援や申立について／成年後見制度利用支援事業補助金"
+     },
+     "status": "auto",
+     "problems": []
     }
    ]
   },
@@ -4878,6 +5307,82 @@
       "title": "広報おおいずみ（oizumi949.pdf）緊急通報装置の貸し出し記事",
       "url": "https://www.town.oizumi.gunma.jp/s006/gyosei/010/020/170/oizumi949.pdf",
       "where": "福祉の記事「緊急通報装置」"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q53",
+     "short": "Lớp học tiếng Nhật và hướng dẫn nhập học",
+     "text": "Thông tin hướng dẫn nhập học cho trẻ em có liên hệ với nước ngoài có trên trang \"Buổi giải thích nhập học cho trẻ em quốc tịch nước ngoài\" (外国籍児童就学説明会) của thị trấn.\nĐối tượng là phụ huynh của trẻ mầm non quốc tịch nước ngoài muốn cho con vào học trường tiểu học của thị trấn vào tháng 4 năm Reiwa 9 (令和9年4月).\nThời gian: 3 giờ chiều thứ Hai, ngày 31 tháng 8 năm Reiwa 8 (令和8年8月31日). Địa điểm: Hội trường đa năng (多目的ホール) tầng 1 Tòa thị chính thị trấn Oizumi (大泉町役場).\nĐồ cần mang: giấy thông báo buổi họp (開催通知書), thẻ cư trú (在留カード), sổ tay sức khỏe mẹ và bé (母子健康手帳).\nBuổi giải thích có thông dịch tiếng Bồ Đào Nha.\nMuốn tư vấn về học tiếng Nhật, xin liên hệ Trung tâm cộng đồng chung sống đa văn hóa (多文化共生コミュニティセンター) (Phòng Hợp tác đa văn hóa (多文化協働課) số 206, tầng 2 tòa thị chính), số điện thoại 0276-62-6066 (tổng đài tòa thị chính: 0276-63-3111).\nThư viện thị trấn (町立図書館) tổ chức \"Salon đa ngôn ngữ\" (多言語サロン) dành cho trẻ em 2 ngày một tuần (thứ Ba và thứ Năm) (theo tài liệu của thị trấn năm Reiwa 4).\nVề thời gian, địa điểm và nơi đăng ký của chính lớp học tiếng Nhật, chúng tôi không xác nhận được trên trang chính thức của thị trấn. Tài liệu của Bộ Tư pháp (法務省) có giới thiệu lớp học tiếng Nhật của Hiệp hội giao lưu (交流協会).",
+     "original": "外国につながる子どもの就学の案内は、町の「外国籍児童就学説明会」のページで見られます。\n令和9年4月に町立小学校へ入学を希望する外国籍の幼児の保護者が対象です。\n日時は令和8年8月31日（月）午後3時、会場は大泉町役場1階 多目的ホールです。\n持ち物は、開催通知書、在留カード、母子健康手帳です。\nポルトガル語の通訳つきで説明します。\n日本語学習の相談は、多文化共生コミュニティセンター（役場2階 多文化協働課206番）の 0276-62-6066（役場代表 0276-63-3111）です。\n町立図書館では、子ども向けの「多言語サロン」を週2日（火・木）に行っています（令和4年度の町の資料）。\n日本語教室そのものの日時・場所・申込先は、町の公式ページでは確認できませんでした。法務省の資料では、交流協会の日本語教室が案内されているとあります。",
+     "back": "外国につながる子どもの就学の案内は、町の「外国籍児童就学説明会」のページで見られます。令和9年4月に町立小学校へ入学を希望する外国籍の幼児の保護者が対象です。日時は令和8年8月31日（月）午後3時、会場は大泉町役場1階 多目的ホールです。持ち物は、開催通知書、在留カード、母子健康手帳です。ポルトガル語の通訳つきで説明します。日本語学習の相談は、多文化共生コミュニティセンター（役場2階 多文化協働課206番）の 0276-62-6066（役場代表 0276-63-3111）です。町立図書館では、子ども向けの「多言語サロン」を週2日（火・木）に行っています（令和4年度の町の資料）。日本語教室そのものの日時・場所・申込先は、町の公式ページでは確認できませんでした。法務省の資料では、交流協会の日本語教室が案内されているとあります。",
+     "source": {
+      "title": "外国籍児童就学説明会を開催します｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s027/kosodate/020/080/20220719102528.html",
+      "where": "外国籍児童就学説明会（対象者・実施日時・会場・当日の持ち物）"
+     },
+     "status": "ok",
+     "problems": [
+      "「多言語サロン」の曜日が原文は「火・木」だが、訳では「thứ Ba và thứ Năm」（火・木）で一致している一方、訳し戻しの確認では問題なし。ただし「幼児」を「trẻ mầm non」と訳しており、原文の「幼児」（未就学児）とずれはないが、「外国籍児童」を「trẻ em có liên hệ với nước ngoài」と訳した点は原文「外国につながる子ども」に近く問題なし。主な問題：原文の「町立図書館」の多言語サロンは「子ども向け」とあるが訳は「dành cho trẻ em」で一致。要確認点は、「Trung tâm cộng đồng」の名称と電話番号は一致。実質的な違いは見当たらないが、「令和8年8月31日（月）午後3時」の曜日「thứ Hai」は一致。→ 確認の結果、重大な違いは特定できず。"
+     ],
+     "ledgerId": "r00597"
+    },
+    {
+     "qid": "Q63",
+     "short": "Đăng ký xét công nhận cần chăm sóc điều dưỡng",
+     "text": "Việc xét công nhận cần chăm sóc điều dưỡng (要介護認定) được đăng ký bằng cách nộp đơn tại quầy của thị trấn.\nNgoài bản thân người cần chăm sóc và gia đình, Trung tâm hỗ trợ toàn diện khu vực (地域包括支援センター), đơn vị hỗ trợ chăm sóc tại nhà (居宅介護支援事業者) và cơ sở bảo hiểm chăm sóc điều dưỡng (介護保険施設) cũng có thể nộp đơn thay.\nQuầy tiếp nhận: Phòng Chăm sóc người cao tuổi (高齢介護課), Ban Phúc lợi và Trẻ em (福祉こども部), quầy số 104 tầng 1 tòa thị chính. Số điện thoại: 0276-63-3111. Thông tin này được đọc từ mục \"Nơi liên hệ\" của trang.\nNhững thứ cần mang theo như sau:\n・Người từ 65 tuổi trở lên: thẻ người được bảo hiểm chăm sóc điều dưỡng (介護保険被保険者証).\n・Người từ 40 đến 64 tuổi: cần xác nhận thông tin tư cách bảo hiểm y tế.\n・Trong đơn phải ghi họ tên, bệnh viện và địa chỉ của bác sĩ điều trị chính.\n・Đơn nộp từ ngày 1 tháng 4 năm Reiwa 8 (令和8年4月1日) trở đi dùng mẫu mới.\nQuy trình như sau:\n1. Nộp đơn.\n2. Nhân viên thị trấn v.v. đến nhà khảo sát. Thị trấn cũng nhờ bác sĩ điều trị chính viết ý kiến.\n3. Máy tính đánh giá, sau đó Hội đồng xét duyệt công nhận chăm sóc điều dưỡng (介護認定審査会) xem xét.\n4. Thông báo kết quả. Từ khi nộp đơn đến khi có thông báo là trong vòng 30 ngày. Nếu không thể thông báo trong 30 ngày, thị trấn sẽ gửi thông báo chậm trễ.\n5. Khi có kết quả, lập kế hoạch chăm sóc (ケアプラン) rồi sử dụng dịch vụ.\nHướng dẫn có trên trang chính thức của thị trấn \"Công nhận cần chăm sóc điều dưỡng\" (要介護認定). File PDF của đơn đăng ký và giấy ủy quyền cũng có trên trang đó.",
+     "original": "要介護認定は、町の窓口で申請書を出して申し込みます。\n本人や家族のほか、地域包括支援センター・居宅介護支援事業者・介護保険施設も代行申請できます。\n窓口は、福祉こども部 高齢介護課（庁舎1階104番窓口）です。電話は 0276-63-3111 です。これは、ページの「問い合わせ先」の欄から読み取りました。\n持っていくものは次のとおりです。\n・65歳以上の人は、介護保険被保険者証。\n・40〜64歳の人は、医療保険の資格情報の確認が必要です。\n・申請書には主治医の氏名・病院・住所を書きます。\n・令和8年4月1日以降の申請は、新しい様式を使います。\n流れは次のとおりです。\n1. 申請します。\n2. 町職員などが家を訪ねて訪問調査をします。町から主治医に意見書も頼みます。\n3. コンピュータで判定し、介護認定審査会が審査します。\n4. 結果を通知します。申請から通知までは30日以内とされています。30日以内に通知できないときは、遅延通知を送ります。\n5. 結果が出たら、ケアプランを作ってサービスを使います。\n案内は、町の公式ページ「要介護認定」にあります。申請書・委任状のPDFもそのページにあります。",
+     "back": "要介護認定は、町の窓口で申請書を出して申し込みます。本人や家族のほか、地域包括支援センター・居宅介護支援事業者・介護保険施設も代行申請できます。窓口は、福祉こども部 高齢介護課（庁舎1階104番窓口）です。電話は 0276-63-3111 です。これは、ページの「問い合わせ先」の欄から読み取りました。持っていくものは次のとおりです。65歳以上の人は、介護保険被保険者証。40〜64歳の人は、医療保険の資格情報の確認が必要です。申請書には主治医の氏名・病院・住所を書きます。令和8年4月1日以降の申請は、新しい様式を使います。流れは次のとおりです。1. 申請します。2. 町職員などが家を訪ねて訪問調査をします。町から主治医に意見書も頼みます。3. コンピュータで判定し、介護認定審査会が審査します。4. 結果を通知します。申請から通知までは30日以内とされています。30日以内に通知できないときは、遅延通知を送ります。5. 結果が出たら、ケアプランを作ってサービスを使います。案内は、町の公式ページ「要介護認定」にあります。申請書・委任状のPDFもそのページにあります。",
+     "source": {
+      "title": "要介護認定（大泉町）",
+      "url": "https://www.town.oizumi.gunma.jp/s015/kenko/010/010/020/20200722111952.html",
+      "where": "「要介護認定の申請」「持参するもの」「要介護認定審査」の各見出し、「このページに関する問い合わせ先」"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q64",
+     "short": "Phòng khám trong thị trấn và khám bệnh tại nhà",
+     "text": "13 bệnh viện và phòng khám trong thị trấn có trên trang \"Thông tin cơ sở y tế\" (医療機関情報) của thị trấn.\nTrang ghi tên, chuyên khoa, địa chỉ, điện thoại và ngày nghỉ.\nGiờ khám không có trên trang. Thị trấn hướng dẫn nên gọi điện xác nhận trước khi đi khám.\nChúng tôi không tìm thấy trang nào giới thiệu riêng về khám bệnh tại nhà (往診・訪問診療), cũng không tìm thấy cách đăng ký.\nĐiều dưỡng đến nhà (訪問看護) và hướng dẫn quản lý điều trị tại nhà (居宅療養管理指導) có trên trang \"Sử dụng dịch vụ chăm sóc điều dưỡng\" (介護サービスの利用) như các dịch vụ của bảo hiểm chăm sóc điều dưỡng.\nDịch vụ tại nhà bắt đầu từ việc chọn đơn vị hỗ trợ chăm sóc tại nhà (居宅介護支援事業者) và nhờ lập kế hoạch chăm sóc (ケアプラン).\nTên và số điện thoại của các cơ sở điều dưỡng đến nhà chắc chắn có trong \"Danh sách cơ sở bảo hiểm chăm sóc điều dưỡng thị trấn Oizumi (PDF)\" (大泉町介護保険事業所一覧), nhưng lần này chúng tôi chưa đọc được.\nNơi tư vấn là Trung tâm hỗ trợ toàn diện khu vực (地域包括支援センター), số điện thoại 0276-63-2294 (thứ Hai đến thứ Sáu, 8 giờ 30 sáng đến 5 giờ 15 chiều).\nNơi liên hệ ghi trên trang dịch vụ chăm sóc điều dưỡng là Phòng Chăm sóc người cao tuổi (高齢介護課) (0276-63-3111, quầy số 104 tầng 1 tòa thị chính). Thông tin này được đọc từ mục nơi liên hệ, không phải được ghi là quầy tiếp nhận.",
+     "original": "町内の病院・診療所13か所は、町の「医療機関情報」ページに載っています。\n名前・診療科目・住所・電話・休診日が書かれています。\n診療時間は載っていません。町は、電話で確認してから受診するよう案内しています。\n往診・訪問診療だけを案内するページは見つかりませんでした。頼み方も見つかりませんでした。\n訪問看護と居宅療養管理指導は、介護保険のサービスとして「介護サービスの利用」ページに載っています。\n在宅サービスは、居宅介護支援事業者を決めてケアプランの作成を頼むところから始まります。\n訪問看護の事業所名と電話番号は、「大泉町介護保険事業所一覧（PDF）」にあるはずですが、今回は読めていません。\n相談窓口は地域包括支援センターで、電話は0276-63-2294です（月〜金 午前8時30分〜午後5時15分）。\n介護サービスのページの問い合わせ先は、高齢介護課（0276-63-3111、庁舎1階104番窓口）です。これは問い合わせ先の欄から読み取ったもので、窓口として書かれているわけではありません。",
+     "back": "町内の病院・診療所13か所は、町の「医療機関情報」ページに載っています。名前・診療科目・住所・電話・休診日が書かれています。診療時間は載っていません。町は、電話で確認してから受診するよう案内しています。往診・訪問診療だけを案内するページは見つかりませんでした。頼み方も見つかりませんでした。訪問看護と居宅療養管理指導は、介護保険のサービスとして「介護サービスの利用」ページに載っています。在宅サービスは、居宅介護支援事業者を決めてケアプランの作成を頼むところから始まります。訪問看護の事業所名と電話番号は、「大泉町介護保険事業所一覧（PDF）」にあるはずですが、今回は読めていません。相談窓口は地域包括支援センターで、電話は0276-63-2294です（月〜金 午前8時30分〜午後5時15分）。介護サービスのページの問い合わせ先は、高齢介護課（0276-63-3111、庁舎1階104番窓口）です。これは問い合わせ先の欄から読み取ったもので、窓口として書かれているわけではありません。",
+     "source": {
+      "title": "医療機関情報（病院、診療所）｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s016/kenko/010/020/010/20200822195308.html",
+      "where": "大泉町の病院、診療所"
+     },
+     "status": "ok",
+     "problems": [
+      "「介護サービスのページの問い合わせ先」の訳し戻しで、原文は「窓口として書かれているわけではありません」と否定しているのに、訳では「quầy số 104」を「Phòng…（quầy số 104 tầng 1）」として窓口扱いしている箇所は、訳文は「không phải được ghi là quầy tiếp nhận」で否定が保たれている。よって問題は、訳文の「Thông tin này được đọc từ mục nơi liên hệ」に対応する部分は一致。ずれとして特定できる点はなし。判定は「yes」が妥当。"
+     ],
+     "ledgerId": "r00598"
+    },
+    {
+     "qid": "Q67",
+     "short": "Hỗ trợ việc đi học của trẻ em",
+     "text": "Chúng tôi không tìm thấy trên trang web chính thức thông tin về xe buýt trường học, trợ cấp chính chi phí đi học, hay đưa đón học sinh đi học xa.\nMột chế độ gần giống là chế độ hỗ trợ đi học (就学援助制度), hỗ trợ chi phí đồ dùng đi học v.v.\nĐối tượng: phụ huynh của học sinh tiểu học và trung học cơ sở đang theo học hoặc sắp nhập học, có địa chỉ trong thị trấn, và thuộc một trong các trường hợp như: đang nhận trợ cấp sinh hoạt, được miễn hoặc giảm thuế cư trú của thị trấn, đang nhận trợ cấp nuôi con (児童扶養手当), hoặc thu nhập bằng hoặc thấp hơn 1,2 lần mức chuẩn trợ cấp sinh hoạt, v.v. Ủy ban giáo dục xét công nhận.\nĐăng ký: nộp đơn kèm các giấy tờ cần thiết cho nhà trường.\nLiên hệ: Phòng Quản lý giáo dục (教育管理課), Ban Giáo dục (教育部) (quầy số 214 tầng 2 tòa thị chính), điện thoại 0276-63-3111.\nThông tin về chi phí đi lại đến trường và giờ xe buýt không có trên các trang chính thức mà chúng tôi tìm được.",
+     "original": "スクールバスや通学費そのものの助成、遠距離通学児童の送迎の案内は、公式サイトで見つかりませんでした。\n近い制度として就学援助制度があります（通学用品費などを援助）。\n対象：町内に住所があり、小・中学校に在学または入学予定の児童生徒の保護者で、生活保護を受けている人、町民税非課税や減免を受けている人、児童扶養手当を受けている人、収入が生活保護基準の1.2倍以下の人など。教育委員会が認定します。\n申し込み：申請書に必要書類を添えて学校へ提出します。\n問い合わせ：教育部 教育管理課（庁舎2階214番窓口）電話 0276-63-3111。\n通学の交通費やバスの時刻の案内は、見つかった公式ページにありません。",
+     "back": "スクールバスや通学費そのものの助成、遠距離通学児童の送迎の案内は、公式サイトで見つかりませんでした。近い制度として就学援助制度があります（通学用品費などを援助）。対象：町内に住所があり、小・中学校に在学または入学予定の児童生徒の保護者で、生活保護を受けている人、町民税非課税や減免を受けている人、児童扶養手当を受けている人、収入が生活保護基準の1.2倍以下の人など。教育委員会が認定します。申し込み：申請書に必要書類を添えて学校へ提出します。問い合わせ：教育部 教育管理課（庁舎2階214番窓口）電話 0276-63-3111。通学の交通費やバスの時刻の案内は、見つかった公式ページにありません。",
+     "source": {
+      "title": "就学援助制度｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s027/kosodate/030/010/20200813181011.html",
+      "where": "就学援助費（対象・援助内容・申請）"
+     },
+     "status": "auto",
+     "problems": []
+    },
+    {
+     "qid": "Q69",
+     "short": "Hỗ trợ sử dụng chế độ giám hộ người trưởng thành",
+     "text": "Thị trấn Oizumi có \"Trợ cấp dự án hỗ trợ sử dụng chế độ giám hộ người trưởng thành\" (成年後見制度利用支援事業補助金) để giúp người dân sử dụng chế độ giám hộ người trưởng thành.\nKhoản trợ cấp áp dụng cho chi phí khi người không phải là thị trưởng đứng ra nộp đơn yêu cầu (tem thu nhập, tem đăng ký, tem thư, giấy chẩn đoán, giám định).\nThù lao cho người giám hộ người trưởng thành v.v. cũng được hỗ trợ. Mức tối đa mỗi tháng là 28.000 yên nếu sống tại nhà và 18.000 yên nếu ở trong cơ sở.\nCũng có thủ tục để thị trưởng nộp đơn yêu cầu thay. Trong trường hợp này, thị trấn trả trước lệ phí nộp đơn và lệ phí đăng ký v.v. Với người có khả năng chi trả, thị trấn sẽ yêu cầu hoàn lại sau.\nVề Dự án hỗ trợ tự lập trong sinh hoạt hằng ngày (日常生活自立支援事業), trên các trang của thị trấn mà chúng tôi xác nhận được, không thấy ghi chế độ hỗ trợ sử dụng.",
+     "original": "大泉町には、成年後見制度の利用を助ける「成年後見制度利用支援事業補助金」があります。\n町長以外の人が申立てをしたときの経費(収入印紙、登録印紙、郵便切手、診断書、鑑定)が対象です。\n成年後見人などへの報酬も対象です。上限は月額で、自宅は28,000円、施設入所は18,000円です。\n町長が代わりに申立てをする手続きもあります。この場合、申立手数料と登記手数料などは町があらかじめ負担します。負担できる人には、後日請求します。\n日常生活自立支援事業については、確認できた町のページに、利用を助ける制度の記載は見つかりませんでした。",
+     "back": "大泉町には、成年後見制度の利用を助ける「成年後見制度利用支援事業補助金」があります。町長以外の人が申立てをしたときの経費（収入印紙、登録印紙、郵便切手、診断書、鑑定）が対象です。成年後見人などへの報酬も対象です。上限は月額で、自宅は28,000円、施設入所は18,000円です。町長が代わりに申立てをする手続きもあります。この場合、申立手数料と登記手数料などは町があらかじめ負担します。負担できる人には、後日請求します。日常生活自立支援事業については、確認できた町のページに、利用を助ける制度の記載は見つかりませんでした。",
+     "source": {
+      "title": "成年後見制度について｜大泉町",
+      "url": "https://www.town.oizumi.gunma.jp/s014/kenko/010/010/300/20240104164049.html",
+      "where": "成年後見制度の利用支援や申立について／成年後見制度利用支援事業補助金"
      },
      "status": "auto",
      "problems": []

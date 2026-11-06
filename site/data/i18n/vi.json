@@ -1,11 +1,11 @@
 {
  "lang": "vi",
  "name": "Tiếng Việt",
- "createdAt": "2026-11-06T08:54:52.400Z",
+ "createdAt": "2026-11-06T10:48:23.476Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1123,
- "of": 1084,
+ "count": 1130,
+ "of": 1091,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Đây là trang hướng dẫn đời sống không chính thức của thị trấn này. Claude thu thập từ các trang chính thức của thị trấn v.v. và ghi rõ nguồn (Machi-shirube)",
   "すべてのページ": "Tất cả các trang",
@@ -1129,6 +1129,13 @@
   "成年後見の利用支援": "Hỗ trợ sử dụng chế độ giám hộ người trưởng thành",
   "冬の灯油代の助成": "Trợ cấp tiền dầu hỏa mùa đông",
   "空き家バンクと移住の相談": "Ngân hàng nhà trống và tư vấn định cư",
-  "家の耐震・家具固定の助成": "Hỗ trợ kinh phí chống động đất cho nhà và cố định đồ đạc"
+  "家の耐震・家具固定の助成": "Hỗ trợ kinh phí chống động đất cho nhà và cố định đồ đạc",
+  "親子で行ける集いの場": "Nơi sinh hoạt chung cho cha mẹ và con cùng tham gia",
+  "認知症の相談と見守り": "Tư vấn và hỗ trợ theo dõi về chứng sa sút trí tuệ",
+  "一時預かりと産後ケア": "Giữ trẻ tạm thời và chăm sóc sau sinh",
+  "病院で使える通訳": "Phiên dịch tại bệnh viện",
+  "就学援助（給食費など）": "Hỗ trợ đi học (tiền ăn bán trú, v.v.)",
+  "介護サービスの事業所": "Cơ sở cung cấp dịch vụ chăm sóc người cao tuổi",
+  "家の手すり・段差の工事助成": "Hỗ trợ chi phí lắp tay vịn và sửa bậc chênh trong nhà"
  }
 }
