@@ -325,7 +325,7 @@ function itemHTML(it) {
       <button type="button" data-action="fix">直して<small>直す所を書いて調べ直す</small></button>
       <button type="button" data-action="reject">出さない<small>理由を書いて出さない</small></button>
       <button type="button" data-action="unknown">分からない<small>町の人に聞くことにする</small></button>
-      <form class="why-form" hidden><label class="field">理由を1行（何が違うか・どこを探すか）<input name="reason" maxlength="100" required></label><button type="submit">決める</button></form>
+      <form class="why-form chosen-form" hidden><p class="why-note" role="status"></p><label class="field"><span class="why-label">理由を1行（何が違うか・どこを探すか）</span><input name="reason" maxlength="100" required></label><button type="submit" class="primary">決める</button></form>
     </div>` : local && it.status !== "auto" ? `<div class="decide" data-id="${it.id}"><button type="button" data-action="undo">元に戻す（確かめ待ちへ）</button></div>` : "";
   // 並び：判断してほしいこと → Claude の答え（カード）→ くわしく → ボタン
   return `
@@ -342,13 +342,22 @@ function wire() {
     const id = box.dataset.id;
     const form = box.querySelector(".why-form");
     let pendingAction = null;
+    // 直して・出さない・分からないは理由を1行。押したボタンに印をつけ、欄の見出しと決めるボタンを選んだものに合わせる
+    // （作者「確かめる一覧のOK以外を押しても、押したか分からない」11/7：前は下に欄が開くだけで、ボタンは変わらず、欄が画面の外のこともあった）
+    const WHY = { fix: ["直して", "何を直すか・どこを探すかを1行で"], reject: ["出さない", "出さない理由を1行で"], unknown: ["分からない", "町の人に聞きたいことを1行で"] };
     for (const b of box.querySelectorAll("button[data-action]")) {
       b.addEventListener("click", () => {
         const a = b.dataset.action;
         if (a === "ok" || a === "undo") return decide(id, a, "", b);
-        pendingAction = a; // 直して・出さない・分からないは理由を1行
+        pendingAction = a;
+        for (const x of box.querySelectorAll("button[data-action]")) { x.classList.toggle("chosen", x === b); x.setAttribute("aria-pressed", String(x === b)); }
+        const [name, ask] = WHY[a] ?? ["決める", "理由を1行で"];
+        form.querySelector(".why-label").textContent = `${name}：${ask}`;
+        form.querySelector("button[type=submit]").textContent = `「${name}」に決める`;
+        form.querySelector(".why-note").textContent = `まだ決まっていません。理由を書いて「${name}」に決める を押すと決まります。`;
         form.hidden = false;
-        form.reason.focus();
+        form.scrollIntoView({ block: "nearest", behavior: "smooth" });
+        form.reason.focus({ preventScroll: true });
       });
     }
     form?.addEventListener("submit", (e) => {

@@ -941,3 +941,10 @@ body.town-page { font-size: calc(16px * var(--fs, 1)); }
 .sagi .tel-quick { display: inline-flex; align-items: center; gap: 8px; max-width: 100%; box-sizing: border-box; min-height: 44px; padding: 6px 16px; border: 1px solid var(--accent); border-radius: 22px; color: var(--accent); text-decoration: none; line-height: 1.35; font-size: calc(14px * var(--fs, 1)); }
 .sagi .tel-quick strong { font-size: calc(17px * var(--fs, 1)); margin-right: 2px; }
 .sagi .tel-quick .ic { flex: none; width: 18px; height: 18px; }
+/* 確かめる一覧：押したボタン（直して・出さない・分からない）に印。理由の欄は枠で囲んで、まだ決まっていないことを書く */
+.decide button.chosen { border: 3px solid var(--accent); background: var(--bg); box-shadow: 0 0 0 2px var(--surface), 0 0 0 4px var(--accent); }
+.decide button.chosen::before { content: "✓ 選んだ"; display: block; font-size: calc(11px * var(--fs, 1)); color: var(--accent); font-weight: 700; }
+.decide .chosen-form { padding: 10px 12px; border: 2px solid var(--accent); border-radius: 10px; background: var(--surface); }
+.decide .why-note { width: 100%; margin: 0; font-size: calc(13px * var(--fs, 1)); font-weight: 600; }
+.decide .why-label { display: block; margin-bottom: 4px; font-weight: 700; color: var(--text); }
+.decide .chosen-form button[type=submit] { min-height: 44px; padding: 0 20px; flex-direction: row; }
