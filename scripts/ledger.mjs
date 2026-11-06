@@ -16,7 +16,8 @@ const LOG = `${DIR}/log.jsonl`;
 export const ACTIONS = ["view", "investigate", "fix", "approve", "request"];
 export function can(user, action, scope) {
   if (!ACTIONS.includes(action)) return false;
-  return user === "owner" && typeof scope === "string";
+  // ai：AI に任せられる種類だけを scripts/ai-judge.mjs が決める（作者「全部」11/7）。何を任せるかは ai-judge.mjs の決まりだけ
+  return (user === "owner" || user === "ai") && typeof scope === "string";
 }
 
 // 情報源カード：町（市区町村）ごとに、サイト（ホスト）を1回 OK すれば、次からそのサイトの答えは自動の候補になる

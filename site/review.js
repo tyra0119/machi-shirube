@@ -29,6 +29,7 @@ async function reload() {
   if (local) {
     data = await (await fetch("api/review")).json();
     all = data.items;
+    showAi();
     showPublish();
   } else {
     const pub = await fetch("data/review.json").then((r) => (r.ok ? r.json() : { items: [] })).catch(() => ({ items: [] }));
@@ -73,6 +74,39 @@ async function showPublish(result) {
     pubBusy = false;
     showPublish(r);
   });
+}
+
+// AI に任せる（作者「人間が確かめるものを減らすことはできる？…確実に人間判断がいるものはこれまでどおり人間が判断する」→「全部」11/7）。
+// 任せられる種類だけを別の Claude が決める（scripts/ai-judge.mjs）。決めたものは「決めたもの」の「AI が判断」で見て、元に戻せる
+let aiTimer = null;
+async function showAi() {
+  const box = $("ai-box");
+  const a = await fetch("api/ai-judge").then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  if (!a) { box.hidden = true; return; }
+  const j = a.job;
+  const words = { ok: "OK", fix: "直して", reject: "出さない" };
+  // 動いている間：作業の流れの新しい行。終わったら：結果と、決めたものの一覧
+  const res = !j ? "" : a.busy
+    ? `<p class="pub-ok"><strong><span class="spin" aria-hidden="true"></span>AI が決めています（1 件 10〜30 秒。消えたページの調べ直しは 1 件 1〜2 分）</strong></p>
+      ${j.log.length ? `<ul class="pub-steps">${j.log.slice(-6).map((l) => `<li>${esc(l)}</li>`).join("")}</ul>` : ""}`
+    : j.error ? `<p class="pub-ng"><strong>できませんでした：${esc(j.error)}</strong></p>`
+    : j.result ? `<p class="pub-ok"><strong>AI が決めた ${j.result.ai} 件・人に残した ${j.result.human} 件（$${j.result.usd.toFixed(2)}）</strong></p>
+      ${j.result.done?.length ? `<ul class="pub-steps">${j.result.done.map((d) => `<li>${esc(words[d.action] ?? d.action)}：${esc(d.reason)}</li>`).join("")}</ul>` : ""}` : "";
+  box.hidden = false;
+  box.innerHTML = `<h2>AI に任せる</h2>${res}
+    <p>確かめ待ち ${a.pending} 件のうち、AI に任せられるもの <strong>${a.ai}</strong> 件（確かめ役が気にした所・訳のずれ・見つからなかった・見張りで消えたページ・国や市町村のサイト）。</p>
+    <p class="note">避難にひびくもの・公式どうしの食い違い・古いデータ・公のサイト以外・調べ直しを頼んだ答え・AI が一度直した答えは、人が決めます。AI が決めたものは「決めたもの」の「AI が判断」で見て、元に戻せます。</p>
+    ${a.busy ? "" : a.cap?.over ? `<p class="note">${esc(a.cap.why)}</p>` : a.ai ? `<button type="button" class="ai-go">AI に決めてもらう（${a.ai} 件）</button>` : ""}`;
+  box.querySelector(".ai-go")?.addEventListener("click", async (e) => {
+    const btn = e.currentTarget;
+    btn.disabled = true;
+    const r = await fetch("api/ai-judge", { method: "POST" }).then(async (x) => ({ ok: x.ok, body: await x.json() })).catch((x) => ({ ok: false, body: { error: String(x.message) } }));
+    if (!r.ok) { btn.disabled = false; btn.textContent = `始められませんでした：${r.body.error}`; return; }
+    showAi();
+  });
+  // 動いている間は 4 秒ごとに出し直す。終わったら一覧も読み直す
+  clearTimeout(aiTimer);
+  if (a.busy) aiTimer = setTimeout(async () => { const was = true; await showAi(); if (was && !$("ai-box").querySelector(".spin")) await reload(); }, 4000);
 }
 
 const inTab = (x) => (tab === "pending" ? x.status === "pending" : tab === "auto" ? x.status === "auto" : !["pending", "auto"].includes(x.status));
@@ -230,7 +264,7 @@ const KINDS = {
 
 // 1行に出す短い札（はじめてのサイトは上でまとめて聞くので、札にしない）
 function tags(it) {
-  if (it.status !== "pending") return [LABEL[it.status] ?? it.status];
+  if (it.status !== "pending") return [LABEL[it.status] ?? it.status, ...((it.decisions ?? []).filter((d) => d.action !== "reassess").at(-1)?.by === "ai" ? ["AI が判断"] : [])];
   if (KINDS[it.kind]) return [KINDS[it.kind].tag];
   const rs = (it.why ?? "").split("／").filter((r) => r && !/^Claude のメモ/.test(r) && !firstUseHost(r));
   if (!rs.length) return ["サイトを決めれば出せる"];
@@ -304,6 +338,8 @@ function itemHTML(it) {
   const src = it.source ? `<p class="src">出典：${esc(it.source.title ?? it.source.url)}${it.source.where ? `（${esc(it.source.where)}）` : ""}${it.asOf ? `・時点 ${esc(it.asOf)}` : ""}</p>` : "";
   const firstUse = (it.why ?? "").split("／").map(firstUseHost).find(Boolean);
   const reasons = (it.why ?? "").split("／").filter((r) => r && !/^Claude のメモ/.test(r) && !firstUseHost(r));
+  const aiNote = it.status === "pending" && (it.aiFixedFrom || it.aiNote)
+    ? `<p class="note">${it.aiFixedFrom ? "AI が「直して」にして、Claude が調べ直した答えです。AI どうしで直しを繰り返さないように、ここからは人が決めます。" : esc(it.aiNote)}</p>` : "";
   const siteNote = it.status === "pending" && firstUse ? `<p class="note">${esc(firstUse)} を使ってよいかは、上の「はじめて使うサイト」で決めてください。${reasons.length ? "" : "ほかに気になる所はありません。サイトを使ってよいにすると、この答えは自動で承認されます。"}</p>` : "";
   const todo = it.status === "pending" && reasons.length ? `
     <div class="todo-box">
@@ -318,7 +354,7 @@ function itemHTML(it) {
     it.check ? `<p class="note">確かめ役（${esc(it.check.model)}）：${it.check.supported ? "資料と合っている" : "合わない所がある"}</p>` : "",
   ].join("");
   const last = it.decided ?? (it.decisions?.length ? it.decisions.at(-1) : null);
-  const decided = last && it.status !== "pending" ? `<p class="note">${esc(LABEL[it.status] ?? it.status)}：${esc(last.at?.slice(0, 16).replace("T", " "))}${last.by ? `・${last.by === "auto" ? "自動" : esc(last.by)}` : ""}${last.reason && last.action !== "reassess" ? `・理由「${esc(last.reason)}」` : ""}</p>` : "";
+  const decided = last && it.status !== "pending" ? `<p class="note">${esc(LABEL[it.status] ?? it.status)}：${esc(last.at?.slice(0, 16).replace("T", " "))}${last.by ? `・${last.by === "auto" ? "自動" : last.by === "ai" ? "AI（Claude）が判断" : last.by === "owner" ? "作者" : esc(last.by)}` : ""}${last.reason && last.action !== "reassess" ? `・理由「${esc(last.reason)}」` : ""}</p>` : "";
   const buttons = local && it.status === "pending" ? `
     <div class="decide" data-id="${it.id}">
       <button type="button" class="primary" data-action="ok">OK<small>このまま町のページに出す</small></button>
@@ -330,7 +366,7 @@ function itemHTML(it) {
   // 並び：判断してほしいこと → Claude の答え（カード）→ くわしく → ボタン
   return `
     <article class="item">
-      ${siteNote}${todo}
+      ${aiNote}${siteNote}${todo}
       ${it.value != null ? `<div class="answer-card"><p class="answer-label">${it.kind === "translation" ? "Claude の訳" : KINDS[it.kind]?.label ?? "Claude の答え"}</p><p class="value">${prettyText(it.value, esc)}</p>${src}${srcLink}</div>` : ""}
       ${details ? `<details class="more"><summary>くわしく（元の文・Claude のメモ）</summary>${details}</details>` : ""}
       ${decided}${buttons}

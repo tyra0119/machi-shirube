@@ -25,6 +25,9 @@ import { dekiru } from "./dekiru.mjs";
 import { mitateAsk } from "./mitate-ask.mjs";
 import { preview, publish } from "./publish.mjs";
 import { spent, japanDay, DAILY_LIMIT_USD, TOTAL_LIMIT_USD } from "../src/cost.mjs";
+import { aiJudge, plan as aiPlan } from "./ai-judge.mjs";
+let judging = null; // AI が確かめ待ちを判断している最中（一度に1つ）
+let aiJob = null; // 確かめる一覧から動かした、いちばん新しい AI の判断（作業の流れと結果）
 
 // 費用の上限（1日・合計）に届いているか。届いていたら調べを始めない（作者「まとめて続きを調べるを押しても反応しなくなった」11/6：
 // 1日の上限 $80 を超えたあと、押した4町が何もせずに 0.1 秒で終わり、画面には何も出なかった）
@@ -218,6 +221,15 @@ function launch(code, part, { qids = null, redo = false } = {}) {
         .then((r) => { run.usd += r.usd; run.proposals = r.proposals.length; })
         .catch((e) => run.log.push({ at: new Date().toISOString(), text: `提案は出せませんでした：${e.message}` }));
     }
+    // 調べ終わったら、AI に任せられる確かめ待ちを AI が決める（作者「全部」11/7。人が要るものは残す）
+    if (!run.stopRequested && process.env.ANTHROPIC_API_KEY && !judging) {
+      run.log.push({ at: new Date().toISOString(), text: "AI に任せられる確かめ待ち（確かめ役が気にした所・見つからなかった・公のサイトなど）を、別の Claude が決めています。人が要るものは残します" });
+      judging = aiJudge({ scope, log: (text) => run.log.push({ at: new Date().toISOString(), text }) })
+        .then((r) => { run.usd += r.usd; })
+        .catch((e) => run.log.push({ at: new Date().toISOString(), text: `AI の判断はできませんでした：${e.message}` }))
+        .finally(() => { judging = null; });
+      await judging;
+    }
     run.status = run.stopRequested ? "stopped" : "done";
   }).catch((e) => {
     run.status = "failed";
@@ -356,6 +368,24 @@ http
       }
       const all = [...list, ...days.values()].sort((a, b) => (a.startedAt < b.startedAt ? 1 : -1));
       return send(res, 200, { list: all });
+    }
+    // AI に任せられる確かめ待ち（GET：数、POST：決める）。確かめる一覧のボタンから
+    if (url.pathname === "/api/ai-judge" && req.method === "GET") {
+      const p = ledger.load().items.filter((x) => x.status === "pending");
+      return send(res, 200, { pending: p.length, ai: p.filter((x) => aiPlan(x) && !x.aiFixedFrom).length, busy: !!judging, cap: capNow(), job: aiJob });
+    }
+    if (url.pathname === "/api/ai-judge" && req.method === "POST") {
+      if (!process.env.ANTHROPIC_API_KEY) return send(res, 400, { error: "AI の判断は npm run serve:research で動かしたときだけです" });
+      if (judging || isBusy()) return send(res, 409, { error: "いま調べているか、AI が判断している最中です。終わってから押してください" });
+      const cap = capNow();
+      if (cap.over) return send(res, 409, { error: cap.why });
+      // 押したらすぐ返し、進み具合は GET の job で見せる（消えたページの調べ直しがあると 5 分を超え、待っている接続が切れた。11/7）
+      aiJob = { startedAt: new Date().toISOString(), log: [], result: null, error: null };
+      const job = aiJob;
+      judging = aiJudge({ log: (t) => job.log.push(t) })
+        .then((r) => { job.result = { ai: r.ai, human: r.human, usd: r.usd, done: r.done }; }, (e) => { job.error = e.message; })
+        .finally(() => { judging = null; job.endedAt = new Date().toISOString(); });
+      return send(res, 202, { started: true });
     }
     // 予約を取り消す
     const qm =url.pathname.match(/^\/api\/queue\/([\w-]+)\/cancel$/);
