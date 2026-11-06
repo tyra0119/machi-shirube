@@ -36,10 +36,11 @@ async function overpass(code, bbox) {
   const file = `local/cache/places/${code}.json`;
   if (fs.existsSync(file)) return JSON.parse(fs.readFileSync(file, "utf8"));
   const [w, s, e, n] = bbox;
+  // 公園は relation を頼まない（黒潮町で、国立公園などの大きな relation の真ん中を出すのに時間がかかり、何度頼んでも 90 秒で切れた。11/6）
   // 種類ごとに分けて、1つずつ頼む（まとめて頼むと、混んでいるときに 504 で断られた。11/6）。断られたら 20 秒あけて 2 回まで頼み直す
   const j = { elements: [] };
   for (const [k, f] of KINDS) {
-    const q = `[out:json][timeout:60];nwr${f}(${s},${w},${n},${e});out center tags;`;
+    const q = `[out:json][timeout:60];${k === "park" ? "nw" : "nwr"}${f}(${s},${w},${n},${e});out center tags;`;
     for (let tryN = 0; ; tryN++) {
       const r = await fetch(API, { method: "POST", headers: { "User-Agent": UA, "Content-Type": "application/x-www-form-urlencoded" }, body: `data=${encodeURIComponent(q)}`, signal: AbortSignal.timeout(90000) }).catch((err) => ({ ok: false, status: err.name }));
       if (r.ok) { j.elements.push(...((await r.json()).elements ?? [])); break; }
