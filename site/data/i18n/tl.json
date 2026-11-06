@@ -1,11 +1,11 @@
 {
  "lang": "tl",
  "name": "Filipino",
- "createdAt": "2026-11-06T07:33:48.767Z",
+ "createdAt": "2026-11-06T07:51:49.319Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1101,
- "of": 1071,
+ "count": 1109,
+ "of": 1079,
  "dict": {
   "この町の非公式の暮らしの案内です。町の公式のサイトや国の公開データから集め、出典をつけています（まちしるべ）": "Ito ay isang di-opisyal na gabay sa pamumuhay sa bayang ito. Kinuha ito mula sa opisyal na website ng bayan at sa pampublikong datos ng bansa, at may nakasaad na pinagmulan (Machishirube)",
   "すべてのページ": "Lahat ng pahina",
@@ -1107,6 +1107,14 @@
   "警察の相談（警察相談専用電話）": "Konsultasyon sa pulisya (Dedikadong telepono para sa konsultasyon sa pulisya)",
   "消費者ホットライン（近くの消費生活の相談窓口）": "Consumer Hotline (pinakamalapit na tanggapan ng konsultasyon para sa mga mamimili)",
   "家に来る・お金を渡すよう言われているとき": "Kapag may pumupunta sa bahay mo o sinasabihan kang magbigay ng pera",
-  "{md}は年金の支給日です。": "Ang {md} ay araw ng pagbibigay ng pensiyon."
+  "{md}は年金の支給日です。": "Ang {md} ay araw ng pagbibigay ng pensiyon.",
+  "公園・公民館などの場所は、下の「場所と道」にあります。開いている時間などは、町の公式のサイトで確かめてください。": "Ang mga lugar tulad ng parke at community center (kominkan) ay nasa \"Mga Lugar at Daan\" sa ibaba. Para sa oras ng pagbubukas at iba pang detalye, tingnan ang opisyal na website ng bayan.",
+  "見つかりませんでした": "Hindi nahanap",
+  "町の公式のサイトなど、公開の資料では見つかりませんでした。": "Hindi ito nahanap sa mga pampublikong sanggunian, tulad ng opisyal na website ng bayan.",
+  "知っていたら教えてください（町の人に聞きたいこと）": "Kung alam ninyo, pakisabi po sa amin (tanong para sa mga taga-bayan)",
+  "まだ調べていません": "Hindi pa nasusuri",
+  "見つからず": "Hindi nahanap",
+  "これから調べます": "Susuriin pa lang",
+  "場所の一覧あり": "May listahan ng mga lugar"
  }
 }

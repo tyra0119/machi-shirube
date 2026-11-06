@@ -1,11 +1,11 @@
 {
  "lang": "id",
  "name": "Bahasa Indonesia",
- "createdAt": "2026-11-06T07:34:03.213Z",
+ "createdAt": "2026-11-06T07:51:30.448Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1110,
- "of": 1071,
+ "count": 1118,
+ "of": 1079,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Ini adalah panduan hidup tidak resmi untuk kota ini. Claude mengumpulkannya dari situs resmi kota dan sumber lain, dengan mencantumkan sumbernya (Machishirube)",
   "すべてのページ": "Semua halaman",
@@ -1116,6 +1116,14 @@
   "警察の相談（警察相談専用電話）": "Konsultasi polisi (telepon khusus konsultasi polisi)",
   "消費者ホットライン（近くの消費生活の相談窓口）": "Hotline Konsumen (loket konsultasi konsumen terdekat)",
   "家に来る・お金を渡すよう言われているとき": "Jika ada yang mengatakan akan datang ke rumah atau meminta Anda menyerahkan uang",
-  "{md}は年金の支給日です。": "{md} adalah tanggal pembayaran pensiun."
+  "{md}は年金の支給日です。": "{md} adalah tanggal pembayaran pensiun.",
+  "公園・公民館などの場所は、下の「場所と道」にあります。開いている時間などは、町の公式のサイトで確かめてください。": "Lokasi seperti taman dan balai warga ada di bagian \"Tempat dan Jalan\" di bawah. Untuk jam buka dan informasi lainnya, silakan periksa di situs resmi kota.",
+  "見つかりませんでした": "Tidak ditemukan",
+  "町の公式のサイトなど、公開の資料では見つかりませんでした。": "Tidak ditemukan di materi yang terbuka untuk umum, seperti situs resmi kota.",
+  "知っていたら教えてください（町の人に聞きたいこと）": "Jika Anda tahu, mohon beri tahu kami (hal yang ingin kami tanyakan kepada warga kota)",
+  "まだ調べていません": "Belum diperiksa",
+  "見つからず": "Tidak ditemukan",
+  "これから調べます": "Akan diperiksa",
+  "場所の一覧あり": "Ada daftar tempat"
  }
 }

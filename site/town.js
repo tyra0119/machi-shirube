@@ -1012,6 +1012,7 @@ async function showHinan(code, townFeatures, startPart) {
 // 確かめた答え（site/data/answers/{市区町村コード}.json。OK か自動で承認したものだけ）。
 // 物差しの問いの page で、町のサイトのどのページに出すかを決める
 let yardstick = { questions: [] };
+let laterTile = {}; // 答えの無いページの札の言葉（見つからず・これから調べます・場所の一覧あり。深く調べた町だけ。showAnswers で決める）
 let answersByPage = {};
 // 町・字のページ（partKey＝{コード}-{番号}）では、その町・字について調べた答えを先に、市区町村全体の答えをあとに出す
 async function showAnswers(code, scopeNote, partKey, partName) {
@@ -1041,6 +1042,23 @@ async function showAnswers(code, scopeNote, partKey, partName) {
   // （住む人の目で見ると、深く調べていない町はほとんどのページが「準備中」で、その先に進む道が無かった）
   const site = (await getData("data/official-sites.json"))?.[code];
   const town = `${$("where").textContent} ${$("name").textContent}`.split("・")[0].trim();
+  // 深く調べた町（答えのある町）では、「準備中」を出し分ける（作者「深く調べた町だが、『準備中』が書かれてるのはなぜ？（阿賀町）」）：
+  // 調べたが見つからなかった問いのページ → 「見つかりませんでした」と町の人に聞きたいことへ。まだ調べていない問いのページ → 「まだ調べていません」。
+  // 公園・図書館は、有志の地図の場所（下の「場所と道」）がある町では「準備中」を出さない
+  const deep = answers.length > 0;
+  const asked = new Set(((await getData(`data/ask/${code}.json`))?.items ?? []).filter((x) => x.scope === `muni:${code}` || (partKey && x.scope === `town:${partKey}`)).map((x) => x.qid));
+  const hasPlaces = !!(await getData(`data/places/${code}.json`))?.items?.length;
+  const laterText = (p) => {
+    const qids = yardstick.questions.filter((q) => q.page === p.view).map((q) => q.id);
+    if (p.view === "shisetsu" && hasPlaces) return `<p class="note">${T("公園・公民館などの場所は、下の「場所と道」にあります。開いている時間などは、町の公式のサイトで確かめてください。")}</p>`;
+    if (deep && qids.some((q) => asked.has(q))) return `<p class="later"><span>${T("見つかりませんでした")}</span>${T("町の公式のサイトなど、公開の資料では見つかりませんでした。")} <a href="#shiru">${T("知っていたら教えてください（町の人に聞きたいこと）")}</a></p>`;
+    if (deep) return `<p class="later"><span>${T("まだ調べていません")}</span>${LANG ? `${esc(T(p.later))} — ${T("町の公式のサイトから探して、出典つきでここに出します。")}` : `${esc(p.later)}を、町の公式のサイトから探して、出典つきでここに出します。`}</p>`;
+    return null;
+  };
+  for (const p of PAGES) {
+    const qids = yardstick.questions.filter((q) => q.page === p.view).map((q) => q.id);
+    laterTile[p.view] = p.view === "shisetsu" && hasPlaces ? "places" : !deep ? null : qids.some((q) => asked.has(q)) ? "none" : "todo";
+  }
   const laterGo = (p) => `<p class="later-go">${site ? `<a href="${esc(site.url)}" target="_blank" rel="noopener">${T("町の公式サイトを開く")}</a>` : `<a href="https://www.google.com/search?q=${encodeURIComponent(`${town} ${T(p.title)} 公式`)}" target="_blank" rel="noopener">${T("町の公式サイトで探す（Google 検索）")}</a>`}<a class="ask-tell" href="${esc(wantHref(p.title))}" target="_blank" rel="noopener">${T("この町も調べてほしい")}</a></p>`;
   for (const box of document.querySelectorAll(".answers-box")) {
     const list = answersByPage[box.dataset.page] ?? [];
@@ -1049,7 +1067,8 @@ async function showAnswers(code, scopeNote, partKey, partName) {
     box.innerHTML = (p ? `<div class="page-banner" style="--h:${ILLUST[p.view]?.h ?? 200}">${scene(p.view)}<p><strong>${esc(T(p.title))}</strong>${esc(T(p.desc))}${list.length ? `<span>${T("公式のサイトから確かめた答え")} ${list.length}</span>` : ""}</p></div>` : "")
       + (list.length && scopeNote && !list.some((a) => a.level) ? `<p class="note">${esc(scopeNote)}</p>` : "")
       + (list.length ? answersHTML(list) : "")
-      + (p?.later && !list.length ? `<p class="later"><span>${T("準備中")}</span>${LANG ? `${esc(T(p.later))} — ${T("町の公式のサイトから探して、出典つきでここに出します。")}` : `${esc(p.later)}を、町の公式のサイトから探して、出典つきでここに出します。`}</p>${laterGo(p)}` : "")
+      + (p?.later && !list.length && laterText(p) ? `${laterText(p)}${laterGo(p)}` : "")
+      + (p?.later && !list.length && !laterText(p) ? `<p class="later"><span>${T("準備中")}</span>${LANG ? `${esc(T(p.later))} — ${T("町の公式のサイトから探して、出典つきでここに出します。")}` : `${esc(p.later)}を、町の公式のサイトから探して、出典つきでここに出します。`}</p>${laterGo(p)}` : "")
       + (!list.length && !p?.later ? `<p class="note">${T("まだありません。")}</p>` : "");
   }
 }
@@ -1394,7 +1413,7 @@ function todayLife(hasHinan) {
     // （作者「大泉町、暮らしの場面、地図が準備中になっているのは正しい？」：地図のページは答えが無く、地図だけなので準備中と出ていた）
     const blocks = [...document.querySelectorAll(`.view[data-view="${p.view}"] > section.block`)].filter((s) => !s.hidden && !s.querySelector(".answers-box")).length;
     const n = (p.feature ? 1 : 0) + has(p.view) + blocks + (p.view === "bousai" && hasHinan ? 1 : 0) + (p.view === "shiru" ? 1 : 0) + (p.view === "iryo" && medicalRow && !medicalRow.includes("later") ? 1 : 0) + (p.view === "foreign" && !$("tr-block").hidden ? 1 : 0);
-    return `<li${p.feature ? " class=\"feat\"" : ""}><a href="#${p.view}">${p.feature ? `<span class="feat-badge">${T("この町ならでは")}</span>` : ""}${illust(p.view)}<span class="t">${esc(T(p.title))}</span><span class="d">${esc(T(p.desc))}</span>${n ? "" : `<span class="later">${T("準備中")}</span>`}</a></li>`;
+    return `<li${p.feature ? " class=\"feat\"" : ""}><a href="#${p.view}">${p.feature ? `<span class="feat-badge">${T("この町ならでは")}</span>` : ""}${illust(p.view)}<span class="t">${esc(T(p.title))}</span><span class="d">${esc(T(p.desc))}</span>${n ? "" : `<span class="later">${laterTile[p.view] === "none" ? T("見つからず") : laterTile[p.view] === "todo" ? T("これから調べます") : laterTile[p.view] === "places" ? T("場所の一覧あり") : T("準備中")}</span>`}</a></li>`;
   }).join("");
 }
 

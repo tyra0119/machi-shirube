@@ -1,11 +1,11 @@
 {
  "lang": "pt",
  "name": "Português",
- "createdAt": "2026-11-06T07:32:16.033Z",
+ "createdAt": "2026-11-06T07:51:00.434Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1113,
- "of": 1071,
+ "count": 1121,
+ "of": 1079,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Guia não oficial da vida na cidade. O Claude reúne as informações em sites oficiais da cidade e outras fontes, e indica a origem de cada uma (Machishirube)",
   "すべてのページ": "Todas as páginas",
@@ -1119,6 +1119,14 @@
   "警察の相談（警察相談専用電話）": "Orientação da polícia (linha exclusiva de consultas da polícia)",
   "消費者ホットライン（近くの消費生活の相談窓口）": "Disque Consumidor (Linha direta do consumidor – central de atendimento do consumidor mais próxima)",
   "家に来る・お金を渡すよう言われているとき": "Se pedirem para ir à sua casa ou para entregar dinheiro",
-  "{md}は年金の支給日です。": "{md} é o dia de pagamento da pensão."
+  "{md}は年金の支給日です。": "{md} é o dia de pagamento da pensão.",
+  "公園・公民館などの場所は、下の「場所と道」にあります。開いている時間などは、町の公式のサイトで確かめてください。": "Os locais, como parques e centros comunitários, estão em \"Locais e caminhos\", logo abaixo. Para saber o horário de funcionamento, consulte o site oficial do município.",
+  "見つかりませんでした": "Não encontrado",
+  "町の公式のサイトなど、公開の資料では見つかりませんでした。": "Não foi encontrado em materiais públicos, como o site oficial do município.",
+  "知っていたら教えてください（町の人に聞きたいこと）": "Se você souber, conte-nos (pergunta para os moradores)",
+  "まだ調べていません": "Ainda não pesquisado",
+  "見つからず": "Não encontrado",
+  "これから調べます": "Vamos pesquisar",
+  "場所の一覧あり": "Há lista de locais"
  }
 }

@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-06T07:32:28.126Z",
+ "createdAt": "2026-11-06T07:51:06.292Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1111,
- "of": 1071,
+ "count": 1119,
+ "of": 1079,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -1117,6 +1117,14 @@
   "警察の相談（警察相談専用電話）": "Consulta con la policía (línea telefónica de consultas policiales)",
   "消費者ホットライン（近くの消費生活の相談窓口）": "Línea directa del consumidor (oficina local de consultas para el consumidor)",
   "家に来る・お金を渡すよう言われているとき": "Si le dicen que vendrán a su casa o que entregue dinero",
-  "{md}は年金の支給日です。": "El {md} es el día de pago de la pensión."
+  "{md}は年金の支給日です。": "El {md} es el día de pago de la pensión.",
+  "公園・公民館などの場所は、下の「場所と道」にあります。開いている時間などは、町の公式のサイトで確かめてください。": "Los lugares como parques y centros comunitarios están en «Lugares y caminos», más abajo. Consulte el horario de apertura y otros datos en el sitio web oficial del pueblo.",
+  "見つかりませんでした": "No se encontró",
+  "町の公式のサイトなど、公開の資料では見つかりませんでした。": "No se encontró en materiales públicos, como el sitio web oficial del pueblo.",
+  "知っていたら教えてください（町の人に聞きたいこと）": "Si lo sabe, cuéntenoslo (preguntas para los vecinos del pueblo)",
+  "まだ調べていません": "Aún no se ha consultado",
+  "見つからず": "No se encontró",
+  "これから調べます": "Se consultará próximamente",
+  "場所の一覧あり": "Hay lista de lugares"
  }
 }
