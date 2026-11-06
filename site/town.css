@@ -883,3 +883,21 @@ ul.morning .k { color: var(--text-sub); font-size: 14px; }
 ul.morning .v { overflow-wrap: anywhere; }
 ul.morning .src svg { width: 13px; height: 13px; vertical-align: -2px; }
 .lang-other ul.morning li { grid-template-columns: 20px 7.5em minmax(0, 1fr); }
+/* きょうのひとこと：その日はじめて開いたときだけ、行が順に出る */
+ul.morning li.m-in { opacity: 0; animation: m-in 0.5s ease-out forwards; }
+@keyframes m-in { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+/* 今日の一問：正解の印と、何日つづけて正解したか */
+.quiz-res { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin: 0 0 4px; }
+.quiz-pop { display: inline-flex; align-items: center; justify-content: center; width: 32px; height: 32px; border-radius: 50%; background: var(--accent); color: var(--accent-text); animation: quiz-pop 0.5s ease-out; }
+.quiz-pop .ic { width: 20px; height: 20px; margin: 0; stroke-width: 3; }
+.quiz-streak { padding: 2px 10px; border: 1px solid var(--accent); border-radius: 999px; color: var(--accent); font-size: 14px; font-weight: 700; animation: m-in 0.5s ease-out 0.25s both; }
+@keyframes quiz-pop { 0% { transform: scale(0.4); opacity: 0; } 60% { transform: scale(1.15); opacity: 1; } 100% { transform: scale(1); } }
+/* 町のサイトの見出しで、日本語のまま出しているもの */
+.ja-tag { display: inline-block; margin-right: 6px; padding: 0 6px; border: 1px solid var(--line); border-radius: 4px; color: var(--text-sub); font-size: 12px; line-height: 1.6; vertical-align: 1px; }
+/* 長いページの「上へ」 */
+.to-top { position: fixed; left: 50%; bottom: 20px; z-index: 29; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 4px; min-height: 44px; padding: 0 16px; border: 1px solid var(--line); border-radius: 22px; background: var(--surface); color: var(--text); box-shadow: var(--shadow); font: inherit; font-size: 15px; cursor: pointer; animation: m-in 0.25s ease-out; }
+.to-top[hidden] { display: none; }
+.to-top .ic { width: 18px; height: 18px; margin: 0; }
+@media (max-width: 640px) { .to-top { bottom: calc(76px + env(safe-area-inset-bottom)); } }
+@media print { .to-top { display: none; } }
+@media (prefers-reduced-motion: reduce) { ul.morning li.m-in, .quiz-pop, .quiz-streak, .to-top { animation: none; opacity: 1; } }

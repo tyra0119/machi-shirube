@@ -440,7 +440,14 @@ async function showQuiz(code) {
     for (const x of $("quiz-today").querySelectorAll(".quiz-opts button")) { x.disabled = true; x.classList.toggle("right", x.dataset.k === "a"); x.classList.toggle("wrong", x === b && !ok); }
     const ans = $("quiz-today").querySelector(".quiz-ans");
     ans.hidden = false;
-    ans.innerHTML = `<p><strong>${ok ? T("正解") : T("ざんねん")}</strong> ${esc(t(`q${k}.why`, q.why))}</p><a href="#shiru" class="quiz-more">${T("ほかの問題も解く")}</a>`;
+    // 何日つづけて正解したか（端末の中だけに覚える。同じ日に何度答えても1日と数える。まちがえたら 0 から）
+    const dk = (x) => `${x.getFullYear()}-${x.getMonth() + 1}-${x.getDate()}`;
+    const yest = new Date(now.getFullYear(), now.getMonth(), now.getDate() - 1);
+    let st = null;
+    try { st = JSON.parse(remember.get(`quiz-streak:${code}`) ?? "null"); } catch {}
+    const n = st?.last === dk(now) ? st.n : ok ? (st?.last === dk(yest) && st.n > 0 ? st.n + 1 : 1) : 0;
+    if (st?.last !== dk(now)) remember.set(`quiz-streak:${code}`, JSON.stringify({ last: dk(now), n }));
+    ans.innerHTML = `<p class="quiz-res${ok ? " ok" : ""}">${ok ? `<span class="quiz-pop" aria-hidden="true">${icon("check")}</span>` : ""}<strong>${ok ? T("正解") : T("ざんねん")}</strong>${ok && n >= 2 ? `<span class="quiz-streak">${esc(TN("{n} 日つづけて正解", { n }))}</span>` : ""}</p><p>${esc(t(`q${k}.why`, q.why))}</p><a href="#shiru" class="quiz-more">${T("ほかの問題も解く")}</a>`;
     ans.querySelector(".quiz-more").addEventListener("click", () => setTimeout(() => $("quiz-block")?.scrollIntoView({ behavior: "smooth", block: "start" }), 50));
   });
 }
@@ -690,10 +697,10 @@ async function showNews(code) {
     const k = $("koho-card");
     k.hidden = false;
     k.href = d.koho.latest.url;
-    k.innerHTML = `<span class="kk">${icon("book")}${esc(T("広報紙の最新号"))}${isNew(d.koho.latest.url) ? newMark() : ""}</span><span class="kt">${esc(d.koho.latest.title)}</span><span class="kd">${esc(TN("{d} 発行", { d: d.koho.latest.date.replace(/-/g, "/").replace(/\/0/g, "/") }))}・${esc(T("町のサイトで読む"))} ↗</span>`;
+    k.innerHTML = `<span class="kk">${icon("book")}${esc(T("広報紙の最新号"))}${isNew(d.koho.latest.url) ? newMark() : ""}</span><span class="kt">${jaTag()}<span lang="ja">${esc(d.koho.latest.title)}</span></span><span class="kd">${esc(TN("{d} 発行", { d: d.koho.latest.date.replace(/-/g, "/").replace(/\/0/g, "/") }))}・${esc(T("町のサイトで読む"))} ↗</span>`;
   }
   if (d.news) {
-    $("news-list").innerHTML = d.news.items.slice(0, 5).map((x) => `<li><span class="nd">${esc(md(x.date))}</span>${isNew(x.url) ? newMark() : ""}<a href="${esc(x.url)}" target="_blank" rel="noopener" lang="ja">${esc(x.title)}</a></li>`).join("")
+    $("news-list").innerHTML = d.news.items.slice(0, 5).map((x) => `<li><span class="nd">${esc(md(x.date))}</span>${isNew(x.url) ? newMark() : ""}${jaTag()}<a href="${esc(x.url)}" target="_blank" rel="noopener" lang="ja">${esc(x.title)}</a></li>`).join("")
       + `<li class="more"><a href="${esc(d.news.source.url)}" target="_blank" rel="noopener">${esc(T("新着の一覧を町のサイトで見る"))}</a></li>`;
   }
   $("news-note").textContent = `${TN("町の公式サイトの新着と広報紙から、見出しとリンクだけを出しています（{d} に取得）。", { d: d.fetchedAt.replace(/-/g, "/") })}${LANG && LANG !== "ja" ? ` ${T("見出しは町のサイトの日本語のままです。")}` : ""}`;
@@ -953,8 +960,8 @@ async function showHinan(code, townFeatures, startPart) {
       ...cand.map((c) => ({ type: "Feature", geometry: { type: "LineString", coordinates: [at, c.f.geometry.coordinates] }, properties: {} })),
     ] };
     // 今いる所の印と線は、地図の読み込みが終わってから引く
-    if (map.getSource("here")) map.getSource("here").setData(hereData);
-    else map.once("load", () => map.getSource("here")?.setData(hereData));
+    if (map.getSource("here")) { map.getSource("here").setData(hereData); flowLine(map); }
+    else map.once("load", () => { map.getSource("here")?.setData(hereData); flowLine(map); });
     const box = new maplibregl.LngLatBounds(at, at);
     for (const c of cand) box.extend(c.f.geometry.coordinates);
     // 右は地図のボタン（方角・現在地・＋・−）の幅だけ余白を広く（1番の印がボタンの下に隠れていた）
@@ -1131,6 +1138,10 @@ async function showToday(code, at) {
     const t = await loadToday(code, at[1], at[0]);
     $("today-box").innerHTML = todayHTML(t, esc);
     todayInfo = t;
+    // 場面の絵の空を、今日の天気に（気象庁の天気コードの先頭 3 雨・4 雪。雨の確率 50% 以上も雨）
+    const d0 = t.days?.[isEvening() ? 1 : 0];
+    const wc = String(d0?.weatherCode ?? "");
+    document.documentElement.dataset.wx = wc.startsWith("4") ? "snow" : wc.startsWith("3") || d0?.pop >= 50 ? "rain" : "sun";
     renderMorning();
     // 危ないことはいちばん上に：警報（赤）・注意報（橙）が出ていれば、どのページを見ていてもタブの下に帯で出す
     const w = t.warnings?.list ?? [];
@@ -1235,11 +1246,21 @@ function townDays(name) {
   }
   return out;
 }
+// 訳のある町をほかの言葉で見ているとき、町のサイトの見出し（日本語のまま出すもの）に「日本語」の札を付ける（訳し忘れと思われないように）
+const jaTag = () => (LANG && LANG !== "ja" && LANG !== "easy" ? `<span class="ja-tag">${esc(T("日本語"))}</span>` : "");
 function renderMorning() {
   if (!morningCode) return;
   const ev = isEvening(), now = jpNow(), day = new Date(now.getFullYear(), now.getMonth(), now.getDate() + (ev ? 1 : 0));
   const rows = [];
-  const row = (ic, k, v) => rows.push(`<li>${icon(ic)}<span class="k">${k}</span><span class="v">${v}</span></li>`);
+  // その日はじめて開いたときだけ、行が順にふわっと出る（毎回だとうるさいので 1 日 1 回。あとから読めた行も、その日のはじめの表示のうちは同じように）
+  const dayKey = `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()}`;
+  if (morningAnim == null) { morningAnim = !matchMedia("(prefers-reduced-motion: reduce)").matches && remember.get("morning-anim") !== dayKey; remember.set("morning-anim", dayKey); }
+  let fresh = 0;
+  const row = (ic, k, v) => {
+    const anim = morningAnim && !morningShown.has(k);
+    morningShown.add(k);
+    rows.push(`<li${anim ? ` class="m-in" style="animation-delay:${120 + fresh++ * 160}ms"` : ""}>${icon(ic)}<span class="k">${k}</span><span class="v">${v}</span></li>`);
+  };
   // 1. ごみ
   const g = ev ? gomiTomorrow : gomiToday;
   if (g) row("trash", T("ごみ"), esc(g.length ? g.join("・") : T("収集なし")) + ((ev ? gomiHolidayTmr : gomiHoliday) ? `（${esc(T("祝日は収集が変わることがあります"))}）` : ""));
@@ -1252,7 +1273,7 @@ function renderMorning() {
   const wl = todayInfo?.warnings?.list ?? [];
   if (wl.length) row("alert", T("警報・注意報"), `<strong>${wl.map((x) => esc(T(x))).join("・")}</strong>`);
   // 4. 町の明るい話題
-  if (brightNews) row("heart", T("町の話題"), `<a href="${esc(brightNews.url)}" target="_blank" rel="noopener" lang="ja">${esc(brightNews.title)}</a>`);
+  if (brightNews) row("heart", T("町の話題"), `${jaTag()}<a href="${esc(brightNews.url)}" target="_blank" rel="noopener" lang="ja">${esc(brightNews.title)}</a>`);
   // 5. 今日は何の日
   const t = MUNI?.stats?.towns?.[morningCode];
   const td = townDays(t ? shortName(t.name) : "");
@@ -1271,6 +1292,8 @@ function renderMorning() {
   $("morning").innerHTML = rows.join("");
   $("morning-block").hidden = !rows.length;
 }
+let morningAnim = null; // きょうのひとことの行を順に出すか（その日はじめて開いたときだけ）
+const morningShown = new Set(); // もう出した行（読み直しで同じ行がまた動かないように）
 let gomiToday = null; // 町・字のページで、今日出せるごみ（ごみを出す日の表から）
 function todayLife(hasHinan) {
   renderMorning();
@@ -2009,6 +2032,36 @@ $("tabs").addEventListener("scroll", tabsHint, { passive: true });
 addEventListener("resize", tabsHint);
 new MutationObserver(tabsHint).observe($("tabs"), { childList: true, subtree: true, attributes: true });
 setTimeout(tabsHint, 0);
+
+// 避難場所への線を、今いる所から避難場所の向きに流す（作者「わくわくする動き全部」。向かう向きが分かる）。
+// 点線の模様を少しずつずらして動いて見せる。12 秒で止めて、ふつうの点線に戻す。動きを減らす設定の人には動かさない
+const FLOW = [[0, 4, 3], [0.5, 4, 2.5], [1, 4, 2], [1.5, 4, 1.5], [2, 4, 1], [2.5, 4, 0.5], [3, 4, 0], [0, 0.5, 3, 3.5], [0, 1, 3, 3], [0, 1.5, 3, 2.5], [0, 2, 3, 2], [0, 2.5, 3, 1.5], [0, 3, 3, 1], [0, 3.5, 3, 0.5]];
+let flowTimer = null;
+function flowLine(map) {
+  clearInterval(flowTimer);
+  if (matchMedia("(prefers-reduced-motion: reduce)").matches || !map.getLayer("near-line")) return;
+  const t0 = Date.now();
+  let k = 0;
+  flowTimer = setInterval(() => {
+    if (!map.getLayer("near-line")) return clearInterval(flowTimer);
+    if (Date.now() - t0 > 12000) { clearInterval(flowTimer); map.setPaintProperty("near-line", "line-dasharray", [2, 1.5]); return; }
+    map.setPaintProperty("near-line", "line-dasharray", FLOW[k++ % FLOW.length]);
+  }, 70);
+}
+
+// 長いページの「上へ」（作者「長いページ」）：画面 1.5 枚ぶんより下まで読んだら、下のメニューの上に出す。押すとページのいちばん上へ
+{
+  const up = $("to-top");
+  up.querySelector(".to-top-ic").innerHTML = icon("up");
+  up.querySelector("span:last-child").textContent = T("上へ");
+  let ticking = false;
+  addEventListener("scroll", () => {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(() => { ticking = false; up.hidden = scrollY < innerHeight * 1.5; });
+  }, { passive: true });
+  up.addEventListener("click", () => scrollTo({ top: 0, behavior: matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth" }));
+}
 
 // カードの開け閉めの動き（作者「カードの開く・閉じるもアニメーションにしてみたい」）：変える前と後の高さを測り、その間をなめらかにつなぐ。
 // 開くときは中身もうすく現れる。動きを減らす設定の人には動かさない

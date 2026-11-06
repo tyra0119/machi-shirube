@@ -5,8 +5,8 @@ const SC = { roof: ["#5b7fa6", "#6f9a6a", "#b08a4a", "#7a6aa6"], wall: "#f4efe4"
 const SCENE_PARTS = {
   house: (x, i = 0) => `<g transform="translate(${x} 0)"><rect x="-13" y="44" width="26" height="20" fill="${SC.wall}"/><path d="M-16 45 0 31 16 45z" fill="${SC.roof[i % 4]}"/><rect x="-7" y="50" width="6" height="6" fill="${SC.win}"/><rect x="3" y="52" width="5" height="12" fill="${SC.roof[i % 4]}" opacity=".7"/></g>`,
   tree: (x, i = 0, s = 1) => `<g transform="translate(${x} 0)"><rect x="-1.6" y="${64 - 12 * s}" width="3.2" height="${12 * s}" fill="${SC.trunk}"/><circle cx="0" cy="${64 - 16 * s}" r="${8 * s}" fill="${SC.leaf[i % 3]}"/></g>`,
-  cloud: (x, y = 14) => `<g fill="#fff" opacity=".95"><ellipse cx="${x}" cy="${y}" rx="11" ry="6"/><ellipse cx="${x + 9}" cy="${y + 2}" rx="8" ry="5"/><ellipse cx="${x - 9}" cy="${y + 2}" rx="7" ry="4.5"/></g>`,
-  sun: (x, y = 16) => `<g transform="translate(${x} ${y})"><circle r="7" fill="#e8c35a"/><g stroke="#e8c35a" stroke-width="2" stroke-linecap="round">${[0, 45, 90, 135, 180, 225, 270, 315].map((a) => `<line x1="0" y1="-10" x2="0" y2="-13" transform="rotate(${a})"/>`).join("")}</g></g>`,
+  cloud: (x, y = 14) => `<g class="sc-cloud" fill="#fff" opacity=".95"><ellipse cx="${x}" cy="${y}" rx="11" ry="6"/><ellipse cx="${x + 9}" cy="${y + 2}" rx="8" ry="5"/><ellipse cx="${x - 9}" cy="${y + 2}" rx="7" ry="4.5"/></g>`,
+  sun: (x, y = 16) => `<g class="sc-sun" transform="translate(${x} ${y})"><circle r="7" fill="#e8c35a"/><g class="sc-rays" stroke="#e8c35a" stroke-width="2" stroke-linecap="round">${[0, 45, 90, 135, 180, 225, 270, 315].map((a) => `<line x1="0" y1="-10" x2="0" y2="-13" transform="rotate(${a})"/>`).join("")}</g></g>`,
   bus: (x) => `<g transform="translate(${x} 0)"><rect x="-22" y="46" width="44" height="15" rx="4" fill="#3f8a7a"/><rect x="-18" y="49" width="30" height="6" rx="1.5" fill="#cfe6e0"/><rect x="14" y="49" width="5" height="9" rx="1" fill="#cfe6e0"/><circle cx="-12" cy="62" r="3.2" fill="${SC.ink}"/><circle cx="12" cy="62" r="3.2" fill="${SC.ink}"/></g>`,
   car: (x, c = "#5b7fa6") => `<g transform="translate(${x} 0)"><path d="M-14 60v-6l4-6h18l6 6v6z" fill="${c}"/><rect x="-8" y="50" width="7" height="4" fill="#dfeaf2"/><rect x="1" y="50" width="7" height="4" fill="#dfeaf2"/><circle cx="-8" cy="61" r="3" fill="${SC.ink}"/><circle cx="8" cy="61" r="3" fill="${SC.ink}"/></g>`,
   person: (x, c = "#6a8fb0", s = 1) => `<g transform="translate(${x} ${64 - 22 * s}) scale(${s})"><circle cx="0" cy="3" r="3.6" fill="${SC.skin}"/><path d="M-5 22v-9a5 5 0 0 1 10 0v9z" fill="${c}"/></g>`,
@@ -21,7 +21,7 @@ const SCENE_PARTS = {
   wave: (x) => `<g transform="translate(${x} 0)"><path d="M-30 64v-10q8-12 18-6 6 4 4 9 10-6 8-14 10 6 6 21z" fill="#8cbfe0"/><path d="M-30 64v-5q15-6 36 0v5z" fill="#6aa5d0"/></g>`,
   mountain: (x) => `<g transform="translate(${x} 0)"><path d="M-30 64 0 24l30 40z" fill="#a7a195"/><path d="M-8 35 0 24l8 11-4 3-4-3-4 3z" fill="#fff"/><g fill="#d5d0c6" opacity=".9"><circle cx="2" cy="16" r="4"/><circle cx="7" cy="10" r="5"/></g></g>`,
   snowman: (x) => `<g transform="translate(${x} 0)"><circle cx="0" cy="55" r="9" fill="#fff"/><circle cx="0" cy="41" r="6" fill="#fff"/><path d="M-6 37h12" stroke="#5b7fa6" stroke-width="2"/></g>`,
-  flakes: (x) => `<g fill="#fff">${[[0, 10], [14, 22], [-14, 26], [24, 8], [-26, 14]].map(([dx, y]) => `<circle cx="${x + dx}" cy="${y}" r="2"/>`).join("")}</g>`,
+  flakes: (x) => `<g class="sc-flakes" fill="#fff">${[[0, 10], [14, 22], [-14, 26], [24, 8], [-26, 14]].map(([dx, y]) => `<circle cx="${x + dx}" cy="${y}" r="2"/>`).join("")}</g>`,
   monument: (x) => `<g transform="translate(${x} 0)"><rect x="-8" y="34" width="16" height="30" rx="3" fill="#b7b2a8"/><rect x="-12" y="60" width="24" height="4" fill="#9a958b"/><path d="M-4 42h8M-4 47h8M-4 52h5" stroke="#8a857b" stroke-width="1.2"/></g>`,
   book: (x) => `<g transform="translate(${x} 0)"><path d="M-16 62v-18q8-4 16 0 8-4 16 0v18q-8-4-16 0-8-4-16 0z" fill="#fff"/><path d="M0 44v18" stroke="#b9c6cf"/><path d="M-12 50h8M-12 54h8M4 50h8M4 54h8" stroke="#b9c6cf"/></g>`,
   doc: (x) => `<g transform="translate(${x} 0)"><rect x="-9" y="40" width="18" height="24" rx="2" fill="#fff"/><path d="M-5 46h10M-5 50h10M-5 54h7" stroke="#b9c6cf" stroke-width="1.4"/><circle cx="5" cy="59" r="3" fill="none" stroke="#6f9a6a" stroke-width="1.2"/></g>`,
@@ -36,13 +36,14 @@ const SCENE_PARTS = {
   stop: (x) => `<g transform="translate(${x} 0)"><path d="M0 64v-26" stroke="${SC.ink}" stroke-width="1.6"/><circle cx="0" cy="36" r="6" fill="#3f8a7a"/><rect x="-3" y="34" width="6" height="4" fill="#fff"/></g>`,
   crosswalk: (x) => `<g fill="#fff" opacity=".9">${[-24, -12, 0, 12, 24].map((dx) => `<rect x="${x + dx - 4}" y="65" width="8" height="3"/>`).join("")}</g>`,
   crack: (x) => `<g transform="translate(${x} 0)"><path d="M-30 64l10-4 6 3 8-5 6 4 8-3 6 3 6-2" stroke="#8a857b" stroke-width="1.6" fill="none"/></g>`,
-  umbrella: (x) => `<g transform="translate(${x} 0)"><path d="M-12 46a12 10 0 0 1 24 0q-4-3-8 0-4-3-8 0-4-3-8 0z" fill="#5b7fa6"/><path d="M0 46v14a3 3 0 0 1-5 0" stroke="${SC.ink}" stroke-width="1.4" fill="none"/></g>`,
+  umbrella: (x) => `<g transform="translate(${x} 0)"><g class="sc-umb"><path d="M-12 46a12 10 0 0 1 24 0q-4-3-8 0-4-3-8 0-4-3-8 0z" fill="#5b7fa6"/><path d="M0 46v14a3 3 0 0 1-5 0" stroke="${SC.ink}" stroke-width="1.4" fill="none"/></g></g>`,
+  rain: (x) => `<g class="sc-rain" stroke="#7aa0c8" stroke-width="1.6" stroke-linecap="round">${[[-30, 8], [-12, 18], [6, 6], [24, 16], [42, 10], [-48, 20]].map(([dx, y]) => `<line x1="${x + dx}" y1="${y}" x2="${x + dx - 2}" y2="${y + 6}"/>`).join("")}</g>`,
   heart: (x) => `<g transform="translate(${x} 0)"><path d="M0 40c-6-8-14-2-10 4l10 10 10-10c4-6-4-12-10-4z" fill="#c78aa6"/></g>`,
   chart: (x) => `<g transform="translate(${x} 0)">${[[-14, 14], [-4, 22], [6, 30], [16, 20]].map(([bx, h]) => `<rect x="${bx - 3.5}" y="${64 - h}" width="7" height="${h}" fill="#7aa0c8"/>`).join("")}</g>`,
 };
 // 場面：どの部品を、どこに置くか
 const SCENES = {
-  today: [["sun", 150], ["cloud", 250, 16], ["house", 175, 0], ["house", 210, 1], ["tree", 235, 0], ["tree", 150, 1]],
+  today: [["wx"], ["cloud", 250, 16], ["house", 175, 0], ["house", 210, 1], ["tree", 235, 0], ["tree", 150, 1]],
   bousai: [["wave", 150], ["hill", 235], ["person", 205, "#6a8fb0"], ["elder", 220], ["cloud", 170, 14]],
   chizu: [["pin", 200], ["house", 160, 2], ["tree", 240, 1], ["tree", 135, 0], ["cloud", 250, 14]],
   gomi: [["bin", 165, "#5f9a6e"], ["bin", 185, "#5b7fa6"], ["bin", 205, "#b08a4a"], ["bag", 228], ["tree", 255, 2], ["cloud", 150, 14]],
@@ -76,6 +77,8 @@ const SCENES = {
   place: [["pin", 200], ["monument", 232], ["tree", 165, 1], ["cloud", 252, 14]],
   food: [["veg", 200], ["shop", 242], ["bag", 162], ["sun", 150, 14]],
 };
+// 今日の天気の部品（data-wx が無いとき・晴れ・くもりは太陽、雨は雨つぶと傘、雪は雪）
+SCENE_PARTS.wx = () => `<g class="wx-sun">${SCENE_PARTS.sun(150)}</g><g class="wx-rain">${SCENE_PARTS.rain(170)}${SCENE_PARTS.umbrella(150)}</g><g class="wx-snow">${SCENE_PARTS.flakes(160)}</g>`;
 function scene(key, cls = "") {
   const s = SCENES[key] ?? SCENES.shiru;
   return `<svg class="scene${cls ? ` ${cls}` : ""}" viewBox="60 0 280 70" preserveAspectRatio="xMidYMax slice" aria-hidden="true"><rect class="sc-sky" width="400" height="70"/><rect class="sc-ground" y="64" width="400" height="6"/>${s.map(([n, ...a]) => SCENE_PARTS[n]?.(...a) ?? "").join("")}</svg>`;

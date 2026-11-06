@@ -1,11 +1,11 @@
 {
  "lang": "vi",
  "name": "Tiếng Việt",
- "createdAt": "2026-11-05T11:56:42.008Z",
+ "createdAt": "2026-11-06T00:29:10.789Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1076,
- "of": 1038,
+ "count": 1078,
+ "of": 1040,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Đây là trang hướng dẫn đời sống không chính thức của thị trấn này. Claude thu thập từ các trang chính thức của thị trấn v.v. và ghi rõ nguồn (Machi-shirube)",
   "すべてのページ": "Tất cả các trang",
@@ -1082,6 +1082,8 @@
   "町の誕生日（{y}年{md}にできて {n} 年）": "Sinh nhật của thị trấn (thành lập ngày {md} năm {y}, được {n} năm)",
   "「{name}」の季節": "Mùa của \"{name}\"",
   "傘を持って": "Hãy mang theo ô",
-  "地区を選ぶと、ここに出せるごみが出ます": "Chọn khu vực thì loại rác có thể đổ sẽ hiện ở đây"
+  "地区を選ぶと、ここに出せるごみが出ます": "Chọn khu vực thì loại rác có thể đổ sẽ hiện ở đây",
+  "上へ": "Lên trên",
+  "{n} 日つづけて正解": "Đúng liên tiếp {n} ngày"
  }
 }

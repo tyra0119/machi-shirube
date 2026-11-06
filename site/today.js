@@ -33,6 +33,22 @@ async function loadToday(code, lat, lon) {
 
 // 今日・明日：気象庁の天気の文と降水確率、Open-Meteo の気温など
 let TELOPS = null;
+// 気象庁の天気の文は言葉ごとに空白で区切ってある（「くもり　昼前　から　晴れ　所により　明け方　雨」）。
+// 読みやすいように詰め、時の言葉の前と「所により」の前だけ「、」で区切る →「くもり、昼前から晴れ、所により明け方雨」
+const WX_JOIN = new Set(["から", "まで", "時々", "一時", "のち", "後", "は", "では", "で", "所により"]);
+const WX_TIME = new Set(["朝", "朝晩", "朝のうち", "昼前", "昼頃", "昼過ぎ", "日中", "夕方", "夜", "夜のはじめ頃", "夜遅く", "夜のうち", "明け方", "未明", "朝から", "昼前から", "昼過ぎから", "夕方から", "夜から"]);
+function tidyWeather(s) {
+  if (!s) return s;
+  const w = s.trim().split(/[\s　]+/);
+  return w.map((t, i) => {
+    if (!i) return t;
+    const prev = w[i - 1];
+    if (t === "所により") return `、${t}`;
+    if (WX_JOIN.has(prev) || WX_JOIN.has(t)) return t;
+    return WX_TIME.has(t) ? `、${t}` : WX_TIME.has(prev) ? t : `、${t}`;
+  }).join("");
+}
+
 function days(jma, fc, om) {
   const out = [];
   const series = fc?.[0]?.timeSeries;
@@ -43,7 +59,7 @@ function days(jma, fc, om) {
     const day = {
       label: T(i === 0 ? "今日" : "明日"),
       date: d?.time?.[i],
-      weather: area?.weathers?.[i]?.replace(/　/g, " "),
+      weather: tidyWeather(area?.weathers?.[i]),
       // ほかの言葉：天気コードの決まった言い方（英語は気象庁の英語、ほかは日本語の決まった言い方を訳したもの）
       weatherLang: (() => { const t = LANG && TELOPS?.[area?.weatherCodes?.[i]]; return !t ? null : LANG === "en" ? t.en.charAt(0) + t.en.slice(1).toLowerCase() : T(t.ja) !== t.ja || LANG === "easy" ? T(t.ja) : null; })(),
       weatherCode: area?.weatherCodes?.[i],

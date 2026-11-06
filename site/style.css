@@ -376,3 +376,24 @@ body.clean .panel, body.clean #counter, body.clean #map-key, body.clean #basemap
 .scene { display: block; width: 100%; height: 60px; margin: 0 0 8px; border-radius: 10px; }
 .scene .sc-sky { fill: #e6eff5; } .scene .sc-ground { fill: #d3e1e8; }
 @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .scene .sc-sky { fill: #24323d; } :root:not([data-theme="light"]) .scene .sc-ground { fill: #34444f; } }
+/* 場面の絵の動き（作者「わくわくする動き全部」）：雲がゆっくり流れ、太陽の光がまわり、傘がゆれ、雪と雨つぶが落ちる。
+   今日の絵は町の天気で切りかえる（<html data-wx="rain|snow">）。動きを減らす設定の人には止めた絵 */
+.scene .wx-rain, .scene .wx-snow { display: none; }
+html[data-wx="rain"] .scene .wx-sun, html[data-wx="snow"] .scene .wx-sun { display: none; }
+html[data-wx="rain"] .scene .wx-rain, html[data-wx="snow"] .scene .wx-snow { display: inline; }
+.scene .sc-cloud { animation: sc-drift 14s ease-in-out infinite alternate; }
+.scene .sc-rays { transform-box: fill-box; transform-origin: center; animation: sc-turn 30s linear infinite; }
+.scene .sc-umb { transform-box: fill-box; transform-origin: 50% 100%; animation: sc-sway 3.4s ease-in-out infinite; }
+.scene .sc-flakes circle { animation: sc-fall 4s linear infinite; }
+.scene .sc-flakes circle:nth-child(2n) { animation-delay: -1.6s; }
+.scene .sc-flakes circle:nth-child(3n) { animation-delay: -2.8s; }
+.scene .sc-rain line { animation: sc-drop 1.1s linear infinite; }
+.scene .sc-rain line:nth-child(2n) { animation-delay: -0.5s; }
+.scene .sc-rain line:nth-child(3n) { animation-delay: -0.8s; }
+@keyframes sc-drift { from { transform: translateX(-10px); } to { transform: translateX(12px); } }
+@keyframes sc-turn { to { transform: rotate(360deg); } }
+@keyframes sc-sway { 0%, 100% { transform: rotate(-7deg); } 50% { transform: rotate(7deg); } }
+@keyframes sc-fall { from { transform: translateY(-6px); opacity: 0; } 20% { opacity: 1; } to { transform: translateY(26px); opacity: 0; } }
+@keyframes sc-drop { from { transform: translateY(-4px); opacity: 0; } 30% { opacity: 1; } to { transform: translateY(18px); opacity: 0; } }
+@media (prefers-reduced-motion: reduce) { .scene * { animation: none !important; } }
+@media print { .scene * { animation: none !important; } }

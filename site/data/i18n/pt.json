@@ -1,11 +1,11 @@
 {
  "lang": "pt",
  "name": "Português",
- "createdAt": "2026-11-05T11:56:19.820Z",
+ "createdAt": "2026-11-06T00:28:52.941Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1079,
- "of": 1038,
+ "count": 1081,
+ "of": 1040,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Guia não oficial da vida na cidade. O Claude reúne as informações em sites oficiais da cidade e outras fontes, e indica a origem de cada uma (Machishirube)",
   "すべてのページ": "Todas as páginas",
@@ -1085,6 +1085,8 @@
   "町の誕生日（{y}年{md}にできて {n} 年）": "Aniversário da cidade (fundada em {md} de {y}, {n} anos)",
   "「{name}」の季節": "A estação de \"{name}\"",
   "傘を持って": "Leve guarda-chuva",
-  "地区を選ぶと、ここに出せるごみが出ます": "Ao escolher o bairro, o lixo que pode ser descartado aparecerá aqui"
+  "地区を選ぶと、ここに出せるごみが出ます": "Ao escolher o bairro, o lixo que pode ser descartado aparecerá aqui",
+  "上へ": "Voltar ao topo",
+  "{n} 日つづけて正解": "{n} dias seguidos de acertos"
  }
 }

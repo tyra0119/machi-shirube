@@ -135,6 +135,7 @@ const CASES = [
     const w = { areaTypes: [{ areas: [] }, { areas: [{ code: "1410000", warnings: [{ code: "10", status: "発表" }] }] }] };
     return fn("warnings")({ class20: "1410011" }, w)?.list?.length === 1 && fn("warnings")({ class20: "9990011" }, w) === null;
   }],
+  ["天気の文の空白を詰め、時の言葉と「所により」の前だけ「、」で区切る（11/6）", () => fn("tidyWeather")("くもり　昼前　から　晴れ　所により　明け方　雨") === "くもり、昼前から晴れ、所により明け方雨" && fn("tidyWeather")("晴れ　時々　くもり") === "晴れ時々くもり" && fn("tidyWeather")("くもり　夜　雨　で　雷を伴う") === "くもり、夜雨で雷を伴う"],
   ["十勝地方・奄美地方の予報は、釧路・鹿児島の予報のファイルから読む（11/5）", () => fn("FORECAST_FILE")?.["014030"] === "014100" && fn("FORECAST_FILE")?.["460040"] === "460100"],
   ["日本の外の端末でも、町の時刻（日本時間）で決める（11/4）", () => { const j = fn("jpNow")(); const u = new Date(); return j.getHours() === (u.getUTCHours() + 9) % 24; }],
   ["今日は何の日：町の誕生日を、町のなりたちの答えから正しく読む（朝霞市は市制の日。11/5）", () => {
