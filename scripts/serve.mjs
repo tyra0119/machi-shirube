@@ -7,11 +7,14 @@
 //   POST /api/review/{番号}  決める（ok・fix・reject・unknown・undo、理由1行）
 //   GET/POST /api/publish  公開に送る（GET は送る前の中身、POST で点検・確かめ・コミット・push）
 //   POST /api/sites  はじめて使うサイトを、町ごとに1回決める（scope・host・ok か reject・理由1行）
+//   POST /api/runs   町を調べ始める（ほかの町を調べている最中なら予約。202 と何番目かを返す）／ GET /api/runs  いま調べている町と予約の列
+//   POST /api/queue/{予約の番号}/cancel  予約を取り消す
+//   GET  /api/unfinished  調べの途中の町（まだ調べていない問い・前に見つからなかった問いの数）
 import http from "node:http";
 import fs from "node:fs";
 import path from "node:path";
 import * as ledger from "./ledger.mjs";
-import { research, researchTown, RUN_LIMIT_USD } from "./research.mjs";
+import { research, researchTown, townProgress, RUN_LIMIT_USD } from "./research.mjs";
 import { backupLedger } from "./backup-ledger.mjs";
 import { propose, decideProposal, loadProposals, requestToQuestion } from "./propose.mjs";
 import { buildOverlays } from "./overlays.mjs";
@@ -24,6 +27,10 @@ import { preview, publish } from "./publish.mjs";
 // 町をまとめて調べる（調べる画面から）。一度に1つだけ。様子はメモリに持ち、終わったら local/runs/ に残す
 const runs = new Map();
 let activeRun = null;
+// 予約（作者「どこかの町を調べている最中に別の町で調べるを押した場合、予約できるようにして。予約した町は、調査中の町が終わったら自動実行するようにしてほしい」）。
+// 調べている最中に「調べ始める」を押すと、ここに並べる。いまの調べが終わったら（止めた・止まったときも）、先頭から1つずつ始める。手元のサーバーを止めると消える
+const queue = [];
+const isBusy = () => activeRun && runs.get(activeRun)?.status === "running";
 
 const ROOT = path.resolve("site");
 const AREAS = path.join(ROOT, "data", "areas.json");
@@ -111,18 +118,36 @@ async function startRequest(req, res) {
 
 async function startRun(req, res) {
   if (!process.env.ANTHROPIC_API_KEY) return send(res, 400, { error: "調べるには npm run serve:research で動かしてください（.env の鍵を読む）" });
-  if (activeRun && runs.get(activeRun)?.status === "running") return send(res, 409, { error: "ほかの町を調べている最中です", runId: activeRun });
   let body = "";
   for await (const chunk of req) body += chunk;
   const { code, part } = JSON.parse(body || "{}");
   if (!/^\d{5}$/.test(code ?? "")) return send(res, 400, { error: "市区町村コードが正しくありません" });
   if (part != null && !/^\d{4}$/.test(part)) return send(res, 400, { error: "町・字の番号が正しくありません" });
   if (!ledger.can("owner", "request", `muni:${code}`)) return send(res, 403, { error: "この範囲を調べる権限がありません" });
+  const same = (x) => x.code === code && (x.part ?? null) === (part ?? null);
+  if (isBusy()) {
+    const cur = runs.get(activeRun);
+    if (same(cur)) return send(res, 409, { error: "この町は、いま調べている最中です", runId: activeRun });
+    let q = queue.find(same);
+    if (!q) { q = { id: `q-${Date.now()}-${code}${part ? `-${part}` : ""}`, code, part: part ?? null, at: new Date().toISOString() }; queue.push(q); }
+    return send(res, 202, { queued: true, id: q.id, position: queue.indexOf(q) + 1, current: { code: cur.code, part: cur.part ?? null } });
+  }
+  send(res, 200, launch(code, part));
+}
+
+// 予約の先頭を始める（いまの調べが終わったあと）
+function next() {
+  if (isBusy() || !queue.length) return;
+  const q = queue.shift();
+  const run = launch(q.code, q.part ?? undefined);
+  run.log.unshift({ at: run.startedAt, text: "予約していた町を、前の町の調べが終わったので始めました" });
+}
+
+function launch(code, part) {
   const id = `run-${new Date().toISOString().replace(/[-:T.Z]/g, "").slice(0, 14)}-${code}${part ? `-${part}` : ""}`;
   const run = { id, code, part, startedAt: new Date().toISOString(), status: "running", usd: 0, limit: RUN_LIMIT_USD, log: [], items: [], stopRequested: false };
   runs.set(id, run);
   activeRun = id;
-  send(res, 200, run);
   // 国のデータを重ねる計算（PC だけ・無料）を、Claude の調べと並べて動かす。町・字のときは市区町村の分がもうあれば何もしない
   const overlays = buildOverlays(code, (text) => run.log.push({ at: new Date().toISOString(), text })).catch(() => {});
   researchTown(code, {
@@ -168,7 +193,9 @@ async function startRun(req, res) {
     run.endedAt = new Date().toISOString();
     fs.mkdirSync("local/runs", { recursive: true });
     fs.writeFileSync(`local/runs/${id}.summary.json`, JSON.stringify(run, null, 1));
+    next();
   });
+  return run;
 }
 
 async function revokeCardReq(req, res, id) {
@@ -250,7 +277,28 @@ http
     if (url.pathname === "/api/requests" && req.method === "POST") return startRequest(req, res);
     if (url.pathname === "/api/runs" && req.method === "POST") return startRun(req, res);
     // いま調べている町（日本地図で点滅させる）
-    if (url.pathname === "/api/runs" && req.method === "GET") return send(res, 200, { running: [...runs.values()].filter((x) => x.status === "running").map((x) => ({ id: x.id, code: x.code, usd: x.usd })) });
+    if (url.pathname === "/api/runs" && req.method === "GET") return send(res, 200, { running: [...runs.values()].filter((x) => x.status === "running").map((x) => ({ id: x.id, code: x.code, part: x.part ?? null, usd: x.usd })), queue });
+    // 調べの途中の町（作者「調査が終わってない町の一覧がほしい。そこから調査を再開できるようにしたい」）：
+    // 一度でも調べた町（町・字）のうち、まだ調べていない問いか、前に見つからなかった問いが残っている所。日本地図の作る側の帯に出す
+    if (url.pathname === "/api/unfinished" && req.method === "GET") {
+      const scopes = [...new Set(ledger.load().items.filter((x) => x.kind === "answer" && /^(muni:\d{5}|town:\d{5}-\d{4})$/.test(x.scope)).map((x) => x.scope))];
+      const list = scopes.map((s) => {
+        const [code, part] = s.replace(/^(muni|town):/, "").split("-");
+        const p = townProgress(code, { part });
+        const running = [...runs.values()].some((x) => x.status === "running" && x.code === code && (x.part ?? null) === (part ?? null));
+        const q = queue.findIndex((x) => x.code === code && (x.part ?? null) === (part ?? null));
+        return { code, part: part ?? null, ...p, running, queued: q >= 0 ? q + 1 : null };
+      }).filter((x) => x.never + x.retry > 0 || x.running);
+      return send(res, 200, { list });
+    }
+    // 予約を取り消す
+    const qm = url.pathname.match(/^\/api\/queue\/([\w-]+)\/cancel$/);
+    if (qm && req.method === "POST") {
+      const i = queue.findIndex((x) => x.id === qm[1]);
+      if (i < 0) return send(res, 404, { error: "予約が見つかりません" });
+      queue.splice(i, 1);
+      return send(res, 200, { queue });
+    }
     const r = url.pathname.match(/^\/api\/runs\/([\w-]+)(\/stop)?$/);
     if (r && req.method === "GET") return runs.has(r[1]) ? send(res, 200, runs.get(r[1])) : send(res, 404, { error: "見つかりません" });
     if (r && r[2] && req.method === "POST") {

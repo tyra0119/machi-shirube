@@ -1167,7 +1167,32 @@ async function showBuilderBox() {
       ? `<p class="bb-nums"><span><strong>${pending}</strong>件 確かめ待ち</span>${props.length ? `<span><strong>${props.length}</strong>件 判断待ちの提案</span>` : ""}</p>`
       : `<p class="bb-none">確かめ待ちと判断待ちの提案はありません</p>`}
     <a class="secondary as-button" href="review.html">確かめる一覧を開く</a>
-    ${towns.map((c) => `<a class="secondary as-button" href="research.html?muni=${c}">提案を見る：${String(stats?.towns?.[c]?.name ?? c).replace(/[&<>"]/g, "")}</a>`).join("")}`;
+    ${towns.map((c) => `<a class="secondary as-button" href="research.html?muni=${c}">提案を見る：${String(stats?.towns?.[c]?.name ?? c).replace(/[&<>"]/g, "")}</a>`).join("")}
+    <div id="bb-unfinished"></div>`;
+  showUnfinished();
+}
+
+// 調べの途中の町（作者「調査が終わってない町の一覧がほしい。そこから調査を再開できるようにしたい」）。
+// 「続きを調べる」：まだの問いと、前に見つからなかった問いを調べる（調べている町があれば予約になり、終わったら自動で始まる）
+async function showUnfinished() {
+  const el = document.getElementById("bb-unfinished");
+  const d = await fetch("api/unfinished").then((r) => (r.ok ? r.json() : null)).catch(() => null);
+  if (!el || !d?.list?.length) { if (el) el.innerHTML = ""; return; }
+  const nm = (x) => String(stats?.towns?.[x.code]?.name ?? x.code).replace(/^.+?郡(?=.+[町村]$)/, "").replace(/[&<>"]/g, "") + (x.part ? `（町・字 ${x.part}）` : "");
+  const url = (x) => `research.html?muni=${x.code}${x.part ? `&part=${x.part}` : ""}`;
+  el.innerHTML = `<p class="bb-sub">調べの途中の町 ${d.list.length}</p><ul class="bb-unf">${d.list.map((x, i) => `<li>
+    <a href="${url(x)}" class="u-name">${nm(x)}</a>
+    <span class="u-num">済み ${x.done}/${x.total}・まだ ${x.never}${x.retry ? `・見つからず ${x.retry}` : ""}</span>
+    ${x.running ? `<span class="u-state">調べています</span>` : x.queued ? `<span class="u-state">予約 ${x.queued} 番目</span>` : `<button type="button" class="secondary" data-i="${i}">続きを調べる</button>`}
+  </li>`).join("")}</ul>`;
+  for (const b of el.querySelectorAll("button[data-i]")) b.addEventListener("click", async () => {
+    const x = d.list[Number(b.dataset.i)];
+    b.disabled = true;
+    const res = await fetch("api/runs", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ code: x.code, part: x.part ?? undefined }) });
+    const body = await res.json().catch(() => ({}));
+    if (!res.ok) { b.disabled = false; b.textContent = `始められませんでした：${body.error ?? res.status}`; return; }
+    showUnfinished();
+  });
 }
 
 function showCounter(running = []) {

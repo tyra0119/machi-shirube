@@ -1,11 +1,11 @@
 {
  "lang": "en",
  "name": "English",
- "createdAt": "2026-11-06T07:51:11.691Z",
+ "createdAt": "2026-11-06T08:31:24.013Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1120,
- "of": 1079,
+ "count": 1123,
+ "of": 1082,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "This is an unofficial guide to living in this town. Claude gathers information from the town's official website and other sources, and cites each source (Machishirube)",
   "すべてのページ": "All pages",
@@ -1126,6 +1126,9 @@
   "まだ調べていません": "Not yet checked",
   "見つからず": "Not found",
   "これから調べます": "Will check soon",
-  "場所の一覧あり": "Place list available"
+  "場所の一覧あり": "Place list available",
+  "坂や雪で出にくい人の支援": "Support for people who have difficulty going out because of slopes or snow",
+  "成年後見の利用支援": "Support for using the adult guardianship system",
+  "冬の灯油代の助成": "Winter heating oil subsidy"
  }
 }

@@ -1,11 +1,11 @@
 {
  "lang": "tl",
  "name": "Filipino",
- "createdAt": "2026-11-06T07:51:49.319Z",
+ "createdAt": "2026-11-06T08:31:55.573Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1109,
- "of": 1079,
+ "count": 1112,
+ "of": 1082,
  "dict": {
   "この町の非公式の暮らしの案内です。町の公式のサイトや国の公開データから集め、出典をつけています（まちしるべ）": "Ito ay isang di-opisyal na gabay sa pamumuhay sa bayang ito. Kinuha ito mula sa opisyal na website ng bayan at sa pampublikong datos ng bansa, at may nakasaad na pinagmulan (Machishirube)",
   "すべてのページ": "Lahat ng pahina",
@@ -1115,6 +1115,9 @@
   "まだ調べていません": "Hindi pa nasusuri",
   "見つからず": "Hindi nahanap",
   "これから調べます": "Susuriin pa lang",
-  "場所の一覧あり": "May listahan ng mga lugar"
+  "場所の一覧あり": "May listahan ng mga lugar",
+  "坂や雪で出にくい人の支援": "Suporta para sa mga nahihirapang lumabas dahil sa matatarik na daan o niyebe",
+  "成年後見の利用支援": "Suporta sa paggamit ng sistema ng adult guardianship",
+  "冬の灯油代の助成": "Ayuda sa gastos sa kerosene tuwing taglamig"
  }
 }

@@ -14,6 +14,9 @@ let questions = [];
 let items = [];
 let run = null;
 let local = false;
+let STATS = null;
+let queued = null; // 予約の番号（ほかの町を調べている最中に「調べ始める」を押したとき）
+const townName = (c, p) => { const t = STATS?.towns?.[c]; return t ? `${t.name.replace(/^.+?郡(?=.+[町村]$)/, "")}${p ? `（町・字 ${p}）` : ""}` : c; };
 
 main();
 async function main() {
@@ -21,6 +24,7 @@ async function main() {
   // 町・字ごとの問いは、町・字を調べるときだけ。「この町だけ」の問いはその町だけ
   const feats = (await fetch("data/features.json").then((r) => r.json()).catch(() => ({ towns: {} }))).towns[code] ?? [];
   questions = yard.questions.filter((q) => (q.level === "town") === Boolean(part) && (!q.only || q.only === code) && (!q.feature || feats.includes(q.feature)));
+  STATS = stats;
   const t = stats.towns[code];
   if (!t) { $("name").textContent = "町が見つかりません"; return; }
   const muniName = t.name.replace(/^.+?郡(?=.+[町村]$)/, "");
@@ -52,6 +56,14 @@ async function main() {
     $("notify-ok").addEventListener("click", async () => { await Notification.requestPermission(); $("notify-ok").remove(); });
   }
   $("stop").addEventListener("click", () => run && fetch(`api/runs/${run.id}/stop`, { method: "POST" }));
+  // この町をもう調べている・予約しているときは、開き直してもその様子を出す
+  if (local) {
+    const st = await fetch("api/runs").then((r) => r.json()).catch(() => null);
+    const mine = st?.running?.find((x) => x.code === code && (x.part ?? null) === (part ?? null));
+    const q = st?.queue?.find((x) => x.code === code && (x.part ?? null) === (part ?? null));
+    if (mine) { run = { id: mine.id }; $("start").disabled = true; $("stop").hidden = false; poll(); }
+    else if (q) { queued = q.id; $("start").disabled = true; showQueued(st.queue.indexOf(q) + 1, st.running[0]); waitTurn(); }
+  }
   await loadItems();
   renderGrid();
   await showProposals();
@@ -97,9 +109,34 @@ async function start() {
   const res = await fetch("api/runs", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ code, part: part ?? undefined }) });
   const body = await res.json();
   if (!res.ok) { $("note").textContent = `始められませんでした：${body.error}`; $("start").disabled = false; return; }
+  // ほかの町を調べている最中なら、予約になる（作者「予約できるようにして。…調査中の町が終わったら自動実行」）
+  if (body.queued) { queued = body.id; showQueued(body.position, body.current); waitTurn(); return; }
   run = body;
   $("stop").hidden = false;
   poll();
+}
+
+// 予約したこと・何番目か・取り消し
+function showQueued(pos, cur) {
+  $("note").innerHTML = `予約しました（${pos} 番目）。いま調べている${cur ? esc(townName(cur.code, cur.part)) : "町"}が終わったら、自動でこの町を始めます。この画面は閉じてもかまいません（手元のサーバーが動いているあいだ）。 <button type="button" id="unqueue" class="secondary">予約を取り消す</button>`;
+  $("unqueue").addEventListener("click", async () => {
+    const res = await fetch(`api/queue/${queued}/cancel`, { method: "POST" });
+    queued = null;
+    $("note").textContent = res.ok ? "予約を取り消しました。" : "予約は、もう始まったか、無くなっていました。";
+    $("start").disabled = false;
+  });
+}
+// 自分の番を待つ：この町の調べが始まったら、その様子を出す
+async function waitTurn() {
+  if (!queued) return;
+  const st = await fetch("api/runs").then((r) => r.json()).catch(() => null);
+  const mine = st?.running?.find((x) => x.code === code && (x.part ?? null) === (part ?? null));
+  if (mine) { queued = null; run = { id: mine.id }; $("stop").hidden = false; $("note").textContent = "予約していたこの町の調べが始まりました。"; return poll(); }
+  const i = st?.queue?.findIndex((x) => x.id === queued) ?? -1;
+  if (i < 0) { queued = null; $("start").disabled = false; $("note").textContent = "予約が見つからなくなりました（手元のサーバーを動かし直したときなど）。もう一度押してください。"; return; }
+  const pos = $("note").textContent.match(/（(\d+) 番目）/)?.[1];
+  if (pos && Number(pos) !== i + 1) showQueued(i + 1, st.running[0]);
+  setTimeout(waitTurn, 3000);
 }
 
 // Claude からの提案の帯：物差しにない問い［この町だけ］［ほかの町にも］［今はしない］、調べ方［スキルにする］［今はしない］

@@ -435,3 +435,12 @@ html[data-wx="rain"] .scene .wx-rain, html[data-wx="snow"] .scene .wx-snow { dis
 .recent-list a:hover { background: var(--bg); }
 .recent-list .name { font-size: calc(17px * var(--fs, 1)); font-weight: 600; color: var(--accent); }
 .recent-list .sub { font-size: calc(13px * var(--fs, 1)); color: var(--text-sub); }
+
+/* 調べの途中の町（作る側の帯。app.js の showUnfinished） */
+.builder-box .bb-sub { margin: 12px 0 4px; font-size: calc(13px * var(--fs, 1)); font-weight: 700; color: var(--text-sub); }
+.bb-unf { margin: 0; padding: 0; list-style: none; }
+.bb-unf li { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; padding: 6px 0; border-top: 1px solid var(--line); }
+.bb-unf .u-name { font-weight: 600; color: var(--accent); }
+.bb-unf .u-num { font-size: calc(12px * var(--fs, 1)); color: var(--text-sub); }
+.bb-unf .u-state { font-size: calc(12px * var(--fs, 1)); font-weight: 700; color: var(--accent); }
+.bb-unf button { min-height: 36px; margin-left: auto; padding: 0 12px; font-size: calc(13px * var(--fs, 1)); }

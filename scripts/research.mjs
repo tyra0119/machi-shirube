@@ -350,14 +350,12 @@ function disallowed(robots, path) {
 
 // 1つの町を、物差しの問い（site/data/yardstick.json）でまとめて調べる。
 // もう答えのある問い（確かめ待ち・OK・自動）は飛ばす。1回の調べの費用の上限を超えたら止める
-// 1回の調べの上限。ふだんは $4。デモを録る日だけ、.env に RUN_LIMIT_USD=8 などと書いて上げる（作者「2：見せる」：その場で押す町で多くの問いが埋まるところを見せる）
+// 1回の調べの上限。ふだんは $4。.env の RUN_LIMIT_USD で上げる（デモを録る日は 8。作者「2：見せる」。11/6 から 30：作者「＄８だと少ないので、＄３０にする」）
 export const RUN_LIMIT_USD = Number(process.env.RUN_LIMIT_USD) > 0 ? Number(process.env.RUN_LIMIT_USD) : 4;
 // まとめて調べる。part を渡すと町・字の問い（物差しで level が town のもの）、渡さなければ市区町村の問い
-export async function researchTown(code, { log = console.log, onItem = () => {}, shouldStop = () => false, part, qids } = {}) {
+// その町（町・字）で調べる物差しの問い（調べる順に並べたもの）。researchTown と、調べの途中の町の一覧（serve.mjs の /api/unfinished）が同じものを使う
+export function townQuestions(code, { part, qids } = {}) {
   const { questions } = JSON.parse(fs.readFileSync("site/data/yardstick.json", "utf8"));
-  const scope = part ? `town:${code}-${part}` : `muni:${code}`;
-  const done = new Set(ledger.load().items.filter((x) => x.scope === scope && ["pending", "ok", "auto"].includes(x.status)).map((x) => x.qid ?? x.question));
-  let total = 0;
   // 「この町だけ」の問い（only）は、その町を調べるときだけ。特徴の問い（feature）は、その特徴のある町だけ（site/data/features.json）
   const feats = fs.existsSync("site/data/features.json") ? JSON.parse(fs.readFileSync("site/data/features.json", "utf8")).towns[code] ?? [] : [];
   // 調べる順：その町らしい問いを先に（1回の上限で止まっても、町の特徴・届きにくい人の問いには届くように）。
@@ -374,6 +372,25 @@ export async function researchTown(code, { log = console.log, onItem = () => {},
   // qids：この問いだけ調べる（物差しに新しく足した問いを、調べた町で調べるとき）
   const list = questions.filter((x) => (!qids || qids.includes(x.id)) && (x.level === "town") === Boolean(part) && (!x.only || x.only === code) && (!x.feature || feats.includes(x.feature)) && ruleOk(x))
     .map((q, i) => ({ q, i })).sort((a, b) => rank(a.q) - rank(b.q) || a.i - b.i).map((x) => x.q);
+  return list;
+}
+
+// 調べの進み具合：調べ済み（確かめ待ち・OK・自動）・まだ一度も調べていない・前に見つからなかった（調べ始めると、もう一度探す）
+export function townProgress(code, { part } = {}) {
+  const list = townQuestions(code, { part });
+  const scope = part ? `town:${code}-${part}` : `muni:${code}`;
+  const items = ledger.load().items.filter((x) => x.scope === scope && x.kind === "answer");
+  const done = new Set(items.filter((x) => ["pending", "ok", "auto"].includes(x.status)).map((x) => x.qid ?? x.question));
+  const tried = new Set(items.map((x) => x.qid ?? x.question));
+  const left = list.filter((q) => !done.has(q.id) && !done.has(q.text));
+  return { total: list.length, done: list.length - left.length, never: left.filter((q) => !tried.has(q.id)).length, retry: left.filter((q) => tried.has(q.id)).length };
+}
+
+export async function researchTown(code, { log = console.log, onItem = () => {}, shouldStop = () => false, part, qids } = {}) {
+  const scope = part ? `town:${code}-${part}` : `muni:${code}`;
+  const done = new Set(ledger.load().items.filter((x) => x.scope === scope && ["pending", "ok", "auto"].includes(x.status)).map((x) => x.qid ?? x.question));
+  let total = 0;
+  const list = townQuestions(code, { part, qids });
   for (const q of list) {
     if (done.has(q.id) || done.has(q.text)) { log(`${q.id} はもう答えがあるので飛ばします`); continue; }
     if (shouldStop()) { log("止めました"); break; }

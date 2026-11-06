@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-06T07:51:06.292Z",
+ "createdAt": "2026-11-06T08:31:20.055Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1119,
- "of": 1079,
+ "count": 1122,
+ "of": 1082,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -1125,6 +1125,9 @@
   "まだ調べていません": "Aún no se ha consultado",
   "見つからず": "No se encontró",
   "これから調べます": "Se consultará próximamente",
-  "場所の一覧あり": "Hay lista de lugares"
+  "場所の一覧あり": "Hay lista de lugares",
+  "坂や雪で出にくい人の支援": "Apoyo para personas con dificultad para salir por las cuestas o la nieve",
+  "成年後見の利用支援": "Apoyo para el uso de la tutela de adultos",
+  "冬の灯油代の助成": "Ayuda para el gasto de queroseno en invierno"
  }
 }
