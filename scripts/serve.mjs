@@ -292,7 +292,8 @@ http
         const q = queue.findIndex((x) => x.code === code && (x.part ?? null) === (part ?? null));
         return { code, part: part ?? null, ...p, running, queued: q >= 0 ? q + 1 : null };
       }).filter((x) => x.never + x.retry > 0 || x.running);
-      return send(res, 200, { list });
+      // 何回探して見つからなければ調べ終わりにするか（research.mjs の GIVE_UP_TRIES）。それより少ない問いだけが「続き」に数えられる
+      return send(res, 200, { list, limit: RUN_LIMIT_USD });
     }
     // 予約を取り消す
     const qm = url.pathname.match(/^\/api\/queue\/([\w-]+)\/cancel$/);

@@ -1180,17 +1180,30 @@ async function showUnfinished() {
   if (!el || !d?.list?.length) { if (el) el.innerHTML = ""; return; }
   const nm = (x) => String(stats?.towns?.[x.code]?.name ?? x.code).replace(/^.+?郡(?=.+[町村]$)/, "").replace(/[&<>"]/g, "") + (x.part ? `（町・字 ${x.part}）` : "");
   const url = (x) => `research.html?muni=${x.code}${x.part ? `&part=${x.part}` : ""}`;
-  el.innerHTML = `<p class="bb-sub">調べの途中の町 ${d.list.length}</p><ul class="bb-unf">${d.list.map((x, i) => `<li>
+  // まとめて続きを調べる（作者「まとめて調査ができるようにしてほしい」11/6）：調べても予約してもいない町を、上から順に予約する
+  const idle = d.list.filter((x) => !x.running && !x.queued);
+  const qs = idle.reduce((n, x) => n + x.never + x.retry, 0);
+  el.innerHTML = `<p class="bb-sub">調べの途中の町 ${d.list.length}</p>
+  ${idle.length >= 2 ? `<div class="bb-all"><button type="button" id="unf-all">まとめて続きを調べる（${idle.length} 町・${qs} 問）</button><span>1 町ずつ順に調べます（1 町の上限 $${d.limit ?? 30}）</span></div>` : ""}
+  <ul class="bb-unf">${d.list.map((x, i) => `<li>
     <a href="${url(x)}" class="u-name">${nm(x)}</a>
-    <span class="u-num">済み ${x.done}/${x.total}・まだ ${x.never}${x.retry ? `・見つからず ${x.retry}` : ""}</span>
+    <span class="u-num">済み ${x.done}/${x.total}・まだ ${x.never}${x.retry ? `・もう一度探す ${x.retry}` : ""}${x.notFound ? `・見つからず ${x.notFound}` : ""}</span>
     ${x.running ? `<span class="u-state">調べています</span>` : x.queued ? `<span class="u-state">予約 ${x.queued} 番目</span>` : `<button type="button" class="secondary" data-i="${i}">続きを調べる</button>`}
   </li>`).join("")}</ul>`;
+  const start = (x) => fetch("api/runs", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ code: x.code, part: x.part ?? undefined }) })
+    .then(async (res) => ({ ok: res.ok, body: await res.json().catch(() => ({})), status: res.status }));
   for (const b of el.querySelectorAll("button[data-i]")) b.addEventListener("click", async () => {
-    const x = d.list[Number(b.dataset.i)];
     b.disabled = true;
-    const res = await fetch("api/runs", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ code: x.code, part: x.part ?? undefined }) });
-    const body = await res.json().catch(() => ({}));
-    if (!res.ok) { b.disabled = false; b.textContent = `始められませんでした：${body.error ?? res.status}`; return; }
+    const r = await start(d.list[Number(b.dataset.i)]);
+    if (!r.ok) { b.disabled = false; b.textContent = `始められませんでした：${r.body.error ?? r.status}`; return; }
+    showUnfinished();
+  });
+  document.getElementById("unf-all")?.addEventListener("click", async (e) => {
+    const b = e.currentTarget;
+    b.disabled = true;
+    const bad = [];
+    for (const x of idle) { const r = await start(x); if (!r.ok) bad.push(`${nm(x)}：${r.body.error ?? r.status}`); }
+    if (bad.length) { b.disabled = false; b.textContent = `始められなかった町：${bad.join("／")}`; }
     showUnfinished();
   });
 }

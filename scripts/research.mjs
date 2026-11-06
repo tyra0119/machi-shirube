@@ -375,24 +375,44 @@ export function townQuestions(code, { part, qids } = {}) {
   return list;
 }
 
-// 調べの進み具合：調べ済み（確かめ待ち・OK・自動）・まだ一度も調べていない・前に見つからなかった（調べ始めると、もう一度探す）
+// 何回探して見つからなければ、その問いを「調べ終わり（見つからなかった）」とするか。
+// 前は見つからなかった問いを調べるたびに探し直し、何度押しても「続きを調べる」が消えなかった
+// （黒潮町の「買い物の手段」は3回とも見つからず。作者「調査をしてもしても消えない」11/6）
+export const GIVE_UP_TRIES = 2;
+// 町の答えの記録から、問いごとの「見つからなかった（出さないにした）回数」を数える
+function missCounts(items) {
+  const n = new Map();
+  for (const x of items) if (x.status === "rejected") { const k = x.qid ?? x.question; n.set(k, (n.get(k) ?? 0) + 1); }
+  return n;
+}
+
+// 調べの進み具合：調べ済み（確かめ待ち・OK・自動）・見つからず調べ終わり（GIVE_UP_TRIES 回探した）・
+// まだ一度も調べていない・前に見つからなかった（調べ始めると、もう一度探す）
 export function townProgress(code, { part } = {}) {
   const list = townQuestions(code, { part });
   const scope = part ? `town:${code}-${part}` : `muni:${code}`;
   const items = ledger.load().items.filter((x) => x.scope === scope && x.kind === "answer");
   const done = new Set(items.filter((x) => ["pending", "ok", "auto"].includes(x.status)).map((x) => x.qid ?? x.question));
+  const miss = missCounts(items);
   const tried = new Set(items.map((x) => x.qid ?? x.question));
   const left = list.filter((q) => !done.has(q.id) && !done.has(q.text));
-  return { total: list.length, done: list.length - left.length, never: left.filter((q) => !tried.has(q.id)).length, retry: left.filter((q) => tried.has(q.id)).length };
+  const gaveUp = left.filter((q) => (miss.get(q.id) ?? 0) >= GIVE_UP_TRIES);
+  const open = left.filter((q) => (miss.get(q.id) ?? 0) < GIVE_UP_TRIES);
+  return { total: list.length, done: list.length - left.length, notFound: gaveUp.length,
+    never: open.filter((q) => !tried.has(q.id)).length, retry: open.filter((q) => tried.has(q.id)).length };
 }
 
 export async function researchTown(code, { log = console.log, onItem = () => {}, shouldStop = () => false, part, qids } = {}) {
   const scope = part ? `town:${code}-${part}` : `muni:${code}`;
-  const done = new Set(ledger.load().items.filter((x) => x.scope === scope && ["pending", "ok", "auto"].includes(x.status)).map((x) => x.qid ?? x.question));
+  const mine = ledger.load().items.filter((x) => x.scope === scope);
+  const done = new Set(mine.filter((x) => ["pending", "ok", "auto"].includes(x.status)).map((x) => x.qid ?? x.question));
+  const miss = missCounts(mine.filter((x) => x.kind === "answer"));
   let total = 0;
   const list = townQuestions(code, { part, qids });
   for (const q of list) {
     if (done.has(q.id) || done.has(q.text)) { log(`${q.id} はもう答えがあるので飛ばします`); continue; }
+    // 問いを名指しで調べるとき（qids）は、前に見つからなくても探す
+    if (!qids && (miss.get(q.id) ?? 0) >= GIVE_UP_TRIES) { log(`${q.id} は ${miss.get(q.id)} 回探して見つからなかったので飛ばします`); continue; }
     if (shouldStop()) { log("止めました"); break; }
     if (total >= RUN_LIMIT_USD) { log(`この調べの費用が上限（$${RUN_LIMIT_USD}）に達したので止めます`); break; }
     try {
