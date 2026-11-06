@@ -1,11 +1,11 @@
 {
  "lang": "id",
  "name": "Bahasa Indonesia",
- "createdAt": "2026-11-06T01:37:36.134Z",
+ "createdAt": "2026-11-06T07:07:14.603Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1095,
- "of": 1057,
+ "count": 1099,
+ "of": 1060,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Ini adalah panduan hidup tidak resmi untuk kota ini. Claude mengumpulkannya dari situs resmi kota dan sumber lain, dengan mencantumkan sumbernya (Machishirube)",
   "すべてのページ": "Semua halaman",
@@ -1101,6 +1101,10 @@
   "車いすで使える": "Bisa digunakan dengan kursi roda",
   "公衆トイレ {n} か所は、地図の「もっと重ねる」から見られます": "{n} toilet umum dapat dilihat melalui \"Tampilkan lebih banyak lapisan\" di peta",
   "{d} に取得": "Diambil pada {d}",
-  "場所と道（公園・図書館・公民館）": "Lokasi dan jalan (taman, perpustakaan, balai warga)"
+  "場所と道（公園・図書館・公民館）": "Lokasi dan jalan (taman, perpustakaan, balai warga)",
+  "ホーム画面に置くと、アプリのように1回で開けます（ブラウザのメニューの「ホーム画面に追加」）。字が小さいときは、町の名前の下の「文字を大きく」を押してください（この端末に覚えます）。": "Jika disimpan di layar utama, bisa dibuka sekali sentuh seperti aplikasi (menu browser \"Tambahkan ke layar utama\"). Jika huruf terlalu kecil, tekan \"Perbesar huruf\" di bawah nama kota (akan diingat di perangkat ini).",
+  "文字をもとに": "Kembalikan ukuran huruf",
+  "文字を大きく": "Perbesar huruf",
+  "文字をふつうに": "Ukuran huruf normal"
  }
 }

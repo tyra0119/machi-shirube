@@ -37,6 +37,12 @@ const siteJs = fs.readdirSync("site").filter((f) => f.endsWith(".js"));
   check(!direct.length, "名札（User-Agent）は src/ua.mjs から読む（台本に直に書かない）", sample(direct));
 }
 {
+  // 文字を大きく（11/6）：字の大きさは、倍率 --fs をかけて書く（font-size: calc(Npx * var(--fs, 1))）。px を直に書くと、その字だけ大きくならない
+  const raw = [];
+  for (const f of ["site/town.css", "site/style.css"]) fs.readFileSync(f, "utf8").split("\n").forEach((l, i) => { if (/font-size:\s*\d+(?:\.\d+)?px/.test(l)) raw.push(`${f}:${i + 1}`); });
+  check(!raw.length, "字の大きさは倍率 --fs をかけて書く（「文字を大きく」で大きくなるように）", sample(raw));
+}
+{
   // 古い iPhone：正規表現の後ろ読み (?<!…) (?<=…) は iOS 16.4 より前の Safari で読めず、ファイル全体が止まる（11/5 に 6 か所あった）
   // ES2023 以降の書き方も使わない（iOS 15.4 の Safari までで動くもの。structuredClone・.at() は可）
   const NEW = /\b(?:Object\.groupBy|Map\.groupBy|toSorted|toReversed|toSpliced|withResolvers|fromAsync)\b|\bstatic\s*\{/;

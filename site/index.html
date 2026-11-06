@@ -7,6 +7,12 @@
 <meta name="description" content="町を選ぶと、その町で暮らしの情報が届きにくい人に届くページを、出典つきで作ります。">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.css">
 <link rel="stylesheet" href="style.css">
+<!-- ホーム画面に置く（作者「1-a・2-a・2-d・1-d」）：置いたアイコンを押すと、このページ（いちばん上に「前に見た町」）が開く -->
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-180.png">
+<meta name="apple-mobile-web-app-title" content="まちしるべ">
+<meta name="theme-color" content="#1f6f8b">
 </head>
 <body>
 <div class="layout">
@@ -28,6 +34,11 @@
       <section id="guide" class="guide">
         <!-- 作る側の帯：確かめ待ち・判断待ちの提案と、確かめる一覧への入口（作者の手元の画面だけ。app.js の showBuilderBox） -->
         <div id="builder-box" class="builder-box" hidden></div>
+        <!-- 前に見た町（端末に覚えたもの。app.js の showRecent）。自分の町と、離れて暮らす家族の町を1回で開く -->
+        <section id="recent" class="recent" hidden>
+          <h2>前に見た町</h2>
+          <div class="recent-list" id="recent-list"></div>
+        </section>
         <p class="about">町を選ぶと、その町の<strong>暮らしのページ</strong>が開きます。<strong>暮らしの情報が届きにくい人</strong>に届く情報を、出典つきで足していきます。</p>
         <h2>たとえば</h2>
         <div class="examples">

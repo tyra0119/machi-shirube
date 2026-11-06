@@ -980,6 +980,32 @@ for (const b of rankEl.querySelectorAll(".order button")) {
   });
 }
 
+// 前に見た町（町のページを開いたときに端末に覚えたもの。town.js の rememberRecent）。
+// 自分の町と、離れて暮らす家族の町（親の町・進学で離れた子どもの町など）を、日本地図から探し直さずに1回で開く（作者「1-a・2-a・2-d・1-d」）
+(function showRecent() {
+  let list = [];
+  try { list = JSON.parse(localStorage.getItem("machi-shirube:recent") || "[]"); } catch {}
+  list = list.filter((x) => x && typeof x.u === "string" && x.u.startsWith("town.html?") && x.n);
+  if (!list.length) return;
+  const box = document.getElementById("recent-list");
+  for (const x of list) {
+    const a = document.createElement("a");
+    a.href = x.u;
+    const n = document.createElement("span");
+    n.className = "name";
+    n.textContent = x.n;
+    a.append(n);
+    if (x.w) {
+      const w = document.createElement("span");
+      w.className = "sub";
+      w.textContent = x.w;
+      a.append(w);
+    }
+    box.append(a);
+  }
+  document.getElementById("recent").hidden = false;
+})();
+
 // はじめの説明の「たとえば」
 for (const b of document.querySelectorAll(".examples button")) {
   b.addEventListener("click", () => {

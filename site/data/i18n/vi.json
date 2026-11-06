@@ -1,11 +1,11 @@
 {
  "lang": "vi",
  "name": "Tiếng Việt",
- "createdAt": "2026-11-06T01:37:36.140Z",
+ "createdAt": "2026-11-06T07:07:20.468Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1095,
- "of": 1057,
+ "count": 1099,
+ "of": 1060,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Đây là trang hướng dẫn đời sống không chính thức của thị trấn này. Claude thu thập từ các trang chính thức của thị trấn v.v. và ghi rõ nguồn (Machi-shirube)",
   "すべてのページ": "Tất cả các trang",
@@ -1101,6 +1101,10 @@
   "車いすで使える": "Xe lăn dùng được",
   "公衆トイレ {n} か所は、地図の「もっと重ねる」から見られます": "Bạn có thể xem {n} nhà vệ sinh công cộng trong mục \"Thêm lớp\" của bản đồ",
   "{d} に取得": "Lấy dữ liệu lúc {d}",
-  "場所と道（公園・図書館・公民館）": "Địa điểm và đường đi (công viên, thư viện, trung tâm sinh hoạt cộng đồng)"
+  "場所と道（公園・図書館・公民館）": "Địa điểm và đường đi (công viên, thư viện, trung tâm sinh hoạt cộng đồng)",
+  "ホーム画面に置くと、アプリのように1回で開けます（ブラウザのメニューの「ホーム画面に追加」）。字が小さいときは、町の名前の下の「文字を大きく」を押してください（この端末に覚えます）。": "Thêm vào màn hình chính thì bạn có thể mở chỉ bằng 1 lần bấm như một ứng dụng (trong menu của trình duyệt chọn \"Thêm vào màn hình chính\"). Nếu chữ nhỏ, hãy bấm \"Phóng to chữ\" ở dưới tên thị trấn (thiết bị này sẽ ghi nhớ).",
+  "文字をもとに": "Đặt lại cỡ chữ",
+  "文字を大きく": "Phóng to chữ",
+  "文字をふつうに": "Chữ bình thường"
  }
 }

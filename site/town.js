@@ -1999,7 +1999,34 @@ const MEDICAL = "病院・診療所：厚生労働省「医療情報ネット」
 const WEATHER = "今日と明日の天気・警報・注意報・地震：気象庁ホームページ（その場で読む）。気温・湿度・風・日の照る時間：Open-Meteo.com（CC BY 4.0）を加工。洗濯・服装はまちしるべの決まりで出しためやす";
 const BASEMAP = "背景の地図：地理院地図 Vector（国土地理院）https://maps.gsi.go.jp/development/vt.html";
 
+// 文字を大きく（作者「1-a・2-a・2-d・1-d」：字を大きくしたいお年寄り）。字の大きさは town.css の倍率 --fs で変わる。端末に覚える
+function showFs() {
+  const on = document.documentElement.getAttribute("data-fs") === "l";
+  $("fs").setAttribute("aria-pressed", on ? "true" : "false");
+  $("fs").textContent = on ? T("文字をふつうに") : T("文字を大きく");
+}
+$("fs").addEventListener("click", () => {
+  const on = document.documentElement.getAttribute("data-fs") !== "l";
+  if (on) document.documentElement.setAttribute("data-fs", "l");
+  else document.documentElement.removeAttribute("data-fs");
+  remember.set("fs", on ? "l" : "");
+  showFs();
+});
+// 前に見た町（トップの「前に見た町」に出す。最大 3 つ。端末の中に覚えるだけで、どこにも送らない）。
+// 自分の町と、離れて暮らす家族の町（親の町・進学で離れた子どもの町など）を、トップから1回で開けるように（作者「親とは限らないよね。子どもかもしれない」）
+function rememberRecent(name, where) {
+  const q = new URLSearchParams(location.search);
+  q.delete("here");
+  if (!q.toString()) return;
+  let list = [];
+  try { list = JSON.parse(remember.get("recent") || "[]"); } catch {}
+  const u = `town.html?${q}`;
+  list = [{ u, n: name, w: where }, ...list.filter((x) => x && x.u !== u)].slice(0, 3);
+  remember.set("recent", JSON.stringify(list));
+}
 function header(name, where, path) {
+  rememberRecent(name, where);
+  showFs();
   document.title = `${name}｜まちしるべ`;
   $("name").textContent = name;
   $("where").textContent = where;

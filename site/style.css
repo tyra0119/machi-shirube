@@ -50,13 +50,13 @@ body {
   width: clamp(300px, 34vw, 380px); flex: 0 0 auto; background: var(--surface); box-shadow: var(--shadow);
 }
 .panel-top { padding: 14px 16px 10px; border-bottom: 1px solid var(--line); }
-.panel-top h1 { margin: 0 0 10px; font-size: 22px; }
+.panel-top h1 { margin: 0 0 10px; font-size: calc(22px * var(--fs, 1)); }
 .panel-body { flex: 1; overflow-y: auto; padding: 4px 16px 24px; }
 main { position: relative; flex: 1; min-width: 0; }
 #map { position: absolute; inset: 0; background: var(--sea); }
 
 /* 読み込めなかったデータの知らせ（赤は使わない。枠と文字で知らせる） */
-.problems { margin: 8px 16px 0; padding: 8px 12px; border: 2px solid var(--text); border-radius: 8px; font-size: 13px; }
+.problems { margin: 8px 16px 0; padding: 8px 12px; border: 2px solid var(--text); border-radius: 8px; font-size: calc(13px * var(--fs, 1)); }
 .problems p { margin: 0 0 4px; font-weight: 600; }
 .problems ul { margin: 0; padding-left: 18px; color: var(--text-sub); }
 
@@ -64,7 +64,7 @@ main { position: relative; flex: 1; min-width: 0; }
 .search { position: relative; }
 .search input {
   width: 100%; height: 48px; padding: 0 20px; border: 1px solid var(--line); border-radius: 24px;
-  background: var(--surface); color: var(--text); font-size: 16px;
+  background: var(--surface); color: var(--text); font-size: calc(16px * var(--fs, 1));
 }
 .search input:focus { outline: 3px solid var(--accent); outline-offset: 0; }
 .results {
@@ -76,25 +76,25 @@ main { position: relative; flex: 1; min-width: 0; }
   border: 0; background: transparent; color: var(--text); text-align: left; cursor: pointer;
 }
 .results button:hover, .results button.active { background: var(--bg); }
-.results .name, .examples .name { font-size: 16px; font-weight: 600; }
-.results .sub, .examples .sub { font-size: 13px; color: var(--text-sub); }
-.results .none { padding: 10px 20px; font-size: 14px; color: var(--text-sub); }
+.results .name, .examples .name { font-size: calc(16px * var(--fs, 1)); font-weight: 600; }
+.results .sub, .examples .sub { font-size: calc(13px * var(--fs, 1)); color: var(--text-sub); }
+.results .none { padding: 10px 20px; font-size: calc(14px * var(--fs, 1)); color: var(--text-sub); }
 
 /* はじめに出す説明 */
-.guide h2 { margin: 22px 0 8px; font-size: 16px; }
-.guide .about { margin: 12px 0 0; font-size: 15px; line-height: 1.7; }
+.guide h2 { margin: 22px 0 8px; font-size: calc(16px * var(--fs, 1)); }
+.guide .about { margin: 12px 0 0; font-size: calc(15px * var(--fs, 1)); line-height: 1.7; }
 .steps { margin: 0; padding: 0; list-style: none; counter-reset: step; }
-.steps li { position: relative; padding: 6px 0 8px 40px; font-size: 14px; line-height: 1.6; color: var(--text-sub); counter-increment: step; }
+.steps li { position: relative; padding: 6px 0 8px 40px; font-size: calc(14px * var(--fs, 1)); line-height: 1.6; color: var(--text-sub); counter-increment: step; }
 .steps li::before {
   content: counter(step); position: absolute; left: 0; top: 6px; display: grid; place-items: center;
-  width: 28px; height: 28px; border-radius: 14px; border: 2px solid var(--accent); color: var(--accent); font-weight: 700; font-size: 14px;
+  width: 28px; height: 28px; border-radius: 14px; border: 2px solid var(--accent); color: var(--accent); font-weight: 700; font-size: calc(14px * var(--fs, 1));
 }
-.steps .step-title { display: block; color: var(--text); font-size: 15px; font-weight: 600; }
-.soon { display: inline-block; margin-left: 6px; padding: 0 8px; border: 1px solid var(--line); border-radius: 10px; font-size: 12px; font-weight: 400; color: var(--text-sub); }
+.steps .step-title { display: block; color: var(--text); font-size: calc(15px * var(--fs, 1)); font-weight: 600; }
+.soon { display: inline-block; margin-left: 6px; padding: 0 8px; border: 1px solid var(--line); border-radius: 10px; font-size: calc(12px * var(--fs, 1)); font-weight: 400; color: var(--text-sub); }
 .examples { display: flex; flex-direction: column; gap: 8px; }
 .examples button { border: 1px solid var(--line); border-radius: 10px; padding: 8px 14px; }
 .examples button:hover, .town-list button:hover { background: var(--bg); }
-.legend { margin: 0; padding: 0; list-style: none; font-size: 14px; }
+.legend { margin: 0; padding: 0; list-style: none; font-size: calc(14px * var(--fs, 1)); }
 .legend li { display: flex; align-items: center; gap: 10px; padding: 4px 0; }
 .legend .swatch { width: 22px; height: 16px; border: 1px solid var(--pref-line); border-radius: 3px; }
 .legend .swatch.selected { background: var(--accent); }
@@ -102,76 +102,76 @@ main { position: relative; flex: 1; min-width: 0; }
 .legend .line { width: 22px; height: 0; }
 .legend .line.pref { border-top: 3px dashed var(--text); }
 .legend .line.muni { border-top: 1.5px solid var(--pref-line); }
-.hint { font-size: 13px; color: var(--text-sub); line-height: 1.6; }
+.hint { font-size: calc(13px * var(--fs, 1)); color: var(--text-sub); line-height: 1.6; }
 
 /* 町のカード（パネルの中に出す） */
 .card { position: relative; padding-top: 12px; }
-.card h2 { margin: 0 0 4px; padding-right: 44px; font-size: 22px; }
-.card .where { margin: 0 0 12px; color: var(--text-sub); font-size: 14px; }
+.card h2 { margin: 0 0 4px; padding-right: 44px; font-size: calc(22px * var(--fs, 1)); }
+.card .where { margin: 0 0 12px; color: var(--text-sub); font-size: calc(14px * var(--fs, 1)); }
 .card p { margin: 0 0 8px; line-height: 1.6; }
-.card .pop { font-size: 16px; font-weight: 600; }
+.card .pop { font-size: calc(16px * var(--fs, 1)); font-weight: 600; }
 .card .features { list-style: none; margin: 0 0 10px; padding: 0; }
 .card .features li {
   display: grid; grid-template-columns: 1fr auto; gap: 0 12px;
   padding: 8px 0; border-top: 1px solid var(--line);
 }
-.card .features .label { font-size: 14px; color: var(--text-sub); }
-.card .features .value { grid-row: span 3; align-self: center; font-size: 22px; font-weight: 700; }
-.card .features .place { font-size: 14px; color: var(--text-sub); }
+.card .features .label { font-size: calc(14px * var(--fs, 1)); color: var(--text-sub); }
+.card .features .value { grid-row: span 3; align-self: center; font-size: calc(22px * var(--fs, 1)); font-weight: 700; }
+.card .features .place { font-size: calc(14px * var(--fs, 1)); color: var(--text-sub); }
 .card .features li:not(.notable) .value { font-weight: 500; color: var(--text-sub); }
 .card .features .notable .place { color: var(--text); }
 .card .features .mark {
   display: inline-block; margin-left: 8px; padding: 0 8px; border-radius: 10px;
-  background: var(--accent); color: var(--accent-text); font-size: 12px; font-weight: 600; vertical-align: 1px;
+  background: var(--accent); color: var(--accent-text); font-size: calc(12px * var(--fs, 1)); font-weight: 600; vertical-align: 1px;
 }
-.card .note, .card .cite { font-size: 12px; color: var(--text-sub); margin: 0 0 4px; }
+.card .note, .card .cite { font-size: calc(12px * var(--fs, 1)); color: var(--text-sub); margin: 0 0 4px; }
 .card .primary {
   display: block; width: 100%; min-height: 48px; margin: 0 0 12px; padding: 0 16px;
   border: 0; border-radius: 24px; background: var(--accent); color: var(--accent-text);
-  font-size: 16px; font-weight: 600; cursor: pointer;
+  font-size: calc(16px * var(--fs, 1)); font-weight: 600; cursor: pointer;
 }
 .card .primary:hover { filter: brightness(1.08); }
 .card a.as-button { display: flex; align-items: center; justify-content: center; text-decoration: none; }
 .card .primary:focus-visible { outline: 3px solid var(--text); outline-offset: 2px; }
 .card .close {
   position: absolute; right: -6px; top: 6px; width: 44px; height: 44px;
-  border: 0; border-radius: 22px; background: transparent; color: var(--text-sub); font-size: 24px; cursor: pointer;
+  border: 0; border-radius: 22px; background: transparent; color: var(--text-sub); font-size: calc(24px * var(--fs, 1)); cursor: pointer;
 }
 .card .close:hover { background: var(--bg); }
 .town-list { margin: 8px 0 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
 .town-list li { border-bottom: 1px solid var(--line); }
 .town-list button { flex-direction: row; justify-content: space-between; align-items: center; padding: 6px 8px; }
-.town-list .n { font-size: 16px; }
-.town-list .p { font-size: 13px; color: var(--text-sub); }
+.town-list .n { font-size: calc(16px * var(--fs, 1)); }
+.town-list .p { font-size: calc(13px * var(--fs, 1)); color: var(--text-sub); }
 
 /* 数字で並べて探す */
 .secondary {
   display: block; width: 100%; min-height: 48px; margin: 14px 0 0; padding: 0 16px;
   border: 1px solid var(--accent); border-radius: 24px; background: var(--surface); color: var(--accent);
-  font-size: 15px; font-weight: 600; cursor: pointer;
+  font-size: calc(15px * var(--fs, 1)); font-weight: 600; cursor: pointer;
 }
 .secondary:hover { background: var(--bg); }
 a.secondary.as-button { display: flex; align-items: center; justify-content: center; text-decoration: none; }
-.rank .field { display: block; margin: 0 0 10px; font-size: 13px; color: var(--text-sub); }
+.rank .field { display: block; margin: 0 0 10px; font-size: calc(13px * var(--fs, 1)); color: var(--text-sub); }
 .rank select {
   display: block; width: 100%; min-height: 44px; margin-top: 4px; padding: 0 10px;
-  border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--text); font-size: 15px;
+  border: 1px solid var(--line); border-radius: 8px; background: var(--surface); color: var(--text); font-size: calc(15px * var(--fs, 1));
 }
 .filters { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 0 0 10px; padding: 6px 10px 8px; border: 1px solid var(--line); border-radius: 8px; }
-.filters legend { padding: 0 4px; font-size: 13px; color: var(--text-sub); }
-.filters label { display: flex; align-items: center; gap: 6px; min-height: 36px; font-size: 14px; cursor: pointer; }
+.filters legend { padding: 0 4px; font-size: calc(13px * var(--fs, 1)); color: var(--text-sub); }
+.filters label { display: flex; align-items: center; gap: 6px; min-height: 36px; font-size: calc(14px * var(--fs, 1)); cursor: pointer; }
 .filters input { width: 20px; height: 20px; accent-color: var(--accent); }
 .filters:disabled { opacity: 0.5; }
 .tags { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 10px; }
-.tags span { padding: 2px 10px; border: 1px solid var(--pref-line); border-radius: 12px; font-size: 13px; }
+.tags span { padding: 2px 10px; border: 1px solid var(--pref-line); border-radius: 12px; font-size: calc(13px * var(--fs, 1)); }
 .order { display: flex; gap: 0; margin: 4px 0 12px; border: 1px solid var(--line); border-radius: 22px; overflow: hidden; }
-.order button { flex: 1; min-height: 44px; border: 0; background: var(--surface); color: var(--text); font-size: 15px; cursor: pointer; }
+.order button { flex: 1; min-height: 44px; border: 0; background: var(--surface); color: var(--text); font-size: calc(15px * var(--fs, 1)); cursor: pointer; }
 .order button[aria-pressed="true"] { background: var(--accent); color: var(--accent-text); font-weight: 600; }
-.rank-legend { display: flex; align-items: center; gap: 8px; margin: 0 0 8px; font-size: 12px; color: var(--text-sub); }
+.rank-legend { display: flex; align-items: center; gap: 8px; margin: 0 0 8px; font-size: calc(12px * var(--fs, 1)); color: var(--text-sub); }
 .rank-legend .bar { flex: 1; height: 10px; border-radius: 5px; border: 1px solid var(--line); }
 .back-to-rank {
   min-height: 40px; margin: 0 0 8px; padding: 0 14px; border: 1px solid var(--line); border-radius: 20px;
-  background: var(--surface); color: var(--text); font-size: 14px; cursor: pointer;
+  background: var(--surface); color: var(--text); font-size: calc(14px * var(--fs, 1)); cursor: pointer;
 }
 .back-to-rank:hover { background: var(--bg); }
 .rank-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
@@ -181,29 +181,29 @@ a.secondary.as-button { display: flex; align-items: center; justify-content: cen
   padding: 4px 6px; border: 0; background: transparent; color: var(--text); text-align: left; cursor: pointer;
 }
 .rank-list button:hover { background: var(--bg); }
-.rank-list .nm { font-size: 15px; }
-.rank-list .nm small { display: block; font-size: 12px; color: var(--text-sub); }
-.rank-list .val { font-size: 15px; font-weight: 600; }
+.rank-list .nm { font-size: calc(15px * var(--fs, 1)); }
+.rank-list .nm small { display: block; font-size: calc(12px * var(--fs, 1)); color: var(--text-sub); }
+.rank-list .val { font-size: calc(15px * var(--fs, 1)); font-weight: 600; }
 
 /* 届きにくい人の候補（深掘りの型） */
-.card h3.sub { margin: 16px 0 6px; font-size: 16px; }
+.card h3.sub { margin: 16px 0 6px; font-size: calc(16px * var(--fs, 1)); }
 .types { margin: 0 0 6px; padding: 0; list-style: none; }
 .types li { display: grid; gap: 2px; padding: 8px 10px; margin-bottom: 6px; border: 1px solid var(--line); border-radius: 8px; }
-.types .type { font-size: 16px; font-weight: 700; }
-.types .who { font-size: 14px; }
-.types .why { font-size: 13px; color: var(--text-sub); }
+.types .type { font-size: calc(16px * var(--fs, 1)); font-weight: 700; }
+.types .who { font-size: calc(14px * var(--fs, 1)); }
+.types .why { font-size: calc(13px * var(--fs, 1)); color: var(--text-sub); }
 
 /* カードのボタンの段（どのカードも名前のすぐ下） */
 .card-actions { display: flex; flex-direction: column; gap: 8px; margin: 0 0 14px; }
 .card-actions .primary, .card-actions .secondary { margin: 0; }
 .card-actions .save-area { display: flex; flex-direction: column; gap: 8px; }
 .card-actions .area-form { display: flex; flex-direction: column; gap: 8px; }
-.card-actions .area-form input { width: 100%; min-height: 44px; margin-top: 4px; padding: 0 10px; border: 1px solid var(--line); border-radius: 8px; font-size: 15px; }
+.card-actions .area-form input { width: 100%; min-height: 44px; margin-top: 4px; padding: 0 10px; border: 1px solid var(--line); border-radius: 8px; font-size: calc(15px * var(--fs, 1)); }
 
 /* 複数選んだ町・字 */
 .picked { display: flex; flex-wrap: wrap; gap: 6px; margin: 0 0 10px; padding: 0; list-style: none; }
 .picked li { display: flex; align-items: center; gap: 2px; padding: 0 2px 0 12px; border: 1px solid var(--accent); border-radius: 18px; }
-.picked button { width: 36px; height: 36px; border: 0; border-radius: 18px; background: transparent; color: var(--text-sub); font-size: 18px; cursor: pointer; }
+.picked button { width: 36px; height: 36px; border: 0; border-radius: 18px; background: transparent; color: var(--text-sub); font-size: calc(18px * var(--fs, 1)); cursor: pointer; }
 .picked button:hover { background: var(--bg); }
 .card .secondary { margin: 4px 0 12px; }
 
@@ -211,7 +211,7 @@ a.secondary.as-button { display: flex; align-items: center; justify-content: cen
 .choices { display: flex; flex-wrap: wrap; gap: 8px; }
 .choices button {
   min-height: 48px; padding: 0 16px; border: 1px solid var(--line); border-radius: 24px;
-  background: var(--surface); color: var(--text); font-size: 16px; cursor: pointer;
+  background: var(--surface); color: var(--text); font-size: calc(16px * var(--fs, 1)); cursor: pointer;
 }
 .choices button:hover { background: var(--bg); }
 
@@ -219,7 +219,7 @@ a.secondary.as-button { display: flex; align-items: center; justify-content: cen
 .tip {
   position: absolute; left: 0; top: 0; z-index: 2; pointer-events: none;
   padding: 4px 10px; background: var(--surface); color: var(--text); border-radius: 6px;
-  box-shadow: var(--shadow); font-size: 14px; white-space: nowrap;
+  box-shadow: var(--shadow); font-size: calc(14px * var(--fs, 1)); white-space: nowrap;
 }
 @media (hover: none) { .tip { display: none; } }
 
@@ -227,14 +227,14 @@ a.secondary.as-button { display: flex; align-items: center; justify-content: cen
 .basemap {
   position: absolute; right: 12px; top: 12px; min-height: 44px; padding: 0 16px;
   border: 1px solid var(--line); border-radius: 22px; background: var(--surface); color: var(--text);
-  font-size: 14px; box-shadow: var(--shadow); cursor: pointer;
+  font-size: calc(14px * var(--fs, 1)); box-shadow: var(--shadow); cursor: pointer;
 }
 .basemap:hover { background: var(--bg); }
 .basemap[aria-pressed="false"] { color: var(--text-sub); }
 .source a { color: inherit; }
 .source {
   position: absolute; left: 8px; bottom: 6px; margin: 0; max-width: calc(100% - 90px);
-  padding: 2px 6px; font-size: 11px; color: var(--text-sub);
+  padding: 2px 6px; font-size: calc(11px * var(--fs, 1)); color: var(--text-sub);
   background: color-mix(in srgb, var(--surface) 80%, transparent); border-radius: 4px;
 }
 /* いま見ている所の道すじ：日本 › 県 › 市区町村 › 町・字 */
@@ -247,10 +247,10 @@ a.secondary.as-button { display: flex; align-items: center; justify-content: cen
 .crumb .path li + li::before { content: "›"; margin: 0 2px; color: var(--text-sub); }
 .crumb .path button {
   min-height: 40px; padding: 0 8px; border: 0; border-radius: 20px; background: transparent;
-  color: var(--accent); font-size: 15px; text-decoration: underline; text-underline-offset: 3px; cursor: pointer;
+  color: var(--accent); font-size: calc(15px * var(--fs, 1)); text-decoration: underline; text-underline-offset: 3px; cursor: pointer;
 }
 .crumb .path button:hover { background: var(--bg); }
-.crumb .path span { padding: 0 8px; font-size: 15px; font-weight: 600; }
+.crumb .path span { padding: 0 8px; font-size: calc(15px * var(--fs, 1)); font-weight: 600; }
 
 /* 地図のボタン：右下に縦に（上から 方角・現在地・＋・−） */
 .map-buttons { display: flex; flex-direction: column; align-items: center; gap: 10px; margin: 0 12px 28px 0; }
@@ -267,15 +267,15 @@ a.secondary.as-button { display: flex; align-items: center; justify-content: cen
 .map-buttons .needle { transition: transform 0.1s linear; }
 .map-message {
   position: absolute; right: 72px; bottom: 120px; max-width: 240px; padding: 8px 12px;
-  background: var(--surface); border-radius: 6px; box-shadow: var(--shadow); font-size: 14px;
+  background: var(--surface); border-radius: 6px; box-shadow: var(--shadow); font-size: calc(14px * var(--fs, 1));
 }
 
 /* 幅が狭いとき：パネルを少し詰める */
 @media (max-width: 900px) {
-  .panel-top h1 { font-size: 19px; margin-bottom: 8px; }
-  .card h2 { font-size: 20px; }
-  .card .features .value { font-size: 19px; }
-  .basemap { padding: 0 12px; font-size: 13px; }
+  .panel-top h1 { font-size: calc(19px * var(--fs, 1)); margin-bottom: 8px; }
+  .card h2 { font-size: calc(20px * var(--fs, 1)); }
+  .card .features .value { font-size: calc(19px * var(--fs, 1)); }
+  .basemap { padding: 0 12px; font-size: calc(13px * var(--fs, 1)); }
 }
 
 /* スマホ：地図を上に、パネルを下に */
@@ -292,15 +292,15 @@ a.secondary.as-button { display: flex; align-items: center; justify-content: cen
 /* 数える欄（日本地図の左下）と灯りの見本 */
 .counter {
   position: absolute; left: 12px; bottom: 28px; z-index: 2; display: flex; flex-wrap: wrap; gap: 4px 12px; max-width: min(560px, calc(100% - 90px));
-  padding: 8px 12px; background: var(--surface); border-radius: 12px; box-shadow: var(--shadow); font-size: 13px; color: var(--text-sub);
+  padding: 8px 12px; background: var(--surface); border-radius: 12px; box-shadow: var(--shadow); font-size: calc(13px * var(--fs, 1)); color: var(--text-sub);
 }
-.counter strong { margin-right: 2px; font-size: 18px; color: var(--text); }
+.counter strong { margin-right: 2px; font-size: calc(18px * var(--fs, 1)); color: var(--text); }
 .counter .now { color: var(--accent); font-weight: 700; }
-.counter .key { width: 100%; display: flex; align-items: center; gap: 6px; font-size: 12px; }
+.counter .key { width: 100%; display: flex; align-items: center; gap: 6px; font-size: calc(12px * var(--fs, 1)); }
 .counter .key i { display: inline-block; width: 14px; height: 10px; border-radius: 2px; }
 .counter .key i.lit { background: var(--accent); }
 .counter .key i.base { margin-left: 8px; background: var(--land); border: 1px solid var(--line); }
-@media (max-width: 700px) { .counter { bottom: 24px; font-size: 12px; } .counter strong { font-size: 15px; } }
+@media (max-width: 700px) { .counter { bottom: 24px; font-size: calc(12px * var(--fs, 1)); } .counter strong { font-size: calc(15px * var(--fs, 1)); } }
 
 /* はじめかたの印・たとえばのイラスト・光る丸の見本 */
 .steps .step-ic { position: absolute; right: 0; top: 8px; color: var(--accent); }
@@ -324,15 +324,15 @@ a.secondary.as-button { display: flex; align-items: center; justify-content: cen
 .legend .swatch.lit { width: 16px; height: 16px; border: 2px solid #fff; border-radius: 8px; background: var(--accent); box-shadow: 0 0 0 4px color-mix(in srgb, var(--accent) 35%, transparent); margin: 0 3px; }
 /* スマホでは数える欄を小さく（地図を隠さない） */
 @media (max-width: 700px) {
-  .counter { left: 8px; bottom: 22px; max-width: calc(100% - 70px); gap: 0 8px; padding: 4px 8px; font-size: 11px; }
-  .counter strong { font-size: 13px; }
+  .counter { left: 8px; bottom: 22px; max-width: calc(100% - 70px); gap: 0 8px; padding: 4px 8px; font-size: calc(11px * var(--fs, 1)); }
+  .counter strong { font-size: calc(13px * var(--fs, 1)); }
   .counter .key { display: none; }
 }
 
 /* 録画用の灯りの波の数（?wave のときだけ出る） */
-.wave-count { position: fixed; left: 50%; top: 24px; transform: translateX(-50%); z-index: 50; padding: 14px 28px; border-radius: 16px; background: var(--surface); box-shadow: var(--shadow, 0 2px 10px rgba(0, 0, 0, 0.2)); font-size: 20px; text-align: center; }
-.wave-count strong { font-size: 36px; margin-right: 6px; color: var(--accent); }
-.wave-count small { display: block; font-size: 13px; color: var(--text-sub); }
+.wave-count { position: fixed; left: 50%; top: 24px; transform: translateX(-50%); z-index: 50; padding: 14px 28px; border-radius: 16px; background: var(--surface); box-shadow: var(--shadow, 0 2px 10px rgba(0, 0, 0, 0.2)); font-size: calc(20px * var(--fs, 1)); text-align: center; }
+.wave-count strong { font-size: calc(36px * var(--fs, 1)); margin-right: 6px; color: var(--accent); }
+.wave-count small { display: block; font-size: calc(13px * var(--fs, 1)); color: var(--text-sub); }
 
 /* 部品の形のそろえ方（town.css の終わりと同じ決まり）：入力欄は角の丸い四角、選ぶ札は角の丸い四角に ✓ */
 .search input { border-radius: 8px; }
@@ -342,27 +342,27 @@ a.secondary.as-button { display: flex; align-items: center; justify-content: cen
 /* 作る側の帯（手元の画面だけ）：確かめ待ちがあるときは作品の色の枠で目立たせる（赤は使わない） */
 .builder-box { margin: 12px 0 4px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px; background: var(--bg); }
 .builder-box.has { border: 2px solid var(--accent); background: var(--surface); }
-.builder-box .bb-title { display: flex; align-items: center; gap: 6px; margin: 0 0 6px; font-size: 13px; font-weight: 700; color: var(--text-sub); }
+.builder-box .bb-title { display: flex; align-items: center; gap: 6px; margin: 0 0 6px; font-size: calc(13px * var(--fs, 1)); font-weight: 700; color: var(--text-sub); }
 .builder-box .bb-title svg { width: 16px; height: 16px; }
-.builder-box .bb-nums { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 0 0 8px; font-size: 14px; }
-.builder-box .bb-nums strong { margin-right: 2px; font-size: 22px; color: var(--accent); }
-.builder-box .bb-none { margin: 0 0 8px; font-size: 13px; color: var(--text-sub); }
+.builder-box .bb-nums { display: flex; flex-wrap: wrap; gap: 4px 14px; margin: 0 0 8px; font-size: calc(14px * var(--fs, 1)); }
+.builder-box .bb-nums strong { margin-right: 2px; font-size: calc(22px * var(--fs, 1)); color: var(--accent); }
+.builder-box .bb-none { margin: 0 0 8px; font-size: calc(13px * var(--fs, 1)); color: var(--text-sub); }
 .builder-box .as-button { margin-top: 6px; }
 /* はじめかた：たたんでおき、押すと開く */
 .guide .howto { margin: 16px 0 0; }
-.guide .howto summary { min-height: 40px; display: flex; align-items: center; font-size: 16px; font-weight: 700; cursor: pointer; }
+.guide .howto summary { min-height: 40px; display: flex; align-items: center; font-size: calc(16px * var(--fs, 1)); font-weight: 700; cursor: pointer; }
 .guide #open-rank { margin-top: 12px; }
-.about-links { margin: 8px 0 0; padding: 0; list-style: none; display: grid; gap: 6px; font-size: 14px; }
+.about-links { margin: 8px 0 0; padding: 0; list-style: none; display: grid; gap: 6px; font-size: calc(14px * var(--fs, 1)); }
 .about-links a { color: var(--accent); }
 /* 地図の見方の札（公開のサイトでも出す。手元の画面ではカウンターの帯に同じ見方が出る） */
-.map-key { position: absolute; left: 12px; bottom: 28px; z-index: 2; display: flex; flex-wrap: wrap; gap: 4px 12px; margin: 0; padding: 6px 10px; background: var(--surface); border-radius: 10px; box-shadow: var(--shadow); font-size: 12px; color: var(--text-sub); }
+.map-key { position: absolute; left: 12px; bottom: 28px; z-index: 2; display: flex; flex-wrap: wrap; gap: 4px 12px; margin: 0; padding: 6px 10px; background: var(--surface); border-radius: 10px; box-shadow: var(--shadow); font-size: calc(12px * var(--fs, 1)); color: var(--text-sub); }
 .map-key[hidden] { display: none; }
 .map-key span { display: inline-flex; align-items: center; gap: 6px; }
 .map-key i { display: inline-block; width: 14px; height: 10px; border-radius: 2px; }
 .map-key i.lit { width: 12px; height: 12px; border-radius: 6px; background: var(--accent); box-shadow: 0 0 0 3px color-mix(in srgb, var(--accent) 35%, transparent); }
 .map-key i.sel { background: var(--accent); }
 .map-key i.base { background: var(--land); border: 1px solid var(--line); }
-@media (max-width: 700px) { .map-key { left: 8px; bottom: 22px; font-size: 11px; } }
+@media (max-width: 700px) { .map-key { left: 8px; bottom: 22px; font-size: calc(11px * var(--fs, 1)); } }
 .guide .howto summary { list-style: none; gap: 6px; }
 .guide .howto summary::-webkit-details-marker { display: none; }
 .guide .howto summary::before { content: "▸"; color: var(--accent); }
@@ -426,3 +426,12 @@ html[data-wx="rain"] .scene .wx-rain, html[data-wx="snow"] .scene .wx-snow { dis
 .scene .sc-flags path:nth-child(2n) { animation-delay: -0.9s; }
 @keyframes sc-flag { 50% { transform: rotate(8deg); } }
 @media (prefers-reduced-motion: reduce) { .scene * { animation: none !important; } }
+
+/* 前に見た町（トップ。app.js の showRecent）：押すとその町のページへ。「たとえば」と同じ形の札 */
+.recent { margin: 0 0 14px; }
+.recent h2 { margin: 4px 0 8px; font-size: calc(15px * var(--fs, 1)); }
+.recent-list { display: flex; flex-direction: column; gap: 8px; }
+.recent-list a { display: flex; flex-direction: column; gap: 2px; padding: 10px 14px; border: 1px solid var(--accent); border-radius: 10px; background: var(--surface); color: var(--text); text-decoration: none; }
+.recent-list a:hover { background: var(--bg); }
+.recent-list .name { font-size: calc(17px * var(--fs, 1)); font-weight: 600; color: var(--accent); }
+.recent-list .sub { font-size: calc(13px * var(--fs, 1)); color: var(--text-sub); }

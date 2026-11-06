@@ -12,6 +12,12 @@
 <meta property="og:description" content="今日の天気・ごみの日・近い避難場所・今日やっている病院・困ったときの窓口を、公式の情報から出典つきで。非公式・無料・登録なし。">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@4.7.1/dist/maplibre-gl.css">
 <link rel="stylesheet" href="style.css">
+<!-- 文字を大きく（端末に覚えたもの）を、ページを描く前に効かせる（大きさが途中で変わってちらつかないように） -->
+<script>try { if (localStorage.getItem("machi-shirube:fs") === "l") document.documentElement.setAttribute("data-fs", "l"); } catch (e) {}</script>
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-180.png">
+<meta name="apple-mobile-web-app-title" content="まちしるべ">
+<meta name="theme-color" content="#1f6f8b">
 <link rel="stylesheet" href="town.css">
 </head>
 <body class="town-page">
@@ -21,6 +27,7 @@
   <p id="where" class="where"></p>
   <div class="head-notes">
     <p class="unofficial">非公式の暮らしの案内です。どの情報にも出典があります</p>
+    <button type="button" class="fs-btn" id="fs" aria-pressed="false">文字を大きく</button>
     <button type="button" class="share-btn icon-only" id="share" aria-label="このページを家族に送る" title="このページを家族に送る"></button>
     <details id="town-color-note" class="color-note" hidden></details>
   </div>
@@ -394,6 +401,7 @@
     <li>急ぐときは、火事・救急は 119、事件・事故は 110 へ。</li>
     <li>答えには確かめた日があります。そのあとに変わっていることがあります。</li>
     <li>数の多くは「めやす」です。必ずこうなるという意味ではありません。</li>
+    <li>ホーム画面に置くと、アプリのように1回で開けます（ブラウザのメニューの「ホーム画面に追加」）。字が小さいときは、町の名前の下の「文字を大きく」を押してください（この端末に覚えます）。</li>
   </ul>
   <p class="note">まちがいや古い所を見つけたら、<a href="report.html">知らせ方</a>のページの「知らせる」から送ってください（アカウントも登録もいりません）。</p>
 </section>

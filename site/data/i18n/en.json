@@ -1,11 +1,11 @@
 {
  "lang": "en",
  "name": "English",
- "createdAt": "2026-11-06T01:37:36.130Z",
+ "createdAt": "2026-11-06T07:07:06.567Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1098,
- "of": 1057,
+ "count": 1101,
+ "of": 1060,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "This is an unofficial guide to living in this town. Claude gathers information from the town's official website and other sources, and cites each source (Machishirube)",
   "すべてのページ": "All pages",
@@ -1104,6 +1104,9 @@
   "車いすで使える": "Wheelchair accessible",
   "公衆トイレ {n} か所は、地図の「もっと重ねる」から見られます": "{n} public restrooms can be viewed under \"More layers\" on the map",
   "{d} に取得": "Retrieved at {d}",
-  "場所と道（公園・図書館・公民館）": "Places and Routes (Parks, Libraries, Community Centers)"
+  "場所と道（公園・図書館・公民館）": "Places and Routes (Parks, Libraries, Community Centers)",
+  "ホーム画面に置くと、アプリのように1回で開けます（ブラウザのメニューの「ホーム画面に追加」）。字が小さいときは、町の名前の下の「文字を大きく」を押してください（この端末に覚えます）。": "Add this page to your home screen to open it in one tap, like an app (use \"Add to Home Screen\" in your browser menu). If the text is too small, tap \"Larger text\" under the town name (this device will remember your setting).",
+  "文字を大きく": "Larger text",
+  "文字をふつうに": "Normal text size"
  }
 }

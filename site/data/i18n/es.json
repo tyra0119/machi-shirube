@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-06T01:37:36.128Z",
+ "createdAt": "2026-11-06T07:07:04.247Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1097,
- "of": 1057,
+ "count": 1100,
+ "of": 1060,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -1103,6 +1103,9 @@
   "車いすで使える": "Accesible en silla de ruedas",
   "公衆トイレ {n} か所は、地図の「もっと重ねる」から見られます": "Los {n} baños públicos se pueden ver en «Añadir más capas» del mapa",
   "{d} に取得": "Obtenido el {d}",
-  "場所と道（公園・図書館・公民館）": "Lugares y rutas (parques, bibliotecas, centros comunitarios)"
+  "場所と道（公園・図書館・公民館）": "Lugares y rutas (parques, bibliotecas, centros comunitarios)",
+  "ホーム画面に置くと、アプリのように1回で開けます（ブラウザのメニューの「ホーム画面に追加」）。字が小さいときは、町の名前の下の「文字を大きく」を押してください（この端末に覚えます）。": "Si lo pone en la pantalla de inicio, se abre de una sola vez como una aplicación (en el menú del navegador, «Añadir a la pantalla de inicio»). Si la letra le parece pequeña, pulse «Letra más grande» que aparece debajo del nombre del pueblo (se guardará en este dispositivo).",
+  "文字を大きく": "Letra más grande",
+  "文字をふつうに": "Texto normal"
  }
 }

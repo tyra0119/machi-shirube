@@ -1,11 +1,11 @@
 {
  "lang": "pt",
  "name": "Português",
- "createdAt": "2026-11-06T01:37:36.124Z",
+ "createdAt": "2026-11-06T07:07:01.832Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1098,
- "of": 1057,
+ "count": 1102,
+ "of": 1060,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Guia não oficial da vida na cidade. O Claude reúne as informações em sites oficiais da cidade e outras fontes, e indica a origem de cada uma (Machishirube)",
   "すべてのページ": "Todas as páginas",
@@ -1104,6 +1104,10 @@
   "車いすで使える": "Acessível a cadeira de rodas",
   "公衆トイレ {n} か所は、地図の「もっと重ねる」から見られます": "{n} banheiros públicos podem ser vistos em \"Mais camadas\" no mapa",
   "{d} に取得": "Obtido em {d}",
-  "場所と道（公園・図書館・公民館）": "Locais e caminhos (parques, bibliotecas, centros comunitários)"
+  "場所と道（公園・図書館・公民館）": "Locais e caminhos (parques, bibliotecas, centros comunitários)",
+  "ホーム画面に置くと、アプリのように1回で開けます（ブラウザのメニューの「ホーム画面に追加」）。字が小さいときは、町の名前の下の「文字を大きく」を押してください（この端末に覚えます）。": "Se você colocar na tela inicial, abre com um só toque, como um aplicativo (no menu do navegador, \"Adicionar à tela inicial\"). Se as letras estiverem pequenas, toque em \"Aumentar letras\", logo abaixo do nome da cidade (o aparelho vai lembrar).",
+  "文字をもとに": "Letras normais",
+  "文字を大きく": "Aumentar letras",
+  "文字をふつうに": "Texto normal"
  }
 }
