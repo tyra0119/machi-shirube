@@ -1,11 +1,11 @@
 {
  "lang": "pt",
  "name": "Português",
- "createdAt": "2026-11-06T00:44:39.898Z",
+ "createdAt": "2026-11-06T01:37:36.124Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1083,
- "of": 1042,
+ "count": 1098,
+ "of": 1057,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Guia não oficial da vida na cidade. O Claude reúne as informações em sites oficiais da cidade e outras fontes, e indica a origem de cada uma (Machishirube)",
   "すべてのページ": "Todas as páginas",
@@ -1089,6 +1089,21 @@
   "上へ": "Voltar ao topo",
   "{n} 日つづけて正解": "{n} dias seguidos de acertos",
   "豆知識": "Curiosidades",
-  "「{name}」のページを開く": "Abrir a página de \"{name}\""
+  "「{name}」のページを開く": "Abrir a página de \"{name}\"",
+  "名前のある公園": "Parques com nome",
+  "有志が作る地図（OpenStreetMap）から。載っていない所や、古い所があります": "Dados do mapa colaborativo OpenStreetMap. Alguns locais podem não constar ou estar desatualizados",
+  "図書館": "Biblioteca",
+  "公民館・児童館など": "Centros comunitários, centros infantis etc.",
+  "だれでも使えるトイレ": "Banheiro de uso livre",
+  "気象庁の雨雲の予想（高解像度降水ナウキャスト）": "Previsão de chuva da Agência Meteorológica do Japão (Nowcast de precipitação de alta resolução)",
+  "予想なので、外れることがあります": "É apenas uma previsão e pode não se confirmar",
+  "気象庁の大雨による浸水の危険度分布": "Mapa de risco de alagamento por chuva forte da Agência Meteorológica do Japão",
+  "黄＝注意・赤＝警戒・紫＝危険・黒＝災害が起きているおそれ。地下や低い所に気をつける": "Amarelo = atenção · Vermelho = alerta · Roxo = perigo · Preto = possível desastre em curso. Cuidado com subsolos e áreas baixas",
+  "気象庁の洪水の危険度分布（川ごと）": "Mapa de risco de enchente da Agência Meteorológica do Japão (por rio)",
+  "黄＝注意・赤＝警戒・紫＝危険・黒＝災害が起きているおそれ。川の近くに住む人は早めに": "Amarelo = atenção · Vermelho = alerta · Roxo = perigo · Preto = possível desastre em curso. Quem mora perto de rios deve agir cedo",
+  "車いすで使える": "Acessível a cadeira de rodas",
+  "公衆トイレ {n} か所は、地図の「もっと重ねる」から見られます": "{n} banheiros públicos podem ser vistos em \"Mais camadas\" no mapa",
+  "{d} に取得": "Obtido em {d}",
+  "場所と道（公園・図書館・公民館）": "Locais e caminhos (parques, bibliotecas, centros comunitários)"
  }
 }

@@ -66,6 +66,7 @@
 | `site/data/shelter-list/15385.json` | 阿賀町地域防災計画 資料編（令和8年2月修正）の「4-2 避難に関する資料 １）避難施設」の表（令和8年2月現在。阿賀町の公式サイトの PDF、2026-11-04 に取得） | 表の文字を PDF から取り出し、Claude（Sonnet 5.5）に1行ずつ読ませ、137 行すべてが資料の文字と同じ並び（施設名・所在地・電話・収容人員・備考）であることを PC で照らした（`scripts/shelter-list.mjs`）。位置は作らず、行政区ごとの一覧として出す。作者が OK（2026-11-04） |
 | `site/data/news/{市区町村コード}.json` | 町の公式サイトの新着（美濃加茂市・朝霞市は RSS、阿賀町は新着のデータ、黒潮町・大泉町は新着の一覧のページ）と、広報紙の一覧のページ（2026-11-04 に取得） | 見出し・日付・リンクだけを取り出す（記事の中身は写さない。Claude は使わない。`npm run news`）。広報紙はいちばん新しい号を1つ選ぶ |
 | `site/data/stats.json` | 住民基本台帳 人口・世帯数と人口動態（総計）・年齢階級別人口・外国人住民（令和8年1月1日、総務省） | 市区町村ごとに割合を計算し、全国の市区町村 1,741 の中での位置を付けた（`npm run build:stats`。`docs/national-stats.md`） |
+| `site/data/places/{コード}.json`（公園・図書館・公民館・公衆トイレの場所。2026-11-06 取得） | OpenStreetMap（Overpass API の公開の窓口 overpass.kumi.systems。overpass-api.de は robots.txt が /api/ を断っているので使わない）。ODbL 1.0・© OpenStreetMap contributors。このファイルも ODbL | 町の形の中の点だけ。名前の無い公園・公民館は出さない。店の客だけ・使えないトイレは出さない。取った返事そのものは local/cache/places/ だけ（scripts/build-places.mjs） |
 
 ## 画面で読み込んで使うもの（リポジトリには入れない）
 
@@ -81,6 +82,7 @@
 | 海抜（坂を考えた歩く時間） | 地理院タイル 標高タイル（dem5a_png・dem_png。https://maps.gsi.go.jp/development/ichiran.html ） | 見る人のブラウザがその場で読む。まっすぐの線の上を 20m ごとに区切り、上り下りで歩く速さを変える（トブラーの式を平らな所で 1分 60m に合わせたもの）。道の坂ではないことを書く |
 | 地図を描く部品 | MapLibre GL JS 4.7.1（BSD-3-Clause）、topojson-client 3.1.0（ISC） | jsDelivr から読み込む |
 | QR コードを作る部品 | qrcode-generator 1.4.4（MIT） | jsDelivr から読み込む（くらしのメモ） |
+| 雨雲の 30 分後・60 分後（高解像度降水ナウキャストの予想）、キキクル（浸水・洪水） | 気象庁 | 気象庁のホームページの利用規約。加工しない（2026-11-06 に足した） |
 
 ## 期間中に使う見込み（使う前に利用条件を確かめる）
 

@@ -5,6 +5,11 @@ import fs from "node:fs";
 
 export function collectKeys() {
   const keys = new Set(JSON.parse(fs.readFileSync("site/data/i18n/keys-page.json", "utf8")));
+  // 町のページの欄の見出し（town.html の h2・h3）も、ページから集め直さなくても拾う（11/6、新しい欄の見出しが keys-page に無く、ほかの言葉で日本語のまま出た）
+  for (const m of fs.readFileSync("site/town.html", "utf8").matchAll(/<h[23][^>]*>([\s\S]*?)<\/h[23]>/g)) {
+    const t = m[1].replace(/<[^>]+>/g, "").trim();
+    if (/[ぁ-んァ-ン一-龥]/.test(t) && !t.includes("/")) keys.add(t);
+  }
   for (const f of fs.readdirSync("site").filter((x) => x.endsWith(".js"))) {
     const src = fs.readFileSync(`site/${f}`, "utf8");
     for (const m of src.matchAll(/T\("([^"]+)"\)/g)) keys.add(m[1]);

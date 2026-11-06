@@ -1,11 +1,11 @@
 {
  "lang": "en",
  "name": "English",
- "createdAt": "2026-11-06T00:44:44.166Z",
+ "createdAt": "2026-11-06T01:37:36.130Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1083,
- "of": 1042,
+ "count": 1098,
+ "of": 1057,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "This is an unofficial guide to living in this town. Claude gathers information from the town's official website and other sources, and cites each source (Machishirube)",
   "すべてのページ": "All pages",
@@ -1089,6 +1089,21 @@
   "上へ": "Back to top",
   "{n} 日つづけて正解": "{n} days in a row correct",
   "豆知識": "Did You Know?",
-  "「{name}」のページを開く": "Open the \"{name}\" page"
+  "「{name}」のページを開く": "Open the \"{name}\" page",
+  "名前のある公園": "Named parks",
+  "有志が作る地図（OpenStreetMap）から。載っていない所や、古い所があります": "From OpenStreetMap, a map made by volunteers. Some places may be missing or out of date",
+  "図書館": "Library",
+  "公民館・児童館など": "Community centers, children's centers, etc.",
+  "だれでも使えるトイレ": "Public restrooms for everyone",
+  "気象庁の雨雲の予想（高解像度降水ナウキャスト）": "Japan Meteorological Agency rain cloud forecast (High-Resolution Precipitation Nowcast)",
+  "予想なので、外れることがあります": "This is a forecast, so it may be wrong",
+  "気象庁の大雨による浸水の危険度分布": "Japan Meteorological Agency flood risk map for heavy rain (inundation risk distribution)",
+  "黄＝注意・赤＝警戒・紫＝危険・黒＝災害が起きているおそれ。地下や低い所に気をつける": "Yellow = Caution, Red = Warning, Purple = Danger, Black = Disaster may be occurring. Be careful in basements and low-lying areas",
+  "気象庁の洪水の危険度分布（川ごと）": "Japan Meteorological Agency flood risk map (by river)",
+  "黄＝注意・赤＝警戒・紫＝危険・黒＝災害が起きているおそれ。川の近くに住む人は早めに": "Yellow = Caution, Red = Warning, Purple = Danger, Black = Disaster may be occurring. If you live near a river, act early",
+  "車いすで使える": "Wheelchair accessible",
+  "公衆トイレ {n} か所は、地図の「もっと重ねる」から見られます": "{n} public restrooms can be viewed under \"More layers\" on the map",
+  "{d} に取得": "Retrieved at {d}",
+  "場所と道（公園・図書館・公民館）": "Places and Routes (Parks, Libraries, Community Centers)"
  }
 }

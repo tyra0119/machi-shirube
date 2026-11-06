@@ -1,11 +1,11 @@
 {
  "lang": "tl",
  "name": "Filipino",
- "createdAt": "2026-11-06T00:44:59.593Z",
+ "createdAt": "2026-11-06T01:37:36.142Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1071,
- "of": 1042,
+ "count": 1086,
+ "of": 1057,
  "dict": {
   "この町の非公式の暮らしの案内です。町の公式のサイトや国の公開データから集め、出典をつけています（まちしるべ）": "Ito ay isang di-opisyal na gabay sa pamumuhay sa bayang ito. Kinuha ito mula sa opisyal na website ng bayan at sa pampublikong datos ng bansa, at may nakasaad na pinagmulan (Machishirube)",
   "すべてのページ": "Lahat ng pahina",
@@ -1077,6 +1077,21 @@
   "上へ": "Pataas",
   "{n} 日つづけて正解": "{n} araw na magkakasunod na tama",
   "豆知識": "Alam Mo Ba?",
-  "「{name}」のページを開く": "Buksan ang pahina ng \"{name}\""
+  "「{name}」のページを開く": "Buksan ang pahina ng \"{name}\"",
+  "名前のある公園": "Mga parke na may pangalan",
+  "有志が作る地図（OpenStreetMap）から。載っていない所や、古い所があります": "Mula sa mapang gawa ng mga boluntaryo (OpenStreetMap). May mga lugar na wala rito at may mga luma na ang impormasyon",
+  "図書館": "Aklatan",
+  "公民館・児童館など": "Mga kominkan (community center), jidokan (sentro para sa mga bata), at iba pa",
+  "だれでも使えるトイレ": "Mga banyong magagamit ng lahat",
+  "気象庁の雨雲の予想（高解像度降水ナウキャスト）": "Forecast ng ulan ng Japan Meteorological Agency (High-resolution Precipitation Nowcast)",
+  "予想なので、外れることがあります": "Forecast lang ito, kaya maaaring hindi ito tumama",
+  "気象庁の大雨による浸水の危険度分布": "Distribusyon ng panganib ng pagbaha dahil sa malakas na ulan, mula sa Japan Meteorological Agency",
+  "黄＝注意・赤＝警戒・紫＝危険・黒＝災害が起きているおそれ。地下や低い所に気をつける": "Dilaw = mag-ingat · Pula = babala · Lila = mapanganib · Itim = maaaring may sakuna na. Mag-ingat sa basement at mabababang lugar",
+  "気象庁の洪水の危険度分布（川ごと）": "Distribusyon ng panganib ng baha ng Japan Meteorological Agency (bawat ilog)",
+  "黄＝注意・赤＝警戒・紫＝危険・黒＝災害が起きているおそれ。川の近くに住む人は早めに": "Dilaw = mag-ingat · Pula = babala · Lila = mapanganib · Itim = maaaring may sakuna na. Ang mga nakatira malapit sa ilog ay dapat maghanda nang maaga",
+  "車いすで使える": "Magagamit ng wheelchair",
+  "公衆トイレ {n} か所は、地図の「もっと重ねる」から見られます": "Makikita ang {n} pampublikong banyo sa \"Magpatong pa\" sa mapa",
+  "{d} に取得": "Kinuha noong {d}",
+  "場所と道（公園・図書館・公民館）": "Mga Lugar at Daan (Parke, Aklatan, Kominkan)"
  }
 }

@@ -1,11 +1,11 @@
 {
  "lang": "vi",
  "name": "Tiếng Việt",
- "createdAt": "2026-11-06T00:44:57.224Z",
+ "createdAt": "2026-11-06T01:37:36.140Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1080,
- "of": 1042,
+ "count": 1095,
+ "of": 1057,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Đây là trang hướng dẫn đời sống không chính thức của thị trấn này. Claude thu thập từ các trang chính thức của thị trấn v.v. và ghi rõ nguồn (Machi-shirube)",
   "すべてのページ": "Tất cả các trang",
@@ -1086,6 +1086,21 @@
   "上へ": "Lên trên",
   "{n} 日つづけて正解": "Đúng liên tiếp {n} ngày",
   "豆知識": "Mẹo nhỏ",
-  "「{name}」のページを開く": "Mở trang \"{name}\""
+  "「{name}」のページを開く": "Mở trang \"{name}\"",
+  "名前のある公園": "Công viên có tên",
+  "有志が作る地図（OpenStreetMap）から。載っていない所や、古い所があります": "Lấy từ bản đồ do tình nguyện viên tạo (OpenStreetMap). Có nơi chưa được ghi và có thông tin đã cũ",
+  "図書館": "Thư viện",
+  "公民館・児童館など": "Nhà văn hóa cộng đồng, nhà thiếu nhi, v.v.",
+  "だれでも使えるトイレ": "Nhà vệ sinh ai cũng dùng được",
+  "気象庁の雨雲の予想（高解像度降水ナウキャスト）": "Dự báo mây mưa của Cục Khí tượng (Nowcast lượng mưa độ phân giải cao)",
+  "予想なので、外れることがあります": "Đây là dự báo nên có thể không chính xác",
+  "気象庁の大雨による浸水の危険度分布": "Bản đồ mức độ nguy hiểm ngập lụt do mưa lớn của Cục Khí tượng",
+  "黄＝注意・赤＝警戒・紫＝危険・黒＝災害が起きているおそれ。地下や低い所に気をつける": "Vàng = chú ý, đỏ = cảnh báo, tím = nguy hiểm, đen = có thể đã xảy ra thảm họa. Hãy cẩn thận ở tầng hầm và nơi trũng thấp",
+  "気象庁の洪水の危険度分布（川ごと）": "Bản đồ mức độ nguy hiểm lũ của Cục Khí tượng (theo từng con sông)",
+  "黄＝注意・赤＝警戒・紫＝危険・黒＝災害が起きているおそれ。川の近くに住む人は早めに": "Vàng = chú ý, đỏ = cảnh báo, tím = nguy hiểm, đen = có thể đã xảy ra thảm họa. Người sống gần sông hãy sơ tán sớm",
+  "車いすで使える": "Xe lăn dùng được",
+  "公衆トイレ {n} か所は、地図の「もっと重ねる」から見られます": "Bạn có thể xem {n} nhà vệ sinh công cộng trong mục \"Thêm lớp\" của bản đồ",
+  "{d} に取得": "Lấy dữ liệu lúc {d}",
+  "場所と道（公園・図書館・公民館）": "Địa điểm và đường đi (công viên, thư viện, trung tâm sinh hoạt cộng đồng)"
  }
 }

@@ -911,3 +911,14 @@ ul.morning li.m-in { opacity: 0; animation: m-in 0.5s ease-out forwards; }
 @media print { .to-top { display: none; } }
 @media (prefers-reduced-motion: reduce) { ul.morning li.m-in, .quiz-pop, .quiz-streak, .to-top { animation: none; opacity: 1; } }
 ul.morning .ai-note { color: var(--text-sub); font-size: 12px; white-space: nowrap; }
+/* 公園・図書館・公民館の場所と道 */
+.places-g { border-top: 1px solid var(--line); }
+.places-g > summary { display: flex; align-items: center; gap: 8px; min-height: 48px; font-size: 16px; font-weight: 700; cursor: pointer; }
+.places-g > summary .n { padding: 0 8px; border-radius: 10px; background: var(--bg); color: var(--text-sub); font-size: 13px; font-weight: 400; }
+ul.places { margin: 0 0 10px; padding: 0; list-style: none; }
+ul.places li { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 10px; padding: 8px 0; border-top: 1px solid var(--line); }
+ul.places li:first-child { border-top: 0; }
+ul.places .pn { flex: 1 1 12em; font-size: 16px; }
+ul.places small { flex-basis: 100%; color: var(--text-sub); }
+ul.places .gmap { margin-top: 0; }
+.places-wc { margin: 8px 0 0; padding-top: 8px; border-top: 1px solid var(--line); font-size: 14px; color: var(--text-sub); }

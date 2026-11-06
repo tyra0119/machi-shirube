@@ -59,7 +59,8 @@
     "news": "node scripts/news.mjs",
     "split-tr": "node scripts/split-translations.mjs",
     "check": "node scripts/check.mjs",
-    "intro": "node --env-file=.env scripts/intro.mjs"
+    "intro": "node --env-file=.env scripts/intro.mjs",
+    "build:places": "node scripts/build-places.mjs"
   },
   "devDependencies": {
     "mapshaper": "^0.7.101"

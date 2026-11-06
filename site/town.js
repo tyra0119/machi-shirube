@@ -403,6 +403,23 @@ async function showIntro(code) {
       <p class="note">${T("国の数字から、決まりでまとめたもの（住民基本台帳・国勢調査・国の指定・国立社会保障・人口問題研究所の推計・国土地理院の自然災害伝承碑）。全国で目立つ数だけを出しています。")}</p>`;
 }
 
+// 公園・図書館・公民館の場所と、Google マップで歩く道（作者「公園や図書館などgooglemapと連携できるものは、連携してほしい（経路検索できるように）」）。
+// もとは OpenStreetMap（scripts/build-places.mjs）。名前のある所だけを、種類ごとにたたんで並べる。公衆トイレは名前が無いことが多いので、数と地図だけ
+async function showPlaces(code) {
+  const d = await getData(`data/places/${code}.json`);
+  if (!d?.items?.length) return;
+  const groups = [["library", "図書館"], ["community", "公民館・児童館など"], ["park", "公園"]];
+  const html = groups.map(([k, label]) => {
+    const list = d.items.filter((x) => x.k === k && x.n).sort((a, b) => a.n.localeCompare(b.n, "ja"));
+    if (!list.length) return "";
+    return `<details class="places-g"${k === "library" ? " open" : ""}><summary>${esc(T(label))} <span class="n">${list.length}</span></summary><ul class="places">${list.map((x) => `<li><span class="pn" lang="ja">${esc(x.n)}</span>${x.h ? `<small>${esc(x.h)}</small>` : ""}<a class="gmap" href="${esc(gmapWalk(x.p))}" target="_blank" rel="noopener">${icon("map")}${T("Google マップで歩く道を見る")}</a></li>`).join("")}</ul></details>`;
+  }).join("");
+  const wc = d.count?.toilets ?? 0;
+  $("places-block").hidden = false;
+  $("places").innerHTML = html + (wc ? `<p class="places-wc">${esc(TN("公衆トイレ {n} か所は、地図の「もっと重ねる」から見られます", { n: wc }))}</p>` : "");
+  $("places-note").textContent = `${T("有志が作る地図（OpenStreetMap）から。載っていない所や、古い所があります")}（© OpenStreetMap contributors・${TN("{d} に取得", { d: d.createdAt.replace(/-/g, "/") })}）`;
+}
+
 async function showQuiz(code) {
   const d = await getData(`data/quiz/${code}.json`);
   if (!d?.questions?.length) return;
@@ -1712,7 +1729,7 @@ async function showGomiDays(code, partName, softName) {
 // どの町のページも最後に同じことをする：答え・わが家の避難・今日の暮らし・すべてのページ・調べる
 // 町のファイルを、はじめに全部同時に読み始める（欄ごとに1本ずつ読むのを待つと、電波の弱い所では 1本 0.3 秒 × 十数本の待ちになる）。
 // getData が読み置くので、あとの欄はそれを使う。無いと分かっているファイルは knownMissing が読まない
-const TOWN_DIRS = ["hitokoto", "dekiru", "changes", "flood-pop", "slope", "plan", "quake-pop", "lore", "bus", "accidents", "shop-access", "kaigo", "climate", "local-sites", "intro", "quiz", "news", "shelters", "shelter-list", "gomi", "gomi-days", "sources", "aed", "ask"];
+const TOWN_DIRS = ["places", "hitokoto", "dekiru", "changes", "flood-pop", "slope", "plan", "quake-pop", "lore", "bus", "accidents", "shop-access", "kaigo", "climate", "local-sites", "intro", "quiz", "news", "shelters", "shelter-list", "gomi", "gomi-days", "sources", "aed", "ask"];
 function prefetchTown(code) {
   for (const d of TOWN_DIRS) getData(`data/${d}/${code}.json`);
   for (const f of ["holidays", "yardstick", "features"]) getData(`data/${f}.json`);
@@ -1766,6 +1783,7 @@ async function finishPage(code, townFeatures, startPart, scopeNote, at) {
   await showFuture(code);
   await showClimate(code);
   await showLocalSites(code);
+  showPlaces(code);
   await showIntro(code);
   await showQuiz(code);
   await showNews(code);

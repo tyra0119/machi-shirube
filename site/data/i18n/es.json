@@ -1,11 +1,11 @@
 {
  "lang": "es",
  "name": "Español",
- "createdAt": "2026-11-06T00:44:41.901Z",
+ "createdAt": "2026-11-06T01:37:36.128Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1082,
- "of": 1042,
+ "count": 1097,
+ "of": 1057,
  "dict": {
   "すべてのページ": "Todas las páginas",
   "今日と明日": "Hoy y mañana",
@@ -1088,6 +1088,21 @@
   "上へ": "Arriba",
   "{n} 日つづけて正解": "{n} días seguidos con respuesta correcta",
   "豆知識": "Datos curiosos",
-  "「{name}」のページを開く": "Abrir la página de «{name}»"
+  "「{name}」のページを開く": "Abrir la página de «{name}»",
+  "名前のある公園": "Parques con nombre",
+  "有志が作る地図（OpenStreetMap）から。載っていない所や、古い所があります": "Datos del mapa colaborativo (OpenStreetMap). Puede haber lugares que no aparecen o información desactualizada",
+  "図書館": "Biblioteca",
+  "公民館・児童館など": "Centros comunitarios, centros infantiles, etc.",
+  "だれでも使えるトイレ": "Baños de uso libre",
+  "気象庁の雨雲の予想（高解像度降水ナウキャスト）": "Pronóstico de nubes de lluvia de la Agencia Meteorológica de Japón (Nowcast de precipitación de alta resolución)",
+  "予想なので、外れることがあります": "Es un pronóstico, así que puede fallar",
+  "気象庁の大雨による浸水の危険度分布": "Mapa de riesgo de inundación por lluvias intensas de la Agencia Meteorológica de Japón",
+  "黄＝注意・赤＝警戒・紫＝危険・黒＝災害が起きているおそれ。地下や低い所に気をつける": "Amarillo = precaución · Rojo = alerta · Morado = peligro · Negro = posible desastre en curso. Cuidado con los sótanos y las zonas bajas",
+  "気象庁の洪水の危険度分布（川ごと）": "Mapa de riesgo de crecida de la Agencia Meteorológica de Japón (por río)",
+  "黄＝注意・赤＝警戒・紫＝危険・黒＝災害が起きているおそれ。川の近くに住む人は早めに": "Amarillo = precaución · Rojo = alerta · Morado = peligro · Negro = posible desastre en curso. Quienes viven cerca de un río, que actúen con tiempo",
+  "車いすで使える": "Accesible en silla de ruedas",
+  "公衆トイレ {n} か所は、地図の「もっと重ねる」から見られます": "Los {n} baños públicos se pueden ver en «Añadir más capas» del mapa",
+  "{d} に取得": "Obtenido el {d}",
+  "場所と道（公園・図書館・公民館）": "Lugares y rutas (parques, bibliotecas, centros comunitarios)"
  }
 }

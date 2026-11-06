@@ -1,11 +1,11 @@
 {
  "lang": "id",
  "name": "Bahasa Indonesia",
- "createdAt": "2026-11-06T00:44:52.802Z",
+ "createdAt": "2026-11-06T01:37:36.134Z",
  "model": "claude-sonnet-5-5",
  "checker": "claude-haiku-5-5",
- "count": 1080,
- "of": 1042,
+ "count": 1095,
+ "of": 1057,
  "dict": {
   "この町の非公式の暮らしの案内です。Claude が町の公式のサイトなどから集め、出典をつけています（まちしるべ）": "Ini adalah panduan hidup tidak resmi untuk kota ini. Claude mengumpulkannya dari situs resmi kota dan sumber lain, dengan mencantumkan sumbernya (Machishirube)",
   "すべてのページ": "Semua halaman",
@@ -1086,6 +1086,21 @@
   "上へ": "Ke atas",
   "{n} 日つづけて正解": "Benar {n} hari berturut-turut",
   "豆知識": "Tahukah Anda?",
-  "「{name}」のページを開く": "Buka halaman \"{name}\""
+  "「{name}」のページを開く": "Buka halaman \"{name}\"",
+  "名前のある公園": "Taman yang memiliki nama",
+  "有志が作る地図（OpenStreetMap）から。載っていない所や、古い所があります": "Dari peta buatan para relawan (OpenStreetMap). Ada tempat yang belum tercantum atau informasinya sudah lama",
+  "図書館": "Perpustakaan",
+  "公民館・児童館など": "Balai warga, balai anak, dll.",
+  "だれでも使えるトイレ": "Toilet yang bisa digunakan siapa saja",
+  "気象庁の雨雲の予想（高解像度降水ナウキャスト）": "Prakiraan awan hujan dari Badan Meteorologi Jepang (Nowcast Curah Hujan Resolusi Tinggi)",
+  "予想なので、外れることがあります": "Ini hanya prakiraan, jadi bisa meleset",
+  "気象庁の大雨による浸水の危険度分布": "Peta tingkat bahaya banjir genangan akibat hujan lebat dari Badan Meteorologi Jepang",
+  "黄＝注意・赤＝警戒・紫＝危険・黒＝災害が起きているおそれ。地下や低い所に気をつける": "Kuning = waspada, merah = siaga, ungu = bahaya, hitam = bencana kemungkinan sedang terjadi. Berhati-hatilah di ruang bawah tanah dan tempat yang rendah",
+  "気象庁の洪水の危険度分布（川ごと）": "Peta tingkat bahaya banjir sungai dari Badan Meteorologi Jepang (per sungai)",
+  "黄＝注意・赤＝警戒・紫＝危険・黒＝災害が起きているおそれ。川の近くに住む人は早めに": "Kuning = waspada, merah = siaga, ungu = bahaya, hitam = bencana kemungkinan sedang terjadi. Warga yang tinggal dekat sungai sebaiknya bersiap lebih awal",
+  "車いすで使える": "Bisa digunakan dengan kursi roda",
+  "公衆トイレ {n} か所は、地図の「もっと重ねる」から見られます": "{n} toilet umum dapat dilihat melalui \"Tampilkan lebih banyak lapisan\" di peta",
+  "{d} に取得": "Diambil pada {d}",
+  "場所と道（公園・図書館・公民館）": "Lokasi dan jalan (taman, perpustakaan, balai warga)"
  }
 }
