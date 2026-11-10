@@ -1,12 +1,11 @@
 # 町からのお知らせを、毎朝取り直す（scripts/news.mjs。町の公式サイトの新着の見出しと広報紙の最新号。AI は使わない・鍵はいらない）
-# 作者「毎朝自動で取り直す仕組みは用意して、実行しないようにできる？」→ いまは、決まった時刻には動かさない（手で押したときだけ動く）。
-# 審査のあいだは書き込みを入れない（「11/8 20:00 以降は push しない」）。審査が終わったら、下の schedule の 2 行の「#」を外すと毎朝動く
+# 毎朝 6:30 に動く（審査のあいだは止めていた。2026-11-10 ハッカソンが終わって戻した）。手で押しても動く
 name: お知らせの取り直し
 
 on:
   workflow_dispatch:
-  # schedule:
-  #   - cron: "30 21 * * *" # 毎朝 6:30（日本時間。GitHub は UTC で数える）
+  schedule:
+    - cron: "30 21 * * *" # 毎朝 6:30（日本時間。GitHub は UTC で数える）
 
 permissions:
   contents: write
@@ -37,6 +36,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add site/data/news
           git commit -m "町からのお知らせを取り直す（自動）"
+          git pull --rebase
           git push
           echo "changed=yes" >> "$GITHUB_OUTPUT"
       # この仕組みの書き込みでは公開の仕組み（pages.yml）が自動で動かないので、呼んで公開し直す

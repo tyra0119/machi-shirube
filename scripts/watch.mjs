@@ -127,7 +127,8 @@ fs.writeFileSync(OUT, JSON.stringify({
 }, null, 1));
 // エラー調査につなぐ：知らせは確かめる一覧に入れる（同じ URL の知らせが待っていれば足さない）。
 // 人が「直して」を押すと、Claude がその問いを調べ直し、新しいページを探す（手元のサーバー）
-if (!burst) {
+// GitHub Actions（毎週の見張り）では確かめる一覧（手元だけの local/ledger）が無いので入れない。手元で動かしたときに入る
+if (!burst && !process.env.GITHUB_ACTIONS) {
   const { load, add: addItem } = await import("./ledger.mjs");
   const all = load().items;
   const open = new Set(all.filter((x) => x.kind === "watch" && x.status === "pending").map((x) => x.watchUrl));

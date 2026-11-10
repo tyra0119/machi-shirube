@@ -1,0 +1,46 @@
+# 見張り：公開している答えの出典のページが、まだあるかを毎週確かめる（scripts/watch.mjs。AI は使わない・鍵はいらない）
+# 結果は site/data/health.json（URL と状態だけ）。町のページは、消えた出典に「出典のページが見つからなくなっています」と出す
+# 確かめる一覧（手元だけ）への知らせは、手元で npm run watch を動かしたときに入る
+name: 見張り
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 21 * * 0" # 毎週月曜 6:00（日本時間。GitHub は UTC で数える）
+
+permissions:
+  contents: write
+  actions: write
+
+concurrency:
+  group: news # お知らせの取り直しと同時に書き込まない
+  cancel-in-progress: false
+
+jobs:
+  watch:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # 名乗って・robots.txt を見て・同じサイトへは 1 秒以上あけて取る（scripts/watch.mjs の決まりのまま）
+      - run: node scripts/watch.mjs
+        env:
+          MACHI_SHIRUBE_UA: ${{ vars.MACHI_SHIRUBE_UA }}
+      - name: 変わったときだけ書き込む
+        id: commit
+        run: |
+          if git diff --quiet -- site/data/health.json; then echo "changed=no" >> "$GITHUB_OUTPUT"; exit 0; fi
+          git config user.name "machi-shirube 見張り"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add site/data/health.json
+          git commit -m "見張り：出典のページがまだあるかを確かめる（自動）"
+          git pull --rebase
+          git push
+          echo "changed=yes" >> "$GITHUB_OUTPUT"
+      - name: 公開し直す
+        if: steps.commit.outputs.changed == 'yes'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages.yml --ref main
