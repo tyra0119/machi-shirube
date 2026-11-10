@@ -23,10 +23,34 @@
   "checkedAt": "2026-11-02",
   "how": "Claude が探し、市町村の公式サイトの形とトップの町の名前を機械で確かめた"
  },
+ "27116": {
+  "url": "https://www.city.osaka.lg.jp/ikuno/",
+  "host": "www.city.osaka.lg.jp",
+  "checkedAt": "2026-11-10",
+  "how": "政令市の区は市のサイトの中にあるので、作る側が区のトップページ（生野区：トップページ）を PC で取って確かめた"
+ },
+ "29449": {
+  "url": "https://www.vill.totsukawa.lg.jp/",
+  "host": "www.vill.totsukawa.lg.jp",
+  "checkedAt": "2026-11-10",
+  "how": "Claude が探し、市町村の公式サイトの形とトップの町の名前を機械で確かめた"
+ },
  "39428": {
   "url": "https://www.town.kuroshio.lg.jp/",
   "host": "www.town.kuroshio.lg.jp",
   "checkedAt": "2026-11-02",
+  "how": "Claude が探し、市町村の公式サイトの形とトップの町の名前を機械で確かめた"
+ },
+ "42211": {
+  "url": "https://www.city.goto.nagasaki.jp/",
+  "host": "www.city.goto.nagasaki.jp",
+  "checkedAt": "2026-11-10",
+  "how": "Claude が探し、市町村の公式サイトの形とトップの町の名前を機械で確かめた"
+ },
+ "01209": {
+  "url": "https://www.city.yubari.lg.jp/",
+  "host": "www.city.yubari.lg.jp",
+  "checkedAt": "2026-11-10",
   "how": "Claude が探し、市町村の公式サイトの形とトップの町の名前を機械で確かめた"
  }
 }

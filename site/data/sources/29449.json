@@ -1,0 +1,40 @@
+{
+ "cards": [
+  {
+   "id": "c0034",
+   "host": "www.pref.nara.lg.jp",
+   "title": "奈良県 十津川村の公式サイト",
+   "url": "https://www.pref.nara.lg.jp/",
+   "license": "作者が使ってよいと確かめた（事実と出典のリンクを出す。文はそのまま写さない）",
+   "status": "ok",
+   "approvedAt": "2026-11-10T10:29:01.317Z"
+  },
+  {
+   "id": "c0035",
+   "host": "www.vill.totsukawa.lg.jp",
+   "title": "奈良県 十津川村の公式サイト",
+   "url": "https://www.vill.totsukawa.lg.jp/",
+   "license": "作者が使ってよいと確かめた（事実と出典のリンクを出す。文はそのまま写さない）",
+   "status": "ok",
+   "approvedAt": "2026-11-10T10:29:03.518Z"
+  },
+  {
+   "id": "c0037",
+   "host": "www.kkr.mlit.go.jp",
+   "title": "奈良県 十津川村の公式サイト",
+   "url": "https://www.kkr.mlit.go.jp/",
+   "license": "作者が使ってよいと確かめた（事実と出典のリンクを出す。文はそのまま写さない）",
+   "status": "ok",
+   "approvedAt": "2026-11-10T12:54:50.525Z"
+  },
+  {
+   "id": "c0038",
+   "host": "jsite.mhlw.go.jp",
+   "title": "奈良県 十津川村の公式サイト",
+   "url": "https://jsite.mhlw.go.jp/",
+   "license": "作者が使ってよいと確かめた（事実と出典のリンクを出す。文はそのまま写さない）",
+   "status": "ok",
+   "approvedAt": "2026-11-10T12:54:52.146Z"
+  }
+ ]
+}

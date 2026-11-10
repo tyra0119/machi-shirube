@@ -1,0 +1,40 @@
+{
+ "cards": [
+  {
+   "id": "c0023",
+   "host": "www.city.osaka.lg.jp",
+   "title": "大阪府 大阪市生野区の公式サイト",
+   "url": "https://www.city.osaka.lg.jp/",
+   "license": "作者が使ってよいと確かめた（事実と出典のリンクを出す。文はそのまま写さない）",
+   "status": "ok",
+   "approvedAt": "2026-11-10T08:08:55.335Z"
+  },
+  {
+   "id": "c0024",
+   "host": "www.police.pref.osaka.lg.jp",
+   "title": "大阪府 大阪市生野区の公式サイト",
+   "url": "https://www.police.pref.osaka.lg.jp/",
+   "license": "作者が使ってよいと確かめた（事実と出典のリンクを出す。文はそのまま写さない）",
+   "status": "ok",
+   "approvedAt": "2026-11-10T08:08:56.748Z"
+  },
+  {
+   "id": "c0025",
+   "host": "www.oml.city.osaka.lg.jp",
+   "title": "大阪府 大阪市生野区の公式サイト",
+   "url": "https://www.oml.city.osaka.lg.jp/",
+   "license": "作者が使ってよいと確かめた（事実と出典のリンクを出す。文はそのまま写さない）",
+   "status": "ok",
+   "approvedAt": "2026-11-10T08:08:58.177Z"
+  },
+  {
+   "id": "c0026",
+   "host": "jsite.mhlw.go.jp",
+   "title": "大阪府 大阪市生野区の公式サイト",
+   "url": "https://jsite.mhlw.go.jp/",
+   "license": "作者が使ってよいと確かめた（事実と出典のリンクを出す。文はそのまま写さない）",
+   "status": "ok",
+   "approvedAt": "2026-11-10T08:08:59.545Z"
+  }
+ ]
+}

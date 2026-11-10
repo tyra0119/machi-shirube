@@ -1,0 +1,31 @@
+{
+ "cards": [
+  {
+   "id": "c0027",
+   "host": "www.pref.nagasaki.lg.jp",
+   "title": "長崎県 五島市の公式サイト",
+   "url": "https://www.pref.nagasaki.lg.jp/",
+   "license": "作者が使ってよいと確かめた（事実と出典のリンクを出す。文はそのまま写さない）",
+   "status": "ok",
+   "approvedAt": "2026-11-10T08:58:21.896Z"
+  },
+  {
+   "id": "c0028",
+   "host": "www.city.goto.nagasaki.jp",
+   "title": "長崎県 五島市の公式サイト",
+   "url": "https://www.city.goto.nagasaki.jp/",
+   "license": "作者が使ってよいと確かめた（事実と出典のリンクを出す。文はそのまま写さない）",
+   "status": "ok",
+   "approvedAt": "2026-11-10T08:58:23.338Z"
+  },
+  {
+   "id": "c0029",
+   "host": "www.city.sasebo.lg.jp",
+   "title": "長崎県 五島市の公式サイト",
+   "url": "https://www.city.sasebo.lg.jp/",
+   "license": "作者が使ってよいと確かめた（事実と出典のリンクを出す。文はそのまま写さない）",
+   "status": "ok",
+   "approvedAt": "2026-11-10T08:58:24.608Z"
+  }
+ ]
+}

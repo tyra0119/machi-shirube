@@ -65,12 +65,18 @@ async function rowsOf(no) {
   return rowsCache.get(no);
 }
 
+// 電話の桁が足りない・多いもの（元のデータの書きまちがい。例「TEL06-6754-43」）は出さない。押すとまちがった所へかかるため（11/10）
+function telOk(tel) {
+  const digits = String(tel ?? "").replace(/[０-９]/g, (c) => String.fromCharCode(c.charCodeAt(0) - 0xfee0)).replace(/\D/g, "");
+  return /^0\d{9,10}$/.test(digits) ? tel : null;
+}
+
 export async function buildKaigo(code, log = console.log) {
   const items = [];
   for (const [no, group, kind] of KINDS) {
     for (const r of await rowsOf(no)) {
       if (r.code5 !== code) continue;
-      items.push({ group, kind, name: r.name, addr: r.addr, tel: r.tel || null, url: /^https?:\/\//.test(r.url) ? r.url : null, ...(Number.isFinite(r.lat) && Number.isFinite(r.lon) && r.lat && r.lon ? { lat: r.lat, lon: r.lon } : {}) });
+      items.push({ group, kind, name: r.name, addr: r.addr, tel: telOk(r.tel), url: /^https?:\/\//.test(r.url) ? r.url : null, ...(Number.isFinite(r.lat) && Number.isFinite(r.lon) && r.lat && r.lon ? { lat: r.lat, lon: r.lon } : {}) });
     }
   }
   fs.mkdirSync("site/data/kaigo", { recursive: true });

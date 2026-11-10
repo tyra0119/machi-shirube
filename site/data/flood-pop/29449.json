@@ -1,0 +1,194 @@
+{
+ "code": "29449",
+ "createdAt": "2026-11-10T09:49:51.853Z",
+ "population": 3060,
+ "kinds": {
+  "洪水": {
+   "people": 60,
+   "rate": 1.8,
+   "over65": 30,
+   "byDepth": {
+    "1〜3m": 40
+   },
+   "parts": {
+    "0060": {
+     "rate": 23,
+     "people": 40
+    }
+   }
+  },
+  "土砂": {
+   "people": 950,
+   "rate": 31,
+   "over65": 500,
+   "byDepth": {
+    "警戒区域": 950
+   },
+   "parts": {
+    "0440": {
+     "rate": 56.7,
+     "people": 30
+    },
+    "0330": {
+     "rate": 46.3,
+     "people": 10
+    },
+    "0430": {
+     "rate": 34.5,
+     "people": 10
+    },
+    "0350": {
+     "rate": 26.5,
+     "people": 10
+    },
+    "0310": {
+     "rate": 40.4,
+     "people": 10
+    },
+    "0540": {
+     "rate": 23.2,
+     "people": 20
+    },
+    "0530": {
+     "rate": 18.8,
+     "people": 10
+    },
+    "0360": {
+     "rate": 31.4,
+     "people": 100
+    },
+    "0450": {
+     "rate": 30.8,
+     "people": 40
+    },
+    "0520": {
+     "rate": 36,
+     "people": 10
+    },
+    "0500": {
+     "rate": 33,
+     "people": 10
+    },
+    "0460": {
+     "rate": 18.8,
+     "people": 10
+    },
+    "0490": {
+     "rate": 26.2,
+     "people": 10
+    },
+    "0470": {
+     "rate": 54.6,
+     "people": 40
+    },
+    "0420": {
+     "rate": 35,
+     "people": 40
+    },
+    "0370": {
+     "rate": 37.4,
+     "people": 60
+    },
+    "0340": {
+     "rate": 32.1,
+     "people": 70
+    },
+    "0410": {
+     "rate": 19.7,
+     "people": 10
+    },
+    "0400": {
+     "rate": 32,
+     "people": 10
+    },
+    "0270": {
+     "rate": 18,
+     "people": 10
+    },
+    "0290": {
+     "rate": 42.1,
+     "people": 10
+    },
+    "0240": {
+     "rate": 37.2,
+     "people": 80
+    },
+    "0280": {
+     "rate": 33.9,
+     "people": 10
+    },
+    "0260": {
+     "rate": 21.5,
+     "people": 10
+    },
+    "0250": {
+     "rate": 25.2,
+     "people": 20
+    },
+    "0220": {
+     "rate": 26.2,
+     "people": 20
+    },
+    "0140": {
+     "rate": 41.9,
+     "people": 10
+    },
+    "0210": {
+     "rate": 42,
+     "people": 20
+    },
+    "0200": {
+     "rate": 37.9,
+     "people": 30
+    },
+    "0180": {
+     "rate": 58.1,
+     "people": 10
+    },
+    "0150": {
+     "rate": 57.7,
+     "people": 50
+    },
+    "0160": {
+     "rate": 29.1,
+     "people": 20
+    },
+    "0170": {
+     "rate": 9.3,
+     "people": 20
+    },
+    "0080": {
+     "rate": 80.3,
+     "people": 10
+    },
+    "0060": {
+     "rate": 28.5,
+     "people": 40
+    },
+    "0050": {
+     "rate": 28.2,
+     "people": 20
+    },
+    "0040": {
+     "rate": 52.6,
+     "people": 10
+    },
+    "0030": {
+     "rate": 37.9,
+     "people": 10
+    }
+   }
+  }
+ },
+ "note": "250m 四方ごとの人口（国勢調査 2020年）に、その四角の中で浸水や土砂災害が想定される場所の割合を掛けて足した、めやすです。人は四角の中に均等に住んでいるとみなしています。10人単位に丸めています",
+ "sources": [
+  {
+   "title": "国勢調査 2020年 地域メッシュ統計（250m）人口及び世帯（総務省統計局 e-Stat）",
+   "url": "https://www.e-stat.go.jp/gis/statmap-search?page=1&type=1&toukeiCode=00200521&toukeiYear=2020&aggregateUnit=Q"
+  },
+  {
+   "title": "ハザードマップポータルサイト（重ねるハザードマップ）のオープンデータを加工して作成",
+   "url": "https://disaportal.gsi.go.jp/hazardmapportal/hazardmap/copyright/opendata.html"
+  }
+ ]
+}
