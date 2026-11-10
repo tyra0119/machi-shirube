@@ -233,7 +233,7 @@ function renderGrid() {
 // extra：1問だけ調べ直すとき { qids: ["Q76"], redo: true }
 async function start(extra = {}) {
   $("start").disabled = true;
-  const res = await fetch("api/runs", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ code, part: part ?? undefined, ...(extra.qids ? extra : {}) }) });
+  const res = await fetch("api/runs", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ code, part: part ?? undefined, ...(extra.qids ? extra : { batch: $("batch").checked }) }) });
   const body = await res.json();
   if (!res.ok) { $("note").textContent = `始められませんでした：${body.error}`; $("start").disabled = false; return; }
   // ほかの町を調べている最中なら、予約になる（作者「予約できるようにして。…調査中の町が終わったら自動実行」）

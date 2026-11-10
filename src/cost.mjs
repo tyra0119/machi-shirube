@@ -15,7 +15,8 @@ const LOG = path.join("local", "costs.jsonl");
 const WEB_SEARCH_USD = 0.01;
 
 // キャッシュの読み出しは入力の 0.1 倍、書き込みは 1.25 倍で数える
-export function costOf(model, usage) {
+// batch：Message Batches API（急がない頼みごと）。トークンの値段が半分になる。Web 検索の 1 回ごとの値段は、半分にならないものとして数える
+export function costOf(model, usage, { batch = false } = {}) {
   const p = PRICES[model];
   if (!p) throw new Error(`値段の分からないモデル: ${model}`);
   const input =
@@ -23,7 +24,7 @@ export function costOf(model, usage) {
     (usage.cache_read_input_tokens ?? 0) * 0.1 +
     (usage.cache_creation_input_tokens ?? 0) * 1.25;
   const searches = usage.server_tool_use?.web_search_requests ?? 0;
-  return (input * p.input + (usage.output_tokens ?? 0) * p.output) / 1_000_000 + searches * WEB_SEARCH_USD;
+  return ((input * p.input + (usage.output_tokens ?? 0) * p.output) / 1_000_000) * (batch ? 0.5 : 1) + searches * WEB_SEARCH_USD;
 }
 
 // 費用の上限（作品の中で止める。Console のワークスペースの上限とは別）。
@@ -34,8 +35,8 @@ export const DAILY_LIMIT_USD = Number(process.env.DAILY_LIMIT_USD ?? 80);
 export const TOTAL_LIMIT_USD = Number(process.env.TOTAL_LIMIT_USD ?? 550); // 2026-11-03 作者「APIの上限を$450から$550に変更する」（残高 $532.60、作品の数えた合計 $68.36 のとき）
 
 // 1回の呼び出しを記録して、その回の費用を返す。what は人が読める「何のための呼び出しか」
-export function record(model, usage, what) {
-  const usd = costOf(model, usage);
+export function record(model, usage, what, { batch = false } = {}) {
+  const usd = costOf(model, usage, { batch });
   fs.mkdirSync(path.dirname(LOG), { recursive: true });
   const row = {
     at: new Date().toISOString(),
@@ -45,6 +46,8 @@ export function record(model, usage, what) {
     output_tokens: usage.output_tokens ?? 0,
     cache_read_input_tokens: usage.cache_read_input_tokens ?? 0,
     cache_creation_input_tokens: usage.cache_creation_input_tokens ?? 0,
+    web_search_requests: usage.server_tool_use?.web_search_requests || undefined,
+    batch: batch || undefined,
     usd,
   };
   fs.appendFileSync(LOG, JSON.stringify(row) + "\n");

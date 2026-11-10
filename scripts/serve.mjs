@@ -16,6 +16,7 @@ import fs from "node:fs";
 import path from "node:path";
 import * as ledger from "./ledger.mjs";
 import { research, researchTown, townProgress, RUN_LIMIT_USD } from "./research.mjs";
+import { researchTownBatch } from "./research-batch.mjs";
 import { backupLedger } from "./backup-ledger.mjs";
 import { propose, decideProposal, loadProposals, requestToQuestion } from "./propose.mjs";
 import { buildOverlays } from "./overlays.mjs";
@@ -141,7 +142,7 @@ async function startRun(req, res) {
   if (cap.over) return send(res, 409, { error: cap.why, cap });
   let body = "";
   for await (const chunk of req) body += chunk;
-  const { code, part, qids: rawQids, redo } = JSON.parse(body || "{}");
+  const { code, part, qids: rawQids, redo, batch } = JSON.parse(body || "{}");
   // 1問だけ調べ直す（作者「あるカード（例えばQ76）だけを再度調べることはできる？」）：qids に問いの番号、redo: true
   const qids = Array.isArray(rawQids) && rawQids.length ? rawQids.slice(0, 10).map(String) : null;
   if (qids && !qids.every((x) => /^[QT]\d+$/.test(x))) return send(res, 400, { error: "問いの番号が正しくありません" });
@@ -154,10 +155,10 @@ async function startRun(req, res) {
     const cur = runs.get(activeRun);
     if (same(cur)) return send(res, 409, { error: "この町は、いま調べている最中です", runId: activeRun });
     let q = queue.find(sameQ);
-    if (!q) { q = { id: `q-${Date.now()}-${code}${part ? `-${part}` : ""}`, code, part: part ?? null, qids, redo: !!redo, at: new Date().toISOString() }; queue.push(q); }
+    if (!q) { q = { id: `q-${Date.now()}-${code}${part ? `-${part}` : ""}`, code, part: part ?? null, qids, redo: !!redo, batch: !!batch, at: new Date().toISOString() }; queue.push(q); }
     return send(res, 202, { queued: true, id: q.id, position: queue.indexOf(q) + 1, current: { code: cur.code, part: cur.part ?? null } });
   }
-  send(res, 200, launch(code, part, { qids, redo: !!redo }));
+  send(res, 200, launch(code, part, { qids, redo: !!redo, batch: !!batch }));
 }
 
 // 予約の先頭を始める（いまの調べが終わったあと）
@@ -165,13 +166,14 @@ function next() {
   if (isBusy() || !queue.length) return;
   if (capNow().over) { console.log(`費用の上限に届いたので、予約の ${queue.length} 町は始めずに残します`); return; }
   const q = queue.shift();
-  const run = launch(q.code, q.part ?? undefined, { qids: q.qids, redo: q.redo });
+  const run = launch(q.code, q.part ?? undefined, { qids: q.qids, redo: q.redo, batch: q.batch });
   run.log.unshift({ at: run.startedAt, text: "予約していた町を、前の町の調べが終わったので始めました" });
 }
 
-function launch(code, part, { qids = null, redo = false } = {}) {
+// batch：急がない調べ（Message Batches API。費用が約 3 割。返るまで数分〜1 時間。scripts/research-batch.mjs）
+function launch(code, part, { qids = null, redo = false, batch = false } = {}) {
   const id = `run-${new Date().toISOString().replace(/[-:T.Z]/g, "").slice(0, 14)}-${code}${part ? `-${part}` : ""}`;
-  const run = { id, code, part, startedAt: new Date().toISOString(), status: "running", usd: 0, limit: RUN_LIMIT_USD, log: [], items: [], stopRequested: false, qids };
+  const run = { id, code, part, startedAt: new Date().toISOString(), status: "running", usd: 0, limit: RUN_LIMIT_USD, log: [], items: [], stopRequested: false, qids, batch };
   runs.set(id, run);
   activeRun = id;
   // 続きの調べ（調べる前から、この町・字に答えがある）では、町全体の仕上げ（見立て・ひとこと・つなぎ・提案）をしない
@@ -181,7 +183,7 @@ function launch(code, part, { qids = null, redo = false } = {}) {
   const finish = !qids && !again;
   // 国のデータを重ねる計算（PC だけ・無料）を、Claude の調べと並べて動かす。町・字のときは市区町村の分がもうあれば何もしない
   const overlays = buildOverlays(code, (text) => run.log.push({ at: new Date().toISOString(), text })).catch(() => {});
-  researchTown(code, {
+  (batch ? researchTownBatch : researchTown)(code, {
     part, qids: qids ?? undefined, redo,
     log: (text) => run.log.push({ at: new Date().toISOString(), text: text.replace(/^\d\d:\d\d:\d\d /, "") }),
     onItem: (q, it, total) => { run.usd = total; run.items.push({ qid: q.id, id: it.id, status: it.status, value: it.value, why: it.why }); },
